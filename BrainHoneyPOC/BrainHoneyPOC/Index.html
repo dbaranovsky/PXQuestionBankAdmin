@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title> question editor </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="Content/styles.css"/>
+    <script type="text/javascript" language="javascript" src="Scripts/easyXDM/easyXDM.debug.js"></script>
+    <script type="text/javascript" language="javascript">
+        easyXDM.DomHelper.requiresJSON('json2.js');
+    </script>
+    
+</head>
+    <body>
+        <div id="inputControls">
+            <div> <label>  EntityID:   </label> <input id="entityId" type="text" value="61195" /> </div>
+            <div> <label>  QuestionId: </label> <input id="questionId" type="text" value="254b47f01325406286fdfb38a4b38d08" /> </div>
+            <div> <button id="button-edit"> Run editor</button> </div>
+        </div>
+
+        <div id="waiting" style="display: none">
+            <p>Loading, please wait...</p>
+            <img src="Images/wait.gif" />
+        </div>
+
+        <div id="contentFrame" style="width: 800px; height: 500px;"></div>
+        <script type="text/javascript" language="javascript" src="Scripts/jquery/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" language="javascript" src="Scripts/dlapWrapper.js"></script>
+        <script type="text/javascript" language="javascript" src="Scripts/questionEditorConfig.js"></script>
+        <script type="text/javascript" language="javascript" src="Scripts/application.js"></script>
+        <script type="text/javascript" language="javascript" src="Scripts/inputPanel.js"></script>
+    </body>
+</html>

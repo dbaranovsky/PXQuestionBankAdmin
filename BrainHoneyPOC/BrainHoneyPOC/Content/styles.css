@@ -1,0 +1,17 @@
+﻿label {
+    padding-right: 4px;
+    width: 100px;
+    display: inline-block;
+}
+
+input {
+    width: 300px;
+}
+
+div {
+    padding: 2px 2px 2px 2px;
+}
+
+#btn-edit {
+    width: 150px;
+}
