@@ -1,0 +1,8 @@
+﻿
+/* PX dialog Modal Styling for new Modal templates */ 
+
+
+
+.px-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+    float: left;
+}

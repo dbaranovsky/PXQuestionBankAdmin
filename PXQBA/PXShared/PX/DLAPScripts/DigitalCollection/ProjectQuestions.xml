@@ -1,0 +1,65 @@
+﻿<requests>
+   
+  <question questionid="B02E4372ECAB4AB029F8760E21020032" entityid="-entityID-">
+    <interaction type="text" flags="2" width="150" texttype="Numeric" />
+		<parameters>
+		<parameter name="a" type="Range" min="1" max="9" step="1" />
+		<parameter name="b" type="Range" min="1" max="9" step="1" />
+		<parameter name="c" type="List" >
+		<values>
+		<value>1</value>
+		<value>3</value>
+		<value>5</value>
+		<value>7</value>
+		</values>
+		</parameter>
+		</parameters>
+		<body>Sample Question - 1 </body>
+		<answer>
+		<value>This is some random answere to our question - 1</value>
+		</answer>
+  </question>
+  
+  
+  <question questionid="2f58ddabe0e343eda629b405759be802" entityid="-entityID-"  >
+		<answer />
+		<body >Match the animals with their sounds.</body>
+		<interaction type="match" flags="2" >
+		<choice id="1" >
+		<body >dog</body>
+		<answer >woof</answer>
+		</choice>
+		<choice id="2" >
+		<body >cat</body>
+		<answer >meow</answer>
+		</choice>
+		<choice id="3" >
+		<body >cow</body>
+		<answer >moo</answer>
+		</choice>
+		</interaction>
+		</question>
+		
+		
+		
+ <question questionid="44cead279c0f46dcab0c2d4ff1ce5c67" entityid="-entityID-">
+		<body >Is this a multiple choice question?</body>
+		<interaction type="choice" flags="2" >
+		<choice id="1" >
+		<body >Yes</body>
+		</choice>
+		<choice id="2" >
+		<body >No</body>
+		</choice>
+		</interaction>
+		<groups >
+		<group >Group A</group>
+		</groups>
+		<answer >
+		<value >1</value>
+		</answer>
+</question>
+  
+  
+  
+</requests>

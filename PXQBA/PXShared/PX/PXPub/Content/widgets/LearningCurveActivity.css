@@ -1,0 +1,16 @@
+﻿.learning-curve-related-content .content-menu-tabs,
+.learning-curve-related-content #content-nav
+{
+    display:none;    
+}
+
+.related-content-dialog #document-viewer-wrapper #document-viewer
+{
+    overflow:auto !important;    
+}
+
+.relatedContentContentDialog 
+{
+    width:90% !important;
+    height:90% !important;    
+}

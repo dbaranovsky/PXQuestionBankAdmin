@@ -1,0 +1,626 @@
+﻿
+/** Assignments Rules **/
+
+#right #content-item .assignment-widget{
+	float:left;
+	padding-top: 32px;
+	width:100%;
+}
+
+#content-item .assignment-widget h2{
+	margin-top:12px;
+}
+
+.assign-set .assignclock{
+	width: 19px;
+	height: 18px;
+	background-color: transparent;
+	background-image: url("style/images/platx_sprite.png");
+	background-position: -99px -51px;
+	background-repeat: no-repeat;
+	float:right;
+	cursor:pointer;
+}
+
+.assign-set .due-date-link{
+	float:right;
+	padding: 0 12px 0 8px !important;
+	text-decoration:none;
+}
+
+body.home-layout .assignment-widget .contentbody{
+	float: right;
+	width: 78%;
+}
+
+body.home-layout .assignment-widget #schedule {
+	width: 65%;
+	float: right;
+}
+
+body.content-layout .assignment-widget #schedule {
+	width: 75%;
+	float:right;
+}
+
+.assignment-widget #schedule table {
+	width: 100%;
+}
+
+.assignment-widget .group-title{
+	text-align: left;
+	width: 130px;
+	padding-top: 8px !important;
+}
+
+.assignment-widget .group-body{
+	text-align: left;
+	font-size: 12px !important;
+}
+
+.assignment-widget .group-body div{
+	margin: 5px;
+	color: #CCC;
+	font-style:italic;
+}
+
+.assignment-widget .group-date{
+	text-align: left;
+	width: 20%;
+}
+
+.assignment-widget .item-title{
+	width: 100%;
+   text-align: left; 
+	color: Blue !important;
+	font-size: 14px !important;
+}
+
+.assignment-widget .item-title .fne-link{
+	color: Blue !important;
+	font-size: 14px !important;
+}
+
+.assignment-widget .item-date{
+	width: 100%;
+	font-size: 11px;
+	color: #CCC;
+	text-align:right;
+}
+
+.assignmentwidget-table .collapseIcon{
+	width: 18px;
+	height: 18px;
+	background-image: url('style/images/platx_sprite.png');
+	background-position: -299px -200px;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	display:block; 
+	float:left;  
+}
+
+.assignmentwidget-table tr{
+	float:left;
+	width: 100%;
+	padding: 0px !important;
+	margin: 0px !important;
+}
+
+.assignmentwidget-table .noCollapse .collapseIcon{
+	background-image:none;
+}
+
+ .assignmentShow{
+	 display: block;
+}
+	
+  .assignmentHide{
+		display: none;
+ }
+ 
+ /* Assignment widget summary */
+ 
+ .assignment-widget.summary .group-date{
+	 float:right;
+ }
+ 
+ .assignment-widget.summary .group-body,
+ .assignment-widget.summary .group-title{
+	 float:left;    
+ }
+ 
+ /* Assignment editors window*/
+ .AssignmentGroup,
+ .AssignmentGroup .errorAssignment{
+	 float:left;
+ }
+ 
+ .AssignmentGroup .AssignmentContainer{
+	 padding: 10px 0;
+ }
+ 
+.AssignmentContainer .AssignmentName{
+	width:350px;
+}
+
+.AssignmentContainer .removeAssignment{
+	float: left; 
+	margin: 5px 0 0 20px; 
+	cursor: pointer;
+	width: 20px;
+	height: 20px;
+	background-image: url(style/images/platx_sprite.png);
+	background-repeat: no-repeat;
+	background-position: -49px -49px;  
+}
+
+.assignmentmodal-prompt{
+	padding-top: 6px;
+}
+
+ /*For Assignment Page not Home*/
+body.content-layout .assignment-widget .item-title
+{
+	width: auto;
+	margin: 0 !important;
+	float: left;
+	padding: 0 !important;
+	line-height: 24px;
+}
+
+body.content-layout .assignment-widget .item-date{
+	width: auto;
+	float:right;
+	margin: 0 25% 0 0 !important;
+	padding: 0 !important;
+	line-height: 24px;
+	white-space:nowrap;
+}
+
+ 
+.assignment-widget .group-title h3 {
+	font-size: 12px;
+	height:30px;
+	padding:3px 0;    
+	text-transform: uppercase;
+	display:inline;      
+	color:#333;     
+}
+
+.assignment-widget tr.today{
+	background-color:#fff;
+}
+
+.assignment-widget .today{
+	background-color:#669900;
+	padding:8px 0 0 0 !important;
+}
+
+ .assignment-widget .thisweek{
+	color: Red;
+} 
+
+.assignment-widget .nextweek{
+	background-color:#C7C3BB;
+}
+
+.assignment-widget .group{
+	border-bottom:1px dotted #B9B9B9;
+	display:block;
+	min-height: 30px;
+}
+
+
+/*END For Assignment Page not Home*/
+
+.schedule-next-week{background:#C7C3BB !important;}
+.schedule-this-week{background:#FFCC00 !important;}
+.schedule-today{background:#669900 !important;}
+
+.assignment-detail-viewer #divComposeItems{
+	margin:5px 0;
+}
+
+.assignment-detail-viewer .reflection-content-title{
+   padding: 6px 0px 12px !important;
+    max-width: 95%;
+}
+
+.assignment-detail-viewer #divComposeItems .hidden{
+display:none;
+}
+
+#student-reflection .submission-body{
+    font-size:12px;
+    line-height:16px;
+    margin-bottom:12px;
+}
+
+#student-reflection #document-body
+{
+    width:73% !important;
+    padding-right:20px;        
+}
+
+#student-reflection #highlight-container
+{
+    position:inherit !important;  
+    padding-top:35px !important; 
+}
+
+#divSavedDocs{
+overflow:hidden;
+height:100%;
+}
+
+#assignmentPopup #assignmentSettings{
+float: right;
+height: 100%;
+text-align: left;
+display: inline;
+margin: 2px 25px 0 10px;
+}
+
+.assignment-editor #frmAssignmentEdit .ui-dialog .ui-dialog-titlebar{
+	background-color: #E9F0F6;
+	border: none !important;
+}
+
+.ui-jqgrid .ui-jqgrid-titlebar {
+	height:15px;
+}
+
+/* END Assignments Rules*/
+
+
+.rubric-total {
+    float:left;
+    color:#0081C6 !important;
+}
+.rubric-pagination {float:right;color:#0081C6;}
+.current-rubric{font-weight:normal;}
+.assignment-actions {width:25%;height:30%; margin-left:4px; float:right;text-align:left;line-height:24px;}
+.assignmentTopView{border-bottom: 1px solid #CDCCCB;height: 135px;}
+.assignmentBottomView {height:60%;background-color:#FFF;}
+.submission-nav {cursor:pointer;height:15px;}
+
+
+#assignmentDetails {width:24%;float:right; text-align:left;margin: 10px 10px 0 0;}
+#topView #leftPanel #rubricsFullView {height:40%;}
+#grid-actions #lnkDeleteSavedDoc {margin-left:4px;}
+#assignmentViewContent #doc-collection {margin:20px;}
+#pr-instructor-StudentList{float:right;}
+.assignment-grade-actions {clear:both;}
+#txtassignedScore {width:25px;}
+.f-right {float: right;}
+.f-left {float: left;}
+.f-inherit {float: inherit;}
+.highlight-options{padding-top:6px;}
+.rubric-summary {width:98%;height:25px;margin-top:6px; color:#0081C6;}
+.rubric-summary #ttlScore {font-weight:bold;}
+.pr-grid-actions{ margin-top: 10px;}
+.assignment_optionsView { margin-right: 18px;float: right;height: 22px;}
+.pr-assignment-topview{ height: 142px;}
+.pr-assignment-topview .assignmentLeftView { height: auto;}
+
+/*Assignment Writer/Viewer Popup Rules */
+#assignmentResTable {
+margin-top: 20px !important;
+}
+
+#assignmentResTable thead td, #statusTable thead td {
+background-color: #e0ded0;
+}
+
+#assignmentResTable td, .pxBorder {
+border: 1px solid #ccc;
+padding: 5px !important;
+}
+
+.addIntLink {
+display: none;
+margin-left: 4px;
+padding: 2px 4px;
+background-color: #f0f0f0;
+-moz-border-radius: 4px;
+border: 1px solid #bbb;
+}
+
+.int-link-toc .int-link-active > a.addIntLink{
+	display: inline;
+}
+
+.regularFont {
+line-height: 1.25em;
+}
+
+#RubricsTable {
+margin-top: 20px !important;
+}
+
+#RubricsTable td {
+border: 1px solid #666666;
+padding: 5px !important;
+}
+
+#attachmentTable {
+margin-top: 20px !important;
+}
+
+#attachmentTable thead td {
+background-color: #CCCCCC;
+}
+
+#attachmentTable td {
+border: 1px solid #666666;
+padding: 5px !important;
+}
+
+.divDropboxComment {
+width: 75%;
+height: 100%;
+margin-left: 2px;
+float: left;
+}
+
+.assignmentLeftView {
+width: 73%;
+float: left;
+background-color:#FFFFFF;
+border-right:1px solid #CDCCCB;
+padding: 10px 0 0 10px;
+height:125px;
+}
+
+.rubricsOptionSelector {
+    font-size: 12px;
+    padding-top: 2px;
+    margin-left:12px;
+}
+.tblAssignmentView {
+    background-color: #FFFFFF;
+    border-collapse: separate;
+    border-spacing: 5px;
+    height: 30%;
+    width: 98%;
+    word-spacing: 2px;
+}
+
+div#rubricsFullView  .tblAssignmentView tr{display:block;height:auto;}
+
+.tblAssignmentView tr{
+height:85px;
+display:none;
+}
+
+.tblAssignmentView .rubric-nav {
+	width:2%;
+	overflow:hidden;
+	height:72px;
+    min-width:16px;
+    float:left;
+    margin-right:10px;
+}
+
+.tblAssignmentView .rubric-nav .rubric-previous {
+    background-color: #0074BB;
+    background-image: url("style/images/platx_sprite.png");
+    background-position:-51px -452px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    display: block;
+    height: 32px;
+    border-bottom: 2px solid #989898;
+    width: 90%;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    -moz-box-shadow: 3px 3px 4px #989898;
+    -webkit-box-shadow: 3px 3px 4px #989898;
+    box-shadow: 3px 3px 4px #989898;
+}
+
+.tblAssignmentView .rubric-nav .rubric-next{
+	width:90%;
+	background-color: #0074BB;
+	cursor: pointer;
+	display: block;
+	float: left;
+	background-image: url('style/images/platx_sprite.png');
+	background-repeat:no-repeat;
+	height: 32px;
+	background-position: -51px -333px;
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    -moz-box-shadow: 3px 3px 4px #989898;
+    -webkit-box-shadow: 3px 3px 4px #989898;
+    box-shadow: 3px 3px 4px #989898;
+    }
+
+.rubric-nav .current-rubric{
+	display: none;
+	text-align:center;
+	padding: 15px 0;
+}
+
+
+.tblAssignmentView .rubric-score{
+    width:20%;
+    border:1px solid #999;
+    height:100%;
+    vertical-align:top;
+    padding: 10px 0 10px 0;
+    display:none;
+}
+
+.tblAssignmentView .rubric-score .rubric-score-assigned{
+    width:30px;
+    display:block;
+    margin:5px 0 0 0;
+}
+
+.tblAssignmentView .rubric-score br{
+    display:none;
+}
+
+.tblAssignmentView .rubric-score-guides{
+    width:15%;
+    border:2px solid #D1D3D4;
+    height:70px;
+    padding: 10px 0 0 10px;
+    vertical-align:top;
+    background-color:#F0F0F0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-align:left;
+    overflow:hidden;
+    display:inline-block;
+}
+
+.tblAssignmentView .rubric-score-grade-title{
+    width:15%;
+    border:2px solid #D1D3D4;
+    height:70px;
+    padding: 10px 0 0 10px;
+    vertical-align:top;
+    background-color:#F0F0F0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-align:left;
+    overflow:hidden;
+    display:inline-block;
+}
+
+#divInstructorView .tblAssignmentView .rubric-score-guides{
+	cursor:pointer;
+}
+
+#divInstructorView .tblAssignmentView .rubric-score-guides hr{
+	margin-right:4px;
+}
+
+#divInstructorView .tblAssignmentView  .scoreSelected{
+	background-color:#E5F6EE;
+	border: 2px solid #00A651;
+    font-weight:bold;
+}
+
+#assignmentDetails #submittedstudentList{
+    width:100%;
+}
+
+#gbox_gridResults{
+    margin:10px 0;
+}
+
+.grid-actions{
+    margin:5px 0;
+    height:25px;
+}
+.assignment-viewer #bottomView  {
+	overflow: auto;
+	width: 100%;
+}
+
+.due-info{margin-top:5px;}
+
+.due-info .due-date{
+	float:left;
+}
+
+.due-info .final-grade{
+	float:right;
+}
+
+.final-grade .grade-input{
+	float: left;
+}
+
+#assignmentDetails #studentList{
+    margin:0 0 5px 0;
+}
+
+#statusBox .dialog-actions #btnStatusClose{
+    display: block;
+    margin: 10px auto;
+    width: 50px;
+}
+
+/* end Assignment Writer/Viewer Popup Rules */
+
+
+.submissionDetails .submissionDetailsTable
+{
+    border: 1px solid #303030;
+}
+
+.submissionDetails .submissionDetailsTable thead
+{
+    background: lightgray;
+}
+
+.submissionDetails .submissionDetailsTable tr th
+{
+    text-align: left;
+    padding: 5px 50px 5px 5px;
+    border: 1px solid #303030;
+}
+
+.submissionDetails .submissionDetailsTable tr td
+{
+    text-align: left;
+    padding: 5px 50px 5px 5px;
+    border: 1px solid #303030;
+}
+
+.submissionDetails .submissionDetailsTableRow .submissionDetailTitleActionLink
+{
+    color: Blue !important;
+}
+
+
+.submissionDetails .submissionDetailsFooter
+{
+    padding-top: 20px;
+}
+
+.assignment-highlight-options #highlightmenuactions
+{
+    width: 230px;
+}
+
+.activity-details-title
+{
+    
+}
+.activity-details-title:hover
+{
+    cursor: pointer;
+}
+.activity-details-content
+{
+    display: none;
+    line-height: 1.3em;
+    padding-left: 15px;
+    padding-top: 15px;
+
+}
+
+.activity-details .activity-details-policy
+{
+    padding-bottom: 15px;
+}
+
+.activity-details .activity-details-rubric
+{
+    padding-bottom: 15px;
+}

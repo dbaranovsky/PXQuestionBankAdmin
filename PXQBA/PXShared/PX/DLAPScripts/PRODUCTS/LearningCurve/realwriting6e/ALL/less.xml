@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<batch>
+	<request cmd="updatecourses">
+		<requests>
+			<course courseid="-courseid-" domainid="-domainid-" title="-title-" reference="">
+				<data>     
+					<cssparameters>
+                        <param name="Typecolor" value="#1f647c" />
+                        <param name="Bordercolor" value="#333333" />
+                        <param name="Calloutcolor" value="#000" />
+                        <param name="Bodytextcolor" value="#1f647c" />
+                        <param name="Columnbackgroundcolor" value="#f4f7ea" />
+                        <param name="bookcover" value="style/images/real-writing-login.png" />
+                        <param name="course-banner-logo" value="style/images/learning_curve_logo2.png" />
+                        <param name="course-title-image" value="style/images/LC-realwriter-banner.png" />
+                    </cssparameters>
+				</data>
+			</course>
+		</requests>
+	</request>
+</batch>

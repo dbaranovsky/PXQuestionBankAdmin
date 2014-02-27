@@ -1,0 +1,9 @@
+<requests>
+      <course courseid="-courseid-" domainid="-domainid-" title="-title-" reference="">
+        <data>
+          <bfw_rss_feeds>
+            <feed name="Scientific American" url="http://www.scientificamerican.com/xml/worth.cfm?category_id=8" />
+          </bfw_rss_feeds>          
+        </data>
+      </course>
+</requests>

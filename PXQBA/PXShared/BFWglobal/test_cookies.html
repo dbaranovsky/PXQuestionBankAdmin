@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE>test</TITLE>
+    <script type="text/javascript" src="/BFWglobal/js/jquery/jquery-1.4.4.min.js"></script>  
+    <script type="text/javascript" src="/BFWglobal/js/jquery/jquery.cookie.js"></script>  
+    <script type="text/javascript"> 
+	$(document).ready(function(){
+		displayCookies();
+    });
+	function checkCookieArray (cookieObjArray) {
+		if (!($('#cookieDisplay').length>0)) $('body').append('<div id="cookieDisplay" style="border: 1px solid blue"></div>');
+		var haveArr = false;
+		if (cookieObjArray) {
+			try {
+				haveArr = (cookiObjArray.length > 0);
+			} catch(e) {
+			}
+		}
+		//$('#cookieDisplay').append('<br/>have array? '+ haveArr);
+		if (!haveArr) {
+			cookieObjArray = [];
+			var cookies = [];
+			var cookiesStrings = document.cookie.split(';');
+			$('#cookieDisplay').append('<br/>cookiesStrings.length '+ cookiesStrings.length);
+			for (var i=0; i < cookies.length; i++) {
+				$('#cookieDisplay').append('<br/>'+cookiesStrings[i]);
+				if (cookiesStrings[i].split) {
+					var actual = cookiesStrings[i].split('=');
+					if (actual.length > 1) {
+						cookies.push({name: actual[0], value: actual[1]});
+					} else {
+						cookies.push({name: null, value: actual[0]});
+					}
+					//$('#cookieDisplay').append('<br/>'+cookies.length+' = '+cookies[cookies.length-1].name);
+				}
+			}
+			var path = window.location.pathname;
+			var pathEls = path.split('/');
+			var paths = [];
+			path = '';
+			for (var j=0; j<pathEls.length; j++) {
+				if (path.charAt(path.length-1)!='/') path += '/';
+				path += pathEls[j];
+				paths.push(path);
+			}
+			$('#cookieDisplay').append('<br/>cookies.length '+ cookies.length);
+			$('#cookieDisplay').append('<br/>paths.length '+ paths.length);
+			$('#cookieDisplay').append('<br/>Domains.length '+ BFWCookies.Domains.length);
+			$('#cookieDisplay').append('<br/>Paths.length '+ BFWCookies.Paths.length);
+			for (var k=0; k < cookies.length; k++) {
+					$('#cookieDisplay').append('<br/>'+k+' = '+cookies[k].name);
+				for (var j=0; j<paths.length; j++) {
+					//$('#cookieDisplay').append('<br/> '+ paths[j]);
+					cookieObjArray.push({name: cookies[k].name, value: cookies[k].value, domain: window.location.host, path: paths[j]});
+				}
+				for (var i=0; i< BFWCookies.Domains.length; i++) {
+					for (var j=0; j< BFWCookies.Paths.length; j++) {
+						cookieObjArray.push({name: cookies[k].name, value: cookies[k].value, domain: BFWCookies.Domains[i], path: BFWCookies.Paths[j]});
+						//$('#cookieDisplay').append('<p>i = '+ i +', j = '+ j +', d = '+ BFWCookies.Domains[i] +', p = '+ BFWCookies.Paths[j] +', cd = '+ cookieObjArray[cookieObjArray.length-1].domain +', cp = '+ cookieObjArray[cookieObjArray.length-1].path +', cn = '+ cookies[k].name +', cv = '+ cookies[k].name +'</p>');
+					}
+				}
+			}
+		}
+		$('#cookieDisplay').append('<br/>cookieObjArray.length '+ cookieObjArray.length);
+		return cookieObjArray;
+	}
+	function clearCookies (cookieObjArray) {
+		cookieObjArray = checkCookieArray(cookieObjArray);
+	}
+	function displayCookies (cookieObjArray) {
+		cookieObjArray = checkCookieArray(cookieObjArray);
+		if (!($('#cookieDisplay').length>0)) $('body').append('<div id="cookieDisplay" style="border: 1px solid blue"></div>');
+		$('#cookieDisplay').append('<hr/><p># of cookies = '+ cookieObjArray.length +'</p>');
+		for (var i=0; i< cookieObjArray.length; i++) {
+			$('#cookieDisplay').append('<br/>'+ cookieObjArray[i].name +' = '+ cookieObjArray[i].value +' - '+ cookieObjArray[i].domain +' - '+ cookieObjArray[i].path);
+		}
+	}
+	var fullHost = window.location.host;
+	var hostElements = fullHost.split('.');
+	var parentHost = fullHost;
+	if (hostElements.length > 2) {
+		parentHost = '';
+		for (var i=1; i<hostElements.length; i++) {
+			parentHost += hostElements[i];
+			if (i<i<hostElements.length-1) parentHost += '.';
+		}
+	}
+	var BFWCookies = {
+		Domains: [ window.location.host, parentHost, '.'+window.location.host, '.'+parentHost ],
+		Paths: [ '/', '/account', '/request', '/beta', '/beta/secure' ],
+		Names: []
+	};
+	</script> 
+ </HEAD>
+
+ <BODY>
+ 
+ Cookies associated with this document: 
+<script type="text/javascript">
+document.write(document.cookie);
+</script>
+
+ </BODY>
+</HTML>

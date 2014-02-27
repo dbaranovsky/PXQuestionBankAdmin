@@ -1,0 +1,74 @@
+﻿@model Bfw.PXAP.Models.SettingsModel
+
+@{
+    ViewBag.Title = "Environments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="@Url.Content("~/Scripts/PAPX/Environment.js")" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var env = GetCurrentEnvironment();
+            $("#AddNewEnv").click(GetUIForNewEnv);
+
+            $("#AllEnvironments Form").each(function () {
+                $(this).find("#submit").hide();
+                $(this).find("#Cancel").hide();
+                $(this).find("#divAddResource").hide();
+                $(this).find("#removeResource").hide();
+
+            });
+        });
+
+        function GetUIForNewEnv() {
+            //if ($("#AllEnvironments #Env").length) {
+            //    $("#AllEnvironments").append($("#AllEnvironments #Env:first").clone());
+            //     return;
+           //            }
+
+            var envIdSelector = "input[id='EnvironmentId'][value='0']";  // selector for hiddend field that holder EnvironmentId
+
+            if ($(envIdSelector).length) {
+                alert('You already have a new environment. Please save or cancel it before adding another one');
+                return;
+            }
+
+            $.get("/dev/Environment/AddEnvironment",{ environmentId: 0 }, function (data) {
+                $("#AllEnvironments").append(data);
+
+                var editButton = $(envIdSelector).closest("form").find("#Edit");
+                editButton.hide();
+                var deleteButton = $(envIdSelector).closest("form").find("#delete");
+                deleteButton.hide();
+                EnableEnvironment({ sender: editButton });
+            });
+        }
+     </script>
+
+<div style="width:400px; margin:0 auto;">
+ @Html.Partial("_MainMenuPartial", Model.MenuModel)
+ </div>
+
+@{
+    Bfw.PXAP.Models.LayoutModel layoutModel = ViewBag.LayoutModel as Bfw.PXAP.Models.LayoutModel;       
+ }
+
+
+
+<div id="AllEnvironments" style="width:900px; margin:0 auto;">  
+<h2>Environments</h2>
+
+    @foreach (var env in layoutModel.PxEnvironments) 
+    {
+        @Html.Partial("_EnvironmentPartial", env);
+    }
+   
+</div>
+
+   <div style="width:150px; margin:0 auto;">
+    <img id="AddNewEnv" alt="Add New Environment" title="Add New Environment" src="/Content/images/add.png" style="cursor:pointer;" />
+</div>
+
+

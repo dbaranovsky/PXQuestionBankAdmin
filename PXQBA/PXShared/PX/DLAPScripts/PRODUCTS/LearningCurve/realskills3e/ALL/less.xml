@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<batch>
+	<request cmd="updatecourses">
+		<requests>
+			<course courseid="-courseid-" domainid="-domainid-" title="-title-" reference="">
+				<data>     
+					<cssparameters>
+                        <param name="Typecolor" value="#5062a4" />
+                        <param name="Bordercolor" value="#767C63" />
+                        <param name="Calloutcolor" value="#737C5E" />
+                        <param name="Bodytextcolor" value="#313653" />
+                        <param name="Columnbackgroundcolor" value="#FAFCF1" />
+                        <param name="bookcover" value="style/images/lc-realskills3e-cover.jpg" />
+                        <param name="course-banner-logo" value="style/images/lc-realskills3e-logo.jpg" />
+                        <param name="course-title-image" value="style/images/lc-realskills3e-banner.png" />
+                    </cssparameters>
+				</data>
+			</course>
+		</requests>
+	</request>
+</batch>

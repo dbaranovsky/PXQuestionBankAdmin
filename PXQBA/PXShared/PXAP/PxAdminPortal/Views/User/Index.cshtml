@@ -1,0 +1,30 @@
+﻿
+
+
+@*@model Bfw.PXAP.Models.View.UserListViewModel
+@using PxAdminPortal.HtmlHelpers
+
+@{
+    Layout = "~/Views/Shared/_LayoutLogOn.cshtml";
+}
+
+<div class="centered" style="border: 2px solid blueviolet">
+    <div>
+        @foreach (var user in Model.Users)
+        {
+            <li>
+                @user.UserName (@user.Email) 
+                @Html.ActionLink("Edit", "Edit", new { username = user.UserName }, new { @class = "editLink" })
+            </li>
+        }
+    </div>
+    <div style="text-align: center">
+        @Html.PageLinks(Model.PagingInfo, i => Url.Action("Index", new {page = i}))
+    </div>
+</div>
+<div id="editDialog" title="Edit User"></div>
+<script type="text/javascript">
+    $(function() {
+        $(".editLink").button();
+    });
+</script>*@

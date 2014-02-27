@@ -1,0 +1,41 @@
+﻿/* Syllabus Tool Styling */ 
+#syl-window {
+-moz-border-radius-topleft: 5px;
+-moz-border-radius-topright: 5px;
+background: none repeat scroll 0 0 #CCCCCC;
+}
+
+#syl-window #syl-title {
+float: left;
+width: 100%;
+line-height: 43px;
+}
+
+#syl-window #syl-unblock-action {
+background-image: url('style/images/close.png');
+width: 30px;
+height: 25px;
+margin: 8px 5px 10px 0;
+float: right;
+}
+
+#syl-content {
+clear: both;
+background: none repeat scroll 0 0 #FFFFFF;
+padding: 20px;
+}
+
+#syl-content span.help {
+display: block;
+margin: 0 0 16px;
+text-align: left;
+}
+
+#syl-content span.field {
+display: block;
+text-align: left;
+}
+
+#nav ul li a#upload-syllabus {
+display: inline;
+}

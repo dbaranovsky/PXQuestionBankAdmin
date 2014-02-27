@@ -1,0 +1,522 @@
+﻿/* start main layout */
+
+* 
+{
+    margin: 0;
+    padding: 0;
+}
+
+ul 
+{
+    list-style-type: none;
+}
+
+h1, h2, h3, h4 
+{
+    color: #0000CD;
+    font-weight: bold;
+}
+
+span.clear 
+{
+    display: block;
+    clear: both;
+}
+
+div#main 
+{
+    width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div#main div#left,
+div#main div#right,
+div#main div#center 
+{
+    float: left;
+}
+
+div#main div#left,
+div#main div#right 
+{
+    width: 200px;
+}
+
+div#main div#center 
+{
+    width: 840px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+div#main div#header div#header-top
+{
+    background-color: #dcdcdc;
+    border-top: solid 3px blue;
+    border-bottom: solid 5px red;
+    color: #808080;
+}
+
+div#main div#header div#header-top h2 
+{
+    color: #808080;
+}
+
+div#main div#header div#header-bottom img#book-logo 
+{
+    float: left;
+    margin-right: 20px;
+}
+
+div#main div#header div#header-bottom div#course-info 
+{
+    float: left;
+    margin-top: 10px;
+}
+
+div#main div#header div#header-bottom div#search-form 
+{
+    float: right;
+    margin-top: 20px;
+}
+
+div#login-status 
+{    
+    float: right;    
+}
+
+div#login-status a 
+{    
+    color: #808080;
+    text-decoration: none;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+div#login-status span 
+{
+    background-color: Blue;
+    color: #fff;
+}
+
+div#main_footer 
+{
+    clear: both;
+}
+
+a 
+{
+    color: #3CB371;
+}
+
+/* end main layout */
+
+/* start basic widget layout */
+
+.widget-container 
+{
+    margin-bottom: 30px;
+}
+
+.widget-header h3 
+{
+    float: left;
+    color: #0000CD;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.widget-header span 
+{
+    float: right;    
+    text-transform: uppercase;
+}
+
+.widget-header span a 
+{
+    text-decoration: none;
+}
+
+.widget-body 
+{
+    clear: both;
+    border-top: solid 2px #3CB371;
+}
+
+.left-column-60 
+{
+    width: 494px;
+    margin-right: 10px;
+    float: left;
+}
+
+.right-column-40 
+{
+    width: 336px;
+    float: left;
+}
+
+/* end basic widget layout */
+
+/* start announcement widget */
+
+div.announcement-header
+{
+    color: #6495ED;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+div.announcement-header h4 
+{
+    float: left;
+    color: #6495ED;
+}
+
+div.announcement-header span 
+{
+    float: right;
+}
+
+div.announcement-body 
+{
+    clear: both;
+    border-top: solid 1px #dcdcdc;
+    padding: 10px;
+}
+
+div.widget-container.announcement-summary div.widget-body 
+{
+    border-bottom: solid 1px #dcdcdc;
+}
+
+div.widget-container.announcement-summary div.widget-body div.left-column-100 ul 
+{
+    margin-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+/* end announcement widget */
+
+/* start assignment widget */
+
+.assignment-groups 
+{
+}
+
+.assignment-groups li
+{
+    clear: both;
+    border-bottom: solid 1px #dcdcdc;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+
+.assignment-groups li span.assignment-footer
+{
+    display:block;
+    clear: both;
+}
+
+.assignment-groups li.last 
+{
+    border-bottom: none;
+}
+
+.assignment-groups li h4
+{
+    text-transform: uppercase;
+    font-weight: bold;
+    width: 110px;
+    margin-right: 10px;
+    text-align: right;
+    display: block;
+    float: left;
+    color: #000;
+}
+
+.assignment-groups li ul
+{
+    float: left;
+    width: 374px;
+}
+
+.assignment-groups li ul li 
+{
+    margin: 0px;
+    padding: 0px;    
+    margin-bottom: 10px;
+    border-bottom: none;
+}
+
+.assignment-groups li ul li span.assignment-date 
+{
+    float: right;
+    color: #6495ED;
+    font-weight: bold;
+}
+
+/* end assignment widget */
+
+/* start activity widget */
+
+.widget-container.activity .widget-body .left-column-100 iframe
+{
+    width: 100%;    
+    height: 450px;
+}
+
+.widget-container.activity .widget-body 
+{
+    border: none;
+}
+
+/* end activity widget */
+
+/* start toc widget */
+
+.toc-widget div.level-1 
+{
+    margin-left: 15px;
+}
+
+.toc-widget div.level-2
+{
+    margin-left: 30px;
+}
+
+.toc-widget div.level-3
+{
+    margin-left: 45px;
+}
+
+.toc-widget div.level-4
+{
+    margin-left: 60px;
+}
+
+.toc-widget div.level-5
+{
+    margin-left: 75px;
+}
+
+.toc-widget div.level-6
+{
+    margin-left: 75px;
+}
+
+.toc-widget div.level-7
+{
+    margin-left: 75px;
+}
+
+.toc-widget div.level-8
+{
+    margin-left: 75px;
+}
+
+.toc-widget div span 
+{
+    display: block;
+}
+
+.toc-widget .widget-body 
+{
+    height: 400px;
+    overflow: scroll;
+}
+
+.toc-widget .widget-body .left-column-100 div.toc 
+{
+    padding: 10px;
+}
+
+/* end toc widget */
+
+/* start message-list widget */
+
+.widget-container.message-list 
+{
+    border-right: solid 4px #3CB371;
+    background-image: url(style/images/disc-widget-gradient.jpg);
+    background-repeat: repeat-x;
+    padding-left: 10px;
+}
+
+.widget-container.message-list .widget-header h3 
+{
+    color: #000;
+}
+
+.widget-container.message-list span.message-author
+{
+    display: block;
+    color: #6495ED;
+    font-weight: bold;
+}
+
+.widget-container.message-list span.message-body
+{
+    display: block;
+    color: #808080;
+}
+
+.widget-container.message-list .widget-body 
+{
+    border-top: solid 1px #808080;    
+}
+
+.widget-container.message-list .widget-body ul li 
+{
+    margin-bottom: 20px;
+}
+
+/* end message-list widget */
+
+/* start featured-content-widget */
+
+.widget-container.featured-summary ul 
+{
+    margin-top: 10px;
+}
+
+.widget-container.featured-summary ul li 
+{
+    width: 205px;
+    float: left;
+    border-right: solid 1px #DCDCDC;
+}
+
+.widget-container.featured-summary ul li.row-end 
+{
+    border-right: none;
+}
+
+.widget-container.featured-summary ul li.row-sub
+{
+    margin-top: 4px;
+}
+
+.widget-container.featured-summary ul li.row-sub span span
+{
+    border-top: solid 1px #DCDCDC;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.widget-container.featured-summary a 
+{
+    display: block;
+    padding: 0px 5px 5px 5px;
+    text-decoration: none;      
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+}
+
+.widget-container.featured-summary a:hover
+{
+    text-decoration: none;
+    background-color: rgb(100, 149, 237);
+    background-color: rgba(100, 149, 237, .1);
+}
+
+.widget-container.featured-summary a span img
+{
+    width: 100px;
+    height: 100px;
+    border: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+.widget-container.featured-summary a span 
+{
+    text-align: center;
+}
+
+.widget-container.featured-summary a span span 
+{    
+    display: block;
+    margin-bottom: 20px;
+}
+
+/* end */
+
+/* start vertical menu */
+
+.vertical-menu 
+{
+    margin-top: 30px;
+}
+
+.vertical-menu ul 
+{    
+    background-color: #fff;    
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 12em;
+}
+
+.vertical-menu a
+{
+    font: normal 11px/16px arial, helvetica, sans-serif;
+    display: block;
+    margin: 0;
+    padding: 2px 3px;    
+    text-transform: uppercase;
+}
+
+.vertical-menu a 
+{
+    color: #000;
+    text-decoration: none;
+}
+
+.vertical-menu a:hover 
+{
+    color: #0000CD;
+    font-weight: bold;
+    background: #fff;
+}
+
+.vertical-menu li 
+{
+    position: relative;
+    border-bottom: solid 1px black;
+}
+
+.vertical-menu ul ul 
+{
+    position: absolute;
+    top: 0;
+    left: 100%;
+}
+
+div.vertical-menu ul ul,
+div.vertical-menu ul li:hover ul ul,
+div.vertical-menu ul ul li:hover ul ul,
+div.vertical-menu ul ul ul li:hover ul ul,
+div.vertical-menu ul ul ul ul li:hover ul ul,
+div.vertical-menu ul ul ul ul ul li:hover ul ul,
+div.vertical-menu ul ul ul ul ul ul li:hover ul ul
+{
+    display: none;
+}
+
+div.vertical-menu ul li:hover ul,
+div.vertical-menu ul ul li:hover ul,
+div.vertical-menu ul ul ul li:hover ul,
+div.vertical-menu ul ul ul ul li:hover ul,
+div.vertical-menu ul ul ul ul ul li:hover ul,
+div.vertical-menu ul ul ul ul ul ul li:hover ul,
+div.vertical-menu ul ul ul ul ul ul ul li:hover ul
+{
+    display: block;
+} 
+
+/* end vertical menu */

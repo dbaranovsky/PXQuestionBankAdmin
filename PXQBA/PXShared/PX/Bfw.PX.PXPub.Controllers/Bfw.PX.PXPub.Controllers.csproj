@@ -1,0 +1,679 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ProjectExtensions />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6ECD9F08-2647-44B2-BF14-727E60828C58}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bfw.PX.PXPub.Controllers</RootNamespace>
+    <AssemblyName>Bfw.PX.PXPub.Controllers</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DEV_PROD_REFRESH|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DEV_PROD_REFRESH\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DEV_PROD_REFRESH|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\DEV_PROD_REFRESH\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\QA\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\QA\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PRISTINE|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\PRISTINE\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PRISTINE|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\PRISTINE\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'LoadTesting|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\LoadTesting\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'LoadTesting|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\LoadTesting\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PROD|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\PROD\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PROD|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\PROD\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DEV|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DEV\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DEV|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\DEV\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Pdf, Version=7.4.0.0, Culture=neutral, PublicKeyToken=47b2d0fcacdd3eb6, processorArchitecture=MSIL">
+      <HintPath>..\..\ThirdParty\Aspose\Aspose.Pdf\Aspose.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Words">
+      <HintPath>..\..\ThirdParty\Aspose\Aspose.Words\Aspose.Words.dll</HintPath>
+    </Reference>
+    <Reference Include="BFW.Shared.Saml, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>..\..\ThirdParty\SAML\v2\BFW.Shared.Saml.dll</HintPath>
+    </Reference>
+    <Reference Include="BFW.Shared.Utilities">
+      <HintPath>..\..\ThirdParty\SAML\BFW.Shared.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="dotless.Core">
+      <HintPath>..\..\ThirdParty\dotless\dotless.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EcmaScript.NET.modified">
+      <HintPath>..\..\ThirdParty\YUICompressor\EcmaScript.NET.modified.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\..\ThirdParty\EPPlus 3.1.2\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.1.5, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>..\..\ThirdParty\DotNetZip\v1.9\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel">
+      <HintPath>..\..\ThirdParty\SAML\Microsoft.IdentityModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols">
+      <HintPath>..\..\ThirdParty\SAML\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.WindowsTokenService">
+      <HintPath>..\..\ThirdParty\SAML\Microsoft.IdentityModel.WindowsTokenService.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Yahoo.Yui.Compressor">
+      <HintPath>..\..\ThirdParty\YUICompressor\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountController.cs" />
+    <Compile Include="AdminMetaDataController.cs" />
+    <Compile Include="Admin\QuestionAdminController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Admin\QuestionAdminHelper.cs" />
+    <Compile Include="AssignmentCenterSyllabusController.cs" />
+    <Compile Include="BHProxyController.cs" />
+    <Compile Include="BreadcrumbController.cs" />
+    <Compile Include="Configurations\ExternalDomainMapping.cs" />
+    <Compile Include="ExternalDomainController.cs" />
+    <Compile Include="ContentTypes\LinkController.cs" />
+    <Compile Include="ContentTypes\LearningCurveActivityController.cs" />
+    <Compile Include="Contracts\IGradebookExportHelper.cs" />
+    <Compile Include="Contracts\IQuizHelper.cs" />
+    <Compile Include="Contracts\IAssignmentCenterHelper.cs" />
+    <Compile Include="Contracts\IContentHelper.cs" />
+    <Compile Include="Contracts\ITreeWidgetHelper.cs" />
+    <Compile Include="Contracts\IUrlHelperWrapper.cs" />
+    <Compile Include="ImageUploadController.cs" />
+    <Compile Include="LogController.cs" />
+    <Compile Include="Exceptions\MappingDataMissingException.cs" />
+    <Compile Include="GradingController.cs" />
+    <Compile Include="Contracts\ICourseHelper.cs" />
+    <Compile Include="Helpers\GradebookExportHelper.cs" />
+    <Compile Include="Helpers\QuizHelper.cs" />
+    <Compile Include="Helpers\CourseHelper.cs" />
+    <Compile Include="Helpers\PartialViewRenderer.cs" />
+    <Compile Include="Helpers\TreeWidgetHelper.cs" />
+    <Compile Include="Helpers\UrlHelperWrapper.cs" />
+    <Compile Include="Mappers\ContentViewMapper.cs" />
+    <Compile Include="Mappers\TemplateMapper.cs" />
+    <Compile Include="Mappers\ExternalDomainMapper.cs" />
+    <Compile Include="Mappers\GradeMapper.cs" />
+    <Compile Include="Mappers\SystemMessageMapper.cs" />
+    <Compile Include="Mappers\HtmlQuizMapper.cs" />
+    <Compile Include="Mappers\QuestionCardDataMapper.cs" />
+    <Compile Include="Mappers\FeaturedWidgetMapper.cs" />
+    <Compile Include="PersistingQtipsController.cs" />
+    <Compile Include="QuestionImporterController.cs" />
+    <Compile Include="Mappers\StudentProfileMapper.cs" />
+    <Compile Include="SiteAnalyticsController.cs" />
+    <Compile Include="TestController.cs" />
+    <Compile Include="DashboardController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EasyXDMController.cs" />
+    <Compile Include="Helpers\AjaxMethodAttributes.cs" />
+    <Compile Include="Helpers\CrunchItHelper.cs" />
+    <Compile Include="Helpers\MvcSelectListHelper.cs" />
+    <Compile Include="Mappers\DashboardDataMapper.cs" />
+    <Compile Include="Mappers\DashboardSettingsMapper.cs" />
+    <Compile Include="Mappers\DropboxMapper.cs" />
+    <Compile Include="Mappers\LearningCurveQuestionSettingsMapper.cs" />
+    <Compile Include="Mappers\WidgetInputHelperMapper.cs" />
+    <Compile Include="ErrorPageController.cs" />
+    <Compile Include="HealthCheckController.cs" />
+    <Compile Include="Helpers\LearningCurveHelper.cs" />
+    <Compile Include="Helpers\LearningCurveTransform.cs" />
+    <Compile Include="Mappers\ActivitiesWidgetMapper.cs" />
+    <Compile Include="Mappers\ActivityMapper.cs" />
+    <Compile Include="Mappers\QuestionLogMapper.cs" />
+    <Compile Include="Mappers\QuestionNoteMapper.cs" />
+    <Compile Include="Mappers\CourseMaterialsMapper.cs" />
+    <Compile Include="Mappers\LearningCurveActivityMapper.cs" />
+    <Compile Include="Mappers\RelatedContentMapper.cs" />
+    <Compile Include="Mappers\SharedCourseDefinitionMapper.cs" />
+    <Compile Include="Widgets\ActivitiesWidgetController.cs" />
+    <Compile Include="CustomSettingsController.cs" />
+    <Compile Include="Mappers\RelatedTemplateMapper.cs" />
+    <Compile Include="ECommerceController.cs" />
+    <Compile Include="FacePlateController.cs" />
+    <Compile Include="ContentController.cs" />
+    <Compile Include="ContentTypes\AssignmentController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContentTypes\DiscussionController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContentTypes\DocumentCollectionController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContentTypes\FolderController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContentTypes\HtmlDocumentController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContentTypes\PxUnitController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContentTypes\LinkCollectionController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContentTypes\QuizController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContentTypes\RSSFeedController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContentTypes\RSSLinkController.cs" />
+    <Compile Include="DateTimePickerController.cs" />
+    <Compile Include="GradeController.cs" />
+    <Compile Include="Helpers\AssessmentSettingsHelper.cs" />
+    <Compile Include="HighlightController.cs" />
+    <Compile Include="EqController.cs" />
+    <Compile Include="LinkLibraryController.cs" />
+    <Compile Include="Mappers\AccountMapper.cs" />
+    <Compile Include="Mappers\AllowedContentTemplatesMapper.cs" />
+    <Compile Include="Mappers\AllowedWidgetMapper.cs" />
+    <Compile Include="Mappers\AnnouncementMapper.cs" />
+    <Compile Include="Mappers\AssessmentSettingsMapper.cs" />
+    <Compile Include="Mappers\AssetLinkMapper.cs" />
+    <Compile Include="Mappers\AssignedItemMapper.cs" />
+    <Compile Include="Mappers\AssignmentCenterCategoryMapper.cs" />
+    <Compile Include="Mappers\AssignmentCenterFilterSecitonMapper.cs" />
+    <Compile Include="Helpers\AssignmentCenterHelper.cs" />
+    <Compile Include="Mappers\AssignmentCenterItemMapper.cs" />
+    <Compile Include="Helpers\AssignmentHelper.cs" />
+    <Compile Include="Mappers\AssignmentMapper.cs" />
+    <Compile Include="Mappers\AssignTabSettingsMapper.cs" />
+    <Compile Include="Mappers\ContentItemMapper.cs" />
+    <Compile Include="Mappers\CourseAcademicTermMapper.cs" />
+    <Compile Include="Mappers\UserProfileMapper.cs" />
+    <Compile Include="Mappers\CourseAssessmentConfigurationMapper.cs" />
+    <Compile Include="Mappers\CustomWidgetMapper.cs" />
+    <Compile Include="Mappers\EbookMapper.cs" />
+    <Compile Include="Mappers\ExternalContentMapper.cs" />
+    <Compile Include="Mappers\MenuItemCallbackMapper.cs" />
+    <Compile Include="Mappers\MenuMapper.cs" />
+    <Compile Include="Mappers\CourseMapper.cs" />
+    <Compile Include="Mappers\DiscussionMapper.cs" />
+    <Compile Include="Mappers\DocumentCollectionMapper.cs" />
+    <Compile Include="Mappers\DocumentMapper.cs" />
+    <Compile Include="Mappers\DomainMapper.cs" />
+    <Compile Include="Mappers\FeaturedContentItem.cs" />
+    <Compile Include="Mappers\FolderMapper.cs" />
+    <Compile Include="Mappers\GradebookWeightCategoryMapper.cs" />
+    <Compile Include="Mappers\GradeBookWeightsMapper.cs" />
+    <Compile Include="Mappers\GroupMapper.cs" />
+    <Compile Include="Mappers\GroupSetMapper.cs" />
+    <Compile Include="Mappers\Helper.cs" />
+    <Compile Include="Mappers\HighlightMapper.cs" />
+    <Compile Include="Mappers\HighlightModelMapper.cs" />
+    <Compile Include="Mappers\HtmlDocumentMapper.cs" />
+    <Compile Include="Mappers\LessonBaseMapper.cs" />
+    <Compile Include="Mappers\LinkCollectionMapper.cs" />
+    <Compile Include="Mappers\LinkMapper.cs" />
+    <Compile Include="Mappers\ModuleMapper.cs" />
+    <Compile Include="Mappers\NavigationItemMapper.cs" />
+    <Compile Include="Mappers\NoteMapper.cs" />
+    <Compile Include="Mappers\NoteSearchMapper.cs" />
+    <Compile Include="Mappers\NoteSettingsMapper.cs" />
+    <Compile Include="Mappers\PageDefinitionMapper.cs" />
+    <Compile Include="Mappers\QuestionChoiceMapper.cs" />
+    <Compile Include="Mappers\QuestionMapper.cs" />
+    <Compile Include="Mappers\QuetionAnalysisMapper.cs" />
+    <Compile Include="Mappers\QuickLinkMapper.cs" />
+    <Compile Include="Mappers\QuickLnkMapper.cs" />
+    <Compile Include="Mappers\QuizHelpers.cs" />
+    <Compile Include="Mappers\QuizMapper.cs" />
+    <Compile Include="Mappers\ResourceDocumentMapper.cs" />
+    <Compile Include="Mappers\RssFeedMapper.cs" />
+    <Compile Include="Mappers\ScoreMapper.cs" />
+    <Compile Include="Mappers\SearchCategoryMapper.cs" />
+    <Compile Include="Mappers\SearchQueryMapper.cs" />
+    <Compile Include="Mappers\SearchResultDocMapper.cs" />
+    <Compile Include="Mappers\SearchResultsMapper.cs" />
+    <Compile Include="Mappers\StudentMapper.cs" />
+    <Compile Include="Mappers\SubmissionMapper.cs" />
+    <Compile Include="Mappers\TaxonomoyRelationshipMapper.cs" />
+    <Compile Include="Mappers\TeacherResponseMapper.cs" />
+    <Compile Include="Mappers\TocCategoryMapper.cs" />
+    <Compile Include="Mappers\TocItemMapper.cs" />
+    <Compile Include="Mappers\UserMessageMapper.cs" />
+    <Compile Include="Mappers\WidgetCallbackMapper.cs" />
+    <Compile Include="Mappers\WidgetConfigurationMapper.cs" />
+    <Compile Include="Mappers\WidgetDisplayOptionsMapper.cs" />
+    <Compile Include="Mappers\WidgetMapper.cs" />
+    <Compile Include="Mappers\XmlResourceMapper.cs" />
+    <Compile Include="Mappers\ZoneMapper.cs" />
+    <Compile Include="NoteLibraryController.cs" />
+    <Compile Include="NoteSettingController.cs" />
+    <Compile Include="PageActionController.cs" />
+    <Compile Include="QuizSearchController.cs" />
+    <Compile Include="AssessmentSettingsController.cs" />
+    <Compile Include="SearchController.cs" />
+    <Compile Include="SettingsViewController.cs" />
+    <Compile Include="TemplateController.cs" />
+    <Compile Include="UploadController.cs" />
+    <Compile Include="Widgets\AboutCourseWidgetController.cs" />
+    <Compile Include="SandboxController.cs" />
+    <Compile Include="Widgets\BeingMetaMockController.cs" />
+    <Compile Include="Widgets\ContentAreaWidgetController.cs" />
+    <Compile Include="Widgets\FeaturedWidgetController.cs" />
+    <Compile Include="Widgets\FneMenuWidgetController.cs" />
+    <Compile Include="Widgets\CourseActivationWidgetController.cs" />
+    <Compile Include="Widgets\GradebookWidgetController.cs" />
+    <Compile Include="Widgets\GradingTitleWidgetController.cs" />
+    <Compile Include="Widgets\SearchWidgetController.cs" />
+    <Compile Include="Widgets\XbookWidgetController.cs" />
+    <Compile Include="Widgets\BrowseMoreResourcesWidgetController.cs" />
+    <Compile Include="Widgets\CalendarWidgetController.cs" />
+    <Compile Include="Widgets\DashboardCoursesWidgetController.cs" />
+    <Compile Include="Widgets\MenuWidgetController.cs" />
+    <Compile Include="Widgets\NewAssignmentWidgetController.cs" />
+    <Compile Include="Widgets\PageContainerWidget.cs" />
+    <Compile Include="Widgets\SocialCommentingWidgetController.cs" />
+    <Compile Include="Widgets\StartWelcomeWidgetController.cs" />
+    <Compile Include="Widgets\FacePlateSupportWidgetController.cs" />
+    <Compile Include="Widgets\LaunchpadTreeWidgetController.cs" />
+    <Compile Include="Widgets\InstructorConsoleWidgetController.cs" />
+    <Compile Include="DomainSelectionDialogController.cs" />
+    <Compile Include="Widgets\ContentLinkWidgetController.cs" />
+    <Compile Include="Widgets\ContentReadWidgetController.cs" />
+    <Compile Include="Widgets\IContentWidgetHelper.cs" />
+    <Compile Include="Widgets\ProfileSummaryWidgetController.cs" />
+    <Compile Include="Widgets\RSSFeedWidgetController.cs" />
+    <Compile Include="Widgets\CustomWidgetController.cs" />
+    <Compile Include="Widgets\QuickPanelController.cs" />
+    <Compile Include="ResourceController.cs" />
+    <Compile Include="CourseController.cs" />
+    <Compile Include="DownloadController.cs" />
+    <Compile Include="GroupsController.cs" />
+    <Compile Include="HeaderController.cs" />
+    <Compile Include="Mappers\ContentHelper.cs" />
+    <Compile Include="NavigationController.cs" />
+    <Compile Include="ProductController.cs" />
+    <Compile Include="QuizEditController.cs" />
+    <Compile Include="StyleController.cs" />
+    <Compile Include="Widgets\AccountWidgetController.cs" />
+    <Compile Include="HomeController.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Widgets\AnnouncementWidgetController.cs" />
+    <Compile Include="Widgets\AssignmentWidgetController.cs" />
+    <Compile Include="Widgets\ContentWidgetController.cs" />
+    <Compile Include="Widgets\CourseWidgetController.cs" />
+    <Compile Include="Widgets\FeaturedContentWidgetController.cs" />
+    <Compile Include="Widgets\ProgressWidgetController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Bfw.Agilix\Bfw.Agilix.Commands\Bfw.Agilix.Commands.csproj">
+      <Project>{19E52C79-1FE3-4385-A035-B603213C099E}</Project>
+      <Name>Bfw.Agilix.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Agilix\Bfw.Agilix.DataContracts\Bfw.Agilix.DataContracts.csproj">
+      <Project>{4D185F8E-C2A0-442A-A05E-78B566361562}</Project>
+      <Name>Bfw.Agilix.DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Agilix\Bfw.Agilix.Dlap\Bfw.Agilix.Dlap.csproj">
+      <Project>{F5A60C36-AA1F-4849-A9E7-465F7963DF9F}</Project>
+      <Name>Bfw.Agilix.Dlap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common.HttpModules\Bfw.Common.HttpModules.csproj">
+      <Project>{36DBAE21-2A80-4C92-B72D-50843A18FCED}</Project>
+      <Name>Bfw.Common.HttpModules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common.Mvc\Bfw.Common.Mvc.csproj">
+      <Project>{149EFE93-FBFD-4F18-8999-7C7A7007B734}</Project>
+      <Name>Bfw.Common.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common.Patterns\Bfw.Common.Patterns.csproj">
+      <Project>{AD00B777-4D80-4D59-AFA0-BD3088938BFF}</Project>
+      <Name>Bfw.Common.Patterns</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common.Xaml\Bfw.Common.Xaml.csproj">
+      <Project>{E1052EA2-8A39-4650-B22F-728393781E13}</Project>
+      <Name>Bfw.Common.Xaml</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common\Bfw.Common.csproj">
+      <Project>{4F1BF9DB-1226-4867-9E41-129B214F24F2}</Project>
+      <Name>Bfw.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.PX.Biz\Bfw.PX.Biz.DataContracts\Bfw.PX.Biz.DataContracts.csproj">
+      <Project>{71124912-42B5-49BF-ACBD-E38F09FACA70}</Project>
+      <Name>Bfw.PX.Biz.DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.PX.Biz\Bfw.PX.Biz.Direct.Services\Bfw.PX.Biz.Direct.Services.csproj">
+      <Project>{756A544B-3923-4A7E-847A-9AAB50FEB106}</Project>
+      <Name>Bfw.PX.Biz.Direct.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.PX.Biz\Bfw.PX.Biz.ServiceContracts\Bfw.PX.Biz.ServiceContracts.csproj">
+      <Project>{392A9467-B225-4300-BC1A-F34983AFBC3D}</Project>
+      <Name>Bfw.PX.Biz.ServiceContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PxWebUserAdmin\PxWebUser\PxWebUser.csproj">
+      <Project>{63B45011-8967-41AC-B6BB-0A2C42D01CB8}</Project>
+      <Name>PxWebUser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bfw.PX.Abstractions\Bfw.PX.Abstractions.csproj">
+      <Project>{BCC9C7E8-D434-4DA2-BF56-3867D97F1702}</Project>
+      <Name>Bfw.PX.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bfw.PX.Notes\Bfw.PX.Notes.csproj">
+      <Project>{BC9BEF83-63D6-4A27-9BD2-6787EF9A8F5B}</Project>
+      <Name>Bfw.PX.Notes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bfw.PX.PXPub.Components\Bfw.PX.PXPub.Components.csproj">
+      <Project>{424D97DD-5BE0-4259-9323-EF576A651F18}</Project>
+      <Name>Bfw.PX.PXPub.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bfw.PX.PXPub.Models\Bfw.PX.PXPub.Models.csproj">
+      <Project>{5D71B360-BDD7-4E5B-B551-5BE74E4339EF}</Project>
+      <Name>Bfw.PX.PXPub.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PxWebUserAdmin\PxWebUser\PxWebUser.csproj">
+      <Project>{63B45011-8967-41AC-B6BB-0A2C42D01CB8}</Project>
+      <Name>PxWebUser</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\Bfw.Agilix.Commands.dll" />
+    <Content Include="bin\Debug\Bfw.Agilix.Commands.pdb" />
+    <Content Include="bin\Debug\Bfw.Agilix.DataContracts.dll" />
+    <Content Include="bin\Debug\Bfw.Agilix.DataContracts.pdb" />
+    <Content Include="bin\Debug\Bfw.Agilix.DataContracts.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="bin\Debug\Bfw.Agilix.Dlap.dll" />
+    <Content Include="bin\Debug\Bfw.Agilix.Dlap.pdb" />
+    <Content Include="bin\Debug\Bfw.Agilix.Dlap.xml" />
+    <Content Include="bin\Debug\Bfw.Common.dll" />
+    <Content Include="bin\Debug\Bfw.Common.HttpModules.dll" />
+    <Content Include="bin\Debug\Bfw.Common.HttpModules.pdb" />
+    <Content Include="bin\Debug\Bfw.Common.Mvc.dll" />
+    <Content Include="bin\Debug\Bfw.Common.Mvc.pdb" />
+    <Content Include="bin\Debug\Bfw.Common.Mvc.xml" />
+    <Content Include="bin\Debug\Bfw.Common.Patterns.dll" />
+    <Content Include="bin\Debug\Bfw.Common.Patterns.pdb" />
+    <Content Include="bin\Debug\Bfw.Common.Patterns.xml" />
+    <Content Include="bin\Debug\Bfw.Common.pdb" />
+    <Content Include="bin\Debug\Bfw.Common.SSO.dll" />
+    <Content Include="bin\Debug\Bfw.Common.SSO.pdb" />
+    <Content Include="bin\Debug\Bfw.Common.Xaml.dll" />
+    <Content Include="bin\Debug\Bfw.Common.Xaml.pdb" />
+    <Content Include="bin\Debug\Bfw.Common.Xaml.xml" />
+    <Content Include="bin\Debug\Bfw.Common.xml" />
+    <Content Include="bin\Debug\Bfw.PX.Abstractions.dll" />
+    <Content Include="bin\Debug\Bfw.PX.Abstractions.pdb" />
+    <Content Include="bin\Debug\Bfw.PX.Account.Abstract.dll" />
+    <Content Include="bin\Debug\Bfw.PX.Account.Abstract.pdb" />
+    <Content Include="bin\Debug\Bfw.PX.Biz.DataContracts.dll" />
+    <Content Include="bin\Debug\Bfw.PX.Biz.DataContracts.pdb" />
+    <Content Include="bin\Debug\Bfw.PX.Biz.Direct.Services.dll" />
+    <Content Include="bin\Debug\Bfw.PX.Biz.Direct.Services.pdb" />
+    <Content Include="bin\Debug\Bfw.PX.Biz.ServiceContracts.dll" />
+    <Content Include="bin\Debug\Bfw.PX.Biz.ServiceContracts.pdb" />
+    <Content Include="bin\Debug\Bfw.PX.Biz.Services.Mappers.dll" />
+    <Content Include="bin\Debug\Bfw.PX.Biz.Services.Mappers.pdb" />
+    <Content Include="bin\Debug\Bfw.PX.Notes.dll" />
+    <Content Include="bin\Debug\Bfw.PX.Notes.pdb" />
+    <Content Include="bin\Debug\Bfw.PX.PXPub.Components.dll" />
+    <Content Include="bin\Debug\Bfw.PX.PXPub.Components.pdb" />
+    <Content Include="bin\Debug\Bfw.PX.PXPub.Controllers.dll" />
+    <Content Include="bin\Debug\Bfw.PX.PXPub.Controllers.pdb" />
+    <Content Include="bin\Debug\Bfw.PX.PXPub.Models.dll" />
+    <Content Include="bin\Debug\Bfw.PX.PXPub.Models.pdb" />
+    <Content Include="bin\Debug\BFW.Shared.Saml.dll" />
+    <Content Include="bin\Debug\BFW.Shared.Saml.pdb" />
+    <Content Include="bin\Debug\BFW.Shared.Utilities.dll" />
+    <Content Include="bin\Debug\BFW.Shared.Utilities.pdb" />
+    <Content Include="bin\Debug\CodeForce.Entities.dll" />
+    <Content Include="bin\Debug\CodeForce.Enums.dll" />
+    <Content Include="bin\Debug\CodeForce.Extensions.dll" />
+    <Content Include="bin\Debug\CodeForce.Utilities.dll" />
+    <Content Include="bin\Debug\dotless.Core.dll" />
+    <Content Include="bin\Debug\EcmaScript.NET.modified.dll" />
+    <Content Include="bin\Debug\Ionic.Zip.dll" />
+    <Content Include="bin\Debug\Microsoft.IdentityModel.dll" />
+    <Content Include="bin\Debug\Microsoft.IdentityModel.Protocols.dll" />
+    <Content Include="bin\Debug\Microsoft.IdentityModel.WindowsTokenService.dll" />
+    <Content Include="bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll" />
+    <Content Include="bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml" />
+    <Content Include="bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.dll" />
+    <Content Include="bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="bin\Debug\Microsoft.Practices.ServiceLocation.dll" />
+    <Content Include="bin\Debug\Microsoft.Practices.ServiceLocation.xml" />
+    <Content Include="bin\Debug\Microsoft.Practices.Unity.Configuration.dll" />
+    <Content Include="bin\Debug\Microsoft.Practices.Unity.Configuration.xml" />
+    <Content Include="bin\Debug\Microsoft.Practices.Unity.dll" />
+    <Content Include="bin\Debug\Microsoft.Practices.Unity.Interception.dll" />
+    <Content Include="bin\Debug\Microsoft.Practices.Unity.Interception.xml" />
+    <Content Include="bin\Debug\Microsoft.Practices.Unity.xml" />
+    <Content Include="bin\Debug\MvcMiniProfiler.dll" />
+    <Content Include="bin\Debug\Novell.Directory.Ldap.dll" />
+    <Content Include="bin\Debug\RAg.Net.dll" />
+    <Content Include="bin\Debug\RAg.Net.pdb" />
+    <Content Include="bin\Debug\Utilities.dll" />
+    <Content Include="bin\Debug\Yahoo.Yui.Compressor.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+    <Folder Include="bin\x64\Debug\" />
+    <Folder Include="bin\x64\Release\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

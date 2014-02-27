@@ -1,0 +1,350 @@
+﻿body 
+{
+}
+.mceFormulaEditorIcon {background:url(img/formula.gif)}
+.mceMultiResponseIcon {background:url(img/multiresponse.gif)}
+.mceShortResponseIcon {background:url(img/shortresponse.gif)}
+
+.hts-grid-template
+{
+    display:none;
+}
+
+.hts-dialog-content
+{
+    font-size:11px;
+    font-family: arial, Lucida grande, Lucida Sans, 'Geneva', sans-serif;
+}
+
+.hts-dialog-top
+{
+    border: solid 1px;
+}
+
+.hts-form fieldset 
+{
+    border:none;
+}
+
+.hts-form fieldset li 
+{
+    list-style-type: none;    
+    padding-bottom:10px;    
+}
+
+.hts-form fieldset li .field
+{
+    float:left;
+}
+
+.hts-form fieldset ul 
+{
+    padding:0px;    
+}
+
+.hts-form .field .option
+{
+    float:left;
+    margin-left:6px;
+}
+.hts-form .field label
+{
+    float:left;
+    position:relative;
+    top:4px;
+}
+
+.hts-form .field .response-text
+{
+    float:left;
+    position:relative;
+    top:4px;
+    height:25px;  
+    width: 450px;
+}
+
+
+.hts-form .field check
+{
+    float:left;
+    position:relative;
+    top:4px;
+}
+
+/* GRID STYLES */
+.hts-grid-header {
+    background-color: #CCCCCC;
+    border: 1px solid;
+    border-bottom: none;
+    padding: 10px;
+    font-weight:bold;
+}
+
+.hts-grid-header input
+{
+    float:right;
+}
+
+.hts-grid-body {
+    height: 165px;
+    overflow-y: scroll;
+}
+
+.hts-grid
+{
+    border-collapse: collapse;
+    border-spacing: 1px;
+    width: 100%;
+    font-size: 11px;
+}
+
+.hts-grid .hts-column
+{
+    border:solid 1px;
+    padding:8px;
+}
+
+.hts-grid .header-row
+{
+    background-color:#eeeeee;
+}
+
+.hts-grid .header-column
+{
+    text-align:left;    
+}
+.hts-grid .hts-answer-input
+{
+    width:100%;
+    display:none;    
+}
+
+.hts-grid .hts-actions
+{
+    width:50px;
+}
+
+.hts-grid .hts-actions .action 
+{
+    float:left;
+}
+
+.hts-grid .hts-actions .hts-grid-deleterow {
+    background-image: url("../img/ui-icons_888888_256x240.png");
+    background-position: 240px -192px;    
+    height: 16px;
+    width: 16px;
+}
+
+.hts-grid .hts-actions .hts-grid-editrow {
+    background-image: url("../img/ui-icons_888888_256x240.png");
+    background-position: -64px 128px;    
+    height: 16px;
+    width: 16px;
+}
+
+.hts-grid .hts-actions .hts-grid-saverow {
+    background-image: url("../img/ui-icons_888888_256x240.png");
+    background-position: -96px 127px;    
+    height: 16px;
+    width: 16px;
+    display:none;
+}
+
+.hts-grid .hts-actions .hts-grid-cancelrow {
+    background-image: url("../img/ui-icons_888888_256x240.png");
+    background-position: 0px 111px;    
+    height: 16px;
+    width: 16px;
+    display:none;
+}
+
+.hts-grid .hts-actions .hts-grid-lockrow {
+    background-image: url("../img/ui-icons_888888_256x240.png");
+    background-position: -193px 143px;    
+    height: 16px;
+    width: 16px;    
+}
+
+.hts-grid .hts-actions .hts-grid-unlockrow {
+    background-image: url("../img/ui-icons_888888_256x240.png");
+    background-position: -208px 143px;    
+    height: 16px;
+    width: 16px;    
+}
+
+.hts-grid-footer {
+    background-color: #CCCCCC;
+    border: 1px solid;    
+    padding: 10px;
+    font-weight:bold;
+}
+
+.hts-grid-footer input
+{
+    float:right;
+    margin-right:6px;
+}
+
+.hts-grid-footer input.hts-grid-addrow
+{
+    float:left;    
+}
+
+
+.hts-edit-row
+{
+    background-color:#FFFFCC;
+}
+
+
+
+.clearer
+{
+    clear:both;
+}
+
+html
+{
+    background-color:transparent !important;
+}
+
+body
+{
+    background-color:transparent !important;
+    margin:0px !important;
+}
+
+/* MULTIPLE CHOICE GRID STYLES */
+
+.hts-dialog-mc .hts-form .field.weighting
+{
+    margin-left:10px;
+}
+
+.hts-dialog-mc .hts-form .field.columns
+{
+    margin-left:10px;
+}
+
+.hts-dialog-mc .hts-grid .hts-answer-correct
+{
+    width:25px;
+    text-align:center;
+}
+
+.hts-dialog-mc .hts-grid .hts-answer-correct-input
+{
+    margin:0px;
+}
+
+.hts-dialog-mc .hts-grid .hts-answer-input
+{
+    display:block;
+}
+
+.hts-dialog-mc .hts-grid .hts-column
+{
+    border:none;
+}
+
+.hts-dialog-mc .hts-grid-header
+{
+    border-bottom:solid 1px;
+}
+
+.hts-dialog-mc .hts-grid .hts-column
+{
+    padding:10px 2px;    
+}
+
+.hts-dialog-mc .hts-grid .hts-actions
+{
+    width:45px;
+}
+
+.hts-dialog-mc .hts-grid-body {
+    height: 205px;
+}
+
+.hts-dialog-mc .hts-grid-toolbar
+{
+    background-color: #E8E9EA;
+    border: 1px solid black;
+    height:30px;
+}
+
+.hts-dialog-mc .mceExternalToolbar 
+{
+    width:99%;
+    position:inherit !important;         
+}
+
+.hts-dialog-mc .mceExternalClose
+{
+    display:none;
+}
+
+.hts-dialog-mc .mceLayout
+{
+    height:40px !important;
+}
+
+.hts-dialog-mc .mceLayout iframe
+{
+    height:40px !important;
+}
+
+/* NUMERIC GRID STYLES */
+.hts-dialog-numeric .hts-grid .hts-answer-input
+{    
+    text-align:right;
+}
+
+.hts-dialog-numeric .hts-grid .hts-tolerance-input
+{
+    width:100%;
+    display:none;
+    text-align:right;    
+}
+
+.hts-dialog-numeric .hts-grid .hts-tolerance-type-input
+{
+    width:100%;
+    display:none;
+}
+
+/* FORMULA GRID STYLES */
+.hts-dialog-formula .hts-grid .hts-answer-input
+{
+    width:auto;
+}
+
+.hts-dialog-formula .hts-grid .hts-answer-rule-input
+{
+    display:none;
+}
+
+
+/* VARIABLE DIALOG STYLES */
+.hts-dialog-variable .hts-dialog-content
+{
+    padding:10px;    
+}
+
+.hts-dialog-variable .hts-form fieldset li
+{
+    padding-bottom:20px;
+}
+
+.hts-dialog-variable .hts-dialog-bottom
+{
+    position:absolute;
+    bottom:20px;    
+}
+
+.hts-dialog-variable .hts-dialog-remove-variable
+{
+    margin-left:20px;
+    cursor:pointer;
+}

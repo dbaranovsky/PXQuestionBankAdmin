@@ -1,0 +1,242 @@
+
+<requests>
+	<item itemid="PX_PRIMARY_EPORTFOLIO" version="1" entityid="-entityid-" creationdate="2012-02-06T21:11:53.23Z" creationby="7" modifieddate="2012-02-06T21:11:53.23Z" modifiedby="7">
+		<data>
+			<parent>PX_MENUS</parent>
+			<title>Primary Navigation</title>
+			<bfw_type>Menu</bfw_type>
+			<bfw_tocid>bsi__3E513BC8__CED8__4764__9664__B5AA33AA5F56</bfw_tocid>
+			<bfw_display_flags>
+				<allow>
+					<role>instructor</role>
+					<coursetype>any</coursetype>
+				</allow>
+			</bfw_display_flags>
+		</data>
+	</item>
+	<item itemid="PX_PRIMARY_EPORTFOLIO_TEMPLATES" version="1" entityid="-entityid-" creationdate="2012-02-06T21:11:53.23Z" creationby="7" modifieddate="2012-02-06T21:11:53.23Z" modifiedby="7">
+		<data>
+			<parent>PX_MENUS</parent>
+			<title>Primary Navigation</title>
+			<bfw_type>Menu</bfw_type>
+			<bfw_tocid>bsi__3E513BC8__CED8__4764__9664__B5AA33AA5F56</bfw_tocid>
+			<bfw_display_flags>
+				<allow>
+					<role>instructor</role>
+					<coursetype>any</coursetype>
+				</allow>
+			</bfw_display_flags>
+		</data>
+	</item>
+	<item itemid="PX_MENU_ITEM_HOME" version="1" entityid="-entityid-" creationdate="2011-01-12T16:44:09.66Z" creationby="7" modifieddate="2011-01-12T16:44:09.66Z" modifiedby="7">
+		<data>
+      		<type>CustomActivity</type>
+      		<parent>PX_PRIMARY_EPORTFOLIO</parent>
+      		<sequence>a</sequence>
+      		<title>HOME</title>
+		     <abbreviation>HOME</abbreviation>
+      		<timetocomplete>PT1M</timetocomplete>
+      		<category>1</category>
+      		<period inherit="true">0</period>
+      		<groupsetid>-1</groupsetid>
+      		<duedate>0001-01-01T00:00:00Z</duedate>
+      		<weight>100</weight>
+      		<gradeentry>1</gradeentry>
+      		<inputtable inherit="true">0</inputtable>	
+			<bfw_type>MenuItem</bfw_type>
+			<bfw_menu_created_by>PX_MENU_ITEM_HOME_TEMPLATE</bfw_menu_created_by>
+			<bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+            <bfw_menu_selected_by_default>true</bfw_menu_selected_by_default>
+			<bfw_display_flags>
+  				<allow>
+    					<role>instructor</role>
+    					<coursetype>any</coursetype>
+  				</allow>
+  				<allow>
+    					<role>student</role>
+    					<coursetype>any</coursetype>
+  				</allow>
+			</bfw_display_flags>
+			<bfw_menu_callbacks>
+  				<method name="Home" controller="Home" action="Home" url="" type="" route="" />
+			</bfw_menu_callbacks>
+		</data>
+
+	</item>
+	<item itemid="PX_MENU_ITEM_COURSEMATERIALS_TEMPLATE" version="1" entityid="-entityid-">
+		<data>
+			<type>CustomActivity</type>
+			<parent>PX_PRIMARY_EPORTFOLIO_TEMPLATES</parent>
+			<sequence>d</sequence>
+			<title>Course Materials</title>
+			<abbreviation>CMATERIALS</abbreviation>
+			<bfw_type>MenutItem</bfw_type>
+			<bfw_menu_created_by />
+			<bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+			<bfw_display_flags>
+				<allow>
+					<role>instructor</role>
+					<coursetype>any</coursetype>
+				</allow>
+				<allow>
+					<role>student</role>
+					<coursetype>any</coursetype>
+				</allow>
+			</bfw_display_flags>
+			<bfw_menu_callbacks>
+				<method name="CourseMaterials" controller="CourseMaterials" action="Index" url="" type="" route="" />
+			</bfw_menu_callbacks>
+		</data>
+	</item>
+	<item itemid="PX_MENU_ITEM_COURSEMATERIALS" version="1" entityid="-entityid-">
+		<data>
+			<type>CustomActivity</type>
+			<parent>PX_PRIMARY_EPORTFOLIO</parent>
+			<sequence>d</sequence>
+			<title>Course Materials</title>
+			<abbreviation>CMATERIALS</abbreviation>
+			<bfw_type>MenutItem</bfw_type>
+			<bfw_menu_created_by>PX_MENU_ITEM_COURSEMATERIALS_TEMPLATE</bfw_menu_created_by>
+			<bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+			<bfw_display_flags>
+				<allow>
+					<role>instructor</role>
+					<coursetype>any</coursetype>
+				</allow>
+				<allow>
+					<role>student</role>
+					<coursetype>any</coursetype>
+				</allow>
+			</bfw_display_flags>
+			<bfw_menu_callbacks>
+				<method name="CourseMaterials" controller="CourseMaterials" action="Index" url="" type="" route="" />
+			</bfw_menu_callbacks>
+		</data>
+	</item>
+  <item itemid="PX_MENU_ITEM_EBOOK" version="1" entityid="-entityid-">
+    <data>
+      <type>CustomActivity</type>
+      <parent>PX_PRIMARY_EPORTFOLIO</parent>
+      <sequence>h</sequence>
+      <title>e-BOOKS</title>
+      <abbreviation>ebk</abbreviation>
+      <bfw_type>MenutItem</bfw_type>
+      <bfw_menu_created_by>PX_MENU_ITEM_EBOOK_TEMPLATE</bfw_menu_created_by>
+      <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+      <bfw_display_flags>
+        <allow>
+          <role>instructor</role>
+          <coursetype>any</coursetype>
+        </allow>
+        <allow>
+          <role>student</role>
+          <coursetype>any</coursetype>
+        </allow>
+      </bfw_display_flags>
+      <bfw_menu_callbacks>
+        <method name="EbookBrowser" controller="EbookBrowser" action="Selection" url="" type="" route="" />
+      </bfw_menu_callbacks>
+    </data>
+  </item>
+	<item itemid="PX_MENU_ITEM_ASSESSMENT_TEMPLATE" version="1" entityid="-entityid-">
+		<data>
+			<type>CustomActivity</type>
+			<parent>PX_PRIMARY_EPORTFOLIO_TEMPLATES</parent>
+			<sequence>c</sequence>
+			<title>Assessment</title>
+			<abbreviation>ASSESSMENT</abbreviation>
+			<bfw_type>MenutItem</bfw_type>
+			<bfw_menu_created_by />
+			<bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+			<bfw_display_flags>
+				<allow>
+					<role>instructor</role>
+					<coursetype>any</coursetype>
+				</allow>
+				<allow>
+					<role>student</role>
+					<coursetype>any</coursetype>
+				</allow>
+			</bfw_display_flags>
+			<bfw_menu_callbacks>
+				<method name="Assessment" controller="Assessment" action="Index" url="" type="" route="" />
+			</bfw_menu_callbacks>
+		</data>
+	</item>
+	<item itemid="PX_MENU_ITEM_ASSESSMENT" version="1" entityid="-entityid-">
+		<data>
+			<type>CustomActivity</type>
+			<parent>PX_PRIMARY_EPORTFOLIO</parent>
+			<sequence>c</sequence>
+			<title>Assessment</title>
+			<abbreviation>ASSESSMENT</abbreviation>
+			<bfw_type>MenutItem</bfw_type>
+			<bfw_menu_created_by>PX_MENU_ITEM_ASSESSMENT_TEMPLATE</bfw_menu_created_by>
+			<bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+			<bfw_display_flags>
+				<allow>
+					<role>instructor</role>
+					<coursetype>any</coursetype>
+				</allow>
+				<allow>
+					<role>student</role>
+					<coursetype>any</coursetype>
+				</allow>
+			</bfw_display_flags>
+			<bfw_menu_callbacks>
+				<method name="Assessment" controller="Assessment" action="Index" url="" type="" route="" />
+			</bfw_menu_callbacks>
+		</data>
+	</item>
+	
+	<item itemid="PX_MENU_ITEM_EPORTFOLIO_TEMPLATE" version="1" entityid="-entityid-">
+		<data>
+			<type>CustomActivity</type>
+			<parent>PX_PRIMARY_EPORTFOLIO_TEMPLATES</parent>
+			<sequence>b</sequence>
+			<title>ePortfolio</title>
+			<abbreviation>ePortfolio</abbreviation>
+			<bfw_type>MenutItem</bfw_type>
+			<bfw_menu_created_by />
+			<bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+			<bfw_display_flags>
+				<allow>
+					<role>instructor</role>
+					<coursetype>any</coursetype>
+				</allow>
+				<allow>
+					<role>student</role>
+					<coursetype>any</coursetype>
+				</allow>
+			</bfw_display_flags>
+			<bfw_menu_callbacks>
+				<method name="ePortfolio" controller="ePortfolio" action="Index" url="" type="" route="" />
+			</bfw_menu_callbacks>
+		</data>
+	</item>
+	<item itemid="PX_MENU_ITEM_EPORTFOLIO" version="1" entityid="-entityid-">
+		<data>
+			<type>CustomActivity</type>
+			<parent>PX_PRIMARY_EPORTFOLIO</parent>
+			<sequence>b</sequence>
+			<title>ePortfolio</title>
+			<abbreviation>ePortfolio</abbreviation>
+			<bfw_type>MenutItem</bfw_type>
+			<bfw_menu_created_by>PX_MENU_ITEM_EPORTFOLIO_TEMPLATE</bfw_menu_created_by>
+			<bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+			<bfw_display_flags>
+				<allow>
+					<role>instructor</role>
+					<coursetype>any</coursetype>
+				</allow>
+				<allow>
+					<role>student</role>
+					<coursetype>any</coursetype>
+				</allow>
+			</bfw_display_flags>
+			<bfw_menu_callbacks>
+				<method name="ePortfolio" controller="ePortfolio" action="Index" url="" type="" route="" />
+			</bfw_menu_callbacks>
+		</data>
+	</item>
+</requests>

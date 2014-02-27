@@ -1,0 +1,12 @@
+﻿<response code="OK">
+  <users>
+    <user userid="1" firstname="System" lastname="Administrator" reference="2" guid="65015e20-f278-408a-807f-7b5be65736b7" domainid="3" domainname="domainName" userspace="userSpace" username="administrator" email="test@macmillan.com" passwordquestion="Dude, Whats does mine say?" lastlogindate="2012-06-03T22:10:34.733Z" creationdate="2010-08-19T20:10:48.357Z" version="150">
+      <data>
+      </data>
+    </user>
+    <user userid="2" firstname="System2" lastname="Administrator2" reference="3" guid="65015e20-f278-408a-807f-7b5be65736b8" domainid="4" domainname="domainName2" userspace="userSpace2" username="administrator2" email="test2@macmillan.com" passwordquestion="Sweet, What does mine say?" lastlogindate="2012-06-03T22:10:34.730Z" creationdate="2010-08-19T20:10:48.357Z" version="150">
+      <data>
+      </data>
+    </user>
+  </users>
+</response>

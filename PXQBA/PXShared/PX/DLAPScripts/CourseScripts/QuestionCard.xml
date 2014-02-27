@@ -1,0 +1,849 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+Items that need replacing before this script can be run
+  -entityid- (every item needs this)
+  -domainid- (only needed for the course)
+-->
+<batch>
+  <!-- Following command updates the product course with the correct metadata values -->
+  <request cmd="updatecourses">
+    <requests>
+      <course courseid="101436" title="  fdyttttttttttttttttttttttttttttt" reference="" guid="0087bfed-8375-479a-9bcc-e4e09cd3adf0" protection="0" schema="2" domainid="8841" baseid="57704" type="Range" startdate="1753-01-01T00:00:00Z" enddate="9999-12-31T00:00:00Z" days="365" term="" creationdate="2013-01-17T20:38:47.06Z">
+        <data>
+          <description>Econportal: Stone, CoreEconomics 2e</description>
+          <passingscore>0</passingscore>
+          <gradetables>
+            <table id="0" name="A,B,C,D,F" scale="Percent">
+              <bracket grade="A" score="0.9" />
+              <bracket grade="B" score="0.8" />
+              <bracket grade="C" score="0.7" />
+              <bracket grade="D" score="0.6" />
+              <bracket grade="F" score="0" />
+            </table>
+            <table id="1" name="A+,A,A-,...,F" scale="Percent">
+              <bracket grade="A+" score="0.97" />
+              <bracket grade="A" score="0.93" />
+              <bracket grade="A-" score="0.9" />
+              <bracket grade="B+" score="0.87" />
+              <bracket grade="B" score="0.83" />
+              <bracket grade="B-" score="0.8" />
+              <bracket grade="C+" score="0.77" />
+              <bracket grade="C" score="0.73" />
+              <bracket grade="C-" score="0.7" />
+              <bracket grade="D+" score="0.67" />
+              <bracket grade="D" score="0.63" />
+              <bracket grade="D-" score="0.6" />
+              <bracket grade="F" score="0" />
+            </table>
+            <table id="2" name="P/F" scale="Percent">
+              <bracket grade="P" score="0.7" />
+              <bracket grade="F" score="0" />
+            </table>
+          </gradetables>
+          <categories weighted="false">
+            <category id="0" name="Uncategorized" weight="100" sequence="a" />
+            <category id="1" name="Chapter 4. Market Efficiency, Market Failure and Government" weight="0" sequence="b" />
+          </categories>
+          <stylesheet>assets/launchpad_bh_component.css</stylesheet>
+          <allowstaticcopy>true</allowstaticcopy>
+          <allowderivativechildcopy>true</allowderivativechildcopy>
+          <allowderivativesiblingcopy>true</allowderivativesiblingcopy>
+          <groupsets>
+            <groupset id="9999" title="Individual Group" prefix="Individual Group" algorithm="Random" />
+          </groupsets>
+          <bfw_search>
+            <searchcategory searchable="true" title="Ebook : Chapters, Headings, Topics" metadata="ebook" />
+            <searchcategory searchable="true" title="Miscellaneous Content" metadata="other" />
+            <searchcategory searchable="false" title="Exclude" metadata="exclude" />
+          </bfw_search>
+          <bfw_properties>
+            <bfw_property name="bfw_infinite_scroll" type="string">true</bfw_property>
+            <bfw_property name="bfw_initialize_user" type="string">true</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <course_materials type="bfw_toc">Course Materials</course_materials>
+          </bfw_tocs>
+          <bfw_infinite_scroll>true</bfw_infinite_scroll>
+          <bfw_tab_settings>
+            <view_tab>
+              <show_policies>false</show_policies>
+              <show_assignment_details>true</show_assignment_details>
+              <show_rubrics>true</show_rubrics>
+              <show_learning_objectives>true</show_learning_objectives>
+            </view_tab>
+            <assign_tab>
+              <show_make_gradeable>true</show_make_gradeable>
+              <show_allow_late_submissions>true</show_allow_late_submissions>
+              <show_schedule_reminder>true</show_schedule_reminder>
+              <show_subcontent_creation>true</show_subcontent_creation>
+              <show_assigned_on_same_day>true</show_assigned_on_same_day>
+              <show_completion_category>true</show_completion_category>
+              <show_gradebook_category>true</show_gradebook_category>
+              <show_syllabus_category>true</show_syllabus_category>
+              <show_points_possible>true</show_points_possible>
+              <show_send_reminder>true</show_send_reminder>
+              <show_include_score>true</show_include_score>
+              <show_calculation_type>true</show_calculation_type>
+              <show_mark_as_complete>true</show_mark_as_complete>
+            </assign_tab>
+          </bfw_tab_settings>
+          <bfw_course_type>FACEPLATE</bfw_course_type>
+          <meta-bfw_course_type>FACEPLATE</meta-bfw_course_type>
+          <bfw_course_home_page>PX_HOME_FACEPLATE</bfw_course_home_page>
+          <bfw_rss_feeds>
+            <feed name="Scientific American" url="http://rss.sciam.com/sciam/feature-articles" />
+            <feed name="Arstechnica" url="http://feeds.arstechnica.com/arstechnica/index/" />
+          </bfw_rss_feeds>
+          <bfw_hide_student_view_in_header>true</bfw_hide_student_view_in_header>
+          <bfw_isloadstartoninit>true</bfw_isloadstartoninit>
+          <bfw_course_home_page_start>PX_HOME_FACEPLATE_START</bfw_course_home_page_start>
+          <bfw_syllabus_info>
+            <syllabus_type>Url</syllabus_type>
+            <syllabus_value />
+          </bfw_syllabus_info>
+          <bfw_console_settings>
+            <show_general>true</show_general>
+            <show_navigation>true</show_navigation>
+            <show_launchpad>true</show_launchpad>
+          </bfw_console_settings>
+          <bfw_allow_sampling>true</bfw_allow_sampling>
+          <bfw_allow_purchase>true</bfw_allow_purchase>
+          <bfw_tinymce>
+            <options>launchpad_editor_options</options>
+          </bfw_tinymce>
+          <bfw_read_only>false</bfw_read_only>
+          <ActivatedDate>01/28/2013 01:36 PM</ActivatedDate>
+          <bfw_course_description>Econportal: Stone, CoreEconomics 2e</bfw_course_description>
+          <bfw_allow_comment_sharing>true</bfw_allow_comment_sharing>
+          <bfw_shared>Unpublished</bfw_shared>
+          <bfw_search_engine_index>false</bfw_search_engine_index>
+          <bfw_facebook_integration>false</bfw_facebook_integration>
+          <bfw_allow_site_search>true</bfw_allow_site_search>
+          <bfw_allow_activation>true</bfw_allow_activation>
+          <bfw_social_commenting_integration>false</bfw_social_commenting_integration>
+          <bfw_template_learningobjectives>
+            <learningobjectives />
+          </bfw_template_learningobjectives>
+          <bfw_dashboard_learningobjectives>
+            <learningobjectives />
+          </bfw_dashboard_learningobjectives>
+          <bfw_eportfolio_learningobjectives>
+            <learningobjectives />
+          </bfw_eportfolio_learningobjectives>
+          <bfw_program_learningobjectives>
+            <learningobjectives />
+          </bfw_program_learningobjectives>
+          <bfw_generic_course id="73337">false</bfw_generic_course>
+          <meta-product-course-id>57704</meta-product-course-id>
+          <CourseProductName>fdyttttttttttttttttttttttttttttt</CourseProductName>
+          <CourseUserName>QA instructor 3</CourseUserName>
+          <CourseTimeZone>Eastern Standard Time</CourseTimeZone>
+          <bfw_dashboard_settings>
+            <bfw_dashboard_course_home_page>PX_DASHBOARD_1COLUMN</bfw_dashboard_course_home_page>
+            <bfw_program_dashboard_course_home_page>PX_PROGRAM_DASHBOARD_1COLUMN</bfw_program_dashboard_course_home_page>
+            <instructor_dashboard>true</instructor_dashboard>
+            <program_dashboard>true</program_dashboard>
+          </bfw_dashboard_settings>
+          <meta-bfw_is_sandbox_course>false</meta-bfw_is_sandbox_course>
+          <bfw_productcourseid>57704</bfw_productcourseid>
+          <enable_learningcurve_quiz>true</enable_learningcurve_quiz>
+          <enable_homework_quiz>true</enable_homework_quiz>
+          <isdashboardactive>false</isdashboardactive>
+          <bfw_initialize_user>true</bfw_initialize_user>
+          <bfw_course_owner>9336</bfw_course_owner>
+          <meta-bfw_academic_term>5349a155-7a5c-4788-880f-f0b6fcb1ff8f</meta-bfw_academic_term>
+          <meta-bfw_course_subtype>regular</meta-bfw_course_subtype>
+          <questioncardlayout>
+            <script id="questioncard-template" type="text/x-handlebars-template">
+              <div class="card">
+                <div class="questioncardrow firstrow">
+                  {{#if difficulty}}
+                  <div class="difficulty">
+                    <h1>Difficulty:</h1>
+                    <div class="content">{{difficulty}}</div>
+                  </div>
+                  {{/if}}
+                  {{#if cognitivelevel}}
+                  <div class="cognitivelevel">
+                    <h1>Cognitive level:</h1>
+                    <div class="content">{{cognitivelevel}}</div>
+                  </div>
+                  {{/if}}
+                  {{#if bloomdomain}}
+                  <div class="bloomdomain">
+                    <h1>Bloom's domain:</h1>
+                    <div class="content">{{bloomdomain}}</div>
+                  </div>
+                  {{/if}}
+                </div>
+                <div class="questioncardrow">
+                  {{#if coreconcept}}
+                  <div class="coreconcept">
+                    <h1>Core Concept:</h1>
+                    <div class="content">{{coreconcept}}</div>
+                  </div>
+                  {{/if}}
+                  {{#if relatedcontent}}
+                  <div class="relatedcontent">
+                    <h1>Related Content:</h1>
+                    <div class="content">{{relatedcontent}}</div>
+                  </div>
+                  {{/if}}
+                </div>
+                <div class="questioncardrow">
+                  {{#if guidance}}
+                  <div class="guidance">
+                    <h1>Guidance:</h1>
+                    <div class="content">{{guidance}}</div>
+                  </div>
+                  {{/if}}
+                </div>
+                <div class="questioncardrow">
+                  {{#if freeresponsequestion}}
+                  <div class="freeresponsequestion">
+                    <h1>Free response question:</h1>
+                    <div class="content">{{freeresponsequestion}}</div>
+                  </div>
+                  {{/if}}
+                </div>
+                <div class="questioncardrow">
+                  {{#if suggesteduse}}
+                  <div class="suggesteduse"><h1>Suggested use:</h1><div class="content"> 
+					{{suggesteduse}}	  
+					</div>
+				</div>
+                  {{/if}}
+                </div>
+				<div class="questioncardrow">
+                  {{#if learningobjectives}}
+                  <div class="learningobjectives"><h1>Learning Objectives:</h1><div class="content"> 
+					{{learningobjectives}}
+					</div>
+				</div>
+                  {{/if}}
+                </div>
+              </div>
+            </script>
+          </questioncardlayout>
+          <questionfiltermetadata>suggesteduse</questionfiltermetadata>
+          <sourceid>57704</sourceid>
+          <indexrule>Deltas</indexrule>
+        </data>
+      </course>
+    </requests>
+  </request>
+  <!-- Creates necessary folders and other course structures including page definitions for Eportfolio -->
+  <request cmd="putquestions">
+    <requests>
+        <question questionid="5C6E5D34B610E8BD78C3BF6C3DF9002C" entityid="101436">
+          <meta>
+            <publisherSupplied>true</publisherSupplied>
+            <totalUsed>-1</totalUsed>
+            <difficulty>High (Level 1)</difficulty>
+            <cognitivelevel>Higher-order cognition</cognitivelevel>
+            <bloomdomain>Analysis</bloomdomain>
+            <coreconcept>CC4.1 Proteins are linear polymers of amino acids that form three-dimensional structures with specific functions.</coreconcept>
+            <relatedcontent>Chapter1 Progressions</relatedcontent>
+            <guidance>This question reinforces the importance od the peptide bonds that stabilize the primary structure of proteins.</guidance>
+            <freeresponsequestion>
+              First, thanks for working through this today.  Some of you ran into issue that I did not hit, others found omissions/errors in the guide.
+
+              I have made a few nginx config change, so please make sure to grab latest and restart nginx when you get in on Tuesday.
+
+              Also, if you are still working through the setup process make sure to recheck the wiki as the guide has been updated as problems were found.
+            </freeresponsequestion>
+            <suggesteduse>Pre-instruction|In-class|Post-class|Exam</suggesteduse>
+            <usedin>24ee104a706a4955a9985c3c214a5697</usedin>
+          </meta>
+          <answer>
+            <value>D</value>
+          </answer>
+          <body>1.Consider a typical downward-sloping demand curve. If the price of the product increases the result will be:</body>
+          <interaction type="choice">
+            <choice id="A">
+              <body>an increase in demand.</body>
+            </choice>
+            <choice id="B">
+              <body>a decrease in demand.</body>
+            </choice>
+            <choice id="C">
+              <body>an increase in the quantity demanded.</body>
+            </choice>
+            <choice id="D">
+              <body>a decrease in the quantity demanded.</body>
+            </choice>
+          </interaction>
+        </question>
+	</requests>
+  </request>
+  <!-- Adds widgets to their respective zones for Eportfolio -->
+</batch>
+
+<!--
+Rubric Resources will need to be run also (MANUALLY) : TOTAL number of resource files needing to load is 3
+Format is as follows, Query-String than POST Data, and repeat if there is another
+
+cmd=putresource&entityid=-entityid-&path=Templates/Data/a960f08b0a9b4f0d845074c6b319f068/_rubric.xml
+
+<rubric>
+  <maxScore>0</maxScore>
+  <title>Reflective Writing rubric</title>
+  <isActive>false</isActive>
+  <columnTitles>
+    <column>
+      <sequence>1</sequence>
+      <title>Exemplary</title>
+    </column>
+    <column>
+      <sequence>2</sequence>
+      <title>Proficient</title>
+    </column>
+    <column>
+      <sequence>3</sequence>
+      <title>Limited</title>
+    </column>
+    <column>
+      <sequence>4</sequence>
+      <title>Unsatisfactory</title>
+    </column>
+  </columnTitles>
+  <rows>
+    <row sequence="1" score="12">
+      <title>Claims and Goals</title>
+      <columns>
+        <column sequence="1">
+          <description>The reflection makes specific and thoughtful claims about the author’s learning and growth; successfully draws connections between author’s achievement and course and personal goals, including goals for the future </description>
+        </column>
+        <column sequence="2">
+          <description>The reflection makes specific and thoughtful claims about the author’s learning and growth; draws some connections between the author’s achievement and course and personal goals</description>
+        </column>
+        <column sequence="3">
+          <description>The reflection makes some specific claims about the author’s learning and growth, but claims may not demonstrate thoughtfulness or successful self-critique; connections between author’s achievement and course or personal goals are loosely drawn</description>
+        </column>
+        <column sequence="4">
+          <description>Claims about author’s learning and growth are vague and general; no connection is made between author’s achievement and course goals or personal goals. </description>
+        </column>
+      </columns>
+    </row>
+    <row sequence="2" score="12">
+      <title>Discussion of Artifacts, Choices, and Revisions</title>
+      <columns>
+        <column sequence="1">
+          <description>The reflection successfully discusses in detail which artifacts were chosen and why; provides eloquent and insightful explication of what choices and/or revisions were made in the artifact(s) and why</description>
+        </column>
+        <column sequence="2">
+          <description>The reflection competently discusses which artifacts were chosen and why; provides explication of choices and/or revisions</description>
+        </column>
+        <column sequence="3">
+          <description>The reflection broadly addresses which artifacts were chosen and why; provides some explication of choices and/or revisions </description>
+        </column>
+        <column sequence="4">
+          <description>The reflection does not discuss or discusses very briefly which artifacts were chosen and why; provides minimal or no explication of choices and/or revisions</description>
+        </column>
+      </columns>
+    </row>
+    <row sequence="3" score="12">
+      <title>Evidence of Learning and Growth</title>
+      <columns>
+        <column sequence="1">
+          <description>The reflection supports claims about what the author has learned with a variety of detailed and vivid evidence from artifact(s)</description>
+        </column>
+        <column sequence="2">
+          <description>The reflection supports claims about what the author has learned with some evidence from artifact(s)</description>
+        </column>
+        <column sequence="3">
+          <description>The reflection offers only a few examples from artifact(s) to demonstrate author’s learning and growth</description>
+        </column>
+        <column sequence="4">
+          <description>Claims about author’s learning and growth are unsupported; few or no specific references to artifacts are included in the reflection</description>
+        </column>
+      </columns>
+    </row>
+    <row sequence="4" score="12">
+      <title>Style and Mechanics</title>
+      <columns>
+        <column sequence="1">
+          <description>Writing style is clear, flowing, polished, and easy to read; grammar, spelling, and usage errors are minimal and do not interfere with the reader’s understanding</description>
+        </column>
+        <column sequence="2">
+          <description>Writing style is clear and comprehensible but may have some awkward phrasing; a few grammar, spelling, or usage errors may be present but they generally do not interfere with the reader’s understanding</description>
+        </column>
+        <column sequence="3">
+          <description>Writing style is readable but unclear in multiple places; grammar, spelling, and usage errors hamper the reader’s understanding in multiple places</description>
+        </column>
+        <column sequence="4">
+          <description>Writing style is disjointed, choppy, or unfinished; grammar, spelling, and usage errors are so frequent as to hamper the reader’s understanding of the piece as a whole</description>
+        </column>
+      </columns>
+    </row>
+  </rows>
+  <rubricrule id="1" max="12">
+    <text>
+      <Paragraph>Claims and Goals</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflection makes specific and thoughtful claims about the author’s learning and growth; successfully draws connections between author’s achievement and course and personal goals, including goals for the future </Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflection makes specific and thoughtful claims about the author’s learning and growth; draws some connections between the author’s achievement and course and personal goals</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflection makes some specific claims about the author’s learning and growth, but claims may not demonstrate thoughtfulness or successful self-critique; connections between author’s achievement and course or personal goals are loosely drawn</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Claims about author’s learning and growth are vague and general; no connection is made between author’s achievement and course goals or personal goals. </Paragraph>
+    </text>
+  </rubricrule>
+  <rubricrule id="2" max="12">
+    <text>
+      <Paragraph>Discussion of Artifacts, Choices, and Revisions</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflection successfully discusses in detail which artifacts were chosen and why; provides eloquent and insightful explication of what choices and/or revisions were made in the artifact(s) and why</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflection competently discusses which artifacts were chosen and why; provides explication of choices and/or revisions</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflection broadly addresses which artifacts were chosen and why; provides some explication of choices and/or revisions </Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflection does not discuss or discusses very briefly which artifacts were chosen and why; provides minimal or no explication of choices and/or revisions</Paragraph>
+    </text>
+  </rubricrule>
+  <rubricrule id="3" max="12">
+    <text>
+      <Paragraph>Evidence of Learning and Growth</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflection supports claims about what the author has learned with a variety of detailed and vivid evidence from artifact(s)</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflection supports claims about what the author has learned with some evidence from artifact(s)</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflection offers only a few examples from artifact(s) to demonstrate author’s learning and growth</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Claims about author’s learning and growth are unsupported; few or no specific references to artifacts are included in the reflection</Paragraph>
+    </text>
+  </rubricrule>
+  <rubricrule id="4" max="12">
+    <text>
+      <Paragraph>Style and Mechanics\</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style is clear, flowing, polished, and easy to read; grammar, spelling, and usage errors are minimal and do not interfere with the reader’s understanding</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style is clear and comprehensible but may have some awkward phrasing; a few grammar, spelling, or usage errors may be present but they generally do not interfere with the reader’s understanding</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style is readable but unclear in multiple places; grammar, spelling, and usage errors hamper the reader’s understanding in multiple places</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style is disjointed, choppy, or unfinished; grammar, spelling, and usage errors are so frequent as to hamper the reader’s understanding of the piece as a whole</Paragraph>
+    </text>
+  </rubricrule>
+</rubric>
+
+********************************************** NEXT **********************************************
+
+cmd=putresource&entityid=-entityid-&path=Templates/Data/c081487b4fcb4ede86436e1056c0b234/_rubric.xml
+
+<rubric>
+  <maxScore>0</maxScore>
+  <title>Holistic e-Portfolio rubric</title>
+  <isActive>false</isActive>
+  <columnTitles>
+    <column>
+      <sequence>1</sequence>
+      <title>Exemplary</title>
+    </column>
+    <column>
+      <sequence>2</sequence>
+      <title>Proficient</title>
+    </column>
+    <column>
+      <sequence>3</sequence>
+      <title>Limited</title>
+    </column>
+    <column>
+      <sequence>4</sequence>
+      <title>Unsatisfactory</title>
+    </column>
+  </columnTitles>
+  <rows>
+    <row sequence="1" score="12">
+      <title>Selection of Artifacts</title>
+      <columns>
+        <column sequence="1">
+          <description>The selected artifacts clearly and completely address course goals and learning outcomes; the artifacts demonstrate thoughtful revision practices; the e-portfolio is organized in a clear, effective manner</description>
+        </column>
+        <column sequence="2">
+          <description>The selected artifacts address course goals and learning outcomes; the artifacts demonstrate adequate revision practices; the e-portfolio is organized in a clear, effective manner</description>
+        </column>
+        <column sequence="3">
+          <description>The selected artifacts only partially address course goals and learning outcomes; the artifacts do not demonstrate revision practices; the e-portfolio organization may be somewhat confusing</description>
+        </column>
+        <column sequence="4">
+          <description>The selected artifacts do not address the course goals and learning outcomes or demonstrate revision practices; the e-portfolio is disorganized and difficult to navigate</description>
+        </column>
+      </columns>
+    </row>
+    <row sequence="2" score="12">
+      <title>Reflection</title>
+      <columns>
+        <column sequence="1">
+          <description>The e-portfolio contains a reflective element that thoughtfully discusses the author’s preparation for the e-portfolio process, identifies revisions and rhetorical choices made, and presents evidence from the e-portfolio to demonstrate understanding and mastery of course outcomes</description>
+        </column>
+        <column sequence="2">
+          <description>The reflective element adequately discusses the author’s preparation for the e-portfolio process, identifies some revisions and rhetorical choices made, and presents some evidence from the e-portfolio artifacts to demonstrate understanding and mastery of course outcomes</description>
+        </column>
+        <column sequence="3">
+          <description>The reflective element broadly discusses the author’s preparation for the e-portfolio process, identifies only a few revisions and rhetorical choices made, presents limited evidence to demonstrate understanding and mastery of course outcomes</description>
+        </column>
+        <column sequence="4">
+          <description>The reflective element is vague and generalized; few or no examples from the e-portfolio artifacts are referenced; the reflective element is not well-integrated with the rest of the e-portfolio. </description>
+        </column>
+      </columns>
+    </row>
+    <row sequence="3" score="12">
+      <title>Rhetorical Knowledge</title>
+      <columns>
+        <column sequence="1">
+          <description>The e-portfolio outstandingly demonstrates the author’s ability to understand and appropriately shape his or her writing for different purposes, audiences, and contexts; the e-portfolio displays multiple genres of writing, successfully  and appropriately executed</description>
+        </column>
+        <column sequence="2">
+          <description>The e-portfolio adequately demonstrates the author’s ability to understand and appropriately shape his or her writing for different purposes, audiences, and contexts; the e-portfolio displays multiple genres of writing, adequately executed</description>
+        </column>
+        <column sequence="3">
+          <description>The e-portfolio demonstrates an incomplete ability to understand and appropriately shape writing for different purposes, audiences, and contexts; the e-portfolio displays only one or two genres of writing</description>
+        </column>
+        <column sequence="4">
+          <description>The e-portfolio does not demonstrate an ability to understand and shape writing for different purposes, audiences, and contexts; the e-portfolio does not display multiple genres of writing</description>
+        </column>
+      </columns>
+    </row>
+    <row sequence="4" score="12">
+      <title>Knowledge of Processes</title>
+      <columns>
+        <column sequence="1">
+          <description>The e-portfolio displays the author’s superior and thoughtful understanding of his or her own writing process and strategies for generating ideas, drafting, and revising; demonstrates the ability to give useful and insightful feedback to other writers </description>
+        </column>
+        <column sequence="2">
+          <description>The e-portfolio displays the author’s competent understanding of his or her own writing process and strategies for generating ideas, drafting, and revising; demonstrates the ability to give acceptable feedback to other writers</description>
+        </column>
+        <column sequence="3">
+          <description>The e-portfolio displays the author’s partial understanding of his or her own writing process and strategies for generating ideas, drafting, and revising; demonstrates some ability to give feedback to other writers</description>
+        </column>
+        <column sequence="4">
+          <description>The e-portfolio does not display an understanding of the author’s writing process and strategies; does not demonstrate the ability to give feedback to other writers</description>
+        </column>
+      </columns>
+    </row>
+    <row sequence="5" score="12">
+      <title>Style and Mechanics</title>
+      <columns>
+        <column sequence="1">
+          <description>Writing style throughout the e-portfolio is clear, flowing, polished, and easy to read; grammar, spelling, and usage errors are minimal and do not interfere with the reader’s understanding; sources are clear and documentation style is used appropriately and correctly</description>
+        </column>
+        <column sequence="2">
+          <description>Writing style throughout the e-portfolio is clear and comprehensible but may have some awkward phrasings; a few grammar, spelling, or usage errors may be present but they generally do not interfere with the reader’s understanding; sources are clear but documentation style has one or two errors</description>
+        </column>
+        <column sequence="3">
+          <description>Writing style throughout the e-portfolio is readable but unclear in multiple places; grammar, spelling, and usage errors hamper the reader’s understanding in multiple places; documentation has multiple significant errors</description>
+        </column>
+        <column sequence="4">
+          <description>Writing style throughout the e-portfolio is disjointed, choppy, or unfinished; grammar, spelling, and usage errors are so frequent as to hamper the reader’s understanding of the e-portfolio as a whole; documentation is inconsistent or absent</description>
+        </column>
+      </columns>
+    </row>
+  </rows>
+  <rubricrule id="1" max="12">
+    <text>
+      <Paragraph>Selection of Artifacts</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The selected artifacts clearly and completely address course goals and learning outcomes; the artifacts demonstrate thoughtful revision practices; the e-portfolio is organized in a clear, effective manner</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The selected artifacts address course goals and learning outcomes; the artifacts demonstrate adequate revision practices; the e-portfolio is organized in a clear, effective manner</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The selected artifacts only partially address course goals and learning outcomes; the artifacts do not demonstrate revision practices; the e-portfolio organization may be somewhat confusing</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The selected artifacts do not address the course goals and learning outcomes or demonstrate revision practices; the e-portfolio is disorganized and difficult to navigate</Paragraph>
+    </text>
+  </rubricrule>
+  <rubricrule id="2" max="12">
+    <text>
+      <Paragraph>Reflection</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The e-portfolio contains a reflective element that thoughtfully discusses the author’s preparation for the e-portfolio process, identifies revisions and rhetorical choices made, and presents evidence from the e-portfolio to demonstrate understanding and mastery of course outcomes</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflective element adequately discusses the author’s preparation for the e-portfolio process, identifies some revisions and rhetorical choices made, and presents some evidence from the e-portfolio artifacts to demonstrate understanding and mastery of course outcomes</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflective element broadly discusses the author’s preparation for the e-portfolio process, identifies only a few revisions and rhetorical choices made, presents limited evidence to demonstrate understanding and mastery of course outcomes</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflective element is vague and generalized; few or no examples from the e-portfolio artifacts are referenced; the reflective element is not well-integrated with the rest of the e-portfolio. </Paragraph>
+    </text>
+  </rubricrule>
+  <rubricrule id="3" max="12">
+    <text>
+      <Paragraph>Rhetorical Knowledge</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The e-portfolio outstandingly demonstrates the author’s ability to understand and appropriately shape his or her writing for different purposes, audiences, and contexts; the e-portfolio displays multiple genres of writing, successfully  and appropriately executed</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The e-portfolio adequately demonstrates the author’s ability to understand and appropriately shape his or her writing for different purposes, audiences, and contexts; the e-portfolio displays multiple genres of writing, adequately executed</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The e-portfolio demonstrates an incomplete ability to understand and appropriately shape writing for different purposes, audiences, and contexts; the e-portfolio displays only one or two genres of writing</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The e-portfolio does not demonstrate an ability to understand and shape writing for different purposes, audiences, and contexts; the e-portfolio does not display multiple genres of writing</Paragraph>
+    </text>
+  </rubricrule>
+  <rubricrule id="4" max="12">
+    <text>
+      <Paragraph>Knowledge of Processes</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The e-portfolio displays the author’s superior and thoughtful understanding of his or her own writing process and strategies for generating ideas, drafting, and revising; demonstrates the ability to give useful and insightful feedback to other writers </Paragraph>
+    </text>
+    <text>
+      <Paragraph>The e-portfolio displays the author’s competent understanding of his or her own writing process and strategies for generating ideas, drafting, and revising; demonstrates the ability to give acceptable feedback to other writers</Paragraph> 
+    </text>
+    <text>
+      <Paragraph>The e-portfolio displays the author’s partial understanding of his or her own writing process and strategies for generating ideas, drafting, and revising; demonstrates some ability to give feedback to other writers</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The e-portfolio does not display an understanding of the author’s writing process and strategies; does not demonstrate the ability to give feedback to other writers</Paragraph>
+    </text>
+  </rubricrule>
+  <rubricrule id="5" max="12">
+    <text>
+      <Paragraph>Style and Mechanics</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style throughout the e-portfolio is clear, flowing, polished, and easy to read; grammar, spelling, and usage errors are minimal and do not interfere with the reader’s understanding; sources are clear and documentation style is used appropriately and correctly</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style throughout the e-portfolio is clear and comprehensible but may have some awkward phrasings; a few grammar, spelling, or usage errors may be present but they generally do not interfere with the reader’s understanding; sources are clear but documentation style has one or two errors</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style throughout the e-portfolio is readable but unclear in multiple places; grammar, spelling, and usage errors hamper the reader’s understanding in multiple places; documentation has multiple significant errors</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style throughout the e-portfolio is disjointed, choppy, or unfinished; grammar, spelling, and usage errors are so frequent as to hamper the reader’s understanding of the e-portfolio as a whole; documentation is inconsistent or absent</Paragraph>
+    </text>
+  </rubricrule>
+</rubric>
+
+********************************************** NEXT **********************************************
+
+cmd=putresource&entityid=-entityid-&path=Templates/Data/c1547871ef5f46438d051ac166737e0d/_rubric.xml
+
+<rubric>
+  <maxScore>0</maxScore>
+  <title>Argument rubric</title>
+  <isActive>false</isActive>
+  <columnTitles>
+    <column>
+      <sequence>1</sequence>
+      <title>Exemplary</title>
+    </column>
+    <column>
+      <sequence>2</sequence>
+      <title>Proficient</title>
+    </column>
+    <column>
+      <sequence>3</sequence>
+      <title>Limited</title>
+    </column>
+    <column>
+      <sequence>4</sequence>
+      <title>Unsatisfactory</title>
+    </column>
+  </columnTitles>
+  <rows>
+    <row sequence="1" score="12">
+      <title>Thesis Statement</title>
+      <columns>
+        <column sequence="1">
+          <description>The thesis is strong, clear, complex, insightful, and engaging; it presents a robust and persuasive answer to a clearly debatable research question</description>
+        </column>
+        <column sequence="2">
+          <description>The thesis statement is strong and clear, but may be lacking in complexity or depth</description>
+        </column>
+        <column sequence="3">
+          <description>The thesis statement is general and/or vague</description>
+        </column>
+        <column sequence="4">
+          <description>No clear thesis statement is present</description>
+        </column>
+      </columns>
+    </row>
+    <row sequence="2" score="12">
+      <title>Use of Evidence</title>
+      <columns>
+        <column sequence="1">
+          <description>Piece provides support from excellent and well-chosen sources; evidence is presented vividly and with apt and relevant details</description>
+        </column>
+        <column sequence="2">
+          <description>Piece provides adequate support for major claims; evidence is clear and strong</description>
+        </column>
+        <column sequence="3">
+          <description>Supporting evidence is present, but deployed inconsistently; piece relies on some inappropriate sources</description>
+        </column>
+        <column sequence="4">
+          <description>Supporting evidence is irrelevant or lacking altogether </description>
+        </column>
+      </columns>
+    </row>
+    <row sequence="3" score="12">
+      <title>Analytical and Critical Thinking</title>
+      <columns>
+        <column sequence="1">
+          <description>The piece provides strong analysis and synthesis of sources and ideas; summary is minimal and used only where appropriate </description>
+        </column>
+        <column sequence="2">
+          <description>The piece provides some analysis and synthesis of sources and ideas, but may include some unnecessary summarizing</description>
+        </column>
+        <column sequence="3">
+          <description>The piece provides primarily a summary of sources, with limited analysis or synthesis</description>
+        </column>
+        <column sequence="4">
+          <description>Analysis and synthesis are essentially absent; the piece relies almost entirely on summary. </description>
+        </column>
+      </columns>
+    </row>
+    <row sequence="4" score="12">
+      <title>Rhetorical Knowledge</title>
+      <columns>
+        <column sequence="1">
+          <description>The piece establishes the writer’s ethos firmly and well; knows and compellingly addresses its target audience; acknowledges and credibly addresses counterarguments </description>
+        </column>
+        <column sequence="2">
+          <description>The piece establishes the writer’s ethos; target audience is clear and well-addressed but there may be some lapses in tone; the piece brings up and responds to counterarguments, but may not consider them deeply</description>
+        </column>
+        <column sequence="3">
+          <description>Writer’s ethos is unclear; target audience is uncertain or not addressed appropriately; some counterarguments are referenced in passing but not responded to completely or convincingly </description>
+        </column>
+        <column sequence="4">
+          <description>Writer’s ethos is not addressed or established; the piece does not demonstrate an understanding of the target audience; no reference to counterarguments </description>
+        </column>
+      </columns>
+    </row>
+    <row sequence="5" score="12">
+      <title>Style, Mechanics, and Documentation</title>
+      <columns>
+        <column sequence="1">
+          <description>Writing style is clear, flowing, and easy to read; grammar, spelling, and usage errors are minimal and do not interfere with the reader’s understanding; sources are clear and documentation style is used appropriately and correctly</description>
+        </column>
+        <column sequence="2">
+          <description>Writing style is clear and comprehensible but may have some awkward phrasing; a few grammar, spelling, or usage errors may be present but they generally do not interfere with the reader’s understanding; sources are clear but documentation style has one or two errors</description>
+        </column>
+        <column sequence="3">
+          <description>Writing style is readable but unclear in multiple places; grammar, spelling, and usage errors hamper the reader’s understanding in multiple places; documentation has multiple significant errors</description>
+        </column>
+        <column sequence="4">
+          <description>Writing style is disjointed, choppy, or unfinished; grammar, spelling, and usage errors are so frequent as to hamper the reader’s understanding of the piece as a whole; documentation is inconsistent or absent</description>
+        </column>
+      </columns>
+    </row>
+  </rows>
+  <rubricrule id="1" max="12">
+    <text>
+      <Paragraph>Thesis Statement</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The thesis is strong, clear, complex, insightful, and engaging; it presents a robust and persuasive answer to a clearly debatable research question</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The thesis statement is strong and clear, but may be lacking in complexity or depth</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The thesis statement is general and/or vague</Paragraph>
+    </text>
+    <text>
+      <Paragraph>No clear thesis statement is present</Paragraph>
+    </text>
+  </rubricrule>
+  <rubricrule id="2" max="12">
+    <text>
+      <Paragraph>Use of Evidence</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Piece provides support from excellent and well-chosen sources; evidence is presented vividly and with apt and relevant details</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Piece provides adequate support for major claims; evidence is clear and strong</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Supporting evidence is present, but deployed inconsistently; piece relies on some inappropriate sources</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Supporting evidence is irrelevant or lacking altogether </Paragraph>
+    </text>
+  </rubricrule>
+  <rubricrule id="3" max="12">
+    <text>
+      <Paragraph>Analytical and Critical Thinking</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The piece provides strong analysis and synthesis of sources and ideas; summary is minimal and used only where appropriate </Paragraph>
+    </text>
+    <text>
+      <Paragraph>The piece provides some analysis and synthesis of sources and ideas, but may include some unnecessary summarizing</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The piece provides primarily a summary of sources, with limited analysis or synthesis</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Analysis and synthesis are essentially absent; the piece relies almost entirely on summary. </Paragraph>
+    </text>
+  </rubricrule>
+  <rubricrule id="4" max="12">
+    <text>
+      <Paragraph>Rhetorical Knowledge</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The piece establishes the writer’s ethos firmly and well; knows and compellingly addresses its target audience; acknowledges and credibly addresses counterarguments </Paragraph>
+    </text>
+    <text>
+      <Paragraph>The piece establishes the writer’s ethos; target audience is clear and well-addressed but there may be some lapses in tone; the piece brings up and responds to counterarguments, but may not consider them deeply</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writer’s ethos is unclear; target audience is uncertain or not addressed appropriately; some counterarguments are referenced in passing but not responded to completely or convincingly </Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writer’s ethos is not addressed or established; the piece does not demonstrate an understanding of the target audience; no reference to counterarguments </Paragraph>
+    </text>
+  </rubricrule>
+  <rubricrule id="5" max="12">
+    <text>
+      <Paragraph>Style, Mechanics, and Documentation</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style is clear, flowing, and easy to read; grammar, spelling, and usage errors are minimal and do not interfere with the reader’s understanding; sources are clear and documentation style is used appropriately and correctly</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style is clear and comprehensible but may have some awkward phrasing; a few grammar, spelling, or usage errors may be present but they generally do not interfere with the reader’s understanding; sources are clear but documentation style has one or two errors</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style is readable but unclear in multiple places; grammar, spelling, and usage errors hamper the reader’s understanding in multiple places; documentation has multiple significant errors</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style is disjointed, choppy, or unfinished; grammar, spelling, and usage errors are so frequent as to hamper the reader’s understanding of the piece as a whole; documentation is inconsistent or absent</Paragraph>
+    </text>
+  </rubricrule>
+</rubric>
+-->

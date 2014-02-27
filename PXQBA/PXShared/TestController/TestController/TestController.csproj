@@ -1,0 +1,856 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6866691E-467B-4C74-9895-670B616FCEAF}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bfw.PX.PXPub.Controllers</RootNamespace>
+    <AssemblyName>Bfw.PX.PXPub.Controllers</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Configuration.Design.HostAdapter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Configuration.Design.HostAdapter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Configuration.Design.HostAdapterV5, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Configuration.Design.HostAdapterV5.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Configuration.DesignTime, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Configuration.DesignTime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Configuration.EnvironmentalOverrides, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Configuration.EnvironmentalOverrides.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data.SqlCe, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Data.SqlCe.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.WCF, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.WCF.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging.Database, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.PolicyInjection, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.PolicyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Security, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Security.Cache.CachingStore, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Security.Cache.CachingStore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Security.Cryptography, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Security.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation.Integration.AspNet, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Validation.Integration.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WinForms, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\JsonConvert\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.3.0.20105.1\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.1.0.20105.408\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class\PxTypeConverter.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\ViewProvider.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AllowCrossSiteJsonAttribute.cs" />
+    <Compile Include="Models\RenderViewData.cs" />
+    <Compile Include="Models\RenderViewInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestViewEngine.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="index.html" />
+    <Content Include="Views\PXPub\Shared\AssignmentUnitSelector.ascx" />
+    <Content Include="Views\PXPub\Shared\GroupSelector.ascx" />
+    <Content Include="Views\PXPub\Shared\WidgetWrapperBeforeAdd.ascx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Bfw.PX.Account\Account\Login.aspx" />
+    <Content Include="Views\Bfw.PX.Account\Account\Logout.aspx" />
+    <Content Include="Views\Bfw.PX.Account\Account\TermsAndConditions.ascx" />
+    <Content Include="Views\Bfw.PX.Account\Home\Index.aspx" />
+    <Content Include="Views\Bfw.PX.Account\Request\Login.aspx" />
+    <Content Include="Views\Bfw.PX.Account\Request\Logout.aspx" />
+    <Content Include="Views\Bfw.PX.Account\Shared\AuthenticationScripts.ascx" />
+    <Content Include="Views\Bfw.PX.Account\Shared\Browser.ascx" />
+    <Content Include="Views\Bfw.PX.Account\Shared\PxStyles.ascx" />
+    <Content Include="Views\Bfw.PX.Account\Shared\WebTrends.ascx" />
+    <Content Include="Views\PXPub\AboutCourseWidget\Edit.ascx" />
+    <Content Include="Views\PXPub\AboutCourseWidget\Index.ascx" />
+    <Content Include="Views\PXPub\AboutCourseWidget\ItemEdit.ascx" />
+    <Content Include="Views\PXPub\AboutCourseWidget\Save.ascx" />
+    <Content Include="Views\PXPub\AccountWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\Account\Login.aspx" />
+    <Content Include="Views\PXPub\Account\Logout.aspx" />
+    <Content Include="Views\PXPub\Account\SessionExtended.aspx" />
+    <Content Include="Views\PXPub\Account\TermsAndConditions.ascx" />
+    <Content Include="Views\PXPub\Account\Upgrade.aspx" />
+    <Content Include="Views\PXPub\ActivitiesWidget\DueDateColumn.ascx" />
+    <Content Include="Views\PXPub\ActivitiesWidget\SortedByDueDate.ascx" />
+    <Content Include="Views\PXPub\ActivitiesWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\ActivitiesWidget\Unsorted.ascx" />
+    <Content Include="Views\PXPub\AdminMetaData\AssociatedChaptersDropDown.ascx" />
+    <Content Include="Views\PXPub\AdminMetaData\MetaDataChaptersAssociations.ascx" />
+    <Content Include="Views\PXPub\AdminMetaData\MetaDataDropDownList.ascx" />
+    <Content Include="Views\PXPub\AdminMetaData\MetaDataIndex.ascx" />
+    <Content Include="Views\PXPub\AdminMetaData\MetaDataInputText.ascx" />
+    <Content Include="Views\PXPub\AdminMetaData\MetaDataRadioButtonList.ascx" />
+    <Content Include="Views\PXPub\AdminMetaData\MetaDataResourceSubType.ascx" />
+    <Content Include="Views\PXPub\AdminMetaData\MetaDataStaticText.ascx" />
+    <Content Include="Views\PXPub\AdminMetaData\MetaDataXmlTemplate.xml" />
+    <Content Include="Views\PXPub\AdminMetaData\QuizToTest.xml" />
+    <Content Include="Views\PXPub\AnnouncementWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\AnnouncementWidget\ViewAll.aspx" />
+    <Content Include="Views\PXPub\AnnouncementWidget\ViewAllAnnouncement.ascx" />
+    <Content Include="Views\PXPub\AssessmentSettings\Index.ascx" />
+    <Content Include="Views\PXPub\AssessmentSettings\ReviewSetting.ascx" />
+    <Content Include="Views\PXPub\AssignmentWidget\CreateAssignment.ascx" />
+    <Content Include="Views\PXPub\AssignmentWidget\EditorModal.ascx" />
+    <Content Include="Views\PXPub\AssignmentWidget\LaunchPad.ascx" />
+    <Content Include="Views\PXPub\AssignmentWidget\ListAssignments.ascx" />
+    <Content Include="Views\PXPub\AssignmentWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\AssignmentWidget\TocLinks.ascx" />
+    <Content Include="Views\PXPub\AssignmentWidget\ViewAll.aspx" />
+    <Content Include="Views\PXPub\BrowseMoreResourcesWidget\FacePlateBrowseResourcesFacetsInstructorConsole.ascx" />
+    <Content Include="Views\PXPub\BrowseMoreResourcesWidget\FacePlateBrowseResourcesFacetsInstructorConsoleEdit.ascx" />
+    <Content Include="Views\PXPub\BrowseMoreResourcesWidget\FacePlateBrowseResourcesInstructorConsole.ascx" />
+    <Content Include="Views\PXPub\BrowseMoreResourcesWidget\FaceplateBrowseResourcesMenuInstructorConsole.ascx" />
+    <Content Include="Views\PXPub\BrowseMoreResourcesWidget\FaceplateBrowseResourcesMenuInstructorConsoleEdit.ascx" />
+    <Content Include="Views\PXPub\BrowseMoreResourcesWidget\Index.ascx" />
+    <Content Include="Views\PXPub\BrowseMoreResourcesWidget\ResourceBreadcrumb.ascx" />
+    <Content Include="Views\PXPub\BrowseMoreResourcesWidget\ResourceFacets.ascx" />
+    <Content Include="Views\PXPub\BrowseMoreResourcesWidget\ResourceList.ascx" />
+    <Content Include="Views\PXPub\BrowseMoreResourcesWidget\ResourceQuestionBanks.ascx" />
+    <Content Include="Views\PXPub\BrowseMoreResourcesWidget\ResourceQuestionSearch.ascx" />
+    <Content Include="Views\PXPub\BrowseMoreResourcesWidget\ResourceResults.ascx" />
+    <Content Include="Views\PXPub\BrowseMoreResourcesWidget\ResourceTypeList.ascx" />
+    <Content Include="Views\PXPub\CalendarWidget\AgendaFullView.ascx" />
+    <Content Include="Views\PXPub\CalendarWidget\MonthFullView.ascx" />
+    <Content Include="Views\PXPub\CalendarWidget\ViewAll.ascx" />
+    <Content Include="Views\PXPub\ContentAreaWidget\ContentArea.ascx" />
+    <Content Include="Views\PXPub\ContentAreaWidget\ContentAreaViewOptions.ascx" />
+    <Content Include="Views\PXPub\ContentAreaWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\ContentAreaWidget\XbookContentOptions.ascx" />
+    <Content Include="Views\PXPub\ContentReadWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\ContentReadWidget\ViewAll.ascx" />
+    <Content Include="Views\PXPub\ContentWidget\Assign.ascx" />
+    <Content Include="Views\PXPub\ContentWidget\AssignmentCalendar.ascx" />
+    <Content Include="Views\PXPub\ContentWidget\AssignTab.ascx" />
+    <Content Include="Views\PXPub\ContentWidget\AssignTabButtons.ascx" />
+    <Content Include="Views\PXPub\ContentWidget\AssignTabTextField.ascx" />
+    <Content Include="Views\PXPub\ContentWidget\ContentSettings.ascx" />
+    <Content Include="Views\PXPub\ContentWidget\ContentSettingsSectionHeader.ascx" />
+    <Content Include="Views\PXPub\ContentWidget\CreateAndAssign.ascx" />
+    <Content Include="Views\PXPub\ContentWidget\DisplayRelatedTemplates.ascx" />
+    <Content Include="Views\PXPub\ContentWidget\DisplayTemplates\Activity.ascx" />
+    <Content Include="Views\PXPub\ContentWidget\DisplayTemplates\ContentItem.ascx" />
+    <Content Include="Views\PXPub\ContentWidget\EditorTemplates\ContentItem.ascx" />
+    <Content Include="Views\PXPub\ContentWidget\Gradebook.ascx" />
+    <Content Include="Views\PXPub\ContentWidget\ListAssignmentsByDate.ascx" />
+    <Content Include="Views\PXPub\ContentWidget\MoreResources.ascx" />
+    <Content Include="Views\PXPub\ContentWidget\NoContent.ascx" />
+    <Content Include="Views\PXPub\ContentWidget\ResultItem.ascx" />
+    <Content Include="Views\PXPub\ContentWidget\Rubrics.ascx" />
+    <Content Include="Views\PXPub\ContentWidget\Settings.ascx" />
+    <Content Include="Views\PXPub\ContentWidget\SettingsView.ascx" />
+    <Content Include="Views\PXPub\ContentWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\ContentWidget\SyllabusFilter.ascx" />
+    <Content Include="Views\PXPub\ContentWidget\Visibility.ascx" />
+    <Content Include="Views\PXPub\Content\Index.aspx" />
+    <Content Include="Views\PXPub\CourseActivationWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\CourseWidget\CourseWidget.ascx" />
+    <Content Include="Views\PXPub\CourseWidget\ViewAll.aspx" />
+    <Content Include="Views\PXPub\Course\CourseActivationConfirmation.ascx" />
+    <Content Include="Views\PXPub\Course\CreateCourse.ascx" />
+    <Content Include="Views\PXPub\Course\CreateCourseStep2.ascx" />
+    <Content Include="Views\PXPub\Course\CreateDashboard.aspx" />
+    <Content Include="Views\PXPub\Course\Edit.aspx" />
+    <Content Include="Views\PXPub\Course\Find.aspx" />
+    <Content Include="Views\PXPub\Course\FindSchool.ascx" />
+    <Content Include="Views\PXPub\Course\ProductScripts.ascx" />
+    <Content Include="Views\PXPub\Course\Sample.aspx" />
+    <Content Include="Views\PXPub\Course\ShowActivateCourse.ascx" />
+    <Content Include="Views\PXPub\Course\ShowActivateCourseStep2.ascx" />
+    <Content Include="Views\PXPub\Course\Step1.aspx" />
+    <Content Include="Views\PXPub\Course\Step2.aspx" />
+    <Content Include="Views\PXPub\Course\StudentEmailTemplate.ascx" />
+    <Content Include="Views\PXPub\Course\StudentInstructions.ascx" />
+    <Content Include="Views\PXPub\CustomSettings\Default.ascx" />
+    <Content Include="Views\PXPub\CustomSettings\FrameComponent.ascx" />
+    <Content Include="Views\PXPub\CustomSettings\Quiz.ascx" />
+    <Content Include="Views\PXPub\CustomWidget\AddEdit.ascx" />
+    <Content Include="Views\PXPub\CustomWidget\CustomWidget.ascx" />
+    <Content Include="Views\PXPub\CustomWidget\Index.aspx" />
+    <Content Include="Views\PXPub\CustomWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\DashboardCoursesWidget\ActivateDashboardCourse.ascx" />
+    <Content Include="Views\PXPub\DashboardCoursesWidget\CourseActivationLink.ascx" />
+    <Content Include="Views\PXPub\DashboardCoursesWidget\CourseInfo.ascx" />
+    <Content Include="Views\PXPub\DashboardCoursesWidget\CourseTitleLink.ascx" />
+    <Content Include="Views\PXPub\DashboardCoursesWidget\CreateBranchConfirmation.ascx" />
+    <Content Include="Views\PXPub\DashboardCoursesWidget\CreateCourse.ascx" />
+    <Content Include="Views\PXPub\DashboardCoursesWidget\CreateCourseOption.ascx" />
+    <Content Include="Views\PXPub\DashboardCoursesWidget\DashboardDialogs.ascx" />
+    <Content Include="Views\PXPub\DashboardCoursesWidget\DeactivateDashboardCourse.ascx" />
+    <Content Include="Views\PXPub\DashboardCoursesWidget\DeleteDashboardCourse.ascx" />
+    <Content Include="Views\PXPub\DashboardCoursesWidget\FindSchool.ascx" />
+    <Content Include="Views\PXPub\DashboardCoursesWidget\GenricDashboardRow.ascx" />
+    <Content Include="Views\PXPub\DashboardCoursesWidget\LaunchPadRow.ascx" />
+    <Content Include="Views\PXPub\DashboardCoursesWidget\ProgramDashboard.ascx" />
+    <Content Include="Views\PXPub\DashboardCoursesWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\DashboardCoursesWidget\ViewRoster.ascx" />
+    <Content Include="Views\PXPub\DashboardWidget\CopyToMyTemplates.ascx" />
+    <Content Include="Views\PXPub\DashboardWidget\SharedWithMeSummary.ascx" />
+    <Content Include="Views\PXPub\DashboardWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\Dashboard\Index.aspx" />
+    <Content Include="Views\PXPub\Download\HtmlContent.ascx" />
+    <Content Include="Views\PXPub\EasyXDM\Provider.aspx" />
+    <Content Include="Views\PXPub\EbookBrowser\DownloadOriginal.ascx" />
+    <Content Include="Views\PXPub\EbookBrowser\EbookSelection.ascx" />
+    <Content Include="Views\PXPub\EbookBrowser\Index.aspx" />
+    <Content Include="Views\PXPub\EbookBrowser\Selection.aspx" />
+    <Content Include="Views\PXPub\ECommerce\CourseList.aspx" />
+    <Content Include="Views\PXPub\ECommerce\ECommerceActionBar.ascx" />
+    <Content Include="Views\PXPub\ECommerce\ECommerceMarketing.ascx" />
+    <Content Include="Views\PXPub\ECommerce\Enroll.aspx" />
+    <Content Include="Views\PXPub\ECommerce\EnrollForm.ascx" />
+    <Content Include="Views\PXPub\ECommerce\EnrollmentConfirmation.aspx" />
+    <Content Include="Views\PXPub\ECommerce\EnrollmentConfirmationForm.ascx" />
+    <Content Include="Views\PXPub\ECommerce\GeneralCourse.ascx" />
+    <Content Include="Views\PXPub\ECommerce\GenericCourse.ascx" />
+    <Content Include="Views\PXPub\ECommerce\Index.aspx" />
+    <Content Include="Views\PXPub\ECommerce\Join.aspx" />
+    <Content Include="Views\PXPub\ECommerce\JoinForm.ascx" />
+    <Content Include="Views\PXPub\EditProjectContentsWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\ErrorPage\Error500.aspx" />
+    <Content Include="Views\PXPub\ErrorPage\Index.aspx" />
+    <Content Include="Views\PXPub\FacePlateSupportWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\FacePlateSupportWidget\ViewSupport.ascx" />
+    <Content Include="Views\PXPub\FacePlate\AddQuestionToExistingAssessment.ascx" />
+    <Content Include="Views\PXPub\FacePlate\FacePlateLaunchPadTab.ascx" />
+    <Content Include="Views\PXPub\FacePlate\FacePlateStudentDetails.ascx" />
+    <Content Include="Views\PXPub\FacePlate\ShowMoveOrCopy.ascx" />
+    <Content Include="Views\PXPub\FeaturedContentWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\FeaturedWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\FneMenuWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\GradebookWidget\AssignedScores.ascx" />
+    <Content Include="Views\PXPub\GradebookWidget\AssignmentSummary.ascx" />
+    <Content Include="Views\PXPub\GradebookWidget\Gradebook.ascx" />
+    <Content Include="Views\PXPub\GradebookWidget\ItemScores.ascx" />
+    <Content Include="Views\PXPub\GradebookWidget\OtherScores.ascx" />
+    <Content Include="Views\PXPub\GradebookWidget\StudentDetail.ascx" />
+    <Content Include="Views\PXPub\GradebookWidget\StudentGradebook.ascx" />
+    <Content Include="Views\PXPub\GradingTitleWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\Grading\DisplayItem.ascx" />
+    <Content Include="Views\PXPub\Grading\Header.ascx" />
+    <Content Include="Views\PXPub\Groups\EditGroupSet.ascx" />
+    <Content Include="Views\PXPub\Groups\GradebookScorecard.aspx" />
+    <Content Include="Views\PXPub\Groups\GradebookScorecardFne.ascx" />
+    <Content Include="Views\PXPub\Groups\GroupList.ascx" />
+    <Content Include="Views\PXPub\Groups\ManageGroups.aspx" />
+    <Content Include="Views\PXPub\Groups\ManageGroupsFne.ascx" />
+    <Content Include="Views\PXPub\Groups\StudentList.ascx" />
+    <Content Include="Views\PXPub\Header\CourseHeader.ascx" />
+    <Content Include="Views\PXPub\HealthCheck\Index.aspx" />
+    <Content Include="Views\PXPub\Highlight\CommentLibraryDropList.ascx" />
+    <Content Include="Views\PXPub\Highlight\CommentList.ascx" />
+    <Content Include="Views\PXPub\Highlight\Create.ascx" />
+    <Content Include="Views\PXPub\Highlight\FileDownload.ascx" />
+    <Content Include="Views\PXPub\Highlight\HighlightCollection.ascx" />
+    <Content Include="Views\PXPub\Highlight\QuickLinkList.ascx" />
+    <Content Include="Views\PXPub\Highlight\Show.ascx" />
+    <Content Include="Views\PXPub\Highlight\TopNotesCollection.ascx" />
+    <Content Include="Views\PXPub\Home\CourseNotAdopted.ascx" />
+    <Content Include="Views\PXPub\Home\DashBoard.aspx" />
+    <Content Include="Views\PXPub\Home\Enroll.aspx" />
+    <Content Include="Views\PXPub\Home\EnrollmentConfirmation.aspx" />
+    <Content Include="Views\PXPub\Home\Help.aspx" />
+    <Content Include="Views\PXPub\Home\InActiveCourse.ascx" />
+    <Content Include="Views\PXPub\Home\Index.aspx" />
+    <Content Include="Views\PXPub\Home\Index2.aspx" />
+    <Content Include="Views\PXPub\Home\ModalTest.aspx" />
+    <Content Include="Views\PXPub\Home\SelectCourse.aspx" />
+    <Content Include="Views\PXPub\Home\Start.aspx" />
+    <Content Include="Views\PXPub\Home\TestBreadcrumb.aspx" />
+    <Content Include="Views\PXPub\Home\TestIFrame.aspx" />
+    <Content Include="Views\PXPub\Home\TestProjectItem.aspx" />
+    <Content Include="Views\PXPub\Home\TestRaw.aspx" />
+    <Content Include="Views\PXPub\InstructorConsoleWidget\BatchDueDateUpdater.ascx" />
+    <Content Include="Views\PXPub\InstructorConsoleWidget\BrowseResourcesItems.ascx" />
+    <Content Include="Views\PXPub\InstructorConsoleWidget\EditView.ascx" />
+    <Content Include="Views\PXPub\InstructorConsoleWidget\FacetValues.ascx" />
+    <Content Include="Views\PXPub\InstructorConsoleWidget\FacetValuesEdit.ascx" />
+    <Content Include="Views\PXPub\InstructorConsoleWidget\FullView.ascx" />
+    <Content Include="Views\PXPub\InstructorConsoleWidget\GradebookCategoriesList.ascx" />
+    <Content Include="Views\PXPub\InstructorConsoleWidget\GradebookPreferences.ascx" />
+    <Content Include="Views\PXPub\InstructorConsoleWidget\LaunchPad.ascx" />
+    <Content Include="Views\PXPub\InstructorConsoleWidget\Navigation.ascx" />
+    <Content Include="Views\PXPub\InstructorConsoleWidget\Resources.ascx" />
+    <Content Include="Views\PXPub\InstructorConsoleWidget\ResourcesEdit.ascx" />
+    <Content Include="Views\PXPub\InstructorConsoleWidget\Settings.ascx" />
+    <Content Include="Views\PXPub\InstructorConsoleWidget\SettingsItems.ascx" />
+    <Content Include="Views\PXPub\InstructorConsoleWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\InstructorConsoleWidget\View.ascx" />
+    <Content Include="Views\PXPub\LaunchPadTreeWidget\DisplayItem.ascx" />
+    <Content Include="Views\PXPub\LaunchPadTreeWidget\EditContentView.ascx" />
+    <Content Include="Views\PXPub\LaunchPadTreeWidget\Index.ascx" />
+    <Content Include="Views\PXPub\LaunchPadTreeWidget\LaunchPad.ascx" />
+    <Content Include="Views\PXPub\LaunchPadTreeWidget\LaunchPadItem.ascx" />
+    <Content Include="Views\PXPub\LaunchPadTreeWidget\ManagementCard.ascx" />
+    <Content Include="Views\PXPub\LearningObjective\Add.ascx" />
+    <Content Include="Views\PXPub\LearningObjective\Checkbox.ascx" />
+    <Content Include="Views\PXPub\LearningObjective\Index.ascx" />
+    <Content Include="Views\PXPub\LearningObjective\List.ascx" />
+    <Content Include="Views\PXPub\LearningObjective\ListDetails.ascx" />
+    <Content Include="Views\PXPub\LearningObjective\ObjectiveForm.ascx" />
+    <Content Include="Views\PXPub\LinkLibrary\Index.ascx" />
+    <Content Include="Views\PXPub\LinkLibrary\SearchLink.ascx" />
+    <Content Include="Views\PXPub\LinkLibrary\SearchResultLinks.ascx" />
+    <Content Include="Views\PXPub\MenuWidget\MenuItem.ascx" />
+    <Content Include="Views\PXPub\MenuWidget\MenuLink.ascx" />
+    <Content Include="Views\PXPub\MenuWidget\Pagination.ascx" />
+    <Content Include="Views\PXPub\MenuWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\MenuWidget\ViewAll.ascx" />
+    <Content Include="Views\PXPub\Navigation\AddTocItemToNav.ascx" />
+    <Content Include="Views\PXPub\Navigation\Advanced.ascx" />
+    <Content Include="Views\PXPub\Navigation\ContentLinks.ascx" />
+    <Content Include="Views\PXPub\Navigation\CreateLink.ascx" />
+    <Content Include="Views\PXPub\Navigation\CreateTOCCategory.ascx" />
+    <Content Include="Views\PXPub\Navigation\NavigationItem.ascx" />
+    <Content Include="Views\PXPub\Navigation\NavTemplateLink.ascx" />
+    <Content Include="Views\PXPub\Navigation\TocCategories.ascx" />
+    <Content Include="Views\PXPub\Navigation\VerticalMenu.ascx" />
+    <Content Include="Views\PXPub\NewAssignmentWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\NoteLibrary\Create.ascx" />
+    <Content Include="Views\PXPub\NoteLibrary\Index.ascx" />
+    <Content Include="Views\PXPub\NoteLibrary\NoteList.ascx" />
+    <Content Include="Views\PXPub\NoteSetting\Index.ascx" />
+    <Content Include="Views\PXPub\NoteSetting\ShareList.ascx" />
+    <Content Include="Views\PXPub\PageContainerWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\Product\ProductHome.aspx" />
+    <Content Include="Views\PXPub\Product\Resource\ListResources.ascx" />
+    <Content Include="Views\PXPub\ProfileSummaryWidget\Edit.ascx" />
+    <Content Include="Views\PXPub\ProfileSummaryWidget\StudentProfile.ascx" />
+    <Content Include="Views\PXPub\ProfileSummaryWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\ProgressWidget\Gradebook.ascx" />
+    <Content Include="Views\PXPub\ProgressWidget\Scorecard.ascx" />
+    <Content Include="Views\PXPub\ProgressWidget\StudentGradebook.ascx" />
+    <Content Include="Views\PXPub\QuestionAdmin\AddFlag.ascx" />
+    <Content Include="Views\PXPub\QuestionAdmin\AddNotes.ascx" />
+    <Content Include="Views\PXPub\QuestionAdmin\BulkConfirmationDialog.ascx" />
+    <Content Include="Views\PXPub\QuestionAdmin\BulkEdit.ascx" />
+    <Content Include="Views\PXPub\QuestionAdmin\BulkOperationDetails.ascx" />
+    <Content Include="Views\PXPub\QuestionAdmin\BulkOperationList.ascx" />
+    <Content Include="Views\PXPub\QuestionAdmin\DynamicAddQuestion.ascx" />
+    <Content Include="Views\PXPub\QuestionAdmin\DynamicFormatDropDown.ascx" />
+    <Content Include="Views\PXPub\QuestionAdmin\getStyleQuestions.ascx" />
+    <Content Include="Views\PXPub\QuestionAdmin\HistoryTab.ascx" />
+    <Content Include="Views\PXPub\QuestionAdmin\HistoryTabDetails.ascx" />
+    <Content Include="Views\PXPub\QuestionAdmin\Index.aspx" />
+    <Content Include="Views\PXPub\QuestionAdmin\MetadataTab.ascx" />
+    <Content Include="Views\PXPub\QuestionAdmin\NotesTab.ascx" />
+    <Content Include="Views\PXPub\QuestionAdmin\PreviewTab.ascx" />
+    <Content Include="Views\PXPub\QuestionAdmin\QuestionEditor.ascx" />
+    <Content Include="Views\PXPub\QuestionAdmin\QuestionEditorTab.ascx" />
+    <Content Include="Views\PXPub\QuestionAdmin\QuestionFlagContainer.ascx" />
+    <Content Include="Views\PXPub\QuestionAdmin\QuestionsListResult.ascx" />
+    <Content Include="Views\PXPub\QuestionAdmin\QuizListDropDown.ascx" />
+    <Content Include="Views\PXPub\QuestionAdmin\QuizzesTab.ascx" />
+    <Content Include="Views\PXPub\QuestionAdmin\SearchPanel.ascx" />
+    <Content Include="Views\PXPub\QuestionAdmin\SearchResult.ascx" />
+    <Content Include="Views\PXPub\QuestionAdmin\StyleQuestions.ascx" />
+    <Content Include="Views\PXPub\RALogin\RAInstructor.aspx" />
+    <Content Include="Views\PXPub\RALogin\RALogin.aspx" />
+    <Content Include="Views\PXPub\RALogin\RAStudent.aspx" />
+    <Content Include="Views\PXPub\RSSFeedWidget\AddEdit.ascx" />
+    <Content Include="Views\PXPub\RSSFeedWidget\CompactSummary.ascx" />
+    <Content Include="Views\PXPub\RSSFeedWidget\CompactSummaryFacePlate.ascx" />
+    <Content Include="Views\PXPub\RSSFeedWidget\CompactSummaryFacePlatePartial.ascx" />
+    <Content Include="Views\PXPub\RSSFeedWidget\CompactSummaryFPStart.ascx" />
+    <Content Include="Views\PXPub\RSSFeedWidget\CompactSummaryFPStartPartial.ascx" />
+    <Content Include="Views\PXPub\RSSFeedWidget\CompactSummaryPartial.ascx" />
+    <Content Include="Views\PXPub\RSSFeedWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\RSSFeedWidget\SummaryPartial.ascx" />
+    <Content Include="Views\PXPub\RSSFeedWidget\ViewAllArchived.ascx" />
+    <Content Include="Views\PXPub\SearchWidget\BeingMetaSearch.ascx" />
+    <Content Include="Views\PXPub\Search\FacetedSearchResults.ascx" />
+    <Content Include="Views\PXPub\Search\Search.ascx" />
+    <Content Include="Views\PXPub\Shared\AccountActionsList.ascx" />
+    <Content Include="Views\PXPub\Shared\AllowedContentTemplate.ascx" />
+    <Content Include="Views\PXPub\Shared\AssignmentCenterFilterSection.ascx" />
+    <Content Include="Views\PXPub\Shared\AuthenticationScripts.ascx" />
+    <Content Include="Views\PXPub\Shared\BackToBlackBoard.ascx" />
+    <Content Include="Views\PXPub\Shared\BaseBanner.ascx" />
+    <Content Include="Views\PXPub\Shared\BaseHeader.ascx" />
+    <Content Include="Views\PXPub\Shared\BaseHeaderScripts.ascx" />
+    <Content Include="Views\PXPub\Shared\BaseScripts.ascx" />
+    <Content Include="Views\PXPub\Shared\BaseStyle.ascx" />
+    <Content Include="Views\PXPub\Shared\BhIFrameComponent.ascx" />
+    <Content Include="Views\PXPub\Shared\BhRawComponent.ascx" />
+    <Content Include="Views\PXPub\Shared\Breadcrumb.ascx" />
+    <Content Include="Views\PXPub\Shared\Browser.ascx" />
+    <Content Include="Views\PXPub\Shared\ContentModes.ascx" />
+    <Content Include="Views\PXPub\Shared\ContentPicker.ascx" />
+    <Content Include="Views\PXPub\Shared\ContentWidgetScripts.ascx" />
+    <Content Include="Views\PXPub\Shared\CourseForm.ascx" />
+    <Content Include="Views\PXPub\Shared\CourseTimeZoneData.ascx" />
+    <Content Include="Views\PXPub\Shared\CreateContent.ascx" />
+    <Content Include="Views\PXPub\Shared\CustomQuestionEditorComponent.ascx" />
+    <Content Include="Views\PXPub\Shared\DateTimePicker.ascx" />
+    <Content Include="Views\PXPub\Shared\DeleteConfirmDialog.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayItem.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayItemContentNav.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayItemNone.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayItemResults.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\AssignmentPartials\AssignmentSubmission.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\AssignmentPartials\Results.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\Content404.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\Discussion.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\DocumentCollection.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\Dropbox.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\ExternalContent.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\Folder.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\HtmlDocument.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\HtmlQuiz.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\LearningCurveActivity.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\LearningCurvePartials\QuestionSettings.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\LinkCollection.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\LinkPartials\TocLinks.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\PxUnit.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\Quiz.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\QuizPartials\BrowseByType.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\QuizPartials\BrowserPage.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\QuizPartials\CreateQuestionPool.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\QuizPartials\DisplayQuestionList.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\QuizPartials\EditQuestion.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\QuizPartials\EditQuiz.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\QuizPartials\ExpandSection.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\QuizPartials\HomeworkQuestionList.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\QuizPartials\ImporterDialog.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\QuizPartials\PreviousAttempts.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\QuizPartials\QuestionList.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\QuizPartials\Questions.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\QuizPartials\QuestionSettings.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\QuizPartials\QuestionToc.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\QuizPartials\QuizQuestionSettings.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\QuizPartials\QuizTemplateId.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\QuizPartials\RelatedContent.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\QuizPartials\SearchQuiz.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\QuizPartials\ShowQuiz.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\QuizPartials\SingleQuestion.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\QuizPartials\SubmissionHistory.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\QuizPartials\UsedElseWhere.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\ReflectionBody.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\ReflectionSubmissionBody.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\ResourceDocument.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\RSSFeed.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\RSSLink.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\RssPartials\RssFeedPopup.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayTemplates\Rubric.ascx" />
+    <Content Include="Views\PXPub\Shared\DisplayWidgetList.ascx" />
+    <Content Include="Views\PXPub\Shared\DocumentFileDownload.ascx" />
+    <Content Include="Views\PXPub\Shared\DocumentList.ascx" />
+    <Content Include="Views\PXPub\Shared\DocumentViewer.ascx" />
+    <Content Include="Views\PXPub\Shared\DomainSelectionDialog.ascx" />
+    <Content Include="Views\PXPub\Shared\DownloadDialog.ascx" />
+    <Content Include="Views\PXPub\Shared\DropboxSubmittedDocument.ascx" />
+    <Content Include="Views\PXPub\Shared\EasyxdmIFrameContainer.ascx" />
+    <Content Include="Views\PXPub\Shared\EcomHomePageCourseHeader.ascx" />
+    <Content Include="Views\PXPub\Shared\EditorTemplates\Course.ascx" />
+    <Content Include="Views\PXPub\Shared\EditorTemplates\Discussion.ascx" />
+    <Content Include="Views\PXPub\Shared\EditorTemplates\DocumentCollection.ascx" />
+    <Content Include="Views\PXPub\Shared\EditorTemplates\Dropbox.ascx" />
+    <Content Include="Views\PXPub\Shared\EditorTemplates\Ebook.ascx" />
+    <Content Include="Views\PXPub\Shared\EditorTemplates\Folder.ascx" />
+    <Content Include="Views\PXPub\Shared\EditorTemplates\GradeRule.ascx" />
+    <Content Include="Views\PXPub\Shared\EditorTemplates\HtmlDocument.ascx" />
+    <Content Include="Views\PXPub\Shared\EditorTemplates\LearningCurveActivity.ascx" />
+    <Content Include="Views\PXPub\Shared\EditorTemplates\Link.ascx" />
+    <Content Include="Views\PXPub\Shared\EditorTemplates\LinkCollection.ascx" />
+    <Content Include="Views\PXPub\Shared\EditorTemplates\NumberOfAttempts.ascx" />
+    <Content Include="Views\PXPub\Shared\EditorTemplates\PxUnit.ascx" />
+    <Content Include="Views\PXPub\Shared\EditorTemplates\QuestionDelivery.ascx" />
+    <Content Include="Views\PXPub\Shared\EditorTemplates\Quiz.ascx" />
+    <Content Include="Views\PXPub\Shared\EditorTemplates\RSSFeed.ascx" />
+    <Content Include="Views\PXPub\Shared\EditorTemplates\ScoredAttempt.ascx" />
+    <Content Include="Views\PXPub\Shared\EmptyContent.ascx" />
+    <Content Include="Views\PXPub\Shared\ExpandSection.ascx" />
+    <Content Include="Views\PXPub\Shared\FneHeaderDoneButton.ascx" />
+    <Content Include="Views\PXPub\Shared\FneHeaderEditMenu.ascx" />
+    <Content Include="Views\PXPub\Shared\FneHeaderFullEdit.ascx" />
+    <Content Include="Views\PXPub\Shared\FneHeaderFullNotInCourse.ascx" />
+    <Content Include="Views\PXPub\Shared\FneHeaderFullPreview.ascx" />
+    <Content Include="Views\PXPub\Shared\FneHeaderFullResults.ascx" />
+    <Content Include="Views\PXPub\Shared\FneHeaderFullScreen.ascx" />
+    <Content Include="Views\PXPub\Shared\FneHeaderGeneric.ascx" />
+    <Content Include="Views\PXPub\Shared\FneHeaderSmall.ascx" />
+    <Content Include="Views\PXPub\Shared\FneWindow.ascx" />
+    <Content Include="Views\PXPub\Shared\Footer.ascx" />
+    <Content Include="Views\PXPub\Shared\GoogleAnalytics.ascx" />
+    <Content Include="Views\PXPub\Shared\GradeBookWeightsOptions.ascx" />
+    <Content Include="Views\PXPub\Shared\HiddenCategoryList.ascx" />
+    <Content Include="Views\PXPub\Shared\HighlightOptions.ascx" />
+    <Content Include="Views\PXPub\Shared\HomePageCourseHeader.ascx" />
+    <Content Include="Views\PXPub\Shared\HTSIFrameComponent.ascx" />
+    <Content Include="Views\PXPub\Shared\ItemEditorTemplate.ascx" />
+    <Content Include="Views\PXPub\Shared\JQueryResourceLister.ascx" />
+    <Content Include="Views\PXPub\Shared\LaunchPadItemStatus.ascx" />
+    <Content Include="Views\PXPub\Shared\LearningCurvePlayer.ascx" />
+    <Content Include="Views\PXPub\Shared\LearningCurveResults.ascx" />
+    <Content Include="Views\PXPub\Shared\LearningCurveWindow.ascx" />
+    <Content Include="Views\PXPub\Shared\LoadingSplashScreen.ascx" />
+    <Content Include="Views\PXPub\Shared\MceAddLink.ascx" />
+    <Content Include="Views\PXPub\Shared\MceContentEditor.ascx" />
+    <Content Include="Views\PXPub\Shared\MceCourseMaterials.ascx" />
+    <Content Include="Views\PXPub\Shared\MceEbookEditor.ascx" />
+    <Content Include="Views\PXPub\Shared\MceEbookItem.ascx" />
+    <Content Include="Views\PXPub\Shared\MceTocItem.ascx" />
+    <Content Include="Views\PXPub\Shared\Menu.ascx" />
+    <Content Include="Views\PXPub\Shared\MenuItem.ascx" />
+    <Content Include="Views\PXPub\Shared\MenuItemManage.ascx" />
+    <Content Include="Views\PXPub\Shared\ModalWindows.ascx" />
+    <Content Include="Views\PXPub\Shared\PageContainer.ascx" />
+    <Content Include="Views\PXPub\Shared\ProgressBar.ascx" />
+    <Content Include="Views\PXPub\Shared\QuickPanel.ascx" />
+    <Content Include="Views\PXPub\Shared\RelatedItems.ascx" />
+    <Content Include="Views\PXPub\Shared\RenderFneWindow.ascx" />
+    <Content Include="Views\PXPub\Shared\RestrictedContent.ascx" />
+    <Content Include="Views\PXPub\Shared\RestrictedItem.ascx" />
+    <Content Include="Views\PXPub\Shared\SandboxAlert.ascx" />
+    <Content Include="Views\PXPub\Shared\SandboxPublish.ascx" />
+    <Content Include="Views\PXPub\Shared\SandboxRevert.ascx" />
+    <Content Include="Views\PXPub\Shared\SearchClassRoster.ascx" />
+    <Content Include="Views\PXPub\Shared\SearchResultLink.ascx" />
+    <Content Include="Views\PXPub\Shared\SearchResultLinkAdvanced.ascx" />
+    <Content Include="Views\PXPub\Shared\ShowAddGradeBookCateagory.ascx" />
+    <Content Include="Views\PXPub\Shared\ShowAddToNewAssessment.ascx" />
+    <Content Include="Views\PXPub\Shared\ShowPersistentQtip.ascx" />
+    <Content Include="Views\PXPub\Shared\SocialCommenting.ascx" />
+    <Content Include="Views\PXPub\Shared\StartPageContainer.ascx" />
+    <Content Include="Views\PXPub\Shared\StartPageCourseHeader.ascx" />
+    <Content Include="Views\PXPub\Shared\TestComponent.aspx" />
+    <Content Include="Views\PXPub\Shared\TinyMceUploadDocumentForm.ascx" />
+    <Content Include="Views\PXPub\Shared\Tooltip.ascx" />
+    <Content Include="Views\PXPub\Shared\Upload.ascx" />
+    <Content Include="Views\PXPub\Shared\UploadAndSubmit.ascx" />
+    <Content Include="Views\PXPub\Shared\UploadDocCol.ascx" />
+    <Content Include="Views\PXPub\Shared\UploadImage.ascx" />
+    <Content Include="Views\PXPub\Shared\WidgetWrapper.ascx" />
+    <Content Include="Views\PXPub\Shared\XbIFrameComponent.ascx" />
+    <Content Include="Views\PXPub\Shared\XbookFneHeader.ascx" />
+    <Content Include="Views\PXPub\StartWelcomeWidget\Edit.ascx" />
+    <Content Include="Views\PXPub\StartWelcomeWidget\Index.ascx" />
+    <Content Include="Views\PXPub\Template\TemplateManagement.ascx" />
+    <Content Include="Views\PXPub\Template\TemplateManagementDetails.ascx" />
+    <Content Include="Views\PXPub\Template\TemplatePicker.ascx" />
+    <Content Include="Views\PXPub\Test\iframe.ascx" />
+    <Content Include="Views\PXPub\Test\index.ascx" />
+    <Content Include="Views\PXPub\Unit\DatePicker.ascx" />
+    <Content Include="Views\PXPub\XClassHomePageWidget\Summary.ascx" />
+    <Content Include="Views\PXPub\XClass\Index.aspx" />
+    <Content Include="Views\QuestionEditor\HTS\Index.aspx" />
+    <Content Include="Views\QuestionEditor\Shared\BaseScripts.ascx" />
+    <Content Include="Views\QuestionEditor\Shared\DialogTemplates.ascx" />
+    <Content Include="Views\QuestionEditor\Shared\EditorBottomMenu.ascx" />
+    <Content Include="Views\QuestionEditor\Shared\Error.aspx" />
+    <Content Include="Views\QuestionEditor\Shared\MathArrayDialog.ascx" />
+    <Content Include="Views\QuestionEditor\Shared\MathVariableDialog.ascx" />
+    <Content Include="Views\QuestionEditor\Shared\NumericArrayDialog.ascx" />
+    <Content Include="Views\QuestionEditor\Shared\NumericVariableDialog.ascx" />
+    <Content Include="Views\QuestionEditor\Shared\StepTemplates.ascx" />
+    <Content Include="Views\QuestionEditor\Shared\TextArrayDialog.ascx" />
+    <Content Include="Views\QuestionEditor\Shared\TextVariableDialog.ascx" />
+    <Content Include="Views\QuestionEditor\Shared\VariablesSidePanel.ascx" />
+    <Content Include="Views\XBkPlayer\Shared\BaseScripts.ascx" />
+    <Content Include="Views\XBkPlayer\Shared\Error.aspx" />
+    <Content Include="Views\XBkPlayer\Shared\PlayerActionMenu.ascx" />
+    <Content Include="Views\XBkPlayer\Shared\QuestionPlayer.ascx" />
+    <Content Include="Views\XBkPlayer\XBP\About.aspx" />
+    <Content Include="Views\XBkPlayer\XBP\Index.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\PXPub\Document\" />
+    <Folder Include="Views\PXPub\XBookGrading\" />
+    <Folder Include="Views\Shared\DisplayTemplates\QuizPartials\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common\Bfw.Common.csproj">
+      <Project>{4f1bf9db-1226-4867-9e41-129b214f24f2}</Project>
+      <Name>Bfw.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PX\Bfw.PX.PXPub.Models\Bfw.PX.PXPub.Models.csproj">
+      <Project>{5d71b360-bdd7-4e5b-b551-5be74e4339ef}</Project>
+      <Name>Bfw.PX.PXPub.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Bfw.PX.Account\Shared\bfw.Master" />
+    <Content Include="Views\Bfw.PX.Account\Shared\px.Master" />
+    <Content Include="Views\Bfw.PX.Account\Shared\Site.Master" />
+    <Content Include="Views\Bfw.PX.Account\Web.config" />
+    <Content Include="Views\GrantAccess\Home\Index.cshtml" />
+    <Content Include="Views\GrantAccess\Web.config" />
+    <Content Include="Views\PxAdminPortal\Account\ChangePassword.cshtml" />
+    <Content Include="Views\PxAdminPortal\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\PxAdminPortal\Account\LogOn.cshtml" />
+    <Content Include="Views\PxAdminPortal\Account\Register.cshtml" />
+    <Content Include="Views\PxAdminPortal\Content\Index.cshtml" />
+    <Content Include="Views\PxAdminPortal\DLAPCommand\DlapResult.cshtml" />
+    <Content Include="Views\PxAdminPortal\DLAPCommand\Index.cshtml" />
+    <Content Include="Views\PxAdminPortal\Enrollment\Index.cshtml" />
+    <Content Include="Views\PxAdminPortal\Environment\Environments.cshtml" />
+    <Content Include="Views\PxAdminPortal\Environment\_EnvironmentPartial.cshtml" />
+    <Content Include="Views\PxAdminPortal\Home\About.cshtml" />
+    <Content Include="Views\PxAdminPortal\Home\Index.cshtml" />
+    <Content Include="Views\PxAdminPortal\Home\_LogSummaryPartial.cshtml" />
+    <Content Include="Views\PxAdminPortal\LogSearch\LogSearch.cshtml" />
+    <Content Include="Views\PxAdminPortal\Metadata\Index.cshtml" />
+    <Content Include="Views\PxAdminPortal\PXWebUser\Index.cshtml" />
+    <Content Include="Views\PxAdminPortal\PXWebUser\_SearchResult.cshtml" />
+    <Content Include="Views\PxAdminPortal\PXWebUser\_WebUserRights.cshtml" />
+    <Content Include="Views\PxAdminPortal\Shared\Error.cshtml" />
+    <Content Include="Views\PxAdminPortal\Shared\_Layout.cshtml" />
+    <Content Include="Views\PxAdminPortal\Shared\_LayoutLogIn.cshtml" />
+    <Content Include="Views\PxAdminPortal\Shared\_LayoutLogOn.cshtml" />
+    <Content Include="Views\PxAdminPortal\Shared\_LogOnPartial.cshtml" />
+    <Content Include="Views\PxAdminPortal\Shared\_MainMenuPartial.cshtml" />
+    <Content Include="Views\PxAdminPortal\Shared\_MenuPartial.cshtml" />
+    <Content Include="Views\PxAdminPortal\Shared\_ProgressBarPartial.cshtml" />
+    <Content Include="Views\PxAdminPortal\Users\Index.cshtml" />
+    <Content Include="Views\PxAdminPortal\User\Create.cshtml" />
+    <Content Include="Views\PxAdminPortal\User\Delete.cshtml" />
+    <Content Include="Views\PxAdminPortal\User\Edit.cshtml" />
+    <Content Include="Views\PxAdminPortal\User\Index.cshtml" />
+    <Content Include="Views\PxAdminPortal\User\Users.cshtml" />
+    <Content Include="Views\PxAdminPortal\User\_UsersPartial.cshtml" />
+    <Content Include="Views\PxAdminPortal\Web.config" />
+    <Content Include="Views\PxAdminPortal\_ViewStart.cshtml" />
+    <Content Include="Views\PXPub\AdminMetaData\AdminMetaData.Master" />
+    <Content Include="Views\PXPub\QuestionAdmin\QuestionAdmin.Master" />
+    <Content Include="Views\PXPub\Shared\Home.Master" />
+    <Content Include="Views\PXPub\Shared\Minimal.Master" />
+    <Content Include="Views\PXPub\Shared\ProductMinimal.Master" />
+    <Content Include="Views\PXPub\Shared\SingleColumn.Master" />
+    <Content Include="Views\PXPub\Shared\Start.Master" />
+    <Content Include="Views\PXPub\Shared\ThreeColumn.Master" />
+    <Content Include="Views\PXPub\Web.config" />
+    <Content Include="Views\QuestionEditor\Shared\Site.Master" />
+    <Content Include="Views\QuestionEditor\Web.config" />
+    <Content Include="Views\SamlTest\Account\ChangePassword.cshtml" />
+    <Content Include="Views\SamlTest\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\SamlTest\Account\DumpBizContextData.cshtml" />
+    <Content Include="Views\SamlTest\Account\DumpSamlData.cshtml" />
+    <Content Include="Views\SamlTest\Account\LogOn.cshtml" />
+    <Content Include="Views\SamlTest\Account\Register.cshtml" />
+    <Content Include="Views\SamlTest\Home\About.cshtml" />
+    <Content Include="Views\SamlTest\Home\Index.cshtml" />
+    <Content Include="Views\SamlTest\Shared\Error.cshtml" />
+    <Content Include="Views\SamlTest\Shared\_Layout.cshtml" />
+    <Content Include="Views\SamlTest\Shared\_LogOnPartial.cshtml" />
+    <Content Include="Views\SamlTest\Web.config" />
+    <Content Include="Views\SamlTest\_ViewStart.cshtml" />
+    <Content Include="Views\XBkPlayer\Shared\Site.Master" />
+    <Content Include="Views\XBkPlayer\Web.config" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51510</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:58075/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\OctoPack.2.0.26\targets\OctoPack.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>REM powershell $(SolutionDir)\UpdateViews.ps1 $(SolutionDir)</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

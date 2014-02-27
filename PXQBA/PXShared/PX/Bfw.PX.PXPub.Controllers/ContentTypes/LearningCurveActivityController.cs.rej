@@ -1,0 +1,29 @@
+diff a/PX/Bfw.PX.PXPub.Controllers/ContentTypes/LearningCurveActivityController.cs b/PX/Bfw.PX.PXPub.Controllers/ContentTypes/LearningCurveActivityController.cs	(rejected hunks)
+@@ -95,7 +95,7 @@
+         /// <param name="content"></param>
+         /// <returns></returns>
+         [ValidateInput(false)]
+-        public ActionResult Create(LearningCurveActivity content)
++        public ActionResult Create(LearningCurveActivity content, string toc = "syllabusfilter")
+         {
+             var timezone = content.CourseInfo == null ? Context.Course.CourseTimeZone : content.CourseInfo.CourseTimeZone;
+             var offset = TimeZoneInfo.FindSystemTimeZoneById(timezone);
+@@ -103,7 +103,7 @@
+                 content.CustomFields.Add( new KeyValuePair<string,string>("course_time_zone", offset.StandardName + "," + offset.BaseUtcOffset.TotalHours) );
+             
+             ContentHelper.StoreQuiz(content);
+-            var model = ContentHelper.LoadContentView(content.Id, ContentViewMode.Preview, false, false);
++            var model = ContentHelper.LoadContentView(content.Id, ContentViewMode.Preview, false, toc, false);
+             ViewData["isStartActiviy"] = false;
+             return View("DisplayItem", model);
+         }
+@@ -133,7 +133,8 @@
+         /// <param name="itemid"></param>
+         /// <param name="targetScore"></param>
+         /// <returns></returns>
+-        public ActionResult UpdateTargetScoreInItem(string entityId, string itemId, string targetScore) {
++        public ActionResult UpdateTargetScoreInItem(string entityId, string itemId, string targetScore)
++        {
+ 
+             if(string.IsNullOrEmpty(entityId))
+                 entityId = Context.EntityId;

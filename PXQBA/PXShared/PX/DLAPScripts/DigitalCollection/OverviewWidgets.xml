@@ -1,0 +1,65 @@
+<item id="PX_InstructorOverviewWidget" version="0.1" resourceentityid="69831,0,0,0" actualentityid="68239" creationdate="2012-09-18T17:47:32.6Z" creationby="7" modifieddate="2012-09-18T17:47:32.6Z" modifiedby="7" origindepth="1" derivativedepth="1">
+      <data>
+        <type>CustomActivity</type>
+        <parent>PX_DC_HOME_2COLUMN_ZONE_1</parent>
+        <title>Overview</title>
+        <abbreviation>lcw</abbreviation>
+        <description>&lt;div class="welcome"&gt; &lt;div class="course-info-widget"&gt; &lt;div class="top"&gt; &lt;h1&gt;Welcome, Instructor!&lt;/h1&gt; &lt;span&gt; It’s easy to find, customize, and assign primary source projects and documents that work for your course. Your students will only see the projects that you have assigned.&lt;/span&gt; &lt;h2&gt;Get started:&lt;/h2&gt; &lt;ol&gt; &lt;li&gt;Browse the Primary Source Projects.&lt;/li&gt; &lt;li&gt;Edit them to match your course.&lt;/li&gt; &lt;li&gt;Assign them to your students.&lt;/li&gt; &lt;/ol&gt; &lt;a class="activation-link register-lc"&gt;Enable Student Registration &lt;span class="icon"&gt;&lt;/span&gt;&lt;/a&gt; &lt;/div&gt; &lt;div class="bottom"&gt; &lt;ul class="tutorial-links"&gt; &lt;li class="header-row"&gt;&lt;span rel=""&gt;Instructor Support&lt;/span&gt;&lt;/li&gt; &lt;li &gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Works" target="_blank"&gt;&lt;span rel=""&gt;How to get started&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Research" target="_blank"&gt;&lt;span rel=""&gt;FAQs&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt;</description>
+        <timetocomplete>PT1M</timetocomplete>
+        <category>0</category>
+        <period inherit="true">0</period>
+        <groupsetid>-1</groupsetid>
+        <weight>100</weight>
+        <gradeentry>1</gradeentry>
+        <inputtable inherit="true">0</inputtable>
+        <completiontrigger>0</completiontrigger><bfw_type>Widget</bfw_type><bfw_subtype>PX_Custom</bfw_subtype><bfw_display_flags>
+  <display>instructor</display>
+</bfw_display_flags><bfw_widget_callbacks>
+  <method name="View" controller="CustomWidget" action="View" fne="false" />
+  <method name="OnBeforeAdd" controller="CustomWidget" action="OnBeforeAdd" fne="false" />
+  <method name="Save" controller="CustomWidget" action="AddCustomWidget" fne="false" />
+</bfw_widget_callbacks><bfw_widget_template>PX_Custom</bfw_widget_template><bfw_properties>
+  <bfw_property name="bfw_syllabusfilter" type="String" />
+  <bfw_property name="bfw_cssclass" type="String" />
+  <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_targetid" type="String" />
+  <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+</bfw_properties><bfw_tocs>
+  <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+</bfw_tocs></data>
+    </item>
+	
+    <item id="PX_StudentOverviewWidget" entityid="69831">
+      <data>
+        <type>CustomActivity</type>
+        <parent>PX_DC_HOME_2COLUMN_ZONE_1</parent>
+        <title>Overview</title>
+        <abbreviation>lcw</abbreviation>
+        <description>&lt;div class="welcome"&gt; &lt;div class="course-info-widget"&gt; &lt;div class="top"&gt; &lt;h1&gt;Welcome, Instructor!&lt;/h1&gt; &lt;span&gt; It’s easy to find, customize, and assign primary source projects and documents that work for your course. Your students will only see the projects that you have assigned.&lt;/span&gt; &lt;h2&gt;Get started:&lt;/h2&gt; &lt;ol&gt; &lt;li&gt;Browse the Primary Source Projects.&lt;/li&gt; &lt;li&gt;Edit them to match your course.&lt;/li&gt; &lt;li&gt;Assign them to your students.&lt;/li&gt; &lt;/ol&gt; &lt;/div&gt; &lt;div class="bottom"&gt; &lt;ul class="tutorial-links"&gt; &lt;li class="header-row"&gt;&lt;span rel=""&gt;Instructor Support&lt;/span&gt;&lt;/li&gt; &lt;li &gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Works" target="_blank"&gt;&lt;span rel=""&gt;How to get started&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Research" target="_blank"&gt;&lt;span rel=""&gt;FAQs&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt;</description>
+        <timetocomplete>PT1M</timetocomplete>
+        <category>0</category>
+        <period inherit="true">0</period>
+        <groupsetid>-1</groupsetid>
+        <weight>100</weight>
+        <gradeentry>1</gradeentry>
+        <inputtable inherit="true">0</inputtable>
+        <completiontrigger>0</completiontrigger><bfw_type>Widget</bfw_type><bfw_subtype>PX_Custom</bfw_subtype><bfw_display_flags>
+  <display>student</display>
+</bfw_display_flags><bfw_widget_callbacks>
+  <method name="View" controller="CustomWidget" action="View" fne="false" />
+  <method name="OnBeforeAdd" controller="CustomWidget" action="OnBeforeAdd" fne="false" />
+  <method name="Save" controller="CustomWidget" action="AddCustomWidget" fne="false" />
+</bfw_widget_callbacks><bfw_widget_template>PX_Custom</bfw_widget_template><bfw_properties>
+  <bfw_property name="bfw_syllabusfilter" type="String" />
+  <bfw_property name="bfw_cssclass" type="String" />
+  <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_targetid" type="String" />
+  <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+</bfw_properties><bfw_tocs>
+  <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+</bfw_tocs></data>
+    </item>

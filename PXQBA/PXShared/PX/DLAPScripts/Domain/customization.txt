@@ -1,0 +1,38 @@
+<files>
+  <file type="style" path="px_overrides.css" />
+</files>
+<customquestions>
+	<customquestion name="HTS" type="choice" location="http://px.bfwpub.com/PxHTS/PxPlayer.ashx" />
+	<customquestion name="FMA_GRAPH" type="choice" location="http://px.bfwpub.com/PxEG/authormode2.aspx" />
+</customquestions>
+<questionmetadata>
+	<value id="title" inputtype="Text" ></value>
+</questionmetadata>
+<webfiles>
+  <file path="logout.html" />
+</webfiles>
+<contentframes>
+  <contentframe itemtype="Assessment" path="Assessment.vhtm" />
+  <contentframe itemtype="Homework" path="Homework.vhtm" />
+</contentframes>
+<strings>
+  <string name="ConfirmFlunkAllUnsubmitted">Are you sure that you want to give zeros for all unsubmitted items?</string>
+  <string name="FlunkUnsubmitted">Zero Score for Unsubmitted</string>
+  <string name="RelativeItemWeight">Gradebook points</string>
+  <string name="ConfirmFlunkAllUnsubmitted">This will record a grade of "0" for all students who haven&#39;t yet submitted. Are you sure you want to do this?</string>
+  <string name="ReturnAllGrades">Submit saved scores</string>
+  <string name="ConfirmReturnAllGrades">Are you sure that you want to submit saved scores?</string>
+</strings>
+<flags>
+  <gradebook hidelinktoitems="true" />
+  <gradebook questiondetailsvisible="true" />
+</flags>
+<securehash>
+  <secretkey name="macmillan.dynamicbooks.net.key">12345</secretkey>
+  <EncryptedData xmlns="http://www.w3.org/2001/04/xmlenc#">
+    <EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes128-cbc" />
+    <CipherData>
+      <CipherValue>Nfrm/blI+z9Pqy7Lntg9bygmD0EwyMW218UWsLrV4NZozkJ5RBXR+JFhTxpOcCro1OdOI5NnK/kkkLeFzE+qz/twBKhPfgApQ2NlR4fyvuy79hj3UdMaqHj69KnwXCtPUOeDphyvMeLO8YIkNVHEWg==</CipherValue>
+    </CipherData>
+  </EncryptedData>
+</securehash>

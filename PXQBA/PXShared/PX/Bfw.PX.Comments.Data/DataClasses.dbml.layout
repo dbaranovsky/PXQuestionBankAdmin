@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataClasses1">
+  <DataContextMoniker Name="/PxCommentsDataContext" />
+  <nestedChildShapes>
+    <classShape Id="c417788b-46f0-4f07-b27c-98899de4310e" absoluteBounds="3.5, 0.875, 2, 1.0961531575520835">
+      <DataClassMoniker Name="/PxCommentsDataContext/HighlightComment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="64c70f5d-8908-4f85-b88b-ac0715e27ef1" absoluteBounds="3.515, 1.335, 1.9700000000000002, 0.53615315755208326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6b2a6f05-80a2-405e-b14c-c37340e36632" absoluteBounds="0.5, 0.875, 2, 2.0822371419270831">
+      <DataClassMoniker Name="/PxCommentsDataContext/Comment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="be564598-4196-4f11-88f1-608854eb63ce" absoluteBounds="0.51500000000000012, 1.335, 1.9700000000000002, 1.5222371419270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 1.42307657877604); (3.5 : 1.42307657877604)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/PxCommentsDataContext/Comment/Comment_HighlightComment" />
+      <nodes>
+        <classShapeMoniker Id="6b2a6f05-80a2-405e-b14c-c37340e36632" />
+        <classShapeMoniker Id="c417788b-46f0-4f07-b27c-98899de4310e" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="461ca61f-c315-497d-a6ff-057b2a3dc30a" absoluteBounds="3.5, 2.625, 2, 3.0683211263020831">
+      <DataClassMoniker Name="/PxCommentsDataContext/Highlight" />
+      <nestedChildShapes>
+        <elementListCompartment Id="304a6ebd-90dd-427c-b214-9136b9e142ad" absoluteBounds="3.5149999999999997, 3.085, 1.9700000000000002, 2.508321126302083" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.5 : 2.625); (4.5 : 1.97115315755208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/PxCommentsDataContext/Highlight/Highlight_HighlightComment" />
+      <nodes>
+        <classShapeMoniker Id="461ca61f-c315-497d-a6ff-057b2a3dc30a" />
+        <classShapeMoniker Id="c417788b-46f0-4f07-b27c-98899de4310e" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

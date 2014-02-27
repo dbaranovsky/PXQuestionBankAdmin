@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Unit Test - XBook Document Viewer</title>
+
+    <link rel="stylesheet" type="text/css" href="../../lib/jasmine-1.3.1/jasmine.css" />
+    <script type="text/javascript" src="../../lib/jasmine-1.3.1/jasmine.js"></script>
+    <script type="text/javascript" src="../../lib/jasmine-1.3.1/jasmine-beforeAll.js"></script>
+    <script type="text/javascript" src="../../lib/jasmine-1.3.1/jasmine-html.js"></script>
+    <script type="text/javascript" src="../../lib/mock-ajax.js"></script>
+    <!--<script type="text/javascript" src="../../lib/blanket/blanket.min.js" data-cover-adapter="../../lib/blanket/jasmine-blanket.js"></script>-->
+
+    <!-- include dependencies here (e.g. jquery) !-->
+    <script type="text/javascript" src="../../lib/jquery/jquery.js"></script>
+    <script type="text/javascript" src="../../lib/jquery/jquery-migrate.js"></script>
+
+    <!-- include vendor files -->
+    <script type="text/javascript" src="../../lib/jasmine-jquery.js"></script>
+
+    <!-- include source files here !-->
+    <script type="text/javascript" src="../../../Scripts/jquery/jquery.utils.js"></script>
+    <script type="text/javascript" src="../../../Scripts/jquery/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript" src="../../../Scripts/jquery/jquery.blockUI.js"></script>
+    <script type="text/javascript" src="../../../Scripts/jquery/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../../../Scripts/jquery/jquery.qtip.min.js"></script>
+    <script type="text/javascript" src="../../../Scripts/jquery/jquery.sticky.js"></script>
+    <script type="text/javascript" src="../../../Scripts/easyXDM/easyXDM.js"></script>
+    
+    <script type="text/javascript" src="../../../Scripts/Highlight/autoHeight.js"></script>
+
+    <script type="text/javascript" src="../../../Scripts/Quiz/HtmlQuiz.js"></script>
+    <script type="text/javascript" src="../../../Scripts/ContentWidget/ContentAreaWidget.js"></script>
+
+    <!-- include helper files here... -->
+    <script type="text/javascript" src="../../helper/RenderingHelper.js"></script>
+    <script type="text/javascript" src="../../lib/viewrender.js"></script>
+    <script type="text/javascript" src="../../helper/HtmlQuizHelper.js"></script>
+
+    <!-- include spec files here... -->
+    <script type="text/javascript" src="../../spec/contentareawidget/ContentAreaWidgetSpec.js"></script>
+
+    <script type="text/javascript">
+        (function () {
+            var jasmineEnv = jasmine.getEnv();
+            jasmineEnv.updateInterval = 1000;
+
+            var htmlReporter = new jasmine.HtmlReporter();
+
+            jasmineEnv.addReporter(htmlReporter);
+
+            jasmineEnv.specFilter = function (spec) {
+                return htmlReporter.specFilter(spec);
+            };
+
+            var currentWindowOnload = window.onload;
+
+            window.onload = function () {
+                if (currentWindowOnload) {
+                    currentWindowOnload();
+                }
+                execJasmine();
+            };
+
+            function execJasmine() {
+                jasmineEnv.execute();
+            }
+
+        })();
+    </script>
+</head>
+<body>
+</body>
+</html>

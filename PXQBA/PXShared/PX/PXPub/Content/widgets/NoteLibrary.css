@@ -1,0 +1,201 @@
+﻿
+#noteLibrary {
+    margin: 16px 16px 0 16px;
+}
+
+
+#notelist
+{
+    position:relative;    
+}
+
+#sortable
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 80%;
+}
+
+#sortable li
+{    
+    margin: 0 3px 0px 3px;      
+    font-size: 1.0em;    
+    padding:5px 0px 0px 0px;
+}
+
+#sortable li span
+{
+    list-style-type: none;
+    position: absolute;
+/*  margin-left: -1.3em; */
+}    
+
+
+#note_widget_action_menu {
+    display: inline;
+    float:right;
+}
+
+#wait 
+{   
+    top:0px;         
+    z-index:1000;
+    vertical-align:middle; 
+    text-align:left; 
+    background: #febf00;
+    display:none; 
+}
+
+.editableForm
+{
+    display:none;
+    background-color:White;
+    border:0px white;
+}
+
+
+.formElements
+{     
+    padding:5px;   
+}
+
+#noteLibrary .formElements .validationForm{
+    width:50%;
+
+}
+
+#noteLibrary .formElements .validationForm input,
+#noteLibrary .formElements .validationForm textarea{
+    font-size: 11px;
+
+}
+#noteLibrary .formElements .validationForm textarea{   
+   min-width:100%;
+   max-width:100%;  
+}
+
+
+.saveAndSubmit
+{
+   padding-top: 5px;
+   float:right;    
+}
+
+.clear
+{
+    clear:both;    
+}
+
+
+#notelist li.selected {
+	border: none;
+	background-color: #fff;
+}
+
+.notSelected 
+{  
+    background-color:white; 
+    border: none;
+} 
+
+.invisible {  display:none; } 
+
+.visible {
+    display:block;
+    margin-top: 4px;  
+}
+
+.noteLibraryHeading
+{
+    border-bottom: 1px solid #CCCCCC;
+    margin-top: 5px;    
+    z-index:99999;
+}
+
+
+.noteTitle
+{
+    width:100%;
+    color: #666;
+    font-size: 11px;
+    cursor: pointer;
+}
+.selectHeading
+{
+        
+}
+
+.noElements
+{
+    padding-top:130px;  
+    padding-left:130px;  
+}
+
+.noteli {
+    font-size: 11px;
+    padding: 12px 0 12px 28px;
+    border-bottom: 1px solid #CCC;
+}
+
+.noteli .noteicon{
+    float: left;
+    background-image: url("style/images/platx_sprite.png");
+    background-repeat: no-repeat;
+    background-position: -374px -250px;
+    display: block;
+    height: 15px;
+    width: 18px;
+}
+.noteli.even{
+    background-color:#F4F4F4;
+}
+
+.noteli.even.selected{
+    background-color:#fff;
+}
+
+.noteli .useText {
+    float: right;
+    padding: 4px 11px!important;
+    position: relative;
+    top: -5px;
+    margin-right:8px;
+}
+
+.noteLibraryHeading #selectprompt{
+    font-size: 11px; 
+    margin-top: 8px;
+    display: block;
+    color: #666;
+}
+.noteLibraryHeading #notetitle{
+    font-size: 18px;
+    color: #000; 
+    font-weight: bold;
+}
+
+#notelibrarywrapper{
+   width:72%;      
+} 
+
+.validationForm label.error {
+    color: red;
+    display: block;
+    float: left;    
+    width: 100%;
+}       
+
+.highlight-comment-form a.add-to-note-library,
+.highlight-comment-form a.open-note-library,
+.highlight-comment-form a.more_eBook_links{
+    color: #467CBE;
+}
+
+.highlight-comment-form .commentLibraryWrapper {
+    margin-bottom: 12px;
+}
+
+#noteLibrary #btnClose{
+    padding: 4px 6px !important;
+}

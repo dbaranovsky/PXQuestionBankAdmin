@@ -1,0 +1,52 @@
+﻿<item id="PxQuiz" version="0.5" resourceentityid="118667,0,29,0" actualentityid="57704" creationdate="2013-07-25T14:56:06.04Z" creationby="7" modifieddate="2013-08-14T20:10:20.5Z" modifiedby="7" origindepth="1" derivativedepth="1">
+	<data>
+		<type>Assessment</type>
+		<parent>PX_MANIFEST</parent>
+		<sequence>a</sequence>
+		<title>Quiz </title>
+		<href>a</href>
+		<timetocomplete>PT0S</timetocomplete>
+		<category>0</category>
+		<period inherit="true">0</period>
+		<groupsetid>-1</groupsetid>
+		<duedate>0001-01-01T00:00:00Z</duedate>
+		<gradereleasedate>0001-01-01T05:00:00Z</gradereleasedate>
+		<gradeentry>1</gradeentry>
+		<inputtable inherit="true">0</inputtable>
+		<completiontrigger>0</completiontrigger>
+		<questions>
+      <question id="question1" score="3" type="2" count="4" />
+      <question id="question2" score="1" type="2" count="3" />
+      <question id="question3" score="1" type="1" />
+      <question id="question4" score="1" type="2" count="2" />
+		</questions>
+		<examflags>6144</examflags>
+		<attemptlimit>0</attemptlimit>
+		<examreviewrules>
+			<rule setting="Question" condition="true" />
+			<rule setting="Answer" condition="true" />
+			<rule setting="Possible" condition="true" />
+			<rule setting="CorrectQuestion" condition="true" />
+			<rule setting="CorrectChoice" condition="true" />
+			<rule setting="Feedback" condition="true" />
+			<rule setting="Feedback-GROUP" condition="true" />
+		</examreviewrules>
+		<bfw_tocs>
+			<bfw_toc_contents parentid="PX_MANIFEST" sequence="a" />
+		</bfw_tocs>
+		<bfw_in_assignment_center>false</bfw_in_assignment_center>
+		<bfw_duedate_manuallyset>false</bfw_duedate_manuallyset>
+		<bfw_is_depreciated>false</bfw_is_depreciated>
+		<IsMarkAsCompleteChecked>false</IsMarkAsCompleteChecked>
+		<meta-bfw_assigned>false</meta-bfw_assigned>
+		<meta-containers>
+			<meta-container toc="syllabusfilter" />
+		</meta-containers>
+		<meta-subcontainers>
+			<meta-subcontainerid toc="syllabusfilter" />
+		</meta-subcontainers>
+		<allowviewhints>false</allowviewhints>
+		<percentsubstracthint>0</percentsubstracthint>
+		<allowstudentsemailinstructors>false</allowstudentsemailinstructors>
+	</data>
+</item>

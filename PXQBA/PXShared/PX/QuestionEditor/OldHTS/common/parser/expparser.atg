@@ -1,0 +1,1122 @@
+$B+  //Auto-increment build number (b)
+$C-  //Generate Delphi test project (c)
+$E-  //Generate a component registration unit (e)
+$R-  //Save DFM as resource (r)
+$V+  //Generate version information (v)
+$Z-  //Generate console app (z)                                                     
+
+(* THIS IS THE PARSER FOR IPEQGIF- 11/23/06 *)
+
+COMPILER TDXExprParser     
+
+DELPHI
+
+  USES (INTERFACE) TDXExpr,Variants,TDXExprFunction,TDXExprVariable,
+    TDXExprSymbolicVar,Contnrs,TDXExprStringLiteral,TDXVar,Math,
+    IPStrUtils,TDXExprSimEq,TDXExprObject,StrUtils,TDXExprModel,TDXExprMath,
+    TDXExprReduce  
+  PRIVATE
+    FRootNode : TTDXExpr;
+    //FProblem : TTDXProblem;
+    FNodeList : TObjectList;
+    FOnSymVarCreate : TTDXSymVarCreateEvent;
+    FOnSymVarGetValue: TTDXSymVarGetValueEvent;  
+    FOnObjectGetValue: TTDXObjectGetValueEvent;
+    FOnObjectCheckSyntax : TTDXObjectCheckSyntaxEvent;
+    FTreatVarsAsSymbolic: boolean;  
+    FIsMath : boolean;
+    FForceAltTrigPowerForm : boolean;
+
+    procedure Init;
+    procedure Final;
+    function AddNode(ANode:TTDXExpr):TTDXExpr;
+    function PopNode(ANode:TTDXExpr):TTDXExpr;  
+    function deQuote(const str:String):String;
+    function MakeCommaVar(value:TTDXExprValue; dollar:boolean; parenneg:boolean):TTDXExprValue;
+    function MakeCurrVar(value:TTDXExprValue; parenneg:boolean):TTDXExprValue;
+    function MakeNegVar(value:TTDXExprValue):TTDXExprValue;
+
+  PROTECTED
+    FSymbolicSymbol : Integer;    
+  PUBLIC
+    procedure PreParse(var str:String);
+    property RootNode : TTDXExpr read FRootNode write FRootNode;
+    //property Problem:TTDXProblem read FProblem write FProblem;
+    property OnSymVarCreate:TTDXSymVarCreateEvent read FOnSymVarCreate write FOnSymVarCreate;
+    property OnSymVarGetValue:TTDXSymVarGetValueEvent read FOnSymVarGetValue write FOnSymVarGetValue;
+    property OnObjectGetValue:TTDXObjectGetValueEvent read FOnObjectGetValue write FOnObjectGetValue;
+    property OnObjectCheckSyntax:TTDXObjectCheckSyntaxEvent read FOnObjectCheckSyntax write FOnObjectCheckSyntax;
+    property TreatVarsAsSymbolic:boolean read FTreatVarsAsSymbolic write FTreatVarsAsSymbolic;
+    property IsMath:boolean read FIsMath write FIsMath;
+    property ForceAltTrigPowerForm:boolean read FForceAltTrigPowerForm write FForceAltTrigPowerForm;
+
+
+  CREATE
+    FRootNode := nil;
+    FNodeList := TObjectList.Create;
+    FSymbolicSymbol := SymbolicSym;
+  DESTROY
+    FNodeList.Free;                                
+  ERRORS
+    200 : Result := 'Text after end of valid expression';
+END_DELPHI
+
+
+
+(* Arbitrary Code *)
+
+procedure T-->Grammar<--.Init;
+begin
+  fRootNode := nil;
+end;
+
+procedure T-->Grammar<--.Final;
+begin                   
+  //Clean up in between parses just in case object stays around.
+  FNodeList.Clear;
+end;
+
+function T-->Grammar<--.AddNode(ANode:TTDXExpr):TTDXExpr;
+begin
+  FNodeList.Add(ANode);
+  Result := ANode;
+end;
+
+function T-->Grammar<--.PopNode(ANode:TTDXExpr):TTDXExpr;
+begin
+  if assigned(ANode) then
+  begin
+    FNodeList.Extract(ANode);
+    Result := ANode;
+  end
+  else
+    Result := nil;
+end;  
+
+function T-->Grammar<--.deQuote(const str:String):String;
+var
+  p : PChar;
+begin                          
+  p := Pchar(str);
+  Result := AnsiExtractQuotedStr(p,str[1]);
+end;
+
+function T-->Grammar<--.MakeCommaVar(value:TTDXExprValue; dollar:boolean; parenneg:boolean ):TTDXExprValue;
+
+
+
+
+
+
+
+
+
+var
+  pPos : integer;
+  fStr : String;          
+  v : Double;
+  text : String;
+begin
+  text := Trim(value);
+  v := value;
+  pPos := Pos('.',text);
+  if pPos > 0 then
+    fStr := ',.'+DupeString('#',Length(text)-pPos)
+  else
+    fStr := ',';        
+  if parenneg then
+    fStr := '(' + fStr + ')';
+  if dollar then
+    fStr := '$' + fStr;
+  //if assigned(FPRoblem) then
+  //  text := FProblem.FormatFloat(v,fstr)
+  //else
+    text := IPFormatFloat(v,fstr);
+
+
+
+
+
+
+
+
+
+
+  Result := VarTDXCreate(v,text);
+end;
+
+function T-->Grammar<--.MakeCurrVar(value:TTDXExprValue; parenneg:boolean ):TTDXExprValue;
+var
+  pPos : integer;
+  fStr : String;          
+  v : Double;
+  text : String;
+begin
+  text := Trim(value);
+  v := value;
+  pPos := Pos('.',text);
+  if pPos > 0 then
+    fStr := '.'+DupeString('#',Length(text)-pPos)
+  else
+    fStr := '';        
+  if parenneg then
+    fStr := '(' + fStr + ')';
+  fStr := '$' + fStr;
+  //if assigned(FPRoblem) then
+  //  text := FProblem.FormatFloat(v,fstr)
+  //else
+    text := IPFormatFloat(v,fstr);
+
+
+
+
+
+
+
+
+
+
+  Result := VarTDXCreate(v,text);
+end;
+
+function T-->Grammar<--.MakeNegVar(value:TTDXExprValue):TTDXExprValue;
+var
+  pPos : integer;
+  fStr : String;          
+  v : Double;
+  text : String;
+begin
+  text := Trim(value);
+  v := -value;
+  pPos := Pos('.',text);
+  if pPos > 0 then
+    fStr := '.'+DupeString('#',Length(text)-pPos)
+  else
+    fStr := '';        
+  fStr := '(' + fStr + ')';
+  //if assigned(FPRoblem) then
+  //  text := FProblem.FormatFloat(v,fstr)
+  //else
+    text := IPFormatFloat(v,fstr);
+
+
+
+
+
+
+
+
+
+
+  Result := VarTDXCreate(v,text);
+end;
+
+
+
+  procedure T-->Grammar<--.PreParse(var str:String);
+  var
+   i : Integer;
+   n : Integer;
+   foundAbs : Boolean;
+   inSquote : Boolean;
+   inDquote : Boolean;
+
+  begin
+    foundAbs := false;
+    inSQuote := false;
+    inDQuote := false;
+    n := Length(str);
+    for i := 1 to n do
+    begin
+      Case str[i] of
+      '''': begin
+              if not inDquote then
+                inSquote := not inSquote;
+            end;
+      '"' : begin
+              if not inSQUote then
+                inDquote := not inDquote;
+            end;
+      '|' : begin
+              if not (inSquote or inDquote) then
+              begin
+                foundAbs := not foundAbs;
+                if not foundAbs then
+                  str[i]:= '?';
+              end;
+            end;
+      end;
+    end;
+  end;
+  
+
+
+(* End of Arbitrary Code *)
+
+IGNORE CASE
+
+CHARACTERS
+  eol      = CHR(13) .
+  letter   = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" .
+  digit    = "0123456789".
+  dQuote   = '"'.
+  sQuote   = "'".
+  space    = " ".
+  nosQuote = ANY - sQuote - eol .
+  nodQuote = ANY - dQuote - eol.  
+//  tilde    = CHR(126) .
+//  ampersand = CHR(38) .
+  dollar = "$".
+  yen = CHR(165) .
+  euro = CHR(128) .
+  pound = CHR(163) .
+
+IGNORE CHR(9) .. CHR(13)
+
+TOKENS
+
+  integer_     =  digit { digit } | digit { digit }  CONTEXT ("..") .
+  float        =  [digit { digit }] "." { digit }
+//                 [ "E" ["+" | "-"] digit { digit } ]
+//                 |  digit { digit } "E" ["+" | "-"] digit { digit }
+  .
+
+//**MAD**  9/28/06 - Only except dollar formating inside @CNUM and @CURR
+//  dollarnum_    =  dollar {space} digit { digit } ["." { digit }].
+                 
+  dollar_ = dollar | yen | euro | pound.
+ 
+  variable   = "~" ( ( (letter | "_") { letter | digit | "_" } ["." ["~"] (letter | digit | "_") { letter | digit | "_"}] )
+                 | ("[" ( (letter | "_") { letter | digit | "_" } ["." ["~"] (letter | digit | "_") { letter | digit | "_"}] "]" )) ). 
+
+  symbolic   = letter.
+  entity     = "&" (letter | "_") { letter | digit | "_" } ";" .
+  
+  object_       = "@" {"@"} (letter | "_") { letter | digit | "_" }[":" (letter | "_") { letter | digit | "_" }] {"." (letter | "_") { letter | digit | "_" }} .
+  
+//  objectpt_     = "@" digit {digit} {"." (letter | "_") { letter | digit | "_" }} .  
+
+  model_       = dollar (letter | "_") { letter | digit | "_" } .  
+  
+  string_      = (sQuote { nosQuote | (sQuote sQuote)} sQuote) |
+                 (dQuote { nodQuote | (dQuote dQuote)} dQuote) .
+      
+//  number_      = digit [digit] [digit] ("," digit digit digit) {"," digit digit digit} ["." digit {digit}].
+
+  
+// COMMENTS FROM "/*" TO "*/" NESTED
+//   COMMENTS FROM "//" TO eol
+
+PRODUCTIONS
+                                         
+TDXExprParser 
+                          (. var Expression : TTDXExpr; .)  
+  =                       (. Init .)
+ OrExpression<Expression> 
+                          (.RootNode := PopNode(Expression); .)
+                          (. if fCurrentInputSymbol <> EOFSYMB then
+                               SynError(200); 
+                             Final .)
+          .
+
+
+OrExpression<var ExprResult:TTDXExpr>
+                                       (.var expr:TTDXExpr;.) 
+  =
+    AndExpression<ExprResult>
+      { "or" AndExpression<expr> (. ExprResult := AddNode(TTDXExprBinary.Create(tdxebOr,PopNode(ExprResult),PopNode(expr))) .) 
+      }
+.
+
+AndExpression<var ExprResult:TTDXExpr>
+                                       (.var expr:TTDXExpr;.) 
+  =
+    NotExpression<ExprResult>
+      { "and" NotExpression<expr> (. ExprResult := AddNode(TTDXExprBinary.Create(tdxebAnd,PopNode(ExprResult),PopNode(expr))) .) 
+      }
+.
+
+NotExpression<var ExprResult:TTDXExpr>
+          (. var notCount:Integer; .)
+  =                                  
+          (. notCount := 0; .)
+    {"not"  (. inc(notCount); .) } 
+      BooleanExpression<ExprResult>
+      (. while notCount > 0 do
+         begin
+           ExprResult := AddNode(TTDXExprUnary.Create(tdxeuNot,PopNode(exprResult)));
+           dec(notCount);
+         end; 
+      .)
+.    
+                                     
+          
+          
+//Arithmetic or relational expression          
+BooleanExpression <var ExprResult:TTDXExpr>
+                                       (.var expr:TTDXExpr; 
+                                             op:TTDXExprRelationalType; .)
+  = 
+    Expression<ExprResult>
+     [ RelOp<op> Expression<expr>  (. ExprResult := AddNode(TTDXExprRelational.Create(op,PopNode(ExprResult),PopNode(expr))) .)
+     ]
+.
+
+   
+//Valid realation operators
+RelOp <var op:TTDXExprRelationalType>
+  = 
+    "="                                (. op := tdxerEQ .) 
+  | "<"                                (. op := tdxerLT .) 
+  | ">"                                (. op := tdxerGT .) 
+  | "<="                               (. op := tdxerLE .) 
+  | ">="                               (. op := tdxerGE .) 
+  | "<>"                               (. op := tdxerNE .)
+  | "CONTAINS"                         (. op := tdxerContains .)
+  | "ONLY"                             (. op := tdxerOnly .)
+//DV this surfaced in Worth 
+//Add this in later when we want to fix it so < > <= >= entities are treated like operators.
+//they're afraid to add them  now. MAD 6/29/05  
+  | "&lt;"                             (. op := tdxerLT .)   
+  | "&gt;"                                (. op := tdxerGT .) 
+  | "&le;"                               (. op := tdxerLE .) 
+  | "&ge;"                               (. op := tdxerGE .) 
+  | "&ne;"                               (. op := tdxerNE .)
+.
+
+
+Expression<var ExprResult:TTDXExpr>
+ =
+   ListExpression<ExprResult>
+ | SimpleExpression<ExprResult>
+// | AbsExpression<ExprResult>
+.
+                 
+ListExpression<var ExprResult:TTDXExpr>
+                                (. var expr:TTDXExpr; .)
+ =
+   "["                          (. ExprResult := AddNode(TTDXExprList.Create); .) 
+      Expression<Expr>    (. TTDXExprList(ExprResult).AddExpr(PopNode(Expr)); .)
+      { ( "," | ";" ) Expression<Expr>  (. TTDXExprList(ExprResult).AddExpr(PopNode(Expr)); .)    
+      } 
+   "]"
+.
+
+
+AbsExpression<var ExprResult:TTDXExpr>
+ =
+   "|"                           
+      SimpleExpression<ExprResult>    (. ExprResult := AddNode(TTDXExprFunction.Create(tdxefAbs,[PopNode(ExprResult)])); .)
+   "?"  //Asssume no nested absolute values.  Have pre-parser change second pipe to a '?'
+.
+
+                         
+//This non-terminal introduces unary support and addition 
+SimpleExpression<var ExprResult:TTDXExpr>
+                                       (.var expr:TTDXExpr; 
+                                             op:TTDXExprBinaryType; .)
+  = 
+    TermFunc<ExprResult>
+  { AddOp<op> TermFunc<expr>    (. ExprResult := AddNode(TTDXExprBinary.Create(op,PopNode(ExprResult),PopNode(expr))) .)
+  } 
+  
+.
+
+//Addition level operator
+AddOp <var op:TTDXExprBinaryType>
+  = 
+    "+"    (. op := tdxebAdd .) 
+  | "-"    (. op := tdxebSubtract .)
+.
+
+
+//This non-terminal introduces multiplication support
+
+TermFunc <var ExprResult:TTDXExpr>
+=
+   Term<ExprResult>
+// | FunctionExpr<ExprResult>
+.
+
+Term <var ExprResult:TTDXExpr>
+                                       (.var expr:TTDXExpr; 
+                                             op:TTDXExprBinaryType;
+                                             special:String; .)
+  =
+    FactorUnary<ExprResult>            
+
+      { (. op := tdxebMultiply; special := '' .) 
+        ( MulOp<op,special> FactorUnary<expr>  | FactorPower<expr>  )
+        
+         (. ExprResult := AddNode(TTDXExprBinary.Create(op,PopNode(ExprResult),PopNode(expr)));
+                                                                     if special <> '' then
+                                                                        TTDXExprBinary(ExprResult).OpName := special;
+
+                                                 .)
+      }
+.
+
+//Multiplication level operators
+MulOp <var op:TTDXExprBinaryType; var special:String>
+  =
+    (. special := ''; .) 
+    "*"      (. op := tdxebMultiply .) 
+  | "/"      (. op := tdxebDivide .)
+  | "&times;" (.op := tdxebMultiply; special := LexString; .)
+  | "&div;"   (.op := tdxebDivide;  special := LexString; .) 
+//  | "mod"    (. op := tdxebMod .) 
+//  | "and"    (. op := tdxebAnd .) 
+  
+.
+                                    
+FactorUnary <var ExprResult:TTDXExpr>
+          (. var minusFlag:boolean; .)
+ =                           
+          (. minusFlag := false .)
+  (  {"-"  (. minusFlag := not minusFlag .)}   FactorPower<ExprResult>
+     (.     if minusFlag then
+                ExprResult := AddNode(TTDXExprUnary.Create(tdxeuMinus,popNode(exprResult)));
+     .)  
+   )
+.   
+
+
+FactorPower <var ExprResult: TTDXExpr>
+                            (.var expr:TTDXExpr; .) 
+=
+  (FactorFact<ExprResult> 
+    [ ( ("^" FactorUnary<Expr>) | SuperEq<Expr> )   
+       (.   ExprResult := AddNode(TTDXExprBinary.Create(tdxebPower,popNode(exprResult),popNode(expr)));
+            TTDXExprBinary(ExprResult).AltTrigPowerForm := FForceAltTrigPowerForm .)
+    ])
+ | FunctionExpr<ExprResult>
+.
+
+
+FactorFact <var ExprResult: TTDXExpr>
+=
+  Factor<ExprResult> 
+    ["!" (. ExprResult := AddNode(TTDXExprFunction.Create(tdxefFact,[PopNode(ExprResult)])); .) ]
+.
+
+
+
+Factor <var ExprResult:TTDXExpr>
+=
+   ParenExpression<ExprResult>
+ | FactorNoParen<ExprResult>
+ | AbsExpression<ExprResult>
+.   
+
+(*
+FactorUnaryNoParen <var ExprResult:TTDXExpr>
+          (. var minusFlag:boolean; .)
+ =                           
+          (. minusFlag := false .)
+  ({"-"  (. minusFlag := not minusFlag .)}  FactorPowerNoParen<ExprResult>
+     (.     if minusFlag then
+                ExprResult := AddNode(TTDXExprUnary.Create(tdxeuMinus,popNode(exprResult)));
+     .)  
+   )
+.   
+
+
+FactorPowerNoParen <var ExprResult: TTDXExpr>
+                            (.var expr:TTDXExpr; .) 
+=
+  (FactorNoParen<ExprResult> 
+    [ ( "^" FactorUnary<Expr> | SuperEq<Expr> )   
+       (.   ExprResult := AddNode(TTDXExprBinary.Create(tdxebPower,popNode(exprResult),popNode(expr))); .)
+    ])
+.
+*)
+         
+FactorNoParen <var ExprResult: TTDXExpr>
+=  
+//   ParenExpression<ExprResult>
+// | FunctionExpr<ExprResult>
+   Literal<ExprResult>
+ | SymbolicVariable<ExprResult>
+ | DivideEq<ExprResult> 
+ | NRootEq<ExprResult>
+ | AbsEq<ExprResult>
+ | ObjectExpr<ExprResult>
+.
+ 
+  
+//Superscript from Equation editor.  We need to treat it differently because it
+//has implied parenthesis
+SuperEq <var ExprResult:TTDXExpr>
+  =
+    "@SUP{" OrExpression<ExprResult> "}"
+.
+
+
+NRootEq <var ExprResult:TTDXExpr>
+                                  (.var expr1,expr2:TTDXExpr;.) 
+  =  (. expr1 := nil;
+        expr2 := nil;
+     .)
+    "@RT{" OrExpression<Expr1> [";" OrExpression<Expr2>  ] "}"
+    (. if expr2 = nil then
+         ExprResult := AddNode(TTDXExprFunction.Create(tdxefSqrt,[PopNode(Expr1)]))
+       else
+         ExprResult := AddNode(TTDXExprFunction.Create(tdxefRTX,[PopNode(Expr2),PopNode(Expr1)]));
+    .)                  
+.
+
+
+
+AbsEq <var ExprResult:TTDXExpr>
+                                  (.var expr:TTDXExpr;.) 
+  =
+   ( "@ABS{" OrExpression<Expr> "}"
+                  (.ExprResult := AddNode(TTDXExprFunction.Create(tdxefAbs,[PopNode(expr)])).)
+   )            
+.
+
+
+ObjectExpr<var ExprResult: TTDXExpr>   
+                    (. var expr :TTDXExpr; .)
+  =
+     object_                      (. ExprResult := AddNode(TTDXExprObject.Create(LexString));
+                                   (ExprResult as TTDXExprObject).OnObjectGetValue := FOnObjectGetValue;
+                                   (ExprResult as TTDXExprObject).OnObjectCheckSyntax := FOnObjectCheckSyntax;
+                                .) 
+     ["(" OrExpression<expr>    (. (ExprResult as TTDXExprObject).AddArg(PopNode(expr)); .)
+      {"," OrExpression<expr>   (. (ExprResult as TTDXExprObject).AddArg(PopNode(expr)); .) } 
+      ")"]
+      
+     (. (ExprResult as TTDXExprObject).CheckSyntax; .)
+. 
+   
+//This nonterminal represents the Divide coming from the equation editor.
+// It has it's own set of rules.  Basically, it can not be involved in
+// an implicit multiplies with itself.  It needs parens.
+DivideEq <var ExprResult:TTDXExpr>
+                                  (.var expr1,expr2:TTDXExpr;.) 
+  =
+   ( "@DIV{" OrExpression<Expr1> ";" OrExpression<Expr2> "}"
+                  (.ExprResult := AddNode(TTDXExprBinary.Create(tdxebDivide,PopNode(Expr1),PopNode(expr2))).)
+   )            
+.
+
+ 
+//Any parenthetical expression
+//Add optional second parameter to handle ordered pair
+     
+ParenExpression <var ExprResult:TTDXExpr>
+                                 (. var Expr1 : TTDXExpr; .)
+  =
+  ( "(" OrExpression<ExprResult> ["," OrExpression<Expr1> 
+                                 (.  ExprResult := 
+                                    AddNode(TTDXExprOrderedPair.Create(PopNode(ExprResult),PopNode(Expr1))) .) ] 
+    ")"  (* (.ExprResult := AddNode(TTDXExprParen.Create(PopNode(ExprResult))) .) *) 
+  )
+ | ( "&lbracket;" OrExpression<ExprResult> "&rbracket;" )
+ | ( "&lbrace;" OrExpression<ExprResult> "&rbrace;" )
+.
+
+
+//Used to represent symbolic variables in equations. 
+SymbolicVariable <var ExprResult:TTDXExpr>
+  =
+ (  symbolic  
+   | entity )  (. ExprResult := AddNode(TTDXExprSymbolicVar.Create(LexString));
+                  TTDXExprSymbolicVar(ExprResult).OnGetValue := FOnSymVarGetValue;
+                  if assigned(FOnSymVarCreate) then
+                    FOnSymVarCreate(ExprResult,LexString) .)
+ | 'pi'    (. ExprResult := AddNode(TTDXExprLiteral.CreateEq(pi,'&pi;')) .)
+ | 'e'     (. ExprResult := AddNode(TTDXExprLiteral.CreateEq(exp(1),'e')) .)
+ | '&pi;'  (. ExprResult := AddNode(TTDXExprLiteral.CreateEq(pi,'&pi;')) .)
+ | '&exp;' (. ExprResult := AddNode(TTDXExprLiteral.CreateEq(exp(1),'e')) .)
+ | '&inf;' (. ExprResult := AddNode(TTDXExprLiteral.CreateEq(Infinity,'&inf;')) .)                 
+.
+     
+
+FunctionParam <var ExprResult:TTDXExpr>
+                                       (.var expr:TTDXExpr; 
+                                             op:TTDXExprBinaryType;
+                                             special:String; .)
+=
+(*
+     ( FactorUnary<ExprResult> 
+
+      { (. op := tdxebMultiply; special := '' .) 
+        ( MulOp<op,special> FactorUnary<expr>  | FactorPower<expr> )
+        
+         (. ExprResult := AddNode(TTDXExprBinary.Create(op,PopNode(ExprResult),PopNode(expr)));
+                                                                     if special <> '' then
+                                                                        TTDXExprBinary(ExprResult).OpName := special;
+
+                                                 .)
+      }
+
+
+//         { FactorNoParen<expr>
+ //           (. ExprResult := AddNode(TTDXExprBinary.Create(tdxebMultiply,popNode(exprResult),popNode(expr))); .) 
+ //        }
+         
+     )
+*)
+     
+//     ParenExpression<ExprResult> 
+//     |
+       Factor<ExprResult> 
+      { (. op := tdxebMultiply; special := '' .) 
+        ( (*[MulOp<op,special>]*) Factor<expr>
+              (. ExprResult := AddNode(TTDXExprBinary.Create(op,PopNode(ExprResult),PopNode(expr)));
+                     if special <> '' then
+                       TTDXExprBinary(ExprResult).OpName := special;
+             .)
+         )
+          | ("^" FactorUnary<expr>)(.  ExprResult := AddNode(TTDXExprBinary.Create(tdxebPower,PopNode(ExprResult),PopNode(expr))); 
+                                                     TTDXExprBinary(ExprResult).AltTrigPowerForm := FForceAltTrigPowerForm .)
+          | (SuperEq<expr>)        (.  ExprResult := AddNode(TTDXExprBinary.Create(tdxebPower,PopNode(ExprResult),PopNode(expr)));
+                                                     TTDXExprBinary(ExprResult).AltTrigPowerForm := FForceAltTrigPowerForm .)
+      }
+.
+
+MathExpr<var ExprResult:TTDXExpr>
+                    (. var expr:TTDXExpr; .)
+=
+   "MATH" "(" OrExpression<expr> ")" (.ExprResult := AddNode(TTDXExprMath.Create(PopNode(expr),false)); .)
+ | "MEVAL" "(" OrExpression<expr> ")" (.ExprResult := AddNode(TTDXExprMath.Create(PopNode(expr),true)); .)
+.
+
+ModelExpr<var ExprResult: TTDXExpr>   
+                    (. var expr :TTDXExpr; .)
+  =
+    model_                     (. ExprResult := AddNode(TTDXExprModel.Create(LexString)); .) 
+     "(" OrExpression<expr>    (. (ExprResult as TTDXExprModel).AddArg(PopNode(expr)); .)
+      {"," OrExpression<expr>   (. (ExprResult as TTDXExprModel).AddArg(PopNode(expr)); .) } 
+     ")"
+      
+     (. (ExprResult as TTDXExprModel).CheckSyntax; .)
+. 
+
+                                   
+//Represents and valid function expression (i.e., sinx, cos@DIV[1,2],sinpi)
+FunctionExpr <var ExprResult:TTDXExpr>
+                                  (.var expr,expr2:TTDXExpr; 
+                                      ftype:TTDXExprFunctionType; .)
+ =    
+   MathExpr<ExprResult>
+ | ModelExpr<ExprResult> 
+ | FunctionLogExpr<ExprResult>
+ | FunctionTrigExpr<ExprResult>   
+ | IfThenExpr<ExprResult>
+ |
+ ( Function1Arg<ftype> 
+  (
+    FunctionParam<expr> 
+//    Literal<expr> 
+//  | SymbolicVariable<expr> 
+//  | 
+//   (
+//    "(" 
+//       OrExpression<expr> 
+//     ")" 
+//    )
+  )
+ (. ExprResult := AddNode(TTDXExprFunction.Create(ftype,[PopNode(expr)])).)
+ )
+|( Function2Arg <ftype> "(" OrExpression<expr> "," OrExpression<expr2> ")"
+                  (. ExprResult := AddNode(TTDXExprFunction.Create(ftype,[PopNode(expr),PopNode(expr2)])).) 
+ ) 
+|
+  FunctionSimEQ<ExprResult>
+| FunctionFinancial<ExprResult>
+| FunctionMultArg<ExprResult>
+| FunctionReduce<ExprResult> 
+. 
+                               
+
+FunctionMultArg<var ExprResult: TTDXExpr>   
+                    (. var expr :TTDXExpr; ftype:TTDXExprFunctionType; .)
+  =   
+  (. ftype := tdxefMin; .)
+  (  "MIN"           (. ftype := tdxefMin; .)
+    |"MAX"           (. ftype := tdxefMax; .)
+  )
+    "(" OrExpression<expr>   (. ExprResult := AddNode(TTDXExprFunction.create(ftype,[])); 
+                                  (ExprResult as TTDXExprFunction).AddParam(PopNode(expr)); .)
+      {"," OrExpression<expr>  (. (ExprResult as TTDXExprFunction).AddParam(PopNode(expr)); .) } 
+     ")"
+. 
+
+
+FunctionFinancial<var ExprResult:TTDXExpr>
+         (.var expr1,expr2,expr3:TTDXExpr; ftype:TTDXExprFunctionType; .)
+=
+//  "%PV" (. ftype := tdxefPV; .) 
+//     "(" Expression<expr1> "," Expression<expr2> "," Expression<expr3> ")"
+//        (. ExprResult := AddNode(TTDXExprFunction.Create(ftype,[PopNode(expr1),PopNode(expr2),PopNode(expr3)])); .)
+//| 
+"FILLARRAY" (. ftype := tdxefFillArray; expr3 := nil; .)
+     "(" Expression<expr1> "," Expression<expr2> ["," Expression<expr3>] ")"
+        (. ExprResult := AddNode(TTDXExprFunction.create(ftype,[PopNode(expr1),PopNode(expr2),PopNode(expr3)])); .)
+| "SUBARRAY" (. ftype := tdxefSubArray; expr3 := nil; .)
+     "(" Expression<expr1> "," Expression<expr2> ["," Expression<expr3>] ")"
+        (. ExprResult := AddNode(TTDXExprFunction.create(ftype,[PopNode(expr1),PopNode(expr2),PopNode(expr3)])); .)
+| "Frac2Mnum" (. ftype := tdxefFrac2Mnum; expr3 := nil; .)
+     "(" Expression<expr1> "," Expression<expr2> ["," Expression<expr3>] ")"
+        (. ExprResult := AddNode(TTDXExprFunction.create(ftype,[PopNode(expr1),PopNode(expr2),PopNode(expr3)])); .)
+.
+
+FunctionSimEQ <var ExprResult:TTDXExpr>
+         (.var expr1,expr2,expr3:TTDXExprValue; .)
+=
+  "SYMEQ" "("  StringLiteral<expr1> "," StringLiteral<expr2> ","  StringLiteral<expr3> ")"
+     (. ExprResult := AddNode(TTDXExprSimEq.Create(expr1,expr2,expr3)).)
+.
+
+FunctionReduce <var ExprResult:TTDXExpr>
+          (.var expr1:TTDXExpr; fmt:String; .)
+=                                              
+  (. fmt := ''; .)
+  "REDUCE" "(" Expression<expr1> ["," string_ (. fmt := Dequote(LexString); .)] ")"
+    (. ExprResult := AddNode(TTDXExprReduce.Create(PopNode(expr1),fmt)) .)
+.              
+
+
+FunctionTrigExpr <var ExprResult:TTDXExpr>
+          (.var exprRoot,expr:TTDXExpr; ftype:TTDXExprFunctionType; .) 
+=                                        
+  (. exprRoot := nil; ftype := tdxefSin; .)
+   ( "SIN"  (. ftype := tdxefSin; .)
+   | "COS"  (. ftype := tdxefCos; .)
+   | "TAN"  (. ftype := tdxefTan; .)
+   | "SEC"      (. ftype := tdxefSec .)
+   | "CSC"      (. ftype := tdxefCsc .)
+   | "COT"      (. ftype := tdxefCot .)
+   | "SINH"  (. ftype := tdxefSinh; .)
+   | "COSH"  (. ftype := tdxefCosh; .)
+   | "TANH"  (. ftype := tdxefTanh; .)
+   | "SECH"      (. ftype := tdxefSech .)
+   | "CSCH"      (. ftype := tdxefCsch .)
+   | "COTH"      (. ftype := tdxefCoth .)
+   )
+   [ SuperEq<exprRoot> | "^" FactorUnary<exprRoot> ]
+   (   FunctionParam<expr>
+//      Literal<expr> 
+//    | SymbolicVariable<expr> 
+//    | ( "(" OrExpression<expr>")" )
+   )
+ (. 
+   if assigned(exprRoot) then
+   begin
+     expr := popNode(expr);
+     exprRoot := popNode(exprRoot);
+     if exprRoot.isNumber and (exprRoot.ExprValue = -1) then
+     begin
+       case ftype of
+         tdxefSin : ftype := tdxefArcSin;
+         tdxefCos : ftype := tdxefArcCos;
+         tdxefTan : ftype := tdxefArcTan;
+         tdxefSec : ftype := tdxefArcSec;
+         tdxefCsc : ftype := tdxefArcCsc;
+         tdxefCot : ftype := tdxefArcCot;
+         tdxefSinh : ftype := tdxefArcSinh;
+         tdxefCosh : ftype := tdxefArcCosh;
+         tdxefTanh : ftype := tdxefArcTanh;
+         tdxefSech : ftype := tdxefArcSech;
+         tdxefCsch : ftype := tdxefArcCsch;
+         tdxefCoth : ftype := tdxefArcCoth;
+       end;
+       ExprResult := AddNode(TTDXExprFunction.Create(ftype,expr));
+       (ExprResult as TTDXExprFunction).AltInverseForm := true;
+     end
+     else                                                      
+     begin
+       ExprResult := AddNode(TTDXExprBinary.Create(tdxebPower,TTDXExprFunction.Create(ftype,expr),exprRoot));
+       (ExprResult as TTDXExprBinary).AltTrigPowerForm := true;
+     end;
+   end
+   else
+   begin
+     ExprResult := AddNode(TTDXExprFunction.Create(ftype,[PopNode(expr)]));
+   end;
+.)     
+.
+
+IfThenExpr <var ExprResult:TTDXExpr>
+         (.var expr1,expr2,expr3:TTDXExpr; .)
+=
+  "IfThen" "(" OrExpression<expr1> "," OrExpression<expr2>  "," OrExpression<expr3> ")"
+            (. ExprResult := AddNode(TTDXExprFunction.Create(tdxefIfThen,[PopNode(expr1),PopNode(expr2),PopNode(expr3)])).)
+.                   
+
+FunctionLogExpr <var ExprResult:TTDXExpr>
+                                  (.var exprRoot,expr:TTDXExpr; .) 
+=                                        
+  (. exprRoot := nil; .)
+ "LOG" [ "@SUB" "{" (Literal<exprRoot> | SymbolicVariable<exprRoot>) "}" ]
+  (
+    FunctionParam<expr> 
+//    Literal<expr> 
+//  | SymbolicVariable<expr> 
+//  | 
+//   (
+//    "(" 
+//       OrExpression<expr> 
+//     ")" 
+//    )
+  )
+ (. 
+   if assigned(exprRoot) then
+   begin
+     expr := popNode(expr);
+     exprRoot := popNode(exprRoot);
+     ExprResult := AddNode(TTDXExprFunction.Create(tdxefLogx,[exprRoot,expr]));
+   end
+   else
+   begin
+     ExprResult := AddNode(TTDXExprFunction.Create(tdxefLog,[PopNode(expr)]));
+   end;
+.)
+.
+
+  
+                                             
+//Function with 1 argument.  
+//***Still need to handle function that can be raise to a power
+Function1Arg <var ftype:TTDXExprFunctionType>
+  =                                  
+    "ABS"      (. ftype := tdxefAbs .)
+//  | "SIN"      (. ftype := tdxefSin .)
+//  | "COS"      (. ftype := tdxefCos .)
+//  | "TAN"      (. ftype := tdxefTan .)
+  | "ARCSIN"   (. ftype := tdxefArcSin .)
+  | "ARCCOS"   (. ftype := tdxefArcCos .)
+  | "ARCTAN"   (. ftype := tdxefArcTan .)
+  | "ARCSINH"   (. ftype := tdxefArcSinh .)
+  | "ARCCOSH"   (. ftype := tdxefArcCosh .)
+  | "ARCTANH"   (. ftype := tdxefArcTanh .)
+  | "EXP"      (. ftype := tdxefExp .)
+//  | "LOG"      (. ftype := tdxefLog .)
+  | "SQRT"     (. ftype := tdxefSqrt .)
+  | "LN"       (. ftype := tdxefLn .)
+  | "FLOOR"    (. ftype := tdxefFloor .)
+  | "CEIL"     (. ftype := tdxefCeil .)
+  | "GCS"      (. ftype := tdxefGCS .)
+  | "GCSR"      (. ftype := tdxefGCSR .)
+//  | "SEC"      (. ftype := tdxefSec .)
+//  | "CSC"      (. ftype := tdxefCsc .)
+//  | "COT"      (. ftype := tdxefCot .)
+  | "ARCSEC"      (. ftype := tdxefArcSec .)
+  | "ARCCSC"      (. ftype := tdxefArcCsc .)
+  | "ARCCOT"      (. ftype := tdxefArcCot .)
+  | "ARCSECH"      (. ftype := tdxefArcSecH .)
+  | "ARCCSCH"      (. ftype := tdxefArcCscH .)
+  | "ARCCOTH"      (. ftype := tdxefArcCotH .)
+.
+ 
+Function2Arg <var ftype:TTDXExprFunctionType>
+ =
+   "DIV"    (. ftype := tdxefDiv .) 
+|  "DIVX"   (. ftype := tdxefDivX .)
+|   "GCF"    (. ftype := tdxefGCF .)
+|   "LCM"    (. ftype := tdxefLCM .)
+|   "MIN_"    (. ftype := tdxefMin .)
+|   "MAX_"    (. ftype := tdxefMax .)
+|   "MOD"    (. ftype := tdxefMod .)
+|   "RTX"    (. ftype := tdxefRTX .)
+|   "ROUND"  (. ftype := tdxefRound .)
+|   "TRUNC"  (. ftype := tdxefTrunc .)
+|   "SIMPAB" (. ftype := tdxefSimpAB .)
+|   "SIMPBA" (. ftype := tdxefSimpBA .)
+|   "LOGX"   (. ftype := tdxefLogX .)
+|   "PERM"   (. ftype := tdxefPerm .)
+|   "COMB"   (. ftype := tdxefComb .)
+|   "EQCASE" (. ftype := tdxefEqCase .)
+|   "NEQCASE" (. ftype := tdxefNeqCase .) 
+.
+
+   
+//Constant of any kind                                                  
+Literal <var ExprResult:TTDXExpr> 
+                                  (. var value:TTDXExprValue; .)
+  =
+    NumberLiteralVar<ExprResult>                               
+  | StringLiteral <value>        (. ExprResult := AddNode(TTDXExprStringLiteral.Create(value,FIsMath)) .)
+  | BooleanLiteral <value>       (. ExprResult := AddNode(TTDXExprLiteral.Create(value)) .)  
+.
+
+NumberLiteralVar <var ExprResult:TTDXExpr>
+  =
+    NumberLiteral <ExprResult>
+  | ExprVariable <ExprResult>
+  | MixedNumber <ExprResult> 
+.
+
+
+MixedNumber <var ExprResult:TTDXExpr>
+                                  (.var expr1,expr2,expr3:TTDXExpr;.) 
+  =
+   ( "@MNUM{" NumberLiteralVar<Expr1> ";" NumberLiteralVar<Expr2> ";" NumberLiteralVar<Expr3> "}"
+               (.ExprResult := AddNode(TTDXExprMixedNum.Create(PopNode(Expr1),PopNode(expr2),PopNode(expr3))).)
+   )            
+.
+
+//Constant represent and kind of number 
+NumberLiteral <var ExprResult:TTDXExpr>
+                                  (. var value:TTDXExprValue;.)
+  =
+    FloatLiteral <value>         (. ExprResult := AddNode(TTDXExprLiteral.Create(value)) .)
+  | IntegerLiteral <value>       (. ExprResult := AddNode(TTDXExprLiteral.Create(value)) .) 
+  | CommaNumberLiteral<ExprResult>
+  | CommaNumberLiteral1<ExprResult>
+  | CurrencyNumberLiteral<ExprResult>
+  | NegParenNumberLiteral<ExprResult>
+.
+
+
+
+CommaNumberLiteral <var ExprResult:TTDXExpr> 
+     (. var buf : String; .)
+  =
+  "NUM" "(" string_ (. buf := Dequote(LexString); .)
+     ")"  (. ExprResult := AddNode(TTDXExprLiteral.Create(VarTDXCreate(IPStrToFloat(buf),buf))) .)
+.
+
+CommaNumberLiteral1 <var ExprResult:TTDXExpr>
+               (. var value:TTDXExprValue;
+                      neg : boolean;
+                      dollar : boolean;
+                      parenneg : boolean;
+                      dollarchar : string;
+
+
+                .)
+  =
+    (. neg := false; dollar := false; parenneg := false; dollarchar := '' .)
+    "@CNUM{" ['-' (.neg := true; .)] [dollar_ (.dollar := true; dollarchar := LexString; .)] 
+      ( ( "(" ( FloatLiteral <value> | IntegerLiteral <value> ) ")" (. parenneg := true .) )   
+        | ( FloatLiteral <value> | IntegerLiteral <value> ) )  
+    "}"
+        (. if neg then
+             value := -value;
+           if parenneg then
+             value := -value;
+           ExprResult := AddNode(TTDXExprLiteral.Create(MakeCommaVar(value,dollar,parenneg))) .)
+
+.
+
+CurrencyNumberLiteral <var ExprResult:TTDXExpr>
+               (. var value:TTDXExprValue;
+                      neg : boolean;
+                      dollar : boolean;
+                      parenneg : boolean;
+                      dollarchar : string;
+
+
+                .)
+  =
+    (. neg := false; dollar := false; parenneg := false; dollarchar := '' .)
+    "@CURR{" ['-' (.neg := true; .)]  
+      ( ( "(" ( FloatLiteral <value> | IntegerLiteral <value> ) ")" (. parenneg := true .) )   
+        | ( FloatLiteral <value> | IntegerLiteral <value> ) )  
+    "}"
+        (. if neg then
+             value := -value;
+           if parenneg then
+             value := -value;
+           ExprResult := AddNode(TTDXExprLiteral.Create(MakeCurrVar(value,parenneg))) .)
+
+.           
+           
+NegParenNumberLiteral <var ExprResult:TTDXExpr>
+               (. var value:TTDXExprValue;
+                      neg : boolean;
+                      dollarchar : string;
+
+
+                .)
+  =
+    (. neg := false; dollarchar := '' .)
+    "@NEGP{" ['-' (.neg := true; .)]  
+         ( FloatLiteral <value> | IntegerLiteral <value> )   
+    "}"
+        (.
+           if neg then
+             value := -value;
+           ExprResult := AddNode(TTDXExprLiteral.Create(MakeNegVar(value))) .)
+
+.           
+
+                                
+//Boolean constants     
+BooleanLiteral<var value:TTDXExprValue>
+  = 
+  'TRUE'  (. value :=  True .) 
+ |'FALSE' (. value := False .)
+.
+
+
+//Floating-point constants                                  
+FloatLiteral <var value:TTDXExprValue>
+   (. var str : String; .) 
+  =                             
+  ( float (*| dollarnum_ *))    (.  str := LexString; 
+               if str[Length(str)] = '.' then Delete(str,Length(str),1); 
+               value := VarTDXCreate(IPStrToFloat(str),str) .)
+//| number_  (. value := VarTDXCreate(IPStrToFloat(LexString),LexString) .)
+.
+
+                 
+//Integer Constant             
+IntegerLiteral <var value:TTDXExprValue> 
+  =                             
+  integer_   (. value := VarTDXCreate(IPStrToFloat(LexString),LexString) .)
+.                        
+
+//String constant                                    
+StringLiteral <var value:TTDXExprValue>
+  =                             
+  string_            (. value := VarAsType(Dequote(LexString),varString) .)
+.    
+                                    
+
+//Represents author-entered variables (i.e., ~A, ~B, etc.)  
+//These variables are basically treated as literals (constants).    
+ExprVariable <var ExprResult:TTDXExpr>
+   (. var v : TTDXExprVariable; .)
+  =
+   variable  (.
+              if FTreatVarsAsSymbolic then                
+              begin
+                ExprResult := AddNode(TTDXExprSymbolicVar.Create(Copy(LexString,2,Length(LexString)-1)));
+                TTDXExprSymbolicVar(ExprResult).OnGetValue := FOnSymVarGetValue;
+                if assigned(FOnSymVarCreate) then
+                  FOnSymVarCreate(ExprResult,Copy(LexString,2,Length(LexString)-1));
+              end
+              else                  
+              begin
+                v := TTDXExprVariable.Create(Copy(LexString,2,Length(LexString)-1));
+                v.IsMath := FIsMath; 
+                ExprResult := AddNode(v);
+              end; 
+            .)
+/*            
+  ["." (variable | integer_) ] (.                                                                
+              //If this is being treated as a symbolic then just alter name.
+              if FTreatVarsAsSymbolic then
+              begin                       
+                with TTDXExprSYmbolicVar(ExprResult) do
+                begin
+                  VarName := VarName + '.' + Copy(LexString,2,Length(LexString)-1); 
+                end;
+              end
+              else
+              begin
+                 v.PropName := LexString;
+              end; 
+          .)
+*/                      
+.
+
+                                                                                                                                   
+                                                                                                                                    
+END TDXExprParser.
+

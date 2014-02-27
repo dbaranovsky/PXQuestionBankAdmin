@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<batch>
+   <request cmd="updatecourses">
+	<requests>
+	     <course courseid="-courseid-" domainid="-domainid-" title="-title-" reference="">
+		<data>     
+		   <bfw_allow_sampling>true</bfw_allow_sampling>
+		   <bfw_allow_purchase>true</bfw_allow_purchase>
+		</data>
+	     </course>
+	</requests>
+   </request>
+</batch>

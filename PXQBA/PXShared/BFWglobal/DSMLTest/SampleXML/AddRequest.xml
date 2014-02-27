@@ -1,0 +1,16 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<dsml:batchRequest xmlns:dsml="urn:oasis:names:tc:DSML:2:0:core" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+   <dsml:addRequest  dn="cn=cjhones,o=test">
+
+      <attr name="objectclass"><value>top</value></attr>
+      <attr name="objectclass"><value>person</value></attr>
+      <attr name="objectclass"><value>organizationalPerson</value></attr>
+      <attr name="objectclass"><value>inetorgperson</value></attr>
+      <attr name="sn"><value>Johnson</value></attr>
+      <attr name="givenName"><value>cjhones</value></attr>
+      <attr name="title"><value>Software Design Engineer</value></attr>
+   </dsml:addRequest>
+
+</dsml:batchRequest>
+ 

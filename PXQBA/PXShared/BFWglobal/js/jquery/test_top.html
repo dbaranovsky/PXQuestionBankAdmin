@@ -1,0 +1,61 @@
+<html>
+<head>
+<script type="text/javascript" src="/BFWGlobal/js/jquery/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="/BFWGlobal/js/cookies.js"></script>
+<script type="text/javascript">
+
+var if_dvars = null;
+var if_dvarsWin = null;
+
+$(document).ready(function(){
+// Your code here
+//	alert('ready top');
+	$('#msg').text( document.cookie );
+	if_dvars = $('#if_dvars')[0];
+	if_dvarsWin = if_dvars.contentWindow;
+});
+
+function update() {
+	$('#msg').text( document.cookie );
+	if_dvarsWin.location.reload();
+}
+
+</script>
+</head>
+<body>
+
+<div><b>TOP</b></div>
+
+<div id="msg"></div>
+
+<br/>
+<br/>
+
+<div>
+<iframe id="if_if"
+ src="/BFWGlobal/js/jquery/test_if.html"
+ style="width:90%; height: 110px"></iframe>
+</div>
+
+<br/>
+<br/>
+
+<div>
+<iframe id="if_cookies"
+ src="/BFWGlobal/js/jquery/test_cookies.html"
+ style="width:90%; height: 310px"></iframe>
+</div>
+
+<br/>
+<br/>
+
+<div>
+<iframe id="if_dvars"
+ src="/BFWGlobal/js/jquery/debugvars.asp"
+ style="width:800px; height: 500px"></iframe>
+</div>
+
+</body>
+</html>
+
+

@@ -1,0 +1,8 @@
+﻿<response code="OK">
+  <users>
+    <user userid="2" firstname="System" lastname="Administrator" reference="234" guid="65015e20-f278-408a-807f-7b5be65736b7" domainid="1" domainname="domainName" userspace="userSpace" username="administrator" email="test@macmillan.com" passwordquestion="Which came first the chicken or the egg?" lastlogindate="2012-06-03T22:10:34.733Z" creationdate="2010-08-19T20:10:48.357Z" version="150">
+      <data>
+      </data>
+    </user>
+  </users>
+</response>

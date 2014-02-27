@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bfw.PX.SSO", "Bfw.PX.SSO\Bfw.PX.SSO.csproj", "{9DE225A7-DF5A-4642-AF81-AC2B94E30573}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bfw.Common", "..\..\Bfw.Common\Bfw.Common\Bfw.Common.csproj", "{4F1BF9DB-1226-4867-9E41-129B214F24F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bfw.Common.Patterns", "..\..\Bfw.Common\Bfw.Common.Patterns\Bfw.Common.Patterns.csproj", "{AD00B777-4D80-4D59-AFA0-BD3088938BFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9DE225A7-DF5A-4642-AF81-AC2B94E30573}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DE225A7-DF5A-4642-AF81-AC2B94E30573}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DE225A7-DF5A-4642-AF81-AC2B94E30573}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DE225A7-DF5A-4642-AF81-AC2B94E30573}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F1BF9DB-1226-4867-9E41-129B214F24F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F1BF9DB-1226-4867-9E41-129B214F24F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F1BF9DB-1226-4867-9E41-129B214F24F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F1BF9DB-1226-4867-9E41-129B214F24F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD00B777-4D80-4D59-AFA0-BD3088938BFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD00B777-4D80-4D59-AFA0-BD3088938BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD00B777-4D80-4D59-AFA0-BD3088938BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD00B777-4D80-4D59-AFA0-BD3088938BFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,679 @@
+﻿/* start popup window */
+.blockUI {
+	top: 30px;
+	right: 30px;
+	bottom: 30px;
+	left: 30px;
+	padding: 0;
+	margin: 0;
+}
+
+#fne-minimized {
+	height: 25px;
+	width: 125px;
+	position:absolute;
+	-moz-border-radius: 5px;
+	background: none repeat scroll 0 0 #FFFFFF;
+	top:-10px;
+	border:2px solid #9BBAD2;
+}
+#fne-minimized #fne-minimized-title{
+	bottom:8px;
+	left:12px;
+	padding-left:10px;
+}
+#fne-minimized #fne-minimized-close{
+	background-image: url("style/images/ui-icons_888888_256x240.png");
+	background-position:-32px -192px;
+	height:14px;
+	width:16px;
+	float:right;
+	margin-top:-18px;
+	margin-right:2px;
+}
+
+#fne-search-minimized {
+	height: 25px;
+	width: 125px;
+	position:absolute;
+	-moz-border-radius: 5px;
+	background: none repeat scroll 0 0 #FFFFFF;
+	top:-10px;
+	border:2px solid #9BBAD2;
+}
+#fne-search-minimized #fne-minimized-title{
+	position:relative;
+	top:8px;
+	left:5px;
+}
+#fne-search-minimized #fne-minimized-close{
+	background-image: url("style/images/ui-icons_888888_256x240.png");
+	background-position:-32px -192px;
+	height:16px;
+	width:16px;
+	float:right;
+	margin-top:4px;
+	margin-right:2px;
+}
+
+#fne-window {
+	height: 100%;
+	background: none repeat scroll 0 0 #F4F4F1;
+	overflow:hidden;
+}
+
+/*IE Hack for modul window*/ 
+
+
+#fne-window #fne-title,
+#nonmodal-window #fne-title  {
+	float: left;
+	width: 100%;
+	text-align: left;
+	border-bottom: 1px dotted #868686;
+	text-transform:none;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+}
+
+#fne-title #fne-title-actions #title-text{
+	display:inline-block;
+	margin-top:4px;
+	width: 83%;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow: ellipsis;
+}
+
+#fne-window #fne-title-breadcrumb{
+	width:90%;
+	margin-bottom: 10px;
+}
+
+#fne-window #fne-title-left{
+	float:left;
+	display:block;
+	width: 100%;  
+	background-color:#d7e4ef;
+}
+#fne-window .faceplate-content-fne-title-left
+{
+    background-color:#e3e3e3 !important;
+    }
+
+#fne-window #fne-title-right
+{
+	background-color:Transparent;
+	float:right;
+	display:none;
+	width:0;
+}
+
+#fne-window h2{
+	margin: 0; 
+}
+
+#fne-window #fne-title-right-nav{
+	display: block;
+	padding: 7px 0 0 8px;
+	position: relative;
+}
+
+#fne-window #fne-title-action-left{
+	float:left;
+	padding:7px;
+	width:83%;
+}
+
+#fne-window #fne-title-action-right{
+	float:right;
+	padding:7px 7px 7px;	
+}
+
+
+#nonmodal-window #nonmodal-unblock-action,
+#nonmodal-window #confirm-action {
+	background-image: url(style/images/platx_sprite.png);
+	background-color:transparent;
+	background-repeat: no-repeat;
+	background-position: 1px -149px;
+	width: 25px;
+	height: 22px;
+	float: right;
+}
+
+#fne-window #fne-minimize-action {
+	background-image: url(style/images/platx_sprite.png);
+	background-color:transparent;
+	background-repeat: no-repeat;
+	background-position: -199px -149px;
+	width: 30px;
+	height: 25px;
+	float: right;
+	background-repeat:no-repeat;
+}
+
+#fne-content {
+	clear: both;
+	background: none repeat scroll 0 0 #FFFFFF !important;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	position:relative; 
+}
+
+#fne-content .menu, #fne-content #content-modes {
+	display: none;
+}
+
+#fne-content iframe {
+    width: 100%;
+    height: 100%;
+    float: left;
+}
+
+#fne-content #hts-editor-ui iframe{
+	overflow:hidden;   
+}
+
+#fne-content .menu {
+    float: left;
+    margin: 0;
+}
+
+#fne-content #content-item {
+padding-left: 10px;
+}
+
+#fne-content #content {
+margin: 0;
+text-align: left;
+float: left;
+}
+
+#fne-content .discussion-widget {
+display: block;
+}
+
+.nonmodal-window #nonmodal-content {clear:both;overflow:auto;}
+
+
+ #nonmodal-content #saveItem{
+	min-width:800px;
+ }
+ 
+ .ac-create-content .fne-title #title-text{
+     color:#333333 !important;
+}
+ 
+/* end popup window */
+
+
+/* fne Tab settings styling moved from Faceplate*/
+
+.assigntab .sectiontitle,
+.contentsettingstab .sectiontitle{
+    border-bottom: 1px solid #e5e7ea;
+    color: #000;
+    cursor: inherit;
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    line-height: 22px;
+}
+
+/* Content item basic info form layout */ 
+
+.fne-window-basic.fullScreen form #form{
+    width: 525px;
+    margin: 0 auto;
+}
+
+#form input{
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid #CCC;
+}
+
+.fne-window-basic.fullScreen #form #settingsAssignDueDate,
+.fne-window-basic.fullScreen #form #settingsAssignTime{
+    margin: 0;
+    padding:8px;
+    max-width: 100px;
+}
+.fne-edit #assign .create-closecancel, 
+.fne-edit .editcontent .create-closecancel, 
+.fne-edit .quiz #assign .edit-questions{
+    display:none;   
+}
+
+.product-type-faceplate #fne-window #content-item .html-content .content-title{
+    display: none;   
+}
+.ui-dialog .ui-dialog-titlebar {
+    border: none;
+}
+
+/* Remove Ui Dialog modal styling */ 
+
+p.remove-message{
+    font-size:13px;
+    font-weight:normal;    
+}
+
+.px-dialog .dialogClose,
+.px-dialog .remove{
+    font-size:12px;
+}
+
+#assignment-list .assigned-items .no-assignment {
+    font-weight: normal;
+    font-style:italic;   
+}
+.fne-window-basic.fullScreen .formlist #Title,
+.fne-window-basic.fullScreen .formlist #SubTitle{
+    width:99%;
+}
+
+/* Full Screen FNE */
+
+/* Hudson -- Had to give these values important because Block UI jquery sets these inline */ 
+.product-type-lms-faceplate .blockUI,
+.product-type-faceplate .blockUI{
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    margin: 0;
+}
+
+#fne-window.fullScreen {
+    height: 100%;
+    border: none !important;
+    background-color: #f4f4f4;
+}
+
+.no-touch #fne-window.fullScreen #fne-header{
+    min-width:1024px;
+}
+
+#fne-window.fullScreen #fne-header 
+{
+    height: 60px;
+    border-bottom:1px solid #aaaaaa;
+
+}
+
+#fne-window.fullScreen #fne-title-right-nav
+{
+    padding: 0px;
+}
+#fne-window.fullScreen #fne-title {
+    width:auto;
+    float: left;
+    border-bottom: none;
+    border-top: none;
+    padding: 23px 0px 0px 10px;
+    font-weight:bold;
+    font-size:14px;
+    font-family:Lato, Trebuchet MS, sans-serif;
+}
+#fne-window.fullScreen #fne-actions 
+{
+    display: block;
+    float:right;
+    position:relative;
+    top: 0px;
+    margin-top: 10px;
+    right: 0px;
+}
+#fne-window.fullScreen #fne-actions span.fne-action-status{
+    float:left;
+}
+
+.fne-action-status a {
+     text-decoration: none;
+ }
+ 
+#fne-window.fullScreen .fne-edit-tabs 
+{
+    width: 100%;
+    display: block;
+    float: left;
+}
+#fne-window.fullScreen #fne-actions div#fne-edit-menu
+{
+    display: none;
+    position: absolute !important;
+    z-index: 1000;
+    border:2px solid #cccccc;
+    width: 110px;
+}
+#fne-window.fullScreen #fne-actions div#fne-edit-menu ul
+{
+    margin: 0px;
+    padding: 0px;
+    width: 60px;
+       
+}
+#fne-window.fullScreen #fne-actions div#fne-edit-menu li
+{
+    width: 100%;
+    border:none;
+    border-radius:none;
+}
+
+#fne-window.fullScreen #fne-actions div
+{
+    display: inline;
+}
+
+#fne-window.fullScreen.activate-course-fne #fne-actions
+{
+    display: none !important;
+}
+
+#fne-window.fullScreen #fne-actions span.fne-action-btn
+{
+
+    margin-top: 13px;
+    display: inline-block;
+}
+
+#fne-window.fullScreen span.fne-action-btn #fne-add{
+    margin:0 15px;
+}
+#fne-window.fullScreen #fne-actions span.fne-action-btn #fne-edit{
+    
+}
+#fne-window.fullScreen #fne-actions span.fne-action-btn #fne-edit .dropdown-icon{
+    background-image: url("style/images/platx_sprite.png");
+    background-position: -1px -250px;
+    display: inline-block;
+    height: 7px;
+    width: 10px;
+}
+#fne-window.fullScreen #fne-actions span.fne-action-btn a {
+    
+    border-radius: 7px 7px 7px 7px;
+    background: #fdfdfd; /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZkZmRmZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlZWVlZWUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top, #fdfdfd 0%, #eeeeee 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fdfdfd), color-stop(100%,#eeeeee)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #fdfdfd 0%,#eeeeee 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #fdfdfd 0%,#eeeeee 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #fdfdfd 0%,#eeeeee 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #fdfdfd 0%,#eeeeee 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfdfd', endColorstr='#eeeeee',GradientType=0 ); /* IE6-8 */
+    border: 1px solid #CCC;
+    padding: 10px 10px 10px 10px;
+    color: #444;
+    font-weight: bold;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 0 1px 1px white;
+    text-decoration: none;
+}
+
+.no-touch #fne-window.fullScreen #fne-actions span.fne-action-btn a:hover{
+    background: #ededed; /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VkZWRlZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkYWRhZGEiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top,  #ededed 0%, #dadada 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ededed), color-stop(100%,#dadada)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ededed 0%,#dadada 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ededed 0%,#dadada 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ededed 0%,#dadada 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ededed 0%,#dadada 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#dadada',GradientType=0 ); /* IE6-8 */
+
+}
+
+#fne-window.fullScreen #content-nav #nav-container 
+{
+    float: none;
+    margin-right: 10px;
+}
+
+/* size fne-editing window to max width*/
+#fne-window.fullScreen.fne-edit  #contentwrapper
+{
+    max-width: none;
+    margin: 0 auto;
+}
+/* size fne-editing window form to fixed width*/
+#fne-window.fullScreen.fne-edit  #contentwrapper form{
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+#fne-window.fullScreen .fne-edit-tabs 
+{
+    width: 100%;
+    display: block;
+    float: left;
+    height:40px;
+    margin-top:14px;
+    background-color:#cccccc;
+    border-bottom: 1px solid #AAAAAA;
+}
+
+#fne-window.fullScreen .fne-edit-tabs .link-list{
+    padding-top:8px;
+}
+#fne-window.fullScreen .fne-edit-tabs .link-list li{
+    background:none;
+    border:none;
+    margin-right: 9px;
+}
+.no-touch #fne-window.fullScreen .fne-edit-tabs .link-list li:hover{
+    background-color:#dddddd;
+    border-radius:5px 5px 5px 5px;
+    border:none;
+}
+#fne-window.fullScreen .fne-edit-tabs .link-list li.active,
+.no-touch #fne-window.fullScreen .fne-edit-tabs .link-list li.active:hover{
+    background-color:#777777 !important;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#777777',endColorstr='#777777',GradientType=0) !important;
+    border-radius:5px 5px 5px 5px;
+    padding:0 16px;
+    text-shadow:none;
+    border: 1px solid #777;
+}
+
+#fne-window.fullScreen .fne-edit-tabs .link-list li.active a{
+    color:#ffffff;
+}
+#fne-window.fullScreen .fne-edit-tabs .link-list li a{
+    color:#057EE0;
+}
+#fne-window.fullScreen .fne-edit-tabs .menu{
+    height:inherit;
+}
+#fne-window .faceplate-content-fne-title-left {
+    background-color: #F8F9F9 !important;
+}
+.faceplate-content-fne-title-left #fne-title-action-right{
+    position: relative;
+    top: 25px;
+}
+.faceplate-content-fne-header #fne-title-action-right #fne-unblock-action{
+    display: none;
+}
+/* size external content in the center with fixed with*/
+#fne-window.fullScreen #contentwrapper
+{
+    max-width: 1024px;
+    min-width:960px;
+    margin: 0 auto;
+}
+#fne-window.fullScreen #nav-container span#back{
+    left:4px;
+    position:relative;
+}
+#fne-window.fullScreen #nav-container span#back,
+#fne-window.fullScreen #nav-container span#next,
+#fne-window.fullScreen #fne-header-view #fne-unblock-action-home,
+#fne-window.fullScreen #fne-header-results #fne-done {
+    background: #fdfdfd; /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZkZmRmZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlZWVlZWUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top, #fdfdfd 0%, #eeeeee 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fdfdfd), color-stop(100%,#eeeeee)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #fdfdfd 0%,#eeeeee 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #fdfdfd 0%,#eeeeee 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #fdfdfd 0%,#eeeeee 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #fdfdfd 0%,#eeeeee 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfdfd', endColorstr='#eeeeee',GradientType=0 ); /* IE6-8 */
+    text-decoration:none;
+}
+.no-touch #fne-window.fullScreen #nav-container span#back:hover,
+.no-touch #fne-window.fullScreen #nav-container span#next:hover,
+.no-touch #fne-window.fullScreen #fne-header-view #fne-unblock-action-home:hover,
+.no-touch #fne-window.fullScreen #fne-header-results #fne-done:hover{
+    background: #ededed; /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VkZWRlZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkYWRhZGEiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top,  #ededed 0%, #dadada 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ededed), color-stop(100%,#dadada)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ededed 0%,#dadada 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ededed 0%,#dadada 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ededed 0%,#dadada 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ededed 0%,#dadada 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#dadada',GradientType=0 ); /* IE6-8 */
+}
+
+
+#fne-window.fullScreen .due_date.grayout{
+    opacity:100;
+}
+#fne-window.fullScreen .due_date{
+    color: #FF6C11;
+    float: right;
+    font-size: 9px;
+    margin-top: 3px;
+    padding-right: 12px;
+    position: relative;
+    white-space: nowrap;
+}
+#fne-window.fullScreen .due_date .dd_cal{
+    border: 1px solid #FF6C11;
+    min-width: 35px;
+    display:block !important;
+    height:31px;
+}
+#fne-window.fullScreen .dd_cal .dd_cal_month{
+    background-color: #FF6C11;
+    color: white;
+    font-size: 10px;
+    padding:1px 0;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    display:block !important; 
+}
+#fne-window.fullScreen .dd_cal .dd_cal_date{
+    color: #FF6C11;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 0;
+    text-align: center;
+    white-space: nowrap;
+    display:block !important;
+}
+#fne-window.fullScreen #fne-header-edit #fne-done,
+#fne-done{
+    padding:10px;
+    background: #fdfdfd; /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZkZmRmZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlZWVlZWUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top, #fdfdfd 0%, #eeeeee 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fdfdfd), color-stop(100%,#eeeeee)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #fdfdfd 0%,#eeeeee 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #fdfdfd 0%,#eeeeee 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #fdfdfd 0%,#eeeeee 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #fdfdfd 0%,#eeeeee 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfdfd', endColorstr='#eeeeee',GradientType=0 ); /* IE6-8 */
+    width: 102px !important;
+    text-decoration:none;
+}
+
+#fne-done{
+    width:65px!important;
+}
+
+.no-touch #fne-window.fullScreen #fne-header-edit #fne-done:hover,
+.no-touch #fne-done:hover{
+    background: #ededed; /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VkZWRlZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkYWRhZGEiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top,  #ededed 0%, #dadada 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ededed), color-stop(100%,#dadada)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ededed 0%,#dadada 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ededed 0%,#dadada 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ededed 0%,#dadada 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ededed 0%,#dadada 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#dadada',GradientType=0 ); /* IE6-8 */
+}
+
+/* size fne-editing window form to fixed width*/
+
+#fne-window.fullScreen #fne-done .doneEditing-btn-icon{
+    background-image: url("style/images/platx_sprite.png");
+    background-position: -153px -705px;
+    display: inline-block;
+    height: 13px;
+    width: 24px;
+}
+#fne-window.fullScreen #fne-actions .item-submitted{
+    float:right;
+    left:-5px;
+    top:8px;
+}
+#fne-window.fullScreen #fne-actions .pxunit-display-points{
+    left: -8px;
+    position: relative;
+    top: 11px;
+    color:#333333;
+    text-decoration:none;
+    float: right;
+    
+}
+#fne-window.fullScreen #fne-actions .faceplate-item-assign {
+    float: right;
+}
+#fne-window.fullScreen #fne-actions #nav-container #back,
+#fne-window.fullScreen #fne-actions #nav-container #next{
+    padding: 10px 0 2px 10px;
+    width:80px !important;
+}
+#fne-window.fullScreen #fne-actions #nav-container .navbtn-back-icon{
+    margin:0 3px 0 0 ;
+}
+
+#fne-window.fullScreen #fne-actions #nav-container .navbtn-next-icon{
+    margin:0 0 0 3px;
+}
+#fne-window.fullScreen #fne-header-view.not-in-course #fne-subtitle{
+    display: inline-block;
+    max-width: 650px;
+    min-width: 380px;
+    position: absolute;
+    right: 150px;
+    top: 10px;
+    font-size:14px;
+}
+
+#fne-window.fullScreen .fne-hidden {
+    display: none;
+}
+#fne-window.fullScreen #createcourse form{    
+    margin: 0 auto;
+    width: 960px;
+}
+/* END Fne Window fullscreen */

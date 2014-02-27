@@ -1,0 +1,31 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>    
+    <% Html.RenderPartial("BaseStyle"); %>
+    <% Html.RenderPartial("BaseScripts"); %>
+    <asp:ContentPlaceHolder ID="HeaderAdditions" runat="server" />
+    <% Html.RenderAction("AnalyticsBase", "SiteAnalytics"); %>
+</head>
+<body class="three-column product-type-<% Html.RenderAction("GetProductType", "Course"); %> course-type-<% Html.RenderAction("GetCourseSubType", "Course"); %> <% Html.RenderPartial("Browser"); %>">
+    <% Html.RenderPartial("BaseHeader"); %>
+    <% Html.RenderPartial("BaseBanner"); %>
+    <div id="main">
+        <div class="hmborder">
+            <div class="wrap">
+                <div id="content">
+                    <asp:ContentPlaceHolder ID="CenterContent" runat="server" />
+                    <span id="faux-nav-border"></span>
+                </div>
+               <% Html.RenderAction("Menu", "Home"); %>
+            </div>
+        </div>   
+        <div class="widgetlist_zone3" style="display:none">
+            <% Html.RenderAction("GetWidgetList", "Navigation", new { parentId = "PX_LOCATION_ZONE3" }); %>
+        </div>
+    </div>
+    <% Html.RenderAction("RenderFne","Course"); %>
+    <% Html.RenderPartial("ModalWindows"); %>
+</body>
+</html>

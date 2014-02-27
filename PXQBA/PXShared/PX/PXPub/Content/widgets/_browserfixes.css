@@ -1,0 +1,30 @@
+﻿/* Restart this as weve largely moved away from lms */
+
+/* fix for firefox header student dropdown bug */ 
+    
+.firefox #student{
+    width: 177px;
+}
+
+.firefox .product-type-faceplate #btnSearchQuiz{
+    top:2px;
+    right: 31px;
+}
+
+
+/* fix for firefox Instructor Title in Xbook */ 
+
+.firefox #container_PX_XbookContentWidget_Home #PX_UserProfileWidget li.status{
+    left:6px;
+}
+
+/*.firefox .linkButton, .firefox input[type="submit"], .firefox  input[type="button"], .firefox button {
+    padding:3px 8px;
+}*/
+
+
+/* IE Quizzing fixes */ 
+
+.ie8 .fullScreen#fne-window #fne-header-edit #fne-done {
+    width: 130px !important;
+}

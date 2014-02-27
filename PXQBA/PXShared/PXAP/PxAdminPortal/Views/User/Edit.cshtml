@@ -1,0 +1,64 @@
+﻿@model Bfw.PXAP.Models.View.EditUserViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#UpdatePassword").click(function () {
+            if (this.checked) {
+                $("input[type=password]").attr("data-val", true);
+                $("input[type=password]").removeAttr('disabled');
+            }
+            else {
+                $("input[type=password]").attr("data-val", false);
+                $("input[type=password]").attr("disabled", "disabled");
+            }
+        });
+    });
+</script>
+
+@using (Ajax.BeginForm("Edit", "User", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "PxApUser.UpdateUser" }))
+{
+<div style="background-color:#ffffff;">
+    <div id="userInfoHeader"></div>
+    <fieldset id="userInfoContent">
+        <legend>Edit User</legend>
+        <div id="error" style="padding-left: 5px; color: red;">
+            @Html.ValidationSummary(false)
+        </div>
+        <div class="form-item">
+            @Html.LabelFor(model => model.UserName)
+            @Html.TextBoxFor(model => model.UserName, new { @readonly = "readonly" })
+        </div>
+        <div class="form-item">
+            @Html.LabelFor(model => model.Name)
+            @Html.EditorFor(model => model.Name)
+        </div>
+        <div class="form-item">
+            @Html.LabelFor(model => model.Email)
+            @Html.EditorFor(model => model.Email)
+        </div>
+        <div class="form-item">
+            @Html.LabelFor(model => model.UpdatePassword)
+            @Html.CheckBoxFor(model => model.UpdatePassword)
+        </div>
+        <div class="form-item">
+            @Html.LabelFor(model => model.CurrentPassword)
+            @Html.PasswordFor(model => model.CurrentPassword, new { disabled = "disabled" })
+        </div>
+        <div class="form-item">
+            @Html.LabelFor(model => model.NewPassword)
+            @Html.PasswordFor(model => model.NewPassword, new { disabled = "disabled" })
+        </div>
+        <div class="form-item">
+            @Html.LabelFor(model => model.ConfirmPassword)
+            @Html.PasswordFor(model => model.ConfirmPassword, new { disabled = "disabled" })
+        </div>
+        <div class="submit-buttons">
+            <input type="button" value="CANCEL" onclick="PxApUser.ClearAndResetModal()" />
+            <input type="submit" value="SAVE" />
+        </div>
+    </fieldset>
+</div>
+}

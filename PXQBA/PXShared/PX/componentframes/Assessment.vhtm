@@ -1,0 +1,291 @@
+﻿<div style="position:absolute;top:0px;left:0px;right:0px;bottom:32px" id="assessmentframecontent_<%ID%>">
+    <%ContentFrameContent%>
+</div>
+<div style="position:absolute;bottom:0;height:32px;left:0px;right:0px" class="color_light" id="assessmentframefooterrow_<%ID%>">
+</div>
+
+<script type="text/javascript">
+(function() {
+    var api = <%ContentFrameAPI%>;
+	var submitted = false;
+    FRAME_API.addListener('examstatechanged',stateChanged, api);
+    FRAME_API.addListener('examtimechanged',timeChanged, api);
+	
+	FRAME_API.addEvent('hostclosing');
+	FRAME_API.addListener('hostclosing', onHostClosing, api);
+	
+	FRAME_API.addEvent('submitrequested');
+	FRAME_API.addListener('submitrequested', onSubmitRequested, api);
+	
+    Ext.EventManager.on(window, 'unload', function () {
+		FRAME_API.removeListener('examstatechanged', stateChanged, api);
+		FRAME_API.removeListener('examtimechanged',timeChanged, api);
+    }, this);
+	
+	function onHostClosing() {
+		var api = this;
+		Ext.MessageBox.confirm(api.I18N.Confirm, unanswered ? api.I18N.SubmitEmptyAnswersText : api.I18N.SubmitText, function(answer) {
+			if(answer == "yes")
+			{       
+				api.performAction('submit');
+			}
+		});
+	}
+	
+	function onSubmitRequested() {
+		api.performAction('submit');
+	}
+	
+    function stateChanged() {
+        var api = this;
+
+        if (api.state == 'summary') {
+            var cells = [{ tag: 'td', width: "100%", html: api.status }];
+			api.actions.push({ type: 'save', text: 'Done', enabled: true });
+            Ext.each(api.actions,function (item, index) {
+                if (item.type == 'detail') {
+                    cells.push({ tag: 'td', cn: [{ tag: 'div', cls: 'dropboxButton', id: 'assessmentframegrade_<%ID%>' }]});
+                }
+                addButton(cells, index);
+                return true;
+            });
+            setFooter(cells);
+            api.renderScore('assessmentframegrade_<%ID%>', api.scoreHtml);
+            Ext.each(api.actions,function (item, index) {
+                renderButton(item, index, this);
+                return true;
+            }, this);
+        }
+        else if (api.state == 'active') {
+
+            (function setBaseTarget() {
+
+                var els = document.getElementsByTagName("base");
+
+                if (els.length > 0 ) {
+                    // don't do anything if target attribute is already there
+                    var trg = els[0].getAttribute("target");
+                    if (trg !== null) {
+                        return;
+                    }   
+                    var baseT = els[0];
+                } else { 
+                    var baseT = document.createElement("base");
+                }
+
+                baseT.setAttribute("target","_blank");
+                document.getElementsByTagName("head")[0].appendChild(baseT);
+            })();
+            
+            var cells = [];
+            if (api.hasTimeLimit) {
+                cells.push({ tag: 'td', width: "100%", html: api.I18N.Remaining + ": <span id='assessmentframeremainingtime_<%ID%>'></span>&nbsp;" + api.I18N.Start + ": " + api.startTime });
+            }
+            else {
+                cells.push({ tag: 'td', width: "100%", html: api.I18N.Start + ": " + api.startTime });
+            }
+			
+            var showDirections = getQueryString()["showDirections"];
+			if(showDirections == "1" ){
+				addButton(cells, 'description');
+			}else{
+			addButton(cells, 'description', "display:none;");
+			}
+			
+            if (api.maxPage > 1) {
+                var items = [];
+                for (var i = 1;i <= api.maxPage;i++) {
+                    items.push({ tag: 'option', value: i, html: i });
+                }
+                addButton(cells, 'previous');
+                cells.push({ tag: 'td', cn: [{ tag: 'select', id: 'assessmentframepageselect_<%ID%>', cn: items }] });
+                cells.push({ tag: 'td', style: 'white-space:nowrap', html: String.format(api.I18N.OfN,api.maxPage) });
+                addButton(cells, 'next');
+            }
+
+            Ext.each(api.actions,function (item, index) {
+                // Add all buttons but these
+                if (!(item.type == 'description' || item.type == 'previous' || item.type == 'next'))
+                    addButton(cells, index);
+                return true;
+            });
+
+            setFooter(cells);
+
+            Ext.each(api.actions,function (item, index) {
+                var id = item.type;
+                if (!(item.type == 'description' || item.type == 'previous' || item.type == 'next'))
+                    id = index;
+                renderButton(item, id, this);
+                return true;
+            }, api);
+
+            if (api.maxPage > 1) {
+                Ext.get('assessmentframepageselect_<%ID%>').on('change',function () {
+                    api.performAction('page', parseInt(this.getValue()));
+                    updatePageButtons(api, true);
+                });
+                updatePageButtons(api);
+            }
+			
+			FRAME_API.fireEvent("componentactive", "assessment", "<%ID%>");
+        }
+        else if (api.state == 'review') {
+            var cells = [{ tag: 'td', width: "100%", html: '&nbsp;' }];
+            if (!Ext.isEmpty(api.scoreHtml)) {
+               cells.push({ tag: 'td', cn: [{ tag: 'div', cls: 'dropboxButton', id: 'assessmentframegrade_<%ID%>' }]});
+            }
+            Ext.each(api.actions,function (item, index) { addButton(cells, index); return true; });
+            setFooter(cells);
+
+
+            Ext.each(api.actions,function (item, index) { renderButton(item, index, api); return true; });
+			FRAME_API.fireEvent("reviewstate", "assessment", "<%ID%>", { });
+        }
+        else if (api.state == 'error') {
+            var cells = [{ tag: 'td', width: "100%", html: '&nbsp;' }];
+            addButton(cells, 'done');
+            setFooter(cells);
+
+            renderButton(api.getAction('done'),'done',api)
+        }
+        else if (api.state == 'password') {
+             clearBar();
+        }
+        else {
+             setFooter([{ tag: 'td', html: 'State: ' + api.state }]);
+        }
+    }
+
+    function timeChanged() {
+        var api = this;
+        if (api.state == 'active') {
+            Ext.DomHelper.overwrite('assessmentframeremainingtime_<%ID%>',api.timeRemainingHtml);
+        }
+    }
+
+    function setFooter(cells) {
+        var table = { tag: 'table', cellpadding: '0', cellspacing: '0', style:'margin:4px', cn: [{ tag: 'tr', cn: cells }] };
+        Ext.DomHelper.overwrite('assessmentframefooterrow_<%ID%>',table);
+    }
+
+    function clearBar() {
+        setFooter([{ tag: 'td', html: '&nbsp;' }]);
+    }
+
+    function addButton(cells, id, extraStyles) {
+        cells.push({ tag: 'td', style: 'padding-left:5px;' + extraStyles, id: 'assessmentframebutton_<%ID%>_' + id });
+    }
+
+    function renderButton(item, id, api) {
+        if (item == null) return;
+        if (item.type == 'print') {
+            api.renderButton({ 
+                id: 'assessmentframebutton_<%ID%>_' + id,
+                text: item.text,
+                tooltip: item.tooltip,
+                enabled: item.enabled,
+                handler: function() { this.performAction('print',1) },
+                scope: api,
+                items: [
+                    { text: api.I18N.Student, handler: function(){ this.performAction('print',1) } },
+                    { text: api.I18N.Teacher, handler: function(){ this.performAction('print',2) } },
+                    { text: api.I18N.Both, handler: function(){ this.performAction('print',3) } }
+                ]
+            });
+        }
+        else {
+            api.renderButton({ 
+                id: 'assessmentframebutton_<%ID%>_' + id,
+                text: item.text,
+                tooltip: item.tooltip,
+                minWidth: item.text.length > 1 ? 70 : 35,
+                enabled: item.enabled,
+                handler: function() { performAction(item, this); },
+                scope: api
+            });
+        }
+    }
+
+    function performAction(action, api) {
+        switch (action.type) {
+        case "next":
+            api.performAction('page', api.page+1);
+            updatePageButtons(api);
+            break;
+        case "previous":
+            api.performAction('page', api.page-1);
+            updatePageButtons(api);
+            break;
+        case "submit":
+            hideContent();
+            // Test if the user answered all questions 
+            var unanswered = api.hasUnansweredQuestion();
+            Ext.MessageBox.getDialog().setWidth(300, false).center();
+            if (api.requireAnswers && unanswered) {
+                Ext.MessageBox.alert(api.I18N.Error,api.I18N.RequireAnswers,showContent).setIcon(Ext.MessageBox.ERROR);
+                return;
+            }
+            Ext.MessageBox.confirm(api.I18N.Confirm, unanswered ? api.I18N.SubmitEmptyAnswersText : api.I18N.SubmitText, function(answer) {
+                showContent();
+                if(answer == "yes") {       
+                    clearBar();             
+                    api.performAction(action.type);
+					FRAME_API.fireEvent("submit", "assessment", "<%ID%>", { });
+                }
+            }).setIcon(unanswered ? Ext.MessageBox.WARNING : Ext.MessageBox.QUESTION);
+            break;
+        case "start":
+            hideContent();
+            Ext.MessageBox.confirm(api.I18N.Confirm, api.I18N.StartQuestion, function (answer) {
+                showContent();
+                if (answer == "yes") {
+                    clearBar();
+                    api.performAction(action.type);
+                }
+            }, this);
+            break;
+		case "done":
+			FRAME_API.fireEvent("componentcancelled", "assessment", "<%ID%>", { });
+			break;
+		case "save":
+			api.performAction(action.type, action.param);
+			FRAME_API.fireEvent("save", "assessment", "<%ID%>", { });
+			break;
+		case "description":
+			FRAME_API.fireEvent("description", "homework", "<%ID%>", { });
+			break;
+        default:
+            api.performAction(action.type, action.param);
+        }
+    }
+
+    function hideContent() {
+        Ext.get('assessmentframecontent_<%ID%>').hide();
+    }
+
+    function showContent() {
+        Ext.get('assessmentframecontent_<%ID%>').show();
+    }
+
+    function updatePageButtons(api, skipSelect) {
+        api.enableButton('assessmentframebutton_<%ID%>_previous', api.page > 1);
+        api.enableButton('assessmentframebutton_<%ID%>_next', api.page < api.maxPage);
+        if (!skipSelect) {
+            document.getElementById('assessmentframepageselect_<%ID%>').value = api.page;
+        }
+    }
+	
+	function getQueryString() {
+	  var result = {}, queryString = location.search.substring(1),
+		  re = /([^&=]+)=([^&]*)/g, m;
+
+	  while (m = re.exec(queryString)) {
+		result[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+	  }
+	  return result;
+	}
+
+})();
+
+</script>

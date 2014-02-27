@@ -1,0 +1,64 @@
+﻿#noteSetting-Container
+{
+     display: block;
+     float: left;          
+     position:relative;     
+     width:270px;
+}
+
+#searchNote
+{
+
+}
+
+#noteSettingList
+{      
+    padding-top:30px; 
+}
+
+#shareListContainer
+{
+     display: block; 
+     position:relative;        
+}
+
+.shareTitle
+{
+    padding-bottom:10px;    
+}
+
+.shared-student
+{    
+    padding: 3px 0;    
+}
+
+.shared-student-name
+{
+    width:90%;    
+}
+
+.shared-student .remove
+{
+    background-image: url("style/images/ui-icons_888888_256x240.png");
+    background-position: -32px -192px;
+    float: right;
+    height: 16px;
+    width: 16px;
+}
+
+.selectStudent
+{
+    background-color: Gray;
+}
+
+.added-info-message
+{
+    padding-top:7px;     
+}
+
+.ui-autocomplete-loading { background: white url('style/images/imgloader.gif') right center no-repeat; }
+
+.returnToNotes
+{
+    float:right; 
+}

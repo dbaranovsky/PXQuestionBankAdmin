@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UpdateItems>
+	<Item>
+		<Id>PX_FacePlate_Support_Widget</Id>
+		<Where>
+			/parent='PX_HOME_FACEPLATE_ZONE_3'
+		</Where>
+		<Update>
+			<key>/bfw_properties/bfw_property[@name='bfw_faceplate_support_detail_popup']</key>
+			<value>For Technical Support, call 1-877-587-6534 between 9:00 AM - 3:00 AM Monday-Thursday, Friday 9:00 AM - 11:00 PM, Saturday 11:30 AM - 8:00 PM and Sunday 11:30 AM - 11:00 PM (all times EST), or or fill out the support request form.</value>
+		</Update>
+		<Delete>
+		</Delete>
+	</Item>
+</UpdateItems>

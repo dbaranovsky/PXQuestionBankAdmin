@@ -1,0 +1,171 @@
+﻿
+
+
+<script type="text/javascript">
+
+    // increase the default animation speed to exaggerate the effect
+
+    $(function () {
+        $.fx.speeds._default = 1000;
+        $('#overlay').hide();
+        $('.ui-dialog').hide();
+
+
+        var p = 0;
+        var pId = 0
+        var percentage = 0;
+        var updateTimer;
+
+        $("#opener").click(function () {
+
+            $('#overlay').show();
+
+            $('.ui-dialog').show();
+            $('#success').hide();
+            $("#myProgressBar").progressbar({ value: 0 });
+            $("#myProgressBar").show();
+
+            StartProgress();
+            return false;
+        });
+
+        $('#closer').click(function () {
+            $('#overlay').hide();
+            $('.ui-dialog').hide();
+        });
+
+        function StartProgress() {
+
+            var $form = $('#longform');
+
+            $.ajax({
+                type: "POST",
+                url: "Progress/StartProcess",
+                success: function (data) {
+                    if (data.ProcessId) {
+                        pId = data.ProcessId;
+                        if (pId > 0) {
+
+                            var values = $form.serializeArray();
+                            values.push({ name: "processId", value: pId });
+
+                            $.ajax({
+                                type: "POST",
+                                url: $form.attr('action'),
+                                data: values,
+                                error: function (xhr, status, error) {
+                                    alert("error!!!");
+                                    clearTimeout(updateTimer);
+                                },
+                                success: function (response) {
+                                    clearTimeout(updateTimer);
+                                    $("#myProgressBar").progressbar({ "value": 100 });
+                                    $('#success').show();
+                                    $("#myProgressBar").hide();
+                                }
+                            });
+
+                            GetProgress();
+
+                        }
+                    }
+                }
+
+            });
+        }
+
+        function GetProgress() {
+
+            //            if (!updateTimer) {
+            //                updateTimer = setInterval(function () {
+            $.ajax({
+                type: "POST",
+                url: "Progress/GetProgress",
+                data: "processId=" + pId,
+                success: function (msg) {
+                    console.log("current percentage: " + msg.Percentage);
+                    if (msg.Percentage) {
+                        percentage = msg.Percentage;
+                        $("#myProgressBar").progressbar({ "value": msg.Percentage + 1 });
+                    }
+
+                    updateTimer = setTimeout(GetProgress, 1000);
+                }
+            });
+            //            } else {
+            //                clearInterval(updateTimer);
+            //                updateTimer = null;
+            //            }
+        }
+
+    });
+    
+
+</script>
+<style>
+    .ui-dialog-titlebar-close
+    {
+        display: none;
+    }
+    
+    #overlay
+    {
+        background-color: black;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0.6; /* also -moz-opacity, etc. */
+        z-index: 10;
+    }
+    
+    #myProgressBar
+    {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        margin-left: -125px;
+        margin-top: -13px;
+        width: 250px;
+        z-index: 1004;
+    }
+    
+    #success
+    {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        margin-left: -125px;
+        margin-top: -13px;
+        width: 250px;
+        z-index: 1004;
+    }
+    
+    
+    #closeButton
+    {
+        position: absolute;
+        top: 70%;
+    }
+</style>
+
+<div id="overlay" title="Progress">
+    <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable"
+            style="display: block; z-index: 1002; outline: 0px none; position: absolute;
+            height: auto; width: 300px; top: 349px; left: 419.5px;" tabindex="-1" role="dialog"
+            aria-labelledby="ui-dialog-title-dialog">
+            <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+                Processing Request...
+                <div id="dialog" class="ui-dialog-content ui-widget-content" style="width: auto;
+                    min-height: 111.4px; height: auto;" scrolltop="50" scrollleft="0">
+                    <div id='myProgressBar'>
+                    </div>
+                    <div id="success">Processing Complete!</div>
+                    <div id='closeButton'>
+                        <button type="button" id="closer">
+                            Close</button></div>
+              </div>
+         </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://int-raws.bfwpub.com/raws3/EnterActivationCode/RAEnterActivationCode.asmx?disco" filename="RAEnterActivationCode.disco" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://int-raws.bfwpub.com/raws3/EnterActivationCode/RAEnterActivationCode.asmx?wsdl" filename="RAEnterActivationCode.wsdl" />
+  </Results>
+</DiscoveryClientResultsFile>

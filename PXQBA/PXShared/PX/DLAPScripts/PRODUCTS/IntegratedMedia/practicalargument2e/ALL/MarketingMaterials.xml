@@ -1,0 +1,889 @@
+<batch>
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_PRODUCT_MARKETING" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_ROOT</parent>
+          <title>Marketing Material</title>
+          <abbreviation>mm</abbreviation>
+          <description>
+              &lt;style type=&quot;text/css&quot;&gt;
+              .course-info-widget .bottom
+              {
+              margin-top: 10px;
+              width: 210px;
+              }
+              .course-info-widget .tutorial-links
+              {
+              list-style-type: none;
+              color: #27327D;
+              }
+              .course-info-widget .tutorial-links li
+              {
+              border-bottom: dotted 1px #27327D;
+              padding: 6px;
+              }
+              .course-info-widget .tutorial-links li.header-row
+              {
+              border-top: 4px solid #27327D;
+              }
+              .page-action-Unauthenticated .course-info-widget .tutorial-links li.header-row
+              {
+              border-top: 1px dotted #27327D;
+              margin-top: 30px;
+              }
+              .course-info-widget .tutorial-links li.header-row h1
+              {
+              margin: 0;
+              font-size: 12px;
+              white-space: nowrap;
+              }
+              .marketing-content
+              {
+              width: 90%;
+              margin: auto;
+              }
+              .marketing-content .bottom
+              {
+              font-size: 10px;
+              font-weight: normal;
+              margin-top: 20px;
+              text-align: right;
+              }
+              .marketing-content .bottom span a
+              {
+              text-decoration: none;
+              color: #27327D;
+              }
+              .marketing-content .tutorial-link
+              {
+              cursor: pointer;
+              font-size: 12px;
+              color: #1e5ac8;
+              }
+              .marketing-content ul
+              {
+              list-style-type: disc;
+              line-height: 24px;
+              margin-left: 15px;
+              }
+              .marketing-content ul li
+              {
+              color: #505050;
+              }
+              .marketing-content h1
+              {
+              font-size: 16px;
+              color: #27327D;
+              line-height: 30px;
+              }
+              body.product-type-ecom #main
+              {
+              background-image: none !important;
+              background-position: 0 18px !important;
+              background-repeat: repeat-x !important;
+              min-width: 960px;
+              overflow-x: auto;
+              overflow-y: auto;
+              top: 72px;
+              padding-top: 32px;
+              position: relative;
+              float: none !important;
+              margin-top: 0 !important;
+              }
+              .product-type-ecom #ecom-marketing h2
+              {
+              line-height: 24px;
+              color: #e51937;
+              font-size: 24px;
+              font-family: TimesNewRoman, &quot;Times New Roman&quot; , Times, Baskerville, Georgia, serif;
+              font-style: italic;
+              text-align: center;
+              margin-bottom: 24px;
+              }
+              .product-type-ecom #ecom-marketing h2 span
+              {
+              font-style: normal;
+              font-size: 24px;
+              line-height: 24px;
+              color: #e51937;
+              font-size: 24px;
+              font-family: TimesNewRoman, &quot;Times New Roman&quot; , Times, Baskerville, Georgia, serif;
+              text-align: center;
+              }
+              #ecom-marketing .xbook-mars-branding-book-wrapper h2 {
+              font-size: 14px;
+              text-align: left;
+              margin: 6px 0 0 0;
+              }
+              #ecom-marketing .xbook-mars-branding-book-wrapper h2 span
+              {
+              font-size: 14px;
+              }
+
+              .product-type-xbook #PX_HOME_ZONE_2, .product-type-xbook #main-container
+              {
+              height: 100%;
+              }
+
+              #ecom-marketing .xbook-mars-nav {
+              float: left;
+              width: 100%;
+              height: 35px;
+              margin: 0 0 12px 0;
+              padding-right: 0;
+              border: 1px solid #c9c8c8;
+              background-color: #c9c8c8;
+              -moz-border-radius-bottomright: 20px;
+              -moz-border-radius-topright: 20px;
+              -webkit-border-radius-topright: 20px;
+              -webkit-border-radius-bottomright: 20px;
+              border-top-right-radius: 20px;
+              border-bottom-right-radius: 20px;
+              -moz-box-shadow: 0 1px 0 #999, 0 1px 0 #e0e0e0 inset;
+              -webkit-box-shadow: 0 1px 0 #999, 0 1px 0 #e0e0e0 inset;
+              box-shadow: 0 1px 0 #999, 0 1px 0 #e0e0e0 inset;
+              }
+
+              #ecom-marketing .xbook-mars-nav ul
+              {
+              margin: 0;
+              padding: 0;
+              width: 100%;
+              }
+              #ecom-marketing .xbook-mars-nav ul li
+              {
+              float: left;
+              margin: 0;
+              list-style: none;
+              padding-right: 0;
+              }
+              #ecom-marketing .xbook-mars-nav ul li .icon
+              {
+              background-image: url(&quot;style/images/xbook-mars-nav-icon.png&quot;);
+              background-repeat: no-repeat;
+              width: 20px;
+              height: 26px;
+              display: block;
+              float: right;
+              background-position: 0 5px;
+              margin-left: 12px;
+              }
+
+              #ecom-marketing .xbook-mars-nav ul li a {
+              line-height: 36px;
+              color: #333;
+              text-transform: capitalize;
+              font-family: Arial, &quot;Helvetica&quot; ,sans-serif;
+              font-weight: normal;
+              font-size: 13px;
+              letter-spacing: 0;
+              padding: 0 12px;
+              }
+
+              .xbook-mars-nav ul li a:hover span{
+              color:#fff;
+              }
+
+              #ecom-marketing .xbook-mars-nav .pxicon.pxicon-right-open{
+              color: #e51937;
+              margin-right:0;
+              }
+              #ecom-marketing .xbook-mars-content
+              {
+              float: left;
+              width: 100%;
+              text-align: left;
+              padding-left: 98px;
+              position: relative;
+              }
+              #ecom-marketing .xbook-mars-content span {
+              clear: both;
+              float: left;
+              width: 100%;
+              }
+              #ecom-marketing .xbook-mars-content ul
+              {
+              font-size: 14px;
+              list-style-type: disc;
+              list-style-position: inside;
+              padding-left: 14px;
+              line-height: 24px;
+              margin-bottom: 8px;
+              }
+
+              #ecom-marketing .xbook-mars-content ul a,
+              .xbook-mars-content a u  {
+              color: #2A679F;
+              text-decoration:none;
+              }
+
+              #ecom-marketing .xbook-mars-content ul a:hover{
+              text-decoration:underline;
+              }
+              .xbook-mars-content .bedford-media-prompt
+              {
+              padding: 12px;
+              background-color: #eae9e9;
+              border: 1px solid #ccc;
+              white-space: normal;
+              font-size: 14px;
+              font-family: Arial, &quot;Helvetica Neue&quot; , Helvetica, sans-serif;
+              }
+              #ecom-marketing .xbook-mars-content .bedford-media-prompt span
+              {
+              color: #e51937;
+              }
+              #ecom-marketing .xbook-mars-content .content-wrapper
+              {
+              width: 460px;
+              margin: 0 auto;
+              position: relative;
+              }
+              #ecom-marketing .xbook-mars-content .content-wrapper h1{
+              font-family: Century Gothic, sans-serif;
+              font-weight: bold;
+              font-size: 25px;
+              color: #4d4d4d;
+              }
+              #ecom-marketing .xbook-mars-content .content-wrapper .subtitle
+              {
+              color: #E95A4E;
+              display: block;
+              font-family: Georgia,Times, &quot;Times New Roman&quot; ,serif;
+              font-size: 22px;
+              font-style: italic;
+              line-height: 28px;
+              padding: 8px 0 0 0;
+              }
+              #ecom-marketing .xbook-mars-content .content-wrapper .author
+              {
+              clear: both;
+              color: #333333 !important;
+              display: block;
+              font-family: Georgia,Times, &quot;Times New Roman&quot; ,serif;
+              font-size: 16px !important;
+              margin: 8px 0;
+              }
+              #ecom-marketing .xbook-mars-content .content-wrapper p
+              {
+              font-size: 14px;
+              line-height: 18px;
+              font-family: Arial, &quot;Helvetica Neue&quot; ,Helvetica,sans-serif;
+              margin-top: 12px;
+              }
+              #ecom-marketing .xbook-mars-content .xbook-mars-branding
+              {
+              clear: both;
+              width: 475px;
+              height: 217px;
+              background-repeat: no-repeat;
+              margin: 0 auto;
+              position: relative;
+              top: -295px;
+              left: -32px;
+              display: none;
+              }
+
+              #ecom-marketing .xbook-mars-content .xbook-mars-branding-book-wrapper {
+              position: absolute;
+              top: 38px;
+              left: 0;
+              }
+
+              .bmi-book{
+              background-image: url('http://qa.bedfordstmartins.com/brainhoney/resource/6650/Content/images/practical-argument-book2.png');
+              background-repeat: no-repeat;
+              height: 185px;
+              position: relative;
+              width: 150px;
+              margin: 0;
+              background-size: contain;
+              float: left;
+              }
+
+              .book-title {
+              color: #666;
+              font-size: 13px;
+              margin-top: 20px;
+              clear: both;
+              float: left;
+              }
+
+              .book-title h3{
+              color: #e30c2b;
+              font-size: 13px;
+              font-family: &quot;Lucida Grande&quot;, Verdana, Helvetica, Arial, sans-serif;
+              font-style: italic;
+              font-weight: normal;
+              }
+
+              .book-title div{
+              margin-top:12px;
+              }
+
+              .book-title span{
+              line-height:16px;
+              }
+
+              .ecom-btns .icon
+              {
+              background-color: transparent;
+              background-image: url(&quot;style/images/platx_sprite.png&quot;);
+              background-position: -99px -353px;
+              background-repeat: no-repeat;
+              display: block;
+              float: right;
+              height: 12px;
+              width: 18px;
+              }
+
+
+
+              #menu, #menu ul {
+              margin: 0;
+              padding: 0;
+              list-style: none;
+              }
+
+              #menu {
+              width: 668px;
+              margin: 0px auto;
+              border: 1px solid #c9c8c8;
+              background-color: #c9c8c8;
+              -moz-border-radius-bottomright: 20px;
+              -moz-border-radius-topright: 20px;
+              -webkit-border-radius-topright: 20px;
+              -webkit-border-radius-bottomright: 20px;
+              border-top-right-radius: 20px;
+              border-bottom-right-radius: 20px;
+              -moz-box-shadow: 0 1px 0 #999, 0 1px 0 #e0e0e0 inset;
+              -webkit-box-shadow: 0 1px 0 #999, 0 1px 0 #e0e0e0 inset;
+              box-shadow: 0 1px 0 #999, 0 1px 0 #e0e0e0 inset;
+
+              }
+
+              #menu:before,
+              #menu:after {
+              content: &quot;&quot;;
+              display: table;
+              }
+
+              #menu:after {
+              clear: both;
+              }
+
+              #menu {
+              zoom:1;
+              }
+
+              #menu li {
+              float: left;
+
+              position: relative;
+              }
+
+              #menu a {
+              float: left;
+              padding: 10px 15px;
+              color: #333333;
+              font: 13px Arial, Helvetica;
+              text-decoration: none;
+              }
+
+              #menu li:hover &gt; a {
+              color: #fff; text-decoration:none;
+              }
+
+              *html #menu li a:hover { /* IE6 only */
+              color: #1291c7;text-decoration:none;
+              }
+
+              #menu ul {
+              margin: 20px 0 0 0;
+              _margin: 0; /*IE6 only*/
+              opacity: 0;
+              visibility: hidden;
+              position: absolute;
+              top: 38px;
+              left: 0;
+              z-index: 1;
+              background: #c9c8c8;
+
+              background: -moz-linear-gradient(#ebebeb, #c9c8c8);
+              background-image: -webkit-gradient(linear, left top, left bottom, from(#ebebeb), to(#c9c8c8));
+              background: -webkit-linear-gradient(#ebebeb, #c9c8c8);
+              background: -o-linear-gradient(#ebebeb, #c9c8c8);
+              background: -ms-linear-gradient(#ebebeb, #c9c8c8);
+              background: linear-gradient(#ebebeb, #c9c8c8);
+              -moz-box-shadow: 0 -1px rgba(255,255,255,.3);
+              -webkit-box-shadow: 0 -1px 0 rgba(255,255,255,.3);
+              box-shadow: 0 -1px 0 rgba(255,255,255,.3);
+              -moz-border-radius: 3px;
+              -webkit-border-radius: 3px;
+              border-radius: 3px;
+              -webkit-transition: all .2s ease-in-out;
+              -moz-transition: all .2s ease-in-out;
+              -ms-transition: all .2s ease-in-out;
+              -o-transition: all .2s ease-in-out;
+              transition: all .2s ease-in-out;
+
+
+              }
+
+
+              #menu li:hover &gt; ul {
+              opacity: 1;
+              visibility: visible;
+              margin: 0;
+              font-size:18px;
+
+
+              }
+
+              #menu ul ul {
+              top: 0;
+              left: 150px;
+              margin: 0 0 0 20px;
+              _margin: 0; /*IE6 only*/
+              font-size:18px;
+
+              }
+
+              #menu ul li {
+              float: none;
+              display: block;
+              border: 0; font-style:italic;
+              _line-height: 0; /*IE6 only*/
+              -moz-box-shadow: 0 1px 0 #111, 0 1px 0 #fff;
+              -webkit-box-shadow: 0 1px 0 #111, 0 1px 0 #fff;
+              box-shadow: 0 1px 0 #111, 0 1px 0 #fff;
+              font-size:18px;
+              color:1291c7;
+              }
+
+              #menu ul li:last-child {
+              -moz-box-shadow: none;
+              -webkit-box-shadow: none;
+              box-shadow: none;
+              font-size:18px;
+              }
+
+              #menu ul a {
+              padding: 10px;
+              width: 200px;
+              _height: 10px; /*IE6 only*/
+              display: block;
+              white-space: nowrap;
+              float: none;
+              text-transform: none;
+              font-size:13px;
+              line-height: 19px;
+              }
+
+              #menu ul a:hover {
+              background-color: #0186ba;
+              background-image: -moz-linear-gradient(#04acec,  #0186ba);
+              background-image: -webkit-gradient(linear, left top, left bottom, from(#04acec), to(#0186ba));
+              background-image: -webkit-linear-gradient(#04acec, #0186ba);
+              background-image: -o-linear-gradient(#04acec, #0186ba);
+              background-image: -ms-linear-gradient(#04acec, #0186ba);
+              background-image: linear-gradient(#04acec, #0186ba);
+              }
+
+              #menu ul li:first-child &gt; a {
+              -moz-border-radius: 3px 3px 0 0;
+              -webkit-border-radius: 3px 3px 0 0;
+              border-radius: 3px 3px 0 0;
+              }
+
+              #menu ul li:first-child &gt; a:after {
+              content: '';
+              position: absolute;
+              left: 40px;
+              top: -6px;
+              border-left: 6px solid transparent;
+              border-right: 6px solid transparent;
+              border-bottom: 6px solid #444;
+              }
+
+              /* Mobile */
+              #menu-trigger {
+              display: none;
+              }
+
+              @media screen and (max-width: 600px)
+              {
+
+              /* nav-wrap */
+              #menu-wrap
+              {
+              position: relative;
+              }
+
+              #menu-wrap *
+              {
+              -moz-box-sizing: border-box;
+              -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+              }
+
+              /* menu icon */
+              #menu-trigger
+              {
+              display: block; /* show menu icon */
+              height: 40px;
+              line-height: 40px;
+              cursor: pointer;
+              padding: 0 0 0 35px;
+              border: 1px solid #222;
+              color: #fafafa;
+              font-weight: bold;
+              background-color: #111;
+              -moz-border-radius: 6px;
+              -webkit-border-radius: 6px;
+              border-radius: 6px;
+              -moz-box-shadow: 0 1px 1px #777, 0 1px 0 #666 inset;
+              -webkit-box-shadow: 0 1px 1px #777, 0 1px 0 #666 inset;
+              box-shadow: 0 1px 1px #777, 0 1px 0 #666 inset;
+              }
+
+              /* main nav */
+              #menu
+              {
+              margin: 0;
+              padding: 10px;
+              position: absolute;
+              top: 40px;
+              width: 100%;
+              z-index: 1;
+              background-color: #444;
+              display: none;
+              -moz-box-shadow: none;
+              -webkit-box-shadow: none;
+              box-shadow: none;
+              font-size: 24px;
+              }
+
+              #menu:after
+              {
+              content: '';
+              position: absolute;
+              left: 25px;
+              top: -8px;
+              border-left: 8px solid transparent;
+              border-right: 8px solid transparent;
+              border-bottom: 8px solid #444;
+              font-size: 24px;
+              }
+
+              #menu ul
+              {
+              position: static;
+              visibility: visible;
+              opacity: 1;
+              margin: 0;
+              background: none;
+              -moz-box-shadow: none;
+              -webkit-box-shadow: none;
+              box-shadow: none;
+              font-size: 24px;
+              }
+
+              #menu ul ul
+              {
+              margin: 0 0 0 20px !important;
+              -moz-box-shadow: none;
+              -webkit-box-shadow: none;
+              box-shadow: none;
+              font-size: 24px;
+              }
+
+              #menu li
+              {
+              position: static;
+              display: block;
+              float: none;
+              border: 0;
+              margin: 5px;
+              -moz-box-shadow: none;
+              -webkit-box-shadow: none;
+              box-shadow: none;
+              }
+
+              #menu ul li
+              {
+              margin-left: 20px;
+              -moz-box-shadow: none;
+              -webkit-box-shadow: none;
+              box-shadow: none;
+              }
+
+              #menu a
+              {
+              display: block;
+              float: none;
+              padding: 0;
+              color: #999;
+              }
+
+              #menu a:hover
+              {
+              color: #fafafa;
+              }
+
+              #menu ul a
+              {
+              padding: 0;
+              width: auto;
+              }
+
+              #menu ul a:hover
+              {
+              background: none;
+              }
+
+              #menu ul li:first-child a:after,
+              #menu ul ul li:first-child a:after
+              {
+              border: 0;
+              }
+              }
+
+              @media screen and (min-width: 600px) {
+              #menu {
+              display: block !important;
+              }
+              }
+
+              /* iPad */
+              .no-transition {
+              -webkit-transition: none;
+              -moz-transition: none;
+              -ms-transition: none;
+              -o-transition: none;
+              transition: none;
+              opacity: 1;
+              visibility: visible;
+              display: none;
+              }
+
+              #menu li:hover &gt; .no-transition {
+              display: block;
+              }
+
+              /* FONT STYLES*/
+              h3{
+              font-family:&quot;Times New Roman&quot;, Times, serif;
+              font-size:20px; font-style:normal; font-weight:100;
+              color:#666;
+              margin: 0 ;
+              padding: 0;
+
+              }
+
+              #ecom-marketing .xbook-mars-content h4{
+              color: #696969;
+              font-size: 13px;
+              font-family: &quot;Lucida Grande&quot;, Verdana, Helvetica, Arial, sans-serif;
+              font-weight: 100;
+              line-height: 9px;
+              }
+
+              #ecom-marketing .xbook-mars-content h4{
+              color: #e30c2b;
+              font-size: 13px;
+              font-family: &quot;Lucida Grande&quot;, Verdana, Helvetica, Arial, sans-serif;
+              font-weight: 100;
+              line-height: 16px;
+              }
+
+              #ecom-marketing .xbook-mars-content .content-wrapper .h4sub{
+              color: #696969;
+              font-size: 11px;
+              font-style:italic;
+              font-family:Arial, Helvetica, sans-serif;
+              margin-top:2px;
+              }
+
+              .content-wrapper .h3sub {
+              font-family: Georgia, &quot;Times New Roman&quot;, Times, serif;
+              font-size: 14px;
+              font-weight: 100;
+              line-height: 14px;
+              margin-bottom: 6px;
+              }
+
+              .content-wrapper .h3sub em{
+              font-size: 18px;
+              color: #e30c2b;
+              }
+
+              #ecom-marketing .xbook-mars-content .content-wrapper p{
+              color: #434343;
+              font-size: 14px;
+              font-family:Arial, Helvetica, sans-serif;
+              text-align: left;
+              }
+
+              #ecom-marketing .xbook-mars-content .content-wrapper .sub{
+              color:#333;
+              font-size: 14px;
+              line-height:20px;
+              font-family:Arial, Helvetica, sans-serif;
+              text-align:left;
+              margin:0px 20px 0px 20px;
+
+              }
+
+              #ecom-marketing .xbook-mars-content .content-wrapper ul{
+              color: #434343;
+              font-size: 14px;
+              font-family:Arial, Helvetica, sans-serif;
+              text-align: left;
+              line-height: 20px;
+              }
+
+              /* END FONTS STYLES */
+
+              #demobody {
+              padding : 0;
+              margin : 0;
+              font : 100.1% 'lucida sans', 'lucida sans unicode', 'lucida grande', 'trebuchet ms', helvetica, arial, sans-serif;
+              }
+
+              #wrapper {
+              width : 668px;
+              background-color : #ffffff;
+              margin : auto;
+              }
+
+
+              #content {
+              float : right;
+              display : inline;
+              width : 475px;
+              margin: 10px 0px 0px 0px;
+              padding: 0px;
+              }
+
+
+              #sidebar {
+              float : left;
+              display : inline;
+              width : 150px;
+              padding-top: 10px;
+              padding-right: 10px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              }
+
+
+              #share {
+              width : 668px;
+              height : auto;
+              text-align : right;
+              padding: 10px  0px 0px 0px;
+              }
+
+              #postit {
+              width:470px;
+              border:1px solid #CCC;
+              background:#f3f4f6;
+              border-radius:10px;
+              box-shadow: 4px 4px 8px  #f1f1f1;
+              padding:15px 0px 15px 0px;
+              }
+
+              &lt;/style&gt;
+
+              &lt;div id=&quot;main-container&quot; class=&quot;practicalargument&quot;&gt;
+              &lt;div class=&quot;xbook-mars-nav&quot;&gt;
+              &lt;ul class=&quot;tutorial-links&quot;&gt;
+              &lt;li class=&quot;header-row&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.bedfordstmartins.com/Catalog/product/practicalargument-secondedition-kirszner&quot;&gt;
+              &lt;span rel=&quot;&quot;&gt;About the Book&lt;/span&gt;&lt;span class=&quot;pxicon pxicon-right-open&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a target=&quot;_blank&quot;
+              href=&quot;http://www.bedfordstmartins.com/Catalog/product/practicalargument-secondedition-kirszner/formatsandpackages&quot;&gt;
+              &lt;span rel=&quot;&quot;&gt;Formats and e-Books&lt;/span&gt;&lt;span class=&quot;pxicon pxicon-right-open&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;&lt;li&gt;
+              &lt;a target=&quot;_blank&quot; href=&quot;http://bedfordstmartins.com/rewriting&quot;&gt;&lt;span rel=&quot;&quot;&gt;Re:Writing&lt;/span&gt;&lt;span
+              class=&quot;pxicon pxicon-right-open&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.bedfordstmartins.com/Catalog/product/practicalargument-secondedition-kirszner/instructorresources&quot;&gt;
+              &lt;span rel=&quot;&quot;&gt;Instructor Resources&lt;/span&gt;&lt;span class=&quot;pxicon pxicon-right-open&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;xbook-mars-content&quot;&gt;
+              &lt;div class=&quot;content-wrapper&quot;&gt;
+              &lt;h1&gt;
+              Bedford Media &lt;font style=&quot;font-family: Georgia, 'Times New Roman', Times, serif;
+              font-size: 20px; font-weight: normal;&quot;&gt;for&lt;/font&gt;&lt;/h1&gt;
+              &lt;h3 class=&quot;h3sub&quot;&gt;
+              &lt;em&gt;Practical Argument&lt;/em&gt;, Second Edition;&lt;br&gt;
+              &lt;/h3&gt;
+              &lt;br&gt;
+              &lt;p&gt;
+              &lt;strong&gt;Students can&lt;/strong&gt;&lt;/p&gt;
+              &lt;ul style=&quot;margin-top: 0px;&quot;&gt;
+              &lt;li&gt;log into the Integrated Media for their book
+              &lt;img src=&quot;http://dev.bedfordstmartins.com/brainhoney/resource/6650/Content/images/arrow3.png&quot; width=&quot;13px&quot; height=&quot;13px&quot; style=&quot;margin-bottom: -1px;&quot;&gt;
+              &lt;/li&gt;
+              &lt;li&gt;purchase other &lt;strong&gt;Formats and e-Books&lt;/strong&gt; &lt;/li&gt;
+              &lt;li&gt;use open resources in &lt;strong&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://bedfordstmartins.com/rewriting&quot;&gt;
+              Re:Writing&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
+              &lt;br&gt;
+              &lt;/li&gt;
+              &lt;/ul&gt;
+              &lt;p&gt;
+              &lt;strong&gt;Instructors can&lt;/strong&gt;&lt;/p&gt;
+              &lt;ul style=&quot;margin-top: 0px;&quot;&gt;
+              &lt;li&gt;log into the Integrated Media with instructor access
+              &lt;img src=&quot;http://dev.bedfordstmartins.com/brainhoney/resource/6650/Content/images/arrow3.png&quot; width=&quot;13px&quot; height=&quot;13px&quot; style=&quot;margin-bottom: -1px;&quot;&gt;
+              &lt;/li&gt;
+              &lt;li&gt;request an exam copy from &lt;strong&gt;About the Book&lt;/strong&gt; &lt;/li&gt;
+              &lt;li&gt;learn about other &lt;strong&gt;Formats and e-Books &lt;/strong&gt;&lt;/li&gt;
+              &lt;li&gt;download&lt;strong&gt; Instructor Resources&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;
+              &lt;br&gt;
+              &lt;div id=&quot;postit&quot;&gt;
+              &lt;p class=&quot;sub&quot;&gt;
+              &lt;font style=&quot;color: #e30c2b&quot;&gt;Bedford Integrated Media&lt;/font&gt; take advantage of what
+              the Web can do.
+              &lt;br&gt;
+              &lt;br&gt;
+              Students receive access to Bedford Integrated Media with the purchase of a new print
+              book or Bedford e-book. If the code does not work, it might be expired. Students
+              may purchase access using the &quot;Purchase Access&quot; option on the right.
+              &lt;br&gt;
+              &lt;a target=&quot;_blank&quot; href=&quot;http://www.bedfordstmartins.com/Catalog/elearningbrowseby/discipline/all/all/BedfordIntegratedMedia&quot;&gt;
+              &lt;u&gt;Read more about Bedford Integrated Media.&lt;/u&gt;&lt;/a&gt;&lt;/p&gt;
+              &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;xbook-mars-branding-book-wrapper&quot;&gt;
+              &lt;div class=&quot;bmi-book&quot; style=&quot;background-image: url('http://qa.bedfordstmartins.com/brainhoney/resource/6650/Content/images/practical-argument-book2.png');background-repeat: no-repeat;&quot;&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;book-title&quot;&gt;
+              &lt;h3&gt;Practical Argument,&lt;/h3&gt;
+              &lt;span&gt;Second Edition.&lt;/span&gt;&lt;br&gt;
+              &lt;div&gt;
+              &lt;span&gt;Laurie G. Kirszner;&lt;/span&gt;
+              &lt;span&gt; Stephen R. Mandell&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;/div&gt;
+
+              &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;/div&gt;
+          </description>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>1</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <bfw_type>ProductMarketing</bfw_type>
+          <bfw_subtype>Marketing</bfw_subtype>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_ROOT" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+     <requests>
+  </request>
+</batch>

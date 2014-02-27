@@ -1,0 +1,64 @@
+<requests>
+	<item entityid="-entityid-" itemid="PX_EBOOKS" >
+		<data>
+			<parent>PX_ROOT</parent>
+			<sequence>aaaa</sequence>
+			<title>PX_EBOOKS</title>
+			<duedate>0001-01-01T00:00:00Z</duedate>
+			<attemptlimit>0</attemptlimit>
+			<securitylevel>Low</securitylevel>
+			<bsi_type>PX</bsi_type>
+			<bsi_subtype>PX_ROOT</bsi_subtype>
+			<bfw_meta>
+				<bfw_metadata name="dlap_sequence">aaaa</bfw_metadata>
+			</bfw_meta>
+			<bfw_tocs>
+			  <bfw_toc_contents parentid="root" sequence="a" />
+			</bfw_tocs>
+		</data>
+	</item>
+    <item entityid="-entityid-" itemid="px_portfolio_teaching">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_EBOOKS</parent>
+          <sequence>a</sequence>
+          <title>Portfolio Teaching </title>
+          <description></description>
+          <href>bsi__F2D99B25__3B03__403C__855C__27263CA926FF</href>
+          <category>0</category>
+          <bfw_type>Ebook</bfw_type>
+          <bfw_properties>
+              <bfw_property name="bfw_subtitle" type="String">A Guide for Instructors, Second Edition</bfw_property>
+              <bfw_property name="bfw_authors" type="String">Edgar Rice Burroughs</bfw_property>
+              <bfw_property name="bfw_coverimage" type="String">http://ebooks-imgs.connect.com/product/400/000/000/000/000/170/899/400000000000000170899_s4.jpg</bfw_property>
+              <bfw_property name="bfw_rootid" type="String">bsi__F2D99B25__3B03__403C__855C__27263CA926FF</bfw_property>
+              <bfw_property name="bfw_catagoryid" type="String">portfolioteaching</bfw_property>
+          </bfw_properties>
+        <bfw_tocs>
+          <bfw_toc_contents parentid="PX_TOC" sequence="a">Portfolio Teaching</bfw_toc_contents>
+        </bfw_tocs>
+    </data>
+  </item>
+	<item entityid="-entityid-" itemid="px_portfolio_keeping">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_EBOOKS</parent>
+          <sequence>b</sequence>
+          <title>Portfolio Keeping</title>
+          <description></description>
+          <href>bsi__5D40B8C2__A237__41D0__B6B9__60528C81D14A</href>
+          <category>0</category>
+          <bfw_type>Ebook</bfw_type>
+          <bfw_properties>
+              <bfw_property name="bfw_subtitle" type="String">A Guide for Students, Second Edition</bfw_property>
+              <bfw_property name="bfw_authors" type="String">Edgar Rice Burroughs</bfw_property>
+              <bfw_property name="bfw_coverimage" type="String">http://ebooks-imgs.connect.com/product/400/000/000/000/000/170/899/400000000000000170899_s4.jpg</bfw_property>
+              <bfw_property name="bfw_rootid" type="String">bsi__5D40B8C2__A237__41D0__B6B9__60528C81D14A</bfw_property>
+              <bfw_property name="bfw_catagoryid" type="String">portfoliokeeping</bfw_property>
+          </bfw_properties>
+        <bfw_tocs>
+          <bfw_toc_contents parentid="PX_TOC" sequence="a">Portfolio Keeping</bfw_toc_contents>
+        </bfw_tocs>
+    </data>
+  </item>
+</requests>

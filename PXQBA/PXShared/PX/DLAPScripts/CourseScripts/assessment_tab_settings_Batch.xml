@@ -1,0 +1,400 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<batch>
+  <request cmd="updatecourses">
+    <requests>
+      <course courseid="--courseid--">
+	    <data>
+        <description>Freedman, Universe 9e</description>
+		  <passingscore>0</passingscore>
+		  <gradetables>
+			<table id="0" name="A,B,C,D,F" scale="Percent">
+			  <bracket grade="A" score="0.9" />
+			  <bracket grade="B" score="0.8" />
+			  <bracket grade="C" score="0.7" />
+			  <bracket grade="D" score="0.6" />
+			  <bracket grade="F" score="0" />
+			</table>
+			<table id="1" name="A+,A,A-,...,F" scale="Percent">
+			  <bracket grade="A+" score="0.97" />
+			  <bracket grade="A" score="0.93" />
+			  <bracket grade="A-" score="0.9" />
+			  <bracket grade="B+" score="0.87" />
+			  <bracket grade="B" score="0.83" />
+			  <bracket grade="B-" score="0.8" />
+			  <bracket grade="C+" score="0.77" />
+			  <bracket grade="C" score="0.73" />
+			  <bracket grade="C-" score="0.7" />
+			  <bracket grade="D+" score="0.67" />
+			  <bracket grade="D" score="0.63" />
+			  <bracket grade="D-" score="0.6" />
+			  <bracket grade="F" score="0" />
+			</table>
+			<table id="2" name="P/F" scale="Percent">
+			  <bracket grade="P" score="0.7" />
+			  <bracket grade="F" score="0" />
+			</table>
+		  </gradetables>
+		  <allowstaticcopy>true</allowstaticcopy>
+		  <allowderivativechildcopy>true</allowderivativechildcopy>
+		  <allowderivativesiblingcopy>true</allowderivativesiblingcopy>
+		  <groupsets>
+			<groupset id="9999" title="Individual Group" prefix="Individual Group" algorithm="Random" />
+		  </groupsets><bfw_search>
+	  <searchcategory searchable="true" title="Ebook : Chapters, Headings, Topics" metadata="ebook" />
+	  <searchcategory searchable="true" title="Miscellaneous Content" metadata="other" />
+	  <searchcategory searchable="false" title="Exclude" metadata="exclude" />
+	</bfw_search><bfw_properties>
+	  <bfw_property name="bfw_infinite_scroll" type="string">false</bfw_property>
+	  <bfw_property name="bfw_initialize_user" type="string">true</bfw_property>
+	</bfw_properties><bfw_tocs>
+	  <my_materials type="bfw_toc">My Materials</my_materials>
+	</bfw_tocs><bfw_tab_settings>
+	  <view_tab>
+		<show_policies>true</show_policies>
+		<show_assignment_details>false</show_assignment_details>
+		<show_rubrics>true</show_rubrics>
+		<show_competency_rubrics>true</show_competency_rubrics>
+		<show_learning_objectives>true</show_learning_objectives>
+	  </view_tab>
+	  <assign_tab>
+		<show_make_gradeable>true</show_make_gradeable>
+		<show_allow_late_submissions>true</show_allow_late_submissions>
+		<show_schedule_reminder>true</show_schedule_reminder>
+		<show_subcontent_creation>true</show_subcontent_creation>
+		<show_assigned_on_same_day>true</show_assigned_on_same_day>
+		<show_completion_category>true</show_completion_category>
+		<show_gradebook_category>true</show_gradebook_category>
+		<show_syllabus_category>true</show_syllabus_category>
+		<show_points_possible>true</show_points_possible>
+		<show_send_reminder>true</show_send_reminder>
+		<show_include_score>true</show_include_score>
+		<show_calculation_type>true</show_calculation_type>
+		<show_mark_as_complete>true</show_mark_as_complete>
+	  </assign_tab>
+	</bfw_tab_settings><bfw_rubric_types>
+	  <rubric_type>CompetencyRubric</rubric_type>
+	</bfw_rubric_types>
+	<bfw_assessment_style>
+	  <rubric_management_style>
+		<show_in_assessment>false</show_in_assessment>
+		<show_preview_on_left>false</show_preview_on_left>
+		<show_edit_on_left>true</show_edit_on_left>
+		<requests>
+  <course courseid="56945" >
+    <data>
+      <bfw_tab_settings>
+  <view_tab>
+    <show_policies>false</show_policies>
+    <show_assignment_details>true</show_assignment_details>
+    <show_rubrics>true</show_rubrics>
+    <show_learning_objectives>true</show_learning_objectives>
+  </view_tab>
+  <assign_tab>
+    <show_make_gradeable>true</show_make_gradeable>
+    <show_allow_late_submissions>true</show_allow_late_submissions>
+    <show_schedule_reminder>true</show_schedule_reminder>
+    <show_subcontent_creation>true</show_subcontent_creation>
+    <show_assigned_on_same_day>false</show_assigned_on_same_day>
+    <show_completion_category>true</show_completion_category>
+    <show_gradebook_category>true</show_gradebook_category>
+    <show_syllabus_category>true</show_syllabus_category>
+    <show_points_possible>true</show_points_possible>
+    <show_send_reminder>true</show_send_reminder>
+    <show_include_score>true</show_include_score>
+    <show_calculation_type>true</show_calculation_type>
+    <show_mark_as_complete>true</show_mark_as_complete>
+  </assign_tab>
+</bfw_tab_settings>
+<bfw_assessment_style>
+	  <rubric_management_style>
+		<show_in_assessment>true</show_in_assessment>
+		<show_preview_on_left>false</show_preview_on_left>
+		<show_edit_on_left>true</show_edit_on_left>
+		<show_delete_on_left>true</show_delete_on_left>
+		<show_view_alignments>true</show_view_alignments>
+		<show_edit_on_right>true</show_edit_on_right>
+		<show_preview_on_right>false</show_preview_on_right>
+		<show_left_column>true</show_left_column>
+		<show_right_column>true</show_right_column>
+		<rubric_alignment_views>
+		  <assignment>true</assignment>
+		  <rubric>true</rubric>
+		</rubric_alignment_views>
+	  </rubric_management_style>
+	  <objective_management_style>
+		<show_in_assessment>true</show_in_assessment>
+		<show_left_column>true</show_left_column>
+		<show_right_column>true</show_right_column>
+		<show_edit_on_left>true</show_edit_on_left>
+		<show_edit_on_right>false</show_edit_on_right>
+		<show_view_alignments>true</show_view_alignments>
+		<learningobj_alignment_views>
+		  <assignment>true</assignment>
+		  <eportfolio />
+		  <objective>true</objective>
+		</learningobj_alignment_views>
+	  </objective_management_style>
+		<competency_rubric_management_style>
+              <show_in_assessment>false</show_in_assessment>
+          </competency_rubric_management_style>
+          <report_management_style>
+              <show_in_assessment>false</show_in_assessment>
+          </report_management_style>
+	</bfw_assessment_style></data>
+  </course>
+</requests>
+		<show_view_alignments>true</show_view_alignments>
+		<show_edit_on_right>true</show_edit_on_right>
+		<show_preview_on_right>false</show_preview_on_right>
+		<show_left_column>true</show_left_column>
+		<show_right_column>true</show_right_column>
+		<rubric_alignment_views>
+		  <assignment>true</assignment>
+		  <rubric>true</rubric>
+		</rubric_alignment_views>
+	  </rubric_management_style>
+	  <objective_management_style>
+		<show_in_assessment>false</show_in_assessment>
+		<show_left_column>true</show_left_column>
+		<show_right_column>true</show_right_column>
+		<show_edit_on_left>true</show_edit_on_left>
+		<show_edit_on_right>false</show_edit_on_right>
+		<show_view_alignments>true</show_view_alignments>
+		<learningobj_alignment_views>
+		  <assignment>true</assignment>
+		  <eportfolio />
+		  <objective>true</objective>
+		</learningobj_alignment_views>
+	  </objective_management_style>
+		<competency_rubric_management_style>
+              <show_in_assessment>true</show_in_assessment>
+          </competency_rubric_management_style>
+          <report_management_style>
+              <show_in_assessment>false</show_in_assessment>
+          </report_management_style>
+	</bfw_assessment_style>
+	<bfw_infinite_scroll>false</bfw_infinite_scroll><bfw_initialize_user>true</bfw_initialize_user><CourseProductName>DEMO-12/21/2012</CourseProductName><CourseUserName>Instructor3 Sagat</CourseUserName><CourseTimeZone>Eastern Standard Time</CourseTimeZone><ActivatedDate>12/21/2012 05:00 AM</ActivatedDate><bfw_course_type>LMS</bfw_course_type><bfw_course_owner>9336</bfw_course_owner><bfw_course_description>Freedman, Universe 9e</bfw_course_description><meta-bfw_course_type>LMS</meta-bfw_course_type><bfw_allow_comment_sharing>true</bfw_allow_comment_sharing><bfw_hide_student_view_in_header>false</bfw_hide_student_view_in_header><bfw_shared>Unpublished</bfw_shared><meta-bfw_academic_term>5349a155-7a5c-4788-880f-f0b6fcb1ff8f</meta-bfw_academic_term><bfw_search_engine_index>false</bfw_search_engine_index><bfw_facebook_integration>false</bfw_facebook_integration><bfw_allow_site_search>true</bfw_allow_site_search><bfw_allow_activation>true</bfw_allow_activation><bfw_isloadstartoninit>false</bfw_isloadstartoninit><bfw_social_commenting_integration>false</bfw_social_commenting_integration><meta-bfw_is_sandbox_course>false</meta-bfw_is_sandbox_course><bfw_dashboard_settings>
+	  <bfw_dashboard_course_home_page />
+	  <instructor_dashboard>False</instructor_dashboard>
+	  <program_dashboard>False</program_dashboard>
+	  <bfw_program_dashboard_course_home_page />
+	</bfw_dashboard_settings><bfw_template_learningobjectives>
+	  <learningobjectives />
+	</bfw_template_learningobjectives><bfw_dashboard_learningobjectives>
+	  <learningobjectives />
+	</bfw_dashboard_learningobjectives><bfw_eportfolio_learningobjectives>
+	  <learningobjectives />
+	</bfw_eportfolio_learningobjectives><bfw_program_learningobjectives>
+	  <learningobjectives />
+	</bfw_program_learningobjectives><meta-product-course-id>43453</meta-product-course-id><meta-bfw_course_subtype>regular</meta-bfw_course_subtype><sourceid>43453</sourceid><indexrule>Deltas</indexrule>
+	</data>
+      </course>
+    </requests>
+  </request>
+  
+  <request cmd="putitems">
+    <requests>
+		<item itemid="TMP_044d2c6941f74cc595fe72d61e9fe681" entityid="--entityid--">
+			<data>
+			  <type>Resource</type>
+			  <parent>PX_RUBRICS</parent>
+			  <sequence>m</sequence>
+			  <title>Argument rubric</title>
+			  <folder>TMP_044d2c6941f74cc595fe72d61e9fe681</folder>
+			  <href>Templates/Data/TMP_044d2c6941f74cc595fe72d61e9fe681/index.html</href>
+			  <timetocomplete>PT1M</timetocomplete>
+			  <category>0</category>
+			  <period inherit="true">0</period>
+			  <groupsetid>-1</groupsetid>
+			  <duedate>0001-01-01T00:00:00Z</duedate>
+			  <rubric>Templates/Data/TMP_044d2c6941f74cc595fe72d61e9fe681/_rubric.xml</rubric>
+			  <weight>100</weight>
+			  <gradeentry>1</gradeentry>
+			  <gradeentry2>16</gradeentry2>
+			  <inputtable inherit="true">0</inputtable>
+			  <completiontrigger>0</completiontrigger><bfw_type>Rubric</bfw_type><bfw_properties>
+		  <bfw_property name="bfw_visibility" type="String">
+					  &lt;bfw_visibility&gt;
+					  &lt;roles&gt;
+					  &lt;instructor /&gt;
+					  &lt;student /&gt;
+					  &lt;/roles&gt;
+					  &lt;/bfw_visibility&gt;
+					</bfw_property>
+		  <bfw_property name="HiddenFromToc" type="Boolean">false</bfw_property>
+		  <bfw_property name="bfw_syllabusfilter" type="String" />
+		  <bfw_property name="bfw_course_type" type="String" />
+		  <bfw_property name="bfw_rubric_owner" type="String">9339</bfw_property>
+		  <bfw_property name="bfw_rubric_active" type="Boolean">true</bfw_property>
+		  <bfw_property name="bfw_duedate_manuallyset" type="Boolean">false</bfw_property>
+		</bfw_properties><bfw_template>Resource</bfw_template><bfw_custom_settings controller="CustomSettings" action="Default">Custom Settings</bfw_custom_settings><bfw_tocs>
+		  <bfw_toc_contents parentid="PX_RUBRICS" sequence="a" />
+		</bfw_tocs><bfw_in_assignment_center>false</bfw_in_assignment_center><bfw_duedate_manuallyset>false</bfw_duedate_manuallyset><IsMarkAsCompleteChecked>false</IsMarkAsCompleteChecked><meta-bfw_assigned>false</meta-bfw_assigned><bfw_is_depreciated>false</bfw_is_depreciated></data>
+		  </item>
+	</requests>
+  </request>
+  
+    <request cmd="putresource" entityid="--entityid" path="Templates/Data/TMP_044d2c6941f74cc595fe72d61e9fe681/_rubric.xml" status="Normal">
+		<rubric>
+	  <maxScore>0</maxScore>
+	  <title>Reflective Writing rubric</title>
+	  <isActive>false</isActive>
+	  <columnTitles>
+		<column>
+		  <sequence>1</sequence>
+		  <title>Exemplary</title>
+		</column>
+		<column>
+		  <sequence>2</sequence>
+		  <title>Proficient</title>
+		</column>
+		<column>
+		  <sequence>3</sequence>
+		  <title>Limited</title>
+		</column>
+		<column>
+		  <sequence>4</sequence>
+		  <title>Unsatisfactory</title>
+		</column>
+	  </columnTitles>
+	  <rows>
+		<row sequence="1" score="12">
+		  <title>Claims and Goals</title>
+		  <columns>
+			<column sequence="1">
+			  <description>The reflection makes specific and thoughtful claims about the author’s learning and growth; successfully draws connections between author’s achievement and course and personal goals, including goals for the future </description>
+			</column>
+			<column sequence="2">
+			  <description>The reflection makes specific and thoughtful claims about the author’s learning and growth; draws some connections between the author’s achievement and course and personal goals</description>
+			</column>
+			<column sequence="3">
+			  <description>The reflection makes some specific claims about the author’s learning and growth, but claims may not demonstrate thoughtfulness or successful self-critique; connections between author’s achievement and course or personal goals are loosely drawn</description>
+			</column>
+			<column sequence="4">
+			  <description>Claims about author’s learning and growth are vague and general; no connection is made between author’s achievement and course goals or personal goals. </description>
+			</column>
+		  </columns>
+		</row>
+		<row sequence="2" score="12">
+		  <title>Discussion of Artifacts, Choices, and Revisions</title>
+		  <columns>
+			<column sequence="1">
+			  <description>The reflection successfully discusses in detail which artifacts were chosen and why; provides eloquent and insightful explication of what choices and/or revisions were made in the artifact(s) and why</description>
+			</column>
+			<column sequence="2">
+			  <description>The reflection competently discusses which artifacts were chosen and why; provides explication of choices and/or revisions</description>
+			</column>
+			<column sequence="3">
+			  <description>The reflection broadly addresses which artifacts were chosen and why; provides some explication of choices and/or revisions </description>
+			</column>
+			<column sequence="4">
+			  <description>The reflection does not discuss or discusses very briefly which artifacts were chosen and why; provides minimal or no explication of choices and/or revisions</description>
+			</column>
+		  </columns>
+		</row>
+		<row sequence="3" score="12">
+		  <title>Evidence of Learning and Growth</title>
+		  <columns>
+			<column sequence="1">
+			  <description>The reflection supports claims about what the author has learned with a variety of detailed and vivid evidence from artifact(s)</description>
+			</column>
+			<column sequence="2">
+			  <description>The reflection supports claims about what the author has learned with some evidence from artifact(s)</description>
+			</column>
+			<column sequence="3">
+			  <description>The reflection offers only a few examples from artifact(s) to demonstrate author’s learning and growth</description>
+			</column>
+			<column sequence="4">
+			  <description>Claims about author’s learning and growth are unsupported; few or no specific references to artifacts are included in the reflection</description>
+			</column>
+		  </columns>
+		</row>
+		<row sequence="4" score="12">
+		  <title>Style and Mechanics</title>
+		  <columns>
+			<column sequence="1">
+			  <description>Writing style is clear, flowing, polished, and easy to read; grammar, spelling, and usage errors are minimal and do not interfere with the reader’s understanding</description>
+			</column>
+			<column sequence="2">
+			  <description>Writing style is clear and comprehensible but may have some awkward phrasing; a few grammar, spelling, or usage errors may be present but they generally do not interfere with the reader’s understanding</description>
+			</column>
+			<column sequence="3">
+			  <description>Writing style is readable but unclear in multiple places; grammar, spelling, and usage errors hamper the reader’s understanding in multiple places</description>
+			</column>
+			<column sequence="4">
+			  <description>Writing style is disjointed, choppy, or unfinished; grammar, spelling, and usage errors are so frequent as to hamper the reader’s understanding of the piece as a whole</description>
+			</column>
+		  </columns>
+		</row>
+	  </rows>
+	  <rubricrule id="1" max="12">
+		<text>
+		  <Paragraph>Claims and Goals</Paragraph>
+		</text>
+		<text>
+		  <Paragraph>The reflection makes specific and thoughtful claims about the author’s learning and growth; successfully draws connections between author’s achievement and course and personal goals, including goals for the future </Paragraph>
+		</text>
+		<text>
+		  <Paragraph>The reflection makes specific and thoughtful claims about the author’s learning and growth; draws some connections between the author’s achievement and course and personal goals</Paragraph>
+		</text>
+		<text>
+		  <Paragraph>The reflection makes some specific claims about the author’s learning and growth, but claims may not demonstrate thoughtfulness or successful self-critique; connections between author’s achievement and course or personal goals are loosely drawn</Paragraph>
+		</text>
+		<text>
+		  <Paragraph>Claims about author’s learning and growth are vague and general; no connection is made between author’s achievement and course goals or personal goals. </Paragraph>
+		</text>
+	  </rubricrule>
+	  <rubricrule id="2" max="12">
+		<text>
+		  <Paragraph>Discussion of Artifacts, Choices, and Revisions</Paragraph>
+		</text>
+		<text>
+		  <Paragraph>The reflection successfully discusses in detail which artifacts were chosen and why; provides eloquent and insightful explication of what choices and/or revisions were made in the artifact(s) and why</Paragraph>
+		</text>
+		<text>
+		  <Paragraph>The reflection competently discusses which artifacts were chosen and why; provides explication of choices and/or revisions</Paragraph>
+		</text>
+		<text>
+		  <Paragraph>The reflection broadly addresses which artifacts were chosen and why; provides some explication of choices and/or revisions </Paragraph>
+		</text>
+		<text>
+		  <Paragraph>The reflection does not discuss or discusses very briefly which artifacts were chosen and why; provides minimal or no explication of choices and/or revisions</Paragraph>
+		</text>
+	  </rubricrule>
+	  <rubricrule id="3" max="12">
+		<text>
+		  <Paragraph>Evidence of Learning and Growth</Paragraph>
+		</text>
+		<text>
+		  <Paragraph>The reflection supports claims about what the author has learned with a variety of detailed and vivid evidence from artifact(s)</Paragraph>
+		</text>
+		<text>
+		  <Paragraph>The reflection supports claims about what the author has learned with some evidence from artifact(s)</Paragraph>
+		</text>
+		<text>
+		  <Paragraph>The reflection offers only a few examples from artifact(s) to demonstrate author’s learning and growth</Paragraph>
+		</text>
+		<text>
+		  <Paragraph>Claims about author’s learning and growth are unsupported; few or no specific references to artifacts are included in the reflection</Paragraph>
+		</text>
+	  </rubricrule>
+	  <rubricrule id="4" max="12">
+		<text>
+		  <Paragraph>Style and Mechanics\</Paragraph>
+		</text>
+		<text>
+		  <Paragraph>Writing style is clear, flowing, polished, and easy to read; grammar, spelling, and usage errors are minimal and do not interfere with the reader’s understanding</Paragraph>
+		</text>
+		<text>
+		  <Paragraph>Writing style is clear and comprehensible but may have some awkward phrasing; a few grammar, spelling, or usage errors may be present but they generally do not interfere with the reader’s understanding</Paragraph>
+		</text>
+		<text>
+		  <Paragraph>Writing style is readable but unclear in multiple places; grammar, spelling, and usage errors hamper the reader’s understanding in multiple places</Paragraph>
+		</text>
+		<text>
+		  <Paragraph>Writing style is disjointed, choppy, or unfinished; grammar, spelling, and usage errors are so frequent as to hamper the reader’s understanding of the piece as a whole</Paragraph>
+		</text>
+	  </rubricrule>
+	</rubric>
+  </request>
+</batch>

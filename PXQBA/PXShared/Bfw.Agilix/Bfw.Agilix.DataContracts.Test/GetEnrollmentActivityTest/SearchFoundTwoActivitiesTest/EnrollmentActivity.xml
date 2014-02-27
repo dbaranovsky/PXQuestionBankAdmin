@@ -1,0 +1,6 @@
+﻿<response code="OK" >
+  <enrollment >
+    <activity itemid="C1" date="2011-08-18T16:06:51.747Z" seconds="154" />
+    <activity itemid="E1" date="2011-10-17T21:17:42.743Z" seconds="20" />
+  </enrollment>
+</response>

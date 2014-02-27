@@ -1,0 +1,193 @@
+﻿.manage-groups {
+position: relative;
+height:100%;
+}
+
+.manage-groups #right #student-list{
+	bottom: 0;
+	overflow-y: scroll;
+	padding-left: 248px;
+	position: absolute;
+	top: 64px;
+	width:inherit;
+	padding-top: 10px;
+	min-height: 300px;
+	min-width: 500px;
+}
+
+#fne-content .manage-groups #right #student-list{
+	overflow-y: auto;
+	padding-left: 0px;
+}
+
+.manage-groups #right #student-list h2{
+	margin: 0 12px 8px 0;
+	float: left;
+}
+
+.manage-groups #right #student-list .email-group{
+	float:left;
+	padding-top: 3px;
+}
+
+.edit-groups {
+height:90%;
+}
+
+.manage-groups #left #groups-setnav {
+overflow-y:scroll;
+position:absolute;
+top: 32px;
+bottom: 0px;
+padding: 18px 18px 0 18px;
+min-height: 300px;
+width: 196px;
+}
+
+.manage-groups #right {
+   padding-left: 0px !important;
+}
+
+.manage-groups #right .tab-links{
+	border-bottom: solid 1px #999;
+	margin-bottom: 0;
+	margin-left: 248px;
+	padding-bottom: 7px;
+	position: relative;
+	top: 43px;
+	width: inherit;
+}
+
+.manage-groups .group-sets-list .group-set {
+margin: 0 0 14px 0;
+padding:3px 0 0 0;
+border-top:1px solid #ccc;
+}
+
+.manage-groups .group-sets-list .group-set .actions {
+margin:3px 0 0 0;
+}
+
+.manage-groups .group-sets-list ul li.group-set:first-child {
+border-top:0px solid #ccc;
+}
+
+.manage-groups .group-sets-list .group-set a{
+padding: 0;
+}
+
+.manage-groups .group-sets-list .group-set a.group-link.selected {
+	border:none;
+	background-color:Transparent;
+}
+
+.manage-groups .course-subtitle a.selected {
+	border:none;
+	background-color:Transparent;
+}
+
+.manage-groups .group-sets-list .group-set .actions a {
+	padding: 4px;
+}
+.manage-groups .group-sets-list .group-set .setcount{
+	margin: 4px 0 8px 0;
+}
+.manage-groups .student-list .title {
+padding-right: 10px;
+}
+
+.manage-groups .student-list table.students {
+text-align: left;
+width: 80%;
+margin: 10px 0 0 0;
+border: solid 1px #EEEEEE;
+clear:both;
+}
+
+.manage-groups .student-list .students thead tr {
+background-color:#FFFFCC;
+}
+
+.manage-groups .student-list .students thead .groupname {
+	background-color: #DCDACD;
+	height: 23px;
+	line-height: 23px;
+}
+.manage-groups .student-list .students thead .groupname td{
+	padding-left: 8px;
+}
+
+.manage-groups .student-list table.students thead tr th {
+padding:5px 5px 5px 8px;
+border: solid 1px #EEEEEE;
+}
+
+.manage-groups .student-list table.students tbody tr td {
+padding:6px 6px;
+border: solid 1px #EEEEEE;
+border-bottom: 1px solid #eee;
+}
+
+.manage-groups .student-list table.students th.complete {
+width: 20%;
+}
+
+.manage-groups .student-list table.students th {
+width: 30%;
+}
+
+.manage-groups .student-list table.students th.name {
+width: 30%;
+}
+
+.manage-groups .student-list table.students th.email {
+width: 30%;
+}
+
+.manage-groups .student-list table.students th.login {
+width: 20%;
+}
+
+.manage-groups .student-list table.students th.complete {
+width: 20%;
+}
+
+.manage-groups .group {
+margin: 10px 0 ;
+}
+.manage-groups .group .no-students-msg{
+	clear:both;
+}
+
+.group .email-link {
+color:#660000;
+text-transform:uppercase;
+}
+
+.manage-groups #left .course-title {
+margin: 0 0 5px 0;
+border-bottom: solid 1px #333;
+line-height: 18px;
+}
+
+.manage-groups #left .course-subtitle {
+margin: 10px 0 10px 0;
+}
+
+.manage-groups #left .course-subtitle .group-count{
+	margin-top: 4px;
+}
+.manage-groups #left .group-sets-title {
+	border-bottom: 1px solid #333;
+	margin-bottom: 8px;
+	line-height:18px;
+}
+
+.manage-groups #left a.create-group-set{
+	margin: 12px 0;
+}
+.create-group-set {
+display:block;
+width:160px;
+margin:10px 0 0 0;
+}

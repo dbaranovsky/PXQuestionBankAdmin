@@ -1,0 +1,73 @@
+﻿@model Bfw.PXAP.Models.LogSummaryViewModel
+@{
+    Layout = "";
+}
+    <script type="text/javascript">
+        $(function () {
+            $('#btnSummaryReload').live("click", function () {
+                LogSummaryLoad();
+            });
+        });
+
+        function LogSummaryLoad() {
+            showLoading();
+            var currenv = GetCurrentEnvironment();
+            var svcUrl = '@Url.Action("LoadLogSummary", "Home")'
+            $.post(svcUrl, function (data) {
+                $('#divDashboard').html(data);
+                hideLoading();
+            });
+        }
+
+    </script>
+
+
+<div id="divMain" class="divMain">
+    <div id="divMainHeader" class="divMainHeader">
+        <div id="divHeaderText" style="float: left;" class="divHeaderText">
+            Log Summary</div>
+        <div id="divMainReload" style="float: right; margin-right: 15px;">
+            <input type="image" id="btnSummaryReload" value="Save" src="../../Content/images/refresh_LogSummary.gif" />
+        </div>
+    </div>
+    <div id="divSummaryGrid" class="divSummaryGrid">
+        <div id="divGridText" class="divGridText">
+            <div style="width: 18%" class="gridHeaderItem">
+                Severity</div>
+            <div style="width: 14%" class="gridHeaderItem">
+                Today</div>
+            <div style="width: 14%" class="gridHeaderItem">
+                Avg/Day</div>
+            <div style="width: 14%" class="gridHeaderItem">
+                Avg/Week</div>
+            <div style="width: 14%" class="gridHeaderItem">
+                Total</div>
+            <div style="width: 18%; float: left; height: 20px; padding-left: 5px; padding-top: 2px;">
+                Action</div>
+            <div>
+            </div>
+        </div>
+        @{
+            foreach (var logSummary in Model.LogSummary)
+            {
+            <div class="dataRow">
+                <div style="width: 18%" class="gridDataItem">
+                    @logSummary.Severity</div>
+                <div style="width: 14%" class="gridDataItem">
+                    @logSummary.TotalToday</div>
+                <div style="width: 14%" class="gridDataItem">
+                    @logSummary.AvgDay</div>
+                <div style="width: 14%" class="gridDataItem">
+                    @logSummary.AvgWeek</div>
+                <div style="width: 14%" class="gridDataItem">
+                    @logSummary.Total</div>
+                <div style="width: 18%; float: left; height: 20px; padding-left: 5px; padding-top: 2px;">                
+                    <a href="@Url.Action("LogSearch", "LogSearch", new { Severity = logSummary.Severity })" >View</a> &nbsp;
+                    <a href="@Url.Action("ClearLogs", "Home", new { Severity = logSummary.Severity })" >Clear</a>
+                </div>
+            </div>
+            }
+
+        }
+    </div>
+</div>

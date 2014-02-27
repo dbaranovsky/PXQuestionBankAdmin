@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<batch>
+<request cmd="updatecourses">
+<requests>
+      <course courseid="-courseid-" domainid="-domainid-" title="-title-" reference="">
+        <data>
+          <bfw_rss_feeds>
+            <feed name="Scientific American" url="http://www.scientificamerican.com/xml/worth.cfm?category_id=8" />
+          </bfw_rss_feeds>          
+        </data>
+      </course>
+</requests>
+</request>
+ <!--Start Page zones and widgets-->
+ <request cmd="putitems">
+    <requests>
+       <item itemid="PX_FacePlate_SA_RSS_Feed_Widget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>default_parent</parent>
+          <sequence>g</sequence>
+          <title>Scientific American</title>
+          <abbreviation>Scientific American</abbreviation>
+          <category>0</category>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_ScientificAmerican_RSS_Feed_Compact</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+            <display>ebook</display>
+            <display>lms</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="RSSFeedWidget" action="CompactViewFPStart" fne="true" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_FacePlate_SA_RSS_Feed_Widget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_feed_items_to_show" type="String">3</bfw_property>
+            <bfw_property name="bfw_feed_name" type="String">Scientific American</bfw_property>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String">custom-rss-widget summary</bfw_property>
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_feedurl" type="String">http://www.scientificamerican.com/xml/worth.cfm?category_id=8</bfw_property>
+            <bfw_property name="bfw_feeddescription" type="String">Additional HTML text required for Scientific American and other premade RSS feeds</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_p" />
+          </bfw_tocs>
+          <meta-bfw_assigned>false</meta-bfw_assigned>
+        </data>
+      </item>
+      <item itemid="PX_FacePlate_SA_RSS_Feed_Widget_Default" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_FACEPLATE_START_ZONE_LEFT</parent>
+          <sequence>g</sequence>
+          <title>Scientific American</title>
+          <abbreviation>Scientific American</abbreviation>
+          <category>0</category>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_ScientificAmerican_RSS_Feed_Compact</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+            <display>ebook</display>
+            <display>lms</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="RSSFeedWidget" action="CompactViewFPStart" fne="true" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_FacePlate_SA_RSS_Feed_Widget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_feed_items_to_show" type="String">3</bfw_property>
+            <bfw_property name="bfw_feed_name" type="String">Scientific American</bfw_property>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String">custom-rss-widget summary</bfw_property>
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_feedurl" type="String">http://www.scientificamerican.com/xml/worth.cfm?category_id=8</bfw_property>
+            <bfw_property name="bfw_feeddescription" type="String">  Additional HTML text required for Scientific American and other premade RSS feeds</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_p" />
+          </bfw_tocs>
+          <meta-bfw_assigned>false</meta-bfw_assigned>
+        </data>
+      </item>	  
+    </requests>
+	
+	
+  </request>
+  
+  </batch>

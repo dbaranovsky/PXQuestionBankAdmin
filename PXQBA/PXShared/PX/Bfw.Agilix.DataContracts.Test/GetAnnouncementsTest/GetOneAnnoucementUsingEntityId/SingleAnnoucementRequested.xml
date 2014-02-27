@@ -1,0 +1,5 @@
+﻿<response code="OK">
+  <announcements>
+    <announcement entityid="1" path="9b4b7d2b782c4dea9a8ef8d1690b8ebb" title="Announcement" version="1" startdate="2012-06-12T19:31:50.3917028Z" enddate="9999-12-31T23:59:59.9999999Z" recurse="false" hasurl="false" creationdate="2012-06-12T19:31:54.65Z" modifieddate="2012-06-12T19:31:54.65Z" />
+  </announcements>
+</response>

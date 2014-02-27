@@ -1,0 +1,9 @@
+.obj
+.pdb
+\obj\
+\Properties\
+.csproj
+.csproj.user
+packages.config
+.Publish.xml
+.transform.xml

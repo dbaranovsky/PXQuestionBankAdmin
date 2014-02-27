@@ -1,0 +1,8 @@
+/* Black */
+.o2k7aSkinBlack .mceToolbar .mceToolbarStart span, .o2k7aSkinBlack .mceToolbar .mceToolbarEnd span, .o2k7aSkinBlack .mceButton, .o2k7aSkinBlack .mceSplitButton, .o2k7aSkinBlack .mceSeparator, .o2k7aSkinBlack .mceSplitButton a.mceOpen, .o2k7aSkinBlack .mceListBox a.mceOpen {background-image:url(img/button_bg_black.png)}
+.o2k7aSkinBlack td.mceToolbar, .o2k7aSkinBlack td.mceStatusbar, .o2k7aSkinBlack .mceMenuItemTitle a, .o2k7aSkinBlack .mceMenuItemTitle span.mceText, .o2k7aSkinBlack .mceStatusbar div, .o2k7aSkinBlack .mceStatusbar span, .o2k7aSkinBlack .mceStatusbar a {background:#535353; color:#FFF}
+.o2k7aSkinBlack table.mceListBoxEnabled .mceText, o2k7aSkinBlack .mceListBox .mceText {background:#FFF; border:1px solid #CBCFD4; border-bottom-color:#989FA9; border-right:0}
+.o2k7aSkinBlack table.mceListBoxEnabled:hover .mceText, .o2k7aSkinBlack .mceListBoxHover .mceText, .o2k7aSkinBlack .mceListBoxSelected .mceText {background:#FFF; border:1px solid #FFBD69; border-right:0}
+.o2k7aSkinBlack .mceExternalToolbar, .o2k7aSkinBlack .mceListBox .mceText, .o2k7aSkinBlack div.mceMenu, .o2k7aSkinBlack table.mceLayout, .o2k7aSkinBlack .mceMenuItemTitle a, .o2k7aSkinBlack table.mceLayout tr.mceFirst td, .o2k7aSkinBlack table.mceLayout, .o2k7aSkinBlack .mceMenuItemTitle a, .o2k7aSkinBlack table.mceLayout tr.mceLast td, .o2k7aSkinBlack .mceIframeContainer {border-color: #535353;}
+.o2k7aSkinBlack table.mceSplitButtonEnabled:hover a.mceAction, .o2k7aSkinBlack .mceSplitButtonHover a.mceAction, .o2k7aSkinBlack .mceSplitButtonSelected {background-image:url(img/button_bg_black.png)}
+.o2k7aSkinBlack .mceMenu .mceMenuItemEnabled a:hover, .o2k7aSkinBlack .mceMenu .mceMenuItemActive {background-color:#FFE7A1}

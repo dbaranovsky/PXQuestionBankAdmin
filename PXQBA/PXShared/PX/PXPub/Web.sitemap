@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode url="/Reports/ReportMasterPage.master" title="Report"  description="">
+        <siteMapNode url="/Reports/ReportsView.aspx?1=1" title="Logins"  description="Logins" />
+        <siteMapNode url="/Reports/ReportsView.aspx?2=2" title="Student vs Group Graph"  description="StudentGroupGraph" />
+        <siteMapNode url="/Reports/ReportsView.aspx?3=3" title="Quiz Submissions"  description="QuizSubmissions" />
+        <siteMapNode url="/Reports/ReportsView.aspx?4=4" title="User Submissions"  description="UserSubmissions" />
+        <siteMapNode url="/Reports/ReportsView.aspx?5=5" title="Uploaded File Submissions"  description="FileSubmissions" />
+        <siteMapNode url="/Reports/ReportsView.aspx?6=6" title="Discussion Forum Posts"  description="DiscussionForum" />
+        <siteMapNode url="/Reports/ReportsView.aspx?7=7" title="Wiki Activity"  description="WikiActivity" />
+        <siteMapNode url="/Reports/ReportsView.aspx?8=8" title="Comments/Notes"  description="CommentsNotes" />
+        <siteMapNode url="/Reports/ReportsView.aspx?9=9" title="Page Views"  description="PageViews" />
+    </siteMapNode>
+</siteMap>

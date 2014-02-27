@@ -1,0 +1,561 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<requests>
+  <item itemid="MarriageLicense1853" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>a</sequence>
+      <title>Joseph Cousselle and Louisa Langley, Marriage License, 1853</title>
+      <description>Source Description</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>Marriage License, 1853.</creditline_caption>
+      <source_caption>London Metropolitan Archives.</source_caption>
+      <headnote>
+        <content>A marriage license then and now is fairly straightforward: it is a record of a couple’s legal 
+          relationship. But it also contains pertinent chronological, demographic, and social information 
+          about the couple and their families.</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>pdf</format>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Cousselle-Marriage.pdf</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Cousselle-Marriage.pdf</location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) What is a cordwainer? &lt;br /&gt;
+          2) What evidence is there of a class difference in the parents’ occupations?
+        </content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs>
+        <bfw_toc_PJX_1 parentid="PJX_1" sequence="a" type="primary"/>
+      </bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+  <item itemid="AmericanEagle1853" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>b</sequence>
+      <title>Ship’s Passenger List, American Eagle, 1853</title>
+      <description>Source Description</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>Passenger List, Ship American Eagle, 1853.</creditline_caption>
+      <source_caption>Records of the U.S. Customs Service, Record Group 36; National Archives, Washington, D.C.</source_caption>
+      <headnote>
+        <content>Like a marriage license, a ship’s passenger list is also fairly obvious: it is a record of people going 
+          from one place to another. But it also contains occupational, geographic, and political information. 
+          The ship American Eagle made regular trips between New York and England in the 1850s. Its 
+          primary business was transporting passengers traveling to and from New York and London. Most of 
+          these passengers were, however, northern Europeans, primarily from England and Germany, 
+          emigrating to the United States.</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>pdf</format>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/PassengerList_AmericanEagle_1853.pdf</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/PassengerList_AmericanEagle_1853.pdf</location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) Who are the Cousselles’ fellow travelers in terms of social class?&lt;br /&gt; 
+          2) How long after their marriage did the Cousselles emigrate to the United States?&lt;br /&gt;
+          3) What does this document list as Louisa Cousselle’s citizenship? Why?
+        </content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs>
+        <bfw_toc_PJX_1 parentid="PJX_1" sequence="b" type="primary"/>
+      </bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+  <item itemid="IRS1865" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>c</sequence>
+      <title>Internal Revenue Service, Nevada Tax List, Nevada, 1865</title>
+      <description>Source Description</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>Internal Revenue List, 1865 (Document).</creditline_caption>
+      <source_caption>National Archives and Records Administration.</source_caption>
+      <headnote>
+        <content>Passed in 1862 to raise money for the Union cause during the Civil War, the Internal Revenue Act 
+          placed a tax on various goods and services. All persons, partnerships, firms, associations, and 
+          corporations, according to the legislation, submitted to a local federal assessor a list showing the 
+          amount of annual income, articles subject to special taxes and duties, and the quantity of goods 
+          made or sold that were liable to taxes or duties. While there is much we cannot learn from a tax list, 
+          it can provide clues as to where a person was living and what his or her relative wealth was in 
+          comparison with other members of the community.</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>pdf</format>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Cousselle Revenue List 1865.pdf</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Cousselle Revenue List 1865.pdf</location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) What did Louisa Cousselle pay tax on?&lt;br /&gt;
+          2) In what ways did her taxable property conform (or not) to nineteenth-century gender expectations?&lt;br /&gt;
+          3) Where does Louisa Cousselle fit, in terms of taxes paid, in comparison to her neighbors?</content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs>
+        <bfw_toc_PJX_1 parentid="PJX_1" sequence="c" type="primary" />
+      </bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+  <item itemid="FireLosses1874" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>d</sequence>
+      <title>Fire Losses, 1874, Helena, Lewis &amp; Clark County, Montana</title>
+      <description>Source Description</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>Subscription History, "Fire Losses, 1874, Helena, Lewis &amp; Clark County, Montana."</creditline_caption>
+      <source_caption>Michael Leeson, "Lewis and Clarke County," History of Montana, 1739–1885 (Chicago: Warner, Beers &amp; Company, 1885): 717–718.</source_caption>
+      <headnote>
+        <content>Many western towns were liable to fires for a host of reasons, and Helena was no exception; it 
+          suffered devastating fires in 1869, 1871, and 1874. Taken from a subscription history, the partial 
+          list enumerates resident losses in the fire.</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>pdf</format>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Cousselle Fire Loss 1874.pdf</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Cousselle Fire Loss 1874.pdf</location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) How many individual men and how many &lt;i&gt;individual&lt;/i&gt; women suffered losses? &lt;br /&gt;
+          2) What was the average &lt;i&gt;individual&lt;/i&gt; loss in the fire? How did Cousselle’s loss compare with the average loss? What might this comparison suggest about her financial standing?&lt;br /&gt;
+          3) Why might Cousselle have moved to Bozeman?</content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs>
+        <bfw_toc_PJX_1 parentid="PJX_1" sequence="d" type="primary" />
+      </bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+  <item itemid="USCensus1880" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>e</sequence>
+      <title>U.S. Manuscript Census, 1880, Gallatin County, Bozeman</title>
+      <description>Source Description</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>U.S. Manuscript Census, 1880, Bozeman, Gallatin County, Montana Territory.</creditline_caption>
+      <source_caption>Tenth Census of the United States, 1880.</source_caption>
+      <headnote>
+        <content>The Census Bureau instructed enumerators to collect the following information for each 
+          household: address (name of the street; house number), occupants (name of each person and their 
+          relationship to head of family), sex, race, age, marital status, ability to read and write, birthplace, 
+          birthplace of parents, occupation (trade or profession; number of months unemployed), health 
+          (whether blind, deaf and dumb, crippled, maimed, idiotic, insane, bedridden, or otherwise 
+          disabled), number of months unemployed during the year; and the state or country of birth of 
+          every individual’s father and mother.</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>pdf</format>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Cousselle Census 1880.pdf</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Cousselle Census 1880.pdf</location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) Why did Louisa Cousselle move to Bozeman?&lt;br /&gt;
+          2) What was her occupation? &lt;br /&gt;
+          3) Does the data from the 1880 census change your interpretation of data from earlier documents?</content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs>
+        <bfw_toc_PJX_1 parentid="PJX_1" sequence="e" type="primary" />
+      </bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+  <item itemid="WillProbate" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>f</sequence>
+      <title>Louisa Cousselle, Will &amp; Probate, 1883 &amp; 1886 (excerpt)</title>
+      <description>Part of a much larger document set, Louisa Cousselle’s will and probate details an array of family 
+        relationships and her intention regarding the disposition of her real and chattel property.</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>Probate Court, Gallatin County, Bozeman, Montana Territory.</creditline_caption>
+      <source_caption>[[excerpt of Will]]</source_caption>
+      <headnote>
+        <content>Part of a much larger document set, Louisa Cousselle’s will and probate details an array of family 
+          relationships and her intention regarding the disposition of her real and chattel property.</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>pdf</format>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Cousselle-Will-Excerpt-1883.pdf</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Transcript_LouisaCousselle_WillProbate_1883.pdf</location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) What were the most surprising revelations contained in the will? &lt;br /&gt;
+          2) What do these surprises suggest about Cousselle’s life? &lt;br /&gt;
+          3) What do Louisa Cousselle’s bequests suggest about her values? &lt;br /&gt;
+          4) Why is Louisa Cousselle’s will and probate so important?
+        </content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs>
+        <bfw_toc_PJX_1 parentid="PJX_1" sequence="f" type="primary" />
+      </bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+  <item itemid="AvantCourier1886" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>g</sequence>
+      <title>"Death of Mrs. Lou," Avant Courier [Bozeman, Montana Territory], June 26, 1886</title>
+      <description>Source Description</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>Avant Courier (Bozeman, Montana Territory), June 26, 1886.</creditline_caption>
+      <source_caption></source_caption>
+      <headnote>
+        <content>Obituaries were (and are) summaries of an individual life. Death notices of notable and notorious 
+          individuals also provided some insight into the community’s view of the departed as well as the 
+          community’s values.</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>pdf</format>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Avant Courier 6-26-1886.pdf</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Avant Courier 6-26-1886.pdf</location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) What parts of the obituary confirm evidence from the other sources? &lt;br /&gt;
+          2) What was the writer’s and, by extension, the community’s view of 
+          Louisa Cousselle?&lt;br /&gt;
+          3) What did the reporter apparently value when he evaluated Cousselle’s life?</content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs>
+        <bfw_toc_PJX_1 parentid="PJX_1" sequence="g" type="primary" />
+      </bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+  <item itemid="LouisaGravestone" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>h</sequence>
+      <title>Louisa Cousselle’s Gravestone, Greenwood Cemetery, Brooklyn, New York</title>
+      <description>Source Description</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>Headstone, Greenwood Cemetery, Brooklyn, New York, 2009 (photo by Paula Petrik).</creditline_caption>
+      <source_caption></source_caption>
+      <headnote>
+        <content>In the nineteenth century it “counted” to be buried in Brooklyn’s Greenwood Cemetery. As one 
+          observer wrote, “It is the ambition of the New Yorker to live upon the Fifth Avenue, to take his 
+          airings in the Park, and to sleep with his fathers in Green-Wood.” Among those buried in 
+          Greenwood were Horace Greeley, who once advised young men to go west, and Lola Montez, a 
+          noted exotic dancer and courtesan.</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>pdf</format>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Couselle_Gravestone_2009.pdf</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Couselle_Gravestone_2009.pdf</location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) Why did Cousselle choose Greenwood Cemetery as her final resting place?&lt;br /&gt;
+          2) What does her choice suggest about her aspirations?</content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs>
+        <bfw_toc_PJX_1 parentid="PJX_1" sequence="h" type="primary" />
+      </bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+  <item itemid="TaxList1867" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>h</sequence>
+      <title>Tax List, Helena, Lewis &amp; Clark County, Montana, 1867</title>
+      <description>Source Description</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>Subscription History, Tax List 1867, Helena, Lewis &amp; Clark County, Montana.</creditline_caption>
+      <source_caption>Michael Leeson, "Lewis and Clarke County," History of 
+        Montana, 1739–1885 (Chicago: Warner, Beers &amp; 
+        Company, 1885): 681–682; 685–686.</source_caption>
+      <headnote>
+        <content>Property taxes were the mainstay of local western governments and provide an index into an 
+          individual’s economic position. Although this list is only a partial tabulation, it can be used as a 
+          rough sample for the whole.</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>pdf</format>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Cousselle Tax List 1867.pdf</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Cousselle Tax List 1867.pdf</location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) How many &lt;i&gt;individual&lt;/i&gt; men and how many &lt;i&gt;individuals&lt;/i&gt; held property?&lt;br /&gt;
+          2) What was the average &lt;i&gt;individual&lt;/i&gt; assessed property value?&lt;br /&gt;
+          3) How did Cousselle’s property value compare with the average property value? </content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs>
+        <bfw_toc_PJX_1 parentid="PJX_1" sequence="a" type="alternate" />
+      </bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+  <item itemid="USCensus1870" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>i</sequence>
+      <title>U.S. Census Bureau, Census List for Helena, Lewis &amp; Clark County, Montana Territory, 1870</title>
+      <description>Source Description</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>U.S. Manuscript Census, 1870, Helena, Lewis &amp; Clark County, Montana Territory.</creditline_caption>
+      <source_caption>National Archives and Records Administration.</source_caption>
+      <headnote>
+        <content>The Census Bureau instructed enumerators to record the names of every person in the household. 
+          Tallies included the following categories in the census: name; age at last birthday (if a child was 
+          under one year of age, months of age were to be stated as fractions, such as 1/12); sex; color; 
+          profession; occupation or trade of every male and female; value of real estate; place of birth; 
+          whether mother and father were of foreign birth; whether born or married within the year and the 
+          month; those who could not read; those who could not write; whether deaf, dumb, blind, or insane 
+          or "idiotic." No relationships were shown between members of a household.</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>pdf</format>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Cousselle Census 1870.pdf</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Cousselle Census 1870.pdf</location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) Is Louisa Cousselle listed on the page? How do you know?&lt;br /&gt;
+          2) If she is listed, what information does she give the census taker? Evaluate its accuracy and account for any discrepancies.</content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs>
+        <bfw_toc_PJX_1 parentid="PJX_1" sequence="b" type="alternate" />
+      </bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+  <item itemid="MontanaMention1886" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>j</sequence>
+      <title>"Montana Mention," Daily Yellowstone Journal (Miles City, Montana), March 6, 1886</title>
+      <description>Source Description</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>Daily Yellowstone Journal (Miles City, Montana), March 6, 1886.</creditline_caption>
+      <source_caption></source_caption>
+      <headnote>
+        <content>The Yellowstone Journal was the paper of record for Miles City, a cattle trans-shipment point in 
+          the eastern part of Montana, some 288 miles from Bozeman.</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>pdf</format>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Yellowstone Journal 3-6-86.pdf</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Yellowstone Journal 3-6-86.pdf</location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) What does the incident described in the Yellowstone Journal add to an account of Cousselle’s financial dealings? &lt;br /&gt;
+          2) Why would a newspaper publish an account of an event involving two demimonde residents in a town nearly 300 miles away?</content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs>
+        <bfw_toc_PJX_1 parentid="PJX_1" sequence="c" type="alternate" />
+      </bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+  <item itemid="BlockCarltonAvenue2009" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>j</sequence>
+      <title>300 Block Carlton Avenue, Brooklyn, New York, 2009</title>
+      <description>Source Description</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>Cityscape, Carlton Avenue Block, Brooklyn, New York, 2009 (photo by Paula Petrik).</creditline_caption>
+      <source_caption></source_caption>
+      <headnote>
+        <content>Although Louisa Cousselle’s house no longer stands, the row house neighborhood in Brooklyn’s 
+          Park Slope area looks much the same as it did in 1880s when Louisa Cousselle built her brick 
+          house sometime after 1881.</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>pdf</format>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/CarltonAve_2009.pdf</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/CarltonAve_2009.pdf</location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) By its physical appearance, what kind of neighborhood does Carlton Avenue appear to be? &lt;br /&gt;
+          2) What does the Carlton Avenue neighborhood suggest about Cousselle’s life in Brooklyn? </content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs>
+        <bfw_toc_PJX_1 parentid="PJX_1" sequence="d" type="alternate" />
+      </bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+</requests>

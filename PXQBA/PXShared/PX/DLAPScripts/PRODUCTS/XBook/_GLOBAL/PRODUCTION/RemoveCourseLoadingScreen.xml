@@ -1,0 +1,12 @@
+<batch>
+  <!-- Following command updates the product course with the correct metadata values -->
+  <request cmd="updatecourses">
+    <requests>
+      <course courseid="-entityid-" domainid="-domainid-">
+        <data>
+          <enableloadingscreen></enableloadingscreen>
+        </data>
+      </course>
+    </requests>
+  </request>
+</batch>

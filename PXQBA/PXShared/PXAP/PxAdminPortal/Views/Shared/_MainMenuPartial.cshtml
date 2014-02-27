@@ -1,0 +1,20 @@
+﻿@model List<Bfw.PXAP.Models.MainMenuModel>
+
+ <div class="divMainMenu">
+<ul id="mainmenu">
+
+    @{
+        
+    foreach(var m in Model)
+    {
+        Bfw.PXAP.Models.LayoutModel layoutModel = ViewBag.LayoutModel as Bfw.PXAP.Models.LayoutModel;                 
+        
+        <li>@Html.ActionLink(m.MenuName, m.MenuAction, m.MenuController,null, new { id=m.MenuName})</li>
+        
+    }    
+
+    }
+
+
+</ul>
+</div >

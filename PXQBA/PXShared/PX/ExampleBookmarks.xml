@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bfw_bookmarks>
+  <bfw_bookmark id="GUID" itemid="ITEM_ID" added="DATE" sequence="SEQ_STRING" type="item">
+    <bfw_bookmark_title>Item Title</bfw_bookmark_title>
+  </bfw_bookmark>
+  <bfw_bookmark id="GUID" added="DATE" sequence="SEQ_STRING" type="folder">
+    <bfw_bookmark_title>Item Title</bfw_bookmark_title>
+    <bfw_bookmark id="GUID" itemid="ITEM_ID" added="DATE" sequence="SEQ_STRING" type="item">
+      <bfw_bookmark_title>Item Title</bfw_bookmark_title>
+    </bfw_bookmark>
+    <bfw_bookmark id="GUID" itemid="ITEM_ID" added="DATE" sequence="SEQ_STRING" type="item">
+      <bfw_bookmark_title>Item Title</bfw_bookmark_title>
+    </bfw_bookmark>
+    <bfw_bookmark id="GUID" added="DATE" sequence="SEQ_STRING" type="folder">
+      <bfw_bookmark_title>Folder Title</bfw_bookmark_title>
+      <bfw_bookmark id="GUID" added="DATE" sequence="SEQ_STRING" type="folder">
+        <bfw_bookmark_title>Folder Title</bfw_bookmark_title>
+        <bfw_bookmark id="GUID" itemid="ITEM_ID" added="DATE" sequence="SEQ_STRING" type="item">
+          <bfw_bookmark_title>Item Title</bfw_bookmark_title>
+        </bfw_bookmark>
+      </bfw_bookmark>
+    </bfw_bookmark>
+  </bfw_bookmark>
+</bfw_bookmarks>

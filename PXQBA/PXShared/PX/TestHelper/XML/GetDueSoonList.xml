@@ -1,0 +1,23 @@
+﻿<items>
+  <item enrollmentid="135688" itemid="588f3efd2dc142d1a19fd97d704279a0" title="Untitled Link" status="1" responseversion="1" scoredversion="1" scoreddate="2013-09-19T16:47:38.837Z" achieved="10" possible="10" letter="A" seconds="43" firstactivitydate="2013-09-19T16:47:46Z" lastactivitydate="2013-09-19T16:48:29Z" submittedversion="1" submitteddate="2013-09-19T16:47:38.837Z" duedate="2013-09-23T03:59:01Z">
+    <entity id="131921" title="4820" />
+  </item>
+  <item enrollmentid="135688" itemid="bsi__7788BE50__039E__418B__8730__13FEBC053D70" title="LearningCurve: Production and Cost" status="0" seconds="377" firstactivitydate="2013-09-16T18:05:10Z" lastactivitydate="2013-09-16T18:28:30Z" duedate="2013-09-24T03:59:01Z">
+    <entity id="131921" title="4820" />
+  </item>
+  <item enrollmentid="135688" itemid="ANGEL_econportal__stoneecon2__master_37D1C2B6E52008A5CC2FCE1D65A70000" title="Chapter 07 Homework Quiz" duedate="2013-09-24T03:59:01Z">
+    <entity id="131921" title="4820" />
+  </item>
+  <item enrollmentid="135688" itemid="bsi__98FD1B5C__0526__4473__B21F__DF96B72E45F9" title="LearningCurve: Supply and Demand" duedate="2013-09-25T03:59:01Z">
+    <entity id="131921" title="4820" />
+  </item>
+  <item enrollmentid="135688" itemid="ANGEL_econportal__stoneecon2__master_58D5775BED6FFE88171008BA7E550000" title="Chapter 03 Homework Quiz" status="261" responseversion="3" scoredversion="3" scoreddate="2013-09-19T16:56:04.687Z" achieved="0.05" possible="1" letter="F" rawachieved="1" rawpossible="20" attempts="3" seconds="89" firstactivitydate="2013-09-19T16:53:05.4Z" lastactivitydate="2013-09-19T16:56:04.607Z" submittedversion="3" submitteddate="2013-09-19T16:56:04.607Z" duedate="2013-09-25T03:59:01Z">
+    <entity id="131921" title="4820" />
+  </item>
+  <item enrollmentid="135688" itemid="bsi__76C9438C__60C2__4770__BC9F__6A4E3DD857BD" title="LearningCurve: Monopolistic Competition, Oligopoly, and Game Theory" duedate="2013-09-26T03:59:01Z">
+    <entity id="131921" title="4820" />
+  </item>
+  <item enrollmentid="135688" itemid="ANGEL_econportal__stoneecon2__master_83E2BCF8848A57299032369B09060000" title="Chapter 10 Homework Quiz" duedate="2013-09-26T03:59:01Z">
+    <entity id="131921" title="4820" />
+  </item>
+</items>

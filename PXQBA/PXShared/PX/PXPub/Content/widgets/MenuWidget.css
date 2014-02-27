@@ -1,0 +1,196 @@
+﻿.PX_Menu .parent {
+    list-style: none outside none;
+    margin: 0;
+    width: 100%;
+}
+.PX_Menu .parent li {
+    background-color: #D9E4DD;
+    float: left;
+    margin-right: 1px;
+    position: relative;
+    white-space: nowrap;
+    width:195px;
+    padding:6px;
+}
+
+/* Fne Project Overlay Menu Styles */ 
+
+#project-overlay-content-nav .PX_Menu .parent ul.child li{
+    white-space:normal;
+}
+.PX_Menu .parent ul li:hover a{
+    color:#fff;
+}
+
+#NavMenu .PX_Menu .parent li {
+    width:auto;
+    padding: 8px;
+    border-right: 1px solid #fff;
+}
+
+.PX_Menu .parent li.active{
+    background-color:#BD2B4B;
+}
+
+.PX_Menu .parent li.active a{
+    /*color:#fff;*/
+}
+
+.PX_Menu .parent li a:hover:after {
+    content: "";
+    height: 0;
+    left: 12px;
+    position: absolute;
+    top: 34px;
+    width: 0;
+}
+.PX_Menu .parent a {
+    color: #333333;
+    float: left;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+    width:100%;
+    
+}
+.PX_Menu .parent li:hover > a {
+    text-shadow: none;
+}
+.no-touch .PX_Menu li:hover {
+    background-color: #62A2A6;
+    
+    color: white;
+}
+
+.no-touch  .PX_Menu li:hover a{
+    color:#fff;
+}
+.PX_Menu .parent li:hover > a.primary-sources {
+    
+    border-left: 1px solid #3D5A6A;
+    border-right: 1px solid #3D5A6A;
+    border-top: 1px solid #3D5A6A;
+    color: #333333;
+    padding: 9px 9px 11px;
+    text-shadow: none;
+}
+.PX_Menu .parent li > a.primary-sources:hover:after {
+    border: medium none;
+}
+.PX_Menu .parent li:hover > ul {
+    display: block;
+}
+
+.PX_Menu .parent ul {
+    background-color: #D9E4DD;
+    border-left: 1px solid #3D5A6A;
+    border-right: 1px solid #3D5A6A;
+    border-bottom: 1px solid #3D5A6A;
+    border-top: 0px;
+    box-shadow: 4px 4px 7px #555;
+    display: none;
+    left: 0;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 24px;
+    width: 275px;
+    z-index: 1;
+}
+
+.PX_Menu .parent ul li {
+    display: block;
+    float: none;
+    margin: 0;
+    padding: 0;
+}
+.PX_Menu .parent ul li:last-child {
+    box-shadow: none;
+}
+.PX_Menu .parent ul a {
+    color: #3D5A6A;
+    display: block;
+    float: none;
+    height: auto;
+    text-transform: none;
+}
+
+:first-child + html .PX_Menu .parent ul a {
+    height: 10px;
+}
+.PX_Menu .parent ul a:hover {
+    color:#fff;
+}
+.PX_Menu .parent ul a:hover:after {
+    
+    border: medium none;
+    
+}
+.PX_Menu .parent:after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.PX_Menu .menu-pagination {
+    font-size: 12px;
+    color: black;
+    width: 100px;
+    margin: 6px 12px 0 0;
+    position:absolute;
+    right:0;
+}
+
+.menu-numeric-seq
+{
+    padding-left: 10px;
+}
+
+.menu-pagination .start-button {
+    color: white;
+    background-color: #BD2B4B;
+    text-transform: uppercase;
+    text-decoration: none;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    display: block;
+    padding: 4px;
+    width:50px; 
+    float:right;
+}
+
+.menu-pagination .start-button::after {
+    content: "▷";
+    font-family: 'pxicons';
+    font-style: normal;
+    speak: none;
+    display: inline-block;
+    text-align: center;
+    font-size: 1.25em;
+    margin-left: 2px;
+}
+
+.PX_Menu .print-button  {
+    content: ""; 
+    display: inline-block;
+    font-family: 'pxicons';
+    float:left;
+    padding-top:4px;
+ }
+    
+    
+.PX_Menu .print-button:before
+{
+    content: "";
+}
+
+.PX_Menu .nav-button
+{
+    text-decoration:none;
+}
+     /* '\e716' */

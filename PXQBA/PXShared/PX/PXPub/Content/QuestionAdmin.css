@@ -1,0 +1,1160 @@
+﻿/* Layout */
+
+html, body{
+    margin:0;
+    height:100%;
+} 
+
+iframe
+{
+    position: relative;	
+    width: 100%;  
+    height: 100%;
+}
+
+@font-face { 		/* References icon font */
+  font-family: 'pxicons';
+  src: url('fonts/pxicons.eot');
+  src: url('fonts/pxicons.eot?#iefix') format('embedded-opentype'),
+       url('fonts/pxicons.woff') format('woff'),
+       url('fonts/pxicons.ttf') format('truetype'),
+       url('fonts/pxicons.svg#fontello') format('svg');
+  font-weight: normal; font-style: normal;
+}
+
+[class^="pxicon-"], [class*=" pxicon-"] {		/* Basic icon styling */
+  font-family: 'pxicons';
+  font-style: normal;
+  speak: none;
+  display: inline-block;
+  width: 0.938rem;
+  margin-right: 0px;
+  text-align: center;
+  font-size: 1.063rem;
+}
+
+.pxicon-plus:before { content: "+"; } /* '\2b' */		/* Assigns unicode characters to a unique icon class */
+.pxicon-plus-circle:before { content: "⊕"; }
+.pxicon-minus:before { content: "-"; } /* '\2d' */
+.pxicon-arrow-up:before { content: "⬆"; } /* '\e803' */
+.pxicon-arrow-down:before { content: "⬇"; } /* '\e805' */
+.pxicon-down-open:before { content: "▽"; } /* '\e75c' */
+.pxicon-left-open:before { content: "◁"; } /* '\e75d' */
+.pxicon-right-open:before { content: "▷"; } /* '\e75e' */
+.pxicon-up-open:before { content: "△"; } /* '\e75f' */
+.pxicon-home:before { content: "⌂"; } /* '\2302' */
+.pxicon-pause:before { content: "⎉"; } /* '\2389' */
+.pxicon-fast-fw:before { content: "⏩"; } /* '\23e9' */
+.pxicon-fast-bw:before { content: "⏪"; } /* '\23ea' */
+.pxicon-to-end:before { content: "⏭"; } /* '\23ed' */
+.pxicon-to-start:before { content: "⏮"; } /* '\23ee' */
+.pxicon-stop:before { content: "▪"; } /* '\25aa' */
+.pxicon-play:before { content: "▶"; } /* '\25b6' */
+.pxicon-small-triangle-right:before { content: "▸"; } /* '\25b8' */
+.pxicon-small-triangle-down:before { content: "▾"; } /* '\25be' */
+.pxicon-star:before { content: "★"; } /* '\e800' */
+.pxicon-list:before { content: "☰"; } /* '\2630' */
+.pxicon-thumbnail:before { content: "⊠"; } /* '\268f' */
+.pxicon-gear:before { content: "⚙"; } /* '\2699' */
+.pxicon-record:before { content: "⚫"; } /* '\26ab' */
+.pxicon-mail:before { content: "✉"; } /* '\2709' */
+.pxicon-pencil:before { content: "✎"; } /* '\270e' */
+.pxicon-check:before { content: "✔"; } /* '\2713' */
+.pxicon-check-circle:before { content: "⊛"; } 
+.pxicon-x:before { content: "✖"; } /* '\2715' */
+.pxicon-x-circle:before { content: "⊗"; }
+.pxicon-questionmark:before { content: "?"; } 
+.pxicon-information:before { content: "𝒊"; }
+.pxicon-new-window:before { content: ""; } /* '\e74c' */
+.pxicon-warningsign:before { content: "⚠"; } /* '\2757' */
+.pxicon-tag:before { content: ""; } /* '\e70c' */
+.pxicon-reply:before { content: ""; } /* '\e804' */
+.pxicon-print:before { content: ""; } /* '\e716' */
+.pxicon-speech-bubble-single:before { content: ""; } /* '\e718' */
+.pxicon-speech-bubble-double:before { content: ""; } /* '\e001' */
+.pxicon-trash:before { content: ""; } /* '\e729' */
+.pxicon-align-left:before { content: ""; } /* '\e734' */
+.pxicon-chart-pie:before { content: ""; } /* '\e7a2' */
+.pxicon-line-graph:before { content: "📈"; } /* '\e802' */
+.pxicon-bar-graph:before { content: "📊"; } /* '\1f4ca' */
+.pxicon-attach:before { content: "📎"; } /* '\1f4ce' */
+.pxicon-search:before { content: "🔍"; } /* '\1f50d' */
+.pxicon-lock:before { content: "🔒"; } /* '\1f512' */
+.pxicon-lock-open:before { content: "🔓"; } /* '\1f513' */
+.pxicon-link:before { content: "🔗"; } /* '\1f517' */
+.pxicon-settings:before { content: "🔧"; } /* '\1f527' */
+.pxicon-forward:before { content: "➦"; } /* '\27a6' */
+.pxicon-copy:before { content: ""; } /* '\e736' */
+.pxicon-calendar:before { content: ""; } /* '\e73e' */
+.pxicon-announcement:before { content: ""; } /* '\e003' */
+.pxicon-network:before { content: ""; } /* '\e000' */
+.pxicon-highlighter:before { content: ""; } /* '\e005' */
+.pxicon-gradebook:before { content: ""; } /* '\e004' */
+.pxicon-assessment:before { content: ""; } /* '\e006' */
+.pxicon-fullscreen-enter:before { content: ""; } /* '\e007' */
+.pxicon-fullscreen-exit:before { content: ""; } /* '\e008' */
+.pxicon-slideshow:before { content: ""; } /* '\e009' */
+.pxicon-figure:before { content: "🌄"; } /* '\e010' */
+.pxicon-video:before { content: "🎬"; } /* '\e011' */
+.pxicon-page:before { content: "📄"; } /* '\e012' */
+.pxicon-pin:before { content: "📌"; } /* '\e013' */
+.pxicon-bookmark:before { content: "🔖"; } /* '\e014' */
+.pxicon-volume:before { content: "🔊"; } /* '\1F50A' */
+.pxicon-download:before { content: "📥"; } /* '\E015' */
+.pxicon-upload:before { content: "📤"; } /* '\E016' */
+.pxicon-paragraph:before { content: "¶"; } /* '\00B6' */
+.pxicon-public:before { content: "👥"; } /* '\E022' */
+.pxicon-private:before { content: "👤"; } /* '\E020' */
+.pxicon-vote-up:before { content: "👍"; } /* '\E026' */
+.pxicon-vote-down:before { content: "👎"; } /* '\E025' */
+.pxicon-audio-input:before { content: "🎤"; } /* '\E018' */
+.pxicon-audio-clip:before { content: "🎧"; } /* '\E019' */
+.pxicon-keyboard:before { content: "⌨"; }
+.pxicon-cc:before { content: ""; }
+.pxicon-save:before { content: ""; }
+.pxicon-cancel:before { content: "⊘";}
+.pxicon-drawer:before { content: "";}
+.pxicon-folder:before { content: "📁";}
+.pxicon-eye:before { content: "";}
+.pxicon-eye-slash:before { content: "";} 
+
+/* end Icon font definitions */ 
+
+#QBA,
+#QBAEditor, #BulkEditor
+{
+    font-family: arial,sans-serif;
+    font-size:12px;
+    color:#333333; 	
+    height: 100%;    
+}
+#QBA #maintable,
+#QBAEditor #maintable
+{
+    width: 100%;   
+    height:100%;     
+    border: 1px solid #D3D3D3;
+    background-color: #D3D3D3;
+      
+}
+#QBA #maintable tr.MainHeader,
+#QBAEditor #maintable tr.MainHeader,
+#BulkEditor #maintable tr.MainHeader
+{
+    height: 70px;
+    background-color: #f4f4f4;
+    font-family: arial,sans-serif;
+    font-size:14px;
+    color:#333333; 
+    padding: 10px;	
+        
+    border: 0 none;
+    margin: 0;
+    
+}
+#QBA #maintable tr.MainHeader td
+#QBAEditor #maintable tr.MainHeader td
+{
+    padding: 10px;	
+}
+#QBA #maintable tr.MainBody,
+#QBAEditor #maintable tr.MainBody
+{
+    height: 100%;
+    vertical-align: top;
+}
+#QBA #maintable td.left 
+{
+    width:20%;    
+    background-color: #ffffff;
+}
+
+#QBA #SearchPanel,
+#QBA #SearchResult
+{
+    height: 100%;    
+}
+
+#QBA-Result-Table
+{
+    width:100%;
+    height: 100%;
+    vertical-align: top;   
+    padding: 0px;   
+    border-spacing: 0px;
+    background-color: #ffffff;
+}
+#QBA-Result-Table tr.header 
+{
+    height: 5%;
+    font-size:14px;
+    background-color: #f4f4f4;
+}
+
+
+#QBA-QuestionList-Table tr.headerForQuestionsResutl 
+/*#QBA-Result-Table tr.headerForQuestionsResutl*/ 
+{
+    width:100%;
+    height: 30px;
+    font-size:12px;
+    font-weight: bold;
+    background-color:darkgrey;
+    border: none;
+    border-spacing: 0px;
+    font-family: arial,sans-serif;
+    padding-top: 10px;
+}
+
+#QBA-Result-Table tr.header td
+{
+    padding-left: 10px;
+}
+#QBA-Result-Table tr.header td.AddQuestion
+{
+    width: 150px;            
+}
+
+
+#QBA-Result-Table tr.body
+{
+    height: 100%;
+    
+}
+
+#QBA-Result-Table tr.body td
+{
+   /* vertical-align: top; */
+    padding: 0px;
+}
+
+#QBA-Result-Table .duplicate-button-container
+{
+    display: none;
+position: absolute;
+top: 0;
+right: 0;
+width: 106px;
+height: 140px;
+z-index: 999999;
+}
+#duplicate-button
+{
+ position: absolute;
+right: 5px;
+   
+}
+#QBA-Result-Table tr.footer
+{
+    height: 50px;
+    background-color: #f4f4f4;
+    
+}
+
+#QBA-Search-Table
+{
+    width:100%;
+    vertical-align: top;   
+    padding: 0px;   
+    border-spacing: 0px;
+    background-color: #ffffff;
+    color: #000;
+}
+#QBA-Search-Table tr.header 
+{
+    height: 5%;
+    font-size:14px;
+    background-color: #f4f4f4;
+}
+#QBA-Search-Table tr.header td
+{
+    padding: 10px;
+}
+#QBA-Search-Table tr.body
+{
+    vertical-align: top;    
+}
+#QBA-Search-Table tr.body td
+{
+    vertical-align: top;
+    padding: 10px;
+}
+#QBA-Search-Table .Format-Listbox,
+#QBA-Search-Table .Status-Listbox,
+#QBA-Search-Table .Chapter-Listbox,
+#QBA-Search-Table #s2id_ChapterList_new,
+#QBA-Search-Table #s2id_QuizList,
+#QBA-Search-Table .Quiz-Listbox {
+    width:100%;
+}
+
+#QBA-Search-Table .Format-Listbox {
+    height: 120px;
+    width:100%;
+}
+#QBA-Search-Table .Chapter-Listbox {
+    /* height: 150px; */
+    width:100%;
+}
+#QBA-Search-Table .Quiz-Listbox {
+    /*height: 150px;*/
+    width:100%;
+}
+#QBA-Search-Table .Search-Textbox {
+    width: 100%;
+    background-color: #e4e4e4;
+}
+#QBA .link{
+    text-decoration: none
+}
+.QBA-Editor-Tabs{
+    float:left;
+    width:100%;
+    padding-left: 0px;
+}
+.QBA-Editor-Tabs li
+{
+    display: inline;
+    list-style-type: none;
+    margin: 0 12px;
+    float:left;
+}
+
+.QBA-Editor-Tabs li.unflagtab{
+    float:right;
+}
+
+.QBA-Editor-Tabs li.special2 a,
+.QBA-Editor-Tabs li a
+{
+    text-decoration: none;
+    color: #6988D1;    
+}
+.QBA-Editor-Tabs li.special2,
+.QBA-Editor-Tabs li.special
+{
+    float: right;
+}
+.QBA-Editor-Tabs li.special a
+{
+    text-decoration: none;
+    color: Red;    
+}
+
+.QBA-Editor-Tabs li a{
+    padding: 6px;
+}
+
+.QBA-Editor-Tabs .selected
+{
+    display: inline;    
+    padding: 6px;
+    background-color: #666666;
+    color: #ffffff !important;
+}
+
+.QBA-Editor-Tabs li.selected a{
+    color:#fff;
+}
+
+#maintable tr.Navigation
+{
+    height: 20px;    
+    font-family: arial,sans-serif;
+    font-size:14px;
+    color:#333333; 
+}
+#QBA-Editor-Container
+{
+
+    height: 100%;
+    background-color: #ffffff;
+    
+}
+
+#QBA-Editor-Container .queston-quiz-item{
+    padding-left: 20px;
+}
+
+#QBA-Editor-Container .bh-component,
+#QBA-Editor-Container .bh-component-wrapper
+{
+    width: 100%;  
+    height: 100%;
+}
+
+#QBA-Editor-Container .custom-hts-editor 
+{
+    position: relative;	
+    width: 100%;  
+
+    height: 100%;
+}
+
+#QBA-Editor-Container .custom-hts-editor iframe,
+#QBA-Editor-Container .bh-component iframe					 
+{
+    position: relative;	
+    width: 100%;  
+
+    height: 100%;
+}
+#QBA-Editor-Container .question-nav
+{
+    padding: 10px;
+    height: 35px;
+    background-color:#f4f4f4;
+}
+
+#qHeader_quizeditorcomponent
+{
+    display: none;
+}
+#TabContainer
+{
+    background-color: #ffffff;
+    height: 90%;
+}
+
+.QBA-button {
+    height: 30px;
+    margin: 10px 0px 0px 0px;
+}
+.Flag-Button-Bar .QBA-button {
+    margin: 0 12px 0 0;
+}
+
+#QBA-QuestionList-Table
+{
+    width:100%;
+    height:100%;
+    vertical-align: top;   
+    padding: 0px;    
+    background-color: #ffffff;
+    border: 0px;
+    border-spacing: 0px;
+    font-size: 12px;
+    
+}
+
+#QBA-Result-Table tr{
+    width:100%;    
+}
+
+#QBA-QuestionList-Table tr {
+    background-color: white;
+    border-bottom: 2px solid lightGrey;
+    border-spacing: 0px;
+    float: left;
+    clear: both;
+    width: 100%;
+    position: relative;
+}
+
+
+
+
+#QBA-QuestionList-Table-header  tr td.ExerciseNo 
+{  width:10%; }
+#QBA-QuestionList-Table-header  tr td.QuestionBank
+{  width:15%; }
+#QBA-QuestionList-Table-header  tr td.ebook 
+{  width:11%; }
+
+
+/* #QBA-QuestionList-Table-header tr td.QuestionTitle */
+#QBA-QuestionList-Table-header tr td.QuestionTitle 
+{
+    
+    width:auto;
+    font-weight:bold;
+}
+
+
+
+/*
+#QBA-QuestionList-Table  tr td.ExerciseNo,td.QuestionBank, td.ebook{ 
+    padding: 5px;
+    vertical-align: middle;
+    width:10%;
+}
+*/
+#QBA-QuestionList-Table  tr td.Qstatus 
+{  padding-left: 4px;
+    width: 125px; }
+#QBA-QuestionList-Table  tr td.ExerciseNo 
+{  padding-left: 5px;
+    width: 78px; }
+#QBA-QuestionList-Table  tr td.QuestionBank
+{  padding-left: 5px;
+    width: 237px; }
+#QBA-QuestionList-Table  tr td.ebook 
+{  padding-left: 5px;
+    width: 100px; }
+
+
+#QBA-QuestionList-Table  tr td.QuestionTitle{ 
+ padding-left: 5px;
+    width: 665px;
+}
+#QBA-QuestionList-Table tr td.first{    
+    /*width: 10%;    */
+    padding-left: 8px;
+    text-align:left;
+    width:125px;
+}
+
+
+#QBA-QuestionList-Table-header{
+    width:100%;
+}
+
+#QBA-QuestionList-Table-header tr td.first {
+    width: 10%;
+    padding: 10px;
+}
+
+#QBA-QuestionList-Table-header tr td{
+    vertical-align: middle;  
+    padding: 5px;
+}
+
+.noresult,
+.norecord{
+    padding: 12px;
+}
+
+#divPagination{
+    margin: 0 22px;
+}
+
+#PreviewTab{
+    /*margin: 12px;*/
+}
+
+#QBA-QuestionList-Table tr td.second
+{
+    vertical-align: middle;
+ 
+    padding: 5px;
+}
+#QBA-QuestionList-Table tr.header
+{    
+    background-color: #d3d3d3;
+    font-family: arial,sans-serif;
+    font-size:12px;	
+    height: 30px;
+}
+
+.new-question-menu .gearbox {
+    float: left;
+    height: 22px;
+    width: 19px;
+    position: static!important;
+    display: block;
+    background-image: url('style/images/platx_sprite.png');
+    background-position: 3px -241px;
+    background-repeat: no-repeat;
+    border-left: 1px solid #CCC;
+    margin-left: 6px;
+}
+.EditorLink 
+{
+    text-decoration: none;
+    color: #6988D1;  
+}
+
+#QBA-Undo-Changes
+{
+    text-decoration: none;
+    color: #6988D1; 
+}
+.truncated p
+{
+    -webkit-margin-before: 0px;
+-webkit-margin-after: 0px;
+}
+.truncated
+{
+    cursor: pointer;
+}
+
+
+
+/* pagination
+----------------------------------------------------------*/
+.paginationLink, .paginationLinkHidden {
+    margin-right: 4px;
+    border: none !important;
+    width: 20px;
+    height: 20px;
+    border-color: transparent !important;
+    border-collapse: separate;
+    -webkit-appearance: none !important;
+    outline: none !important;
+    background-color:transparent;
+    cursor:pointer;
+}
+
+.header input:focus{
+    outline: none;
+}
+.paginationLinkHidden
+{
+    color: gray !important;
+    cursor: default;
+    visibility:hidden
+}
+#QBA-Preview-Table 
+{
+    height:100%;
+    width:100%;
+}
+#QBA-Preview-Table tr.main
+{
+    vertical-align: top;
+    height:100%;
+}
+#QBA-Preview-Table .first
+{
+    width:100%;
+    font-size: 12px;
+}
+#QBA-Preview-Table .second
+{
+    /*width:40%;*/
+    height:100%;
+    
+}
+
+#QBA-Metadata-Table 
+{
+    height:100%;
+    width:100%;
+}
+#QBA-Metadata-Table tr.main
+{
+    vertical-align: top;
+    height:100%;
+}
+#QBA-Metadata-Table .first
+{
+    width:100%;
+}
+
+#MetadataTab
+{
+ width: 100%;
+float: left;   
+
+}
+#QBA-Metadata-Table .second
+{
+    width:40%;
+    height:100%;
+}
+#QBA-Metadata-Fieldset
+{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#QBA-Metadata-Fieldset input
+{
+    width:400px;
+}
+
+#QBA-Metadata-Fieldset .QBA-button
+{
+    margin-left:0px;
+}
+
+
+#QBA-Flag-Container 
+{
+    padding: 20px;
+    background-color: #f4f4f4;
+    height:95%;
+}
+#QBA-Preview-Table .footer
+{
+    height:30px;
+    background-color: #f4f4f4;
+}
+
+#QBA-Preview-Table .Flag-Button-Bar
+{
+    height:30px;
+}
+
+#AddNote_txt
+{
+    width:50%;
+    height:200px;
+    margin-left: 15px;
+    resize: none; 
+}
+
+#AddFlag_txt
+{
+    width:100%;
+    height:300px;
+    resize: none; 
+}
+.hidden
+{
+    display: block;
+}
+#QBA-NoteList
+{
+    list-style-type:none;
+    padding: 0px;
+    overflow:auto;
+    height: 500px;    
+}
+#QBA-NoteList li
+{
+    padding:10px;
+    border-bottom: 1px solid #CCCCCC;
+    line-height:18px;    
+}
+#QBA-LogList
+{
+    height: 100%;
+    list-style-type: none;
+    padding-left: 60px;
+    padding-top: 25px;
+    text-align: left;
+    width: 96%;
+}
+#QBA-LogList li
+{
+    padding:10px;
+    border-bottom: 1px solid #CCCCCC;    
+}
+.error
+{
+    padding: 5px;
+    color: Red;
+}
+#fne-window {
+    height: 100%;
+}
+
+/*IE Hack for modul window*/ 
+
+body.ie #fne-window{
+    height: 100%;
+}
+
+/* styling changes */ 
+
+.question-bank-title{
+    float:left;
+    margin-left:12px;
+    width:100%;
+}
+
+#lnkClearSearch.link{
+    color:#6988D1;
+}
+
+#QuestionEditorTab{
+
+    height: 100%;
+}
+
+.question-bank-prompt {
+    background-color: #FFFFCB;
+    border: 1px solid #FC7F00;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 12px;
+}
+
+.question-bank-prompt img{
+    margin-top:4px;
+}
+#QBA-AddNote 
+{
+    padding: 10px;
+}
+
+
+div.loading {
+background-image: url("style/images/ajax-loader_big.gif");
+background-color: #fff;
+}
+.logout {
+float: right;
+margin-right: 25px;
+}
+
+#NotesTab
+{
+    overflow:auto;
+}
+
+.cssAddQuestion dd, .cssAddQuestion dt, .cssAddQuestion ul { margin:0px; padding:0px; }
+.cssAddQuestion dd { position:relative; }
+.cssAddQuestion a, .cssAddQuestion a:visited { color:black; text-decoration:none; outline:none;}
+.cssAddQuestion a:hover { color:black;}
+.cssAddQuestion dt a:hover { color:black; border:none;}
+.cssAddQuestion dt a {background:#f4f4f4 url("style/images/addButtonWhite.png") no-repeat scroll content-box right; 
+                            display:block; padding-right:0px;
+                            border:none; width:140px; padding:0px;}
+.cssAddQuestion dt a span {cursor:pointer; display:block;}
+.cssAddQuestion dd ul { background:lightgray none repeat scroll 0 0; border:none; color:lightgray; display:none;
+    left:0px; padding:5px 0px; position:absolute; top:2px; width:auto; min-width:140px; list-style:none; z-index: 500;}
+.cssAddQuestion span.value { display:none;}
+.cssAddQuestion dd ul li a {padding-left: 0px; padding:5px; display:block;}
+.cssAddQuestion dd ul li a:hover { background-color:darkgrey;}
+        
+.cssAddQuestion img.flag { border:none; vertical-align:middle; margin-left:10px; }
+.flagvisibility { display:none;}
+
+
+.cssResponseFormat dd, .cssResponseFormat dt, .cssResponseFormat ul { margin:0px; padding:0px; }
+.cssResponseFormat dd { position:relative; }
+.cssResponseFormat a, .cssResponseFormat a:visited { color:black; text-decoration:none; outline:none;}
+.cssResponseFormat a:hover { color:black;}
+.cssResponseFormat dt a:hover { color:black; border:none;}
+.cssResponseFormat dt a {background:darkgrey url("style/images/combo_drop_down.png") no-repeat scroll content-box right; 
+                            display:block; padding-right:0px;
+                            border:none; width:130px; padding:0px;}
+.cssResponseFormat dt a span {cursor:pointer; display:block;}
+.cssResponseFormat dd ul { background:lightgray none repeat scroll 0 0; border:none; color:lightgray; display:none;
+    left:0px; padding:5px 0px; position:absolute; top:2px; width:auto; min-width:130px; list-style:none;}
+.cssResponseFormat span.value { display:none;}
+.cssResponseFormat dd ul li a {padding-left: 0px; padding:5px; display:block;}
+.cssResponseFormat dd ul li a:hover { background-color:darkgrey;}
+        
+.cssResponseFormat img.flag { border:none; vertical-align:middle; margin-left:10px; }
+.flagvisibility { display:none;}
+
+#loadingBlock{
+    background: url("style/images/launchpad-loader.gif") no-repeat scroll 0 0;
+    height: 64px;
+    margin: 50px auto;
+    text-indent: -9999px;
+    width: 64px;
+    opacity: 1 !important;
+}
+
+
+#MetadataTab .select2-container-multi .select2-choices
+{
+ border:none;   
+}
+
+#MetadataTab .select2-container-multi .select2-choices .select2-search-choice
+{
+    margin: 3px 0 3px 5px;
+}
+
+#QBA-LogList .blank_row 
+{
+    background-color: white;
+    border-spacing: 0;
+    border-top: 2px solid lightgrey;
+}
+
+#QBA-LogList .Field_col
+{
+    width:20%;
+    vertical-align:top;
+}
+
+#QBA-LogList .original_col
+{
+    width:40%;
+    vertical-align:top;
+}
+
+#QBA-LogList .new_col
+{
+    vertical-align:top;
+}
+
+#QBA-LogList .headerCaption
+{
+    font-size: 14px;
+}
+
+   
+   
+#PreviewDialog .ui-dialog-titlebar-close .ui-icon{
+    background-image: url("images/platx_sprite.png");
+    background-position: -103px -703px;
+    height: 42px;
+    width: 42px;
+    box-shadow: -2px 2px 10px 0 #444444;
+    -moz-box-shadow: -2px 2px 10px 0 #444444;
+    -webkit-box-shadow: -2px 2px 10px 0 #444444;
+    border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+}
+#PreviewDialog .ui-dialog-titlebar-close {
+    top: -16px;
+    z-index:1005;
+    right: -30px;
+    width: 48px;
+    height: 43px;
+    padding:0;
+}
+#PreviewDialog .ui-dialog-titlebar {
+    background-color:transparent;
+    background-image:none !important;
+    border:none !important;
+}
+.ui-dialog{
+    overflow:visible !important;
+} 
+
+#PreviewDialog .ui-dialog-titlebar {
+    background: none; /*  url("images/ui-bg_highlight-soft_75_cccccc_1x100.png") repeat-x scroll 50% 50% #CCCCCC; */
+    border: 1px;
+    color: #222222;
+    font-weight: bold;
+}
+#PreviewDialog .ui-dialog-title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.ui-widget {
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 0.9em;
+}
+#QBA-Preview-Table .greybackground
+{
+    background-color: #F4F4F4;
+    height: 50px;
+}
+
+#gear-button {
+background-color: #2F68C2;
+border: 0;
+color: #FFF;
+width: 24px;
+font-size: 16px;
+position: absolute;
+top: 7px;
+right: 0px;
+height: 21px;
+}
+
+
+.action {
+border: 1px solid black;
+width: 100px;
+background-color: white;
+border-top: none;
+cursor: pointer;
+}
+
+.action:first-child {
+border: 1px solid black;
+width: 100px;
+background-color: white;
+padding-left: 5px;
+}
+
+#menu-container {
+display: none;
+list-style: none;
+margin: 0;
+padding: 0;
+margin-top: 28px;
+}
+
+#main-action-container
+{
+position: absolute;
+top: 0;
+right: 0;
+}
+
+
+/* button set for Search Panel on QBA Screen */
+#QBA_question_type .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #d3d3d3; background: #e6e6e6 url(images/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x; font-weight: normal; color: #555555; }
+#QBA_question_type .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #555555; text-decoration: none; }
+#QBA_question_type .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #999999; background: #dadada url(images/ui-bg_glass_75_dadada_1x400.png) 50% 50% repeat-x; font-weight: normal; color: #212121; }
+#QBA_question_type .ui-state-hover a, .ui-state-hover a:hover { color: #212121; text-decoration: none; }
+#QBA_question_type .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #aaaaaa; background: #ffffff url(images/ui-bg_glass_65_ffffff_1x400.png) 50% 50% repeat-x; font-weight: normal; color: #212121; }
+#QBA_question_type .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #212121; text-decoration: none; }
+
+
+#BulkEditor #maintable
+{
+    width:100%;    
+}
+
+#BulkEditor .MainHeader
+{
+    background-color: #F4F4F4;
+}
+
+#BulkEditor .contentRow
+{
+    height: 650px;
+    vertical-align: top;
+}
+#BulkEditor .BOW_left
+{
+    border: 1px solid #D3D3D3;
+    padding-left: 20px;
+    padding-top: 33px;
+    width: 15%;
+}
+
+#BulkEditor .BOW_ContentArea
+{
+    border: 1px solid #D3D3D3;
+    height: 100%;
+    padding-top: 4px;
+}
+
+#maintable .cHeader, #maintable .cFooter
+{
+    height:25px;
+    padding-top:8px;
+   
+}
+#maintable .cBody
+{
+   /*height: 700px;*/
+   border-top:1px solid #D3D3D3;
+    min-height: 575px;
+   /*border-bottom:1px solid #D3D3D3;*/
+
+}
+
+.SelectedRadioButton
+{
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#maintable .bow_Questionlist
+{
+    /*background-color:#DBCA7B;*/
+    
+}
+#maintable .bow_operationlist
+{
+    /*background-color:#E68C25;
+    height:100%;   */
+}
+#maintable .bow_operationlist .bow_step2 
+{
+    padding-left: 10px;
+    padding-top: 15px;
+    width: 100%;
+}
+
+#maintable .bow_operationDetails .bow_step3
+{
+    /*background-color:#69E08F;
+    height:100%;*/
+    padding-left: 10px;
+    padding-top: 15px;
+    width: 100%;
+}
+#maintable .bow_confirmation
+{width:100%;}
+#maintable .bow_confirmation .grayborder
+{
+    background-color: white;
+    border-bottom: 2px solid #D3D3D3;
+    border-spacing: 0;
+}
+.bow_confirmation .tdHeader
+{
+    font-size: 18px;
+    font-weight: bold;
+ }
+ 
+
+
+#pv_1 .chkboxSelection {
+    width: 50px;
+}
+
+
+#question-status-container
+{
+    list-style: none;
+    padding: 0;
+}
+
+#QBA-QuestionList-Table tr.Deleted
+{
+    text-decoration: line-through;
+}
+
+
+#QBA-QuestionList-Table tr.InProgress
+{
+    background-color:#FFC;
+
+}
+
+.bowheader
+{
+    background:white;
+}
+.bowheader span
+{
+   font-size: 27px;
+    font-weight: bold;
+    padding-left: 21px;
+}
+.bowheader .QBA-button
+{
+    float:right;
+}
+.cHeader
+{
+    height:25px;
+}
+
+.visitedBulkEditRadio
+{
+    color: blue;
+    font-weight: normal;
+}
+.bowDDSize, .bowDropdown .select2-container {
+    width: 250px;
+}
+.preview-question-dialog .show-quiz,
+.preview-question-dialog .bh-component,
+.preview-question-dialog .bh-component-wrapper {
+	height: 100%;
+}
+
+.preview-question-dialog .submission-link {
+	display:none;
+}
+
+#QuestionFlagContainer
+{
+    float:left;
+}
+
+#QuestionFlagContainer.CustomFlag
+{
+    float:right;
+    height: 99%;
+    position: absolute;
+    right: 5px;
+    top: 0;
+    width: 20%;
+}
+    #FlagContents
+    {
+        height:100%;
+    }
+

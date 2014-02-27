@@ -1,0 +1,57 @@
+<form id="payForm" method="post" action="PayPal_action">
+<input type="hidden" name="cmd" value="PayPal_cmd" />
+<input type="hidden" name="upload" value="PayPal_upload" />
+<input type="hidden" name="business" value="PayPal_business" />
+<input type=hidden name="notify_url" value="PayPal_notify_url" />
+<input type=hidden name="return" value="PayPal_success_return" />
+<input type=hidden name="cancel_return" value="PayPal_cancel_return" />
+<input type=hidden name="rm" value="PayPal_rm" />
+<input type=hidden name="custom" value="tmpTransactionID" />
+<input type=hidden name="no_shipping" value="PayPal_no_shipping" />
+<input type=hidden name="page_style" value="PayPal_page_style" />
+<input type=hidden name="cbt" value="PayPal_cbt" />
+<% 
+int count = int.Parse(Session["itemCount"].ToString());
+for (int i = 0; i < count; i++) {
+	float price = float.Parse( (Session["price_" + i].ToString()) );
+	price = price/100;
+	%>
+	<input type="hidden" name="item_name_<%=(i+1) %>" value="<%= (toPrefix+Session["name_"+i]) %>" />                 
+	<input type="hidden" name="amount_<%=(i+1) %>" value="<%= price %>" />
+	<%
+}
+</form>
+<script type="text/javascript" language="javascript">
+document.forms["payForm"].submit ();
+</script>
+
+
+<!-- Paypal Configurations -->
+<!--<add key="PayPal_action" value="https://www.paypal.com/cgi-bin/webscr"/> -->
+<!--<add key="PayPal_business" value="rsherline@bfwpub.com"/> -->
+<add key="PayPal_action" value="https://www.sandbox.paypal.com/cgi-bin/webscr"/>
+<add key="PayPal_business" value="shubhr_1197269184_biz@hcl.in"/>
+<add key="PayPal_cancel_return" value="http://bcs.bedfordstmartins.com/audioreviews_2/aspx/Interior.aspx"/>
+<add key="PayPal_cmd" value="_cart"/>
+<add key="PayPal_no_shipping" value="1"/>
+<add key="PayPal_notify_url" value="#"/>
+<add key="PayPal_rm" value="2"/>
+<add key="PayPal_success_return" value="http://bcs.bedfordstmartins.com/audioreviews_2/aspx/PayPalUpdateTrans.aspx"/>
+<add key="PayPal_upload" value="1"/>
+<add key="PayPal_cbt" value="Click here to complete the Transaction"/>
+<add key="PayPal_page_style" value="PayPalAudioReviews"/>
+
+
+<!-- AudioReviews2Go Database Configurations -->
+<add key="AudioReviews_webpubURL" value="http://bcs.bedfordstmartins.com/WebPub/history/HistoryAudioReviewsBeta_publish/"/>
+
+
+<!-- AudioReviews2Go Configurations -->
+<add key="AudioReviews_baseURL" value="AudioReviews2go"/>
+<add key="AudioReviews_Premium1" value="99"/>
+<add key="AudioReviews_rssURL" value="http://www.sciam.com/podcast/sciam_podcast_r_AudioReviews.xml"/>
+<add key="AudioReviews_siteID" value="30"/>
+<add key="AudioReviews_unlimitedAccessPrice" value="999"/>
+<add key="AudioReviews_unlimitedAccessText" value="Unlimited Access"/>
+<add key="AudioReviews_RelativeExpiration" value="365"/>
+

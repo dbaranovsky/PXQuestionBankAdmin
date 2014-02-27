@@ -1,0 +1,441 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<requests>
+  <item itemid="TMP_429ef3606d6a45a695a8dd0225e_unit" version="4" entityid="-entityid-" creationdate="2011-12-16T16:52:28.22Z" creationby="7" modifieddate="2012-01-25T17:16:15.907Z" modifiedby="7">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>a</sequence>
+      <sequence>a</sequence>
+      <title>Unit</title>
+      <description>
+        &lt;br/&gt;
+        A unit often contains a number of resources
+        and activities that are conceptually connected.
+        Generally, units correspond to chapters or major
+        topics in the course, and the materials within
+        each unit are designed to drive students to an
+        understanding of that concept. A unit may
+        contain items of different types, and thus build
+        a progression of learning; for example, a prereading
+        assessment, an ebook reading, an activity,
+        and a summative quiz.
+        &lt;br/&gt;
+        &lt;br/&gt;
+        Typical Uses
+        &lt;br/&gt;
+        • Prebuilt modules of Launchpad
+        &lt;br/&gt;
+        • Instructor-built collections of resources
+      </description>
+      <folder>429ef3606d6a45a695a8dd0225ee9518</folder>
+      <category>0</category>
+      <gradable>true</gradable>
+      <bfw_type>PxUnit</bfw_type>
+      <bfw_properties>
+        <bfw_property name="bfw_visibility" type="String" />
+        <bfw_property name="bfw_syllabusfilter" type="String" />
+        <bfw_property name="thumbnail" type="String" />
+        <bfw_property name="duedate" type="DateTime" />
+        <bfw_property name="associatedtocourse" type="String" />
+        <bfw_property name="bfw_startdate" type="DateTime" />
+        <bfw_property name="associatedTOCItems" type="String">
+          <associatedTOCItems />
+        </bfw_property>
+      </bfw_properties>
+      <bfw_tocs>
+        <bfw_toc_contents parentid="PX_TEMPLATES" sequence="a_" />
+      </bfw_tocs>
+      <bfw_template>Unit</bfw_template>
+    </data>
+  </item>
+  <item itemid="TMP_5639c5e11e83479abbaeff34beb94e16" version="2" entityid="-entityid-" creationdate="2011-06-17T19:23:07.983Z" creationby="2" modifieddate="2012-01-25T17:16:17.783Z" modifiedby="7">
+    <data>
+      <type>Discussion</type>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>e</sequence>
+      <title>Discussion</title>
+      <description>
+        &lt;br/&gt;
+        A communication tool that allows users to post
+        a comment or question online. Other users may
+        respond with their own remarks over time. Portal
+        discussion boards include tools for instructors to
+        read, grade, and view reports on activity.
+        &lt;br/&gt;
+        &lt;br/&gt;
+        Typical Uses
+        &lt;br/&gt;
+        • Instructors post questions for students to
+        answer.
+        &lt;br/&gt;
+        • Instructors can provide a rubric or other
+        grading guidelines and assess students on
+        their contributions
+        &lt;br/&gt;
+        • Student commentary on an aspect of class
+        such as a reading, activity, or concept
+        &lt;br/&gt;
+        • Peer-led learning and collaboration
+        &lt;br/&gt;
+      </description>
+      <folder>5639c5e11e83479abbaeff34beb94e16</folder>
+      <href>Templates/Data/5639c5e11e83479abbaeff34beb94e16/index.html</href>
+      <category>0</category>
+      <bfw_properties>
+        <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+        <bfw_property name="bfw_contentcreate_assign" type="string">true</bfw_property>
+      </bfw_properties>
+      <bfw_template>Discussion</bfw_template>
+    </data>
+  </item>
+  <item itemid="TMP_6e91f1119c464e55b8851b15419d1c67" version="2" entityid="-entityid-" creationdate="2011-06-17T19:23:07.997Z" creationby="2" modifieddate="2012-01-25T17:16:20.533Z" modifiedby="7">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>b</sequence>
+      <title>Folder</title>
+      <description>
+        &lt;br/&gt;
+        An organizational tool, which may contain other
+        resources. Most often, an instructor would create
+        a folder to hold related items, such as all links,
+        assets, or files associated with a certain topic,
+        project, or due date.
+      </description>
+      <folder>6e91f1119c464e55b8851b15419d1c67</folder>
+      <href>Templates/Data/6e91f1119c464e55b8851b15419d1c67/index.html</href>
+      <category>0</category>
+      <bfw_properties>
+        <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+      </bfw_properties>
+      <bfw_template>Folder</bfw_template>
+      <bfw_allowed_templates>
+        <bfw_allowed_template templateid="TMP_dcef7cf5ba194495a7c86145b557bc15" templatename="Homework Template" displayname="Homework" />
+        <bfw_allowed_template templateid="TMP_8fb2fe4aa2f0494c8f6caa62eaabf908" templatename="Writing Assignment Template" displayname="Writing Assignment" />
+        <bfw_allowed_template templateid="TMP_88161c2783b949ed805d56fc5a1a1349" templatename="Quiz Template" displayname="Quiz" />
+      </bfw_allowed_templates>      
+    </data>
+  </item>
+	<item itemid="TMP_83a8a14d1cc34a54b84868257ac3f165" version="2" entityid="-entityid-" creationdate="2011-06-17T19:23:08.03Z" creationby="2" modifieddate="2012-01-25T17:16:20.89Z" modifiedby="7">
+		<data>
+		  <type>Resource</type>
+		  <parent>PX_TEMPLATES</parent>
+		  <sequence>f</sequence>
+		  <title>Document Collection</title>
+		  <description>
+			&lt;br/&gt;
+			A repository for useful files, typically
+			those employed in the delivery of course
+			information or material that offers educational
+			support. The collection may be organized,
+			referenced, or assigned by instructors for students
+			to access
+			&lt;br/&gt;
+			&lt;br/&gt;
+			Typical Uses
+			&lt;br/&gt;
+			• A location to host course information, policies,
+			or processes.
+			&lt;br/&gt;
+			• A location to host documents related to
+			activities or labs, articles, or worksheets to be
+			used in class.
+			&lt;br/&gt;
+		  </description>
+		  <folder>83a8a14d1cc34a54b84868257ac3f165</folder>
+		  <href>Templates/Data/83a8a14d1cc34a54b84868257ac3f165/index.html</href>
+		  <category>0</category>
+		  <bfw_type>DocumentCollection</bfw_type>
+		  <bfw_properties>
+			<bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+			<bfw_property name="bfw_contentcreate_assign" type="string">true</bfw_property>
+		  </bfw_properties>
+		  <bfw_template>Document</bfw_template>
+		</data>
+	  </item>
+  <item itemid="TMP_88161c2783b949ed805d56fc5a1a1349" version="4" entityid="-entityid-" creationdate="2011-06-17T19:23:08.043Z" creationby="2" modifieddate="2012-01-25T17:16:21Z" modifiedby="7">
+    <data>
+      <type>Assessment</type>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>k</sequence>
+      <title>Quiz (Assessment template)</title>
+      <description>
+        &lt;br/&gt;
+        An assignment primarily designed to assess
+        knowledge. Quizzes replicate the experience
+        of traditional in-class quizzes, in that they are
+        often timed and do not incorporate support
+        opportunities.
+        &lt;br/&gt;
+        &lt;br/&gt;
+        Typical Uses
+        &lt;br/&gt;
+        • Reading verification
+        &lt;br/&gt;
+        • Summative Assessment
+        &lt;br/&gt;
+      </description>
+      <folder>88161c2783b949ed805d56fc5a1a1349</folder>
+      <href>a</href>
+      <category>0</category>
+      <bfw_properties>
+        <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+        <bfw_property name="bfw_test" type="String">testing</bfw_property>
+        <bfw_property name="bfw_contentcreate_assign" type="string">true</bfw_property>
+      </bfw_properties>
+      <bfw_template>Quiz</bfw_template>
+      <bfw_metadata_admin>
+        <metaDataElements>
+          <metaDataElement name="ResourceType" displayOrder="1" action="MetaDataStaticText" controller="AdminMetaData" xPath="./bfw_subtype" description="Resource Type" defaultValue="Quiz">
+            <elasticMetaNodeToSave name="bfw_subtype">
+              <bfw_subtype dlaptype="exact">{value}</bfw_subtype>
+            </elasticMetaNodeToSave>
+          </metaDataElement>
+          <metaDataElement name="ResourceSubType" displayOrder="2" action="MetaDataResourceSubType" controller="AdminMetaData" xPath="./meta-content-type" description="Resource Sub-Type" defaultValue="0">
+            <elasticMetaNodeToSave name="meta-content-type">
+              <meta-content-type dlaptype="exact">{value}</meta-content-type>
+            </elasticMetaNodeToSave>
+          </metaDataElement>
+          <metaDataElement name="ResourceUserGroup" displayOrder="3" action="MetaDataRadioButtonList" controller="AdminMetaData" xPath="./meta-content-type" description="Resource User Group" defaultValue="0">
+            <elasticMetaNodeToSave name="meta-content-type">
+              <meta-content-type dlaptype="exact">{value}</meta-content-type>
+            </elasticMetaNodeToSave>
+            <elasticMetaContorl>
+              <table>
+                <tr>
+                  <td>
+                    <input type="radio" value="instructor_" id="ResourceUserGroup" name="ResourceUserGroup" />
+                  </td>
+                  <td>Instructor resource</td>
+                  <td>
+                    <input type="radio" value="student_" id="ResourceUserGroup" name="ResourceUserGroup" />
+                  </td>
+                  <td>Student resource</td>
+                </tr>
+                <tr>
+                  <td colspan="2">This will be hidden from students by default</td>
+                </tr>
+              </table>
+            </elasticMetaContorl>
+          </metaDataElement>
+          <metaDataElement name="DefaultGradeBookValue" displayOrder="4" action="MetaDataInputText" controller="AdminMetaData" xPath="./weight" description="Default Grade Book Value" defaultValue="">
+            <elasticMetaNodeToSave name="weight">
+              <weight>{value}</weight>
+            </elasticMetaNodeToSave>
+          </metaDataElement>
+          <metaDataElement name="EBooksAssociations" displayOrder="5" action="MetaDataChaptersAssociations" controller="AdminMetaData" xPath="./meta-topics" description="EBooks Associations" defaultValue="ebookfilter">
+            <elasticMetaNodeToSave name="meta-topic">
+              <meta-topics>
+                <meta-topic toc="ebookfilter" dlaptype="exact">{value}</meta-topic>
+              </meta-topics>
+            </elasticMetaNodeToSave>
+          </metaDataElement>
+          <metaDataElement name="LaunchpadUnitAssociations" displayOrder="6" action="MetaDataChaptersAssociations" controller="AdminMetaData" xPath="./meta-topics" description="Launchpad Unit Associations" defaultValue="syllabusfilter">
+            <elasticMetaNodeToSave name="meta-topic">
+              <meta-topics>
+                <meta-topic toc="syllabusfilter" dlaptype="exact">{value}</meta-topic>
+              </meta-topics>
+            </elasticMetaNodeToSave>
+          </metaDataElement>
+        </metaDataElements>
+      </bfw_metadata_admin>
+    </data>
+  </item>
+  <item itemid="TMP_88161c2783c949ed806d56fc8a1a1349" version="2" entityid="-entityid-" creationdate="2011-06-17T19:23:08.06Z" creationby="2" modifieddate="2012-01-25T17:16:21.407Z" modifiedby="7">
+    <data>
+      <parent>PX_TEMPLATES_DELETED</parent>
+      <sequence>k</sequence>
+      <title>Multi-Part Lesson</title>
+      <folder>88161c2783b949ed805d56fc5a1a1349</folder>
+      <href>Templates/Data/88161c2783b949ed805d56fc5a1a1349/index.html</href>
+      <category>0</category>
+      <bfw_type>MultiPartLesson</bfw_type>
+      <bfw_properties>
+        <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+      </bfw_properties>
+      <bfw_template>MultiPartLesson</bfw_template>
+    </data>
+  </item>
+  
+  <item itemid="TMP_95f884c8be2e430597f50e43c9057727" version="2" entityid="-entityid-" creationdate="2011-06-17T19:23:08.14Z" creationby="2" modifieddate="2012-01-25T17:16:22.987Z" modifiedby="7">
+    <data>
+      <type>Resource</type>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>j</sequence>
+      <title>Web Resource</title>
+      <description>
+        &lt;br/&gt;
+        A straightforward method to provide students
+        with a collection of links to other useful
+        destinations on the Web. Instructors create the
+        content through an easy-to-use editor.
+        &lt;br/&gt;
+        &lt;br/&gt;
+        Typical Uses
+        &lt;br/&gt;
+        • To provide enrichment, support, or other
+        external resources relevant to the course.
+        &lt;br/&gt;
+      </description>
+      <folder>95f884c8be2e430597f50e43c9057727</folder>
+      <href>Templates/Data/95f884c8be2e430597f50e43c9057727/index.html</href>
+      <category>0</category>
+      <bfw_type>LinkCollection</bfw_type>
+      <bfw_properties>
+        <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+        <bfw_property name="bfw_contentcreate_assign" type="string">true</bfw_property>
+      </bfw_properties>
+      <bfw_template>LinkCollection</bfw_template>
+    </data>
+  </item>
+  <item itemid="TMP_a9435305a14e472ba2e503653c520538" version="2" entityid="-entityid-" creationdate="2011-06-17T19:23:08.2Z" creationby="2" modifieddate="2012-01-25T17:16:24.547Z" modifiedby="7">
+    <data>
+      <type>Resource</type>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>i</sequence>
+      <title>HTML Page</title>
+      <description>
+        &lt;br/&gt;
+        A flexible blank slate on which an instructor
+        can incorporate any HTML-based content. The
+        page HTML page can incorporate links, images, or
+        active multimedia content. HTML pages within
+        the Portal can be produced through an easy-touse
+        editor.
+        &lt;br/&gt;
+        &lt;br/&gt;
+        Typical Uses
+        &lt;br/&gt;
+        • General content such as announcements,
+        policies, explanations
+        &lt;br/&gt;
+      </description>
+      <folder>a9435305a14e472ba2e503653c520538</folder>
+      <href>Templates/Data/a9435305a14e472ba2e503653c520538/index.html</href>
+      <category>0</category>
+      <bfw_type>HtmlDocument</bfw_type>
+      <bfw_properties>
+        <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+        <bfw_property name="bfw_contentcreate_assign" type="string">true</bfw_property>
+      </bfw_properties>
+      <bfw_template>HtmlDocument</bfw_template>
+    </data>
+  </item>
+  <item itemid="TMP_dcef7cf5ba194495a7c86145b557bc15" version="2" entityid="-entityid-" creationdate="2011-06-17T19:23:08.247Z" creationby="2" modifieddate="2012-01-25T17:16:24.89Z" modifiedby="7">
+    <data>
+      <type>Homework</type>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>h</sequence>
+      <title>Homework</title>
+      <description>
+        &lt;br/&gt;
+        An assignment primarily designed to reinforce
+        knowledge provided in lecture, reading, or
+        other activities. Homework is generally graded
+        and often incorporates some level of support
+        to help students arrive at the correct answer or
+        understand where they need help. For example,
+        homework may link to the ebook, tutorials, or
+        answer-specific feedback.
+        &lt;br/&gt;
+        &lt;br/&gt;
+        Typical Uses
+        &lt;br/&gt;
+        • Student self-check or practice problems
+        &lt;br/&gt;
+        • Reading verification
+        &lt;br/&gt;
+        • PreLecture, PreLab, or formative assessment
+      </description>
+      <folder>dcef7cf5ba194495a7c86145b557bc15</folder>
+      <href>Templates/Data/dcef7cf5ba194495a7c86145b557bc15/index.html</href>
+      <category>0</category>
+      <bfw_properties>
+        <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+      </bfw_properties>
+      <bfw_template>Homework</bfw_template>
+    </data>
+  </item>
+  <item itemid="TMP_97aadf238e3a4203af1175e0488a7467" version="1" entityid="-entityid-" creationdate="2011-06-17T19:23:08.17Z" creationby="2" modifieddate="2011-06-17T19:23:08.17Z" modifiedby="2">
+    <data>
+      <type>Assignment</type>
+      <parent>PX_TEMPLATES_DELETED</parent>
+      <sequence>d</sequence>
+      <title>Peer Review</title>
+      <folder>97aadf238e3a4203af1175e0488a7467</folder>
+      <href>Templates/Data/97aadf238e3a4203af1175e0488a7467/index.html</href>
+      <category>0</category>
+      <gradable>true</gradable>
+      <bfw_type>PeerReview</bfw_type>
+      <bfw_properties>
+        <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+        <bfw_property name="WritingAssignmentId" type="String" />
+        <bfw_property name="WritingAssignmentTitle" type="String" />
+      </bfw_properties>
+      <bfw_template>PeerReview</bfw_template>
+    </data>
+  </item>
+   
+  <item id="PX_default_metadata_defination" entityid="-entityid-">
+    <data>
+      <sequence>m</sequence>
+      <title>Generic</title>
+      <timetocomplete>PT1M</timetocomplete>
+      <category>0</category>
+      <period inherit="true">0</period>
+      <groupsetid>-1</groupsetid>
+      <weight>100</weight>
+      <gradeentry>1</gradeentry>
+      <inputtable inherit="true">0</inputtable>
+      <bfw_metadata_admin>
+        <metaDataElements>
+          <metaDataElement name="ResourceType" displayOrder="1" action="MetaDataStaticText" controller="AdminMetaData" xPath="./bfw_subtype" description="Resource Type" defaultValue="Quiz">
+            <elasticMetaNodeToSave name="bfw_subtype">
+              <bfw_subtype dlaptype="exact">{value}</bfw_subtype>
+            </elasticMetaNodeToSave>
+          </metaDataElement>
+          <metaDataElement name="ResourceSubType" displayOrder="2" action="MetaDataResourceSubType" controller="AdminMetaData" xPath="./meta-content-type" description="Resource Sub-Type" defaultValue="0">
+            <elasticMetaNodeToSave name="meta-content-type">
+              <meta-content-type dlaptype="exact">{value}</meta-content-type>
+            </elasticMetaNodeToSave>
+          </metaDataElement>
+          <metaDataElement name="ResourceUserGroup" displayOrder="3" action="MetaDataRadioButtonList" controller="AdminMetaData" xPath="./meta-content-type" description="Resource User Group" defaultValue="0">
+            <elasticMetaNodeToSave name="meta-content-type">
+              <meta-content-type dlaptype="exact">{value}</meta-content-type>
+            </elasticMetaNodeToSave>
+            <elasticMetaContorl>
+              <table>
+                <tr>
+                  <td>
+                    <input type="radio" value="instructor_" id="ResourceUserGroup" name="ResourceUserGroup" />
+                  </td>
+                  <td>Instructor resource</td>
+                  <td>
+                    <input type="radio" value="student_" id="ResourceUserGroup" name="ResourceUserGroup" />
+                  </td>
+                  <td>Student resource</td>
+                </tr>
+                <tr>
+                  <td colspan="2">This will be hidden from students by default</td>
+                </tr>
+              </table>
+            </elasticMetaContorl>
+          </metaDataElement>
+          <metaDataElement name="EBooksAssociations" displayOrder="5" action="MetaDataChaptersAssociations" controller="AdminMetaData" xPath="./meta-topics" description="EBooks Associations" defaultValue="ebookfilter">
+            <elasticMetaNodeToSave name="meta-topic">
+              <meta-topics>
+                <meta-topic toc="ebookfilter" dlaptype="exact">{value}</meta-topic>
+              </meta-topics>
+            </elasticMetaNodeToSave>
+          </metaDataElement>
+          <metaDataElement name="LaunchpadUnitAssociations" displayOrder="6" action="MetaDataChaptersAssociations" controller="AdminMetaData" xPath="./meta-topics" description="Launchpad Unit Associations" defaultValue="syllabusfilter">
+            <elasticMetaNodeToSave name="meta-topic">
+              <meta-topics>
+                <meta-topic toc="syllabusfilter" dlaptype="exact">{value}</meta-topic>
+              </meta-topics>
+            </elasticMetaNodeToSave>
+          </metaDataElement>
+        </metaDataElements>
+      </bfw_metadata_admin>
+    </data>
+  </item>  
+
+</requests>

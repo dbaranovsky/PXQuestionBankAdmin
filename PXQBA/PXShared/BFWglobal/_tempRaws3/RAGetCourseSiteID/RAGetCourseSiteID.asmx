@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="RAGetCourseSiteID.asmx.cs" Class="RAGetAgilixCourseID.RAGetAgilixCourseID" %>

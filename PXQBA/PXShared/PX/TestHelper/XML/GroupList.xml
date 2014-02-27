@@ -1,0 +1,155 @@
+<root>
+<rootItem type="GenericGroupList">
+  <groups>
+    <group id="109298" title="QAThree StudentOne" reference="" guid="6df9b282-1a00-4db2-91b5-2c42f34ed776" ownerid="92920" domainid="8841" setid="9999" creationdate="2013-03-15T21:04:35.26Z" />
+    <group id="115175" title="www 1" reference="" guid="b47cc6fc-9028-4a01-86c6-151b4b86dd40" ownerid="92920" domainid="8841" setid="10000" creationdate="2013-05-01T15:32:06.867Z" />
+    <group id="115176" title="ttt 1" reference="" guid="aa6157e5-85d5-4b44-8fa6-401342dda663" ownerid="92920" domainid="8841" setid="10001" creationdate="2013-05-01T15:33:26.1Z" />
+    <group id="115183" title="ggg 1" reference="" guid="fd240f94-b414-4391-a8fa-5ba5f807bda2" ownerid="92920" domainid="8841" setid="10002" creationdate="2013-05-01T15:39:07.04Z" />
+    <group id="115188" title="zzz 1" reference="" guid="c1df4bd6-b192-496c-ae29-ca04d6dbab52" ownerid="92920" domainid="8841" setid="10003" creationdate="2013-05-01T15:45:07.23Z" />
+    <group id="115190" title="222 1" reference="" guid="3bcb0474-1af1-4440-a6aa-3ea70a99d6b2" ownerid="92920" domainid="8841" setid="10004" creationdate="2013-05-01T15:57:42.47Z" />
+    <group id="115204" title="666 1" reference="" guid="9f56be1b-bdf6-4a91-8bfa-abdc476c62cc" ownerid="92920" domainid="8841" setid="10005" creationdate="2013-05-01T16:39:33.237Z" />
+    <group id="115694" title="aaa 1" reference="" guid="b193bf0c-7d5a-421b-8349-20616c3982a3" ownerid="92920" domainid="8841" setid="10006" creationdate="2013-05-02T19:18:10.687Z" />
+    <group id="115695" title="bbb 1" reference="" guid="9b3128ad-9a2a-450c-92a8-c2c5ff9d6553" ownerid="92920" domainid="8841" setid="10007" creationdate="2013-05-02T19:18:43.2Z" />
+    <group id="116039" title="000 1" reference="" guid="44aa246a-c266-4946-9c4c-274945f38988" ownerid="92920" domainid="8841" setid="10008" creationdate="2013-05-06T14:49:39.667Z" />
+    <group id="116044" title="555 1" reference="" guid="3fb20ff1-974e-4544-89ae-367d23f904cc" ownerid="92920" domainid="8841" setid="10009" creationdate="2013-05-06T14:51:46.2Z" />
+    <group id="116899" title="jjj 1" reference="" guid="1e43ad3e-3707-47a7-a299-9bd5ce3c7d42" ownerid="92920" domainid="8841" setid="10010" creationdate="2013-05-09T13:28:44.18Z" />
+  </groups>
+</rootItem>
+<rootItem type="GroupListWithEnrollments">
+  <groups>
+    <group id="109298" title="QAThree StudentOne" reference="" guid="6df9b282-1a00-4db2-91b5-2c42f34ed776" ownerid="92920" domainid="8841" setid="9999" creationdate="2013-03-15T21:04:35.26Z" />
+    <group id="115175" title="www 1" reference="" guid="b47cc6fc-9028-4a01-86c6-151b4b86dd40" ownerid="92920" domainid="8841" setid="10000" creationdate="2013-05-01T15:32:06.867Z">
+      <enrollment id="105626" userid="99600" entityid="92920" domainid="8841" reference="" guid="62911471-9e5c-4baf-802c-777cbfa0e72c" flags="131073" status="1" startdate="2013-02-14T21:01:15.997Z" enddate="2014-02-14T21:01:15.997Z">
+        <data>
+          <status>
+            <performance signal="Red" code="2" />
+            <pace signal="Yellow" code="6" limit1="0.15" />
+          </status>
+        </data>
+        <user id="99600" firstname="Scott 24" lastname="Ezhno24" reference="5151621" guid="aa21a96c-0041-4821-a83c-956bc95887d7" userspace="bfwusers" username="sezhno@email.phoenix.edu" email="sezhno1@email.phoenix.edu" lastlogindate="2013-03-20T17:19:15.347Z" />
+        <domain id="8841" name="BFWUsers" />
+      </enrollment>
+    </group>
+    <group id="115176" title="ttt 1" reference="" guid="aa6157e5-85d5-4b44-8fa6-401342dda663" ownerid="92920" domainid="8841" setid="10001" creationdate="2013-05-01T15:33:26.1Z">
+      <enrollment id="105626" userid="99600" entityid="92920" domainid="8841" reference="" guid="62911471-9e5c-4baf-802c-777cbfa0e72c" flags="131073" status="1" startdate="2013-02-14T21:01:15.997Z" enddate="2014-02-14T21:01:15.997Z">
+        <data>
+          <status>
+            <performance signal="Red" code="2" />
+            <pace signal="Yellow" code="6" limit1="0.15" />
+          </status>
+        </data>
+        <user id="99600" firstname="Scott 24" lastname="Ezhno24" reference="5151621" guid="aa21a96c-0041-4821-a83c-956bc95887d7" userspace="bfwusers" username="sezhno@email.phoenix.edu" email="sezhno1@email.phoenix.edu" lastlogindate="2013-03-20T17:19:15.347Z" />
+        <domain id="8841" name="BFWUsers" />
+      </enrollment>
+    </group>
+    <group id="115183" title="ggg 1" reference="" guid="fd240f94-b414-4391-a8fa-5ba5f807bda2" ownerid="92920" domainid="8841" setid="10002" creationdate="2013-05-01T15:39:07.04Z">
+      <enrollment id="105626" userid="99600" entityid="92920" domainid="8841" reference="" guid="62911471-9e5c-4baf-802c-777cbfa0e72c" flags="131073" status="1" startdate="2013-02-14T21:01:15.997Z" enddate="2014-02-14T21:01:15.997Z">
+        <data>
+          <status>
+            <performance signal="Red" code="2" />
+            <pace signal="Yellow" code="6" limit1="0.15" />
+          </status>
+        </data>
+        <user id="99600" firstname="Scott 24" lastname="Ezhno24" reference="5151621" guid="aa21a96c-0041-4821-a83c-956bc95887d7" userspace="bfwusers" username="sezhno@email.phoenix.edu" email="sezhno1@email.phoenix.edu" lastlogindate="2013-03-20T17:19:15.347Z" />
+        <domain id="8841" name="BFWUsers" />
+      </enrollment>
+    </group>
+    <group id="115188" title="zzz 1" reference="" guid="c1df4bd6-b192-496c-ae29-ca04d6dbab52" ownerid="92920" domainid="8841" setid="10003" creationdate="2013-05-01T15:45:07.23Z">
+      <enrollment id="105626" userid="99600" entityid="92920" domainid="8841" reference="" guid="62911471-9e5c-4baf-802c-777cbfa0e72c" flags="131073" status="1" startdate="2013-02-14T21:01:15.997Z" enddate="2014-02-14T21:01:15.997Z">
+        <data>
+          <status>
+            <performance signal="Red" code="2" />
+            <pace signal="Yellow" code="6" limit1="0.15" />
+          </status>
+        </data>
+        <user id="99600" firstname="Scott 24" lastname="Ezhno24" reference="5151621" guid="aa21a96c-0041-4821-a83c-956bc95887d7" userspace="bfwusers" username="sezhno@email.phoenix.edu" email="sezhno1@email.phoenix.edu" lastlogindate="2013-03-20T17:19:15.347Z" />
+        <domain id="8841" name="BFWUsers" />
+      </enrollment>
+    </group>
+    <group id="115190" title="222 1" reference="" guid="3bcb0474-1af1-4440-a6aa-3ea70a99d6b2" ownerid="92920" domainid="8841" setid="10004" creationdate="2013-05-01T15:57:42.47Z">
+      <enrollment id="105626" userid="99600" entityid="92920" domainid="8841" reference="" guid="62911471-9e5c-4baf-802c-777cbfa0e72c" flags="131073" status="1" startdate="2013-02-14T21:01:15.997Z" enddate="2014-02-14T21:01:15.997Z">
+        <data>
+          <status>
+            <performance signal="Red" code="2" />
+            <pace signal="Yellow" code="6" limit1="0.15" />
+          </status>
+        </data>
+        <user id="99600" firstname="Scott 24" lastname="Ezhno24" reference="5151621" guid="aa21a96c-0041-4821-a83c-956bc95887d7" userspace="bfwusers" username="sezhno@email.phoenix.edu" email="sezhno1@email.phoenix.edu" lastlogindate="2013-03-20T17:19:15.347Z" />
+        <domain id="8841" name="BFWUsers" />
+      </enrollment>
+    </group>
+    <group id="115204" title="666 1" reference="" guid="9f56be1b-bdf6-4a91-8bfa-abdc476c62cc" ownerid="92920" domainid="8841" setid="10005" creationdate="2013-05-01T16:39:33.237Z">
+      <enrollment id="105626" userid="99600" entityid="92920" domainid="8841" reference="" guid="62911471-9e5c-4baf-802c-777cbfa0e72c" flags="131073" status="1" startdate="2013-02-14T21:01:15.997Z" enddate="2014-02-14T21:01:15.997Z">
+        <data>
+          <status>
+            <performance signal="Red" code="2" />
+            <pace signal="Yellow" code="6" limit1="0.15" />
+          </status>
+        </data>
+        <user id="99600" firstname="Scott 24" lastname="Ezhno24" reference="5151621" guid="aa21a96c-0041-4821-a83c-956bc95887d7" userspace="bfwusers" username="sezhno@email.phoenix.edu" email="sezhno1@email.phoenix.edu" lastlogindate="2013-03-20T17:19:15.347Z" />
+        <domain id="8841" name="BFWUsers" />
+      </enrollment>
+    </group>
+    <group id="115694" title="aaa 1" reference="" guid="b193bf0c-7d5a-421b-8349-20616c3982a3" ownerid="92920" domainid="8841" setid="10006" creationdate="2013-05-02T19:18:10.687Z">
+      <enrollment id="105626" userid="99600" entityid="92920" domainid="8841" reference="" guid="62911471-9e5c-4baf-802c-777cbfa0e72c" flags="131073" status="1" startdate="2013-02-14T21:01:15.997Z" enddate="2014-02-14T21:01:15.997Z">
+        <data>
+          <status>
+            <performance signal="Red" code="2" />
+            <pace signal="Yellow" code="6" limit1="0.15" />
+          </status>
+        </data>
+        <user id="99600" firstname="Scott 24" lastname="Ezhno24" reference="5151621" guid="aa21a96c-0041-4821-a83c-956bc95887d7" userspace="bfwusers" username="sezhno@email.phoenix.edu" email="sezhno1@email.phoenix.edu" lastlogindate="2013-03-20T17:19:15.347Z" />
+        <domain id="8841" name="BFWUsers" />
+      </enrollment>
+    </group>
+    <group id="115695" title="bbb 1" reference="" guid="9b3128ad-9a2a-450c-92a8-c2c5ff9d6553" ownerid="92920" domainid="8841" setid="10007" creationdate="2013-05-02T19:18:43.2Z">
+      <enrollment id="105626" userid="99600" entityid="92920" domainid="8841" reference="" guid="62911471-9e5c-4baf-802c-777cbfa0e72c" flags="131073" status="1" startdate="2013-02-14T21:01:15.997Z" enddate="2014-02-14T21:01:15.997Z">
+        <data>
+          <status>
+            <performance signal="Red" code="2" />
+            <pace signal="Yellow" code="6" limit1="0.15" />
+          </status>
+        </data>
+        <user id="99600" firstname="Scott 24" lastname="Ezhno24" reference="5151621" guid="aa21a96c-0041-4821-a83c-956bc95887d7" userspace="bfwusers" username="sezhno@email.phoenix.edu" email="sezhno1@email.phoenix.edu" lastlogindate="2013-03-20T17:19:15.347Z" />
+        <domain id="8841" name="BFWUsers" />
+      </enrollment>
+    </group>
+    <group id="116039" title="000 1" reference="" guid="44aa246a-c266-4946-9c4c-274945f38988" ownerid="92920" domainid="8841" setid="10008" creationdate="2013-05-06T14:49:39.667Z">
+      <enrollment id="105626" userid="99600" entityid="92920" domainid="8841" reference="" guid="62911471-9e5c-4baf-802c-777cbfa0e72c" flags="131073" status="1" startdate="2013-02-14T21:01:15.997Z" enddate="2014-02-14T21:01:15.997Z">
+        <data>
+          <status>
+            <performance signal="Red" code="2" />
+            <pace signal="Yellow" code="6" limit1="0.15" />
+          </status>
+        </data>
+        <user id="99600" firstname="Scott 24" lastname="Ezhno24" reference="5151621" guid="aa21a96c-0041-4821-a83c-956bc95887d7" userspace="bfwusers" username="sezhno@email.phoenix.edu" email="sezhno1@email.phoenix.edu" lastlogindate="2013-03-20T17:19:15.347Z" />
+        <domain id="8841" name="BFWUsers" />
+      </enrollment>
+    </group>
+    <group id="116044" title="555 1" reference="" guid="3fb20ff1-974e-4544-89ae-367d23f904cc" ownerid="92920" domainid="8841" setid="10009" creationdate="2013-05-06T14:51:46.2Z">
+      <enrollment id="105626" userid="99600" entityid="92920" domainid="8841" reference="" guid="62911471-9e5c-4baf-802c-777cbfa0e72c" flags="131073" status="1" startdate="2013-02-14T21:01:15.997Z" enddate="2014-02-14T21:01:15.997Z">
+        <data>
+          <status>
+            <performance signal="Red" code="2" />
+            <pace signal="Yellow" code="6" limit1="0.15" />
+          </status>
+        </data>
+        <user id="99600" firstname="Scott 24" lastname="Ezhno24" reference="5151621" guid="aa21a96c-0041-4821-a83c-956bc95887d7" userspace="bfwusers" username="sezhno@email.phoenix.edu" email="sezhno1@email.phoenix.edu" lastlogindate="2013-03-20T17:19:15.347Z" />
+        <domain id="8841" name="BFWUsers" />
+      </enrollment>
+    </group>
+    <group id="116899" title="jjj 1" reference="" guid="1e43ad3e-3707-47a7-a299-9bd5ce3c7d42" ownerid="92920" domainid="8841" setid="10010" creationdate="2013-05-09T13:28:44.18Z">
+      <enrollment id="105626" userid="99600" entityid="92920" domainid="8841" reference="" guid="62911471-9e5c-4baf-802c-777cbfa0e72c" flags="131073" status="1" startdate="2013-02-14T21:01:15.997Z" enddate="2014-02-14T21:01:15.997Z">
+        <data>
+          <status>
+            <performance signal="Red" code="2" />
+            <pace signal="Yellow" code="6" limit1="0.15" />
+          </status>
+        </data>
+        <user id="99600" firstname="Scott 24" lastname="Ezhno24" reference="5151621" guid="aa21a96c-0041-4821-a83c-956bc95887d7" userspace="bfwusers" username="sezhno@email.phoenix.edu" email="sezhno1@email.phoenix.edu" lastlogindate="2013-03-20T17:19:15.347Z" />
+        <domain id="8841" name="BFWUsers" />
+      </enrollment>
+    </group>
+  </groups>  
+</rootItem>
+</root>

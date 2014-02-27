@@ -1,0 +1,102 @@
+﻿
+body {
+    margin: 0px;
+}
+#ebook_frame_header {
+    background-color: #F4F3F1;
+    position: inherit;
+    height: 25px;
+    padding: 8px 0 0 15px;
+    display: table-cell;
+    vertical-align: middle;
+    width: inherit;
+}
+#header-title {
+    margin-left: 212px;
+    width: 120px;
+    position: relative;
+    top: 10px;
+}
+#header_toggle_link {
+
+}
+#ebook_main_container #toc_main #left #container #toc 
+{
+    position: static;
+}
+#left #contain .gearbox {
+    display: none !important;
+}
+#toc_main #right {
+    position: inherit;
+}
+
+#contentwrapper #container .folder-container {
+    display: none;
+}
+.html {
+    background-image: none !important;
+}
+
+#contain #toc {
+    position: absolute;
+    min-height: 600px;
+    background-color: #F4F3F1;
+}
+#left #contain 
+{
+    width: 250px;
+}
+#left #contain #tocmenubar {
+    min-height: 50px;
+}
+#right #content-item .menu {
+    display: none;
+}
+#right #contentwrapper {
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+}
+#ebook_main_container #right {
+    position: absolute;
+    float: left;
+    padding-left: 250px;
+}
+#ebook_main_container #left {
+    position: absolute;
+    float: left;
+}
+#right #contentwrapper #content {
+    top: 32px;
+    position: absolute;
+    overflow-y: scroll;
+    bottom: 0;
+    width: inherit;
+}
+#left {
+    margin-right: 0px;
+}
+
+#content #document-viewer-wrapper
+{
+    height: 100%;
+}
+
+#content #document-viewer-wrapper #document-viewer 
+{
+    height: 100%;
+    width: 97%;
+    padding-left: 12px;
+}
+
+
+#content #document-viewer-wrapper #document-body
+{
+    height: 100%
+}
+
+#content #document-viewer-wrapper .document-viewer-frame-host
+{
+    height: 100%;
+}

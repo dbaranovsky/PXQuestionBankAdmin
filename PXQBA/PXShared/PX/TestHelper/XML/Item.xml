@@ -1,0 +1,86 @@
+<root>
+<rootItem type="GenericItem">
+  <item id="GenericItem" version="0.29" resourceentityid="118960,0,F,0,0,0" actualentityid="57704" creationdate="2012-07-13T15:39:13.963Z" creationby="7" modifieddate="2013-04-12T20:23:38.683Z" modifiedby="7" origindepth="1" derivativedepth="1">
+    <data>
+      <type>CustomActivity</type>
+      <parent>MODULE_bsi__9922C838__B084__432D__A72E__D073B21B9407</parent>
+      <sequence>b</sequence>
+      <title>LearningCurve: Exploring Economics</title>
+      <href>http://learningcurve.bfwpub.com/index.php?file=econ/Stone2e/Chapter_01</href>
+      <timetocomplete>PT1M</timetocomplete>
+      <category>0</category>
+      <period inherit="true">0</period>
+      <groupsetid>-1</groupsetid>
+      <duedate>0001-01-01T00:00:00Z</duedate>
+	  <duedategrace>20160</duedategrace>
+      <weight>100</weight>
+      <gradeentry>1</gradeentry>
+      <inputtable inherit="true">0</inputtable>
+      <sco>true</sco><bfw_type>ExternalContent</bfw_type><bfw_subtype>LearningCurve</bfw_subtype><bfw_meta>
+  <bfw_metadata name="bsi_item_id">5357360</bfw_metadata>
+  <bfw_metadata name="bsi_site_id">4549</bfw_metadata>
+  <bfw_metadata name="bsi_bfw_uid">bsi-22954099-1854-4DAA-830F-AB7767C756FB</bfw_metadata>
+  <bfw_metadata name="bfw_allowcomments" type="Boolean">False</bfw_metadata>
+</bfw_meta><bfw_properties>
+  <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+  <bfw_property name="bfw_item_default_points">10</bfw_property>
+</bfw_properties><bfw_tocs>
+  <bfw_toc_contents parentid="MODULE_bsi__9922C838__B084__432D__A72E__D073B21B9407" sequence="b" />
+  <syllabusfilter parentid="MODULE_bsi__9922C838__B084__432D__A72E__D073B21B9407" sequence="b" />
+</bfw_tocs><meta-topics>
+  <meta-topic dlaptype="exact">Chapter 1. Exploring Economics </meta-topic>
+</meta-topics><meta-content-type dlaptype="exact">student_LearningCurve</meta-content-type>
+<meta-containers>
+  <meta-container dlaptype="exact" toc="syllabusfilter">LaunchPad</meta-container>
+</meta-containers><meta-subcontainers>
+  <meta-subcontainerid dlaptype="exact" toc="syllabusfilter">MODULE_bsi__9922C838__B084__432D__A72E__D073B21B9407</meta-subcontainerid>
+</meta-subcontainers></data>
+  </item>
+ </rootItem>
+  <rootItem type="NotGenericItem">
+  <item id="NotGenericItem" version="0.29" resourceentityid="118960,0,F,0,0,0" actualentityid="57704" creationdate="2012-07-13T15:39:13.963Z" creationby="7" modifieddate="2013-04-12T20:23:38.683Z" modifiedby="7" origindepth="1" derivativedepth="1">
+    <data>
+      <type>CustomActivity</type>
+      <parent>MODULE_bsi__9922C838__B084__432D__A72E__D073B21B9407</parent>
+      <sequence>b</sequence>
+      <title>LearningCurve: Exploring Economics</title>
+      <href>http://learningcurve.bfwpub.com/index.php?file=econ/Stone2e/Chapter_01</href>
+      <timetocomplete>PT1M</timetocomplete>
+      <category>0</category>
+      <period inherit="true">0</period>
+      <groupsetid>-1</groupsetid>
+      <duedate>0001-01-01T00:00:00Z</duedate>
+      <weight>100</weight>
+      <gradeentry>1</gradeentry>
+      <inputtable inherit="true">0</inputtable>
+      <sco>true</sco>
+      <bfw_type>ExternalContent</bfw_type>
+      <bfw_subtype>LearningCurve</bfw_subtype>
+      <bfw_meta>
+        <bfw_metadata name="bsi_item_id">5357360</bfw_metadata>
+        <bfw_metadata name="bsi_site_id">4549</bfw_metadata>
+        <bfw_metadata name="bsi_bfw_uid">bsi-22954099-1854-4DAA-830F-AB7767C756FB</bfw_metadata>
+        <bfw_metadata name="bfw_allowcomments" type="Boolean">False</bfw_metadata>
+      </bfw_meta>
+      <bfw_properties>
+        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+        <bfw_property name="bfw_item_default_points">10</bfw_property>
+      </bfw_properties>
+      <bfw_tocs>
+        <bfw_toc_contents parentid="MODULE_bsi__9922C838__B084__432D__A72E__D073B21B9407" sequence="b" />
+        <syllabusfilter parentid="MODULE_bsi__9922C838__B084__432D__A72E__D073B21B9407" sequence="b" />
+      </bfw_tocs>
+      <meta-topics>
+        <meta-topic dlaptype="exact">Chapter 1. Exploring Economics </meta-topic>
+      </meta-topics>
+      <meta-content-type dlaptype="exact">student_LearningCurve</meta-content-type>
+      <meta-containers>
+        <meta-container dlaptype="exact" toc="syllabusfilter">LaunchPad</meta-container>
+      </meta-containers>
+      <meta-subcontainers>
+        <meta-subcontainerid dlaptype="exact" toc="syllabusfilter">MODULE_bsi__9922C838__B084__432D__A72E__D073B21B9407</meta-subcontainerid>
+      </meta-subcontainers>
+    </data>
+  </item>
+</rootItem>
+</root>

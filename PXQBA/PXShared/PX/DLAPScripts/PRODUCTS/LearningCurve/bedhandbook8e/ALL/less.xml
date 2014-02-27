@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<batch>
+	<request cmd="updatecourses">
+		<requests>
+			<course courseid="-courseid-" domainid="-domainid-" title="-title-" reference="">
+				<data>     
+					<cssparameters>
+                        <param name="Typecolor" value="#27327D" />
+                        <param name="Bordercolor" value="#d8114a" />
+                        <param name="Calloutcolor" value="#5261a6" />
+                        <param name="Bodytextcolor" value="#5f8d75" />
+                        <param name="Columnbackgroundcolor" value="#fafbf1" />
+                        <param name="bookcover" value="style/images/lc-bedhandbook8e-cover.jpg" />
+                        <param name="course-banner-logo" value="style/images/lc-bedhandbook8e-logo.png" />
+                        <param name="course-title-image" value="style/images/lc-bedhandbook8e-banner.png" />
+                    </cssparameters>
+				</data>
+			</course>
+		</requests>
+	</request>
+</batch>

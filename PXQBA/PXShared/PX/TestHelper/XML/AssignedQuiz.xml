@@ -1,0 +1,87 @@
+﻿<item id="PxQuiz" version="0.5" resourceentityid="118667,0,29,0" actualentityid="57704" creationdate="2013-07-25T14:56:06.04Z" creationby="7" modifieddate="2013-08-14T20:10:20.5Z" modifiedby="7" origindepth="1" derivativedepth="1">
+  <data>
+    <type>Assessment</type>
+    <parent>PX_MANIFEST</parent>
+    <sequence>e</sequence>
+    <title>Prologue Summative Quiz</title>
+    <folder>ANGEL_psychportal__myers10e__master_D394D38AB1C648627EC6BD96E4050004</folder>
+    <href>xxx</href>
+    <timetocomplete>PT1M</timetocomplete>
+    <category>0</category>
+    <categorysequence>e</categorysequence>
+    <period inherit="true">0</period>
+    <groupsetid>-1</groupsetid>
+    <duedate>2013-11-30T04:59:01Z</duedate>
+    <gradable>true</gradable>
+    <gradereleasedate>0001-01-01T05:00:00Z</gradereleasedate>
+    <weight>15</weight>
+    <maxpoints>15</maxpoints>
+    <gradeentry>1</gradeentry>
+    <inputtable inherit="true">0</inputtable>
+    <completiontrigger>1</completiontrigger>
+    <graderule>2</graderule>
+    <submissiongradeaction>-1</submissiongradeaction>
+    <flags>1</flags>
+    <questions>
+      <question id="D394D38AB1C648627EC6BD96E4050006" score="2" type="2" count="3" />
+      <question id="D394D38AB1C648627EC6BD96E4050034" score="1" type="2" count="3" />
+    </questions>
+    <examflags>6404</examflags>
+    <attemptlimit>1</attemptlimit>
+    <securitylevel>Low</securitylevel>
+    <examreviewrules>
+      <rule setting="Question" condition="true" />
+      <rule setting="Answer" condition="true" />
+      <rule setting="Possible" condition="true" />
+      <rule setting="CorrectQuestion" condition="true" />
+      <rule setting="CorrectChoice" condition="true" />
+      <rule setting="Feedback" condition="true" />
+      <rule setting="Feedback-GROUP" condition="true" />
+    </examreviewrules>
+    <bfw_type>bfw_qti_document</bfw_type>
+    <bfw_subtype>QUIZ</bfw_subtype>
+    <bfw_properties>
+      <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility&gt;&lt;instructor /&gt;&lt;student /&gt;&lt;/bfw_visibility&gt;</bfw_property>
+      <bfw_property name="HideFromStudents" type="Boolean">false</bfw_property>
+      <bfw_property name="bfw_item_default_points" type="String">15</bfw_property>
+      <bfw_property name="bfw_assignment_instructions" type="String" />
+      <bfw_property name="bfw_allow_extracredit" type="Boolean">false</bfw_property>
+      <bfw_property name="bfw_allowlatesubmissiongrace" type="Boolean">false</bfw_property>
+      <bfw_property name="bfw_SendReminder" type="Boolean">false</bfw_property>
+      <bfw_property name="bfw_IncludeGbbScoreTrigger" type="Integer">1</bfw_property>
+      <bfw_property name="bfw_syllabusfilter" type="String">MODULE_bsi__DC53F9B1__0912__4B32__A02A__F55D7D34C0DC</bfw_property>
+      <bfw_property name="bfw_startdate" type="DateTime">0001-01-01T05:00:00Z</bfw_property>
+      <bfw_property name="assessment_auto_submit_at_due_time" type="Boolean">false</bfw_property>
+      <bfw_property name="bfw_duedate_manuallyset" type="Boolean">false</bfw_property>
+    </bfw_properties>
+    <meta-px-source>pdx_px</meta-px-source>
+    <meta-px-updated>2013-09-09T17:20:31Z</meta-px-updated>
+    <bfw_meta>
+      <bfw_metadata name="bfw_allowcomments" type="Boolean">false</bfw_metadata>
+      <bfw_metadata name="AgilixDisciplineId" type="String">39768</bfw_metadata>
+    </bfw_meta>
+    <bfw_tocs>
+      <bfw_toc_contents parentid="MODULE_bsi__DC53F9B1__0912__4B32__A02A__F55D7D34C0DC" sequence="e" />
+      <syllabusfilter type="bfw_toc" parentid="MODULE_bsi__DC53F9B1__0912__4B32__A02A__F55D7D34C0DC" sequence="e">syllabusfilter</syllabusfilter>
+    </bfw_tocs>
+    <meta-containers>
+      <meta-container toc="syllabusfilter" dlaptype="exact">Launchpad</meta-container>
+    </meta-containers>
+    <meta-subcontainers>
+      <meta-subcontainerid toc="syllabusfilter" dlaptype="exact">MODULE_bsi__DC53F9B1__0912__4B32__A02A__F55D7D34C0DC</meta-subcontainerid>
+    </meta-subcontainers>
+    <meta-topics>
+      <meta-topic dlaptype="exact">Prologue: The Story of Psychology</meta-topic>
+    </meta-topics>
+    <meta-content-type dlaptype="exact">student_Summative Quizzes</meta-content-type>
+    <creationby>7</creationby>
+    <IsMarkAsCompleteChecked>false</IsMarkAsCompleteChecked>
+    <meta-bfw_assigned>true</meta-bfw_assigned>
+    <bfw_in_assignment_center>true</bfw_in_assignment_center>
+    <bfw_duedate_manuallyset>false</bfw_duedate_manuallyset>
+    <bfw_is_depreciated>false</bfw_is_depreciated>
+    <allowviewhints>false</allowviewhints>
+    <percentsubstracthint>0</percentsubstracthint>
+    <allowstudentsemailinstructors>true</allowstudentsemailinstructors>
+  </data>
+</item>

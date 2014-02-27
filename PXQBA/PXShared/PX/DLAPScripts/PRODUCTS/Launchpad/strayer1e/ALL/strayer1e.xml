@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<batch>
+	<request cmd="updatecourses">
+		<requests>
+			<course courseid="-courseid-" domainid="-domainid-" title="-title-" reference="">
+				<data>
+					<bfw_rss_feeds>
+						<feed name="The Economist" url="http://www.economist.com/feeds/print-sections/102/briefings2.xml" />
+					</bfw_rss_feeds>              
+					<cssparameters>
+						<param name="Gradienttopcolor" value="#697aaa" />
+						<param name="Gradientbottomcolor" value="#7e93cc" />
+						<param name="Typecolor" value="#244D9D" />
+						<param name="TitleColor" value="#FFBF00" />  
+						<param name="Columnborder" value="#8EA6E5" />
+						<param name="bookcover" value="style/images/Strayer1e_entryPage.png" />
+						<param name="course-banner-logo" value="style/images/Strayer1eClass_header_logo1.png" />
+						<param name="course-title-image" value="style/images/Strayer1eClass_header_logo2.png" />
+					</cssparameters>
+				</data>
+			</course>
+		</requests>
+	</request>
+
+
+	<request cmd="putitems">
+		<requests>
+			<item itemid="PX_PRODUCT_GETTING_STARTED" entityid="-entityid-">
+				<data>
+					<type>CustomActivity</type>
+					<parent>PX_ROOT</parent>
+					<title>Everyday Writer</title>
+					<abbreviation>ecw</abbreviation>
+					<description>&lt;div class=&quot;real-writing welcome&quot;&gt;
+					&lt;div id=&quot;PX_LC_HOME_2COLUMN_ZONE_1&quot; class=&quot;zoneParent&quot;&gt;
+						&lt;div class=&quot;course-info-widget&quot;&gt;
+							&lt;div class=&quot;top&quot;&gt;
+								&lt;div class=&quot;book&quot;&gt;
+								&lt;/div&gt;
+								&lt;span class=&quot;book-title&quot;&gt;Core Economics&lt;/span&gt;&lt;br/&gt;
+								&lt;span&gt;Second Edition&lt;/span&gt;&lt;br/&gt;
+								&lt;span&gt;Gerald Stone&lt;/span&gt;&lt;br/&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+					&lt;div id=&quot;PX_LC_HOME_2COLUMN_ZONE_2&quot; class=&quot;zoneParent&quot;&gt;
+						&lt;div class=&quot;marketing-content&quot;&gt;
+							&lt;div class=&quot;lc-rw-body-copy&quot;&gt;
+								&lt;p&gt;
+									&lt;b&gt;Welcome to Worth Publisher&#39;s EconPortal!&lt;/b&gt; &lt;/p&gt;
+							&lt;/div&gt;
+							&lt;div class=&quot;lc-action-button&quot;&gt;
+								&lt;a href=&quot;[[viewcourses]]&quot; class=&quot;ecom-btns view-courses-button fixed view-courses-button-hidden &quot;&gt;
+									View Courses &lt;span class=&quot;icon&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;a href=&quot;[[createcourse]]&quot;
+										class=&quot;ecom-btns creation-button fne-link fixed&quot;&gt;Get into the Portal&lt;span class=&quot;icon&quot;&gt;
+										&lt;/span&gt;&lt;/a&gt;
+								&lt;a href="[[questionbank]]"
+									class="ecom-btns view-courses-button fixed view-questionbank-button-hidden "&gt;Question Bank Administration&lt;span class="icon"&gt;
+									&lt;/span&gt;&lt;/a&gt;
+								&lt;a href="[[editsandbox]]"
+										class="ecom-btns view-courses-button fixed view-editsandbox-button-hidden "&gt;Edit Sandbox Course&lt;span class="icon"&gt;
+									&lt;/span&gt;&lt;/a&gt;
+
+					&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+		&lt;/div&gt;	</description>
+					<timetocomplete>PT1M</timetocomplete>
+					<category>1</category>
+					<period inherit="true">0</period>
+					<groupsetid>-1</groupsetid>
+					<weight>100</weight>
+					<gradeentry>1</gradeentry>
+					<inputtable inherit="true">0</inputtable>
+					<bfw_type>ProductMarketing</bfw_type>
+					<bfw_subtype>Marketing</bfw_subtype>
+					<bfw_tocs>
+						<bfw_toc_contents parentid="PX_ROOT" sequence="_ja" />
+					</bfw_tocs>
+				</data>
+			</item>
+			<item entityid="-entityid-" itemid="PX_PRODUCT_MARKETING">
+				<data>
+					<type>CustomActivity</type>
+					<parent>PX_ROOT</parent>
+					<title>Everyday Writer</title>
+					<abbreviation>ecw</abbreviation>
+					<description>&lt;div class=&quot;marketing&quot;&gt;
+		  &lt;div class=&quot;course-info-widget&quot;&gt;
+			&lt;div class=&quot;top&quot;&gt;
+			  &lt;div class=&quot;book&quot;&gt;
+			  &lt;/div&gt;
+			  &lt;span class=&quot;book-title&quot;&gt;Core Economics&lt;/span&gt;
+			  &lt;br/&gt;
+			  &lt;span&gt;Second Edition&lt;/span&gt;
+			  &lt;br/&gt;
+			  &lt;span&gt;Gerald Stone&lt;/span&gt;
+			  &lt;br/&gt;
+			&lt;/div&gt;
+		  &lt;/div&gt;
+		&lt;/div&gt;</description>
+					<timetocomplete>PT1M</timetocomplete>
+					<category>1</category>
+					<period inherit="true">0</period>
+					<groupsetid>-1</groupsetid>
+					<weight>100</weight>
+					<gradeentry>1</gradeentry>
+					<inputtable inherit="true">0</inputtable>
+					<bfw_type>ProductMarketing</bfw_type>
+					<bfw_subtype>Marketing</bfw_subtype>
+					<bfw_tocs>
+						<bfw_toc_contents parentid="PX_ROOT" sequence="_ja" />
+					</bfw_tocs>
+				</data>
+			</item>
+		</requests>
+	</request>
+
+	<!--Start Page zones and widgets-->
+	<request cmd="putitems">
+		<requests>
+			<item itemid="PX_HOME_FACEPLATE_START_ZONE_LEFT" entityid="-entityid-">
+				<data>
+					<parent>PX_HOME_FACEPLATE_START_ZONES</parent>
+					<sequence>a</sequence>
+					<title>PX_HOME_FACEPLATE_START_ZONE_LEFT</title>
+					<abbreviation>PXHOMEFACEPLATEZONESTARTLEFT</abbreviation>
+					<completiontrigger>0</completiontrigger>
+					<bfw_type>Zone</bfw_type>
+					<bfw_allowed_widgets>
+						<widget type="PX_FacePlate_SA_RSS_Feed_Widget" displayName="The Economist RSS Feed" />
+						<widget type="PX_Custom_RSS_Feed_FP_Start" displayName="Custom RSS Feed" />
+						<widget type="PX_AssignmentWidget" displayName="Upcoming Assignments" />
+						<widget type="PX_Custom" displayName="Create your own" />
+					</bfw_allowed_widgets>
+				</data>
+			</item>
+			<item itemid="PX_HOME_FACEPLATE_START_ZONE_RIGHT" entityid="-entityid-">
+				<data>
+					<parent>PX_HOME_FACEPLATE_START_ZONES</parent>
+					<sequence>a</sequence>
+					<title>PX_HOME_FACEPLATE_START_ZONE_RIGHT</title>
+					<abbreviation>PXHOMEFACEPLATEZONESTARTRIGHT</abbreviation>
+					<completiontrigger>0</completiontrigger>
+					<bfw_type>Zone</bfw_type>
+					<bfw_allowed_widgets>
+						<widget type="PX_FacePlate_SA_RSS_Feed_Widget" displayName="The Economist RSS Feed" />
+						<widget type="PX_Custom_RSS_Feed_FP_Start" displayName="Custom RSS Feed" />
+						<widget type="PX_AssignmentWidget" displayName="Upcoming Assignments" />
+						<widget type="PX_Custom" displayName="Create your own" />
+					</bfw_allowed_widgets>
+				</data>
+			</item>
+			<item itemid="PX_FacePlate_SA_RSS_Feed_Widget" entityid="-entityid-">
+				<data>
+					<type>CustomActivity</type>
+					<parent>default_parent</parent>
+					<sequence>g</sequence>
+					<title>The Economist</title>
+					<abbreviation>The Economist</abbreviation>
+					<category>0</category>
+					<completiontrigger>0</completiontrigger>
+					<bfw_type>Widget</bfw_type>
+					<bfw_subtype>PX_ScientificAmerican_RSS_Feed_Compact</bfw_subtype>
+					<bfw_display_flags>
+						<display>instructor</display>
+						<display>student</display>
+						<display>ebook</display>
+						<display>lms</display>
+					</bfw_display_flags>
+					<bfw_widget_callbacks>
+						<method name="View" controller="RSSFeedWidget" action="CompactViewFPStart" fne="true" />
+					</bfw_widget_callbacks>
+					<bfw_widget_template>PX_FacePlate_SA_RSS_Feed_Widget</bfw_widget_template>
+					<bfw_properties>
+						<bfw_property name="bfw_feed_items_to_show" type="String">3</bfw_property>
+						<bfw_property name="bfw_feed_name" type="String">The Economist</bfw_property>
+						<bfw_property name="bfw_syllabusfilter" type="String" />
+						<bfw_property name="bfw_cssclass" type="String">custom-rss-widget summary</bfw_property>
+						<bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+						<bfw_property name="bfw_targetid" type="String" />
+						<bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+						<bfw_property name="bfw_feedurl" type="String">http://www.economist.com/topics/economics/index.xml</bfw_property>
+						<bfw_property name="bfw_feeddescription" type="String">Additional HTML text required for Scientific American and other premade RSS feeds</bfw_property>
+					</bfw_properties>
+					<bfw_tocs>
+						<bfw_toc_contents parentid="PX_WIDGETS" sequence="_p" />
+					</bfw_tocs>
+					<meta-bfw_assigned>false</meta-bfw_assigned>
+				</data>
+			</item>
+			<item itemid="PX_FacePlate_SA_RSS_Feed_Widget_Default" entityid="-entityid-">
+				<data>
+					<type>CustomActivity</type>
+					<parent>PX_HOME_FACEPLATE_START_ZONE_LEFT</parent>
+					<sequence>g</sequence>
+					<title>The Economist</title>
+					<abbreviation>The Economist</abbreviation>
+					<category>0</category>
+					<completiontrigger>0</completiontrigger>
+					<bfw_type>Widget</bfw_type>
+					<bfw_subtype>PX_ScientificAmerican_RSS_Feed_Compact</bfw_subtype>
+					<bfw_display_flags>
+						<display>instructor</display>
+						<display>student</display>
+						<display>ebook</display>
+						<display>lms</display>
+					</bfw_display_flags>
+					<bfw_widget_callbacks>
+						<method name="View" controller="RSSFeedWidget" action="CompactViewFPStart" fne="true" />
+					</bfw_widget_callbacks>
+					<bfw_widget_template>PX_FacePlate_SA_RSS_Feed_Widget</bfw_widget_template>
+					<bfw_properties>
+						<bfw_property name="bfw_feed_items_to_show" type="String">3</bfw_property>
+						<bfw_property name="bfw_feed_name" type="String">The Economist</bfw_property>
+						<bfw_property name="bfw_syllabusfilter" type="String" />
+						<bfw_property name="bfw_cssclass" type="String">custom-rss-widget summary</bfw_property>
+						<bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+						<bfw_property name="bfw_targetid" type="String" />
+						<bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+						<bfw_property name="bfw_feedurl" type="String">http://www.economist.com/topics/economics/index.xml</bfw_property>
+						<bfw_property name="bfw_feeddescription" type="String">  Additional HTML text required for Scientific American and other premade RSS feeds</bfw_property>
+					</bfw_properties>
+					<bfw_tocs>
+						<bfw_toc_contents parentid="PX_WIDGETS" sequence="_p" />
+					</bfw_tocs>
+					<meta-bfw_assigned>false</meta-bfw_assigned>
+				</data>
+			</item>	  
+		</requests>
+
+
+	</request>
+
+</batch>

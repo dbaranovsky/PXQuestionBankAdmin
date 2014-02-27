@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Bfw.PX.Biz.Direct.Services.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Bfw_PX_Biz_Direct_Services_RA_CheckUsername_RACheckUsername" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://int-raws.bfwpub.com/RAWS3/CheckUserName/RACheckUserName.asmx</Value>
+    </Setting>
+    <Setting Name="Bfw_PX_Biz_Direct_Services_RA_EnterActivationCode_RAEnterActivationCode" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://int-raws.bfwpub.com/raws3/EnterActivationCode/RAEnterActivationCode.asmx</Value>
+    </Setting>
+    <Setting Name="Bfw_PX_Biz_Direct_Services_RA_StudentRegistration_RAStudentRegistration" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://int-raws.bfwpub.com/raws3/StudentRegistration/RAStudentRegistration.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

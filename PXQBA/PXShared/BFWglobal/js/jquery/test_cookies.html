@@ -1,0 +1,120 @@
+<html>
+<head>
+<script type="text/javascript" src="/BFWGlobal/js/jquery/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="/BFWGlobal/js/cookies.js"></script>
+<script type="text/javascript">
+
+//window.onload = function(){ alert("welcome"); }
+
+var QPC_Http;
+var QPC_XML;
+var wsAction;
+var wsTarget;
+var strEnvelope;
+var callct = getCookie('callct');
+if (callct == '') callct = 0;
+var pWin = window.parent;
+
+
+$(document).ready(function(){
+// Your code here
+//	alert('ready cookies');
+	$('#goBtn').text( 'go '+ callct );
+});
+
+function doAjax () {
+	callct++;
+	setCookie('callct',callct);
+
+	strEnvelope = '' +
+	'<?xml version="1.0"?>' +
+	'<SOAP-ENV:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">' +
+	'  <SOAP-ENV:Body>' +
+	'     <nStr>yo:'+callct+'</nStr>' +
+	'  </SOAP-ENV:Body>' +
+	'</SOAP-ENV:Envelope>' +
+	'';
+//alert(strEnvelope);
+
+	wsAction = 'blank';
+	wsTarget = '/BFWglobal/js/jquery/test_cookies.asp';
+
+	$.ajax({
+		type: 'POST',
+		url: wsTarget,
+		dataType: 'xml',
+		data: strEnvelope,
+		processData: false,
+		beforeSend: function(req) {
+			req.setRequestHeader('Content-Type', 'text/xml');
+			req.setRequestHeader('SOAPAction', wsAction) ;
+		},
+		success: function(data,textStatus) {
+//alert(data);
+//alert('BCSBSI QPC_HTTPREQUEST : '+textStatus);
+//			alert('DONE: '+ data);
+			QPC_XML = data;
+			QPC_HTTP_SUCCESS();
+		},
+		error: function(XHR, textStatus, errorThrown) {
+			QPC_HTTP_ERROR(XHR, textStatus, errorThrown);
+		}
+	});
+}
+
+function QPC_HTTP_SUCCESS () {
+//	alert('DONE: '+ QPC_XML.xml);
+	$('#goBtn').text( 'go '+ callct );
+	var html = '';
+	html += '<div>';
+	html += '<b>SUCCESS:</b>';
+	html += '</div>';
+	html += '<div>';
+	html += '<b>response:</b><br/><textarea cols="100" rows="3">'+ $('responseStrD', QPC_XML).text();
+	html += '</div>';
+	html += '<div>';
+	html += '<b>cookies:</b><br/>'+ document.cookie +' ';
+	html += '</div>';
+	$('#msg').html( html );
+	if (pWin) pWin.update();
+}
+
+function QPC_HTTP_ERROR (XMLHttpRequest, textStatus, errorThrown) {
+	$('#goBtn').text( 'go '+ callct );
+	var html = '';
+	html += '<div>';
+	html += '<b>ERROR:</b> ';
+	html += '</div>';
+	html += '<div>';
+	html += XMLHttpRequest.readyState +'<br/>';
+	html += XMLHttpRequest.status +'<br/>';
+	html += XMLHttpRequest.statusText +'<br/>';
+	html += textStatus +'<br/>';
+	html += errorThrown +'';
+	html += '</div>';
+	html += '<div>';
+	html += '<b>txt:</b><br/><textarea cols="100" rows="3">'+ XMLHttpRequest.responseText +'</textarea>';
+	html += '</div>';
+	html += '<div>';
+	html += '<b>xml:</b><br/><textarea cols="100" rows="3">'+ XMLHttpRequest.responseXML +'</textarea>';
+	html += '</div>';
+	$('#msg').html( html );
+	if (pWin) pWin.update();
+}
+
+</script>
+</head>
+<body>
+
+<div><b>COOKIES</b></div>
+
+<div>
+<button id="goBtn" onclick="doAjax()">go</button>
+</div>
+
+<div id="msg">msg</div>
+
+</body>
+</html>
+
+

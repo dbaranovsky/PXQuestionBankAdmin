@@ -1,0 +1,145 @@
+﻿/*Learning Objectives Styling */
+
+#objective-tags {
+	margin-bottom: 2px;
+	padding: 10px 0;
+}
+
+#objective-tags span {
+	clear: both;
+	line-height: 14px;
+	margin: 7px 20px 0 0;
+}
+
+.eportfoliosubmitstatus.notvisible
+{
+    display: none;    
+}
+
+#objective-tags span a {
+   background-image: url("style/images/platx_sprite.png");
+	background-position: -1px -149px;
+	background-repeat: no-repeat;
+	color: #333333;
+	display: inline-block;
+	height: 23px;
+	line-height: 15px;
+	margin-right: 2px;
+	padding: 0 3px 0 7px;
+	position: relative;
+	text-decoration: none;
+	top: 7px;
+	width: 13px;
+}
+
+.correlatelink {
+	background-color: #CCCCCC;
+	color: #333333;
+	display: block;
+	font-size: 14px;
+	height: 23px;
+	line-height: 28px;
+	padding: 6px 5px 10px 4px;
+	width: 250px;
+}
+
+#objective-form{
+	border: 1px solid #ccc;
+	padding: 12px;
+}
+
+#objective-form #close-objective-link{    
+	float:right;
+	padding-bottom:10px;
+}
+
+#objective-form #close-objective-link .close-link
+{
+	background-image: url("style/images/ui-icons_888888_256x240.png");
+	background-position:-32px -192px;
+	height:15px;
+	width:10px;
+	float:right;
+	margin-top:-5px;
+	margin-right:-5px;
+}
+
+#objective-form #add-objective-link
+{
+	float:right;
+	background: rgb(238,238,238); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(238,238,238,1) 42%, rgba(224,224,224,1) 66%, rgba(244,244,241,1) 98%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(238,238,238,1)), color-stop(42%,rgba(238,238,238,1)), color-stop(66%,rgba(224,224,224,1)), color-stop(98%,rgba(244,244,241,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(238,238,238,1) 42%,rgba(224,224,224,1) 66%,rgba(244,244,241,1) 98%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(238,238,238,1) 42%,rgba(224,224,224,1) 66%,rgba(244,244,241,1) 98%); /* Opera11.10+ */
+	background: -ms-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(238,238,238,1) 42%,rgba(224,224,224,1) 66%,rgba(244,244,241,1) 98%); /* IE10+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#f4f4f1',GradientType=0 ); /* IE6-9 */
+	background: linear-gradient(top, rgba(238,238,238,1) 0%,rgba(238,238,238,1) 42%,rgba(224,224,224,1) 66%,rgba(244,244,241,1) 98%); /* W3C */
+	border: 1px solid #ccc;
+	-moz-border-radius-topleft: 6px;
+	-webkit-border-top-left-radius: 6px;
+	border-top-left-radius: 6px;
+	-moz-border-radius-bottomleft: 6px;
+	-webkit-border-bottom-left-radius: 6px;
+	border-bottom-left-radius: 6px;
+	-moz-border-radius-topright: 6px;
+	-webkit-border-top-right-radius: 6px;
+	border-top-right-radius: 6px;
+	-moz-border-radius-bottomright: 6px;
+	-webkit-border-bottom-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+	height: 25px;
+	width:90px;
+	margin-right: 8px;
+}
+
+#objective-form div a{
+	font-size: 11px;
+	text-decoration: none;
+	color: #333;
+	display: block;
+	width: 80px;
+	line-height: 25px;
+	padding-left: 6px;
+   
+}
+#objective-list{
+	margin-bottom: 12px;
+}
+
+#objective-list div{
+	font-size: 11px;
+	line-height:16px;
+}
+
+.objective-modul .ui-widget-header {
+	background-color: #CCCCCC;
+	border:none;
+	color: #467CBE;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.objective-modul #add-objective-form{
+	font-size:12px;
+}
+
+.objective-modul #add-objective-form input{
+	width: 200px;
+}
+
+.objective-modul .ui-dialog-buttonpane {
+	font-size: 12px;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.objective-modul .ui-dialog-buttonpane button{
+	width: 60px;
+}
+
+#bodyObjectives .tree-container .tree-buttons .LOViewAlignment{
+    width: 220px !important;    
+}
+
+

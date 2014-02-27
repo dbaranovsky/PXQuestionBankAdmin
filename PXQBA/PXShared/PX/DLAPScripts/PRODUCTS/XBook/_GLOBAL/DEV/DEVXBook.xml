@@ -1,0 +1,31 @@
+<batch>
+  <!-- Delete items that don't exist in DEV environment-->
+  <request cmd="putitems">
+    <requests>
+      <!-- TOC link widget-->
+      <item itemid="PX_FeaturedContentWidget_TocButton" entityid="-entityid-">
+        <data>
+          <parent>INVALID</parent>
+        </data>
+      </item>
+      <!-- Recent submission widget replacement for the agilix component -->
+      <item itemid="PX_RecentSubmissionsWidget2" entityid="-entityid-" >
+        <data>
+          <parent>INVALID</parent>
+        </data>
+      </item>
+      <!-- Recent assignment widget replacement for agilix component -->
+      <item itemid="PX_RecentAssignmentsWidget" entityid="-entityid-">
+        <data>
+          <parent>INVALID</parent>
+        </data>
+      </item>
+      <!-- Recent submission widget replacement for agilix component (NOT SURE WHERE THIS IS COMING FROM)-->
+      <item itemid="PX_RecentlySubmittedWidget" entityid="-entityid-">
+        <data>
+          <parent>INVALID</parent>
+        </data>
+      </item>
+    </requests>
+  </request>
+</batch>

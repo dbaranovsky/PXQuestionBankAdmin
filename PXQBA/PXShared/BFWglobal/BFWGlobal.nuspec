@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>BFWGlobal</id>
+    <version>1.0</version>
+    <authors>WebOps</authors>
+    <owners>WebOps</owners>
+                <licenseUrl>http://www.macmillanhighered.com</licenseUrl>
+    <projectUrl>http://www.macmillanhighered.com</projectUrl>
+                <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description> BFWGlobal </description>
+    <releaseNotes></releaseNotes>
+  </metadata>
+</package>

@@ -1,0 +1,21 @@
+﻿@model SamlTest.Models.SamlDataModel
+
+@{
+    ViewBag.Title = "DumpSamlData";
+}
+
+<h2>DumpSamlData</h2>
+
+@if (Model.Claims.Count > 0)
+{
+<ul>
+    @foreach (var claim in Model.Claims)
+    {
+        <li>@claim.Name of type @claim.Type with value "@claim.Value"</li>
+    }
+</ul>
+}
+else
+{
+    <span>There are no claims to display</span>
+}

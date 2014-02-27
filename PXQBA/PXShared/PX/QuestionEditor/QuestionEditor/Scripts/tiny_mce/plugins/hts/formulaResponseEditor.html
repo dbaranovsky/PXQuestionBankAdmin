@@ -1,0 +1,126 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=koi8-r" />
+    <title>Formula Response Editor</title>    
+    <script type="text/javascript" src="../../../jquery/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../../../jquery/jquery.validate.js"></script>
+     <script type="text/javascript" src="../../../jquery/jquery-ui-1.8.16.custom.min.js"></script>
+    <script type="text/javascript" src="../../tiny_mce_popup.js"></script>
+    <script type="text/javascript" src="js/formulaResponseEditor.js"></script>
+    <script src="js/helper.js" type="text/javascript"></script>
+    <link href="css/hts.css" rel="stylesheet" type="text/css" />
+</head>
+<body style="background-color:#ffffff" class="hts-dialog-formula">
+    <form action="">
+    <div class="hts-dialog-content formula-response-edit">
+    <div class="hts-dialog-top">
+            <div class="hts-form">
+            <div class="errors"></div>
+                <fieldset>
+                    <ul>
+<!--                        <li>
+                            <div class="field">
+                                <label>
+                                    Answer Blank Width:</label>
+                                <div class="option">
+                                    <input type="radio" value="auto" class="response-width" name="response-width" />
+                                    Auto</div>
+                                <div class="option">
+                                    <input type="radio" value="char" checked="checked" class="response-width" name="response-width" />
+                                    <select name="response-charWidth" class="response-charWidth" size="1">
+                                        <option value="1">1</option>
+                                        <option value="2" selected="selected">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                    Characters</div>
+                                <div class="question-icon"></div>
+                            </div>
+                            <div class="clearer">
+                            </div>
+                        </li>-->
+                        <li>
+                            <div class="field">
+                                <label>
+                                    Weight:</label>
+                                <div class="option">
+                                    <input type="text" name="response-weighting" class="response-weighting required number greaterThanZero" />
+                                </div>
+                                <!--<div class="question-icon"></div>-->
+                            </div>
+                            <div class="clearer">
+                            </div>
+                        </li>
+                    </ul>
+                </fieldset>
+            </div>
+    </div>
+    <div class="hts-dialog-bottom">
+        <div class="hts-grid-wrapper">
+            <div class="hts-grid-header">
+                <span>Correct Answers</span>
+                <!--<div class="question-icon"></div>-->
+                <input type="button" class="hts-grid-addrow" value="Add Correct Answer" />
+                <div class="clearer">
+                </div>
+            </div>
+            <div class="hts-grid-body">
+            </div>
+            <div class="hts-grid-footer">
+                <input type="button" class="hts-dialog-cancel" value="Cancel" />
+                <input type="button" class="hts-dialog-save" value="Save" />
+                <div class="clearer">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <table class="hts-grid-template">
+        <tr class="header-row">
+            <th class="hts-column header-column hts-answer">
+                Answer
+            </th>
+            <th class="hts-column header-column hts-answer-rule">
+                Answer Rule
+            </th>
+            <th class="hts-column header-column hts-actions">
+                Actions
+            </th>
+        </tr>
+        <tr class="data-row">
+            <td class="hts-column data-column hts-answer">                
+                <img src="img/mathinput.gif" alt="img/mathinput.gif" class="hts-formula-input" name="hts-formula-input" />
+            </td> 
+            <td class="hts-column data-column hts-answer-rule">
+                <span class="hts-answer-rule-text"></span>
+                <select class="hts-answer-rule-input required" name="hts-answer-rule-input">                    
+                    <option value="any" selected="selected">Any</option>
+                    <option value="exact">Exact</option>
+                    <option value="similar">Similar</option>
+                    <option value="nodecimal">No Decimal</option>
+                    <option value="list">List</option>
+                    <option value="ordered list">Ordered List</option>
+                </select>
+            </td>
+            <td class="hts-column data-column hts-actions">
+                <div class="action hts-grid-editrow">
+                </div>
+                <div class="action hts-grid-deleterow">
+                </div>
+                <div class="action hts-grid-saverow">
+                </div>
+                <div class="action hts-grid-cancelrow">
+                </div>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+<script type="text/javascript">
+    (function ($) {
+        $(document).ready(function () {
+            FormulaResponseEditorDialog.build();
+        });
+    } (jQuery))
+</script>
+</html>

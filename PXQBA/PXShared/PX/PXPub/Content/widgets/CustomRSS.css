@@ -1,0 +1,343 @@
+﻿#inputRssUrl{
+    width: 300px;
+}
+
+.ArchiveButtonOnMouseOver {
+    background: #2554C7 !important;
+    color: White !important;
+}
+
+.customRSSWidgetOuterDiv
+{
+    height: 119px; 
+    overflow: auto;
+}
+
+#PX_HOME_ZONE_3 .customRSSWidgetOuterDiv
+{
+    height: 200px; 
+}
+
+.RSSFeedButton
+{
+    width: 80px;
+}
+
+.WaterMarkedTextBox
+{
+    color: #ccc !important; 
+    font-style: italic !important;      
+}
+
+.AssignButtonOnMouseOver {
+    background: #2554C7 !important;
+    color: White !important;
+}
+
+.RSSArticleRow 
+{
+    background: #EBDDE2 !important;
+}
+
+.dialogLabel
+{
+    font-size:12px; 
+    font-family:Arial;
+    padding-bottom: 5px;
+}
+
+.customRSSEditWidget
+{
+    float:left;
+}
+
+.customRssViewAllLink{
+    cursor: pointer;
+}
+
+.lnkButtonSet
+{
+    color: Navy;
+    cursor: pointer;
+    padding-right: 10px;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 12px;
+    width: 60px;
+}
+
+.customRssLink
+{
+    color: #005AC1 !important;
+    cursor: pointer;
+    font-size:13px;
+}
+
+.NoArticleMessageNotVisible
+{
+    display: none;    
+}
+
+
+.customRssPubDate
+{
+    color: Black;
+    font-size:10px;
+}
+
+
+.btnArchiveRSSFeedVisible
+{
+    padding-right:20px;
+    font-size:small;
+}
+
+.btnArchiveRSSFeedNonVisible
+{
+    padding-right:20px;
+    font-size:small;
+    display:none;
+}
+
+
+
+.btnAssignRSSFeedVisible
+{
+    padding-left:10px;
+    padding-right:20px;
+    font-size:small;
+}
+
+.btnAssignRSSFeedNonVisible
+{
+    padding-left:10px;
+    padding-right:20px;
+    font-size:small;
+    display:none;
+}
+
+.linkTitle
+{
+    float:left;
+    padding:5px 0 0 10px;
+    color: Blue;
+    font-size: 11px;
+}
+
+.compactLinkTitle
+{
+    float:left;
+    padding: 5px 0 0 10px;
+    color: Blue;
+    font-size: 11px;
+}
+
+
+.feedURLContainer
+{
+    padding-bottom: 5px;    
+}
+
+.feedContainer
+{
+    float:left; 
+    width:100%; 
+    padding-top:5px; 
+    padding-bottom:5px; 
+    border-bottom:1px solid #CCCCCC;
+}
+
+.compactFeedContainer
+{
+    float:left; 
+    width:100%; 
+    padding-top:5px; 
+    padding-bottom:5px; 
+    border-bottom:1px solid #CCCCCC;
+}
+
+
+.buttonContainer
+{
+    float:right; 
+    width:220px;
+}
+
+.buttonRSS
+{
+    float:right;
+}
+
+.pubDate
+{
+    float:right; 
+    padding: 5px 0 0 24px;
+}
+
+.compactPubDate
+{
+    float:left; 
+    padding: 5px 0 0 10px;
+    font-size: 11px;
+    clear:both;
+}
+
+
+.customRSSViewAllBar {
+    border: 1px solid #CCCCCC;
+    clear: both;
+    font-size: 12px;
+    height: 32px;
+    padding-left: 10px;
+    line-height:32px;
+}
+
+.noArticlesMessage
+{
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:12px;
+    clear:both;
+    font-size:medium !important;
+    color: Red !important;
+}
+
+.customRSSViewAllBarArticleCount
+{
+    float:left; 
+}
+
+.customRSSViewAllBarText
+{
+    float:left; 
+    padding-left: 2px;
+}
+
+.customRSSViewAllBarLink
+{
+    float:left; 
+    padding-left: 10px;
+}
+
+
+.compactTitlePubDateContainer
+{
+    float:left; 
+    width:82%;
+}
+
+.compactButtonContainer
+{
+    float:left; 
+    padding-top:20px; 
+    padding-left:15px;
+    position:relative;
+}
+
+.compactButtonSetMenuContainer{
+    display: none; 
+    position: absolute; 
+    border: 1px solid black; 
+    background-color: White; 
+    right: 35px;
+}
+
+.lnkArchiveRSSFeed,
+.lnkUnarchiveRSSFeed,
+.lnkAssignRSSFeed,
+.lnkUnassignRSSFeed{
+    width: 105px;
+}
+.compactButtonSetController {
+    background-color: transparent;
+    background-image: url("style/images/platx_sprite.png");
+    background-position: -99px -99px;
+    background-repeat: no-repeat;
+    height: 22px;
+    width: 22px;
+    float: right;
+    margin-top:0px;
+    margin-right:5px;
+}
+
+.compactButtonSetController:hover {
+    background-position: -149px -99px;
+}
+
+
+.buttonCheckOn {
+    background-color: transparent;
+    background-image: url("style/images/platx_sprite.png");
+    background-position: -199px -99px;
+    background-repeat: no-repeat;
+    height: 22px;
+    width: 22px;
+    float: left;
+    margin-top:0px;
+    margin-right:5px;
+}
+
+.buttonCheckOff {
+    background-color: transparent;
+    height: 22px;
+    width: 22px;
+    float: left;
+    margin-top:0px;
+    margin-right:5px;
+}
+
+.alignLeft {
+    float: left;   
+}
+
+.alignRight {
+    float: right;   
+}
+
+.CustomRSSLoadStatus{
+    padding-bottom: 5px;
+    padding-left: 5px;
+    color: Red;
+    font-size:13px;
+}
+
+.CustomRSSLoadMessage{
+    float: right;
+    padding-right: 5px;
+    padding-left: 5px;
+    color: Black;
+    font-size:12px;
+}
+
+.CustomRSSLoadMessageSpinner{
+    float: right;
+    padding-right: 5px;
+    background:url(style/images/ajax-loader.gif) no-repeat;
+    height:14px;
+    width:14px;
+}
+
+.customRSSfeedDescription{
+    float:left; 
+    width:97%; 
+    font-size:13px;
+    padding-left: 13px;
+    padding-right: 1px;
+    /*padding-top:5px; 
+    padding-bottom:5px; 
+    border-bottom:1px solid #CCCCCC;*/
+}
+
+
+.customRSSfeedDescriptionCompact{
+    float:left; 
+    width:92%;
+    font-size:13px;
+    padding-left: 13px;
+    padding-right: 1px;
+    padding-top:5px; 
+    padding-bottom:5px; 
+    border-bottom:1px solid #CCCCCC;
+}
+

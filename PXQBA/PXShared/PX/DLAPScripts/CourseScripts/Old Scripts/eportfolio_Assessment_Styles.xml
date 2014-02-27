@@ -1,0 +1,26 @@
+﻿<bfw_assessment_style>
+    <rubric_management_style>
+        <show_preview_on_left>true</show_preview_on_left>
+        <show_edit_on_left>true</show_edit_on_left>
+        <show_view_alignments>true</show_view_alignments>
+        <show_edit_on_right>false</show_edit_on_right>
+        <show_preview_on_right>false</show_preview_on_right>
+        <show_left_column>true</show_left_column>
+        <rubric_alignment_views>
+            <assignment>true</assignment>
+            <eportfolio />
+            <rubric>true</rubric>
+        </rubric_alignment_views>
+    </rubric_management_style>
+    <objective_management_style>
+        <show_left_column>true</show_left_column>
+        <show_edit_on_left>true</show_edit_on_left>
+        <show_edit_on_right>false</show_edit_on_right>
+        <show_view_alignments>true</show_view_alignments>
+        <learningobj_alignment_views>
+            <assignment>true</assignment>
+            <eportfolio />
+            <objective>true</objective>
+        </learningobj_alignment_views>
+    </objective_management_style>
+</bfw_assessment_style>

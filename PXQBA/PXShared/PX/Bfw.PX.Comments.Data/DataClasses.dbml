@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="PX_Comments" Class="PxCommentsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=VSCONVERSION04\SQLEXPRESS;Initial Catalog=PX_Comments;Integrated Security=True" SettingsObjectName="Bfw.PX.Comments.Data.Properties.Settings" SettingsPropertyName="PX_CommentsConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.HighlightComment" Member="HighlightComments">
+    <Type Name="HighlightComment">
+      <Column Name="FK_HighlightId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FK_CommentId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Comment_HighlightComment" Member="Comment" ThisKey="FK_CommentId" OtherKey="commentId" Type="Comment" IsForeignKey="true" />
+      <Association Name="Highlight_HighlightComment" Member="Highlight" ThisKey="FK_HighlightId" OtherKey="highlightId" Type="Highlight" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Comment" Member="Comments">
+    <Type Name="Comment">
+      <Column Name="commentId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="commentText" Type="System.String" DbType="VarChar(160) NOT NULL" CanBeNull="false" />
+      <Column Name="dateAdded" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="userFirstName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="userLastName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="userAccessLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="isBookmarked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Comment_HighlightComment" Member="HighlightComments" ThisKey="commentId" OtherKey="FK_CommentId" Type="HighlightComment" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Highlight" Member="Highlights">
+    <Type Name="Highlight">
+      <Column Name="highlightId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="highlightText" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="dateAdded" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="userId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="itemId" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="courseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="userAccessLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="isActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="isShared" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="highlightType" Type="global::Bfw.PX.Comments.Data.HighlightType" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="secondaryId" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="isGeneral" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="reviewId" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Association Name="Highlight_HighlightComment" Member="HighlightComments" ThisKey="highlightId" OtherKey="FK_HighlightId" Type="HighlightComment" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,93 @@
+﻿@model Bfw.PXAP.Models.PXEnvironment
+@{
+    Layout = "";
+}
+@{
+    string envId = string.Empty;
+    if (Model != null)
+    {
+        envId = Model.EnvironmentId.ToString();
+    }
+}
+@*@using (Ajax.BeginForm("AddEnvironment", null, new AjaxOptions { HttpMethod = "Post" }, new { id="Form" + envId}))*@
+@using (Ajax.BeginForm("AddEnvironment", "Environment", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "onAddUpdateEnvironment" }, new { id = "EnvForm" + envId }))
+{
+    <div class="envMainDiv">
+        <div id="error" style="padding-left: 5px; color: red;">
+        </div>
+        <div class="envHeader">
+            <div style="float: left;">
+               @* @if (Model.EnvironmentId == 0)
+                {        
+                    @Html.TextBoxFor(m => m.Title);
+                }
+                else
+                {
+                    @Model.Title;
+                }*@
+
+                 @*@Model.Title*@
+                @Html.TextBoxFor(m => m.Title, new { disabled = "disabled", @class = "envField", style="background:transparent;font-weight:bold; border:0" })
+            </div>
+            <div style="float: right; vertical-align: top;">
+                <input type="submit" id="submit" value="" title="Save" class="save-button" onclick="return ValidateForm(this);" />
+                <input type="button" id="Edit" value="" title="Edit"  class="edit-button" onclick="EnableEnvironment({sender:this});" />
+                <input type="button" id="delete" value="" title="Delete"  class="delete-button" onclick="DeleteEnvironment(this);" />
+                <input type="button" id="Cancel" value="" title="Cancel" class="cancel-button" onclick="CancelEnv(this);" />
+            </div>
+            <div style="clear: both;">
+            </div>
+        </div>
+        <div style="width: 100%">
+            <div class="env-left">
+                <div class="row">
+                    <div class="label">
+                        Description:</div>
+                    <div>@Html.TextBoxFor(m => m.Description, new { disabled = "disabled", @class = "envField" })</div>
+                </div>
+                <div class="row">
+                    <div class="label">
+                        DLAP Server:</div>
+                    <div>@Html.TextBoxFor(m => m.DlapServer, new { disabled = "disabled", @class = "envField" })</div>
+                </div>
+                <div class="row">
+                    <div class="label">
+                        BrainHoney Server:</div>
+                    <div>@Html.TextBoxFor(m => m.BrainHoneyServer, new { disabled = "disabled", @class = "envField" })</div>
+                </div>
+                <div class="row">
+                    <div class="label">
+                        BrainHoney Docs:</div>
+                    <div>@Html.TextBoxFor(m => m.BrainHoneyDocs , new { disabled = "disabled", @class = "envField" })</div>
+                </div>
+                <div class="row">
+                    <div class="label">
+                        PX Docs:</div>
+                    <div>@Html.TextBoxFor(m => m.PxDocs, new { disabled = "disabled", @class = "envField" })</div>
+                </div>
+            </div>
+            <div class="env-right">
+                <div class="row" style="width: 410px;">
+                    <div class="label">
+                        Sources:</div>
+                    <div>
+                        @Html.ListBoxFor(m => m.Sources, Model.SourcesSelectList, new { disabled = "disabled", @class = "envField" })
+                        <input type="button" id="removeResource" value="Remove" class="" style="vertical-align: top;"
+                            onclick="RemoveSourceFromList(this);" />
+                    </div>
+                </div>
+                <div id="divAddResource" class="row" style="width: 410px;">
+                    <div class="label">
+                        &nbsp;</div>
+                    <div id="AddRemoveSources">
+                        @Html.TextBox("txtAddSource", string.Empty, new { @class = "add-envSource" })
+                        <input type="button" value="Add" class="" onclick="AddSourceToList(this);" />
+                    </div>
+                </div>
+            </div>
+            <div style="clear: both;">
+            </div>
+        </div>
+        @Html.HiddenFor(m => m.EnvironmentId)
+    </div>
+}

@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=koi8-r" />
+    <title>Variable</title>
+    <script type="text/javascript" src="../../../jquery/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../../tiny_mce_popup.js"></script>
+    <script type="text/javascript" src="js/variableEditor.js"></script>
+    <link href="css/hts.css" rel="stylesheet" type="text/css" />
+</head>
+<body style="background-color: #ffffff" class="hts-dialog-variable">
+    <div class="hts-dialog-content variable-edit">
+        
+            <div class="hts-form">
+                <fieldset>
+                    <ul class="hts-variable-array-inputs" style="display:none;">
+                        <li>
+                            <div class="field">
+                                <label>
+                                    Input a value to index into the variable "<span class="hts-variable-name">x</span>".</label>
+                            </div>
+                            <div class="clearer">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="field">
+                                <input type="text" class="hts-variable-index-input" />
+                                <span></span>
+                            </div>
+                            <div class="clearer">
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="hts-variable-inputs" style="display:none;">
+                    <li>Variable "<span class="hts-variable-name">x</span>".</li>
+                    </ul>
+                </fieldset>
+            </div>
+        
+        <div class="hts-dialog-bottom">
+            <input type="button" class="hts-dialog-save" value="OK" />
+            <input type="button" class="hts-dialog-cancel" value="Cancel" />            
+            <span class="hts-dialog-remove-variable" style="display:none;">Remove Variable Instance</span>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    (function ($) {
+        $(document).ready(function () {
+            VariableEditorDialog.build();
+        });
+    } (jQuery))
+</script>
+</html>

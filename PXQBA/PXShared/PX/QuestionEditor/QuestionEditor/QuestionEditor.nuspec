@@ -1,0 +1,15 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>QuestionEditor</id>
+    <title>QuestionEditor</title>
+    <version>1.0.0</version>
+    <authors>PXTeam</authors>
+    <owners>PXTeam</owners>
+    <licenseUrl>http://www.macmillanhighered.com</licenseUrl>
+    <projectUrl>http://www.macmillanhighered.com</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Implements the PX version of the HTS Question Editor</description>
+    <releaseNotes>This release contains the following changes...</releaseNotes>
+  </metadata>
+</package>

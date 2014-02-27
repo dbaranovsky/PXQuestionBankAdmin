@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<batch>
+  <request cmd="updatecourses">
+    <requests>
+      <course courseid="-courseid-" domainid="-domainid-" title="-title-" reference="">
+        <data>     
+			<cssparameters>
+			  <param name="Typecolor" value="#b2d4d3" />
+			  <param name="Gradientinnercolor" value="#cee7e4" />
+			  <param name="Gradienttopcolor" value="#b6d5d7" />
+			  <param name="Gradientbottomcolor" value="#49929b" />
+			  <param name="course-title-image" value="/BrainHoney/Resource/6698/assets/pdx_files/product_decoration/languageofcomp2e-xbook/tlc_banner.jpg" />
+			  <param name="bookcover" value="/BrainHoney/Resource/6698/assets/pdx_files/product_decoration/languageofcomp2e-xbook/97803126765.jpg" />
+			  <param name="course-banner-logo" value="/BrainHoney/Resource/6698/assets/pdx_files/product_decoration/languageofcomp2e-xbook/bedford_xbook_logo.png" />
+			</cssparameters>
+        </data>
+      </course>
+    </requests>
+  </request>
+</batch>

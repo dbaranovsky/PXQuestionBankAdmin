@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>test_effects.html</title>
+<script type="text/javascript" src="jquery-1.3.2.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	var BCS_BSI_Ready = true;
+	var BCS_RA_Ready = true;
+	var strRecord = 'site timed out!\nBSI ready:'+BCS_BSI_Ready+'\nRA ready:'+BCS_RA_Ready;
+	var htmlMsg = 'Oops, something is wrong! You can continue, but be aware that the site may not function correctly. Or, you can wait a few minutes and reload the site.';
+	var severity = 5;
+	if (!htmlMsg) htmlMsg = strRecord.replace('\n','<br/>');
+	if (severity>5) {
+		htmlMsg += '<br/><br/><a href="JavaScript:window.location.reload()">try again</a>';
+htmlMsg += '<br/><br/><a href="JavaScript:BCS_LogError_Close()">continue</a>';
+	} else {
+		htmlMsg += '<br/><br/><a href="JavaScript:BCS_LogError_Close()">continue</a> - <a href="JavaScript:window.location.reload()">try again</a>';
+	}
+//	htmlMsg += '<br/><br/>error code:'+ severity;
+//	htmlMsg += '<br/>BSI ready:'+BCS_BSI_Ready+'<br/>RA ready:'+BCS_RA_Ready;
+//	htmlMsg += '<br/>URL:'+window.location.href;
+	htmlMsg = ''+ htmlMsg +'';
+
+
+	var $mine = $('p');
+	var $this;
+	$this = $mine;
+	htmlMsg = $mine.length;
+	htmlMsg += '<br/>';
+	htmlMsg = '';
+	for (var i=0; i<$mine.length; i++) {
+		htmlMsg += $this.filter(':first').text();
+		$this = $this.not(':first')
+		htmlMsg += ': '+ i +'<br/>';
+	}
+//	$('#msg').fadeOut(5000);
+//	$('#msg').hide()
+	$('#msgInner').css('color','red').css('font-face','Arial').css('font-size','20pt').css('text-align','right').css('width','450px').css('height','200px').html( htmlMsg );
+//	$('#msg').show()
+});
+
+function doNada () {
+	alert('DONE');
+}
+
+</script>
+</head>
+<body>
+<div id="msg" style="border: 1px solid red"><div id="msgInner" style="border: 1px solid blue">message</div></div>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+</body>
+</html>

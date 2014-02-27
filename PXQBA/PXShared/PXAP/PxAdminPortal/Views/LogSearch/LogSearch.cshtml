@@ -1,0 +1,132 @@
+﻿@model Bfw.PXAP.Models.LogSearchModel
+@{    
+    ViewBag.Title = "LogSearch";     
+}
+
+    @{
+        
+        Bfw.PXAP.Models.LayoutModel layoutModel = this.ViewBag.LayoutModel as Bfw.PXAP.Models.LayoutModel;
+
+        if (string.IsNullOrEmpty(layoutModel.CurrentEnvironment))
+        {
+            return;
+        }
+
+
+        if (Model.SourceOptions.Count == 0)
+        {
+            <div class="missingEnvMessages">
+                There are no sources defined for current environment. Please click 
+                @Html.ActionLink("here", "Environments", "Environment")
+                to define them
+            </div>
+            return;
+        }
+       
+        }
+<script type="text/javascript">
+    $(function () {
+
+        LogSearchLoad();
+        $("#tabs").hide();
+        $("#dialog").hide();
+
+    });
+</script>
+
+<div id="divLogSearch">
+    <div id="divSearch">   
+        @using (Html.BeginForm("LogSearch", "LogSearch", FormMethod.Post))
+        {        
+                
+            <div class="dataPara">
+                <div style="padding-top: 5px; height: 20px; width: 100px; text-align: right; margin-right: 10px;
+                    float: left;">
+                    Severity:
+                </div>
+                <div style="float: left">
+                    @Html.DropDownListFor(m => m.Severity, Model.SeverityOptions, new { @class = "ddlSearch" })
+                </div>
+                <div style="padding-top: 5px; height: 20px; width: 150px; text-align: right; margin-right: 10px;
+                    float: left;">
+                    Between:
+                </div>
+                <div style="float: left">
+                    @Html.TextBoxFor(m => m.StartDate, new { @class = "txtDate startDate", @readonly = "readonly" })
+                    @Html.ValidationMessageFor(m => m.StartDate)
+                </div>
+                <div style="padding-top: 5px; height: 20px; width: 40px; text-align: right; margin-right: 10px;
+                    float: left;">
+                    and:
+                </div>
+                <div style="float: left">
+                    @Html.TextBoxFor(m => m.EndDate, new { @class = "txtDate endDate" })
+                    @Html.ValidationMessageFor(m => m.EndDate)
+                </div>
+            </div>
+            <div class="dataPara">
+                <div style="padding-top: 5px; height: 20px; width: 100px; text-align: right; margin-right: 10px;
+                    float: left;">
+                    Category:
+                </div>
+                <div style="float: left">
+                    @Html.DropDownListFor(m => m.Category, Model.CategoryOptions, new { @class = "ddlSearch" })
+                </div>
+                <div style="padding-top: 5px; height: 20px; width: 150px; text-align: right; margin-right: 10px;
+                    float: left;">
+                    Message:
+                </div>
+                <div style="float: left">
+                    @Html.TextBoxFor(m => m.Message, new { @class = "txtMessage" })
+                    @Html.ValidationMessageFor(m => m.Message)
+                </div>
+            </div>
+            <div class="dataPara">
+                <div style="padding-top: 5px; height: 20px; width: 100px; text-align: right; margin-right: 10px;
+                    float: left;">
+                    Source:
+                </div>
+                <div style="float: left">
+                    @Html.DropDownListFor(m => m.Source, Model.SourceOptions, new { @class = "ddlSearch" })
+                </div>
+            </div>
+            <div class="dataPara">
+                <div style="padding-top: 5px; height: 20px; width: 185px; text-align: right; margin-right: 10px;
+                    float: left;">
+                    <input type="button" value="submit" id="btnSearch" style="width:75px" />
+                </div>
+                <div style="padding-top: 5px; height: 20px; width: 100px; text-align: right; float: left;">
+                    <input type="button" value="save search" id="btnSaveSearch" style="visibility: hidden"/>
+                </div>
+            </div>
+       
+        }
+    </div>
+    <div id="divLogGrid" style="float: left">
+        <table id="list" class="scroll" cellpadding="0" cellspacing="0">
+        </table>
+        <div id="pager" class="scroll" style="text-align: center;">
+        </div>
+    </div>
+</div>
+
+<div id="dialog" title="Log Details">
+
+<div id="tabs" style="height:90%;">
+    <ul>
+        <li><a href="#Message"><span>Message</span></a></li>
+        <li><a href="#Properties"><span>Properties</span></a></li>
+        <li><a href="#FullDetail"><span>FullDetail</span></a></li>
+    </ul>
+    <div id="Message">
+        Show Message here
+    </div>
+    <div id="Properties">
+        not yet implemented    
+     </div>
+    <div id="FullDetail">
+            not yet implemented
+    </div>
+</div>
+
+</div>

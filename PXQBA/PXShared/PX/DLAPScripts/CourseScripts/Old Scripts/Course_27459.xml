@@ -1,0 +1,74 @@
+cmd=getcourse&courseid=27459
+cmd=updatecourses
+
+<requests>
+  <course courseid="27459" title="Freedman, Universe 9e" reference="" guid="1933af07-2304-4f7f-8528-e438084398f1" protection="0" schema="2" domainid="6650" baseid="6651" type="Range" startdate="1753-01-01T00:00:00Z" enddate="9999-12-31T00:00:00Z" days="365" term="" creationdate="2011-12-23T07:13:55.863Z">
+    <data>
+      <description>Freedman, Universe 9e</description>
+      <gradetables>
+        <table id="0" name="A,B,C,D,F" scale="Percent">
+          <bracket grade="A" score="0.9" />
+          <bracket grade="B" score="0.8" />
+          <bracket grade="C" score="0.7" />
+          <bracket grade="D" score="0.6" />
+          <bracket grade="F" score="0" />
+        </table>
+        <table id="1" name="A+,A,A-,...,F" scale="Percent">
+          <bracket grade="A+" score="0.97" />
+          <bracket grade="A" score="0.93" />
+          <bracket grade="A-" score="0.9" />
+          <bracket grade="B+" score="0.87" />
+          <bracket grade="B" score="0.83" />
+          <bracket grade="B-" score="0.8" />
+          <bracket grade="C+" score="0.77" />
+          <bracket grade="C" score="0.73" />
+          <bracket grade="C-" score="0.7" />
+          <bracket grade="D+" score="0.67" />
+          <bracket grade="D" score="0.63" />
+          <bracket grade="D-" score="0.6" />
+          <bracket grade="F" score="0" />
+        </table>
+        <table id="2" name="P/F" scale="Percent">
+          <bracket grade="P" score="0.7" />
+          <bracket grade="F" score="0" />
+        </table>
+      </gradetables>
+      <groupsets>
+        <groupset id="9999" title="Individual Group" prefix="Individual Group" algorithm="Random" />
+      </groupsets><bfw_search>
+  <searchcategory searchable="true" title="Ebook : Chapters, Headings, Topics" metadata="ebook" />
+  <searchcategory searchable="true" title="Miscellaneous Content" metadata="other" />
+  <searchcategory searchable="false" title="Exclude" metadata="exclude" />
+</bfw_search>
+<bfw_properties>
+  <bfw_property name="bfw_infinite_scroll" type="string">false</bfw_property>
+</bfw_properties>
+<bfw_tocs>
+  <my_materials type="bfw_toc">My Materials</my_materials>
+</bfw_tocs>
+	<bfw_tab_settings>
+		<view_tab>
+			<show_policies>false</show_policies>
+			<show_assignment_details>true</show_assignment_details>
+			<show_rubrics>true</show_rubrics>
+			<show_learning_objectives>true</show_learning_objectives>
+		</view_tab>
+		<assign_tab>
+			<show_make_gradeable>true</show_make_gradeable>
+			<show_allow_late_submissions>true</show_allow_late_submissions>
+			<show_schedule_reminder>false</show_schedule_reminder>
+			<show_subcontent_creation>false</show_subcontent_creation>
+			<show_assigned_on_same_day>false</show_assigned_on_same_day>
+			<show_completion_category>true</show_completion_category>
+			<show_gradebook_category>true</show_gradebook_category>
+			<show_syllabus_category>true</show_syllabus_category>
+			<show_points_possible>false</show_points_possible>	
+			<show_send_reminder>true</show_send_reminder>
+			 <show_include_score>true</show_include_score>
+			 <show_calculation_type>true</show_calculation_type>
+		</assign_tab>
+	</bfw_tab_settings>
+
+<bfw_course_theme>_theme_default.css</bfw_course_theme><bfw_welcome_message>Welcome, students!&lt;br /&gt;&amp;gt; Finding and developing your materials&lt;br /&gt;&amp;gt; Creating a structure&lt;br /&gt;&amp;gt; Choosing a style and design&lt;br /&gt;This Bedford e-Portfolio gives you a single place to collect and reflect on your&lt;br /&gt;work. You can compose directly in your e-portfolio or upload documents, video,&lt;br /&gt;audio, or images that best represent who you are and what you have created.&lt;br /&gt;Just click on the e-portfolio tab at the top of the page and get started!</bfw_welcome_message></data>
+  </course>
+</requests>

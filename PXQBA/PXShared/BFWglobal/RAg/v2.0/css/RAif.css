@@ -1,0 +1,244 @@
+#RA_Page {
+	MARGIN: 0px;
+	PADDING: 20px;
+	FONT-FAMILY: Arial, Verdana, sans-serif;
+}
+TABLE.RA_buttons {
+	PADDING-TOP: 13px;
+}
+TD.RA_button {
+	PADDING-RIGHT: 5px! important;
+}
+.RA_formTitle {
+	FONT-SIZE: 11pt;
+	FONT-WEIGHT: bold;
+}
+.RA_formText {
+	FONT-SIZE: 10pt;
+	color:#000;
+}
+.RA_formError {
+	FONT-SIZE: 10pt;
+	display: none;
+	color:#ff0000;
+}
+.RA_formFieldError {
+	FONT-SIZE: 12pt;
+	display: none;
+	color:#ff0000;
+	font-weight: bold;
+	line-height: 10px;
+}
+TD.RA_formLabel {
+	PADDING-TOP: 2px! important;
+	PADDING-LEFT: 5px! important;
+	FONT-SIZE: 9pt;
+}
+TD.RA_formLabelSmall {
+	margin: 0px;
+	PADDING-LEFT: 7px! important;
+	color: #999;
+	FONT-SIZE: 8pt;
+}
+TD.RA_formField {
+	PADDING-LEFT: 5px! important;
+	FONT-SIZE: 9pt;
+}
+.RA_formValueDisplay {
+	PADDING-LEFT: 5px! important;
+	FONT-SIZE:10pt;
+	FONT-WEIGHT: bold;
+	COLOR: #f00;
+}
+.RA_formShow {
+	FONT-SIZE: 10pt;
+	color:#000000;
+}
+a.RA_editlink {
+	color: #008800;
+	font-size: 8pt;
+	text-decoration: none;
+}
+a.RA_editlink:link {
+	color: #008800;
+	font-size: 8pt;
+	text-decoration: none;
+}
+a.RA_editlink:visited {
+	color: #008800;
+	font-size: 8pt;
+	text-decoration: none;
+}
+a.RA_editlink:hover {
+	color: #008800;
+	font-size: 8pt;
+	text-decoration: underline;
+}
+
+.RA_box_tbl {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.RA_box_tbl TD {
+	padding: 0px;
+}
+
+.RA_box_tbl_tl {
+	width: 13px;
+	height: 12px;
+	font-size:1px;
+	text-align: left;
+	background: url('../images/RA_box_tl.gif') no-repeat;
+}
+
+.RA_box_tbl_tc {
+	height: 12px;
+	font-size:1px;
+	text-align: left;
+	background: url('../images/RA_box_tc.gif') repeat-x;
+}
+
+.RA_box_tbl_tr {
+	width: 18px;
+	height: 12px;
+	font-size:1px;
+	text-align: right;
+	background: url('../images/RA_box_tr.gif') no-repeat;
+}
+
+.RA_box_tbl_ml {
+	width: 13px;
+	text-align: left;
+	background: url('../images/RA_box_ml.gif') repeat-y;
+}
+
+.RA_box_tbl_mc {
+	text-align: left;
+	background-color:#ffffff;
+}
+
+.RA_box_tbl_mr {
+	width: 13px;
+	text-align: right;
+	background: url('../images/RA_box_mr.gif') repeat-y;
+}
+
+.RA_box_tbl_bl {
+	width: 13px;
+	height: 12px;
+	font-size:1px;
+	text-align: left;
+	background: url('../images/RA_box_bl.gif') no-repeat;
+}
+
+.RA_box_tbl_bc {
+	height: 12px;
+	font-size:1px;
+	text-align: left;
+	background: url('../images/RA_box_bc.gif') repeat-x;
+}
+
+.RA_box_tbl_br {
+	width: 18px;
+	height: 17px;
+	font-size:1px;
+	text-align: right;
+	background: url('../images/RA_box_br.gif') no-repeat;
+}
+
+
+/* Button styles -- should move into angel 
+20100718, Chad: originally just .button_*, changed to .BFWj_PepperButton_*
+*/
+
+/* medium-height button */
+a.BFWj_PepperButton_medium {
+	display: block;
+	float: left;
+	font: normal 10px Arial; /* Change 12px as desired */
+	line-height: 11px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 23px) */
+	height: 19px; /* Height of button background height */
+	padding-left: 4px; /* Width of left menu image */
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+a.BFWj_PepperButton_medium span{
+	display: block;
+	padding: 4px 6px 4px 2px; /*Set 9px below to match value of 'padding-left' value above*/
+	white-space:nowrap;
+}
+
+/* link - dark gray */
+a.BFWj_PepperButton_medium_link {
+background: url('../images/button-dark-left.gif') no-repeat top left;
+}
+
+a.BFWj_PepperButton_medium_link span {
+	background: url('../images/button-dark-right.gif') no-repeat top right;
+}
+
+a:link.BFWj_PepperButton_medium_link, a:visited.BFWj_PepperButton_medium_link, a:active.BFWj_PepperButton_medium_link {
+	color: #fff !important;
+}
+
+a.BFWj_PepperButton_medium_link:hover {
+	color: #ccc !important;
+}
+
+/* "on" state */
+
+a.BFWj_PepperButton_medium_link_on {
+background: url('../images/button-dark-left.gif') no-repeat top left;
+}
+
+a.BFWj_PepperButton_medium_link_on span {
+	background: url('../images/button-dark-right.gif') no-repeat top right;
+}
+
+a:link.BFWj_PepperButton_medium_link_on, a:visited.BFWj_PepperButton_medium_link_on, a:active.BFWj_PepperButton_medium_link_on {
+	color: #ccc !important;
+}
+
+a.BFWj_PepperButton_medium_link_on:hover {
+	color: #fff !important;
+}
+
+/* setting - white */
+a.BFWj_PepperButton_medium_setting {
+	background: url('../images/button-light-left2.gif') no-repeat top left;
+}
+
+a.BFWj_PepperButton_medium_setting span {
+	background: url('../images/button-light-right2.gif') no-repeat top right;
+}
+
+a:link.BFWj_PepperButton_medium_setting, a:visited.BFWj_PepperButton_medium_setting, a:active.BFWj_PepperButton_medium_setting {
+	color: #333 !important;
+}
+
+a.BFWj_PepperButton_medium_setting:hover {
+	color: #666 !important;
+}
+
+/* "on" state */
+
+a.BFWj_PepperButton_medium_setting_on {
+background: url('../images/button-dark-left.gif') no-repeat top left;
+}
+
+a.BFWj_PepperButton_medium_setting_on span {
+	background: url('../images/button-dark-right.gif') no-repeat top right;
+}
+
+a:link.BFWj_PepperButton_medium_setting_on, a:visited.BFWj_PepperButton_medium_setting_on, a:active.BFWj_PepperButton_medium_setting_on {
+	color: #fff !important;
+}
+
+a.BFWj_PepperButton_medium_setting_on:hover {
+	color: #ccc !important;
+}
+
+
+

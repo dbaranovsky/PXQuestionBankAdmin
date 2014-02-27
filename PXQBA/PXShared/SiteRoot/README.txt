@@ -1,0 +1,1 @@
+This folder is required while setting up the px.bfwpub.com site in IIS.

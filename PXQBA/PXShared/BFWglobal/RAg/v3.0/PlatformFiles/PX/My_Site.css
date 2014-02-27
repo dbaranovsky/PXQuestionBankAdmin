@@ -1,0 +1,136 @@
+﻿BODY {
+	PADDING: 0px;
+	MARGIN: 0px;
+	FONT-FAMILY: Arial, sans-serif;
+	TEXT-ALIGN: left;
+	background-color:#ffffff;
+}
+a {
+	color:#c60;
+	text-decoration: none;
+}
+a:link {
+	color:#c60;
+	text-decoration: none;
+}
+a:visited {
+	color:#c60;
+	text-decoration: none;
+}
+a:hover {
+	color:#c60;
+	text-decoration: underline;
+}
+.trans_layer_page {
+	background-color:#000;
+	position:absolute;
+	vertical-align:middle;
+	top:0px;
+	left:0px;
+	height:800px;
+	z-index:90000;
+	width:100%;
+	opacity: 0.30;
+	filter:alpha(opacity=30);
+}
+#MySite_overlay_msg {
+	display:block;
+	position:absolute;
+	top:150px;
+	left:150px;
+	width:80%;
+	text-align:left;
+	z-index:95000;
+	opacity:1.0;
+	filter:alpha(opacity=100);
+}
+#MySite_overlay_msgInner {
+	position:relative;
+	text-align:center;
+	vertical-align:middle;
+	background: none;
+	width:300px;
+	height:100px;
+	color: #fff;
+	font-weight: bold;
+	font-family:Arial, sans-serif;
+	font-size:11pt;
+	padding: 30px;
+}
+
+H2 {
+	margin: 20px 20px 50px 120px;
+	text-align: left;
+}
+LI 
+{
+	margin: 10px 0px 5px 0px;
+}
+
+#MySite_Page {
+	position: relative;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+#MySite_PageInner {
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+}
+
+.MySite_module {
+	width: 600px;
+	margin: 20px 20px 20px 120px;
+	padding: 0px;
+	text-align: left;
+}
+
+#MySite_UserInfo_Anon {
+	display: none;
+}
+
+#MySite_UserInfo_LoggedIn {
+	display: none;
+}
+
+.MySite_RA_UserAccess {
+	display: inline;
+}
+.MySite_RA_UserName {
+	display: inline;
+}
+
+.MySite_RA_Login_Tbl {
+	width: 200px;
+	margin: 0px;
+	padding: 0px;
+}
+.MySite_RA_form {
+	margin: 0px;
+	padding: 0px;
+}
+.MySite_RA_Login_Tbl TD.MySite_RA_Login_TblTD {
+	font-size: 10px;
+	padding: 0px 0px 0px 10px;
+}
+.MySite_RA_Login_Tbl TD.MySite_RA_Login_TblTD INPUT {
+	font-size: 10px;
+	margin: 0px 0px 10px 0px;
+}
+.MySite_RA_Login_Tbl TD.MySite_RA_Login_TblTDLabel {
+	font-size: 10px;
+	padding: 10px 10px 0px 10px;
+}
+.MySite_RA_Login_Tbl TD.MySite_RA_Login_TblTDButton {
+	font-size: 10px;
+}
+.MySite_RA_Login_Tbl TD.MySite_RA_Login_TblTDButton INPUT {
+	font-size: 10px;
+	margin: 0px 0px 10px 10px;
+}
+
+
+

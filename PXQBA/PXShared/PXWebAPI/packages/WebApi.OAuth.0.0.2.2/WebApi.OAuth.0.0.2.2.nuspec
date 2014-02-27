@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>WebApi.OAuth</id>
+    <version>0.0.2.2</version>
+    <title>OAuth Support for WCF Web Api</title>
+    <authors>Johnny Halife, Juan Pablo Garcia, Mauro Krikorian, Mariano Converti, Damian Martinez, Nico Bello, Ezequiel Morito, and Wade Wegner</authors>
+    <owners>Johnny Halife, Juan Pablo Garcia, Mauro Krikorian, Mariano Converti, Damian Martinez, Nico Bello, Ezequiel Morito, and Wade Wegner</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Authenticates service requests using Windows Identity Foundation and
+      SimpleWebToken (wif.swf). Due to WebApi requirement for ASP.NET it also 
+      suppresses Forms Redirect by leveraging aspnet.suppressformsredirect Package.</description>
+    <releaseNotes />
+    <copyright />
+    <language />
+    <tags>swt wif oauth wrap acs azure webapi</tags>
+    <dependencies>
+      <dependency id="aspnet.suppressformsredirect" version="0.0.1.4" />
+      <dependency id="HttpClient" version="0.6.0" />
+      <dependency id="Wif.Swt" version="0.0.1.4" />
+    </dependencies>
+    <references>
+      <reference file="WebApi.OAuth.dll" />
+    </references>
+  </metadata>
+</package>

@@ -1,0 +1,108 @@
+<html>
+<head>
+<script type="text/javascript" src="jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="/BFWGlobal/js/cookies.js"></script>
+<script type="text/javascript" src="/BFWGlobal/js/global.js"></script>
+<script type="text/javascript">
+
+var c1 = BFW_QStr['c'];
+var c2 = getCookie('c');
+var redirecting = false;
+if ( c1 != c2 ) {
+	redirecting = true;
+	setCookie('c',c1);
+}
+
+var gourl = '';
+$(document).ready(function(){
+	var str = 'c1 = '+ c1 +'<br/>c2 = '+ c2 +'<br/>';
+	if (redirecting) {
+		gourl = 'http://192.168.77.242/BFWGlobal/js/jquery/test_cookie_ajax2.asp?c='+ c1 +'&returl='+ encodeURIComponent( window.location.href );
+		gourl = 'http://192.168.77.114/BFWGlobal/js/jquery/test_cookie_ajax2.asp?c='+ c1 +'&returl='+ encodeURIComponent( gourl );
+		str += '<br/>gourl = '+ gourl;
+//		str = 'redirecting<br/>'+ str;
+		str = '<a href="'+ gourl +'">redirect</a><br/>'+ str;
+		$('#msg').html( str );
+//		setTimeout( 'window.location = gourl', 1000 );
+	} else {
+		$('#msg').html(str);
+		doAjax();
+	}
+});
+
+var AJAX_XML;
+var AJAX_XML_DATA = 'default';
+
+function doAjax() {
+	var strEnvelope = '' +
+'<soap:Envelope xmlns:xsi=\"http://tempuri.org/\"' +
+' xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"' +
+' xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">' +
+'  <soap:Body>' +
+'    <data xmlns=\"http://tempuri.org/\"></data>' +
+'  </soap:Body>' +
+'</soap:Envelope>' +
+''
+	$.ajax({
+		type: 'POST',
+		url: 'http://192.168.77.114/BFWGlobal/js/jquery/test_cookie_ajax3proxy.asp',
+		dataType: 'xml',
+		data: strEnvelope,
+		processData: false,
+		beforeSend: function(req) {
+			req.setRequestHeader('Content-Type', 'text/xml');
+			req.setRequestHeader('SOAPAction', 'blank') ;
+		},
+		success: function(data,textStatus) {
+//alert(data);
+//alert(textStatus);
+			AJAX_XML = data;
+			AJAX_XML_DATA = $('resultdata', AJAX_XML).text();
+			var str = 'c1 = '+ c1 +'<br/>c2 = '+ c2 +'<br/>';
+			str = 'AJAX DONE<br/>AJAX c = '+ AJAX_XML_DATA +'<br/>'+ str;
+			str += '<textarea cols="100" rows="10">'+ data +'</textarea><br/>';
+			str += '<textarea cols="100" rows="10">'+ data.responseText +'</textarea><br/>';
+			str += '<textarea cols="100" rows="10">'+ data.responseXML +'</textarea><br/>';
+			str += '<textarea cols="100" rows="10">'+ data.xml +'</textarea><br/>';
+			str += '<textarea cols="100" rows="10">'+ data.innerHTML +'</textarea><br/>';
+			str += '<textarea cols="100" rows="10">'+ $('resultdata', data) +'</textarea><br/>';
+			str += '<textarea cols="100" rows="10">'+ $('resultdata', data).text() +'</textarea><br/>';
+			$('#msg').html(str);
+		},
+		error: function(XHR, textStatus, errorThrown) {
+alert('error: '+ XHR +' - '+ textStatus +' - '+ errorThrown);
+		}
+	});
+}
+
+</script>
+</head>
+<body>
+<br/>
+<br/>
+
+<div id="msg">
+</div
+
+<br/>
+<br/>
+
+<h2>242</h2>
+<div>
+<iframe id="if_dvars"
+ src="http://192.168.77.242//BFWGlobal/js/jquery/debugvars.asp"
+ style="width:800px; height: 500px"></iframe>
+</div>
+
+<br/>
+<br/>
+
+<h2>114</h2>
+<div>
+<iframe id="if_dvars_local"
+ src="http://192.168.77.114//BFWGlobal/js/jquery/debugvars.asp"
+ style="width:800px; height: 500px"></iframe>
+</div>
+
+</body>
+</html>

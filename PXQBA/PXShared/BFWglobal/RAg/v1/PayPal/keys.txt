@@ -1,0 +1,13 @@
+<!--<add key="PayPal_action" value="https://www.paypal.com/cgi-bin/webscr"/> -->
+<!--<add key="PayPal_business" value="rsherline@bfwpub.com"/> -->
+<add key="PayPal_action" value="https://www.sandbox.paypal.com/cgi-bin/webscr"/>
+<add key="PayPal_business" value="shubhr_1197269184_biz@hcl.in"/>
+<add key="PayPal_cancel_return" value="http://bcs.bedfordstmartins.com/audioreviews_2/aspx/Interior.aspx"/>
+<add key="PayPal_cmd" value="_cart"/>
+<add key="PayPal_no_shipping" value="1"/>
+<add key="PayPal_notify_url" value="#"/>
+<add key="PayPal_rm" value="2"/>
+<add key="PayPal_success_return" value="http://bcs.bedfordstmartins.com/audioreviews_2/aspx/PayPalUpdateTrans.aspx"/>
+<add key="PayPal_upload" value="1"/>
+<add key="PayPal_cbt" value="Click here to complete the Transaction"/>
+<add key="PayPal_page_style" value="PayPalAudioReviews"/>

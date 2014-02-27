@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<requests>
+  <item itemid="PX_MENU_ITEM_CONTENT" version="1" entityid="-entityid-" creationdate="2011-01-12T16:44:09.66Z" creationby="7" modifieddate="2011-01-12T16:44:09.66Z" modifiedby="7">
+    <data>
+      <type>CustomActivity</type>
+      <parent>PX_PRIMARY</parent>
+      <sequence>a</sequence>
+      <title>Contents</title>
+      <abbreviation>CONTENTS</abbreviation>
+      <bfw_type>MenutItem</bfw_type>
+      <bfw_menu_created_by>PX_MENU_ITEM_CONTENT_TEMPLATE</bfw_menu_created_by>
+      <bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+      <bfw_display_flags>
+        <allow>
+          <role>instructor</role>
+          <coursetype>any</coursetype>
+        </allow>
+        <allow>
+          <role>student</role>
+          <coursetype>any</coursetype>
+        </allow>
+      </bfw_display_flags>
+      <bfw_menu_callbacks>
+        <method name="Navigate" controller="Content" action="Index" url="" type="" route="FeaturedContentItem">
+          <parameter name="id" value="-tocid-" />
+        </method>
+      </bfw_menu_callbacks>
+    </data>
+  </item>
+  <item itemid="PX_MENU_ITEM_ASSIGNMENT" version="1" entityid="-entityid-" creationdate="2011-01-12T16:44:09.66Z" creationby="7" modifieddate="2011-01-12T16:44:09.66Z" modifiedby="7">
+    <data>
+      <type>CustomActivity</type>
+      <parent>PX_PRIMARY</parent>
+      <sequence>b</sequence>
+      <title>My Assignments</title>
+      <abbreviation>MyAssignments</abbreviation>
+      <bfw_type>MenutItem</bfw_type>
+      <bfw_menu_created_by>PX_MENU_ITEM_ASSIGNMENT_TEMPLATE</bfw_menu_created_by>
+      <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+      <bfw_display_flags>
+        <allow>
+          <role>instructor</role>
+          <coursetype>any</coursetype>
+        </allow>
+        <allow>
+          <role>student</role>
+          <coursetype>any</coursetype>
+        </allow>
+      </bfw_display_flags>
+      <bfw_menu_callbacks>
+        <method name="AssignmentCenter" controller="AssignmentCenter" action="Index" url="" type="true" route="AssignmentCenter">
+          <parameter name="itemid" value="{item-id}" />
+        </method>
+      </bfw_menu_callbacks>
+    </data>
+  </item>
+  <item itemid="PX_MENU_ITEM_GRADEBOOK" version="1" entityid="-entityid-" creationdate="2011-01-12T16:44:09.66Z" creationby="7" modifieddate="2011-01-12T16:44:09.66Z" modifiedby="7">
+    <data>
+      <type>CustomActivity</type>
+      <parent>PX_PRIMARY</parent>
+      <sequence>c</sequence>
+      <title>Gradebook</title>
+      <abbreviation>MYGRADEBOOKANDANDSCORECARD</abbreviation>
+      <bfw_type>MenutItem</bfw_type>
+      <bfw_menu_created_by>PX_MENU_ITEM_GRADEBOOK_TEMPLATE</bfw_menu_created_by>
+      <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+      <bfw_display_flags>
+        <allow>
+          <role>instructor</role>
+          <coursetype>any</coursetype>
+        </allow>
+        <allow>
+          <role>student</role>
+          <coursetype>any</coursetype>
+        </allow>
+      </bfw_display_flags>
+      <bfw_menu_callbacks>
+        <method name="Groups" controller="Groups" action="GradebookScorecard" url="" type="tab" route="" studentoverride="ProgressWidget|Summary|fne">
+          <parameter name="itemid" value="{item-id}" />
+        </method>
+      </bfw_menu_callbacks>
+    </data>
+  </item>
+  <item itemid="PX_MENU_ITEM_EPORTFOLIO" version="1" entityid="-entityid-" creationdate="2011-01-12T16:44:09.66Z" creationby="7" modifieddate="2011-01-12T16:44:09.66Z" modifiedby="7">
+    <data>
+      <type>CustomActivity</type>
+      <parent>PX_PRIMARY</parent>
+      <sequence>d</sequence>
+      <title>Eportfolio</title>
+      <abbreviation>EPORTFOLIO</abbreviation>
+      <bfw_type>MenutItem</bfw_type>
+      <bfw_menu_created_by>PX_MENU_ITEM_EPORTFOLIO_TEMPLATE</bfw_menu_created_by>
+      <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+      <bfw_display_flags>
+        <allow>
+          <role>instructor</role>
+          <coursetype>any</coursetype>
+        </allow>
+        <allow>
+          <role>student</role>
+          <coursetype>any</coursetype>
+        </allow>
+      </bfw_display_flags>
+      <bfw_menu_callbacks>
+        <method name="" controller="" action="" url="" type="" route="MyEPortfolios">
+          <parameter name="itemid" value="{item-id}" />
+        </method>
+      </bfw_menu_callbacks>
+    </data>
+  </item>
+  <item itemid="PX_MENU_ITEM_MYBOOKMARKS" version="1" entityid="-entityid-" creationdate="2011-01-12T16:44:09.66Z" creationby="7" modifieddate="2011-01-12T16:44:09.66Z" modifiedby="7">
+    <data>
+      <type>CustomActivity</type>
+      <parent>PX_PRIMARY</parent>
+      <sequence>e</sequence>
+      <title>My Bookmarks</title>
+      <abbreviation>MYBOOKMARKS</abbreviation>
+      <bfw_type>MenutItem</bfw_type>
+      <bfw_menu_created_by>PX_MENU_ITEM_MYBOOKMARKS_TEMPLATE</bfw_menu_created_by>
+      <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+      <bfw_display_flags>
+        <allow>
+          <role>instructor</role>
+          <coursetype>any</coursetype>
+        </allow>
+        <allow>
+          <role>student</role>
+          <coursetype>any</coursetype>
+        </allow>
+      </bfw_display_flags>
+      <bfw_menu_callbacks>
+        <method name="MyBookmarks" controller="MyBookmarks" action="Index" url="" type="" route="MyBookmarks">
+          <parameter name="itemid" value="{item-id}" />
+        </method>
+      </bfw_menu_callbacks>
+    </data>
+  </item>
+  <item itemid="PX_MENU_ITEM_HOME" version="1" entityid="-entityid-" creationdate="2011-01-12T16:44:09.66Z" creationby="7" modifieddate="2011-01-12T16:44:09.66Z" modifiedby="7">
+    <data>
+      <type>CustomActivity</type>
+      <parent>PX_PRIMARY</parent>
+      <sequence>_a</sequence>
+      <title>Home</title>
+      <abbreviation>HOME</abbreviation>
+      <bfw_type>MenutItem</bfw_type>
+      <bfw_menu_created_by>PX_MENU_ITEM_HOME_TEMPLATE</bfw_menu_created_by>
+      <bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+      <bfw_display_flags>
+        <allow>
+          <role>instructor</role>
+          <coursetype>any</coursetype>
+        </allow>
+        <allow>
+          <role>student</role>
+          <coursetype>any</coursetype>
+        </allow>
+      </bfw_display_flags>
+      <bfw_menu_callbacks>
+        <method name="Home" controller="" action="" url="" type="" route="CourseSectionHome">
+          <parameter name="itemid" value="{item-id}" />
+        </method>
+      </bfw_menu_callbacks>
+    </data>
+  </item>
+  <item itemid="PX_MENU_ITEM_WRITING" version="1" entityid="-entityid-" creationdate="2011-01-12T16:44:09.66Z" creationby="7" modifieddate="2011-01-12T16:44:09.66Z" modifiedby="7">
+    <data>
+      <type>CustomActivity</type>
+      <parent>PX_PRIMARY</parent>
+      <sequence>g</sequence>
+      <title>My Writing</title>
+      <abbreviation>MYWRITING</abbreviation>
+      <bfw_type>MenutItem</bfw_type>
+      <bfw_menu_created_by>PX_MENU_ITEM_WRITING_TEMPLATE</bfw_menu_created_by>
+      <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+      <bfw_display_flags>
+        <allow>
+          <role>instructor</role>
+          <coursetype>any</coursetype>
+        </allow>
+        <allow>
+          <role>student</role>
+          <coursetype>any</coursetype>
+        </allow>
+      </bfw_display_flags>
+      <bfw_menu_callbacks>
+        <method name="Writing" controller="WritingTab" action="Index" url="" type="" route="">
+          <parameter name="itemid" value="{item-id}" />
+        </method>
+      </bfw_menu_callbacks>
+    </data>
+  </item>
+</requests>

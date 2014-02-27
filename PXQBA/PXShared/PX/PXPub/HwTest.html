@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>HighlightWidget Test</title>
+    <script type="text/javascript" language="javascript" src="/Scripts/jquery/1.4.4-jquery.min.js"></script>
+    <script type="text/javascript" language="javascript" src="/Scripts/jquery/jquery-ui-1.8.10.custom.min.js"></script>
+    <script type="text/javascript" language="javascript" src="/Scripts/HighlightWidget/highlighter.js"></script>
+    <script type="text/javascript" language="javascript" src="/Scripts/HighlightWidget/HighlightWidget.js"></script>
+    <script type="text/javascript" language="javascript">
+        $(function() {
+            $(".highlightable").HighlightWidget("init", {});            
+        });
+    </script>
+    <style type="text/css">
+        #highlight-widget-menu { width: 195px; border: solid 1px black; padding: 5px; background: beige; }
+        #highlight-widget-menu .sep { margin: 0px 5px 0px 5px; }
+        #highlight-widget-menu .menu-item.color { width: 8px; height: 8px; display: inline-block; margin-right: 2px; border: solid 1px beige; }
+        #highlight-widget-menu .menu-item.color.active { border: solid 1px black; }
+        #highlight-widget-menu #highlight-widget-color-1 { background: yellow; }
+        #highlight-widget-menu #highlight-widget-color-2 { background: green; }
+        #highlight-widget-menu #highlight-widget-color-3 { background: red; }
+        #highlight-widget-menu #highlight-widget-color-4 { background: orange; margin-right: 0px; }  
+        .color-1 { background: yellow; }
+        .color-2 { background: green; }
+        .color-3 { background: red; }
+        .color-4 { background: orange; }      
+    </style>
+</head>
+<body>
+    <div class="highlightable">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse justo orci, bibendum sit amet ornare at, tempus in lorem. Maecenas placerat massa neque, id rhoncus justo. Duis pulvinar euismod cursus. Quisque pretium nunc eget felis semper adipiscing auctor nisl aliquam. Nullam sagittis tristique vulputate. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus scelerisque commodo eleifend. Vivamus ornare dictum iaculis. Vivamus non justo risus, at volutpat eros. Praesent non arcu eros, at rutrum risus. Nullam a orci at orci commodo pulvinar eu ac nulla. Quisque mauris tortor, hendrerit sollicitudin sodales id, bibendum vitae augue. Maecenas ut interdum libero. Donec sit amet sem vel mauris pharetra adipiscing. Suspendisse posuere porta libero, id sagittis ante ullamcorper vitae. Duis risus tortor, mattis a pellentesque eu, cursus eu tortor.</p>
+
+        <p>Aenean vitae massa urna. Etiam enim purus, elementum non porta nec, hendrerit eget lorem. Praesent diam tellus, posuere sit amet condimentum vitae, ultricies quis est. Donec vehicula, massa lobortis accumsan gravida, sapien massa lacinia velit, in lobortis lorem enim sed turpis. Sed eros nibh, sagittis vitae fermentum quis, bibendum sed purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer at tellus ac mauris luctus commodo non et neque. Donec consequat purus non mauris tincidunt viverra. Sed tempor hendrerit odio, eu pulvinar augue elementum ut. Donec vel tortor vel libero varius adipiscing ut nec magna. Integer lacinia, massa quis interdum consequat, ligula ante vulputate ligula, at sollicitudin ante orci eget orci. Etiam lectus ligula, placerat vel luctus consequat, blandit sit amet ligula. Morbi dictum felis nec sapien egestas consectetur. Aliquam a egestas sapien. Cras vitae ipsum sed nisl vestibulum sodales.</p>
+
+        <p>Curabitur consequat congue sapien vitae luctus. Suspendisse quis dignissim felis. In rhoncus dolor eget metus gravida eu blandit quam cursus. Sed velit sapien, eleifend sit amet tristique ultrices, aliquet a est. Nullam sagittis velit in elit interdum adipiscing. Aliquam erat volutpat. Vivamus semper porttitor eleifend. Aenean fermentum aliquet sem at aliquam. In vel arcu et mauris dapibus tempus eu hendrerit massa. Aenean rutrum sapien nec nisl aliquam adipiscing. Donec eget arcu turpis, nec fringilla massa. Nulla lacus quam, sollicitudin vitae pellentesque ut, eleifend sit amet odio. Donec accumsan felis ac urna volutpat tempor. Pellentesque nec velit purus.</p>
+
+        <p>Aenean tempus ultrices lorem, ac porttitor felis fermentum non. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque elit odio, placerat eget pretium et, rutrum malesuada nunc. Curabitur vel nibh sed ipsum pulvinar congue. Nulla tempor porttitor purus, eu commodo tellus pulvinar non. Sed varius iaculis erat, a iaculis arcu hendrerit ut. Integer interdum egestas ipsum, eget aliquam turpis fermentum eu. Cras sapien elit, accumsan vitae commodo nec, faucibus nec tellus. Nam consectetur vulputate vestibulum. Aliquam volutpat suscipit velit at ultricies. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus eu velit mauris, dapibus rutrum nibh. Ut ut leo ut ipsum vestibulum aliquam. Donec ac erat tortor, vel venenatis lectus. Pellentesque fringilla urna sit amet ipsum ornare a consectetur dui molestie. In rutrum dolor eget nibh blandit sit amet euismod libero dapibus. Aliquam ac velit nisi. Fusce ultrices lorem nec leo porttitor in pulvinar mauris congue. Aenean a aliquet odio. Quisque at purus at ante consectetur sollicitudin sit amet fringilla dolor.</p>
+
+        <p>Vivamus lacinia nunc sit amet felis semper vitae tincidunt tellus bibendum. Aenean gravida auctor mauris vitae scelerisque. Cras ornare vehicula tellus eu aliquet. Integer auctor tristique elit eu interdum. Vestibulum non molestie lacus. Etiam quis elit turpis. Integer purus libero, lacinia ac scelerisque consequat, vestibulum vitae est. Sed aliquet, urna vitae sagittis dictum, nisl nisl iaculis leo, et varius nisl tellus in purus. Proin vel odio vitae sem suscipit porttitor nec quis odio. Aliquam erat volutpat. Pellentesque sit amet massa in leo semper consectetur. Nullam nec lacus augue, vel suscipit orci. Aliquam erat volutpat. Nam tincidunt tortor non ante mattis nec ultrices odio elementum. Vestibulum mi mi, interdum sed commodo ac, cursus eu massa.</p>
+    </div>
+</body>
+</html>

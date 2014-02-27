@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://int-raws.bfwpub.com/RAWS3/CheckUserName/RACheckUserName.asmx?wsdl" filename="RACheckUserName.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://int-raws.bfwpub.com/RAWS3/CheckUserName/RACheckUserName.asmx?disco" filename="RACheckUserName.disco" />
+  </Results>
+</DiscoveryClientResultsFile>

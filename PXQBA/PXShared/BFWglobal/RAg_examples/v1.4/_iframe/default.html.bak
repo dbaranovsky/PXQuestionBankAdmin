@@ -1,0 +1,272 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<title>RAg v1.4 example</title>
+
+	<script type="text/javascript">
+var MySite_CtrlWin = window.self;
+var MySite_PageWin = null; 
+
+/* **********************************************************************
+	REQUIRED
+	The following JS includes load global functions, required for RA, but also useful for any site-specific JS.
+*/
+	</script>
+	<script src="/BFWglobal/js/RSH0.6FINAL/json2007.js" type="text/javascript"></script>
+	<script src="/BFWglobal/js/jquery/jquery-1.3.2.min.js" type="text/javascript"></script>
+	<script src="/BFWglobal/js/global.js" type="text/javascript"></script>
+	<script src="/BFWglobal/js/cookies.js" type="text/javascript"></script>
+	<script src="/BFWglobal/js/BFW_LogError.js" type="text/javascript"></script>
+	<script src="/BFWglobal/js/BFW_Error.js" type="text/javascript"></script>
+	<script type="text/javascript">
+/* **********************************************************************
+	REQUIRED
+	The following JS loads the basic framework for RA JS.
+*/
+	</script>
+	<script src="/BFWglobal/RAg/v1.4/RA.js"></script>
+	<script src="/BFWglobal/RAg/v1.4/RAWS.js"></script>
+	<script type="text/javascript">
+/* **********************************************************************
+	REQUIRED
+	The following JS does RA cross-site check before anything else in the page loads.
+	Some things (like cookie block check) can be checked first. Any exceptions to a normal page load can skip the RAXS.Check, but should then be handled in the $(document).ready function.
+*/
+var sysreqshtml = '';
+var popupsblocked = false;
+var cookiesblocked = !navigator.cookieEnabled;
+if ( ! cookiesblocked ) {
+		RA_CtrlWin.RA.RAXS.Check();
+}
+/* **********************************************************************
+	REQUIRED
+	The following CSS is mandatory to set site-specific styles for RA.
+	The class names must remain constant, but styles can be modified to customize the display of the RA iframe overlay.
+*/
+	</script>
+	<link id="RAif_css" href="MySite_RAif.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript">
+/* **********************************************************************
+	REQUIRED
+	The following JS include loads the site-specific RA JS functions and settings.
+	See notes in the file on requirements and options.
+*/
+	</script>
+	<script src="MySite_RA.js"></script>
+	<script type="text/javascript">
+$(document).ready(function(){
+	MySite_init();
+});
+/* **********************************************************************
+	The following JS include contains custom functions for this site.
+*/
+	</script>
+	<script src="MySite.js"></script>
+
+	<style type="text/css">
+BODY {
+	PADDING: 0px;
+	MARGIN: 0px;
+	FONT-FAMILY: Arial, sans-serif;
+	TEXT-ALIGN: left;
+}
+.trans_layer_page {
+	background-color:#000000;
+	position:absolute;
+	vertical-align:middle;
+	top:0px;
+	left:0px;
+	height:800px;
+	z-index:90000;
+	width:100%;
+	opacity: 0.70;
+	filter:alpha(opacity=70);
+}
+#MySite_overlay_msg {
+	display:block;
+	position:absolute;
+	top:150px;
+	left:150px;
+	width:80%;
+	text-align:left;
+	z-index:95000;
+	opacity:1.0;
+	filter:alpha(opacity=100);
+}
+#MySite_overlay_msgInner {
+	position:relative;
+	text-align:center;
+	vertical-align:middle;
+	background-color:#ffffff;
+	width:300px;
+	height:100px;
+	font-family:Arial, sans-serif;
+	font-size:11pt;
+	padding: 30px;
+}
+
+#BFW_LogError {
+	display: none;
+	width: 100%; height: 100px;
+	background-color: transparent;
+}
+
+#MySite_pageTitle {
+	margin: 20px;
+	padding: 10px;
+	font-size: 18pt;
+	font-weight: bold;
+}
+
+#MySite_SiteInfo {
+	border: 1px solid #ccc;
+	margin: 20px;
+	padding: 10px;
+}
+
+#MySite_UserInfo_Anon {
+	border: 1px solid #ccc;
+	margin: 20px;
+	padding: 10px;
+}
+
+#MySite_UserInfo_LoggedIn {
+	display: none;
+	border: 1px solid #ccc;
+	margin: 20px;
+	padding: 10px;
+}
+
+.MySite_RA_Login_Tbl {
+	border: 1px solid #ccc;
+	width: 200px;
+	margin: 0px;
+	padding: 0px;
+}
+.MySite_RA_form {
+	margin: 0px;
+	padding: 0px;
+}
+.MySite_RA_Login_Tbl TD.MySite_RA_Login_TblTD {
+	font-size: 10px;
+	padding: 0px 0px 0px 10px;
+}
+.MySite_RA_Login_Tbl TD.MySite_RA_Login_TblTD INPUT {
+	font-size: 10px;
+	margin: 0px 0px 10px 0px;
+}
+.MySite_RA_Login_Tbl TD.MySite_RA_Login_TblTDLabel {
+	font-size: 10px;
+	padding: 10px 10px 0px 10px;
+}
+.MySite_RA_Login_Tbl TD.MySite_RA_Login_TblTDButton {
+	font-size: 10px;
+}
+.MySite_RA_Login_Tbl TD.MySite_RA_Login_TblTDButton INPUT {
+	font-size: 10px;
+	margin: 0px 0px 10px 10px;
+}
+	</style>
+</head>
+<body onunload="MySite_uninit()">
+
+<div id="MySite_page_grayed" class="trans_layer_page" style="display:block;">
+</div>
+<!--
+-->
+<div id="MySite_overlay_msg">
+<div id="MySite_overlay_msgInner"><br/><br/><br/>loading, please wait...</div>
+</div>
+<div id="RAif_div"></div>
+
+<div id="MySite_pageTitle">RAg v1.4 example site - iframe overlay</div>
+
+<div id="MySite_SiteInfo">
+<p><b>RA Site info</b></p>
+<div id="MySite_SiteInfoInner">
+loading...
+</div>
+</div>
+
+<div id="MySite_UserInfo_Anon">
+<p><b>RA Anonymous user options</b></p>
+<div id="MySite_UserInfo_AnonInner">
+<p>
+<a href="JavaScript:MySite_RAif_init('checkemail')">log in</a>
+</p>
+inline log in form:
+<form class="MySite_RA_form" name="RA_Login" action="JavaScript:MySite_RA_doLogin();" style="padding:0px;margin:0px">
+<table class="MySite_RA_Login_Tbl" width="100%" border="0" cellpadding="0" cellspacing="0">
+<TR><td width="10" class="MySite_RA_Login_TblTDLabel"><nobr>E-mail address</nobr></td><td width="10" class="MySite_RA_Login_TblTDLabel"><nobr>Password</nobr></td><td>&nbsp;</td><td>&nbsp;</td></TR>
+<TR><td width="10" class="MySite_RA_Login_TblTD">
+<input type="text" id="RA_Email" name="email" value="" style="width:100px;"/>
+</td><td width="10" class="MySite_RA_Login_TblTD">
+<input type="password" id="RA_Password" name="pw" value="" style="width:90px;"/>
+</td><td width="50" class="MySite_RA_Login_TblTDButton">
+<input type="submit" name="submit" value="GO"/>
+</td><td>&nbsp;</td></TR></table>
+</form>
+<br/>
+inline check e-mail form:
+<form class="MySite_RA_form" name="RA_CheckEmail" action="JavaScript:MySite_RA_doCheckEmail();">
+<table class="MySite_RA_Login_Tbl" width="100%" border="0" cellpadding="0" cellspacing="0">
+<TR><td class="MySite_RA_Login_TblTDLabel" colspan="3">Enter the e-mail address you would like to register:</td></TR>
+<TR><td width="10" class="MySite_RA_Login_TblTD">
+<input type="text" id="RA_CheckEmail" name="email" value="" style="width:130px;"/>
+</td><td width="30" class="MySite_RA_Login_TblTDButton">
+<input type="submit" name="submit" value="GO"/>
+</td><td width="140">&nbsp;</td></TR></table>
+</form>
+<p>
+<a href="JavaScript:MySite_RAif_init('cart')">shopping cart</a>
+</p>
+<p>
+<a href="JavaScript:MySite_RAif_init('quizclassprompt')">quiz class prompt</a>
+</p>
+</div>
+</div>
+
+<div id="MySite_UserInfo_LoggedIn">
+<p><b>RA Logged-in user info and options</b></p>
+<div id="MySite_RA_UserName"></div>
+<div id="MySite_RA_UserAccess"></div>
+<div id="MySite_UserInfo_LoggedInInner">
+<p>
+<a href="JavaScript:MySite_RAif_init('dologout')">log out</a>
+</p>
+<p>
+<a href="JavaScript:MySite_RAif_init('updateprofile')">update profile</a>
+</p>
+<p>
+<a href="JavaScript:MySite_RAif_init('cart')">shopping cart</a>
+</p>
+<p>
+<a href="JavaScript:MySite_RAif_init('quizclassprompt')">quiz class prompt</a>
+</p>
+</div>
+</div>
+
+<div><a id="RA_info_div_toggle" href="JavaScript:void(0);">toggle display of BFW RA data</a></div>
+<div id="RA_info_div">
+<p><b>RA data dump</b>
+</p>
+<div id="RA_info_divInner">
+</div>
+</div>
+
+<IFRAME id="BFW_LogError" src="" frameBorder="0" scrolling="no" allowTransparency></IFRAME>
+
+<!--
+<div>?? -
+	<script type="text/javascript">
+document.write( encodeURIComponent('bcs.bfwpub.com/everydaywriter4e_qa/default.html#____i') );
+	</script>
+</div>
+-->
+
+</body>
+
+
+</html>

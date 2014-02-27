@@ -1,0 +1,7 @@
+<UpdateItems>
+  <Item>
+    <Where>
+/type='Assessment'
+    </Where>
+  </Item>
+</UpdateItems>

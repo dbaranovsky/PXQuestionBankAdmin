@@ -1,0 +1,118 @@
+﻿#linklibrary
+{
+    padding:10px;
+}
+
+#linklibrary .contentInner
+{
+    padding:10px;    
+}
+
+#linklibrary .addLinkText
+{
+    padding-bottom:10px;    
+}
+
+#linklibrary .searchLink{
+    padding-bottom:10px;    
+}
+
+#txtSearchLink{
+    width:30%;    
+}
+
+#linklibrary #search-results{     
+   margin-top: 7px;
+   border-top: 0.5px solid;
+   padding: 4px 7px 0 20px;
+   width: 99%;
+   line-height: 35px;
+   overflow-y: auto;
+   height: 250px;     
+   font-size: 11px;
+   color: #666;
+}
+
+#linklibrary .contentBox .linklibraryLink,
+#linklibrary .contentBox .loLink{     
+   color: #457CBE;
+}
+
+#linklibrary .searchLinkBox .addLinkText .titleBox{
+    font-size: 18px;
+}
+
+#linklibrary .contentBox a {
+    font-size: 14px;
+    color: #666;
+    text-decoration: none;
+    width: 85%;
+    display: block;
+}
+
+#linklibrary .contentBox .addlink-menubar{
+    border-bottom: solid 1px #666;
+    padding-bottom: 8px;
+}
+
+#linklibrary .contentBox .contentInner #divToc .addLinkToNote {
+    float: right;
+    background-image: url("style/images/add_link_button.png");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    height: 18px;
+    width: 79px;
+    position: relative;
+    top: -15px;
+}
+
+ #search-results-panel #search-total{
+    color: #333333;
+    font-family: Tahoma,'Geneva',arial,sans-serif;
+    font-size: 12px;
+}
+
+#linklibrary #search-results ul li {
+    border-bottom: 1px solid #666666;
+    height: 33px;
+    
+}
+
+#search-results ul li .addLinkToNote{
+    background-image: url("style/images/add_link_button.png");
+    background-position: 0 7px;
+    background-repeat: no-repeat;
+    float: right;
+    height: 29px;
+    width: 79px;
+}
+
+#linklibrary .expandContainer.folder ins.folder{
+    background-image: url('style/images/platx_sprite.png');
+    background-repeat: no-repeat;
+    background-position: -299px -200px;
+    display:inline-block;
+    width: 15px;
+    height:15px;
+    float:left;
+    position:relative;
+    left:-10px;
+}
+
+#linklibrary .expandContainer.folder .folderopen ins.folder,
+#linklibrary .expandContainer.folder .active ins.folder{
+    background-position: -349px -200px;
+}
+
+#linklibrary .expandContainer .folderopen {
+    background-image:none;
+}
+
+#linklibrary .expandContainer {
+    margin-left:15px;
+}
+
+#linklibrary .toc .level {
+padding: 2px 0 2px 20px;
+line-height:12px;
+}

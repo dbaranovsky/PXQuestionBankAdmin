@@ -1,0 +1,17 @@
+..\..\Tools\Metadata\Metadata\bin\rundlapscript\metadata.exe /a:executedlapscript /d:"C:\Work\PXBranchCheckouts2\PX\DLAPScripts\CourseScripts\QBAMetaDataXML.xml" /m:8841 /ti="PsychPortal: Myers, Exploring Psychology 8e" /c:61239 /e:qa
+..\..\Tools\Metadata\Metadata\bin\rundlapscript\metadata.exe /a:executedlapscript /d:"C:\Work\PXBranchCheckouts2\PX\DLAPScripts\CourseScripts\QBAMetaDataXML.xml" /m:8841 /ti="Econportal: Stone, CoreEconomics 2e" /c:61195 /e:qa
+..\..\Tools\Metadata\Metadata\bin\rundlapscript\metadata.exe /a:executedlapscript /d:"C:\Work\PXBranchCheckouts2\PX\DLAPScripts\CourseScripts\QBAMetaDataXML.xml" /m:8841 /ti="Freedman, Universe 9e" /c:61262 /e:qa
+..\..\Tools\Metadata\Metadata\bin\rundlapscript\metadata.exe /a:executedlapscript /d:"C:\Work\PXBranchCheckouts2\PX\DLAPScripts\CourseScripts\QBAMetaDataXML.xml" /m:8841 /ti="Morris1e" /c:62352 /e:qa
+..\..\Tools\Metadata\Metadata\bin\rundlapscript\metadata.exe /a:executedlapscript /d:"C:\Work\PXBranchCheckouts2\PX\DLAPScripts\CourseScripts\QBAMetaDataXML.xml" /m:8841 /ti="Myers Psychology 10e" /c:75652 /e:qa
+..\..\Tools\Metadata\Metadata\bin\rundlapscript\metadata.exe /a:executedlapscript /d:"C:\Work\PXBranchCheckouts2\PX\DLAPScripts\CourseScripts\QBAMetaDataXML.xml" /m:8841 /ti="Krugman/Wells, Microeconomics 3e" /c:77588 /e:qa
+..\..\Tools\Metadata\Metadata\bin\rundlapscript\metadata.exe /a:executedlapscript /d:"C:\Work\PXBranchCheckouts2\PX\DLAPScripts\CourseScripts\QBAMetaDataXML.xml" /m:8841 /ti="Krugman/Wells, Macroeconomics 3e" /c:77594 /e:qa
+..\..\Tools\Metadata\Metadata\bin\rundlapscript\metadata.exe /a:executedlapscript /d:"C:\Work\PXBranchCheckouts2\PX\DLAPScripts\CourseScripts\QBAMetaDataXML.xml" /m:8841 /ti="Hillis, Principles of Life 1e" /c:76138 /e:qa
+..\..\Tools\Metadata\Metadata\bin\rundlapscript\metadata.exe /a:executedlapscript /d:"C:\Work\PXBranchCheckouts2\PX\DLAPScripts\CourseScripts\QBAMetaDataXML.xml" /m:8841 /ti="Berger, Lifespan 8e" /c:77509 /e:qa
+..\..\Tools\Metadata\Metadata\bin\rundlapscript\metadata.exe /a:executedlapscript /d:"C:\Work\PXBranchCheckouts2\PX\DLAPScripts\CourseScripts\QBAMetaDataXML.xml" /m:8841 /ti="Phelan, What is Life? 2e with physio" /c:77491 /e:qa
+..\..\Tools\Metadata\Metadata\bin\rundlapscript\metadata.exe /a:executedlapscript /d:"C:\Work\PXBranchCheckouts2\PX\DLAPScripts\CourseScripts\QBAMetaDataXML.xml" /m:8841 /ti="Moore, BPS6e" /c:61233 /e:qa
+
+..\..\Tools\Metadata\Metadata\bin\rundlapscript\metadata.exe /a:executedlapscript /d:"C:\Work\PXBranchCheckouts2\PX\DLAPScripts\CourseScripts\QBAMetaDataXML.xml" /m:8841 /ti="Rogawski, Calculus ET, 2e" /c:76626 /e:qa
+..\..\Tools\Metadata\Metadata\bin\rundlapscript\metadata.exe /a:executedlapscript /d:"C:\Work\PXBranchCheckouts2\PX\DLAPScripts\CourseScripts\QBAMetaDataXML.xml" /m:8841 /ti="Hayden McNeil" /c:76116 /e:qa
+..\..\Tools\Metadata\Metadata\bin\rundlapscript\metadata.exe /a:executedlapscript /d:"C:\Work\PXBranchCheckouts2\PX\DLAPScripts\CourseScripts\QBAMetaDataXML.xml" /m:8841 /ti="Cowen, Microecon 2e" /c:78298 /e:qa
+..\..\Tools\Metadata\Metadata\bin\rundlapscript\metadata.exe /a:executedlapscript /d:"C:\Work\PXBranchCheckouts2\PX\DLAPScripts\CourseScripts\QBAMetaDataXML.xml" /m:8841 /ti="Cowen, Macroecon 2e" /c:78300 /e:qa
+..\..\Tools\Metadata\Metadata\bin\rundlapscript\metadata.exe /a:executedlapscript /d:"C:\Work\PXBranchCheckouts2\PX\DLAPScripts\CourseScripts\QBAMetaDataXML.xml" /m:8841 /ti="Moore, BPS6e" /c:61233 /e:qa

@@ -1,0 +1,33 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title> 		 
+        <asp:ContentPlaceHolder ID="HeaderAdditions" runat="server" />
+    </head>
+
+        <% Html.RenderPartial("BaseHeaderScripts"); %>
+        <%= ResourceEngine.IncludesFor("~/Scripts/common.js")%>
+        <%= ResourceEngine.IncludesFor("~/Scripts/grid.js")%>
+		<%= ResourceEngine.IncludesFor("~/Scripts/quiz.js")%>  
+		<%= ResourceEngine.IncludesFor("~/Content/basestyle.css", Url.RouteUrl("CourseSectionHome")) %>	
+
+	<script type="text/javascript">
+		function ShowSaved() {
+			alert('Changes Saved.');
+		}
+
+		function OnSuccess() {
+			alert('Changes Saved.');
+		}
+
+		function OnBegin() {
+			alert('OnBegin.');
+		}
+
+	</script>
+
+    <body >    
+        <asp:ContentPlaceHolder ID="CenterContent" runat="server" />		 
+    </body>
+</html>

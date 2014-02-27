@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<requests>
+  <item itemid="PX_MENU_EDITORS" version="1" entityid="-entityid-" creationdate="2011-01-12T16:44:09.66Z" creationby="7" modifieddate="2011-01-12T16:44:09.66Z" modifiedby="7">
+    <data>
+      <parent>PX_ROOT</parent>
+      <title>PX_MENU_EDITORS</title>
+      <type>Folder</type>
+    </data>
+  </item>
+  <item itemid="PX_MENUITEM_TEMPLATES" version="1" entityid="-entityid-" creationdate="2011-01-12T16:44:09.66Z" creationby="7" modifieddate="2011-01-12T16:44:09.66Z" modifiedby="7">
+    <data>
+      <parent>PX_ROOT</parent>
+      <title>PX_MENUITEM_TEMPLATES</title>
+      <type>Folder</type>
+    </data>
+  </item>
+  <item itemid="PX_MENUS" version="1" entityid="-entityid-" creationdate="2011-01-12T16:44:09.66Z" creationby="7" modifieddate="2011-01-12T16:44:09.66Z" modifiedby="7">
+    <data>
+      <parent>PX_ROOT</parent>
+      <title>PX_MENUS</title>
+      <type>Folder</type>
+    </data>
+  </item>
+  <item itemid="PX_PRIMARY" version="1" entityid="-entityid-" creationdate="2011-01-12T16:44:09.66Z" creationby="7" modifieddate="2011-01-12T16:44:09.66Z" modifiedby="7">
+    <data>
+      <type>Folder</type>
+      <parent>PX_MENUS</parent>
+      <title>Primary Navigation</title>
+      <bfw_type>Menu</bfw_type>
+      <bfw_tocid>-tocid-</bfw_tocid>
+      <bfw_display_flags>
+        <allow>
+          <role>instructor</role>
+          <coursetype>any</coursetype>
+        </allow>
+      </bfw_display_flags>
+    </data>
+  </item>
+</requests>

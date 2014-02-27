@@ -1,0 +1,22 @@
+
+INSERT INTO tblClass (Title,Description,Code,Expiration,CreatorID,StartDate,EndDate,EmailScores,RecordStatus)
+VALUES 
+
+SELECT 
+'Default group for '+UserEmail as Title, 
+'' as Description, 
+UserEmail as Code, 
+'1/1/2070' as Expiration,  
+UserID as CreatorID, 
+getdate() as StartDate,
+'1/1/2070' as EndDate, 
+0 as EmailScores, 
+1 as tiRecordStatus
+FROM tblUserProfile where UserID=156
+
+
+SELECT COUNT(*) AS InstLevelCt FROM tblUserAssignment WHERE UserID=[iUserID] AND PackageID IN (
+        SELECT PackageID FROM tblSiteAssignments WHERE LevelID IN (
+            SELECT LevelID FROM tblLevelType WHERE LevelOfAccess >= 40
+        )
+    )

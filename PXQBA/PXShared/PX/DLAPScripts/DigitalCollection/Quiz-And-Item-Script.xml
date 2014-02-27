@@ -1,0 +1,71 @@
+﻿<requests>
+  <item itemid="1955988db8064b9d9c123b3abee572bc" entityid="69076" >
+     <data>
+      <type>Assessment</type>
+      <parent>PJX_1</parent>
+      <sequence>e</sequence>
+      <title>Project Questions</title>
+      <description></description>
+      <folder>88161c2783b949ed805d56fc5a1a1349</folder>
+      <href>a</href>
+      <timetocomplete>PT1M</timetocomplete>
+      <category>0</category>
+      <period inherit="true">0</period>
+      <groupsetid>-1</groupsetid>
+      <duedate>0001-01-01T00:00:00Z</duedate>
+      <gradereleasedate>0001-01-01T05:00:00Z</gradereleasedate>
+      <weight>100</weight>
+      <gradeentry>1</gradeentry>
+      <inputtable inherit="true">0</inputtable>
+      <completiontrigger>0</completiontrigger>
+      
+	   <questions>
+        <question id="B02E4372ECAB4AB029F8760E21020032" score="1" />
+      </questions>
+	  
+	  <examflags>258</examflags>
+      <attemptlimit>3</attemptlimit>
+      <examreviewrules>
+        <rule setting="Question" condition="true" />
+        <rule setting="Answer" condition="true" />
+        <rule setting="possible" condition="true" />
+        <rule setting="CorrectQuestion" condition="true" />
+        <rule setting="CorrectChoice" condition="true" />
+        <rule setting="Feedback" condition="true" />
+        <rule setting="Feedback-GROUP" condition="true" />
+      </examreviewrules><bfw_properties>
+  <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility&gt;&lt;instructor /&gt;&lt;student /&gt;&lt;/bfw_visibility&gt;</bfw_property>
+  <bfw_property name="bfw_test" type="String">testing</bfw_property>
+  <bfw_property name="bfw_syllabusfilter" type="String">PJX_1</bfw_property>
+  <bfw_property name="assessment_auto_submit_at_due_time" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_duedate_manuallyset" type="Boolean">false</bfw_property>
+</bfw_properties><bfw_template>Quiz</bfw_template><bfw_custom_settings controller="CustomSettings" action="Quiz">custom settings</bfw_custom_settings><bfw_tocs>
+  <bfw_toc_contents parentid="PJX_1" sequence="a" />
+  <my_materials type="bfw_toc" parentid="my_materials_9339" sequence="">my_materials</my_materials>
+  <syllabusfilter type="bfw_toc" parentid="PJX_1" sequence="e">syllabusfilter</syllabusfilter>
+</bfw_tocs><bfw_in_assignment_center>true</bfw_in_assignment_center><bfw_duedate_manuallyset>false</bfw_duedate_manuallyset><IsMarkAsCompleteChecked>false</IsMarkAsCompleteChecked><meta-bfw_assigned>false</meta-bfw_assigned><allowviewhints>false</allowviewhints><percentsubstracthint>0</percentsubstracthint><allowstudentsemailinstructors>true</allowstudentsemailinstructors><meta-container>LaunchPad</meta-container><meta-subcontainerid>PJX_1</meta-subcontainerid>
+</data>
+  </item>
+</requests>
+
+<requests>
+  <question questionid="B02E4372ECAB4AB029F8760E21020032" entityid="69076">
+    <interaction type="text" flags="2" width="150" texttype="Numeric" />
+		<parameters>
+		<parameter name="a" type="Range" min="1" max="9" step="1" />
+		<parameter name="b" type="Range" min="1" max="9" step="1" />
+		<parameter name="c" type="List" >
+		<values>
+		<value>1</value>
+		<value>3</value>
+		<value>5</value>
+		<value>7</value>
+		</values>
+		</parameter>
+		</parameters>
+		<body>Sample Question - 1 </body>
+		<answer>
+		<value>This is some random answere to our question - 1</value>
+		</answer>
+  </question>
+</requests>

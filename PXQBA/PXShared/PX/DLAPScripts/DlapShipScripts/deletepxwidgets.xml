@@ -1,0 +1,8 @@
+<DeleteItems>
+  <!-- This script will delete all PX widgets from DLAP -->
+  <Item>
+    <Where>
+/type='CustomActivity'
+    </Where>
+  </Item>
+</DeleteItems>

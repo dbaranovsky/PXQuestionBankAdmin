@@ -1,0 +1,10 @@
+<batch>
+<request cmd="deleteitems">
+  <requests>
+     <item itemid="PX_AssignmentSummaryWidget" entityid="-entityid-" />
+     <item itemid="PX_RecentlyViewedWidget" entityid="-entityid-" />
+     <item itemid="PX_RecentSubmissionsWidget" entityid="-entityid-" />
+     <item itemid="PX_FeaturedContentWidget_LearningCurve" entityid="-entityid-" />
+  </requests>
+</request>
+</batch>

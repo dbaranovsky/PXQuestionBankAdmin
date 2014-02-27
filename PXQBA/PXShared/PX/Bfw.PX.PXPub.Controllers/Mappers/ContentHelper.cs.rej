@@ -1,0 +1,11 @@
+diff a/PX/Bfw.PX.PXPub.Controllers/Mappers/ContentHelper.cs b/PX/Bfw.PX.PXPub.Controllers/Mappers/ContentHelper.cs	(rejected hunks)
+@@ -565,7 +565,8 @@
+         /// <param name="docFile"></param>
+         /// <param name="courseId"></param>
+         /// <param name="id"></param>
+-        public void StoreDocument(string collectionId, string docTitle, System.Web.HttpPostedFileBase docFile, string courseId, string id)
++        public void StoreDocument(string collectionId, string docTitle, System.Web.HttpPostedFileBase docFile, 
++            string courseId, string id)
+         {
+             if (!string.IsNullOrEmpty(docTitle) && null != docFile)
+             {

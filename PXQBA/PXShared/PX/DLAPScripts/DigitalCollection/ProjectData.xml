@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<requests>
+    <item itemid="PJX_1" entityid="-entityid-">
+        <data>
+            <bfw_type>Project</bfw_type>
+            <folder></folder>
+            <parent>PX_TEMPLATES</parent>
+            <sequence>a</sequence>
+            <title>Louisa Cousselle</title>
+            <subtitle>Reconstructing a Life in the West</subtitle>
+            <description>What does the life of Louisa Cousselle reveal about women in the nineteenth-century trans-Mississippi West?</description>
+            <tooltip>&quot;Reconstructing a Life in the West&quot; introduces students to a range of primary sources centered on the life of a nineteenth-century prostitute in the American West. Using these limited sources, students will piece together the known &quot;facts&quot; about Louisa Cousselle and then use this evidence to create a plausible account of Cousselle’s life—and by extension, those of other western prostitutes. Students will be able to understand and articulate that historical evidence is oftentimes neither neat nor complete. Thus, they will need to identify evidentiary gaps and employ strategies (verification, inference, reasonable speculation) for dealing with the missing pieces</tooltip>
+            <thumbnail>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/projects/images/Cousselle-thumbnail.jpg</thumbnail>
+            <showheadnotes>true</showheadnotes>
+            <showtranscripts>true</showtranscripts>
+            <showquestions>true</showquestions>
+            <learningobjectivedescription>&quot;Reconstructing a Life in the West&quot; introduces students to a range of primary sources. Using these limited sources, students will piece together the known &quot;facts&quot; about Louisa Cousselle and then use this evidence to create a plausible account of Cousselle’s life—and by extension, those of other western prostitutes. Students will be able to understand and articulate that historical evidence is oftentimes neither neat nor complete. Thus, they will need to identify evidentiary gaps and employ strategies (verification, inference, reasonable speculation) for dealing with the missing pieces.</learningobjectivedescription>
+            <showlearningobjective>true</showlearningobjective>
+            <bfw_tocs>
+                <bfw_toc_projects parentid="PX_PROJECT_ID" sequence="a" />
+            </bfw_tocs>
+        </data>
+    </item>
+    <item itemid="PJX_2" entityid="-entityid-">
+        <data>
+            <bfw_type>Project</bfw_type>
+            <folder></folder>
+            <parent>PX_TEMPLATES</parent>
+            <sequence>b</sequence>
+            <title>School Desegregation, North and South</title>
+            <subtitle></subtitle>
+            <description>How did school desegregation efforts differ in the North and South, and what were the challenges that reformers faced in trying to desegregate American schools after the 1960s?  </description>
+            <tooltip>Students gain a better understanding of the unresolved issues from civil rights struggles of the 1960s, and how it was that despite unprecedented gains in breaking down segregated patterns of schooling in the rural South, separate and unequal public education would persist in the United States for decades to come.</tooltip>
+            <thumbnail>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/projects/images/Dummy_Project1-Segregation.jpg</thumbnail>
+            <showheadnotes>true</showheadnotes>
+            <showtranscripts>true</showtranscripts>
+            <showquestions>true</showquestions>
+            <learningobjectivedescription>Students gain a better understanding of the unresolved issues from civil rights struggles of the 1960s, and how it was that despite unprecedented gains in breaking down segregated patterns of schooling in the rural South, separate and unequal public education would persist in the United States for decades to come.</learningobjectivedescription>
+            <showlearningobjective>true</showlearningobjective>
+            <bfw_tocs>
+                <bfw_toc_projects parentid="PX_PROJECT_ID" sequence="a" />
+            </bfw_tocs>
+        </data>
+    </item>
+    <item itemid="PJX_3" entityid="-entityid-">
+        <data>
+            <bfw_type>Project</bfw_type>
+            <folder></folder>
+            <parent>PX_TEMPLATES</parent>
+            <sequence>c</sequence>
+            <title>The Juvenile Delinquency/Comic Book Panic of the 1950s</title>
+            <subtitle></subtitle>
+            <description>To what extent did culture, in the shape of comic books, influence juvenile delinquency rates in the 1950s?</description>
+            <tooltip>Students read about the reasons why a great many Americans believed that culture caused crime, as well as understand the arguments against this assumption.  And they will also discover how the comics industry answered its critics by instituting self-censorship.</tooltip>
+            <thumbnail>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/projects/images/Dummy_Project2-ComicBook.jpg</thumbnail>
+            <showheadnotes>true</showheadnotes>
+            <showtranscripts>true</showtranscripts>
+            <showquestions>true</showquestions>
+            <learningobjectivedescription>Students read about the reasons why a great many Americans believed that culture caused crime, as well as understand the arguments against this assumption.  And they will also discover how the comics industry answered its critics by instituting self-censorship.</learningobjectivedescription>
+            <showlearningobjective>true</showlearningobjective>
+            <bfw_tocs>
+                <bfw_toc_projects parentid="PX_PROJECT_ID" sequence="a" />
+            </bfw_tocs>
+        </data>
+    </item>
+    <item itemid="PJX_4" entityid="-entityid-">
+        <data>
+            <bfw_type>Project</bfw_type>
+            <folder></folder>
+            <parent>PX_TEMPLATES</parent>
+            <sequence>d</sequence>
+            <title>The California Gold Rush</title>
+            <subtitle>A Trans-Pacific Phenomenon</subtitle>
+            <description>How was the gold rush influenced by California’s proximity to places and diverse communities around the Pacific Ocean?</description>
+            <tooltip>Students will consider how the events in California resonated throughout the Pacific Ocean, and the ways in which different communities around the Pacific participated in and changed as a result of California’s gold rush.</tooltip>
+            <thumbnail>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/projects/images/Dummy_Project3-GoldRush.jpg</thumbnail>
+            <showheadnotes>true</showheadnotes>
+            <showtranscripts>true</showtranscripts>
+            <showquestions>true</showquestions>
+            <learningobjectivedescription>Students will consider how the events in California resonated throughout the Pacific Ocean, and the ways in which different communities around the Pacific participated in and changed as a result of California’s gold rush.</learningobjectivedescription>
+            <showlearningobjective>true</showlearningobjective>
+            <bfw_tocs>
+                <bfw_toc_projects parentid="PX_PROJECT_ID" sequence="a" />
+            </bfw_tocs>
+        </data>
+    </item>
+    <item itemid="PJX_5" entityid="-entityid-">
+        <data>
+            <bfw_type>Project</bfw_type>
+            <folder></folder>
+            <parent>PX_TEMPLATES</parent>
+            <sequence>e</sequence>
+            <title>Louisa Cousselle</title>
+            <subtitle>Reconstructing a Life in the West</subtitle>
+            <description>What does the life of Louisa Cousselle reveal about women in the nineteenth-century trans-Mississippi West?</description>
+            <tooltip>&quot;Reconstructing a Life in the West&quot; introduces students to a range of primary sources centered on the life of a nineteenth-century prostitute in the American West. Using these limited sources, students will piece together the known &quot;facts&quot; about Louisa Cousselle and then use this evidence to create a plausible account of Cousselle’s life—and by extension, those of other western prostitutes. Students will be able to understand and articulate that historical evidence is oftentimes neither neat nor complete. Thus, they will need to identify evidentiary gaps and employ strategies (verification, inference, reasonable speculation) for dealing with the missing pieces</tooltip>
+            <thumbnail>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/projects/images/Cousselle-thumbnail.jpg</thumbnail>
+            <showheadnotes>true</showheadnotes>
+            <showtranscripts>true</showtranscripts>
+            <showquestions>true</showquestions>
+            <learningobjectivedescription>&quot;Reconstructing a Life in the West&quot; introduces students to a range of primary sources. Using these limited sources, students will piece together the known &quot;facts&quot; about Louisa Cousselle and then use this evidence to create a plausible account of Cousselle’s life—and by extension, those of other western prostitutes. Students will be able to understand and articulate that historical evidence is oftentimes neither neat nor complete. Thus, they will need to identify evidentiary gaps and employ strategies (verification, inference, reasonable speculation) for dealing with the missing pieces.</learningobjectivedescription>
+            <showlearningobjective>true</showlearningobjective>
+            <bfw_tocs>
+                <bfw_toc_projects parentid="PX_PROJECT_ID" sequence="e" />
+            </bfw_tocs>
+        </data>
+    </item>
+    <item itemid="PJX_6" entityid="-entityid-">
+        <data>
+            <bfw_type>Project</bfw_type>
+            <folder></folder>
+            <parent>PX_TEMPLATES</parent>
+            <sequence>f</sequence>
+            <title>School Desegregation, North and South</title>
+            <subtitle></subtitle>
+            <description>How did school desegregation efforts differ in the North and South, and what were the challenges that reformers faced in trying to desegregate American schools after the 1960s?  </description>
+            <tooltip>Students gain a better understanding of the unresolved issues from civil rights struggles of the 1960s, and how it was that despite unprecedented gains in breaking down segregated patterns of schooling in the rural South, separate and unequal public education would persist in the United States for decades to come.</tooltip>
+            <thumbnail>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/projects/images/Dummy_Project1-Segregation.jpg</thumbnail>
+            <showheadnotes>true</showheadnotes>
+            <showtranscripts>true</showtranscripts>
+            <showquestions>true</showquestions>
+            <learningobjectivedescription>Testing objective 2</learningobjectivedescription>
+            <showlearningobjective>true</showlearningobjective>
+            <bfw_tocs>
+                <bfw_toc_projects parentid="PX_PROJECT_ID" sequence="f" />
+            </bfw_tocs>
+        </data>
+    </item>
+    <item itemid="PJX_7" entityid="-entityid-">
+        <data>
+            <bfw_type>Project</bfw_type>
+            <folder></folder>
+            <parent>PX_TEMPLATES</parent>
+            <sequence>g</sequence>
+            <title>The Juvenile Delinquency/Comic Book Panic of the 1950s</title>
+            <subtitle></subtitle>
+            <description>To what extent did culture, in the shape of comic books, influence juvenile delinquency rates in the 1950s?</description>
+            <tooltip>Students read about the reasons why a great many Americans believed that culture caused crime, as well as understand the arguments against this assumption.  And they will also discover how the comics industry answered its critics by instituting self-censorship.</tooltip>
+            <thumbnail>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/projects/images/Dummy_Project2-ComicBook.jpg</thumbnail>
+            <showheadnotes>true</showheadnotes>
+            <showtranscripts>true</showtranscripts>
+            <showquestions>true</showquestions>
+            <learningobjectivedescription>Testing objective 3</learningobjectivedescription>
+            <showlearningobjective>true</showlearningobjective>
+            <bfw_tocs>
+                <bfw_toc_projects parentid="PX_PROJECT_ID" sequence="g" />
+            </bfw_tocs>
+        </data>
+    </item>
+    <item itemid="PJX_8" entityid="-entityid-">
+        <data>
+            <bfw_type>Project</bfw_type>
+            <folder></folder>
+            <parent>PX_TEMPLATES</parent>
+            <sequence>h</sequence>
+            <title>The California Gold Rush</title>
+            <subtitle>A Trans-Pacific Phenomenon</subtitle>
+            <description>How was the gold rush influenced by California’s proximity to places and diverse communities around the Pacific Ocean?</description>
+            <tooltip>Students will consider how the events in California resonated throughout the Pacific Ocean, and the ways in which different communities around the Pacific participated in and changed as a result of California’s gold rush.</tooltip>
+            <thumbnail>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/projects/images/Dummy_Project3-GoldRush.jpg</thumbnail>
+            <showheadnotes>true</showheadnotes>
+            <showtranscripts>true</showtranscripts>
+            <showquestions>true</showquestions>
+            <learningobjectivedescription>Project 4 test learning curve objective</learningobjectivedescription>
+            <showlearningobjective>true</showlearningobjective>
+            <bfw_tocs>
+                <bfw_toc_projects parentid="PX_PROJECT_ID" sequence="h" />
+            </bfw_tocs>
+        </data>
+    </item>
+</requests>

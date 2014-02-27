@@ -1,0 +1,10 @@
+diff a/Bfw.Agilix/Bfw.Agilix.Commands.Tests.Integration/Bfw.Agilix.Commands.Tests.Integration.csproj b/Bfw.Agilix/Bfw.Agilix.Commands.Tests.Integration/Bfw.Agilix.Commands.Tests.Integration.csproj	(rejected hunks)
+@@ -4,7 +4,7 @@
+   <PropertyGroup>
+     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+-    <ProjectGuid>{96627FC3-AABE-448B-BB30-7E539CECF40C}</ProjectGuid>
++    <ProjectGuid>{614C450E-6DB7-432B-BA19-CB6EB8CD89C3}</ProjectGuid>
+     <OutputType>Library</OutputType>
+     <AppDesignerFolder>Properties</AppDesignerFolder>
+     <RootNamespace>Bfw.Agilix.Commands.Tests.Integration</RootNamespace>

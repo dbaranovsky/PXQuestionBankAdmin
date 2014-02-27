@@ -1,0 +1,53 @@
+<html>
+<head>
+<script type="text/javascript" src="jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="/BFWGlobal/js/cookies.js"></script>
+<script type="text/javascript">
+
+var c = getCookie('c');
+if (c == '') {
+	c = 0;
+} else {
+	c++;
+}
+setCookie('c',c);
+
+$(document).ready(function(){
+//	var imgsrc = 'http://192.168.77.242/BFWGlobal/js/jquery/test_cookie_img.asp?c='+ c;
+	var imgsrc = 'test_cookie_img_proxy.asp?c='+ c;
+	document.getElementById('img').src = imgsrc;
+	$('#msg').html('c = '+ c +'<br/>'+ imgsrc);
+	document.getElementById('lnk').href = imgsrc +'&u='+ encodeURIComponent(window.location);
+});
+
+</script>
+</head>
+<body>
+<img id="img" src="" style="width:10px;height:10px;border:1px solid red"/>
+<a id="lnk">go</a>
+<br/>
+<br/>
+
+<div id="msg">
+</div
+
+<br/>
+<br/>
+
+<div>
+<iframe id="if_dvars"
+ src="/BFWGlobal/js/jquery/debugvars.asp"
+ style="width:800px; height: 500px"></iframe>
+</div>
+
+<br/>
+<br/>
+
+<div>
+<iframe id="if_dvars"
+ src="http://192.168.77.242/BFWGlobal/js/jquery/debugvars.asp"
+ style="width:800px; height: 500px"></iframe>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+﻿/* Assignment fne overrides */
+
+#assignmentViewContent #lnkCompose{
+	position:relative;
+	left: 0;
+}
+
+#assigmentsyllabusfne{
+	padding:0 50px;
+}
+
+#assigmentsyllabusfne .assignsylprompt{
+	line-height: 18px;
+	margin-top: 24px;
+}
+
+#assigmentsyllabusfne #ultopics{
+	float: right;
+	margin-right: 40%;
+	margin-bottom: 8px;
+	margin-top:12px;
+	margin-left: 75px;
+}
+#assigmentsyllabusfne .syllabusconfigitem{
+	float:left;
+	clear:both;
+	font-size: 12px;
+}
+
+#assigmentsyllabusfne .syllabusconfigitem .itemCount{
+	width: 40px;
+}
+
+#assigmentsyllabusfne .syllabusconfigitem.blank{
+	margin-top: 12px;
+}
+
+#assigmentsyllabusfne .sylsubmitbtn {
+clear: both;
+float: right;
+text-align: right;
+width: 100%;
+border-top: 1px solid #CCC;
+margin-top: 12px;
+padding-top: 12px;
+}
+
+#assigmentsyllabusfne .sylsubmitbtn input{
+	float: right;
+	margin: 0 4px;
+}
+
+#assigmentsyllabusfne .sylsubmitbtn .configactionsblank{
+	width: 300px;
+}
+
+#assigmentsyllabusfne .syllabusitemvalidation{
+	color:Red;
+	display:none;
+}
+
+h2.assignhead{
+	padding: 12px 0;
+}
+
+/*Assignment center Modul Styles*/
+
+.assignsyllabus {
+	clear: left;
+	display: block;
+	float: left;
+	margin-bottom: 12px;
+	width: 100px;
+}
+
+.assignsyllabus input{
+	margin-top: 12px;
+}
+
+.assigninfo {
+	display: inline;
+	position: relative;
+}
+
+#lessonContent{
+	 padding-top:15px;
+	 border-top: solid 6px #F5F5F1;    
+}
+
+.launchpad-default-message{
+	padding: 12px;
+	width: 40%;
+	line-height: 16px;
+}
+
+/*Assignment override to fix cascaded style*/
+
+h4 .filtersectiontrigger .selected{
+	border:0px;
+	background-color:Transparent; 
+}
+
+/*Assignment center Redesigns styles*/
+body.content-layout #right #content-item #assignmentViewContent h2 .edit-link{
+	position: relative;
+	right: 32px;
+}
+
+#assignmentViewContent h2 .edit-link a{
+	width: 50px;
+	text-align:center;
+}
+
+#fne-window #assignmentViewContent.assignment-detail-viewer{
+	margin:18px;
+}
+.accordion a { padding: 4px; }
+
+#fne-window #assignmentViewContent h3.sub-title {
+	margin: 17px 0 12px 0;
+}
+
+#ac-nav .nav-category:hover{
+	background: #e6f2ff; /* Old browsers */
+	background: -moz-linear-gradient(left, #e6f2ff 0%, #91bff5 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#e6f2ff), color-stop(100%,#91bff5)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left, #e6f2ff 0%,#91bff5 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left, #e6f2ff 0%,#91bff5 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left, #e6f2ff 0%,#91bff5 100%); /* IE10+ */
+	background: linear-gradient(left, #e6f2ff 0%,#91bff5 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6f2ff', endColorstr='#91bff5',GradientType=1 ); /* IE6-9 */
+	cursor:pointer;
+}
+
+#ac-nav .nav-category.active:hover{
+   border: 1px solid #39F;
+}
+
+#ac-nav .nav-category.active:hover .nav-category-title,
+#ac-nav .nav-category.active:hover .nav-category-item-count{
+	color:#0066CC;
+}
+
+#ac-nav .faux-tree-node-title:hover{
+	text-decoration:underline;
+}
+
+.nav-category .faux-tree .faux-tree-node.hidden-from-students{
+    color:#A9A9A9;
+}
+
+#ac-nav .nav-category li.due-this-week-student .icon{
+    background-position: -350px -97px;
+    background-image: url('style/images/platx_sprite.png');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    display: inline-block;   
+}
+
+#eport-nav .faux-tree-node-title:hover{
+	text-decoration:underline;
+}
+
+#bottomView #topNotesList
+{
+    float:right;
+    width:25%;  
+    position:relative; 
+}

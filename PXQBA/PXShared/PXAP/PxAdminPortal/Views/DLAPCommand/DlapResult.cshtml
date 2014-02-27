@@ -1,0 +1,57 @@
+﻿@model Bfw.PXAP.Models.DlapCommandModel
+<script type="text/javascript">
+    var foldFunc = CodeMirror.newFoldFunction(CodeMirror.tagRangeFinder);
+</script>
+
+@Html.TextAreaFor(m => m.postdata, 20, 100, new Dictionary<string, object>())
+
+@if (!string.IsNullOrWhiteSpace(Model.result))
+{
+
+    @Html.TextAreaFor(m => m.result, 20, 100, new Dictionary<string, object>())
+    <script type="text/javascript">
+        var editor = CodeMirror.fromTextArea(document.getElementById("result"), {
+            value: '',
+            mode: 'text/xml',
+            lineNumbers: true,
+            lineWrapping: true,
+            extraKeys: {
+                "' '": function (cm) { CodeMirror.xmlHint(cm, ' '); },
+                "'<'": function (cm) { CodeMirror.xmlHint(cm, '<'); },
+                "Ctrl-Space": function (cm) { CodeMirror.xmlHint(cm, ''); },
+                "Ctrl-Q": function (cm) { foldFunc(cm, cm.getCursor().line); }
+            },
+            autoCloseTags: true,
+            theme: "solarized dark",
+            indentWithTabs: false,
+            indentUnit: 4,
+        
+        });
+        editor.on("gutterClick", foldFunc);
+    </script>
+}
+<script type="text/javascript">
+    //editor.autoFormatRange({ ch: 0, line: 0 }, { ch: 0, line: editor.lineCount() });
+    
+    var editorPost = CodeMirror.fromTextArea(document.getElementById("postdata"), {
+        value: '',
+        mode: 'text/xml',
+        lineNumbers: true,
+        extraKeys: {
+            "' '": function (cm) { CodeMirror.xmlHint(cm, ' '); },
+            "'<'": function (cm) { CodeMirror.xmlHint(cm, '<'); },
+            "Ctrl-Space": function (cm) { CodeMirror.xmlHint(cm, ''); },
+            "Ctrl-Q": function (cm) { foldFunc(cm, cm.getCursor().line); }
+        },
+        autoCloseTags: true,
+        theme: "solarized dark",
+        indentWithTabs: false,
+        indentUnit: 4
+    });
+    editorPost.on("gutterClick", foldFunc);
+
+    
+//editorPost.autoFormatRange({ ch: 0, line: 0 }, { ch: 0, line: editorPost.lineCount() });
+    
+
+</script>

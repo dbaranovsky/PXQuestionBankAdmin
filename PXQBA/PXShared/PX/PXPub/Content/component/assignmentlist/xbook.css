@@ -1,0 +1,122 @@
+﻿html, body{
+    height: 100%;
+    min-height: 0;
+    min-width: 0;
+    width: 100%;
+    background-color:transparent;
+    overflow:hidden;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+#allcontainers #bookContent{
+    left: 35px;
+    bottom:25px;
+    top:0;
+}
+#allcontainers{
+   min-width:0;
+   min-height:0 !important;
+   height:100%;
+   margin:0!important;
+   padding:0!important;
+}
+#allcontainers #assignmentsContainer{
+    min-width:0;
+    min-height:0;
+    margin:0!important;
+}
+#allcontainers #assignmentContent{
+    margin:10px;
+    top:0;
+}
+#allcontainers #assignmentContent div#assignmentLeft
+{
+    border-radius: 20px 0 0 20px;
+    -moz-border-radius: 20px 0 0 20px;
+    -webkit-border-radius: 20px 0 0 20px;
+}
+#allcontainers #assignmentContent
+#allcontainers #assignmentLeft,
+#allcontainers #assignmentRight{
+    bottom:20px;
+}
+#xbookContentContainer #itemPlayerWrapper{
+    height: 100%;
+}
+module-background-bsi__5C3C85A5__FBF8__45EF__8288__94B11C97F538{
+    Background:#76ACA2; 
+}
+chapter-outline-bsi__18CBBB0E__3C81__486B__BBF0__34A933B51F7F{
+    border:2px solid #76ACA2;
+}
+#profLinks{
+    width:188px;
+}
+#profLinks ul{
+    height:214px;
+    overflow-y:auto;
+}
+#profLinks li{
+    margin-bottom:0;
+    padding:8px 0;
+}
+#xbookContentContainer .bh.asset-player.content {
+    height: initial;
+}
+#xbookContentContainer iframe{
+    overflow:hidden;
+}
+
+
+/* Notes Scrolling Positioning */ 
+#document-body{
+    float:left;
+    width: 100%;
+}
+
+#fne-window #highlight-container {
+    width:auto;
+    min-width: 0;
+    z-index: 5000;
+    top: 1% !important;
+    position: absolute;
+    background: transparent;
+    display: block;
+    float: left;
+    left: 73%;
+}
+
+#highlightList {
+    position: relative;
+    bottom:0;
+}
+
+div.bh .player {
+    position: absolute;
+    top: 55px;
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    overflow-y: auto;
+}
+
+/* Edit Course link styling */ 
+
+#profLinks #profEditLink a {
+    color: #1B8A95 !important;
+    font-size:12px;
+    margin-top:4px;
+    font-family: helvetica,Trebuchet MS,sans-serif;
+    background:none;
+    padding:0;
+    text-decoration:underline;
+}
+
+#assignmentLeft ul#assignmentList {
+    overflow-y: auto;
+    position: absolute;
+    width: auto;
+    top: 110px;
+    right: 50px;
+    left: 50px;
+    bottom: 0;
+}

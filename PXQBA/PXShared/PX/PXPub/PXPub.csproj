@@ -1,0 +1,2532 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{75951338-EDEF-4CFB-9B02-E30BA52B0F57}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PXPub</RootNamespace>
+    <AssemblyName>PXPub</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>true</MvcBuildViews>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <UseIISExpress>false</UseIISExpress>
+    <TargetFrameworkProfile />
+    <UseMsdeployExe>true</UseMsdeployExe>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <!--DPerlyuk: As part of CustomWebConfigTransform: For Each condition added the node: <TransformWebConfigEnabled>False</TransformWebConfigEnabled>
+                We don't need make transformation during publishing since it will be done before build (for details see node "TransformXml")-->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PackageAsSingleFile>true</PackageAsSingleFile>
+    <DesktopBuildPackageLocation>
+    </DesktopBuildPackageLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\PXPub.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PackageAsSingleFile>false</PackageAsSingleFile>
+    <DesktopBuildPackageLocation>R:\web_novell\vdirs\PXPub_Novell\</DesktopBuildPackageLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <TransformWebConfigEnabled>False</TransformWebConfigEnabled>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <TransformWebConfigEnabled>False</TransformWebConfigEnabled>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=3.5.40412.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>..\..\ThirdParty\AjaxControlToolkit\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Pdf, Version=4.9.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\Aspose\Aspose.Pdf\Aspose.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Words, Version=13.7.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\Aspose\Aspose.Words\Aspose.Words.dll</HintPath>
+    </Reference>
+    <Reference Include="BFW.Shared.Saml">
+      <HintPath>..\..\ThirdParty\SAML\BFW.Shared.Saml.dll</HintPath>
+    </Reference>
+    <Reference Include="BFW.Shared.Utilities">
+      <HintPath>..\..\ThirdParty\SAML\BFW.Shared.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\..\ThirdParty\EPPlus 3.1.2\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.AspNet, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Glimpse.AspNet.1.4.1\lib\net40\Glimpse.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.Core, Version=1.6.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Glimpse.1.6.1\lib\net40\Glimpse.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.Mvc3">
+      <HintPath>..\packages\Glimpse.Mvc3.1.3.3\lib\net40\Glimpse.Mvc3.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\ThirdParty\SharpZipLib\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel">
+      <HintPath>..\..\ThirdParty\SAML\Microsoft.IdentityModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols">
+      <HintPath>..\..\ThirdParty\SAML\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.WindowsTokenService">
+      <HintPath>..\..\ThirdParty\SAML\Microsoft.IdentityModel.WindowsTokenService.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging.Database, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.Unity.dll</HintPath>
+      <SpecificVersion>True</SpecificVersion>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.Unity.Interception.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\ThirdParty\VS-2009-ReportViewer\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\ThirdParty\VS-2009-ReportViewer\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="MiniProfiler">
+      <HintPath>..\packages\MiniProfiler.2.1.0\lib\net40\MiniProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="Novell.Directory.Ldap">
+      <HintPath>..\..\ThirdParty\SAML\Novell.Directory.Ldap.dll</HintPath>
+    </Reference>
+    <Reference Include="RAg.Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\ThirdParty\RAg\RAg.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Utilities">
+      <HintPath>..\..\ThirdParty\SAML\Utilities.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GlimpseSecurityPolicy.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Content\component\assignmentlist\strayer2e.css" />
+    <Content Include="Content\component\assignmentlist\xbook.css" />
+    <Content Include="Content\component\assignmentsummary\strayer2e.css" />
+    <Content Include="Content\component\assignmentsummary\xbook.css" />
+    <Content Include="Content\component\carousel\strayer2e.css" />
+    <Content Include="Content\component\carousel\xbook.css" />
+    <Content Include="Content\component\courselinks\strayer2e.css" />
+    <Content Include="Content\component\courselinks\xbook.css" />
+    <Content Include="Content\component\learningcurve\strayer2e.css" />
+    <Content Include="Content\component\learningcurve\xbook.css" />
+    <Content Include="Content\component\maincontentarea\xbookv2.css" />
+    <Content Include="Content\component\maincontentarea\faceplate.css" />
+    <Content Include="Content\component\maincontentarea\strayer2e.css" />
+    <Content Include="Content\component\maincontentarea\xbook.css" />
+    <Content Include="Content\component\recentlyviewed\strayer2e.css" />
+    <Content Include="Content\component\recentlyviewed\xbook.css" />
+    <Content Include="Content\component\recentsubmissions\strayer2e.css" />
+    <Content Include="Content\component\recentsubmissions\xbook.css" />
+    <Content Include="Content\component\toc\strayer2e.css" />
+    <Content Include="Content\component\toc\xbook.css" />
+    <Content Include="Content\jquery.ui\toastr.css" />
+    <Content Include="Content\_xbookv2.css" />
+    <Content Include="Content\fonts\pxicons.svg" />
+    <Content Include="Content\images\HewittLawson1eClass_header_logo1.png" />
+    <Content Include="Content\images\HewittLawson1eClass_header_logo2.png" />
+    <Content Include="Content\images\Hewittlawson1e_entryPage.png" />
+    <Content Include="Content\images\placeholder.png" />
+    <Content Include="Content\images\practicalargument\book.jpg" />
+    <Content Include="Content\images\Strayer1eClass_header_logo1.png" />
+    <Content Include="Content\images\Strayer1eClass_header_logo2.png" />
+    <Content Include="Content\images\Strayer1e_entryPage.png" />
+    <Content Include="Content\pie\PIE.htc" />
+    <Content Include="Content\pie\PIE.js" />
+    <Content Include="Content\pie\PIE_uncompressed.htc" />
+    <Content Include="Content\pie\PIE_uncompressed.js" />
+    <Content Include="Content\px_overrides.css" />
+    <Content Include="Content\Sandbox\xbook_pa_welcome.htm" />
+    <Content Include="Content\images\branch-this-course.png" />
+    <Content Include="Content\images\hourglass.png" />
+    <Content Include="Content\images\launchpad-icons-bottom.png" />
+    <Content Include="Content\images\launchpad-icons-top.png" />
+    <Content Include="Content\images\launchpadportal.png" />
+    <Content Include="Content\images\realwriting-mars-icons-book.jpg" />
+    <Content Include="Content\images\select2-spinner.gif" />
+    <Content Include="Content\images\select2.png" />
+    <Content Include="Content\images\select2x2.png" />
+    <Content Include="Content\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\images\ui-bg_flat_75_orange_40x100.png" />
+    <Content Include="Content\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\images\xbook_everyday_banner.png" />
+    <Content Include="Content\images\xbook_pocketspeak4e_banner.png" />
+    <Content Include="Content\images\xbook_realwriting_banner.png" />
+    <Content Include="Content\images\xbook_reflectrelate_banner.png" />
+    <Content Include="Content\images\xbook_yce_banner.png" />
+    <Content Include="Content\widgets\BackToBlackboard.css" />
+    <Content Include="Content\widgets\jquery.DataTables.css" />
+    <Content Include="Content\widgets\PageLoader.css" />
+    <Content Include="Content\widgets\PxDialog.css" />
+    <Content Include="Scripts\ArgaApi\ArgaApi.js" />
+    <Content Include="Scripts\AssignmentWidget\CreateAssignmentRoutes.js" />
+    <Content Include="Scripts\Common\CA.js" />
+    <Content Include="Scripts\Common\HashHistory.js" />
+    <Content Include="Scripts\Common\DialogHelper.js" />
+    <Content Include="Scripts\Common\PxPage.Loader.js" />
+    <Content Include="Scripts\Common\PxPage.Toasts.js" />
+    <Content Include="Scripts\Common\PxRoutes.js" />
+    <Content Include="Scripts\Common\US.js" />
+    <Content Include="Scripts\ContentTreeWidget\ContentTreeWidget.js" />
+    <Content Include="Scripts\CreateCourse\CreateCourse.js" />
+    <Content Include="Scripts\Crossroads\crossroads.js" />
+    <Content Include="Scripts\Crossroads\crossroads.min.js" />
+    <Content Include="Scripts\DataTablesExtras\copy_csv_xls.swf" />
+    <Content Include="Scripts\DataTablesExtras\FixedColumns.min.js" />
+    <Content Include="Scripts\DataTablesExtras\TableTools.min.js" />
+    <Content Include="Scripts\EditUnitInfo\EditUnitInfo.js" />
+    <Content Include="Scripts\EnrollmentWidget\EnrollmentWidget.js" />
+    <Content Include="Scripts\FeaturedWidget\FeaturedWidget.js" />
+    <Content Include="Scripts\Fne\PageDefinedFNE.js" />
+    <Compile Include="SiteInfo.cs" />
+    <Compile Include="Views\XClassHomePageWidget\Summary.ascx.cs">
+      <DependentUpon>Summary.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\XClassHomePageWidget\Summary.ascx.designer.cs">
+      <DependentUpon>Summary.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\XClass\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\XClass\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Scripts\jquery\grid.custom.js" />
+    <Content Include="Scripts\jquery\grid.locale-en.js" />
+    <Content Include="Scripts\jquery\jquery-migrate-1.2.1.js" />
+    <Content Include="Scripts\jquery\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery\jquery-migrate-1.2.1.js" />
+    <Content Include="Scripts\jquery\jquery-ui-1.10.3.custom.js" />
+    <Content Include="Scripts\jquery\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="Scripts\HtmlSanitizer\html-sanitizer.js" />
+    <Content Include="Scripts\ImageUpload\ImageUpload.js" />
+    <Content Include="Scripts\jquery\jquery.jqGrid.min.js" />
+    <Content Include="Scripts\jquery\jquery.sticky.js" />
+    <Content Include="Scripts\jquery\toastr.js" />
+    <Content Include="Scripts\ManagementCard\ManagementCard.js" />
+    <Content Include="Scripts\Search\Search.js" />
+    <Content Include="Scripts\SystemCheck\SystemCheck.js" />
+    <Content Include="Scripts\tiny_mce\tinymceoverrides.js" />
+    <Content Include="Scripts\Xbook\XbookV2.js" />
+    <Content Include="Tests\Chutzpah.2.4.3\AntiXssLibrary.dll" />
+    <Content Include="Tests\Chutzpah.2.4.3\chutzpah.console.exe" />
+    <Content Include="Tests\Chutzpah.2.4.3\chutzpah.dll" />
+    <Content Include="Tests\Chutzpah.2.4.3\JSRunners\chutzpahRunner.js" />
+    <Content Include="Tests\Chutzpah.2.4.3\JSRunners\jasmineRunner.js" />
+    <Content Include="Tests\Chutzpah.2.4.3\License.txt" />
+    <Content Include="Tests\Chutzpah.2.4.3\phantomjs.exe" />
+    <Content Include="Tests\Chutzpah.2.4.3\ServiceStack.Text.dll" />
+    <Content Include="Tests\Chutzpah.2.4.3\StructureMap.dll" />
+    <Content Include="Tests\Chutzpah.2.4.3\TestFiles\Coverage\blanket_jasmine.js" />
+    <Content Include="Tests\Chutzpah.2.4.3\TestFiles\Jasmine\jasmine-ddescribe-iit.js" />
+    <Content Include="Tests\Chutzpah.2.4.3\TestFiles\Jasmine\jasmine-html.js" />
+    <Content Include="Tests\Chutzpah.2.4.3\TestFiles\Jasmine\jasmine.css" />
+    <Content Include="Tests\Chutzpah.2.4.3\TestFiles\Jasmine\jasmine.html" />
+    <Content Include="Tests\Chutzpah.2.4.3\TestFiles\Jasmine\jasmine.js" />
+    <Content Include="Tests\Chutzpah.2.4.3\TestFiles\Jasmine\jasmine_favicon.png" />
+    <Content Include="Tests\fixtures\html\bhhtmlquizcontainer.html" />
+    <Content Include="Tests\fixtures\html\bhhtmlquizcontent.html" />
+    <Content Include="Tests\fixtures\html\bhhtmlquizwrapper.html" />
+    <Content Include="Tests\fixtures\html\digitalfirstcontent.html" />
+    <Content Include="Tests\fixtures\html\htmlquizcontainer.html" />
+    <Content Include="Tests\fixtures\html\htmlquizcontent.html" />
+    <Content Include="Tests\fixtures\html\lccontent.html" />
+    <Content Include="Tests\helper\BaseTestHelper.js" />
+    <Content Include="Tests\helper\HtmlQuizHelper.js" />
+    <Content Include="Tests\helper\ManagementCardHelper.js" />
+    <Content Include="Tests\helper\TestQuizHelper.js" />
+    <Content Include="Tests\helper\RenderingHelper.js" />
+    <Content Include="Tests\index.html" />
+    <Content Include="Tests\lib\jquery\jquery.js" />
+    <Content Include="Tests\lib\viewrender.release.js" />
+    <Content Include="Tests\lib\viewrender.debug.js" />
+    <Content Include="Tests\lib\jasmine-1.3.1\jasmine-beforeAll.js" />
+    <Content Include="Tests\lib\jquery\jquery-migrate.js" />
+    <Content Include="Tests\QuizIndex.html" />
+    <!--Content Include="Tests\runners\calendarwidget\CalendarWidgetTest.html" /-->
+    <Content Include="Tests\runners\activitiesWidget\ActivitiesWidgetTest.html" />
+    <Content Include="Tests\runners\calendarwidget\CalendarWidgetTest.html" />
+    <Content Include="Tests\runners\common\PxPage.ToastsTest.html" />
+    <Content Include="Tests\runners\common\PxCommonTest.html" />
+    <Content Include="Tests\runners\contentareawidget\ContentAreaWidgetTest.html" />
+    <Content Include="Tests\runners\contentsettings\ContentSettingsTest.html" />
+    <Content Include="Tests\runners\contenttreewidget\ContentTreeWidgetTest.html" />
+    <Content Include="Tests\runners\contentwidget\ContentTemplatesTest.html" />
+    <Content Include="Tests\runners\contentwidget\ContentWidgetTest.html" />
+    <Content Include="Tests\runners\createCourse\CreateCourseTest.html" />
+    <Content Include="Tests\runners\courseform\courseformtest.html" />
+    <Content Include="Tests\runners\dashboard\dashboardtest.html" />
+    <Content Include="Tests\runners\dateformat\dateFormatTest.html" />
+    <Content Include="Tests\runners\faceplate\PxFacePlateTest.html" />
+    <Content Include="Tests\runners\htmlSanitizer\HtmlSanitizerTest.html" />
+    <Content Include="Tests\runners\learningCurve\LearningCurveMoreResourcesTest.html" />
+    <Content Include="Tests\runners\linkCollection\LinkCollectionTest.html" />
+    <Content Include="Tests\runners\managementcard\ManagementCardTest.html" />
+    <Content Include="Tests\runners\quiz\HtmlQuizTest.html" />
+    <Content Include="Tests\runners\quiz\QuestionFilterTest.html" />
+    <Content Include="Tests\runners\quiz\QuestionImporterTest.html" />
+    <Content Include="Tests\runners\resources\FacePlateBrowseMoreResourcesTest.html" />
+    <Content Include="Tests\runners\instructorconsole\instructorconsoletest.html" />
+    <Content Include="Tests\runners\quiz\QuizHomeworkTest.html" />
+    <Content Include="Tests\runners\quiz\QuizHtsTest.html" />
+    <Content Include="Tests\fixtures\html\addquestiontoexistingassessment.html" />
+    <Content Include="Tests\fixtures\html\usedelsewhere.html" />
+    <Content Include="Tests\runners\quiz\QuizFneTest.html" />
+    <Content Include="Tests\fixtures\html\availablequestionslist.html" />
+    <Content Include="Tests\fixtures\html\homeworkeditform.html" />
+    <Content Include="Tests\fixtures\html\homeworkquestionlists.html" />
+    <Content Include="Tests\fixtures\html\questionlists.html" />
+    <Content Include="Tests\fixtures\html\QuestionPicker.html" />
+    <Content Include="Tests\fixtures\html\QuizOverview.html" />
+    <Content Include="Tests\fixtures\html\selectedquestionslist.html" />
+    <Content Include="Tests\fixtures\style\quiz.css" />
+    <Content Include="Tests\runners\quiz\helpers\QuizResponses.js" />
+    <Content Include="Tests\runners\quiz\QuestionEditorTest.html" />
+    <Content Include="Tests\runners\quiz\QuestionListCheckboxTest.html" />
+    <Content Include="Tests\runners\quiz\QuestionListGearboxTest.html" />
+    <Content Include="Tests\runners\quiz\questionlisttest.html" />
+    <Content Include="Tests\runners\rssfeed\RssFeedTest.html" />
+    <!--Content Include="Tests\spec\calendarwidget\CalendarWidgetSpec.js" /-->
+    <Content Include="Tests\runners\settingsTab\SettingsTabTest.html" />
+    <Content Include="Tests\runners\tinyMCE\launchPad\EditorTest.html" />
+    <Content Include="Tests\runners\xbook\XbookManagementCardTest.html" />
+    <Content Include="Tests\runners\xbook\XbookV2Test.html" />
+    <Content Include="Tests\spec\activitiesWidget\ActivitiesWidgetSpec.js" />
+    <Content Include="Tests\spec\calendarwidget\CalendarWidgetSpec.js" />
+    <Content Include="Tests\spec\common\PxPage.ToastsSpec.js" />
+    <Content Include="Tests\spec\common\PxCommonSpec.js" />
+    <Content Include="Tests\spec\common\PxPage.LargeFNESpec.js" />
+    <Content Include="Tests\spec\contentareawidget\ContentAreaWidgetSpec.js" />
+    <Content Include="Tests\spec\contentsettings\ContentSettingsSpec.js" />
+    <Content Include="Tests\spec\contenttreewidget\ContentTreeWidgetSpec.js" />
+    <Content Include="Tests\spec\contentwidget\ContentTemplatesSpec.js" />
+    <Content Include="Tests\spec\contentwidget\ContentWidgetSpec.js" />
+    <Content Include="Tests\spec\courseform\CourseFormSpec.js" />
+    <Content Include="Tests\spec\createCourse\CreateCourseSpec.js" />
+    <Content Include="Tests\spec\dashboard\DashboardSpec.js" />
+    <Content Include="Tests\spec\dateformat\dateformatSpec.js" />
+    <Content Include="Tests\spec\faceplate\PxFacePlateSpec.js" />
+    <Content Include="Tests\spec\htmlSanitizer\HtmlSanitizerSpec.js" />
+    <Content Include="Tests\spec\learningCurve\LearningCurveMoreResourcesSpec.js" />
+    <Content Include="Tests\spec\linkCollection\LinkCollectionSpec.js" />
+    <Content Include="Tests\spec\managementcard\PxManagementCardSpec.js" />
+    <Content Include="Tests\spec\quiz\HtmlQuizSpec.js" />
+    <Content Include="Tests\spec\quiz\QuestionFilterSpec.js" />
+    <Content Include="Tests\spec\quiz\QuestionImporterSpec.js" />
+    <Content Include="Tests\spec\resources\FacePlateBrowseMoreResourcesSpec.js" />
+    <Content Include="Tests\spec\instructorconsole\InstructorConsoleSpec.js" />
+    <Content Include="Tests\spec\quiz\QuizHomeworkSpec.js" />
+    <Content Include="Tests\spec\quiz\QuizHtsSpec.js" />
+    <Content Include="Tests\spec\quiz\QuizFneSpec.js" />
+    <Content Include="Tests\spec\quiz\QuestionEditorSpec.js" />
+    <Content Include="Tests\spec\quiz\QuestionListCheckboxSpec.js" />
+    <Content Include="Tests\spec\quiz\QuestionListGearboxSpec.js" />
+    <Content Include="Tests\spec\quiz\QuestionListSpec.js" />
+    <Content Include="Tests\spec\quiz\QuestionSearchSpec.js" />
+    <Content Include="Tests\spec\settingsTab\SettingsTabSpec.js" />
+    <Content Include="Tests\spec\rssfeed\RssFeedSpec.js" />
+    <Content Include="Tests\spec\tinyMCE\launchPad\EditorSpec.js" />
+    <Content Include="Tests\spec\xbook\XBookManagementCardSpec.js" />
+    <Content Include="Tests\spec\xbook\XbookV2Spec.js" />
+    <Content Include="Views\ActivitiesWidget\DueDateColumn.ascx" />
+    <Content Include="Views\BrowseMoreResourcesWidget\Message.ascx" />
+    <Content Include="Views\ExternalDomain\GetSettings.ascx" />
+    <Content Include="Views\ContentAreaWidget\ContentArea.ascx" />
+    <Content Include="Views\Course\StudentInstructions.ascx" />
+    <Content Include="Views\ImageUpload\ImageGrid.ascx" />
+    <Content Include="Views\ImageUpload\Index.aspx" />
+    <Content Include="Views\ImageUpload\UploadImageForm.ascx" />
+    <Content Include="Views\Search\Search.ascx" />
+    <Content Include="Views\Shared\AssignmentUnitSelector.ascx" />
+    <Content Include="Views\ECommerce\UnauthenticatedTransfer.aspx" />
+    <Content Include="Views\Shared\BaseHeaderScripts.ascx" />
+    <Content Include="Views\Shared\GradeBookWeightsOptions.ascx" />
+    <Content Include="Views\Shared\GroupSelector.ascx" />
+    <Content Include="Views\Shared\LinkList.ascx" />
+    <Content Include="Views\Shared\RestrictedItem.ascx" />
+    <Content Include="Views\Shared\TinyMceUploadDocumentForm.ascx" />
+    <Content Include="Views\Shared\CourseTimeZoneData.ascx" />
+    <Content Include="Views\Shared\UploadAndSubmit.ascx" />
+    <Content Include="Views\Shared\WidgetWrapperBeforeAdd.ascx" />
+    <Content Include="WebTransformsNotes.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\PROD\identityprovider.xml" />
+    <Content Include="App_Data\PROD\serviceprovider.xml" />
+    <Content Include="App_Data\QA\identityprovider.xml" />
+    <Content Include="App_Data\QA\serviceprovider.xml" />
+    <Content Include="App_Data\PR\identityprovider.xml" />
+    <Content Include="App_Data\PR\serviceprovider.xml" />
+    <Content Include="Content\images\back.png" />
+    <Content Include="Content\images\bedford_xbook_logo.png" />
+    <Content Include="Content\images\Davismcgivney1ePortal_header_logo1.png" />
+    <Content Include="Content\images\Davismcgivney1e_entryPage.png" />
+    <Content Include="Content\images\diagnostics_entitled.png" />
+    <Content Include="Content\images\diagnostics_home.png" />
+    <Content Include="Content\images\diagnostic_toolkit.png" />
+    <Content Include="Content\images\fwd.png" />
+    <Content Include="Content\images\icon-fullscreen.png" />
+    <Content Include="Content\images\image.gif" />
+    <Content Include="Content\images\LoginPageCovers\Davismcgivney1e_entryPage.png" />
+    <Content Include="Content\images\paneh.gif" />
+    <Content Include="Content\images\panehc.gif" />
+    <Content Include="Content\images\panev.gif" />
+    <Content Include="Content\images\panevc.gif" />
+    <Content Include="Content\images\strayer-mars-icons-book.png" />
+    <Content Include="Content\images\xbook_strayer_banner.png" />
+    <Content Include="Content\Sandbox\xbook_welcome.htm" />
+    <Content Include="Content\Sandbox\xbook_welcome_changes.css" />
+    <Content Include="Content\images\addButtonWhite.png" />
+    <Content Include="Content\images\arrow.png" />
+    <Content Include="Content\images\bedfordLogo.gif" />
+    <Content Include="Content\images\Bps6ePortal_header_logo1.png" />
+    <Content Include="Content\images\Bps6ePortal_header_logo2.png" />
+    <Content Include="Content\images\combo_arrow_sans_down_45.png" />
+    <Content Include="Content\images\combo_drop_down.png" />
+    <Content Include="Content\images\down.gif" />
+    <Content Include="Content\images\gobackArrowSmall.png" />
+    <Content Include="Content\images\home_v_w.png" />
+    <Content Include="Content\images\informationBlue.png" />
+    <Content Include="Content\images\addtopool_button.png" />
+    <Content Include="Content\images\addtopool_button_blue.png" />
+    <Content Include="Content\images\ajax-loader-no-bg-16x16.gif" />
+    <Content Include="Content\images\ajax-loader-no-bg-32x32.gif" />
+    <Content Include="Content\images\bookcovers\lc-bedhandbook8e-cover.jpg" />
+    <Content Include="Content\images\bookcovers\lc-easywriter4e-cover.jpg" />
+    <Content Include="Content\images\bookcovers\lc-hewittlawson1e-cover.jpg" />
+    <Content Include="Content\images\bookcovers\lc-pocket6e-cover.jpg" />
+    <Content Include="Content\images\bookcovers\lc-rules7e-cover.jpg" />
+    <Content Include="Content\images\bookcovers\lc-smhandbook7e-cover.jpg" />
+    <Content Include="Content\images\bookcovers\lc-writersref7e-cover.jpg" />
+    <Content Include="Content\images\chem216Portal_header_logo1.png" />
+    <Content Include="Content\images\chem216Portal_header_logo2.png" />
+    <Content Include="Content\images\chem216_entryPage.png" />
+    <Content Include="Content\images\cowentabarrokmacro2Portal_header_logo1.png" />
+    <Content Include="Content\images\cowentabarrokmacro2Portal_header_logo2.png" />
+    <Content Include="Content\images\cowentabarrokmacro2_entryPage.png" />
+    <Content Include="Content\images\cowentabarrokmicro2Portal_header_logo1.png" />
+    <Content Include="Content\images\cowentabarrokmicro2Portal_header_logo2.png" />
+    <Content Include="Content\images\cowentabarrokmicro2_entryPage.png" />
+    <Content Include="Content\images\fullStar.png" />
+    <Content Include="Content\images\Hockenbury6ePortal_header_logo1.png" />
+    <Content Include="Content\images\Hockenbury6ePortal_header_logo2.png" />
+    <Content Include="Content\images\Krugmanwellsmacro3Portal_header_logo1.png" />
+    <Content Include="Content\images\Krugmanwellsmacro3Portal_header_logo2.png" />
+    <Content Include="Content\images\launchpad-loader.gif" />
+    <Content Include="Content\images\lc-realskills3e-cover.jpg" />
+    <Content Include="Content\images\LoginPageCovers\chem216_entryPage.png" />
+    <Content Include="Content\images\LoginPageCovers\cowentabarrokmacro2_entryPage.png" />
+    <Content Include="Content\images\LoginPageCovers\cowentabarrokmicro2_entryPage.png" />
+    <Content Include="Content\images\LoginPageCovers\Hockenbury6e_entryPage.png" />
+    <Content Include="Content\images\LoginPageCovers\Krugmanwellsmacro3_entryPage.png" />
+    <Content Include="Content\images\LoginPageCovers\Myers10e_entryPage.jpg" />
+    <Content Include="Content\images\Morris1ePortal_header_logo1.png" />
+    <Content Include="Content\images\Morris1ePortal_header_logo2.png" />
+    <Content Include="Content\images\move_button_blue.png" />
+    <Content Include="Content\images\no_due_date_icon.png" />
+    <Content Include="Content\images\unit_default_thumbnail.png" />
+    <Content Include="Content\images\Universe9ePortal_header_logo1.png" />
+    <Content Include="Content\images\Universe9ePortal_header_logo2.png" />
+    <Content Include="Content\images\xbook_banner.png" />
+    <Content Include="Content\launchpad_bh_component.css" />
+    <Content Include="Content\widgets\LearningCurveActivity.css" />
+    <Content Include="Content\xbook_iframeWidgets.css" />
+    <Content Include="Content\images\assignment_graded.png" />
+    <Content Include="Content\images\assignment_not_submitted.png" />
+    <Content Include="Content\images\assignment_submitted.png" />
+    <Content Include="Content\images\Bergerls8ePortal_header_logo1.png" />
+    <Content Include="Content\images\Bergerls8ePortal_header_logo2.png" />
+    <Content Include="Content\images\black-star.png" />
+    <Content Include="Content\images\Calculuset2ePortal_header_logo1.png" />
+    <Content Include="Content\images\Calculuset2ePortal_header_logo2.png" />
+    <Content Include="Content\images\delete.png" />
+    <Content Include="Content\images\entercourse.png" />
+    <Content Include="Content\images\Hillis1ePortal_header_logo1.png" />
+    <Content Include="Content\images\Hillis1ePortal_header_logo2.png" />
+    <Content Include="Content\images\home-slideshow-pagination.png" />
+    <Content Include="Content\images\info_icon.png" />
+    <Content Include="Content\images\mccornack-mars-icons-book.png" />
+    <Content Include="Content\images\primary-question.png" />
+    <Content Include="Content\images\Ips7ePortal_header_logo1.png" />
+    <Content Include="Content\images\Ips7ePortal_header_logo2.png" />
+    <Content Include="Content\images\Krugmanwellsmicro3Portal_header_logo1.png" />
+    <Content Include="Content\images\Krugmanwellsmicro3Portal_header_logo2.png" />
+    <Content Include="Content\images\lc-bedhandbook8e-cover.jpg" />
+    <Content Include="Content\images\lc-easywriter4e-cover.jpg" />
+    <Content Include="Content\images\lc-hewittlawson1e-cover.jpg" />
+    <Content Include="Content\images\lc-pocket6e-cover.jpg" />
+    <Content Include="Content\images\lc-rules7e-cover.jpg" />
+    <Content Include="Content\images\lc-smhandbook7e-cover.jpg" />
+    <Content Include="Content\images\lc-writersref7e-cover.jpg" />
+    <Content Include="Content\images\LoginPageCovers\Bergerls8e_entryPage.png" />
+    <Content Include="Content\images\LoginPageCovers\Calculuset2e_entryPage.png" />
+    <Content Include="Content\images\LoginPageCovers\Hillis1e_entryPage.png" />
+    <Content Include="Content\images\LoginPageCovers\Ips7e_entryPage.png" />
+    <Content Include="Content\images\LoginPageCovers\Krugmanwellsmicro3_entryPage.png" />
+    <Content Include="Content\images\LoginPageCovers\Myers10e_entryPage.png" />
+    <Content Include="Content\images\LoginPageCovers\Phelanphys2e_entryPage.png" />
+    <Content Include="Content\images\Myers10ePortal_header_logo1.png" />
+    <Content Include="Content\images\Myers10ePortal_header_logo2.png" />
+    <Content Include="Content\images\Phelanphys2ePortal_header_logo1.png" />
+    <Content Include="Content\images\Phelanphys2ePortal_header_logo2.png" />
+    <Content Include="Content\images\platx_sprite_filetypes.png" />
+    <Content Include="Content\images\Stoneecon2Portal_header_logo1.png" />
+    <Content Include="Content\images\Stoneecon2Portal_header_logo2.png" />
+    <Content Include="Content\images\Stoneecon2_entryPage.png" />
+    <Content Include="Content\images\xbook-mars-nav-icon.png" />
+    <Content Include="Content\jquery.ui\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\jquery.ui\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\jquery.ui\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\jquery.ui\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\jquery.ui\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\jquery.ui\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\jquery.ui\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\jquery.ui\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\jquery.ui\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\jquery.ui\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\jquery.ui\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\jquery.ui\jquery-ui-1.9.0.custom.css" />
+    <Content Include="Content\jquery.ui\jquery.qtip.css" />
+    <Content Include="Content\widgets\AssessmentContainerWidget.css" />
+    <Content Include="Content\widgets\ContentItemDisplayTemplates.css" />
+    <Content Include="Content\widgets\AssignmentListWidget.css" />
+    <Content Include="Content\widgets\DashboardWidget.css" />
+    <Content Include="Content\widgets\Rubric.css" />
+    <Content Include="Content\images\print.jpg" />
+    <Content Include="Content\widgets\AgendaFullView.css" />
+    <Content Include="Content\widgets\NoTitleDialog.css" />
+    <Content Include="Content\widgets\fullcalendar.css" />
+    <Content Include="Content\widgets\AssignDialog.css" />
+    <Content Include="Content\widgets\buttons.css" />
+    <Content Include="Content\images\bdc-ecom-banner.png" />
+    <Content Include="Content\images\bdc-ecom-logo.png" />
+    <Content Include="Content\images\bdcHeader.png" />
+    <Content Include="Content\images\entrypages\bps6e_entryPage.png" />
+    <Content Include="Content\images\entrypages\exploring8e_entryPage.png" />
+    <Content Include="Content\images\entrypages\morris1e_entryPage.png" />
+    <Content Include="Content\images\entrypages\stoneecon2_entryPage.png" />
+    <Content Include="Content\images\entrypages\universe9e_entryPage.png" />
+    <Content Include="Content\widgets\MenuWidget.css" />
+    <Content Include="Content\_faceplate.css" />
+    <Content Include="Content\images\404-icon.png" />
+    <Content Include="Content\images\class_report.png" />
+    <Content Include="Content\images\lc-hewittlawson1e-cover.jpg" />
+    <Content Include="Content\images\LoginPageCovers\Myers10e_entryPage.jpg" />
+    <Content Include="Content\images\Myers10ePortal_header_logo1.png" />
+    <Content Include="Content\images\Myers10ePortal_header_logo2.png" />
+    <Content Include="Content\images\platx_sprite_filetypes.png" />
+    <Content Include="Content\images\print.jpg" />
+    <Content Include="Content\images\sample_class_activity.png" />
+    <Content Include="Content\QuestionAdmin.css" />
+    <Content Include="Content\widgets\learningcurve.css" />
+    <Content Include="Content\widgets\AboutCourseWidget.css" />
+    <Content Include="Content\widgets\AnnouncementWidget.css" />
+    <Content Include="Content\widgets\AssignmentCenter.css" />
+    <Content Include="Content\widgets\AssignmentSettings.css" />
+    <Content Include="Content\widgets\CreateCourse.css" />
+    <Content Include="Content\widgets\DiscussionWidget.css" />
+    <Content Include="Content\widgets\DocumentCollection.css" />
+    <Content Include="Content\widgets\FeaturedContent.css" />
+    <Content Include="Content\widgets\FneWindow.css" />
+    <Content Include="Content\widgets\LearningObjectives.css" />
+    <Content Include="Content\widgets\ManageGroups.css" />
+    <Content Include="Content\widgets\QuickPanel.css" />
+    <Content Include="Content\widgets\Quiz.css" />
+    <Content Include="Content\widgets\Scorecard.css" />
+    <Content Include="Content\widgets\Search.css" />
+    <Content Include="Content\widgets\SyllabusTool.css" />
+    <Content Include="Content\widgets\TemplateManagement.css" />
+    <Content Include="Content\widgets\RelatedContent.css" />
+    <Content Include="Content\_learningcurve.css" />
+    <Content Include="Content\_lms_layout.css" />
+    <Content Include="Content\ecommerce.css" />
+    <Content Include="Content\images\LoginPageCovers\bps6e_entryPage.png" />
+    <Content Include="Content\images\LoginPageCovers\exploring8e_entryPage.png" />
+    <Content Include="Content\images\LoginPageCovers\morris1e_entryPage.png" />
+    <Content Include="Content\images\LoginPageCovers\stoneecon2_entryPage.png" />
+    <Content Include="Content\images\LoginPageCovers\universe9e_entryPage.png" />
+    <Content Include="Content\images\eport-landing-banner.png" />
+    <Content Include="Content\images\eport-landing-logo.jpg" />
+    <Content Include="Content\images\bedford-st.martins-banner.png" />
+    <Content Include="Content\images\BioPortal_header_logo1.png" />
+    <Content Include="Content\images\BioPortal_header_logo2.png" />
+    <Content Include="Content\images\clock_launchpad2.png" />
+    <Content Include="Content\images\eportportf-icons.png" />
+    <Content Include="Content\images\everday-lc-cover.jpg" />
+    <Content Include="Content\images\everday-lc-login.png" />
+    <Content Include="Content\images\hide_from_student_no.png" />
+    <Content Include="Content\images\hide_from_student_yes.png" />
+    <Content Include="Content\images\learning-curve-logo.png" />
+    <Content Include="Content\images\learning_curve_logo2.png" />
+    <Content Include="Content\images\macmillan-logo.png" />
+    <Content Include="Content\images\PsychPortal_header_logo1.png" />
+    <Content Include="Content\images\PsychPortal_header_logo2.png" />
+    <Content Include="Content\images\real-writing-lc-cover.jpg" />
+    <Content Include="Content\images\real-writing-login.png" />
+    <Content Include="Content\images\reports_sample_screen.png" />
+    <Content Include="Content\images\strayer-lc-cover.jpg" />
+    <Content Include="Content\images\assignment_activity_completed_checkmark.png" />
+    <Content Include="Content\images\calendar_expand.png" />
+    <Content Include="Content\images\clock_launchpad.png" />
+    <Content Include="Content\images\eport-banner.png" />
+    <Content Include="Content\images\off.png" />
+    <Content Include="Content\images\on.png" />
+    <Content Include="Content\images\port-Keeping.png" />
+    <Content Include="Content\images\port-Teaching.png" />
+    <Content Include="Content\images\question-quick-add.jpg" />
+    <Content Include="Content\uniform.default.css" />
+    <Content Include="Content\widgets\ActivitiesWidget.css" />
+    <Content Include="App_Data\DEV\identityprovider.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Data\DEV\serviceprovider.xml" />
+    <Content Include="Content\images\add_link_button.png" />
+    <Content Include="Content\images\alarm-clock.png" />
+    <Content Include="Content\images\astroportal_logo_2.png" />
+    <Content Include="Content\images\berg7e_login.png" />
+    <Content Include="Content\images\bergerls8e_login.png" />
+    <Content Include="Content\images\bio-banner.png" />
+    <Content Include="Content\images\calculuset2e_login.png" />
+    <Content Include="Content\images\dtu9e_login.png" />
+    <Content Include="Content\images\econ-banner.png" />
+    <Content Include="Content\images\eportmain_banner.png" />
+    <Content Include="Content\images\exploring8e_login.png" />
+    <Content Include="Content\images\faceplate-fne-home.PNG" />
+    <Content Include="Content\images\faceplate-fne-next.PNG" />
+    <Content Include="Content\images\faceplate-fne-prev.PNG" />
+    <Content Include="Content\images\faceplateheader.png" />
+    <Content Include="Content\images\hillis1e_login.png" />
+    <Content Include="Content\images\iga10e_login.png" />
+    <Content Include="Content\images\ips7e_login.png" />
+    <Content Include="Content\images\krugmanwells_modules_econ_login.png" />
+    <Content Include="Content\images\life9e_login.png" />
+    <Content Include="Content\images\morris1e_login.png" />
+    <Content Include="Content\images\pdf_view.jpg" />
+    <Content Include="Content\images\phelan2e_login.png" />
+    <Content Include="Content\images\ppt_view.jpg" />
+    <Content Include="Content\images\psych-banner.png" />
+    <Content Include="Content\images\schacter2e_login.png" />
+    <Content Include="Content\images\slater_login.png" />
+    <Content Include="Content\images\stats-banner.png" />
+    <Content Include="Content\images\unknown_user.jpg" />
+    <Content Include="Content\images\welcome-message-autumn.jpg" />
+    <Content Include="Content\images\welcome-message-college.jpg" />
+    <Content Include="Content\images\welcome-message-sports.jpg" />
+    <Content Include="Content\images\welcome-message-spring.jpg" />
+    <Content Include="Content\images\welcome-message-summer.jpg" />
+    <Content Include="Content\images\welcome-message-winter.jpg" />
+    <Content Include="Content\jquery.ui\jquery.ptTimeSelect.css" />
+    <Content Include="Content\_defaultcourse.css" />
+    <Content Include="Content\EbookBrowser.css" />
+    <Content Include="Content\images\d.png" />
+    <Content Include="Content\images\eport-login.png" />
+    <Content Include="Content\images\astro-banner.png" />
+    <Content Include="Content\images\eportlogo.png" />
+    <Content Include="Content\images\faceplate-home.png" />
+    <Content Include="Content\images\Universe-9e-cover.jpg" />
+    <Content Include="Content\images\fauxtable.png" />
+    <Content Include="Content\images\pin.png" />
+    <Content Include="Content\images\platformXsprite400x600.png" />
+    <Content Include="Content\images\platx_sprite.png" />
+    <Content Include="Content\images\scientific-american-banner.png" />
+    <Content Include="Content\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Content\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Content\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Content\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Content\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Content\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Content\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Content\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Content\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\images\view-questions-menu.jpg" />
+    <Content Include="Content\widgets\CustomRSS.css" />
+    <Content Include="Content\widgets\CustomWidget.css" />
+    <Content Include="Content\widgets\PageLayout.css" />
+    <Content Include="Content\_xbook.css" />
+    <Content Include="crossdomain.xml" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\ActivitiesWidget\ActivitiesWidget.js" />
+    <Content Include="Scripts\AssignmentWidget\CreateAssignmentWidget.js" />
+    <Content Include="Scripts\Assignment\ActivityDetails.js" />
+    <Content Include="Scripts\ContentWidget\ContentAreaWidget.js" />
+    <Content Include="Scripts\Assignment\AssignmentSubmissionDetails.js" />
+    <Content Include="Scripts\CalendarWidget\CalendarWidget.js" />
+    <Content Include="Scripts\Common\PxPage.LargeFNE.js" />
+    <Content Include="Scripts\Common\PxPage.AjaxForm.js" />
+    <Content Include="Scripts\Common\dateFormat.js" />
+    <Content Include="Scripts\DashboardWidget\PxDashboard.js" />
+    <Content Include="Scripts\fullcalendar\fullcalendar.css" />
+    <Content Include="Scripts\fullcalendar\fullcalendar.js" />
+    <Content Include="Scripts\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Scripts\fullcalendar\fullcalendar.print.css" />
+    <Content Include="Scripts\fullcalendar\gcal.js" />
+    <Content Include="Scripts\CourseForm\CourseForm.js" />
+    <Content Include="Scripts\GradebookWidget\Gradebook.js" />
+    <Content Include="Scripts\GradebookWidget\GradebookRoutes.js" />
+    <Content Include="Scripts\GradingScreen\GradingScreen.js" />
+    <Content Include="Scripts\Handlebar\Handlebar.js" />
+    <Content Include="Scripts\Hasher\hasher.js" />
+    <Content Include="Scripts\Hasher\hasher.min.js" />
+    <Content Include="Scripts\Highlight\highlights.js" />
+    <Content Include="Scripts\Highlight\wgxpath.install.js" />
+    <Content Include="Scripts\jquery\jquery.dataTables.min.js" />
+    <Content Include="Scripts\jquery\jquery.utils.js" />
+    <Content Include="Scripts\jquery\jquery.expander.min.js" />
+    <Content Include="Scripts\jquery\modernizr.custom.js" />
+    <Content Include="Scripts\jquery\slides.min.jquery.js" />
+    <Content Include="Scripts\CurrentDueItemWidget\CurrentDueItemWidget.js" />
+    <Content Include="Scripts\FacePlate\PxModal.js" />
+    <Content Include="Scripts\InstructorConsoleWidget\InstructorConsole.js" />
+    <Content Include="Scripts\jquery\jquery.ptTimeSelect.js" />
+    <Content Include="Scripts\Navigation\TocNavigationStructure.js" />
+    <Content Include="Scripts\NoteWidget\NoteLibrary.js" />
+    <Content Include="Scripts\NoteWidget\NoteSetting.js" />
+    <Content Include="Scripts\NoteWidget\NoteWidget.js" />
+    <Content Include="Scripts\Other\date.js" />
+    <Content Include="Scripts\PersistingQtips\PersistingQtips.js" />
+    <Content Include="Scripts\LearningCurve\LearningCurve.js" />
+    <Content Include="Scripts\LearningCurve\LearningCurveMoreResources.js" />
+    <Content Include="Scripts\MenuWidget\PxMenuWidget.js" />
+    <Content Include="Scripts\Quiz\QuizFne.js" />
+    <Content Include="Scripts\Quiz\HtmlQuiz.js" />
+    <Content Include="Scripts\Quiz\QuizHomework.js" />
+    <Content Include="Scripts\Quiz\QuizHTS.js" />
+    <Content Include="Scripts\Quiz\QuizPlayer.js" />
+    <Content Include="Scripts\Quiz\QuizQuestionEditor.js" />
+    <Content Include="Scripts\Quiz\QuizQuestionFilter.js" />
+    <Content Include="Scripts\Quiz\QuizQuestionImporter.js" />
+    <Content Include="Scripts\Quiz\QuizQuestionList.js" />
+    <Content Include="Scripts\Quiz\QuizQuestionListCheckbox.js" />
+    <Content Include="Scripts\Quiz\QuizQuestionListGearbox.js" />
+    <Content Include="Scripts\Quiz\QuizQuestionSearch.js" />
+    <Content Include="Scripts\Rangy\rangy-core.js" />
+    <Content Include="Scripts\RelatedContent\RelatedContent.js" />
+    <Content Include="Scripts\Report\ReportDetails.js" />
+    <Content Include="Scripts\Report\ReportViewer.js" />
+    <Content Include="Scripts\Rubric\DisplayRubric.js" />
+    <Content Include="Scripts\Sandbox\SandboxAlert.js" />
+    <Content Include="Scripts\jquery\jquery.placeholder.js" />
+    <Content Include="Scripts\SearchWidget\SearchWidget.js" />
+    <Content Include="Scripts\FeaturedWidget\FeaturedWidget.js" />
+    <Content Include="Content\jquery.ui\images\select2-spinner.gif" />
+    <Content Include="Content\jquery.ui\select2.css" />
+    <Content Include="Scripts\select2\select2.js" />
+    <Content Include="Scripts\select2\select2.min.js" />
+    <Content Include="Content\jquery.ui\images\select2.png" />
+    <Content Include="Content\jquery.ui\images\select2x2.png" />
+    <Content Include="Scripts\select2\select2_locale_es.js" />
+    <Content Include="Scripts\select2\select2_locale_hu.js" />
+    <Content Include="Scripts\select2\select2_locale_it.js" />
+    <Content Include="Scripts\Signals\signals.js" />
+    <Content Include="Scripts\Signals\signals.min.js" />
+    <Content Include="Scripts\StartWelcomeWidget\StartWelcome.js" />
+    <Content Include="Scripts\Template\TemplatePicker.js" />
+    <Content Include="Scripts\tiny_mce\plugins\hts\AC_RunActiveContent.js" />
+    <Content Include="Scripts\tiny_mce\plugins\hts\css\hts.css" />
+    <Content Include="Scripts\tiny_mce\plugins\hts\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\hts\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\hts\eqeditor.swf" />
+    <Content Include="Scripts\tiny_mce\plugins\hts\formulaEditor.html" />
+    <Content Include="Scripts\tiny_mce\plugins\hts\img\formula.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\hts\js\formulaEditor.js" />
+    <Content Include="Scripts\tiny_mce\plugins\hts\langs\en.js" />
+    <Content Include="Scripts\tiny_mce\plugins\hts\langs\en_dlg.js" />
+    <Content Include="Scripts\tiny_mce\plugins\hts\skins\img\formula.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\hts\skins\img\MultiResponse.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\hts\skins\img\ShortResponse.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\hts\skins\window.css" />
+    <Content Include="Scripts\tiny_mce\plugins\launchpad\editor_plugin.js" />
+    <Content Include="Scripts\QuestionAdmin\QuestionAdmin.js" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\img\flash.gif" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\img\icons.png" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\img\iframe.gif" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\img\pagebreak.gif" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\img\quicktime.gif" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\img\realmedia.gif" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\img\shockwave.gif" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\img\trans.gif" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\img\video.gif" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\img\windowsmedia.gif" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\shortcuts.htm" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\highcontrast\content.css" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\highcontrast\dialog.css" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\highcontrast\ui.css" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\o2k7a\content.css" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\o2k7a\dialog.css" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\o2k7a\img\button_bg.png" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\o2k7a\img\button_bg_black.png" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\o2k7a\img\button_bg_silver.png" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\o2k7a\ui.css" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\o2k7a\ui_black.css" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\o2k7a\ui_silver.css" />
+    <Content Include="Scripts\WidgetHelper\WidgetHelper.js" />
+    <Content Include="Scripts\Xbook\Xbook.js" />
+    <Content Include="Scripts\Xbook\XbookRoutes.js" />
+    <Content Include="Scripts\Xbook\XbookWidget.js" />
+    <Content Include="Tests\lib\blanket\blanket.min.js" />
+    <Content Include="Tests\lib\blanket\jasmine-blanket.js" />
+    <Content Include="Tests\lib\jasmine-1.3.1\jasmine-html.js" />
+    <Content Include="Tests\lib\jasmine-1.3.1\jasmine.css" />
+    <Content Include="Tests\lib\jasmine-1.3.1\jasmine.js" />
+    <Content Include="Tests\lib\mock-ajax.js" />
+    <Content Include="Tests\fixtures\html\highlights.html" />
+    <Content Include="Tests\runners\highlights\HighlightingTests.html" />
+    <Content Include="Tests\runners\highlights\HighlightsTest.html" />
+    <Content Include="Tests\spec\highlights\HighlighterSpec.js" />
+    <Content Include="Tests\spec\highlights\HighlightsSpec.js" />
+    <Content Include="Tests\lib\jasmine-jquery.js" />
+    <Content Include="Tests\fixtures\html\highlightingdoc.html" />
+    <Content Include="version.txt" />
+    <Content Include="Scripts\AboutCourseWidget\AboutCourseWidget.js" />
+    <Content Include="Scripts\AccountWidget\AccountWidget.js" />
+    <Content Include="Scripts\ActionWidget\ActionWidget.js" />
+    <Content Include="Scripts\AnnouncementView\AnnouncementView.js" />
+    <Content Include="Scripts\AnnouncementWidget\AnnouncementWidget.js" />
+    <Content Include="Scripts\AssignmentWidget\AssignmentWidget.js" />
+    <Content Include="Scripts\Assignment\Assignment.js" />
+    <Content Include="Scripts\Breadcrumb\Breadcrumb.js" />
+    <Content Include="Scripts\CalendarWidget\Calendar\MonthlyCalendar.js" />
+    <Content Include="Scripts\Common\less-1.1.3.min.js" />
+    <Content Include="Scripts\Common\NonModal.js" />
+    <Content Include="Scripts\Common\PxCommon.js" />
+    <Content Include="Scripts\Common\PxPage.js" />
+    <Content Include="Scripts\ContentWidget\ContentTemplates.js" />
+    <Content Include="Scripts\ContentWidget\ContentWidget.js" />
+    <Content Include="Scripts\ContentWidget\Templates.js" />
+    <Content Include="Scripts\ECommerce\DomainDialog.js" />
+    <Content Include="Scripts\ECommerce\ECommerce.js" />
+    <Content Include="Scripts\CustomWidget\Custom.js" />
+    <Content Include="Scripts\Datepicker\datepicker.js" />
+    <Content Include="Scripts\Discussion\Discussion.js" />
+    <Content Include="Scripts\easyXDM\cors\index.html" />
+    <Content Include="Scripts\easyXDM\easyXDM.debug.js" />
+    <Content Include="Scripts\easyXDM\easyXDM.js" />
+    <Content Include="Scripts\easyXDM\easyXDM.min.js" />
+    <Content Include="Scripts\easyXDM\easyxdm.swf" />
+    <Content Include="Scripts\easyXDM\easyXDM.Widgets.debug.js" />
+    <Content Include="Scripts\easyXDM\easyXDM.Widgets.js" />
+    <Content Include="Scripts\easyXDM\easyXDM.Widgets.min.js" />
+    <Content Include="Scripts\easyXDM\json2.js" />
+    <Content Include="Scripts\easyXDM\MIT-license.txt" />
+    <Content Include="Scripts\easyXDM\name.html" />
+    <Content Include="Scripts\FacePlate\FaceplateBrowseMoreResources.js" />
+    <Content Include="Scripts\jquery\jquery.sortElements.js" />
+    <Content Include="Scripts\FacePlate\PxFacePlate.js" />
+    <Content Include="Scripts\Groups\PxGroups.js" />
+    <Content Include="Scripts\HighlightWidget\highlighter.js" />
+    <Content Include="Scripts\HighlightWidget\HighlightWidget.js" />
+    <Content Include="Scripts\Highlight\autoHeight.js" />
+    <Content Include="Scripts\jquery\css\uniform.default.css" />
+    <Content Include="Scripts\jquery\images\bg-input-focus.png" />
+    <Content Include="Scripts\jquery\images\bg-input.png" />
+    <Content Include="Scripts\jquery\images\sprite.png" />
+    <Content Include="Scripts\jquery\jquery-1.6.4-vsdoc.js" />
+    <Content Include="Scripts\jquery\jquery-1.6.4.js" />
+    <Content Include="Scripts\jquery\jquery-ui-1.8.18.custom.min.js" />
+    <Content Include="Scripts\jquery\jquery.blockUI.js" />
+    <Content Include="Scripts\jquery\jquery.dropdown.js" />
+    <Content Include="Scripts\jquery\jquery.fauxtree.js" />
+    <Content Include="Scripts\jquery\jquery.form.js" />
+    <Content Include="Scripts\jquery\jquery.pageLayout.js" />
+    <Content Include="Scripts\jquery\jquery.qtip.min.js" />
+    <Content Include="Scripts\jquery\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery\jquery.validate.js" />
+    <Content Include="Scripts\jquery\jquery.validate.min-vsdoc.js" />
+    <Content Include="Scripts\jquery\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jsTree\jquery.jstree.js" />
+    <Content Include="Scripts\jsTree\jquery.jstree.min.js" />
+    <Content Include="Scripts\jsTree\themes\apple\bg.jpg" />
+    <Content Include="Scripts\jsTree\themes\apple\d.png" />
+    <Content Include="Scripts\jsTree\themes\apple\dot_for_ie.gif" />
+    <Content Include="Scripts\jsTree\themes\apple\style.css" />
+    <Content Include="Scripts\jsTree\themes\apple\throbber.gif" />
+    <Content Include="Scripts\jsTree\themes\classic\d.png" />
+    <Content Include="Scripts\jsTree\themes\classic\dot_for_ie.gif" />
+    <Content Include="Scripts\jsTree\themes\classic\style.css" />
+    <Content Include="Scripts\jsTree\themes\classic\throbber.gif" />
+    <Content Include="Scripts\jsTree\themes\default-rtl\d.gif" />
+    <Content Include="Scripts\jsTree\themes\default-rtl\d.png" />
+    <Content Include="Scripts\jsTree\themes\default-rtl\dots.gif" />
+    <Content Include="Scripts\jsTree\themes\default-rtl\style.css" />
+    <Content Include="Scripts\jsTree\themes\default-rtl\throbber.gif" />
+    <Content Include="Scripts\jsTree\themes\default\d.gif" />
+    <Content Include="Scripts\jsTree\themes\default\d.png" />
+    <Content Include="Scripts\jsTree\themes\default\d_autofocus.png" />
+    <Content Include="Scripts\jsTree\themes\default\style.css" />
+    <Content Include="Scripts\jsTree\themes\default\throbber.gif" />
+    <Content Include="Scripts\LAB.src.js" />
+    <Content Include="Scripts\LinkCollection\LinkCollection.js" />
+    <Content Include="Scripts\LinkWidget\LinkLibrary.js" />
+    <Content Include="Scripts\MceAddLink\MceAddLink.js" />
+    <Content Include="Scripts\Microsoft\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\Microsoft\MicrosoftAjax.js" />
+    <Content Include="Scripts\Microsoft\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\Microsoft\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\Microsoft\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Scripts\Microsoft\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\Module\PxUnit.js" />
+    <Content Include="Scripts\Other\1.4.4-jquery.min.js" />
+    <Content Include="Scripts\Other\accordion\index.html" />
+    <Content Include="Scripts\Other\accordion\index_collapsed.html" />
+    <Content Include="Scripts\Other\accordion\jquery-1.2.1.min.js" />
+    <Content Include="Scripts\Other\accordion\menu-collapsed.js" />
+    <Content Include="Scripts\Other\accordion\menu.js" />
+    <Content Include="Scripts\Other\accordion\README.txt" />
+    <Content Include="Scripts\Other\accordion\style.css" />
+    <Content Include="Scripts\Other\jquery.nestedAccordion.js" />
+    <Content Include="Scripts\Other\jquery.tmpl.js" />
+    <Content Include="Scripts\Other\JqueryAccordion.js" />
+    <Content Include="Scripts\Other\json2.js" />
+    <Content Include="Scripts\Other\login_redir.js" />
+    <Content Include="Scripts\Other\motiongallery.js" />
+    <Content Include="Scripts\Other\sugar-1.2.4.min.js" />
+    <Content Include="Scripts\ProfileSummaryWidget\ProfileSummaryWidget.js" />
+    <Content Include="Scripts\Quiz\CQ.js" />
+    <Content Include="Scripts\Quiz\Quiz.js" />
+    <Content Include="Scripts\Rag\RAg.js" />
+    <Content Include="Scripts\Report\Report.js" />
+    <Content Include="Scripts\RssFeed\RssFeed.js" />
+    <Content Include="Scripts\Rubric\RubricManager.js" />
+    <Content Include="Scripts\Rubric\Rubric.js" />
+    <Content Include="Scripts\Rubric\RubricBuilder.js" />
+    <Content Include="Scripts\SettingsTab\ContentSettings.js" />
+    <Content Include="Scripts\SettingsTab\AssignmentSettings.js" />
+    <Content Include="Scripts\SettingsTab\LearningObjectives.js" />
+    <Content Include="Scripts\SettingsTab\SettingsTab.js" />
+    <Content Include="Scripts\tiny_mce\classes\adapter\jquery\adapter.js" />
+    <Content Include="Scripts\tiny_mce\classes\adapter\jquery\jquery.tinymce.js" />
+    <Content Include="Scripts\tiny_mce\classes\adapter\prototype\adapter.js" />
+    <Content Include="Scripts\tiny_mce\classes\AddOnManager.js" />
+    <Content Include="Scripts\tiny_mce\classes\CommandManager.js" />
+    <Content Include="Scripts\tiny_mce\classes\ControlManager.js" />
+    <Content Include="Scripts\tiny_mce\classes\Developer.js" />
+    <Content Include="Scripts\tiny_mce\classes\dom\DOMUtils.js" />
+    <Content Include="Scripts\tiny_mce\classes\dom\Element.js" />
+    <Content Include="Scripts\tiny_mce\classes\dom\EventUtils.js" />
+    <Content Include="Scripts\tiny_mce\classes\dom\Range.js" />
+    <Content Include="Scripts\tiny_mce\classes\dom\RangeUtils.js" />
+    <Content Include="Scripts\tiny_mce\classes\dom\Schema.js" />
+    <Content Include="Scripts\tiny_mce\classes\dom\ScriptLoader.js" />
+    <Content Include="Scripts\tiny_mce\classes\dom\Selection.js" />
+    <Content Include="Scripts\tiny_mce\classes\dom\Serializer.js" />
+    <Content Include="Scripts\tiny_mce\classes\dom\Sizzle.js" />
+    <Content Include="Scripts\tiny_mce\classes\dom\StringWriter.js" />
+    <Content Include="Scripts\tiny_mce\classes\dom\TreeWalker.js" />
+    <Content Include="Scripts\tiny_mce\classes\dom\TridentSelection.js" />
+    <Content Include="Scripts\tiny_mce\classes\dom\XMLWriter.js" />
+    <Content Include="Scripts\tiny_mce\classes\Editor.js" />
+    <Content Include="Scripts\tiny_mce\classes\EditorCommands.js" />
+    <Content Include="Scripts\tiny_mce\classes\EditorManager.js" />
+    <Content Include="Scripts\tiny_mce\classes\firebug\firebug-lite.js" />
+    <Content Include="Scripts\tiny_mce\classes\ForceBlocks.js" />
+    <Content Include="Scripts\tiny_mce\classes\Formatter.js" />
+    <Content Include="Scripts\tiny_mce\classes\html\DomParser.js" />
+    <Content Include="Scripts\tiny_mce\classes\html\Entities.js" />
+    <Content Include="Scripts\tiny_mce\classes\html\Node.js" />
+    <Content Include="Scripts\tiny_mce\classes\html\SaxParser.js" />
+    <Content Include="Scripts\tiny_mce\classes\html\Schema.js" />
+    <Content Include="Scripts\tiny_mce\classes\html\Serializer.js" />
+    <Content Include="Scripts\tiny_mce\classes\html\Styles.js" />
+    <Content Include="Scripts\tiny_mce\classes\html\Writer.js" />
+    <Content Include="Scripts\tiny_mce\classes\LegacyInput.js" />
+    <Content Include="Scripts\tiny_mce\classes\Popup.js" />
+    <Content Include="Scripts\tiny_mce\classes\tinymce.js" />
+    <Content Include="Scripts\tiny_mce\classes\ui\Button.js" />
+    <Content Include="Scripts\tiny_mce\classes\ui\ColorSplitButton.js" />
+    <Content Include="Scripts\tiny_mce\classes\ui\Container.js" />
+    <Content Include="Scripts\tiny_mce\classes\ui\Control.js" />
+    <Content Include="Scripts\tiny_mce\classes\ui\DropMenu.js" />
+    <Content Include="Scripts\tiny_mce\classes\ui\KeyboardNavigation.js" />
+    <Content Include="Scripts\tiny_mce\classes\ui\ListBox.js" />
+    <Content Include="Scripts\tiny_mce\classes\ui\Menu.js" />
+    <Content Include="Scripts\tiny_mce\classes\ui\MenuButton.js" />
+    <Content Include="Scripts\tiny_mce\classes\ui\MenuItem.js" />
+    <Content Include="Scripts\tiny_mce\classes\ui\NativeListBox.js" />
+    <Content Include="Scripts\tiny_mce\classes\ui\Separator.js" />
+    <Content Include="Scripts\tiny_mce\classes\ui\SplitButton.js" />
+    <Content Include="Scripts\tiny_mce\classes\ui\Toolbar.js" />
+    <Content Include="Scripts\tiny_mce\classes\ui\ToolbarGroup.js" />
+    <Content Include="Scripts\tiny_mce\classes\UndoManager.js" />
+    <Content Include="Scripts\tiny_mce\classes\util\Cookie.js" />
+    <Content Include="Scripts\tiny_mce\classes\util\Dispatcher.js" />
+    <Content Include="Scripts\tiny_mce\classes\util\JSON.js" />
+    <Content Include="Scripts\tiny_mce\classes\util\JSONP.js" />
+    <Content Include="Scripts\tiny_mce\classes\util\JSONRequest.js" />
+    <Content Include="Scripts\tiny_mce\classes\util\Quirks.js" />
+    <Content Include="Scripts\tiny_mce\classes\util\URI.js" />
+    <Content Include="Scripts\tiny_mce\classes\util\VK.js" />
+    <Content Include="Scripts\tiny_mce\classes\util\XHR.js" />
+    <Content Include="Scripts\tiny_mce\classes\WindowManager.js" />
+    <Content Include="Scripts\tiny_mce\classes\xml\Parser.js" />
+    <Content Include="Scripts\tiny_mce\jquery.tinymce.js" />
+    <Content Include="Scripts\tiny_mce\langs\en.js" />
+    <Content Include="Scripts\tiny_mce\license.txt" />
+    <Content Include="Scripts\tiny_mce\plugins\advhr\css\advhr.css" />
+    <Content Include="Scripts\tiny_mce\plugins\advhr\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\advhr\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\advhr\js\rule.js" />
+    <Content Include="Scripts\tiny_mce\plugins\advhr\langs\en_dlg.js" />
+    <Content Include="Scripts\tiny_mce\plugins\advhr\rule.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\advimage\css\advimage.css" />
+    <Content Include="Scripts\tiny_mce\plugins\advimage\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\advimage\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\advimage\image.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\advimage\img\sample.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\advimage\js\image.js" />
+    <Content Include="Scripts\tiny_mce\plugins\advimage\langs\en_dlg.js" />
+    <Content Include="Scripts\tiny_mce\plugins\advlink\css\advlink.css" />
+    <Content Include="Scripts\tiny_mce\plugins\advlink\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\advlink\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\advlink\js\advlink.js" />
+    <Content Include="Scripts\tiny_mce\plugins\advlink\langs\en_dlg.js" />
+    <Content Include="Scripts\tiny_mce\plugins\advlink\link.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\advlist\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\advlist\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\autolink\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\autolink\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\autoresize\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\autoresize\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\autosave\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\autosave\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\autosave\langs\en.js" />
+    <Content Include="Scripts\tiny_mce\plugins\bbcode\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\bbcode\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\contextmenu\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\contextmenu\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\customButton\css\customButton.css" />
+    <Content Include="Scripts\tiny_mce\plugins\customButton\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\customButton\img\example.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\customButton\img\sample.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\customButton\langs\en.js" />
+    <Content Include="Scripts\tiny_mce\plugins\customButton\langs\en_dlg.js" />
+    <Content Include="Scripts\tiny_mce\plugins\directionality\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\directionality\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\dropdown\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\dropdown\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\emotions\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\emotions\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\emotions\emotions.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\emotions\img\smiley-cool.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\emotions\img\smiley-cry.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\emotions\img\smiley-embarassed.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\emotions\img\smiley-foot-in-mouth.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\emotions\img\smiley-frown.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\emotions\img\smiley-innocent.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\emotions\img\smiley-kiss.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\emotions\img\smiley-laughing.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\emotions\img\smiley-money-mouth.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\emotions\img\smiley-sealed.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\emotions\img\smiley-smile.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\emotions\img\smiley-surprised.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\emotions\img\smiley-tongue-out.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\emotions\img\smiley-undecided.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\emotions\img\smiley-wink.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\emotions\img\smiley-yell.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\emotions\js\emotions.js" />
+    <Content Include="Scripts\tiny_mce\plugins\emotions\langs\en_dlg.js" />
+    <Content Include="Scripts\tiny_mce\plugins\example\dialog.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\example\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\example\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\example\img\example.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\example\js\dialog.js" />
+    <Content Include="Scripts\tiny_mce\plugins\example\langs\en.js" />
+    <Content Include="Scripts\tiny_mce\plugins\example\langs\en_dlg.js" />
+    <Content Include="Scripts\tiny_mce\plugins\example_dependency\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\example_dependency\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\fullpage\css\fullpage.css" />
+    <Content Include="Scripts\tiny_mce\plugins\fullpage\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\fullpage\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\fullpage\fullpage.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\fullpage\js\fullpage.js" />
+    <Content Include="Scripts\tiny_mce\plugins\fullpage\langs\en_dlg.js" />
+    <Content Include="Scripts\tiny_mce\plugins\fullscreen\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\fullscreen\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\fullscreen\fullscreen.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\iespell\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\iespell\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\indentDropdown\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\indentDropdown\img\example.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\indentDropdown\js\dialog.js" />
+    <Content Include="Scripts\tiny_mce\plugins\indentDropdown\langs\en.js" />
+    <Content Include="Scripts\tiny_mce\plugins\indentDropdown\langs\en_dlg.js" />
+    <Content Include="Scripts\tiny_mce\plugins\inlinepopups\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\inlinepopups\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\alert.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\button.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\buttons.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\confirm.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\corners.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\horizontal.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\vertical.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\inlinepopups\skins\clearlooks2\window.css" />
+    <Content Include="Scripts\tiny_mce\plugins\inlinepopups\template.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\insertdatetime\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\insertdatetime\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\justifyDropdown\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\justifyDropdown\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\justifyDropdown\img\example.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\justifyDropdown\js\dialog.js" />
+    <Content Include="Scripts\tiny_mce\plugins\justifyDropdown\langs\en.js" />
+    <Content Include="Scripts\tiny_mce\plugins\justifyDropdown\langs\en_dlg.js" />
+    <Content Include="Scripts\tiny_mce\plugins\layer\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\layer\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\legacyoutput\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\legacyoutput\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\lists\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\lists\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\media\css\content.css" />
+    <Content Include="Scripts\tiny_mce\plugins\media\css\media.css" />
+    <Content Include="Scripts\tiny_mce\plugins\media\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\media\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\media\img\flash.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\media\img\flv_player.swf" />
+    <Content Include="Scripts\tiny_mce\plugins\media\img\quicktime.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\media\img\realmedia.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\media\img\shockwave.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\media\img\trans.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\media\img\windowsmedia.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\media\js\embed.js" />
+    <Content Include="Scripts\tiny_mce\plugins\media\js\media.js" />
+    <Content Include="Scripts\tiny_mce\plugins\media\langs\en_dlg.js" />
+    <Content Include="Scripts\tiny_mce\plugins\media\media.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\netImageBrowser\css\browser.css" />
+    <Content Include="Scripts\tiny_mce\plugins\netImageBrowser\css\jquery.contextMenu.css" />
+    <Content Include="Scripts\tiny_mce\plugins\netImageBrowser\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\netImageBrowser\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\netImageBrowser\img\button-bg.png" />
+    <Content Include="Scripts\tiny_mce\plugins\netImageBrowser\img\cut.png" />
+    <Content Include="Scripts\tiny_mce\plugins\netImageBrowser\img\door.png" />
+    <Content Include="Scripts\tiny_mce\plugins\netImageBrowser\img\fading_background_19.png" />
+    <Content Include="Scripts\tiny_mce\plugins\netImageBrowser\img\folder.png" />
+    <Content Include="Scripts\tiny_mce\plugins\netImageBrowser\img\folder_home.png" />
+    <Content Include="Scripts\tiny_mce\plugins\netImageBrowser\img\go-home.png" />
+    <Content Include="Scripts\tiny_mce\plugins\netImageBrowser\img\login-page-bg.jpg" />
+    <Content Include="Scripts\tiny_mce\plugins\netImageBrowser\img\page_white_copy.png" />
+    <Content Include="Scripts\tiny_mce\plugins\netImageBrowser\img\page_white_delete.png" />
+    <Content Include="Scripts\tiny_mce\plugins\netImageBrowser\img\page_white_edit.png" />
+    <Content Include="Scripts\tiny_mce\plugins\netImageBrowser\img\page_white_paste.png" />
+    <Content Include="Scripts\tiny_mce\plugins\netImageBrowser\img\sample.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\netImageBrowser\js\jquery.contextMenu.js" />
+    <Content Include="Scripts\tiny_mce\plugins\netImageBrowser\js\jquery.jqURL.js" />
+    <Content Include="Scripts\tiny_mce\plugins\netImageBrowser\js\netbrowser.js" />
+    <Content Include="Scripts\tiny_mce\plugins\netImageBrowser\langs\en_dlg.js" />
+    <Content Include="Scripts\tiny_mce\plugins\nonbreaking\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\nonbreaking\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\noneditable\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\noneditable\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\pagebreak\css\content.css" />
+    <Content Include="Scripts\tiny_mce\plugins\pagebreak\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\pagebreak\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\pagebreak\img\pagebreak.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\pagebreak\img\trans.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\paste\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\paste\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\paste\js\pastetext.js" />
+    <Content Include="Scripts\tiny_mce\plugins\paste\js\pasteword.js" />
+    <Content Include="Scripts\tiny_mce\plugins\paste\langs\en_dlg.js" />
+    <Content Include="Scripts\tiny_mce\plugins\paste\pastetext.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\paste\pasteword.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\preview\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\preview\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\preview\example.html" />
+    <Content Include="Scripts\tiny_mce\plugins\preview\jscripts\embed.js" />
+    <Content Include="Scripts\tiny_mce\plugins\preview\preview.html" />
+    <Content Include="Scripts\tiny_mce\plugins\print\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\print\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\save\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\save\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\searchreplace\css\searchreplace.css" />
+    <Content Include="Scripts\tiny_mce\plugins\searchreplace\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\searchreplace\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\searchreplace\js\searchreplace.js" />
+    <Content Include="Scripts\tiny_mce\plugins\searchreplace\langs\en_dlg.js" />
+    <Content Include="Scripts\tiny_mce\plugins\searchreplace\searchreplace.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\spellchecker\css\content.css" />
+    <Content Include="Scripts\tiny_mce\plugins\spellchecker\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\spellchecker\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\spellchecker\img\wline.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\style\css\props.css" />
+    <Content Include="Scripts\tiny_mce\plugins\style\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\style\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\style\js\props.js" />
+    <Content Include="Scripts\tiny_mce\plugins\style\langs\en_dlg.js" />
+    <Content Include="Scripts\tiny_mce\plugins\style\props.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\subSupDropdown\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\subSupDropdown\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\subSupDropdown\img\example.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\subSupDropdown\js\dialog.js" />
+    <Content Include="Scripts\tiny_mce\plugins\subSupDropdown\langs\en.js" />
+    <Content Include="Scripts\tiny_mce\plugins\subSupDropdown\langs\en_dlg.js" />
+    <Content Include="Scripts\tiny_mce\plugins\tabfocus\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\tabfocus\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\tableDropdown\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\tableDropdown\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\tableDropdown\img\example.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\tableDropdown\js\dialog.js" />
+    <Content Include="Scripts\tiny_mce\plugins\tableDropdown\langs\en.js" />
+    <Content Include="Scripts\tiny_mce\plugins\tableDropdown\langs\en_dlg.js" />
+    <Content Include="Scripts\tiny_mce\plugins\table\cell.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\table\css\cell.css" />
+    <Content Include="Scripts\tiny_mce\plugins\table\css\row.css" />
+    <Content Include="Scripts\tiny_mce\plugins\table\css\table.css" />
+    <Content Include="Scripts\tiny_mce\plugins\table\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\table\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\table\js\cell.js" />
+    <Content Include="Scripts\tiny_mce\plugins\table\js\merge_cells.js" />
+    <Content Include="Scripts\tiny_mce\plugins\table\js\row.js" />
+    <Content Include="Scripts\tiny_mce\plugins\table\js\table.js" />
+    <Content Include="Scripts\tiny_mce\plugins\table\langs\en_dlg.js" />
+    <Content Include="Scripts\tiny_mce\plugins\table\merge_cells.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\table\row.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\table\table.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\tagInsert\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\template\blank.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\template\css\template.css" />
+    <Content Include="Scripts\tiny_mce\plugins\template\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\template\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\template\js\template.js" />
+    <Content Include="Scripts\tiny_mce\plugins\template\langs\en_dlg.js" />
+    <Content Include="Scripts\tiny_mce\plugins\template\template.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\textOpsDropdown\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\textOpsDropdown\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\textOpsDropdown\img\example.gif" />
+    <Content Include="Scripts\tiny_mce\plugins\textOpsDropdown\js\dialog.js" />
+    <Content Include="Scripts\tiny_mce\plugins\textOpsDropdown\langs\en.js" />
+    <Content Include="Scripts\tiny_mce\plugins\textOpsDropdown\langs\en_dlg.js" />
+    <Content Include="Scripts\tiny_mce\plugins\visualchars\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\visualchars\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\wordcount\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\wordcount\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\xhtmlxtras\abbr.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\xhtmlxtras\acronym.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\xhtmlxtras\attributes.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\xhtmlxtras\cite.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\xhtmlxtras\css\attributes.css" />
+    <Content Include="Scripts\tiny_mce\plugins\xhtmlxtras\css\popup.css" />
+    <Content Include="Scripts\tiny_mce\plugins\xhtmlxtras\del.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\xhtmlxtras\editor_plugin.js" />
+    <Content Include="Scripts\tiny_mce\plugins\xhtmlxtras\editor_plugin_src.js" />
+    <Content Include="Scripts\tiny_mce\plugins\xhtmlxtras\ins.htm" />
+    <Content Include="Scripts\tiny_mce\plugins\xhtmlxtras\js\abbr.js" />
+    <Content Include="Scripts\tiny_mce\plugins\xhtmlxtras\js\acronym.js" />
+    <Content Include="Scripts\tiny_mce\plugins\xhtmlxtras\js\attributes.js" />
+    <Content Include="Scripts\tiny_mce\plugins\xhtmlxtras\js\cite.js" />
+    <Content Include="Scripts\tiny_mce\plugins\xhtmlxtras\js\del.js" />
+    <Content Include="Scripts\tiny_mce\plugins\xhtmlxtras\js\element_common.js" />
+    <Content Include="Scripts\tiny_mce\plugins\xhtmlxtras\js\ins.js" />
+    <Content Include="Scripts\tiny_mce\plugins\xhtmlxtras\langs\en_dlg.js" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\about.htm" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\anchor.htm" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\charmap.htm" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\color_picker.htm" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\editor_template.js" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\editor_template_src.js" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\image.htm" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\img\colorpicker.jpg" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\img\folder_picture.png" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\img\icons.gif" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\js\about.js" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\js\anchor.js" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\js\charmap.js" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\js\color_picker.js" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\js\image.js" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\js\link.js" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\js\source_editor.js" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\langs\en.js" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\langs\en_dlg.js" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\link.htm" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\default\content.css" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\default\dialog.css" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\default\img\buttons.png" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\default\img\items.gif" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\default\img\menu_arrow.gif" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\default\img\menu_check.gif" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\default\img\progress.gif" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\default\img\tabs.gif" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\default\ui.css" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\o2k7\content.css" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\o2k7\dialog.css" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\o2k7\img\button_bg.png" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\o2k7\img\button_bg_black.png" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\o2k7\img\button_bg_silver.png" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\o2k7\ui.css" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\o2k7\ui_black.css" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\skins\o2k7\ui_silver.css" />
+    <Content Include="Scripts\tiny_mce\themes\advanced\source_editor.htm" />
+    <Content Include="Scripts\tiny_mce\themes\simple\editor_template.js" />
+    <Content Include="Scripts\tiny_mce\themes\simple\editor_template_src.js" />
+    <Content Include="Scripts\tiny_mce\themes\simple\img\icons.gif" />
+    <Content Include="Scripts\tiny_mce\themes\simple\langs\en.js" />
+    <Content Include="Scripts\tiny_mce\themes\simple\skins\default\content.css" />
+    <Content Include="Scripts\tiny_mce\themes\simple\skins\default\ui.css" />
+    <Content Include="Scripts\tiny_mce\themes\simple\skins\o2k7\content.css" />
+    <Content Include="Scripts\tiny_mce\themes\simple\skins\o2k7\img\button_bg.png" />
+    <Content Include="Scripts\tiny_mce\themes\simple\skins\o2k7\ui.css" />
+    <Content Include="Scripts\tiny_mce\themes\zen\editor_template.js" />
+    <Content Include="Scripts\tiny_mce\themes\zen\editor_template_src.js" />
+    <Content Include="Scripts\tiny_mce\themes\zen\img\icons.gif" />
+    <Content Include="Scripts\tiny_mce\themes\zen\langs\en.js" />
+    <Content Include="Scripts\tiny_mce\themes\zen\skins\default\content.css" />
+    <Content Include="Scripts\tiny_mce\themes\zen\skins\default\ui.css" />
+    <Content Include="Scripts\tiny_mce\themes\zen\skins\o2k7\content.css" />
+    <Content Include="Scripts\tiny_mce\themes\zen\skins\o2k7\img\button_bg.png" />
+    <Content Include="Scripts\tiny_mce\themes\zen\skins\o2k7\ui.css" />
+    <Content Include="Scripts\tiny_mce\tiny_mce.js" />
+    <Content Include="Scripts\tiny_mce\tiny_mce_dev.js" />
+    <Content Include="Scripts\tiny_mce\tiny_mce_gzip.js" />
+    <Content Include="Scripts\tiny_mce\tiny_mce_jquery.js" />
+    <Content Include="Scripts\tiny_mce\tiny_mce_jquery_src.js" />
+    <Content Include="Scripts\tiny_mce\tiny_mce_popup.js" />
+    <Content Include="Scripts\tiny_mce\tiny_mce_prototype.js" />
+    <Content Include="Scripts\tiny_mce\tiny_mce_prototype_src.js" />
+    <Content Include="Scripts\tiny_mce\tiny_mce_src.js" />
+    <Content Include="Scripts\tiny_mce\utils\editable_selects.js" />
+    <Content Include="Scripts\tiny_mce\utils\form_utils.js" />
+    <Content Include="Scripts\tiny_mce\utils\mctabs.js" />
+    <Content Include="Scripts\tiny_mce\utils\validate.js" />
+    <Content Include="Scripts\Upload\Upload.js" />
+    <Content Include="Views\AboutCourseWidget\Index.ascx" />
+    <Content Include="Views\AboutCourseWidget\Edit.ascx" />
+    <Content Include="Views\AboutCourseWidget\ItemEdit.ascx" />
+    <Content Include="Views\AboutCourseWidget\Save.ascx" />
+    <Content Include="Views\Account\SessionExtended.aspx" />
+    <Content Include="Views\Account\TermsAndConditions.ascx" />
+    <Content Include="Views\ActivitiesWidget\Unsorted.ascx" />
+    <Content Include="Views\ActivitiesWidget\SortedByDueDate.ascx" />
+    <Content Include="Views\ActivitiesWidget\Summary.ascx" />
+    <Content Include="Views\AdminMetaData\AssociatedChaptersDropDown.ascx" />
+    <Content Include="Views\AdminMetaData\MetaDataChaptersAssociations.ascx" />
+    <Content Include="Views\AdminMetaData\MetaDataDropDownList.ascx" />
+    <Content Include="Views\AdminMetaData\MetaDataInputText.ascx" />
+    <Content Include="Views\AdminMetaData\MetaDataRadioButtonList.ascx" />
+    <Content Include="Views\AdminMetaData\MetaDataResourceSubType.ascx" />
+    <Content Include="Views\AdminMetaData\MetaDataStaticText.ascx" />
+    <Content Include="Views\AdminMetaData\QuizToTest.xml" />
+    <Content Include="Views\AdminMetaData\MetaDataXmlTemplate.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\ContentAreaWidget\ContentAreaViewOptions.ascx" />
+    <Content Include="Views\ContentAreaWidget\XbookContentOptions.ascx" />
+    <Content Include="Views\Course\CourseActivationConfirmation.ascx" />
+    <Content Include="Views\Course\StudentEmailTemplate.ascx" />
+    <Content Include="Views\AssignmentWidget\CreateAssignment.ascx" />
+    <Content Include="Views\AssignmentWidget\LaunchPad.ascx" />
+    <Content Include="Views\AssignmentWidget\TocLinks.ascx" />
+    <Content Include="Views\BrowseMoreResourcesWidget\ResourceQuestionSearch.ascx" />
+    <Content Include="Views\BrowseMoreResourcesWidget\ResourceQuestionBanks.ascx" />
+    <Content Include="Views\BrowseMoreResourcesWidget\ResourceBreadcrumb.ascx" />
+    <Content Include="Views\BrowseMoreResourcesWidget\ResourceList.ascx" />
+    <Content Include="Views\BrowseMoreResourcesWidget\ResourceTypeList.ascx" />
+    <Content Include="Views\BrowseMoreResourcesWidget\FacePlateBrowseResourcesFacetsInstructorConsole.ascx" />
+    <Content Include="Views\BrowseMoreResourcesWidget\FacePlateBrowseResourcesFacetsInstructorConsoleEdit.ascx" />
+    <Content Include="Views\BrowseMoreResourcesWidget\FacePlateBrowseResourcesInstructorConsole.ascx" />
+    <Content Include="Views\BrowseMoreResourcesWidget\FaceplateBrowseResourcesMenuInstructorConsole.ascx" />
+    <Content Include="Views\BrowseMoreResourcesWidget\FaceplateBrowseResourcesMenuInstructorConsoleEdit.ascx" />
+    <Content Include="Views\ContentAreaWidget\Summary.ascx" />
+    <Content Include="Views\CourseActivationWidget\Summary.ascx" />
+    <Content Include="Views\DashboardCoursesWidget\ActivateDashboardCourse.ascx" />
+    <Content Include="Views\DashboardCoursesWidget\CourseActivationLink.ascx" />
+    <Content Include="Views\DashboardCoursesWidget\CourseInfo.ascx" />
+    <Content Include="Views\DashboardCoursesWidget\CourseTitleLink.ascx" />
+    <Content Include="Views\DashboardCoursesWidget\CreateCourse.ascx" />
+    <Content Include="Views\DashboardCoursesWidget\CreateCourseOption.ascx" />
+    <Content Include="Views\DashboardCoursesWidget\DashboardDialogs.ascx" />
+    <Content Include="Views\DashboardCoursesWidget\CreateBranchConfirmation.ascx" />
+    <Content Include="Views\DashboardCoursesWidget\DeactivateDashboardCourse.ascx" />
+    <Content Include="Views\DashboardCoursesWidget\DeleteDashboardCourse.ascx" />
+    <Content Include="Views\DashboardCoursesWidget\FindSchool.ascx" />
+    <Content Include="Views\DashboardCoursesWidget\LaunchPadRow.ascx" />
+    <Content Include="Views\DashboardCoursesWidget\GenricDashboardRow.ascx" />
+    <Content Include="Views\DashboardCoursesWidget\ViewRoster.ascx" />
+    <Content Include="Views\ECommerce\EnrollmentConfirmationForm.ascx" />
+    <Content Include="Views\ECommerce\JoinForm.ascx" />
+    <Content Include="Views\ErrorPage\Error500.aspx" />
+    <Content Include="Views\FacePlate\AddQuestionToExistingAssessment.ascx" />
+    <Content Include="Views\FeaturedWidget\Summary.ascx" />
+    <Content Include="Views\FneMenuWidget\Summary.ascx" />
+    <Content Include="Views\GradebookWidget\AssignedScores.ascx" />
+    <Content Include="Views\GradebookWidget\AssignmentSummary.ascx" />
+    <Content Include="Views\GradebookWidget\Gradebook.ascx" />
+    <Content Include="Views\GradebookWidget\OtherScores.ascx" />
+    <Content Include="Views\GradebookWidget\ItemScores.ascx" />
+    <Content Include="Views\GradebookWidget\StudentDetail.ascx" />
+    <Content Include="Views\GradebookWidget\StudentGradebook.ascx" />
+    <Content Include="Views\GradingTitleWidget\Summary.ascx" />
+    <Content Include="Views\Grading\DisplayItem.ascx" />
+    <Content Include="Views\Grading\Header.ascx" />
+    <Content Include="Views\InstructorConsoleWidget\GradebookCategoriesList.ascx" />
+    <Content Include="Views\InstructorConsoleWidget\GradebookPreferences.ascx" />
+    <Content Include="Views\LearningObjective\ListDetails.ascx" />
+    <Content Include="Views\QuestionAdmin\BulkConfirmationDialog.ascx" />
+    <Content Include="Views\QuestionAdmin\BulkEdit.ascx" />
+    <Content Include="Views\QuestionAdmin\BulkOperationDetails.ascx" />
+    <Content Include="Views\QuestionAdmin\BulkOperationList.ascx" />
+    <Content Include="Views\QuestionAdmin\getStyleQuestions.ascx" />
+    <Content Include="Views\QuestionAdmin\HistoryTabDetails.ascx" />
+    <Content Include="Views\QuestionAdmin\MetadataTab.ascx" />
+    <Content Include="Views\QuestionAdmin\QuestionFlagContainer.ascx" />
+    <Content Include="Views\QuestionAdmin\StyleQuestions.ascx" />
+    <Content Include="Views\SearchWidget\BeingMetaSearch.ascx" />
+    <Content Include="Views\Shared\BackToBlackBoard.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\HtmlQuiz.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\QuizPartials\ImporterDialog.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\QuizPartials\SingleQuestion.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\QuizPartials\UsedElseWhere.ascx" />
+    <Content Include="Views\Shared\DocumentFileDownload.ascx" />
+    <Content Include="Views\Shared\DocumentList.ascx" />
+    <Content Include="Views\Shared\GradingTemplates\HtmlDocument.ascx" />
+    <Content Include="Views\Shared\GradingTemplates\ExternalContent.ascx" />
+    <Content Include="Views\Shared\GradingTemplates\HtmlQuiz.ascx" />
+    <Content Include="Views\Shared\GradingTemplates\Quiz.ascx" />
+    <Content Include="Views\Shared\LoadingSplashScreen.ascx" />
+    <Content Include="Views\Home\ModalTest.aspx" />
+    <Content Include="Views\Shared\ProgressBar.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\QuizPartials\QuizTemplateId.ascx" />
+    <Content Include="Views\Shared\RelatedItems.ascx" />
+    <Content Include="Views\Shared\ShowAddToNewAssessment.ascx" />
+    <Content Include="Views\Shared\ShowPersistentQtip.ascx" />
+    <Content Include="Views\Shared\UploadDocCol.ascx" />
+    <Content Include="Views\Shared\CustomQuestionEditorComponent.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\Link.ascx" />
+    <Content Include="Views\Shared\FneHeaderDoneButton.ascx" />
+    <Content Include="Views\Course\FindSchool.ascx" />
+    <Content Include="Views\DashboardCoursesWidget\ProgramDashboard.ascx" />
+    <Content Include="Views\DashboardCoursesWidget\Summary.ascx" />
+    <Content Include="Views\Dashboard\Index.aspx" />
+    <Content Include="Views\ECommerce\EnrollForm.ascx" />
+    <Content Include="Views\ECommerce\GeneralCourse.ascx" />
+    <Content Include="Views\ECommerce\GenericCourse.ascx" />
+    <Content Include="Views\ECommerce\Join.aspx" />
+    <Content Include="Views\FacePlate\FacePlateLaunchPadTab.ascx" />
+    <Content Include="Views\Home\CourseNotAdopted.ascx" />
+    <Content Include="Views\InstructorConsoleWidget\SettingsItems.ascx" />
+    <Content Include="Views\NewAssignmentWidget\Summary.ascx" />
+    <Content Include="Views\Shared\DisplayItemNone.ascx" />
+    <Content Include="Views\Shared\EasyxdmIFrameContainer.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\Ebook.ascx" />
+    <Content Include="Views\Shared\ItemEditorTemplate.ascx" />
+    <Content Include="Views\Shared\FneHeaderFullNotInCourse.ascx" />
+    <Content Include="Views\Shared\FneHeaderFullResults.ascx" />
+    <Content Include="Views\Shared\FneHeaderFullEdit.ascx" />
+    <Content Include="Views\Shared\FneHeaderFullPreview.ascx" />
+    <Content Include="Views\Shared\FneHeaderGeneric.ascx" />
+    <Content Include="Views\Shared\LaunchPadItemStatus.ascx" />
+    <Content Include="Views\AdminMetaData\MetaDataIndex.ascx" />
+    <Content Include="Views\PageContainerWidget\Summary.ascx" />
+    <Content Include="Views\ProfileSummaryWidget\StudentProfile.ascx" />
+    <Content Include="Views\InstructorConsoleWidget\ResourcesEdit.ascx" />
+    <Content Include="Views\InstructorConsoleWidget\FacetValuesEdit.ascx" />
+    <Content Include="Views\InstructorConsoleWidget\FacetValues.ascx" />
+    <Content Include="Views\InstructorConsoleWidget\Resources.ascx" />
+    <Content Include="Views\InstructorConsoleWidget\BrowseResourcesItems.ascx" />
+    <Content Include="Views\BrowseMoreResourcesWidget\Index.ascx" />
+    <Content Include="Views\CalendarWidget\AgendaFullView.ascx" />
+    <Content Include="Views\CalendarWidget\MonthFullView.ascx" />
+    <Content Include="Views\CalendarWidget\ViewAll.ascx" />
+    <Content Include="Views\ContentWidget\AssignTab.ascx" />
+    <Content Include="Views\ContentWidget\AssignmentCalendar.ascx" />
+    <Content Include="Views\ContentWidget\AssignTabButtons.ascx" />
+    <Content Include="Views\ContentWidget\ContentSettings.ascx" />
+    <Content Include="Views\ContentWidget\ContentSettingsSectionHeader.ascx" />
+    <Content Include="Views\ContentWidget\DisplayRelatedTemplates.ascx" />
+    <Content Include="Views\ContentWidget\Gradebook.ascx" />
+    <Content Include="Views\ContentWidget\ResultItem.ascx" />
+    <Content Include="Views\ContentWidget\SettingsView.ascx" />
+    <Content Include="Views\ContentWidget\SyllabusFilter.ascx" />
+    <Content Include="Views\ContentWidget\Visibility.ascx" />
+    <Content Include="Views\EasyXDM\Provider.aspx" />
+    <Content Include="Views\Course\ProductScripts.ascx" />
+    <Content Include="Views\DashboardWidget\SharedWithMeSummary.ascx" />
+    <Content Include="Views\InstructorConsoleWidget\BatchDueDateUpdater.ascx" />
+    <Content Include="Views\InstructorConsoleWidget\LaunchPad.ascx" />
+    <Content Include="Views\InstructorConsoleWidget\Navigation.ascx" />
+    <Content Include="Views\LaunchPadTreeWidget\LaunchPad.ascx" />
+    <Content Include="Views\InstructorConsoleWidget\View.ascx" />
+    <Content Include="Views\MenuWidget\Pagination.ascx" />
+    <Content Include="Views\MenuWidget\MenuItem.ascx" />
+    <Content Include="Views\MenuWidget\MenuLink.ascx" />
+    <Content Include="Views\MenuWidget\Summary.ascx" />
+    <Content Include="Views\MenuWidget\ViewAll.ascx" />
+    <Content Include="Views\Shared\DisplayItemContentNav.ascx" />
+    <Content Include="Views\Shared\DisplayItemResults.ascx" />
+    <Content Include="Views\Shared\FneHeaderSmall.ascx" />
+    <Content Include="Views\Shared\DropboxSubmittedDocument.ascx" />
+    <Content Include="Views\Shared\FneHeaderFullScreen.ascx" />
+    <Content Include="Views\Shared\LearningCurveWindow.ascx" />
+    <Content Include="Views\Shared\SandboxAlert.ascx" />
+    <Content Include="Views\Shared\SandboxPublish.ascx" />
+    <Content Include="Views\Shared\SandboxRevert.ascx" />
+    <Content Include="Views\Shared\CourseForm.ascx" />
+    <Content Include="Views\CourseWidget\CourseWidget.ascx" />
+    <Content Include="Views\CourseWidget\ViewAll.aspx" />
+    <Content Include="Views\CustomSettings\Default.ascx" />
+    <Content Include="Views\CustomSettings\FrameComponent.ascx" />
+    <Content Include="Views\CustomSettings\Quiz.ascx" />
+    <Content Include="Views\DashboardWidget\CopyToMyTemplates.ascx" />
+    <Content Include="Views\Download\HtmlContent.ascx" />
+    <Content Include="Views\EbookBrowser\DownloadOriginal.ascx" />
+    <Content Include="Views\ECommerce\EnrollmentConfirmation.aspx" />
+    <Content Include="Views\ECommerce\CourseList.aspx" />
+    <Content Include="Views\ECommerce\ECommerceActionBar.ascx" />
+    <Content Include="Views\ECommerce\ECommerceMarketing.ascx" />
+    <Content Include="Views\ECommerce\Enroll.aspx" />
+    <Content Include="Views\ECommerce\Index.aspx" />
+    <Content Include="Views\ErrorPage\Index.aspx" />
+    <Content Include="Views\Home\TestProjectItem.aspx" />
+    <Content Include="Views\InstructorConsoleWidget\EditView.ascx" />
+    <Content Include="Views\InstructorConsoleWidget\Settings.ascx" />
+    <Content Include="Views\LaunchPadTreeWidget\DisplayItem.ascx" />
+    <Content Include="Views\LaunchPadTreeWidget\EditContentView.ascx" />
+    <Content Include="Views\LaunchPadTreeWidget\ManagementCard.ascx" />
+    <Content Include="Views\LaunchPadTreeWidget\Index.ascx" />
+    <Content Include="Views\FacePlateSupportWidget\ViewSupport.ascx" />
+    <Content Include="Views\FacePlate\ShowMoveOrCopy.ascx" />
+    <Content Include="Views\BrowseMoreResourcesWidget\ResourceFacets.ascx" />
+    <Content Include="Views\BrowseMoreResourcesWidget\ResourceResults.ascx" />
+    <Content Include="Views\HealthCheck\Index.aspx" />
+    <Content Include="Views\Home\Start.aspx" />
+    <Content Include="Views\Home\Index2.aspx" />
+    <Content Include="Views\FacePlateSupportWidget\Summary.ascx" />
+    <Content Include="Views\InstructorConsoleWidget\FullView.ascx" />
+    <Content Include="Views\Groups\GradebookScorecardFne.ascx" />
+    <Content Include="Views\InstructorConsoleWidget\Summary.ascx" />
+    <Content Include="Views\ProgressWidget\StudentGradebook.ascx" />
+    <Content Include="Views\QuestionAdmin\AddNotes.ascx" />
+    <Content Include="Views\QuestionAdmin\AddFlag.ascx" />
+    <Content Include="Views\QuestionAdmin\DynamicAddQuestion.ascx" />
+    <Content Include="Views\QuestionAdmin\DynamicFormatDropDown.ascx" />
+    <Content Include="Views\QuestionAdmin\PreviewTab.ascx" />
+    <Content Include="Views\QuestionAdmin\QuizzesTab.ascx" />
+    <Content Include="Views\QuestionAdmin\QuestionEditorTab.ascx" />
+    <Content Include="Views\QuestionAdmin\QuestionEditor.ascx" />
+    <Content Include="Views\QuestionAdmin\HistoryTab.ascx" />
+    <Content Include="Views\QuestionAdmin\NotesTab.ascx" />
+    <Content Include="Views\QuestionAdmin\QuestionsListResult.ascx" />
+    <Content Include="Views\QuestionAdmin\QuizListDropDown.ascx" />
+    <Content Include="Views\QuestionAdmin\SearchResult.ascx" />
+    <Content Include="Views\QuestionAdmin\Index.aspx" />
+    <Content Include="Views\QuestionAdmin\SearchPanel.ascx" />
+    <Content Include="Views\RSSFeedWidget\CompactSummaryFPStart.ascx" />
+    <Content Include="Views\RSSFeedWidget\CompactSummaryFPStartPartial.ascx" />
+    <Content Include="Views\Search\FacetedSearchResults.ascx" />
+    <Content Include="Views\Shared\AccountActionsList.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\Dropbox.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\LearningCurvePartials\QuestionSettings.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\Dropbox.ascx" />
+    <Content Include="Views\Shared\LearningCurveResults.ascx" />
+    <Content Include="Views\Shared\LearningCurvePlayer.ascx" />
+    <Content Include="Views\Shared\SocialCommenting.ascx" />
+    <Content Include="Views\Shared\StartPageContainer.ascx" />
+    <Content Include="Views\Shared\StartPageCourseHeader.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\LearningCurveActivity.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\LearningCurveActivity.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\QuizPartials\RelatedContent.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\Dropbox.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\QuizPartials\QuestionList.ascx" />
+    <Content Include="Views\Shared\DropboxSubmittedDocument.ascx" />
+    <Content Include="Views\Shared\EasyxdmIFrameContainer.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\Dropbox.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\GradeRule.ascx" />
+    <Content Include="Views\Shared\HTSIFrameComponent.ascx" />
+    <Content Include="Views\Shared\EcomHomePageCourseHeader.ascx" />
+    <Content Include="Views\Shared\DeleteConfirmDialog.ascx" />
+    <Content Include="Views\Home\Enroll.aspx" />
+    <Content Include="Views\Home\EnrollmentConfirmation.aspx" />
+    <Content Include="Views\EbookBrowser\Selection.aspx" />
+    <Content Include="Views\AnnouncementWidget\ViewAllAnnouncement.ascx" />
+    <Content Include="Views\AssessmentSettings\ReviewSetting.ascx" />
+    <Content Include="Views\AssignmentWidget\EditorModal.ascx" />
+    <Content Include="Views\DashboardWidget\Summary.ascx" />
+    <Content Include="Views\CustomWidget\AddEdit.ascx" />
+    <Content Include="Views\CustomWidget\Summary.ascx" />
+    <Content Include="Views\EbookBrowser\EbookSelection.ascx" />
+    <Content Include="Views\EbookBrowser\Index.aspx" />
+    <Content Include="Views\FacePlate\FacePlateStudentDetails.ascx" />
+    <Content Include="Views\Shared\FneHeaderEditMenu.ascx" />
+    <Content Include="Views\LaunchPadTreeWidget\LaunchPadItem.ascx" />
+    <Content Include="Views\Groups\ManageGroupsFne.ascx" />
+    <Content Include="Views\Groups\GradebookScorecard.aspx" />
+    <Content Include="Views\Highlight\FileDownload.ascx" />
+    <Content Include="Views\Course\CreateDashboard.aspx" />
+    <Content Include="Views\Highlight\TopNotesCollection.ascx" />
+    <Content Include="Views\Home\DashBoard.aspx" />
+    <Content Include="Views\LearningObjective\Add.ascx" />
+    <Content Include="Views\LearningObjective\Checkbox.ascx" />
+    <Content Include="Views\LearningObjective\ObjectiveForm.ascx" />
+    <Content Include="Views\LearningObjective\Index.ascx" />
+    <Content Include="Views\LearningObjective\List.ascx" />
+    <Content Include="Views\AssessmentSettings\Index.ascx" />
+    <Content Include="Views\ProfileSummaryWidget\Edit.ascx" />
+    <Content Include="Views\ProfileSummaryWidget\Summary.ascx" />
+    <Content Include="Views\RSSFeedWidget\AddEdit.ascx" />
+    <Content Include="Views\RSSFeedWidget\CompactSummary.ascx" />
+    <Content Include="Views\RSSFeedWidget\CompactSummaryFacePlate.ascx" />
+    <Content Include="Views\RSSFeedWidget\CompactSummaryPartial.ascx" />
+    <Content Include="Views\RSSFeedWidget\CompactSummaryFacePlatePartial.ascx" />
+    <Content Include="Views\RSSFeedWidget\Summary.ascx" />
+    <Content Include="Views\RSSFeedWidget\SummaryPartial.ascx" />
+    <Content Include="Views\RSSFeedWidget\ViewAllArchived.ascx" />
+    <Content Include="Views\Shared\MceContentEditor.ascx" />
+    <Content Include="Views\Shared\MceEbookItem.ascx" />
+    <Content Include="Views\Shared\MceTocItem.ascx" />
+    <Content Include="Views\Shared\RestrictedContent.ascx" />
+    <Content Include="Views\Shared\SearchClassRoster.ascx" />
+    <Content Include="Views\Shared\ShowAddGradeBookCateagory.ascx" />
+    <Content Include="Views\Shared\AllowedContentTemplate.ascx" />
+    <Content Include="Views\Shared\ContentPicker.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\QuizPartials\CreateQuestionPool.ascx" />
+    <Content Include="Views\Shared\DomainSelectionDialog.ascx" />
+    <Content Include="Views\Shared\DateTimePicker.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\QuizPartials\QuizQuestionSettings.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\ReflectionBody.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\ReflectionSubmissionBody.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\PxUnit.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\QuizPartials\BrowseByType.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\QuizPartials\BrowserPage.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\QuizPartials\DisplayQuestionList.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\QuizPartials\QuestionSettings.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\RSSLink.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\Rubric.ascx" />
+    <Content Include="Views\Shared\DownloadDialog.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\NumberOfAttempts.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\PxUnit.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\QuestionDelivery.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\ScoredAttempt.ascx" />
+    <Content Include="Views\Shared\MceAddLink.ascx" />
+    <Content Include="Views\Shared\MceCourseMaterials.ascx" />
+    <Content Include="Views\Shared\MceEbookEditor.ascx" />
+    <Content Include="Views\Shared\Menu.ascx" />
+    <Content Include="Views\Shared\MenuItem.ascx" />
+    <Content Include="Views\Shared\MenuItemManage.ascx" />
+    <Content Include="Views\Shared\PageContainer.ascx" />
+    <Content Include="Views\Shared\RenderFneWindow.ascx" />
+    <Content Include="Views\Shared\UploadAndSubmit.ascx" />
+    <Content Include="Views\Shared\UploadImage.ascx" />
+    <Content Include="Views\Shared\GoogleAnalytics.ascx" />
+    <Content Include="Views\Shared\WidgetWrapper.ascx" />
+    <Content Include="Views\Shared\TestComponent.aspx" />
+    <Content Include="Views\Shared\XbIFrameComponent.ascx" />
+    <Content Include="Views\Shared\XbookFneHeader.ascx" />
+    <Content Include="Views\StartWelcomeWidget\Index.ascx" />
+    <Content Include="Views\StartWelcomeWidget\Edit.ascx" />
+    <Content Include="Views\Test\iframe.ascx" />
+    <Content Include="Views\Test\index.ascx" />
+    <Content Include="Views\Unit\DatePicker.ascx" />
+    <Content Include="Views\XClassHomePageWidget\Summary.ascx" />
+    <Content Include="Views\XClass\Index.aspx" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\fonts\pxicons.eot" />
+    <Content Include="Web.DEV.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <!--<Content Include="Web.QA.config" />-->
+    <!--DPerlyuk: This is done to enalbe Web.config Transformation before build-->
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.LoadTesting.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\fonts\pxicons.woff" />
+    <Content Include="Content\fonts\pxicons" />
+    <Content Include="Tests\runners\common\pxpage.largefnetest.html" />
+    <Content Include="Content\_xbookv2-ui.less" />
+    <None Include="Web.template.config">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.template.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.template.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.DEV_PROD_REFRESH.config">
+      <DependentUpon>Web.template.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.QA.config">
+      <DependentUpon>Web.template.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.PRISTINE.config">
+      <DependentUpon>Web.template.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Bfw.Agilix\Bfw.Agilix.Commands\Bfw.Agilix.Commands.csproj">
+      <Project>{19E52C79-1FE3-4385-A035-B603213C099E}</Project>
+      <Name>Bfw.Agilix.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Agilix\Bfw.Agilix.DataContracts\Bfw.Agilix.DataContracts.csproj">
+      <Project>{4D185F8E-C2A0-442A-A05E-78B566361562}</Project>
+      <Name>Bfw.Agilix.DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Bfw.Agilix.Dlap.Components.csproj">
+      <Project>{BFFD6B7A-4EA1-431A-916A-8214BD16E049}</Project>
+      <Name>Bfw.Agilix.Dlap.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Agilix\Bfw.Agilix.Dlap\Bfw.Agilix.Dlap.csproj">
+      <Project>{F5A60C36-AA1F-4849-A9E7-465F7963DF9F}</Project>
+      <Name>Bfw.Agilix.Dlap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common.HttpModules\Bfw.Common.HttpModules.csproj">
+      <Project>{36DBAE21-2A80-4C92-B72D-50843A18FCED}</Project>
+      <Name>Bfw.Common.HttpModules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common.Mvc\Bfw.Common.Mvc.csproj">
+      <Project>{149EFE93-FBFD-4F18-8999-7C7A7007B734}</Project>
+      <Name>Bfw.Common.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common.Patterns\Bfw.Common.Patterns.csproj">
+      <Project>{AD00B777-4D80-4D59-AFA0-BD3088938BFF}</Project>
+      <Name>Bfw.Common.Patterns</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common.SSO.Novell\Bfw.Common.SSO.Novell.csproj">
+      <Project>{157E1189-484E-4005-ADA5-38C7FC417C54}</Project>
+      <Name>Bfw.Common.SSO.Novell</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common.SSO\Bfw.Common.SSO.csproj">
+      <Project>{AB21E1BC-A01C-4C8D-8477-26F821B1E914}</Project>
+      <Name>Bfw.Common.SSO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common.Xaml\Bfw.Common.Xaml.csproj">
+      <Project>{E1052EA2-8A39-4650-B22F-728393781E13}</Project>
+      <Name>Bfw.Common.Xaml</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common\Bfw.Common.csproj">
+      <Project>{4F1BF9DB-1226-4867-9E41-129B214F24F2}</Project>
+      <Name>Bfw.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.PX.Biz\Bfw.PX.Biz.Components.FormsAuthBusinessContext\Bfw.PX.Biz.Components.FormsAuthBusinessContext.csproj">
+      <Project>{520EB623-A99A-4F71-9B18-54983BE58920}</Project>
+      <Name>Bfw.PX.Biz.Components.FormsAuthBusinessContext</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.PX.Biz\Bfw.PX.Biz.Components.SamlBusinessContext\Bfw.PX.Biz.Components.SamlBusinessContext.csproj">
+      <Project>{597A60FD-7A81-4650-9A4B-6040A5ECDF47}</Project>
+      <Name>Bfw.PX.Biz.Components.SamlBusinessContext</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.PX.Biz\Bfw.PX.Biz.DataContracts\Bfw.PX.Biz.DataContracts.csproj">
+      <Project>{71124912-42B5-49BF-ACBD-E38F09FACA70}</Project>
+      <Name>Bfw.PX.Biz.DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.PX.Biz\Bfw.PX.Biz.Direct.Services\Bfw.PX.Biz.Direct.Services.csproj">
+      <Project>{756A544B-3923-4A7E-847A-9AAB50FEB106}</Project>
+      <Name>Bfw.PX.Biz.Direct.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.PX.Biz\Bfw.PX.Biz.ServiceContracts\Bfw.PX.Biz.ServiceContracts.csproj">
+      <Project>{392A9467-B225-4300-BC1A-F34983AFBC3D}</Project>
+      <Name>Bfw.PX.Biz.ServiceContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PXWebAPI\BLTI\BLTI\Bfw.BLTI.csproj">
+      <Project>{C140E76B-D203-4CA3-9533-33DADD621B03}</Project>
+      <Name>Bfw.BLTI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PxWebUserAdmin\PxWebUser\PxWebUser.csproj">
+      <Project>{63B45011-8967-41AC-B6BB-0A2C42D01CB8}</Project>
+      <Name>PxWebUser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bfw.PX.Abstractions\Bfw.PX.Abstractions.csproj">
+      <Project>{BCC9C7E8-D434-4DA2-BF56-3867D97F1702}</Project>
+      <Name>Bfw.PX.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bfw.PX.Account\Bfw.PX.Account.Abstract\Bfw.PX.Account.Abstract.csproj">
+      <Project>{5A34477E-A112-43CC-A8EE-EB7B740F5226}</Project>
+      <Name>Bfw.PX.Account.Abstract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bfw.PX.Account\Bfw.PX.Account.Components\Bfw.PX.Account.Components.csproj">
+      <Project>{3BF2A15B-2D4B-448F-9A80-29E56B920CB9}</Project>
+      <Name>Bfw.PX.Account.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bfw.PX.PXPub.Components\Bfw.PX.PXPub.Components.csproj">
+      <Project>{424D97DD-5BE0-4259-9323-EF576A651F18}</Project>
+      <Name>Bfw.PX.PXPub.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bfw.PX.PXPub.Controllers\Bfw.PX.PXPub.Controllers.csproj">
+      <Project>{C4A12AC0-30D3-48D7-B46C-0FCC169C8EDB}</Project>
+      <Name>Bfw.PX.PXPub.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bfw.PX.PXPub.Models\Bfw.PX.PXPub.Models.csproj">
+      <Project>{5D71B360-BDD7-4E5B-B551-5BE74E4339EF}</Project>
+      <Name>Bfw.PX.PXPub.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AccountWidget\Summary.ascx" />
+    <Content Include="Views\Home\Index.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\DefaultCourse.css" />
+    <Content Include="Content\jquery.ui\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\jquery.ui\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\jquery.ui\jquery-ui-1.8.4.custom.css" />
+    <Content Include="Views\AnnouncementWidget\Summary.ascx" />
+    <Content Include="Views\AnnouncementWidget\ViewAll.aspx" />
+    <Content Include="Views\AssignmentWidget\Summary.ascx" />
+    <Content Include="Views\AssignmentWidget\ViewAll.aspx" />
+    <Content Include="Views\ContentWidget\CreateAndAssign.ascx" />
+    <Content Include="Views\Shared\DisplayItem.ascx" />
+    <Content Include="Views\ContentWidget\DisplayTemplates\Activity.ascx" />
+    <Content Include="Views\ContentWidget\DisplayTemplates\ContentItem.ascx" />
+    <Content Include="Views\ContentWidget\Summary.ascx" />
+    <Content Include="Views\Content\Index.aspx" />
+    <Content Include="Views\FeaturedContentWidget\Summary.ascx" />
+    <Content Include="Views\Navigation\VerticalMenu.ascx" />
+    <Content Include="Views\ProgressWidget\Scorecard.ascx" />
+    <Content Include="Views\Shared\SingleColumn.Master" />
+    <Content Include="Views\Header\CourseHeader.ascx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\images\book_logo.jpg" />
+    <Content Include="Content\images\disc-widget-gradient.jpg" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Rag\css\images\blackbuttonbg.gif" />
+    <Content Include="Rag\css\images\bluebuttonbg.gif" />
+    <Content Include="Rag\css\images\button-dark-left.gif" />
+    <Content Include="Rag\css\images\button-dark-right.gif" />
+    <Content Include="Rag\css\images\button-light-left2.gif" />
+    <Content Include="Rag\css\images\button-light-right2.gif" />
+    <Content Include="Rag\css\images\RAif_bc.gif" />
+    <Content Include="Rag\css\images\RAif_bl.gif" />
+    <Content Include="Rag\css\images\RAif_br.gif" />
+    <Content Include="Rag\css\images\RAif_ml.gif" />
+    <Content Include="Rag\css\images\RAif_mr.gif" />
+    <Content Include="Rag\css\images\RAif_tc.gif" />
+    <Content Include="Rag\css\images\RAif_tl.gif" />
+    <Content Include="Rag\css\images\RAif_tr.gif" />
+    <Content Include="Rag\css\images\RA_box_bc.gif" />
+    <Content Include="Rag\css\images\RA_box_bl.gif" />
+    <Content Include="Rag\css\images\RA_box_br.gif" />
+    <Content Include="Rag\css\images\RA_box_ml.gif" />
+    <Content Include="Rag\css\images\RA_box_mr.gif" />
+    <Content Include="Rag\css\images\RA_box_tc.gif" />
+    <Content Include="Rag\css\images\RA_box_tl.gif" />
+    <Content Include="Rag\css\images\RA_box_tr.gif" />
+    <Content Include="Rag\css\images\RA_premium_locked.gif" />
+    <Content Include="Rag\css\images\RA_premium_unlocked.gif" />
+    <Content Include="Rag\css\RA.css" />
+    <Content Include="Rag\css\RAg.css" />
+    <Content Include="Rag\css\RA_buttons.css" />
+    <Content Include="Rag\RAgLocal.asmx" />
+    <Content Include="Rag\RAif.html" />
+    <Content Include="Views\Shared\DisplayTemplates\DocumentCollection.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\Folder.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\LinkCollection.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\DocumentCollection.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\LinkCollection.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\Folder.ascx" />
+    <Content Include="Views\RALogin\RAInstructor.aspx" />
+    <Content Include="Views\RALogin\RALogin.aspx" />
+    <Content Include="Views\RALogin\RAStudent.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="comingsoon.html" />
+    <Content Include="Content\images\ajax-loader_big.gif" />
+    <Content Include="Content\images\assigned_peer_node_icon.png" />
+    <Content Include="Content\images\bedguide9e\activity_Class.png" />
+    <Content Include="Content\images\bedguide9e\activity_Site.png" />
+    <Content Include="Content\images\bedguide9e\activity_XBook.png" />
+    <Content Include="Content\images\bedguide9e\H2_arrow.png" />
+    <Content Include="Content\images\bedguide9e\left_Class.png" />
+    <Content Include="Content\images\bedguide9e\left_Site.png" />
+    <Content Include="Content\images\bedguide9e\left_XBook.png" />
+    <Content Include="Content\images\bedguide9e\menu_fill.png" />
+    <Content Include="Content\images\bedguide9e\menu_image.png" />
+    <Content Include="Content\images\bedguide9e\middle.png" />
+    <Content Include="Content\images\bedguide9e\right_Class.png" />
+    <Content Include="Content\images\bedguide9e\right_Site.png" />
+    <Content Include="Content\images\bedguide9e\right_XBook.png" />
+    <Content Include="Content\images\bedguide9e\ui-icons_course.PNG" />
+    <Content Include="Content\images\bps5e\background_left.png" />
+    <Content Include="Content\images\bps5e\background_right.png" />
+    <Content Include="Content\images\bps5e\book.png" />
+    <Content Include="Content\images\bps5e\H2_image.png" />
+    <Content Include="Content\images\bps5e\left_Class.png" />
+    <Content Include="Content\images\bps5e\left_Site.png" />
+    <Content Include="Content\images\bps5e\left_XBook.png" />
+    <Content Include="Content\images\bps5e\middle.png" />
+    <Content Include="Content\images\bps5e\nav_Shadow.png" />
+    <Content Include="Content\images\bps5e\right_Class.png" />
+    <Content Include="Content\images\bps5e\right_Site.png" />
+    <Content Include="Content\images\bps5e\right_XBook.png" />
+    <Content Include="Content\images\bps5e\ui-icons_course.png" />
+    <Content Include="Content\images\H2_arrow.png" />
+    <Content Include="Content\images\hockenbury5e\bg_yellow.jpg" />
+    <Content Include="Content\images\hockenbury5e\book.png" />
+    <Content Include="Content\images\hockenbury5e\left_Class.png" />
+    <Content Include="Content\images\hockenbury5e\left_Site.png" />
+    <Content Include="Content\images\hockenbury5e\left_XBook.png" />
+    <Content Include="Content\images\hockenbury5e\middle.png" />
+    <Content Include="Content\images\hockenbury5e\right_Class.png" />
+    <Content Include="Content\images\hockenbury5e\right_Site.png" />
+    <Content Include="Content\images\hockenbury5e\right_XBook.png" />
+    <Content Include="Content\images\hockenbury5e\ui-icons_course.png" />
+    <Content Include="Content\images\instructor_node_icon.png" />
+    <Content Include="Content\images\left_Class.png" />
+    <Content Include="Content\images\left_Site.png" />
+    <Content Include="Content\images\left_XBook.png" />
+    <Content Include="Content\images\mckaywest10e\activity_Class.png" />
+    <Content Include="Content\images\mckaywest10e\activity_Site.png" />
+    <Content Include="Content\images\mckaywest10e\activity_XBook.png" />
+    <Content Include="Content\images\mckaywest10e\left_Class.png" />
+    <Content Include="Content\images\mckaywest10e\left_Site.png" />
+    <Content Include="Content\images\mckaywest10e\left_XBook.png" />
+    <Content Include="Content\images\mckaywest10e\menu_image.png" />
+    <Content Include="Content\images\mckaywest10e\middle.png" />
+    <Content Include="Content\images\mckaywest10e\right_Class.png" />
+    <Content Include="Content\images\mckaywest10e\right_Site.png" />
+    <Content Include="Content\images\mckaywest10e\right_XBook.png" />
+    <Content Include="Content\images\mckaywest10e\ui-icons_course.png" />
+    <Content Include="Content\images\menu_line.png" />
+    <Content Include="Content\images\middle.png" />
+    <Content Include="Content\images\peer_node_icon.png" />
+    <Content Include="Content\images\PlatformX-R_transp.png" />
+    <Content Include="Content\images\PlatformX_logo.png" />
+    <Content Include="Content\images\right_Class.png" />
+    <Content Include="Content\images\right_Site.png" />
+    <Content Include="Content\images\right_XBook.png" />
+    <Content Include="Content\images\search_bars.gif" />
+    <Content Include="Content\images\speakersguide4e\activity_Class.png" />
+    <Content Include="Content\images\speakersguide4e\activity_Site.png" />
+    <Content Include="Content\images\speakersguide4e\activity_XBook.png" />
+    <Content Include="Content\images\speakersguide4e\background_left.png" />
+    <Content Include="Content\images\speakersguide4e\chat.png" />
+    <Content Include="Content\images\speakersguide4e\left_Class.png" />
+    <Content Include="Content\images\speakersguide4e\left_Site.png" />
+    <Content Include="Content\images\speakersguide4e\left_XBook.png" />
+    <Content Include="Content\images\speakersguide4e\middle.png" />
+    <Content Include="Content\images\speakersguide4e\reddot.PNG" />
+    <Content Include="Content\images\speakersguide4e\right_Class.png" />
+    <Content Include="Content\images\speakersguide4e\right_Site.png" />
+    <Content Include="Content\images\speakersguide4e\right_XBook.png" />
+    <Content Include="Content\images\speakersguide4e\ui-icons_course.png" />
+    <Content Include="Content\images\step1.png" />
+    <Content Include="Content\images\step2.png" />
+    <Content Include="Content\images\step3.png" />
+    <Content Include="Content\images\student_node_icon.jpg" />
+    <Content Include="Content\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\images\vertical_line.png" />
+    <Content Include="Content\images\writersref7e\activity_Class.png" />
+    <Content Include="Content\images\writersref7e\activity_Site.png" />
+    <Content Include="Content\images\writersref7e\activity_XBook.png" />
+    <Content Include="Content\images\writersref7e\H2_arrow.png" />
+    <Content Include="Content\images\writersref7e\left_Class.png" />
+    <Content Include="Content\images\writersref7e\left_Site.png" />
+    <Content Include="Content\images\writersref7e\left_XBook.png" />
+    <Content Include="Content\images\writersref7e\menu_fill.png" />
+    <Content Include="Content\images\writersref7e\menu_image.png" />
+    <Content Include="Content\images\writersref7e\menu_line.png" />
+    <Content Include="Content\images\writersref7e\middle.png" />
+    <Content Include="Content\images\writersref7e\right_Class.png" />
+    <Content Include="Content\images\writersref7e\right_Site.png" />
+    <Content Include="Content\images\writersref7e\right_XBook.png" />
+    <Content Include="Content\images\writersref7e\ui-icons_course.png" />
+    <Content Include="Content\images\writersref7e\vertical_line.png" />
+    <Content Include="Content\images\writingclasssolo\ui-icons_course.PNG" />
+    <Content Include="Content\widgets\NoteSetting.css" />
+    <Content Include="Content\widgets\NoteLibrary.css" />
+    <Content Include="Content\images\writingclasssolo\activity_Class.png" />
+    <Content Include="Content\images\writingclasssolo\left_Class.png" />
+    <Content Include="Content\images\writingclasssolo\menu_line.png" />
+    <Content Include="Content\images\writingclasssolo\middle.png" />
+    <Content Include="Content\images\writingclasssolo\right_Class.png" />
+    <Content Include="Content\DefaultLayout.css" />
+    <Content Include="Content\images\assigned_default_node_icon.png" />
+    <Content Include="Content\images\assigned_discussion_node_icon.png" />
+    <Content Include="Content\images\assigned_documentcollection_node_icon.png" />
+    <Content Include="Content\images\assigned_document_node_icon.png" />
+    <Content Include="Content\images\assigned_linkcollection_node_icon.png" />
+    <Content Include="Content\images\assigned_quiz_node_icon.png" />
+    <Content Include="Content\images\assigned_rss_node_icon.png" />
+    <Content Include="Content\images\assigned_wiki_node_icon.png" />
+    <Content Include="Content\images\assigned_writingassignment_node_icon.png" />
+    <Content Include="Content\images\default_node_icon.png" />
+    <Content Include="Content\images\icon_briefcase.png" />
+    <Content Include="Content\images\link_icon.jpeg" />
+    <Content Include="Content\images\link_icon.png" />
+    <Content Include="Content\images\save_icon.gif" />
+    <Content Include="Content\widgets\Assignment.css" />
+    <Content Include="Content\widgets\gallerystyle.css" />
+    <Content Include="Content\widgets\Highlights.css" />
+    <Content Include="Content\widgets\JqueryAccordion.css" />
+    <Content Include="Content\course.css" />
+    <Content Include="Content\images\black_pixel.png" />
+    <Content Include="Content\images\blank_node_icon.png" />
+    <Content Include="Content\images\b_calendar.png" />
+    <Content Include="Content\images\discussion_node_icon.png" />
+    <Content Include="Content\images\documentcollection_node_icon.png" />
+    <Content Include="Content\images\document_node_icon.png" />
+    <Content Include="Content\images\linkcollection_node_icon.png" />
+    <Content Include="Content\images\nav_logo26.png" />
+    <Content Include="Content\images\quiz_node_icon.png" />
+    <Content Include="Content\images\rss_node_icon.png" />
+    <Content Include="Content\images\trash_icon.gif" />
+    <Content Include="Content\images\wiki_node_icon.png" />
+    <Content Include="Content\jquery.ui\ui.jqgrid.css" />
+    <Content Include="Content\images\ajax-loader.gif" />
+    <Content Include="Content\images\bedford_logo.png" />
+    <Content Include="Content\images\bg_grad_gray.png" />
+    <Content Include="Content\images\darth_vader_mr_helmet.jpg" />
+    <Content Include="Content\images\expand.png" />
+    <Content Include="Content\images\line.png" />
+    <Content Include="Content\images\minus.gif" />
+    <Content Include="Content\images\plus.gif" />
+    <Content Include="Content\images\quiz_icon.png" />
+    <Content Include="Content\images\right-arrow.png" />
+    <Content Include="Content\images\worth_logo.png" />
+    <Content Include="Content\images\writersRef_banner.png" />
+    <Content Include="Content\images\sprite.png" />
+    <Content Include="HwTest.html" />
+    <Content Include="Rag\css\My_Site.css" />
+    <Content Include="Views\Account\Login.aspx" />
+    <Content Include="Views\Account\Logout.aspx" />
+    <Content Include="Views\Account\Upgrade.aspx" />
+    <Content Include="Views\AssignmentWidget\ListAssignments.ascx" />
+    <Content Include="Views\ContentWidget\Assign.ascx" />
+    <Content Include="Views\Home\TestIFrame.aspx" />
+    <Content Include="Views\Navigation\AddTocItemToNav.ascx" />
+    <Content Include="Views\Navigation\Advanced.ascx" />
+    <Content Include="Views\Navigation\CreateLink.ascx" />
+    <Content Include="Views\Navigation\CreateTOCCategory.ascx" />
+    <Content Include="Views\NoteLibrary\NoteList.ascx" />
+    <Content Include="Views\NoteSetting\Index.ascx" />
+    <Content Include="Views\NoteSetting\ShareList.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\ExternalContent.ascx" />
+    <Content Include="Views\Shared\DisplayWidgetList.ascx" />
+    <Content Include="Views\Navigation\TocCategories.ascx" />
+    <Content Include="Views\NoteLibrary\Create.ascx" />
+    <Content Include="Views\NoteLibrary\Index.ascx" />
+    <Content Include="Views\Highlight\CommentLibraryDropList.ascx" />
+    <Content Include="Views\Highlight\CommentList.ascx" />
+    <Content Include="Views\Highlight\Create.ascx" />
+    <Content Include="Views\Highlight\HighlightCollection.ascx" />
+    <Content Include="Views\Highlight\Show.ascx" />
+    <Content Include="Views\Shared\QuickPanel.ascx" />
+    <Content Include="Views\Shared\SearchResultLink.ascx" />
+    <Content Include="Views\Shared\BaseBanner.ascx" />
+    <Content Include="Views\Shared\BaseHeader.ascx" />
+    <Content Include="Views\Shared\BaseScripts.ascx" />
+    <Content Include="Views\Shared\BaseStyle.ascx" />
+    <Content Include="Views\Shared\BhRawComponent.ascx" />
+    <Content Include="Views\Shared\Breadcrumb.ascx" />
+    <Content Include="Views\Shared\Browser.ascx" />
+    <Content Include="Views\Shared\ContentModes.ascx" />
+    <Content Include="Views\ContentWidget\NoContent.ascx" />
+    <Content Include="Views\Groups\EditGroupSet.ascx" />
+    <Content Include="Views\Groups\GroupList.ascx" />
+    <Content Include="Views\Groups\ManageGroups.aspx" />
+    <Content Include="Views\Groups\StudentList.ascx" />
+    <Content Include="Views\Home\TestRaw.aspx" />
+    <Content Include="Content\images\dynamicbook1.gif" />
+    <Content Include="Views\Course\ShowActivateCourseStep2.ascx" />
+    <Content Include="Views\Course\CreateCourseStep2.ascx" />
+    <Content Include="Views\Course\ShowActivateCourse.ascx" />
+    <Content Include="Views\Course\CreateCourse.ascx" />
+    <Content Include="Views\Course\Edit.aspx" />
+    <Content Include="Views\Course\Step1.aspx" />
+    <Content Include="Views\Course\Step2.aspx" />
+    <Content Include="Views\Home\InActiveCourse.ascx" />
+    <Content Include="Views\Product\ProductHome.aspx" />
+    <Content Include="Views\Product\Resource\ListResources.ascx" />
+    <Content Include="Views\Shared\HighlightOptions.ascx" />
+    <Content Include="Views\Shared\SearchResultLinkAdvanced.ascx" />
+    <Content Include="Views\Shared\ContentWidgetScripts.ascx" />
+    <Content Include="Views\Shared\BhIFrameComponent.ascx" />
+    <Content Include="Views\Shared\Tooltip.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\AssignmentPartials\AssignmentSubmission.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\AssignmentPartials\Results.ascx" />
+    <Content Include="Views\ContentWidget\Rubrics.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\Content404.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\ResourceDocument.ascx" />
+    <Content Include="Views\Shared\DocumentViewer.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\QuizPartials\SubmissionHistory.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\Discussion.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\Quiz.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\QuizPartials\EditQuestion.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\QuizPartials\EditQuiz.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\QuizPartials\ExpandSection.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\QuizPartials\ShowQuiz.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\QuizPartials\PreviousAttempts.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\QuizPartials\Questions.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\QuizPartials\QuestionToc.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\RSSFeed.ascx" />
+    <Content Include="Views\ContentWidget\EditorTemplates\ContentItem.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\Course.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\Discussion.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\Quiz.ascx" />
+    <Content Include="Views\ContentWidget\Settings.ascx" />
+    <Content Include="Views\Home\Help.aspx" />
+    <Content Include="Views\ProgressWidget\Gradebook.ascx" />
+    <Content Include="Views\Course\Find.aspx" />
+    <Content Include="Views\Course\Sample.aspx" />
+    <Content Include="Views\Shared\AuthenticationScripts.ascx" />
+    <Content Include="Views\Shared\CreateContent.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\HtmlDocument.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\HtmlDocument.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\RSSFeed.ascx" />
+    <Content Include="Views\Shared\ExpandSection.ascx" />
+    <Content Include="Views\Shared\FneWindow.ascx" />
+    <Content Include="Views\Shared\HiddenCategoryList.ascx" />
+    <Content Include="Views\Shared\JQueryResourceLister.ascx" />
+    <Content Include="Views\Shared\ThreeColumn.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Aspose.Pdf.lic" />
+    <None Include="Aspose.Total.lic" />
+    <Content Include="Content\frameToChange.css" />
+    <Content Include="Content\images\add_arrow.png" />
+    <Content Include="Content\images\body_banner.png" />
+    <Content Include="Content\images\Book.jpg" />
+    <Content Include="Content\images\bookcovers\bps5e_book.png" />
+    <Content Include="Content\images\bookcovers\compclass_book.jpg" />
+    <Content Include="Content\images\bookcovers\eport_book.gif" />
+    <Content Include="Content\images\bookcovers\eport_book.png" />
+    <Content Include="Content\images\bookcovers\krugman_book.png" />
+    <Content Include="Content\images\bookcovers\myers_book.png" />
+    <Content Include="Content\images\bookcovers\phelan_book.png" />
+    <Content Include="Content\images\bookcovers\universe_book.png" />
+    <Content Include="Content\images\bookcovers\xbook_book.jpg" />
+    <Content Include="Content\images\bps5e_banner1.png" />
+    <Content Include="Content\images\calendar_660000.png" />
+    <Content Include="Content\images\clock.png" />
+    <Content Include="Content\images\comp_banner.png" />
+    <Content Include="Content\images\comp_bggrad.png" />
+    <Content Include="Content\images\comp_sprite.png" />
+    <Content Include="Content\images\courseinfo_banner.png" />
+    <Content Include="Content\images\courseinfo_bps5e.png" />
+    <Content Include="Content\images\courseinfo_freeman.png" />
+    <Content Include="Content\images\courseinfo_hock.png" />
+    <Content Include="Content\images\courseinfo_krugman.png" />
+    <Content Include="Content\images\courseinfo_myers.png" />
+    <Content Include="Content\images\courseinfo_phelan.png" />
+    <Content Include="Content\images\dash.png" />
+    <Content Include="Content\images\eport_banner.png" />
+    <Content Include="Content\images\eport_bggrad.png" />
+    <Content Include="Content\images\eport_sprite.png" />
+    <Content Include="Content\images\expandclip.png" />
+    <Content Include="Content\images\external_link.png" />
+    <Content Include="Content\images\footerbg.png" />
+    <Content Include="Content\images\freeman_banner1.png" />
+    <Content Include="Content\images\freeman_logo.png" />
+    <Content Include="Content\images\header-astro-portal.png" />
+    <Content Include="Content\images\header-bio-portal.png" />
+    <Content Include="Content\images\header-econ-portal.png" />
+    <Content Include="Content\images\header-psych-portal-hock.png" />
+    <Content Include="Content\images\header-psych-portal-meyers.png" />
+    <Content Include="Content\images\header-stats-portal.png" />
+    <Content Include="Content\images\help.gif" />
+    <Content Include="Content\images\hockenbury5e\background_right.png" />
+    <Content Include="Content\images\hockenbury5e\bm_logo.png" />
+    <Content Include="Content\images\hockenbury5e\down_arrow.png" />
+    <Content Include="Content\images\hockenbury5e\hock_banner.png" />
+    <Content Include="Content\images\hockenbury5e\home.png" />
+    <Content Include="Content\images\hockenbury5e\right_arrow.png" />
+    <Content Include="Content\images\hock_banner1.png" />
+    <Content Include="Content\images\homemaincolmn.png" />
+    <Content Include="Content\images\Icon_Checkmark_Green_32.png" />
+    <Content Include="Content\images\imgloader.gif" />
+    <Content Include="Content\images\instructor_banner.png" />
+    <Content Include="Content\images\krugman_banner1.png" />
+    <Content Include="Content\images\MoreResourcesStatic.png" />
+    <Content Include="Content\images\moreresources_compclass_REF.gif" />
+    <Content Include="Content\images\moreresources_xBook_HTWA.gif" />
+    <Content Include="Content\images\myers_banner1.png" />
+    <Content Include="Content\images\phelan_banner1.png" />
+    <Content Include="Content\images\left_arrow.png" />
+    <Content Include="Content\images\line_shadow.png" />
+    <Content Include="Content\images\main_banner.png" />
+    <Content Include="Content\images\note-arrow.png" />
+    <Content Include="Content\images\noteicon.png" />
+    <Content Include="Content\images\portf-icons.png" />
+    <Content Include="Content\images\recent-quickpanelfpo.png" />
+    <Content Include="Content\images\reused.png" />
+    <Content Include="Content\images\right_arrow.png" />
+    <Content Include="Content\images\right_arrow660000.png" />
+    <Content Include="Content\images\rubric_down.png" />
+    <Content Include="Content\images\rubric_up.png" />
+    <Content Include="Content\images\show_menu.png" />
+    <Content Include="Content\images\signout-dash.png" />
+    <Content Include="Content\images\speakersguide4e\recent-quickpanelfpo.png" />
+    <Content Include="Content\images\ui-icons_assigned_256x240.png" />
+    <Content Include="Content\images\phelan_bggrad1.png" />
+    <Content Include="Content\images\myers_bggrad.png" />
+    <Content Include="Content\images\hock_bggrad.png" />
+    <Content Include="Content\images\krugman_bggrad.png" />
+    <Content Include="Content\images\freeman_bggrad.png" />
+    <Content Include="Content\images\bps5e_bggrad.png" />
+    <Content Include="Content\images\whf_sprite.png" />
+    <Content Include="Content\images\worth_sprite.png" />
+    <Content Include="Content\images\xbook_bggrad.png" />
+    <Content Include="Content\images\xbook_sprite.png" />
+    <Content Include="Content\widgets\ContentReadWidget.css" />
+    <Content Include="Content\widgets\_browserfixes.css" />
+    <Content Include="Content\widgets\_header.css" />
+    <Content Include="Content\widgets\LinkLibrary.css" />
+    <Content Include="Content\widgets\datepicker.css" />
+    <Content Include="robots.txt" />
+    <Content Include="Views\ContentWidget\MoreResources.ascx" />
+    <Content Include="Views\Home\SelectCourse.aspx" />
+    <Content Include="Views\Navigation\ContentLinks.ascx" />
+    <Content Include="Views\Navigation\NavigationItem.ascx" />
+    <Content Include="Views\Navigation\NavTemplateLink.ascx" />
+    <Content Include="Views\Shared\AssignmentCenterFilterSection.ascx" />
+    <Content Include="Views\ContentReadWidget\Summary.ascx" />
+    <Content Include="Views\ContentReadWidget\ViewAll.ascx" />
+    <Content Include="Views\ContentWidget\ListAssignmentsByDate.ascx" />
+    <Content Include="Views\CustomWidget\CustomWidget.ascx" />
+    <Content Include="Views\CustomWidget\Index.aspx" />
+    <Content Include="Views\Home\TestBreadcrumb.aspx" />
+    <Content Include="Views\LinkLibrary\Index.ascx" />
+    <Content Include="Views\Highlight\QuickLinkList.ascx" />
+    <Content Include="Views\LinkLibrary\SearchLink.ascx" />
+    <Content Include="Views\LinkLibrary\SearchResultLinks.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\LinkPartials\TocLinks.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\QuizPartials\HomeworkQuestionList.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\QuizPartials\SearchQuiz.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\RssPartials\RssFeedPopup.ascx" />
+    <Content Include="Views\Shared\Footer.ascx" />
+    <Content Include="Views\Shared\HomePageCourseHeader.ascx" />
+    <Content Include="Views\Shared\EmptyContent.ascx" />
+    <Content Include="Views\Shared\ModalWindows.ascx" />
+    <Content Include="Views\Shared\Upload.ascx" />
+    <Content Include="Views\Template\TemplateManagement.ascx" />
+    <Content Include="Views\Template\TemplateManagementDetails.ascx" />
+    <Content Include="Views\Template\TemplatePicker.ascx" />
+    <Content Include="Web.PROD.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.sitemap" />
+    <Content Include="Views\Shared\Home.Master" />
+    <Content Include="packages.config" />
+    <Content Include="Views\Shared\Minimal.Master" />
+    <Content Include="Content\styles.less" />
+    <Content Include="Scripts\tiny_mce\tiny_mce_gzip.ashx" />
+    <Content Include="PostDeploy.ps1" />
+    <Content Include="Content\fonts\pxicons.ttf" />
+    <Content Include="Aspose.Words.lic" />
+    <Content Include="Content\widgets\Viewscreentemplate.less" />
+    <Content Include="Content\Templates\AssignedReportTemplate.xlsx" />
+    <Content Include="Content\Templates\XGI-Additional-All_Template.xlsx" />
+    <Content Include="Content\Templates\XGI-Additional-Student_Template.xlsx" />
+    <Content Include="Content\Templates\XGI-Assigned-AllTemplate.xlsx" />
+    <Content Include="Content\faceplate_title.less" />
+    <Content Include="Content\xbook_title.less" />
+    <Content Include="Content\learningcurve_title.less" />
+    <Content Include="Content\pie\PIE.php" />
+    <None Include="PXPub.nuspec">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Scripts\select2\component.json" />
+    <None Include="Scripts\select2\LICENSE" />
+    <None Include="Scripts\select2\README.md" />
+    <None Include="Scripts\select2\release.sh" />
+    <None Include="Scripts\select2\select2.jquery.json" />
+    <None Include="Scripts\tiny_mce\classes\firebug\FIREBUG.LICENSE" />
+    <None Include="Scripts\tiny_mce\plugins\tableDropdown\editor_plugin.js_" />
+    <Content Include="Views\Shared\ProductMinimal.Master" />
+    <Content Include="Views\QuestionAdmin\QuestionAdmin.Master" />
+    <Content Include="Views\Shared\Start.Master" />
+    <Content Include="Views\AdminMetaData\AdminMetaData.Master" />
+    <Content Include="Tests\lib\jasmine-1.3.1\MIT.LICENSE" />
+    <Content Include="Tests\runners\quiz\QuestionSearchTest.html" />
+    <Content Include="Tests\Chutzpah.2.4.3\ctz.bat" />
+    <Content Include="Tests\Chutzpah.2.4.3\ServiceStack.LICENSE.BSD" />
+    <Content Include="Tests\chutzpah.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\images\stats101\" />
+    <Folder Include="Scripts\images\" />
+    <Folder Include="Scripts\themes\apple\" />
+    <Folder Include="Scripts\themes\classic\" />
+    <Folder Include="Scripts\themes\default-rtl\" />
+    <Folder Include="Scripts\themes\default\" />
+    <Folder Include="Scripts\tiny_mce\plugins\autosave\images\" />
+    <Folder Include="Scripts\tiny_mce\plugins\customButton\js\" />
+    <Folder Include="Scripts\tiny_mce\plugins\spellchecker\classes\utils\" />
+    <Folder Include="Scripts\tiny_mce\plugins\spellchecker\includes\" />
+    <Folder Include="Views\Document\" />
+    <Folder Include="Views\EditProjectContentsWidget\" />
+    <Folder Include="Views\XBookGrading\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <!--DPerlyuk: CustomWebConfigTransform: This is done to enalbe Web.config Transformation before build-->
+  <PropertyGroup>
+    <BuildDependsOn>
+			CustomWebConfigTransform;
+			$(BuildDependsOn);
+		</BuildDependsOn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DEV_PROD_REFRESH|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DEV_PROD_REFRESH|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PRISTINE|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PRISTINE|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'LoadTesting|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'LoadTesting|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PROD|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PROD|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+   -->
+  <!--DPerlyuk: CustomWebConfigTransform: This is done to enalbe Web.config Transformation before build-->
+  <Target Name="BeforeBuild">
+    <TransformXml Source="Web.template.config" Transform="Web.$(Configuration).config" Destination="Web.config" />
+  </Target>
+  <!--<Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />
+  </Target>-->
+  <UsingTask TaskName="TransformXml" AssemblyFile="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\Web\Microsoft.Web.Publishing.Tasks.dll" />
+  <Target Name="ConfigTransform">
+    <TransformXml Source="Web.Config" Transform="$(EnvironmentFile)" Destination="$(DestinationFile)" StackTrace="true" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>1192</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:4207/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="..\packages\OctoPack.1.0.98\targets\OctoPack.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <PropertyGroup>
+    <PreBuildEvent>if $(ConfigurationName) == Debug (
+ copy "$(ProjectDir)\Tests\lib\viewrender.debug.js" "$(ProjectDir)\Tests\lib\viewrender.js"
+)
+
+if not $(ConfigurationName) == Debug (
+ copy "$(ProjectDir)\Tests\lib\viewrender.release.js" "$(ProjectDir)\Tests\lib\viewrender.js"
+)
+</PreBuildEvent>
+  </PropertyGroup>
+</Project>

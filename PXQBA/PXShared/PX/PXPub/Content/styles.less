@@ -1,0 +1,770 @@
+/* Typography */ 
+
+/* Font Size Variables */
+
+@fontsmall: 10px;
+@fontnormal: 13px;
+@fontmedium: 14px;
+@fontlarge: 16px;
+@fontXlarge: 18px;
+@fontXXlarge: 21px;
+
+/*Rem Substitues*/
+
+@remsmall:.813;
+@remnormal: 0.813;
+@remmedium: 0.875;
+@remlarge: 1;
+@remXlarge: 1.125;
+@remXXlarge: 1.313;
+
+/* Font Color Variables */
+	
+@fontClrLightBlue:#6799CC;
+@fontClrBlue: #0086ff;
+@fontClrDarkBlue:#0000ff;
+@fontClrGrey: #959695;
+@fontClrWhiteGrey: #CCC;
+@fontClrLightGrey:#696969;
+@fontClrMidGrey:#5B5B5B;
+@fontClrDrkGrey: #333;
+@fontClrGreyBlack: #222;
+@fontClrWhite:#FFF;
+@fontClrBlack:#000;
+@fontClrRed:#ff0000;
+@fontClrDarkRed:#711D18;
+@fontClrLightGreen:#3CB371;
+
+/* Font Weight Mixins*/
+
+.fontbold (@weight: bold){
+  font-weight: @weight;
+}
+
+.fontnormal (@weight: normal){
+  font-weight: @weight;
+}
+
+/* Text Decoration Mixins */
+
+.fontnone (@decoration: none){
+  text-decoration: @decoration;
+}
+
+.fontunderline (@decoration: underline){
+  text-decoration: @decoration;
+}
+
+/*End Varibles*/
+
+#scorecard table td .small,
+.course_item-error,
+.rssdescription,
+.manage-groups .group-sets-list .group-set,
+#content h4 span,
+#quick-panel h3 span,
+#searchResultsPanel .search-link,
+.html-container ul, 
+.html-container ol,
+.highlight-count,
+#content h2 span,
+#content span.view-all,
+body.home-layout .lnkDisplayWidgetList b,
+.rubric-info-cell,
+.lnkDisplayWidgetList_parent,
+#unit-subitems .faux-tree-node-title .description,
+#footer,
+.menu,
+.controls a,
+.section-controls,
+#scorecard .date,
+div.message,
+.info-message,
+#assignment-settings #cal-box,
+div#editForm span.field label,
+.px-default-text,
+.toc .level .children span.view-link,
+.quiz-overview ol li ul,
+.quiz-content > div > ul,
+.create-question-type-dropdown ul li,
+.create-question-type-dropdown ul li a,
+.createcourselabel-field11,
+.course_item,
+.course_item-title,
+.course-item p,
+#createcourse .course-item li label,
+.addIntLink,
+.regularFont,
+.rss-summary,
+.manage-groups .student-list table.students tbody tr td,
+.group .email-link,
+#breadcrumbs a,
+.contextMenu,
+.homepageheader a.creation-button .create-instructions,
+#right #content h3.sub-title .menu,
+#fne-footer,
+#login-footer,
+#activities ul,
+#form label,
+#form label.error,
+#form span,
+#gradeEportfolio li,
+#breadcrumbs a,
+.courseinfo span,
+#content .courseinfo span,
+.tab-links,
+.qtip-content,
+#objective-tags{
+	font-size: @fontsmall;
+    font-size: ~"@{remsmall}rem";
+}
+
+.home-layout #main .contentbody,
+#toc a,
+.assignment-widget #schedule .item-title a,
+.assignment-widget #schedule .item-date span,
+body.content-layout .assignment-widget .item-date,
+.scorecard .row .row-content .description,
+#fne-minimized #fne-minimized-title,
+#fne-search-minimized #fne-minimized-title,
+#syl-content span.help,
+.discussion-widget ul li,
+#assignment-list ul li a,
+#content td a,
+#schedule td a,
+#right #content .quiz-content .html-container,
+#right #content .quiz-content .quiz-policies .quiz-policy-list li,
+.previousattempts,
+.action-links li,
+.action-links li a,
+.question-list .questions .question-actions a,
+#divAddPortfolioForm #selectedNodeTitle,
+#divAddPortfolioForm #divToc,
+#assignmentViewContent #emptyMessage,
+#assignmentViewContent .eportdescription,
+.manage-groups #right #student-list .email-group a,
+.manage-groups #right #student-list .email-link,
+.manage-groups .group-sets-list .group-set a,
+.manage-groups .group-sets-list .group-set .setcount,
+.manage-groups .student-list table.students,
+.manage-groups .group .no-students-msg,
+.manage-groups #left .course-subtitle,
+.manage-groups #left .group-sets-list .no-group-sets-msg,
+.context-menu-section a,
+.breadcrumb,
+.content-link-widget ul li a,
+body.content-layout #main #right.eportfolioright #content,
+.widget h3, 
+.widget h5,
+#quick-panel h3,
+#quick-panel ul li a,
+#quick-panel ul li span,
+#quick-panel #common-tags a,
+.current-discussions,
+.quiz-editor .selected-questions .new-question,
+.template-picker .details,
+ #content .customwidgetclass .custom-widget .contentbody p,
+ #content .customwidgetclass .custom-widget .contentbody ul,
+#content .customwidgetclass .custom-widget .contentbody ol,
+#content .customwidgetclass .custom-widget .contentbody ul li,
+#content .customwidgetclass .custom-widget .contentbody ol li,
+#content .announcement-widget h4,
+#content .announcement-widget .dateandtime,
+#divSaveTemplateAsContent label,
+#divSaveTemplate .divPopupContent span,
+#divSaveTemplate .divPopupContent,
+.ui-menu .ui-menu-item a,
+.eportfolioleft #courseStudentList,
+#widgetconfig_contentreadwidget .contentbody ul.read li a,
+#widgetconfig_contentreadwidget .contentbody .read .readdate,
+#assignmentResTable td,
+#assignmentResTable td a,
+.unit-content-wrapper .unit-no-content,
+#search-results ul li .search-results-title,
+.advanced-search .advanced-results-links,
+#divUnitDateAssigned,
+#fne-content .quiz-donebtn a.switchQE,
+#fne-content .quiz-donebtn a.switchBrowse,
+.various-actions .linkButton {
+	font-size: @fontnormal;
+    font-size: ~"@{remnormal}rem";
+}
+
+
+.rubric-associated-activities-container ul a,
+.rubric-description textarea,
+.rubric-top-view .sub-title,
+.rubric-selector .rubric-description,
+.rubric-selector .rubric-info-cell,
+.rubric-selector #rubric-grid span,
+#assigmentsyllabusfne .assignsylprompt,
+#nonmodal-content form h2.content-title,
+.instructions, .help,
+#right #content .edit-link,
+div#RA_Page,
+.manage-groups #left a.create-group-set,
+.manage-groups #left .group-sets-title,
+.manage-groups #left .course-title,
+.manage-groups .student-list table.students thead tr th,
+.manage-groups .group-sets-list .group-set a.group-link,
+.manage-groups #right .tab-links,
+#__lesson_parent_empty,
+.divPopupContent span.field label,
+.divPopupContent span.help,
+#fne-content .show-quiz .info .description,
+.previousattempts .attemptsheader,
+#right #content .quiz-content .quiz-policies .linkButton,
+.quiz-content h3 .q-title,
+#right #content .quiz-content h3 .edit-link,
+.question-list ul.questions .description .points-line,
+#question-list-table th,
+.assignment-editor #inputBox .dialog-title,
+.assignment-editor #inputBox .document-name,
+.scorecard .row h5,
+.course-nav .editPageStart,
+.editpagebtnwrp .editPageStart,
+.unit-subitems-wrapper .nav-category,
+.launchpad-default-message,
+.open-pxunit-menu-dropdown .pxunit-menu-list a,
+.first-unit-message,
+#saveItem #form ol li.formbtns,
+#saveItem #form .create-closecancel,
+#saveItem #form .edit-questions,
+.customWidgetOuterDiv,
+.widgetItem .course-info-wrapper,
+.rubric-actionbtns,
+.rss-content-view .feed,
+ .pxunit .lessonTitle,
+ .launchpadWidget .launchpadViewAllBar,
+ .widgetHeader .widgetHeaderText,
+ #ggbcategorydialog label,
+ #assigmentsyllabusfne .sylsubmitbtn input,
+ #noteLibrary .formElements .validationForm,
+.facePlateStartPageBody .widgetHeaderText{
+    font-size: @fontmedium;
+    font-size: ~"@{remmedium}rem";
+}
+
+.document-list td input,
+.document-list td,
+.document-list td a,
+.rss-item-title .fne-link{
+    font-size: @fontmedium !important;
+    font-size: ~"@{remmedium}rem" !important;
+}
+
+.widgetlist_zone3 .configwidgetitem h2,
+h2.assignhead,
+#nonmodal .existingdropdown #nonModalViewList,
+.top-left p,
+.discussion-widget .no-messages-label,
+#assignment-settings #other-assignments,
+#assignment-list,
+#content .message,
+#fne-content .show-quiz .directions-title,
+.divPopupWin .divPopupTitle,
+.quiz-content .open-question-editor a,
+.template-list li,
+#nonmodal #title-text,
+#fne-content .quiz-editor .available-questions .children-list .folder-title,
+.rubric-nav .current-rubric,
+.rubric-max-score textarea,
+.rubric-score-column textarea,
+.rubric-max-score .watermark,
+#search-form-panel .blade h5,
+#ui-dialog-title-launchpadDialog,
+.module-preview .launchpadpreview-left,
+.template-picker .details h2 {
+    font-size: @fontlarge;
+    font-size: ~"@{remlarge}rem" !important;
+}
+
+#content .date,
+#content .ui-jqgrid-view td a,
+#LoginForm #form label,
+div#RA_Page td p.RA_formTitle {
+font-size:@fontXlarge;
+font-size: ~"@{remXlarge}rem";
+}
+
+.ui-jqgrid-view td p,
+.regularTable td a,
+.homepageheader a.creation-button .create-start,
+.folder-container .folder-title,
+#groupsheader-title,
+ #fne-title #fne-title-actions #title-text{
+    font-size: @fontXlarge !important;
+    font-size: ~"@{remXlarge}rem" !important;
+}
+
+#content .courseinfo h1,
+.manage-groups #right #student-list h2,
+#eportmenu #student-eportfolio span.student-title,
+.assignment-widget .item-title,
+#content .lessonTitle{
+    font-size:@fontXXlarge;
+    font-size:~"@{remXXlarge}rem";
+}
+
+/* Special Additions */
+
+.bookmark-count{
+	font-size: 9px;
+}
+div#RA_Page p.RA_formTitle{
+	font-size: 22px;
+}
+#LoginForm h2 {
+	font-size: 24px;
+}
+
+/* Typographic Colors */
+
+.assignment-widget .today,
+.assignment-widget .thisweek,
+#scorecard .percent-total a,
+.ui-tooltip ul li a:hover,
+.bookmark-count,
+.contextMenu a:hover,
+.contextMenu li.hover a,
+.highlight-count,
+.homepageheader a.creation-button .create-start,
+.content-link-widget ul li.highlighted a ,
+.coverfpo,
+.lnkDisplayWidgetList_parent a:active,
+.lnkDisplayWidgetList_parent a:active b,
+#nonmodal #toc a:hover,
+.course-nav .editPageStart,
+.editpagebtnwrp .editPageStart{
+	color: @fontClrWhite;
+}
+
+.widgettitlebar,
+#content span.view-all a{
+	color:@fontClrLightBlue;
+}
+
+.rubric-associated-activities-container ul a,
+#assignment-list ul li a,
+#document-list-table li,
+.question-list ul.questions .description .points-line,
+#right #content .quiz-content h3 .edit-link a,
+ .previousattempts .attemptsheader,
+ .manage-groups .tab-links,
+ .manage-groups .tab-links a,
+ table.students tbody tr td.email a,
+ .manage-groups .group-sets-list .no-group-sets-msg,
+.manage-groups a.all-students,
+.manage-groups .create-group-set,
+.manage-groups .group-link,
+.manage-groups .course-subtitle,
+.manage-groups  #student-list .email-group a,
+.manage-groups  #student-list .email-link,
+.manage-groups .student-list table.students thead tr th,
+.quiz-content .open-question-editor a,
+.template-list li,
+body.home-layout .lnkDisplayWidgetList b,
+.create-question-type-dropdown ul li a , .open-question-editor-dropdown  ul li a,
+#assignmentResTable thead td, #statusTable thead td,
+.advanced-search #search-results ul li a,
+.toc .level .addIntLink,
+#activatecourse .creation-url-box,
+.unit-content-header .unit-content-header-links,
+#fne-content .quiz-editor .available-questions .breadcrumb-trail a,
+#fne-content .quiz-editor .available-questions .breadcrumb-trail span a,
+.hts-editor-links,
+.hts-editor-links a{
+	color: @fontClrBlue;
+}
+
+.document-list td a,
+ul.document-list-controls input {
+	color: @fontClrBlue !important;
+}
+
+.discussion-widget ul li .message-author{
+	color: @fontClrDarkBlue;
+}
+
+#content .announcement-widget .dateandtime,
+#unit-subitems .faux-tree-node-title .description{
+	color:@fontClrGrey;
+}
+
+#content p ,
+#content td a,
+#schedule td a,
+.ui-tooltip ul li a,
+.ui-tooltip .create-question-type-dropdown ul li a:hover,
+.ui-tooltip .open-question-editor-dropdown ul li a:hover,
+#right #content .quiz-content .html-container,
+#right #content .quiz-content .quiz-policies .quiz-policy-list li,
+#fne-content .quiz-donebtn a.switchQE,
+#fne-content .show-quiz .info .description,
+#divTocContainer ol li #selectedNodeTitle span,
+.divPopupWin .divPopupTitle,
+.manage-groups #right #student-list h2,
+.manage-groups .group .no-students-msg,
+.manage-groups #left .group-sets-title,
+#content_widget_highlight_menu #highlightmenuactions li a,
+.fne-local #content h2, .fne-local #right h2,
+#searchResultsPanel #title,
+.advanced-search #search-form-panel label,
+.folder-container .folder-title,
+#content .customwidgetclass .custom-widget .contentbody ul,
+#content .customwidgetclass .custom-widget .contentbody ol,
+#content .customwidgetclass .custom-widget .contentbody ul li,
+#content .customwidgetclass .custom-widget .contentbody ol li,
+#nonmodal-content form h2.content-title,
+.ui-menu .ui-menu-item a,
+#fne-content .quiz-editor .available-questions .children-list .folder-title,
+#eportmenu #student-eportfolio span.student-title,
+.linkButton,
+.courseinfo span,
+#content .courseinfo span,
+.rubric-grid textarea,
+#toc .subtitle,
+.assignment-widget #schedule .item-title a,
+.assignment-widget #schedule .item-date span,
+.scorecard .row h5,
+.document-list td input,
+.document-list td,
+.px-default-text,
+.quiz-overview ol li ul,
+.quiz-content > div > ul,
+.linkOpenPopup,
+.regularFont,
+#RubricsTable td,
+#attachmentTable thead td,
+#attachmentTable td,
+.assignment-viewer .due-date .label,
+.assignment-viewer .final-grade .label,
+.assignment-viewer .due-date .date,
+.assignment-viewer .due-info .label,
+.rss-summary,
+.linkButton, 
+input[type="submit"], 
+input[type="button"], 
+button,
+.contextMenu a,
+#nonmodal #title-text,
+.content-link-widget ul li a.current,
+#quick-panel ul li a,
+#breadcrumb-links li a.active,
+#fne-title-breadcrumb .breadcrumb span a,
+#nav ul li a,
+#nav ul li a.current,
+.course_item ,
+.course_item-title,
+#content .announcement-widget .entry,
+#objective-tags,
+#headermenu .action_menu a,
+#fne-content .quiz-donebtn a.switchBrowse,
+.widgetHeaderText{
+	color:@fontClrDrkGrey;
+}
+
+#fne-window .quiz-editor .selected-questions h5,
+.template-picker .details h2,
+#content .customwidgetclass .custom-widget .contentbody p,
+.qtip-content,
+.manage-groups .student-list table.students tbody tr td:last-child,
+.manage-groups .student-list table.students tbody tr td.login,
+.manage-groups .student-list table.students tbody tr td.name,
+.manage-groups #left .course-title{
+	color:@fontClrDrkGrey !important;
+}
+
+#LoginForm #form label,
+div#RA_Page td p.RA_formTitle,
+#breadcrumbs a,
+.context-menu-section a,
+#footer ,
+#login-footer,
+.footer-terms,
+#login-footer .fne-footer-link,
+.advanced-search .sidepanel h5,
+.advanced-search #search-form,
+#assigmentsyllabusfne .assignsylprompt,
+ #widgetconfig_contentreadwidget .contentbody .read .readdate,
+ .assignment-widget .nextweek,
+ #scorecard table td .small,
+ .course-item p ,
+ .course_item-error ,
+ #divAddPortfolioForm #selectedNodeTitle,
+ #toc a.expand.active,
+ li.jstree-open:first-child,
+ .widget h3, .widget h5,
+ #nonmodal .existing-content-title,
+ #nonmodal .existingdropdown #nonModalViewList{
+	color:@fontClrLightGrey;
+}
+
+
+#manage-groups{
+	float:right;
+	padding:4px;
+	text-decoration:underline;
+	color:@fontClrGreyBlack;
+	cursor: pointer;
+}
+
+.doc-collection li .instructions,
+#gradeEportfolio li,
+.folderul a,
+#toc,
+div#editForm span.field label,
+#docUploadWin .field label,
+#activities ul,
+#activities ul li input,
+#__lesson_parent_empty,
+.template-list li.selected,
+#fne-window #fne-content .quiz-editor .children-list ul li a:hover,
+.watermark,
+.scorecard .row .row-content .description,
+.manage-groups #left .course-subtitle .group-count{
+	color:@fontClrMidGrey;
+}
+
+#left .toc .level a {
+	color:@fontClrMidGrey !important;
+}
+
+.homepageheader a ,
+#banner,
+.featured-content-widget a span,
+#right #content .quiz-content h2.content-title,
+#createcourse .creation-info-text .creator-name,
+#activatecourse .creation-info-text .creator-name,
+#right #content h3.sub-title,
+#content .announcement-widget h4,
+ #fne-title #fne-title-actions #title-text{
+	color:@fontClrBlack;
+}
+
+
+.manage-groups .course-subtitle a.selected ,
+ #breadcrumb-links li a.active,
+ .homepageheader a.creation-button,
+ .homepageheader a.creation-button .create-instructions,
+ .content-link-widget ul li a{
+	color:@fontClrBlack !important;
+}
+
+#form label.error,
+#widgetconfig_contentreadwidget .contentbody ul.read li a,
+#nav ul li a#upload-syllabus,
+.discussion-widget ul li a,
+#spnLinkError,
+#createcourse .important .important-alert,
+#activatecourse .important .important-alert{
+	color:@fontClrRed;
+}
+
+.field-validation-error {
+	color: #ff0000 !important;
+}
+
+.toc .level span.view-link a{
+	color:@fontClrLightGreen;
+}
+
+#breadcrumb-links li,
+#breadcrumb-links li a,
+#breadcrumbs a:hover,
+div#RA_Page p.RA_formTitle,
+#content .courseinfo,
+#content .courseinfo h1,
+#nav ul li.highlighted a,
+#gradeEportfolio li a.fne-link,
+.quiz-editor h5,
+.course_item-subtitle{
+	color:@fontClrDarkRed;
+}
+
+#createcourse .course-setup .course-setup-steps,
+#createcourse .important,
+#activatecourse .important,
+.controls a,
+.section-controls {
+	color:@fontClrGreyBlack;
+}
+
+#assignment-list hr,
+.rubric-grid .watermark,
+.manage-groups .group-sets-list .group-set {
+	color:@fontClrWhiteGrey;
+}
+
+/*Color Exceptions */
+.action-links li a, .question-list ul.questions .question-actions a {
+	color: #477DBF !important;
+}
+
+#quick-panel h2{
+	color: #F8991D;
+}
+
+.open-question-editor-dropdown ul li a:hover{
+	color: #fff !important;    
+}
+.fne-footer-link{
+	color:#c60;
+}
+/* Font Weight Styles */ 
+
+#toc .subtitle,
+#toc a,
+#toc a.expand.active,
+#scorecard .date,
+.bold,
+#fne-minimized #fne-minimized-title,
+#fne-search-minimized #fne-minimized-title,
+.discussion-widget ul li .message-author,
+#question-list-table th,
+.question-list ul.questions .description .points-line,
+.createcourselabel,
+.course_item,
+.course_item-title,
+.course_product-name,
+#createcourse .creation-info-text .creator-name,
+#activatecourse .creation-info-text .creator-name,
+#createcourse .important .important-alert,
+#activatecourse .important .important-alert,
+.course_item-error,
+.rubric-nav .current-rubric,
+.manage-groups #right #student-list h2,
+.manage-groups .group-sets-list .group-set a.group-link.selected,
+.manage-groups .course-subtitle a.selected,
+.manage-groups .student-list .title,
+.manage-groups .student-list .students thead .groupname td,
+.context-menu-section a,
+.RA_formError,
+.homepageheader a.creation-button .create-start,
+.widget h3, .widget h5,
+.footer-terms,
+#footer .fne-link,
+#login-footer .fne-footer-link,
+.bold,
+ul.link-list li.active,
+#searchResultsPanel #title,
+.advanced-search #search-form-panel label,
+.advanced-search #search-total,
+.advanced-search #search-form .heading,
+.folder-container .folder-title,
+#eportmenu #student-eportfolio span.student-title,
+#groupsheader-title,
+.courseinfo span,
+#content .courseinfo h1,
+#content .courseinfo span,
+#nav ul li a ,
+#nav ul li.highlighted a,
+.top-left p,
+.rubric-max-score textarea,
+.rubric-score-column textarea,
+#fsDateTime label,
+#fsGradebook label,
+fsMarkAsComplete label,
+#fsRubric label,
+.unit-subitems-wrapper .headerRow,
+.browseinassessment-info,
+.browsebypublisher-info,
+.browsemyquestions-info {
+	.fontbold;
+}
+
+.px-default-text,
+ul.questions .description .text,
+.action-links li,
+.linkButton, 
+input[type="submit"], 
+input[type="button"], 
+button,
+.contextMenu,
+.rubric-selector .rubric-info-cell,
+#fsDateTime ol li label,
+#fsGradebook ol li label, 
+#fsMarkAsComplete ol li label,
+#fsRubric ol li label{
+	.fontnormal;
+}
+
+/* Text Decoration */
+
+.toc .level a,
+.toc .level .addIntLink:hover,
+.rss-item td a.rssOpenPopup,
+.manage-groups #right .tab-links a,
+.manage-groups .group-sets-list .group-set a.group-link,
+.manage-groups #left a.create-group-set,
+.linkButton, 
+input[type="submit"], 
+input[type="button"], 
+button,
+#breadcrumb-links li a.active ,
+.contextMenu .context-menu-section a:hover,
+.contextMenu a,
+#content_widget_highlight_menu #highlightmenuactions li a,
+#content_widget_highlight_menu #highlightmenuactions li a:hover,
+.homepageheader a.creation-button,
+h2 a,
+.content-link-widget ul li a ,
+#right #content h3.sub-title .menu a,
+#quick-panel #common-tags a,
+.footer-terms,
+#footer .fne-footer-link,
+#login-footer .fne-footer-link,
+ul.link-list li a,
+.folderul a,
+.ui-menu .ui-menu-item a,
+ body.home-layout .lnkDisplayWidgetList b,
+ .lnkDisplayWidgetList_parent a,
+ #breadcrumb-links li a,
+#breadcrumb-links li,
+.rubric-associated-activities-container ul a,
+#header a,
+.controls a,
+.section-controls,
+#scorecard .percent-total a,
+.featured-content-widget a,
+.discussion-widget ul li a,
+#assignment-list ul li a,
+#content td a,
+#schedule td a,
+.action-links li a, .question-list ul.questions .question-actions a,
+#fne-content .quiz-donebtn a.switchQE,
+.linkOpenPopup,
+#toc a,
+.toc .level a:hover,
+.toc .level span.view-link a,
+.tab-links a,
+ul.link-list li.active,
+.quiz-content .open-question-editor a,
+.ui-tooltip ul li a,
+#fne-content .quiz-donebtn a.switchBrowse,
+.unit-content-header .unit-content-header-links,
+ table.students tbody tr td.email a{
+ .fontnone;
+}
+
+
+
+.controls a:hover,
+.rss-item td a:hover.rssOpenPopup,
+.group .email-link,
+.contextMenu a:hover,
+.quiz-overview .attempt-label,
+.quiz-overview .timelimit-label, 
+.quiz-overview .review-label, 
+.quiz-overview .score-label,
+.quiz-overview .hint-label,
+.quiz-overview .scrambled-label,
+#breadcrumb-links li a.active{
+	.fontunderline;
+}
+
+
+del {
+	text-decoration: line-through;
+}
+

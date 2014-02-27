@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="RAStudentRegistration" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="RAStudentRegistration" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="RAStudentRegistration">
+      <s:element name="StudentRegistration">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sInstructorEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sUserFirstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sUserLastName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sUserPwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sVerifyPwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sUserPwdHint" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sRemoteIPAddr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sBaseURL" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StudentRegistrationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StudentRegistrationResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sErrorMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StudentRegistration_ET">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sInstructorEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sUserFirstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sUserLastName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sUserPwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sVerifyPwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sUserPwdHint" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sRemoteIPAddr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sBaseUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sOptInEmail" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StudentRegistration_ETResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StudentRegistration_ETResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sErrorMsg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sET_Msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="StudentRegistrationSoapIn">
+    <wsdl:part name="parameters" element="tns:StudentRegistration" />
+  </wsdl:message>
+  <wsdl:message name="StudentRegistrationSoapOut">
+    <wsdl:part name="parameters" element="tns:StudentRegistrationResponse" />
+  </wsdl:message>
+  <wsdl:message name="StudentRegistration_ETSoapIn">
+    <wsdl:part name="parameters" element="tns:StudentRegistration_ET" />
+  </wsdl:message>
+  <wsdl:message name="StudentRegistration_ETSoapOut">
+    <wsdl:part name="parameters" element="tns:StudentRegistration_ETResponse" />
+  </wsdl:message>
+  <wsdl:portType name="RAStudentRegistrationSoap">
+    <wsdl:operation name="StudentRegistration">
+      <wsdl:input message="tns:StudentRegistrationSoapIn" />
+      <wsdl:output message="tns:StudentRegistrationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StudentRegistration">
+      <wsdl:input name="StudentRegistration_ET" message="tns:StudentRegistration_ETSoapIn" />
+      <wsdl:output name="StudentRegistration_ET" message="tns:StudentRegistration_ETSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="RAStudentRegistrationHttpGet" />
+  <wsdl:portType name="RAStudentRegistrationHttpPost" />
+  <wsdl:binding name="RAStudentRegistrationSoap" type="tns:RAStudentRegistrationSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="StudentRegistration">
+      <soap:operation soapAction="RAStudentRegistration/StudentRegistration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StudentRegistration">
+      <soap:operation soapAction="RAStudentRegistration/StudentRegistration_ET" style="document" />
+      <wsdl:input name="StudentRegistration_ET">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="StudentRegistration_ET">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RAStudentRegistrationSoap12" type="tns:RAStudentRegistrationSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="StudentRegistration">
+      <soap12:operation soapAction="RAStudentRegistration/StudentRegistration" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StudentRegistration">
+      <soap12:operation soapAction="RAStudentRegistration/StudentRegistration_ET" style="document" />
+      <wsdl:input name="StudentRegistration_ET">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="StudentRegistration_ET">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RAStudentRegistrationHttpGet" type="tns:RAStudentRegistrationHttpGet">
+    <http:binding verb="GET" />
+  </wsdl:binding>
+  <wsdl:binding name="RAStudentRegistrationHttpPost" type="tns:RAStudentRegistrationHttpPost">
+    <http:binding verb="POST" />
+  </wsdl:binding>
+  <wsdl:service name="RAStudentRegistration">
+    <wsdl:port name="RAStudentRegistrationSoap" binding="tns:RAStudentRegistrationSoap">
+      <soap:address location="http://int-raws.bfwpub.com/raws3/StudentRegistration/RAStudentRegistration.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RAStudentRegistrationSoap12" binding="tns:RAStudentRegistrationSoap12">
+      <soap12:address location="http://int-raws.bfwpub.com/raws3/StudentRegistration/RAStudentRegistration.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RAStudentRegistrationHttpGet" binding="tns:RAStudentRegistrationHttpGet">
+      <http:address location="http://int-raws.bfwpub.com/raws3/StudentRegistration/RAStudentRegistration.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RAStudentRegistrationHttpPost" binding="tns:RAStudentRegistrationHttpPost">
+      <http:address location="http://int-raws.bfwpub.com/raws3/StudentRegistration/RAStudentRegistration.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

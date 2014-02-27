@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<batch>
+  <request cmd="putitems">
+  <requests>
+   <item entityid="-entityid-" itemid="PX_PRODUCT_MARKETING">
+      <data>
+        <type>CustomActivity</type>
+        <parent>PX_ROOT</parent>
+        <title>Everyday Writer</title>
+        <abbreviation>ecw</abbreviation>
+        <description>&lt;div class=&quot;marketing&quot;&gt;
+  &lt;div class=&quot;course-info-widget&quot;&gt;
+    &lt;div class=&quot;top&quot;&gt;
+      &lt;div class=&quot;book&quot;&gt;
+      &lt;/div&gt;
+      &lt;span class=&quot;book-title&quot;&gt;Core Economics&lt;/span&gt;
+      &lt;br/&gt;
+      &lt;span&gt;Second Edition&lt;/span&gt;
+      &lt;br/&gt;
+      &lt;span&gt;Gerald Stone&lt;/span&gt;
+      &lt;br/&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</description>
+        <timetocomplete>PT1M</timetocomplete>
+        <category>1</category>
+        <period inherit="true">0</period>
+        <groupsetid>-1</groupsetid>
+        <weight>100</weight>
+        <gradeentry>1</gradeentry>
+        <inputtable inherit="true">0</inputtable><bfw_type>ProductMarketing</bfw_type><bfw_subtype>Marketing</bfw_subtype><bfw_tocs>
+  <bfw_toc_contents parentid="PX_ROOT" sequence="_ja" />
+</bfw_tocs></data>
+    </item>
+	</requests>
+	  </request>
+  </batch>

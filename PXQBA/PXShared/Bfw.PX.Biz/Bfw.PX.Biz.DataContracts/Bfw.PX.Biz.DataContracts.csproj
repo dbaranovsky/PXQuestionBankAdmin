@@ -1,0 +1,379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{71124912-42B5-49BF-ACBD-E38F09FACA70}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bfw.PX.Biz.DataContracts</RootNamespace>
+    <AssemblyName>Bfw.PX.Biz.DataContracts</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DEV_PROD_REFRESH|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DEV_PROD_REFRESH\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DEV_PROD_REFRESH|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\DEV_PROD_REFRESH\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\QA\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\QA\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PRISTINE|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\PRISTINE\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PRISTINE|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\PRISTINE\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'LoadTesting|AnyCPU'">
+    <OutputPath>bin\LoadTesting\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'LoadTesting|x64'">
+    <OutputPath>bin\x64\LoadTesting\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PROD|AnyCPU'">
+    <OutputPath>bin\PROD\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PROD|x64'">
+    <OutputPath>bin\x64\PROD\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DEV|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DEV\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DEV|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\DEV\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AllowedContentTemplate.cs" />
+    <Compile Include="AllowedWidget.cs" />
+    <Compile Include="Announcement.cs" />
+    <Compile Include="AssessmentGroup.cs" />
+    <Compile Include="AssignedItem.cs" />
+    <Compile Include="AssignmentCenterCategory.cs" />
+    <Compile Include="AssignmentCenterItem.cs" />
+    <Compile Include="AssignmentSettings.cs" />
+    <Compile Include="AssignTabSettings.cs" />
+    <Compile Include="Attachment.cs" />
+    <Compile Include="ActivitiesWidgetResults.cs" />
+    <Compile Include="CategoryGrade.cs" />
+    <Compile Include="FilterCriteriaForReport.cs" />
+    <Compile Include="GradeList.cs" />
+    <Compile Include="ItemLink.cs" />
+    <Compile Include="ItemReport.cs" />
+    <Compile Include="QuestionCardData.cs" />
+    <Compile Include="QuestionFilter.cs" />
+    <Compile Include="ProxyConfig.cs" />
+    <Compile Include="Container.cs" />
+    <Compile Include="QuestionFilterMetadata.cs" />
+    <Compile Include="QuestionInteraction.cs" />
+    <Compile Include="QuestionLog.cs" />
+    <Compile Include="QuestionNote.cs" />
+    <Compile Include="DashboardData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DashboardSettings.cs" />
+    <Compile Include="FeaturedItem.cs" />
+    <Compile Include="LaunchPadSettings.cs" />
+    <Compile Include="ContactInfo.cs" />
+    <Compile Include="CourseMaterials.cs" />
+    <Compile Include="InstructorConsoleSettings.cs" />
+    <Compile Include="LearningCurveQuestionSettings.cs" />
+    <Compile Include="RAAccessInfo.cs" />
+    <Compile Include="RASiteInfo.cs" />
+    <Compile Include="RelatedContent.cs" />
+    <Compile Include="RelatedTemplate.cs" />
+    <Compile Include="PresentationCourse.cs" />
+    <Compile Include="CopyToItem.cs" />
+    <Compile Include="DashboardItem.cs" />
+    <Compile Include="ProgramSearch.cs" />
+    <Compile Include="RespondusQuestionChoice.cs" />
+    <Compile Include="RespondusQuestion.cs" />
+    <Compile Include="RSSCourseFeed.cs" />
+    <Compile Include="RubricGrade.cs" />
+    <Compile Include="RubricsReport.cs" />
+    <Compile Include="RubricsReportContainer.cs" />
+    <Compile Include="SchoolResponse.cs" />
+    <Compile Include="SharedCourseDefinition.cs" />
+    <Compile Include="StudentProfile.cs" />
+    <Compile Include="StudentRubricReport.cs" />
+    <Compile Include="SubmissionAction.cs" />
+    <Compile Include="tinyMCE.cs" />
+    <Compile Include="UserProgram.cs" />
+    <Compile Include="CourseAcademicTerm.cs" />
+    <Compile Include="CourseAssessmentConfiguration.cs" />
+    <Compile Include="ExportItem.cs" />
+    <Compile Include="FacetSearchSchema.cs" />
+    <Compile Include="RAUserInfo.cs" />
+    <Compile Include="ReminderEmail.cs" />
+    <Compile Include="Ebook.cs" />
+    <Compile Include="ObjectiveAlignmentSortByFolder.cs" />
+    <Compile Include="ItemUpdate.cs" />
+    <Compile Include="GradebookInfo.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="MenuItem.cs" />
+    <Compile Include="MenuItemCallback.cs" />
+    <Compile Include="ObjectiveAlignmentSortByObjective.cs" />
+    <Compile Include="QuestionSettings.cs" />
+    <Compile Include="QuizQuestion.cs" />
+    <Compile Include="HWGroupInfo.cs" />
+    <Compile Include="ContentItem.cs" />
+    <Compile Include="Domain.cs" />
+    <Compile Include="GradeBookWeightCategory.cs" />
+    <Compile Include="GradeBookWeights.cs" />
+    <Compile Include="Highlight.cs" />
+    <Compile Include="ItemLearningObjective.cs" />
+    <Compile Include="LearningObjective.cs" />
+    <Compile Include="PageDefinition.cs" />
+    <Compile Include="QuestionAnalysis.cs" />
+    <Compile Include="QuestionQuery.cs" />
+    <Compile Include="QuestionResultSet.cs" />
+    <Compile Include="RSSFeed.cs" />
+    <Compile Include="SearchSchema.cs" />
+    <Compile Include="ShareNoteResult.cs" />
+    <Compile Include="SubmissionAttempt.cs" />
+    <Compile Include="TabSettings.cs" />
+    <Compile Include="Task.cs" />
+    <Compile Include="Note.cs" />
+    <Compile Include="DocumentConversion.cs" />
+    <Compile Include="NavigationItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NoteSearch.cs" />
+    <Compile Include="SearchParameters.cs" />
+    <Compile Include="StudentRegistrationResult.cs" />
+    <Compile Include="ResourceMap.cs" />
+    <Compile Include="SearchQuery.cs" />
+    <Compile Include="SearchResultDoc.cs" />
+    <Compile Include="SearchResultSet.cs" />
+    <Compile Include="TaxonomyRelationship.cs" />
+    <Compile Include="WidgetCallback.cs" />
+    <Compile Include="WidgetDisplayOptions.cs" />
+    <Compile Include="Widget.cs" />
+    <Compile Include="WidgetInputHelper.cs" />
+    <Compile Include="XmlResource.cs" />
+    <Compile Include="Course.cs" />
+    <Compile Include="DataContractExtensions.cs" />
+    <Compile Include="Enrollment.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Grade.cs" />
+    <Compile Include="Group.cs" />
+    <Compile Include="GroupSet.cs" />
+    <Compile Include="Message.cs" />
+    <Compile Include="MetadataValue.cs" />
+    <Compile Include="Navigation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyValue.cs" />
+    <Compile Include="Question.cs" />
+    <Compile Include="QuestionChoice.cs" />
+    <Compile Include="Resource.cs" />
+    <Compile Include="AssessmentSettings.cs" />
+    <Compile Include="Submission.cs" />
+    <Compile Include="TeacherResponse.cs" />
+    <Compile Include="TocCategory.cs" />
+    <Compile Include="UserInfo.cs" />
+    <Compile Include="Zone.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Bfw.Agilix\Bfw.Agilix.Dlap\Bfw.Agilix.Dlap.csproj">
+      <Project>{F5A60C36-AA1F-4849-A9E7-465F7963DF9F}</Project>
+      <Name>Bfw.Agilix.Dlap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common\Bfw.Common.csproj">
+      <Project>{4F1BF9DB-1226-4867-9E41-129B214F24F2}</Project>
+      <Name>Bfw.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PX\PxWebUserAdmin\PxWebUser\PxWebUser.csproj">
+      <Project>{63B45011-8967-41AC-B6BB-0A2C42D01CB8}</Project>
+      <Name>PxWebUser</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\Bfw.Common.dll" />
+    <Content Include="bin\Debug\Bfw.Common.pdb" />
+    <Content Include="bin\Debug\Bfw.Common.xml" />
+    <Content Include="bin\Debug\Bfw.PX.Biz.DataContracts.dll" />
+    <Content Include="bin\Debug\Bfw.PX.Biz.DataContracts.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+    <Folder Include="bin\x64\Debug\" />
+    <Folder Include="bin\x64\Release\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

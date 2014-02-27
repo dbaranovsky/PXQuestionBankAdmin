@@ -1,0 +1,104 @@
+﻿@model Bfw.PXAP.Models.AppFabricCacheModel
+@{
+    ViewBag.Title = "AppFabric Cache";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var currentOption = Model.FindOptions.FirstOrDefault(o => o.Selected);
+    var optionValue = currentOption == null ? "Key" : currentOption.Value;
+}
+@section Header
+{
+    <link href="@Url.Content("~/Content/codemirror.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/simple-hint.css")" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/neat.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/elegant.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/erlang-dark.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/night.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/monokai.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/cobalt.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/eclipse.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/rubyblue.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/lesser-dark.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/xq-dark.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/ambiance.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/blackboard.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/vibrant-ink.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/solarized.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/twilight.css")"/>
+}
+<div>
+    @Html.Partial("_MainMenuPartial", Model.MenuModel)
+</div>
+
+<script src="@Url.Content("~/Scripts/codemirror/codemirror.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/codemirror/simple-hint.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/codemirror/closetag.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/codemirror/xml-hint.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/codemirror/xml.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/codemirror/foldcode.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/codemirror/formatting.js")" type="text/javascript"></script>
+
+<div id="ContentForm">
+    @{
+        Bfw.PXAP.Models.LayoutModel layout = this.ViewBag.LayoutModel as Bfw.PXAP.Models.LayoutModel;
+
+
+        if (string.IsNullOrEmpty(layout.CurrentEnvironment))
+        {
+            return;
+        }
+    }
+    @using (Html.BeginForm("Execute", "AppFabricCache", FormMethod.Post))
+    {
+        <input id="FindType" name="FindType" type="hidden" value="@optionValue" />
+        <div class="longrow">
+            "Fetch" attempts to retrieve an item from cache and display its content in xml format. "Clear From Cache" deletes the item from cache. If Region Name is not provided, the default will be used. If entering more than one tag, use a pipe as delimiter. Empty spaces will become part of the tag.
+        </div>
+        <br />
+        <div class="longrow">
+            <div style="width: 300px; display: inline-block">
+                <div class="label">Options:</div>@Html.DropDownList("Options", Model.FindOptions)
+            </div>
+        </div>
+        <div class="longrow">
+            <div style="width: 480px; display: inline-block">
+                <div class="label">Region Name:</div>@Html.TextBoxFor(m => m.Region, new { @class = "regionField" })
+            </div>
+        </div>
+        <div>
+            <div class="label">Input:</div>@Html.TextBoxFor(m => m.Input, new { @class = "cacheKeyField" })
+        </div>
+        <br />
+        <div>
+            <button type="submit" name ="SubmitType" value="Fetch">Fetch</button>
+            @if (optionValue == "AnyTag" || optionValue == "AllTags")
+            {
+                <button type="submit" name ="SubmitType" value="Clear" disabled="disabled">Clear From Cache</button>
+            }
+            else
+            {
+                <button type="submit" name ="SubmitType" value="Clear">Clear From Cache</button>
+            }
+        </div>
+        <br />
+        <div id="resultDiv">
+            @Html.Partial("AppFabricCacheResult", Model)
+        </div>
+    }
+</div>
+@Html.Partial("_ProgressBarPartial")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Options").change(function () {
+            var value = $(this).val();
+            $("#FindType").val(value);
+            if (value == "AnyTag" || value == "AllTags") {
+                $("button[type='submit'][value='Clear']").attr("disabled", "disabled");
+            }
+            else {
+                $("button[type='submit'][value='Clear']").removeAttr("disabled");
+            }
+        });
+    });
+</script>

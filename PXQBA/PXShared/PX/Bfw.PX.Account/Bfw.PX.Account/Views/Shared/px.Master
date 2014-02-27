@@ -1,0 +1,64 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" MasterPageFile="~/Views/Shared/Site.Master" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">    
+    <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="server">
+    <% 
+        var targetUrl = Request.QueryString["target"];
+        var path = string.Empty;
+        if (!string.IsNullOrEmpty(targetUrl))
+        {
+            var uri = new Uri(targetUrl);        
+            int n;
+            var segments = uri.Segments;        
+            
+            for (int s = 0; s < segments.Length; ++s)
+            {
+                path += segments[s];
+                if (int.TryParse(segments[s], out n))
+                    break;
+            }
+
+            var port = (uri.Port != 80) ? string.Format(":{0}", uri.Port) : string.Empty;
+            path = string.Format("{0}://{1}{2}{3}", uri.Scheme, uri.Host, port, path);   
+        }
+    %>
+    <link rel="Stylesheet" type="text/css" href="<%= string.Format("{0}/Style?kill=9", path) %>" />    
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+    <script type="text/javascript" language="javascript">
+        (function($) {
+            $(function() {
+                $.get('<%= string.Format("{0}/Header/CourseHeader", path) %>', function(response) {
+                    $('#banner .courseinfo').append(response);
+                });
+            });
+        } (jQuery));
+    </script>
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+    <%--<div id="header">
+        <div id="publisher-logo">
+            <div id="logo"></div>
+        </div>
+        <div id="platformX-logo">
+        </div> 
+        <div id="student-info">            
+        </div>
+    </div> --%>
+    <%--<div id="banner">
+        <div class="courseinfo">
+            <!-- course title and instructor name will be injected here upon page load -->            
+        </div>
+        <div id="banner-image">
+        </div>
+    </div>
+--%>    
+        <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+    
+        <% Html.RenderPartial("WebTrends"); %>
+
+</asp:Content>
+    
+

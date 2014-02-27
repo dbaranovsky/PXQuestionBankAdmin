@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<batch>
+  <!-- Following command updates the product course with the correct metadata values -->
+  <request cmd="updatecourses">
+    <requests>
+      <course courseid="-entityid-" domainid="-domainid-" title="LearningCurve" reference="" type="Range">
+        <data>
+          <bfw_tocs>
+            <course_materials type="bfw_toc">Course Materials</course_materials>
+          </bfw_tocs>
+          <bfw_infinite_scroll>false</bfw_infinite_scroll>
+          <show_student_view_link>false</show_student_view_link>
+          <meta-bfw_course_type>LearningCurve</meta-bfw_course_type>
+          <bfw_course_type>LearningCurve</bfw_course_type>
+          <bfw_course_home_page>PX_LC_HOME_2COLUMN</bfw_course_home_page>
+          <bfw_welcome_message>&amp;lt;h1&amp;gt;Welcome&amp;lt;/h1&amp;gt;
+                        &amp;lt;p&amp;gt;This Bedford e-Portfolio gives you a single place to collect and reflect on your work. You can compose directly in your e-Portfolio or uplaoad word documents, video, audio, or images that best represent who you are and what you have created. Just click on the e-Portfolio tab at the top of the page and get started!&amp;amp;nbsp;&amp;lt;/p&amp;gt;
+                        &amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;lt;/p&amp;gt;
+                        &amp;lt;div class=&amp;quot;eportfolio_PortfolioTeaching&amp;quot; style=&amp;quot;float: left;&amp;quot;&amp;gt;&amp;lt;img style=&amp;quot;width: 100%; height: 100%;&amp;quot; src=&amp;quot;/Content/images/Universe-9e-cover.jpg&amp;quot; alt=&amp;quot;&amp;quot; /&amp;gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;ul class=&amp;quot;welcome-links&amp;quot;&amp;gt;
+                        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Finding and developing your materials&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+                        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Creating your Structure&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+                        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Choosing a style and design&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+                        &amp;lt;/ul&amp;gt;
+                    </bfw_welcome_message>
+          <bfw_allow_site_search>false</bfw_allow_site_search>
+          <bfw_allow_activation>true</bfw_allow_activation>
+          <meta-bfw_course_subtype>regular</meta-bfw_course_subtype>
+          <bfw_dashboard_settings>
+            <bfw_dashboard_course_home_page>PX_DASHBOARD_1COLUMN</bfw_dashboard_course_home_page>
+            <bfw_program_dashboard_course_home_page>PX_PROGRAM_DASHBOARD_1COLUMN</bfw_program_dashboard_course_home_page>
+            <instructor_dashboard>true</instructor_dashboard>
+            <program_dashboard>true</program_dashboard>
+          </bfw_dashboard_settings>
+          <isdashboardactive>true</isdashboardactive>
+          <CourseTimeZone>Eastern Standard Time</CourseTimeZone>
+          <bfw_generic_course id="">true</bfw_generic_course>
+          <bfw_enrollment_switch>true</bfw_enrollment_switch>
+          <bfw_course_domain_switch>true</bfw_course_domain_switch>
+        </data>
+      </course>
+    </requests>
+  </request>
+  <!-- Creates necessary folders and other course structures including page definitions for learning curve -->
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_LC_HOME_2COLUMN" entityid="-entityid-">
+        <data>
+          <parent>PX_PAGES</parent>
+          <sequence>b</sequence>
+          <title>PX_LC_HOME_2COLUMN</title>
+          <bfw_page_editable>false</bfw_page_editable>
+          <abbreviation>PXLCHOME2COLUMN</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_LC_HOME_2COLUMN_ZONES" entityid="-entityid-">
+        <data>
+          <parent>PX_LC_HOME_2COLUMN</parent>
+          <sequence>a</sequence>
+          <title>PX_LC_HOME_2COLUMN_ZONES</title>
+          <abbreviation>PXLCHOME2COLUMNZONES</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_LC_HOME_2COLUMN_ZONE_1" entityid="-entityid-">
+        <data>
+          <parent>PX_LC_HOME_2COLUMN_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_LC_HOME_ZONE_1</title>
+          <abbreviation>PXLCHOMEZONE1</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets />
+          <bfw_support_hide>true</bfw_support_hide>
+        </data>
+      </item>
+      <item itemid="PX_LC_HOME_2COLUMN_ZONE_2" entityid="-entityid-">
+        <data>
+          <parent>PX_LC_HOME_2COLUMN_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_LC_HOME_ZONE_2</title>
+          <abbreviation>PXLCHOMEZONE2</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets>
+            <widget type="PX_ActivitiesWidget" displayName="LearningCurve Activities" />
+          </bfw_allowed_widgets>
+        </data>
+      </item>
+      <item itemid="PX_DASHBOARD_1COLUMN" entityid="-entityid-">
+        <data>
+          <parent>PX_PAGES</parent>
+          <sequence>b</sequence>
+          <title>PX_DC_ASSIGNMENT_2COLUMN</title>
+          <abbreviation>PXDCHOME2COLUMN</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>1</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_page_editable>false</bfw_page_editable>
+        </data>
+      </item>
+      <item itemid="PX_DASHBOARD_1COLUMN_ZONES" entityid="-entityid-">
+        <data>
+          <parent>PX_DASHBOARD_1COLUMN</parent>
+          <sequence>a</sequence>
+          <title>PX_DASHBOARD_1COLUMN_ZONES</title>
+          <abbreviation>PXDCHOME2COLUMNZONES</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>1</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_DASHBOARD_1COLUMN_ZONE_1" entityid="-entityid-">
+        <data>
+          <parent>PX_DASHBOARD_1COLUMN_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_DC_HOME_ZONE_1</title>
+          <abbreviation>PXDCHOMEZONE1</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>1</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_support_hide>true</bfw_support_hide>
+        </data>
+      </item>
+    </requests>
+  </request>
+  <!-- Adds widgets to their respective zones for learning curve -->
+  <request cmd="putitems">
+	<requests>
+		<item itemid="PX_DirectionsWidget" entityid="-entityid-">
+      <data>
+        <type>CustomActivity</type>
+        <parent>PX_LC_HOME_2COLUMN_ZONE_2</parent>
+        <sequence>a</sequence>
+        <title>Directions</title>
+        <abbreviation>lcw</abbreviation>
+		<description>
+			&lt;div class="course-directions-widget"&gt;
+			&lt;a class="activation-link register-lc"&gt;Enable Student Registration &lt;span class="icon"&gt;&lt;/span&gt;&lt;/a&gt;
+			&lt;div class="top"&gt;
+			&lt;h1&gt;Here's how it works:&lt;/h1&gt;
+			&lt;ul&gt;
+			&lt;li&gt;Choose which &lt;i&gt;LearningCurve&lt;/i&gt; activities you want to assign.&lt;/li&gt;
+			&lt;li&gt;Enable student registration and enter your course information.&lt;/li&gt;
+			&lt;li&gt;Use reports to see how your class and students are doing on &lt;i&gt;LearningCurve&lt;/i&gt; activities.&lt;/li&gt;
+			&lt;li&gt;To create a new course, select "create new course" in the top banner.&lt;/li&gt;
+			&lt;/ul&gt;
+			&lt;/div&gt;
+			&lt;div class="bottom"&gt;
+			VIEW SAMPLE: &lt;span&gt;&lt;a href="http://learningcurve.bfwpub.com/index.php?file=english/Easywriter4e/Active_Passive_Voice&amp;show_report=true&amp;sample_report_popUp=true&amp;disable_links=true"  class="fne-link useIFrameForExternal Class-Activity-Report"&gt;Class Activity Report&lt;/a&gt;&lt;/span&gt; | 
+			&lt;span&gt;&lt;a href="http://learningcurve.bfwpub.com/index.php?file=english/Easywriter4e/Active_Passive_Voice&amp;show_report=true&amp;report_type=showAll&amp;sample_report_popUp=true&amp;disable_links=true " class="fne-link useIFrameForExternal Student-Activity-Report"&gt;Student Activity Report&lt;/a&gt;&lt;/span&gt;
+			&lt;/div&gt;
+			&lt;/div&gt;
+		</description>
+        <timetocomplete>PT1M</timetocomplete>
+        <category>0</category>
+        <period inherit="true">0</period>
+        <groupsetid>-1</groupsetid>
+        <duedate>0001-01-01T00:00:00Z</duedate>
+        <weight>100</weight>
+        <gradeentry>1</gradeentry>
+        <inputtable inherit="true">0</inputtable>
+        <completiontrigger>0</completiontrigger><bfw_type>Widget</bfw_type><bfw_subtype>PX_Custom</bfw_subtype><bfw_display_flags>
+  <display>instructor</display>
+</bfw_display_flags><bfw_widget_callbacks>
+  <method name="View" controller="CustomWidget" action="View" fne="false" />
+  <method name="OnBeforeAdd" controller="CustomWidget" action="OnBeforeAdd" fne="false" />
+  <method name="Save" controller="CustomWidget" action="AddCustomWidget" fne="false" />
+</bfw_widget_callbacks><bfw_widget_template>PX_Custom</bfw_widget_template><bfw_properties>
+  <bfw_property name="bfw_syllabusfilter" type="String" />
+  <bfw_property name="bfw_cssclass" type="String" />
+  <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_targetid" type="String" />
+  <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+</bfw_properties><bfw_tocs>
+  <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+</bfw_tocs></data>
+    </item>
+		<item itemid="PX_DashboardWidget" entityid="-entityid-">
+    <data>
+      <type>CustomActivity</type>
+      <parent>PX_DASHBOARD_1COLUMN_ZONE_1</parent>
+      <sequence>a</sequence>
+      <abbreviation>lcw</abbreviation>
+      <timetocomplete>PT1M</timetocomplete>
+      <category>0</category>
+      <period inherit="true">0</period>
+      <groupsetid>-1</groupsetid>
+      <weight>100</weight>
+      <gradeentry>1</gradeentry>
+      <inputtable inherit="true">0</inputtable>
+      <completiontrigger>0</completiontrigger><bfw_type>Widget</bfw_type><bfw_subtype>PX_CarouselWidget</bfw_subtype><bfw_display_flags>
+  <display>instructor</display>
+  <display>student</display>
+</bfw_display_flags><bfw_widget_callbacks>
+  <method name="View" controller="DashboardCoursesWidget" action="Summary" fne="false" />
+</bfw_widget_callbacks><bfw_properties>
+  <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+  <bfw_property name="bfw_target_content_type" type="String">LearningCurve</bfw_property>
+  <bfw_property name="bfw_sortgroups" type="String">true</bfw_property>
+  <bfw_property name="allow_title_column" type="String">true</bfw_property>
+  <bfw_property name="allow_instructorname_column" type="String">true</bfw_property>
+  <bfw_property name="allow_allowdomainname_column" type="String">true</bfw_property>
+  <bfw_property name="academicterm" type="String">false</bfw_property>
+  <bfw_property name="allow_courseid_column" type="String">false</bfw_property>
+  <bfw_property name="allow_deletebutton_column" type="String">true</bfw_property>
+  <bfw_property name="allow_status_column" type="String">true</bfw_property>
+  <bfw_property name="allow_enrollmentcount_column" type="String">true</bfw_property>
+  <bfw_property name="allow_createanotherbranch_column" type="String">false</bfw_property>
+  <bfw_property name="allow_activatebutton_column" type="String">false</bfw_property>
+  <bfw_property name="allow_courseopeninnewwindow_column" type="String">true</bfw_property>
+  <bfw_property name="allow_view_roster" type="String">true</bfw_property>
+  <bfw_property name="allow_edit_course" type="String">true</bfw_property>
+</bfw_properties><bfw_tocs>
+  <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+</bfw_tocs><creationby>7</creationby><IsMarkAsCompleteChecked>false</IsMarkAsCompleteChecked><meta-bfw_assigned>false</meta-bfw_assigned>
+
+</data>
+</item>
+		<item itemid="PX_Program_DashboardWidget" entityid="-entityid-">
+          <data>
+            <type>CustomActivity</type>
+            <parent>PX_PROGRAM_DASHBOARD_1COLUMN_ZONE_1</parent>
+            <sequence>a</sequence>
+            <abbreviation>lcw</abbreviation>
+            <timetocomplete>PT1M</timetocomplete>
+            <category>0</category>
+            <period inherit="true">0</period>
+            <groupsetid>-1</groupsetid>
+            <weight>100</weight>
+            <gradeentry>1</gradeentry>
+            <inputtable inherit="true">0</inputtable>
+            <completiontrigger>0</completiontrigger>
+            <bfw_type>Widget</bfw_type>
+            <bfw_subtype>PX_Program_DashboardWidget</bfw_subtype>
+            <bfw_display_flags>
+              <display>instructor</display>
+              <display>student</display>
+            </bfw_display_flags>
+            <bfw_widget_callbacks>
+              <method name="View" controller="DashboardCoursesWidget" action="ProgramDashboard" fne="false" />
+            </bfw_widget_callbacks>
+            <bfw_properties>
+              <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+              <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+              <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            </bfw_properties>
+            <bfw_tocs>
+              <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+            </bfw_tocs>
+            <creationby>7</creationby>
+            <IsMarkAsCompleteChecked>false</IsMarkAsCompleteChecked>
+            <meta-bfw_assigned>false</meta-bfw_assigned>
+          </data>
+        </item>
+		<item itemid="PX_ActivitiesWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_LC_HOME_2COLUMN_ZONE_2</parent>
+          <sequence>ab</sequence>
+          <title>Activities</title>
+          <abbreviation>lcw</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_ActivitiesWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="ActivitiesWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_ActivitiesWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_target_content_type" type="String">LearningCurve</bfw_property>
+            <bfw_property name="bfw_sortgroups" type="String">true</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+	  <item itemid="PX_PRODUCT_GETTING_STARTED" entityid="-entityid-">
+    <data>
+      <type>CustomActivity</type>
+      <parent>PX_ROOT</parent>
+      <title>Everyday Writer</title>
+      <abbreviation>ecw</abbreviation>
+      <description>
+          &lt;div class="real-writing welcome"&gt; &lt;div id="PX_LC_HOME_2COLUMN_ZONE_1" class="zoneParent"&gt; &lt;div class="course-info-widget"&gt; &lt;div class="top"&gt; &lt;div class="book"&gt; &lt;/div&gt; &lt;span class="book-title"&gt;Real Writing with Readings&lt;/span&gt;&lt;br&gt; &lt;span&gt;Sixth Edition&lt;/span&gt;&lt;br&gt; &lt;span&gt;Susan Anker&lt;/span&gt;&lt;br&gt; &lt;/div&gt; &lt;div class="bottom"&gt; &lt;ul class="tutorial-links"&gt; &lt;li class="header-row"&gt;&lt;span rel=""&gt;Instructor Support&lt;/span&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://cmg.screenstepslive.com/s/MacmillanMedia/m/LearningCurveIM/l/130994-first-day-of-class-how-do-i-share-ordering-information-with-my-students" target="_blank"&gt;&lt;span rel=""&gt;First Day of Class&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Works" target="_blank"&gt;&lt;span rel=""&gt;How LearningCurve Works&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://cmg.screenstepslive.com/s/MacmillanMedia/m/LearningCurveIM/l/131292-how-do-i-get-in-touch-with-tech-support" target="_blank"&gt;&lt;span rel=""&gt;FAQs&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://cmg.screenstepslive.com/s/3918/m/7129" target="_blank"&gt;&lt;span rel=""&gt;Instructor QuickStart&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="http://cmg.screenstepslive.com/s/3919/m/11163" target="_blank"&gt;&lt;span rel=""&gt;Student QuickStart&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;div id="PX_LC_HOME_2COLUMN_ZONE_2" class="zoneParent"&gt; &lt;div class="marketing-content"&gt; &lt;div class="lc-rw-body-copy"&gt; &lt;p&gt;&lt;b&gt;Welcome, instructors!&lt;/b&gt; Assign &lt;i&gt;LearningCurve&lt;/i&gt; activities and watch your students and class use our adaptive quizzing to master course content.&lt;/p&gt; &lt;/div&gt; &lt;div class="lc-rw-body-copy"&gt; &lt;span&gt;Here's how it works:&lt;/span&gt; &lt;ul&gt; &lt;li&gt;Choose which &lt;i&gt;LearningCurve&lt;/i&gt; activities you want to assign.&lt;/li&gt; &lt;li&gt;Enable Student registration and enter your course information.&lt;/li&gt; &lt;li&gt;Use Reports to see how your class and students are doing on &lt;i&gt;LearningCurve&lt;/i&gt; activities. &lt;/li&gt; &lt;li&gt;To create a new course, select "Create new course" in the top banner.&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;div class="lc-action-button"&gt;
+
+          &lt;a href="[[viewcourses]]" class="ecom-btns view-courses-button fixed view-courses-button-hidden "&gt;View Courses
+          &lt;span class="icon"&gt;&lt;/span&gt;&lt;/a&gt;
+
+          &lt;a href="[[createcourse]]" class="ecom-btns [[createcoursestyles]]"&gt;Get into LearningCurve &lt;span class="icon"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt;
+        </description>
+      <timetocomplete>PT1M</timetocomplete>
+      <category>1</category>
+      <period inherit="true">0</period>
+      <groupsetid>-1</groupsetid>
+      <weight>100</weight>
+      <gradeentry>1</gradeentry>
+      <inputtable inherit="true">0</inputtable><bfw_type>ProductMarketing</bfw_type><bfw_subtype>Marketing</bfw_subtype><bfw_tocs>
+	  <bfw_toc_contents parentid="PX_ROOT" sequence="_ja" />
+	</bfw_tocs></data>
+    </item>
+	</requests>
+  </request>
+  <!-- This deletes some legacy items that may be on the course -->
+  <request cmd="deleteitems">
+    <requests>
+      <item entityid="-entityid-" itemid="PX_MENU_ITEM_COURSEMATERIALS_TEMPLATE_PM" />
+      <item entityid="-entityid-" itemid="PX_MENU_ITEM_COURSEMATERIALS_PM" />
+      <item entityid="-entityid-" itemid="PX_MENU_ITEM_EBOOK_PM" />
+      <item entityid="-entityid-" itemid="PX_MENU_ITEM_PROGRAM_MANAGER_TEMPLATE" />
+      <item entityid="-entityid-" itemid="PX_MENU_ITEM_PROGRAM_MANAGER" />
+      <item entityid="-entityid-" itemid="PX_ProfileSummaryWidget" />
+    </requests>
+  </request>
+</batch>

@@ -1,0 +1,39 @@
+	<responses>
+		<response code="OK">
+			<question questionid="2f58ddabe0e343eda629b405759be802"   resourceentityid="id" version="1" schema="2" partial="true" round="true">
+				<answer/>
+				<body>Match the animals with their sounds.</body>
+				<interaction type="match" flags="2" width="10" height="11" significantfigures="12" texttype="IgnoreCase">
+					<choice id="1">
+						<body>dog</body>
+						<answer>woof</answer>
+					</choice>
+					<choice id="2">
+						<body>cat</body>
+						<answer>meow</answer>
+					</choice>
+					<choice id="3">
+						<body>cow</body>
+						<answer>moo</answer>
+					</choice>
+				</interaction>
+			</question>
+			<question questionid="44cead279c0f46dcab0c2d4ff1ce5c67"  resourceentityid="id" version="1" schema="2" partial="false">
+				<groups>
+					<group>Group A</group>
+				</groups>
+				<answer>
+					<value>1</value>
+				</answer>
+				<body>Is this a multiple choice question?</body>
+				<interaction type="choice" flags="2">
+					<choice id="1">
+						<body>Yes</body>
+					</choice>
+					<choice id="2">
+						<body>No</body>
+					</choice>
+				</interaction>
+			</question>
+		</response>
+	</responses>

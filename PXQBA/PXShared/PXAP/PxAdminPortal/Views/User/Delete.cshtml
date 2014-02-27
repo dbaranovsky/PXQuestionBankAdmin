@@ -1,0 +1,20 @@
+﻿@model Bfw.PXAP.Models.Domain.User
+
+@using (Ajax.BeginForm("Delete", "User", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "PxApUser.UpdateUser" }))
+{
+<div style="background-color:#ffffff;">
+    <div id="userInfoHeader"></div>
+    <fieldset id="userInfoContent">
+        <legend>Warning!</legend>
+        @Html.HiddenFor(m => m.UserName)
+        <div class="form-item">
+            Are you sure want to delete this user "@Model.UserName"? Deleting this user will prevent them from accessing the system and will
+            permanently delete any data associated with the account.
+        </div>
+        <div class="submit-buttons">
+            <input type="button" value="CANCEL" onclick="PxApUser.ClearAndResetModal()"/>
+            <input type="submit" value="CONFIRM" />
+        </div>
+    </fieldset>
+</div>
+}

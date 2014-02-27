@@ -1,0 +1,14 @@
+﻿@model List<Bfw.PXAP.Models.ExternalMenuModel>
+           
+<ul id="topnav">
+
+    @{
+        
+    foreach(var m in Model)
+    {
+        <li><a href="@m.MenuURL" target="_blank" id="@m.MenuName">@m.MenuName</a></li> 
+    }    
+
+    }
+
+</ul>

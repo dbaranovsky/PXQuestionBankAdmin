@@ -1,0 +1,43 @@
+﻿html, body, #main, .page, #question-player
+{
+    height:100%;
+}
+#question-player
+{
+    font:normal 12px/18px Century Gothic, sans-serif;
+    color:#333333;
+}
+
+#question-player .header 
+{
+    font-size:1em;
+    padding:10px;
+}
+
+#question-player .header .title
+{
+    float:right;
+}
+#question-player .content-wrapper{  
+    overflow-y:auto;
+    height:90%;
+    margin: 12px 12px 0 12px;
+}
+#question-player .action-menu
+{
+    padding:6px;
+    background-color:#E8E9EA;
+    border-top:1px solid #666666;    
+    float:left;
+}
+#question-player .action-menu input
+{
+    width:90px;
+}
+
+.clearer
+{
+    clear:both;
+    float:none !important;
+}
+ 

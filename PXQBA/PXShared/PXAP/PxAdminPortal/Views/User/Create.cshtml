@@ -1,0 +1,43 @@
+﻿@model Bfw.PXAP.Models.View.CreateUserViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Ajax.BeginForm("Create", "User", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "PxApUser.UpdateUser" }))
+{
+<div style="background-color:#ffffff;">
+    <div id="userInfoHeader"></div>
+    <fieldset id="userInfoContent">
+        <legend>New User</legend>
+        <div id="error" style="padding-left: 5px; color: red;">
+            @Html.ValidationSummary(false)
+        </div>
+        <div class="form-item">
+            @Html.LabelFor(model => model.UserName)
+            @Html.EditorFor(model => model.UserName)
+        </div>
+        <div class="form-item">
+            @Html.LabelFor(model => model.Name)
+            @Html.EditorFor(model => model.Name)
+        </div>
+        <div class="form-item">
+            @Html.LabelFor(model => model.Email)
+            @Html.EditorFor(model => model.Email)
+        </div>
+        <div class="form-item">
+            @Html.LabelFor(model => model.Password)
+            @Html.PasswordFor(model => model.Password)
+        </div>
+        <div class="form-item">
+            @Html.LabelFor(model => model.ConfirmPassword)
+            @Html.PasswordFor(model => model.ConfirmPassword)
+        </div>
+        <div class="submit-buttons">
+            <input type="button" value="CANCEL" onclick="PxApUser.ClearAndResetModal()" />
+            <input type="submit" value="SAVE" />
+        </div>
+    </fieldset>
+</div>
+}
+

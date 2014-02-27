@@ -1,0 +1,53 @@
+ <requests>
+ <item itemid="PX_Course_Information" version="0.1" entityid="40516" creationdate="2012-04-12T20:27:29.697Z" creationby="7" modifieddate="2012-04-12T20:27:29.697Z" modifiedby="7" origindepth="1" derivativedepth="1">
+    <data>
+      <type>CustomActivity</type>
+      <parent>PX_Widget</parent>
+      <sequence>f</sequence>
+      <title>About This Course</title>
+      <abbreviation>Course Information</abbreviation>
+      <duedate>0001-01-01T00:00:00Z</duedate><bfw_type>Widget</bfw_type><bfw_subtype>PX_Course_Information</bfw_subtype><bfw_display_flags>
+  <display>instructor</display>
+  <display>student</display>
+  <display>ebook</display>
+  <display>lms</display>
+</bfw_display_flags><bfw_widget_template>PX_Course_Information</bfw_widget_template><bfw_widget_callbacks>
+  <method name="View" controller="AboutCourseWidget" action="View" fne="false" />
+  <method name="Edit" controller="AboutCourseWidget" action="Edit" fne="false" />
+  <method name="Save" controller="AboutCourseWidget" action="Save" fne="false" />
+  <method name="OnBeforeAdd" controller="AboutCourseWidget" action="OnBeforeAdd" fne="false" />
+</bfw_widget_callbacks><bfw_properties>
+  <bfw_property name="instructorname" type="String" />
+  <bfw_property name="officehours" type="String" />
+  <bfw_property name="syllabus" type="String" />
+  <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+</bfw_properties><bfw_tocs>
+  <bfw_toc_contents parentid="PX_WIDGETS" sequence="_f" />
+</bfw_tocs></data>
+  </item>
+  </requests>
+  
+  
+  <requests>
+  <item itemid="PX_LaunchpadWidget" version="0.1" entityid="40516" creationdate="2012-04-12T20:27:31.167Z" creationby="7" modifieddate="2012-04-12T20:27:31.167Z" modifiedby="7" origindepth="1" derivativedepth="1">
+    <data>
+      <type>CustomActivity</type>
+      <parent>PX_WIDGETS</parent>
+      <title>Launch Pad</title>
+      <abbreviation>Launchpad</abbreviation>
+      <duedate>0001-01-01T00:00:00Z</duedate><bfw_type>Widget</bfw_type><bfw_subtype>PX_LaunchpadWidget</bfw_subtype><bfw_display_flags>
+  <display>instructor</display>
+</bfw_display_flags><bfw_widget_callbacks>
+  <method name="View" controller="LaunchpadWidget" action="Summary" fne="false" />
+  <method name="Edit" controller="LaunchpadWidget" action="Edit" fne="false" />
+</bfw_widget_callbacks><bfw_widget_template>PX_LaunchpadWidget</bfw_widget_template><bfw_properties>
+  <bfw_property name="bfw_syllabusfilter" type="String" />
+  <bfw_property name="bfw_cssclass" type="String" />
+  <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_targetid" type="String" />
+  <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+</bfw_properties><bfw_tocs>
+  <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+</bfw_tocs></data>
+  </item>
+ </requests>

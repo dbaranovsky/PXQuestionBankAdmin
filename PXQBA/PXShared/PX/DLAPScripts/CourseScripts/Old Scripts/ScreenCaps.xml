@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<requests>
+  <item itemid="SCREENSTEPS_CONFIG" version="0.2" entityid="36516">
+    <data>
+      <type>CustomActivity</type>
+      <bfw_properties>
+        <bfw_property name="bfw_config" type="xml">
+          <ScreenSteps>
+            <Actions>
+              <Action Key="PX_FACEPLATE_WHATWILLTHISDO" Url="http://angelaward.screenstepslive.com/s/px_space_universe9e/m/home-page-customization/l/50546-how-do-i-create-a-course">
+                <ScreenStepKey />
+                <DisplayText>what will this do?</DisplayText>
+              </Action>
+              <Action Key="PX_EPORTFOLIO_ABOUT_ASSESSMENT" Url="http://angelaward.screenstepslive.com/s/px_space_universe9e/m/home-page-customization/l/50546-how-do-i-create-a-course">
+                <ScreenStepKey />
+                <DisplayText>About Assessment</DisplayText>
+              </Action>
+              <Action Key="PX_EPORTFOLIO_ABOUT_UPLOADMATERIALS" Url="http://angelaward.screenstepslive.com/s/px_space_universe9e/m/home-page-customization/l/50546-how-do-i-create-a-course">
+                <ScreenStepKey />
+                <DisplayText>About My Material</DisplayText>
+              </Action>
+              <Action Key="PX_EPORTFOLIO_ABOUT_EBOOKS" Url="http://angelaward.screenstepslive.com/s/px_space_universe9e/m/home-page-customization/l/50546-how-do-i-create-a-course">
+                <ScreenStepKey />
+                <DisplayText>About e-Books</DisplayText>
+              </Action>
+              <Action Key="PX_EPORTFOLIO_COURSE_CREATE" Url="http://angelaward.screenstepslive.com/s/px_space_universe9e/m/home-page-customization/l/50546-how-do-i-create-a-course">
+                <ScreenStepKey />
+                <DisplayText>About Create course</DisplayText>
+              </Action>
+              <Action Key="PX_EPORTFOLIO_ABOUT_EDITWELCOMEMESSAGE" Url="http://angelaward.screenstepslive.com/s/px_space_universe9e/m/home-page-customization/l/50546-how-do-i-create-a-course">
+                <ScreenStepKey />
+                <DisplayText>About edit welcome message</DisplayText>
+              </Action>
+              <Action Key="PX_EPORTFOLIO_ABOUT_ACTIVATION" Url="http://angelaward.screenstepslive.com/s/px_space_universe9e/m/home-page-customization/l/50546-how-do-i-create-a-course">
+                <ScreenStepKey />
+                <DisplayText>About activation</DisplayText>
+              </Action>
+              <Action Key="PX_EPORTFOLIO_NON_ACTIVATED1" Url="http://angelaward.screenstepslive.com/s/px_space_universe9e/m/home-page-customization/l/50546-how-do-i-create-a-course">
+                <ScreenStepKey />
+                <DisplayText>some message</DisplayText>
+              </Action>
+			  <Action Key="PX_ABOUT_ADD_NOTE" Url="http://angelaward.screenstepslive.com/s/px_space_universe9e/m/home-page-customization/l/50546-how-do-i-create-a-course">
+				<ScreenStepKey />
+				<DisplayText>About Add Note</DisplayText>
+			</Action>
+            </Actions>
+          </ScreenSteps>
+        </bfw_property>
+      </bfw_properties>
+    </data>
+  </item>
+</requests>

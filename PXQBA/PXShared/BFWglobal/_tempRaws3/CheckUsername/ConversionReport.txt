@@ -1,0 +1,34 @@
+﻿This report shows the steps taken to convert your Web application from ASP.NET 1.1 to ASP.NET 2.0. 
+There may be some unresolved conversion issues you will need to manually fix. 
+For more information, please refer to http://go.microsoft.com/fwlink/?LinkId=46995 or search for the help topic "Converting from Visual Studio .NET 2002 or 2003".
+Conversion Started on project file WebService1.csproj at November 17 2007, 14:34:33.
+
+=========================ERRORS===================
+
+=========================WARNINGS=================
+Warning: This web project was converted as a file-based web application. If your site contained any IIS meta-information, e.g. sub-folders marked as virtual directories, it is recommended that you close this web site and re-open it using the Open Web Site command and selecting the Local IIS tab.
+
+=========================COMMENTS=================
+Read-only attribute of file C:\Inetpub\wwwroot\WebService1\Web.Config has been changed to read-write.
+Web.Config: Added 'xhtmlConformance' attribute.
+Read-only attribute of file C:\Inetpub\wwwroot\WebService1\Global.asax has been changed to read-write.
+Removed attribute Codebehind from file Global.asax.
+Read-only attribute of file C:\Inetpub\wwwroot\WebService1\Service1.asmx has been changed to read-write.
+Read-only attribute of file C:\Inetpub\wwwroot\WebService1\Global.asax.cs has been changed to read-write.
+Added folder App_Code.
+Moved file Global.asax.cs to the App_Code\ directory.
+Read-only attribute of file C:\Inetpub\wwwroot\WebService1\DML.cs has been changed to read-write.
+Moved file DML.cs to the App_Code\ directory.
+Read-only attribute of file C:\Inetpub\wwwroot\WebService1\Envelope.cs has been changed to read-write.
+Moved file Envelope.cs to the App_Code\ directory.
+Moved file Service1.asmx.cs to the App_Code\ directory.
+Read-only attribute of file C:\Inetpub\wwwroot\WebService1\AssemblyInfo.cs has been changed to read-write.
+Moved file AssemblyInfo.cs to the App_Code\ directory.
+Read-only attribute of file C:\Inetpub\wwwroot\WebService1\BFW64Exceptions.cs has been changed to read-write.
+Moved file BFW64Exceptions.cs to the App_Code\ directory.
+Changed HTML validation schema for all projects to 'Internet Explorer 6.0'.
+Removed file Bin\WebService1.dll.
+Removed file Bin\WebService1.pdb.
+Removed file WebService1.csproj.
+Removed file WebService1.csproj.webinfo.
+Project WebService1.csproj has been converted successfully at November 17 2007, 14:34:34.

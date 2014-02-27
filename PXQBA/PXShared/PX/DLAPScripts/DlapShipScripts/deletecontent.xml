@@ -1,0 +1,10 @@
+<DeleteItems>
+  <!-- Following command will delete all Assessment and AssetLink content from a course -->
+  <!-- PX_Root PX_LEFT_NAV and NOTHING are left in for XBook -->
+  <!-- Test in DEV on a single course before running -->
+  <Item>
+    <Where>
+(/type='Assessment' OR /type='AssetLink') AND /parent &lt;&gt; 'PX_LEFT_NAV' AND /parent &lt;&gt; 'PX_ROOT' AND /parent &lt;&gt; 'NOTHING'
+    </Where>
+  </Item>
+</DeleteItems>

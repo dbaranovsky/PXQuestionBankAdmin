@@ -1,0 +1,858 @@
+﻿/* Course Dashboard Layout
+
+/* End Course Dashboard Layout */ 
+
+.course-type-instructor_dashboard .editPageStart
+{
+display:none !important;
+}
+
+#PX_DashboardWidget #widgetBody{
+border: none;
+-moz-box-shadow: none;
+-webkit-box-shadow: none;
+background-image: none;
+padding-bottom: 30px;
+}
+
+#PX_DashboardWidget.widgetItem{
+    border: none;
+    height: 100%;
+}
+
+
+.PX_DashboardWidget{
+
+    margin: 0 42px;
+}
+    
+.dashboardgrid{
+margin: auto;
+width: 100%;
+border-collapse: collapse;
+}
+    
+.dashboardgrid tr
+{   padding:0px;
+text-align: left;
+}
+
+.dashboardgrid th
+{    
+font-weight: normal;
+padding-bottom:5px;
+text-align: left;
+text-transform: uppercase;
+border-bottom: 1px solid #767E68;
+}
+
+.dashboardgrid td
+{
+border-bottom: 1px dashed #767E68;
+text-align: left;
+min-width: 100px;
+width: 51%;
+padding: 0px;
+vertical-align: top;
+}
+
+.dashboardgrid .status-cell
+{
+border-left: 1px solid #767E68;
+    
+min-width: 50px;
+padding: 5px 5px 5px 5px;
+width: 10%;
+}
+    
+
+.dashboardgrid .domain-cell
+{
+border-left: 1px solid #767E68;
+border-right: 1px solid #767E68;
+min-width: 50px;
+padding: 5px 5px 5px 5px;
+width: 15%;
+}
+    
+.dashboardgrid .header-titles
+{   padding-left:5px;
+min-width: 50px;
+}
+
+.dashboardgrid .enrollment-count-cell
+{  
+width: 20%;
+padding: 5px 5px 5px 5px;
+border-left: 1px solid #767E68;
+}
+
+
+.dashboardgrid .semester,
+.dashboardgrid.professor-name,
+.dashboardgrid .activate-button,
+.dashboardgrid  .delete-button.delete-button-invisible
+{
+display:none;
+}
+.dashboardgrid  .delete-button.delete-button-visible
+{
+display:inline;
+}
+.dashboardgrid .title-cell,
+#studentsRosterInformation .title-cell
+{
+padding: 5px 5px 5px 0px;
+text-decoration: none; 
+}
+
+.dashboardgrid .title-cell .course-title{
+    color:#2691CA;
+    text-decoration: none;
+    float:left;
+    font-size: 16px;
+    font-size:1rem;
+    font-weight:bold;
+}
+   
+.course-roster-title
+{
+padding:30px 0px 30px 0px;    
+}
+.course-roster-title-text
+{
+font:bold;    
+}
+    
+#studentsRosterInformation{
+width:100%;  
+padding:20px;  
+}
+
+#studentsRosterInformation tr
+{   
+border-top: 1px dashed #767E68;
+border-bottom: 1px dashed #767E68;  
+}
+
+#studentsRosterInformation td
+{   
+width:50%;  
+font-family:arial,sans-serif;
+}
+   
+.PX_DashboardWidget #widget-title{
+color: #58595B;
+float:left;  
+}
+
+.PX_DashboardWidget .my-courses{
+    border-top: 5px solid #7A8569;
+    color: #7A8569;
+    padding-bottom: 20px;
+    padding-top: 6px;
+} 
+
+.PX_DashboardWidget #create-course{     
+    float:right;
+}
+.PX_DashboardWidget #create-course-regular{     
+    float:right;
+}
+.PX_DashboardWidget #dashboard-header
+{
+float: left;
+width: 100%;
+margin-bottom: 20px;
+margin-top: 30px;
+}
+    
+.PX_DashboardWidget .show-creation-button{
+background-color: #1291C7;
+color: white;
+text-decoration: none;
+font-weight: bold;
+margin: 6px 0px 12px;
+border-radius: 7px;
+padding: 5px 10px;
+font-size: 14px;
+}
+
+.PX_DashboardWidget .dashboardgrid .enrollment-count-cell .show-url-delete,
+.PX_DashboardWidget .dashboardgrid .enrollment-count-cell .show-url-view-roster,
+.PX_DashboardWidget .dashboardgrid .enrollment-count-cell .show-url-view-edit
+{
+display:none;   
+float:right;
+text-decoration:none;
+color: #003D8B;
+}
+    
+.dashboardgrid .title-cell .show-url-hover
+{
+display:none;   
+float:right;
+}
+
+.dashboardgrid .title-cell .show-url
+{
+display:none;   
+float:left;
+padding-top: 5px;
+color:#003D8B;
+width:100%;
+}
+
+.dashboardgrid .title-cell .course-url{
+    float:left;
+    padding-top: 10px;
+    color:#7C7C7C;
+    width:100%;
+    font-size: 13px;
+    font-size: .813rem;
+}
+
+.PX_DashboardWidget .launchpad{
+margin: 0 auto;
+}
+    
+.dashboardgrid tr{
+    border:1px solid #DDDFE3;
+    float: left;
+    margin: 0 auto;
+    width: 100%;
+    background-color: white;
+}
+
+.launchpad .dashboardgrid th{    
+    font-weight: normal;
+    padding-bottom:5px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.launchpad .dashboardgrid td{
+    text-align: left;
+    padding:0px;
+    vertical-align: top;
+    float:left
+}
+
+ .launchpad h2.my-courses {
+    float: left;
+	font-size: 26px;
+	margin: 50px 0;
+	text-align: left;
+	width: 100%;
+	border-top: 0;
+	color: black;
+	padding-bottom: 0;
+	padding-top: 0;
+}   
+
+.launchpad .dashboardgrid{
+float:left;
+width:100%;
+margin-top:15px;
+margin-bottom: 60px;
+}
+
+.launchpad .dashboardgrid td 
+{
+border-bottom:none;   
+}
+	
+.launchpad .dashboardgrid .title-cell {
+    float: left;
+    width: 70%;
+    padding: 18px 20px 19px;
+}
+	
+.launchpad  #create-course{
+    border:4px dashed #E3E5E7;
+    height: 83px;
+    float:right;
+    width:99%; 
+}
+
+.launchpad  #create-course:hover{
+    border: 4px dashed #2691CA;
+    transition: border 0.2s ease 0s;
+    background-color:#fff;
+    cursor:pointer;
+}
+
+.launchpad #create-course .createcourseoption {
+    position: relative;
+    font-weight: bold;
+    text-decoration: none;
+    color: #2691CA;
+    font-size: 1rem;
+    margin: 0 auto;
+    width: 120px;
+    display: block;
+    line-height: 85px;
+}
+
+.ie .launchpad #create-course .createcourseoption {
+    width: auto;
+    text-align: center; 
+}
+.dashboardgrid .parent-course{	
+    float: right;
+    border:1px solid #DDDFE3;
+    margin-top:21px;
+}		
+
+.dashboardgrid .course-info-container{	
+    float:left; 
+    width:80%
+}
+
+ .dashboardgrid .child-course{	
+    border-top: medium none;
+    float: right;
+    width:90%;
+    border-left: none;
+}
+
+.dashboardgrid .inner-child-course{	
+border-left:none;
+border-top:none;
+float: right;
+width: 860px;
+}
+
+.dashboardgrid .inner-child-course .link-image{	
+
+float: left;
+width: auto;
+background-repeat: no-repeat;
+height: 138px;
+
+}
+	
+.dashboardgrid .inner-child-course .title-cell{	
+    border-left: 1px solid #DDDFE3;
+}
+	
+.dashboardgrid .title-cell .left  .professor-name{	
+    float: left;
+    margin-right: 10px;
+    min-width: 0;
+    display:block;
+}
+
+.dashboardgrid .title-cell .left .domain-name{	
+    float: left;
+    min-width: 1px;
+    margin-right: 10px;
+    display:block;
+}
+
+.dashboardgrid .title-cell .left .semester{	
+    float: left;
+    min-width: 10px;
+    margin-right: 10px;
+    display:block;
+}
+
+.dashboardgrid .title-cell .left .class-id{	
+    float: left;
+    min-width: 10px;
+    display:block;
+}
+	
+.dashboardgrid .enrollment-count-cell{	
+    float: right;
+    width: auto;
+    text-align: right;
+    border-right: none;
+    border-left: none;
+    color: #8F8F8F;
+    padding: 10px 0px 0px 0px;
+}
+
+.dashboardgrid .status-cell{	
+    float: right;
+    width: auto;
+    text-align: right;
+    border-left: none;
+    color: #8F8F8F;
+    padding: 10px 10px 0px 0px;
+}
+
+.dashboardgrid .course-title{	 
+    float:left;
+    width:100%;
+    text-align:left;
+    padding-left: 0px !important;
+    margin-top:0px;
+}
+
+.dashboardgrid .title-cell .course-info{	
+    float:left;
+    width:100%;
+    color: #7C7C7C;
+    line-height:32px;
+    font-size: 13px;
+    font-size: .813rem;
+}
+
+.dashboardgrid .title-cell .course-actions{
+    font-size: 13px;
+    font-size: .813rem;
+    color:#2691CA;
+}
+
+.course-actions .edit-dashboard-course,
+.course-actions .activate-dashboard-course,
+ .course-actions .create-another-branch-link,
+ .course-actions .deactivate-dashboard-course{
+	color: #2691CA;
+}
+
+.course-actions a{
+    text-decoration:none;    
+}
+
+.course-actions a:hover{
+    text-decoration:underline;    
+}
+
+.dashboardgrid .create-another-branch{	
+    margin-right: 10px;
+    float:left;
+}
+	
+ .dashboardgrid .create-branch-this-icon{	
+    background-image: url("style/images/branch-this-course.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 19px;
+    float: left;
+}
+	
+.dashboardgrid  .activate-button{	
+    float:left;
+    margin-right:10px;
+    display:block;
+}
+
+.dashboardgrid .edit-button{	
+	float:left;
+	margin-right:10px;
+	display:block;
+}
+
+.dashboardgrid .delete-button{	
+    float: left;
+    width: 40px;
+    margin-right: 5px;
+    display:block;
+}
+
+.dashboardgrid .delete-button a{	
+    color: #FF0E0E;
+}
+	
+.dashboardgrid .parent-course .link-icon{	
+    display:none;
+}
+
+.dashboardgrid .inner-child-course .link-icon{	
+    width: auto;
+    background-image: url("style/images/launchpad-icons-top.png");
+    background-size: contain;
+    height: 101%;
+    background-repeat: no-repeat;
+}
+
+.dashboardgrid .child-course .link-icon{	
+    width: auto;
+    background-image: url("style/images/launchpad-icons-bottom.png");
+    background-size: contain;
+    height: 101%;
+    background-repeat: no-repeat;
+}
+	
+	
+#first-branch{
+    margin:0 auto;
+    width:560px
+}
+
+.Activate { background: #F8F9F9 !important;}
+
+/* Dashboard jQuery Popups */
+#dashboard-course-item .course-info { padding: 6px 0; border-top: 2px solid #333;  border-bottom: 2px solid #333; }
+#dashboard-course-item ul, #dashboard-course-item ol { display: block; list-style: none; list-style-type: disc; -webkit-margin-before: 1em; -webkit-margin-after: 1em; -webkit-margin-start: 0px; -webkit-margin-end: 0px; -webkit-padding-start: 15px; }
+#dashboard-course-item ol.course-info li  { border-bottom: 1px dotted #333; background-color: #EFF9FE; overflow: hidden; display: list-item; list-style: none; text-align: -webkit-match-parent; }
+#dashboard-course-item ol.course-info .left-col  { float: left; margin-top: 12px; text-align:right; }
+#dashboard-course-item ol.course-info .right-col { float: right; padding: 12px 0 12px 12px; width: 70%; text-decoration:bold; font-weight:bold; background-color: #FFFFFF; }
+#dashboard-course-item ol.course-info label { color: #333333; margin-right: 18px; text-transform: uppercase; font-size: 11px !important; }
+
+#create-branch-confirmation, #activate-dashboard-course, #create-course-option, #deactivate-dashboard-course, #edit-dashboard-course, #delete-dashboard-course, #dashboard-course-creation-screen
+{
+display:none;
+}
+
+/* Create Course Modal */ 
+.ui-dialog .courseoption-dialog-buttonpane,
+.ui-dialog .pxactivatecourse-dialog-buttonpane{
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+/* End*/ 
+
+.dashboard-widget-dialog
+{
+display:none;
+}
+
+.dashboard-widget-dialog p
+{
+margin: 5px 0px 5px 0px;
+font-size: 16px;
+}
+
+.dashboard-widget-dialog .ui-dialog-titlebar
+{
+display:none;   
+}
+
+#dashboard-template-row
+{
+display:none;   
+    
+}
+
+/* Common Across All Dialog */
+.disable { display: none !important; }
+.enable { display: block; }
+.doneEditing-btn-icon { background-image: url("style/images/platx_sprite.png"); background-position: -153px -705px; display: inline-block; height: 13px; width: 24px; }
+
+/* Activate Dashboard Dialog */
+.activateheader { font-family: arial, Lucida grande, Lucida Sans, 'Geneva' , sans-serif; }
+.activated-course { background-color:#FBF8E5; border-color:#D3C481; border-style:solid; border-width:2px; border-radius:5px; padding:15px; font-size:13px; font-weight:bold;margin-top:7px; }
+.activation-information { font-family: arial, Lucida grande, Lucida Sans, 'Geneva' , sans-serif; font-size: 13px; padding-bottom: 5px;  }
+.editactivatecourse { color: blue; text-decoration: none; margin-bottom:5px; }
+.editactivatecourse-container { float: right; font-family: Arial, Lucida grande, Lucida Sans, 'Geneva' , Sans-Serif; padding-bottom: 10px; font-size: 13px; padding-left:80%; }
+.pxactivatecourse-dialog-activate { background: #6cb043; color: White !important; border-color: Black; font-weight: bold; }
+.pxactivatecourse-dialog-buttonpane { background: rgb(243,243,243); }
+.pxactivatecourse-dialog-buttonset { float: left !important; padding-left: 10px; }
+.pxactivatecourse-dialog-cancel { text-decoration: underline; color: Blue; background: white !important; font-weight: bold; }
+
+/* Create Course Option Dialog Box */
+.courseoptionheader { font-family: arial, Lucida grande, Lucida Sans, 'Geneva' , sans-serif; text-decoration: none; padding-bottom: 15px; }
+.courseoption-collection { -webkit-padding-start: 0px; }
+.courseoption-list { width: 100%; list-style-type: none; }
+/*Btns*/ 
+
+.courseoption-dialog-buttonpane { background: rgb(243,243,243); }
+.courseoption-dialog-buttonset { float: left !important; padding-left: 10px; }
+.create-course-option { font-family: arial, Lucida grande, Lucida Sans, 'Geneva' , sans-serif; font-size: 13px; }
+
+/* Create Branch Confirmation Dialog Box*/
+#buttons-footer{ background-color: #F8F9F9; border-top: 1px solid black; float: left; margin-bottom: 5px; padding: 2px 0 4px 10px; width: 550px; }
+.display-branch-none { display:none !important; }
+.display-branch { display:block; }
+#display-container{ background-color: white; border-radius: 5px; float: left; margin: 0 auto; width: 560px }
+#display-info { float:left; padding:10px; font-size:13px; }
+
+/* Create Course Dialog Box */
+#academic-term, #dashboard-input, #time-zone { width: 100%; }
+.comboStyle { border-bottom-right-radius: 4px; border-radius: 3px; min-width: 90% }
+.coursefindschool { padding-top: 10px; color: #3A709C; font-size: 11px !important; text-decoration: none; }
+#cover #schoolfinder ol.find-school .left-col { float: left; font-weight: normal; text-align: right; width: 145px; color: #333333; font-size: 12px; padding-right: 15px; }
+#cover #schoolfinder ol.find-school .right-col { margin-right: 20px; float:left; padding: 0px; }
+#cover { width: 620px; margin: 0 auto; font-size: 13px; }
+
+#cover #title-header h1,
+#dashboard-course-item h1{
+    font-size: 21px; 
+}
+
+#cover #schoolfinder ol.find-school li { min-width:300px; list-style-type:none; }
+#dashboard-course-item
+{
+ max-height:500px !important;   
+}
+.dashboard-input{
+   width: 90%; 
+}
+
+.dashboard-labels{
+    float: left; 
+    margin: 6px 0 4px; 
+    width: 100%; 
+    font-weight: bold;
+}
+
+.dashboard-input-radio {
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.dashboard-radio {
+    margin: 6px 0 4px;
+    line-height: 22px;
+    width: 100%; 
+    font-weight: normal;
+}
+
+.dashboard-labels i{
+    font-weight:normal;
+}
+.dashboard-input-short { width: 60%; float: left; }
+.dashboard-label-short { width: 30%; float: left; }
+.dashboard-course-number-label { width: 60% !important; }
+.dashboard-section-number-label { float: left; }
+#error-message { margin: 10px 0px; color: Red; display: none; }
+.error-message { margin: 10px 0px; color: Red;}
+
+.inputStyle {
+    border: 1px solid #ccc; 
+    -moz-border-radius: 10px; 
+    -webkit-border-radius: 10px; 
+    border-radius: 3px; padding: 4px 4px; 
+    outline: 0; 
+    -webkit-appearance: none;
+    margin-bottom:12px;
+}
+
+.optional-text { color: rgb(126, 125, 125); font-size: 12px; padding-left: 10px; }
+#smaller-dashboard-inputs { float: left; width: 100%; }
+.stack { float: left; width: 50%; }
+#title-header { margin: 10px 0px; }
+#title-header h1 { font-size: 32px; }
+
+/* De-activate Dashboard Course */
+.deactivateheader { font-family: arial, Lucida grande, Lucida Sans, 'Geneva' , sans-serif; }
+.pxdeactivatecourse-dialog-deactivate { background:#6cb043; color:White !important; border-color:Black; font-weight:bold; }
+.pxdeactivatecourse-dialog-cancel { text-decoration: underline; color:Blue; background: white !important; font-weight:bold; }
+.pxdeactivatecourse-dialog-buttonpane { background: rgb(243,243,243);}
+.pxdeactivatecourse-dialog-buttonset { float:left !important; padding-left:10px; }
+ul.deactivate-consequence-list { list-style:inside; font-size:medium; font-family: arial, Lucida grande, Lucida Sans, 'Geneva' , sans-serif; }
+
+/* Delete Dashboard Course*/
+.deleteheader {font-family: arial, Lucida grande, Lucida Sans, 'Geneva' , sans-serif;  }
+
+.pxdeletecourse-dialog-cancel { text-decoration: underline; color:Blue; background: white !important; font-weight:bold; }
+.pxdeletecourse-dialog-buttonpane { background: rgb(243,243,243); }
+.pxdeletecourse-dialog-buttonset { float:left !important; padding-left:10px; }
+ul.delete-consequence-list { font-size:medium; font-family: arial, Lucida grande, Lucida Sans, 'Geneva' , sans-serif;  list-style:inside; }
+
+
+/*---- */
+
+.course-copy .dashboardgrid
+{
+margin: auto;
+width: 550px;
+border-collapse: collapse;
+}
+    
+.course-copy .dashboardgrid tr {
+    border: none;
+    float: left;
+    margin: 0 auto;
+    padding: 10px;
+    width: 96%;
+    border-bottom: none;
+    line-height: 25px;
+}
+  .course-copy .dashboardgrid td
+  {
+      border-bottom: none;
+      
+  }
+  
+  .course-copy .dashboardgrid .child-course .link-icon
+  {
+      background-image: none;
+  }
+  .course-copy .dashboardgrid .child-course .title-cell
+  {
+      border-left:none;
+      padding: 0px 18px;
+  }
+  
+  .dashboardgrid .semester
+.course-copy .dashboardgrid tr:last-child
+{
+border-bottom: 1px solid #EBECEE;
+}
+.course-copy .dashboardgrid tr:nth-child(even) { background: #F8F9F9; }
+	
+.course-copy .dashboardgrid th
+{    
+font-weight: normal;
+padding-bottom:5px;
+text-align: left;
+text-transform: uppercase;
+
+}
+.course-copy .dashboardgrid td
+{
+text-align: left;
+min-width: 100px;
+width: 100%;
+padding:0px;
+vertical-align: top;
+float:left
+} 
+
+.course-copy .dashboardgrid{
+float:left;
+width:100%;
+margin-top:10px
+}
+.course-copy .dashboardgrid .title-cell{
+float:left;
+width:60%;
+}
+
+.course-copy .dashboardgrid .parent-course{	
+float: right;
+}		
+	
+	
+.course-copy .dashboardgrid .child-course{	
+
+float: right;
+border-top: 1px solid #DDDFE3;
+}
+
+.course-copy .dashboardgrid .child-course .title-cell{	
+padding-left: 10px;
+}
+
+.course-copy .dashboardgrid .professor-name{	
+float: left;
+margin-right: 10px;
+min-width: 0;
+width: 100px;
+}
+
+.course-copy .dashboardgrid .domain-name{	
+float: left;
+min-width: 1px;
+width: 140px;
+
+}
+.course-copy .dashboardgrid .semester
+{
+display:block;
+}
+
+.course-copy .dashboardgrid .semester{	
+float: left;
+min-width: 10px;
+width: 80px;
+color:#727272;
+}
+
+.course-copy .dashboardgrid .class-id{	
+float: left;
+min-width: 10px;
+
+}
+.course-copy .dashboardgrid .enrollment-count-cell{	
+float:right;
+width:20%;
+text-align:right;
+}
+.course-copy .dashboardgrid .status-cell{	
+float:right;
+width:100px;
+text-align:right;
+line-height: 20px;
+}
+.course-copy .dashboardgrid .course-title{	
+float:left;
+width:100%;
+text-align:left;
+color:black;
+}
+.course-copy .dashboardgrid .course-info{	
+margin-top:5px;
+float:left;
+width:100%;
+}
+.course-copy .dashboardgrid .create-another-branch{	
+margin-top:5px;
+margin-right: 5px;
+float:left;
+width:130px;
+}
+.course-copy .dashboardgrid .activate-button{	
+margin-top:5px;
+float:left;
+margin-right:5px;
+width:50px;
+}
+.course-copy .dashboardgrid .delete-button{	
+float: left;
+margin-top: 5px;
+width: 40px;
+margin-right: 5px;
+}
+.course-copy .dashboardgrid .title-cell a	
+{
+margin-top:0px;
+text-decoration:none;
+}
+	
+.course-copy .dashboardgrid .selected
+{
+background-color:#0095FF !important;
+}
+.course-copy .dashboardgrid .selected .title-cell .course-title,
+.course-copy .dashboardgrid .selected .status-cell .semester
+{
+color:white;
+}
+	
+.course-copy .dashboardgrid .show-url-hover,
+.course-copy .dashboardgrid .domain-name,
+.course-copy .dashboardgrid .domain-cell,
+.course-copy .dashboardgrid .show-url
+{
+display:none;
+}
+.course-copy #which-course-text
+{
+font-weight:bold;   
+}
+
+#dashboard-logout
+{
+   font-size:16px;
+}
+
+#logout-button {
+text-decoration: none;
+color: #1291C7;
+padding-top: 10px;
+font-size: 16px;
+font-weight: normal;
+}
+.entityidofcourse.template
+{
+    display:none;
+}
+
+
+.ui-autocomplete.schoolNames{
+    max-height: 195px;
+    overflow: auto;
+    position:fixed;
+}
+
+body.mozilla .dashboardgrid .child-course .link-icon,
+body.internetexplorer .dashboardgrid .child-course .link-icon { /* mozilla = ie11 */
+    left: 73px !important;
+}

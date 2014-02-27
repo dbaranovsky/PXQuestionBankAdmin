@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<batch>
+  <request cmd="updatecourses">
+    <requests>
+      <course courseid="-courseid-">
+        <data>		
+		  <!--Dashboard Settings -->
+		  <bfw_dashboard_settings>
+            <bfw_dashboard_course_home_page>PX_DASHBOARD_1COLUMN</bfw_dashboard_course_home_page>
+            <bfw_program_dashboard_course_home_page>PX_PROGRAM_DASHBOARD_1COLUMN</bfw_program_dashboard_course_home_page>
+            <instructor_dashboard>true</instructor_dashboard>
+            <program_dashboard>true</program_dashboard>
+          </bfw_dashboard_settings>
+          <isdashboardactive>true</isdashboardactive>
+		  <!-- END Dashboard Settings -->		  
+        </data>
+      </course>
+    </requests>
+  </request>
+
+  <!-- Dashboard Data -->
+
+    <request cmd="putitems">
+        <requests>
+            <item itemid="PX_DashboardWidget" entityid="-entityid-">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>PX_DASHBOARD_1COLUMN_ZONE_1</parent>
+                    <sequence>a</sequence>
+                    <abbreviation>lcw</abbreviation>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <completiontrigger>0</completiontrigger>
+                    <bfw_type>Widget</bfw_type>
+                    <bfw_subtype>PX_CarouselWidget</bfw_subtype>
+                    <bfw_display_flags>
+                        <display>instructor</display>
+                        <display>student</display>
+                    </bfw_display_flags>
+                    <bfw_widget_callbacks>
+                        <method name="View" controller="DashboardCoursesWidget" action="Summary" fne="false" />
+                    </bfw_widget_callbacks>
+                    <bfw_properties>
+                        <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+                        <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+                        <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+                        <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+                        <bfw_property name="bfw_target_content_type" type="String">LearningCurve</bfw_property>
+                        <bfw_property name="bfw_sortgroups" type="String">true</bfw_property>
+                        <bfw_property name="allow_title_column" type="String">true</bfw_property>
+                        <bfw_property name="allow_instructorname_column" type="String">true</bfw_property>
+                        <bfw_property name="allow_allowdomainname_column" type="String">true</bfw_property>
+                        <bfw_property name="academicterm" type="String">true</bfw_property>
+                        <bfw_property name="allow_courseid_column" type="String">true</bfw_property>
+                        <bfw_property name="allow_deletebutton_column" type="String">true</bfw_property>
+                        <bfw_property name="allow_status_column" type="String">true</bfw_property>
+                        <bfw_property name="allow_enrollmentcount_column" type="String">true</bfw_property>
+                        <bfw_property name="allow_createanotherbranch_column" type="String">true</bfw_property>
+                        <bfw_property name="allow_activatebutton_column" type="String">true</bfw_property>
+                        <bfw_property name="allow_courseopeninnewwindow_column" type="String">false</bfw_property>
+                        <bfw_property name="get_nondashboard_courses" type="String">true</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+                    </bfw_tocs>
+                    <creationby>7</creationby>
+                    <IsMarkAsCompleteChecked>false</IsMarkAsCompleteChecked>
+                    <meta-bfw_assigned>false</meta-bfw_assigned>
+
+                </data>
+            </item>
+            <item itemid="PX_DASHBOARD_1COLUMN" entityid="-entityid-">
+                <data>
+                    <parent>PX_PAGES</parent>
+                    <sequence>b</sequence>
+                    <title>PX_DC_ASSIGNMENT_2COLUMN</title>
+                    <abbreviation>PXDCHOME2COLUMN</abbreviation>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>1</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <completiontrigger>0</completiontrigger>
+                    <bfw_page_editable>false</bfw_page_editable>
+                </data>
+            </item>
+            <item itemid="PX_DASHBOARD_1COLUMN_ZONES" entityid="-entityid-">
+                <data>
+                    <parent>PX_DASHBOARD_1COLUMN</parent>
+                    <sequence>a</sequence>
+                    <title>PX_DASHBOARD_1COLUMN_ZONES</title>
+                    <abbreviation>PXDCHOME2COLUMNZONES</abbreviation>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>1</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <completiontrigger>0</completiontrigger>
+                </data>
+            </item>
+            <item itemid="PX_DASHBOARD_1COLUMN_ZONE_1" entityid="-entityid-">
+                <data>
+                    <parent>PX_DASHBOARD_1COLUMN_ZONES</parent>
+                    <sequence>a</sequence>
+                    <title>PX_DC_HOME_ZONE_1</title>
+                    <abbreviation>PXDCHOMEZONE1</abbreviation>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>1</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <completiontrigger>0</completiontrigger>
+                    <bfw_type>Zone</bfw_type>
+                    <bfw_support_hide>true</bfw_support_hide>
+                </data>
+            </item>
+        </requests>
+    </request>
+    <!-- END Dashboard Data -->
+</batch>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<results>
+  <result name="response" numFound="2265" start="0" maxScore="2.2831361" time="83">
+    <doc entityid="6712" class="question" questionid="F7F3EFAFE235257B5E50C44354160036">
+      <str name="dlap_id">6712|Q|F7F3EFAFE235257B5E50C44354160036</str>
+      <str name="dlap_class">question</str>
+      <str name="dlap_q_type">choice</str>
+      <double name="dlap_q_score">1.0</double>
+      <arr name="dlap_html_text">
+        <str>Convergent thinking is to a single correct answer as _________________ is to multiple answers.</str>
+        <str>social thinking</str>
+        <str>divergent thinking</str>
+        <str>emergent thinking</str>
+        <str>practical thinking</str>
+      </arr>
+      <arr name="score">
+        <float name="score">2.2831361</float>
+      </arr>
+    </doc>
+    <doc entityid="6712" class="question" questionid="6404822A0A8612473FDDCF85F9D405E4">
+      <str name="dlap_id">6712|Q|6404822A0A8612473FDDCF85F9D405E4</str>
+      <str name="dlap_class">question</str>
+      <str name="dlap_q_type">Choice</str>
+      <double name="dlap_q_score">1.2</double>
+      <arr name="dlap_html_text">
+        <str>Thinking on the margin means that the individual thinks about the additional costs or benefits of doing something.</str>
+        <str>True</str>
+        <str>False</str>
+      </arr>
+      <arr name="title">
+        <str>376. (TB) Thinking on the margin means that the individual thinks about the additional costs or benefits of do...</str>
+      </arr>
+      <arr name="exercisenumber_dlap_l">
+        <long>376</long>
+      </arr>
+      <arr name="exercisenumber_dlap_d">
+        <double>376.0</double>
+      </arr>
+      <arr name="exercisenumber">
+        <str>376</str>
+      </arr>
+      <arr name="score">
+        <float name="score">1.5315742</float>
+      </arr>
+    </doc>
+  </result>
+</results>

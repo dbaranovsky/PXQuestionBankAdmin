@@ -1,0 +1,4 @@
+ <courses>
+    <course id="42447" title="dnd coursetest53" domainid="8841" reference="" guid="0d36720a-47fe-428e-8041-7bfd146f3096" schema="2" baseid="41294" type="Range" startdate="1753-01-01T00:00:00Z" enddate="9999-12-31T00:00:00Z" days="365" term="" protection="0" flags="0" creationdate="2012-04-20T13:53:31.613Z" creationby="7" modifieddate="2012-07-10T15:20:26.047Z" modifiedby="7" version="43.82.12.40" />
+    <course id="43086" title="bedford st martins eportfolio" domainid="8841" reference="" guid="06af8b28-9e1f-4985-84af-96525afb9d82" schema="2" baseid="42796" type="Range" startdate="1753-01-01T00:00:00Z" enddate="9999-12-31T00:00:00Z" days="365" term="" protection="0" flags="0" creationdate="2012-04-25T21:08:44.57Z" creationby="7" modifieddate="2012-07-16T15:02:26.213Z" modifiedby="7" version="43.19.15" />
+ </courses>

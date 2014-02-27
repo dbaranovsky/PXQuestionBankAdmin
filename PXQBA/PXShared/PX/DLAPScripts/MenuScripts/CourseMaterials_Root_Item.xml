@@ -1,0 +1,20 @@
+<requests>
+	<item entityid="-entityid-" itemid="PX_COURSE_MATERIALS" >
+		<data>
+			<parent>PX_ROOT</parent>
+			<sequence>aaaa</sequence>
+			<title>Course Materials</title>
+			<duedate>0001-01-01T00:00:00Z</duedate>
+			<attemptlimit>0</attemptlimit>
+			<securitylevel>Low</securitylevel>
+			<bsi_type>PX</bsi_type>
+			<bsi_subtype>PX_ROOT</bsi_subtype>
+			<bfw_meta>
+				<bfw_metadata name="dlap_sequence">aaaa</bfw_metadata>
+			</bfw_meta>
+			<bfw_tocs>
+			  <bfw_toc_contents parentid="root" sequence="a" />
+			</bfw_tocs>
+		</data>
+	</item>
+</requests>

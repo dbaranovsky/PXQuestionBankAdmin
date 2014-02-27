@@ -1,0 +1,65 @@
+﻿
+#allcontainers #bookContent{
+    left: 35px;
+    bottom:25px;
+    top:0;
+}
+#allcontainers{
+   min-width:0;
+   min-height:0 !important;
+   height:100%;
+   margin:0!important;
+   padding:0!important;
+}
+#allcontainers #assignmentsContainer{
+    min-width:0;
+    min-height:0;
+    margin:0!important;
+}
+#allcontainers #assignmentContent{
+    margin:10px;
+    top:0;
+}
+#allcontainers #assignmentContent div#assignmentLeft
+{
+    border-radius: 20px 0 0 20px;
+    -moz-border-radius: 20px 0 0 20px;
+    -webkit-border-radius: 20px 0 0 20px;
+}
+#allcontainers #assignmentContent
+#allcontainers #assignmentLeft,
+#allcontainers #assignmentRight{
+    bottom:20px;
+}
+#xbookContentContainer #itemPlayerWrapper{
+    height: 100%;
+}
+#profLinks{
+    width:188px;
+}
+#profLinks ul{
+    height:214px;
+    overflow-y:auto;
+}
+#profLinks li{
+    margin-bottom:0;
+    padding:8px 0;
+}
+/* Edit Course link styling */ 
+
+#profLinks #profEditLink a {
+    color: #1B8A95 !important;
+    font-size:12px;
+    margin-top:4px;
+    font-family: helvetica,Trebuchet MS,sans-serif;
+    background:none;
+    padding:0;
+    text-decoration:underline;
+}
+
+#xbookContentContainer .bh.asset-player.content {
+    height: initial;
+}
+#xbookContentContainer iframe{
+    overflow:hidden;
+}

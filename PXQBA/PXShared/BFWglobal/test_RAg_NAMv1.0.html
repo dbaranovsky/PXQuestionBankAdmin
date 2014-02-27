@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+ <head>
+  <title>test</title>
+    <link href="/BFWglobal/RAg/NAMv1.0/css/RAg.css" rel="stylesheet" type="text/css" />
+<style>
+</style>
+	
+	<script type="text/javascript" src="/BFWglobal/js/jquery/jquery-1.4.4.min.js"></script>  
+    <script type="text/javascript" src="/BFWglobal/js/jquery/jquery.cookie.js"></script>  
+    <script type="text/javascript" src="/BFWglobal/js/global.js"></script>  
+	<script type="text/javascript" src="/BFWglobal/js/BFW_LogError.js"></script>
+	<script type="text/javascript" src="/BFWglobal/js/BFW_Error.js"></script>
+    <script type="text/javascript" src="/BFWglobal/RAg/NAMv1.0/RA.js"></script>  
+    <script type="text/javascript"> 
+
+	var $ = null; //to test no conflict with jQuery object
+
+	var MySiteCtrlWin = window.self;
+
+	MySiteCtrlWin.MySite = {
+			Ready: false
+		,	RAUI: {}
+	};
+
+	(function ($) {
+
+		if (!$) 
+		{
+			throw new Error('jQuery required for MySite');
+			return;
+		}
+
+		MySiteCtrlWin.MySite.RAInited = function () {
+			MySiteCtrlWin.MySite.Ready = true;
+			//prompt('SiteInfo', JSON.stringify( this.SiteInfo, RA_CtrlWin.RA.stringifier ));
+			prompt('SiteInfo.BaseURL', this.SiteInfo.BaseURL );
+			//prompt('SiteUserInfo', JSON.stringify( this.SiteUserInfo, RA_CtrlWin.RA.stringifier ));
+			prompt('SiteUserInfo.LevelOfAccess', this.SiteUserInfo.LevelOfAccess );
+			MySiteCtrlWin.MySite.RAUI.Init( 'login' );
+		}
+
+		// **********************************************************************
+		// EXAMPLE - 
+		// How to trigger RAg login from local form.
+		MySiteCtrlWin.MySite.DoLogin = function () {
+			if (!MySiteCtrlWin.MySite.Ready)
+			{
+				alert('Still loading, please wait.');
+				return;
+			}
+			RA_CtrlWin.RA.RAUI.vars['Email'] = jQuery('#RA_Email').val();
+			RA_CtrlWin.RA.RAUI.vars['Password'] = jQuery('#RA_Password').val();
+			MySiteCtrlWin.MySite.RAUI.Init( 'dologin' );
+		}
+		// **********************************************************************
+		// REQUIRED
+		// RA iframe initialize function, required in order to customize display of RAUI
+		MySiteCtrlWin.MySite.RAUI.Init = function ( state ) {
+
+			//alert('inside MySite.RAUI.Init');
+			setTimeout('MySiteCtrlWin.MySite.RAUI.InitGo(\''+state+'\')',100);
+		}
+		MySiteCtrlWin.MySite.RAUI.InitGo = function ( state ) {
+			if (!state) state = '';
+			// -----------------------------------------------------------------
+			// optional
+			// When RAUI is opened, the UI should change to accommodate it.
+			// One method is to use a tranparent layer between the page and RAUI.
+			jQuery('#MySite_page_grayed').show();
+			RA_CtrlWin.scrollTo(0,0);
+			// -----------------------------------------------------------------
+			// REQUIRED
+			// Set the RAUI on-close function, then init RAUI
+			RA_CtrlWin.RA.RAUI.close_site = MySiteCtrlWin.MySite.RAUI.Close;
+			RA_CtrlWin.RA.RAUI.Init( state );
+			// -----------------------------------------------------------------
+			// optional UI continued
+			//MySiteCtrlWin.MySite_page_grayed_Resize();
+		}
+		// **********************************************************************
+		// RA iframe close function
+		// Required to update page UI after RAUI closes
+		MySiteCtrlWin.MySite.RAUI.Close = function () {
+			//alert('Close Called');
+			if (RA_CtrlWin.RA.RAUI.updated) {
+				MySiteCtrlWin.MySite_Draw_UserInfo();
+			}
+			jQuery('#MySite_page_grayed').hide();
+		}
+		// **********************************************************************
+		// RA iframe resize function
+		// Required in order for RAUI page to resize this page as needed.
+		// (In this example, only the page_grayed overlay needs to be resized)
+		MySiteCtrlWin.MySite.RAUI.OnUIResizeCallback = function () {
+			//MySiteCtrlWin.MySite_page_grayed_Resize();
+		}
+
+		var popupsblocked = false;
+		var cookiesblocked = !navigator.cookieEnabled;
+		if (!cookiesblocked) {
+			RA_CtrlWin.RA.RAXS.Check();
+		}
+		else {
+		}
+		// **********************************************************************
+		// REQUIRED
+		// should call RA.setOptions
+		RA.setOptions({
+				RavellAuthentication: true
+			,	OnUIResizeCallback: MySiteCtrlWin.MySite.RAUI.OnUIResizeCallback
+		});
+		// **********************************************************************
+		// REQUIRED
+		// document ready function should call RA.WaitFor and RA.Init
+		jQuery(document).ready(function(){
+			jQuery.cookie('SiteData','%7b%22SiteID%22%3a26317%2c%22AgilixCourseId%22%3a2602%2c%22ID%22%3a%2226317%22%2c%22BaseURL%22%3a%22dev.bedfordstmartins.com%2fbeta%2fwritersref7e%2flms%22%2c%22URL%22%3a%22dev.bedfordstmartins.com%2fbeta%2fwritersref7e%2flms%22%7d');
+			jQuery.cookie('SiteUserData','%7b%22SiteID%22%3a26317%2c%22UserID%22%3a4816297%2c%22LastLogin%22%3a%22%22%2c%22InstructorEmail%22%3a%22%22%2c%22LevelOfAccess%22%3a30%2c%22Expiration%22%3a%22%5c%2fDate(1317441600000)%5c%2f%22%7d');
+			RA_CtrlWin.RA.WaitFor();
+			RA.Init( MySiteCtrlWin.MySite.RAInited );
+		});
+
+	} (jQuery) );
+
+	</script> 
+ </head>
+
+ <body>
+
+<div id="msg"></div>
+
+ </body>
+</html>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<batch>
+	<request cmd="updatecourses">
+		<requests>
+			<course courseid="-courseid-" reference="">
+				<data>
+					<bfw_tab_settings>
+						<view_tab>
+							<show_policies>false</show_policies>
+							<show_assignment_details>true</show_assignment_details>
+							<show_rubrics>true</show_rubrics>
+							<show_learning_objectives>true</show_learning_objectives>
+						</view_tab>
+						<assign_tab>
+							<show_make_gradeable>true</show_make_gradeable>
+							<show_allow_late_submissions>true</show_allow_late_submissions>
+							<show_schedule_reminder>true</show_schedule_reminder>
+							<show_subcontent_creation>true</show_subcontent_creation>
+							<show_assigned_on_same_day>true</show_assigned_on_same_day>
+							<show_completion_category>false</show_completion_category>
+							<show_gradebook_category>true</show_gradebook_category>
+							<show_syllabus_category>true</show_syllabus_category>
+							<show_points_possible>true</show_points_possible>
+							<show_send_reminder>true</show_send_reminder>
+							<show_include_score>true</show_include_score>
+							<show_calculation_type>true</show_calculation_type>
+							<show_mark_as_complete>true</show_mark_as_complete>
+						</assign_tab>
+					</bfw_tab_settings>
+				</data>
+			</course>
+		</requests>
+	</request>
+</batch>

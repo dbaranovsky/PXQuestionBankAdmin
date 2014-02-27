@@ -1,0 +1,87 @@
+﻿/** Headers **/
+
+#header { height:30px; border-top:#333333; border-top-style:solid; border-top-width:3px; background-image:url('/content/images/bg_grad_gray.png'); background-repeat:repeat-y; }
+#header h1 { display:inline;}
+#banner { text-align: right; padding-right: 15px;  color: #fff; height:100px; background-image:url('/content/images/banner_hockenbury_pysch5.png'); background-repeat: no-repeat; background-color: #721E1E; }
+#banner h1 { padding-top: 10px; color: #fff; }
+
+/** Three Column Rules **/
+#main { position:relative; }
+#main > #content { background:#fff; margin:0 240px 0 230px; min-width:200px; padding:20px 15px; width:auto; border-top:1px solid #bbb; border-right:1px solid #bbb; border-bottom:1px solid #bbb; -moz-box-shadow:5px 5px 5px #ddd; -webkit-box-shadow:5px 5px 5px #ddd; box-shadow:5px 5px 5px #ddd; position:relative; -moz-border-radius-topright:12px; -webkit-border-top-right-radius:12px; border-top-right-radius:12px; -moz-border-radius-bottomright:12px; -webkit-border-bottom-right-radius:12px; border-bottom-right-radius:12px; }
+#nav { position:absolute; left:0; top:0; padding:20px 20px 0 10px; width:200px; border-top:1px solid #bbb; }
+/* END Three Column Rules */
+
+/** Navigation Rules **/
+#nav ul li { border-bottom:1px solid #999; }
+#nav ul li:hover { border-bottom:1px solid #303030; }
+#nav ul li a { text-decoration:none; font-size:0.83em; line-height:2em; font-family:Tahoma, 'Geneva', arial, sans-serif; color:#000; text-transform:uppercase; display:block; }
+#nav ul li.highlighted a { color:#ffffff; background-color:#600; }
+#nav ul li a.current { color:#303030; }
+/* END Navigation Rules */
+
+.toc-switch { display:none; }
+
+/** Content Rules **/
+/*#toc a.expand.active { color:#660000; }*/
+#content .entry { margin:0 0 10px 0; padding:0 0 10px 0; border-bottom:1px solid #600; }
+#content .last { border-bottom:none; }
+#content h2 { border-bottom:4px solid #600; margin:0 0 10px 0; position:relative; }
+#content h2 span { font-family:arial, sans-serif; font-size:0.63em; position:absolute; right:0; bottom:-3px; text-align:right; }
+#content h4 { border-bottom:1px solid #600; margin:0 0 5px 0; position:relative; }
+#content h4 span { font-family:arial, sans-serif; font-size:0.68em; position:absolute; right:0; bottom:3px; text-align:right; }
+h5{ font-family:'Lucida Sans Unicode', 'Lucida Grande', arial, sans-serif; font-size:.80em; font-weight:bold; text-transform:uppercase; line-height:1.2em; color:#303030; }
+#content p { font-family:Tahoma, 'Geneva', arial, sans-serif;  margin:0 0 0 10px; color:#333; line-height:1.25em; }
+
+#right #content{ clear:both; }
+#right #content > div{ overflow:hidden; }
+#right #content > h2, #right h2.content-title{ border-bottom:1px solid #333; }
+#right #content .edit-link { float:right; }
+#right #content h3.sub-title { margin-bottom: 10px; }
+/* END Content Rules*/
+
+/** Updates Rules **/
+#updates { margin:0 0 20px 0; }
+/* END Updates Rules */
+
+#footer { height:150px; background-image:url('/content/images/bg_grad_gray.png'); background-repeat:repeat-y; padding-top:20px; }
+#footer-inside { padding-top:50px; height:50px; background:#fff; border-top:2px solid #bbbbbb; }
+
+/** Font Styling **/
+.bold { font-weight:bold; }
+/* END Font Styling*/
+
+#publisher-logo { float:left; }
+#publisher-logo #logo { background-image: url(/content/images/worth_logo.png); background-repeat: no-repeat; }
+#publisher-logo #logo h1 { margin-left: 223px; }
+#student-info { height:9px; position:absolute; right:5px; font-family:arial, sans-serif; font-size:0.63em; }
+#student { background:#313131; color:#fff; padding-left:10px; padding-right:10px; }
+.corner-tl { -moz-border-radius-topleft:12px; -webkit-border-top-left-radius:12px; border-top-left-radius:12px; }
+.corner-tr { -moz-border-radius-topright:12px; -webkit-border-top-right-radius:12px; border-top-right-radius:12px; }
+.corner-bl { -moz-border-radius-bottomleft:12px; -webkit-border-bottom-left-radius:12px; border-bottom-left-radius:12px; }
+.corner-br { -moz-border-radius-bottomright:12px; -webkit-border-bottom-right-radius:12px; border-bottom-right-radius:12px; }
+.corner-top { -moz-border-radius-topleft:12px; -webkit-border-top-left-radius:12px; border-top-left-radius:12px; -moz-border-radius-topright:12px; -webkit-border-top-right-radius:12px; border-top-right-radius:12px; }
+.corner-bottom { -moz-border-radius-bottomleft:12px; -webkit-border-bottom-left-radius:12px; border-bottom-left-radius:12px; -moz-border-radius-bottomright:12px; -webkit-border-bottom-right-radius:12px; border-bottom-right-radius:12px; }
+.corner-right { -moz-border-radius-topright:12px; -webkit-border-top-right-radius:12px; border-top-right-radius:12px; -moz-border-radius-bottomright:12px; -webkit-border-bottom-right-radius:12px; border-bottom-right-radius:12px; }
+.corner-left { -moz-border-radius-topleft:12px; -webkit-border-top-left-radius:12px; border-top-left-radius:12px; -moz-border-radius-bottomleft:12px; -webkit-border-bottom-left-radius:12px; border-bottom-left-radius:12px; }
+.corner-all { -moz-border-radius:12px; -webkit-border-radius:12px; border-radius:12px; }
+
+#content-item .menu { height: auto; margin-top: 2px; background-image: url(/content/images/black_pixel.png); background-repeat: repeat-x; background-position: bottom; }
+ul.link-list li { float: left; margin-right:2px; border:solid 1px #808080; border-bottom: none; padding: 0px 4px 0px 4px; margin-bottom: 1px; position: relative; top: 1px; }
+ul.link-list li.active { border-bottom: none; padding-bottom: 1px; margin-bottom: 0px;}
+ul.link-list li a { text-decoration:none; color:#000; }
+ul.link-list li.add { margin-left: 30px; }
+
+#activities ul{ float:left; margin:10px 10% 0 0; font-size:0.8em; color:#5b5b5b; }
+#activities ul li{ margin:0 0 10px 0; }
+#activities ul li input{ background: #fff; border: none; cursor: pointer; color:#5b5b5b; }
+
+#content #cal-box .instructions{ font-size:0.65em; text-transform:uppercase; margin:5px 0; display:block; }
+#cal-box{ float:left; }
+#form{ /*float:left;*/ margin:20px 0 0 20px; }
+#form label{ text-align:right; width:105px;	display:block; font-size:0.8em;	float:left;	margin:0 10px 0 0; color:#5b5b5b; }
+#form input, #form select, #form .input-label { float:left; margin-right:5px; }
+#form span{ font-size:0.75em; }
+#form #date-select select{ float:none; }
+#form #date-select{	margin:15px 0 0 115px; }
+#form li{ clear:both; margin:0 0 5px 0; overflow:hidden; }
+input.readonly{ border: none; width: 180px; }

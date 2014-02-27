@@ -1,0 +1,151 @@
+﻿.PX_assignModal #assigndialog
+{
+    min-height:0px;
+    min-width:0px;
+    overflow:hidden;
+    margin:30px;
+}
+
+.PX_assignModal #assignmentInstructions{
+    float: left;
+    height: 50px;
+    margin-left: 30px;
+    font-size: 12px;
+}
+               
+.PX_assignModal #PXAssignCalendar
+{
+float: left;
+width: 218px;
+padding: 30px;
+background-color:#B4CDCD;
+    
+}
+
+.PX_assignModal #assignWithoutDueDate
+{
+float: left;
+margin-top: 10px;
+}
+
+.PX_assignModal #PXAssignWithoutDueDateCheckBox{
+ float:left;   
+}
+
+.product-type-learningcurve #PXAssignCalendar .datepicker,
+.product-type-learningcurve #PXAssignWithoutDueDate{
+    width:200px;
+    margin: 0 auto;
+}
+
+.PX_assignModal #checkboxLabel{
+float: left;
+font-size: 12px;
+padding-top: 3px;
+}
+
+.PX_assignModal #calInstructions
+{
+text-align: center;
+color: grey;
+font-size: 12px;
+margin-bottom: 12px;
+float: left;
+height: 13px;
+}
+
+.PX_assignModal .ui-widget-header
+{
+color: black;
+font-weight: normal;
+border:none;
+border-bottom: solid 1px #AAA;
+background-color: white;
+margin:auto 30px;
+
+}
+
+.PX_assignModal #buttonscontainer
+{ 
+    margin-top: 300px;
+}
+
+.PX_assignModal .primary {
+    width: auto;
+    background-color: #DAD466;
+    text-align: center;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-right: 5px;
+    padding: 4px 6px;
+}
+
+
+.PX_assignModal .secondary{
+    width: auto;
+    background-color: #F0F0F0;
+    text-align: center;
+    font-size: 9px;
+    font-weight: 600;
+    margin-right:5px;
+    text-transform:uppercase;
+    padding: 4px 6px;
+}
+
+
+.PxProjectAssigned .ui-widget-header
+{
+    color: #073B4F;
+    font-weight: normal;
+    border:none;
+    border-bottom: none;
+    background-color: white;
+}
+.PxProjectAssigned .ui-dialog-buttonset .ui-button
+{
+    background-color: #DAD466 !important;
+}
+.PxProjectAssigned .ui-dialog-buttonset .okButton{
+    position: absolute;
+    top: 57px;
+    left: 16px;
+    text-transform: uppercase;
+    margin-right: 5px;
+    padding: 4px 6px;
+    width: 60px;
+background-color: #DAD466 !important;
+text-align: center;
+font-size: 9px;
+font-weight: 600;
+}
+.PxProjectAssigned .ui-dialog-buttonset .okButton .ui-button, .PxProjectAssigned .ui-dialog.ui-widget-content .ui-dialog-buttonpane .ui-dialog-buttonset .ui-state-hover
+{
+ background-color: #DAD466 !important;   
+}
+
+.PxProjectAssigned .ui-button
+{
+ background: none;   
+}
+
+
+.PxProjectAssigned .ui-button-text-only .ui-button-text
+{
+    
+ padding:0px;   
+}
+
+.PxProjectAssigned #assignment-list-link
+{
+ color: #1B8A95;
+    float: left;
+    font-size: 15px;
+    left: 85px;
+    padding-left: 5px;
+    position: absolute;
+    text-decoration: none;
+    top: 69px;
+    width: auto;
+   
+}

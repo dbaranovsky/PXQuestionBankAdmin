@@ -1,0 +1,440 @@
+﻿#document-viewer{
+    text-align:left;
+} 
+
+#document-viewer #document-body{
+    float:left;
+    width:100%;
+    margin-right:15px;
+}
+
+.highlight-block {
+    -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    background-color: #FFFDE9;
+    border: 1px solid #E2C650;
+    min-height: 50px;
+    padding: 0px;
+    position: absolute;
+    top: 0;
+    z-index: 110;
+    width: 270px;
+    margin-bottom: 15px;
+    color: #696969;
+    font-family: arial,Helvetica,Sans-Serif;
+    font-size: 13px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+    right: 20px;
+}
+
+.highlight-block.page {
+    border:2px solid blue;
+    float: none;
+    top: 0px !important;
+    margin: auto;
+    position: relative;
+    width: 90%;
+}
+
+.highlight-block.top-note
+{
+    position: relative;
+    left: 10px;
+    width: 60%;
+}
+
+.highlight-block.page .highlight-text {color:blue;}
+
+
+.highlight-block-hightlighted{
+    border-width: 4px;
+}
+
+.highlight-note-user 
+{
+    font-weight: bold;
+    color: #000000;
+}
+
+.highlight-block.active{border:2px solid #E2C650;}
+.highlight-block.active .highlight-comment-form {display:block;}
+
+
+.highlight-comment-form{display:none;}
+
+.highlight-bottom-menu {
+    margin-top: 10px; 
+    overflow: hidden;
+ }
+    
+.highlight-middle-menu {
+    margin-top: 10px;
+} 
+    
+
+/* Removed because new design doesn't have icons -- keep, might add back  
+.highlight-block .pointer,
+.highlight-clock .action, 
+.highlight-block .close, 
+.highlight-block .vspib, 
+.highlight-block .share,
+.highlight-block .shared,
+.highlight-block .save,
+.highlight-block .saved,
+.highlight-block .commentLink,
+.highlight-block .commentLibrary{
+    background-color: transparent;
+    background-image: url("style/images/platx_sprite.png");
+    background-position: -348px -149px;
+    background-repeat: no-repeat;
+    display:block;
+    cursor:pointer;    
+    height:16px;
+    z-index:16;
+    border:none;
+ }
+   */   
+/*For Top Note Display*/
+
+.highlight-block.page .pointer{
+     display: none;
+}    
+
+.highlight-block .close {background-image: url("style/images/ui-icons_888888_256x240.png");background-position:-32px -192px;height:16px;width:16px;float:right;}
+.highlight-block .share {background-image: url("style/images/ui-icons_888888_256x240.png");background-position:-128px -96px;height:16px;width:16px;float:right;}
+.highlight-block .shared {background-image: url("style/images/ui-icons_assigned_256x240.png");background-position:-128px -96px;height:16px;width:16px;float:right;}
+.highlight-block .delete {}
+.highlight-block .save {background: url('style/images/bookmark_unactive.png') no-repeat;width:16px;height:16px;float:right;}
+.highlight-block .saved {background: url('style/images/bookmark_active.png') no-repeat;width:16px;height:16px;float:right;}
+.highlight-block .commentLink {background-image: url("style/images/ui-icons_888888_256x240.png");background-position:-240px -112px;width:16px;height:16px;position:relative;display:none;margin-left:4px;}
+.highlight-block .commentLibrary {background:url("style/images/icon_briefcase.png") no-repeat scroll 0 transparent;left:220px;top:20px;width:17px;height:16px;position:inherit;margin-top: 1px;display:none;}
+
+
+.highlight-block .more_eBook_links{
+    padding-top:5px; 
+    float:right    
+}
+
+.highlight-comment-form {padding:6px; overflow:hidden;}
+.highlight-comment-form textarea.commentTextbox {border:0px solid #CCCCCC;width:100%;}
+.highlight-comment-form input.commentLinkTextbox {border:solid 1px blue;width:80%;position:relative;top:5px;}
+.highlight-comment-form input.commentLinkSubmit {border:solid 1px blue;width:15%;position:relative;top:5px;}
+
+.highlight-comment-form .dlCommentLibrary {border:solid 1px black;width:100%; margin: 10px 0 10px 0; display:none;}
+.highlight-comment-form .commentLibraryWrapper { display:none; }
+.highlight-comment-form .dlCommentLibrary option{width:225px;}
+.highlight-comment-form input.outline {border:solid 1px gray; }
+
+.highlight-comment-form .listLinkLibrary option{width:225px;}
+.highlight-comment-form .listLinkLibrary {border:solid 1px black;width:100%; margin: 10px 0 10px 0; display:none;}
+.highlight-comment-form .linkLibraryWrapper { display:none; }
+
+
+.highlight-body.inline 
+{
+    -moz-box-shadow:2px 2px 5px rgba(0, 0, 0, 0.5);
+    background-color:#FFFFFF;
+    border:1px solid #999999;
+    padding:4px;
+    position:absolute;
+    top:0;
+    z-index:110;
+    width: auto;
+    color: #696969;
+    font-family: Verdana,Helvetica,Sans-Serif;
+    font-size: 11px;
+}
+
+.note-list-box .highlight-comment p{
+    margin: 0 !important;
+}
+
+.note-list-box .highlight-comment{
+    padding: 6px;
+    border-bottom: 1px solid #E2C650;
+}
+
+
+.highlight-body {min-height:22px;} 
+.highlight-body.collapse {overflow-y:scroll;height:150px;} 
+
+.highlight-text {font-weight:bold; width:65%;margin-bottom:5px; max-height: 22px; overflow: hidden;}
+
+#highlight-new-container
+{
+    position: relative;
+    z-index: 5000;
+}
+
+#highlight-container {
+    /*left: 576px; float:left;*/
+}
+
+/*For HTML Pages*/
+.html-container #highlight-container {
+    right: -300px;
+    position: absolute;
+    width: 300px;
+    /*height: 100%;*/
+    left:inherit;
+    float: none;
+}
+
+.highlight-block-innerwrapper{position:relative;}
+
+#highlightList {position:relative;}
+
+.tempHl {background-color:Aqua;}
+
+#document-viewer #document-body iframe {
+    border:0px; 
+    overflow:auto; 
+    height:100%;
+}
+
+#highlight-links ul li a {color: #333; font-size:0.9em;}
+#highlight-links ul li { float:left; margin-right:5px; /*border-right:solid 1px #808080;*/ padding-right:5px; }
+#highlight-links ul li.active a { text-decoration:none; color:#000; }
+#highlight-links ul li.last { border-right:none; }
+
+
+/********************************************/
+
+
+/* styles for main view */
+#right #highlight-container{ display:none; }
+
+
+/* styles for fne view */
+#fne-content #highlight-container  
+{
+    display:block;
+    position:absolute;
+    width: 100%;
+    left: 0;
+ }
+#fne-content #document-viewer #document-body {
+    width:101%; 
+    background-color:#fff; 
+    border-right:1px solid #CDCCCB; 
+    height:100%; 
+}
+.assignment-viewer #document-viewer{ height:100%;
+                                     clear:both;}
+    
+.highlight-block input.watermark {
+    color: lightgrey;
+    font-style: italic;
+    margin: 12px 0;
+}
+
+#highlight-widget-menu {
+    width: auto;
+    float: left;
+    border: 1px solid #cccccc;
+    padding: 0 12px;
+    background: #fff;
+    -moz-box-shadow: 3px 3px 3px #ddd;
+    -webkit-box-shadow: 3px 3px 3px #ddd;
+    box-shadow: 3px 3px 3px #ddd;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    font-size: .813rem;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 30px;
+}
+
+#highlight-widget-highlight {
+    margin-right: 8px;
+}
+
+#highlight-widget-add-note,
+#highlight-widget-edit-note,
+#highlight-widget-reply-note
+{
+    padding: 0 0 0 12px;
+    margin-left: 12px;
+    border-left: 1px solid #cccccc;
+    display: inline-block;
+    line-height: 36px;
+}
+
+#highlight-widget-add-note.existingHighlight,
+#highlight-widget-edit-note.existingHighlight,
+#highlight-widget-reply-note.existingHighlight
+{
+    border-right: 1px solid #ccc;
+    padding-right: 12px;
+    margin-right: 12px;
+}
+
+#highlight-widget-delete img{
+    margin-top:2px;
+}
+
+
+#highlight-widget-menu #highlight-widget-delete {
+    background-image: url("../images/ui-icons_888888_256x240.png");
+    background-position: -177px -98px;
+    width: 16px;
+    height: 12px;
+    display: inline-block;
+}
+
+#highlight-widget-menu .sep { margin: 0px 5px 0px 5px; }
+#highlight-widget-menu .menu-item { cursor: pointer; }
+
+#highlight-widget-menu .menu-item.color {
+     width: 10px;
+     height: 10px; 
+     display: inline-block; 
+     margin-right: 8px; 
+     border: solid 1px beige;
+}
+
+#highlight-widget-menu #highlight-widget-color-1 {
+     background: #FEE881;
+    border: 1px solid #d2c16d;
+}
+
+#highlight-widget-menu #highlight-widget-color-2 {
+     background: #B1E3FA;
+     border: 1px solid #95BDD1;
+}
+
+#highlight-widget-menu #highlight-widget-color-3 {
+     background: #BEE0C1;
+     border: 1px solid #9DBBA3;
+}
+
+#highlight-widget-menu #highlight-widget-color-4 {
+     background: #F9C5D1; margin-right: 0px;
+     border: 1px solid #CEA5B0;
+}  
+
+.color-1 { background: #FEF2BE; }
+.color-2 { background: #D4EFFC; }
+.color-3 { background: #DDEEDD; }
+.color-4 { background: #FCDDE4; }
+
+.color-1-hover { background: #FEE881; }
+.color-2-hover { background: #B1E3FA; }
+.color-3-hover { background: #BEE0C1; }
+.color-4-hover { background: #F9C5D1; }
+
+i .has-notes,
+b .has-notes{
+    background-image:none;
+}
+
+#highlight-container iframe{height:40px;}
+#highlight-container .mceLayout{height:40px;}
+
+
+.highlight-block .shared {
+	background-image: url("style/images/hockenbury5e/ui-icons_course.png");
+	background-position:-128px -96px;
+	height:16px;
+	width:16px;
+	float:right;
+}
+
+.top-note .unlock{
+    display:none !important;    
+}
+
+#highlight-container .highlight-block.blank-notes, #highlight-container .blank-note {
+	display:none !important;
+}
+
+.highlight-note-action-menu {
+    float: right;
+    color: #e2c650;
+    font-size: .813rem;
+}
+
+/* Removed because using pxicon 
+.highlight-block .action {background-image: url("style/images/ui-icons_888888_256x240.png");background-position:-192px -115px;height:16px;width:16px;float:right;}
+*/
+
+.highlight-block .lockedIcon {background-image: url("style/images/ui-icons_888888_256x240.png");background-position:-192px -96px;height:16px;width:16px;float:right;}
+
+.highlight-note-action-menu-list
+{
+    position: absolute;  
+    background: white;
+    border: 1px solid #CCCCCC;
+    padding: 5px 0 5px 0;
+    z-index:5001;    
+}
+
+.highlight-note-action-menu-item {
+    padding: 4px 8px 4px 8px;
+    white-space: nowrap;
+    color: #000;
+    text-align: left;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+.highlight-note-action-menu-item:hover
+{
+    background-color: #fefdcc;
+}
+#highlight-widget-copy {
+    margin-right: 12px;
+}
+
+.highlight-block .delete,
+.highlight-block .edit,
+.highlight-block .lock,
+.highlight-block .unlock
+{
+    display:block;
+    cursor:pointer;    
+    border:none;
+}
+
+.highlight-public-private-student{
+    display:none;
+}
+
+.author {
+    font-weight: bold;
+    color: #000;
+    margin-right: 4px;
+}
+
+/*platx-3901*/
+
+.note{
+	width:100%;
+    margin-top: 6px;
+}
+
+.note p{
+	white-space: pre;           /* CSS 2.0 */
+	white-space: pre-wrap;      /* CSS 2.1 */
+	white-space: pre-line;      /* CSS 3.0 */
+	white-space: -pre-wrap;     /* Opera 4-6 */
+	white-space: -o-pre-wrap;   /* Opera 7 */
+	white-space: -moz-pre-wrap; /* Mozilla */
+	white-space: -hp-pre-wrap;  /* HP Printers */
+	word-wrap: break-word;      /* IE 5+ */
+}
+
+.note-description 
+{
+    text-align: center;
+    padding: 5px;    
+}
+
+#highlight-block-0 .highlight-block-innerwrapper 
+{
+    padding: 6px;
+}
+
+
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UpdateItems>
+	<Item>
+		<Where>
+			/link@itemid='6B7C266343A2B1BB2083B44C4411120A'
+		</Where>
+		<Update>
+			<key>/test[@res='blah']</key>
+			<value>ola</value>
+		</Update>
+		<Update>
+			<key>/test[@you='chicken']</key>
+		</Update>
+		<Update>
+			<key>/test</key>
+			<value>correct</value>
+		</Update>
+		<Delete>
+		</Delete>
+	</Item>
+</UpdateItems>

@@ -1,0 +1,2084 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+Items that need replacing before this script can be run
+  -entityid- (every item needs this)
+  -domainid- (only needed for the course)
+-->
+<batch>
+  <!-- Following command updates the product course with the correct metadata values -->
+  <request cmd="updatecourses">
+    <requests>
+      <course courseid="-entityid-" domainid="-domainid-" title="bedford st martins eportfolio" reference="" type="Range">
+        <data>
+		 <categories weighted="false">
+			 <category id="1" name="Include" weight="100" sequence="a" />
+			 <category id="0" name="Exclude" weight="0" sequence="b"/>
+		  </categories>	
+		<bfw_properties>  
+			<bfw_property name="bfw_default_instructions" type="string">true</bfw_property>
+			<bfw_property name="bfw_default_title" type="String">New Folder</bfw_property>
+			<bfw_property name="bfw_default_description" type="String">This folder is where you should compose or upload the work you want to turn in. If there is a due date, you must click &quot;Submit&quot; once everything is how you want it. To create a cover page for this folder, click &quot;Personalize this Folder&quot;.</bfw_property>
+			<bfw_property name="bfw_show_course_number" type="string">false</bfw_property>
+			<bfw_property name="bfw_show_course_section" type="string">false</bfw_property>
+		</bfw_properties>
+          <CourseTimeZone>Eastern Standard Time</CourseTimeZone>
+          <bfw_tocs>
+            <course_materials type="bfw_toc">Course Materials</course_materials>
+            <portfolioteaching type="bfw_toc">Portfolio Teaching</portfolioteaching>
+            <portfoliokeeping type="bfw_toc">Portfolio Keeping</portfoliokeeping>
+          </bfw_tocs>
+          <bfw_infinite_scroll>false</bfw_infinite_scroll>
+          <bfw_initialize_user>true</bfw_initialize_user>
+          <show_student_view_link>false</show_student_view_link>
+          <bfw_tab_settings>
+            <view_tab>
+              <show_policies>false</show_policies>
+              <show_assignment_details>true</show_assignment_details>
+              <show_rubrics>true</show_rubrics>
+              <show_learning_objectives>true</show_learning_objectives>
+            </view_tab>
+            <assign_tab>
+              <show_make_gradeable>true</show_make_gradeable>
+              <show_allow_late_submissions>true</show_allow_late_submissions>
+              <show_schedule_reminder>true</show_schedule_reminder>
+              <show_subcontent_creation>true</show_subcontent_creation>
+              <show_assigned_on_same_day>false</show_assigned_on_same_day>
+              <show_completion_category>true</show_completion_category>
+              <show_gradebook_category>true</show_gradebook_category>
+              <show_syllabus_category>true</show_syllabus_category>
+              <show_points_possible>true</show_points_possible>
+              <show_send_reminder>true</show_send_reminder>
+              <show_include_score>true</show_include_score>
+              <show_calculation_type>true</show_calculation_type>
+              <show_mark_as_complete>true</show_mark_as_complete>
+            </assign_tab>
+          </bfw_tab_settings>
+          <meta-bfw_course_type>Eportfolio</meta-bfw_course_type>
+          <meta-product-course-id>-entityid-</meta-product-course-id>
+          <bfw_course_type>Eportfolio</bfw_course_type>
+          <bfw_download_only_document_types>xls|xlsx|ppt|pptx|jpg|jpeg|png|tiff|bmp|gif</bfw_download_only_document_types>
+          <bfw_assessment_style>
+            <rubric_management_style>
+              <show_preview_on_left>true</show_preview_on_left>
+              <show_edit_on_left>true</show_edit_on_left>
+              <show_view_alignments>true</show_view_alignments>
+              <show_edit_on_right>false</show_edit_on_right>
+              <show_preview_on_right>false</show_preview_on_right>
+              <show_left_column>true</show_left_column>
+              <show_right_column>true</show_right_column>
+              <rubric_alignment_views>
+                <assignment>true</assignment>
+                <eportfolio />
+                <rubric>true</rubric>
+              </rubric_alignment_views>
+            </rubric_management_style>
+            <objective_management_style>
+              <show_left_column>true</show_left_column>
+              <show_right_column>true</show_right_column>
+              <show_edit_on_left>true</show_edit_on_left>
+              <show_edit_on_right>false</show_edit_on_right>
+              <show_view_alignments>true</show_view_alignments>
+              <learningobj_alignment_views>
+                <assignment>true</assignment>
+                <eportfolio />
+                <objective>true</objective>
+              </learningobj_alignment_views>
+            </objective_management_style>
+          </bfw_assessment_style>
+          <bfw_allow_comment_sharing>true</bfw_allow_comment_sharing>
+          <bfw_allow_activation>false</bfw_allow_activation>
+          <bfw_shared>Unpublished</bfw_shared>
+          <bfw_allow_site_search>false</bfw_allow_site_search>
+          <bfw_welcome_message>
+            &amp;lt;h1&amp;gt;Sample Welcome Message&amp;lt;/h1&amp;gt;
+            &amp;lt;p&amp;gt;
+            &amp;lt;span class=red&amp;gt; This is a sample welcome message that you can edit as you see fit in order for you to introduce your e-portfolio to your class. &amp;lt;/span&amp;gt; This Bedford e-Portfolio gives you a single place to collect and reflect on your work. You can compose directly in your e-Portfolio or upload word documents, video, audio, or images that best represent who you are and what you have created. Just click on the e-Portfolio tab at the top of the page and get started!&amp;amp;nbsp;&amp;lt;/p&amp;gt;
+            &amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;lt;/p&amp;gt;
+            &lt;h3 style=&quot;padding-top: 10px; padding-bottom: 10px; border-top: 1px dotted; color: rgb(163, 194, 224);&quot;&gt;&lt;/h3&gt;
+            &amp;lt;div class=&amp;quot;eportfolio_PortfolioTeaching&amp;quot; style=&amp;quot;float: left;&amp;quot;&amp;gt;&amp;lt;img style=&amp;quot;width: 111px; height: 137px;&amp;quot; src=&amp;quot;0/style/images/port-keeping.png&amp;quot; alt=&amp;quot;&amp;quot; /&amp;gt;&amp;lt;/div&amp;gt;
+            &amp;lt;ul class=&amp;quot;welcome-links&amp;quot;&amp;gt;
+            &amp;lt;li class=eportfolio_PortfolioTitle&amp;gt;Portfolio Keeping&amp;lt;/li&amp;gt;
+            &amp;lt;li class=eportfolio_PortfolioTitle2&amp;gt;A Guide for Students, Second Edition&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;Nedra Reynolds; Rich Rice&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;&#62;&amp;nbsp;Finding and developing your materials&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;&#62;&amp;nbsp;Creating your structure&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;&#62;&amp;nbsp;Choosing a style and design&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+            &amp;lt;/ul&amp;gt;
+          </bfw_welcome_message>
+          <bfw_template_learningobjectives>
+            <learningobjectives>
+              <objective guid="9222c505-86f8-4a7c-9b6c-346e601d66b6" id="1" parentid="" sequence="a">
+                <description>Rhetorical Knowledge</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="e8844d58-5c81-4eaa-897d-adcef44a68c1" id="2" parentid="9222c505-86f8-4a7c-9b6c-346e601d66b6" sequence="b">
+                <description>Focus on a purpose</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="87024fc0-36e3-4468-8162-f81f1590d55e" id="3" parentid="9222c505-86f8-4a7c-9b6c-346e601d66b6" sequence="c">
+                <description>Respond to the needs of different audiences</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="6344b2e5-1e8d-4585-a50f-22b442692c30" id="4" parentid="9222c505-86f8-4a7c-9b6c-346e601d66b6" sequence="d">
+                <description>Respond appropriately to different kinds of rhetorical situations</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="7a5c30a8-78a1-4ddf-9e1d-c2ee6753aac9" id="5" parentid="9222c505-86f8-4a7c-9b6c-346e601d66b6" sequence="e">
+                <description>Use conventions of format and structure appropriate to the rhetorical situation</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="510ff999-8b06-420a-8a0b-cd479e015844" id="6" parentid="9222c505-86f8-4a7c-9b6c-346e601d66b6" sequence="f">
+                <description>Adopt appropriate voice, tone, and level of formality</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="809dde6f-2c89-46bc-bd1e-58cdc1ac5760" id="7" parentid="9222c505-86f8-4a7c-9b6c-346e601d66b6" sequence="g">
+                <description>Understand how genres shape reading and writing</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="5b85e2d6-95a9-400d-8993-7a9973de2512" id="8" parentid="9222c505-86f8-4a7c-9b6c-346e601d66b6" sequence="h">
+                <description>Write in several genres</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="8c77a46e-09e2-454f-a98b-87cee6c2c7d3" id="9" parentid="" sequence="i">
+                <description>Critical Thinking Reading and Writing</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="27628d88-8642-4869-a464-bd603e4ccd4d" id="10" parentid="8c77a46e-09e2-454f-a98b-87cee6c2c7d3" sequence="j">
+                <description>Use writing and reading for inquiry, learning, thinking, and communicating</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="87ab6eb6-f29c-46ff-a164-969dca55f706" id="10" parentid="8c77a46e-09e2-454f-a98b-87cee6c2c7d3" sequence="k">
+                <description>Understand a writing assignment as a series of tasks, including finding, evaluating, analyzing, and synthesizing appropriate primary and secondary sources</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="8d55cea1-d1ac-4d63-971e-b9c62717edf5" id="10" parentid="8c77a46e-09e2-454f-a98b-87cee6c2c7d3" sequence="l">
+                <description>Integrate their own ideas with those of others</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="1a0b519b-e05e-44f8-85a8-a392ca965dd5" id="10" parentid="8c77a46e-09e2-454f-a98b-87cee6c2c7d3" sequence="m">
+                <description>Understand the relationships among language, knowledge, and power</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="3dcfff86-b366-464c-935e-e97bbdbbef58" id="10" parentid="" sequence="n">
+                <description>Processes</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="2e4225a0-5721-400b-81a8-b173e9cf64fe" id="10" parentid="3dcfff86-b366-464c-935e-e97bbdbbef58" sequence="o">
+                <description>Be aware that it usually takes multiple drafts to create and complete a successful text</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="55b6643a-1ecd-4564-bcea-219954a47070" id="10" parentid="3dcfff86-b366-464c-935e-e97bbdbbef58" sequence="p">
+                <description>Develop flexible strategies for generating, revising, editing, and proof-reading</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="f5b833b0-0302-49c1-8331-4acfc35d0055" id="10" parentid="3dcfff86-b366-464c-935e-e97bbdbbef58" sequence="q">
+                <description>Understand writing as an open process that permits writers to use later invention and re-thinking to revise their work</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="bf880641-8366-4b6f-aeb5-768a807df116" id="10" parentid="3dcfff86-b366-464c-935e-e97bbdbbef58" sequence="r">
+                <description>Understand the collaborative and social aspects of writing processes</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="484d0f1e-b207-4e30-8811-fd3a70c6c6cb" id="10" parentid="3dcfff86-b366-464c-935e-e97bbdbbef58" sequence="s">
+                <description>Learn to critique their own and others' works</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="811b7ce8-0cc5-462b-91ee-3f6f2e1e215d" id="10" parentid="3dcfff86-b366-464c-935e-e97bbdbbef58" sequence="t">
+                <description>Learn to balance the advantages of relying on others with the responsibility of doing their part</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="222bdbd1-c765-4572-b480-6561062cb67e" id="10" parentid="3dcfff86-b366-464c-935e-e97bbdbbef58" sequence="u">
+                <description>Use a variety of technologies to address a range of audiences</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="e111216c-4a28-484e-9846-ec54aac0fb67" id="10" parentid="" sequence="v">
+                <description>Knowledge of Conventions</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="6e67cba6-6d73-45b2-8413-7605581b34cc" id="10" parentid="e111216c-4a28-484e-9846-ec54aac0fb67" sequence="w">
+                <description>Learn common formats for different kinds of texts</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="3962eb7e-115e-4da2-88a3-1c6e31607030" id="10" parentid="e111216c-4a28-484e-9846-ec54aac0fb67" sequence="x">
+                <description>Develop knowledge of genre conventions ranging from structure and paragraphing to tone and mechanics</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="c1749c55-6d3f-4f43-9391-aca64f01ad0d" id="10" parentid="e111216c-4a28-484e-9846-ec54aac0fb67" sequence="y">
+                <description>Practice appropriate means of documenting their work</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="a861c341-57e5-4978-ada6-c2f8127214b9" id="10" parentid="e111216c-4a28-484e-9846-ec54aac0fb67" sequence="z">
+                <description>Control such surface features as syntax, grammar, punctuation, and spelling</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="0ffcc622-6a85-4ba8-b03a-e54c8b9e527b" id="10" parentid="" sequence="za">
+                <description>Composing in Electronic Environments</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="46e0cd19-23dd-4540-84cc-7cc4fd5be07a" id="10" parentid="0ffcc622-6a85-4ba8-b03a-e54c8b9e527b" sequence="zb">
+                <description>Use electronic environments for drafting, reviewing, revising, editing, and sharing texts</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="f7931d7c-1d90-43ef-a04f-0fc373b35871" id="10" parentid="0ffcc622-6a85-4ba8-b03a-e54c8b9e527b" sequence="zc">
+                <description>Locate, evaluate, organize, and use research material collected from electronic sources, including scholarly library databases; other official databases and informal electronic networks and internet sources</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+              <objective guid="2a67fc7b-9ccb-4ded-ac40-16cf7a7fb710" id="10" parentid="0ffcc622-6a85-4ba8-b03a-e54c8b9e527b" sequence="zd">
+                <description>Understand and exploit the differences in the rhetorical strategies and in the affordances available for both print and electronic composing processes and texts</description>
+                <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+              </objective>
+            </learningobjectives>
+          </bfw_template_learningobjectives>
+        </data>
+      </course>
+    </requests>
+  </request>
+  <!-- Creates necessary folders and other course structures including page definitions for Eportfolio -->
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_RUBRICS" entityid="-entityid-">
+        <data>
+          <parent>PX_ROOT</parent>
+          <sequence>a</sequence>
+          <title>PX_RUBRICS</title>
+          <bfw_type>bfw_toc_document</bfw_type>
+          <bfw_subtype>FOLDER</bfw_subtype>
+          <bfw_meta></bfw_meta>
+        </data>
+      </item>
+      <item itemid="PX_HOME_EPORTFOLIO" entityid="-entityid-">
+        <data>
+          <parent>PX_PAGES</parent>
+          <sequence>b</sequence>
+          <title>PX_HOME_EPORTFOLIO</title>
+          <bfw_page_editable>false</bfw_page_editable>
+          <abbreviation>PXHOMEEPORTFOLIO</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_HOME_EPORTFOLIO_ZONES" entityid="-entityid-">
+        <data>
+          <parent>PX_HOME_EPORTFOLIO</parent>
+          <sequence>a</sequence>
+          <title>PX_HOME_EPORTFOLIO_ZONES</title>
+          <abbreviation>PXZONESEPORTFOLIO</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_HOME_EPORTFOLIO_ZONE_2" entityid="-entityid-">
+        <data>
+          <parent>PX_HOME_EPORTFOLIO_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_HOME_EPORTFOLIO_ZONE_2</title>
+          <abbreviation>PXHOMEZONEEPORTFOLIO2</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets />
+        </data>
+      </item>
+      <item itemid="PX_HOME_EPORTFOLIO_ZONE_3" entityid="-entityid-">
+        <data>
+          <parent>PX_HOME_EPORTFOLIO_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_HOME_EPORTFOLIO_ZONE_3</title>
+          <abbreviation>PXHOMEZONEEPORTFOLIO3</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets />
+        </data>
+      </item>
+      <item itemid="PX_HOME_EPORTFOLIODASHBOARD" entityid="-entityid-">
+        <data>
+          <parent>PX_PAGES</parent>
+          <sequence>b</sequence>
+          <title>PX_HOME_EPORTFOLIODASHBOARD</title>
+          <abbreviation>PXHOMEEPORTFOLIODASHBOARD</abbreviation>
+          <bfw_page_editable>false</bfw_page_editable>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_HOME_EPORTFOLIODASHBOARD_ZONES" entityid="-entityid-">
+        <data>
+          <parent>PX_HOME_EPORTFOLIODASHBOARD</parent>
+          <sequence>a</sequence>
+          <title>PX_HOME_EPORTFOLIODASHBOARD_ZONES</title>
+          <abbreviation>PXHOMEEPORTFOLIODASHBOARDZONES</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_HOME_EPORTFOLIODASHBOARD_ZONE_2" entityid="-entityid-">
+        <data>
+          <parent>PX_HOME_EPORTFOLIODASHBOARD_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_HOME_EPORTFOLIO_ZONE_2</title>
+          <abbreviation>PXHOMEZONEEPORTFOLIO2</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets>
+            <widget type="PX_EportfolioCourseWidget" displayName="Eportfolio Dashboard" />
+          </bfw_allowed_widgets>
+        </data>
+      </item>
+      <item itemid="PX_HOME_EPORTFOLIODASHBOARD_ZONE_3" entityid="-entityid-">
+        <data>
+          <parent>PX_HOME_EPORTFOLIODASHBOARD_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_HOME_EPORTFOLIO_ZONE_3</title>
+          <abbreviation>PXHOMEZONEEPORTFOLIO3</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets />
+        </data>
+      </item>
+    
+	  <item itemid="PX_GRADING_SCREEN" entityid="-entityid-">
+        <data>
+          <parent>PX_PAGES</parent>
+          <sequence>b</sequence>
+          <title>Grading Screen</title>
+          <bfw_page_editable>false</bfw_page_editable>
+          <abbreviation>PXGRADINGSCREEN</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_GRADING_SCREEN_ZONES" entityid="-entityid-">
+        <data>
+          <parent>PX_GRADING_SCREEN</parent>
+          <sequence>a</sequence>
+          <title>PX_GRADING_SCREEN_ZONES</title>
+          <abbreviation>PXGRADINGSCREENZONES</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_GRADING_SCREEN_ZONE_1" entityid="-entityid-">
+        <data>
+          <parent>PX_GRADING_SCREEN_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_GRADING_SCREEN_ZONE_1</title>
+          <abbreviation>PXGRADINGSCREENZONE_1</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets />
+        </data>
+      </item>
+                  
+	
+	
+	
+	
+	</requests>
+  </request>
+  <!-- Adds widgets to their respective zones for Eportfolio -->
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_EportfolioCourseWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_EPORTFOLIODASHBOARD_ZONE_2</parent>
+          <sequence />
+          <title>Dashboard</title>
+          <abbreviation>ecw</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_EportfolioCourseWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="DashBoardWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_EportfolioCourseWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_EportfolioCourseSettingsWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_EPORTFOLIO_ZONE_3</parent>
+          <sequence />
+          <title>Eportfolio Home Page</title>
+          <abbreviation>ecw</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_EportfolioCourseSettingsWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="EportfolioCourseSettingsWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_EportfolioCourseSettingsWidget_template</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_EportfolioCourseCustomizationWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_EPORTFOLIO_ZONE_2</parent>
+          <sequence>a</sequence>
+          <title>Eportfolio Home Page</title>
+          <abbreviation>ecw</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_EportfolioCourseCustomizationWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="EportfolioCustomizeCourseWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_EportfolioCourseCustomizationWidget_template</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_UserProfileWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_EPORTFOLIO_ZONE_2</parent>
+          <sequence>f</sequence>
+          <title>User Profile Roster</title>
+          <abbreviation>USERPROFILEROSTER</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_UserProfile</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="ProfileSummaryWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_properties>
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">false</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_f" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_EportfolioCourseSaveAsTemplateWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_EPORTFOLIO_ZONE_2</parent>
+          <sequence>b</sequence>
+          <title>Save as Template</title>
+          <abbreviation>sat</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_EportfolioCourseSaveAsTemplateWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="EportfolioCourseSaveAsTemplateWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template />
+          <bfw_properties>
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+        </data>
+      </item>
+      <item itemid="PX_CreateCourseWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_EPORTFOLIO_ZONE_2</parent>
+          <sequence>abc</sequence>
+          <title>Create Course e-Portfolios</title>
+          <abbreviation>cc</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>1</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <duedate>0001-01-01T00:00:00Z</duedate>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_CreateCourseWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="EportfolioCreateCourseButtonWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_properties>
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+        </data>
+      </item>
+      <item itemid="PX_ActivateButtonWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_EPORTFOLIO_ZONE_2</parent>
+          <sequence>ab</sequence>
+          <title>Activate Button</title>
+          <abbreviation>ecw</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_ActivateButtonWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="EportfolioCourseActivateButtonWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template />
+          <bfw_properties>
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+        </data>
+      </item>
+      <item itemid="PX_GradingTitleWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_GRADING_SCREEN_ZONE_1</parent>
+          <sequence>a</sequence>
+          <title>Grading Title Widget</title>
+          <abbreviation>GradingTitleWidget</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_GradingTitleWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="GradingTitleWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template />
+          <bfw_properties>
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+        </data>
+      </item>
+      <item itemid="PX_GradingInfoWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_GRADING_SCREEN_ZONE_1</parent>
+          <sequence>a</sequence>
+          <title>Grading Info Widget</title>
+          <abbreviation>GradingInfoWidget</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_GradingInfoWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="PageContainerWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template />
+          <bfw_properties>
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+        </data>
+      </item>
+      <item itemid="PX_GradingRubricsLO_Widget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_GRADING_SCREEN_ZONE_1</parent>
+          <sequence>a</sequence>
+          <title>Grading Rubrics LO Widget</title>
+          <abbreviation>PXGradingRubricsLOWidget</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_GradingRubricsLO_Widget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="GradingRubricsLOWidget" action="AsyncSummary" fne="false" async="true"/>
+          </bfw_widget_callbacks>
+          <bfw_input_helpers>
+            <input name="enrollmentId" selector="#EportfolioWidgetInputHelper #studentEnrollmentId" default="StringValue" usedefault="true" />
+            <input name="itemId" selector="#EportfolioWidgetInputHelper #itemId" default="56123" usedefault="true" />
+          </bfw_input_helpers>
+          <bfw_widget_template />
+          <bfw_properties>
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+        </data>
+      </item>	 
+      <item itemid="PX_GradingAssignmentPlayer_Widget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_GRADING_SCREEN_ZONE_1</parent>
+          <sequence>a</sequence>
+          <title>PX GradingAssignmentPlayer Widget</title>
+          <abbreviation>PXGradingAssignmentPlayerWidget</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_GradingAssignmentPlayer_Widget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="PageContainerWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template />
+          <bfw_properties>
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+        </data>
+      </item>		  
+
+
+
+	  </requests>
+  </request>
+  <!-- creates templates for any Eportfolio menuitems -->
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_PRIMARY_EPORTFOLIO_TEMPLATES" version="1" entityid="-entityid-" creationdate="2012-02-06T21:11:53.23Z" creationby="7" modifieddate="2012-02-06T21:11:53.23Z" modifiedby="7">
+        <data>
+          <parent>PX_MENUS</parent>
+          <title>Primary Navigation</title>
+          <bfw_type>Menu</bfw_type>
+          <bfw_tocid>-tocid-</bfw_tocid>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_COURSEMATERIALS_TEMPLATE" version="1" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PRIMARY_EPORTFOLIO_TEMPLATES</parent>
+          <sequence>d</sequence>
+          <title>Course Materials</title>
+          <abbreviation>CMATERIALS</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="CourseMaterials" controller="CourseMaterials" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_ASSESSMENT_TEMPLATE" version="1" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PRIMARY_EPORTFOLIO_TEMPLATES</parent>
+          <sequence>c</sequence>
+          <title>Assessment</title>
+          <abbreviation>ASSESSMENT</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Assessment" controller="Assessment" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_EPORTFOLIO_TEMPLATE" version="1" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PRIMARY_EPORTFOLIO_TEMPLATES</parent>
+          <sequence>b</sequence>
+          <title>e-Portfolio</title>
+          <abbreviation>ePortfolio</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="eportfoliobrowser" controller="eportfoliobrowser" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+		<bfw_properties>  
+			<bfw_property name="bfw_active_keywords" type="string">PX_COURSE_EPORTFOLIO_ROOT_ITEM</bfw_property>
+		</bfw_properties>		  
+        </data>
+      </item>
+    </requests>
+  </request>
+  <!-- Creates the primary menu for the Eportfolio product -->
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_PRIMARY_EPORTFOLIO" version="1" entityid="-entityid-" creationdate="2012-02-06T21:11:53.23Z" creationby="7" modifieddate="2012-02-06T21:11:53.23Z" modifiedby="7">
+        <data>
+          <parent>PX_MENUS</parent>
+          <title>Primary Navigation</title>
+          <bfw_type>Menu</bfw_type>
+          <bfw_tocid>-tocid-</bfw_tocid>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_HOME" version="1" entityid="-entityid-" creationdate="2011-01-12T16:44:09.66Z" creationby="7" modifieddate="2011-01-12T16:44:09.66Z" modifiedby="7">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PRIMARY_EPORTFOLIO</parent>
+          <sequence>a</sequence>
+          <title>HOME</title>
+          <abbreviation>HOME</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by>PX_MENU_ITEM_HOME_TEMPLATE</bfw_menu_created_by>
+          <bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Home" controller="" action="" url="" type="" route="CourseSectionHome" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_COURSEMATERIALS" version="1" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PRIMARY_EPORTFOLIO</parent>
+          <sequence>d</sequence>
+          <title>COURSE MATERIALS</title>
+          <abbreviation>CMATERIALS</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by>PX_MENU_ITEM_COURSEMATERIALS_TEMPLATE</bfw_menu_created_by>
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="CourseMaterials" controller="CourseMaterials" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_EBOOK" version="1" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PRIMARY_EPORTFOLIO</parent>
+          <sequence>h</sequence>
+          <title>e-BOOKS</title>
+          <abbreviation>ebk</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by>PX_MENU_ITEM_EBOOK_TEMPLATE</bfw_menu_created_by>
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="EbookBrowser" controller="EbookBrowser" action="Selection" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_ASSESSMENT" version="1" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PRIMARY_EPORTFOLIO</parent>
+          <sequence>c</sequence>
+          <title>ASSESSMENT</title>
+          <abbreviation>ASSESSMENT</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by>PX_MENU_ITEM_ASSESSMENT_TEMPLATE</bfw_menu_created_by>
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Assessment" controller="Assessment" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_EPORTFOLIO" version="1" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PRIMARY_EPORTFOLIO</parent>
+          <sequence>b</sequence>
+          <title>e-PORTFOLIO</title>
+          <abbreviation>ePortfolio</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by>PX_MENU_ITEM_EPORTFOLIO_TEMPLATE</bfw_menu_created_by>
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="eportfoliobrowser" controller="eportfoliobrowser" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+		  <bfw_properties>  
+			<bfw_property name="bfw_active_keywords" type="string">PX_COURSE_EPORTFOLIO_ROOT_ITEM</bfw_property>
+		  </bfw_properties>	
+        </data>
+      </item>
+    </requests>
+  </request>
+  <!-- removing the steps, below they are being added back in, no way of deleting a single step -->
+  <request cmd="deleteitems">
+    <requests>
+      <item itemid="SCREENSTEPS_CONFIG" entityid="-entityid-" />
+    </requests>
+  </request>
+    <!-- Adds "ebook" and "tutorial" content to the course -->
+  <request cmd="putitems">
+    <requests>
+      <item entityid="-entityid-" itemid="PX_EBOOKS">
+        <data>
+          <parent>PX_ROOT</parent>
+          <sequence>aaaa</sequence>
+          <title>PX_EBOOKS</title>
+          <duedate>0001-01-01T00:00:00Z</duedate>
+          <attemptlimit>0</attemptlimit>
+          <securitylevel>Low</securitylevel>
+          <bsi_type>PX</bsi_type>
+          <bsi_subtype>PX_ROOT</bsi_subtype>
+          <bfw_meta>
+            <bfw_metadata name="dlap_sequence">aaaa</bfw_metadata>
+          </bfw_meta>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="root" sequence="a" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item entityid="-entityid-" itemid="px_portfolio_teaching">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_EBOOKS</parent>
+          <sequence>a</sequence>
+          <title>Portfolio Teaching </title>
+          <description>Provides the practical information instructors and writing program administrators need to use the portfolio method successfully in a writing course. Ideal companion to Portfolio Keeping, a guide for students, also by Nedra Reynolds and Rich Rice.</description>
+          <href>bsi__F2D99B25__3B03__403C__855C__27263CA926FF</href>
+          <category>0</category>
+          <bfw_type>Ebook</bfw_type>
+          <bfw_properties>
+            <bfw_property name="bfw_subtitle" type="String">A Guide for Instructors, Second Edition</bfw_property>
+            <bfw_property name="bfw_authors" type="String">Nedra Reynolds and Rich Rice</bfw_property>
+            <bfw_property name="bfw_coverimage" type="String">http://ebooks-imgs.connect.com/product/400/000/000/000/000/170/899/400000000000000170899_s4.jpg</bfw_property>
+            <bfw_property name="bfw_rootid" type="String">PX_PORTFOLIO_TEACHING_ID</bfw_property>
+            <bfw_property name="bfw_catagoryid" type="String">portfolioteaching</bfw_property>
+            <bfw_property name="bfw_hiddenfromstudents" type="String">true</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_TOC" sequence="a">Portfolio Teaching</bfw_toc_contents>
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_PORTFOLIO_TEACHING_ID" entityid="-entityid-">
+        <data>
+          <description>
+            &lt;div class=&quot;ebook-section&quot;&gt;
+            &lt;div class=&quot;ebooks-wrapper&quot;&gt;
+            &lt;div&gt;
+            &lt;img src=&quot;style/images/port-Teaching.png&quot; alt=&quot;Portfolio Teaching &quot;&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+            &lt;div class=&quot;ebook-title&quot;&gt;&lt;a href=&quot;#&quot;&gt;Portfolio Teaching&lt;/a&gt;&lt;/div&gt;
+            &lt;div class=&quot;ebook-subtitle&quot;&gt;A Guide for Instructors, Second Edition&lt;/div&gt;
+            &lt;div class=&quot;ebook-author&quot;&gt;by Nedra Reynolds and Rich Rice&lt;/div&gt;
+            &lt;div class=&quot;ebook-description&quot;&gt;Provides the practical information instructors and writing program administrators need to use the portfolio method successfully in a writing course. Ideal companion to Portfolio Keeping, a guide for students, also by Nedra Reynolds and Rich Rice.&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;
+          </description>
+        </data>
+      </item>
+      <item entityid="-entityid-" itemid="px_portfolio_keeping">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_EBOOKS</parent>
+          <sequence>b</sequence>
+          <title>Portfolio Keeping</title>
+          <description>Brief and inexpensive, Portfolio Keeping is the first guide that provides information students need to use the portfolio method successfully in a writing course. Portfolio Teaching, a guide for instructors, is also available.</description>
+          <href>bsi__5D40B8C2__A237__41D0__B6B9__60528C81D14A</href>
+          <category>0</category>
+          <bfw_type>Ebook</bfw_type>
+          <bfw_properties>
+            <bfw_property name="bfw_subtitle" type="String">A Guide for Students, Second Edition</bfw_property>
+            <bfw_property name="bfw_authors" type="String">Nedra Reynolds and Rich Rice</bfw_property>
+            <bfw_property name="bfw_coverimage" type="String">http://ebooks-imgs.connect.com/product/400/000/000/000/000/170/899/400000000000000170899_s4.jpg</bfw_property>
+            <bfw_property name="bfw_rootid" type="String">PX_PORTFOLIO_KEEPING_ID</bfw_property>
+            <bfw_property name="bfw_catagoryid" type="String">portfoliokeeping</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_TOC" sequence="a">Portfolio Keeping</bfw_toc_contents>
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_PORTFOLIO_KEEPING_ID" entityid="-entityid-">
+        <data>
+          <description>
+            &lt;div class=&quot;ebook-section&quot;&gt;
+            &lt;div class=&quot;ebooks-wrapper&quot;&gt;
+            &lt;div&gt;
+            &lt;img src=&quot;style/images/port-Keeping.png&quot; alt=&quot;Portfolio Keeping&quot;&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+            &lt;div class=&quot;ebook-title&quot;&gt;&lt;a href=&quot;#&quot;&gt;Portfolio Keeping&lt;/a&gt;&lt;/div&gt;
+            &lt;div class=&quot;ebook-subtitle&quot;&gt;A Guide for Students, Second Edition&lt;/div&gt;
+            &lt;div class=&quot;ebook-author&quot;&gt;by Nedra Reynolds and Rich Rice&lt;/div&gt;
+            &lt;div class=&quot;ebook-description&quot;&gt;Brief and inexpensive, Portfolio Keeping is the first guide that provides information students need to use the portfolio method successfully in a writing course. Portfolio Teaching, a guide for instructors, is also available.&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;
+          </description>
+        </data>
+      </item>
+      <item itemid="SCREENSTEPS_CONFIG" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <bfw_properties>
+            <bfw_property name="bfw_config" type="xml">
+              <ScreenSteps>
+                <Actions>
+                  <Action Key="PX_EPORTFOLIO_ABOUT_FOLDERS" Url="https://cmg.screenstepslive.com/s/tutorials/m/7292/l/72311-organize">
+                    <ScreenStepKey />
+                    <DisplayText>See more ^</DisplayText>
+                  </Action>
+                  <Action Key="PX_EPORTFOLIO_ABOUT_ASSESSMENT" Url="https://cmg.screenstepslive.com/s/tutorials/m/7292/l/72308-add-assessment">
+                    <ScreenStepKey />
+                    <DisplayText>See more ^</DisplayText>
+                  </Action>
+                  <Action Key="PX_EPORTFOLIO_ABOUT_UPLOADMATERIALS" Url="https://cmg.screenstepslive.com/s/tutorials/m/7292/l/72309-upload-materials">
+                    <ScreenStepKey />
+                    <DisplayText>See more ^</DisplayText>
+                  </Action>
+                  <Action Key="PX_EPORTFOLIO_TOC_INSTRUCTOR" Url="https://cmg.screenstepslive.com/s/e-Portfolio-Instructor">
+                    <ScreenStepKey />
+                    <DisplayText>Help</DisplayText>
+                  </Action>
+                  <Action Key="PX_EPORTFOLIO_TOC_STUDENT" Url="https://cmg.screenstepslive.com/s/e-Portfolio-Student">
+                    <ScreenStepKey />
+                    <DisplayText>Help</DisplayText>
+                  </Action>
+                </Actions>
+              </ScreenSteps>
+            </bfw_property>
+          </bfw_properties>
+        </data>
+      </item>
+    </requests>
+  </request>
+  <!-- Creates zones and page definitions for ProgramManagement dashboard -->
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_HOME_PMDASHBOARD" entityid="-entityid-">
+        <data>
+          <parent>PX_PAGES</parent>
+          <sequence>b</sequence>
+          <title>PX_HOME_PMDASHBOARD</title>
+          <bfw_page_editable>false</bfw_page_editable>
+          <abbreviation>PXHOMEPMDASHBOARD</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_HOME_PMDASHBOARD_ZONES" entityid="-entityid-">
+        <data>
+          <parent>PX_HOME_PMDASHBOARD</parent>
+          <sequence>a</sequence>
+          <title>PX_HOME_PMDASHBOARD_ZONES</title>
+          <abbreviation>PXHOMEPMDASHBOARDZONES</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_HOME_PMDASHBOARD_ZONE_1" entityid="-entityid-">
+        <data>
+          <parent>PX_HOME_PMDASHBOARD_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_HOME_PMDASHBOARD_ZONE_1</title>
+          <abbreviation>PXHOMEPMDASHBOARDZONE1</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets>
+            <widget type="PX_ProgramCourseWidget" displayName="PM Dashboard" />
+          </bfw_allowed_widgets>
+        </data>
+      </item>
+    </requests>
+  </request>
+  <!-- Adds widgets to the ProgramManagement Dashboard -->
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_ProgramCourseWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_PMDASHBOARD_ZONE_1</parent>
+          <sequence />
+          <title>Dashboard</title>
+          <abbreviation>pcw</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_ProgramCourseWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="ProgramCourseWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_ProgramCourseWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_tocs></bfw_tocs>
+        </data>
+      </item>
+    </requests>
+  </request>
+  <!-- defines menuitem templates for ProgramManagement -->
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_PROGRAM_MANAGER_TEMPLATES" entityid="-entityid-">
+        <data>
+          <parent>PX_MENUS</parent>
+          <title>Primary Navigation</title>
+          <bfw_type>Menu</bfw_type>
+          <bfw_tocid>-tocid-</bfw_tocid>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_ASSESSMENT_TEMPLATE_PM" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PROGRAM_MANAGER_TEMPLATES</parent>
+          <sequence>c</sequence>
+          <title>ASSESSMENT</title>
+          <abbreviation>ASSESSMENT</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Assessment" controller="Assessment" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_TEMPLATES_TEMPLATE" version="1" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PROGRAM_MANAGER_TEMPLATES</parent>
+          <sequence>b</sequence>
+          <title>TEMPLATES</title>
+          <abbreviation>TEMPLATES</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Templates" controller="ProgramManagerTemplates" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+    </requests>
+  </request>
+  <!-- Creates menu for the ProgramManagment course -->
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_PROGRAM_MANAGER" entityid="-entityid-">
+        <data>
+          <parent>PX_MENUS</parent>
+          <title>Primary Navigation</title>
+          <bfw_type>Menu</bfw_type>
+          <bfw_tocid>-tocid-</bfw_tocid>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_HOME_PM" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PROGRAM_MANAGER</parent>
+          <sequence>a</sequence>
+          <title>e-PORTFOLIOS</title>
+          <abbreviation>e-PORTFOLIOS</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by>PX_MENU_ITEM_HOME_TEMPLATE</bfw_menu_created_by>
+          <bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Home" controller="" action="" url="" type="" route="CourseSectionHome" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_ASSESSMENT_PM" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PROGRAM_MANAGER</parent>
+          <sequence>c</sequence>
+          <title>ASSESSMENT</title>
+          <abbreviation>ASSESSMENT</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by>PX_MENU_ITEM_ASSESSMENT_TEMPLATE_PM</bfw_menu_created_by>
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Assessment" controller="Assessment" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_TEMPLATES" version="1" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PROGRAM_MANAGER</parent>
+          <sequence>b</sequence>
+          <title>TEMPLATES</title>
+          <abbreviation>TEMPLATES</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by>PX_MENU_ITEM_TEMPLATES_TEMPLATE</bfw_menu_created_by>
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Templates" controller="ProgramManagerTemplates" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+    </requests>
+  </request>
+  <!-- This deletes some legacy items that may be on the course -->
+  <request cmd="deleteitems">
+    <requests>
+      <item entityid="-entityid-" itemid="PX_MENU_ITEM_COURSEMATERIALS_TEMPLATE_PM" />
+      <item entityid="-entityid-" itemid="PX_MENU_ITEM_COURSEMATERIALS_PM" />
+      <item entityid="-entityid-" itemid="PX_MENU_ITEM_EBOOK_PM" />
+      <item entityid="-entityid-" itemid="PX_MENU_ITEM_PROGRAM_MANAGER_TEMPLATE" />
+      <item entityid="-entityid-" itemid="PX_MENU_ITEM_PROGRAM_MANAGER" />
+      <item entityid="-entityid-" itemid="PX_ProfileSummaryWidget" />
+      <item entityid="-entityid-" itemid="PX_HOME_EPORTFOLIO_ZONE_1" />
+    </requests>
+  </request>
+  <!-- This adds item templates to the course-->
+  <request cmd="putitems">
+    <requests>
+      <item itemid="TMP_8fb2fe4aa2f0494c8f6caa62eaabf909" version="2" entityid="-entityid-" creationdate="2011-06-17T19:23:08.123Z" creationby="2" modifieddate="2012-01-25T17:16:22.767Z" modifiedby="7">
+        <data>
+          <type>Assignment</type>
+          <parent>PX_TEMPLATES</parent>
+          <sequence>i</sequence>
+          <title>Reflection Assignment</title>
+          <folder>8fb2fe4aa2f0494c8f6caa62eaabf909</folder>
+          <href>Templates/Data/8fb2fe4aa2f0494c8f6caa62eaabf909/index.html</href>
+          <category>0</category>
+          <gradable>true</gradable>
+          <bfw_type>ReflectionAssignment</bfw_type>
+          <bfw_properties>
+            <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+            <bfw_property name="bfw_contentcreate_assign" type="string">true</bfw_property>
+          </bfw_properties>
+          <bfw_template>ReflectionAssignment</bfw_template>
+        </data>
+      </item>
+      <item itemid="TMP_8ce68f301db54ffa950b83fa2e082cae" version="3" entityid="-entityid-" creationdate="2011-06-17T19:23:08.093Z" creationby="2" modifieddate="2012-01-25T17:16:21.75Z" modifiedby="7">
+        <data>
+          <type>Assignment</type>
+          <parent>PX_TEMPLATES</parent>
+          <sequence>a</sequence>
+          <title>e-Portfolio</title>
+          <folder>8ce68f301db54ffa950b83fa2e082cae</folder>
+          <href>Templates/Data/8ce68f301db54ffa950b83fa2e082cae/index.html</href>
+          <category>0</category>
+          <duedate>0001-01-01T00:00:00Z</duedate>
+          <gradable>true</gradable>
+          <maxpoints>100</maxpoints>
+          <bfw_type>ePortFolio</bfw_type>
+          <bfw_properties>
+            <bfw_property name="bfw_visibility" type="String">
+              &lt;bfw_visibility&gt;
+              &lt;instructor /&gt;
+              &lt;student /&gt;
+              &lt;/bfw_visibility&gt;
+            </bfw_property>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_TEMPLATES" sequence="a" />
+          </bfw_tocs>
+          <bfw_template>ePortfolio</bfw_template>
+          <bfw_related_templates>
+            <template id="TMP_8fb2fe4aa2f0494c8f6caa62eaabf909" name="Add a Reflection Assignment" message="You may also want to add a reflection assignment for this folder." />
+          </bfw_related_templates>
+        </data>
+      </item>
+    </requests>
+  </request>
+  <!-- ROOT mode for e-portfolio tab to work -->
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_COURSE_EPORTFOLIO_ROOT_ITEM" entityid="-entityid-">
+        <data>
+          <type>Assignment</type>
+          <parent>PX_COURSE_EPORTFOLIO</parent>
+          <title>My e-Portfolio</title>
+          <description></description>
+          <href>Templates/Data/PX_COURSE_EPORTFOLIO_ROOT_ITEM/index.html</href>
+          <category>0</category>
+          <gradable>true</gradable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>ePortFolio</bfw_type>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_COURSE_EPORTFOLIO" sequence="a" />
+          </bfw_tocs>
+          <bfw_properties>
+            <bfw_property name="bfw_visibility" type="String">
+              &lt;bfw_visibility&gt;
+              &lt;instructor /&gt;
+              &lt;student /&gt;
+              &lt;/bfw_visibility&gt;
+            </bfw_property>
+            <bfw_property name="HiddenFromToc" type="Boolean">false</bfw_property>
+            <bfw_property name="HiddenFromStudents" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_IsConvertedToStudentFolder" type="Boolean">false</bfw_property>
+          </bfw_properties>
+          <bfw_in_assignment_center>false</bfw_in_assignment_center>
+          <IsMarkAsCompleteChecked>false</IsMarkAsCompleteChecked>
+          <meta-bfw_assigned>false</meta-bfw_assigned>
+        </data>
+      </item>
+    </requests>
+  </request>
+  <request cmd="putitems">
+    <requests>
+      <item itemid="a960f08b0a9b4f0d845074c6b319f068" entityid="-entityid-">
+        <data>
+          <type>Resource</type>
+          <parent>PX_RUBRICS</parent>
+          <title>Reflective Writing rubric</title>
+          <folder>a960f08b0a9b4f0d845074c6b319f068</folder>
+          <href>Templates/Data/a960f08b0a9b4f0d845074c6b319f068/index.html</href>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <rubric>Templates/Data/a960f08b0a9b4f0d845074c6b319f068/_rubric.xml</rubric>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <gradeentry2>16</gradeentry2>
+          <inputtable inherit="true">0</inputtable>
+          <dropbox>true</dropbox>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Rubric</bfw_type>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_RUBRICS" sequence="a" />
+          </bfw_tocs>
+          <bfw_properties>
+            <bfw_property name="bfw_visibility" type="String">
+              &lt;bfw_visibility&gt;
+              &lt;roles&gt;
+              &lt;instructor /&gt;
+              &lt;student /&gt;
+              &lt;/roles&gt;
+              &lt;/bfw_visibility&gt;
+            </bfw_property>
+            <bfw_property name="HiddenFromToc" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_course_type" type="String"></bfw_property>
+            <bfw_property name="bfw_rubric_owner" type="String">9339</bfw_property>
+            <bfw_property name="bfw_rubric_active" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_duedate_manuallyset" type="Boolean">false</bfw_property>
+          </bfw_properties>
+          <bfw_in_assignment_center>false</bfw_in_assignment_center>
+          <bfw_duedate_manuallyset>false</bfw_duedate_manuallyset>
+          <IsMarkAsCompleteChecked>false</IsMarkAsCompleteChecked>
+          <meta-bfw_assigned>false</meta-bfw_assigned>
+        </data>
+      </item>
+      <item itemid="c081487b4fcb4ede86436e1056c0b234" entityid="-entityid-">
+        <data>
+          <type>Resource</type>
+          <parent>PX_RUBRICS</parent>
+          <title>Holistic e-Portfolio rubric</title>
+          <folder>c081487b4fcb4ede86436e1056c0b234</folder>
+          <href>Templates/Data/c081487b4fcb4ede86436e1056c0b234/index.html</href>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <rubric>Templates/Data/c081487b4fcb4ede86436e1056c0b234/_rubric.xml</rubric>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <gradeentry2>16</gradeentry2>
+          <inputtable inherit="true">0</inputtable>
+          <dropbox>true</dropbox>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Rubric</bfw_type>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_RUBRICS" sequence="a" />
+          </bfw_tocs>
+          <bfw_properties>
+            <bfw_property name="bfw_visibility" type="String">
+              &lt;bfw_visibility&gt;
+              &lt;roles&gt;
+              &lt;instructor /&gt;
+              &lt;student /&gt;
+              &lt;/roles&gt;
+              &lt;/bfw_visibility&gt;
+            </bfw_property>
+            <bfw_property name="HiddenFromToc" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_course_type" type="String"></bfw_property>
+            <bfw_property name="bfw_rubric_owner" type="String">9339</bfw_property>
+            <bfw_property name="bfw_rubric_active" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_duedate_manuallyset" type="Boolean">false</bfw_property>
+          </bfw_properties>
+          <bfw_in_assignment_center>false</bfw_in_assignment_center>
+          <bfw_duedate_manuallyset>false</bfw_duedate_manuallyset>
+          <IsMarkAsCompleteChecked>false</IsMarkAsCompleteChecked>
+          <meta-bfw_assigned>false</meta-bfw_assigned>
+        </data>
+      </item>
+      <item itemid="c1547871ef5f46438d051ac166737e0d" entityid="-entityid-" >
+        <data>
+          <type>Resource</type>
+          <parent>PX_RUBRICS</parent>
+          <title>Argument rubric</title>
+          <folder>c1547871ef5f46438d051ac166737e0d</folder>
+          <href>Templates/Data/c1547871ef5f46438d051ac166737e0d/index.html</href>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <rubric>Templates/Data/c1547871ef5f46438d051ac166737e0d/_rubric.xml</rubric>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <gradeentry2>16</gradeentry2>
+          <inputtable inherit="true">0</inputtable>
+          <dropbox>true</dropbox>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Rubric</bfw_type>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_RUBRICS" sequence="a" />
+          </bfw_tocs>
+          <bfw_properties>
+            <bfw_property name="bfw_visibility" type="String">
+              &lt;bfw_visibility&gt;
+              &lt;roles&gt;
+              &lt;instructor /&gt;
+              &lt;student /&gt;
+              &lt;/roles&gt;
+              &lt;/bfw_visibility&gt;
+            </bfw_property>
+            <bfw_property name="HiddenFromToc" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_course_type" type="String"></bfw_property>
+            <bfw_property name="bfw_rubric_owner" type="String">9339</bfw_property>
+            <bfw_property name="bfw_rubric_active" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_duedate_manuallyset" type="Boolean">false</bfw_property>
+          </bfw_properties>
+          <bfw_in_assignment_center>false</bfw_in_assignment_center>
+          <bfw_duedate_manuallyset>false</bfw_duedate_manuallyset>
+          <IsMarkAsCompleteChecked>false</IsMarkAsCompleteChecked>
+          <meta-bfw_assigned>false</meta-bfw_assigned>
+        </data>
+      </item>
+    </requests>
+  </request>
+</batch>
+
+<!--
+Rubric Resources will need to be run also (MANUALLY) : TOTAL number of resource files needing to load is 3
+Format is as follows, Query-String than POST Data, and repeat if there is another
+
+cmd=putresource&entityid=-entityid-&path=Templates/Data/a960f08b0a9b4f0d845074c6b319f068/_rubric.xml
+
+<rubric>
+  <maxScore>0</maxScore>
+  <title>Reflective Writing rubric</title>
+  <isActive>false</isActive>
+  <columnTitles>
+    <column>
+      <sequence>1</sequence>
+      <title>Exemplary</title>
+    </column>
+    <column>
+      <sequence>2</sequence>
+      <title>Proficient</title>
+    </column>
+    <column>
+      <sequence>3</sequence>
+      <title>Limited</title>
+    </column>
+    <column>
+      <sequence>4</sequence>
+      <title>Unsatisfactory</title>
+    </column>
+  </columnTitles>
+  <rows>
+    <row sequence="1" score="12">
+      <title>Claims and Goals</title>
+      <columns>
+        <column sequence="1">
+          <description>The reflection makes specific and thoughtful claims about the author’s learning and growth; successfully draws connections between author’s achievement and course and personal goals, including goals for the future </description>
+        </column>
+        <column sequence="2">
+          <description>The reflection makes specific and thoughtful claims about the author’s learning and growth; draws some connections between the author’s achievement and course and personal goals</description>
+        </column>
+        <column sequence="3">
+          <description>The reflection makes some specific claims about the author’s learning and growth, but claims may not demonstrate thoughtfulness or successful self-critique; connections between author’s achievement and course or personal goals are loosely drawn</description>
+        </column>
+        <column sequence="4">
+          <description>Claims about author’s learning and growth are vague and general; no connection is made between author’s achievement and course goals or personal goals. </description>
+        </column>
+      </columns>
+    </row>
+    <row sequence="2" score="12">
+      <title>Discussion of Artifacts, Choices, and Revisions</title>
+      <columns>
+        <column sequence="1">
+          <description>The reflection successfully discusses in detail which artifacts were chosen and why; provides eloquent and insightful explication of what choices and/or revisions were made in the artifact(s) and why</description>
+        </column>
+        <column sequence="2">
+          <description>The reflection competently discusses which artifacts were chosen and why; provides explication of choices and/or revisions</description>
+        </column>
+        <column sequence="3">
+          <description>The reflection broadly addresses which artifacts were chosen and why; provides some explication of choices and/or revisions </description>
+        </column>
+        <column sequence="4">
+          <description>The reflection does not discuss or discusses very briefly which artifacts were chosen and why; provides minimal or no explication of choices and/or revisions</description>
+        </column>
+      </columns>
+    </row>
+    <row sequence="3" score="12">
+      <title>Evidence of Learning and Growth</title>
+      <columns>
+        <column sequence="1">
+          <description>The reflection supports claims about what the author has learned with a variety of detailed and vivid evidence from artifact(s)</description>
+        </column>
+        <column sequence="2">
+          <description>The reflection supports claims about what the author has learned with some evidence from artifact(s)</description>
+        </column>
+        <column sequence="3">
+          <description>The reflection offers only a few examples from artifact(s) to demonstrate author’s learning and growth</description>
+        </column>
+        <column sequence="4">
+          <description>Claims about author’s learning and growth are unsupported; few or no specific references to artifacts are included in the reflection</description>
+        </column>
+      </columns>
+    </row>
+    <row sequence="4" score="12">
+      <title>Style and Mechanics</title>
+      <columns>
+        <column sequence="1">
+          <description>Writing style is clear, flowing, polished, and easy to read; grammar, spelling, and usage errors are minimal and do not interfere with the reader’s understanding</description>
+        </column>
+        <column sequence="2">
+          <description>Writing style is clear and comprehensible but may have some awkward phrasing; a few grammar, spelling, or usage errors may be present but they generally do not interfere with the reader’s understanding</description>
+        </column>
+        <column sequence="3">
+          <description>Writing style is readable but unclear in multiple places; grammar, spelling, and usage errors hamper the reader’s understanding in multiple places</description>
+        </column>
+        <column sequence="4">
+          <description>Writing style is disjointed, choppy, or unfinished; grammar, spelling, and usage errors are so frequent as to hamper the reader’s understanding of the piece as a whole</description>
+        </column>
+      </columns>
+    </row>
+  </rows>
+  <rubricrule id="1" max="12">
+    <text>
+      <Paragraph>Claims and Goals</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflection makes specific and thoughtful claims about the author’s learning and growth; successfully draws connections between author’s achievement and course and personal goals, including goals for the future </Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflection makes specific and thoughtful claims about the author’s learning and growth; draws some connections between the author’s achievement and course and personal goals</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflection makes some specific claims about the author’s learning and growth, but claims may not demonstrate thoughtfulness or successful self-critique; connections between author’s achievement and course or personal goals are loosely drawn</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Claims about author’s learning and growth are vague and general; no connection is made between author’s achievement and course goals or personal goals. </Paragraph>
+    </text>
+  </rubricrule>
+  <rubricrule id="2" max="12">
+    <text>
+      <Paragraph>Discussion of Artifacts, Choices, and Revisions</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflection successfully discusses in detail which artifacts were chosen and why; provides eloquent and insightful explication of what choices and/or revisions were made in the artifact(s) and why</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflection competently discusses which artifacts were chosen and why; provides explication of choices and/or revisions</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflection broadly addresses which artifacts were chosen and why; provides some explication of choices and/or revisions </Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflection does not discuss or discusses very briefly which artifacts were chosen and why; provides minimal or no explication of choices and/or revisions</Paragraph>
+    </text>
+  </rubricrule>
+  <rubricrule id="3" max="12">
+    <text>
+      <Paragraph>Evidence of Learning and Growth</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflection supports claims about what the author has learned with a variety of detailed and vivid evidence from artifact(s)</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflection supports claims about what the author has learned with some evidence from artifact(s)</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflection offers only a few examples from artifact(s) to demonstrate author’s learning and growth</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Claims about author’s learning and growth are unsupported; few or no specific references to artifacts are included in the reflection</Paragraph>
+    </text>
+  </rubricrule>
+  <rubricrule id="4" max="12">
+    <text>
+      <Paragraph>Style and Mechanics\</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style is clear, flowing, polished, and easy to read; grammar, spelling, and usage errors are minimal and do not interfere with the reader’s understanding</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style is clear and comprehensible but may have some awkward phrasing; a few grammar, spelling, or usage errors may be present but they generally do not interfere with the reader’s understanding</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style is readable but unclear in multiple places; grammar, spelling, and usage errors hamper the reader’s understanding in multiple places</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style is disjointed, choppy, or unfinished; grammar, spelling, and usage errors are so frequent as to hamper the reader’s understanding of the piece as a whole</Paragraph>
+    </text>
+  </rubricrule>
+</rubric>
+
+********************************************** NEXT **********************************************
+
+cmd=putresource&entityid=-entityid-&path=Templates/Data/c081487b4fcb4ede86436e1056c0b234/_rubric.xml
+
+<rubric>
+  <maxScore>0</maxScore>
+  <title>Holistic e-Portfolio rubric</title>
+  <isActive>false</isActive>
+  <columnTitles>
+    <column>
+      <sequence>1</sequence>
+      <title>Exemplary</title>
+    </column>
+    <column>
+      <sequence>2</sequence>
+      <title>Proficient</title>
+    </column>
+    <column>
+      <sequence>3</sequence>
+      <title>Limited</title>
+    </column>
+    <column>
+      <sequence>4</sequence>
+      <title>Unsatisfactory</title>
+    </column>
+  </columnTitles>
+  <rows>
+    <row sequence="1" score="12">
+      <title>Selection of Artifacts</title>
+      <columns>
+        <column sequence="1">
+          <description>The selected artifacts clearly and completely address course goals and learning outcomes; the artifacts demonstrate thoughtful revision practices; the e-portfolio is organized in a clear, effective manner</description>
+        </column>
+        <column sequence="2">
+          <description>The selected artifacts address course goals and learning outcomes; the artifacts demonstrate adequate revision practices; the e-portfolio is organized in a clear, effective manner</description>
+        </column>
+        <column sequence="3">
+          <description>The selected artifacts only partially address course goals and learning outcomes; the artifacts do not demonstrate revision practices; the e-portfolio organization may be somewhat confusing</description>
+        </column>
+        <column sequence="4">
+          <description>The selected artifacts do not address the course goals and learning outcomes or demonstrate revision practices; the e-portfolio is disorganized and difficult to navigate</description>
+        </column>
+      </columns>
+    </row>
+    <row sequence="2" score="12">
+      <title>Reflection</title>
+      <columns>
+        <column sequence="1">
+          <description>The e-portfolio contains a reflective element that thoughtfully discusses the author’s preparation for the e-portfolio process, identifies revisions and rhetorical choices made, and presents evidence from the e-portfolio to demonstrate understanding and mastery of course outcomes</description>
+        </column>
+        <column sequence="2">
+          <description>The reflective element adequately discusses the author’s preparation for the e-portfolio process, identifies some revisions and rhetorical choices made, and presents some evidence from the e-portfolio artifacts to demonstrate understanding and mastery of course outcomes</description>
+        </column>
+        <column sequence="3">
+          <description>The reflective element broadly discusses the author’s preparation for the e-portfolio process, identifies only a few revisions and rhetorical choices made, presents limited evidence to demonstrate understanding and mastery of course outcomes</description>
+        </column>
+        <column sequence="4">
+          <description>The reflective element is vague and generalized; few or no examples from the e-portfolio artifacts are referenced; the reflective element is not well-integrated with the rest of the e-portfolio. </description>
+        </column>
+      </columns>
+    </row>
+    <row sequence="3" score="12">
+      <title>Rhetorical Knowledge</title>
+      <columns>
+        <column sequence="1">
+          <description>The e-portfolio outstandingly demonstrates the author’s ability to understand and appropriately shape his or her writing for different purposes, audiences, and contexts; the e-portfolio displays multiple genres of writing, successfully  and appropriately executed</description>
+        </column>
+        <column sequence="2">
+          <description>The e-portfolio adequately demonstrates the author’s ability to understand and appropriately shape his or her writing for different purposes, audiences, and contexts; the e-portfolio displays multiple genres of writing, adequately executed</description>
+        </column>
+        <column sequence="3">
+          <description>The e-portfolio demonstrates an incomplete ability to understand and appropriately shape writing for different purposes, audiences, and contexts; the e-portfolio displays only one or two genres of writing</description>
+        </column>
+        <column sequence="4">
+          <description>The e-portfolio does not demonstrate an ability to understand and shape writing for different purposes, audiences, and contexts; the e-portfolio does not display multiple genres of writing</description>
+        </column>
+      </columns>
+    </row>
+    <row sequence="4" score="12">
+      <title>Knowledge of Processes</title>
+      <columns>
+        <column sequence="1">
+          <description>The e-portfolio displays the author’s superior and thoughtful understanding of his or her own writing process and strategies for generating ideas, drafting, and revising; demonstrates the ability to give useful and insightful feedback to other writers </description>
+        </column>
+        <column sequence="2">
+          <description>The e-portfolio displays the author’s competent understanding of his or her own writing process and strategies for generating ideas, drafting, and revising; demonstrates the ability to give acceptable feedback to other writers</description>
+        </column>
+        <column sequence="3">
+          <description>The e-portfolio displays the author’s partial understanding of his or her own writing process and strategies for generating ideas, drafting, and revising; demonstrates some ability to give feedback to other writers</description>
+        </column>
+        <column sequence="4">
+          <description>The e-portfolio does not display an understanding of the author’s writing process and strategies; does not demonstrate the ability to give feedback to other writers</description>
+        </column>
+      </columns>
+    </row>
+    <row sequence="5" score="12">
+      <title>Style and Mechanics</title>
+      <columns>
+        <column sequence="1">
+          <description>Writing style throughout the e-portfolio is clear, flowing, polished, and easy to read; grammar, spelling, and usage errors are minimal and do not interfere with the reader’s understanding; sources are clear and documentation style is used appropriately and correctly</description>
+        </column>
+        <column sequence="2">
+          <description>Writing style throughout the e-portfolio is clear and comprehensible but may have some awkward phrasings; a few grammar, spelling, or usage errors may be present but they generally do not interfere with the reader’s understanding; sources are clear but documentation style has one or two errors</description>
+        </column>
+        <column sequence="3">
+          <description>Writing style throughout the e-portfolio is readable but unclear in multiple places; grammar, spelling, and usage errors hamper the reader’s understanding in multiple places; documentation has multiple significant errors</description>
+        </column>
+        <column sequence="4">
+          <description>Writing style throughout the e-portfolio is disjointed, choppy, or unfinished; grammar, spelling, and usage errors are so frequent as to hamper the reader’s understanding of the e-portfolio as a whole; documentation is inconsistent or absent</description>
+        </column>
+      </columns>
+    </row>
+  </rows>
+  <rubricrule id="1" max="12">
+    <text>
+      <Paragraph>Selection of Artifacts</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The selected artifacts clearly and completely address course goals and learning outcomes; the artifacts demonstrate thoughtful revision practices; the e-portfolio is organized in a clear, effective manner</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The selected artifacts address course goals and learning outcomes; the artifacts demonstrate adequate revision practices; the e-portfolio is organized in a clear, effective manner</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The selected artifacts only partially address course goals and learning outcomes; the artifacts do not demonstrate revision practices; the e-portfolio organization may be somewhat confusing</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The selected artifacts do not address the course goals and learning outcomes or demonstrate revision practices; the e-portfolio is disorganized and difficult to navigate</Paragraph>
+    </text>
+  </rubricrule>
+  <rubricrule id="2" max="12">
+    <text>
+      <Paragraph>Reflection</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The e-portfolio contains a reflective element that thoughtfully discusses the author’s preparation for the e-portfolio process, identifies revisions and rhetorical choices made, and presents evidence from the e-portfolio to demonstrate understanding and mastery of course outcomes</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflective element adequately discusses the author’s preparation for the e-portfolio process, identifies some revisions and rhetorical choices made, and presents some evidence from the e-portfolio artifacts to demonstrate understanding and mastery of course outcomes</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflective element broadly discusses the author’s preparation for the e-portfolio process, identifies only a few revisions and rhetorical choices made, presents limited evidence to demonstrate understanding and mastery of course outcomes</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The reflective element is vague and generalized; few or no examples from the e-portfolio artifacts are referenced; the reflective element is not well-integrated with the rest of the e-portfolio. </Paragraph>
+    </text>
+  </rubricrule>
+  <rubricrule id="3" max="12">
+    <text>
+      <Paragraph>Rhetorical Knowledge</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The e-portfolio outstandingly demonstrates the author’s ability to understand and appropriately shape his or her writing for different purposes, audiences, and contexts; the e-portfolio displays multiple genres of writing, successfully  and appropriately executed</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The e-portfolio adequately demonstrates the author’s ability to understand and appropriately shape his or her writing for different purposes, audiences, and contexts; the e-portfolio displays multiple genres of writing, adequately executed</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The e-portfolio demonstrates an incomplete ability to understand and appropriately shape writing for different purposes, audiences, and contexts; the e-portfolio displays only one or two genres of writing</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The e-portfolio does not demonstrate an ability to understand and shape writing for different purposes, audiences, and contexts; the e-portfolio does not display multiple genres of writing</Paragraph>
+    </text>
+  </rubricrule>
+  <rubricrule id="4" max="12">
+    <text>
+      <Paragraph>Knowledge of Processes</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The e-portfolio displays the author’s superior and thoughtful understanding of his or her own writing process and strategies for generating ideas, drafting, and revising; demonstrates the ability to give useful and insightful feedback to other writers </Paragraph>
+    </text>
+    <text>
+      <Paragraph>The e-portfolio displays the author’s competent understanding of his or her own writing process and strategies for generating ideas, drafting, and revising; demonstrates the ability to give acceptable feedback to other writers</Paragraph> 
+    </text>
+    <text>
+      <Paragraph>The e-portfolio displays the author’s partial understanding of his or her own writing process and strategies for generating ideas, drafting, and revising; demonstrates some ability to give feedback to other writers</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The e-portfolio does not display an understanding of the author’s writing process and strategies; does not demonstrate the ability to give feedback to other writers</Paragraph>
+    </text>
+  </rubricrule>
+  <rubricrule id="5" max="12">
+    <text>
+      <Paragraph>Style and Mechanics</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style throughout the e-portfolio is clear, flowing, polished, and easy to read; grammar, spelling, and usage errors are minimal and do not interfere with the reader’s understanding; sources are clear and documentation style is used appropriately and correctly</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style throughout the e-portfolio is clear and comprehensible but may have some awkward phrasings; a few grammar, spelling, or usage errors may be present but they generally do not interfere with the reader’s understanding; sources are clear but documentation style has one or two errors</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style throughout the e-portfolio is readable but unclear in multiple places; grammar, spelling, and usage errors hamper the reader’s understanding in multiple places; documentation has multiple significant errors</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style throughout the e-portfolio is disjointed, choppy, or unfinished; grammar, spelling, and usage errors are so frequent as to hamper the reader’s understanding of the e-portfolio as a whole; documentation is inconsistent or absent</Paragraph>
+    </text>
+  </rubricrule>
+</rubric>
+
+********************************************** NEXT **********************************************
+
+cmd=putresource&entityid=-entityid-&path=Templates/Data/c1547871ef5f46438d051ac166737e0d/_rubric.xml
+
+<rubric>
+  <maxScore>0</maxScore>
+  <title>Argument rubric</title>
+  <isActive>false</isActive>
+  <columnTitles>
+    <column>
+      <sequence>1</sequence>
+      <title>Exemplary</title>
+    </column>
+    <column>
+      <sequence>2</sequence>
+      <title>Proficient</title>
+    </column>
+    <column>
+      <sequence>3</sequence>
+      <title>Limited</title>
+    </column>
+    <column>
+      <sequence>4</sequence>
+      <title>Unsatisfactory</title>
+    </column>
+  </columnTitles>
+  <rows>
+    <row sequence="1" score="12">
+      <title>Thesis Statement</title>
+      <columns>
+        <column sequence="1">
+          <description>The thesis is strong, clear, complex, insightful, and engaging; it presents a robust and persuasive answer to a clearly debatable research question</description>
+        </column>
+        <column sequence="2">
+          <description>The thesis statement is strong and clear, but may be lacking in complexity or depth</description>
+        </column>
+        <column sequence="3">
+          <description>The thesis statement is general and/or vague</description>
+        </column>
+        <column sequence="4">
+          <description>No clear thesis statement is present</description>
+        </column>
+      </columns>
+    </row>
+    <row sequence="2" score="12">
+      <title>Use of Evidence</title>
+      <columns>
+        <column sequence="1">
+          <description>Piece provides support from excellent and well-chosen sources; evidence is presented vividly and with apt and relevant details</description>
+        </column>
+        <column sequence="2">
+          <description>Piece provides adequate support for major claims; evidence is clear and strong</description>
+        </column>
+        <column sequence="3">
+          <description>Supporting evidence is present, but deployed inconsistently; piece relies on some inappropriate sources</description>
+        </column>
+        <column sequence="4">
+          <description>Supporting evidence is irrelevant or lacking altogether </description>
+        </column>
+      </columns>
+    </row>
+    <row sequence="3" score="12">
+      <title>Analytical and Critical Thinking</title>
+      <columns>
+        <column sequence="1">
+          <description>The piece provides strong analysis and synthesis of sources and ideas; summary is minimal and used only where appropriate </description>
+        </column>
+        <column sequence="2">
+          <description>The piece provides some analysis and synthesis of sources and ideas, but may include some unnecessary summarizing</description>
+        </column>
+        <column sequence="3">
+          <description>The piece provides primarily a summary of sources, with limited analysis or synthesis</description>
+        </column>
+        <column sequence="4">
+          <description>Analysis and synthesis are essentially absent; the piece relies almost entirely on summary. </description>
+        </column>
+      </columns>
+    </row>
+    <row sequence="4" score="12">
+      <title>Rhetorical Knowledge</title>
+      <columns>
+        <column sequence="1">
+          <description>The piece establishes the writer’s ethos firmly and well; knows and compellingly addresses its target audience; acknowledges and credibly addresses counterarguments </description>
+        </column>
+        <column sequence="2">
+          <description>The piece establishes the writer’s ethos; target audience is clear and well-addressed but there may be some lapses in tone; the piece brings up and responds to counterarguments, but may not consider them deeply</description>
+        </column>
+        <column sequence="3">
+          <description>Writer’s ethos is unclear; target audience is uncertain or not addressed appropriately; some counterarguments are referenced in passing but not responded to completely or convincingly </description>
+        </column>
+        <column sequence="4">
+          <description>Writer’s ethos is not addressed or established; the piece does not demonstrate an understanding of the target audience; no reference to counterarguments </description>
+        </column>
+      </columns>
+    </row>
+    <row sequence="5" score="12">
+      <title>Style, Mechanics, and Documentation</title>
+      <columns>
+        <column sequence="1">
+          <description>Writing style is clear, flowing, and easy to read; grammar, spelling, and usage errors are minimal and do not interfere with the reader’s understanding; sources are clear and documentation style is used appropriately and correctly</description>
+        </column>
+        <column sequence="2">
+          <description>Writing style is clear and comprehensible but may have some awkward phrasing; a few grammar, spelling, or usage errors may be present but they generally do not interfere with the reader’s understanding; sources are clear but documentation style has one or two errors</description>
+        </column>
+        <column sequence="3">
+          <description>Writing style is readable but unclear in multiple places; grammar, spelling, and usage errors hamper the reader’s understanding in multiple places; documentation has multiple significant errors</description>
+        </column>
+        <column sequence="4">
+          <description>Writing style is disjointed, choppy, or unfinished; grammar, spelling, and usage errors are so frequent as to hamper the reader’s understanding of the piece as a whole; documentation is inconsistent or absent</description>
+        </column>
+      </columns>
+    </row>
+  </rows>
+  <rubricrule id="1" max="12">
+    <text>
+      <Paragraph>Thesis Statement</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The thesis is strong, clear, complex, insightful, and engaging; it presents a robust and persuasive answer to a clearly debatable research question</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The thesis statement is strong and clear, but may be lacking in complexity or depth</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The thesis statement is general and/or vague</Paragraph>
+    </text>
+    <text>
+      <Paragraph>No clear thesis statement is present</Paragraph>
+    </text>
+  </rubricrule>
+  <rubricrule id="2" max="12">
+    <text>
+      <Paragraph>Use of Evidence</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Piece provides support from excellent and well-chosen sources; evidence is presented vividly and with apt and relevant details</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Piece provides adequate support for major claims; evidence is clear and strong</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Supporting evidence is present, but deployed inconsistently; piece relies on some inappropriate sources</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Supporting evidence is irrelevant or lacking altogether </Paragraph>
+    </text>
+  </rubricrule>
+  <rubricrule id="3" max="12">
+    <text>
+      <Paragraph>Analytical and Critical Thinking</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The piece provides strong analysis and synthesis of sources and ideas; summary is minimal and used only where appropriate </Paragraph>
+    </text>
+    <text>
+      <Paragraph>The piece provides some analysis and synthesis of sources and ideas, but may include some unnecessary summarizing</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The piece provides primarily a summary of sources, with limited analysis or synthesis</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Analysis and synthesis are essentially absent; the piece relies almost entirely on summary. </Paragraph>
+    </text>
+  </rubricrule>
+  <rubricrule id="4" max="12">
+    <text>
+      <Paragraph>Rhetorical Knowledge</Paragraph>
+    </text>
+    <text>
+      <Paragraph>The piece establishes the writer’s ethos firmly and well; knows and compellingly addresses its target audience; acknowledges and credibly addresses counterarguments </Paragraph>
+    </text>
+    <text>
+      <Paragraph>The piece establishes the writer’s ethos; target audience is clear and well-addressed but there may be some lapses in tone; the piece brings up and responds to counterarguments, but may not consider them deeply</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writer’s ethos is unclear; target audience is uncertain or not addressed appropriately; some counterarguments are referenced in passing but not responded to completely or convincingly </Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writer’s ethos is not addressed or established; the piece does not demonstrate an understanding of the target audience; no reference to counterarguments </Paragraph>
+    </text>
+  </rubricrule>
+  <rubricrule id="5" max="12">
+    <text>
+      <Paragraph>Style, Mechanics, and Documentation</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style is clear, flowing, and easy to read; grammar, spelling, and usage errors are minimal and do not interfere with the reader’s understanding; sources are clear and documentation style is used appropriately and correctly</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style is clear and comprehensible but may have some awkward phrasing; a few grammar, spelling, or usage errors may be present but they generally do not interfere with the reader’s understanding; sources are clear but documentation style has one or two errors</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style is readable but unclear in multiple places; grammar, spelling, and usage errors hamper the reader’s understanding in multiple places; documentation has multiple significant errors</Paragraph>
+    </text>
+    <text>
+      <Paragraph>Writing style is disjointed, choppy, or unfinished; grammar, spelling, and usage errors are so frequent as to hamper the reader’s understanding of the piece as a whole; documentation is inconsistent or absent</Paragraph>
+    </text>
+  </rubricrule>
+</rubric>
+-->

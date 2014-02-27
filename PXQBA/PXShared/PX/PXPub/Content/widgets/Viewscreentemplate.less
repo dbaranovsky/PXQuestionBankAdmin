@@ -1,0 +1,91 @@
+﻿/* Typography */ 
+
+/* Font Size Variables */
+
+@fontH1: 21px;
+@fontNormalBody: 13px;
+@fontH2:16px;
+
+/* Color Variables */ 
+
+@SecondaryInfoGrey:#7f7f7f;
+@StandardLink:#057EE0;
+
+/* End Variables */ 
+
+/* Layout Rules */ 
+
+#fne-content .quiz-content,
+#fne-content .link-collection-content-view,
+#fne-content #content .html-content,
+#fne-content #content .discussion-content
+#fne-content #content .doc-collection-content-view{
+	padding: 28px 20px;    
+}
+
+
+/* Styles for h1s */
+ 
+#content .content-title,
+.product-type-faceplate #content-item #content .content-title{
+	font-size: @fontH1;
+	margin-bottom: 18px;
+}
+
+/* Description styling */ 
+
+.content .description-content{
+	line-height: 1.4em;
+    margin: 0 0 28px 0;
+	font-size: @fontNormalBody;
+}
+
+/* H2 styling Bheads */ 
+
+.content h3.sub-title{
+	font-size: @fontH2;
+	margin: 0 0 8px 0;
+}
+
+.quiz-content .quiz-overview {
+	clear: both;
+	float: left;
+	width: 100%;
+	margin: 0 0 16px 0;
+}
+
+/* Policies List Text */ 
+
+.quiz-content .quiz-policies .quiz-policy-list{
+	font-size: @fontNormalBody;
+	line-height:20px;
+}
+
+.quiz-content .quiz-policies{
+	margin-bottom:28px;
+}
+
+/* Overview No Questions */ 
+
+.quiz-overview .overview-no-questions,
+.selected-questions  ul.questions .selected-question-info,
+.no-student-enrolled{
+	font-size: @fontNormalBody;
+	line-height: 1.4em;
+	font-style: italic;
+	color: @SecondaryInfoGrey;
+}
+
+/* Doc Collection Content */ 
+
+.doc-collection-content-view .upload-link{
+	margin-top: 16px;
+}
+
+/* Launchpad homepage links */ 
+
+#LaunchPadAssignmentsWidget #rightLaunchPad .viewAllAssignments,
+.widgetItem .course-info-wrapper .widgetEditLink,
+#PX_InstructorConsoleWidget .link{
+	color: @StandardLink;
+}

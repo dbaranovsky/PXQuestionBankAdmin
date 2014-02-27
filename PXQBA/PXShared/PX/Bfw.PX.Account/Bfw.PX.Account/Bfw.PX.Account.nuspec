@@ -1,0 +1,15 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>AccountRequest</id>
+    <title>AccountRequest</title>
+    <version>1.0.0</version>
+    <authors>PXTeam</authors>
+    <owners>PXTeam</owners>
+    <licenseUrl>http://www.macmillanhighered.com</licenseUrl>
+    <projectUrl>http://www.macmillanhighered.com</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides Login page for Ravell SSO (depricated)</description>
+    <releaseNotes>This release contains the following changes...</releaseNotes>
+  </metadata>
+</package>

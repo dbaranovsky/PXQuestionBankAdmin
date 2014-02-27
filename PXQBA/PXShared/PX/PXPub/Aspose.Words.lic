@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<License>
+  <Data>
+    <LicensedTo>Macmillan Higher Ed</LicensedTo>
+    <LicenseType>Developer OEM</LicenseType>
+    <LicenseNote>Limited to 1 developer.</LicenseNote>
+    <OrderID>130923160909</OrderID>
+    <OEM>This is a redistributable license</OEM>
+    <Products>
+      <Product>Aspose.Words for .NET</Product>
+    </Products>
+    <EditionType>Enterprise</EditionType>
+    <SerialNumber>67f93108-a49d-4e17-a8be-a3e1c46127ce</SerialNumber>
+    <SubscriptionExpiry>20141023</SubscriptionExpiry>
+    <LicenseVersion>2.2</LicenseVersion>
+  </Data>
+  <Signature>lUelzEPGOdN7pLPYIoigm7ywhfuyeZdRIGrwo9tlYmp9YGNAVWcuEtVDM4STzb/cmus0nutDM5HYKYfb42mG4kQaGEWNxeTIic8RcWbyRsnkzk8D3xsQLPy3FnfncPyP7zwqpGH/E0c0c0oSQ4ndJ0ekfv8Svr6Ue9g55/8lmXA=</Signature>
+</License>

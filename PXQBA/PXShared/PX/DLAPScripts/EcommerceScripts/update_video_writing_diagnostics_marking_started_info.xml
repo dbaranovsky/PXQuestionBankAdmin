@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<batch>
+	<request cmd="putitems">
+		<requests>
+			<item itemid="PX_PRODUCT_GETTING_STARTED" entityid="-entityid-" >
+				<data>
+					<description>
+						&lt;div class="video-welcome"&gt; 
+						&lt;div id="PX_LC_HOME_2COLUMN_ZONE_1" class="zoneParent"&gt;
+						&lt;div class="imageContainer"&gt;
+						&lt;div class="video-starting-image"&gt;&lt;/div&gt; 
+						&lt;/div&gt; 
+						&lt;/div&gt; 
+						&lt;div id="PX_LC_HOME_2COLUMN_ZONE_2" class="zoneParent"&gt; 
+						&lt;div class="marketing-content"&gt; 
+						&lt;div class="lc-rw-body-copy"&gt; 
+						&lt;p&gt; &lt;/p&gt; 
+						&lt;/div&gt; 
+						&lt;div class="lc-action-button"&gt;
+
+						&lt;a href="[[viewcourses]]" class="ecom-btns view-courses-button fixed view-courses-button-hidden "&gt;View Courses
+						&lt;span class="icon"&gt;&lt;/span&gt;&lt;/a&gt;
+
+						&lt;a href="[[createcourse]]" class="ecom-btns  [[createcoursestyles]]"&gt;Get Started &lt;span class="icon"&gt;&lt;/span&gt;&lt;/a&gt;
+						&lt;/div&gt; 
+						&lt;/div&gt; 
+						&lt;/div&gt; 
+						&lt;/div&gt; 
+					</description>
+				</data>
+			</item>
+		</requests>
+	</request>
+	
+</batch>

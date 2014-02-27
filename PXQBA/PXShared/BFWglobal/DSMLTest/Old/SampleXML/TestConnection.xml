@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<dom:batchRequest xmlns:dsml="urn:oasis:names:tc:DSML:2:0:core"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <dsml:searchRequest requestID="1" dn="" scope="baseObject" derefAliases="derefAlways">
+    <dsml:filter>
+      <dsml:present name="objectclass"/>
+    </dsml:filter>
+  </dsml:searchRequest>
+</dom:batchRequest>

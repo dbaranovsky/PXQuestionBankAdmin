@@ -1,0 +1,42 @@
+<root>
+<rootItem type="getenrollmentgradebook2">
+  <enrollment id="-enrollmentid-" userid="-userid-" entityid="-entityid-" domainid="8841" reference="" guid="00000000-0000-0000-0000-000000000000" flags="-2" status="1" startdate="0001-01-01T00:00:00Z" enddate="9999-12-31T23:59:59.9999999Z">
+    <user id="7" firstname="pxmigration" lastname="user" reference="" guid="8a686534-be79-4cf0-95f9-845231fe65d6" userspace="Root" username="pxmigration" email="" lastlogindate="2013-06-07T21:07:15.39Z" />
+    <entity id="-entityid-" title="Econportal Stone CoreEconomics 2e -/-/" reference="" guid="85b6c353-3f49-4c6e-9b2c-dc8916f634a4" domainid="8841" schema="2" protection="0" type="Range" startdate="1753-01-01T00:00:00Z" enddate="9999-12-31T00:00:00Z" days="365" term="" baseid="0" />
+    <domain id="-domainid-" name="BFWUsers" />
+    <grades achieved="0" possible="200" letter="F" passingscore="50" complete="0" seconds="0">
+      <categories>
+        <category id="0" name="Uncategorized" achieved="0" possible="200" letter="F" />
+        <category id="1" name="Chapter 2. Production, Economic Growth, and Trade" achieved="0" possible="0" />
+        <category id="11" name="TestFolder 2" achieved="0" possible="0" />
+        <category id="111" name="Untitled Unititled Unit" achieved="0" possible="0" />
+        <category id="1111" name="Chapter 5. Elasticity" achieved="0" possible="0" />
+        <category id="11111" name="PX-2225" achieved="0" possible="0" />
+        <category id="111111" name="PX-2276" achieved="0" possible="0" />
+        <category id="1111111" name="Chapter 8. Competition" achieved="0" possible="0" />
+        <category id="11111111" name="11Unit" achieved="0" possible="0" />
+      </categories>
+    </grades>
+  </enrollment>
+</rootItem>
+<rootItem type="getusergradebook2">
+  <enrollments>
+    <enrollment id="-enrollmentid-" userid="-userid-" entityid="-entityid-" domainid="-domainid-" reference="" guid="694fa616-9758-4d39-96a1-7f7ef44280ef" flags="552692744193" status="1" startdate="1753-01-01T00:00:00Z" enddate="9999-12-31T00:00:00Z">
+      <entity id="-entityid-" entitytype="C" title="DEMO-1/18/2013" reference="" guid="d76e9557-6aae-4e9e-8252-64aac2b492e3" domainid="8841" schema="2" protection="0" type="Range" startdate="1753-01-01T00:00:00Z" enddate="9999-12-31T00:00:00Z" days="365" term="" baseid="0" />
+      <domain id="-domainid-" name="BFWUsers" />
+      <grades achieved="0" possible="0" passingscore="0" complete="0" seconds="0">
+        <categories>
+          <category id="1" name="New assignment 1" achieved="0" possible="0" />
+          <category id="2" name="New assignment 1" achieved="0" possible="0" />
+          <category id="3" name="New assignment 2" achieved="0" possible="0" />
+        </categories>
+      </grades>
+    </enrollment>
+  </enrollments>
+</rootItem>
+<rootItem type="getentitygradebook2">
+  <enrollments>
+    <enrollment id="-enrollmentid-" userid="-userid-" entityid="-entityid-" domainid="-domainid-" reference="" guid="62911471-9e5c-4baf-802c-777cbfa0e72c" flags="131073" status="1" startdate="2013-02-14T21:01:15.997Z" enddate="2014-02-14T21:01:15.997Z"><data><status><performance signal="Red" code="2" /><pace signal="Green" /></status></data><user id="99600" firstname="Scott 24" lastname="Ezhno24" reference="5151621" guid="aa21a96c-0041-4821-a83c-956bc95887d7" userspace="bfwusers" username="sezhno@email.phoenix.edu" email="sezhno1@email.phoenix.edu" lastlogindate="2013-03-20T17:19:15.347Z" /><domain id="8841" name="BFWUsers" /><grades achieved="0" possible="200" letter="F" passingscore="50" complete="0" seconds="1016"><categories><category id="0" name="Uncategorized" achieved="0" possible="200" letter="F" seconds="1020" /><category id="1" name="Chapter 2. Production, Economic Growth, and Trade" achieved="0" possible="0" /><category id="11" name="TestFolder 2" achieved="0" possible="0" /><category id="111" name="Untitled Unititled Unit" achieved="0" possible="0" /><category id="1111" name="Chapter 5. Elasticity" achieved="0" possible="0" /><category id="11111" name="PX-2225" achieved="0" possible="0" /><category id="111111" name="PX-2276" achieved="0" possible="0" /><category id="1111111" name="Chapter 8. Competition" achieved="0" possible="0" /><category id="11111111" name="11Unit" achieved="0" possible="0" /></categories></grades></enrollment>
+  </enrollments>
+</rootItem>
+</root>
