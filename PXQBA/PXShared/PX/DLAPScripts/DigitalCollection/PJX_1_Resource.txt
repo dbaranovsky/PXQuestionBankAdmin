@@ -1,0 +1,56 @@
+cmd=putresource&entityid="-entityid-"&path=Templates/Data/46e3c96f407f44c687c1e55b7d55b4fe/index.html
+
+
+
+<table style="width: 648px; height: 412px;" border="0" align="left">
+<tbody>
+<tr>
+<td valign="top"><img title="Introduction" src="/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/projects/images/intro.JPG" alt="/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/projects/images/intro.JPG" border="0" /></td>
+<td style="width: 15px;">&nbsp;</td>
+<td align="left" valign="top">When imagining the West of the late nineteenth century, many Americans might think of cowboys on the open range rustling cattle, or perhaps of two men engaged in a gunfight on a dusty main street. But what about women in the West? Since the late nineteenth century, the American West has produced several popular stereotypes of women. In the early twentieth century, for example, a popular western novel&mdash;Owen Wister&rsquo;s The Virginian (1903)&mdash;featured the cultured schoolmarm who worked to civilize the &ldquo;Wild West.&rdquo; Little House on the Prairie, a juvenile novel published in 1935 (later adapted into a popular television show of the 1970s and 1980s), brought to the public the wise and ever-helpful &ldquo;Ma.&rdquo; A final iconic stereotype of western women was (and is) the &ldquo;bad woman,&rdquo; which includes the West&rsquo;s prostitutes and madams. One such representation, the &ldquo;hooker with the heart of gold&rdquo; appeared in the popular television series Gunsmoke (1955&ndash;1975) in the character of &ldquo;Miss Kitty.&rdquo; More common, however is the depiction of the West&rsquo;s prostitutes as lonely victims, bereft of family, health, and money. Historians have, for the most part, also viewed such women as casualties. But did isolation and an unhappy end describe Louisa Cousselle&rsquo;s life? Or is hers a more complicated story worthy of a different historical interpretation?<br /><br /></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+putresource&entityid="-entityid-"&path=Templates/Data/7100d491bcdc4994bab1d7e6091b19c8/index.html
+
+
+
+<table style="width: 701px; height: 394px;" border="0">
+<tbody>
+<tr>
+<td align="left" valign="top"><img title="Historical Background" src="/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/projects/images/background.JPG" alt="/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/projects/images/background.JPG" width="216" height="303" border="0" /></td>
+<td style="width: 12px;">&nbsp;</td>
+<td align="left" valign="top">Contrary to common myth, the West was far more urban than rural. Frontier urban areas, especially mining towns, possessed a particular demographic profile: there were many more young, single men than single women and a far greater number of all-male than familial households. The mining West was, in short, a man&rsquo;s world. As a result, men found it necessary to pay women for domestic services, such as cooking, laundry, and housekeeping, that they might otherwise have received gratis from their wives. Likewise, female companionship was at a premium. <br /><br />Although women were few in number, they were present and they well understood that their traditional roles could be turned into cash. They opened boardinghouses or took in boarders; they established restaurants and bakeries; and they set up laundry operations. Women, in short, moved their domestic skills and labor from the home onto Main Street and profited accordingly. In similar fashion, women catered to men&rsquo;s desire for female companionship and sex. Seeing profits to be made in mining towns, women both professional and amateur took up work in the &ldquo;demimonde&rdquo; or &ldquo;half-world&rdquo; (meaning, the part of the West that operated outside of mainstream social conventions). According to most historians, some so-called fancy ladies were successful; most were not. But both the winners and losers came to bad ends because of their chosen vocation. Whatever the conclusion, most historical interpretations overlook women&rsquo;s own decisions to become public women.<br />Why would a woman choose to &ldquo;work on the line,&rdquo; given prostitution&rsquo;s inherent dangers and the likelihood of social ostracism? Did most prostitutes actually choose the work or were they forced into it? (Other work was available, even if it paid less.) Were prostitutes entirely without family? Where did the women come from? What were their ambitions and aspirations? Were the West&rsquo;s madams and public women really financially successful? And if they were, how did they achieve their affluence? Finally, was prostitution in the West a matter of &ldquo;once a whore, always a whore&rdquo;?</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+putresource&entityid="-entityid-"&path=Templates/Data/37cf49c840a445d0b9a4d656e57342e3/index.html
+
+
+<p class="Default">1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Using the bits and pieces from the documents, construct a short biography of Louisa Cousselle&rsquo;s life.</p>
+<p class="Default">&nbsp;</p>
+<p class="Default">2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Both individual and institutional <a href="http://www.youtube.com/" target="_blank">youtube.com</a> members have contributed film clips from early silent films, many of which are westerns. Using these clips as your source material, construct a PowerPoint presentation or online presentation in which you show how these early films depicted the West&rsquo;s prostitutes.</p>
+<p class="Default">&nbsp;</p>
+<p class="Default">&nbsp;</p>
+<p class="Default"><strong>Additional Resources for Research</strong></p>
+<p>Baumler, Ellen.&nbsp;&ldquo;Devil&rsquo;s Perch: Prostitution from Suite to Cellar in Butte, Montana.&rdquo;&nbsp;<em>Montana: The Magazine of Western History</em>&nbsp;48, no. 3 (1998):&nbsp;4&ndash;21.</p>
+<p>Butler, Anne M.&nbsp;<em>Daughters of Joy, Sisters of Misery: Prostitutes in the American West, 1865&ndash;90</em>. University of Illinois Press,&nbsp;1987.</p>
+<p>Rosen, Ruth. &ldquo;Go West Young Woman? Prostitution on the Frontier.&rdquo;&nbsp;<em>Reviews in American History</em>&nbsp;14, no. 1 (1986): 91&ndash;96.&nbsp;</p>
+<p class="Default"><em>McCabe and Mrs. Miller</em> (1971; 120 minutes)</p>
+<p class="Default">Roger Ebert, the Chicago Sun Times&rsquo;s film critic, remarked in his review that Robert B. Altman&rsquo;s film <em>McCabe and Mrs. Miller</em> (1971) &ldquo;was like no other western ever made&hellip;.&rdquo; His remark certainly extended to the portrayal of the madam, Mrs. Miller. How does the portrayal of Mrs. Miller compare with Louisa Cousselle&rsquo;s history?</p>
+<p class="CM13"><strong>&nbsp;</strong></p>
+<p class="CM13"><strong>&gt; Download</strong> <span style="text-decoration: underline;">Rubric for Grading Essay-Based Assignments</span></p>
+<p class="Default">&nbsp;</p>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B27F8420-A37D-4DF5-9489-FAE456A0DE6E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bfw.PXAP.ServiceContracts</RootNamespace>
+    <AssemblyName>Bfw.PXAP.ServiceContracts</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IDlapService.cs" />
+    <Compile Include="IEnrollmentService.cs" />
+    <Compile Include="IContentService.cs" />
+    <Compile Include="IDashboardService.cs" />
+    <Compile Include="IEnvironmentService.cs" />
+    <Compile Include="ILogSearchService.cs" />
+    <Compile Include="IMenuService.cs" />
+    <Compile Include="IMetadataService.cs" />
+    <Compile Include="IProgressService.cs" />
+    <Compile Include="IPxWebUserRepository.cs" />
+    <Compile Include="IUserRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Bfw.Agilix\Bfw.Agilix.DataContracts\Bfw.Agilix.DataContracts.csproj">
+      <Project>{4D185F8E-C2A0-442A-A05E-78B566361562}</Project>
+      <Name>Bfw.Agilix.DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Agilix\Bfw.Agilix.Dlap\Bfw.Agilix.Dlap.csproj">
+      <Project>{F5A60C36-AA1F-4849-A9E7-465F7963DF9F}</Project>
+      <Name>Bfw.Agilix.Dlap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bfw.PXAP.Models\Bfw.PXAP.Models.csproj">
+      <Project>{94760FDA-B80F-40FD-89FE-77B6E145DE19}</Project>
+      <Name>Bfw.PXAP.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

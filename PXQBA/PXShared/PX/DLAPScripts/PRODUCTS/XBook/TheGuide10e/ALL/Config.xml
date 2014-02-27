@@ -1,0 +1,20 @@
+<batch>
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_MainContentAreaWidget" entityid="-entityid-">
+        <data>
+          <bfw_bhcomponent_property name="MainContentArea">
+            <param name="EnrollmentId" id="" alias="EnrollmentId" value="" />
+            <param name="ItemID" id="" alias="ItemID" value="" />
+            <param name="FragmentID" id="" alias="FragmentID" value="" />
+            <param name="RelatedContentItemID" id="" alias="RelatedContentItemID" value=""></param>
+            <param name="BrainHoneyUrl" id="" alias="BrainHoneyUrl" value=""/>
+            <param name="ProductCourseId" id="" alias="ProductCourseId" value="-entityid-"/>
+            <param name="PXAppPath" id="" alias="PXAppPath" value="http://-env-.bedfordstmartins.com/beta/theguide10e/xbook/" />
+            <!-- should be a dynamic url -->
+          </bfw_bhcomponent_property>
+        </data>
+      </item>
+    </requests>
+  </request>
+</batch>

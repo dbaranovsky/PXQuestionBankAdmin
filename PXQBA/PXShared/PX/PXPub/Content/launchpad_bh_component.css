@@ -1,0 +1,156 @@
+/*Added by JOSH*/
+/* Updated by PW, Jan 2 2013 */
+
+/* PW: This is the "bottom banner" at the bottom of the quiz submission page
+   (and, I assume, other places as well) */
+/*.color_light, .x-menu {
+	background-color:#eee;
+}
+
+.color_medium {
+background-color:#F0F0F0;
+}
+
+.color_dark {
+background-color:#DCDCDC;
+}
+
+.alt_color_light {
+background-color:#E4E4E4;
+}
+
+.alt_color_medium {
+background-color:#CECECE;
+}
+
+.alt_color_dark {
+background-color:#B8B8B8;
+}
+
+.color_header, .x-toolbar {
+background-color:#e6e6e6;
+}*/
+
+/* end adding by Josh */
+
+/* ext-all.css (line 5634) */
+/*.x-fieldset legend {
+	color:#666666;
+	font:bold 11px tahoma,arial,helvetica,sans-serif;
+}*/
+
+/* Styles_vv1CB655975442C60.css (line 1) */
+/*.x-panel-header {
+	color:#666;
+	text-transform:uppercase;
+	font-weight:bold;
+}*/
+
+/*ext-all.css (line 6686)*/
+/*.x-panel-tbar-noheader .x-toolbar, .x-panel-mc .x-panel-tbar .x-toolbar {
+	background:none repeat scroll 0 0 transparent !important;
+	border-top-color:#99BBE8;
+}*/
+
+/*ext-all.css (line 3886)*/
+/*.x-panel-tbar-noheader .x-toolbar, .x-panel-mc .x-panel-tbar .x-toolbar {
+	border-bottom:1px solid #B5B8C8;
+	border-top:1px solid #B5B8C8;
+}*/
+
+/*ext-all.css (line 3879)*/
+/*.x-panel-bbar .x-toolbar, .x-panel-tbar .x-toolbar {
+overflow:hidden;
+padding:2px;
+}*/
+
+/* Styles_vv1CB655975442C60.css (line 1) */
+/*.x-panel-body {*/
+/*background:none repeat scroll 0 0 transparent !important; remove this line*/
+/*border:0 none;
+}*/
+
+/* ext-all.css (line 6852) */
+/*.x-accordion-hd {
+font-weight:bold;
+text-transform:uppercase;
+}*/
+
+/* ext-all.css (line 1071) */
+/*.x-form-item label {
+color:#666666;
+}*/
+
+
+/* ext-all.css (Line 5642) */
+
+/*.x-btn button{
+  font:12px tahoma,verdana,helvetica,arial;
+}*/
+
+/*.x-btn button{
+
+       color:#2b2b2b !important;
+
+       font-weight: bold !important;
+
+}*/
+
+/* Buttons */
+/*.x-btn-tl, .x-btn-tr, .x-btn-tc, .x-btn-ml, .x-btn-mr, .x-btn-mc, .x-btn-bl, .x-btn-br, .x-btn-bc{*/
+	/*PW: this file doesn't exist*/
+    /*background-image:url(btn.gif);*/
+	/*background-color:#999;
+	background-image:none;
+}*/
+
+ 
+
+/*.x-btn-disabled *,
+
+.x-item-disabled button {
+
+       color:#b6b6b6 !important;
+
+}*/
+
+
+#qHeader_quizeditorcomponent #qTypeLink_quizeditorcomponent,
+#qHeader_quizeditorcomponent #qTypeSpan_quizeditorcomponent,
+#qHeader_quizeditorcomponent #sPropsLink_quizeditorcomponent,
+#qHeader_quizeditorcomponent #qPropsSpan_quizeditorcomponent,
+#qHeader_quizeditorcomponent #qPreviewSpan_quizeditorcomponent,
+#qHeader_quizeditorcomponent #qAdvancedSpan_quizeditorcomponent{
+	display: none;
+}
+
+
+.add-student-btn {
+    display: none;
+}
+
+.gbh-leaf div.gbh-title{
+    height: 62px !important;
+}
+/* Styles_vv1CB655975442C60.css (Line 1) */
+/*
+.alt_color_light 
+{
+  font:bold 12pt myriad;
+  background-color:#EFEFEF;
+}*/
+
+/* 
+<div class="x-panel-footer color_medium default_border dashboard_list_btns" id="ext-gen14"> 
+
+remove color_medium class on this line to make background white or change definition of color_medium class
+*/
+
+/*
+To Style Form Elements:
+
+To style the form elements you will need to use the same technique that was used to style the quiz elements in pervious deliverable.
+
+You will need the Uniform.js javascript, css, and image files to style the form elements.
+
+*/

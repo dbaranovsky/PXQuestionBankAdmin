@@ -1,0 +1,50 @@
+﻿@model Bfw.PXAP.Models.AppFabricCacheModel
+<script type="text/javascript">
+    var foldFunc = CodeMirror.newFoldFunction(CodeMirror.tagRangeFinder);
+</script>
+
+@if (!string.IsNullOrWhiteSpace(Model.Result))
+{
+    @Html.TextAreaFor(m => m.Result, 20, 100, new Dictionary<string, object>())
+    <br />
+    @Html.TextAreaFor(m => m.ItemTagsResult, 20, 100, new Dictionary<string, object>())
+    <script type="text/javascript">
+        var editor = CodeMirror.fromTextArea(document.getElementById("Result"), {
+            value: '',
+            mode: 'text/xml',
+            lineNumbers: true,
+            lineWrapping: true,
+            extraKeys: {
+                "' '": function (cm) { CodeMirror.xmlHint(cm, ' '); },
+                "'<'": function (cm) { CodeMirror.xmlHint(cm, '<'); },
+                "Ctrl-Space": function (cm) { CodeMirror.xmlHint(cm, ''); },
+                "Ctrl-Q": function (cm) { foldFunc(cm, cm.getCursor().line); }
+            },
+            autoCloseTags: true,
+            theme: "solarized dark",
+            indentWithTabs: false,
+            indentUnit: 4,
+
+        });
+        editor.on("gutterClick", foldFunc);
+
+        var tagsEditor = CodeMirror.fromTextArea(document.getElementById("ItemTagsResult"), {
+            value: '',
+            mode: 'text/xml',
+            lineNumbers: true,
+            lineWrapping: true,
+            extraKeys: {
+                "' '": function (cm) { CodeMirror.xmlHint(cm, ' '); },
+                "'<'": function (cm) { CodeMirror.xmlHint(cm, '<'); },
+                "Ctrl-Space": function (cm) { CodeMirror.xmlHint(cm, ''); },
+                "Ctrl-Q": function (cm) { foldFunc(cm, cm.getCursor().line); }
+            },
+            autoCloseTags: true,
+            theme: "solarized dark",
+            indentWithTabs: false,
+            indentUnit: 4,
+
+        });
+        tagsEditor.on("gutterClick", foldFunc);
+    </script>
+}

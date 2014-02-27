@@ -1,0 +1,72 @@
+.RA_box_tbl {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.RA_box_tbl TD {
+	padding: 0px;
+}
+
+.RA_box_tbl_tl {
+	width: 13px;
+	height: 12px;
+	font-size:1px;
+	text-align: left;
+	background: url('../images/RA_box_tl.gif') no-repeat;
+}
+
+.RA_box_tbl_tc {
+	height: 12px;
+	font-size:1px;
+	text-align: left;
+	background: url('../images/RA_box_tc.gif') repeat-x;
+}
+
+.RA_box_tbl_tr {
+	width: 18px;
+	height: 12px;
+	font-size:1px;
+	text-align: right;
+	background: url('../images/RA_box_tr.gif') no-repeat;
+}
+
+.RA_box_tbl_ml {
+	width: 13px;
+	text-align: left;
+	background: url('../images/RA_box_ml.gif') repeat-y;
+}
+
+.RA_box_tbl_mc {
+	text-align: left;
+	background-color:#ffffff;
+}
+
+.RA_box_tbl_mr {
+	width: 13px;
+	text-align: right;
+	background: url('../images/RA_box_mr.gif') repeat-y;
+}
+
+.RA_box_tbl_bl {
+	width: 13px;
+	height: 12px;
+	font-size:1px;
+	text-align: left;
+	background: url('../images/RA_box_bl.gif') no-repeat;
+}
+
+.RA_box_tbl_bc {
+	height: 12px;
+	font-size:1px;
+	text-align: left;
+	background: url('../images/RA_box_bc.gif') repeat-x;
+}
+
+.RA_box_tbl_br {
+	width: 18px;
+	height: 17px;
+	font-size:1px;
+	text-align: right;
+	background: url('../images/RA_box_br.gif') no-repeat;
+}
+

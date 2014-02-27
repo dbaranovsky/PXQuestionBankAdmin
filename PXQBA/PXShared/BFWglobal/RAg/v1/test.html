@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script language="JavaScript">
+alert('test');
+</script>
+<script src="RA.js"></script>
+<script src="RAXS.asp" type="text/javascript" language="Javascript"></script>
+<script src="http://bcs.bfwpub.com/RA/RAXS.asp" type="text/javascript" language="Javascript"></script>
+<script language="JavaScript">
+//alert(RA.CurrentUser);
+</script>
+</head>
+<body onload="">
+
+<!-- ************************************************************ -->
+<!--
+<script language="JavaScript">
+var ifhtml = '';
+ifhtml += '<IFRAME id="hide" style="DISPLAY: none; WIDTH: 100%; HEIGHT: 100px; BACKGROUND-COLOR: transparent" src="/BFWglobal/RAg/v1/RAif.html" frameBorder="0" scrolling="no" allowTransparency></IFRAME>';
+//document.write(ifhtml);
+</script>
+
+<SCRIPT language=JavaScript>
+document.write('RAXS UserID = '+ RAXS_UserID +'<br>');
+document.write('<br>');
+document.write('SiteID = '+ RASite.SiteID +'<br>');
+document.write('SiteBaseURL = '+ RASite.SiteBaseURL +'<br>');
+document.write('UserID = '+ RASite.UserID +'<br>');
+document.write('LevelOfAccess = '+ RASite.LevelOfAccess +'<br>');
+document.write('InstructorEmail = '+ RASite.UserInstructorEmail +'<br>');
+</SCRIPT>
+-->
+
+<div id="testRA">
+
+<p>test RA JS</p>
+<script language="JavaScript">
+document.write('<br/>');
+document.write('RA.CurrentUser.ID = '+RA.CurrentUser.ID+'<br/>');
+document.write('RA.CurrentUser.ID = '+RA.CurrentUser.FName+'<br/>');
+document.write('RA.CurrentUser.ID = '+RA.CurrentUser.LName+'<br/>');
+document.write('<br/>');
+for (var i in RA.Users) {
+	document.write('RA.Users['+i+'].ID = '+RA.Users[i].ID+'<br/>');
+	document.write('<br/>');
+}
+</script>
+
+<div>
+<p>RA.DisplayAll</p>
+<script language="JavaScript">
+document.write( RA.DisplayAll() );
+</script>
+</div>
+
+</div>
+
+<iframe src="debugvars.asp" width="100%" height="300"/>
+<!--
+-->
+<iframe src="http://bcs.bfwpub.com/RA/debugvars.asp" width="100%" height="300"/>
+
+
+</body>
+
+
+</html>

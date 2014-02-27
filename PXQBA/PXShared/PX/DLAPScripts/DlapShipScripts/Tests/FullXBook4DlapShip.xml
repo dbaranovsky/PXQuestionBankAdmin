@@ -1,0 +1,2558 @@
+﻿<batch>
+  <!-- Following command updates the product course with the correct metadata values -->
+  <request cmd="updatecourses">
+    <requests>
+      <course courseid="-courseid-" type="Range">
+        <data>
+          <enableloadingscreen>true</enableloadingscreen>
+          <meta-available-question-data>
+            <coreconcept  filterable='true' friendlyname='Core Concept'/>
+            <difficulty filterable='true' searchterm='difficulty:'  friendlyname='Difficulty'></difficulty>
+            <cognitivelevel  filterable='true' friendlyname='Cognitive Level' />
+            <bloomdomain filterable='true' friendlyname="Bloom's level"></bloomdomain>
+            <suggesteduse filterable='true' friendlyname="Suggested Use"></suggesteduse>
+            <guidance filterable='false' />
+          </meta-available-question-data>
+          <CourseTimeZone>Eastern Standard Time</CourseTimeZone>
+          <gradetables>
+            <table id="0" name="A,B,C,D,F" scale="Percent">
+              <bracket grade="A" score="0.9" />
+              <bracket grade="B" score="0.8" />
+              <bracket grade="C" score="0.7" />
+              <bracket grade="D" score="0.6" />
+              <bracket grade="F" score="0" />
+            </table>
+            <table id="1" name="A+,A,A-,...,F" scale="Percent">
+              <bracket grade="A+" score="0.97" />
+              <bracket grade="A" score="0.93" />
+              <bracket grade="A-" score="0.9" />
+              <bracket grade="B+" score="0.87" />
+              <bracket grade="B" score="0.83" />
+              <bracket grade="B-" score="0.8" />
+              <bracket grade="C+" score="0.77" />
+              <bracket grade="C" score="0.73" />
+              <bracket grade="C-" score="0.7" />
+              <bracket grade="D+" score="0.67" />
+              <bracket grade="D" score="0.63" />
+              <bracket grade="D-" score="0.6" />
+              <bracket grade="F" score="0" />
+            </table>
+            <table id="2" name="P/F" scale="Percent">
+              <bracket grade="P" score="0.7" />
+              <bracket grade="F" score="0" />
+            </table>
+          </gradetables>
+          <allowstaticcopy>true</allowstaticcopy>
+          <allowderivativechildcopy>true</allowderivativechildcopy>
+          <allowderivativesiblingcopy>true</allowderivativesiblingcopy>
+          <bfw_assessment_style>
+            <rubric_management_style>
+              <show_preview_on_left>true</show_preview_on_left>
+              <show_edit_on_left>true</show_edit_on_left>
+              <show_view_alignments>true</show_view_alignments>
+              <show_edit_on_right>false</show_edit_on_right>
+              <show_preview_on_right>false</show_preview_on_right>
+              <show_left_column>true</show_left_column>
+              <show_right_column>true</show_right_column>
+              <rubric_alignment_views>
+                <assignment>true</assignment>
+                <eportfolio />
+                <rubric>true</rubric>
+              </rubric_alignment_views>
+            </rubric_management_style>
+            <objective_management_style>
+              <show_left_column>true</show_left_column>
+              <show_right_column>true</show_right_column>
+              <show_edit_on_left>true</show_edit_on_left>
+              <show_edit_on_right>false</show_edit_on_right>
+              <show_view_alignments>true</show_view_alignments>
+              <learningobj_alignment_views>
+                <assignment>true</assignment>
+                <eportfolio />
+                <objective>true</objective>
+              </learningobj_alignment_views>
+            </objective_management_style>
+          </bfw_assessment_style>
+          <groupsets>
+            <groupset id="9999" title="Individual Group" prefix="Individual Group" algorithm="Random" />
+          </groupsets>
+          <bfw_search>
+            <searchcategory searchable="true" title="Ebook : Chapters, Headings, Topics" metadata="ebook" />
+            <searchcategory searchable="true" title="Miscellaneous Content" metadata="other" />
+            <searchcategory searchable="false" title="Exclude" metadata="exclude" />
+          </bfw_search>
+          <bfw_properties>
+            <bfw_property name="bfw_infinite_scroll" type="string">true</bfw_property>
+            <bfw_property name="bfw_obtain_bh_auth_cookie" type="bool">true</bfw_property>
+            <bfw_property name="application_js_files" type="string">~/Scripts/Xbook/Xbook.js</bfw_property>
+            <bfw_property name="bfw_initialize_user" type="string">true</bfw_property>
+          </bfw_properties>
+          <bfw_tab_settings>
+            <view_tab>
+              <show_policies>true</show_policies>
+              <show_assignment_details>false</show_assignment_details>
+              <show_rubrics>false</show_rubrics>
+              <show_learning_objectives>false</show_learning_objectives>
+            </view_tab>
+            <assign_tab>
+              <show_make_gradeable>true</show_make_gradeable>
+              <show_allow_late_submissions>false</show_allow_late_submissions>
+              <show_schedule_reminder>false</show_schedule_reminder>
+              <show_subcontent_creation>false</show_subcontent_creation>
+              <show_assigned_on_same_day>true</show_assigned_on_same_day>
+              <show_completion_category>true</show_completion_category>
+              <show_gradebook_category>true</show_gradebook_category>
+              <show_syllabus_category>true</show_syllabus_category>
+              <show_points_possible>true</show_points_possible>
+              <show_send_reminder>false</show_send_reminder>
+            </assign_tab>
+          </bfw_tab_settings>
+          <bfw_allow_activation>false</bfw_allow_activation>
+          <bfw_course_type>XBOOK</bfw_course_type>
+          <meta-bfw_course_type>XBOOK</meta-bfw_course_type>
+          <bfw_course_home_page>PX_XBOOK_DEFAULT</bfw_course_home_page>
+          <bfw_hide_student_view_in_header>false</bfw_hide_student_view_in_header>
+          <meta-book-isbn>000000000000X</meta-book-isbn>
+          <sourceid>6651</sourceid>
+          <bfw_template_learningobjectives>
+            <learningobjectives>
+            </learningobjectives>
+          </bfw_template_learningobjectives>
+          <bfw_allow_activation>true</bfw_allow_activation>
+          
+          <!--Dashboard Settings -->
+          <bfw_dashboard_settings>
+            <bfw_dashboard_course_home_page>PX_DASHBOARD_1COLUMN</bfw_dashboard_course_home_page>
+            <bfw_program_dashboard_course_home_page>PX_PROGRAM_DASHBOARD_1COLUMN</bfw_program_dashboard_course_home_page>
+            <instructor_dashboard>true</instructor_dashboard>
+            <program_dashboard>true</program_dashboard>
+          </bfw_dashboard_settings>
+          <isdashboardactive>true</isdashboardactive>
+          <!-- END Dashboard Settings -->
+          <bfw_enrollment_switch>true</bfw_enrollment_switch>
+          <bfw_course_domain_switch>true</bfw_course_domain_switch>
+          <bfw_generic_course>true</bfw_generic_course>
+        </data>
+      </course>
+    </requests>
+  </request>
+
+  <!-- Delete items that could exist in other environments -->
+  <request cmd="deleteitems">
+    <requests>
+      <!-- Feature Content Widget template -->
+      <item itemid="PX_LearningCurveWidget" entityid="-entityid-" />
+      <!-- Agilix MCA is no longer being used -->
+      <item itemid="PX_MainContentAreaWidget" entityid="-entityid-" />
+      <!-- Student Registration widget -->
+      <item itemid="PX_StudentRegistrationWidget" entityid="-entityid-" />
+      <item itemid="PX_ClassSubmissionWidget" entityid="-entityid-" />
+      <item itemid="PX_SearchWidget" entityid="-entityid-" />
+      <!-- was added to this document but it should not have been -->
+      <!-- Remove the old student Grades tab -->
+      <item itemid="PX_MENU_ITEM_CLASS_ACTIVITY_STUDENT" entityid="-entityid-" />
+
+      <!-- Old templates that happened to have the same names as some of the menu items that arn't used anymore-->
+      <item itemid="PX_PRIMARY_XBOOK" entityid="-entityid-"/>
+      <item itemid="PX_PRIMARY_XBOOK_TEMPLATES" entityid="-entityid-"/>
+      <item itemid="PX_MENU_ITEM_ASSIGNMENTS" version="1" entityid="-entityid-"/>
+      <item itemid="PX_MENU_ITEM_xBook" version="1" entityid="-entityid-"/>
+      <item itemid="PX_MENU_ITEM_CLASSSUBMISSIONS" version="1" entityid="-entityid-"/>
+      <item itemid="PX_MENU_ITEM_BOOKMARKS" version="1" entityid="-entityid-"/>
+    </requests>
+  </request>
+
+  <!-- loading the default marketing and welcome screens which will be over written by the course specific scripts -->
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_PRODUCT_GETTING_STARTED" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_ROOT</parent>
+          <title>Everyday Writer</title>
+          <abbreviation>ecw</abbreviation>
+          <description>
+            &lt;div class=&quot;everydaywriter5e&quot;&gt;
+            &lt;div class=&quot;zoneParent PX_XBOOK_HOME_2COLUMN_ZONE_1&quot; id=&quot;PX_XBOOK_HOME_2COLUMN_ZONE_1&quot;&gt;
+            &lt;div class=&quot;course-info-widget&quot;&gt;
+            &lt;div class=&quot;top&quot;&gt;
+            &lt;div class=&quot;book&quot;&gt;
+            &lt;/div&gt;
+            &lt;span class=&quot;book-title&quot;&gt;x-Book for The Everyday Writer with Exercises&lt;/span&gt;
+            &lt;br /&gt;
+            &lt;span&gt;Fifth Edition&lt;/span&gt;
+            &lt;br /&gt;
+            &lt;span&gt;Andrea A. Lunsford&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;bottom&quot;&gt;
+            &lt;ul class=&quot;tutorial-links&quot;&gt;
+            &lt;li class=&quot;header-row&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.bedfordstmartins.com/Catalog/other/Xbook_Works&quot;&gt;
+            &lt;span rel=&quot;&quot;&gt;SEE HOW IT WORKS&lt;/span&gt;&lt;span class=&quot;tut-link-arrow&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.bedfordstmartins.com/Catalog/other/Xbook_Research&quot;&gt;
+            &lt;span rel=&quot;&quot;&gt;FAQS&lt;/span&gt;&lt;span class=&quot;tut-link-arrow&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.bedfordstmartins.com/Catalog/other/Xbook_Instructor_FAQ&quot;&gt;
+            &lt;span rel=&quot;&quot;&gt;WHAT'S SPECIAL&lt;/span&gt;&lt;span class=&quot;tut-link-arrow&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;zoneParent welcome PX_XBOOK_HOME_2COLUMN_ZONE_2&quot; id=&quot;PX_XBOOK_HOME_2COLUMN_ZONE_2&quot;&gt;
+            &lt;div class=&quot;marketing-content&quot;&gt;
+            &lt;div class=&quot;xb-rw-body-copy xbook-body-copy&quot;&gt;
+            &lt;p&gt;
+            &lt;b&gt;Welcome, instructor.&lt;/b&gt;&lt;i&gt; The x-Book for The Everyday Writer with Exercises &lt;/i&gt; re-imagines what a textbook can
+            do online. The x-book integrates the narrative with extra images and documents so that you can
+            assign them, and it provides adaptive quizzing that shows you what your students already know.
+            &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;xb-rw-body-copy xbook-body-copy&quot;&gt;
+            &lt;span&gt;Here's how it works:&lt;/span&gt;
+            &lt;ul&gt;
+            &lt;li&gt;Customize your table of contents and build out assignments.&lt;/li&gt;
+            &lt;li&gt;Enable student registration and enter your course information.&lt;/li&gt;
+            &lt;li&gt;See student activity across the pages and materials in the x-book.&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;xb-action-button xbook-action-button&quot;&gt;
+            &lt;a class=&quot;ecom-btns [[createcoursestyles]]&quot; href=&quot;[[createcourse]]&quot;&gt;
+            Get into the x-Book&lt;span class=&quot;icon&quot;&gt;&lt;/span&gt;&lt;/a&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;
+          </description>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>1</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <bfw_type>ProductMarketing</bfw_type>
+          <bfw_subtype>Marketing</bfw_subtype>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_ROOT" sequence="_ja"/>
+          </bfw_tocs>
+        </data>
+      </item>
+
+      <item itemid="PX_PRODUCT_MARKETING" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_ROOT</parent>
+          <title>Marketing Material</title>
+          <abbreviation>mm</abbreviation>
+          <description>
+            &lt;div id="main-container" class="everydaywriter5e"&gt;
+            &lt;div class="xbook-mars-nav"&gt;
+            &lt;ul&gt;
+            &lt;li&gt;&lt;a target="_blank" href="http://bedfordstmartins.com/Catalog/Product.aspx?isbn=9781457612671&amp;tab=tableofcontents"&gt;Table of Contents&lt;span class="icon"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a target="_blank" href="http://bedfordstmartins.com/catalog/other/xbook_special"&gt;What's Special&lt;span class="icon"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a target="_blank" href="http://bedfordstmartins.com/catalog/other/xbook_works"&gt;See how it Works&lt;span class="icon"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a target="_blank" href="http://bedfordstmartins.com/catalog/other/xbook_FAQs"&gt;Faqs&lt;span class="icon"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;/div&gt;
+
+            &lt;div class="xbook-mars-content"&gt;
+            &lt;div class="content-wrapper"&gt;
+            &lt;h1&gt; A book is just the beginning&lt;/h1&gt;
+            &lt;span class="subtitle"&gt;x-Book for The Everyday Writer with Exercises, Fifth Edition&lt;/span&gt;
+            &lt;span class="author"&gt; Andrea A. Lunsford &lt;/span&gt;
+            &lt;p class="description"&gt;Ever wanted a book that lets you and your students dive in, make it your own, and talk to each other right on its pages? The &lt;i&gt;x-Book for The Everyday Writer with Exercises&lt;/i&gt; reimagines what a text can do online&amp;mdash;integrating interactive content and social tools that let you and your students get into your book in a whole new way.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="xbook-mars-branding-book"&gt;&lt;/div&gt;
+            &lt;div class="xbook-mars-branding"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;/div&gt;
+          </description>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>1</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <bfw_type>ProductMarketing</bfw_type>
+          <bfw_subtype>Marketing</bfw_subtype>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_ROOT" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+
+      <item itemid="PX_PRODUCT_ACTIVATION_TEXT" entityid="-entityid-">
+        <data>
+          <description>
+            &lt;div class=&quot;customerCourseActivationWrapper&quot;&gt;
+            &lt;div class=&quot;alertIconWrapper&quot;&gt;
+            &lt;span class=&quot;alertIcon&quot;&gt;&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;customcourseactivation&quot;&gt;
+            &lt;div class=&quot;activatetext&quot;&gt;
+            Click below to activate once you&#39;re ready to distribute the course URL to your class
+            &lt;/div&gt;
+            &lt;div class=&quot;activatelinks&quot;&gt;
+            &lt;span class=&quot;activationlink&quot;&gt;[[Activation]]&lt;/span&gt;
+            &lt;span class=&quot;templatelink&quot;&gt;[[SaveAsTemplate]]&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;
+          </description>
+        </data>
+      </item>
+    </requests>
+  </request>
+
+  <!-- Creates necessary folders and other course structures including page definitions for XBOOK-->
+  <request cmd="putitems">
+    <requests>
+      <!-- Page definition for the default page -->
+      <item itemid="PX_XBOOK_DEFAULT" entityid="-entityid-">
+        <data>
+          <parent>PX_PAGES</parent>
+          <sequence>a</sequence>
+          <title>PX_XBOOK_DEFAULT</title>
+          <bfw_page_editable>false</bfw_page_editable>
+          <abbreviation>XBOOKDEFAULT</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_XBOOK_DEFAULT_ZONES" entityid="-entityid-">
+        <data>
+          <parent>PX_XBOOK_DEFAULT</parent>
+          <sequence>a</sequence>
+          <title>PX_XBOOK_DEFAULT_ZONES</title>
+          <abbreviation>XBOOKDEFAULTZONES</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_XBOOK_DEFAULT_ZONE_1" entityid="-entityid-">
+        <data>
+          <parent>PX_XBOOK_DEFAULT_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_XBOOK_DEFAULT_ZONE_1</title>
+          <abbreviation>XBOOKDEFAULTZONE1</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets>
+            <widget type="PX_MenuWidget" displayName="XBOOK MENU" />
+          </bfw_allowed_widgets>
+          <bfw_support_hide>true</bfw_support_hide>
+        </data>
+      </item>
+
+      <!-- Page definition for the Commenting FNE page -->
+      <item itemid="PX_XBOOK_FNE_COMMENTING" entityid="-entityid-">
+        <data>
+          <parent>PX_PAGES</parent>
+          <sequence>a</sequence>
+          <title>PX_XBOOK_FNE_COMMENTING</title>
+          <bfw_page_editable>false</bfw_page_editable>
+          <abbreviation>XBOOKDEFAULT</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_XBOOK_FNE_COMMENTING_ZONES" entityid="-entityid-">
+        <data>
+          <parent>PX_XBOOK_FNE_COMMENTING</parent>
+          <sequence>a</sequence>
+          <title>PX_XBOOK_FNE_COMMENTING_ZONES</title>
+          <abbreviation>PXXBOOKFNECOMMENTINGZONES</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_XBOOK_FNE_COMMENTING_ZONE_1" entityid="-entityid-">
+        <data>
+          <parent>PX_XBOOK_FNE_COMMENTING_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_XBOOK_FNE_COMMENTING_ZONE_1</title>
+          <abbreviation>PXXBOOKFNECOMMENTINGZONE1</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets>
+            <widget type="PX_MenuWidget" displayName="XBOOK MENU" />
+          </bfw_allowed_widgets>
+          <bfw_support_hide>false</bfw_support_hide>
+        </data>
+      </item>
+      <item itemid="PX_XBOOK_FNE_COMMENTING_ZONE_2" entityid="-entityid-">
+        <data>
+          <parent>PX_XBOOK_FNE_COMMENTING_ZONES</parent>
+          <sequence>b</sequence>
+          <title>PX_XBOOK_FNE_COMMENTING_ZONE_2</title>
+          <abbreviation>PXXBOOKFNECOMMENTINGZONE2</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_support_hide>false</bfw_support_hide>
+        </data>
+      </item>
+
+      <!-- Page definition for the home page -->
+      <item itemid="PX_XBOOK_HOME" entityid="-entityid-">
+        <data>
+          <parent>PX_PAGES</parent>
+          <sequence>a</sequence>
+          <title>PX_XBOOK_HOME</title>
+          <bfw_page_editable>false</bfw_page_editable>
+          <abbreviation>XBOOKHOME</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_XBOOK_HOME_ZONES" entityid="-entityid-">
+        <data>
+          <parent>PX_XBOOK_HOME</parent>
+          <sequence>a</sequence>
+          <title>PX_XBOOK_HOME_ZONES</title>
+          <abbreviation>XBOOKHOMEZONES</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_XBOOK_HOME_ZONE_1" entityid="-entityid-">
+        <data>
+          <parent>PX_XBOOK_HOME_ZONES</parent>
+          <sequence>a</sequence>
+          <title>Caurosel</title>
+          <abbreviation>Carousel</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets/>
+          <bfw_support_hide>true</bfw_support_hide>
+        </data>
+      </item>
+      <!-- removed because it was not being used
+      <item itemid="PX_XBOOK_HOME_ZONE_2" entityid="-entityid-">
+        <data>
+          <parent>PX_XBOOK_HOME_ZONES</parent>
+          <sequence>b</sequence>
+          <title>Agilix Book</title>
+          <abbreviation>AgilixBook</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets/>
+          <bfw_support_hide>true</bfw_support_hide>
+        </data>
+      </item>
+       -->
+      <item itemid="PX_XBOOK_HOME_ZONE_3" entityid="-entityid-">
+        <data>
+          <parent>PX_XBOOK_HOME_ZONES</parent>
+          <sequence>c</sequence>
+          <title>4 Widgets</title>
+          <abbreviation>4Widgets</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets/>
+          <bfw_support_hide>true</bfw_support_hide>
+        </data>
+      </item>
+      <item itemid="PX_XBOOK_HOME_ZONE_4" entityid="-entityid-">
+        <data>
+          <parent>PX_XBOOK_HOME_ZONES</parent>
+          <sequence>d</sequence>
+          <title>4 Widgets</title>
+          <abbreviation>4Widgets</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets/>
+          <bfw_support_hide>true</bfw_support_hide>
+        </data>
+      </item>
+
+      <!-- Page definition for the Xbook page -->
+      <item itemid="PX_XBOOK_TAB" entityid="-entityid-">
+        <data>
+          <parent>PX_PAGES</parent>
+          <sequence>a</sequence>
+          <title>PX_XBOOK_TAB</title>
+          <bfw_page_editable>false</bfw_page_editable>
+          <abbreviation>XBOOKTAB</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_XBOOK_TAB_ZONES" entityid="-entityid-">
+        <data>
+          <parent>PX_XBOOK_TAB</parent>
+          <sequence>a</sequence>
+          <title>PX_XBOOK_TAB_ZONES</title>
+          <abbreviation>XBOOKTABZONES</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_XBOOK_TAB_ZONE_1" entityid="-entityid-">
+        <data>
+          <parent>PX_XBOOK_TAB_ZONES</parent>
+          <sequence>a</sequence>
+          <title>Toc</title>
+          <abbreviation>toc</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets>
+            <widget type="PX_MenuWidget" displayName="XBOOK MENU" />
+          </bfw_allowed_widgets>
+          <bfw_support_hide>true</bfw_support_hide>
+        </data>
+      </item>
+      <item itemid="PX_XBOOK_TAB_ZONE_2" entityid="-entityid-">
+        <data>
+          <parent>PX_XBOOK_TAB_ZONES</parent>
+          <sequence>b</sequence>
+          <title>Content Area</title>
+          <abbreviation>ContentArea</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets>
+            <widget type="PX_MenuWidget" displayName="XBOOK MENU" />
+          </bfw_allowed_widgets>
+          <bfw_support_hide>true</bfw_support_hide>
+        </data>
+      </item>
+
+      <!-- Page definition for the Assessment page -->
+      <item itemid="PX_XBOOK_ASSESSMENTS" entityid="-entityid-">
+        <data>
+          <parent>PX_PAGES</parent>
+          <sequence>a</sequence>
+          <title>PX_XBOOK_ASSESSMENTS</title>
+          <bfw_page_editable>false</bfw_page_editable>
+          <abbreviation>XBOOKASSESSMENTS</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_XBOOK_ASSESSMENTS_ZONES" entityid="-entityid-">
+        <data>
+          <parent>PX_XBOOK_ASSESSMENTS</parent>
+          <sequence>a</sequence>
+          <title>PX_XBOOK_ASSESSMENTS_ZONES</title>
+          <abbreviation>XBOOKASSESSMENTSZONES</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_XBOOK_ASSESSMENTS_ZONE_1" entityid="-entityid-">
+        <data>
+          <parent>PX_XBOOK_ASSESSMENTS_ZONES</parent>
+          <sequence>a</sequence>
+          <title>Toc</title>
+          <abbreviation>toc</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets>
+            <widget type="PX_MenuWidget" displayName="XBOOK MENU" />
+          </bfw_allowed_widgets>
+          <bfw_support_hide>true</bfw_support_hide>
+        </data>
+      </item>
+      <!-- Page definition for the Assignments page -->
+      <item itemid="PX_XBOOK_ASSIGNMENTS" entityid="-entityid-">
+        <data>
+          <parent>PX_PAGES</parent>
+          <sequence>a</sequence>
+          <title>PX_XBOOK_ASSIGNMENTS</title>
+          <bfw_page_editable>false</bfw_page_editable>
+          <bfw_custom_divs>
+            <custom_div>create-assignment-bar</custom_div>
+          </bfw_custom_divs>
+          <abbreviation>XBOOKASSIGNMENTS</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_XBOOK_ASSIGNMENTS_ZONES" entityid="-entityid-">
+        <data>
+          <parent>PX_XBOOK_ASSIGNMENTS</parent>
+          <sequence>a</sequence>
+          <title>PX_XBOOK_ASSIGNMENTS_ZONES</title>
+          <abbreviation>XBOOKASSIGNMENTSZONES</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_XBOOK_ASSIGNMENTS_ZONE_1" entityid="-entityid-">
+        <data>
+          <parent>PX_XBOOK_ASSIGNMENTS_ZONES</parent>
+          <sequence>a</sequence>
+          <title>Toc</title>
+          <abbreviation>toc</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets>
+            <widget type="PX_MenuWidget" displayName="XBOOK MENU" />
+          </bfw_allowed_widgets>
+          <bfw_support_hide>true</bfw_support_hide>
+        </data>
+      </item>
+      <item itemid="PX_XBOOK_ASSIGNMENTS_ZONE_2" entityid="-entityid-">
+        <data>
+          <parent>PX_XBOOK_ASSIGNMENTS_ZONES</parent>
+          <sequence>a</sequence>
+          <title>Content Area</title>
+          <abbreviation>ContentArea</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets>
+            <widget type="PX_MenuWidget" displayName="XBOOK MENU" />
+          </bfw_allowed_widgets>
+          <bfw_support_hide>true</bfw_support_hide>
+        </data>
+      </item>
+
+      <!-- Page definition for the Class Activity page -->
+      <item itemid="PX_XBOOK_CLASS_ACTIVITY" entityid="-entityid-">
+        <data>
+          <parent>PX_PAGES</parent>
+          <sequence>a</sequence>
+          <title>PX_XBOOK_CLASS_ACTIVITY</title>
+          <bfw_page_editable>false</bfw_page_editable>
+          <abbreviation>XBOOKCLASS_ACTIVITY</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_XBOOK_CLASS_ACTIVITY_ZONES" entityid="-entityid-">
+        <data>
+          <parent>PX_XBOOK_CLASS_ACTIVITY</parent>
+          <sequence>a</sequence>
+          <title>PX_XBOOK_CLASS_ACTIVITY_ZONES</title>
+          <abbreviation>XBOOKCLASS_ACTIVITYZONES</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_XBOOK_CLASS_ACTIVITY_ZONE_1" entityid="-entityid-">
+        <data>
+          <parent>PX_XBOOK_CLASS_ACTIVITY_ZONES</parent>
+          <sequence>a</sequence>
+          <title>Toc</title>
+          <abbreviation>toc</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets>
+            <widget type="PX_MenuWidget" displayName="XBOOK MENU" />
+          </bfw_allowed_widgets>
+          <bfw_support_hide>true</bfw_support_hide>
+        </data>
+      </item>
+      <item itemid="PX_XBOOK_CLASS_ACTIVITY_ZONE_2" entityid="-entityid-">
+        <data>
+          <parent>PX_XBOOK_CLASS_ACTIVITY_ZONES</parent>
+          <sequence>a</sequence>
+          <title>Content Area</title>
+          <abbreviation>ContentArea</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets>
+            <widget type="PX_MenuWidget" displayName="XBOOK MENU" />
+          </bfw_allowed_widgets>
+          <bfw_support_hide>true</bfw_support_hide>
+        </data>
+      </item>
+    </requests>
+
+  </request>
+
+  <!-- Adds widgets to their respective zones for xbook-->
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_MenuWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_DEFAULT_ZONE_1</parent>
+          <sequence>a</sequence>
+          <title>Menu</title>
+          <abbreviation>MenuWidget</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_MenuWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="MenuWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_MenuWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_target_menu" type="String">PX_MENU_XBOOK</bfw_property>
+            <bfw_property name="bfw_target_menu_id" type="String">PX_MENU_ITEM_HOME</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_AssessmentMenuWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_ASSESSMENTS_ZONE_1</parent>
+          <sequence>a</sequence>
+          <title>Assessment Menu</title>
+          <abbreviation>AssessmentMenuWidget</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_MenuWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="MenuWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_AssessmentMenuWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_target_menu" type="String">PX_MENU_ASSESSMENT</bfw_property>
+            <bfw_property name="bfw_target_menu_id" type="String">PX_MENU_ASSESSMENT_RUBRICS</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_XbookContentWidget_Home" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_DEFAULT_ZONE_1</parent>
+          <sequence>b</sequence>
+          <title>Xbook Widget</title>
+          <abbreviation>XbookWidget</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_MenuWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="PageContainerWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_XbookContentWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_XbookContentWidget_XBook" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_DEFAULT_ZONE_1</parent>
+          <sequence>c</sequence>
+          <title>Xbook Widget</title>
+          <abbreviation>XbookWidget</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_MenuWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="PageContainerWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_XbookContentWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_XBook_FNE_DisplayItem_Header" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_FNE_COMMENTING_ZONE_1</parent>
+          <sequence>c</sequence>
+          <title>Xbook Display Item Widget</title>
+          <abbreviation>XbookWidget</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_MenuWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="ContentWidget" action="DisplayItem" fne="false" async="true" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_XbookContentWidget</bfw_widget_template>
+          <bfw_input_helpers>
+            <input name="mode" selector="#USE_DEFAULT_VALUE" default="4" usedefault="true" />
+            <input name="includeNavigation" selector="#USE_DEFAULT_VALUE" default="false" usedefault="true" />
+            <input name="includeDiscussion" selector="#USE_DEFAULT_VALUE" default="false" usedefault="true" />
+            <input name="Id" selector="Default_MetaDataStore" default="" usedefault="false" />
+            <input name="menuOnly" selector="#USE_DEFAULT_VALUE" default="true" usedefault="true" />
+          </bfw_input_helpers>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_XBookDisplayItemWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_FNE_COMMENTING_ZONE_2</parent>
+          <sequence>c</sequence>
+          <title>Xbook Display Item Widget</title>
+          <abbreviation>XbookWidget</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_MenuWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="ContentWidget" action="DisplayItem" fne="false" async="true" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_XbookContentWidget</bfw_widget_template>
+          <bfw_input_helpers>
+            <input name="mode" selector="#USE_DEFAULT_VALUE" default="4" usedefault="true" />
+            <input name="includeNavigation" selector="#USE_DEFAULT_VALUE" default="false" usedefault="true" />
+            <input name="includeDiscussion" selector="#USE_DEFAULT_VALUE" default="false" usedefault="true" />
+            <input name="Id" selector="Default_MetaDataStore" default="" usedefault="false" />
+          </bfw_input_helpers>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_XbookContentWidget_Assignments" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_DEFAULT_ZONE_1</parent>
+          <sequence>d</sequence>
+          <title>Xbook Widget</title>
+          <abbreviation>XbookWidget</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_MenuWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="PageContainerWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_XbookContentWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_XBOOK_FNE_GRADING_SCREEN_HEADER" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_FNE_COMMENTING_ZONE_UNKNOWN</parent>
+          <sequence>c</sequence>
+          <title>Xbook Widget</title>
+          <abbreviation>XbookWidget</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <duedate>0001-01-01T00:00:00Z</duedate>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_MenuWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_input_helpers>
+            <input name="ItemId" selector="Default_MetaDataStore" default="" usedefault="false" />
+          </bfw_input_helpers>
+          <bfw_widget_callbacks>
+            <method name="View" controller="FneMenuWidget" action="Summary" fne="false" async="true" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_XbookContentWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_home_callback" type="String">PageDefinedFNE.CloseFNE</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_XbookContentWidget_ClassActivity" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_DEFAULT_ZONE_1</parent>
+          <sequence>e</sequence>
+          <title>Xbook Widget</title>
+          <abbreviation>XbookWidget</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_MenuWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="PageContainerWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_XbookContentWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_AssessmentContainerWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_ASSESSMENTS_ZONE_1</parent>
+          <sequence>b</sequence>
+          <title>Assessment Content Widget</title>
+          <abbreviation>AssessmentContent</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_AssessmentContainerWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="PageContainerWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_AssessmentContainerWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_XbookCarouselWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_HOME_ZONE_1</parent>
+          <sequence>b</sequence>
+          <title>Xbook Carousel Widget</title>
+          <abbreviation>XbookCarouselWidget</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_XbookCarouselWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" action="Summary" controller="XbookWidget" fne="false"/>
+          </bfw_widget_callbacks>
+          <bfw_input_helpers>
+            <input name="variableName" selector="#html-jquery-selector" default="StringValue" usedefault="true" />
+            <input name="instructorid" selector="#LatestInstructorId" default="56123" usedefault="true" />
+            <input name="studentid" selector="#LatestStudentId" default="123456" usedefault="true" />
+          </bfw_input_helpers>
+          <bfw_widget_template>PX_XbookCarouselWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_bhcomponent_property name="Carousel">
+            <param name="EnrollmentId" id="" value="" alias="EnrollmentId"/>
+            <param name="HidePageJumper" id="" value="TRUE" alias="HidePageJumper"/>
+          </bfw_bhcomponent_property>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_jc" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_AssignmentSummaryWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_HOME_ZONE_4</parent>
+          <sequence>b</sequence>
+          <title>Assignment Summary Widget</title>
+          <abbreviation>AssignmentSummaryWidget</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_AssignmentSummaryWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="XbookWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_AssignmentSummaryWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_bhcomponent_property name="AssignmentSummary">
+            <param name="EnrollmentId" id="" alias="EnrollmentId" value=""></param>
+          </bfw_bhcomponent_property>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_jc" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_RecentlyViewedWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_HOME_ZONE_4</parent>
+          <sequence>a</sequence>
+          <title>Recently Viewed Widget</title>
+          <abbreviation>RecentlyViewedWidget</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_RecentlyViewedWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="XbookWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_RecentlyViewedWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_bhcomponent_property name="RecentlyViewed">
+            <param name="EnrollmentId" id="" alias="EnrollmentId" value=""></param>
+          </bfw_bhcomponent_property>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_jd" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_RecentSubmissionsWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_HOME_ZONE_4</parent>
+          <sequence>c</sequence>
+          <title>Recent Submissions Widget</title>
+          <abbreviation>RecentSubmissionsWidget</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_RecentSubmissionsWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="XbookWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_RecentSubmissionsWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_bhcomponent_property name="RecentSubmissions">
+            <param name="EnrollmentId" id="" alias="EnrollmentId" value=""></param>
+          </bfw_bhcomponent_property>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_jf" />
+          </bfw_tocs>
+        </data>
+      </item>
+
+      <item itemid="PX_RecentSubmissionsWidget2" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_HOME_ZONE_4</parent>
+          <sequence>h</sequence>
+          <title>Recent Submissions Widget2</title>
+          <abbreviation>RecentSubmissionsWidget2</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_RecentSubmissionsWidget2</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="RecentSubmissionsWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_RecentSubmissionsWidget2</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_bhcomponent_property />
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_jf" />
+          </bfw_tocs>
+        </data>
+      </item>
+
+      <item itemid="PX_CourseLinksWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_HOME_ZONE_3</parent>
+          <sequence>b</sequence>
+          <title>Course Links</title>
+          <abbreviation>CourseLinksWidget</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_CourseLinksWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="XbookWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_CourseLinksWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_bhcomponent_property name="CourseLinks">
+            <param name="EnrollmentId" id="" alias="EnrollmentId" value=""></param>
+            <param name="Mode" id="" alias="Mode" value="VIEW-EDITABLE"></param>
+          </bfw_bhcomponent_property>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_jf" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_CourseLinksStudentWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_HOME_ZONE_3</parent>
+          <sequence>b</sequence>
+          <title>Course Links Student</title>
+          <abbreviation>CourseLinksWidget</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_CourseLinksStudentWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="XbookWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_CourseLinksStudentWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_bhcomponent_property name="CourseLinks">
+            <param name="EnrollmentId" id="" alias="EnrollmentId" value=""></param>
+            <param name="Mode" id="" alias="Mode" value="VIEW"></param>
+          </bfw_bhcomponent_property>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_jf" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_CourseLinksEditWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_HOME_ZONE_3</parent>
+          <sequence>f</sequence>
+          <title>Edit Course Links</title>
+          <abbreviation>CourseLinksEditWidget</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_CourseLinksEditWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="XbookWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_CourseLinksEditWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String">disabled</bfw_property>
+            <bfw_property name="bfw_iscollapsed" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_bhcomponent_property name="CourseLinks">
+            <param name="EnrollmentId" id="" alias="EnrollmentId" value=""></param>
+            <param name="Mode" id="" alias="Mode" value="EDIT"></param>
+          </bfw_bhcomponent_property>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_jf" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_UserProfileWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_HOME_ZONE_3</parent>
+          <sequence>a</sequence>
+          <title>User Profile Roster</title>
+          <abbreviation>USERPROFILEROSTER</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_UserProfile</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="ProfileSummaryWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_properties>
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_liststudents" type="Boolean">false</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_f" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_AssignmentListWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_ASSIGNMENTS_ZONE_1</parent>
+          <sequence>b</sequence>
+          <title>Assignment List</title>
+          <abbreviation>AssignmentListWidget</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_AssignmentListWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="XbookWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_AssignmentListWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_bhcomponent_property name="AssignmentList">
+            <param name="EnrollmentId" id="" alias="EnrollmentId" value=""></param>
+          </bfw_bhcomponent_property>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_jf" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_TOCWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_TAB_ZONE_1</parent>
+          <sequence>a</sequence>
+          <title>TOC</title>
+          <abbreviation>TOCWidget</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_TOCWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="XbookWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_TOCWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_show_persistent_qtip" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_qtips" type="String">PX_Gearbox_Tooltip,PX_RelatedContent_Tooltip</bfw_property>
+          </bfw_properties>
+          <bfw_bhcomponent_property name="TOC">
+            <param name="EnrollmentId" id="" alias="EnrollmentId" value="" />
+            <param name="ItemID" id="" alias="ItemID" value="" />
+            <param name="AssignmentID" id="" alias="AssignmentID" value="" />
+            <param name="DisplayAssignment" id="" alias="DisplayAssignment" value=""></param>
+            <param name="DisplayHideShow" id="" alias="DisplayHideShow" value=""></param>
+            <param name="ProductCourseId" id="" alias="ProductCourseId" value="-entityid-"/>
+          </bfw_bhcomponent_property>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_jf" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_MainContentAreaSwitchWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_TAB_ZONE_2</parent>
+          <sequence>c</sequence>
+          <title>Main Content Area</title>
+          <abbreviation>MainContentAreaSwitchWidget</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_MainContentAreaSwitchWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="ContentAreaWidget" action="Summary" fne="false" async="false"></method>
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_MainContentAreaSwitchWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_bhcomponent_property name="MainContentArea">
+            <param name="EnrollmentId" id="" alias="EnrollmentId" value="" />
+            <param name="ItemID" id="" alias="ItemID" value="" />
+            <param name="FragmentID" id="" alias="FragmentID" value="" />
+            <param name="RelatedContentItemID" id="" alias="RelatedContentItemID" value=""></param>
+            <param name="BrainHoneyUrl" id="" alias="BrainHoneyUrl" value=""/>
+          </bfw_bhcomponent_property>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_jf" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <!-- This is fine to be removed from dev and qa but pr and prod will see errors it this is removed already because controllers dont exist
+      <item itemid="PX_ClassSubmissionWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_CLASS_ACTIVITY_ZONE_2</parent>
+          <sequence>b</sequence>
+          <title>Class Submission</title>
+          <abbreviation>ClassSubmissionWidget</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_ClassSubmissionWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="XbookWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_ClassSubmissionWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_bhcomponent_property name="ClassSubmission">
+            <param name="EnrollmentId" id="" alias="EnrollmentId" value="" />
+          </bfw_bhcomponent_property>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_jf" />
+          </bfw_tocs>
+        </data>
+      </item>
+      -->
+      <item itemid="PX_Gradebook" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_CLASS_ACTIVITY_ZONE_2</parent>
+          <sequence>b</sequence>
+          <title>Grade Book</title>
+          <abbreviation>Gradebook</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_Gradebook</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="GradebookWidget" action="Gradebook" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_Gradebook</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_jf" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_NewAssignmentWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_ASSIGNMENTS_ZONE_2</parent>
+          <sequence>a</sequence>
+          <title>New Assignment Widget</title>
+          <abbreviation>NewAssignmentWidget</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_NewAssignmentWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="NewAssignmentWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_NewAssignmentWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <!-- Feature Content Widget template -->
+      <item itemid="PX_FeaturedContentWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_TEMPLATES</parent>
+          <sequence>d</sequence>
+          <title>Learning Curve</title>
+          <abbreviation>FeaturedContentWidget</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_FeaturedContentWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="FeaturedWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_FeaturedContentWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">false</bfw_property>
+          </bfw_properties>
+        </data>
+      </item>
+      <!-- instance of Featured Content Widget -->
+      <item itemid="PX_FeaturedContentWidget_LearningCurve" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_HOME_ZONE_4</parent>
+          <sequence>d</sequence>
+          <title>Learning Curve</title>
+          <abbreviation>FeaturedContentWidget</abbreviation>
+          <href>Templates/Data/PX_FeaturedContentWidget_LearningCurve/index.html</href>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_FeaturedContentWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="FeaturedWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_FeaturedContentWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">false</bfw_property>
+            <bfw_property name="content-type" type="String">LearningCurve</bfw_property>
+          </bfw_properties>
+        </data>
+      </item>
+
+      <!-- instance of Featured Content Widget  for TOC Button -->
+      <!--
+      <item itemid="PX_FeaturedContentWidget_TocButton" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_HOME_ZONE_1</parent>
+          <sequence>b</sequence>
+          <title>Toc Button</title>
+          <abbreviation>TocButton</abbreviation>
+          <href>Templates/Data/PX_FeaturedContentWidget_TocButton/index.html</href>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_FeaturedContentWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="FeaturedWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_FeaturedContentWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+            <bfw_property name="content-type" type="String">TocButton</bfw_property>
+          </bfw_properties>
+        </data>
+      </item>
+    -->
+
+      <item itemid="PX_RecentAssignmentsWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_XBOOK_HOME_ZONE_4</parent>
+          <sequence>d</sequence>
+          <title>Class Assignments</title>
+          <abbreviation>RecentAssignmentsWidget</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_RecentAssignmentsWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="RecentAssignmentsWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_RecentAssignmentsWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">false</bfw_property>
+          </bfw_properties>
+        </data>
+      </item>
+    </requests>
+  </request>
+
+  <!--Creates the primary menu for the X-BOOK product-->
+  <request cmd="putitems">
+    <requests>
+      <!-- Main Menu for Xbook -->
+      <item itemid="PX_MENU_XBOOK" version="1" entityid="-entityid-" creationdate="2012-02-06T21:11:53.23Z" creationby="7" modifieddate="2012-02-06T21:11:53.23Z" modifiedby="7">
+        <data>
+          <parent>PX_MENUS</parent>
+          <title>Primary Navigation</title>
+          <bfw_type>Menu</bfw_type>
+          <bfw_tocid>-tocid-</bfw_tocid>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_properties>
+            <bfw_property name="bfw_usehash" type="Boolean">true</bfw_property>
+          </bfw_properties>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_HOME" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_MENU_XBOOK</parent>
+          <sequence>a</sequence>
+          <title>HOME</title>
+          <abbreviation>HOME</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_css_class>xbookhome menu-text</bfw_css_class>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Projects" controller="Home" action="LoadPageDefinition" url="" type="" route="" target="#container_PX_XbookContentWidget_Home">
+              <parameter name="pageDefnId" value="PX_XBOOK_HOME"></parameter>
+            </method>
+          </bfw_menu_callbacks>
+          <bfw_properties>
+            <bfw_property name="bfw_usehash" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_hashcomponent" type="String">home</bfw_property>
+            <bfw_property name="bfw_hashfunction" type="String"/>
+          </bfw_properties>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_XBOOK_TAB" version="1" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_MENU_XBOOK</parent>
+          <sequence>b</sequence>
+          <title>X-BOOK</title>
+          <bfw_css_class>menu-text</bfw_css_class>
+          <abbreviation>XBOOK</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Source" controller="Home" action="LoadPageDefinition" url="" type="" route="" target="#container_PX_XbookContentWidget_XBook">
+              <parameter name="pageDefnId" value="PX_XBOOK_TAB"></parameter>
+            </method>
+          </bfw_menu_callbacks>
+          <bfw_properties>
+            <bfw_property name="bfw_usehash" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_hashcomponent" type="String">xbook</bfw_property>
+            <bfw_property name="bfw_hashfunction" type="String"/>
+          </bfw_properties>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_ASSIGNMENTS" version="1" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_MENU_XBOOK</parent>
+          <sequence>c</sequence>
+          <title>ASSIGNMENTS</title>
+          <abbreviation>Assignments</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_css_class>menu-text</bfw_css_class>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Source" controller="Home" action="LoadPageDefinition" url="" type="" route="" target="#container_PX_XbookContentWidget_Assignments">
+              <parameter name="pageDefnId" value="PX_XBOOK_ASSIGNMENTS"></parameter>
+            </method>
+          </bfw_menu_callbacks>
+          <bfw_properties>
+            <bfw_property name="bfw_usehash" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_hashcomponent" type="String">assignments</bfw_property>
+            <bfw_property name="bfw_hashfunction" type="String"/>
+          </bfw_properties>
+        </data>
+      </item>
+      <!-- currently being removed from the xbook application
+      <item itemid="PX_MENU_ITEM_ASSESSMENTS" version="1" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_MENU_XBOOK</parent>
+          <sequence>d</sequence>
+          <title>ASSESSMENTS</title>
+          <abbreviation>Assessments</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Source" controller="Home" action="LoadPageDefinition" url="" type="" route="" target="#container_PX_XbookContentWidget">
+              <parameter name="pageDefnId" value="PX_XBOOK_ASSESSMENTS"></parameter>
+            </method>
+          </bfw_menu_callbacks>
+        </data>
+      </item>	  
+      -->
+      <item itemid="PX_MENU_ITEM_CLASS_ACTIVITY" version="1" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_MENU_XBOOK</parent>
+          <sequence>e</sequence>
+          <title>GRADES</title>
+          <abbreviation>ClassActivity</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_css_class>menu-text</bfw_css_class>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Source" controller="Home" action="LoadPageDefinition" url="" type="" route="" target="#container_PX_XbookContentWidget_ClassActivity">
+              <parameter name="pageDefnId" value="PX_XBOOK_CLASS_ACTIVITY"></parameter>
+            </method>
+          </bfw_menu_callbacks>
+          <bfw_properties>
+            <bfw_property name="bfw_usehash" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_hashcomponent" type="String">gradebook</bfw_property>
+            <bfw_property name="bfw_hashfunction" type="String"/>
+          </bfw_properties>
+        </data>
+      </item>
+
+      <!-- Sub Menu to display the Assessment Tab -->
+      <item itemid="PX_MENU_ASSESSMENT" version="1" entityid="-entityid-">
+        <data>
+          <parent>PX_MENUS</parent>
+          <title>Primary Navigation for Assessments</title>
+          <bfw_type>Menu</bfw_type>
+          <bfw_tocid>-tocid-</bfw_tocid>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ASSESSMENT_RUBRICS" version="1" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_MENU_ASSESSMENT</parent>
+          <sequence>a</sequence>
+          <title>Rubrics</title>
+          <abbreviation>RUBRICS</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_css_class>rubrics</bfw_css_class>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Projects" controller="Assessment" action="ManageRubrics" url="" type="" route="" target="#container_PX_AssessmentContainerWidget">
+            </method>
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ASSESSMENT_LO" version="1" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_MENU_ASSESSMENT</parent>
+          <sequence>b</sequence>
+          <title>Learning Objectives</title>
+          <abbreviation>LO</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_css_class>lo</bfw_css_class>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Projects" controller="Assessment" action="ManageObjectives" url="" type="" route="" target="#container_PX_AssessmentContainerWidget">
+            </method>
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+
+    </requests>
+  </request>
+
+  <!-- Item Templates for content creation -->
+  <request cmd="putitems">
+    <requests>
+      <item itemid="TMP_6e91f1119c464e55b8851b15419d1c67" entityid="-entityid-">
+        <data>
+          <parent>PX_TEMPLATES</parent>
+          <sequence>g</sequence>
+          <title>Folder</title>
+          <description>
+            &lt;br/&gt;
+            An organizational tool, which may contain other
+            resources. Most often, an instructor would create
+            a folder to hold related items, such as all links,
+            assets, or files associated with a certain topic,
+            project, or due date.
+          </description>
+          <folder>6e91f1119c464e55b8851b15419d1c67</folder>
+          <href>Templates/Data/6e91f1119c464e55b8851b15419d1c67/index.html</href>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <bfw_properties>
+            <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+          </bfw_properties>
+          <bfw_template>Folder</bfw_template>
+          <meta-containers>
+            <meta-container toc="bfw_toc_contents">xbooktoc</meta-container>
+          </meta-containers>
+        </data>
+      </item>
+      <item itemid="TMP_83a8a14d1cc34a54b84868257ac3f165" entityid="-entityid-">
+        <data>
+          <type>Resource</type>
+          <parent>PX_TEMPLATES</parent>
+          <sequence>f</sequence>
+          <title>Document Collection</title>
+          <description>
+            &lt;br/&gt;
+            A repository for useful files, typically
+            those employed in the delivery of course
+            information or material that offers educational
+            support. The collection may be organized,
+            referenced, or assigned by instructors for students
+            to access
+            &lt;br/&gt;
+            &lt;br/&gt;
+            Typical Uses
+            &lt;br/&gt;
+            • A location to host course information, policies,
+            or processes.
+            &lt;br/&gt;
+            • A location to host documents related to
+            activities or labs, articles, or worksheets to be
+            used in class.
+            &lt;br/&gt;
+          </description>
+          <folder>83a8a14d1cc34a54b84868257ac3f165</folder>
+          <href>Templates/Data/83a8a14d1cc34a54b84868257ac3f165/index.html</href>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <bfw_type>DocumentCollection</bfw_type>
+          <bfw_properties>
+            <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+          </bfw_properties>
+          <bfw_template>Document</bfw_template>
+          <meta-containers>
+            <meta-container toc="bfw_toc_contents">xbooktoc</meta-container>
+          </meta-containers>
+        </data>
+      </item>
+      <item itemid="TMP_a9435305a14e472ba2e503653c520538" entityid="-entityid-">
+        <data>
+          <type>Resource</type>
+          <parent>PX_TEMPLATES</parent>
+          <sequence>i</sequence>
+          <title>HTML Page</title>
+          <description>
+            &lt;br/&gt;
+            A flexible blank slate on which an instructor
+            can incorporate any HTML-based content. The
+            page HTML page can incorporate links, images, or
+            active multimedia content. HTML pages within
+            the Portal can be produced through an easy-touse
+            editor.
+            &lt;br/&gt;
+            &lt;br/&gt;
+            Typical Uses
+            &lt;br/&gt;
+            • General content such as announcements,
+            policies, explanations
+            &lt;br/&gt;
+          </description>
+          <folder>a9435305a14e472ba2e503653c520538</folder>
+          <href>Templates/Data/a9435305a14e472ba2e503653c520538/index.html</href>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <bfw_type>HtmlDocument</bfw_type>
+          <bfw_properties>
+            <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+          </bfw_properties>
+          <bfw_template>HtmlDocument</bfw_template>
+          <meta-containers>
+            <meta-container toc="bfw_toc_contents">xbooktoc</meta-container>
+          </meta-containers>
+        </data>
+      </item>
+      <item itemid="TMP_88161c2783b949ed805d56fc5a1a1349" entityid="-entityid-">
+        <data>
+          <type>Assessment</type>
+          <parent>PX_TEMPLATES</parent>
+          <sequence>k</sequence>
+          <title>Quiz</title>
+          <description>
+            &lt;br/&gt;
+            An assignment primarily designed to assess
+            knowledge. Quizzes replicate the experience
+            of traditional in-class quizzes, in that they are
+            often timed and do not incorporate support
+            opportunities.
+            &lt;br/&gt;
+            &lt;br/&gt;
+            Typical Uses
+            &lt;br/&gt;
+            • Reading verification
+            &lt;br/&gt;
+            • Summative Assessment
+            &lt;br/&gt;
+          </description>
+          <folder>88161c2783b949ed805d56fc5a1a1349</folder>
+          <href>a</href>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <bfw_properties>
+            <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+            <bfw_property name="bfw_test" type="String">testing</bfw_property>
+          </bfw_properties>
+          <bfw_template>Quiz</bfw_template>
+          <bfw_custom_settings controller="CustomSettings" action="Quiz">custom settings</bfw_custom_settings>
+          <meta-containers>
+            <meta-container toc="bfw_toc_contents">xbooktoc</meta-container>
+          </meta-containers>
+        </data>
+      </item>
+    </requests>
+  </request>
+
+  <request cmd="putitems">
+    <requests>
+      <item itemid="a960f08b0a9b4f0d845074c6b319f068" entityid="-entityid-">
+        <data>
+          <type>Resource</type>
+          <parent>PX_RUBRICS</parent>
+          <title>Reflective Writing rubric</title>
+          <folder>a960f08b0a9b4f0d845074c6b319f068</folder>
+          <href>Templates/Data/a960f08b0a9b4f0d845074c6b319f068/index.html</href>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <rubric>Templates/Data/a960f08b0a9b4f0d845074c6b319f068/_rubric.xml</rubric>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <gradeentry2>16</gradeentry2>
+          <inputtable inherit="true">0</inputtable>
+          <dropbox>true</dropbox>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Rubric</bfw_type>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_RUBRICS" sequence="a" />
+          </bfw_tocs>
+          <bfw_properties>
+            <bfw_property name="bfw_visibility" type="String">
+              &lt;bfw_visibility&gt;
+              &lt;roles&gt;
+              &lt;instructor /&gt;
+              &lt;student /&gt;
+              &lt;/roles&gt;
+              &lt;/bfw_visibility&gt;
+            </bfw_property>
+            <bfw_property name="HiddenFromToc" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_course_type" type="String"></bfw_property>
+            <bfw_property name="bfw_rubric_owner" type="String">9339</bfw_property>
+            <bfw_property name="bfw_rubric_active" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_duedate_manuallyset" type="Boolean">false</bfw_property>
+          </bfw_properties>
+          <bfw_in_assignment_center>false</bfw_in_assignment_center>
+          <bfw_duedate_manuallyset>false</bfw_duedate_manuallyset>
+          <IsMarkAsCompleteChecked>false</IsMarkAsCompleteChecked>
+          <meta-bfw_assigned>false</meta-bfw_assigned>
+        </data>
+      </item>
+      <item itemid="c081487b4fcb4ede86436e1056c0b234" entityid="-entityid-">
+        <data>
+          <type>Resource</type>
+          <parent>PX_RUBRICS</parent>
+          <title>Holistic e-Portfolio rubric</title>
+          <folder>c081487b4fcb4ede86436e1056c0b234</folder>
+          <href>Templates/Data/c081487b4fcb4ede86436e1056c0b234/index.html</href>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <rubric>Templates/Data/c081487b4fcb4ede86436e1056c0b234/_rubric.xml</rubric>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <gradeentry2>16</gradeentry2>
+          <inputtable inherit="true">0</inputtable>
+          <dropbox>true</dropbox>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Rubric</bfw_type>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_RUBRICS" sequence="a" />
+          </bfw_tocs>
+          <bfw_properties>
+            <bfw_property name="bfw_visibility" type="String">
+              &lt;bfw_visibility&gt;
+              &lt;roles&gt;
+              &lt;instructor /&gt;
+              &lt;student /&gt;
+              &lt;/roles&gt;
+              &lt;/bfw_visibility&gt;
+            </bfw_property>
+            <bfw_property name="HiddenFromToc" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_course_type" type="String"></bfw_property>
+            <bfw_property name="bfw_rubric_owner" type="String">9339</bfw_property>
+            <bfw_property name="bfw_rubric_active" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_duedate_manuallyset" type="Boolean">false</bfw_property>
+          </bfw_properties>
+          <bfw_in_assignment_center>false</bfw_in_assignment_center>
+          <bfw_duedate_manuallyset>false</bfw_duedate_manuallyset>
+          <IsMarkAsCompleteChecked>false</IsMarkAsCompleteChecked>
+          <meta-bfw_assigned>false</meta-bfw_assigned>
+        </data>
+      </item>
+      <item itemid="c1547871ef5f46438d051ac166737e0d" entityid="-entityid-" >
+        <data>
+          <type>Resource</type>
+          <parent>PX_RUBRICS</parent>
+          <title>Argument rubric</title>
+          <folder>c1547871ef5f46438d051ac166737e0d</folder>
+          <href>Templates/Data/c1547871ef5f46438d051ac166737e0d/index.html</href>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <rubric>Templates/Data/c1547871ef5f46438d051ac166737e0d/_rubric.xml</rubric>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <gradeentry2>16</gradeentry2>
+          <inputtable inherit="true">0</inputtable>
+          <dropbox>true</dropbox>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Rubric</bfw_type>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_RUBRICS" sequence="a" />
+          </bfw_tocs>
+          <bfw_properties>
+            <bfw_property name="bfw_visibility" type="String">
+              &lt;bfw_visibility&gt;
+              &lt;roles&gt;
+              &lt;instructor /&gt;
+              &lt;student /&gt;
+              &lt;/roles&gt;
+              &lt;/bfw_visibility&gt;
+            </bfw_property>
+            <bfw_property name="HiddenFromToc" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_course_type" type="String"></bfw_property>
+            <bfw_property name="bfw_rubric_owner" type="String">9339</bfw_property>
+            <bfw_property name="bfw_rubric_active" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_duedate_manuallyset" type="Boolean">false</bfw_property>
+          </bfw_properties>
+          <bfw_in_assignment_center>false</bfw_in_assignment_center>
+          <bfw_duedate_manuallyset>false</bfw_duedate_manuallyset>
+          <IsMarkAsCompleteChecked>false</IsMarkAsCompleteChecked>
+          <meta-bfw_assigned>false</meta-bfw_assigned>
+        </data>
+      </item>
+    </requests>
+  </request>
+
+  <!-- Persistent Tool tips -->
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_Gearbox_Tooltip" entityid="-entityid-">
+        <data>
+          <description>This is a tooltip for PX_Gearbox_Tooltip</description>
+          <bfw_properties>
+            <bfw_property name="qtipTooltipPosition" type="String">left bottom</bfw_property>
+            <bfw_property name="qtipTargetPosition" type="String">right top</bfw_property>
+            <bfw_property name="qtipTarget" type="String">#PX_TOCWidget</bfw_property>
+            <bfw_property name="showStudent" type="Boolean">false</bfw_property>
+          </bfw_properties>
+        </data>
+      </item>
+      <item itemid="PX_RelatedContent_Tooltip" entityid="-entityid-">
+        <data>
+          <description>Customize your table of contents by drag-and-dropping items from &quot;Related Content&quot; here.</description>
+          <bfw_properties>
+            <bfw_property name="isToolTipHidden" type="Boolean">true</bfw_property>
+            <bfw_property name="qtipTooltipPosition" type="String">left center</bfw_property>
+            <bfw_property name="qtipTargetPosition" type="String">right center</bfw_property>
+            <bfw_property name="qtipTarget" type="String">#PX_TOCWidget</bfw_property>
+            <bfw_property name="showStudent" type="Boolean">false</bfw_property>
+          </bfw_properties>
+        </data>
+      </item>
+    </requests>
+  </request>
+  
+  <!-- Dashboard Script -->
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_DashboardWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_DASHBOARD_1COLUMN_ZONE_1</parent>
+          <sequence>a</sequence>
+          <abbreviation>lcw</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_CarouselWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="DashboardCoursesWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_properties>
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_target_content_type" type="String">Xbook</bfw_property>
+            <bfw_property name="bfw_sortgroups" type="String">true</bfw_property>
+            <bfw_property name="allow_title_column" type="String">true</bfw_property>
+            <bfw_property name="allow_instructorname_column" type="String">true</bfw_property>
+            <bfw_property name="allow_allowdomainname_column" type="String">true</bfw_property>
+            <bfw_property name="academicterm" type="String">true</bfw_property>
+            <bfw_property name="allow_courseid_column" type="String">true</bfw_property>
+            <bfw_property name="allow_deletebutton_column" type="String">true</bfw_property>
+            <bfw_property name="allow_status_column" type="String">true</bfw_property>
+            <bfw_property name="allow_enrollmentcount_column" type="String">true</bfw_property>
+            <bfw_property name="allow_createanotherbranch_column" type="String">true</bfw_property>
+            <bfw_property name="allow_activatebutton_column" type="String">true</bfw_property>
+            <bfw_property name="allow_courseopeninnewwindow_column" type="String">false</bfw_property>
+            <bfw_property name="allow_edit_course" type="String">true</bfw_property>	
+            <bfw_property name="get_nondashboard_courses" type="String">true</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+          <creationby>7</creationby>
+          <IsMarkAsCompleteChecked>false</IsMarkAsCompleteChecked>
+          <meta-bfw_assigned>false</meta-bfw_assigned>
+
+        </data>
+      </item>
+      <item itemid="PX_DASHBOARD_1COLUMN" entityid="-entityid-">
+        <data>
+          <parent>PX_PAGES</parent>
+          <sequence>b</sequence>
+          <title>PX_DC_ASSIGNMENT_2COLUMN</title>
+          <abbreviation>PXDCHOME2COLUMN</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>1</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_page_editable>false</bfw_page_editable>
+        </data>
+      </item>
+      <item itemid="PX_DASHBOARD_1COLUMN_ZONES" entityid="-entityid-">
+        <data>
+          <parent>PX_DASHBOARD_1COLUMN</parent>
+          <sequence>a</sequence>
+          <title>PX_DASHBOARD_1COLUMN_ZONES</title>
+          <abbreviation>PXDCHOME2COLUMNZONES</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>1</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_DASHBOARD_1COLUMN_ZONE_1" entityid="-entityid-">
+        <data>
+          <parent>PX_DASHBOARD_1COLUMN_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_DC_HOME_ZONE_1</title>
+          <abbreviation>PXDCHOMEZONE1</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>1</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_support_hide>true</bfw_support_hide>
+        </data>
+      </item>
+    </requests>
+  </request>  
+</batch>
+
+<!--
+
+cmd=putresource&entityid=-entityid-&path=Templates/Data/PX_FeaturedContentWidget_TocButton/index.html
+
+&lt;div class=&quot;carouselTocButton&quot;&gt;
+      Table of Contents
+  &lt;/div&gt;
+
+-->
+

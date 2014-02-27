@@ -1,0 +1,182 @@
+﻿#PX_XBOOK_HOME_2COLUMN_ZONE_1.zoneParent {
+  display: block;
+  float: left;
+  height: 85%;
+  min-width: 210px;
+  padding: 0 0 0 12px;
+  width: 15%;
+  
+}
+#PX_XBOOK_HOME_2COLUMN_ZONE_1 .top .book {
+  margin-bottom: 5px;
+}
+#PX_XBOOK_HOME_2COLUMN_ZONE_1 .course-info-widget .top span.book-title {
+  font-size: 12px;
+  margin-top: 10px;
+  color:#df5741 !important;
+  font-style: italic;
+}
+#PX_XBOOK_HOME_2COLUMN_ZONE_1 .course-info-widget .top span {
+  font-size: 12px;
+  line-height: 16px;
+  color:#6b6b6b;
+}
+
+#PX_XBOOK_HOME_2COLUMN_ZONE_2.zoneParent {
+  background-color: #E7F2F8;
+  bottom: 0;
+  float: left;
+  height: auto;
+  margin-left: 20px;
+  position: relative;
+  top: 0;
+  width: 73%;
+}
+#PX_XBOOK_HOME_2COLUMN_ZONE_2.zoneParent {
+  background: none repeat scroll 0 0 #fafcf1;
+}
+.welcome .xbook-body-copy {
+  border-top: medium none;
+  padding: 15px 0 !important;
+  font-family: georgia;
+}
+.xbook-body-copy {
+  border-top: 6px solid #356BCE;
+  padding: 15px 0 30px;
+}
+.marketing-content .xbook-action-button {
+  float: right;
+}
+.marketing-content .xbook-action-button .ecom-btns {
+  background-color: #98BB34;
+  border-radius: 7px 7px 7px 7px;
+  clear: both;
+  color: #FFFFFF;
+  float: left;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 18px;
+  margin: 6px 0;
+  padding: 4px 6px;
+  text-decoration: none;
+  width: 190px;
+}
+.marketing-content .xbook-action-button .ecom-btns {
+  background-color: #00ACDC;
+}
+.marketing-content .xbook-action-button .ecom-btns .icon {
+  background-color: transparent;
+  background-image: url("style/images/platx_sprite.png");
+  background-position: -99px -353px;
+  background-repeat: no-repeat;
+  display: block;
+  float: right;
+  height: 12px;
+  margin-top: 4px;
+  width: 18px;
+}
+.welcome .marketing-content .xbook-rw-body-copy span {
+  color: #27327D;
+  font-family: georgia;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 22px;
+}
+.welcome .marketing-content .xbook-rw-body-copy ul {
+  list-style: disc outside none;
+  margin-left: 15px;
+}
+.welcome .marketing-content .xbook-body-copy ul li {
+  color: #505050;
+  font-size: 12px;
+  line-height: 22px;
+}
+.welcome .xbook-body-copy p {
+  color: #6b6b6b;
+  font-size: 12px;
+  line-height: 24px;
+}
+.welcome .xbook-body-copy b {
+  font-weight: normal;
+  color: #6b6b6b;
+  font-family: georgia;
+  font-size: 20px;
+}
+.welcome .marketing-content .xbook-body-copy span {
+  color: #6b6b6b;
+  font-family: georgia;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 22px;
+}
+.welcome .marketing-content .xbook-body-copy ul {
+  list-style: disc outside none;
+  margin-left: 15px;
+}
+
+
+/* defaults */
+.course-info-widget .top .book {
+  height: 270px;
+  width: 211px;
+}
+.course-info-widget .top .book {
+  background-image: url("/Content/images/strayer-lc-cover.jpg");
+  background-repeat: no-repeat;
+}
+.course-info-widget .top span.book-title {
+  color: #234094 !important;
+}
+.course-info-widget .bottom {
+  margin-top: 10px;
+  width: 210px;
+  background-color:#eaefeb;
+}
+.course-info-widget .tutorial-links {
+  color: #27327D;
+  list-style-type: none;
+}
+.course-info-widget .tutorial-links li.header-row {
+  margin-top: 20px;
+}
+.course-info-widget .tutorial-links li.header-row {
+  border-top:none;
+}
+.course-info-widget .tutorial-links li {
+  border-bottom: none;
+  padding: 6px;
+  position:relative;
+}
+
+.course-info-widget .tutorial-links li span {
+  cursor: pointer;
+  display: inline-block;
+  color: #505050 !important;
+  font-size: 13px !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+}
+.welcome .marketing-content {
+  padding: 140px 60px;
+}
+.marketing-content {
+  font-size: 14px;
+  line-height: 21px;
+}
+.tut-link-arrow{
+    background-image: url("/Content/images/xbook-mars-nav-icon.png");
+    background-position: 0 6px;
+    background-repeat: no-repeat;
+    display: block;
+    float: none;
+    height: 22px;
+    margin-left: 12px;
+    position: absolute;
+    top: 0;
+    width: 20px;
+}
+
+
+
+

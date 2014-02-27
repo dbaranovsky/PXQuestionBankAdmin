@@ -1,0 +1,21 @@
+<batch>
+   <request cmd="putitems">
+     <requests>
+      <item itemid="PX_FeaturedContentWidget_LearningCurve" entityid="-entityid-">
+        <data>
+          <title>Test Yourself</title>
+        </data>
+      </item>
+     </requests>
+   </request>
+</batch>
+
+<!--
+cmd=putresource&entityid=-entityid-&path=Templates/Data/PX_FeaturedContentWidget_LearningCurve/index.html
+
+&lt;div&gt;
+Each selection in this x-book is accompanied by a reading comprehension quiz. <br>
+
+Click Related Content in the top-right corner of a page to access any available quizzes.
+&lt;/div&gt;
+-->

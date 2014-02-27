@@ -1,0 +1,38 @@
+<html>
+<head>
+<script type="text/javascript" src="/BFWGlobal/js/jquery/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="/BFWGlobal/js/cookies.js"></script>
+<script type="text/javascript">
+
+var pWin = window.parent;
+var cct = 0;
+
+$(document).ready(function(){
+// Your code here
+//	alert('ready iframe');
+	$('#msg').text( document.cookie );
+});
+
+function doCookie() {
+	cct++;
+	setCookie('ifc',cct);
+	$('#msg').text( document.cookie );
+	if (pWin) pWin.update();
+}
+
+</script>
+</head>
+<body>
+
+<div><b>IFRAME</b></div>
+
+<div>
+<button id="goBtn" onclick="doCookie()">go</button>
+</div>
+
+<div id="msg">msg</div>
+
+</body>
+</html>
+
+

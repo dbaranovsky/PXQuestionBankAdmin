@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<themes>
+  <theme color="#D6EBFF" title="default" key="default_key" image="" />
+  <theme color="#85D6FF" title="Modern" key="Modern" image="" />
+  <theme color="#85D6FF" title="Traditional" key="Traditional" image="" />
+  <theme color="#FFB5FF" title="Collegiate" key="Collegiate" image="" />
+  <theme color="##FFFF99" title="Modern" key="Modern" image="" />
+</themes>

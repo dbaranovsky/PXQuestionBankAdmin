@@ -1,0 +1,34 @@
+﻿
+/* Back to Blackboard btn styling */ 
+
+.back-blackboard-btn {
+    color: #000000;
+}
+
+.blackboard-btn-wrapper {
+    position: absolute;
+    height: 28px;
+    padding: 12px 8px !important;
+    background: #cccccc;
+    background: -moz-linear-gradient(top, #cccccc 0%, #eeeeee 48%, #eeeeee 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cccccc), color-stop(48%,#eeeeee), color-stop(100%,#eeeeee));
+    background: -webkit-linear-gradient(top, #cccccc 0%,#eeeeee 48%,#eeeeee 100%);
+    background: -o-linear-gradient(top, #cccccc 0%,#eeeeee 48%,#eeeeee 100%);
+    background: -ms-linear-gradient(top, #cccccc 0%,#eeeeee 48%,#eeeeee 100%);
+    background: linear-gradient(to bottom, #cccccc 0%,#eeeeee 48%,#eeeeee 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cccccc', endColorstr='#eeeeee',GradientType=0 );
+    -webkit-border-bottom-right-radius: 6px;
+    -webkit-border-bottom-left-radius: 6px;
+    -moz-border-radius-bottomright: 6px;
+    -moz-border-radius-bottomleft: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    left: 46%;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+
+.back-blackboard-link {
+    text-decoration: none;
+    color: #000000;
+}

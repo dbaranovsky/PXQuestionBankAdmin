@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<% 
+    string action = string.Empty;
+    if (ViewContext.Controller.ValueProvider.GetValue("action") != null)
+    {
+
+        action = ViewContext.Controller.ValueProvider.GetValue("action").RawValue.ToString();
+
+    } %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html class="ecom" xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>
+        <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+    </title>
+    
+    <% Html.RenderPartial("BaseStyle"); %> 
+       <%= ResourceEngine.IncludesFor("~/Content/ecommerce.css", Url.RouteUrl("CourseSectionHome")) %>
+    <asp:ContentPlaceHolder ID="HeaderAdditions" runat="server" />    
+</head>
+<body class="content-layout single-column product-type-ecom product-type-<% Html.RenderAction("GetProductType", "Course"); %> course-type-<% Html.RenderAction("GetCourseSubType", "Course"); %> page-action-<%=action %> <% Html.RenderPartial("Browser"); %>">
+    <% Html.RenderPartial("BaseHeaderScripts"); %>
+    <div class="single-column product-type-<% Html.RenderAction("GetProductType", "Course"); %> course-type-<% Html.RenderAction("GetCourseSubType", "Course"); %> <% Html.RenderPartial("Browser"); %>">
+        <%--<div id="brandbanner" class="content-banner">
+                <div id="rightbanner"><% Html.RenderPartial("BaseHeader"); %></div>
+                <div id="leftbanner"> <% Html.RenderPartial("BaseBanner"); %></div>
+            </div>    --%>
+        <% Html.RenderAction("EcomHomePageCourseHeader", "Header"); %>
+        <%-- <% Html.RenderAction("Menu", "Home"); %>--%>
+        <div id="main">
+            <div class="pageContainer">
+                <asp:ContentPlaceHolder ID="CenterContent" runat="server" />
+                <div style="clear: both;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <asp:ContentPlaceHolder ID="FooterAdditions" runat="server" />
+    <% Html.RenderPartial("BaseScripts"); %>
+    <% Html.RenderAction("AnalyticsBase", "SiteAnalytics"); %>
+    <% Html.RenderPartial("Footer"); %>
+    <% Html.RenderPartial("ModalWindows"); %>
+</body>
+</html>

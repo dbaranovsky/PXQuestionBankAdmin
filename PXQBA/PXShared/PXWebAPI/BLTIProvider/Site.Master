@@ -1,0 +1,27 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head runat="server">
+       
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    
+     <asp:ContentPlaceHolder ID="MainContent" runat="server">
+
+ </asp:ContentPlaceHolder>
+    
+<script type="text/javascript">
+    function myfunc() {
+        var frm = document.getElementById("bltiLaunchForm");
+        frm.submit();
+    }
+    //window.onload = myfunc;
+</script>
+</body>
+</html>

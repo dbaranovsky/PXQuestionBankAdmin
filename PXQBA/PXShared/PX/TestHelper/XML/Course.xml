@@ -1,0 +1,389 @@
+<root>
+<rootItem type="GenericCourse">
+  <course courseid="-courseid-" title="Econportal Stone CoreEconomics 2e -/-/" reference="" guid="85b6c353-3f49-4c6e-9b2c-dc8916f634a4" protection="0" schema="2" domainid="-domainid-" baseid="57704" type="Range" startdate="1753-01-01T00:00:00Z" enddate="9999-12-31T00:00:00Z" days="365" term="" creationdate="2012-12-13T18:46:19.507Z">
+    <data>
+      <description>Econportal: Stone, CoreEconomics 2e</description>
+      <learningobjectives>
+        <objective guid="9222c505-86f8-4a7c-9b6c-346e601d66b6" id="1">
+          <description>Rhetorical Knowledge</description>
+        </objective>
+        <objective guid="e8844d58-5c81-4eaa-897d-adcef44a68c1" id="2">
+          <description>Focus on a purpose</description>
+        </objective>
+        <objective guid="87024fc0-36e3-4468-8162-f81f1590d55e" id="3">
+          <description>Respond to the needs of different audiences</description>
+        </objective>
+        <objective guid="6344b2e5-1e8d-4585-a50f-22b442692c30" id="4">
+          <description>Respond appropriately to different kinds of rhetorical situations</description>
+        </objective>
+        <objective guid="7a5c30a8-78a1-4ddf-9e1d-c2ee6753aac9" id="5">
+          <description>Use conventions of format and structure appropriate to the rhetorical situation</description>
+        </objective>
+        <objective guid="510ff999-8b06-420a-8a0b-cd479e015844" id="6">
+          <description>Adopt appropriate voice, tone, and level of formality</description>
+        </objective>
+        <objective guid="809dde6f-2c89-46bc-bd1e-58cdc1ac5760" id="7">
+          <description>Understand how genres shape reading and writing</description>
+        </objective>
+        <objective guid="5b85e2d6-95a9-400d-8993-7a9973de2512" id="8">
+          <description>Write in several genres</description>
+        </objective>
+        <objective guid="8c77a46e-09e2-454f-a98b-87cee6c2c7d3" id="9">
+          <description>Critical Thinking Reading and Writing</description>
+        </objective>
+        <objective guid="27628d88-8642-4869-a464-bd603e4ccd4d" id="10">
+          <description>Use writing and reading for inquiry, learning, thinking, and communicating</description>
+        </objective>
+        <objective guid="87ab6eb6-f29c-46ff-a164-969dca55f706" id="10">
+          <description>Understand a writing assignment as a series of tasks, including finding, evaluating, analyzing, and synthesizing appropriate primary and secondary sources</description>
+        </objective>
+        <objective guid="8d55cea1-d1ac-4d63-971e-b9c62717edf5" id="10">
+          <description>Integrate their own ideas with those of others</description>
+        </objective>
+        <objective guid="1a0b519b-e05e-44f8-85a8-a392ca965dd5" id="10">
+          <description>Understand the relationships among language, knowledge, and power</description>
+        </objective>
+        <objective guid="3dcfff86-b366-464c-935e-e97bbdbbef58" id="10">
+          <description>Processes</description>
+        </objective>
+        <objective guid="2e4225a0-5721-400b-81a8-b173e9cf64fe" id="10">
+          <description>Be aware that it usually takes multiple drafts to create and complete a successful text</description>
+        </objective>
+        <objective guid="55b6643a-1ecd-4564-bcea-219954a47070" id="10">
+          <description>Develop flexible strategies for generating, revising, editing, and proof-reading</description>
+        </objective>
+        <objective guid="f5b833b0-0302-49c1-8331-4acfc35d0055" id="10">
+          <description>Understand writing as an open process that permits writers to use later invention and re-thinking to revise their work</description>
+        </objective>
+        <objective guid="bf880641-8366-4b6f-aeb5-768a807df116" id="10">
+          <description>Understand the collaborative and social aspects of writing processes</description>
+        </objective>
+        <objective guid="484d0f1e-b207-4e30-8811-fd3a70c6c6cb" id="10">
+          <description>Learn to critique their own and others' works</description>
+        </objective>
+        <objective guid="811b7ce8-0cc5-462b-91ee-3f6f2e1e215d" id="10">
+          <description>Learn to balance the advantages of relying on others with the responsibility of doing their part</description>
+        </objective>
+        <objective guid="222bdbd1-c765-4572-b480-6561062cb67e" id="10">
+          <description>Use a variety of technologies to address a range of audiences</description>
+        </objective>
+        <objective guid="e111216c-4a28-484e-9846-ec54aac0fb67" id="10">
+          <description>Knowledge of Conventions</description>
+        </objective>
+        <objective guid="6e67cba6-6d73-45b2-8413-7605581b34cc" id="10">
+          <description>Learn common formats for different kinds of texts</description>
+        </objective>
+        <objective guid="3962eb7e-115e-4da2-88a3-1c6e31607030" id="10">
+          <description>Develop knowledge of genre conventions ranging from structure and paragraphing to tone and mechanics</description>
+        </objective>
+        <objective guid="c1749c55-6d3f-4f43-9391-aca64f01ad0d" id="10">
+          <description>Practice appropriate means of documenting their work</description>
+        </objective>
+        <objective guid="a861c341-57e5-4978-ada6-c2f8127214b9" id="10">
+          <description>Control such surface features as syntax, grammar, punctuation, and spelling</description>
+        </objective>
+        <objective guid="0ffcc622-6a85-4ba8-b03a-e54c8b9e527b" id="10">
+          <description>Composing in Electronic Environments</description>
+        </objective>
+        <objective guid="46e0cd19-23dd-4540-84cc-7cc4fd5be07a" id="10">
+          <description>Use electronic environments for drafting, reviewing, revising, editing, and sharing texts</description>
+        </objective>
+        <objective guid="f7931d7c-1d90-43ef-a04f-0fc373b35871" id="10">
+          <description>Locate, evaluate, organize, and use research material collected from electronic sources, including scholarly library databases; other official databases and informal electronic networks and internet sources</description>
+        </objective>
+        <objective guid="2a67fc7b-9ccb-4ded-ac40-16cf7a7fb710" id="10">
+          <description>Understand and exploit the differences in the rhetorical strategies and in the affordances available for both print and electronic composing processes and texts</description>
+        </objective>
+      </learningobjectives>
+      <passingscore>50</passingscore>
+      <gradetables>
+        <table id="0" name="A,B,C,D,F" scale="Percent">
+          <bracket grade="A" score="0.9" />
+          <bracket grade="B" score="0.8" />
+          <bracket grade="C" score="0.7" />
+          <bracket grade="D" score="0.6" />
+          <bracket grade="F" score="0" />
+        </table>
+        <table id="1" name="A+,A,A-,...,F" scale="Percent">
+          <bracket grade="A+" score="0.97" />
+          <bracket grade="A" score="0.93" />
+          <bracket grade="A-" score="0.9" />
+          <bracket grade="B+" score="0.87" />
+          <bracket grade="B" score="0.83" />
+          <bracket grade="B-" score="0.8" />
+          <bracket grade="C+" score="0.77" />
+          <bracket grade="C" score="0.73" />
+          <bracket grade="C-" score="0.7" />
+          <bracket grade="D+" score="0.67" />
+          <bracket grade="D" score="0.63" />
+          <bracket grade="D-" score="0.6" />
+          <bracket grade="F" score="0" />
+        </table>
+        <table id="2" name="P/F" scale="Percent">
+          <bracket grade="P" score="0.7" />
+          <bracket grade="F" score="0" />
+        </table>
+      </gradetables>
+      <categories weighted="false">
+        <category id="0" name="Uncategorized" weight="100" sequence="a" droplowest="5" />
+        <category id="1" name="Chapter 2. Production, Economic Growth, and Trade" weight="0" sequence="b" />
+        <category id="11" name="TestFolder 2" weight="0" sequence="c" />
+        <category id="111" name="Untitled Unititled Unit" weight="0" sequence="d" />
+        <category id="1111" name="Chapter 5. Elasticity" weight="0" sequence="e" />
+        <category id="11111" name="PX-2225" weight="0" sequence="f" />
+        <category id="111111" name="PX-2276" weight="0" sequence="g" />
+        <category id="1111111" name="Chapter 8. Competition" weight="0" sequence="h" />
+        <category id="11111111" name="11Unit" weight="0" sequence="i" />
+      </categories>
+      <stylesheet>assets/launchpad_bh_component.css</stylesheet>
+      <allowstaticcopy>true</allowstaticcopy>
+      <allowderivativechildcopy>true</allowderivativechildcopy>
+      <allowderivativesiblingcopy>true</allowderivativesiblingcopy>
+      <groupsets>
+        <groupset id="9999" title="Individual Group" prefix="Individual Group" algorithm="Random" />
+        <groupset id="10000" title="www" prefix="www" algorithm="Random" studentspergroup="2" />
+        <groupset id="10001" title="55" prefix="ttt" algorithm="Random" studentspergroup="2" />
+        <groupset id="10002" title="ggg" prefix="ggg" algorithm="Random" studentspergroup="2" />
+        <groupset id="10003" title="zzz" prefix="zzz" algorithm="Random" studentspergroup="2" />
+        <groupset id="10004" title="222" prefix="222" algorithm="Random" studentspergroup="2" />
+        <groupset id="10005" title="666" prefix="666" algorithm="Random" studentspergroup="2" />
+        <groupset id="10006" title="aaa" prefix="aaa" algorithm="Random" studentspergroup="2" />
+        <groupset id="10007" title="bbb" prefix="bbb" algorithm="Random" studentspergroup="2" />
+        <groupset id="10008" title="000" prefix="000" algorithm="Random" studentspergroup="2" />
+        <groupset id="10009" title="555" prefix="555" algorithm="Random" studentspergroup="2" />
+        <groupset id="10010" title="jjj" prefix="jjj" algorithm="Random" studentspergroup="2" />
+      </groupsets><bfw_search>
+  <searchcategory searchable="true" title="Ebook : Chapters, Headings, Topics" metadata="ebook" />
+  <searchcategory searchable="true" title="Miscellaneous Content" metadata="other" />
+  <searchcategory searchable="false" title="Exclude" metadata="exclude" />
+</bfw_search><bfw_properties>
+  <bfw_property name="bfw_infinite_scroll" type="string">true</bfw_property>
+  <bfw_property name="bfw_initialize_user" type="string">true</bfw_property>
+  <bfw_property name="bfw_obtain_bh_auth_cookie" type="bool">true</bfw_property>
+  <bfw_property name="application_js_files" type="string">~/Scripts/Xbook/Xbook.js</bfw_property>
+</bfw_properties><bfw_tocs>
+  <course_materials type="bfw_toc">Course Materials</course_materials>
+</bfw_tocs><bfw_infinite_scroll>true</bfw_infinite_scroll><bfw_tab_settings>
+  <view_tab>
+    <show_policies>false</show_policies>
+    <show_assignment_details>true</show_assignment_details>
+    <show_rubrics>true</show_rubrics>
+    <show_learning_objectives>true</show_learning_objectives>
+  </view_tab>
+  <assign_tab>
+    <show_make_gradeable>true</show_make_gradeable>
+    <show_allow_late_submissions>true</show_allow_late_submissions>
+    <show_schedule_reminder>true</show_schedule_reminder>
+    <show_subcontent_creation>true</show_subcontent_creation>
+    <show_assigned_on_same_day>true</show_assigned_on_same_day>
+    <show_completion_category>true</show_completion_category>
+    <show_gradebook_category>true</show_gradebook_category>
+    <show_syllabus_category>true</show_syllabus_category>
+    <show_points_possible>true</show_points_possible>
+    <show_send_reminder>true</show_send_reminder>
+    <show_include_score>true</show_include_score>
+    <show_calculation_type>true</show_calculation_type>
+    <show_mark_as_complete>true</show_mark_as_complete>
+  </assign_tab>
+</bfw_tab_settings><bfw_course_type>FACEPLATE</bfw_course_type><meta-bfw_course_type>FACEPLATE</meta-bfw_course_type><bfw_course_home_page>PX_HOME_FACEPLATE</bfw_course_home_page><bfw_hide_student_view_in_header>true</bfw_hide_student_view_in_header><bfw_isloadstartoninit>true</bfw_isloadstartoninit><bfw_course_home_page_start>PX_HOME_FACEPLATE_START</bfw_course_home_page_start><bfw_syllabus_info>
+  <syllabus_type>File</syllabus_type>
+  <syllabus_value>92920/88032_Spring2013PH121Syllabus.pdf</syllabus_value>
+</bfw_syllabus_info><bfw_console_settings>
+  <show_general>true</show_general>
+  <show_navigation>true</show_navigation>
+  <show_launchpad>true</show_launchpad>
+</bfw_console_settings><bfw_tinymce>
+  <options>launchpad_editor_options</options>
+</bfw_tinymce><bfw_read_only>false</bfw_read_only><bfw_course_description>Econportal: Stone, CoreEconomics 2e</bfw_course_description><bfw_allow_comment_sharing>true</bfw_allow_comment_sharing><bfw_shared>Unpublished</bfw_shared><bfw_search_engine_index>false</bfw_search_engine_index><bfw_facebook_integration>false</bfw_facebook_integration><bfw_allow_site_search>true</bfw_allow_site_search><bfw_allow_activation>true</bfw_allow_activation><bfw_social_commenting_integration>false</bfw_social_commenting_integration><bfw_template_learningobjectives>
+  <learningobjectives>
+    <objective guid="9222c505-86f8-4a7c-9b6c-346e601d66b6" id="1" parentid="" sequence="a">
+      <description>Rhetorical Knowledge</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="e8844d58-5c81-4eaa-897d-adcef44a68c1" id="2" parentid="9222c505-86f8-4a7c-9b6c-346e601d66b6" sequence="b">
+      <description>Focus on a purpose</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="87024fc0-36e3-4468-8162-f81f1590d55e" id="3" parentid="9222c505-86f8-4a7c-9b6c-346e601d66b6" sequence="c">
+      <description>Respond to the needs of different audiences</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="6344b2e5-1e8d-4585-a50f-22b442692c30" id="4" parentid="9222c505-86f8-4a7c-9b6c-346e601d66b6" sequence="d">
+      <description>Respond appropriately to different kinds of rhetorical situations</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="7a5c30a8-78a1-4ddf-9e1d-c2ee6753aac9" id="5" parentid="9222c505-86f8-4a7c-9b6c-346e601d66b6" sequence="e">
+      <description>Use conventions of format and structure appropriate to the rhetorical situation</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="510ff999-8b06-420a-8a0b-cd479e015844" id="6" parentid="9222c505-86f8-4a7c-9b6c-346e601d66b6" sequence="f">
+      <description>Adopt appropriate voice, tone, and level of formality</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="809dde6f-2c89-46bc-bd1e-58cdc1ac5760" id="7" parentid="9222c505-86f8-4a7c-9b6c-346e601d66b6" sequence="g">
+      <description>Understand how genres shape reading and writing</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="5b85e2d6-95a9-400d-8993-7a9973de2512" id="8" parentid="9222c505-86f8-4a7c-9b6c-346e601d66b6" sequence="h">
+      <description>Write in several genres</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="8c77a46e-09e2-454f-a98b-87cee6c2c7d3" id="9" parentid="" sequence="i">
+      <description>Critical Thinking Reading and Writing</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="27628d88-8642-4869-a464-bd603e4ccd4d" id="10" parentid="8c77a46e-09e2-454f-a98b-87cee6c2c7d3" sequence="j">
+      <description>Use writing and reading for inquiry, learning, thinking, and communicating</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="87ab6eb6-f29c-46ff-a164-969dca55f706" id="10" parentid="8c77a46e-09e2-454f-a98b-87cee6c2c7d3" sequence="k">
+      <description>Understand a writing assignment as a series of tasks, including finding, evaluating, analyzing, and synthesizing appropriate primary and secondary sources</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="8d55cea1-d1ac-4d63-971e-b9c62717edf5" id="10" parentid="8c77a46e-09e2-454f-a98b-87cee6c2c7d3" sequence="l">
+      <description>Integrate their own ideas with those of others</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="1a0b519b-e05e-44f8-85a8-a392ca965dd5" id="10" parentid="8c77a46e-09e2-454f-a98b-87cee6c2c7d3" sequence="m">
+      <description>Understand the relationships among language, knowledge, and power</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="3dcfff86-b366-464c-935e-e97bbdbbef58" id="10" parentid="" sequence="n">
+      <description>Processes</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="2e4225a0-5721-400b-81a8-b173e9cf64fe" id="10" parentid="3dcfff86-b366-464c-935e-e97bbdbbef58" sequence="o">
+      <description>Be aware that it usually takes multiple drafts to create and complete a successful text</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="55b6643a-1ecd-4564-bcea-219954a47070" id="10" parentid="3dcfff86-b366-464c-935e-e97bbdbbef58" sequence="p">
+      <description>Develop flexible strategies for generating, revising, editing, and proof-reading</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="f5b833b0-0302-49c1-8331-4acfc35d0055" id="10" parentid="3dcfff86-b366-464c-935e-e97bbdbbef58" sequence="q">
+      <description>Understand writing as an open process that permits writers to use later invention and re-thinking to revise their work</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="bf880641-8366-4b6f-aeb5-768a807df116" id="10" parentid="3dcfff86-b366-464c-935e-e97bbdbbef58" sequence="r">
+      <description>Understand the collaborative and social aspects of writing processes</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="484d0f1e-b207-4e30-8811-fd3a70c6c6cb" id="10" parentid="3dcfff86-b366-464c-935e-e97bbdbbef58" sequence="s">
+      <description>Learn to critique their own and others' works</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="811b7ce8-0cc5-462b-91ee-3f6f2e1e215d" id="10" parentid="3dcfff86-b366-464c-935e-e97bbdbbef58" sequence="t">
+      <description>Learn to balance the advantages of relying on others with the responsibility of doing their part</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="222bdbd1-c765-4572-b480-6561062cb67e" id="10" parentid="3dcfff86-b366-464c-935e-e97bbdbbef58" sequence="u">
+      <description>Use a variety of technologies to address a range of audiences</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="e111216c-4a28-484e-9846-ec54aac0fb67" id="10" parentid="" sequence="v">
+      <description>Knowledge of Conventions</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="6e67cba6-6d73-45b2-8413-7605581b34cc" id="10" parentid="e111216c-4a28-484e-9846-ec54aac0fb67" sequence="w">
+      <description>Learn common formats for different kinds of texts</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="3962eb7e-115e-4da2-88a3-1c6e31607030" id="10" parentid="e111216c-4a28-484e-9846-ec54aac0fb67" sequence="x">
+      <description>Develop knowledge of genre conventions ranging from structure and paragraphing to tone and mechanics</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="c1749c55-6d3f-4f43-9391-aca64f01ad0d" id="10" parentid="e111216c-4a28-484e-9846-ec54aac0fb67" sequence="y">
+      <description>Practice appropriate means of documenting their work</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="a861c341-57e5-4978-ada6-c2f8127214b9" id="10" parentid="e111216c-4a28-484e-9846-ec54aac0fb67" sequence="z">
+      <description>Control such surface features as syntax, grammar, punctuation, and spelling</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="0ffcc622-6a85-4ba8-b03a-e54c8b9e527b" id="10" parentid="" sequence="za">
+      <description>Composing in Electronic Environments</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="46e0cd19-23dd-4540-84cc-7cc4fd5be07a" id="10" parentid="0ffcc622-6a85-4ba8-b03a-e54c8b9e527b" sequence="zb">
+      <description>Use electronic environments for drafting, reviewing, revising, editing, and sharing texts</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="f7931d7c-1d90-43ef-a04f-0fc373b35871" id="10" parentid="0ffcc622-6a85-4ba8-b03a-e54c8b9e527b" sequence="zc">
+      <description>Locate, evaluate, organize, and use research material collected from electronic sources, including scholarly library databases; other official databases and informal electronic networks and internet sources</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+    <objective guid="2a67fc7b-9ccb-4ded-ac40-16cf7a7fb710" id="10" parentid="0ffcc622-6a85-4ba8-b03a-e54c8b9e527b" sequence="zd">
+      <description>Understand and exploit the differences in the rhetorical strategies and in the affordances available for both print and electronic composing processes and texts</description>
+      <bfw_description>&amp;lt;p&amp;gt;Adopted by the Council of Writing Program Administrators (WPA), April 2000; amended July 2008.&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the development of the Outcomes Statement, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot; data-mce-href=&amp;quot;http://comppile.org/archives/WPAoutcomes/continue.html&amp;quot;&amp;gt;http://comppile.org/archives/WPAoutcomes/continue.html&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;For further information about the Council of Writing Program Administrators, please see&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://www.wpacouncil.org/&amp;quot; data-mce-href=&amp;quot;http://www.wpacouncil.org/&amp;quot;&amp;gt;http://www.wpacouncil.org&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;A version of this statement was published in &amp;lt;em&amp;gt;WPA: Writing Program Administration&amp;lt;/em&amp;gt; 23.1/2 (fall/winter 1999): 59-66&amp;lt;/p&amp;gt;</bfw_description>
+    </objective>
+  </learningobjectives>
+</bfw_template_learningobjectives><bfw_dashboard_learningobjectives>
+  <learningobjectives />
+</bfw_dashboard_learningobjectives><bfw_eportfolio_learningobjectives>
+  <learningobjectives />
+</bfw_eportfolio_learningobjectives><bfw_program_learningobjectives>
+  <learningobjectives />
+</bfw_program_learningobjectives><meta-product-course-id>57704</meta-product-course-id><CourseProductName>course</CourseProductName><CourseUserName>77</CourseUserName><CourseTimeZone>Pacific Standard Time</CourseTimeZone><bfw_dashboard_settings>
+  <bfw_dashboard_course_home_page />
+  <instructor_dashboard>False</instructor_dashboard>
+  <program_dashboard>False</program_dashboard>
+  <bfw_program_dashboard_course_home_page />
+</bfw_dashboard_settings><meta-bfw_is_sandbox_course>false</meta-bfw_is_sandbox_course><bfw_productcourseid>57704</bfw_productcourseid><enable_learningcurve_quiz>false</enable_learningcurve_quiz><enable_homework_quiz>false</enable_homework_quiz><isdashboardactive>true</isdashboardactive><questioncardlayout>
+  <script id="questioncard-template" type="text/x-handlebars-template">
+    <div class="card">
+      <div class="questioncardrow firstrow">
+                  {{#if difficulty}}
+                  <div class="difficulty"><h1>Difficulty:</h1><div class="content">{{difficulty}}</div></div>
+                  {{/if}}
+                  {{#if cognitivelevel}}
+                  <div class="cognitivelevel"><h1>Cognitivel level:</h1><div class="content">{{cognitivelevel}}</div></div>
+                  {{/if}}
+                  {{#if bloomdomain}}
+                  <div class="bloomdomain"><h1>Bloom's domain:</h1><div class="content">{{bloomdomain}}</div></div>
+                  {{/if}}
+                </div>
+      <div class="questioncardrow">
+                  {{#if coreconcept}}
+                  <div class="coreconcept"><h1>Core Concept:</h1><div class="content">{{coreconcept}}</div></div>
+                  {{/if}}
+                  {{#if relatedcontent}}
+                  <div class="relatedcontent"><h1>Related Content:</h1><div class="content">{{relatedcontent}}</div></div>
+                  {{/if}}
+                </div>
+      <div class="questioncardrow">
+                  {{#if guidance}}
+                  <div class="guidance"><h1>Guidance:</h1><div class="content">{{guidance}}</div></div>
+                  {{/if}}
+                </div>
+      <div class="questioncardrow">
+                  {{#if freeresponsequestion}}
+                  <div class="freeresponsequestion"><h1>Free response question:</h1><div class="content">{{freeresponsequestion}}</div></div>
+                  {{/if}}
+                </div>
+      <div class="questioncardrow">
+                  {{#if suggesteduse}}
+                  <div class="suggesteduse"><h1>Suggested use:</h1><div class="content">{{suggesteduse}}</div></div>
+                  {{/if}}
+                </div>
+    </div>
+  </script>
+</questioncardlayout><meta-available-question-data>
+  <coreconcept filterable="true" friendlyname="Core Concept" />
+  <difficulty filterable="true" searchterm="difficulty:" friendlyname="Difficulty" />
+  <cognitivelevel filterable="true" friendlyname="Cognitive Level" />
+  <bloomdomain filterable="true" friendlyname="Bloom's level" />
+  <suggesteduse filterable="true" friendlyname="Suggested Use" />
+  <guidance filterable="false" />
+</meta-available-question-data><enableloadingscreen>true</enableloadingscreen><cssparameters>
+  <param name="Gradienttopcolor" value="#1d0002" />
+  <param name="Gradientbottomcolor" value="#3b0005" />
+  <param name="Typecolor" value="#244D9D" />
+  <param name="TitleColor" value="#FFBF00" />
+  <param name="Columnborder" value="#634043" />
+  <param name="bookcover" value="style/images/LoginPageCovers/Stoneecon2_entryPage.png" />
+  <param name="course-banner-logo" value="style/images/Stoneecon2Portal_header_logo1.png" />
+  <param name="courseEconportal: Stone, CoreEconomics 2eimage" value="style/images/Stoneecon2Portal_header_logo2.png" />
+</cssparameters><bfw_initialize_user>true</bfw_initialize_user><bfw_obtain_bh_auth_cookie>true</bfw_obtain_bh_auth_cookie><application_js_files>~/Scripts/Xbook/Xbook.js</application_js_files><ActivatedDate>01/02/2013 09:04 AM</ActivatedDate><bfw_allow_sampling>true</bfw_allow_sampling><bfw_allow_purchase>true</bfw_allow_purchase><bfw_course_owner>9336</bfw_course_owner><meta-bfw_academic_term>5349a155-7a5c-4788-880f-f0b6fcb1ff8f</meta-bfw_academic_term><meta-bfw_course_subtype>regular</meta-bfw_course_subtype><bfw_office_hours>Monday-Friday</bfw_office_hours><CourseNumber>13</CourseNumber><SectionNumber>23</SectionNumber><sourceid>57704</sourceid><indexrule>Deltas</indexrule></data>
+  </course>
+</rootItem>
+</root>

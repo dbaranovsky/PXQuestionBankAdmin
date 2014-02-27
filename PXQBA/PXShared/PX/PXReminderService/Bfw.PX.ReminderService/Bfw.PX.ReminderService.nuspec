@@ -1,0 +1,15 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>ReminderService</id>
+    <title>ReminderService</title>
+    <version>1.0.0</version>
+    <authors>PXTeam</authors>
+    <owners>PXTeam</owners>
+    <licenseUrl>http://www.macmillanhighered.com</licenseUrl>
+    <projectUrl>http://www.macmillanhighered.com</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Sends out e-mail notifications to students</description>
+    <releaseNotes>This release contains the following changes...</releaseNotes>
+  </metadata>
+</package>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>MVC3ControlsToolkit</id>
+    <version>2.3.0</version>
+    <title>Mvc 3-4 Controls Toolkit</title>
+    <authors>Francesco Abbruzzese</authors>
+    <owners>Francesco Abbruzzese</owners>
+    <licenseUrl>http://mvccontrolstoolkit.codeplex.com/license</licenseUrl>
+    <projectUrl>http://mvccontrolstoolkit.codeplex.com/</projectUrl>
+    <iconUrl>http://download.codeplex.com/Project/Download/FileDownload.aspx?ProjectName=mvccontrolstoolkit&amp;DownloadId=215281&amp;Build=17950</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>MVC 3 Controls Toolkit is a complete set of advanced server controls for MVC 3 and MVC4 ranging from a templated edit-on line datagrid to date-picker and custom formatted textboxes, supporting client validation and globalization. MVC Controls Toolkit makes it easier to define new complex controls for MVC without defining custom binders to read back the input from the Controls because each control enables the MVC engine to call its own handler to bind properly the input to the view model. Thus, there is no need to adapt the controller to a control or to define ad hoc controllers.</description>
+    <summary>MVC 3 Controls Toolkit is a complete set of advanced server controls for MVC 3 and MVC 4</summary>
+    <releaseNotes>Now compatible with Mvc4RTM. Added utilities to handle timezones, improved menu and treeview and sortablelistfor. client blocks bindings now react also to controls values changes done by code.</releaseNotes>
+    <copyright>Francesco Abbruzzese</copyright>
+    <language />
+    <tags>Mvc controls helpers Grid TreeView Knockout WebApi</tags>
+    <dependencies>
+      <dependency id="WebActivator" version="1.4" />
+    </dependencies>
+    <references>
+      <reference file="MVC3ControlsToolkit.dll" />
+      <reference file="MVC4ControlsToolkit.dll" />
+    </references>
+  </metadata>
+</package>

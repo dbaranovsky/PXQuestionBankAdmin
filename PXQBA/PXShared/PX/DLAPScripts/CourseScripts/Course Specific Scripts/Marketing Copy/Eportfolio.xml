@@ -1,0 +1,48 @@
+<request cmd="putitems">
+  <requests>
+    <item itemid="PX_PRODUCT_MARKETING" version="0.2" entityid="-entityid-" creationdate="2012-07-19T19:35:54.043Z" creationby="2" modifieddate="2012-07-19T19:44:36.27Z" modifiedby="2" origindepth="1" derivativedepth="1">
+      <data>
+        <type>CustomActivity</type>
+        <parent>PX_ROOT</parent>
+        <title>eportfolio</title>
+        <abbreviation>ecw</abbreviation>
+        <description>
+          &lt;div class=&quot;eport-landing-container&quot;&gt;
+          &lt;div class=&quot;header-banner&quot;&gt;
+          &lt;div class=&quot;logo&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;gradient-banner&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;content-container&quot;&gt;
+          &lt;div class=&quot;content-banner&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;landing-content&quot;&gt;
+          &lt;div class=&quot;landing-links&quot;&gt;
+          &lt;ul&gt;
+          &lt;li class=&quot;header-link&quot;&gt;&lt;span class=&quot;link-icon works&quot;&gt;&lt;/span&gt;&lt;a href=&quot;http://www.bedfordstmartins.com/Catalog/other/ePortfolio_Works&quot; target=&quot;_blank&quot; class=&quot;eportlanding-link&quot;&gt;See How It Works&lt;/a&gt;&lt;span class=&quot;arrow-icon&quot;&gt;&lt;/span&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;span class=&quot;link-icon features&quot;&gt;&lt;/span&gt;&lt;a  href=&quot;http://www.bedfordstmartins.com/Catalog/other/ePortfolio_Features&quot; target=&quot;_blank&quot;  class=&quot;eportlanding-link&quot;&gt;e-Portfolio Features&lt;/a&gt;&lt;span class=&quot;arrow-icon&quot;&gt;&lt;/span&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;span class=&quot;link-icon tour&quot;&gt;&lt;/span&gt;&lt;a  href=&quot;http://www.bedfordstmartins.com/Catalog/other/ePortfolio_SignUp&quot; target=&quot;_blank&quot;  class=&quot;eportlanding-link&quot;&gt;Sign Up for a Personal Tour&lt;/a&gt;&lt;span class=&quot;arrow-icon&quot;&gt;&lt;/span&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;eport-landing-body&quot;&gt;
+          &lt;p&gt;Welcome to &lt;b&gt;&lt;i&gt;The Bedford e-Portfolio&lt;/i&gt;&lt;/b&gt;, the course tool that makes it easy for students to showcase their work and share the story of their unique learning experience, whether for their class, for their job, or even for their friends. With straightforward, flexible assessment tools, instructors can easily map rubrics and learning outcomes to student work or simply invite students  to start their collections.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;eport-landing-footer&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        </description>
+        <timetocomplete>PT1M</timetocomplete>
+        <category>1</category>
+        <period inherit="true">0</period>
+        <groupsetid>-1</groupsetid>
+        <weight>100</weight>
+        <gradeentry>1</gradeentry>
+        <inputtable inherit="true">0</inputtable>
+        <bfw_type>ProductMarketing</bfw_type>
+        <bfw_subtype>Marketing</bfw_subtype>
+        <bfw_tocs>
+          <bfw_toc_contents parentid="PX_ROOT" sequence="_ja" />
+        </bfw_tocs>
+      </data>
+    </item>
+  </requests>
+</request>

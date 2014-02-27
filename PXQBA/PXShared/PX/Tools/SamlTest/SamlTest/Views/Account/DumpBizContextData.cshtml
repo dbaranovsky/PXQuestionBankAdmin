@@ -1,0 +1,50 @@
+﻿@model Bfw.PX.Biz.ServiceContracts.IBusinessContext
+
+@{
+    ViewBag.Title = "DumpBizContextData";
+}
+
+<h2>DumpBizContextData</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Key</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>CourseId</td>
+            <td>@Model.CourseId</td>
+        </tr>
+        <tr>
+            <td>ProductCourseId</td>
+            <td>@Model.ProductCourseId</td>
+        </tr>
+        <tr>
+            <td>Reference Id</td>
+            <td>@Model.CurrentUser.ReferenceId</td>            
+        </tr>
+        <tr>
+            <td>Username</td>
+            <td>@Model.CurrentUser.Username</td>
+        </tr>
+        <tr>
+            <td>Agilix UserId</td>
+            <td>@Model.CurrentUser.Id</td>
+        </tr>
+        <tr>
+            <td>Level of Access</td>
+            <td>@Model.AccessLevel</td>
+        </tr>
+        <tr>
+            <td>Access Type</td>
+            <td>@Model.AccessType</td>
+        </tr>
+        <tr>
+            <td>Course Title</td>
+            <td>@Model.Course.Title</td>
+        </tr>
+    </tbody>
+</table>

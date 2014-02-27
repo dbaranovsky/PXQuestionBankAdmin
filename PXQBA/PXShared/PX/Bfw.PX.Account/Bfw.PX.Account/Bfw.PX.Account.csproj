@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D8A052BB-3935-4100-8FFB-CD7DE8A39535}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PXLogin</RootNamespace>
+    <AssemblyName>PXLogin</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <UseIISExpress>false</UseIISExpress>
+    <TargetFrameworkProfile />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="RAg.Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ThirdParty\RAg\RAg.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleAppLogger, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ThirdParty\RAg\SimpleAppLogger.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="crossdomain.xml" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery\jquery-1.4.4.js" />
+    <Content Include="Views\AccountRequest\Login.aspx" />
+    <Content Include="Views\AccountRequest\Logout.aspx" />
+    <Content Include="Views\AccountRequest\TermsAndConditions.ascx" />
+    <Content Include="Views\Account\TermsAndConditions.ascx" />
+    <Content Include="Views\Request\Login.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\Microsoft\MicrosoftAjax.js" />
+    <Content Include="Scripts\Microsoft\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\Microsoft\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\Microsoft\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\Microsoft\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\Microsoft\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Shared\Site.Master" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Bfw.Agilix\Bfw.Agilix.Commands\Bfw.Agilix.Commands.csproj">
+      <Project>{19E52C79-1FE3-4385-A035-B603213C099E}</Project>
+      <Name>Bfw.Agilix.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Bfw.Agilix\Bfw.Agilix.DataContracts\Bfw.Agilix.DataContracts.csproj">
+      <Project>{4D185F8E-C2A0-442A-A05E-78B566361562}</Project>
+      <Name>Bfw.Agilix.DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Bfw.Agilix.Dlap.Components.csproj">
+      <Project>{BFFD6B7A-4EA1-431A-916A-8214BD16E049}</Project>
+      <Name>Bfw.Agilix.Dlap.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Bfw.Agilix\Bfw.Agilix.Dlap\Bfw.Agilix.Dlap.csproj">
+      <Project>{F5A60C36-AA1F-4849-A9E7-465F7963DF9F}</Project>
+      <Name>Bfw.Agilix.Dlap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Bfw.Common\Bfw.Common.Mvc\Bfw.Common.Mvc.csproj">
+      <Project>{149EFE93-FBFD-4F18-8999-7C7A7007B734}</Project>
+      <Name>Bfw.Common.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Bfw.Common\Bfw.Common.Patterns\Bfw.Common.Patterns.csproj">
+      <Project>{AD00B777-4D80-4D59-AFA0-BD3088938BFF}</Project>
+      <Name>Bfw.Common.Patterns</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Bfw.Common\Bfw.Common.SSO.Novell\Bfw.Common.SSO.Novell.csproj">
+      <Project>{157E1189-484E-4005-ADA5-38C7FC417C54}</Project>
+      <Name>Bfw.Common.SSO.Novell</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Bfw.Common\Bfw.Common.SSO\Bfw.Common.SSO.csproj">
+      <Project>{AB21E1BC-A01C-4C8D-8477-26F821B1E914}</Project>
+      <Name>Bfw.Common.SSO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Bfw.Common\Bfw.Common.Xaml\Bfw.Common.Xaml.csproj">
+      <Project>{E1052EA2-8A39-4650-B22F-728393781E13}</Project>
+      <Name>Bfw.Common.Xaml</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Bfw.Common\Bfw.Common\Bfw.Common.csproj">
+      <Project>{4F1BF9DB-1226-4867-9E41-129B214F24F2}</Project>
+      <Name>Bfw.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bfw.PX.Account.Abstract\Bfw.PX.Account.Abstract.csproj">
+      <Project>{5A34477E-A112-43CC-A8EE-EB7B740F5226}</Project>
+      <Name>Bfw.PX.Account.Abstract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bfw.PX.Account.Components\Bfw.PX.Account.Components.csproj">
+      <Project>{3BF2A15B-2D4B-448F-9A80-29E56B920CB9}</Project>
+      <Name>Bfw.PX.Account.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bfw.PX.Account.Controllers\Bfw.PX.Account.Controllers.csproj">
+      <Project>{20CC62EA-A954-46B1-8297-5A5330483D2D}</Project>
+      <Name>Bfw.PX.Account.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bfw.PX.Account.Models\Bfw.PX.Account.Models.csproj">
+      <Project>{7E50B53C-EA34-4577-80FF-74BCD5D993DB}</Project>
+      <Name>Bfw.PX.Account.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\default_header.gif" />
+    <Content Include="Rag\css\images\blackbuttonbg.gif" />
+    <Content Include="Rag\css\images\bluebuttonbg.gif" />
+    <Content Include="Rag\css\images\button-dark-left.gif" />
+    <Content Include="Rag\css\images\button-dark-right.gif" />
+    <Content Include="Rag\css\images\button-light-left2.gif" />
+    <Content Include="Rag\css\images\button-light-right2.gif" />
+    <Content Include="Rag\css\images\RAif_bc.gif" />
+    <Content Include="Rag\css\images\RAif_bl.gif" />
+    <Content Include="Rag\css\images\RAif_br.gif" />
+    <Content Include="Rag\css\images\RAif_ml.gif" />
+    <Content Include="Rag\css\images\RAif_mr.gif" />
+    <Content Include="Rag\css\images\RAif_tc.gif" />
+    <Content Include="Rag\css\images\RAif_tl.gif" />
+    <Content Include="Rag\css\images\RAif_tr.gif" />
+    <Content Include="Rag\css\images\RA_box_bc.gif" />
+    <Content Include="Rag\css\images\RA_box_bl.gif" />
+    <Content Include="Rag\css\images\RA_box_br.gif" />
+    <Content Include="Rag\css\images\RA_box_ml.gif" />
+    <Content Include="Rag\css\images\RA_box_mr.gif" />
+    <Content Include="Rag\css\images\RA_box_tc.gif" />
+    <Content Include="Rag\css\images\RA_box_tl.gif" />
+    <Content Include="Rag\css\images\RA_box_tr.gif" />
+    <Content Include="Rag\css\images\RA_premium_locked.gif" />
+    <Content Include="Rag\css\images\RA_premium_unlocked.gif" />
+    <Content Include="Rag\css\My_Site.css" />
+    <Content Include="Rag\css\RA.css" />
+    <Content Include="Rag\css\RAg.css" />
+    <Content Include="Rag\css\RA_buttons.css" />
+    <Content Include="Rag\RAgLocal.asmx" />
+    <Content Include="Rag\RAif.html" />
+    <Content Include="Scripts\Rag\RAg.js" />
+    <Content Include="Views\Account\Logout.aspx" />
+    <Content Include="Views\Shared\AuthenticationScripts.ascx" />
+    <Content Include="Views\Shared\px.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\WebTrends\webtrends.js" />
+    <Content Include="Views\Account\Login.aspx" />
+    <Content Include="Views\Request\Logout.aspx" />
+    <Content Include="Views\Shared\bfw.Master" />
+    <Content Include="Views\Shared\Browser.ascx" />
+    <Content Include="Views\Shared\PxStyles.ascx" />
+    <Content Include="Views\Shared\WebTrends.ascx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Bfw.PX.Account.nuspec" />
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.PRISTINE.config" />
+    <Content Include="Web.PROD.config" />
+    <Content Include="Web.QA.config" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DEV_PROD_REFRESH|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DEV_PROD_REFRESH|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PRISTINE|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PRISTINE|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />
+  </Target>
+  <UsingTask TaskName="TransformXml" AssemblyFile="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\Web\Microsoft.Web.Publishing.Tasks.dll" />
+  <Target Name="ConfigTransform">
+    <TransformXml Source="Web.Config" Transform="$(EnvironmentFile)" Destination="$(DestinationFile)" StackTrace="true" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53557</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\OctoPack.1.0.105\targets\OctoPack.targets" />
+</Project>

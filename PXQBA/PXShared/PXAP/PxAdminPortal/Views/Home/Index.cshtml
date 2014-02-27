@@ -1,0 +1,17 @@
+﻿@model Bfw.PXAP.Models.DashboardModel
+@{    
+    ViewBag.Title = "Home Page";
+}
+
+<div id="divDashboard">
+    @{
+        
+        Bfw.PXAP.Models.LayoutModel layoutModel = this.ViewBag.LayoutModel as Bfw.PXAP.Models.LayoutModel;
+        
+        if (!string.IsNullOrEmpty(layoutModel.CurrentEnvironment)) {
+            @Html.Partial("_LogSummaryPartial", Model.LogSummary)
+        }
+    }
+</div>
+
+

@@ -1,0 +1,6 @@
+﻿<response code="OK">
+  <user userid="2" firstname="System" lastname="Administrator" reference="" guid="65015e20-f278-408a-807f-7b5be65736b7" domainid="1" username="administrator" email="" passwordquestion="" lastlogindate="2012-06-03T22:10:34.733Z" creationdate="2010-08-19T20:10:48.357Z" version="150">
+    <data>
+    </data>
+  </user>
+</response>

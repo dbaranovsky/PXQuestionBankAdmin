@@ -1,0 +1,89 @@
+/* Button styles -- should move into angel */
+
+/* medium-height button */
+a.button_medium {
+	display: block;
+	float: left;
+	font: normal 10px Arial; /* Change 12px as desired */
+	line-height: 11px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 23px) */
+	height: 19px; /* Height of button background height */
+	padding-left: 4px; /* Width of left menu image */
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+a.button_medium span{
+	display: block;
+	padding: 4px 6px 4px 2px; /*Set 9px below to match value of 'padding-left' value above*/
+	white-space:nowrap;
+}
+
+/* link - dark gray */
+a.button_medium_link {
+background: url('../images/button-dark-left.gif') no-repeat top left;
+}
+
+a.button_medium_link span {
+	background: url('../images/button-dark-right.gif') no-repeat top right;
+}
+
+a:link.button_medium_link, a:visited.button_medium_link, a:active.button_medium_link {
+	color: #fff !important;
+}
+
+a.button_medium_link:hover {
+	color: #ccc !important;
+}
+
+/* "on" state */
+
+a.button_medium_link_on {
+background: url('../images/button-dark-left.gif') no-repeat top left;
+}
+
+a.button_medium_link_on span {
+	background: url('../images/button-dark-right.gif') no-repeat top right;
+}
+
+a:link.button_medium_link_on, a:visited.button_medium_link_on, a:active.button_medium_link_on {
+	color: #ccc !important;
+}
+
+a.button_medium_link_on:hover {
+	color: #fff !important;
+}
+
+/* setting - white */
+a.button_medium_setting {
+	background: url('../images/button-light-left2.gif') no-repeat top left;
+}
+
+a.button_medium_setting span {
+	background: url('../images/button-light-right2.gif') no-repeat top right;
+}
+
+a:link.button_medium_setting, a:visited.button_medium_setting, a:active.button_medium_setting {
+	color: #333 !important;
+}
+
+a.button_medium_setting:hover {
+	color: #666 !important;
+}
+
+/* "on" state */
+
+a.button_medium_setting_on {
+background: url('../images/button-dark-left.gif') no-repeat top left;
+}
+
+a.button_medium_setting_on span {
+	background: url('../images/button-dark-right.gif') no-repeat top right;
+}
+
+a:link.button_medium_setting_on, a:visited.button_medium_setting_on, a:active.button_medium_setting_on {
+	color: #fff !important;
+}
+
+a.button_medium_setting_on:hover {
+	color: #ccc !important;
+}

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.6.2.min.js")" type="text/javascript"></script>
+    <style type="text/css">
+        
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Environment").change(function () {
+                var env = $(this).val();
+                if (env != null) {
+                    var loc = window.location.protocol + "//" + window.location.host + "/" + env.toString() + "/home/index";
+
+                    window.location = loc;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="page">
+        <div id="header">
+            <div id="mainBanner">
+                <div id="title">
+                    <h1>
+                        PX Admin Portal</h1>
+                </div>
+
+            </div>
+            
+        </div>
+        <br />
+        <div id="main1">
+            @RenderBody()
+        </div>
+        <div id="footer1">
+        </div>
+    </div>
+</body>
+</html>

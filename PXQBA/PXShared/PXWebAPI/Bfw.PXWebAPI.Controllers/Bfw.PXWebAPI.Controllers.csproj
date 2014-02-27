@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{69E97F6E-48F0-493B-ACDB-78E6A5B62E7F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bfw.PXWebAPI.Controllers</RootNamespace>
+    <AssemblyName>Bfw.PXWebAPI.Controllers</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Bfw.PXWebAPI.Controllers.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PRISTINE|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\PRISTINE\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>bin\Debug\Bfw.PXWebAPI.Controllers.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DEV_PROD_REFRESH|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DEV_PROD_REFRESH\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>bin\Debug\Bfw.PXWebAPI.Controllers.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\QA\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>bin\Debug\Bfw.PXWebAPI.Controllers.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DEV|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DEV\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>bin\Debug\Bfw.PXWebAPI.Controllers.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PROD|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\PROD\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>bin\Debug\Bfw.PXWebAPI.Controllers.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssignmentsController.cs" />
+    <Compile Include="ContentController.cs" />
+    <Compile Include="CourseController.cs" />
+    <Compile Include="DomainController.cs" />
+    <Compile Include="EnrollmentController.cs" />
+    <Compile Include="GradesController.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="HomeController.cs" />
+    <Compile Include="UserController.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Bfw.Agilix\Bfw.Agilix.Commands\Bfw.Agilix.Commands.csproj">
+      <Project>{19E52C79-1FE3-4385-A035-B603213C099E}</Project>
+      <Name>Bfw.Agilix.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Agilix\Bfw.Agilix.DataContracts\Bfw.Agilix.DataContracts.csproj">
+      <Project>{4D185F8E-C2A0-442A-A05E-78B566361562}</Project>
+      <Name>Bfw.Agilix.DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Agilix\Bfw.Agilix.Dlap\Bfw.Agilix.Dlap.csproj">
+      <Project>{F5A60C36-AA1F-4849-A9E7-465F7963DF9F}</Project>
+      <Name>Bfw.Agilix.Dlap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common\Bfw.Common.csproj">
+      <Project>{4F1BF9DB-1226-4867-9E41-129B214F24F2}</Project>
+      <Name>Bfw.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.PX.Biz\Bfw.PX.Biz.DataContracts\Bfw.PX.Biz.DataContracts.csproj">
+      <Project>{71124912-42B5-49BF-ACBD-E38F09FACA70}</Project>
+      <Name>Bfw.PX.Biz.DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.PX.Biz\Bfw.PX.Biz.Direct.Services\Bfw.PX.Biz.Direct.Services.csproj">
+      <Project>{756A544B-3923-4A7E-847A-9AAB50FEB106}</Project>
+      <Name>Bfw.PX.Biz.Direct.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.PX.Biz\Bfw.PX.Biz.ServiceContracts\Bfw.PX.Biz.ServiceContracts.csproj">
+      <Project>{392A9467-B225-4300-BC1A-F34983AFBC3D}</Project>
+      <Name>Bfw.PX.Biz.ServiceContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.PX.Biz\Bfw.PX.Biz.Services.Mappers\Bfw.PX.Biz.Services.Mappers.csproj">
+      <Project>{ABEDE889-2258-4429-87C8-96AF317C7593}</Project>
+      <Name>Bfw.PX.Biz.Services.Mappers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PX\Bfw.PX.PXPub.Controllers\Bfw.PX.PXPub.Controllers.csproj">
+      <Project>{C4A12AC0-30D3-48D7-B46C-0FCC169C8EDB}</Project>
+      <Name>Bfw.PX.PXPub.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PX\Bfw.PX.PXPub.Models\Bfw.PX.PXPub.Models.csproj">
+      <Project>{5D71B360-BDD7-4E5B-B551-5BE74E4339EF}</Project>
+      <Name>Bfw.PX.PXPub.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bfw.PXWebAPI.Helpers\Bfw.PXWebAPI.Helpers.csproj">
+      <Project>{C159906D-E4BC-4AAA-B64A-5316AB0FF810}</Project>
+      <Name>Bfw.PXWebAPI.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bfw.PXWebAPI.Mappers\Bfw.PXWebAPI.Mappers.csproj">
+      <Project>{77D5E886-70A1-4976-9B1D-7CAD10DD6253}</Project>
+      <Name>Bfw.PXWebAPI.Mappers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bfw.PXWebAPI.Models\Bfw.PXWebAPI.Models.csproj">
+      <Project>{25BBB6CD-CA04-4907-8BC1-C88CC28308EC}</Project>
+      <Name>Bfw.PXWebAPI.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,9 @@
+/* Silver */
+.o2k7aSkinSilver .mceToolbar .mceToolbarStart span, .o2k7aSkinSilver .mceButton, .o2k7aSkinSilver .mceSplitButton, .o2k7aSkinSilver .mceSeparator, .o2k7aSkinSilver .mceSplitButton a.mceOpen, .o2k7aSkinSilver .mceListBox a.mceOpen {background-image:url(img/button_bg_silver.png) !important}
+.o2k7aSkinSilver table, td.mceToolbar, .o2k7aSkinSilver td.mceStatusbar, .o2k7aSkinSilver .mceMenuItemTitle a {background:#eee !important}
+.o2k7aSkinSilver .mceListBox .mceText {background:#FFF !important}
+.o2k7aSkinSilver .mceExternalToolbar, .o2k7aSkinSilver .mceListBox .mceText, .o2k7aSkinSilver div.mceMenu, .o2k7aSkinSilver table.mceLayout, .o2k7aSkinSilver .mceMenuItemTitle a, .o2k7aSkinSilver table.mceLayout tr.mceFirst td, .o2k7aSkinSilver table.mceLayout, .o2k7aSkinSilver .mceMenuItemTitle a, .o2k7aSkinSilver table.mceLayout tr.mceLast td, .o2k7aSkinSilver .mceIframeContainer {border-color: #bbb !important}
+.o2k7aSkinSilver iframe {height:70px !important}
+span.o2k7aSkinSilver {vertical-align:top; display:inline;}
+
+.o2k7aSkinSilver table.mceToolbar { margin:0px !important; height:auto !important}

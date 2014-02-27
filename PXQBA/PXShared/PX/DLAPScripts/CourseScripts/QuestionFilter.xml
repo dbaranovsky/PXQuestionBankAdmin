@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+Items that need replacing before this script can be run
+  -entityid- (every item needs this)
+  -domainid- (only needed for the course)
+-->
+<batch>
+  <!-- Following command updates the product course with the correct metadata values -->
+  <request cmd="updatecourses">
+    <requests>
+      <course courseid="108762" title="DEMO-3/13/2013" reference="" guid="36f06707-8d65-4d6c-a08b-0af226c422ac" protection="0" schema="2" domainid="8841" baseid="57704" type="Range" startdate="1753-01-01T00:00:00Z" enddate="9999-12-31T00:00:00Z" days="365" term="" creationdate="2013-03-13T20:12:52.41Z">
+        <data>
+          <description>Econportal: Stone, CoreEconomics 2e</description>
+          <passingscore>0</passingscore>
+          <gradetables>
+            <table id="0" name="A,B,C,D,F" scale="Percent">
+              <bracket grade="A" score="0.9" />
+              <bracket grade="B" score="0.8" />
+              <bracket grade="C" score="0.7" />
+              <bracket grade="D" score="0.6" />
+              <bracket grade="F" score="0" />
+            </table>
+            <table id="1" name="A+,A,A-,...,F" scale="Percent">
+              <bracket grade="A+" score="0.97" />
+              <bracket grade="A" score="0.93" />
+              <bracket grade="A-" score="0.9" />
+              <bracket grade="B+" score="0.87" />
+              <bracket grade="B" score="0.83" />
+              <bracket grade="B-" score="0.8" />
+              <bracket grade="C+" score="0.77" />
+              <bracket grade="C" score="0.73" />
+              <bracket grade="C-" score="0.7" />
+              <bracket grade="D+" score="0.67" />
+              <bracket grade="D" score="0.63" />
+              <bracket grade="D-" score="0.6" />
+              <bracket grade="F" score="0" />
+            </table>
+            <table id="2" name="P/F" scale="Percent">
+              <bracket grade="P" score="0.7" />
+              <bracket grade="F" score="0" />
+            </table>
+          </gradetables>
+          <categories weighted="false">
+            <category id="0" name="Uncategorized" weight="100" sequence="a" />
+          </categories>
+          <stylesheet>assets/launchpad_bh_component.css</stylesheet>
+          <allowstaticcopy>true</allowstaticcopy>
+          <allowderivativechildcopy>true</allowderivativechildcopy>
+          <allowderivativesiblingcopy>true</allowderivativesiblingcopy>
+          <groupsets>
+            <groupset id="9999" title="Individual Group" prefix="Individual Group" algorithm="Random" />
+          </groupsets>
+          <bfw_search>
+            <searchcategory searchable="true" title="Ebook : Chapters, Headings, Topics" metadata="ebook" />
+            <searchcategory searchable="true" title="Miscellaneous Content" metadata="other" />
+            <searchcategory searchable="false" title="Exclude" metadata="exclude" />
+          </bfw_search>
+          <bfw_properties>
+            <bfw_property name="bfw_infinite_scroll" type="string">true</bfw_property>
+            <bfw_property name="bfw_initialize_user" type="string">true</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <course_materials type="bfw_toc">Course Materials</course_materials>
+          </bfw_tocs>
+          <bfw_infinite_scroll>true</bfw_infinite_scroll>
+          <bfw_tab_settings>
+            <view_tab>
+              <show_policies>false</show_policies>
+              <show_assignment_details>true</show_assignment_details>
+              <show_rubrics>true</show_rubrics>
+              <show_learning_objectives>true</show_learning_objectives>
+            </view_tab>
+            <assign_tab>
+              <show_make_gradeable>true</show_make_gradeable>
+              <show_allow_late_submissions>true</show_allow_late_submissions>
+              <show_schedule_reminder>true</show_schedule_reminder>
+              <show_subcontent_creation>true</show_subcontent_creation>
+              <show_assigned_on_same_day>true</show_assigned_on_same_day>
+              <show_completion_category>true</show_completion_category>
+              <show_gradebook_category>true</show_gradebook_category>
+              <show_syllabus_category>true</show_syllabus_category>
+              <show_points_possible>true</show_points_possible>
+              <show_send_reminder>true</show_send_reminder>
+              <show_include_score>true</show_include_score>
+              <show_calculation_type>true</show_calculation_type>
+              <show_mark_as_complete>true</show_mark_as_complete>
+            </assign_tab>
+          </bfw_tab_settings>
+          <bfw_course_type>FACEPLATE</bfw_course_type>
+          <meta-bfw_course_type>FACEPLATE</meta-bfw_course_type>
+          <bfw_course_home_page>PX_HOME_FACEPLATE</bfw_course_home_page>
+          <bfw_rss_feeds>
+            <feed name="Scientific American" url="http://rss.sciam.com/sciam/feature-articles" />
+            <feed name="Arstechnica" url="http://feeds.arstechnica.com/arstechnica/index/" />
+          </bfw_rss_feeds>
+          <bfw_hide_student_view_in_header>true</bfw_hide_student_view_in_header>
+          <bfw_isloadstartoninit>true</bfw_isloadstartoninit>
+          <bfw_course_home_page_start>PX_HOME_FACEPLATE_START</bfw_course_home_page_start>
+          <bfw_syllabus_info>
+            <syllabus_type>Url</syllabus_type>
+            <syllabus_value />
+          </bfw_syllabus_info>
+          <bfw_console_settings>
+            <show_general>true</show_general>
+            <show_navigation>true</show_navigation>
+            <show_launchpad>true</show_launchpad>
+          </bfw_console_settings>
+          <bfw_allow_sampling>true</bfw_allow_sampling>
+          <bfw_allow_purchase>true</bfw_allow_purchase>
+          <bfw_tinymce>
+            <options>launchpad_editor_options</options>
+          </bfw_tinymce>
+          <bfw_read_only>false</bfw_read_only>
+          <ActivatedDate>12/31/9999</ActivatedDate>
+          <bfw_course_description>Econportal: Stone, CoreEconomics 2e</bfw_course_description>
+          <bfw_allow_comment_sharing>true</bfw_allow_comment_sharing>
+          <bfw_shared>Unpublished</bfw_shared>
+          <bfw_search_engine_index>false</bfw_search_engine_index>
+          <bfw_facebook_integration>false</bfw_facebook_integration>
+          <bfw_allow_site_search>true</bfw_allow_site_search>
+          <bfw_allow_activation>true</bfw_allow_activation>
+          <bfw_social_commenting_integration>false</bfw_social_commenting_integration>
+          <bfw_template_learningobjectives>
+            <learningobjectives />
+          </bfw_template_learningobjectives>
+          <bfw_dashboard_learningobjectives>
+            <learningobjectives />
+          </bfw_dashboard_learningobjectives>
+          <bfw_eportfolio_learningobjectives>
+            <learningobjectives />
+          </bfw_eportfolio_learningobjectives>
+          <bfw_program_learningobjectives>
+            <learningobjectives />
+          </bfw_program_learningobjectives>
+          <bfw_generic_course id="73337">false</bfw_generic_course>
+          <meta-product-course-id>57704</meta-product-course-id>
+          <CourseProductName>[CourseNumber]-[SectionNumber] [Title],Econportal: Stone, CoreEconomics 2e</CourseProductName>
+          <CourseUserName>Michael Steele</CourseUserName>
+          <CourseTimeZone>Eastern Standard Time</CourseTimeZone>
+          <bfw_dashboard_settings>
+            <bfw_dashboard_course_home_page>PX_DASHBOARD_1COLUMN</bfw_dashboard_course_home_page>
+            <instructor_dashboard>True</instructor_dashboard>
+            <program_dashboard>True</program_dashboard>
+            <bfw_program_dashboard_course_home_page>PX_PROGRAM_DASHBOARD_1COLUMN</bfw_program_dashboard_course_home_page>
+          </bfw_dashboard_settings>
+          <meta-bfw_is_sandbox_course>false</meta-bfw_is_sandbox_course>
+          <bfw_productcourseid>57704</bfw_productcourseid>
+          <enable_learningcurve_quiz>true</enable_learningcurve_quiz>
+          <enable_homework_quiz>true</enable_homework_quiz>
+          <isdashboardactive>false</isdashboardactive>
+          <bfw_initialize_user>true</bfw_initialize_user>
+          <bfw_course_owner>9336</bfw_course_owner>
+          <meta-bfw_academic_term>5349a155-7a5c-4788-880f-f0b6fcb1ff8f</meta-bfw_academic_term>
+          <meta-bfw_course_subtype>regular</meta-bfw_course_subtype>
+          <sourceid>57704</sourceid>
+          <indexrule>Deltas</indexrule>
+
+
+          <meta-available-question-data>
+            <difficulty filterable='true' searchterm='difficulty:'  friendlyname='Difficulty'></difficulty>
+            <bloomdomain filterable='true'></bloomdomain>
+            <suggesteduse filterable='false'></suggesteduse>
+            <guidance filterable='false' />
+          </meta-available-question-data>
+        </data>
+      </course>
+    </requests>
+  </request>
+</batch>

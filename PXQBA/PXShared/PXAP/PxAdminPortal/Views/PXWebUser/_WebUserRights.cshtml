@@ -1,0 +1,132 @@
+﻿@model Bfw.PXAP.Models.PxWebUserModel
+
+<script type="text/javascript" >
+	$(document).ready(function() {
+		$("input[type='checkbox']").bind("change", function() {
+
+			var prefix = "WebUserRights.AdminTool.";
+			if ($(this).attr('name').contains("WebUserRights.QuestionBank")) prefix = "WebUserRights.QuestionBank.";
+
+			var isCurrentChecked = "false";
+
+			if ($(this).attr('name').contains(prefix)) {
+				if ($(this).attr('name').contains("None") && ($(this).attr('checked') == "checked")) {
+					$("input[type='checkbox']").each(function() {
+						if ($(this).attr('name').contains(prefix) && (!$(this).attr('name').contains("None"))) {
+							$(this).removeAttr('checked');
+						}
+
+					});
+				} else {
+					$("input[type='checkbox']").each(function() {
+						if ($(this).attr('name').contains(prefix) && (!$(this).attr('name').contains("None"))) {
+							if ($(this).attr('checked') == "checked") isCurrentChecked = "true";
+						}
+
+					});
+				}
+
+
+				if (isCurrentChecked == "false") $("input[name='" + prefix + "None']").attr('checked', 'checked');
+				if (isCurrentChecked == "true") $("input[name='" + prefix + "None']").removeAttr('checked');
+			}
+
+			
+		});			
+	});
+
+
+	
+</script>
+
+@using (Ajax.BeginForm("_SaveWebUserRights", "PXWebUser", Model, new AjaxOptions
+ {
+	 HttpMethod = "POST",
+	 UpdateTargetId = "WebUserRights",
+	 InsertionMode = InsertionMode.Replace
+ }, new { @id = "frmWebUserRights" }))
+
+ { 
+
+ <fieldset id="WebUserRights" style="width:70%; display:inherit;">
+ 	<legend id="WebUserRightsLegend" title="WebUser Rights Types" > PX Web Rights </legend>
+ 	<table style="width: 100%; margin: 0 auto;">				
+		<tr>
+			<td ><b>@Model.WebUserRights.AdminTool.ToString()</b></td>
+		</tr>
+		<tr> 
+			<td>
+				@Html.CheckBoxFor(model => model.WebUserRights.AdminTool.None) None
+			</td>
+		</tr>
+		<tr> 
+			<td>
+				@Html.CheckBoxFor(model => model.WebUserRights.AdminTool.AllowEditSandboxCourse) AllowEditSandboxCourse
+			</td>
+		</tr>
+		<tr>
+			<td>
+				@Html.CheckBoxFor(model => model.WebUserRights.AdminTool.AllowPublishCourse) AllowPublishCourse
+			</td>
+		</tr>
+		<tr>
+			<td>
+				@Html.CheckBoxFor(model => model.WebUserRights.AdminTool.AllowRevertCourse) AllowRevertCourse
+			</td>
+		</tr>		
+		<tr>
+			<td ><b>@Model.WebUserRights.QuestionBank.ToString()</b></td>
+		</tr>		
+		<tr> 
+			<td>
+				@Html.CheckBoxFor(model => model.WebUserRights.QuestionBank.None) None
+			</td>
+		</tr>
+		<tr> 
+			<td>
+				@Html.CheckBoxFor(model => model.WebUserRights.QuestionBank.AllowAddNote) AllowAddNote
+			</td>
+		</tr>
+		<tr> 
+			<td>
+				@Html.CheckBoxFor(model => model.WebUserRights.QuestionBank.AllowAddQuestion) AllowAddQuestion
+			</td>
+		</tr>
+		<tr> 
+			<td>				
+				@Html.CheckBoxFor(model => model.WebUserRights.QuestionBank.AllowEditQuestion) AllowEditQuestion
+			</td>
+		</tr>
+		<tr> 
+			<td>
+				@Html.CheckBoxFor(model => model.WebUserRights.QuestionBank.AllowFlagQuestion) AllowFlagQuestion
+			</td>
+		</tr>
+		<tr> 
+			<td>
+				@Html.CheckBoxFor(model => model.WebUserRights.QuestionBank.ShowHistory) ShowHistory
+			</td>
+		</tr>
+		<tr> 
+			<td>
+				@Html.CheckBoxFor(model => model.WebUserRights.QuestionBank.ShowQuestionBankManager) ShowQuestionBankManager
+			</td>
+		</tr>
+		<tr> 
+			<td>						
+				@Html.CheckBoxFor(model => model.WebUserRights.QuestionBank.ShowQuestionEditor) ShowQuestionEditor
+			</td>
+		</tr>
+		<tr> 
+			<td>
+				@Html.CheckBoxFor(model => model.WebUserRights.QuestionBank.ShowQuestionNotes) ShowQuestionNotes
+			</td>
+		</tr>
+		<tr>
+			<td></td> <td><input type="submit" id="btnSave" value="Save" /><input type="button" id="btnCancel" value="Cancel" onclick="$('#WebUserRights').hide();"/></td>
+		</tr>
+	
+	</table>
+ </fieldset>
+
+ }

@@ -1,0 +1,35 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>  
+        <% Html.RenderPartial("BaseHeaderScripts"); %>
+        <%= ResourceEngine.IncludesFor("~/Scripts/common.js")%>            
+        <script type="text/javascript" language="javascript">
+            //easyXDM.DomHelper.requiresJSON('<%= Url.ContentCache("~/Scripts/easyXDM/json2.js") %>');
+            jQuery(document).ready(function () {
+                PxPage.Init({
+                    html_editor_options: {},
+                    editableNote_editor_options: {},
+                    rubricText_editor_options: {},
+                    css_routes: {},
+                    routes: {},
+                    context: {
+                        BaseUrl: '<%= Url.RouteUrl("CourseSectionHome") %>',
+                        IsAuthenticated: '<% Html.RenderAction("UserAuthenticated", "Account"); %>',
+                        product_type: '<% Html.RenderAction("GetProductType", "Course"); %>',
+                        CurrentUserId: '<% Html.RenderAction("CurrentUserId", "Account"); %>',
+                        IsInstructor: '<% Html.RenderAction("IsInstructor", "Account"); %>',
+                        IsProductCourse: '<% Html.RenderAction("IsProductCourse", "Course"); %>',
+                        ZclipMoviePath: '<%= Url.ContentCache("~/Scripts/ZeroClipboard/ZeroClipboard.swf") %>'
+                    },
+                    externalurlprefix: '<%= ConfigurationManager.AppSettings["xUrlPrefix"] %>'
+                });
+            });
+        </script>
+        <asp:ContentPlaceHolder ID="HeaderAdditions" runat="server" />
+    </head>
+    <body>
+        <asp:ContentPlaceHolder ID="CenterContent" runat="server" />
+    </body>
+</html>

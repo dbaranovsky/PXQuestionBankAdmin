@@ -1,0 +1,7 @@
+<DeleteItems>
+  <Item>
+    <Where>
+/parent='TESTING'
+    </Where>
+  </Item>
+</DeleteItems>

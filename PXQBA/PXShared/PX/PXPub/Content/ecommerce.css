@@ -1,0 +1,468 @@
+﻿body {
+    background-color: transparent;
+    background-image: none;
+    margin: 0;
+    
+}
+
+.homepage-course-info {
+    background-color: transparent;
+    padding: 16px 0px 0px 24px;
+}
+
+#main {
+    top: 0px !important;
+    background-image: none !important;
+    padding: 0 !important;
+    float: left !important;
+    clear: both !important;
+    width: 100% !important;
+    height: 100% !important;
+    left: 0 !important;
+    margin-top: 12px !important;
+}
+
+.product-type-faceplate #main {
+    padding-top: 24px !important;
+}
+
+.course-title-lable {
+    width: 350px;
+    height: 25px;
+    background-repeat: no-repeat;
+}
+
+.homepage-course-info .product-banner-logo {
+    display: none;
+}
+
+.homepage-course-info .course-banner-logo 
+{
+    margin: 0;
+}
+
+/*ecom section styles */ 
+
+body.product-type-ecom #main {
+    background-image: none !important;
+    background-position: 0 18px !important;
+    background-repeat: repeat-x !important;
+    min-width: 960px;
+    overflow-x: auto;
+    overflow-y: auto;
+    top: 72px;
+    padding-top:32px;
+    position: relative;
+    float:none !important;
+}
+
+.product-type-ecom .pageContainer{
+    height: 98%;
+    padding-top: 1%;
+}
+
+.product-type-ecom #PX_HOME_ZONE_3 {
+    padding: 0 12px;
+    height: 100%;
+    width:23%;
+}
+
+.product-type-ecom #footer 
+{
+    border-top: 1px solid #ccc;
+    background-color: #fff;
+    bottom: 0;
+    height: 36px;
+    margin-top: -36px;
+    position: relative;
+    padding:0 8px;
+}
+
+.product-type-ecom #student-info a{
+    color:#fff;
+}
+#ecommerce-action-bar h2 {
+    color: #505050;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 6px 0;
+    text-transform: uppercase;
+}
+
+#ecommerce-action-bar a{
+    float:left;
+    clear:both;
+    font-size:12px;
+    color:#505050;
+}
+#ecommerce-action-bar a.what-is-link{
+    font-size:10px;
+     margin: -5px 0 10px;
+}
+#ecommerce-action-bar .instructor-links,
+#ecommerce-action-bar .student-links,
+#ecommerce-action-bar .help-links{
+    border-top: 3px solid #505050;
+    float:left;
+    clear:both;
+    width:100%;
+}
+#ecommerce-action-bar .instructor-links{
+    margin-top:50px;
+}
+#ecommerce-action-bar .instructor-links h2{
+    margin-bottom:5px;
+}
+#ecommerce-action-bar a.ecom-btns {
+    background-color: #1291C7;
+    color: #FFFFFF;
+    padding: 4px 6px;
+    text-decoration: none;
+    border-radius: 7px 7px 7px 7px;
+    font-weight:bold;
+    margin: 6px 0 12px;
+}
+
+#ecom-greeting{
+    min-height: 250px;
+}
+#ecom-greeting .ecom-not-entitled{
+	padding-top: 10px;
+    padding-bottom: 10px;
+}
+#ecom-greeting .ecom-not-entitled .ecom-not-entitled-message{
+    background: #fefdcc;
+    line-height: 1.4em;
+    font-size: 0.8em;
+    padding: 10px;
+    border: solid 1px #FFB11B;
+}
+#ecom-marketing .bookcover{
+    height:250px;
+    width: 175px;
+    background-color:#007B7B;
+    float:left;
+    margin: 0 24px;
+    background-image: url("style/images/everydaywriter.png");
+    background-size:contain;   
+ }
+
+#ecom-marketing .marketing-content {
+    float: left;
+    width: 62%;
+    border-bottom: 1px dotted #3E7287;
+    padding-bottom: 24px;
+}
+
+#ecom-marketing h1{
+    color: #333;
+    line-height:20px;
+    border-bottom: 3px solid #333;
+    text-transform:uppercase;
+   
+}
+
+#ecom-marketing p.instructor {
+    border-bottom: 1px dotted #3E7287;
+    margin-bottom: 6px;
+    padding-bottom: 6px;
+}
+
+#ecom-marketing p.instructor{
+    color: #808080;
+    font-size:12px;
+}
+
+#ecom-marketing h2{
+    line-height:36px;
+    color:#00ACDC;
+    
+}
+
+#fne-window.choose-university #fne-title-left,
+#fne-window.activate-course-fne #fne-title-left {
+    background-color: #333;
+}
+
+#fne-window.choose-university #title-text,
+#fne-window.activate-course-fne #title-text{
+    color:#fff !important;
+}
+
+#fne-window.choose-university #fne-title-action-right{
+    display:none;
+}
+
+#fne-window.choose-university #content{
+    font-size:14px;
+    padding:12px;
+    color:#4d4d4d;
+}
+
+#frmSelectDomain{
+    border-top:1px dotted #4D4D4D;
+    padding:12px 0 24px 0;
+    margin-top:12px;
+    border-bottom:3px solid #4D4D4D;
+}
+#frmSelectDomain select{
+    width:100%;
+}
+
+#fne-window.choose-university #select-domain{
+    width:170px;
+    background:#1291C7 !important;
+    color:#fff;
+    border:none;
+    text-shadow:none !important;
+}
+#fne-window.choose-university #unblock-action
+{
+     background:#D4484B !important;
+    color:#fff;
+    border:none;
+    text-shadow:none !important;
+}
+
+.ecom-courselist{
+   border-top: 3px solid #333333;
+    margin-left: 24px;
+    margin-top: 24px;
+    width: 92%;
+    overflow-y:scroll;
+    height:500px;
+}
+.ecom-courselist .ecom-courselist-items{
+    padding: 12px 0;
+    border-bottom: 1px dotted #3E7287;
+    float:left;
+    clear:both;
+    width:100%;
+}   
+
+.ecom .ecom-access-wrapper{
+    border: 5px solid #C8D265;
+    color:#C8D265;
+    padding:12px;
+}
+
+.ecom-courselist-items .course-number{
+    color:#333;
+    font-size:12px;
+    float:left;
+    clear:both;
+}
+
+.ecom-courselist-items .product-name{
+    color:#1291C7;
+    font-size:16px;
+    font-weight:bold;
+    float:left;
+    clear:both;
+    line-height: 21px;
+    text-decoration: none;
+}
+
+.ecom-courselist-items .instructor-name{
+    color:#808080;
+    font-size:14px;
+    float:left;
+    clear:both;
+}
+.activate-course-fne .course-info,
+form .course-info{
+    width:100%;
+    border-top:3px solid #4d4d4d;
+    border-bottom: 3px solid #4d4d4d;
+    margin-bottom:24px;
+}
+
+.activate-course-fne 
+{
+    overflow: auto;
+}
+
+.activate-course-fne .course-info tr,
+form .course-info tr{
+    border-bottom:1px dotted #808080;
+}
+
+.activate-course-fne .course-info td,
+form .course-info td{
+    font-size:11px;
+    line-height:26px;
+}
+
+.activate-course-fne .course-info .first-col,
+form .course-info .first-col {
+    width: 150px;
+    background-color: #EEF9FE;
+    text-align: right;
+    padding-right: 12px;
+}
+
+.activate-course-fne .course-info .second-col,
+form .course-info .second-col {
+    padding-left: 12px;
+    /* color:#D4484B; */
+}
+
+.course-info .second-col select{
+    width:100%;
+}
+
+ .activate-course-fne .activation-bookmark-btn button#unblock-action{
+    width:170px;
+    color:#fff;
+    background:#1291C7 !important;
+    border:none;
+    text-shadow:none;
+}
+
+.activate-course-fne .creation-url-descript{
+    font-size:11px;
+    margin-left:11px;
+    color:#333;  
+}
+
+.activate-course-fne #activatecourse{
+    padding:0px;
+}
+
+.course-item #greeting{
+    color:#666;
+    
+}
+
+.course-item .course-greeting-header{
+    font-size:20px;
+    color:#333;
+    line-height:32px;
+}
+
+.course-item .description{
+    font-size:14px;
+    line-height:16px;
+    margin-bottom:12px;
+}
+
+.course-continue,
+.course-item .course-continue,
+.course-item .find-course-continue{
+    background-color:#1291C7;
+    width:170px;
+    border:none;
+    margin-right:12px;
+    color:#fff;
+    font-size: 13px;
+}
+
+.course-item .find-course-continue-disabled {
+    background-color:#DDD;
+    border:none;
+    color: #AAAAAA;
+    cursor: default;
+    font-size: 13px;
+    font-weight: bold;
+    height:42px;
+    margin-right:12px;
+    width:170px;
+}
+
+#createcourse .course-continue
+ {
+    width: 100px;
+ }
+ a.course-continue 
+ {
+    font-size: 13px;
+    padding: 4px 0;
+    text-align: center;
+    color:#fff;
+ }
+ 
+.course-item .wrong-link a,
+.course-item .wrong-link{
+    font-size:12px;
+    color:#4d4d4d;
+}
+
+.student-find-course-header{
+    font-size:20px;
+    color:#333;
+    margin-bottom:14px;
+}
+
+ a.creation-button{
+    font-size: 14px;
+    padding: 20px;
+    text-decoration: none;
+    line-height: 18px;
+    color: #057EE0;
+}
+
+ a.creation-button:hover{
+    text-decoration:underline;
+}
+
+ a.creation-button:active{
+    text-decoration:underline;
+    color:#ff9100;
+}
+
+.page-action-Enroll #PX_HOME_ZONE_2,
+.page-action-EnrollmentConfirmation #PX_HOME_ZONE_2,
+.page-action-Entitled #PX_HOME_ZONE_2{
+    width:97%;
+}
+
+.page-action-Enroll #PX_HOME_ZONE_3,
+.page-action-EnrollmentConfirmation #PX_HOME_ZONE_3{
+    display:none;
+}
+
+#enroll-course-selection .enroll-generic-course{
+    color: #4D4D4D;
+    float: right;
+    font-size: 12px;
+    padding-top: 12px;
+}
+
+#px-dialog #PX_HOME_ZONE_2 {        
+	width: 98%;
+}
+
+.join-course-confirmation-disabled {
+    color: #AAAAAA !important;
+    background: none repeat scroll 0 0 #DDDDDD !important;
+    cursor:default !important;
+}
+
+#lmsDiv.EnrollForm, #lmsDiv.GenericCourse {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+#lmsDiv.EnrollForm input, #lmsDiv.GenericCourse input {
+    font-family: Arial;
+    font-size: 13px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    margin-bottom: 0px;
+}
+#lmsDiv.EnrollForm i, #lmsDiv.GenericCourse i {
+    color: #777;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 11px;
+    margin-left: 2px;
+}
+.unenrolledText {
+    background-color: #EEF9FE ;
+    border-width: thin;
+    border-style: solid;
+    font-size: 13px;
+    padding: 10px 10px 10px 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

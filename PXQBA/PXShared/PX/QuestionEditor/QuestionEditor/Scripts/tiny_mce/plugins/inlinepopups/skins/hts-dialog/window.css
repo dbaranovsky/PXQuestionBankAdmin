@@ -1,0 +1,94 @@
+/* HTS dialog skin */
+
+/* Reset */
+.hts-dialog, .hts-dialog div, .hts-dialog span, .hts-dialog a {vertical-align:baseline; text-align:left; position:absolute; border:0; padding:0; margin:0; background:transparent; font-family:Arial,Verdana; font-size:11px; color:#000; text-decoration:none; font-weight:normal; width:auto; height:auto; overflow:hidden; display:block}
+
+/* General */
+.hts-dialog {position:absolute; direction:ltr;-moz-box-shadow: 5px 5px 5px #DDDDDD;-webkit-box-shadow:5px 5px 5px rgba(0, 0, 0, 0.3);border-right:15px solid #edfaff;border-left:15px solid #edfaff;border-bottom:15px solid #edfaff;border-top:10px solid #edfaff;}
+.hts-dialog .mceWrapper {position:static; background: #edfaff;height:100%;width:100%;}
+.mceEventBlocker {position:fixed; left:0; top:0; background:url(img/horizontal.gif) no-repeat 0 -75px; width:100%; height:100%}
+.hts-dialog .mcePlaceHolder {border:1px solid #000; background:#888; top:0; left:0; opacity:0.5; -ms-filter:'alpha(opacity=50)'; filter:alpha(opacity=50)}
+.hts-dialog_modalBlocker {position:fixed; left:0; top:0; width:100%; height:100%; background:#FFF; opacity:0.6; -ms-filter:'alpha(opacity=60)'; filter:alpha(opacity=60); display:none}
+
+/* Top */
+.hts-dialog .mceTop, .hts-dialog .mceTop div {top:0; width:100%; height:23px;}
+.hts-dialog .mceTop .mceLeft {width:6px; background:url(img/corners.gif)}
+.hts-dialog .mceTop .mceCenter {right:6px; width:100%; height:23px; background:url(img/horizontal.gif) 12px 0; clip:rect(auto auto auto 12px)}
+.hts-dialog .mceTop .mceRight {right:0; width:6px; height:23px; background:url(img/corners.gif) -12px 0}
+.hts-dialog .mceTop span {width:100%; vertical-align:middle; line-height:23px; font-weight:bold; padding-left:10px;}
+
+.hts-dialog .mceFocus .mceTop .mceLeft {background:none;}
+.hts-dialog .mceFocus .mceTop .mceCenter {background:none;}
+.hts-dialog .mceFocus .mceTop .mceRight {background:none;}
+.hts-dialog .mceFocus .mceTop span {}
+
+/* Middle */
+.hts-dialog .mceMiddle, .hts-dialog .mceMiddle div {top:0}
+.hts-dialog .mceMiddle {width:99.2%; height:98.7%; clip:rect(23px auto auto auto)}
+.hts-dialog .mceMiddle .mceLeft {left:0; width:5px; height:100%; background:none;}
+.hts-dialog .mceMiddle span {top:23px; left:5px; width:100%; height:100%; background:#FFF}
+.hts-dialog .mceMiddle .mceRight {right:0; width:5px; height:100%; none;}
+
+/* Bottom */
+.hts-dialog .mceBottom, .hts-dialog .mceBottom div {height:6px}
+.hts-dialog .mceBottom {left:0; bottom:0; width:100%}
+.hts-dialog .mceBottom div {top:0}
+.hts-dialog .mceBottom .mceLeft {left:0; width:5px; background:none;}
+.hts-dialog .mceBottom .mceCenter {left:5px; width:100%; background:none;}
+.hts-dialog .mceBottom .mceRight {right:0; width:5px; background: none;}
+.hts-dialog .mceBottom span {display:none}
+.hts-dialog .mceStatusbar .mceBottom, .hts-dialog .mceStatusbar .mceBottom div {height:23px}
+.hts-dialog .mceStatusbar .mceBottom .mceLeft {background:url(img/corners.gif) -29px 0}
+.hts-dialog .mceStatusbar .mceBottom .mceCenter {background:url(img/horizontal.gif) 0 -52px}
+.hts-dialog .mceStatusbar .mceBottom .mceRight {background:url(img/corners.gif) -24px 0}
+.hts-dialog .mceStatusbar .mceBottom span {display:block; left:7px; font-family:Arial, Verdana; font-size:11px; line-height:23px}
+
+/* Actions */
+.hts-dialog a {width:29px; height:16px; top:3px;}
+.hts-dialog .mceClose {right:6px; background:url(img/buttons.gif) -87px 0}
+.hts-dialog .mceMin {display:none; right:68px; background:url(img/buttons.gif) 0 0}
+.hts-dialog .mceMed {display:none; right:37px; background:url(img/buttons.gif) -29px 0}
+.hts-dialog .mceMax {display:none; right:37px; background:url(img/buttons.gif) -58px 0}
+.hts-dialog .mceMove {display:none;width:100%;cursor:move;background:url(img/corners.gif) no-repeat -100px -100px}
+.hts-dialog .mceMovable .mceMove {display:block}
+.hts-dialog .mceFocus .mceClose {display:none;right:6px; background:url(img/buttons.gif) -87px -16px}
+.hts-dialog .mceFocus .mceMin {right:68px; background:url(img/buttons.gif) 0 -16px}
+.hts-dialog .mceFocus .mceMed {right:37px; background:url(img/buttons.gif) -29px -16px}
+.hts-dialog .mceFocus .mceMax {right:37px; background:url(img/buttons.gif) -58px -16px}
+.hts-dialog .mceFocus .mceClose:hover {right:6px; background:url(img/buttons.gif) -87px -32px}
+.hts-dialog .mceFocus .mceClose:hover {right:6px; background:url(img/buttons.gif) -87px -32px}
+.hts-dialog .mceFocus .mceMin:hover {right:68px; background:url(img/buttons.gif) 0 -32px}
+.hts-dialog .mceFocus .mceMed:hover {right:37px; background:url(img/buttons.gif) -29px -32px}
+.hts-dialog .mceFocus .mceMax:hover {right:37px; background:url(img/buttons.gif) -58px -32px}
+
+/* Resize */
+.hts-dialog .mceResize {top:auto; left:auto; display:none; width:5px; height:5px; background:url(img/horizontal.gif) no-repeat 0 -75px}
+.hts-dialog .mceResizable .mceResize {display:none}
+.hts-dialog .mceResizable .mceMin, .hts-dialog .mceMax {display:none}
+.hts-dialog .mceMinimizable .mceMin {display:block}
+.hts-dialog .mceMaximizable .mceMax {display:block}
+.hts-dialog .mceMaximized .mceMed {display:block}
+.hts-dialog .mceMaximized .mceMax {display:none}
+.hts-dialog a.mceResizeN {top:0; left:0; width:100%; cursor:n-resize}
+.hts-dialog a.mceResizeNW {top:0; left:0; cursor:nw-resize}
+.hts-dialog a.mceResizeNE {top:0; right:0; cursor:ne-resize}
+.hts-dialog a.mceResizeW {top:0; left:0; height:100%; cursor:w-resize;}
+.hts-dialog a.mceResizeE {top:0; right:0; height:100%; cursor:e-resize}
+.hts-dialog a.mceResizeS {bottom:0; left:0; width:100%; cursor:s-resize}
+.hts-dialog a.mceResizeSW {bottom:0; left:0; cursor:sw-resize}
+.hts-dialog a.mceResizeSE {bottom:0; right:0; cursor:se-resize}
+
+/* Alert/Confirm */
+.hts-dialog .mceButton {font-weight:bold; bottom:10px; width:80px; height:30px; background:url(img/button.gif); line-height:30px; vertical-align:middle; text-align:center; outline:0}
+.hts-dialog .mceMiddle .mceIcon {left:15px; top:35px; width:32px; height:32px}
+.hts-dialog .mceAlert .mceMiddle span, .hts-dialog .mceConfirm .mceMiddle span {background:transparent;left:60px; top:35px; width:320px; height:50px; font-weight:bold; overflow:auto; white-space:normal}
+.hts-dialog a:hover {font-weight:bold;}
+.hts-dialog .mceAlert .mceMiddle, .hts-dialog .mceConfirm .mceMiddle {background:#D6D7D5}
+.hts-dialog .mceAlert .mceOk {left:50%; top:auto; margin-left: -40px}
+.hts-dialog .mceAlert .mceIcon {background:url(img/alert.gif)}
+.hts-dialog .mceConfirm .mceOk {left:50%; top:auto; margin-left: -90px}
+.hts-dialog .mceConfirm .mceCancel {left:50%; top:auto}
+.hts-dialog .mceConfirm .mceIcon {background:url(img/confirm.gif)}
+
+
+

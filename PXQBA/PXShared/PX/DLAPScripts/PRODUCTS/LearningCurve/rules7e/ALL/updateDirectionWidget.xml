@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<batch>
+	<request cmd="putitems">
+		<requests>
+			<item itemid="PX_DirectionsWidget" entityid="-entityid">
+				<data>
+					<description>
+						&lt;div class="course-directions-widget"&gt;
+						&lt;a class="activation-link register-lc"&gt;Enable Student Registration &lt;span class="icon"&gt;&lt;/span&gt;&lt;/a&gt;
+						&lt;div class="top"&gt;
+						&lt;h1&gt;Here's how it works:&lt;/h1&gt;
+						&lt;ul&gt;
+						&lt;li&gt;Choose which &lt;i&gt;LearningCurve&lt;/i&gt; activities you want to assign.&lt;/li&gt;
+						&lt;li&gt;Enable student registration and enter your course information.&lt;/li&gt;
+						&lt;li&gt;Use reports to see how your class and students are doing on &lt;i&gt;LearningCurve&lt;/i&gt; activities.&lt;/li&gt;
+						&lt;li&gt;To create a new course, select "create new course" in the top banner.&lt;/li&gt;
+						&lt;/ul&gt;
+						&lt;/div&gt;
+						&lt;div class="bottom"&gt;
+						VIEW SAMPLE: &lt;span&gt;&lt;a href="http://learningcurve.bfwpub.com/index.php?file=english/Rules7e/Active_Passive&amp;show_report=true&amp;sample_report_popUp=true&amp;disable_links=true"  class="fne-link useIFrameForExternal "&gt;Class Activity Report&lt;/a&gt;&lt;/span&gt; | 
+						&lt;span&gt;&lt;a href="http://learningcurve.bfwpub.com/index.php?file=english/Rules7e/Active_Passive&amp;show_report=true&amp;report_type=showAll&amp;sample_report_popUp=true&amp;disable_links=true " class="fne-link useIFrameForExternal "&gt;Student Activity Report&lt;/a&gt;&lt;/span&gt;
+						&lt;/div&gt;
+						&lt;/div&gt;
+					</description>
+				</data>
+			</item>
+		</requests>
+	</request>
+</batch>

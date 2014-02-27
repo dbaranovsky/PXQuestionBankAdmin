@@ -1,0 +1,58 @@
+﻿<EntityDescriptor ID="_ad1b0fbf-cad4-4fe5-ac59-ee2138a69ad5" entityID="urn:macillan:platx" xmlns="urn:oasis:names:tc:SAML:2.0:metadata">
+  <SPSSODescriptor WantAssertionsSigned="true" AuthnRequestsSigned="true" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+    <KeyDescriptor use="signing">
+      <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <X509Data>
+          <X509Certificate>
+            MIIC/DCCAeSgAwIBAgIQTbcyyCIyd75HNG9tQfJbKzANBgkqhkiG9w0BAQUFADAn
+            MSUwIwYDVQQDExxkbmV3bWFuMTQxLm5ld3lvcmsuaGJwdWIubmV0MB4XDTEyMDYw
+            NDE4MjU0OFoXDTEzMDYwNDAwMDAwMFowJzElMCMGA1UEAxMcZG5ld21hbjE0MS5u
+            ZXd5b3JrLmhicHViLm5ldDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEB
+            AL5v7qGQNlGzF58hc571QFy3i72GvGlbExT8pOQRG8NKOinNQJD+KB++fnyUthHs
+            UCEXDVCbsWu2pu0bYHtjq0DmkK9kOj7C5BulB3UAO2fYKi6mvSQCyxz063t0Xqk5
+            YRd0PcMM5wzIBfeO/Lp3QqvCST2rCow3M8U6ypOYOHimAZTHI7g2liHcbtvCU/um
+            phy9DxxuwbsyvCpamUiGUEgpX/pdTATCBzhhcnf+6SVZpoVWjiM8zgiqgJOxE2TE
+            lESVThhpdhcpLfgOP8Xl1asEwiR2JVgDttRyvVYR5Yh7MZVpUCqqNOu7R6EMaxDf
+            m8mUgPKBTG+wpPWF58cEphkCAwEAAaMkMCIwCwYDVR0PBAQDAgQwMBMGA1UdJQQM
+            MAoGCCsGAQUFBwMBMA0GCSqGSIb3DQEBBQUAA4IBAQCfrd4Lm8PmuS/WFPq9kMrN
+            dPgolrFjkI3jt2io3S2ZW4Cj0/QhRUiFKooAP5eMH77RabADeLzSAVStcKG/RIer
+            edM75H+1ScTY+PBXlpO+QS0arJJMqom5UgUeWaFSfaSn3Ekx0BlAWtcSym0ORF7W
+            OVOAbrCLeqprWpYrJxWDPsWhr3PXsloMVmWaMH+6Pd/m7GZ4iZ2gPRfYgC8mAToY
+            lguPvf5rwxH9rLzDWyYz+tSDn9g1pVRP1kutQuMBaUcXXYz7sEsavVyOAfSUxkH+
+            nFFrhilvC02n0dTH+F4dkoaJC+so+FeARJdBdC4ofr1d7eO3KQbBvWhAv/nq6j45
+          </X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </KeyDescriptor>
+    <KeyDescriptor use="encryption">
+      <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <X509Data>
+          <X509Certificate>
+            MIIC/DCCAeSgAwIBAgIQTbcyyCIyd75HNG9tQfJbKzANBgkqhkiG9w0BAQUFADAn
+            MSUwIwYDVQQDExxkbmV3bWFuMTQxLm5ld3lvcmsuaGJwdWIubmV0MB4XDTEyMDYw
+            NDE4MjU0OFoXDTEzMDYwNDAwMDAwMFowJzElMCMGA1UEAxMcZG5ld21hbjE0MS5u
+            ZXd5b3JrLmhicHViLm5ldDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEB
+            AL5v7qGQNlGzF58hc571QFy3i72GvGlbExT8pOQRG8NKOinNQJD+KB++fnyUthHs
+            UCEXDVCbsWu2pu0bYHtjq0DmkK9kOj7C5BulB3UAO2fYKi6mvSQCyxz063t0Xqk5
+            YRd0PcMM5wzIBfeO/Lp3QqvCST2rCow3M8U6ypOYOHimAZTHI7g2liHcbtvCU/um
+            phy9DxxuwbsyvCpamUiGUEgpX/pdTATCBzhhcnf+6SVZpoVWjiM8zgiqgJOxE2TE
+            lESVThhpdhcpLfgOP8Xl1asEwiR2JVgDttRyvVYR5Yh7MZVpUCqqNOu7R6EMaxDf
+            m8mUgPKBTG+wpPWF58cEphkCAwEAAaMkMCIwCwYDVR0PBAQDAgQwMBMGA1UdJQQM
+            MAoGCCsGAQUFBwMBMA0GCSqGSIb3DQEBBQUAA4IBAQCfrd4Lm8PmuS/WFPq9kMrN
+            dPgolrFjkI3jt2io3S2ZW4Cj0/QhRUiFKooAP5eMH77RabADeLzSAVStcKG/RIer
+            edM75H+1ScTY+PBXlpO+QS0arJJMqom5UgUeWaFSfaSn3Ekx0BlAWtcSym0ORF7W
+            OVOAbrCLeqprWpYrJxWDPsWhr3PXsloMVmWaMH+6Pd/m7GZ4iZ2gPRfYgC8mAToY
+            lguPvf5rwxH9rLzDWyYz+tSDn9g1pVRP1kutQuMBaUcXXYz7sEsavVyOAfSUxkH+
+            nFFrhilvC02n0dTH+F4dkoaJC+so+FeARJdBdC4ofr1d7eO3KQbBvWhAv/nq6j45
+          </X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </KeyDescriptor>
+    <AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://qa.whfreeman.com/beta/saml/post/ac" index="0" />
+    <AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://qa.whfreeman.com/beta/secure/saml/post/ac" index="1" />
+    <AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://qa.bedfordstmartins.com/beta/saml/post/ac" index="2" />
+    <AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://qa.bedfordstmartins.com/beta/secure/saml/post/ac" index="3" />
+    <AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://qa.worthpublishers.com/beta/saml/post/ac" index="4" />
+    <AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://qa.worthpublishers.com/beta/secure/saml/post/ac" index="5" />
+  </SPSSODescriptor>
+</EntityDescriptor>

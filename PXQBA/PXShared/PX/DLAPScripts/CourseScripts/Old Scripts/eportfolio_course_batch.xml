@@ -1,0 +1,883 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<batch>
+  <request cmd="updatecourses">
+    <requests>
+      <course courseid="36817" domainid="6650" title="bedford st martins eportfolio" reference="" type="Range">
+        <data>
+          <bfw_tocs>
+            <course_materials type="bfw_toc">Course Materials</course_materials>
+            <portfolioteaching type="bfw_toc">Portfolio Teaching</portfolioteaching>
+            <portfoliokeeping type="bfw_toc">Portfolio Keeping</portfoliokeeping>
+          </bfw_tocs>
+          <bfw_infinite_scroll>false</bfw_infinite_scroll>
+		  <show_student_view_link>false</show_student_view_link>
+          <bfw_tab_settings>
+            <view_tab>
+              <show_policies>false</show_policies>
+              <show_assignment_details>true</show_assignment_details>
+              <show_rubrics>true</show_rubrics>
+              <show_learning_objectives>true</show_learning_objectives>
+            </view_tab>
+            <assign_tab>
+              <show_make_gradeable>true</show_make_gradeable>
+              <show_allow_late_submissions>true</show_allow_late_submissions>
+              <show_schedule_reminder>true</show_schedule_reminder>
+              <show_subcontent_creation>true</show_subcontent_creation>
+              <show_assigned_on_same_day>true</show_assigned_on_same_day>
+              <show_completion_category>true</show_completion_category>
+              <show_gradebook_category>true</show_gradebook_category>
+              <show_syllabus_category>true</show_syllabus_category>
+              <show_points_possible>true</show_points_possible>
+              <show_send_reminder>true</show_send_reminder>
+              <show_include_score>true</show_include_score>
+              <show_calculation_type>true</show_calculation_type>
+              <show_mark_as_complete>true</show_mark_as_complete>
+            </assign_tab>
+          </bfw_tab_settings>
+          <meta-bfw_course_type>Eportfolio</meta-bfw_course_type>
+          <bfw_course_type>Eportfolio</bfw_course_type>
+          <bfw_assessment_style>
+            <rubric_management_style>
+              <show_preview_on_left>true</show_preview_on_left>
+              <show_edit_on_left>true</show_edit_on_left>
+              <show_view_alignments>true</show_view_alignments>
+              <show_edit_on_right>false</show_edit_on_right>
+              <show_preview_on_right>false</show_preview_on_right>
+              <show_left_column>true</show_left_column>
+              <show_right_column>true</show_right_column>
+              <rubric_alignment_views>
+                <assignment>true</assignment>
+                <eportfolio />
+                <rubric>true</rubric>
+              </rubric_alignment_views>
+            </rubric_management_style>
+            <objective_management_style>
+              <show_left_column>true</show_left_column>
+              <show_right_column>true</show_right_column>
+              <show_edit_on_left>true</show_edit_on_left>
+              <show_edit_on_right>false</show_edit_on_right>
+              <show_view_alignments>true</show_view_alignments>
+              <learningobj_alignment_views>
+                <assignment>true</assignment>
+                <eportfolio />
+                <objective>true</objective>
+              </learningobj_alignment_views>
+            </objective_management_style>
+          </bfw_assessment_style>
+          <bfw_allow_comment_sharing>true</bfw_allow_comment_sharing>
+          <bfw_shared>Unpublished</bfw_shared>
+        </data>
+      </course>
+    </requests>
+  </request>
+  <request cmd="putitems">
+    <requests>
+        <item itemid="PX_RUBRICS" entityid="36817">
+            <data>
+                <parent>PX_ROOT</parent>
+                <sequence>a</sequence>
+                <title>PX_RUBRICS</title>
+                <bfw_type>bfw_toc_document</bfw_type>
+                <bfw_subtype>FOLDER</bfw_subtype>
+                <bfw_meta>
+                </bfw_meta>
+            </data>
+        </item>
+      <item itemid="PX_HOME_EPORTFOLIO" entityid="36817">
+        <data>
+          <parent>PX_PAGES</parent>
+          <sequence>b</sequence>
+          <title>PX_HOME_EPORTFOLIO</title>
+          <abbreviation>PXHOMEEPORTFOLIO</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_HOME_EPORTFOLIO_ZONES" entityid="36817">
+        <data>
+          <parent>PX_HOME_EPORTFOLIO</parent>
+          <sequence>a</sequence>
+          <title>PX_HOME_EPORTFOLIO_ZONES</title>
+          <abbreviation>PXZONESEPORTFOLIO</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_HOME_EPORTFOLIO_ZONE_1" entityid="36817">
+        <data>
+          <parent>PX_HOME_EPORTFOLIO_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_HOME_EPORTFOLIO_ZONE_1</title>
+          <abbreviation>PXHOMEZONEEPORTFOLIO1</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets />
+          <bfw_support_hide>true</bfw_support_hide>
+        </data>
+      </item>
+      <item itemid="PX_HOME_EPORTFOLIO_ZONE_2" entityid="36817">
+        <data>
+          <parent>PX_HOME_EPORTFOLIO_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_HOME_EPORTFOLIO_ZONE_2</title>
+          <abbreviation>PXHOMEZONEEPORTFOLIO2</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets />
+        </data>
+      </item>
+      <item itemid="PX_HOME_EPORTFOLIO_ZONE_3" entityid="36817">
+        <data>
+          <parent>PX_HOME_EPORTFOLIO_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_HOME_EPORTFOLIO_ZONE_3</title>
+          <abbreviation>PXHOMEZONEEPORTFOLIO3</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets />
+        </data>
+      </item>
+      <item itemid="PX_HOME_EPORTFOLIODASHBOARD" entityid="36817">
+        <data>
+          <parent>PX_PAGES</parent>
+          <sequence>b</sequence>
+          <title>PX_HOME_EPORTFOLIODASHBOARD</title>
+          <abbreviation>PXHOMEEPORTFOLIODASHBOARD</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_HOME_EPORTFOLIODASHBOARD_ZONES" entityid="36817">
+        <data>
+          <parent>PX_HOME_EPORTFOLIODASHBOARD</parent>
+          <sequence>a</sequence>
+          <title>PX_HOME_EPORTFOLIODASHBOARD_ZONES</title>
+          <abbreviation>PXHOMEEPORTFOLIODASHBOARDZONES</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_HOME_EPORTFOLIODASHBOARD_ZONE_2" entityid="36817">
+        <data>
+          <parent>PX_HOME_EPORTFOLIODASHBOARD_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_HOME_EPORTFOLIO_ZONE_2</title>
+          <abbreviation>PXHOMEZONEEPORTFOLIO2</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets>
+            <widget type="PX_EportfolioCourseWidget" displayName="Eportfolio Dashboard" />
+          </bfw_allowed_widgets>
+        </data>
+      </item>
+      <item itemid="PX_HOME_EPORTFOLIODASHBOARD_ZONE_3" entityid="36817">
+        <data>
+          <parent>PX_HOME_EPORTFOLIODASHBOARD_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_HOME_EPORTFOLIO_ZONE_3</title>
+          <abbreviation>PXHOMEZONEEPORTFOLIO3</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets />
+        </data>
+      </item>
+      <item itemid="PX_EportfolioCourseWidget" entityid="36817">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_EPORTFOLIODASHBOARD_ZONE_2</parent>
+          <sequence />
+          <title>Dashboard</title>
+          <abbreviation>ecw</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_EportfolioCourseWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="DashBoardWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_EportfolioCourseWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_EportfolioCourseSettingsWidget" entityid="36817">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_EPORTFOLIO_ZONE_3</parent>
+          <sequence />
+          <title>Eportfolio Home Page</title>
+          <abbreviation>ecw</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_EportfolioCourseSettingsWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="EportfolioCourseSettingsWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_EportfolioCourseSettingsWidget_template</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_EportfolioCourseCustomizationWidget" entityid="36817">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_EPORTFOLIO_ZONE_1</parent>
+          <sequence />
+          <title>Eportfolio Home Page</title>
+          <abbreviation>ecw</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_EportfolioCourseCustomizationWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="EportfolioCustomizeCourseWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_EportfolioCourseCustomizationWidget_template</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_ProfileSummaryWidget" entityid="36817">
+		<data>
+			<type>CustomActivity</type>
+			<parent>PX_HOME_EPORTFOLIO_ZONE_2</parent>
+			<sequence>f</sequence>
+			<title>User Profile Roster</title>
+			<abbreviation>USERPROFILEROSTER</abbreviation>
+			<bfw_type>Widget</bfw_type>
+			<bfw_subtype>PX_UserProfile</bfw_subtype>
+			<bfw_display_flags>
+				<display>instructor</display>
+				<display>student</display>
+			</bfw_display_flags>
+			<bfw_widget_callbacks>
+				<method name="View" controller="ProfileSummaryWidget" action="Summary" fne="false" />
+			</bfw_widget_callbacks>
+			<bfw_properties>
+				 <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+				<bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+			</bfw_properties>
+			<bfw_tocs>
+				<bfw_toc_contents parentid="PX_WIDGETS" sequence="_f" />
+			</bfw_tocs>
+		</data>
+      </item>
+      <item itemid="PX_EportfolioCourseSaveAsTemplateWidget" entityid="36817">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_EPORTFOLIO_ZONE_2</parent>
+          <sequence>b</sequence>
+          <title>Save as Template</title>
+          <abbreviation>sat</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_EportfolioCourseSaveAsTemplateWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="EportfolioCourseSaveAsTemplateWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template />
+          <bfw_properties>
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+          </bfw_properties>
+        </data>
+      </item>
+    </requests>
+  </request>
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_EportfolioCourseWidget" entityid="36817">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_EPORTFOLIODASHBOARD_ZONE_2</parent>
+          <sequence />
+          <title>Dashboard</title>
+          <abbreviation>ecw</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_EportfolioCourseWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="DashBoardWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_EportfolioCourseWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_EportfolioCourseSettingsWidget" entityid="36817">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_EPORTFOLIO_ZONE_3</parent>
+          <sequence />
+          <title>Eportfolio Home Page</title>
+          <abbreviation>ecw</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_EportfolioCourseSettingsWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="EportfolioCourseSettingsWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_EportfolioCourseSettingsWidget_template</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_EportfolioCourseCustomizationWidget" entityid="36817">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_EPORTFOLIO_ZONE_1</parent>
+          <sequence />
+          <title>Eportfolio Home Page</title>
+          <abbreviation>ecw</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_EportfolioCourseCustomizationWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="EportfolioCustomizeCourseWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_EportfolioCourseCustomizationWidget_template</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_ActivateButtonWidget" entityid="36817">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_EPORTFOLIO_ZONE_2</parent>
+          <sequence />
+          <title>Activate Button</title>
+          <abbreviation>ecw</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_ActivateButtonWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="EportfolioCourseActivateButtonWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template />
+          <bfw_properties>
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+        </data>
+      </item>
+      <item itemid="PX_ProfileSummaryWidget" entityid="36817">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_EPORTFOLIO_ZONE_2_DELETED</parent>
+          <sequence />
+          <title>Profile</title>
+          <abbreviation>ecw</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_ProfileSummaryWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="ProfileSummaryWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template />
+          <bfw_properties>
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+        </data>
+      </item>
+      <item itemid="PX_EportfolioCourseSaveAsTemplateWidget" entityid="36817">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_EPORTFOLIO_ZONE_2</parent>
+          <sequence>b</sequence>
+          <title>Save as Template</title>
+          <abbreviation>sat</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_EportfolioCourseSaveAsTemplateWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="EportfolioCourseSaveAsTemplateWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template />
+          <bfw_properties>
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+        </data>
+      </item>
+    </requests>
+  </request>
+  <request>
+    <requests>
+      <item itemid="PX_PRIMARY_EPORTFOLIO" version="1" entityid="36817" creationdate="2012-02-06T21:11:53.23Z" creationby="7" modifieddate="2012-02-06T21:11:53.23Z" modifiedby="7">
+        <data>
+          <parent>PX_MENUS</parent>
+          <title>Primary Navigation</title>
+          <bfw_type>Menu</bfw_type>
+          <bfw_tocid>-tocid-</bfw_tocid>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+        </data>
+      </item>
+      <item itemid="PX_PRIMARY_EPORTFOLIO_TEMPLATES" version="1" entityid="36817" creationdate="2012-02-06T21:11:53.23Z" creationby="7" modifieddate="2012-02-06T21:11:53.23Z" modifiedby="7">
+        <data>
+          <parent>PX_MENUS</parent>
+          <title>Primary Navigation</title>
+          <bfw_type>Menu</bfw_type>
+          <bfw_tocid>-tocid-</bfw_tocid>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_HOME" entityid="36817">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PRIMARY_EPORTFOLIO</parent>
+          <sequence>a</sequence>
+          <title>HOME</title>
+          <abbreviation>HOME</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>1</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <bfw_type>MenutItem</bfw_type>
+          <bfw_menu_created_by>PX_MENU_ITEM_HOME_TEMPLATE</bfw_menu_created_by>
+          <bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Home" controller="" action="" url="" type="" route="CourseSectionHome" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_COURSEMATERIALS_TEMPLATE" version="1" entityid="36817">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PRIMARY_EPORTFOLIO_TEMPLATES</parent>
+          <sequence>d</sequence>
+          <title>Course Materials</title>
+          <abbreviation>CMATERIALS</abbreviation>
+          <bfw_type>MenutItem</bfw_type>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="CourseMaterials" controller="CourseMaterials" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_COURSEMATERIALS" entityid="36817">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PRIMARY_EPORTFOLIO</parent>
+          <sequence>d</sequence>
+          <title>COURSE MATERIALS</title>
+          <abbreviation>CMATERIALS</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>1</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <bfw_type>MenutItem</bfw_type>
+          <bfw_menu_created_by>PX_MENU_ITEM_COURSEMATERIALS_TEMPLATE</bfw_menu_created_by>
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="CourseMaterials" controller="CourseMaterials" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_EBOOK" version="1" entityid="36817">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PRIMARY_EPORTFOLIO</parent>
+          <sequence>h</sequence>
+          <title>e-BOOKS</title>
+          <abbreviation>ebk</abbreviation>
+          <bfw_type>MenutItem</bfw_type>
+          <bfw_menu_created_by>PX_MENU_ITEM_EBOOK_TEMPLATE</bfw_menu_created_by>
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="EbookBrowser" controller="EbookBrowser" action="Selection" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_ASSESSMENT_TEMPLATE" version="1" entityid="36817">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PRIMARY_EPORTFOLIO_TEMPLATES</parent>
+          <sequence>c</sequence>
+          <title>Assessment</title>
+          <abbreviation>ASSESSMENT</abbreviation>
+          <bfw_type>MenutItem</bfw_type>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Assessment" controller="Assessment" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_ASSESSMENT" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PRIMARY_EPORTFOLIO</parent>
+          <sequence>c</sequence>
+          <title>ASSESSMENT</title>
+          <abbreviation>ASSESSMENT</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>1</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <bfw_type>MenutItem</bfw_type>
+          <bfw_menu_created_by>PX_MENU_ITEM_ASSESSMENT_TEMPLATE</bfw_menu_created_by>
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Assessment" controller="Assessment" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_EPORTFOLIO_TEMPLATE" version="1" entityid="36817">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PRIMARY_EPORTFOLIO_TEMPLATES</parent>
+          <sequence>b</sequence>
+          <title>ePortfolio</title>
+          <abbreviation>ePortfolio</abbreviation>
+          <bfw_type>MenutItem</bfw_type>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="eportfoliobrowser" controller="eportfoliobrowser" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item id="PX_MENU_ITEM_EPORTFOLIO" entityid="36817">
+          <data>
+            <type>CustomActivity</type>
+            <parent>PX_PRIMARY_EPORTFOLIO</parent>
+            <sequence>b</sequence>
+            <title>e-PORTFOLIO</title>
+            <abbreviation>ePortfolio</abbreviation>
+            <timetocomplete>PT1M</timetocomplete>
+            <category>1</category>
+            <period inherit="true">0</period>
+            <groupsetid>-1</groupsetid>
+            <weight>100</weight>
+            <gradeentry>1</gradeentry>
+            <inputtable inherit="true">0</inputtable>
+            <bfw_type>MenutItem</bfw_type>
+            <bfw_menu_created_by>PX_MENU_ITEM_EPORTFOLIO_TEMPLATE</bfw_menu_created_by>
+            <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+            <bfw_display_flags>
+              <allow>
+                <role>instructor</role>
+                <coursetype>any</coursetype>
+              </allow>
+              <allow>
+                <role>student</role>
+                <coursetype>any</coursetype>
+              </allow>
+            </bfw_display_flags>
+            <bfw_menu_callbacks>
+              <method name="eportfoliobrowser" controller="eportfoliobrowser" action="Index" url="" type="" route="" />
+            </bfw_menu_callbacks>
+          </data>
+        </item>
+    </requests>
+  </request>
+  <request cmd="putitems">
+    <requests>
+  <item entityid="36817" itemid="PX_EBOOKS" >
+    <data>
+      <parent>PX_ROOT</parent>
+      <sequence>aaaa</sequence>
+      <title>PX_EBOOKS</title>
+      <duedate>0001-01-01T00:00:00Z</duedate>
+      <attemptlimit>0</attemptlimit>
+      <securitylevel>Low</securitylevel>
+      <bsi_type>PX</bsi_type>
+      <bsi_subtype>PX_ROOT</bsi_subtype>
+      <bfw_meta>
+        <bfw_metadata name="dlap_sequence">aaaa</bfw_metadata>
+      </bfw_meta>
+      <bfw_tocs>
+        <bfw_toc_contents parentid="root" sequence="a" />
+      </bfw_tocs>
+    </data>
+  </item>
+    <item entityid="36817" itemid="px_portfolio_teaching">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_EBOOKS</parent>
+          <sequence>a</sequence>
+          <title>Portfolio Teaching </title>
+          <description></description>
+          <href>bsi__F2D99B25__3B03__403C__855C__27263CA926FF</href>
+          <category>0</category>
+          <bfw_type>Ebook</bfw_type>
+          <bfw_properties>
+              <bfw_property name="bfw_subtitle" type="String">A Guide for Instructors, Second Edition</bfw_property>
+              <bfw_property name="bfw_authors" type="String">Edgar Rice Burroughs</bfw_property>
+              <bfw_property name="bfw_coverimage" type="String">http://ebooks-imgs.connect.com/product/400/000/000/000/000/170/899/400000000000000170899_s4.jpg</bfw_property>
+              <bfw_property name="bfw_rootid" type="String">bsi__F2D99B25__3B03__403C__855C__27263CA926FF</bfw_property>
+              <bfw_property name="bfw_catagoryid" type="String">portfolioteaching</bfw_property>
+          </bfw_properties>
+        <bfw_tocs>
+          <bfw_toc_contents parentid="PX_TOC" sequence="a">Portfolio Teaching</bfw_toc_contents>
+        </bfw_tocs>
+    </data>
+  </item>
+  <item entityid="36817" itemid="px_portfolio_keeping">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_EBOOKS</parent>
+          <sequence>b</sequence>
+          <title>Portfolio Keeping</title>
+          <description></description>
+          <href>bsi__5D40B8C2__A237__41D0__B6B9__60528C81D14A</href>
+          <category>0</category>
+          <bfw_type>Ebook</bfw_type>
+          <bfw_properties>
+              <bfw_property name="bfw_subtitle" type="String">A Guide for Students, Second Edition</bfw_property>
+              <bfw_property name="bfw_authors" type="String">Edgar Rice Burroughs</bfw_property>
+              <bfw_property name="bfw_coverimage" type="String">http://ebooks-imgs.connect.com/product/400/000/000/000/000/170/899/400000000000000170899_s4.jpg</bfw_property>
+              <bfw_property name="bfw_rootid" type="String">bsi__5D40B8C2__A237__41D0__B6B9__60528C81D14A</bfw_property>
+              <bfw_property name="bfw_catagoryid" type="String">portfoliokeeping</bfw_property>
+          </bfw_properties>
+        <bfw_tocs>
+          <bfw_toc_contents parentid="PX_TOC" sequence="a">Portfolio Keeping</bfw_toc_contents>
+        </bfw_tocs>
+    </data>
+  </item>
+</requests>
+</request>
+<request cmd="putitems">
+  <requests>
+    <item itemid="PX_EportfolioCourseCustomizationWidget" entityid="-entityid-">
+      <data>
+        <type>CustomActivity</type>
+        <parent>PX_HOME_EPORTFOLIO_ZONE_2</parent>
+        <title>Eportfolio Home Page</title>
+        <abbreviation>ecw</abbreviation>
+        <timetocomplete>PT1M</timetocomplete>
+        <category>1</category>
+        <period inherit="true">0</period>
+        <groupsetid>-1</groupsetid>
+        <weight>100</weight>
+        <gradeentry>1</gradeentry>
+        <sequence>a</sequence>
+        <inputtable inherit="true">0</inputtable>
+        <bfw_type>Widget</bfw_type>
+        <bfw_subtype>PX_EportfolioCourseCustomizationWidget</bfw_subtype>
+        <bfw_display_flags>
+          <display>instructor</display>
+        </bfw_display_flags>
+        <bfw_widget_callbacks>
+          <method name="View" controller="EportfolioCustomizeCourseWidget" action="Summary" fne="false" />
+        </bfw_widget_callbacks>
+        <bfw_widget_template>PX_EportfolioCourseCustomizationWidget_template</bfw_widget_template>
+        <bfw_properties>
+          <bfw_property name="bfw_syllabusfilter" type="String" />
+          <bfw_property name="bfw_cssclass" type="String" />
+          <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+          <bfw_property name="bfw_targetid" type="String" />
+          <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+          <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+          <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+        </bfw_properties>
+        <bfw_tocs>
+          <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+        </bfw_tocs>
+      </data>
+    </item>
+  </requests>
+</request>
+<request cmd="deleteitems">
+  <requests>
+    <item itemid="PX_HOME_EPORTFOLIO_ZONE_1" entityid="-entityid-"></item>
+  </requests>
+</request>
+<request cmd="putitems">
+  <requests>
+    <item itemid="PX_ActivateButtonWidget" entityid="-entityid-">
+      <data>
+        <type>CustomActivity</type>
+        <parent>PX_HOME_EPORTFOLIO_ZONE_2</parent>
+        <title>Activate Button</title>
+        <abbreviation>ecw</abbreviation>
+        <timetocomplete>PT1M</timetocomplete>
+        <category>1</category>
+        <period inherit="true">0</period>
+        <groupsetid>-1</groupsetid>
+        <weight>100</weight>
+        <gradeentry>1</gradeentry>
+        <sequence>ab</sequence>
+        <inputtable inherit="true">0</inputtable>
+        <bfw_type>Widget</bfw_type>
+        <bfw_subtype>PX_ActivateButtonWidget</bfw_subtype>
+        <bfw_display_flags>
+          <display>instructor</display>
+        </bfw_display_flags>
+        <bfw_widget_callbacks>
+          <method name="View" controller="EportfolioCourseActivateButtonWidget" action="Summary" fne="false" />
+        </bfw_widget_callbacks>
+        <bfw_properties>
+          <bfw_property name="bfw_cssclass" type="String" />
+          <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+          <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+          <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+          <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+        </bfw_properties>
+        <bfw_tocs>
+          <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+        </bfw_tocs>
+      </data>
+    </item>
+  </requests>
+</request>
+  
+</batch>

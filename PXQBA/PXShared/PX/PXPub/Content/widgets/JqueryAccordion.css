@@ -1,0 +1,167 @@
+﻿
+/* --------
+  The CSS rules offered here are just an example. You can style the 'accordion' in any way you like.
+  The styles for the Page Structure are needed just for the purpose of this demo page.
+  If you decide to use the CSS rules in 'Accordion' (see below) as a base, 
+  be sure to rename the selectors as to satisfy the elements in your site.
+ ---------   
+*/
+#container {
+  float:left;
+  width:100%;
+  margin-right:-19em;
+  position:relative;
+  min-height:0
+}
+
+.accordion p {margin: 0 10px 1em}
+.accordion .strong{font-weight:700}
+.clear {clear:both}
+
+/* --- Headings --- */
+.accordion h1 {font-family:georgia,'times new roman',times,serif; font-size:2.5em; font-weight:normal; color:#f60}
+
+.accordion h1, .accordion h2, .accordion h3 {margin-bottom:1em !important;}
+
+/*
+.accordion h2, h3, h4 a, h5 a {padding:3px 10px !important;}
+*/
+.accordion h2, .accordion h3, .accordion h4, .accordion h5 {font-size:1em !important;}
+
+.accordion h4 {font-weight:normal !important;}
+/*
+#main h2 {background-color:#f0f0f0}
+*/
+
+#side, #side h2, #side h3 {background:#000; color:#e3e3e3;}
+
+#side h2 {border-bottom:1px solid #484b51;}
+
+/* --- Links --- */
+.accordion a {padding:1px; border-top: 1px solid #fff; border-bottom:1px solid #DFE4EC; color:#477DBF;display:inline;}
+
+#accordioncontent p.actitle{
+    color:#477DBF;
+    font-size: 12px;
+    width: 110px;
+    float:left;
+    -o-text-overflow: ellipsis;    /* Opera 9-10 */
+    text-overflow:    ellipsis;    /* IE, WebKit (Safari, Chrome), Firefox 7, Opera 11 */
+    overflow:hidden;
+    white-space:nowrap;
+    margin:0;
+    padding:0;
+}
+.accordion a:hover, a:focus, a:active {border-color:#bcd; text-decoration:none; outline:0 none;}
+
+
+#side a {display:inline; border-width:0 0 1px; border-color:#445; color:#f0f0f0;}
+
+#side a:hover, #side a:active, #side a:focus {background-color:#334;}
+
+/* --- Accordion --- */
+
+/*
+.js #main .accordion {visibility:hidden;}
+
+.js #side .accordion {display:none;}
+*/
+
+.accordion {}
+
+.accordion li {list-style-type:none;}
+
+.accordion li.last-child {margin-left:19px; list-style-type:disc;}
+
+#side ul.accordion ul {margin:0; padding:0 0 0 20px;}
+
+.accordion .outer {border-bottom:1px solid #dadada; border-width:0 1px 1px; background: #ffffff;}
+
+.accordion .inner {margin-bottom:0; overflow:hidden;width:100%; }
+
+.accordion .h{}  /* {margin-top:.3em}vertical padding instead of vertical margin (ie8) */
+
+.accordion p{} /*{margin-top:.5em}*/
+
+/*  
+  Add styles for all links in the 'accordion':
+.accordion a {...}
+*/    
+
+.accordion a.trigger {padding-left:16px; font-size: 12px;/* background-image: url(style/images/plus.gif);*/ background-repeat: no-repeat; background-position: 1px 50%;  display:inline; text-transform:none;}
+.accordion a.selected { font-weight:bold !important;}
+
+/*.accordion a.trigger.open {background-image: url(style/images/minus.gif)}*/
+
+.accordion .last-child a.trigger{padding-left:1px; background-image:none; font-weight:normal;}
+
+.accordion a.trigger {background-color:#EAF1F7;}
+
+.accordion a.trigger.open {border-color:#dadada; background-color:#e7e7e7;}
+
+.accordion a:hover.trigger.open, .accordion a:focus.trigger.open, .accordion a:active.trigger.open {border-color:#bcd}
+.accordion a.trigger.item, .accordion a.trigger.open.item { background-image:none; background-color:Transparent; margin-left:18px; padding-left:3px; }
+.accordion h5 { font-weight:normal !important;}
+
+
+.accordion table tr td a.trigger, 
+.accordion table tr td a, 
+.accordion table tr td a.trigger.open{border:none; background-color:transparent;}
+
+.accordion table tr{border:1px solid #e0e0e0;}
+
+#side a.active{font-weight:700; color:#f72; text-decoration:none;}
+
+.accordion a {text-decoration:none; font-size:small;padding:5px 0;}
+
+.delete {display:none;}
+
+#accordioncontent {
+    font-family: Tahoma,'Geneva',arial,sans-serif;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+
+#accordioncontent td a {
+    color: #333;
+    font-size: 11px;
+}
+
+#accordioncontent .h td a {
+    padding: 0 12px;
+    line-height: 18px;
+}
+#accordioncontent p {
+    color: #333333;
+    font-size: 11px;
+    line-height: 16px;
+    margin: 0 0 0 10px;
+}
+
+.lessonitem { background-color: rgb(240, 240, 240); padding: 0px; margin: 3px 0 3px 0; vertical-align: middle; font-size:x-small;font-weight:bold;}
+
+#content-item-header{ padding: 10px 0px 25px 25px}
+
+.eportfolio {
+    background: url("style/images/bookmark_off.gif") no-repeat scroll 0 0 #FFFFFF;
+    display: inline-block;
+    height: 23px;
+    margin: 0 10px;
+    width: 17px;
+}
+
+#document-body-iframe{
+    width: 100%;
+}
+
+#divcreatelessonbutton {
+    padding-left:20px;
+    padding-top:20px;
+}
+
+#divcreatelessonbutton a {
+    font-weight: bold;
+}
+
+.graybackground { background-color: #F0F0F0;}
+

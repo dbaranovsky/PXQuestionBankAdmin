@@ -1,0 +1,75 @@
+﻿ #PX_AssignmentList .assignment-btn
+    {
+        font-family: Helvetica, sans-serif;
+        font-size: 11px;
+        color: #fff;
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #c32f48), color-stop(1, #a9001f));
+        background-image: -moz-linear-gradient(top, #c32f48, #a9001f);
+        filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, startColorstr=#c32f48, endColorstr=#a9001f);
+        padding-left: 5px;
+    }
+    
+
+        #PX_AssignmentList .icon-right-open
+    {
+        float:none; 
+        margin-right:4px;
+        color:white;
+        padding-left: 5px;
+    }
+        
+    #PX_AssignmentList .icon-pencil, #PX_AssignmentList .icon-trash, #PX_AssignmentList .icon-eye, #PX_AssignmentList .icon-bar-graph
+    {
+     color:Black;   
+        
+    }
+    
+       #PX_AssignmentList a
+       {
+           margin-right:5px;
+           margin-left:5px;
+           color: #1B8A95 ;
+       }
+       
+       
+       #PX_AssignmentList #assignments-content-projects-contain
+       {
+        min-height:500px;   
+       }
+       
+      #PX_AssignmentList  #assignments-content-right
+      {
+ height: inherit;
+      }
+      
+      #PX_AssignmentList #assignments-content-projects-contain
+      {
+          height: inherit;
+          
+      }
+      
+       .Px_AssignmentListOverview .icon-right-open
+       {
+           
+        color: Black;
+        float:right;   
+       }
+       #PX_AssignmentList .duedate-container
+       {
+           margin-top: 6px;
+           float:left;
+           border-bottom: 3px solid #9FA74A;
+           padding-left: 7px;
+
+       }
+ #PX_AssignmentList .no-due-date
+ {
+     background: url("style/images/no_due_date_icon.png") no-repeat;
+     width:42px;
+     height:60px;
+     float:left;
+       
+
+
+
+ }

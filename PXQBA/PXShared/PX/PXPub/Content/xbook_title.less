@@ -1,0 +1,69 @@
+/* Will be Xbook Dynamic Style Template */ 
+
+/* Only Alter these 5 values */ 
+
+/* Tab Gradient */ 
+
+@Gradientinnercolor: {{Gradientinnercolor}};
+
+@Gradienttopcolor: {{Gradienttopcolor}};
+
+@Gradientbottomcolor: {{Gradientbottomcolor}};
+
+
+/* Typography and Links Color */
+@Typecolor: {{Typecolor}};
+
+/* URl Name of the Course which is the same as the named Graphics ie. Myers */
+@CourseTitleImage:'{{course-title-image}}';
+
+/* Bedford logo*/
+
+@CourseBannerLogo: '{{course-banner-logo}}';
+
+/* Book Cover image*/
+@BookCover: '{{bookcover}}';
+
+/* Don't Touch Styles Under Here!!! please */ 
+
+/* Navigation Tab Gradient */ 
+.PX_Menu .parent li {
+	background-color:@Gradienttopcolor;
+	background: -moz-linear-gradient(top, @Gradienttopcolor , @Gradientbottomcolor) fixed;
+	filter: ~'progid:DXImageTransform.Microsoft.gradient(startColorstr="@{Gradienttopcolor}", endColorstr="@{Gradientbottomcolor}")';
+	background: -webkit-gradient(linear, left top, left bottom, from(@Gradienttopcolor), to(@Gradientbottomcolor)) fixed;
+	background: -moz-linear-gradient(top, @Gradienttopcolor, @Gradientbottomcolor) fixed;
+	background-repeat: no-repeat !important;
+	background-position: 0 0;
+	-moz-box-shadow: inset 0 -2px 5px 3px @Gradientinnercolor;
+	-webkit-box-shadow: inset 0 -2px 5px 3px @Gradientinnercolor;
+	box-shadow: inset 0 -2px 5px 3px @Gradientinnercolor;
+}
+
+/* Typography and Link Colors */
+.homepage-course-info .course-title-lable-label, 
+.homepage-course-info .course-author-label{
+	color: @Typecolor;
+}
+
+/* Graphic Images */ 
+.product-type-xbook .homepage-course-info .product-banner-logo {
+    background-image: url("@{CourseTitleImage}") !important;
+    background-color:transparent;
+    background-repeat:no-repeat;
+    display:block;
+    width:30%;
+}
+
+
+.homepage-course-info .course-banner-logo{
+    background-image: url("@{CourseBannerLogo}");
+}
+
+.xbook-mars-content .xbook-mars-branding-book,
+.top .book {
+    background-image: url("@{BookCover}");
+}
+
+
+

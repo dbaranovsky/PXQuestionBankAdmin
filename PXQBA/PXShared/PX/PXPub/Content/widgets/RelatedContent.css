@@ -1,0 +1,93 @@
+﻿#related-content-editor
+{
+    height: 100%;
+}
+
+#related-content-editor .relatedContent
+{
+    padding:10px;
+}
+
+#related-content-editor .add-related-resource
+{
+    float:right;    
+}
+
+#related-content-editor .heading, #related-content-editor .descriptions
+{
+    padding:10px;    
+}
+
+#related-content-editor .heading
+{
+    background-color: #E3E3E3 !important;    
+}
+
+#browseResultsPanel.quiz-window-resources
+{
+    z-index:9999!important;    
+}
+
+#related-content-editor .related-content-grid
+{
+    padding:20px 0 20px 0;    
+}
+
+#related-content-editor table
+{
+    width:100%;    
+}
+
+#related-content-editor table tr
+{
+    height:20px;    
+}
+
+#related-content-editor .remove-related-content
+{
+    color:Red;        
+}
+
+.question-pool-inner-container .pool-actions .rightnav
+{
+    width:30%;
+    float:right;    
+}
+
+.quiz-window-resources .lblInUse
+{
+   /* display:none !important;    */
+}
+
+.quiz-window-resources .lblIncluded 
+{
+    display:none !important;    
+}
+
+.quiz-window-resources .lblAdd
+{
+    /*display:block !important;    */
+}
+
+.quizActivity .edit-related-content,
+.quizActivity .learning-curve-question-settings,
+.quizActivity .lc-question-preview
+{
+    display:none !important;    
+} 
+
+.learningCurveActivity .portal-question-settings,
+.learningCurveActivity .portal-question-preview
+{
+    display:none !important;    
+}
+
+
+.related-content-qtip
+{
+     padding: 0;    
+     background: '#FAF9E8';     
+     color: black;
+     max-height: 160px;     
+     overflow: auto
+}

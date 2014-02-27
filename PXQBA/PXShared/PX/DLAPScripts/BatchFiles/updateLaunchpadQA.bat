@@ -1,0 +1,16 @@
+..\..\Tools\Metadata\Metadata\bin\metadata.exe /a:executedlapscript /d:"..\CourseScripts\faceplate_course_batch.xml" /m:6650 /ti="PsychPortal: Myers, Exploring Psychology 8e" /c:61239 /e:qa
+..\..\Tools\Metadata\Metadata\bin\metadata.exe /a:executedlapscript /d:"..\CourseScripts\faceplate_course_batch.xml" /m:6650 /ti="Econportal: Stone, CoreEconomics 2e" /c:61195 /e:qa
+..\..\Tools\Metadata\Metadata\bin\metadata.exe /a:executedlapscript /d:"..\CourseScripts\faceplate_course_batch.xml" /m:6650 /ti="Freedman, Universe 9e" /c:61262 /e:qa
+..\..\Tools\Metadata\Metadata\bin\metadata.exe /a:executedlapscript /d:"..\CourseScripts\faceplate_course_batch.xml" /m:6650 /ti="Morris1e" /c:62352 /e:qa
+..\..\Tools\Metadata\Metadata\bin\metadata.exe /a:executedlapscript /d:"..\CourseScripts\faceplate_course_batch.xml" /m:6650 /ti="Moore, BPS6e" /c:61233 /e:qa
+..\..\Tools\Metadata\Metadata\bin\metadata.exe /a:executedlapscript /d:"..\CourseScripts\faceplate_course_batch.xml" /m:6650 /ti="Myers Psychology 10e" /c:75652 /e:qa
+..\..\Tools\Metadata\Metadata\bin\metadata.exe /a:executedlapscript /d:"..\CourseScripts\faceplate_course_batch.xml" /m:6650 /ti="Krugman/Wells, Microeconomics 3e" /c:77588 /e:qa
+..\..\Tools\Metadata\Metadata\bin\metadata.exe /a:executedlapscript /d:"..\CourseScripts\faceplate_course_batch.xml" /m:6650 /ti="Krugman/Wells, Macroeconomics 3e" /c:77594 /e:qa
+..\..\Tools\Metadata\Metadata\bin\metadata.exe /a:executedlapscript /d:"..\CourseScripts\faceplate_course_batch.xml" /m:6650 /ti="Hillis, Principles of Life 1e" /c:76138 /e:qa
+..\..\Tools\Metadata\Metadata\bin\metadata.exe /a:executedlapscript /d:"..\CourseScripts\faceplate_course_batch.xml" /m:6650 /ti="Berger, Lifespan 8e" /c:77509 /e:qa
+..\..\Tools\Metadata\Metadata\bin\metadata.exe /a:executedlapscript /d:"..\CourseScripts\faceplate_course_batch.xml" /m:6650 /ti="Phelan, What is Life? 2e with physio" /c:77491 /e:qa
+..\..\Tools\Metadata\Metadata\bin\metadata.exe /a:executedlapscript /d:"..\CourseScripts\faceplate_course_batch.xml" /m:6650 /ti="Rogawski, Calculus ET, 2e" /c:76626 /e:qa
+..\..\Tools\Metadata\Metadata\bin\metadata.exe /a:executedlapscript /d:"..\CourseScripts\faceplate_course_batch.xml" /m:6650 /ti="Moore, IPS 7e" /c:77473 /e:qa
+..\..\Tools\Metadata\Metadata\bin\metadata.exe /a:executedlapscript /d:"..\CourseScripts\faceplate_course_batch.xml" /m:6650 /ti="Hayden McNeil" /c:76116 /e:qa
+..\..\Tools\Metadata\Metadata\bin\metadata.exe /a:executedlapscript /d:"..\CourseScripts\faceplate_course_batch.xml" /m:6650 /ti="Cowen, Microecon 2e" /c:78298 /e:qa
+..\..\Tools\Metadata\Metadata\bin\metadata.exe /a:executedlapscript /d:"..\CourseScripts\faceplate_course_batch.xml" /m:6650 /ti="Cowen, Macroecon 2e" /c:78300 /e:qa

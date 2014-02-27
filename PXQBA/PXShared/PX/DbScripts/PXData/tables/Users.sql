@@ -1,0 +1,25 @@
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+IF OBJECT_ID('dbo.[Users]','U') IS NULL
+BEGIN
+
+	CREATE TABLE [dbo].[Users](
+		[UserId] [nvarchar](50) NOT NULL,
+		[FirstName] [nvarchar](50) NOT NULL,
+		[LastName] [nvarchar](50) NOT NULL,
+	 CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED 
+	(
+		[UserId] ASC
+	)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+	) ON [PRIMARY]
+
+END
+
+GO
+
+

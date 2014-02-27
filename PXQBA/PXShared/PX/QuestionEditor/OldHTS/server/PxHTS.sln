@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HTS_TEST", "HTS_TEST\HTS_TEST.csproj", "{78A08094-5357-482B-AFF0-04358065C1A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HTS", "HTS\HTS.csproj", "{0B07120A-2C6E-4280-A69D-623B55F8D8D6}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "PxHTS", "PxHTS\", "{61531B63-ACED-4601-A5DC-DAF0F1EC310F}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{0B07120A-2C6E-4280-A69D-623B55F8D8D6}|HTS.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/PxHTS"
+		Debug.AspNetCompiler.PhysicalPath = "PxHTS\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\PxHTS\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/PxHTS"
+		Release.AspNetCompiler.PhysicalPath = "PxHTS\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\PxHTS\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "64874"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{78A08094-5357-482B-AFF0-04358065C1A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78A08094-5357-482B-AFF0-04358065C1A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78A08094-5357-482B-AFF0-04358065C1A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78A08094-5357-482B-AFF0-04358065C1A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B07120A-2C6E-4280-A69D-623B55F8D8D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B07120A-2C6E-4280-A69D-623B55F8D8D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B07120A-2C6E-4280-A69D-623B55F8D8D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B07120A-2C6E-4280-A69D-623B55F8D8D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61531B63-ACED-4601-A5DC-DAF0F1EC310F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61531B63-ACED-4601-A5DC-DAF0F1EC310F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61531B63-ACED-4601-A5DC-DAF0F1EC310F}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{61531B63-ACED-4601-A5DC-DAF0F1EC310F}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

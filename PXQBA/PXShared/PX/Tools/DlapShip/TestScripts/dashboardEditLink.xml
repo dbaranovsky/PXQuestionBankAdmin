@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UpdateItems>
+	<Item>
+		<Where>
+			/parent='PX_DASHBOARD_1COLUMN_ZONE_1'
+		</Where>
+		<Update>
+			<key>/bfw_properties/bfw_property[@name='allow_edit_course' and @type='String']</key>
+			<value>true</value>
+		</Update>
+	</Item>
+</UpdateItems>

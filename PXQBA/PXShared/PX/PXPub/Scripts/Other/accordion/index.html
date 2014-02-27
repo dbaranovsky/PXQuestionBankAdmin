@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-EN">
+<head>
+	<script src="jquery-1.2.1.min.js" type="text/javascript"></script>
+	<script src="menu.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Simple JQuery Accordion menu</title>
+	<!--[if lt IE 8]>
+   <style type="text/css">
+   li a {display:inline-block;}
+   li a {display:block;}
+   </style>
+   <![endif]-->
+</head>
+<body>
+	<h1>Simple JQuery Accordion menu</h1>
+	<p>This is a simple Accordion menu done in <a href="http://www.jquery.com/">JQuery</a>. Links with subitems under them will expand the submenu when clicked. Items that don't have subitems are normal links. (example link to <a href="http://www.i-marco.nl/weblog/">Marco's blog</a>). The menu initialises with the first submenu expanded.</p>
+	<p>If this code snippet is useful for you feel free to <a href="demo.zip">download it</a> and use it on your (non commercial) website.</p>
+	<p>This snipped is discussed on my blog in <a href="http://www.i-marco.nl/weblog/archive/2007/11/25/jquery_accordion_menu" title="JQuery Accordion menu on my blog">this post</a>.</p>
+	<ul id="menu">
+		<li>
+			<a href="#">Weblog Tools</a>
+			<ul>
+				<li><a href="http://www.pivotx.net/">PivotX</a></li>
+				<li><a href="http://www.wordpress.org/">WordPress</a></li>
+				<li><a href="http://www.textpattern.com/">Textpattern</a></li>
+				<li><a href="http://typosphere.org/">Typo</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="#">Programming Languages</a>
+			<ul>
+				<li><a href="http://www.php.net/">PHP</a></li>
+				<li><a href="http://www.ruby-lang.org/en/">Ruby</a></li>
+				<li><a href="http://www.python.org/">Python</a></li>
+				<li><a href="http://www.perl.org/">PERL</a></li>
+				<li><a href="http://java.sun.com/">Java</a></li>
+				<li><a href="http://en.wikipedia.org/wiki/C_Sharp">C#</a></li>
+			</ul>
+		</li>
+		<li><a href="http://www.i-marco.nl/weblog/">Marco's blog (no submenu)</a></li>
+		<li>
+			<a href="#">Cool Stuff</a>
+			<ul>
+				<li><a href="http://www.apple.com/">Apple</a></li>
+				<li><a href="http://www.nikon.com/">Nikon</a></li>
+				<li><a href="http://www.xbox.com/en-US/">XBOX360</a></li>
+				<li><a href="http://www.nintendo.com/">Nintendo</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="#">Search Engines</a>
+			<ul>
+				<li><a href="http://search.yahoo.com/">Yahoo!</a></li>
+				<li><a href="http://www.google.com/">Google</a></li>
+				<li><a href="http://www.ask.com/">Ask.com</a></li>
+				<li><a href="http://www.live.com/?searchonly=true">Live Search</a></li>
+			</ul>
+		</li>
+	</ul>
+	<h2>Source</h2>
+	<ol class="code">
+	  <li><code>function initMenu() {</code></li>
+	  <li class="indent0"><code>$('#menu ul').hide();</code></li>
+	  <li class="indent0"><code>$('#menu ul:first').show();</code></li>
+	  <li class="indent0"><code>$('#menu li a').click(</code></li>
+	  <li class="indent1"><code>function() {</code></li>
+	  <li class="indent2"><code>var checkElement = $(this).next();</code></li>
+	  <li class="indent2"><code>if((checkElement.is('ul')) &amp;&amp; (checkElement.is(':visible'))) {</code></li>
+	  <li class="indent2"><code>return false;</code></li>
+	  <li class="indent2"><code>}</code></li>
+	  <li class="indent2"><code>if((checkElement.is('ul')) &amp;&amp; (!checkElement.is(':visible'))) {</code></li>
+	  <li class="indent2"><code>$('#menu ul:visible').slideUp('normal');</code></li>
+	  <li class="indent2"><code>checkElement.slideDown('normal');</code></li>
+	  <li class="indent2"><code>return false;</code></li>
+	  <li class="indent2"><code>}</code></li>
+	  <li class="indent2"><code>}</code></li>
+	  <li class="indent1"><code>);</code></li>
+	  <li class="indent0"><code>}</code></li>
+	  <li><code>$(document).ready(function() {initMenu();});</code></li>
+	</ol>
+	<h2>Collapsing menu</h2>
+	<p>Just want it as a simple collapsing / uncollapsing menu? Find it <a href="index_collapsed.html">here</a>. Even less code.</p>
+	
+	<h2>Download</h2>
+	<p><a href="demo.zip">Download everything in a zip file</a></p>
+</body>
+</html>

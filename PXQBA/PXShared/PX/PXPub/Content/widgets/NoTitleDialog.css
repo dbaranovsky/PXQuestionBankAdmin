@@ -1,0 +1,15 @@
+﻿
+.ui-dialog.notitle .ui-dialog-titlebar {
+    background-color: transparent;
+    border: medium none;
+    position: absolute !important;
+    right: 0;
+    top: -20px;
+    width: 20px;
+}
+
+.ui-dialog.notitle
+{
+    overflow:visible;
+    padding:0px;
+}

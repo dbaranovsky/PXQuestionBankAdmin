@@ -1,0 +1,577 @@
+﻿/* Rubric */
+.rubric-view-buttons{
+    margin: 10px 0 10px 0;
+}
+
+.rubric-buttons {
+    border-top: 1px solid #CFCFCF;
+    font-size: 11px;
+    margin: 18px 0 0 0;
+    padding-top: 11px;
+}
+
+.rubric-builder{
+    width: 98%;
+}
+
+.rubric-selector, .rubric-editor
+{
+    font-size:11px !important;    
+    height:520px;
+    min-width:600px;
+    overflow-y:auto;
+    padding-top:8px;
+}
+
+.rubric-alignment .rubric-selector, #rubric-preview-wrapper .rubric-selector
+{
+    padding:0px;
+    min-width:inherit;
+    height:auto;
+}
+
+.rubric-selector .footer-column{
+    line-height:26px;
+}
+
+.rubric-alignment .rubric-selector .title, .rubric-alignment .rubric-selector #objectives-container, #rubric-preview-wrapper .rubric-selector #objectives-container, #rubric-preview-wrapper .rubric-selector .title,  #rubric-preview-wrapper .rubric-selector .description
+{
+    display:none;
+}
+
+#rubric-alignment
+{    
+    font-size:.75em;
+}
+
+#rubric-alignment .tree-container
+{
+    height:350px;
+}
+
+#rubric-alignment #assessment-content .assessment-container .tree
+{
+    height: 250px;
+}
+
+.rubric-editor fieldset
+{
+    width:100%;
+}
+
+.rubric-editor #error-message-title
+{
+    display: inline;
+    margin-left: 4px;
+    color:Red;
+}
+
+.rubric-editor fieldset label
+{
+    display:block;
+    float:left;
+    font-weight:bold;    
+    margin:5px 10px 0px 0px;
+    line-height:15px;    
+}
+
+.rubric-editor fieldset li p{
+    line-height:16px;
+    float:left;
+    width:650px;
+}
+
+.rubric-editor #objectives-container
+{
+    float:left;
+    margin-top:8px;
+}
+
+.rubric-editor fieldset input.button
+{
+    width:100px;    
+}
+
+.rubric-editor .rubric-subheader
+{
+    line-height:14px;
+    width:65%;
+    float:left;
+}
+
+.top-left p{
+    line-height: 16px;
+}
+
+.rubric-title-bar h2 {
+    background-color: #0074BB;
+    color: #FFFFFF;
+    font-weight: bold;
+    line-height: 24px;
+    padding-left: 20px;
+}
+
+.rubric-grid{
+    table-layout:auto;
+    display:table;
+    border-collapse:separate;
+}
+.rubric-grid .rubric-column {    
+    margin: 0px !important;
+    padding: 0px !important;
+    width: 150px;  
+}
+
+.rubric-grid .rubric-row{
+    padding-bottom:6px;
+}
+
+.rubric-grid .rubric-row-separator {    
+    margin-left: 55px;
+}
+
+.rubric-selector .rubric-grid tfoot td
+{
+    text-align:right;
+    border:none;    
+    border-bottom:none;
+}
+
+.rubric-selector .top-view .title {
+    font-size: 1.8em !important;
+}
+
+.rubric-grid .rubric-header-row td {    
+    vertical-align: bottom;   
+}
+
+ .rubric-row .rubric-row-title
+{    
+    vertical-align: top;
+    height: 60px;
+    background-color:#F0F0F0;      
+}
+
+.rubric-bottom-view .add-rubric-column,
+.rubric-bottom-view .add-rubric-row
+{
+    width: 100px;    
+}
+
+.rubric-buttons .submit-rubric,
+.rubric-buttons .cancel-rubric-edit
+{
+    width: 100px;    
+}
+
+.rubric-row .rubric-row-title,
+.rubric-description-column{
+    border:1px solid #CCC;   
+}
+
+.rubric-grid .rubric-heading-column{
+    margin-bottom: 8px;
+}
+
+.rubric-grid .rubric-header-row .rubric-column{
+    height: 30px;
+    padding-bottom:8px;
+}
+
+.rubric-grid .rubric-delete-row .rubric-column
+{
+    height: 35px;
+    vertical-align: bottom;
+}
+
+.rubric-grid .rubric-description-column
+{
+    vertical-align:top;
+    background-color:#F0F0F0;
+}
+
+.rubric-editor .rubric-grid .rubric-row .rubric-description-column span:hover,
+.rubric-editor .rubric-grid .rubric-row .rubric-row-title span:hover
+{
+    background-color:#FFFFCC;
+}
+
+.rubric-grid .rubric-header-row span {    
+    font-weight:bold;  
+    font-size:1.2em; 
+}
+
+.rubric-grid .rubric-row span.rubric-description {
+    font-size:1.0em; 
+    display:block;
+    min-height:100px;
+    width:150px; 
+    background-color:#F0F0F0;
+    padding:8px !important;
+    color:#333333;
+    overflow:hidden;
+    line-height:14px;
+}
+
+.rubric-preview .rubric-row span.rubric-description {
+    width:100px; 
+}
+
+.rubric-preview .rubric-column
+{
+    width:90px; 
+}
+
+
+.rubric-grid .rubric-row .rubricTextButtons
+{
+    margin-top:2px;    
+}
+.rubric-grid .rubric-row .rubricTextButtons input
+{
+    margin-right:4px;    
+}
+
+.rubric-grid body
+{
+    background-color:#FFFFCC;
+}
+.rubric-grid td.rubric-score-column{
+    background-color:#F0F0F0;
+    border: 1px solid #CCC;
+}
+.rubric-grid .rubric-score-column input[type="text"] {
+    background-color: #FFFFFF;
+    height: 20px;
+    margin: 50px 0 0 15px;
+    width: 120px;
+}
+
+.rubric-grid input[type="text"]{
+    width: 75%;
+    height:25px;
+    background-color:#F0F0F0;
+    border: 1px solid #CCC;
+    margin-right:4px; 
+    margin-bottom: 4px;   
+}
+
+.rubric-max-score {
+    height: 80px;
+    width: 85px;
+    text-align: center;
+}
+.rubric-score-column{
+    vertical-align: top !important;
+}
+.rubric-score-column textarea{
+    height: 75px;
+    width: 85px;
+    text-align: center;
+}
+.rubric-grid-container{
+    overflow: auto;
+    width: 100%;
+    float:left;
+    height: 280px;
+}
+.rubric-delete-button {
+    cursor: pointer;
+    display: none;
+    height: 15px;    
+    padding: 6px 0 0;
+    text-align: center;
+    width: 15px;
+    margin: 0 10px 0px 0;
+    float:left;
+     background-color: Transparent;
+    background-image: url("style/images/platx_sprite.png");
+    background-position:-150px 0px;
+    background-repeat: no-repeat;
+}
+
+.rubric-score-column{
+    width: 100px;    
+}
+.rubric-delete-row-button{
+    vertical-align: middle;
+    float: left;    
+    position:relative;
+    left:24px;
+    width:20px;
+}
+.rubric-row-title,.row-title-container{
+    height: 80px;    
+}
+.rubric-row-title textarea{
+    float: right;
+}
+
+.rubric-grid .rubric-row-delete-column{
+    vertical-align: top;
+    width:50px;
+}
+
+.rubric-selector .rubric-grid .rubric-header-row .rubric-column
+{
+    height:auto;
+    line-height:18px;
+    padding: 0 !important;
+    vertical-align: bottom !important;
+}
+
+.rubric-selector .rubric-grid .rubric-header-row .rubric-heading-column,
+.rubric-selector .rubric-grid .rubric-header-row .rubric-score-column,
+.rubric-selector .rubric-grid .rubric-row .rubric-score-column
+{
+    text-align:center;
+}
+
+.rubric-selector .rubric-grid .rubric-score-column
+{
+    width:50px;    
+}
+
+.rubric-selector .rubric-grid .rubric-column span.rubric-description
+{
+    padding:4px;
+}
+
+.rubric-selector .rubric-grid .rubric-header-row, .rubric-selector .rubric-grid .rubric-row
+{
+    border-bottom: solid 1px; 
+}
+
+.rubric-associated-activities-container .sub-title{
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 4px;
+}
+.rubric-associated-activities-container ul a{
+    line-height: 14px;
+} 
+.add-row-container{
+    padding-left: 55px;
+}
+
+.top-right .top-right-input{
+    margin-bottom: 12px;
+}
+
+.rubric-actionbtns{
+    line-height:26px;
+}
+
+#save-as-rubric-dialog
+{
+    display:none;
+    text-align:center;
+    font-size:0.75em;
+}
+
+#save-as-rubric-dialog label
+{
+    float: left;    
+    padding: 5px;
+    text-align: right;
+    width: 125px;
+}
+
+#save-as-rubric-dialog #txtTitle
+{
+    width:300px;
+}
+
+#save-as-rubric-dialog #title-block
+{
+    padding-top: 10px;    
+}
+
+#save-as-rubric-dialog #error-message-block
+{
+    padding: 5px;   
+    color: red;     
+}
+
+#save-as-rubric-dialog #button-block
+{
+    padding-top: 10px;
+    
+}
+
+#save-as-rubric-dialog .error-message
+{    
+    display:none;    
+}
+
+#save-as-rubric-dialog .button
+{
+    width: 80px;    
+}
+
+#save-as-rubric-dialog .button:hover
+{
+    background-color: #3BB9FF !important;
+    color: White;
+}
+
+#remove-rubric-dialog
+{
+    display:none;    
+    font-size:0.75em;
+    padding:20px 70px;
+}
+
+#remove-rubric-dialog .remove-rubric, #remove-rubric-dialog .keep-rubric
+{
+    width:80px;    
+}
+
+#remove-rubric-dialog .remove-rubric:hover, #remove-rubric-dialog .keep-rubric:hover
+{
+    background-color: #3BB9FF !important;
+    color: White;
+}
+
+#remove-rubric-dialog .icon
+{
+    background-color: transparent;
+    background-image: url("style/images/platx_sprite.png");
+    background-position: -299px -49px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    height: 18px;
+    width: 18px;
+    float:left;
+    position:absolute;
+    left:50px;
+}
+
+#remove-rubric-dialog #message-block, #remove-rubric-dialog #button-block
+{
+    float:left;
+    margin-bottom:20px;
+}
+
+#rubric-alignments
+{    
+    font-size:0.8em;
+}
+
+#rubric-alignments label, #rubric-alignments .sort-option 
+{
+    display:inline;
+}
+
+#rubric-alignments .header-row .column 
+{
+    float:left;
+    font-weight: bold;
+}
+
+#rubric-alignments .column
+{    
+    padding: 10px;
+    width: 320px;
+}
+
+#rubric-alignments .alignments-data
+{
+    border:solid 1px;
+    overflow-y: scroll;
+    height:400px;
+    background-color: #F0F0F0;
+}
+
+.assessment-container #aligned-rubric
+{
+    margin: 10px 0;
+}
+
+.assessment-container #aligned-rubric .close
+{
+	width: 18px;
+	height: 18px;
+	background-image: url('style/images/platx_sprite.png'); 
+	background-position: -149px 0px;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	cursor:pointer;
+	display: block;
+	float: left;
+	position: relative;
+	top:-3px;
+}
+
+.assessment-container #aligned-rubric .disabledClose
+{
+	width: 18px;
+	height: 18px;
+	background-image: url('style/images/platx_sprite.png'); 
+	background-position: -149px -299px;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	cursor:pointer;
+	display: block;
+	float: left;
+	position: relative;
+	top:-3px;
+}
+
+
+#px-dialog .rubric-editor .top-view {
+    line-height: 16px;
+    margin-bottom: 6px;
+    float:left;
+}
+
+.imgRubricDelete
+{
+    background-image:url('style/images/rubric_delete.png');
+    background-repeat:no-repeat;
+    width: 25px;
+    height:20px;
+}
+
+.hoverdelete 
+{
+    color:black;
+    font-size:1em;
+    display:none;
+    float:left;
+}
+
+/*Rubric Redesign */ 
+
+.create-rubric-title,
+.create-rubric-description{
+     width:280px;
+     float:left;
+}
+
+.create-rubric-objectives{
+     width:360px;
+     float:left;
+}
+.rubric-title-label{
+    float:left;
+}
+.create-rubric-title,
+.create-rubric-description{
+    clear:both;
+}
+.rubric-editor .top-view #Title,
+.rubric-desc{
+    width: 246px;
+    float:left;
+    clear:both;
+}
+
+.rubric-desc{
+    height: 108px;
+    resize:none;
+}
+
+.create-rubric-left,
+.create-rubric-right{
+    float: left;
+}

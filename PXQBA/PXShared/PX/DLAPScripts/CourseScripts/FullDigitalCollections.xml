@@ -1,0 +1,616 @@
+﻿<batch>
+  <!-- Following command updates the product course with the correct metadata values -->
+  <request cmd="updatecourses">
+    <requests>
+      <course courseid="-entityid-" domainid="-domainid-" title="Digital Collections" reference="" type="Range">
+        <data>
+          <bfw_tocs>
+            <course_materials type="bfw_toc">Course Materials</course_materials>
+          </bfw_tocs>
+          <bfw_infinite_scroll>false</bfw_infinite_scroll>
+          <show_student_view_link>true</show_student_view_link>
+          <meta-bfw_course_type>DigitalCollections</meta-bfw_course_type>
+          <bfw_course_type>DigitalCollections</bfw_course_type>
+          <bfw_course_home_page>PX_DC_HOME_2COLUMN</bfw_course_home_page>
+          <bfw_welcome_message>&amp;lt;h1&amp;gt;Welcome&amp;lt;/h1&amp;gt;
+                        &amp;lt;p&amp;gt;This Bedford e-Portfolio gives you a single place to collect and reflect on your work. You can compose directly in your e-Portfolio or uplaoad word documents, video, audio, or images that best represent who you are and what you have created. Just click on the e-Portfolio tab at the top of the page and get started!&amp;amp;nbsp;&amp;lt;/p&amp;gt;
+                        &amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;lt;/p&amp;gt;
+                        &amp;lt;div class=&amp;quot;eportfolio_PortfolioTeaching&amp;quot; style=&amp;quot;float: left;&amp;quot;&amp;gt;&amp;lt;img style=&amp;quot;width: 100%; height: 100%;&amp;quot; src=&amp;quot;/Content/images/Universe-9e-cover.jpg&amp;quot; alt=&amp;quot;&amp;quot; /&amp;gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;ul class=&amp;quot;welcome-links&amp;quot;&amp;gt;
+                        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Finding and developing your materials&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+                        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Creating your Structure&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+                        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Choosing a style and design&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+                        &amp;lt;/ul&amp;gt;
+                    </bfw_welcome_message>
+          <bfw_allow_site_search>false</bfw_allow_site_search>
+				  <bfw_dashboard_settings>
+		  <bfw_dashboard_course_home_page>PX_DASHBOARD_1COLUMN</bfw_dashboard_course_home_page>
+		  <bfw_program_dashboard_course_home_page>PX_PROGRAM_DASHBOARD_1COLUMN</bfw_program_dashboard_course_home_page>
+		  <instructor_dashboard>false</instructor_dashboard>
+		  <program_dashboard>false</program_dashboard>
+		</bfw_dashboard_settings>
+		<isdashboardactive>false</isdashboardactive>
+		<CourseTimeZone>Eastern Standard Time</CourseTimeZone>
+		<bfw_student_page_start>PX_DC_ASSIGNMENT_2COLUMN</bfw_student_page_start>
+		<meta-bfw_course_subtype>regular</meta-bfw_course_subtype>
+		  
+        </data>
+      </course>
+    </requests>
+  </request>
+  <!-- Creates necessary folders and other course structures including page definitions for digital collections-->
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_DC_HOME_2COLUMN" entityid="-entityid-">
+        <data>
+          <parent>PX_PAGES</parent>
+          <sequence>b</sequence>
+          <title>PX_DC_HOME_2COLUMN</title>
+          <bfw_page_editable>false</bfw_page_editable>
+          <abbreviation>PXDCHOME2COLUMN</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_DC_HOME_2COLUMN_ZONES" entityid="-entityid-">
+        <data>
+          <parent>PX_DC_HOME_2COLUMN</parent>
+          <sequence>a</sequence>
+          <title>PX_DC_HOME_2COLUMN_ZONES</title>
+          <abbreviation>PXDCHOME2COLUMNZONES</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_DC_HOME_2COLUMN_ZONE_1" entityid="-entityid-">
+        <data>
+          <parent>PX_DC_HOME_2COLUMN_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_DC_HOME_ZONE_1</title>
+          <abbreviation>PXDCHOMEZONE1</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets />
+          <bfw_support_hide>true</bfw_support_hide>
+        </data>
+      </item>
+      <item itemid="PX_DC_HOME_2COLUMN_ZONE_2" entityid="-entityid-">
+        <data>
+          <parent>PX_DC_HOME_2COLUMN_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_DC_HOME_ZONE_2</title>
+          <abbreviation>PXDCHOMEZONE2</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets>
+            <widget type="PX_ActivitiesWidget" displayName="LearningCurve Activities" />
+          </bfw_allowed_widgets>
+        </data>
+      </item>
+      <item itemid="PX_DC_ASSIGNMENT_2COLUMN" entityid="-entityid-">
+        <data>
+          <parent>PX_PAGES</parent>
+          <sequence>b</sequence>
+          <title>PX_DC_ASSIGNMENT_2COLUMN</title>
+          <bfw_page_editable>false</bfw_page_editable>
+          <abbreviation>PXDCHOME2COLUMN</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_DC_ASSIGNMENT_2COLUMN_ZONES" entityid="-entityid-">
+        <data>
+          <parent>PX_DC_ASSIGNMENT_2COLUMN</parent>
+          <sequence>a</sequence>
+          <title>PX_DC_ASSIGNMENT_2COLUMN_ZONES</title>
+          <abbreviation>PXDCHOME2COLUMNZONES</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_DC_ASSIGNMENT_2COLUMN_ZONE_1" entityid="-entityid-">
+        <data>
+          <parent>PX_DC_ASSIGNMENT_2COLUMN_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_DC_HOME_ZONE_1</title>
+          <abbreviation>PXDCHOMEZONE1</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets />
+          <bfw_support_hide>true</bfw_support_hide>
+        </data>
+      </item>
+      <item itemid="PX_DC_ASSIGNMENT_2COLUMN_ZONE_2" entityid="-entityid-">
+        <data>
+          <parent>PX_DC_ASSIGNMENT_2COLUMN_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_DC_HOME_ZONE_2</title>
+          <abbreviation>PXDCHOMEZONE2</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets>
+            <widget type="PX_assignmentList" displayName="Digital Collections Assignment List" />
+          </bfw_allowed_widgets>
+        </data>
+      </item>
+	  
+	   <item itemid="PX_ASSIGNMENTLIST_HOME_2COLUMN" entityid="-entityid-">
+      <data>
+        <parent>PX_PAGES</parent>
+        <sequence>b</sequence>
+        <title>PX_DC_ASSIGNMENT_2COLUMN</title>
+        <abbreviation>PXDCHOME2COLUMN</abbreviation>
+        <timetocomplete>PT1M</timetocomplete>
+        <category>1</category>
+        <period inherit="true">0</period>
+        <groupsetid>-1</groupsetid>
+        <weight>100</weight>
+        <gradeentry>1</gradeentry>
+        <inputtable inherit="true">0</inputtable>
+        <completiontrigger>0</completiontrigger><bfw_page_editable>false</bfw_page_editable></data>
+    </item>
+ <item itemid="PX_ASSIGNMENTLIST_2COLUMN_ZONES" entityid="-entityid-">
+      <data>
+        <parent>PX_ASSIGNMENTLIST_HOME_2COLUMN</parent>
+        <sequence>a</sequence>
+        <title>PX_DC_ASSIGNMENT_2COLUMN_ZONES</title>
+        <abbreviation>PXDCHOME2COLUMNZONES</abbreviation>
+        <timetocomplete>PT1M</timetocomplete>
+        <category>1</category>
+        <period inherit="true">0</period>
+        <groupsetid>-1</groupsetid>
+        <weight>100</weight>
+        <gradeentry>1</gradeentry>
+        <inputtable inherit="true">0</inputtable>
+        <completiontrigger>0</completiontrigger>
+      </data>
+    </item>
+	
+	<item itemid="PX_ASSIGNMENTLIST_HOME_2COLUMN_ZONE_1" entityid="-entityid-">
+      <data>
+        <parent>PX_ASSIGNMENTLIST_2COLUMN_ZONES</parent>
+        <sequence>a</sequence>
+        <title>PX_DC_HOME_ZONE_1</title>
+        <abbreviation>PXDCHOMEZONE1</abbreviation>
+        <timetocomplete>PT1M</timetocomplete>
+        <category>1</category>
+        <period inherit="true">0</period>
+        <groupsetid>-1</groupsetid>
+        <weight>100</weight>
+        <gradeentry>1</gradeentry>
+        <inputtable inherit="true">0</inputtable>
+        <completiontrigger>0</completiontrigger><bfw_type>Zone</bfw_type><bfw_support_hide>true</bfw_support_hide></data>
+    </item>
+    <item itemid="PX_ASSIGNMENTLIST_HOME_2COLUMN_ZONE_2" entityid="-entityid-">
+      <data>
+        <parent>PX_ASSIGNMENTLIST_HOME_2COLUMN_ZONES</parent>
+        <sequence>a</sequence>
+        <title>PX_DC_HOME_ZONE_2</title>
+        <abbreviation>PXDCHOMEZONE2</abbreviation>
+        <timetocomplete>PT1M</timetocomplete>
+        <category>1</category>
+        <period inherit="true">0</period>
+        <groupsetid>-1</groupsetid>
+        <weight>100</weight>
+        <gradeentry>1</gradeentry>
+        <inputtable inherit="true">0</inputtable>
+        <completiontrigger>0</completiontrigger><bfw_type>Zone</bfw_type><bfw_allowed_widgets>
+  <widget type="PX_assignmentList" displayName="Digital Collections Assignment List" />
+</bfw_allowed_widgets></data>
+    </item>
+    </requests>
+  </request>
+  <!-- Adds widgets to their respective zones for digital collections-->
+  <request cmd="putitems">
+    <requests>
+     <item itemid="PX_MenuWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_DC_HOME_2COLUMN_ZONE_2</parent>
+          <sequence>a</sequence>
+          <title>Menu</title>
+          <abbreviation>lcw</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_MenuWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="MenuWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_MenuWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_target_menu" type="String">PX_MENU_DIGITALCOLLECTIONS</bfw_property>
+<bfw_property name="bfw_target_menu_id" type="String">PX_MENU_ITEM_PROJECTS</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+      
+<item itemid="PX_CarouselWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_DC_HOME_2COLUMN_ZONE_2</parent>
+          <sequence>b</sequence>
+          <abbreviation>lcw</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_CarouselWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="CarouselWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_properties>
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_hidealltitles" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_hidethumbnails" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_hidealldescriptions" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_hideallassignbuttons" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_loadbytoc" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_hideQtip" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_itemsperslide" type="String">4</bfw_property>
+            <bfw_property name="bfw_autogenerateprev" type="String">true</bfw_property>
+            <bfw_property name="bfw_autogeneratepagination" type="String">true</bfw_property>
+            <bfw_property name="bfw_pagination" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_startingPoint" type="string">1</bfw_property>
+            <bfw_property name="bfw_autoheight" type="String">true</bfw_property>
+            <bfw_property name="bfw_hideviewall" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_viewallurl" type="String">#</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+          <creationby>7</creationby>
+          <IsMarkAsCompleteChecked>false</IsMarkAsCompleteChecked>
+          <meta-bfw_assigned>false</meta-bfw_assigned>
+        </data>
+      </item>
+	  <item itemid="PX_AssignmentList" entityid="-entityid-">
+      <data>
+        <type>CustomActivity</type>
+        <parent>PX_DC_ASSIGNMENT_2COLUMN_ZONE_2</parent>
+        <sequence>ab</sequence>
+        <abbreviation>lcw</abbreviation>
+        <timetocomplete>PT1M</timetocomplete>
+        <category>0</category>
+        <period inherit="true">0</period>
+        <groupsetid>-1</groupsetid>
+        <weight>100</weight>
+        <gradeentry>1</gradeentry>
+        <inputtable inherit="true">0</inputtable>
+        <completiontrigger>0</completiontrigger><bfw_type>Widget</bfw_type><bfw_subtype>PX_AssignmentList</bfw_subtype><bfw_display_flags>
+  <display>instructor</display>
+  <display>student</display>
+</bfw_display_flags><bfw_widget_callbacks>
+  <method name="View" controller="AssignmentListWidget" action="Summary" fne="false" />
+</bfw_widget_callbacks><bfw_properties>
+  <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+</bfw_properties><bfw_tocs>
+  <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+</bfw_tocs><creationby>7</creationby><IsMarkAsCompleteChecked>false</IsMarkAsCompleteChecked><meta-bfw_assigned>false</meta-bfw_assigned></data>
+    </item>
+<item itemid="PX_MenuWidget_AssignmentList" entityid="-entityid-">
+    <data>
+      <type>CustomActivity</type>
+      <parent>PX_DC_ASSIGNMENT_2COLUMN_ZONE_2</parent>
+      <sequence>a</sequence>
+      <title>Menu</title>
+      <abbreviation>lcw</abbreviation>
+      <timetocomplete>PT1M</timetocomplete>
+      <category>0</category>
+      <period inherit="true">0</period>
+      <groupsetid>-1</groupsetid>
+      <weight>100</weight>
+      <gradeentry>1</gradeentry>
+      <inputtable inherit="true">0</inputtable>
+      <completiontrigger>0</completiontrigger><bfw_type>Widget</bfw_type><bfw_subtype>PX_MenuWidget</bfw_subtype><bfw_display_flags>
+  <display>instructor</display>
+  <display>student</display>
+</bfw_display_flags><bfw_widget_callbacks>
+  <method name="View" controller="MenuWidget" action="Summary" fne="false" />
+</bfw_widget_callbacks><bfw_widget_template>PX_MenuWidget</bfw_widget_template><bfw_properties>
+  <bfw_property name="bfw_syllabusfilter" type="String" />
+  <bfw_property name="bfw_cssclass" type="String" />
+  <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_targetid" type="String" />
+  <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+  <bfw_property name="bfw_target_menu" type="String">PX_MENU_DIGITALCOLLECTIONS</bfw_property>
+<bfw_property name="bfw_target_menu_id" type="String">PX_MENU_ITEM_ASSIGNMENTS</bfw_property>
+
+</bfw_properties><bfw_tocs>
+  <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+</bfw_tocs></data>
+  </item>
+<item itemid="PX_Instructor_AssignmentList_Overview" entityid="-entityid-">
+      <data>
+        <type>CustomActivity</type>
+        <parent>PX_DC_ASSIGNMENT_2COLUMN_ZONE_1</parent>
+        <title>Overview</title>
+        <abbreviation>lcw</abbreviation>
+        <description>&lt;div class=&quot;welcome&quot;&gt; 
+		&lt;div class=&quot;course-info-widget&quot;&gt; 
+			&lt;div class=&quot;top&quot;&gt; 
+			&lt;a class=&quot;add-assignment-link&quot; href=&quot;#&quot; onclick=&#39;$(document).find(&quot;#PX_MENU_ITEM_PROJECTS a &quot;).click();&#39;&gt;Add an Assignment &lt;i class=&quot;icon-right-open stand-alone&quot; style=&quot;float:right&quot;&gt;&lt;/i&gt;&lt;/a&gt; 
+			&lt;span style=&quot;margin-bottom:10px; float:left;&quot;&gt;This is where we can explain to the instructor that only things that appear on this page will be visible to student&lt;/span&gt;  
+				&lt;ol style=&quot;float: left;&quot;&gt;
+				 &lt;li&gt;Do we give directions?&lt;/li&gt; 
+				 &lt;li&gt;Who shall write them&lt;/li&gt; 
+				 &lt;li&gt;Assign them to your students.&lt;/li&gt; 
+				 &lt;/ol&gt;
+			 &lt;/div&gt;
+		 &lt;/div&gt;
+	 &lt;/div&gt;</description>
+        <timetocomplete>PT1M</timetocomplete>
+        <category>0</category>
+        <period inherit="true">0</period>
+        <groupsetid>-1</groupsetid>
+        <weight>100</weight>
+        <gradeentry>1</gradeentry>
+        <inputtable inherit="true">0</inputtable>
+        <completiontrigger>0</completiontrigger><bfw_type>Widget</bfw_type><bfw_subtype>PX_Custom</bfw_subtype><bfw_display_flags>
+  <display>instructor</display>
+</bfw_display_flags><bfw_widget_callbacks>
+  <method name="View" controller="CustomWidget" action="View" fne="false" />
+  <method name="OnBeforeAdd" controller="CustomWidget" action="OnBeforeAdd" fne="false" />
+  <method name="Save" controller="CustomWidget" action="AddCustomWidget" fne="false" />
+</bfw_widget_callbacks><bfw_widget_template>PX_Custom</bfw_widget_template><bfw_properties>
+  <bfw_property name="bfw_syllabusfilter" type="String" />
+  <bfw_property name="bfw_cssclass" type="String" />
+  <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_targetid" type="String" />
+  <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+</bfw_properties><bfw_tocs>
+  <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+</bfw_tocs></data>
+    </item>
+	  
+	  <item itemid="PX_InstructorOverviewWidget" entityid="-entityid-">
+      <data>
+        <type>CustomActivity</type>
+        <parent>PX_DC_HOME_2COLUMN_ZONE_1</parent>
+        <title>Overview</title>
+        <abbreviation>lcw</abbreviation>
+        <description>&lt;div class="welcome"&gt; &lt;div class="course-info-widget"&gt; &lt;div class="top"&gt; &lt;h1&gt;Welcome, Instructor!&lt;/h1&gt; &lt;span&gt; It’s easy to find, customize, and assign primary source projects and documents that work for your course. Your students will only see the projects that you have assigned.&lt;/span&gt; &lt;h2&gt;Get started:&lt;/h2&gt; &lt;ol&gt; &lt;li&gt;Browse the Primary Source Projects.&lt;/li&gt; &lt;li&gt;Edit them to match your course.&lt;/li&gt; &lt;li&gt;Assign them to your students.&lt;/li&gt; &lt;/ol&gt; &lt;a class="activation-link register-lc"&gt;Enable Student Registration &lt;span class="icon"&gt;&lt;/span&gt;&lt;/a&gt; &lt;/div&gt; &lt;div class="bottom"&gt; &lt;ul class="tutorial-links"&gt; &lt;li class="header-row"&gt;&lt;span rel=""&gt;Instructor Support&lt;/span&gt;&lt;/li&gt; &lt;li &gt;&lt;a href="#" target="_blank"&gt;&lt;span rel=""&gt;How to get started&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="#" target="_blank"&gt;&lt;span rel=""&gt;FAQs&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt;</description>
+        <timetocomplete>PT1M</timetocomplete>
+        <category>0</category>
+        <period inherit="true">0</period>
+        <groupsetid>-1</groupsetid>
+        <weight>100</weight>
+        <gradeentry>1</gradeentry>
+        <inputtable inherit="true">0</inputtable>
+        <completiontrigger>0</completiontrigger><bfw_type>Widget</bfw_type><bfw_subtype>PX_Custom</bfw_subtype><bfw_display_flags>
+  <display>instructor</display>
+</bfw_display_flags><bfw_widget_callbacks>
+  <method name="View" controller="CustomWidget" action="View" fne="false" />
+  <method name="OnBeforeAdd" controller="CustomWidget" action="OnBeforeAdd" fne="false" />
+  <method name="Save" controller="CustomWidget" action="AddCustomWidget" fne="false" />
+</bfw_widget_callbacks><bfw_widget_template>PX_Custom</bfw_widget_template><bfw_properties>
+  <bfw_property name="bfw_syllabusfilter" type="String" />
+  <bfw_property name="bfw_cssclass" type="String" />
+  <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_targetid" type="String" />
+  <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+</bfw_properties><bfw_tocs>
+  <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+</bfw_tocs></data>
+    </item>
+	
+    <item itemid="PX_StudentOverviewWidget" entityid="-entityid-">
+      <data>
+        <type>CustomActivity</type>
+        <parent>PX_DC_HOME_2COLUMN_ZONE_1</parent>
+        <title>Overview</title>
+        <abbreviation>lcw</abbreviation>
+        <description>&lt;div class=&quot;welcome&quot;&gt; &lt;div class=&quot;course-info-widget&quot;&gt; &lt;div class=&quot;top&quot;&gt; &lt;h1&gt;Welcome, student!&lt;/h1&gt; &lt;span&gt; We’ll need copy directed at the student who may be browsing the site. We may want to direct them to the assignments tab and point out that they only have to do stuff assigned by their instructor.&lt;/span&gt; &lt;h2&gt;Get started:&lt;/h2&gt; &lt;ol&gt; &lt;li&gt;We may need to edit these.&lt;/li&gt; &lt;li&gt;Because students have different options.&lt;/li&gt; &lt;li&gt;We may not even need this.&lt;/li&gt; &lt;/ol&gt; &lt;/div&gt; &lt;div class=&quot;bottom&quot;&gt; &lt;ul class=&quot;tutorial-links&quot;&gt; &lt;li class=&quot;header-row&quot;&gt;&lt;span rel=&quot;&quot;&gt;Student Support&lt;/span&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#&quot; target=&quot;_blank&quot;&gt;&lt;span rel=&quot;&quot;&gt;How to get started&lt;/span&gt;&lt;span class=&quot;tut-link-arrow&quot;/&gt;&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#&quot; target=&quot;_blank&quot;&gt;&lt;span rel=&quot;&quot;&gt;FAQs&lt;/span&gt;&lt;span class=&quot;tut-link-arrow&quot; /&gt;&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;/div&gt;&lt;/div&gt;</description>
+        <timetocomplete>PT1M</timetocomplete>
+        <category>0</category>
+        <period inherit="true">0</period>
+        <groupsetid>-1</groupsetid>
+        <weight>100</weight>
+        <gradeentry>1</gradeentry>
+        <inputtable inherit="true">0</inputtable>
+        <completiontrigger>0</completiontrigger><bfw_type>Widget</bfw_type><bfw_subtype>PX_Custom</bfw_subtype><bfw_display_flags>
+  <display>student</display>
+</bfw_display_flags><bfw_widget_callbacks>
+  <method name="View" controller="CustomWidget" action="View" fne="false" />
+  <method name="OnBeforeAdd" controller="CustomWidget" action="OnBeforeAdd" fne="false" />
+  <method name="Save" controller="CustomWidget" action="AddCustomWidget" fne="false" />
+</bfw_widget_callbacks><bfw_widget_template>PX_Custom</bfw_widget_template><bfw_properties>
+  <bfw_property name="bfw_syllabusfilter" type="String" />
+  <bfw_property name="bfw_cssclass" type="String" />
+  <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_targetid" type="String" />
+  <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+</bfw_properties><bfw_tocs>
+  <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+</bfw_tocs></data>
+    </item>
+	  <item itemid="PX_StudentAssignmentListOverview" entityid="-entityid-">
+      <data>
+        <type>CustomActivity</type>
+        <parent>PX_DC_ASSIGNMENT_2COLUMN_ZONE_1</parent>
+        <title>Overview</title>
+        <abbreviation>lcw</abbreviation>
+        <description>
+          &lt;div class=&quot;welcome&quot; &gt; &lt;div class=&quot;course-info-widget&quot;&gt; &lt;div class=&quot;top&quot;&gt; &lt;h1&gt;Welcome, student!&lt;/h1&gt; &lt;span style=&quot;margin-bottom:10px; float:left;&quot;&gt;Your instructor has assigned primary source projects and documents here for you to read and work through.&lt;/span&gt; &lt;h2&gt;Get started:&lt;/h2&gt; &lt;ol&gt; &lt;li&gt;Notice the due date next to each assignment.&lt;/li&gt; &lt;li&gt;Click on the title of the assignment to open the project or document.&lt;/li&gt; &lt;li&gt;Read through the material and answer any questions that appear.&lt;/li&gt; &lt;/ol&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt;		</description>
+        <timetocomplete>PT1M</timetocomplete>
+        <category>0</category>
+        <period inherit="true">0</period>
+        <groupsetid>-1</groupsetid>
+        <weight>100</weight>
+        <gradeentry>1</gradeentry>
+        <inputtable inherit="true">0</inputtable>
+        <completiontrigger>0</completiontrigger><bfw_type>Widget</bfw_type><bfw_subtype>PX_Custom</bfw_subtype><bfw_display_flags>
+  <display>student</display>
+</bfw_display_flags><bfw_widget_callbacks>
+  <method name="View" controller="CustomWidget" action="View" fne="false" />
+  <method name="OnBeforeAdd" controller="CustomWidget" action="OnBeforeAdd" fne="false" />
+  <method name="Save" controller="CustomWidget" action="AddCustomWidget" fne="false" />
+</bfw_widget_callbacks><bfw_widget_template>PX_Custom</bfw_widget_template><bfw_properties>
+  <bfw_property name="bfw_syllabusfilter" type="String" />
+  <bfw_property name="bfw_cssclass" type="String" />
+  <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_targetid" type="String" />
+  <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+</bfw_properties><bfw_tocs>
+  <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+</bfw_tocs></data>
+    </item>
+	
+    </requests>
+  </request>
+  <!-- This deletes some legacy items that may be on the course -->
+  <request cmd="deleteitems">
+    <requests>
+      <item entityid="-entityid-" itemid="PX_MENU_ITEM_COURSEMATERIALS_TEMPLATE_PM" />
+      <item entityid="-entityid-" itemid="PX_MENU_ITEM_COURSEMATERIALS_PM" />
+      <item entityid="-entityid-" itemid="PX_MENU_ITEM_EBOOK_PM" />
+      <item entityid="-entityid-" itemid="PX_MENU_ITEM_PROGRAM_MANAGER_TEMPLATE" />
+      <item entityid="-entityid-" itemid="PX_MENU_ITEM_PROGRAM_MANAGER" />
+      <item entityid="-entityid-" itemid="PX_ProfileSummaryWidget" />
+	  <item entityid="-entityid-"  itemid="PX_AssignmentListStudentOverview" />
+	  <item entityid="-entityid-" itemid="PX_AssignmentListOverview" />
+	  <item itemid="PX_Student_Home_MenuWidget_AssignmentList" entityid="-entityid-" />
+      <item itemid="PX_Student_Home_AssignmentList" entityid="-entityid-" />
+    </requests>
+  </request>
+  <!--Creates the primary menu for the Digital Collections product-->
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_MENU_DIGITALCOLLECTIONS" version="1" entityid="-entityid-" creationdate="2012-02-06T21:11:53.23Z" creationby="7" modifieddate="2012-02-06T21:11:53.23Z" modifiedby="7">
+        <data>
+          <parent>PX_MENUS</parent>
+          <title>Primary Navigation</title>
+          <bfw_type>Menu</bfw_type>
+          <bfw_tocid>-tocid-</bfw_tocid>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+        </data>
+      </item>
+     <item itemid="PX_MENU_ITEM_PROJECTS" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_MENU_DIGITALCOLLECTIONS</parent>
+          <sequence>a</sequence>
+          <title>Projects</title>
+          <abbreviation>PROJECTS</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Projects" controller="PageAction" action="LoadPage" target="#page-definition-wrapper">			
+			<parameter name="pageid" value="PX_DC_HOME_2COLUMN" />			
+			</method>
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_PRIMARY_SOURCES" version="1" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_MENU_DIGITALCOLLECTIONS</parent>
+          <sequence>b</sequence>
+          <title>Primary Sources</title>
+          <abbreviation>PRIMARYSOURCES</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+                       <method name="Projects" controller="PageAction" action="LoadPage" target="#page-definition-wrapper">			
+			<parameter name="pageid" value="PX_DC_HOME_2COLUMN" />			
+			</method>
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_ASSIGNMENTS" version="1" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_MENU_DIGITALCOLLECTIONS</parent>
+          <sequence>c</sequence>
+          <title>View Your Assignments</title>
+          <abbreviation>ASSIGNMENTS</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+                <method name="Projects" controller="PageAction" action="LoadPage" target="#page-definition-wrapper">			
+			<parameter name="pageid" value="PX_DC_ASSIGNMENT_2COLUMN" />			
+			</method>
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+    </requests>
+  </request>
+</batch>

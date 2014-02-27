@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Unit Test - Px Management Card</title>
+
+    <link rel="stylesheet" type="text/css" href="../../lib/jasmine-1.3.1/jasmine.css" />
+    <script type="text/javascript" src="../../lib/jasmine-1.3.1/jasmine.js"></script>
+    <script type="text/javascript" src="../../lib/jasmine-1.3.1/jasmine-html.js"></script>
+    <script type="text/javascript" src="../../lib/blanket/blanket.min.js" data-cover-adapter="../../lib/blanket/jasmine-blanket.js"></script>
+
+    <!-- include dependencies here (e.g. jquery) !-->
+    <script type="text/javascript" src="../../../Tests/lib/jasmine-jquery.js"></script>
+    <script type="text/javascript" src="../../../Scripts/jquery/jquery-1.10.2.js"></script>
+    <script type="text/javascript"             src="../../../Scripts/jquery/jquery-migrate-1.2.1.js"></script>
+
+    <script type="text/javascript" src="../../../Scripts/other/jquery.tmpl.js"></script>
+    <script type="text/javascript" src="../../../Scripts/jquery/jquery.blockUI.js"></script>
+    <script type="text/javascript" src="../../../Scripts/jquery/jquery.utils.js"></script>
+    <script type="text/javascript" src="../../../Scripts/jquery/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript" src="../../../Scripts/jquery/jquery.fauxtree.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Other/date.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Datepicker/datepicker.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/dateFormat.js"></script>
+
+    <script type="text/javascript" src="../../../Tests/lib/mock-ajax.js"></script>
+    <script type="text/javascript" src="../../../Tests/lib/viewrender.js"></script>
+
+    <script type="text/javascript" data-cover src="../../../Scripts/ManagementCard/ManagementCard.js"></script>
+  
+    <!-- include helper files here -->
+    <script type="text/javascript" src="../../helper/ManagementCardHelper.js"></script>
+
+    <!-- include spec files here... -->
+    <script type="text/javascript" src="../../spec/ManagementCard/PxManagementCardSpec.js"></script>
+
+    <script type="text/javascript">
+        (function () {
+            var jasmineEnv = jasmine.getEnv();
+            jasmineEnv.updateInterval = 1000;
+
+            var htmlReporter = new jasmine.HtmlReporter();
+
+            jasmineEnv.addReporter(htmlReporter);
+
+            jasmineEnv.specFilter = function (spec) {
+                return htmlReporter.specFilter(spec);
+            };
+
+            var currentWindowOnload = window.onload;
+
+            window.onload = function () {
+                if (currentWindowOnload) {
+                    currentWindowOnload();
+                }
+                execJasmine();
+            };
+
+            function execJasmine() {
+                jasmineEnv.execute();
+            }
+
+        })();
+    </script>
+</head>
+<body>
+</body>
+</html>

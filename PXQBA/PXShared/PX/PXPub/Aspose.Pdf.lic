@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<License>
+  <Data>
+    <LicensedTo>Macmillan Higher Ed</LicensedTo>
+    <LicenseType>Developer OEM</LicenseType>
+    <LicenseNote>Limited to 1 developer.</LicenseNote>
+    <OrderID>130923160909</OrderID>
+    <OEM>This is a redistributable license</OEM>
+    <Products>
+      <Product>Aspose.Pdf for .NET</Product>
+    </Products>
+    <EditionType>Enterprise</EditionType>
+    <SerialNumber>4606cda4-c35a-4ea2-ab4c-a56eef67fefd</SerialNumber>
+    <SubscriptionExpiry>20141023</SubscriptionExpiry>
+    <LicenseVersion>2.2</LicenseVersion>
+  </Data>
+  <Signature>cFctqaXPI40G5685ZOUxpZhJHy6dn1GTFVNNP5rz0zj9+n0LiDeIGvvA2xkcGMQ9ROTARxFHVofWIYzs1iQtMm7sz1CVKUO43H3Ul+FldKSmlpsVKfefyyQEkdGayTce8MuyshKZ0HRSU4KuI7t4qzcVblGcHN/e+kWBVIsIupc=</Signature>
+</License>

@@ -1,0 +1,9 @@
+﻿@model System.Web.Security.MembershipUserCollection
+
+@{
+    Layout = null;
+}
+@foreach (MembershipUser user in Model)
+{
+    <li>@user.UserName Edit | Delete</li>
+}

@@ -1,0 +1,250 @@
+<requests>
+	<item itemid="PX_InstructorOverviewWidget" entityid="-entityid-">
+		<data>
+			<type>CustomActivity</type>
+			<parent>PX_LC_HOME_2COLUMN_ZONE_1</parent>
+			<title>Overview</title>
+			<abbreviation>lcw</abbreviation>
+			<description>
+				&lt;div class="welcome"&gt;
+				&lt;div class="course-info-widget"&gt;
+				&lt;div class="top"&gt;
+				&lt;div class="book"&gt;
+				&lt;/div&gt;
+				&lt;span class="book-title"&gt;[book-title]&lt;/span&gt;&lt;br&gt;
+				&lt;span&gt;[edition-number]&lt;/span&gt;&lt;br&gt;
+				&lt;span&gt;[author-names]&lt;/span&gt;&lt;br&gt; 
+				&lt;/div&gt;
+				&lt;div class="bottom"&gt;
+				&lt;ul class="tutorial-links"&gt;
+				&lt;li class="header-row"&gt;&lt;span rel=""&gt;Instructor Support&lt;/span&gt;&lt;/li&gt; 
+				&lt;li &gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Works" target="_blank"&gt;&lt;span rel=""&gt;How LearningCurve Works&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Research" target="_blank"&gt;&lt;span rel=""&gt;The Research Behind LearningCurve&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Instructor_FAQ" target="_blank" &gt;&lt;span rel=""&gt; Instructor FAQs &lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Student_FAQ " target="_blank" &gt;&lt;span rel=""&gt; Student FAQs &lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;/ul&gt;
+				&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;/div&gt;
+			</description>
+			<timetocomplete>PT1M</timetocomplete>
+			<category>0</category>
+			<period inherit="true">0</period>
+			<groupsetid>-1</groupsetid>
+			<weight>100</weight>
+			<gradeentry>1</gradeentry>
+			<inputtable inherit="true">0</inputtable>
+			<completiontrigger>0</completiontrigger>
+			<bfw_type>Widget</bfw_type>
+			<bfw_subtype>PX_Custom</bfw_subtype>
+			<bfw_display_flags>
+				<display>instructor</display>
+			</bfw_display_flags>
+			<bfw_widget_callbacks>
+				<method name="View" controller="CustomWidget" action="View" fne="false" />
+				<method name="OnBeforeAdd" controller="CustomWidget" action="OnBeforeAdd" fne="false" />
+				<method name="Save" controller="CustomWidget" action="AddCustomWidget" fne="false" />
+			</bfw_widget_callbacks>
+			<bfw_widget_template>PX_Custom</bfw_widget_template>
+			<bfw_properties>
+				<bfw_property name="bfw_syllabusfilter" type="String" />
+				<bfw_property name="bfw_cssclass" type="String" />
+				<bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+				<bfw_property name="bfw_targetid" type="String" />
+				<bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+				<bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+				<bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+			</bfw_properties>
+			<bfw_tocs>
+				<bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+			</bfw_tocs>
+		</data>
+	</item>
+
+	<item itemid="PX_StudentOverviewWidget" entityid="-entityid-">
+		<data>
+			<type>CustomActivity</type>
+			<parent>PX_LC_HOME_2COLUMN_ZONE_1</parent>
+			<title>Overview</title>
+			<abbreviation>lcw</abbreviation>
+			<description>
+				&lt;div class="welcome"&gt;
+				&lt;div class="course-info-widget welcome"&gt;
+				&lt;div class="top"&gt;
+				&lt;div class="book"&gt;
+				&lt;/div&gt;
+				&lt;span class="book-title"&gt;[book-title]&lt;/span&gt;&lt;br&gt;
+				&lt;span&gt;[edition-number]&lt;/span&gt;&lt;br&gt;
+				&lt;span&gt;[author-names]&lt;/span&gt;&lt;br&gt; 
+				&lt;/div&gt;
+				&lt;div class="bottom"&gt;
+				&lt;ul class="tutorial-links"&gt;
+				&lt;li class="header-row"&gt;&lt;span rel=""&gt;Student Support&lt;/span&gt;&lt;/li&gt; 
+				&lt;li &gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Works" target="_blank"&gt;&lt;span rel=""&gt;How LearningCurve Works&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Research" target="_blank"&gt;&lt;span rel=""&gt;The Research Behind LearningCurve&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Instructor_FAQ" target="_blank" &gt;&lt;span rel=""&gt; Instructor FAQs &lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Student_FAQ " target="_blank" &gt;&lt;span rel=""&gt; Student FAQs &lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+
+
+				&lt;/ul&gt;
+				&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;/div&gt;
+			</description>
+			<timetocomplete>PT1M</timetocomplete>
+			<category>0</category>
+			<period inherit="true">0</period>
+			<groupsetid>-1</groupsetid>
+			<weight>100</weight>
+			<gradeentry>1</gradeentry>
+			<inputtable inherit="true">0</inputtable>
+			<completiontrigger>0</completiontrigger><bfw_type>Widget</bfw_type><bfw_subtype>PX_Custom</bfw_subtype><bfw_display_flags>
+				<display>student</display>
+			</bfw_display_flags><bfw_widget_callbacks>
+				<method name="View" controller="CustomWidget" action="View" fne="false" />
+				<method name="OnBeforeAdd" controller="CustomWidget" action="OnBeforeAdd" fne="false" />
+				<method name="Save" controller="CustomWidget" action="AddCustomWidget" fne="false" />
+			</bfw_widget_callbacks><bfw_widget_template>PX_Custom</bfw_widget_template><bfw_properties>
+				<bfw_property name="bfw_syllabusfilter" type="String" />
+				<bfw_property name="bfw_cssclass" type="String" />
+				<bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+				<bfw_property name="bfw_targetid" type="String" />
+				<bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+				<bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+				<bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+			</bfw_properties><bfw_tocs>
+				<bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+			</bfw_tocs></data>
+	</item>
+	<item itemid="PX_PRODUCT_GETTING_STARTED" entityid="-entityid-">
+		<data>
+			<type>CustomActivity</type>
+			<parent>PX_ROOT</parent>
+			<title>Everyday Writer</title>
+			<abbreviation>ecw</abbreviation>
+			<description>
+				&lt;div&gt;
+				&lt;div id="PX_LC_HOME_2COLUMN_ZONE_1" class="zoneParent"&gt;
+				&lt;div class="course-info-widget"&gt;
+				&lt;div class="top"&gt;
+				&lt;div class="book"&gt;
+				&lt;/div&gt;
+				&lt;span class="book-title"&gt;[book-title]&lt;/span&gt;&lt;br&gt;
+				&lt;span&gt;[edition-number]&lt;/span&gt;&lt;br&gt;
+				&lt;span&gt;[author-names]&lt;/span&gt;&lt;br&gt; 
+				&lt;/div&gt;
+				&lt;div class="bottom"&gt;
+				&lt;ul class="tutorial-links"&gt;
+				&lt;li class="header-row"&gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Works" target="_blank"&gt;&lt;span rel=""&gt;See How 
+
+				LearningCurve Works&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Research" target="_blank"&gt;&lt;span rel=""&gt;The Research Behind 
+
+				LearningCurve&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Instructor_FAQ" target="_blank"&gt;&lt;span rel=""&gt;Instructor FAQs&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Student_FAQ" target="_blank"&gt;&lt;span rel=""&gt;Student FAQs&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;/ul&gt;
+				&lt;/div&gt;
+
+				&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;div id="PX_LC_HOME_2COLUMN_ZONE_2" class="zoneParent welcome"&gt;
+				&lt;div class="marketing-content"&gt;
+				&lt;div class="lc-rw-body-copy"&gt;
+				&lt;p&gt;&lt;b&gt;Welcome, instructors!&lt;/b&gt; Assign &lt;i&gt;LearningCurve&lt;/i&gt; activities and watch your students and class use our adaptive 
+
+				quizzing to master course content.&lt;/p&gt;
+				&lt;/div&gt;
+				&lt;div class="lc-rw-body-copy"&gt;
+				&lt;span&gt;Here's how it works:&lt;/span&gt;
+				&lt;ul&gt;
+				&lt;li&gt;Choose which &lt;i&gt;LearningCurve&lt;/i&gt; activities you want to assign.&lt;/li&gt;
+				&lt;li&gt;Enable student registration and enter your course information.&lt;/li&gt;
+				&lt;li&gt;Use reports to see how your class and students are doing on &lt;i&gt;LearningCurve&lt;/i&gt; activities. &lt;/li&gt;
+
+				&lt;/ul&gt;
+				&lt;/div&gt;
+				&lt;div class="lc-action-button"&gt;
+
+				&lt;a href="[[createcourse]]" class="ecom-btns [[createcoursestyles]]"&gt;Get into LearningCurve
+				&lt;span class="icon"&gt;&lt;/span&gt;&lt;/a&gt;
+
+
+				&lt;a href="[[viewcourses]]" class="ecom-btns view-courses-button fixed view-courses-button-hidden "&gt;View Courses
+				&lt;span class="icon"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/div&gt; 
+
+
+				&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;/div&gt;
+			</description>
+			<timetocomplete>PT1M</timetocomplete>
+			<category>1</category>
+			<period inherit="true">0</period>
+			<groupsetid>-1</groupsetid>
+			<weight>100</weight>
+			<gradeentry>1</gradeentry>
+			<inputtable inherit="true">0</inputtable><bfw_type>ProductMarketing</bfw_type><bfw_subtype>Marketing</bfw_subtype><bfw_tocs>
+				<bfw_toc_contents parentid="PX_ROOT" sequence="_ja" />
+			</bfw_tocs></data>
+	</item>
+
+	<item itemid="PX_PRODUCT_MARKETING" entityid="-entityid-">
+		<data>
+			<type>CustomActivity</type>
+			<parent>PX_ROOT</parent>
+			<title>Everyday Writer</title>
+			<abbreviation>ecw</abbreviation>
+			<description>
+				&lt;div class=&quot;real-writing&quot;&gt;
+				&lt;div id=&quot;PX_LC_HOME_2COLUMN_ZONE_1&quot; class=&quot;zoneParent&quot;&gt;
+				&lt;div class=&quot;course-info-widget&quot;&gt;
+				&lt;div class=&quot;top&quot;&gt;
+				&lt;div class=&quot;book&quot;&gt;
+				&lt;/div&gt;
+				&lt;span class="book-title"&gt;[book-title]&lt;/span&gt;&lt;br&gt;
+				&lt;span&gt;[edition-number]&lt;/span&gt;&lt;br&gt;
+				&lt;span&gt;[author-names]&lt;/span&gt;&lt;br&gt; 
+				&lt;/div&gt;
+				&lt;div class=&quot;bottom&quot;&gt;
+				&lt;ul class=&quot;tutorial-links&quot;&gt;
+				&lt;li&gt;&lt;a href=&quot;http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Works &quot; target=&quot;_blank&quot;&gt;&lt;span rel=&quot;&quot;&gt;See How LearningCurve Works&lt;/span&gt;&lt;span class=&quot;tut-link-arrow&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+
+				&lt;li&gt;&lt;a href=&quot;http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Research &quot; target=&quot;_blank&quot;&gt;&lt;span rel=&quot;&quot;&gt;The Research Behind LearningCurve&lt;/span&gt;&lt;span class=&quot;tut-link-arrow&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+
+				&lt;li&gt;&lt;a href=&quot;http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Instructor_FAQ  &quot; target=&quot;_blank&quot;&gt;&lt;span rel=&quot;&quot;&gt;Instructor FAQs&lt;/span&gt;&lt;span class=&quot;tut-link-arrow&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Student_FAQ  &quot; target=&quot;_blank&quot;&gt;&lt;span rel=&quot;&quot;&gt;Student FAQs&lt;/span&gt;&lt;span class=&quot;tut-link-arrow&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;/ul&gt;
+				&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;div id=&quot;PX_LC_HOME_2COLUMN_ZONE_2&quot; class=&quot;zoneParent&quot;&gt;
+				&lt;div class=&quot;marketing-content&quot;&gt;
+				&lt;div class=&quot;lc-rw-content-header&quot;&gt;
+				&lt;div class=&quot;lc-rw-logo&quot;&gt;
+				&lt;/div&gt;
+				&lt;span&gt;Learning Curve &lt;i&gt;for [book-title] &lt;/i&gt;&lt;/span&gt;
+				&lt;/div&gt;
+				&lt;div class=&quot;lc-rw-body-copy&quot;&gt;&lt;p&gt;&lt;b&gt; Everybody&#39;s got a learning curve-what&#39;s yours?&lt;/b&gt; Welcome to &lt;i&gt;LearningCurve,&lt;/i&gt; adaptive game-like quizzing that helps you focus on the material you need most help with. When you get a question wrong, feedback tells you why and links you to your book for review - and then you get a chance to try again.
+				&lt;/p&gt;
+				&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;/div&gt;
+			</description>
+			<timetocomplete>PT1M</timetocomplete>
+			<category>1</category>
+			<period inherit="true">0</period>
+			<groupsetid>-1</groupsetid>
+			<weight>100</weight>
+			<gradeentry>1</gradeentry>
+			<inputtable inherit="true">0</inputtable>
+			<bfw_type>ProductMarketing</bfw_type>
+			<bfw_subtype>Marketing</bfw_subtype>
+			<bfw_tocs>
+				<bfw_toc_contents parentid="PX_ROOT" sequence="_ja" />
+			</bfw_tocs>
+		</data>
+	</item>
+</requests>

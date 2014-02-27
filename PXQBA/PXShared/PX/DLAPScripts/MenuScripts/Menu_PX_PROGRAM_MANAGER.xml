@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<requests>
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_PROGRAM_MANAGER" entityid="-entityid-">
+        <data>
+          <parent>PX_MENUS</parent>
+          <title>Primary Navigation</title>
+          <bfw_type>Menu</bfw_type>
+          <bfw_tocid>-tocid-</bfw_tocid>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+        </data>
+      </item>
+      <item itemid="PX_PROGRAM_MANAGER_TEMPLATES" entityid="-entityid-">
+        <data>
+          <parent>PX_MENUS</parent>
+          <title>Primary Navigation</title>
+          <bfw_type>Menu</bfw_type>
+          <bfw_tocid>-tocid-</bfw_tocid>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_HOME_PM" entityid="-entityid-">
+        <data>
+      		<type>CustomActivity</type>
+      		<parent>PX_PROGRAM_MANAGER</parent>
+      		<sequence>a</sequence>
+		    <title>e-PORTFOLIOS</title>
+      		<abbreviation>e-PORTFOLIOS</abbreviation>
+      		<timetocomplete>PT1M</timetocomplete>
+      		<category>1</category>
+      		<period inherit="true">0</period>
+      		<groupsetid>-1</groupsetid>
+      		<duedate>0001-01-01T00:00:00Z</duedate>
+      		<weight>100</weight>
+      		<gradeentry>1</gradeentry>
+      		<inputtable inherit="true">0</inputtable>
+			<bfw_type>MenuItem</bfw_type>
+			<bfw_menu_created_by>PX_MENU_ITEM_HOME_TEMPLATE</bfw_menu_created_by>
+			<bfw_menu_selected_by_default>true</bfw_menu_selected_by_default>
+			<bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+			<bfw_display_flags>
+  				<allow>
+   					<role>instructor</role>
+    				<coursetype>any</coursetype>
+  				</allow>
+  				<allow>
+    				<role>student</role>
+    				<coursetype>any</coursetype>
+  				</allow>
+  				<allow>
+    				<role>student</role>
+    				<coursetype>any</coursetype>
+  				</allow>
+			</bfw_display_flags>
+			<bfw_menu_callbacks>
+  				<method name="Home" controller="Home" action="Home" url="" type="" route="" />
+			</bfw_menu_callbacks>
+	</data>
+      </item>
+      <item itemid="PX_MENU_ITEM_ASSESSMENT_TEMPLATE_PM" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PROGRAM_MANAGER_TEMPLATES</parent>
+          <sequence>c</sequence>
+          <title>Assessment</title>
+          <abbreviation>ASSESSMENT</abbreviation>
+          <bfw_type>MenutItem</bfw_type>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Assessment" controller="Assessment" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_ASSESSMENT_PM" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PROGRAM_MANAGER</parent>
+          <sequence>c</sequence>
+          <title>Assessment</title>
+          <abbreviation>ASSESSMENT</abbreviation>
+          <bfw_type>MenutItem</bfw_type>
+          <bfw_menu_created_by>PX_MENU_ITEM_ASSESSMENT_TEMPLATE_PM</bfw_menu_created_by>
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Assessment" controller="Assessment" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+    </requests>
+  </request>
+  <request cmd="deleteitems">
+	  <requests>
+		<item entityid="-entityid-" itemid="PX_MENU_ITEM_COURSEMATERIALS_TEMPLATE_PM"/>
+		<item entityid="-entityid-" itemid="PX_MENU_ITEM_COURSEMATERIALS_PM"/>
+		<item entityid="-entityid-" itemid="PX_MENU_ITEM_EBOOK_PM"/>
+		<item entityid="-entityid-" itemid="PX_MENU_ITEM_PROGRAM_MANAGER_TEMPLATE"/>
+		<item entityid="-entityid-" itemid="PX_MENU_ITEM_PROGRAM_MANAGER"/>
+	  </requests>
+  </request>
+</requests>

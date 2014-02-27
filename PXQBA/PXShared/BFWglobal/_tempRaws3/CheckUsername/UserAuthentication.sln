@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\WebService1\", ".", "{366BBFEE-7160-4043-A1B2-320CF8A599CE}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.VirtualPath = "/WebService1"
+		Debug.AspNetCompiler.PhysicalPath = "..\WebService1\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\WebService1\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/WebService1"
+		Release.AspNetCompiler.PhysicalPath = "..\WebService1\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\WebService1\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "2201"
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "WebSetup1", "..\WebSetup1\WebSetup1.vdproj", "{9F458F5F-D670-4C09-9DE0-025135C2C54E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+		Release|.NET = Release|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{366BBFEE-7160-4043-A1B2-320CF8A599CE}.Debug|.NET.ActiveCfg = Debug|.NET
+		{366BBFEE-7160-4043-A1B2-320CF8A599CE}.Debug|.NET.Build.0 = Debug|.NET
+		{366BBFEE-7160-4043-A1B2-320CF8A599CE}.Release|.NET.ActiveCfg = Debug|.NET
+		{366BBFEE-7160-4043-A1B2-320CF8A599CE}.Release|.NET.Build.0 = Debug|.NET
+		{9F458F5F-D670-4C09-9DE0-025135C2C54E}.Debug|.NET.ActiveCfg = Debug
+		{9F458F5F-D670-4C09-9DE0-025135C2C54E}.Release|.NET.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,21 @@
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+IF OBJECT_ID('dbo.[rpt_QuestionTypeMaster]','U') IS NULL
+BEGIN
+CREATE TABLE [dbo].[rpt_QuestionTypeMaster](
+	[QuestionTypeID] [int] NOT NULL,
+	[QuestionTypeName] [varchar](30) NOT NULL,
+ CONSTRAINT [PK_InteractionType] PRIMARY KEY CLUSTERED 
+(
+	[QuestionTypeID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+
+

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <configSections>
+    <section name="microsoft.identityModel" type="Microsoft.IdentityModel.Configuration.MicrosoftIdentityModelSection, Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+  </configSections>
+  <appSettings>
+    <add key="SwtSigningKey" value="[your 256-bit symmetric key configured in the STS/ACS]" />
+  </appSettings>
+  <system.web>
+    <httpRuntime requestValidationType="Microsoft.IdentityModel.Swt.SwtFederationRequestValidator, Wif.Swt" requestValidationMode="2.0" />
+  </system.web>
+  <microsoft.identityModel>
+    <service saveBootstrapTokens="true">
+      <audienceUris>
+        <add value="[yourrealm]" />
+      </audienceUris>
+      <issuerNameRegistry type="Microsoft.IdentityModel.Swt.SwtIssuerNameRegistry, Wif.Swt">
+        <trustedIssuers>
+          <add name="https://[youracsnamespace].accesscontrol.windows.net/" thumbprint=""/>
+        </trustedIssuers>
+      </issuerNameRegistry>
+      <securityTokenHandlers>
+        <add type="Microsoft.IdentityModel.Swt.SwtSecurityTokenHandler, Wif.Swt" />
+      </securityTokenHandlers>
+      <issuerTokenResolver type="Microsoft.IdentityModel.Swt.SwtIssuerTokenResolver, Wif.Swt" />
+    </service>
+  </microsoft.identityModel>
+</configuration>
+  

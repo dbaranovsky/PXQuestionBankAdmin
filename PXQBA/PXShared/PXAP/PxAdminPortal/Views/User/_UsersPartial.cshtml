@@ -1,0 +1,19 @@
+﻿@model Bfw.PXAP.Models.View.UserListViewModel
+
+<table width="100%">
+    <tr>
+        <th>Username</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
+    @foreach(Bfw.PXAP.Models.Domain.User user in Model.Users)
+    {
+    <tr>
+        <td>@user.UserName</td>
+        <td>@user.Name</td>
+        <td>@user.Email</td>
+        <td><a href="javascript:PxApUser.EditUser('@user.UserName')" title="Edit">Edit</a> <a href="javascript:PxApUser.DeleteUser('@user.UserName')" title="Delete">Delete</a></td>
+    </tr>
+    }
+</table>

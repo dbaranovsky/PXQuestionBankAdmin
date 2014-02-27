@@ -1,0 +1,210 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>Tests for javascript components</title>
+
+  <link rel="stylesheet" type="text/css" href="lib/jasmine-1.3.1/jasmine.css" />
+  <script type="text/javascript" src="lib/jasmine-1.3.1/jasmine.js"></script>
+    <script type="text/javascript" src="lib/jasmine-1.3.1/jasmine-html.js"></script>
+    <script type="text/javascript" src="lib/mock-ajax.js"></script>
+    <script type="text/javascript" src="lib/jasmine-1.3.1/jasmine-beforeAll.js"></script>
+   <script type="text/javascript" src="lib/blanket/blanket.min.js" data-cover-adapter="lib/blanket/jasmine-blanket.js"></script>
+
+  <!-- include dependencies here (e.g. jquery) !-->
+    <script type="text/javascript" src="lib/jasmine-jquery.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery/jquery-1.6.4.js"></script>
+    <script type="text/javascript" src="../Scripts/other/jquery.tmpl.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery/jquery.blockUI.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery/jquery.utils.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery/jquery.fauxtree.js"></script>
+    <script type="text/javascript" src="../Scripts/select2/select2.min.js"></script>
+
+    <script type="text/javascript" data-cover src="../Scripts/AboutCourseWidget/AboutCourseWidget.js"></script>
+    <script type="text/javascript" data-cover src="../Scripts/AccountWidget/AccountWidget.js"></script>
+    <script type="text/javascript" data-cover src="../Scripts/ActionWidget/ActionWidget.js"></script>
+    <script type="text/javascript" data-cover src="../Scripts/ActivitiesWidget/ActivitiesWidget.js"></script>
+    <script type="text/javascript" data-cover src="../Scripts/AnnouncementView/AnnouncementView.js"></script>
+    <script type="text/javascript" data-cover src="../Scripts/AnnouncementWidget/AnnouncementWidget.js"></script>
+    <script type="text/javascript" data-cover src="../Scripts/Assignment/ActivityDetails.js"></script>
+    <script type="text/javascript" data-cover src="../Scripts/Assignment/Assignment.js"></script>
+    <script type="text/javascript" data-cover src="../Scripts/Assignment/AssignmentSubmissionDetails.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/AssignmentWidget/AssignmentWidget.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/AssignmentWidget/CreateAssignmentRoutes.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/AssignmentWidget/CreateAssignmentWidget.js"></script>    
+    <script type="text/javascript" data-cover  src="../Scripts/Breadcrumb/Breadcrumb.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/CalendarWidget/CalendarWidget.js"></script>
+    
+    <script type="text/javascript" data-cover  src="../Scripts/Common/dateFormat.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Common/DialogHelper.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Common/HashHistory.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Common/NonModal.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Common/PxPage.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Common/PxPage.LargeFNE.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Common/PxPage.Loader.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Common/PxPage.Toasts.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Common/PxRoutes.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/ContentWidget/ContentAreaRoutes.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/ContentWidget/ContentAreaWidget.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/ContentWidget/ContentTemplates.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/ContentWidget/ContentWidget.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/ContentWidget/Templates.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/CourseForm/CourseForm.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/CurrentDueItemWidget/CurrentDueItemWidget.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/CustomWidget/Custom.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/DashboardWidget/PxDashboard.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Datepicker/datepicker.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Discussion/Discussion.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/ECommerce/DomainDialog.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/ECommerce/ECommerce.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/EditUnitInfo/EditUnitInfo.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/EnrollmentWidget/EnrollmentWidget.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/FacePlate/FaceplateBrowseMoreResources.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/ContentTreeWidget/ContentTreeWidget.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/FacePlate/PxFacePlate.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/FacePlate/PxModal.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/FeaturedWidget/FeaturedWidget.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/FeaturedWidget/FeaturedWidget.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Fne/PageDefinedFNE.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/GradebookWidget/Gradebook.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/GradebookWidget/GradebookRoutes.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/GradingRubricsLOWidget/GradingRubricsLOWidget.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/GradingScreen/GradingScreen.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Groups/PxGroups.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Handlebar/Handlebar.js"></script>
+    
+    <script type="text/javascript" data-cover  src="../Scripts/Highlight/autoHeight.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Highlight/highlights.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/HighlightWidget/highlighter.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/HighlightWidget/HighlightWidget.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/InstructorConsoleWidget/InstructorConsole.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/LearningCurve/LearningCurve.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/LearningCurve/LearningCurveMoreResources.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/LinkCollection/LinkCollection.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/LinkWidget/LinkLibrary.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/MceAddLink/MceAddLink.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/MenuConfig/MenuConfig.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/MenuWidget/PxMenuWidget.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Module/PxUnit.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Navigation/TocNavigationStructure.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/NoteWidget/NoteLibrary.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/NoteWidget/NoteSetting.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/NoteWidget/NoteWidget.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/PersistingQtips/PersistingQtips.js"></script>
+    
+    <script type="text/javascript" data-cover  src="../Scripts/Presentation/FacebookLike.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Presentation/PresentationActionBar.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Presentation/PresentationCourse.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/PreviewAsVisitor/PreviewAsVisitor.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/ProfileSummaryWidget/ProfileSummaryWidget.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/ProgramDashboard/ProgramDashboard.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/ProgramManagerTemplates/ProgramManagerTemplates.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/ProjectViewer/PXProjectViewer.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/QuestionAdmin/QuestionAdmin.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/RelatedContent/RelatedContent.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Report/Report.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Report/ReportDetails.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Report/ReportViewer.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/RssFeed/RssFeed.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Rubric/Rubric.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Rubric/DisplayRubric.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Rubric/RubricBuilder.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Rubric/RubricManager.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Sandbox/SandboxAlert.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Search/Search.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/SearchWidget/SearchWidget.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/SettingsTab/AssignmentSettings.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/SettingsTab/ContentSettings.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/SettingsTab/LearningObjectives.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/SettingsTab/SettingsTab.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/StartWelcomeWidget/StartWelcome.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Template/TemplatePicker.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Upload/Upload.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/WidgetHelper/WidgetHelper.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Xbook/Xbook.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Xbook/XbookRoutes.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Xbook/XbookWidget.js"></script>
+
+    <script type="text/javascript" data-cover src="../Scripts/Common/PxCommon.js"></script>
+    <script type="text/javascript" data-cover src="../Scripts/Quiz/Quiz.js"></script>
+    <script type="text/javascript" data-cover src="../Scripts/Quiz/QuizQuestionListGearbox.js"></script>
+    <script type="text/javascript" data-cover src="../Scripts/ActionWidget/ActionWidget.js"></script>
+    
+    
+    <!-- include source files here... -->
+    <script type="text/javascript" src="../Scripts/Rangy/rangy-core.js"></script>
+    <!-- Quizzing source files here... -->
+    <script type="text/javascript" data-cover  src="../Scripts/Quiz/CQ.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Quiz/HtmlQuiz.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Quiz/Quiz.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Quiz/QuizFne.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Quiz/QuizHomework.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Quiz/QuizHTS.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Quiz/QuizPlayer.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Quiz/QuizQuestionEditor.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Quiz/QuizQuestionFilter.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Quiz/QuizQuestionImporter.js"></script>
+    <script type="text/javascript" data-cover src="../Scripts/Quiz/QuizQuestionSearch.js"></script>
+    <script type="text/javascript" data-cover src="../Scripts/Quiz/QuizQuestionList.js"></script>    
+    <script type="text/javascript" data-cover  src="../Scripts/Quiz/QuizQuestionListCheckbox.js"></script>
+    <script type="text/javascript" data-cover  src="../Scripts/Quiz/QuizQuestionListGearbox.js"></script>
+
+    <!-- include test helper files here... -->
+    <script type="text/javascript" src="helper/TestQuizHelper.js"></script>
+    <script type="text/javascript" src="runners/quiz/helpers/QuizResponses.js"></script>
+	<script type="text/javascript" src="lib/viewrender.release.js"></script>
+
+    <!-- include spec files here... -->
+    <script type="text/javascript" src="spec/quiz/QuestionListSpec.js"></script>
+    <script type="text/javascript" src="spec/quiz/QuestionListCheckboxSpec.js"></script>
+    <script type="text/javascript" src="spec/quiz/QuestionListGearboxSpec.js"></script>
+    <script type="text/javascript" src="spec/quiz/QuestionSearchSpec.js"></script>
+    <script type="text/javascript" src="spec/quiz/QuizFneSpec.js"></script>
+    <script type="text/javascript" src="spec/quiz/QuizHtsSpec.js"></script>
+    <script type="text/javascript" src="spec/quiz/QuizHomeworkspec.js"></script>
+    <script type="text/javascript" src="spec/quiz/QuestionImporterSpec.js"></script>
+    <script type="text/javascript" src="spec/quiz/QuestionFilterSpec.js"></script>
+    
+
+
+
+  
+  <script type="text/javascript">
+      (function () {
+          
+          var jasmineEnv = jasmine.getEnv();
+          jasmineEnv.updateInterval = 1000;
+          
+          var htmlReporter = new jasmine.HtmlReporter();
+
+          jasmineEnv.addReporter(htmlReporter);
+
+          jasmineEnv.specFilter = function (spec) {
+              return htmlReporter.specFilter(spec);
+          };
+
+          var currentWindowOnload = window.onload;
+          
+          jasmine.getFixtures().fixturesPath = 'runners/quiz/fixtures/html';
+          jasmine.getStyleFixtures().fixturesPath = 'runners/quiz/fixtures/style';
+          
+          window.onload = function () {
+              if (currentWindowOnload) {
+                  currentWindowOnload();
+              }
+              execJasmine();
+          };
+
+          function execJasmine() {
+              jasmineEnv.execute();
+          }
+
+      })();
+  </script>
+
+</head>
+
+<body>
+</body>
+</html>

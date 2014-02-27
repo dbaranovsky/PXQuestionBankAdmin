@@ -1,0 +1,430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<batch>
+  <request cmd="updatecourses">
+    <requests>
+      <course courseid="-courseid-" domainid="-domainid-" title="-title-" reference="">
+        <data>
+		  <enable_learningcurve_quiz>false</enable_learningcurve_quiz>
+		  <enable_homework_quiz>false</enable_homework_quiz>
+        </data>
+      </course>
+    </requests>
+  </request>
+
+  <request cmd="deleteitems">
+    <requests>
+      <item itemid="PX_FACEPLATEHOMEPAGEWIDGET" entityid="-entityid-" />
+	  <item itemid="PX_FacePlate_RSS_Feed_Widget" entityid="-entityid-" />
+	  <item itemid="PX_FacePlate_SA_RSS_Feed_Widget" entityid="-entityid-" />
+	  <item itemid="PX_FacePlate_SA_RSS_Feed_Widget_Default" entityid="-entityid-" />
+	  <item itemid="PX_FacePlate_TE_RSS_Feed_Widget" entityid="-entityid-" />
+	  <item itemid="PX_FacePlate_TE_RSS_Feed_Widget_Default" entityid="-entityid-" />
+	  <item itemid="TMP_79e70863484b443b81793043eb5c3a4f" entityid="-entityid-" />
+	  <item itemid="TMP_8fb2fe4aa2f0494c8f6caa62eaabf908" entityid="-entityid-" />
+	  <item itemid="TMP_dcef7cf5ba194495a7c86145b557bc15" entityid="-entityid-" />
+    </requests>
+  </request>
+
+
+
+ 
+
+   <request cmd="putitems">
+    <requests>
+	<item itemid="PX_HOME_FACEPLATE_START_ZONE_LEFT" entityid="-entityid-">
+        <data>
+          <parent>PX_HOME_FACEPLATE_START_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_HOME_FACEPLATE_START_ZONE_LEFT</title>
+          <abbreviation>PXHOMEFACEPLATEZONESTARTLEFT</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets>
+            <widget type="PX_Custom_RSS_Feed_FP_Start" displayName="Custom RSS Feed" />
+            <widget type="PX_AssignmentWidget" displayName="Upcoming Assignments" />
+            <widget type="PX_Custom" displayName="Create your own" />
+          </bfw_allowed_widgets>
+        </data>
+      </item>
+      <item itemid="PX_HOME_FACEPLATE_START_ZONE_RIGHT" entityid="-entityid-">
+        <data>
+          <parent>PX_HOME_FACEPLATE_START_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_HOME_FACEPLATE_START_ZONE_RIGHT</title>
+          <abbreviation>PXHOMEFACEPLATEZONESTARTRIGHT</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets>
+            <widget type="PX_Custom_RSS_Feed_FP_Start" displayName="Custom RSS Feed" />
+            <widget type="PX_AssignmentWidget" displayName="Upcoming Assignments" />
+            <widget type="PX_Custom" displayName="Create your own" />
+          </bfw_allowed_widgets>
+        </data>
+      </item>
+	     <item itemid="PX_Course_Activation_Widget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_FACEPLATE_ZONE_3</parent>
+          <sequence>a</sequence>
+          <title>Course Activation</title>
+          <abbreviation>Course Activation</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_Course_Activation_Widget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_template>PX_Course_Activation_Widget</bfw_widget_template>
+          <bfw_widget_callbacks>
+            <method name="View" controller="CourseActivationWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+		  <bfw_properties>
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>		  
+		   <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="a" />
+          </bfw_tocs>
+        </data>
+      </item>	
+      <!--Faceplate Templates-->
+      <item itemid="TMP_8fb2fe4aa2f0494c8f6caa62eaabf101" entityid="-entityid-">
+        <data>
+          <type>Assignment</type>
+          <parent>PX_TEMPLATES</parent>
+          <sequence>x</sequence>
+          <title>Dropbox</title>
+          <description>
+            &lt;br/&gt;
+            A Dropbox in which the student can submit a document which will be graded by the instructor
+          </description>
+          <folder>8fb2fe4aa2f0494c8f6caa62eaabf101</folder>
+          <href>Templates/Data/8fb2fe4aa2f0494c8f6caa62eaabf101/index.html</href>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <dropbox>true</dropbox>
+          <dropboxtype>2</dropboxtype>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <gradable>true</gradable>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <bfw_type>Dropbox</bfw_type>
+          <bfw_properties>
+            <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+          </bfw_properties>
+          <bfw_template>Dropbox</bfw_template>
+        </data>
+      </item>
+      <item itemid="TMP_429ef3606d6a45a695a8dd0225e_unit" entityid="-entityid-">
+        <data>
+          <parent>PX_TEMPLATES</parent>
+          <sequence>a</sequence>
+          <title>Unit</title>
+          <description>
+            &lt;br/&gt;
+            A unit often contains a number of resources
+            and activities that are conceptually connected.
+            Generally, units correspond to chapters or major
+            topics in the course, and the materials within
+            each unit are designed to drive students to an
+            understanding of that concept. A unit may
+            contain items of different types, and thus build
+            a progression of learning; for example, a prereading
+            assessment, an ebook reading, an activity,
+            and a summative quiz.
+            &lt;br/&gt;
+            &lt;br/&gt;
+            Typical Uses
+            &lt;br/&gt;
+            • Prebuilt modules of Launchpad
+            &lt;br/&gt;
+            • Instructor-built collections of resources
+          </description>
+          <folder>429ef3606d6a45a695a8dd0225ee9518</folder>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <gradable>true</gradable>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <bfw_type>PxUnit</bfw_type>
+          <bfw_properties>
+            <bfw_property name="bfw_visibility" type="String" />
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="thumbnail" type="String" />
+            <bfw_property name="duedate" type="DateTime" />
+            <bfw_property name="associatedtocourse" type="String" />
+            <bfw_property name="bfw_startdate" type="DateTime" />
+            <bfw_property name="associatedTOCItems" type="String">
+              <associatedTOCItems />
+            </bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_TEMPLATE" sequence="a_" />
+          </bfw_tocs>
+          <bfw_template>Unit</bfw_template>
+        </data>
+      </item>
+      <item itemid="TMP_5639c5e11e83479abbaeff34beb94e16" entityid="-entityid-">
+        <data>
+          <type>Discussion</type>
+          <parent>PX_TEMPLATES</parent>
+          <sequence>e</sequence>
+          <title>Discussion Board</title>
+          <description>
+            &lt;br/&gt;
+            A communication tool that allows users to post
+            a comment or question online. Other users may
+            respond with their own remarks over time. Portal
+            discussion boards include tools for instructors to
+            read, grade, and view reports on activity.
+            &lt;br/&gt;
+            &lt;br/&gt;
+            Typical Uses
+            &lt;br/&gt;
+            • Instructors post questions for students to
+            answer.
+            &lt;br/&gt;
+            • Instructors can provide a rubric or other
+            grading guidelines and assess students on
+            their contributions
+            &lt;br/&gt;
+            • Student commentary on an aspect of class
+            such as a reading, activity, or concept
+            &lt;br/&gt;
+            • Peer-led learning and collaboration
+            &lt;br/&gt;
+          </description>
+          <folder>5639c5e11e83479abbaeff34beb94e16</folder>
+          <href>Templates/Data/5639c5e11e83479abbaeff34beb94e16/index.html</href>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <bfw_properties>
+            <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+          </bfw_properties>
+          <bfw_template>Discussion</bfw_template>
+        </data>
+      </item>
+      <item itemid="TMP_6e91f1119c464e55b8851b15419d1c67" entityid="-entityid-">
+        <data>
+          <parent>PX_TEMPLATES</parent>
+          <sequence>g</sequence>
+          <title>Folder</title>
+          <description>
+            &lt;br/&gt;
+            An organizational tool, which may contain other
+            resources. Most often, an instructor would create
+            a folder to hold related items, such as all links,
+            assets, or files associated with a certain topic,
+            project, or due date.
+          </description>
+          <folder>6e91f1119c464e55b8851b15419d1c67</folder>
+          <href>Templates/Data/6e91f1119c464e55b8851b15419d1c67/index.html</href>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <bfw_properties>
+            <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+          </bfw_properties>
+          <bfw_template>Folder</bfw_template>
+        </data>
+      </item>
+      <item itemid="TMP_83a8a14d1cc34a54b84868257ac3f165" entityid="-entityid-">
+        <data>
+          <type>Resource</type>
+          <parent>PX_TEMPLATES</parent>
+          <sequence>f</sequence>
+          <title>Document Collection</title>
+          <description>
+            &lt;br/&gt;
+            A repository for useful files, typically
+            those employed in the delivery of course
+            information or material that offers educational
+            support. The collection may be organized,
+            referenced, or assigned by instructors for students
+            to access
+            &lt;br/&gt;
+            &lt;br/&gt;
+            Typical Uses
+            &lt;br/&gt;
+            • A location to host course information, policies,
+            or processes.
+            &lt;br/&gt;
+            • A location to host documents related to
+            activities or labs, articles, or worksheets to be
+            used in class.
+            &lt;br/&gt;
+          </description>
+          <folder>83a8a14d1cc34a54b84868257ac3f165</folder>
+          <href>Templates/Data/83a8a14d1cc34a54b84868257ac3f165/index.html</href>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <bfw_type>DocumentCollection</bfw_type>
+          <bfw_properties>
+            <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+          </bfw_properties>
+          <bfw_template>Document</bfw_template>
+        </data>
+      </item>
+      <item itemid="TMP_88161c2783b949ed805d56fc5a1a1349" entityid="-entityid-">
+        <data>
+          <type>Assessment</type>
+          <parent>PX_TEMPLATES</parent>
+          <sequence>k</sequence>
+          <title>Quiz</title>
+          <description>
+            &lt;br/&gt;
+            An assignment primarily designed to assess
+            knowledge. Quizzes replicate the experience
+            of traditional in-class quizzes, in that they are
+            often timed and do not incorporate support
+            opportunities.
+            &lt;br/&gt;
+            &lt;br/&gt;
+            Typical Uses
+            &lt;br/&gt;
+            • Reading verification
+            &lt;br/&gt;
+            • Summative Assessment
+            &lt;br/&gt;
+          </description>
+          <folder>88161c2783b949ed805d56fc5a1a1349</folder>
+          <href>a</href>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+		  <graderule>2</graderule>
+          <inputtable inherit="true">0</inputtable>
+		  <completiontrigger>1</completiontrigger>
+          <bfw_properties>
+            <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+            <bfw_property name="bfw_test" type="String">testing</bfw_property>
+          </bfw_properties>
+          <bfw_type>Quiz</bfw_type>
+          <bfw_template>Quiz</bfw_template>
+          <bfw_custom_settings controller="CustomSettings" action="Quiz">custom settings</bfw_custom_settings>
+        </data>
+      </item>
+      <item itemid="TMP_95f884c8be2e430597f50e43c9057727" entityid="-entityid-">
+        <data>
+          <type>Resource</type>
+          <parent>PX_TEMPLATES</parent>
+          <sequence>j</sequence>
+          <title>Link</title>
+          <description>
+            &lt;br/&gt;
+            A straightforward method to provide students
+            with a collection of links to other useful
+            destinations on the Web. Instructors create the
+            content through an easy-to-use editor.
+            &lt;br/&gt;
+            &lt;br/&gt;
+            Typical Uses
+            &lt;br/&gt;
+            • To provide enrichment, support, or other
+            external resources relevant to the course.
+            &lt;br/&gt;
+          </description>
+          <folder>95f884c8be2e430597f50e43c9057727</folder>
+          <href>Templates/Data/95f884c8be2e430597f50e43c9057727/index.html</href>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <bfw_type>LinkCollection</bfw_type>
+          <bfw_properties>
+            <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+          </bfw_properties>
+          <bfw_template>LinkCollection</bfw_template>
+        </data>
+      </item>
+     
+      <item itemid="TMP_a9435305a14e472ba2e503653c520538" entityid="-entityid-">
+        <data>
+          <type>Resource</type>
+          <parent>PX_TEMPLATES</parent>
+          <sequence>i</sequence>
+          <title>HTML Page</title>
+          <description>
+            &lt;br/&gt;
+            A flexible blank slate on which an instructor
+            can incorporate any HTML-based content. The
+            page HTML page can incorporate links, images, or
+            active multimedia content. HTML pages within
+            the Portal can be produced through an easy-touse
+            editor.
+            &lt;br/&gt;
+            &lt;br/&gt;
+            Typical Uses
+            &lt;br/&gt;
+            • General content such as announcements,
+            policies, explanations
+            &lt;br/&gt;
+          </description>
+          <folder>a9435305a14e472ba2e503653c520538</folder>
+          <href>Templates/Data/a9435305a14e472ba2e503653c520538/index.html</href>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <bfw_type>HtmlDocument</bfw_type>
+          <bfw_properties>
+            <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+          </bfw_properties>
+          <bfw_template>HtmlDocument</bfw_template>
+        </data>
+      </item>
+      <item itemid="TMP_c2e80347203e4b9b98f1b85d8b605e0f" entityid="-entityid-">
+        <data>
+          <type>RssFeed</type>
+          <parent>PX_TEMPLATES</parent>
+          <sequence>l</sequence>
+          <title>RSS Feed</title>
+          <folder>c2e80347203e4b9b98f1b85d8b605e0f</folder>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <bfw_properties>
+            <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+          </bfw_properties>
+          <bfw_template>RssFeed</bfw_template>
+        </data>
+      </item>
+
+    </requests>
+  </request>
+
+</batch>

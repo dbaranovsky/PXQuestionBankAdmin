@@ -1,0 +1,370 @@
+﻿/* Create Course Block to Move to another css file*/ 
+#createcourse {
+text-align: left;
+margin-left: auto;
+margin-right: auto;
+padding: 20px;
+}
+
+#activatecourse {
+text-align: left;
+width: 800px;
+margin-left: auto;
+margin-right: auto;
+padding: 20px;
+}
+
+#createcourse .confirmation-header{
+    font-size:20px;
+    color:#333;
+    font-weight:bold;
+    margin-bottom:40px;
+}
+
+#createcourse .confirmation-header .congrats{
+    color:#1291C7;
+}
+
+#createcourse .url-bookmark-message{
+    font-size:14px;
+    color:#333;
+    line-height:18px;
+    margin-bottom: 12px;
+}
+
+.creation-url-descript{
+    font-size:12px;
+    color:#4d4d4d;
+}
+
+#createcourse .creation-url-descript
+{
+    padding-left:20px;
+}
+.createcourselabel {
+color: #CC3333;
+display: inline;
+}
+
+.createcourselabel-field11 {
+width: 300px;
+}
+
+.course_item {
+line-height: 1.2em;
+}
+
+.course_item-title {
+line-height: 1.2em;
+margin: 0 0 10px 0;
+}
+
+.course-cancelbutton {
+padding-top: 10px;
+float: right;
+}
+
+.course_item-subtitle {
+line-height: 1.25em;
+margin: 0 0 20px 0;
+padding:0;
+}
+
+.course_product-name {
+border: 0px solid #000000;
+background-color: #FFFFFF;
+width:600px;
+}
+
+.coursefindschool 
+{
+    border: 0px solid #000000;
+    color: Black;
+    background-color: #FFFFFF;
+    padding-left:15px;
+    font-size:0.8em !important;
+    width:600px;
+}
+
+.course-item p {
+line-height: 1.25em;
+}
+
+#createcourse .creation-info-text,
+#activatecourse .creation-info-text {
+    border: 2px solid #D4484B;
+    color: #D4484B;
+    margin: 10px;
+    padding: 12px;
+}
+
+#createcourse .creation-info-text .course-title,
+#activatecourse .creation-info-text .course-title{
+color:#3a8ac9;
+}
+.activate-course-fne #activatecourse .creation-info-text {
+    border: none;
+    color: #333;
+    margin:0px;
+    font-size: 14px;
+    padding:0px;
+}
+
+.activate-course-fne #activatecourse .creation-url-box a{
+    text-decoration:none;
+    color:#1291C7;
+    font-size:14px;
+    padding:0px;
+}
+
+#createcourse .course-item li{
+overflow:hidden;
+}
+
+#createcourse .course-item li label{
+display:block;
+width:120px;
+text-align:right;
+margin:0 5px 0 0;
+float:left;
+}
+
+#createcourse .course-item li p {
+    margin-top: 4px;
+    width: 80%;
+}
+
+#createcourse .activate-btns{
+    font-size: 11px;
+    padding-top:12px;
+}
+#createcourse form .activate-btns .activate-submit{
+    width:170px;
+    background:#1291C7;
+    color:#fff;
+    border:none;
+    text-shadow:none;
+}
+#createcourse form .activate-btns .activate-cancel{
+     background:#D4484B;
+    color:#fff;
+    border:none;
+    margin-right:24px;  
+    text-shadow:none;
+}
+
+
+#createcourse .course-setup{
+margin:20px auto;
+overflow:hidden;
+width:600px;
+}
+
+#createcourse .course-setup .course-setup-steps{
+padding:50px 0 0 0;
+width:175px;
+float:left;
+margin:0 25px 0 0;
+}
+
+#createcourse .course-setup .step1{
+background:url(style/images/step1.png) no-repeat;
+}
+
+#createcourse .course-setup .step2{
+background:url(style/images/step2.png) no-repeat;
+}
+
+#createcourse .course-setup .step3{
+background:url(style/images/step3.png) no-repeat;
+}
+
+#createcourse .important,
+#activatecourse .important{
+	background:#e7cdcc;
+	border:1px solid #fe0202;
+	padding:10px;
+	margin:10px;
+	line-height:1.4em;
+}
+
+#createcourse .creation-description,
+#activatecourse .creation-description{
+	margin:10px;
+	line-height:1.4em;
+}
+
+#activatecourse .creation-url-box{
+	margin:10px;
+}
+
+#activatecourse .creation-url-box .creation-url-descript{
+	display:block;
+	margin:0 0 20px 0;
+}
+
+#createcourse .course-creation-buttons,
+#activatecourse .course-creation-buttons,
+#activatecourse .activation-btns{
+	margin:40px 10px 0;
+	text-align:right;
+}
+
+.activation-link{display:none;}
+
+.course_item-error {
+	line-height: 1.25em;
+	width:150px;
+}
+
+.course-cancelbutton {
+padding-top: 10px;
+float: right;
+}
+
+#createcourse ol.course-item{
+    padding: 6px 0;
+    border-top: 2px solid #333;
+    border-bottom: 2px solid #333;
+}
+#createcourse ol.course-item li{
+    border-bottom:1px dotted #333;
+    background-color: #EFF9FE;
+    min-width:790px
+}
+
+#createcourse ol.course-item label{
+    color: #333333;
+    margin-right: 18px;
+    text-transform: uppercase;
+    font-size:11px !important;
+}
+
+#createcourse ol.course-item input{
+    width:80%;
+}
+
+#createcourse ol.course-item .left-col{
+    float:left;
+    margin-top: 12px;
+}
+
+#createcourse ol.course-item .right-col {
+    background-color: #FFFFFF;
+    float: right;
+    padding: 12px 0 12px 12px;
+    width: 80%;
+}
+/* find schools block */
+#schoolfinder {
+    text-align:left;
+}
+
+#schoolfinder input {
+    width:10%!important;
+}
+
+#schoolfinder #searchcity {
+    width:40%!important;
+}
+
+#schoolfinder ol.find-school li {
+    background-color:#FFFFFF;
+    min-width:790px;
+    border-bottom:0;
+}
+
+#schoolfinder .find-school li {
+    overflow:hidden;
+}
+
+#schoolfinder ol.find-school .left-col {
+    float:left;
+    font-weight:normal;
+    text-align:right;
+    width:145px;
+    color:#333333;
+    font-size:12px;
+}
+
+#schoolfinder ol.find-school .right-col {
+    float:right;
+    padding: 11px 0 0;
+}
+
+#schoolfinder .search-btns {
+    font-size:11px;
+    padding-top:12px;
+    padding-bottom:20px;
+    position:relative;
+}
+
+#schoolfinder .search-btns .search-cancel {
+    background:none repeat scroll 0 0 #D4484B!important;
+    border:medium none;
+    color:#FFFFFF!important;
+    margin-right:24px;
+    text-shadow:none;
+}
+
+#schoolfinder .search-btns .search-submit {
+    background:none repeat scroll 0 0 #1291C7!important;
+    border:medium none;
+    color:#FFFFFF!important;
+    text-shadow:none;
+    width:116px!important;
+    padding-left:22px;
+}
+
+.school_search-criteria {
+    background-color:#FFFFFF;
+    font-weight:bold;
+    border:0 solid #000000;
+    width:790px;
+}
+
+.school_search-top {
+    padding-top:20px;
+    color:#333333;
+    font-size:13px;
+}
+
+.school_search-width {
+    width:80%!important;
+}
+
+#schoolfinder label,#schoolfinder input {
+    width:auto!important;
+}
+
+#schoolfinder #search-by {
+    padding-left:83px;
+}
+
+#schoolfinder #specific-school {
+    padding-bottom:6px;
+}
+
+#schoolfinder #search-by label,#schoolfinder #specific-school label {
+    margin-right:10px;
+    line-height:20px;
+}
+
+#schoolfinder ol.find-school #State {
+    width:100px!important;
+}
+
+#schoolfinder #schoolsearchbyzip,#schoolfinder #highschool {
+    margin-left:30px;
+}
+
+#schoolfinder .search-btns .find-icon {
+    background-color:transparent;
+    background-image:url(style/images/platx_sprite.png);
+    background-position:-100px -650px;
+    height:20px;
+    left:4px;
+    position:absolute;
+    width:20px;
+}
+/* End Create Course Block */ 

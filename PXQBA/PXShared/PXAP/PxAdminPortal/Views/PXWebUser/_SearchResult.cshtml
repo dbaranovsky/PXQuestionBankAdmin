@@ -1,0 +1,38 @@
+﻿@using Bfw.PXAP.Models
+@model IQueryable<Bfw.PXAP.Models.PxWebUserModel> 
+<script type="text/javascript" >
+	function OnSuccess() {
+		$('#WebUserRights').show();
+	}
+	
+</script>
+<table style="width: 80%;">
+    <tr>
+        <th>UserId</th>
+        <th>Email</th>
+		<th>CourseId</th>
+		<th>Actions</th>
+    </tr>
+    @foreach (PxWebUserModel user in Model)
+    {
+		<tr>
+			<td>@user.UserId</td>
+			<td>@user.Email</td>
+			<td>@user.CourseId</td>
+			<td>
+				@using (Ajax.BeginForm("_WebUserRights", "PXWebUser",user,new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "WebUserRights" , 
+                                                                                              InsertionMode = InsertionMode.Replace,
+																							  OnSuccess = "OnSuccess();"}, 
+                                         new { @id = "frmWebUserRights" + user.UserId }))
+				{			
+					<input type="submit" id="submitWebUserRights" value="Edit"/>
+				}
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4">
+				<span id="WebUserRights"></span>
+		    </td>
+		</tr>
+	}
+</table>

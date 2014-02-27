@@ -1,0 +1,270 @@
+﻿/* Template Picker */
+.template-picker{
+	height:90%;
+}
+
+.template-picker .template-list{
+	border-right:0;
+    width:35%;
+	float:left;
+	display: inline;
+	height:100%;
+}
+
+.template-picker .template-list ul{
+	overflow-y:auto;
+	height:90%;
+}
+
+.buttonHolder{
+	padding-left:20px;
+}
+
+.ac-create-content .add-from-selected-template{    
+	margin-top:2%;
+}
+
+.template-list .templateLineItem .tocAssign.create,
+.template-list .templateLineItem .tocAssign.createcontent{
+	position:absolute;
+}
+
+.template-list .templateLineItem .tocAssign{
+	font-size:12px;
+	left: 6px;
+}
+
+ .templateLineItem .tocAssign.workspace{
+	padding-right:25px;    
+ }
+
+.template-picker .template-actions{
+	height:9%;
+	border-top:1px solid #CCCCCC;
+	background-color:#EDEDED;
+	text-align:right;
+}
+
+.ac-create-content .template-picker .template-actions{
+	height: 18%;
+}
+
+.ac-create-content .assign-buttons
+{
+ display:none;   
+    
+}
+.template-picker .details{
+	margin:5px 0 0 10px;
+	float:left;
+	display: inline;
+	padding: 0 0 0 10px;
+	width:50%;
+	line-height: 16px;
+}
+
+.template-picker .template-list li{
+	cursor:pointer;
+}
+
+.create-new-module, .add-existing-item{
+	margin-right: 5px;
+	text-transform: none;
+}
+
+#btnAddToIW{
+	margin: 4px 3px 0 0;
+}
+
+/*Template Management styles*/ 
+#fne-window .template-management{
+	background-image:url("style/images/main_banner.png");
+	background-repeat:repeat-x;
+	background-position: 0 0;
+	height: auto;
+}
+
+.template-management .template-management-list {
+	background-color: #F3F3F1;
+	float: left;
+	height: 95%;
+	overflow: auto;
+	padding-bottom: 5px;
+	padding-left: 12px;
+	width: 20%;
+}
+
+.template-management .template-management-list ul.template-list{
+	margin-top: 12px;
+}
+.template-management .template-management-details {
+   width: 75%; 
+   height:500px; 
+   margin: 0 0 0 10px; 
+   float: left; 
+   background-color: White; 
+   height: 90%;
+   background-color: White;
+   position: relative;
+   top: 0px;
+   padding-left: 10px;
+}
+.template-management-details .TemplateTitle{
+	margin-left: 10px;
+}
+.template-management #divBhIFrameComponent {
+	height:90%;
+}
+
+.template-management .gear-box {
+	float:right;
+	width: 30px;
+	margin-top: 4px;
+}
+
+.template-management #select-gearbox .delete{
+	display:block;  
+}
+
+.tplmanagment-btns{
+	display: block;
+	float: right;
+	position: relative;
+	margin-bottom: 12px;
+}
+
+#divSaveTemplateAsContent input,
+#divSaveTemplateAsContent .description-text-area{
+	margin-top: 4px;
+}
+
+#divSaveTemplate .divPopupContent span,
+#divSaveTemplate .divPopupContent{
+	line-height: 14px;
+}
+
+/*FNE Template Management Modul*/
+#fne-window.template-management {
+background: none repeat scroll 0 0 #fff;
+min-width: 1200px;
+}
+ 
+#sortable.leftnavmain{
+	width: 100%;
+}
+#nonmodal {
+	position:absolute;
+	z-index:1002;
+}
+
+#nonmodal #title-text{
+	float:left;
+	padding:5px;
+}
+
+#nonmodal-content form h2.content-title{
+	padding:12px 0 0 16px;
+}
+
+#nonmodal h3.title{
+	font-size:1.2em;
+}
+
+#nonmodal p.description{
+	font-size:0.75em;
+}
+
+#nonmodal .top-view{
+	line-height:25px;
+	margin-bottom:20px;
+}
+
+.ui-dialog.px-dialog-notitle .ui-dialog-titlebar
+{
+	display:none;
+}
+
+.ui-dialog.px-dialog #loadingBlock
+{
+	margin:auto;
+}
+
+#px-dialog #title-text{
+	float:left;
+	padding:5px;
+}
+
+#px-dialog form h2.content-title{
+	padding:12px 0 0 16px;
+}
+
+#px-dialog h3.title{
+	font-size:1.2em;
+}
+
+#px-dialog .top-view{
+	line-height:25px;
+	margin-bottom:20px;
+}
+
+#form .eport-wysform .mceEditor{
+	display: block;
+	float: left;
+	overflow: auto;
+}
+
+#nonmodal-content form .eportfoldersubmitbtns{
+	float: left;
+	margin-right: 0%;
+	position: relative;
+}
+
+#nonmodal .nonmodal-actions{
+	float:right;
+	padding:5px;
+}
+
+.add-from-selected-template{
+	position: relative;
+	margin-top:4%;
+	margin-right:3px;
+}
+.template-gearbox {
+	background-color: #D0D3CC;
+	clear: both;
+	display: inline-block;
+	float: left;
+	height: 32px;
+	padding-left: 12px;
+	position: relative;
+	width: 20%;
+}
+.template-management-header {
+	display: block;
+	float: left;
+	height: 32px;
+	position: relative;
+	top: 0;
+	width:60%;
+}
+.template-management-header .TemplateTitle,
+.template-gearbox b{
+	line-height:32px;
+	padding-left: 12px;
+}
+settingswrapper {
+    margin: 10px 0;
+    float: left;
+    border-bottom: 1px solid #e5e7ea;
+    width: 100%;
+    padding: 12px 0;
+}
+.bh-component,
+.bh-component-wrapper{
+	width: 100%;  
+	float:left; 
+}
+.show-quiz .bh-component,
+.show-quiz .bh-component-wrapper{
+	clear:both;
+}

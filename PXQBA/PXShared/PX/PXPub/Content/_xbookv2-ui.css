@@ -1,0 +1,193 @@
+/*
+* CENTRALZING ALL NEW UI ELEMENTS FOR XBOOK V2
+* THIS FILE IS NOT PROCESSED BY THE SERVER AND MUST BE BUILT MANUALLY
+*/
+#content-nav,
+#content-modes {
+  display: none !important;
+}
+#fne-unblock-action-home {
+  display: block !important;
+}
+#fne-header {
+  background: #f4f4f4;
+  font-family: Lato, sans-serif;
+  width: 100%;
+  border-bottom: 1px solid #dddddd;
+}
+#fne-header #fne-title {
+  border: 0;
+}
+#fne-header #fne-title #fne-title-breadcrumb {
+  margin: 13px;
+  display: inline-block;
+}
+#fne-header #fne-title #fne-title-left {
+  background: none;
+  width: 80% !important;
+  float: left;
+  margin: 12px;
+}
+#fne-header #fne-title #nav-container {
+  float: right;
+}
+#fne-header #fne-title #fne-title-action-right {
+  display: none;
+}
+#fne-header #fne-title #fne-title-actions #title-text {
+  font-size: 14px !important;
+  overflow: visible;
+  margin-left: 10px;
+}
+#fne-header #nav-container {
+  margin: 12px;
+}
+#fne-header #nav-container #back.navigate-back,
+#fne-header #nav-container #next.navigate-next {
+  background-color: #fdfdfd;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fdfdfd), to(#eeeeee));
+  background: -webkit-linear-gradient(top, #fdfdfd, #eeeeee);
+  background: -moz-linear-gradient(top, #fdfdfd, #eeeeee);
+  background: -ms-linear-gradient(top, #fdfdfd, #eeeeee);
+  background: -o-linear-gradient(top, #fdfdfd, #eeeeee);
+}
+#fne-header #nav-container #back.navigate-back:hover,
+#fne-header #nav-container #next.navigate-next:hover {
+  background-color: #ededed;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#dadada));
+  background: -webkit-linear-gradient(top, #ededed, #dadada);
+  background: -moz-linear-gradient(top, #ededed, #dadada);
+  background: -ms-linear-gradient(top, #ededed, #dadada);
+  background: -o-linear-gradient(top, #ededed, #dadada);
+}
+#fne-header #nav-container #back:before {
+  content: 'Prev';
+}
+#fne-header #nav-container #back span {
+  position: relative;
+  top: 2px;
+  left: 7px;
+}
+#fne-header #nav-container #next:before {
+  content: 'Next';
+}
+#fne-header .navigate-back {
+  margin-right: -4px;
+}
+#fne-header #fne-title-actions {
+  width: 20%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+#fne-header #fne-title-action-left {
+  float: none;
+  padding: 0;
+}
+#fne-unblock-action-home {
+  background-color: #fdfdfd;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fdfdfd), to(#eeeeee));
+  background: -webkit-linear-gradient(top, #fdfdfd, #eeeeee);
+  background: -moz-linear-gradient(top, #fdfdfd, #eeeeee);
+  background: -ms-linear-gradient(top, #fdfdfd, #eeeeee);
+  background: -o-linear-gradient(top, #fdfdfd, #eeeeee);
+  float: left !important;
+  width: 70px !important;
+  border: 1px solid #cccccc;
+  color: #444444;
+  padding: 10px 0 10px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  text-shadow: 0 1px 1px white;
+  border-radius: 7px;
+}
+#fne-unblock-action-home .home-btn-icon {
+  background: url(style/images/platx_sprite.png) -199px -299px;
+  width: 15px;
+  height: 13px;
+  display: inline-block;
+  margin-right: 5px;
+  opacity: 0.5;
+}
+#fne-unblock-action-home:hover {
+  background-color: #ededed;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#dadada));
+  background: -webkit-linear-gradient(top, #ededed, #dadada);
+  background: -moz-linear-gradient(top, #ededed, #dadada);
+  background: -ms-linear-gradient(top, #ededed, #dadada);
+  background: -o-linear-gradient(top, #ededed, #dadada);
+}
+.blockElement {
+  width: 100%;
+  height: 100% !important;
+  top: 0 !important;
+  left: 0 !important;
+  position: fixed !important;
+}
+#fne-window #fne-content #contentwrapper {
+  max-width: 1024px;
+  min-width: 960px;
+  margin: 0 auto;
+}
+#fne-window #fne-content #contentwrapper #document-viewer #document-body {
+  border: 0;
+}
+.xb-btn {
+  background-color: #dcee64;
+  width: auto;
+  height: 30px;
+  color: #333333 !important;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 3px;
+  border-bottom: 1px solid #b2bc52;
+  padding: 3px 16px;
+  font-size: 13px;
+}
+.xb-btn:hover {
+  background-color: #009999;
+  border-bottom-color: #555555;
+}
+.xb-btn:hover:hover:before {
+  color: white;
+}
+.xb-btn:active {
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.34);
+  border-bottom-color: transparent;
+}
+.xb-btn:before {
+  display: inline-block;
+  margin-top: 9px;
+}
+#content-px .contentPlayerHeader {
+  padding: 5px !important;
+}
+#content-px .contentPlayerHeader .xb-btn {
+  float: right;
+  margin-left: 4px;
+}
+#content-px .contentPlayerHeader #content-back {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+#content-px .contentPlayerHeader #content-back:before {
+  content: 'Next';
+}
+#content-px .contentPlayerHeader #content-fwd {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: 0;
+  border-left: 1px solid #b2bc52;
+}
+#content-px .contentPlayerHeader #content-fwd:before {
+  content: 'Previous';
+}
+#content-px .contentPlayerHeader #content-fullscreen:before {
+  content: '\e744';
+  font: 300 11px/100% pxicons;
+  margin-top: 12px;
+}
+#content-courseb-title {
+  position: relative;
+  top: 14px;
+}

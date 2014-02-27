@@ -1,0 +1,44 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<%@ Import Namespace="StackExchange.Profiling" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title> 	
+        
+        <% Html.RenderPartial("BaseHeaderScripts"); %>
+        <%= ResourceEngine.IncludesFor("~/Scripts/common.js")%>
+        <%= ResourceEngine.IncludesFor("~/Scripts/grid.js")%>
+		<%= ResourceEngine.IncludesFor("~/Scripts/quiz.js")%>  
+		<%= ResourceEngine.IncludesFor("~/Scripts/questionBankAdmin.js")%>  
+		<%= ResourceEngine.IncludesFor("~/Content/basestyle.css", Url.RouteUrl("CourseSectionHome")) %>	
+	    <%= ResourceEngine.IncludesFor("~/Content/QuestionAdmin.css", Url.RouteUrl("CourseSectionHome"))%>
+        
+        <script type="text/javascript" language="javascript">
+            //easyXDM.DomHelper.requiresJSON('<%= Url.ContentCache("~/Scripts/easyXDM/json2.js") %>');
+            jQuery(document).ready(function () {
+                PxPage.Init({
+                    launchpad_editor_options: {},
+                    html_editor_options: {},
+                    editableNote_editor_options: {},
+                    rubricText_editor_options: {},
+                    css_routes: {},
+                    routes: {
+                        copy_question: '<%= Url.ActionCache("DuplicateQuestion", "QuestionAdmin") %>',
+                        custom_inline_preview: '<%= Url.ActionCache("GetCustomInlinePreview", "Quiz") %>', 
+                        update_previous_question: '<%= Url.ActionCache("UpdatePreviousQuestion", "Quiz") %>',
+                        remove_question_from_cache: '<%= Url.ActionCache("RemoveQuestionFromCache", "Quiz") %>',
+                        store_live_quiz: '<%= Url.ActionCache("StoreQuizData", "Quiz") %>',
+                        show_quiz: '<%= Url.ActionCache("ShowQuiz", "Quiz") %>'
+                    },
+                    context: {},
+                    externalurlprefix: '<%= ConfigurationManager.AppSettings["xUrlPrefix"] %>'
+                });
+            });
+        </script>
+        <asp:ContentPlaceHolder ID="HeaderAdditions" runat="server" />
+    </head>
+    <body class="question-admin">    
+        <asp:ContentPlaceHolder ID="CenterContent" runat="server" />
+        <%= MiniProfiler.RenderIncludes(RenderPosition.Right, showTimeWithChildren: true, showControls: true) %>		 
+    </body>
+</html>

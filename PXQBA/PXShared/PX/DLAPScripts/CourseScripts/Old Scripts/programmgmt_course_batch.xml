@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<batch>
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_HOME_PMDASHBOARD" entityid="-entityid-">
+        <data>
+          <parent>PX_PAGES</parent>
+          <sequence>b</sequence>
+          <title>PX_HOME_PMDASHBOARD</title>
+          <abbreviation>PXHOMEPMDASHBOARD</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_HOME_PMDASHBOARD_ZONES" entityid="-entityid-">
+        <data>
+          <parent>PX_HOME_PMDASHBOARD</parent>
+          <sequence>a</sequence>
+          <title>PX_HOME_PMDASHBOARD_ZONES</title>
+          <abbreviation>PXHOMEPMDASHBOARDZONES</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_HOME_PMDASHBOARD_ZONE_1" entityid="-entityid-">
+        <data>
+          <parent>PX_HOME_PMDASHBOARD_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_HOME_PMDASHBOARD_ZONE_1</title>
+          <abbreviation>PXHOMEPMDASHBOARDZONE1</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets>
+            <widget type="PX_ProgramCourseWidget" displayName="PM Dashboard" />
+          </bfw_allowed_widgets>
+        </data>
+      </item>
+    </requests>
+  </request>
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_ProgramCourseWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_PMDASHBOARD_ZONE_1</parent>
+          <sequence />
+          <title>Dashboard</title>
+          <abbreviation>pcw</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_ProgramCourseWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="ProgramCourseWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_ProgramCourseWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+          </bfw_tocs>
+        </data>
+      </item>
+    </requests>
+  </request>
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_PROGRAM_MANAGER" entityid="-entityid-">
+        <data>
+          <parent>PX_MENUS</parent>
+          <title>Primary Navigation</title>
+          <bfw_type>Menu</bfw_type>
+          <bfw_tocid>-tocid-</bfw_tocid>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+        </data>
+      </item>
+      <item itemid="PX_PROGRAM_MANAGER_TEMPLATES" entityid="-entityid-">
+        <data>
+          <parent>PX_MENUS</parent>
+          <title>Primary Navigation</title>
+          <bfw_type>Menu</bfw_type>
+          <bfw_tocid>-tocid-</bfw_tocid>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_HOME_PM" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PROGRAM_MANAGER</parent>
+          <sequence>a</sequence>
+          <title>e-Portfolios</title>
+          <abbreviation>eportfolios</abbreviation>
+          <bfw_type>MenutItem</bfw_type>
+          <bfw_menu_created_by>PX_MENU_ITEM_HOME_TEMPLATE</bfw_menu_created_by>
+          <bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Home" controller="" action="" url="" type="" route="CourseSectionHome" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_ASSESSMENT_TEMPLATE_PM" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PROGRAM_MANAGER_TEMPLATES</parent>
+          <sequence>c</sequence>
+          <title>Assessment</title>
+          <abbreviation>ASSESSMENT</abbreviation>
+          <bfw_type>MenutItem</bfw_type>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Assessment" controller="Assessment" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_ASSESSMENT_PM" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PROGRAM_MANAGER</parent>
+          <sequence>c</sequence>
+          <title>Assessment</title>
+          <abbreviation>ASSESSMENT</abbreviation>
+          <bfw_type>MenutItem</bfw_type>
+          <bfw_menu_created_by>PX_MENU_ITEM_ASSESSMENT_TEMPLATE_PM</bfw_menu_created_by>
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Assessment" controller="Assessment" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_TEMPLATES_TEMPLATE" version="1" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PROGRAM_MANAGER_TEMPLATES</parent>
+          <sequence>b</sequence>
+          <title>Templates</title>
+          <abbreviation>TEMPLATES</abbreviation>
+          <bfw_type>MenutItem</bfw_type>
+          <bfw_menu_created_by/>
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Templates" controller="ProgramManagerTemplates" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_TEMPLATES" version="1" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_PROGRAM_MANAGER</parent>
+          <sequence>b</sequence>
+          <title>Templates</title>
+          <abbreviation>TEMPLATES</abbreviation>
+          <bfw_type>MenutItem</bfw_type>
+          <bfw_menu_created_by>PX_MENU_ITEM_TEMPLATES_TEMPLATE</bfw_menu_created_by>
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Templates" controller="ProgramManagerTemplates" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+    </requests>
+  </request>
+  <request cmd="deleteitems">
+	  <requests>
+		<item entityid="-entityid-" itemid="PX_MENU_ITEM_COURSEMATERIALS_TEMPLATE_PM"/>
+		<item entityid="-entityid-" itemid="PX_MENU_ITEM_COURSEMATERIALS_PM"/>
+		<item entityid="-entityid-" itemid="PX_MENU_ITEM_EBOOK_PM"/>
+		<item entityid="-entityid-" itemid="PX_MENU_ITEM_PROGRAM_MANAGER_TEMPLATE"/>
+		<item entityid="-entityid-" itemid="PX_MENU_ITEM_PROGRAM_MANAGER"/>
+	  </requests>
+  </request>
+</batch>

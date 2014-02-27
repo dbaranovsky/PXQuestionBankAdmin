@@ -1,0 +1,27 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<dsml:batchRequest xmlns:dsml="urn:oasis:names:tc:DSML:2:0:core" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <dsml:searchRequest  
+          dn="o=test"
+          scope="wholeSubtree" 
+          derefAliases="neverDerefAliases"
+          sizeLimit="1000">
+
+      <dsml:filter>
+           <dsml:and>
+              <dsml:substrings name="givenName">
+                 <initial>S</initial></dsml:substrings>
+              <dsml:equalityMatch name="objectclass">
+                 <value>inetorgperson</value></dsml:equalityMatch>
+          </dsml:and>
+     </dsml:filter>
+
+     <dsml:attributes>
+          <dsml:attribute name="cn"/>
+          <dsml:attribute name="sn"/>
+          <dsml:attribute name="l"/>
+     </dsml:attributes>
+
+     </dsml:searchRequest>
+
+</dsml:batchRequest>
+ 

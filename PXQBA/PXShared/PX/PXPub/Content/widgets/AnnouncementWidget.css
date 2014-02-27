@@ -1,0 +1,29 @@
+﻿
+.announcementModal  .saveEditAnnouncement{
+    margin-bottom:10px;
+}
+.announcementModal .containerPostAnnouncement{
+    margin-bottom:25px;
+}
+.announcementModal .announcementBody{
+    line-height:18px;
+}
+.announcementModal .announcementItem{
+    padding:10px 0;
+}
+.announcementModal .announcementItem .announcementPin{
+    height:25px;
+}
+.announcementModal .announcementItem input[type="button"],
+.announcementModal .announcementModalChange input[type="button"]{
+    width:64px;
+    background: #EEE;
+    background: -moz-linear-gradient(top,rgba(238, 238, 238, 1) 0,rgba(238, 238, 238, 1) 42%,rgba(224, 224, 224, 1) 66%,rgba(244, 244, 241, 1) 98%);
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,rgba(238, 238, 238, 1)),color-stop(42%,rgba(238, 238, 238, 1)),color-stop(66%,rgba(224, 224, 224, 1)),color-stop(98%,rgba(244, 244, 241, 1)));
+    background: -webkit-linear-gradient(top,rgba(238, 238, 238, 1) 0,rgba(238, 238, 238, 1) 42%,rgba(224, 224, 224, 1) 66%,rgba(244, 244, 241, 1) 98%);
+    background: -o-linear-gradient(top,rgba(238, 238, 238, 1) 0,rgba(238, 238, 238, 1) 42%,rgba(224, 224, 224, 1) 66%,rgba(244, 244, 241, 1) 98%);
+    background: -ms-linear-gradient(top,rgba(238, 238, 238, 1) 0,rgba(238, 238, 238, 1) 42%,rgba(224, 224, 224, 1) 66%,rgba(244, 244, 241, 1) 98%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee',endColorstr='#f4f4f1',GradientType=0);
+    background: linear-gradient(top,rgba(238, 238, 238, 1) 0,rgba(238, 238, 238, 1) 42%,rgba(224, 224, 224, 1) 66%,rgba(244, 244, 241, 1) 98%);
+}
+

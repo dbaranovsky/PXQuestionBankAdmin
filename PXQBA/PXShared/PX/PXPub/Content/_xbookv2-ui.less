@@ -1,0 +1,1217 @@
+/*
+* CENTRALZING ALL NEW UI ELEMENTS FOR XBOOK V2
+* THIS FILE IS NOT PROCESSED BY THE SERVER AND MUST BE BUILT MANUALLY
+*/
+
+// globals
+@text: #333;
+@radius: 6px;
+@btn-radius: 7px;
+@green: #e1e44a;
+@lt-green: #f6f8de;
+@dk-green: #b2bc52;
+@teal: #099;
+@lt-grey: #eaefeb;
+@dk-grey: #555;
+@pink: #c0224a;
+@purple: #5b60ad;
+
+// mixins
+.gradient (@startColor: #eee, @endColor: white) {
+	background-color: @startColor;
+	background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+	background: -webkit-linear-gradient(top, @startColor, @endColor);
+	background: -moz-linear-gradient(top, @startColor, @endColor);
+	background: -ms-linear-gradient(top, @startColor, @endColor);
+	background: -o-linear-gradient(top, @startColor, @endColor);
+	background: linear-gradient(top, @startColor, @endColor);
+}
+
+// hidden for xbookv2
+#eLibrary,
+.templatelink,
+#bookmark-menu-container,
+#fne-unblock-action,
+#saveItem .create-new-btn-wrapper label,
+#saveItem .create-new-btn-wrapper label + input[type=button],
+.chapter-student-status,
+.product-banner-logo,
+#content-modes .assign-arrow,
+#PX_Assignments .faceplate-nav #add-assignment-btn,
+#PX_Assignments .fpimageLarge, // hide huge icon on assignments tab (PX-10065)
+#PX_Assignments .faux-tree-node.unitrowlevel1 .icon,
+#PX_Assignments .face-plate-unit-menu .faceplate-item-assign,
+#PX_Assignments .launchpad-settings,
+#PX_Assignments .launchpad-settings .launchpad-title,
+#PX_Assignments .launchpad-msg,
+.product-type-xbookv2 #PX_TOC #create-assignment,
+// hide assignments fne buttons
+#fne-item-assign,
+.assign-tab,
+#show-question .add-menu,
+.ui-dialog-titlebar-close .ui-button-text,
+.dlg-movecopy .launchpad-title,
+.dlg-movecopy .faceplate-add-content-menu,
+.moveorcopy.link span,
+#PX_Assignments .moveorcopy,
+.dlg-movecopy .ui-icon-closethick,
+.btnCopyItem,
+#fne-window.htmlquiz .questions-tab:last-child // hide question editing for published html quizzes
+{
+	display: none !important;
+}
+
+// ***********************************
+// FNE VIEWER
+// ***********************************
+
+// fne title and nav styles
+#fne-header {
+	background: #f4f4f4;
+	width: 100%;
+	border-bottom: 1px solid #ddd;
+	& #fne-title {
+		border: 0;
+		& #fne-title-breadcrumb {
+			width: auto;
+			margin: 13px;
+			display: inline-block;
+		}
+		& #fne-title-left {
+			background: none;
+			width: 60% !important;
+			float: left;
+			margin: 12px;
+		}
+		& #nav-container {
+			float: right;
+		}
+		& #fne-title-action-right {
+		    display: none;
+		}
+		& #fne-title-actions #title-text {
+			font-size: 14px !important;
+			overflow: visible;
+			margin-left: 10px;
+		}
+	}
+	& #nav-container {
+		margin: 12px;
+		& #back.navigate-back, #next.navigate-next {
+			.gradient (#fdfdfd, #eee);
+			&:hover {
+				.gradient(#ededed, #dadada);
+			}
+		}
+		& #back:before {
+			content: 'Prev';
+		}
+		& #back span {
+			position: relative;
+			top: 2px;
+			left: 7px;
+		}
+		& #next:before {
+			content: 'Next';
+		}
+	}
+	& .navigate-back {
+		margin-right: -4px;
+	}
+	& #fne-title-actions {
+		width: auto !important;
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+	& #fne-title-action-left {
+		float: none;
+		padding: 0;
+	}
+	& .fne-done-link {
+		float: left !important;
+		width: 70px !important;
+		margin: 10px 0 0 15px;
+		border: 1px solid #ccc;
+		color: @text;
+		font-weight: 700;
+		padding: 10px 0 10px 10px;
+		font-size: 12px;
+		text-shadow: 0 1px 1px #fff;
+		border-radius: @btn-radius;
+	}
+}
+
+// home button
+#fne-unblock-action-home {
+	.gradient (#fdfdfd, #eee);
+	float: left !important;
+    width: 70px !important;
+    border: 1px solid #ccc;
+    color: #444;
+    padding: 10px 0 10px 10px;
+    margin: 10px 0 0 15px;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 0 1px 1px #fff;
+    border-radius: @btn-radius;
+	& .home-btn-icon {
+	    background: url(style/images/platx_sprite.png) -199px -299px;
+	    width: 15px;
+	    height: 13px;
+	    display: inline-block;
+	    margin-right: 5px;
+	    opacity: 0.5;
+	}
+	&:hover {
+		.gradient(#ededed, #dadada);
+	}
+}
+
+// edit menu
+#fne-edit-menu {
+    margin: 4px 0 0 12px;
+    padding-top: 2px;
+    & #content-modes {
+        background-color: #fff;
+        min-width: 100%;
+        & a {
+            background-color: #fff;
+            display: block;
+            padding: 0 14px;
+            font-size: 90%;
+            font-weight: 700;
+            &:hover {
+                .gradient(#fdfdfd, #eee);
+            }
+        }
+    }
+    & li {
+        padding: 0;
+        margin: 0;
+    }
+}
+
+/* content menu buttons */
+#content-modes.link-list {
+    padding-top: 7px;
+    margin-right: 20px;
+    padding-left: 20px;
+}
+
+#highlight-menu-container,
+.gearbox {
+	display: inline-block !important;
+}
+
+// fne block js override
+.blockElement {
+	width: 100%;
+	height: 100% !important;
+	top: 0 !important;
+	left: 0 !important;
+	position: fixed !important;
+}
+
+// fne content
+#fne-window #fne-content {
+	#contentwrapper {
+		margin: 0 auto;
+		#document-viewer #document-body {
+			border: 0;
+			padding-bottom: 100px; // to show LC bottom content
+            #document-body-iframe {
+                position: relative;
+                z-index: 9999;
+            }
+		}
+	}
+	#content:after {
+		content: ' ';
+		height: 100px;
+		display: table;
+	}
+}
+.fne-window-basic.fullScreen form #form {
+	width: 100%;
+}
+#fne-window.fullScreen #fne-header {
+	padding-bottom: 12px;
+}
+#fne-content #content {
+	float: none;
+}
+#fne-content #content-item {
+	padding: 0;
+}
+
+// course activation screen
+.activate-course-fne {
+	& #fne-header #fne-title-actions {
+		position: relative;
+		left: 0;
+	}
+	& #title-text {
+		color: @text !important;
+	}
+}
+
+// ***********************************
+// BUTTONS
+// ***********************************
+
+// special xbv2 class
+.xb-btn,
+.faceplate-nav #add-assignment-btn {
+	background-color: @green;
+	width: auto;
+	height: 30px;
+	color: @text !important;
+	display: inline-block;
+	cursor: pointer;
+	border-radius: 3px;
+	border-bottom: 1px solid @dk-green;
+	padding: 3px 16px;
+	font-size: 13px;
+	&:hover {
+		background-color: @teal;
+		border-bottom-color: @dk-grey;
+		&:hover:before {
+			color: #fff;
+		}
+	}
+	&:active {
+		box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.34);
+		border-bottom-color: transparent;
+	}
+	&:before {
+		display: inline-block;
+		margin-top: 9px;
+	}
+	&.disabled {
+		background-color: #444;
+		pointer-events: none;
+		border-bottom-color: #777;
+	&:before {
+		color: #777;
+		}
+	}
+}
+
+#back.disabled,
+#next.disabled {
+	opacity: 0.5;
+	display: inline-block !important;
+	pointer-events: none;
+}
+
+// existing classes
+input[type=button].assignment-selection-btn {
+	background: #e1e44a;
+	border: 1px solid #b2bc52;
+	color: #333;
+}
+input[type=button]:hover.assignment-selection-btn:hover {
+	background: #099;
+	border-color: #099;
+}
+form input[type=button],
+#form input[type=button],
+.button.primary {
+	background: #099;
+	border: 0;
+	font-size: 14px !important;
+	outline: none;
+	text-shadow: none !important;
+}
+form input[type=button]:hover,
+#form input[type=button]:hover,
+.button.primary:hover {
+	background: #FF6633;
+}
+
+// one-off styles
+#PX_Assignments #create-assignment {
+	height: auto;
+	padding: 9px;
+	margin-left: 10px;
+	float: left;
+	&:hover {
+		color: #fff !important;
+	}
+}
+#btnUnassign {
+	background: transparent !important;
+}
+
+// ***********************************
+// CONTENT PLAYER
+// ***********************************
+
+#content-px .contentPlayerHeader {
+	display: table !important;
+	padding: 5px !important;
+	& .xb-btn {
+		float: right;
+		margin-left: 4px;
+	}
+	& #content-fwd {
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		margin-left: 0;
+		&:before {
+			content: 'Next';
+		}
+	}
+	& #content-back {
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+		&:before {
+			content: 'Previous';
+		}
+	}
+	& #content-fullscreen {
+		&:before {
+			content: '\e744';
+			font: 300 11px/100% pxicons;
+			margin-top: 12px;
+		}
+	}
+	& #content-courseb-title {
+		width: 60%;
+		line-height: 130%;
+		display: table-cell;
+		vertical-align: middle;
+	    font-size: 11px;
+	    text-transform: uppercase;
+	    letter-spacing: 1px;
+	    color: #fff;
+	    padding: 5px 10px;
+	}
+}
+
+// ***********************************
+// FACEPLATE MENU
+// ***********************************
+
+#widgetBody {
+	.faceplate-nav .faceplate-add-content-menu {
+		background: #fff;
+		width: 250px;
+		border: solid 2px @lt-grey;
+		border-radius: 0 0 @radius @radius;
+		display: none;
+	    position: absolute;
+	    z-index: 100;
+	    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.18);
+	    &:hover + .btn-wrapper #add-assignment-btn {
+	    	background-color: @teal;
+			border-bottom-color: @dk-grey;
+			color: #fff !important;
+	    }
+		li a {
+			display: block;
+			padding: 8px;
+			text-decoration: none;
+			color: @text;
+			font-size: 14px;
+			&:hover {
+				background-color: @teal;
+				color: #fff;
+			}
+		}
+	}
+	.faceplate-nav #add-assignment-btn {
+		height: 23px;
+		float: right;
+		margin: -3px 5px 0 0;
+		padding-top: 10px;
+		&:hover {
+			color: #fff !important;
+		}
+		span {
+			margin-right: -5px;
+		}
+	}
+	.faceplate-add-content-menu li {
+		padding: 5px 0;
+		border-bottom: solid 1px #e5e5e5;
+		&:last-child {
+			border-bottom: none;
+		}
+	}
+}
+
+// ***********************************
+// ACTIVATION BANNER
+// ***********************************
+
+#main .homepageheader {
+	overflow: visible;
+	& .customerCourseActivationWrapper {
+		background: @lt-green;
+		width: 90%;
+		height: 64px;
+		font-size: 90%;
+		font-weight: 700;
+		border-radius: 12px;
+		border: 3px solid @green;
+		overflow: hidden;
+		margin: 0 auto;
+		box-shadow: 2px 6px 8px -6px #ddd;
+	}
+	& .alertIconWrapper {
+		background: @green;
+		width: 70px;
+		height: 100%;
+		display: block;
+		margin: 0;
+		position: relative;
+		&:before {
+			content: ' ';
+			background: @text;
+			width: 44px;
+			height: 44px;
+			display: block;
+			position: absolute;
+			top: 7px;
+			left: 8px;
+			border-radius: 30px;
+			border: 4px solid #bebe32;
+		}
+		&:after {
+			content: '\26A0';
+			font: 190% pxicons;
+			color: #fff;
+			position: relative;
+			top: 17px;
+			left: -2px;
+		}
+	}
+	& .activatetext {
+		display: inline-block;
+		margin: 10px 5px 0 16px;
+	}
+	& .activatelinks {
+		display: inline-block;
+		float: none;
+		text-decoration: underline;
+	}
+}
+
+// ***********************************
+// STUDENT VIEW BANNER
+// ***********************************
+
+.has-banner .student-view-banner {
+	background: #a00;
+	width: 100%;
+	height: 40px;
+	border: 0;
+	margin-top: -2px;
+	color: #fff;
+	position: relative;
+	z-index: 99;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	& a {
+		background-color: #fff;
+		display: inline-block;
+		float: none;
+		margin-left: 30px;
+		text-decoration: none;
+		padding: 6px 12px;
+		color: #000;
+		border-radius: 7px;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+		&:before {
+			content: '\2716';
+			font: 300 15px/100% pxicons;
+			color: #a00;
+			margin-right: 5px;
+		}
+	}
+}
+
+// ***********************************
+// NON MODAL DIALOG
+// ***********************************
+
+#nonmodal {
+	background-color: #fff;
+	height: auto !important;
+	border-radius: @radius;
+	z-index: 2001;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+	&:before {
+		content: ' ';
+		background-color: #000;
+		width: 100%;
+		height: 100%;
+		display: block;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: -9999;
+		opacity: 0.4;
+	}
+	& a {
+		color: @pink;
+	}
+	& #content {
+		background-color: #fff;
+		border-radius: 0 0 @radius @radius;
+	}
+	& #nonmodal-content {
+		height: 100% !important;
+	}
+	& #fne-title {
+		width: 97%;
+		padding: 1.5% 1.5% 1% 1.5%;
+		border-bottom: 1px solid @lt-grey !important;
+	}
+	& #fne-title #title-text {
+		font-size: 150% !important
+	}
+	.ac-create-content {
+		#nonmodal-content {
+			padding-top: 20px;
+		}
+		.details {
+			min-height: 200px;
+		}
+		.buttonHolder {
+			clear: both;
+			margin: 20px;
+			text-align: right;
+		}
+	}
+}
+
+// close button for dialogs
+#managementcard-close,
+#nonmodal-window #nonmodal-unblock-action,
+.ui-dialog-titlebar-close {
+    background: #575757 !important;
+    height: 31px !important;
+    width: 31px !important;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    cursor: pointer;
+    border-radius: 25px !important;
+    text-decoration: none !important;
+    &:before {
+	    content: '\2716';
+	    display: block;
+	    font: 300 19px/100% pxicons;
+	    color: #fff;
+	    text-align: center;
+	    margin-top: 7px;
+	}
+	&:hover {
+		background: @pink;
+	}
+}
+#nonmodal-window #nonmodal-unblock-action {
+    top: 10px;
+    left: -29px;
+}
+
+// ***********************************
+// `CREATE NEW` FORM
+// ***********************************
+
+#saveItem {
+	li {
+		margin-bottom: 24px;
+	}
+	label[for] {
+		margin-bottom: 6px;
+	}
+	input[type=text] {
+		padding: 7px 10px;
+	}
+	.create-closecancel {
+		display: inline-block;
+		margin: 9px 0 0 10px;
+	}
+	.create-new-btn-wrapper {
+		background-color: #fff;
+		border: 0;
+		padding: 14px 0; 
+	}
+}
+
+.create-new-btn-wrapper {
+    .saveandopen {
+        .gradient(#ededed, #dadada);
+        padding: 12px 24px!important;
+    }
+}
+
+// ***********************************
+// STUDENT QUIZ CONTROLS
+// ***********************************
+
+#submission-controls {
+	height: 70px;
+	position: relative;
+	top: 15px;
+	left: 25px;
+	display: inline-block;
+	& button {
+		padding: 8px 10px;
+		border-radius: @btn-radius;
+	}
+	& #submission-submit {
+		font-weight: 700;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}
+
+// ***********************************
+// ASSIGNMENTS TAB TREE
+// ***********************************
+
+@assignment-child-margin-left: 30px;
+
+#PX_Assignments {
+	background-color: #fff;
+	.xbookv2_contenttreewidget {
+		padding: 0;
+		overflow: visible;
+	}
+	.faux-tree-node {
+		padding: 3px 0 10px 0;
+		margin: 0;
+		border: 0;
+		// expanded nodes
+		&.nodeExpanded ~ .faux-tree-node.unitrowlevel1 {
+			margin-top: 30px !important;
+		}
+		&.nodeExpanded.unitrowlevel1 {
+			border: 0;
+		}
+		// thumbnail image
+		&.unitrowlevel1 .fp-img-wrapper {
+			display: block !important;
+			float: left;
+			overflow: hidden;
+			border: 1px solid #666;
+			margin: 10px 20px 10px 20px;
+			& img {
+				width: 40px;
+				height: auto;
+			}
+		}
+		// levels
+		&.unitrowlevel1 {
+			border-bottom: 1px dotted #aaa;
+			margin-bottom: 14px;
+			.unitfptitle,
+			.unitfptitle a {
+				font-size: 18px;
+				font-weight: 700;
+				color: #333;
+				display: block;
+				padding-top: 20px;
+			}
+			// large upcoming calendar
+			.dd_cal {
+				background-color: @green;
+				width: 42px;
+				height: 40px;
+				border: 2px solid @green !important;
+				border-radius: 6px;
+				padding: 4px;
+				position: absolute;
+				top: -20px;
+				left: -50px;
+			}
+			.dd_cal_date {
+				background: #fff;
+				width: 34px;
+				height: 20px;
+				margin: 0 auto;
+				padding-top: 7px;
+				color: #333 !important;
+				border-radius: 0 0 4px 4px;
+			}
+			.dd_cal_month {
+				background-color: @green !important;
+				color: @text;
+			}
+			.due_date_day {
+				font-size: 13px;
+				color: #fff;
+			}
+			.dd_cal_date {
+				span {
+					font-size: 10px !important;
+					color: @text !important;
+				}
+			}
+			.due_soon {
+				.dd_cal {
+					background-color: @purple;
+					width: 45px;
+					height: 45px;
+					border-color: @purple !important;
+				}
+				.dd_cal_month {
+					background-color: @purple !important;
+					color: #fff;
+				 }
+				 .dd_cal_date {
+					background-color: @purple;
+					border: solid 2px #fff;
+					color: #fff;
+					span {
+						color: #fff !important;
+					}
+				}
+			}
+			// large past due calendar
+			.grayout {
+				.dd_cal {
+					background-color: #fff;
+					border-color: @pink !important;
+				}
+				.dd_cal_month {
+					background-color: #fff !important;
+					color: @pink;
+				}
+				.dd_cal_date {
+					background-color: @pink;
+					color: #fff;
+				}
+				.dd_cal_date span {
+					color: #fff !important;
+				}
+			}
+		}
+		&.unitrowlevel2 {
+			margin-left: @assignment-child-margin-left;
+		}
+		&.unitrowlevel3 {
+			margin-left: @assignment-child-margin-left * 2;
+		}
+		&.unitrowlevel4 {
+			margin-left: @assignment-child-margin-left * 3;
+		}
+		// default link
+		.unitfptitle,
+		.unitfptitle a,
+		.fptitle,
+		.fptitle a {
+			font-size: 14px;
+			font-weight: 400;
+			text-decoration: none;
+			color: #000;
+			cursor: pointer;
+			&:hover {
+				color: @teal;
+			}
+		}
+		// assignment content
+		.px-default-text {
+			width: 70%;
+			font-size: 110%;
+			line-height: 150%;
+			margin: 20px 0 20px 0;
+			float: left;
+		}
+		.px-default-text-empty {
+			margin-left: 80px;
+			clear: both;
+			color: #777;
+			font-style: italic;
+		}
+		.fpimageLarge {
+			float: right;
+			margin: 30px 30px 0 0;
+		}
+		// small calendar icon
+		.due_date {
+			float: left;
+			position: relative;
+		}
+		.dd_cal {
+			border-color: @green !important;
+			padding: 2px 3px 2px 2px;
+			text-align: center;
+			margin-top: -5px;
+		}
+		.due_date_day {
+			color: @text;
+		}
+		.dd_cal_month {
+			background-color: #fff !important;
+			color: @text;
+			font-size: 10px;
+			margin-bottom: 3px;
+		}
+		// small past due calendar icon
+		.grayout {
+			.dd_cal {
+				background-color: #fff;
+				border-color: @pink !important;
+			}
+			.dd_cal_month {
+				color: @text;
+			}
+			.dd_cal_date span {
+				color: @text !important;
+			}
+		}
+		&:not(.unitrowlevel1) .faux-tree-node-title {
+			padding-top: 10px;
+		}
+		.icon {
+			display: block !important;
+			margin-right: 5px;
+			position: relative;
+			top: -4px;
+		}
+	} // end .faux-tree-node
+	.faceplate-row-on-hover {
+		width: 70px;
+		display: block;
+	}
+	.faux-tree-node {
+		position: relative;
+	}
+	.faceplate-item-status {
+		float: right;
+		position: absolute;
+		top: 26px;
+		right: 20px;
+	}
+	// gearbox icon
+	.gearbox {
+		position: relative;
+		top: -10px;
+		.gearbox-icon.pxicon {
+			margin-left: 2px;
+		}
+	}
+	// management card
+	#faceplate-right-menu {
+		top: 76px !important;
+		left: inherit !important;
+		right: 20px;
+	}
+	// config checkboxes
+	.launchpad-settings {
+		position: relative;
+		padding: 18px 0 10px 10px;
+	}
+	.launchpad-settings label:before {
+		content: attr(data-on);
+		color: #000;
+		position: absolute;
+		top: 20px;
+		left: 37px;
+		text-transform: capitalize;
+	}
+	// ***********************************
+	// EMPTY ASSIGNMENTS TAB
+	// ***********************************
+	.unit-content-wrapper {
+		margin: 0;
+	}
+	.xbook-msg {
+		padding: 40px;
+	}
+	#empty-greeting {
+		font-size: 140%;
+		font-weight: 700;
+	}
+	#empty-steps {
+		display: table;
+		text-align: center;
+		margin: 0 auto;
+		.step {
+			width: 30%;
+			height: 100px;
+			overflow: hidden;
+			border-right: 1px dotted #d2d2d2;
+			display: inline-block;
+			text-align: left;
+			padding: 20px 0 0 30px;
+			margin: 30px 0;
+			&:last-child {
+				border-right: 0;
+				padding-right: 0;
+			}
+			i {
+				border: 2px solid #efefef;
+				padding: 20px 24px;
+				display: inline-block;
+				float: left;
+				color: @teal;
+				font-size: 120%;
+				font-style: normal;
+				font-weight: bold;
+				border-radius: 100%;
+			}
+			p {
+				width: 68%;
+				line-height: 180%;
+				float: left;
+				margin: 6px 0 0 20px;
+			}
+		}
+	}
+}
+
+// ***********************************
+// ADD TO UNIT DROPDOWN LIST
+// ***********************************
+#PX_Assignments .faux-tree-node .addContentBtn {
+    float: left;
+    display: none;
+    clear:left;
+}
+
+#PX_Assignments .faux-tree-node .btn-wrapper{
+    .gradient(#099, #099); 
+    display: inline-block;
+    margin-left: 20px;
+    border-radius: 7px 7px 7px 7px;
+    width: 136px;
+    position: relative;
+    z-index: 0;
+}
+
+.no-touch #PX_Assignments .faux-tree-node .btn-wrapper:hover{
+    background: #f63; /* Old browsers */
+    .gradient(#f63, #f63); 
+}
+
+#PX_Assignments #add-assignment-btn
+{
+    color: #fff !important;
+    padding: 6px 8px; 
+
+    .pxicon
+    {
+        font-size: 19px;
+        font-size: 1.2rem;
+        margin-left: 8px;
+        margin-right: 0;
+        line-height: 6px;
+    }
+}
+
+// ***********************************
+// UPCOMING ASSIGNMENTS NOTIFICATION
+// ***********************************
+
+#PX_UpcomingAssignments {
+	background: @lt-green;
+	width: 99.7%;
+	height: 64px;
+	font-size: 90%;
+	font-weight: 700;
+	border-radius: 12px;
+	border: 3px solid @green;
+	overflow: hidden;
+	margin: 10px auto 20px auto;
+	box-shadow: 2px 6px 8px -6px #ddd;
+	#leftLaunchPad {
+		float: left;
+	}
+	#clockImage {
+		background: @green;
+		width: 70px;
+		height: 64px;
+		display: block;
+		margin: 0;
+		position: relative;
+		float: left;
+		&:before {
+			content: ' ';
+			background: @text;
+			width: 44px;
+			height: 44px;
+			display: block;
+			position: absolute;
+			top: 7px;
+			left: 8px;
+			border-radius: 30px;
+			border: 4px solid #bebe32;
+		}
+		&:after {
+			content: '\e73e';
+			font: 220% pxicons;
+			color: #fff;
+			position: relative;
+			top: 16px;
+			left: 22px;
+		}
+		& + div {
+			margin: 26px 20px 0 90px;
+		}
+	}
+	#rightLaunchPad {
+		margin-top: 26px;
+		float: left;
+		a {
+			color: @pink !important;
+		}
+	}
+}
+
+// ***********************************
+// MANAGEMENT CARD VISIBILITY TOGGLE
+// ***********************************
+
+.managementcard_students_show:before,
+.managementcard_students_show:after,
+.managementcard_students_hide:before,
+.managementcard_students_hide:after {
+	content: 'YES';
+	background: @teal;
+	width: 50px;
+	height: 19px;
+	padding-top: 9px;
+	text-align: center;
+	color: #fff;
+	display: inline-block;
+	float: left;
+	border: 1px solid #ddd;
+	border-right-color: transparent;
+	border-radius: 4px 0 0 4px;
+	box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+// switch button
+.managementcard_students_show:after,
+.managementcard_students_hide:before {
+	content: ' ';
+	.gradient(#fff, #eee);
+	border-radius: 0 4px 4px 0;
+	border-right-color: #ddd;
+	box-shadow: none;
+}
+// states
+.managementcard_students_show:hover:before {
+	background: #08c;
+}
+.managementcard_students_hide:hover:after {
+	background: #eee;
+}
+.managementcard_students_show:hover:after,
+.managementcard_students_hide:hover:before {
+	background: #f6f6f6;
+}
+// disabled label
+.managementcard_students_hide:after {
+	content: 'NO';
+	.gradient(#eee, #fff);
+	color: @text;
+	border-right-color: #ddd;
+	border-radius: 0 4px 4px 0;
+}
+.managementcard_students_hide:before {
+	border-radius: 4px 0 0 4px;
+}
+#card_item_visible-label {
+	display: inline-block;
+	margin: 8px 0 0 14px;
+}
+
+// ***********************************
+// MOVE / COPY DIALOG
+// ***********************************
+
+@faux-tree-node-left: 10px;
+
+.dlg-movecopy {
+	height: 80%;
+	overflow: visible !important;
+	top: 60px !important;
+	border: 0 !important;
+	.ui-dialog-title {
+		position: relative;
+		top: 10px;
+		&:before {
+			content: 'Move to folder or unit';
+			width: 300px;
+			background-color: #fff;
+			position: absolute;
+			top: 0;
+			left: 0;
+			padding: 4px;
+		}
+	}
+	.ui-dialog-titlebar-close {
+		top: -10px !important;
+		right: -20px !important;
+		&:before {
+			margin-top: 3px;
+		}
+	}
+	#launchPadView {
+		height: 300px;
+		overflow-y: auto;
+		overflow-x: hidden;
+		margin-bottom: 16px;
+	}
+	.unit-content-wrapper {
+		margin: 0;
+	}
+	// tree
+	.faux-tree-node {
+		width: 100%;
+		height: 13px;
+		padding: 10px;
+		font-size: 90%;
+		font-weight: bold;
+		cursor: pointer;
+		border-style: dotted;
+		position: relative;
+		.icon {
+			position: relative;
+			top: -10px;
+			left: 10px;
+		}
+		.faux-tree-link {
+			margin-left: 20px !important;
+			font-size: 12px !important;
+			padding: 0 !important;
+		}
+		&:hover {
+			background-color: #eee;
+		}
+		&.active {
+			background-color: @teal;
+			color: #fff;
+			a {
+				color: #fff !important;
+			}
+			.dd_cal_date {
+				background-color: #fff;
+			}
+		}
+	}
+	// tree level positions
+	.unitrowlevel1 .unitfptitle {
+		padding-left: @faux-tree-node-left;
+	}
+	.unitLevelLoop (@index) when (@index > 1) {
+		(~'.unitrowlevel@{index} .faux-tree-node-title') {
+			padding-left: @faux-tree-node-left * @index !important
+		}
+		.unitLevelLoop(@index - 1);
+	}
+	.unitLevelLoop (5);
+	// date
+	.due_date {
+		width: 40px;
+		position: absolute;
+		top: 6px;
+		right: 6px;
+	}
+}

@@ -1,0 +1,637 @@
+﻿.placeholder {
+    background: #f0f0f0;
+    border:1px dashed;
+    border-color:Black;
+    visibility: visible !important;
+    display:inline-block;
+    height:150px;
+}
+
+.placeholderAdeel {
+    background: #f0f0f0;
+    border:1px solid;
+    display:inline-block;
+    border-color:Black;
+    visibility: visible !important;
+    height:150px;
+}
+
+
+.closeWidgetButton {
+    background-color: Transparent;
+    background-image: url("style/images/platx_sprite.png");
+    background-position: -196px -51px;
+    background-repeat: no-repeat;
+    float: right;
+    height: 25px;
+    width: 30px;
+    margin-top:5px;
+}
+
+
+
+.removeMenuItem {
+    background-color: Transparent;
+    background-image: url("style/images/platx_sprite.png");
+    background-position: 1px -149px;
+    background-repeat: no-repeat;
+    float: none;
+    height: 25px;
+    width: 35px;
+    margin-top:5px;
+    display:block;  
+    left: 35%;        
+}
+   
+.widgetToolbar 
+{
+    background-color: #FFFFCC;
+    height: 32px;
+    width: 100%;    
+}
+.widgetToolbar .grip-icon{
+    background-color: Transparent;
+    background-image: url("style/images/platx_sprite.png");
+    background-position: -150px -800px;
+    background-repeat: no-repeat;
+    float: left;
+    height: 25px;
+    width: 30px;
+    margin:4px;
+}
+.widgetHeader
+{
+    height: 28px;
+    border-bottom:1px solid #CCC; 
+    padding-top:5px;
+    padding-left:5px;
+}
+
+.widgetHeaderText
+{
+    float: left;
+    width: 80%;
+    height: 22px;
+    line-height:22px;
+}
+
+.widgetHeaderImage{
+    background-repeat: no-repeat;
+    background-color: Transparent;
+    background-image: url("style/images/scientific-american-banner.png"); /* this is temporary */
+    height: 29px;
+    width: 80px;
+}
+
+
+.widgetHeaderCollapse
+{
+    float: right;
+}
+
+.widgetCollapse { /*button to collapse widget*/
+    background-color: Transparent;
+    background-image: url("style/images/platx_sprite.png");
+    background-position: 0px -99px;
+    background-repeat: no-repeat;
+    height: 22px;
+    width: 22px;
+    float: right;
+    margin-top:0px;
+    margin-right:5px;
+}
+
+.dialogbox { /*button to expand widget*/
+    background-color: Transparent;
+    font-size: 12px;
+}
+
+
+.widgetExpand { /*button to expand widget*/
+    background-color: Transparent;
+    background-image: url("style/images/platx_sprite.png");
+    background-position: 0px -49px;
+    background-repeat: no-repeat;
+    height: 22px;
+    width: 22px;
+    float: right;
+    margin-top:0px;
+    margin-right:5px;
+}
+
+  /*div around each widget*/
+  #widgetBody{
+    background-image: linear-gradient(bottom, rgb(234,234,233) 31%, rgb(255,255,255) 83%);
+    background-image: -o-linear-gradient(bottom, rgb(234,234,233) 31%, rgb(255,255,255) 83%);
+    background-image: -moz-linear-gradient(bottom, rgb(234,234,233) 31%, rgb(255,255,255) 83%);
+    background-image: -webkit-linear-gradient(bottom, rgb(234,234,233) 31%, rgb(255,255,255) 83%);
+    background-image: -ms-linear-gradient(bottom, rgb(234,234,233) 31%, rgb(255,255,255) 83%);
+    background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0.31, rgb(234,234,233)),
+	    color-stop(0.83, rgb(255,255,255))
+    );
+  }
+  
+.widgetItem {
+    border: 1px solid #CBCBCB;
+    -moz-box-shadow: 3px 3px 3px #C9C7C7;
+    -webkit-box-shadow:3px 3px 3px rgba(204, 199, 199, 0.6);
+    float: left;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.editing-homepage .widgetItem {
+    border: 2px solid #EB7C00;
+}
+
+.addWidget /* div which is clicked to get list of widgets that can be added*/
+{
+    display: block;
+    width: 100%;
+    color: black;
+    padding: 0 0 10px 0;
+    border: 2px solid #EB7C00;
+    text-align: center;
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: none;
+    background-color: #FFC;
+    border-image: initial;
+}
+
+.addWidget .prompt{
+    float: left;
+    font-size: 11px;
+    display: block;
+    background-color: #EB7C00;
+    color: white;
+    height: 16px;
+    width: 122px;
+    text-transform: uppercase;
+    font-weight:bold;
+}
+
+.AddMenuItemLink{
+    background-color:#EB7C00 !important;
+}
+
+.addWidget:hover{
+    background-color:#DEE9F3;
+}
+.chooseWidget /* div that shows list of widgets which can be added*/
+{
+    z-index:950;
+    display:block;
+    overflow:hidden;
+    width:100%;
+    padding-left: 12px;            
+    padding: 10px 0 10px 0;
+    border: 2px solid #B8B8B8;
+    text-align: center;
+    font-style: italic;
+    background-color: #F0F0F0;
+}    
+
+.addWidgetDisplay /* TITLE of the div that shows list of widgets which can be added*/
+{
+    font-weight: bold;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+      
+.widgetDisplayItem /*each option that can be used to add a new widget*/
+{
+    margin: 0;
+    width: 300px;
+    padding: 0 0 10px 0;
+    text-align:left;        
+    float: left; 
+    height: 20px; 
+}
+    
+.chooseWidget a /*chooseWidget is the class on dic which has list of options to add new widgets*/
+{
+    text-decoration: none;
+    outline: 0 none;
+    color: #1975FF;
+}
+
+.muItemEditorRegion a.miContentLink,
+.muItemEditorRegion a.miContentLink:active,
+.muItemEditorRegion a.miBookMarkLink,
+.muItemEditorRegion a.miBookMarkLink:active,
+.muItemEditorRegion a.miToolsLink,
+.muItemEditorRegion a.miToolsLink:active{
+    text-decoration:underline;
+}
+
+.muItemEditorRegion a:hover,
+.muItemEditorRegion a.miContentLink:focus,
+.muItemEditorRegion a.miBookMarkLink:focus,
+.muItemEditorRegion a.miToolsLink:focus{
+    text-decoration:none;
+}   
+
+.chooseWidget a:hover, a:focus, a:active
+{
+    text-decoration: underline;
+    outline: 0 none;
+}
+    
+.createYourWidget
+{
+    text-align: left;
+    margin-left:5%;
+    float: left;
+    width: 100%;
+    color: #1975FF;
+}
+    
+ul#topnav 
+{
+    margin: 0;
+    padding: 0;
+    display: block;
+    list-style: none;
+    float: left;        
+}
+
+/* Announcement Widget Styles */
+
+.btnPostAnnouncement{
+    width: 60px;
+    text-align: center;
+}
+
+.announcementViewAllBar {
+    background-color: #F0F0F0;
+    border: 1px solid #CCCCCC;
+    clear: both;
+    font-size: 12px;
+    height: 28px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.announcementItem {
+    border-top: 1px solid #D4D4CF;
+    clear: both;
+    float: left;
+    padding: 5px 0 10px 0;
+    width: 100%;
+}
+
+.announcementArchiveButton, 
+.announcementRepostButton{
+    float:right;
+    margin: 0px;
+}
+
+.announcementItem:hover{
+    background-color:#D6EBFF;
+}
+
+.announcementItem:hover .announcementPin{
+   background-position:-236px -194px;
+ }
+ 
+.announcementItem .announcementPin{ 
+    cursor: pointer;
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin-right: 12px;
+    background-image: url("style/images/platx_sprite.png");
+    background-position:-236px -244px;
+    background-repeat: no-repeat;
+}
+
+.announcementItem .announcementwrapper{
+    float:left;
+    width: 92%;
+}
+
+.announcementItem .announcement-menu{
+    position:relative;
+    width: 100px;
+    margin: 6px 12px 0 0;
+    float: right;   
+}
+
+.announcementItem .announcementPin.Pin{ 
+    background-position:-140px -244px;
+}
+
+ .announcementDelete:hover {
+     cursor:pointer;
+ }
+ 
+.announcementDate {
+    color: #B8B8B8;
+    font-size: 12px;
+    line-height: 18px;
+    display: inline;
+}
+
+.announcementBody {
+    float: left;
+    font-size: 11px;
+    width: 80%;
+    line-height: 14px;
+    word-wrap:break-word;
+}
+
+.announcementHover{
+    background-color: #D6EBFF;
+    list-style-type: circle;
+}
+
+.announcementArchiveButton{
+    width:60px; 
+    text-align:center;
+}
+
+.announcementEdit {
+    background-color: Transparent;
+    background-image: url("style/images/platx_sprite.png");
+    background-position: -99px -250px;
+    background-repeat: no-repeat;
+    display: none;
+    height: 22px;
+    width: 24px;
+    cursor: pointer;
+}
+
+.announcementDelete {
+    background-color: Transparent;
+    background-image: url("style/images/platx_sprite.png");
+    background-position: -199px -250px;
+    background-repeat: no-repeat;
+    display: none;
+    height: 25px;
+    width: 25px;
+    margin-left: 8px;
+}
+
+.announcementList .displayWrapper {
+float: left;
+width: 70%;
+min-width: 450px;
+}
+
+.announcementViewAllLink{
+    color: Navy;
+    cursor: pointer;
+}
+
+.postAnnouncement{
+    height: 40px; 
+    padding-top: 15px;
+}
+
+.containerPostAnnouncement .watermark {
+    color: #ccc !important; 
+    font-style: italic !important;      
+    font-size: 12px !important;  
+}
+
+.containerPostAnnouncement {
+    float: left;
+    margin: 12px;
+    position: relative;
+    width: 80%;
+}
+
+.containerEditAnnouncement{
+    float: left;
+    margin: 12px;
+    position: relative;
+    width: 80%;
+}
+
+.announcementWidget ul{
+    clear: both;
+    height: 150px;
+    overflow-y:scroll;
+}
+
+.btnPostAnnouncement{
+    float: right;
+    margin: 12px 25px 0 0;
+}
+
+.txtPostAnnouncement {
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    font-size: 12px !important;
+}
+
+.txtEditAnnouncement {
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    font-size: 12px !important;
+}
+
+.textCopy {    
+    padding: 6px;   /* Same border+padding as text area. */
+    padding-bottom: 1.15em; /* A bit more than one additional line of text. */ 
+    visibility: hidden;
+    width: 100%;
+}
+
+.noItemsMessage{
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:12px;
+    clear:both;
+}
+
+.editWrapper{
+    float:left; 
+    width:100%
+}
+
+.cancelEditAnnouncement{
+    cursor: pointer;
+}
+
+.txtEditAnnoucementButtons {
+    padding-top: 12px;
+    text-align: center;
+    font-size: 12px;
+}
+
+/*** Announcement Modal ***/
+
+.announcementModalChange{
+    float: left; 
+    border-top: 1px solid rgb(212, 212, 207); 
+    padding-top: 20px; 
+    width: 100%;
+}
+
+.announcementModalDash{
+    float: left; 
+    margin-left: 10px; 
+    border-left: 1px solid rgb(212, 212, 207);
+    height: 25px;
+}
+
+.announcementModalCancel{
+    float: left; 
+    cursor: pointer;
+    font-size: 14px;
+    height: 25px;
+    padding-top: 5px;
+}
+
+.announcementInActiveModal
+{
+    background-color: #DCDCDC;   
+}
+
+.announcementArchiveButton,
+.btnPostAnnouncement,
+.announcementModalDone,
+.announcementRepostButton{
+    font-size: 12px !important;
+}
+
+.announcementModalDone
+{
+    width: 60px;
+    text-align: center;
+}
+
+.widgetBlocker_ON /*this class is used to put a block a widget ui, when move hoveres it if the widget cannot be edited*/
+{
+z-index:1000;
+position:absolute;
+top:0;
+left:0;
+width:300px;
+height:300px;
+background:#000;
+opacity:0.45;
+-moz-opacity:0.45;
+filter:alpha(opacity=45);
+overflow:hidden;
+}
+
+.widgetBlocker_OFF /*this class is used to put a block a widget ui, when move hoveres it if the widget cannot be edited*/
+{
+    background:red;  
+    display:none;
+}
+
+.widgetBlockMessage{
+    background-color:black;
+    color:white;
+    font-weight:bold;
+    width:200px;
+    position:relative;
+    display:block;
+}
+
+.widgetBlockMessage .cannot-edit-lock{
+    background-color: Transparent;
+    background-image: url("style/images/platx_sprite.png");
+    background-position: -149px -49px;
+    background-repeat: no-repeat;
+    height: 22px;
+    right: -20px;
+    position:absolute;
+    margin-top: 0;
+    width: 22px;
+    top: -3px;
+}
+
+.ErrorTextNotVisible
+{
+    display: none;
+}
+
+.ErrorTextVisible
+{
+    background-color:#F9966B;
+    color:Black;
+    height: 15px;
+    padding-top: 5px;
+    text-align:left;
+    vertical-align: middle;
+}
+
+
+.blockWidgetUI_ON
+{
+    z-index:900;
+    cursor:pointer;
+    position:absolute;
+    top:0;
+    left:0;
+    width:300px;
+    height:300px;
+    background:#000;
+    opacity:0.45;
+    -moz-opacity:0.45;
+    filter:alpha(opacity=45);
+    overflow:hidden;
+}
+
+.tblAssignmentCollapsed{
+    cursor: pointer;
+}
+.assignmentLink{
+        cursor: pointer;
+        color: Blue !important;
+}
+
+/* Announcement View All */
+.assignmentViewAll{
+        font-size: 12px;
+        padding-left: 22px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+}
+    
+.assignmentViewAllLink{
+        text-decoration: none;
+        margin-left: 6px;
+ }
+
+.announcementViewAll .announcementDate{
+    float:right;
+    margin-right: 24px;
+}    
+.announcementViewAll .announcementItem {
+    min-height: 23px;
+}
+.announcementViewAll .announcementInActiveModal .displayWrapper{
+    margin-left: 42px;
+}
+.announcementViewAll .announcmentMenu{
+    margin-right: 12px;
+    width:150px;
+    float:right;
+}
+
+.announcementViewAll .announcementItem .displayWrapper {
+    width: 55%;
+}
+
+#doc-upload-window .watermark
+{
+    color: #CCC;
+}

@@ -1,0 +1,150 @@
+﻿.activitiesWidgetBody 
+{
+    border-collapse: collapse;
+    font-family: arial, Lucida grande, Lucida Sans, 'Geneva' , sans-serif;
+    font-size: 16px;
+    width: 90%;
+    color: #686868;
+    border-top: 1px dotted #27327D;
+    margin:auto;
+}
+.activitiesWidgetBody tr span.reportSpan
+{
+ color:#27327D;
+ font-weight:normal;
+ font-size:12px;
+ text-decoration:underline;
+}
+.activitiesWidgetBody td
+{
+    padding: 5px 14px 5px 14px;
+    min-width: 100px;
+}
+
+.activitiesWidgetBody tr
+{
+    cursor:pointer;    
+}
+.activitiesWidgetBody td.topicRow
+{
+    cursor:default;
+}
+.activitiesWidgetBody  tr span.noDecoration
+{
+        text-decoration:none;
+}
+
+.activitiesWidgetBody tr span
+{
+    font-weight:bold;
+    text-decoration:underline;    
+}
+
+.activitiesWidgetBody th
+{
+    text-align: left;
+    padding: 2px 0px 2px 14px;
+    color: black;
+    font-weight: 800;
+    font-size: 24px;
+}
+
+.activitiesWidgetBody a:visited
+{
+    color: Blue;
+}
+
+.activitiesWidgetBody td.colIndex1
+{
+    text-decoration: none;
+    width: 75%;
+}
+
+.activitiesWidgetBody td.colIndex1 a
+{
+    text-decoration: none;
+}
+
+.activitiesWidgetBody .colIndex2, .activitiesWidgetBody .colIndex3
+{
+    border-left: 1px solid #27327D;
+    text-align: center;
+}
+
+.activitiesWidgetBody.student .colIndex2
+{
+        border-left: 1px solid #27327D;
+    text-align: center;
+    cursor:default;
+}
+
+.activitiesWidgetBody .assigned
+{
+    background-color: #b2d235;
+    color: #27327D;
+    font-weight: 500;
+}
+
+.activitiesWidgetBody .assigned a, .activitiesWidgetBody .assigned a:visited
+{
+    background-color: #9ACA3C;
+    color: #27327D;
+    font-weight: 800;
+}
+
+.activitiesWidgetBody .titleRow, .activitiesWidgetBody .topicRow
+{
+    color: Black;
+}
+
+.activitiesWidgetBody .assignStyles
+{
+    color:#1e5ac8;
+    font-weight:normal;
+    font-size:12px;
+}
+
+.activitiesWidgetBody .titleSpan
+{
+    
+}
+
+#tableHeader 
+{
+    padding:0px 0px 12px 0px; 
+    margin:auto;
+    width:90%
+    }
+    
+    
+    .activitiesWidgetBody .topicRow
+{
+    font-weight:bold;
+    font-size:12px;
+    color:#f15a22;
+    background-color:#E0E4D6;
+}
+.activitiesWidgetBody tr span.titleSpan{
+    font-size:12px;
+    color:#505050;
+    font-weight:normal;
+}
+
+.activitiesWidgetBody .assignedTextChange
+{
+    font-weight: 700 !important;
+    color:#27327D;
+    
+}
+.unassignButtonLC 
+{
+    font-size:14px !important;   
+    
+}
+
+#unassignButtonLC
+{
+margin: 1px 28px 0px 0px;
+text-align: center;
+display: block;
+}

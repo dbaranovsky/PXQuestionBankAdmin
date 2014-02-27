@@ -1,0 +1,24 @@
+<bfw_template_learningobjectives>
+  <learningobjectives>
+    <objective guid="35852e58-fd97-4489-9a37-9f61b38ef2eb" id="1" parentid="" sequence="a">
+      <description>Publisher Learning Objective 1</description>
+      <bfw_description>Publisher Learning Objective One Description</bfw_description>
+    </objective>
+    <objective guid="3e46cf5b-39f7-41ff-90b1-ef5ed74a3055" id="2" parentid="" sequence="b">
+      <description>Publisher Learning Objective 2</description>
+      <bfw_description>Publisher Learning Objective Two Description</bfw_description>
+    </objective>
+    <objective guid="73e059c7-afb7-4c76-886c-35b3dcd29522" id="3" parentid="" sequence="c">
+      <description>Publisher Learning Objective 3</description>
+      <bfw_description>Publisher Learning Objective Three Description</bfw_description>
+    </objective>
+    <objective guid="667f8b3d-e463-4ea4-8fbe-9194bafea744" id="4" parentid="" sequence="d">
+      <description>Publisher Learning Objective 4</description>
+      <bfw_description>Publisher Learning Objective Four Description</bfw_description>
+    </objective>
+    <objective guid="814d39eb-bae8-42de-b691-8cc480b1a3b3" id="5" parentid="" sequence="e">
+      <description>Publisher Learning Objective 5</description>
+      <bfw_description>Publisher Learning Objective Five Description</bfw_description>
+    </objective>
+  </learningobjectives>
+</bfw_template_learningobjectives>

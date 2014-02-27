@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UpdateItems>
+	<Item>
+		<Where>
+			/bfw_menu_callbacks/method/parameter@value='PX_MENU_ITEM_EBOOK'
+		</Where>
+		<Update>
+			<key>/bfw_properties/bfw_property[@name='bfw_use_product_course']</key>
+			<value>true</value>
+		</Update>
+		<Delete>
+		</Delete>
+	</Item>
+</UpdateItems>

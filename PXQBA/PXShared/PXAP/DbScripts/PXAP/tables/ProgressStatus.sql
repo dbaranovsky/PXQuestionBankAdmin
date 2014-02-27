@@ -1,0 +1,24 @@
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+IF OBJECT_ID('dbo.[ProgressStatus]','U') IS NULL
+BEGIN
+
+CREATE TABLE [dbo].[ProgressStatus](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[percent_complete] [int] NOT NULL,
+	[status] [varchar](15) NULL,
+ CONSTRAINT [PK_ProgressStatus] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+END
+GO
+
+

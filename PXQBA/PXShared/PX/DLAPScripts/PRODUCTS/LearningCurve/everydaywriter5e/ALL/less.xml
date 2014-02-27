@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<batch>
+	<request cmd="updatecourses">
+		<requests>
+			<course courseid="-courseid-" domainid="-domainid-" title="-title-" reference="">
+				<data>     
+					<cssparameters>
+                        <param name="Typecolor" value="#1e5ac8" />
+                        <param name="Bordercolor" value="#27327d" />
+                        <param name="Calloutcolor" value="#234094" />
+                        <param name="Bodytextcolor" value="#505050" />
+                        <param name="Columnbackgroundcolor" value="#e7f2f8" />
+                        <param name="bookcover" value="style/images/everday-lc-login.png" />
+                        <param name="course-banner-logo" value="style/images/learning-curve-logo.png" />
+                        <param name="course-title-image" value="style/images/LC-everyday-banner.png" />
+                    </cssparameters>
+				</data>
+			</course>
+		</requests>
+	</request>
+</batch>

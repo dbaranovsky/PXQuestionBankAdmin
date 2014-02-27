@@ -1,0 +1,60 @@
+<html>
+<head>
+<script src="/BFWglobal/js/BFW_LogError.js" type="text/javascript" language="Javascript"></script>
+<script src="/BFWglobal/js/BFW_Error.js" type="text/javascript" language="Javascript"></script>
+<script type="text/javascript">
+
+SiteNotLoadedError = new Error("Site failed to load for unknown reasons");
+SiteNotLoadedError.name = 'SiteNotLoadedError';
+xSiteNotLoadedError = new Error("X Site failed to load for unknown reasons");
+xSiteNotLoadedError.name = 'xSiteNotLoadedError';
+
+try {
+//	throw SiteNotLoadedError;
+} catch(e) {
+	BFW_Errors.add( e, 10 );
+	if (e instanceof Error) {
+		try {
+//			throw xSiteNotLoadedError;
+		} catch(e) {
+			BFW_Errors.add( e, 20 );
+		}
+	}
+} finally {
+		if (BFW_Errors.LogErrors()) {
+//			alert('errors in head')
+		} else {
+//			alert('no errors in head')
+		};
+}
+
+function init () {
+	try {
+		throw SiteNotLoadedError;
+	} catch(e) {
+		BFW_Errors.add( e, 1 );
+		if (e instanceof Error) {
+			try {
+				throw xSiteNotLoadedError;
+			} catch(e) {
+				BFW_Errors.add( e, 2 );
+			}
+		}
+	} finally {
+		if (BFW_Errors.LogErrors()) {
+//			alert('errors in body')
+		} else {
+//			alert('no errors in body')
+		};
+	}
+}
+
+</script>
+</head><body onload="init()">
+
+Testing BFW_Error and BFW_LogError.
+
+<IFRAME id="BFW_LogError" src="" frameBorder="0" scrolling="yes" style="display:block" allowTransparency></IFRAME>
+
+</body></html>
+

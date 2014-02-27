@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="PXData" Class="NotesDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=PXData;Integrated Security=True" SettingsObjectName="Bfw.PX.Notes.Properties.Settings" SettingsPropertyName="PXData" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.HighlightNotes" Member="HighlightNotes">
+    <Type Name="HighlightNote">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HighlightId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="NoteId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Highlight_HighlightNote" Member="Highlight" ThisKey="HighlightId" OtherKey="HighlightId" Type="Highlight" IsForeignKey="true" />
+      <Association Name="Note_HighlightNote" Member="Note" ThisKey="NoteId" OtherKey="NoteId" Type="Note" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TopNotes" Member="TopNotes">
+    <Type Name="TopNote">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TopNoteId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="NoteId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Note_TopNote" Member="Note" ThisKey="TopNoteId" OtherKey="NoteId" Type="Note" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserTypes" Member="UserTypes">
+    <Type Name="UserType">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="User_UserType" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Highlights" Member="Highlights">
+    <Type Name="Highlight">
+      <Column Name="HighlightId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="[Public]" Member="Public" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Modified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Highlight_HighlightNote" Member="HighlightNotes" ThisKey="HighlightId" OtherKey="HighlightId" Type="HighlightNote" />
+      <Association Name="Highlight_ItemHighlight" Member="ItemHighlights" ThisKey="HighlightId" OtherKey="HighlightId" Type="ItemHighlight" />
+      <Association Name="Highlight_ReviewHighlight" Member="ReviewHighlights" ThisKey="HighlightId" OtherKey="HighlightId" Type="ReviewHighlight" />
+      <Association Name="Highlight_SubmissionHighlight" Member="SubmissionHighlights" ThisKey="HighlightId" OtherKey="HighlightId" Type="SubmissionHighlight" />
+      <Association Name="User_Highlight" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ItemHighlights" Member="ItemHighlights">
+    <Type Name="ItemHighlight">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HighlightId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ItemId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Highlight_ItemHighlight" Member="Highlight" ThisKey="HighlightId" OtherKey="HighlightId" Type="Highlight" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ItemNotes" Member="ItemNotes">
+    <Type Name="ItemNote">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NoteId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Note_ItemNote" Member="Note" ThisKey="NoteId" OtherKey="NoteId" Type="Note" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ReviewHighlights" Member="ReviewHighlights">
+    <Type Name="ReviewHighlight">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HighlightId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ReviewId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ItemId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EnrollmentId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Highlight_ReviewHighlight" Member="Highlight" ThisKey="HighlightId" OtherKey="HighlightId" Type="Highlight" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ReviewNotes" Member="ReviewNotes">
+    <Type Name="ReviewNote">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NoteId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ReviewId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ItemId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EnrollmentId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Note_ReviewNote" Member="Note" ThisKey="NoteId" OtherKey="NoteId" Type="Note" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SubmissionHighlights" Member="SubmissionHighlights">
+    <Type Name="SubmissionHighlight">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HighlightId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ItemId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EnrollmentId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Highlight_SubmissionHighlight" Member="Highlight" ThisKey="HighlightId" OtherKey="HighlightId" Type="Highlight" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SubmissionNotes" Member="SubmissionNotes">
+    <Type Name="SubmissionNote">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NoteId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ItemId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EnrollmentId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Note_SubmissionNote" Member="Note" ThisKey="NoteId" OtherKey="NoteId" Type="Note" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserNoteSettings" Member="UserNoteSettings">
+    <Type Name="UserNoteSetting">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ShowMyNotes" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ShowInstructorNotes" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ShowMyHighlights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ShowInstructorHighlights" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="HighlightColor" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="User_UserNoteSetting" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="UserId" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="User_UserType" Member="UserTypes" ThisKey="UserId" OtherKey="UserId" Type="UserType" />
+      <Association Name="User_Highlight" Member="Highlights" ThisKey="UserId" OtherKey="UserId" Type="Highlight" />
+      <Association Name="User_UserNoteSetting" Member="UserNoteSettings" ThisKey="UserId" OtherKey="UserId" Type="UserNoteSetting" />
+      <Association Name="User_Note" Member="Notes" ThisKey="UserId" OtherKey="UserId" Type="Note" />
+      <Association Name="User_UserShare" Member="UserShares" ThisKey="UserId" OtherKey="UserId" Type="UserShare" />
+      <Association Name="User_UserShare1" Member="UserShares1" ThisKey="UserId" OtherKey="SharedUserId" Type="UserShare" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Note" Member="Notes">
+    <Type Name="Note">
+      <Column Name="NoteId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="[Public]" Member="Public" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Modified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Note_HighlightNote" Member="HighlightNotes" ThisKey="NoteId" OtherKey="NoteId" Type="HighlightNote" />
+      <Association Name="Note_TopNote" Member="TopNotes" ThisKey="NoteId" OtherKey="TopNoteId" Type="TopNote" />
+      <Association Name="Note_ItemNote" Member="ItemNotes" ThisKey="NoteId" OtherKey="NoteId" Type="ItemNote" />
+      <Association Name="Note_ReviewNote" Member="ReviewNotes" ThisKey="NoteId" OtherKey="NoteId" Type="ReviewNote" />
+      <Association Name="Note_SubmissionNote" Member="SubmissionNotes" ThisKey="NoteId" OtherKey="NoteId" Type="SubmissionNote" />
+      <Association Name="User_Note" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserShares" Member="UserShares">
+    <Type Name="UserShare">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SharedUserId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="HighlightsEnabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="HighlightColor" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="NotesEnabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="User_UserShare" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+      <Association Name="User_UserShare1" Member="User1" ThisKey="SharedUserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.UpdateNote" Method="UpdateNote">
+    <Parameter Name="noteId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="noteText" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetItemNotes" Method="GetItemNotes">
+    <Parameter Name="reqXml" Type="System.Xml.Linq.XElement" DbType="Xml" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetReviewNotes" Method="GetReviewNotes">
+    <Parameter Name="reqXml" Type="System.Xml.Linq.XElement" DbType="Xml" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetSubmissionNotes" Method="GetSubmissionNotes">
+    <Parameter Name="reqXml" Type="System.Xml.Linq.XElement" DbType="Xml" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SetHighlightNoteRelation" Method="SetHighlightNoteRelation">
+    <Parameter Name="highlightId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="noteId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ShareHighlight" Method="ShareHighlight">
+    <Parameter Name="highlightId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="public" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ShareNote" Method="ShareNote">
+    <Parameter Name="noteId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="public" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ShareNotes" Method="ShareNotes">
+    <Parameter Name="studentId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="courseId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="sharedStudentId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="firstNameSharer" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="lastNameSharer" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="firstNameSharee" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="lastNameSharee" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.StopSharingToUser" Method="StopSharingToUser">
+    <Parameter Name="studentId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="sharedStudentId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="courseId" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddHighlight" Method="AddHighlight">
+    <Parameter Name="highlightText" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="description" Type="System.String" DbType="NVarChar(300)" />
+    <Parameter Name="highlightType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="itemId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="reviewId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="enrollmentId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="courseId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="public" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="userId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="firstName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="lastName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="color" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="highlightId" Type="System.Guid" DbType="UniqueIdentifier" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateHighlightColor" Method="UpdateHighlightColor">
+    <Parameter Name="highlightId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="color" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetNoteCount" Method="GetNoteCount">
+    <Parameter Name="itemId" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="reviewId" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="courseId" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="userId" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="enrollmentId" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="highlightType" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetNoteCountResult">
+      <Column Name="HighlightCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NoteCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.AddNote" Method="AddNote">
+    <Parameter Name="noteID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="noteText" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="description" Type="System.String" DbType="NVarChar(300)" />
+    <Parameter Name="noteType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="isGeneralNote" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="itemId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="reviewId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="enrollmentId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="public" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="userId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="firstName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="lastName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="courseId" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddHighlightNote" Method="AddHighlightNote">
+    <Parameter Name="highlightText" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="description" Type="System.String" DbType="NVarChar(300)" />
+    <Parameter Name="noteText" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="highlightType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="itemId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="reviewId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="enrollmentId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="courseId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="userId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="firstName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="lastName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="color" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="highlightpublic" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="notepublic" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="highlightId" Type="System.Guid" DbType="UniqueIdentifier" Direction="InOut" />
+    <Parameter Name="noteId" Type="System.Guid" DbType="UniqueIdentifier" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddNoteToHighlight" Method="AddNoteToHighlight">
+    <Parameter Name="highlightId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="noteText" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="description" Type="System.String" DbType="NVarChar(300)" />
+    <Parameter Name="noteType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="itemId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="reviewId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="enrollmentId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="public" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="userId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="firstName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="lastName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="courseId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="noteId" Type="System.Guid" DbType="UniqueIdentifier" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddNoteToTopNote" Method="AddNoteToTopNote">
+    <Parameter Name="topNoteId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="noteText" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="description" Type="System.String" DbType="NVarChar(300)" />
+    <Parameter Name="noteType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="itemId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="reviewId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="enrollmentId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="public" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="userId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="firstName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="lastName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="courseId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="noteId" Type="System.Guid" DbType="UniqueIdentifier" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateNoteSettings" Method="UpdateNoteSettings">
+    <Parameter Name="studentId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="courseId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="sharerId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="sharerHighlights" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="sharerNotes" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="myHighlights" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="myNotes" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="instHighlights" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="instNotes" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.InitializeUser" Method="InitializeUser">
+    <Parameter Name="userId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="firstName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="lastName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="courseId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="userType" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetNoteSettings" Method="GetNoteSettings">
+    <Parameter Name="studentId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="courseId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="itemId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="reviewId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="enrollmentId" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateHighlightStatus" Method="UpdateHighlightStatus">
+    <Parameter Name="highlightId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="userId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="itemId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="reviewId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="courseId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="enrollmentId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="updateOnlyEmptyHighlights" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="status" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateNoteStatus" Method="UpdateNoteStatus">
+    <Parameter Name="highlightId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="noteId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="userId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="itemId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="reviewId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="courseId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="enrollmentId" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="updateParentHighlight" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="status" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetNotesByUser" Method="GetNotesByUser">
+    <Parameter Name="highlightType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="userId" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="courseId" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="enrollmentId" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="GetNotesByUserResult">
+      <Column Name="HighlightId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="NoteId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(300) NOT NULL" CanBeNull="false" />
+      <Column Name="[Public]" Member="Public" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ItemId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Modified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetNotesForPeerReview" Method="GetNotesForPeerReview">
+    <Parameter Name="userId" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="enrollmentIds" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

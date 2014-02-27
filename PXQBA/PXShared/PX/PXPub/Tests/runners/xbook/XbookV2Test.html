@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Unit Test - XbookV2</title>
+
+    <link rel="stylesheet" type="text/css" href="../../lib/jasmine-1.3.1/jasmine.css" />
+    <script type="text/javascript" src="../../lib/jasmine-1.3.1/jasmine.js"></script>
+    <script type="text/javascript" src="../../lib/jasmine-1.3.1/jasmine-beforeAll.js"></script>
+    <script type="text/javascript" src="../../lib/jasmine-1.3.1/jasmine-html.js"></script>
+    <script type="text/javascript" src="../../lib/blanket/blanket.min.js" data-cover-adapter="../../lib/blanket/jasmine-blanket.js"></script>
+
+    <!-- include dependencies here (e.g. jquery) !-->
+    <script type="text/javascript" src="../../lib/jquery/jquery.js"></script>
+    <script type="text/javascript" src="../../lib/jquery/jquery-migrate.js"></script>
+
+    <!-- include vendor files -->
+    <script type="text/javascript" src="../../lib/jasmine-jquery.js"></script>
+
+    <!-- include source files here !-->
+    <script type="text/javascript" src="../../../Scripts/jquery/jquery.utils.js"></script>
+    <script type="text/javascript" src="../../../Scripts/jquery/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript" src="../../../Scripts/jquery/jquery.blockUI.js"></script>
+    <script type="text/javascript" src="../../../Scripts/jquery/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../../../Scripts/jquery/jquery.qtip.min.js"></script>
+    <script type="text/javascript" src="../../../Scripts/jquery/jquery.sticky.js"></script>
+    
+    <script type="text/javascript" src="../../../Scripts/Common/PxRoutes.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/dateFormat.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Signals/signals.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Hasher/hasher.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/HashHistory.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Crossroads/crossroads.js"></script>
+
+    <script type="text/javascript" src="../../../Scripts/jquery/jquery.fauxtree.js"></script>
+    <script type="text/javascript" src="../../../Scripts/jquery/jquery.sortElements.js"></script>
+
+    <script type="text/javascript" src="../../../Scripts/ContentTreeWidget/ContentTreeWidget.js"></script>
+    <script type="text/javascript" src="../../../Scripts/ContentWidget/ContentWidget.js"></script>
+    <script type="text/javascript" src="../../../Scripts/ContentWidget/ContentAreaWidget.js"></script>
+    <script type="text/javascript" src="../../../Scripts/ManagementCard/ManagementCard.js"></script>
+    
+    <script type="text/javascript">
+        window.PxPage = {
+          switchboard: $(document),
+          Loading: function(args) {
+          },
+          Loaded: function(args) {
+          },
+          log: function(args) {
+          },
+          OnProductLoaded: function(callback) { callback(); },
+          Routes: {
+            resource_type_list: "resource_type_list",
+            resource_results: "resource_results",
+            resource_removed: "resource_removed",
+            resource_mine: "resource_mine",
+            resource_facets: "resource_facets",
+            resource_facets_chapter: "resource_facets_chapter",
+            resource_facets_type: "resource_facets_type",
+            launchpad_item_operation: 'launchpad_item_operation'
+          },
+          SetFneLinks: function (args) {
+          },
+          TouchEnabled: function () {
+              return true;
+          },
+          UpdateFneSize: function (args) {
+          },
+          LargeFNE: {
+            Init: function() {
+            }
+          },
+          Toasts: {
+            AppName: function() {
+                return "xbook";
+            },
+            Success: function(message) {
+                
+            },
+            Error: function(message) {
+                
+            }
+          },
+          UnBlock: function() {
+        
+          }
+        };
+    </script>
+
+    <script type="text/javascript" data-cover src="../../../Scripts/Xbook/XbookV2.js"></script>
+
+    <!-- include helper files here... -->
+    <script type="text/javascript" src="../../lib/viewrender.js"></script>
+    <script type="text/javascript" src="../../helper/RenderingHelper.js"></script>
+    <script type="text/javascript" src="../../helper/ManagementCardHelper.js"></script>
+
+    <!-- include spec files here... -->
+    <script type="text/javascript" src="../../spec/xbook/XbookV2Spec.js"></script>
+
+    <script type="text/javascript">
+        (function () {
+            var jasmineEnv = jasmine.getEnv();
+            jasmineEnv.updateInterval = 1000;
+
+            var htmlReporter = new jasmine.HtmlReporter();
+
+            jasmineEnv.addReporter(htmlReporter);
+
+            jasmineEnv.specFilter = function (spec) {
+                return htmlReporter.specFilter(spec);
+            };
+
+            var currentWindowOnload = window.onload;
+
+            window.onload = function () {
+                if (currentWindowOnload) {
+                    currentWindowOnload();
+                }
+                execJasmine();
+            };
+
+            function execJasmine() {
+                jasmineEnv.execute();
+            }
+
+        })();
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,23 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" MasterPageFile="~/Views/Shared/Site.Master" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+    <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="server">
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+    <div id="header">
+        <div><img src="<%= Url.Content("~/Content/default_header.gif") %>" border="0"/></div>
+        <div id="student-info">
+        </div>
+    </div>
+    <div id="banner">        
+    </div>
+    <div id="main">
+        <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+    </div>
+</asp:Content>
+    
+

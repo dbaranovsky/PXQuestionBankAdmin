@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<requests>
+  <item itemid="8abcc4e7-53e6-434f-b926-284e39e94e47" entityid="-entityid-">
+    <data>
+      <type>CustomActivity</type>
+      <parent>PX_HOME_ZONE_2</parent>
+      <sequence>a</sequence>
+      <title>Launchpad</title>
+      <abbreviation>Launchpad</abbreviation>
+      <category>0</category>
+      <completiontrigger>0</completiontrigger>
+      <bfw_type>Widget</bfw_type>
+      <bfw_subtype>PX_LaunchpadWidget</bfw_subtype>
+      <bfw_display_flags>
+        <display>instructor</display>
+      </bfw_display_flags>
+      <bfw_widget_callbacks>
+        <method name="View" controller="LaunchpadWidget" action="Summary" fne="false" />
+        <method name="Edit" controller="LaunchpadWidget" action="Edit" fne="false" />
+      </bfw_widget_callbacks>
+      <bfw_widget_template>PX_LaunchpadWidget</bfw_widget_template>
+      <bfw_properties>
+        <bfw_property name="bfw_syllabusfilter" type="String" />
+        <bfw_property name="bfw_cssclass" type="String" />
+        <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+        <bfw_property name="bfw_targetid" type="String" />
+        <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+      </bfw_properties>
+      <bfw_tocs>
+        <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+      </bfw_tocs>
+      <meta-bfw_assigned>false</meta-bfw_assigned>
+    </data>
+  </item>
+  <item itemid="6fb27592-39e6-43c0-955e-1f17f5ad55b9" entityid="-entityid-">
+    <data>
+      <type>CustomActivity</type>
+      <parent>PX_HOME_ZONE_2</parent>
+      <sequence>b</sequence>
+      <title>Upcoming Assignments</title>
+      <abbreviation>Assignments</abbreviation>
+      <category>0</category>
+      <completiontrigger>0</completiontrigger>
+      <bfw_type>Widget</bfw_type>
+      <bfw_subtype>PX_AssignmentWidget</bfw_subtype>
+      <bfw_display_flags>
+        <display>instructor</display>
+        <display>student</display>
+        <display>ebook</display>
+        <display>lms</display>
+      </bfw_display_flags>
+      <bfw_widget_callbacks>
+        <method name="View" controller="AssignmentWidget" action="View" fne="false" />
+        <method name="Edit" controller="AssignmentWidget" action="Edit" fne="false" />
+        <method name="OnBeforeEdit" controller="AssignmentWidget" action="OnBeforeEdit" fne="false" />
+        <method name="Save" controller="AssignmentWidget" action="SaveImportantAssignments" fne="false" />
+      </bfw_widget_callbacks>
+      <bfw_widget_template>PX_AssignmentWidget</bfw_widget_template>
+      <bfw_properties>
+        <bfw_property name="bfw_syllabusfilter" type="String" />
+        <bfw_property name="bfw_cssclass" type="String" />
+        <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+        <bfw_property name="bfw_targetid" type="String" />
+        <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+      </bfw_properties>
+      <bfw_tocs>
+        <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+      </bfw_tocs>
+      <meta-bfw_assigned>false</meta-bfw_assigned>
+    </data>
+  </item>
+  <item itemid="7d48e027-a67c-463f-867c-6b2c9769d208" entityid="-entityid-">
+    <data>
+      <type>CustomActivity</type>
+      <parent>PX_HOME_ZONE_2</parent>
+      <sequence>b</sequence>
+      <title>Announcements</title>
+      <abbreviation>Announcements</abbreviation>
+      <category>0</category>
+      <completiontrigger>0</completiontrigger>
+      <bfw_type>Widget</bfw_type>
+      <bfw_subtype>PX_AnnouncementWidget</bfw_subtype>
+      <bfw_display_flags>
+        <display>instructor</display>
+        <display>student</display>
+        <display>ebook</display>
+        <display>lms</display>
+      </bfw_display_flags>
+      <bfw_widget_callbacks>
+        <method name="View" controller="AnnouncementWidget" action="ViewSummary" fne="false" />
+        <method name="Edit" controller="AnnouncementWidget" action="Edit" fne="false" />
+      </bfw_widget_callbacks>
+      <bfw_widget_template>PX_AnnouncementWidget</bfw_widget_template>
+      <bfw_properties>
+        <bfw_property name="bfw_syllabusfilter" type="String" />
+        <bfw_property name="bfw_cssclass" type="String">announcement-widget summary</bfw_property>
+        <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+        <bfw_property name="bfw_targetid" type="String" />
+        <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+      </bfw_properties>
+      <bfw_tocs>
+        <bfw_toc_contents parentid="PX_WIDGETS" sequence="_h" />
+      </bfw_tocs>
+      <meta-bfw_assigned>false</meta-bfw_assigned>
+    </data>
+  </item>
+  <item itemid="5a542fdc-8d3e-4437-b553-add7eb9c01c3" entityid="-entityid-">
+    <data>
+      <type>CustomActivity</type>
+      <parent>PX_HOME_ZONE_3</parent>
+      <sequence>a</sequence>
+      <title>Scientific American</title>
+      <abbreviation>Scientific American</abbreviation>
+      <category>0</category>
+      <completiontrigger>0</completiontrigger>
+      <bfw_type>Widget</bfw_type>
+      <bfw_subtype>PX_ScientificAmerican_RSS_Feed_Compact</bfw_subtype>
+      <bfw_display_flags>
+        <display>instructor</display>
+        <display>student</display>
+        <display>ebook</display>
+        <display>lms</display>
+      </bfw_display_flags>
+      <bfw_widget_callbacks>
+        <method name="View" controller="RSSFeedWidget" action="CompactView" fne="false" />
+      </bfw_widget_callbacks>
+      <bfw_widget_template>PX_ScientificAmerican_RSS_Feed_Compact</bfw_widget_template>
+      <bfw_properties>
+        <bfw_property name="bfw_syllabusfilter" type="String" />
+        <bfw_property name="bfw_cssclass" type="String">custom-rss-widget summary</bfw_property>
+        <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+        <bfw_property name="bfw_targetid" type="String" />
+        <bfw_property name="bfw_ismultipleallowed" type="Boolean">true</bfw_property>
+        <bfw_property name="bfw_feedurl" type="String">http://rss.sciam.com/ScientificAmerican-Global</bfw_property>
+        <bfw_property name="bfw_feeddescription" type="String">  Additional HTML text required for Scientific American and other premade RSS feeds</bfw_property>
+        <bfw_property name="bfw_imageurl" type="String">style/images/scientific-american-banner.png</bfw_property>
+      </bfw_properties>
+      <bfw_tocs>
+        <bfw_toc_contents parentid="PX_WIDGETS" sequence="_p" />
+      </bfw_tocs>
+      <meta-bfw_assigned>false</meta-bfw_assigned>
+    </data>
+  </item>
+</requests>

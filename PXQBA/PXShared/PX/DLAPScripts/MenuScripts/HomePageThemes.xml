@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<themes>
+  <theme title="Default" color="gray" key="default_theme" />
+  <theme title="Custom" color="#F2F2F2" key="Custom" />
+  <theme title="Modern" color="#CED8F6" key="Modern" />
+  <theme title="Traditional" color="#CED8F6" key="Traditional" />
+  <theme title="Collegiate" color="#E1F5A9" key="Collegiate" />
+</themes>

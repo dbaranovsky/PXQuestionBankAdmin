@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<requests>
+	<item itemid="ANGEL_econportal__stoneecon2__master_61759DA24040EB94B4952427A7470008" entityid="66407" version="0.35" resourceentityid="66407,0,E,0" actualentityid="57704" creationdate="2012-07-13T15:37:59.147Z" creationby="7" modifieddate="2012-11-19T18:22:18.11Z" modifiedby="2" origindepth="1" derivativedepth="1">
+		<data>
+			<link courseid="6712" itemid="ANGEL_econportal__stoneecon2__master_61759DA24040EB94B4952427A7470008" />
+			<type>Assessment</type>
+			<parent>ANGEL_econportal__stoneecon2__master_61759DA24040EB94B4952427A7470006</parent>
+			<sequence>a</sequence>
+			<title>Chapter 1 By The Numbers Quiz</title>
+			<description>By the Number Quizzes</description>
+			<folder>ANGEL_econportal__stoneecon2__master_61759DA24040EB94B4952427A7470008</folder>
+			<href>http:////</href>
+			<timetocomplete>PT1M</timetocomplete>
+			<category>1</category>
+			<period inherit="true">0</period>
+			<groupsetid>-1</groupsetid>
+			<duedate>0001-01-01T00:00:00Z</duedate>
+			<gradable>true</gradable>
+			<gradereleasedate>0001-01-01T05:00:00Z</gradereleasedate>
+			<weight>100</weight>
+			<gradeentry>1</gradeentry>
+			<inputtable inherit="true">0</inputtable>
+			<completiontrigger>0</completiontrigger>
+			<graderule>1</graderule>
+			<flags>1</flags>
+			<questions>
+				<question entityid="6712" id="61759DA24040EB94B4952427A7470014" score="1" type="1" />
+				<question entityid="6712" id="61759DA24040EB94B4952427A7470016" score="1" type="1" />
+				<question entityid="6712" id="61759DA24040EB94B4952427A7470018" score="1" type="1" />
+				<question entityid="6712" id="61759DA24040EB94B4952427A747001A" score="1" type="1" />
+				<question entityid="6712" id="61759DA24040EB94B4952427A747001C" score="1" type="1" />
+				<question entityid="6712" id="61759DA24040EB94B4952427A747000A" score="1" type="1" />
+				<question entityid="6712" id="61759DA24040EB94B4952427A747000C" score="1" type="1" />
+				<question entityid="6712" id="61759DA24040EB94B4952427A747000E" score="1" type="1" />
+				<question entityid="6712" id="61759DA24040EB94B4952427A7470010" score="1" type="1" />
+				<question entityid="6712" id="61759DA24040EB94B4952427A7470012" score="1" type="1" />
+			</questions>
+			<examflags>0</examflags>
+			<attemptlimit>3</attemptlimit>
+			<securitylevel>Low</securitylevel>
+			<examreviewrules>
+				<rule setting="Question" condition="true" />
+				<rule setting="Answer" condition="true" />
+				<rule setting="Possible" condition="true" />
+				<rule setting="CorrectQuestion" condition="true" />
+				<rule setting="CorrectChoice" condition="true" />
+				<rule setting="Feedback" condition="true" />
+				<rule setting="Feedback-GROUP" condition="true" />
+				<rule setting="Question" condition="true" />
+				<rule setting="Answer" condition="true" />
+				<rule setting="Possible" condition="true" />
+				<rule setting="CorrectQuestion" condition="true" />
+				<rule setting="CorrectChoice" condition="true" />
+				<rule setting="Feedback" condition="true" />
+				<rule setting="Feedback-GROUP" condition="true" />
+				<rule setting="Question" condition="true" />
+				<rule setting="Answer" condition="true" />
+				<rule setting="Possible" condition="true" />
+				<rule setting="CorrectQuestion" condition="true" />
+				<rule setting="CorrectChoice" condition="true" />
+				<rule setting="Feedback" condition="true" />
+				<rule setting="Feedback-GROUP" condition="true" />
+			</examreviewrules>
+			<bfw_type>bfw_qti_document</bfw_type>
+			<bfw_subtype>QUIZ</bfw_subtype>
+			<bfw_meta>
+				<bfw_metadata name="bsi_item_id">5320449</bfw_metadata>
+				<bfw_metadata name="bsi_site_id">4549</bfw_metadata>
+				<bfw_metadata name="bsi_bfw_uid">ANGEL_econportal-stoneecon2-master_61759DA24040EB94B4952427A7470008</bfw_metadata>
+				<bfw_metadata name="AgilixDisciplineId">6712</bfw_metadata>
+			</bfw_meta>		
+			<meta-topics>
+			</meta-topics>
+			<bfw_tocs>
+				<bfw_toc_contents parentid="ANGEL_econportal__stoneecon2__master_61759DA24040EB94B4952427A7470006" sequence="a" />
+			</bfw_tocs>
+			<meta-blah dlaptype="exact">blah2</meta-blah>
+			<creationby>7</creationby>
+			<IsMarkAsCompleteChecked>false</IsMarkAsCompleteChecked>
+			<meta-bfw_assigned>false</meta-bfw_assigned>
+			<allowviewhints>false</allowviewhints>
+			<percentsubstracthint>0</percentsubstracthint>
+			<allowstudentsemailinstructors>true</allowstudentsemailinstructors>
+			<meta-content-type dlaptype="exact">instructor_By the Number Quizzes</meta-content-type>
+			<customfields>
+				<field name="Subtitle" value="Chapter 1" />
+				<field name="AUTOSAVE" value="0" />
+				<field name="NOTAKE" value="0" />
+				<field name="SINGLE_QUESTION" value="0" />
+				<field name="VALIDATION" value="0" />
+				<field name="USER_REVIEW" value="0" />
+				<field name="ANONYMOUS" value="0" />
+				<field name="TIME_WARNING" value="1" />
+				<field name="FORCE_SUBMIT" value="1" />
+				<field name="FDBK_SCORE" value="1" />
+				<field name="FDBK_QUESTION" value="1" />
+				<field name="FDBK_ANSWER_KEY" value="1" />
+				<field name="FDBK_USER_RESPONSE" value="1" />
+				<field name="FDBK_RIGHT_WRONG" value="1" />
+				<field name="FDBK_POINTS_POSSIBLE" value="1" />
+				<field name="FDBK_POINTS_AWARDED" value="1" />
+				<field name="FDBK_FEEDBACK" value="1" />
+				<field name="FDBK_GRADER_REMARKS" value="1" />
+				<field name="SCRAMBLE_QUESTIONS" value="0" />
+				<field name="SCRAMBLE_CHOICES" value="0" />
+			</customfields>
+			<bfw_properties>
+				<bfw_property name="HideFromStudents" type="Boolean">True</bfw_property>
+			</bfw_properties>
+			<bfw_metadata_admin>
+				<metaDataElements>
+					<metaDataElement name="ResourceType"   displayOrder="1" action="MetaDataStaticText" controller="AdminMetaData" xPath="./bfw_subtype" description="Resource Type" defaultValue="Quiz" >
+						<elasticMetaNodeToSave name="bfw_subtype">
+							<bfw_subtype dlaptype="exact">{value}</bfw_subtype>
+						</elasticMetaNodeToSave>
+					</metaDataElement>
+
+					<metaDataElement name="ResourceSubType"       displayOrder="2" action="MetaDataDropDownList" controller="AdminMetaData" xPath="./meta-content-type"  description="Resource Sub-Type" defaultValue="0" >
+						<elasticMetaNodeToSave name="meta-content-type">
+							<meta-content-type dlaptype="exact">{value}</meta-content-type>
+						</elasticMetaNodeToSave>
+					</metaDataElement>
+					<metaDataElement name="ResourceUserGroup"  displayOrder="3" action="MetaDataRadioButtonList" controller="AdminMetaData" xPath="./meta-content-type" description="Resource User Group" defaultValue="0" >
+
+						<elasticMetaNodeToSave name="meta-content-type">
+							<meta-content-type dlaptype="exact">{value}</meta-content-type>
+						</elasticMetaNodeToSave>
+
+						<elasticMetaContorl>
+							<table>
+								<tr>
+									<td><input type="radio"  value="instructor_"  id="ResourceUserGroup" name="ResourceUserGroup" />
+									</td>
+									<td>Instructor resource</td>
+									<td >
+										<input type="radio"  value="student_"   id="ResourceUserGroup" name="ResourceUserGroup" />
+									</td>
+									<td>Student resource</td>
+								</tr>
+								<tr>
+									<td colspan="2">This will be hidden from students by default</td>
+								</tr>
+							</table>
+						</elasticMetaContorl>
+
+					</metaDataElement>
+
+					<metaDataElement name="DefaultGradeBookValue" displayOrder="4" action="MetaDataInputText" controller="AdminMetaData" xPath="./weight"  description="Default Grade Book Value" defaultValue="" >
+						<elasticMetaNodeToSave name="weight">
+							<weight>{value}</weight>
+						</elasticMetaNodeToSave>
+					</metaDataElement>
+
+					<metaDataElement name="EBooksAssociations"    displayOrder="5" action="MetaDataChaptersAssociations" controller="AdminMetaData" xPath="./meta-topics" description="EBooks Associations" defaultValue="ebookfilter" >
+						<elasticMetaNodeToSave name="meta-topic">
+							<meta-topics>
+								<meta-topic toc="ebookfilter" dlaptype="exact">{value}</meta-topic>
+							</meta-topics>
+						</elasticMetaNodeToSave>
+				    </metaDataElement>
+
+					<metaDataElement name="LaunchpadUnitAssociations" displayOrder="6" action="MetaDataChaptersAssociations" controller="AdminMetaData" xPath="./meta-topics"  description="Launchpad Unit Associations" defaultValue="syllabusfilter">
+						<elasticMetaNodeToSave name="meta-topic">
+							<meta-topics>
+								<meta-topic toc="syllabusfilter" dlaptype="exact">{value}</meta-topic>
+							</meta-topics>
+						</elasticMetaNodeToSave>
+					</metaDataElement>
+				
+				
+				</metaDataElements>
+			</bfw_metadata_admin>
+		</data>
+	</item>
+	</requests>

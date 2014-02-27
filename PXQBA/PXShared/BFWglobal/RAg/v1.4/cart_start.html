@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<title>Check out</title>
+	<script src="/BFWglobal/js/global.js" type="text/javascript"></script>
+
+<style type="text/css">
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px;
+	FONT-FAMILY: Verdana, sans-serif;
+}
+</style>
+
+<script type="text/javascript">
+var RA_CtrlWin = null;
+var mainf = null;
+function init () {
+	if (!window.opener) {
+		alert('not allowed!');
+	} else{
+		RA_CtrlWin = window.opener.RA_CtrlWin;
+		var payForm = document.getElementById('payForm');
+		payForm.action = 'http://'+RA_CtrlWin.RA.RARootDomain+'/RA/RAeCommerce/v1/pp_start.asp';
+
+		var returl = 'http://'+window.location.hostname+''+window.location.pathname.replace('/cart_start.html','/cart_return.html');
+		var cancelurl = 'http://'+window.location.hostname+''+window.location.pathname.replace('/cart_start.html','/cart_cancel.html');
+		var pp_return = document.getElementById('pp_return');
+		pp_return.value = returl;
+		var pp_cancel_return = document.getElementById('pp_cancel_return');
+		pp_cancel_return.value = cancelurl;
+
+		var UserID = document.getElementById('UserID');
+		UserID.value = RA_CtrlWin.RA.CurrentUser.ID;
+		var SiteID = document.getElementById('SiteID');
+		SiteID.value = RA_CtrlWin.RA.CurrentSite.ID;
+		var SchoolID = document.getElementById('SchoolID');
+		SchoolID.value = RA_CtrlWin.RA.CurrentUser.School.ID;
+		var SchoolZip = document.getElementById('SchoolZip');
+		SchoolZip.value = RA_CtrlWin.RA.CurrentUser.School.Zip;
+		var SchoolName = document.getElementById('SchoolName');
+		SchoolName.value = RA_CtrlWin.RA.CurrentUser.School.Name;
+		var SchoolType = document.getElementById('SchoolType');
+		SchoolType.value = RA_CtrlWin.RA.CurrentUser.School.Type;
+
+		var ict = 0;
+		for (var iitem in RA_CtrlWin.RA.Cart.Items) {if (RA_CtrlWin.RA.Cart.Items.hasOwnProperty(iitem)) {
+			if (RA_CtrlWin.RA.Cart.Items[iitem].InCart) {
+				ict++;
+				var x = document.createElement('input');
+				x.type = 'hidden';
+				x.name = 'item_name_'+ict;
+				x.value = RA_CtrlWin.RA.Cart.Items[iitem].Product.Title;
+				var y = document.createElement('input');
+				y.type = 'hidden';
+				y.name = 'amount_'+ict;
+				y.value = RA_CtrlWin.RA.Cart.Items[iitem].Price;
+				var z = document.createElement('input');
+				z.type = 'hidden';
+				z.name = 'PackageID_'+ict;
+				z.value = RA_CtrlWin.RA.Cart.Items[iitem].PackageID;
+				payForm.appendChild(x);
+				payForm.appendChild(y);
+				payForm.appendChild(z);
+				payForm.appendChild(document.createElement('br'));
+			}
+		}}
+
+		payForm.submit();
+	}
+}
+</script>
+
+</head>
+<body onload="init();">
+<div id="ppf" style="display:none;">
+<form id="payForm" method="post" action="">
+<input type="button" name="go" value="go" onclick="this.form.submit()"/><br/>
+
+<input type="hidden" name="UserID" id="UserID" /><br/>
+<input type="hidden" name="SiteID" id="SiteID" /><br/>
+<input type="hidden" name="SchoolID" id="SchoolID" /><br/>
+<input type="hidden" name="SchoolZip" id="SchoolZip" /><br/>
+<input type="hidden" name="SchoolName" id="SchoolName" /><br/>
+<input type="hidden" name="SchoolType" id="SchoolType" /><br/>
+<input type="hidden" name="return" id="pp_return" /><br/>
+<input type="hidden" name="cancel_return" id="pp_cancel_return" /><br/>
+
+</form>
+</div>
+</body>
+</html>

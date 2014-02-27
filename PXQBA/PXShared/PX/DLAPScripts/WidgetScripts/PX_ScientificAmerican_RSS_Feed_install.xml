@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<requests>
+  <item itemid="abf55089-65a2-4e52-9d65-0aef45e7ae3e" entityid="-entityid-">
+    <data>
+      <type>CustomActivity</type>
+      <parent>PX_HOME_ZONE_3</parent>
+      <sequence>a</sequence>
+      <title>Scientific American</title>
+      <abbreviation>Scientific American</abbreviation>
+      <category>0</category>
+      <completiontrigger>0</completiontrigger>
+      <bfw_type>Widget</bfw_type>
+      <bfw_subtype>PX_ScientificAmerican_RSS_Feed</bfw_subtype>
+      <bfw_display_flags>
+        <display>instructor</display>
+        <display>student</display>
+        <display>ebook</display>
+        <display>lms</display>
+      </bfw_display_flags>
+      <bfw_widget_callbacks>
+        <method name="View" controller="RSSFeedWidget" action="View" fne="false" />
+      </bfw_widget_callbacks>
+      <bfw_widget_template>PX_ScientificAmerican_RSS_Feed</bfw_widget_template>
+      <bfw_properties>
+        <bfw_property name="bfw_syllabusfilter" type="String" />
+        <bfw_property name="bfw_cssclass" type="String">custom-rss-widget summary</bfw_property>
+        <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+        <bfw_property name="bfw_targetid" type="String" />
+        <bfw_property name="bfw_ismultipleallowed" type="Boolean">true</bfw_property>
+        <bfw_property name="bfw_feedurl" type="String">http://rss.sciam.com/ScientificAmerican-Global</bfw_property>
+        <bfw_property name="bfw_feeddescription" type="String">  Additional HTML text required for Scientific American and other premade RSS feeds</bfw_property>
+        <bfw_property name="bfw_imageurl" type="String">style/images/scientific-american-banner.png</bfw_property>
+      </bfw_properties>
+      <bfw_tocs>
+        <bfw_toc_contents parentid="PX_WIDGETS" sequence="_p" />
+      </bfw_tocs>
+      <meta-bfw_assigned>false</meta-bfw_assigned>
+    </data>
+  </item>
+</requests>

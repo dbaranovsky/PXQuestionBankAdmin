@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<batch>
+    <!-- Following command updates the product course with the correct metadata values -->
+    <request cmd="updatecourses">
+        <requests>
+            <course courseid="55609" domainid="8841" title="Learning Curve" reference="" type="Range">
+                <data>
+                    <bfw_tocs>
+                        <course_materials type="bfw_toc">Course Materials</course_materials>
+                    </bfw_tocs>
+                    <bfw_infinite_scroll>false</bfw_infinite_scroll>
+                    <show_student_view_link>false</show_student_view_link>
+                    <meta-bfw_course_type>LearningCurve</meta-bfw_course_type>
+                    <bfw_course_type>LearningCurve</bfw_course_type>
+                    <bfw_course_home_page>PX_LC_HOME_2COLUMN</bfw_course_home_page>
+                    <bfw_welcome_message>
+                    </bfw_welcome_message>
+                </data>
+            </course>
+        </requests>
+    </request>
+    <!-- Creates necessary folders and other course structures including page definitions for learning curve -->
+    <request cmd="putitems">
+        <requests>
+            <item itemid="PX_LC_HOME_2COLUMN" entityid="55609">
+                <data>
+                    <parent>PX_PAGES</parent>
+                    <sequence>b</sequence>
+                    <title>PX_LC_HOME_2COLUMN</title>
+                    <bfw_page_editable>false</bfw_page_editable>
+                    <abbreviation>PXLCHOME2COLUMN</abbreviation>
+                    <completiontrigger>0</completiontrigger>
+                </data>
+            </item>
+            <item itemid="PX_LC_HOME_2COLUMN_ZONES" entityid="55609">
+                <data>
+                    <parent>PX_LC_HOME_2COLUMN</parent>
+                    <sequence>a</sequence>
+                    <title>PX_LC_HOME_2COLUMN_ZONES</title>
+                    <abbreviation>PXLCHOME2COLUMNZONES</abbreviation>
+                    <completiontrigger>0</completiontrigger>
+                </data>
+            </item>
+            <item itemid="PX_LC_HOME_2COLUMN_ZONE_1" entityid="55609">
+                <data>
+                    <parent>PX_LC_HOME_2COLUMN_ZONES</parent>
+                    <sequence>a</sequence>
+                    <title>PX_LC_HOME_ZONE_1</title>
+                    <abbreviation>PXLCHOMEZONE1</abbreviation>
+                    <completiontrigger>0</completiontrigger>
+                    <bfw_type>Zone</bfw_type>
+                    <bfw_allowed_widgets />
+                    <bfw_support_hide>true</bfw_support_hide>
+                </data>
+            </item>
+            <item itemid="PX_LC_HOME_2COLUMN_ZONE_2" entityid="55609">
+                <data>
+                    <parent>PX_LC_HOME_2COLUMN_ZONES</parent>
+                    <sequence>a</sequence>
+                    <title>PX_LC_HOME_ZONE_2</title>
+                    <abbreviation>PXLCHOMEZONE2</abbreviation>
+                    <completiontrigger>0</completiontrigger>
+                    <bfw_type>Zone</bfw_type>
+                    <bfw_allowed_widgets>
+                        <widget type="PX_ActivitiesWidget" displayName="LearningCurve Activities" />
+                    </bfw_allowed_widgets>
+                </data>
+            </item>
+        </requests>
+    </request>
+    <!-- Adds widgets to their respective zones for learning curve -->
+    <request cmd="putitems">
+        <requests>
+            <item itemid="PX_InstructorOverviewWidget" entityid="55609">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>PX_LC_HOME_2COLUMN_ZONE_1</parent>
+                    <sequence />
+                    <title>Overview</title>
+                    <abbreviation>lcw</abbreviation>
+                    <description>
+                    &lt;div class="course-info-widget"&gt;
+                    &lt;div class="top"&gt;
+                    &lt;img src="Content/images/Book.jpg" /&gt;
+                    &lt;/div&gt;
+                    &lt;div class="bottom"&gt;
+                    &lt;ul class="tutorial-links"&gt;
+                    &lt;li class="header-row"&gt;&lt;h1&gt;INSTRUCTOR SUPPORT&lt;/h1&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;span rel=""&gt;First Day of Class&lt;/span&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;span rel=""&gt;How LearningCurve Works&lt;/span&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;span rel=""&gt;FAQs&lt;/span&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;span rel=""&gt;Instructor QuickStart&lt;/span&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;span rel=""&gt;Student QuickStart&lt;/span&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;/div&gt;
+                    &lt;/div&gt;
+                    </description>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <completiontrigger>0</completiontrigger>
+                    <bfw_type>Widget</bfw_type>
+                    <bfw_subtype>PX_Custom</bfw_subtype>
+                    <bfw_display_flags>
+                        <display>instructor</display>
+                    </bfw_display_flags>
+                    <bfw_widget_callbacks>
+                        <method name="View" controller="CustomWidget" action="View" fne="false" />
+                        <method name="OnBeforeAdd" controller="CustomWidget" action="OnBeforeAdd" fne="false" />
+                        <method name="Save" controller="CustomWidget" action="AddCustomWidget" fne="false" />
+                    </bfw_widget_callbacks>
+                    <bfw_widget_template>PX_Custom</bfw_widget_template>
+                    <bfw_properties>
+                        <bfw_property name="bfw_syllabusfilter" type="String" />
+                        <bfw_property name="bfw_cssclass" type="String" />
+                        <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+                        <bfw_property name="bfw_targetid" type="String" />
+                        <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+                        <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+                        <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+                    </bfw_tocs>
+                </data>
+            </item>
+
+            <item itemid="PX_StudentOverviewWidget" entityid="55609">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>PX_LC_HOME_2COLUMN_ZONE_1</parent>
+                    <sequence />
+                    <title>Overview</title>
+                    <abbreviation>lcw</abbreviation>
+                    <description>
+                    &lt;div class="course-info-widget"&gt;
+                    &lt;div class="top"&gt;
+                    &lt;img src="Content/images/Book.jpg" /&gt;
+                    &lt;/div&gt;
+                    &lt;div class="bottom"&gt;
+                    &lt;ul class="tutorial-links"&gt;
+                    &lt;li class="header-row"&gt;&lt;h1&gt;INSTRUCTOR SUPPORT&lt;/h1&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;span rel=""&gt;First Day of Class&lt;/span&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;span rel=""&gt;How LearningCurve Works&lt;/span&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;span rel=""&gt;FAQs&lt;/span&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;span rel=""&gt;Instructor QuickStart&lt;/span&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;span rel=""&gt;Student QuickStart&lt;/span&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;/div&gt;
+                    &lt;/div&gt;
+                    </description>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <completiontrigger>0</completiontrigger>
+                    <bfw_type>Widget</bfw_type>
+                    <bfw_subtype>PX_Custom</bfw_subtype>
+                    <bfw_display_flags>
+                        <display>student</display>
+                    </bfw_display_flags>
+                    <bfw_widget_callbacks>
+                        <method name="View" controller="CustomWidget" action="View" fne="false" />
+                        <method name="OnBeforeAdd" controller="CustomWidget" action="OnBeforeAdd" fne="false" />
+                        <method name="Save" controller="CustomWidget" action="AddCustomWidget" fne="false" />
+                    </bfw_widget_callbacks>
+                    <bfw_widget_template>PX_Custom</bfw_widget_template>
+                    <bfw_properties>
+                        <bfw_property name="bfw_syllabusfilter" type="String" />
+                        <bfw_property name="bfw_cssclass" type="String" />
+                        <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+                        <bfw_property name="bfw_targetid" type="String" />
+                        <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+                        <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+                        <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+                    </bfw_tocs>
+                </data>
+            </item>
+
+            <item itemid="PX_DirectionsWidget" entityid="55609">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>PX_LC_HOME_2COLUMN_ZONE_2</parent>
+                    <sequence>a</sequence>
+                    <title>Directions</title>
+                    <abbreviation>lcw</abbreviation>
+                    <description>
+                    &lt;div class="course-directions-widget"&gt;
+                    &lt;div class="top"&gt;
+                    &lt;h1&gt;Here's how it works:&lt;/h1&gt;
+                    &lt;ul&gt;
+                    &lt;li&gt;Choose which &lt;i&gt;LearningCurve&lt;/i&gt; activities you want to assign.&lt;/li&gt;
+                    &lt;li&gt;Enable student registration and enter your course information.&lt;/li&gt;
+                    &lt;li&gt;Use reports to see how your class and students are doing on &lt;i&gt;LearningCurve&lt;/i&gt; activities.&lt;/li&gt;
+                    &lt;li&gt;To create a new course, select "create new course" in the top banner.&lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;/div&gt;
+                    &lt;div class="bottom"&gt;
+                    VIEW SAMPLE: &lt;span class="tutorial-link" rel=""&gt;class activity report&lt;/span&gt; | &lt;span class="tutorial-link" rel=""&gt;student activity report&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;/div&gt;
+                    </description>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <completiontrigger>0</completiontrigger>
+                    <bfw_type>Widget</bfw_type>
+                    <bfw_subtype>PX_Custom</bfw_subtype>
+                    <bfw_display_flags>
+                        <display>instructor</display>
+                    </bfw_display_flags>
+                    <bfw_widget_callbacks>
+                        <method name="View" controller="CustomWidget" action="View" fne="false" />
+                        <method name="OnBeforeAdd" controller="CustomWidget" action="OnBeforeAdd" fne="false" />
+                        <method name="Save" controller="CustomWidget" action="AddCustomWidget" fne="false" />
+                    </bfw_widget_callbacks>
+                    <bfw_widget_template>PX_Custom</bfw_widget_template>
+                    <bfw_properties>
+                        <bfw_property name="bfw_syllabusfilter" type="String" />
+                        <bfw_property name="bfw_cssclass" type="String" />
+                        <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+                        <bfw_property name="bfw_targetid" type="String" />
+                        <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+                        <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+                        <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+                    </bfw_tocs>
+                </data>
+            </item>
+
+            <item itemid="PX_ActivitiesWidget" entityid="55609">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>PX_LC_HOME_2COLUMN_ZONE_2</parent>
+                    <sequence>ab</sequence>
+                    <title>Activities</title>
+                    <abbreviation>lcw</abbreviation>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <completiontrigger>0</completiontrigger>
+                    <bfw_type>Widget</bfw_type>
+                    <bfw_subtype>PX_ActivitiesWidget</bfw_subtype>
+                    <bfw_display_flags>
+                        <display>instructor</display>
+                        <display>student</display>
+                    </bfw_display_flags>
+                    <bfw_widget_callbacks>
+                        <method name="View" controller="ActivitiesWidget" action="Summary" fne="false" />
+                    </bfw_widget_callbacks>
+                    <bfw_widget_template>PX_ActivitiesWidget</bfw_widget_template>
+                    <bfw_properties>
+                        <bfw_property name="bfw_syllabusfilter" type="String" />
+                        <bfw_property name="bfw_cssclass" type="String" />
+                        <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+                        <bfw_property name="bfw_targetid" type="String" />
+                        <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+                        <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+                        <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+                        <bfw_property name="bfw_target_content_type" type="String">LearningCurve</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+                    </bfw_tocs>
+                </data>
+            </item>
+        </requests>
+    </request>
+    <!-- This deletes some legacy items that may be on the course -->
+    <request cmd="deleteitems">
+        <requests>
+            <item entityid="55609" itemid="PX_MENU_ITEM_COURSEMATERIALS_TEMPLATE_PM" />
+            <item entityid="55609" itemid="PX_MENU_ITEM_COURSEMATERIALS_PM" />
+            <item entityid="55609" itemid="PX_MENU_ITEM_EBOOK_PM" />
+            <item entityid="55609" itemid="PX_MENU_ITEM_PROGRAM_MANAGER_TEMPLATE" />
+            <item entityid="55609" itemid="PX_MENU_ITEM_PROGRAM_MANAGER" />
+            <item entityid="55609" itemid="PX_ProfileSummaryWidget" />
+        </requests>
+    </request>
+</batch>

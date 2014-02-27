@@ -1,0 +1,231 @@
+<html>
+	<head>
+		<title>Platform-X Coding Standard</title>
+	</head>
+		
+	<body>
+		<h1>Platform-X Coding Standard</h1>
+		<h2>Braces</h2>
+		<p>The following guidelines apply to all statements that support braces:</p>
+		<ul>
+			<li>Braces are not optional and should be used to wrap even single statements</li>
+			<li>Opening and closing braces appear on their own line</li>
+			<li>Opening and closing braces appear at the same level of indentation as the associated statement</li>
+		</ul>
+		<h3>Example</h3>
+<pre>
+namespace Foo
+{
+	public class Bar
+	{
+		public int DoSomething(int count)
+		{
+			var something = 0;
+			
+			if(count <= 0) 
+			{
+				throw new Exception("Can't DoSomething zero times");
+			}
+			
+			for(var i = 0; i < count; ++i) 
+			{
+				something += i;
+				something *= i;
+			}
+			
+			return something;					
+		}
+	}
+}						
+</pre>
+		<h2>Class, member and variable Names</h2>
+		<p>The following styles of case are used in Platform-X:</p>
+		<ul>
+			<li>Pascal Case (e.g. ClassName, SomeProperty, CoolEvent, AnInterestingNamespace)</li>
+			<li>Camel Case (e.g. memberVariable, localVariable, parameterName)</li>
+		</ul>
+		<p>The following rules apply to all names:</p>
+		<ul>
+			<li><b>DO NOT</b> prefix member of local variables name</li>
+			<li><b>DO NOT</b> prefix variables with an underscore except for static or const values</li>
+			<li><b>DO NOT</b> use Hungarian notation</li>
+			<li><b>DO</b> prefix interfaces with I</li>
+			<li><b>DO NOT</b> prefix any other Type (e.g. classes, structs, enums, events, delegates, etc)</li>
+		</ul>
+		<h2>Spacing</h2>
+		<p>Observe the following rules regarding spacing:</p>
+		<ul>
+			<li><b>AVOID</b> excessive newlines between statements</li>
+			<li>Separate method definitions by <b>ONLY ONE</b> newline</li>
+			<li>Separate variable declarations from the rest of the method body by <b>ONLY ONE</b> newline</li>
+			<li>Separate logical block of code by <b>ONLY ONE</b> newline</li>
+			<li><b>DO NOT</b> have any newlines between an opening brace and the first statement of the block</li>
+		</ul>
+		<h3>Example</h3>
+<pre>
+namespace Foo
+{
+	public class Bar
+	{
+		public int DoSomething(int count)
+		{
+			var something = 0;
+			
+			if(count <= 0) 
+			{
+				throw new Exception("Can't DoSomething zero times");
+			}
+			
+			for(var i = 0; i < count; ++i) 
+			{
+				something += i;
+				something *= i;
+			}
+			
+			return something;					
+		}
+		
+		public void SomeOtherMethod() 
+		{
+			var localVariable = "duh";
+			
+			localVariable.ToUpper();
+		}
+	}
+}						
+</pre>
+		<h2>Commenting</h2>
+		<p>The following commenting rules apply to all code:</p>
+		<ul>
+			<li><b>DO NOT</b> comment out code and commit it. Delete unnecessary code.</li>
+			<li>All classes, member variables, methods, and static methods <b>MUST</b> be commented using .NET XML comments.</li>
+			<li>All comments should start with a capital and follow standard English sentence structure.</li>
+			<li><b>DO NOT</b> use multi-line (e.g. /* */) comments</li>
+		</ul>
+		<h3>Example</h3>
+<pre>
+/// &lt;summary&gt;
+/// Contains all information required to submit a request to the Agilix DLAP API.
+/// &lt;/summary&gt;
+public class DlapRequest : Session.IDlapRequestTransformer, IDisposable
+{
+	#region Constants
+
+	/// &lt;summary&gt;
+	/// Root element used if the request is a batch command
+	/// &lt;/summary&gt;
+	public const string BATCH_ELEMENT = "requests";
+
+	/// &lt;summary&gt;
+	/// Root element "batch" is used 
+	/// 1. request Mode is DlapRequestMode.Batch 
+	/// 2. request type is DlapRequestType.Post
+	/// 3. Parameter is with empty cmd like {"cmd", ""}. 
+	/// Example is demonstrated in Bfw.Agilix.Commands.GetUsersBatch
+	/// Check ~/Docs/Concept/CommandUsage for more information
+	/// &lt;/summary&gt;
+	public const string BATCH_ELEMENT_WITHOUT_PARAMETERS = "batch";
+
+	/// &lt;summary&gt;
+	/// Root element used if the request is a single command
+	/// &lt;/summary&gt;
+	public const string SINGLE_ELEMENT = "request";
+
+	#endregion
+
+	#region Properties			
+
+	/// &lt;summary&gt;
+	/// Determines if this request represents a batch, single request, etc. Defaults to Single
+	/// &lt;/summary&gt;
+	/// &lt;value&gt;Any value of &lt;see cref="DlapRequestMode" /&gt;&lt;/value&gt;
+	public DlapRequestMode Mode { get; set; }
+	
+	/// &lt;summary&gt;
+	/// Determines the type of HTTP method used to make the request to Dlap
+	/// &lt;/summary&gt;
+	/// &lt;value&gt;Any value of &lt;see cref="DlaptRequestType" /&gt;&lt;/value&gt;
+	public DlapRequestType Type { get; set; }
+
+	#endregion
+
+	#region Constructors
+
+	/// &lt;summary&gt;
+	/// Initializes all collections and sets Type = None and Mode = Single
+	/// &lt;/summary&gt;
+	public DlapRequest()
+	{				
+	}
+
+	#endregion
+
+	#region Methods
+
+	/// &lt;summary&gt;
+	/// Appends the given document fragment as the next child of the root request element
+	/// &lt;/summary&gt;
+	/// &lt;param name="postData"&gt;document fragment to add to the request&lt;/param&gt;
+	public void AppendData(XElement postData)
+	{				
+	}			
+
+	#endregion
+}
+</pre>
+		<h2>File Organization</h2>
+		<p>The following rules apply to all code files:</p>
+		<ul>
+			<li><b>ONLY ONE</b> public type should be declared per file. The only exception is Enumerations. All Enumerations for a given assembly should be defined in a single file called Enums.cs</li>
+			<li>Class members should be grouped into like section, and wrapped in region tags. The members of each section should be sorted alphabetically.</li>			
+		</ul>
+		<h3>Region Example</h3>
+		<p>This example shows the correct region structure for a class.</p>
+<pre>
+public class Foo : SomeClass, ISomeInterface, IAnotherInterface
+{
+	#region Constants
+	
+	// Define any constants.
+	
+	#endregion
+	
+	#region Properties
+	
+	// Define all properties and fields, except for overrides or interface implementations.
+	
+	#endregion
+	
+	#region Constructors
+	
+	// Define all constructors.
+	
+	#endregion
+	
+	#region Methods
+	
+	// Define any methods, except for overrides or interface implementations.
+	
+	#endregion
+	
+	#region SomeClass Overrides
+	
+	// Override any methods pertaining to SomeClass.
+	
+	#endregion
+	
+	#region ISomeInterface
+	
+	// Define any members, including properties, to implement the interface.
+	
+	#endregion
+	
+	#region IAnotherInterface
+	
+	// Define any members, including properties, to implement the interface.
+	
+	#endregion
+}
+</pre>
+	</body>
+</html>

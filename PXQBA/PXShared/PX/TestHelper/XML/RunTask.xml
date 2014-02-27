@@ -1,0 +1,7 @@
+<response code="OK">
+  <responses>
+    <response code="OK">
+      <task taskid="12" command="EnrollmentMetrics" periodminutes="2880" startdate="2010-11-16T07:00:00Z" creationdate="2010-10-12T18:17:00Z" lastrunstartdate="2010-11-15T07:00:00Z" lastrunenddate="2010-11-14T07:09:27.632Z" finished="false" portioncomplete="0.43211" currentitem="Computer Science 460"/>
+    </response>
+  </responses>
+</response>

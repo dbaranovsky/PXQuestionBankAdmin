@@ -1,0 +1,9 @@
+﻿<response code="BadRequest" message="User 124 not found.">
+  <detail>
+    GoCourseServer.BadRequestException: User 124 not found.
+    at GoCourseServer.EntityRef.get_UserEntity()
+    at GoCourseServer.UserRequestHandler.GetUser(DlapContext context)
+    at GoCourseServer.Dlap.ProcessRequest(HttpContext context)
+    agent='Desktop' url='http://qa.dlap.bfwpub.com/Dlap.ashx?cmd=getuser&amp;userid=124' site='dlap' method='GET' referer='http://qa.dlap.bfwpub.com/CallMethod.aspx' userid='7'
+  </detail>
+</response>

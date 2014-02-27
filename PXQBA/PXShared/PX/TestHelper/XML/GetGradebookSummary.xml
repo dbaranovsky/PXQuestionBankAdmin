@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<items>
+  <item itemid="item1">
+    <enrollment enrollmentid="216455" firstname="sahba" lastname="abolfazli" status="261" submittedversion="1" submitteddate="2013-09-03T19:27:12.233Z" scoredversion="1" scoreddate="2013-09-03T19:27:12.327Z" pointsachieved="5" pointspossible="6" score="0.83333333333333337" attempts="1" seconds="576" />
+    <enrollment enrollmentid="219849" firstname="Brooke" lastname="Adams" status="261" submittedversion="1" submitteddate="2013-09-06T03:59:33.127Z" scoredversion="1" scoreddate="2013-09-06T03:59:33.207Z" pointsachieved="4" pointspossible="6" score="0.83333333333333337" attempts="2" seconds="523" />
+  </item>
+  <item itemid="item2">
+    <enrollment enrollmentid="214629" firstname="Sarah" lastname="Adams" status="261" submittedversion="1" submitteddate="2013-09-03T18:55:26.497Z" scoredversion="1" scoreddate="2013-09-03T18:55:26.667Z" pointsachieved="3" pointspossible="6" score="0.66666666666666663" attempts="1" seconds="129" />
+  </item>
+</items>

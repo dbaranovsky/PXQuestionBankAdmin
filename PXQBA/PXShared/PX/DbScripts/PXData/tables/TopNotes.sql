@@ -1,0 +1,32 @@
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+IF OBJECT_ID('[dbo].[TopNotes]','U') IS NULL
+BEGIN
+
+CREATE TABLE [dbo].[TopNotes](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[TopNoteId] [uniqueidentifier] NOT NULL,
+	[NoteId] [uniqueidentifier] NOT NULL,
+ CONSTRAINT [PK_TopNotes] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+ALTER TABLE [dbo].[TopNotes] WITH CHECK ADD CONSTRAINT [FK_TopNotes_TopNote] FOREIGN KEY([TopNoteId])
+REFERENCES [dbo].[Note] ([NoteId])
+
+ALTER TABLE [dbo].[TopNoteId] CHECK CONSTRAINT [FK_TopNotes_TopNote]
+
+ALTER TABLE [dbo].[TopNotes] WITH CHECK ADD CONSTRAINT [FK_TopNotes_Note] FOREIGN KEY([NoteId])
+REFERENCES [dbo].[Note] ([NoteId])
+
+ALTER TABLE [dbo].[TopNotes] CHECK CONSTRAINT [FK_TopNotes_Note]
+
+END
+
+GO

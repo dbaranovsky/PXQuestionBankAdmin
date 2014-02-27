@@ -1,0 +1,2058 @@
+<requests>
+        
+            <item itemid="bsi__01480F69__4630__4477__B31D__D968BCF3C09A"
+                entityid="22808"
+                
+                modifieddate="2013-01-07T21:02:15.027Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>za</sequence>
+                    <title>Revolutions as a Path to Communism </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_21_REVOLUTIONS_AS_A_PATH_TO_COMMUNISM&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421300</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-01480F69-4630-4477-B31D-D968BCF3C09A</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__8__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="za"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 21: Revolution, Socialism, and Global Conflict: The Rise and
+                        Fall of World Communism, 1917–Present </meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 21: Revolution, Socialism, and Global Conflict: The Rise and
+                            Fall of World Communism, 1917–Present </meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__0E91FDB1__8938__46E2__8708__C4E4D89C287B"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:08.323Z" creationby="7"
+                modifieddate="2013-01-07T21:02:15.93Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>zi</sequence>
+                    <title>The Globalization of Liberation</title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_23_THE_GLOBALIZATION_OF_LIBERATION&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421308</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-0E91FDB1-8938-46E2-8708-C4E4D89C287B</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__10__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="zi"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 23: Capitalism and Culture: A New Phase of Global
+                        Interaction, since 1945</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 23: Capitalism and Culture: A New Phase of Global
+                            Interaction, since 1945</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__0F20FFA8__0745__4112__9C1B__377F26FED55F"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:08.197Z" creationby="7"
+                modifieddate="2013-01-07T21:02:15.823Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>zh</sequence>
+                    <title>The Transformation of the World Economy</title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_23_THE_TRANSFORMATION_OF_THE_WORLD_ECONOMY&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421307</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-0F20FFA8-0745-4112-9C1B-377F26FED55F</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__10__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="zh"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 23: Capitalism and Culture: A New Phase of Global
+                        Interaction, since 1945</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 23: Capitalism and Culture: A New Phase of Global
+                            Interaction, since 1945</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__169A1518__B1FB__4CF2__A150__A92B2F8EE4B9"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:04.173Z" creationby="7"
+                modifieddate="2013-01-07T21:02:11.98Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>c</sequence>
+                    <title>The Steppes and Siberia</title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_13_The_Steppes_and_Siberia&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421267</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-169A1518-B1FB-4CF2-A150-A92B2F8EE4B9</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__1__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="c"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 13: Political Transformations: Empires and Encounters,
+                        1450–1750</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 13: Political Transformations: Empires and Encounters,
+                            1450–1750</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__1A952C5D__C19E__456E__B957__50FC34B2A2CA"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:06.543Z" creationby="7"
+                modifieddate="2013-01-07T21:02:14.48Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>u</sequence>
+                    <title>The First World War</title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_20_THE_FIRST_WORLD_WAR&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421294</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-1A952C5D-C19E-456E-B957-50FC34B2A2CA</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__7__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="u"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 20: Collapse at the Center: World War, Depression, and the
+                        Rebalancing of Global Power, 1914–1970s</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 20: Collapse at the Center: World War, Depression, and the
+                            Rebalancing of Global Power, 1914–1970s</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__1D775235__94CB__4AEC__B662__EAE2BAD4808F"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:06.747Z" creationby="7"
+                modifieddate="2013-01-07T21:02:14.633Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>w</sequence>
+                    <title>Democracy Denied</title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_20_DEMOCRACY_DENIED&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421296</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-1D775235-94CB-4AEC-B662-EAE2BAD4808F</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__7__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="w"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 20: Collapse at the Center: World War, Depression, and the
+                        Rebalancing of Global Power, 1914–1970s</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 20: Collapse at the Center: World War, Depression, and the
+                            Rebalancing of Global Power, 1914–1970s</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__27CF7639__1F46__409A__8741__1D21A8819968"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:04.657Z" creationby="7"
+                modifieddate="2013-01-07T21:02:12.463Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>h</sequence>
+                    <title>Commerce in People </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_14_Commerce_in_People&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421273</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-27CF7639-1F46-409A-8741-1D21A8819968</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__2__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="h"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 14: Economic Transformations: Commerce and Consequence,
+                        1450–1750</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 14: Economic Transformations: Commerce and Consequence,
+                            1450–1750</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__2B197B65__8147__48D6__8295__7ED2C103F994"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:07.667Z" creationby="7"
+                modifieddate="2013-01-07T21:02:15.493Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>ze</sequence>
+                    <title>Toward Freedom </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_22_Toward_Freedom&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421304</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-2B197B65-8147-48D6-8295-7ED2C103F994</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__9__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="ze"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 22: The End of Empire: The Global South on the Global Stage,
+                        1914–Present</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 22: The End of Empire: The Global South on the Global Stage,
+                            1914–Present</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__2CC4A355__38A4__44A1__A803__5BE15EBBA0FC"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:04.22Z" creationby="7"
+                modifieddate="2013-01-07T21:02:12.073Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>d</sequence>
+                    <title>Asian Empires </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_13_Asian_Empires&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421268</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-2CC4A355-38A4-44A1-A803-5BE15EBBA0FC</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__1__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="d"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 13: Political Transformations: Empires and Encounters,
+                        1450–1750</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 13: Political Transformations: Empires and Encounters,
+                            1450–1750</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__31DEAACD__2BFF__4703__A77D__8123E6EBF1F5"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:06.14Z" creationby="7"
+                modifieddate="2013-01-07T21:02:13.98Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>q</sequence>
+                    <title>Believing and Belonging: Identity and Cultural Change in the Colonial Era </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_18_BELIEVING_AND_BELONGING&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421290</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-31DEAACD-2BFF-4703-A77D-8123E6EBF1F5</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__5__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="q"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 18: Colonial Encounters in Asia and Africa,
+                        1750–1950</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 18: Colonial Encounters in Asia and Africa,
+                            1750–1950</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__36A041AA__9826__4BE6__A9BA__A94D3C86E68D"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:06.373Z" creationby="7"
+                modifieddate="2013-01-07T21:02:14.277Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>s</sequence>
+                    <title>The Ottoman Empire and the West in the Nineteenth Century </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_19_THE_OTTOMAN_EMPIRE_AND_THE_WEST_IN_THE_NINETEENTH_CENTURY&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421292</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-36A041AA-9826-4BE6-A9BA-A94D3C86E68D</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__6__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="s"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 19: Empire in Collision: Europe, the Middle East, and East
+                        Asia, 1800–1914 </meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 19: Empire in Collision: Europe, the Middle East, and East
+                            Asia, 1800–1914 </meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__3B52C811__EC3E__4874__AF57__351435EEE177" version="0.7"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:03.457Z" creationby="7"
+                modifieddate="2013-01-07T21:02:11.463Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>zn</sequence>
+                    <title>Civilizations of the Fifteenth Century: The Islamic World </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_12_Civilizations_of_the_Fifteenth_Century_The_Islamic_World&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <meta-topic>Chapter 12: The Worlds of the Fifteenth Century</meta-topic>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421321</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-3B52C811-EC3E-4874-AF57-351435EEE177</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents parentid="bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="zn"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topics>
+                        <meta-topic dlaptype="exact">Chapter 12: The Worlds of the Fifteenth Century
+                        </meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__42B28375__B613__40D0__86C6__419D283ABFA6" version="0.7"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:04.86Z" creationby="7"
+                modifieddate="2013-01-07T21:02:12.713Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>i</sequence>
+                    <title>Persistence and Change in Afro-Asian Cultural Traditions </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_15_Persistence_and_Change_in_Afro&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <meta-topic>Chapter 15: Cultural Transformations: Religion and Science,
+                        1450-1750 </meta-topic>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421276</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-42B28375-B613-40D0-86C6-419D283ABFA6</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__3__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="i"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topics>
+                        <meta-topic>Chapter 15: Cultural Transformations: Religion and Science,
+                            1450-1750 </meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__4E54890E__8412__4D52__BCE7__96F257D38D84" version="0.7"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:03.02Z" creationby="7"
+                modifieddate="2013-01-07T21:02:11.167Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>zl</sequence>
+                    <title>The Shapes of Human Communities </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_12_THE_SHAPES_OF_HUMAN_COMMUNITIES</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <meta-topic>Chapter 12: The Worlds of the Fifteenth Century</meta-topic>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421319</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-4E54890E-8412-4D52-BCE7-96F257D38D84</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents parentid="bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="zl"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topics>
+                        <meta-topic dlaptype="exact">Chapter 12: The Worlds of the Fifteenth Century
+                        </meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__4F42A6F9__9A83__4A83__87C7__3FB0C8B26446"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:08.87Z" creationby="7"
+                modifieddate="2013-01-07T21:02:16.087Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>zk</sequence>
+                    <title>Experiencing the Anthropocene Era</title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_23_EXPERIENCING_THE_ANTHROPOCENE_ERA&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421310</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-4F42A6F9-9A83-4A83-87C7-3FB0C8B26446</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__10__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="zk"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 23: Capitalism and Culture: A New Phase of Global
+                        Interaction, since 1945</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 23: Capitalism and Culture: A New Phase of Global
+                            Interaction, since 1945</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__52053499__0F70__4C9C__BCD3__5B17DA05460D"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:05.56Z" creationby="7"
+                modifieddate="2013-01-07T21:02:13.417Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>k</sequence>
+                    <title>Variations on a Theme: Comparing Industrialization in the United States
+                        and Russia </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_17_Variations_on_a_Theme&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421284</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-52053499-0F70-4C9C-BCD3-5B17DA05460D</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__4__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="k"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 17: Revolutions of Industrialization, 1750–1914</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 17: Revolutions of Industrialization, 1750–1914</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__523E90C2__DFD5__48E4__8AB6__72F1F75236C5"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:04.097Z" creationby="7"
+                modifieddate="2013-01-07T21:02:11.9Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>b</sequence>
+                    <title>Comparing Colonial Societies in the Americas </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_13_Comparing_Colonial_Societies_in_the_Americas&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421266</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-523E90C2-DFD5-48E4-8AB6-72F1F75236C5</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__1__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="b"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 13: Political Transformations: Empires and Encounters,
+                        1450–1750</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 13: Political Transformations: Empires and Encounters,
+                            1450–1750</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__53C5C562__04D6__491B__A6A2__8B35A0923CB8" version="0.7"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:04.953Z" creationby="7"
+                modifieddate="2013-01-07T21:02:12.807Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>i</sequence>
+                    <title>A New Way of Thinking: The Birth of Modern Science </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_15_A_New_Way_of_Thinking&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <meta-topic>Chapter 15: Cultural Transformations: Religion and Science,
+                        1450-1750 </meta-topic>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421277</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-53C5C562-04D6-491B-A6A2-8B35A0923CB8</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__3__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="i"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topics>
+                        <meta-topic>Chapter 15: Cultural Transformations: Religion and Science,
+                            1450-1750 </meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__56B0D7ED__6A00__451C__87DA__D4D5C29FF13D"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:08.48Z" creationby="7"
+                modifieddate="2013-01-07T21:02:16.01Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>zj</sequence>
+                    <title>Religion and Global Modernity </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_23_RELIGION_AND_GLOBAL_MODERNITY&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421309</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-56B0D7ED-6A00-451C-87DA-D4D5C29FF13D</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__10__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="zj"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 23: Capitalism and Culture: A New Phase of Global
+                        Interaction, since 1945</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 23: Capitalism and Culture: A New Phase of Global
+                            Interaction, since 1945</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__5927696B__C075__4930__B0D3__FCA7A2BB57F9"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:06.623Z" creationby="7"
+                modifieddate="2013-01-07T21:02:14.557Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>v</sequence>
+                    <title>Capitalism Unraveling </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_20_CAPITALISM_UNRAVELING&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421295</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-5927696B-C075-4930-B0D3-FCA7A2BB57F9</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__7__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="v"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 20: Collapse at the Center: World War, Depression, and the
+                        Rebalancing of Global Power, 1914–1970s</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 20: Collapse at the Center: World War, Depression, and the
+                            Rebalancing of Global Power, 1914–1970s</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__5E8747E9__F743__4339__8F34__9406D522940F"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:07.247Z" creationby="7"
+                modifieddate="2013-01-07T21:02:15.133Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>zb</sequence>
+                    <title>Building Socialism </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_21_BUILDING_SOCIALISM&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421301</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-5E8747E9-F743-4339-8F34-9406D522940F</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__8__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="zb"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 21: Revolution, Socialism, and Global Conflict: The Rise and
+                        Fall of World Communism, 1917–Present </meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 21: Revolution, Socialism, and Global Conflict: The Rise and
+                            Fall of World Communism, 1917–Present </meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__67572FCB__851A__41EA__84F7__68E6BB84848E"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:04.36Z" creationby="7"
+                modifieddate="2013-01-07T21:02:12.23Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>e</sequence>
+                    <title>Europeans and Asian Commerce </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_14_Europeans_and_Asian_Commerce&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421270</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-67572FCB-851A-41EA-84F7-68E6BB84848E</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__2__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="e"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 14: Economic Transformations: Commerce and Consequence,
+                        1450–1750</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 14: Economic Transformations: Commerce and Consequence,
+                            1450–1750</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__6DB9A860__26C6__42C8__AFB7__F1846D4367A3"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:06.84Z" creationby="7"
+                modifieddate="2013-01-07T21:02:14.713Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>x</sequence>
+                    <title>A Second World War </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_20_A_SECOND_WORLD_WAR&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421297</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-6DB9A860-26C6-42C8-AFB7-F1846D4367A3</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__7__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="x"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 20: Collapse at the Center: World War, Depression, and the
+                        Rebalancing of Global Power, 1914–1970s</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 20: Collapse at the Center: World War, Depression, and the
+                            Rebalancing of Global Power, 1914–1970s</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__73256367__9377__4FE8__A8B8__0718ACD1C252" version="0.7"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:03.58Z" creationby="7"
+                modifieddate="2013-01-07T21:02:11.573Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>zo</sequence>
+                    <title>Civilizations of the Fifteenth Century: The Americas </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_12_Civilizations_of_the_Fifteenth_Century_The_Americas&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <meta-topic>Chapter 12: The Worlds of the Fifteenth Century</meta-topic>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421323</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-73256367-9377-4FE8-A8B8-0718ACD1C252</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents parentid="bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="zo"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topics>
+                        <meta-topic dlaptype="exact">Chapter 12: The Worlds of the Fifteenth Century
+                        </meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__754FD939__ABE7__4112__B4A9__5C3516929A9F"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:07.463Z" creationby="7"
+                modifieddate="2013-01-07T21:02:15.29Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>zd</sequence>
+                    <title>Paths to the End of Communism </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_21_PATHS_TO_THE_END_OF_COMMUNISM&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421303</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-754FD939-ABE7-4112-B4A9-5C3516929A9F</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__8__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="zd"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 21: Revolution, Socialism, and Global Conflict: The Rise and
+                        Fall of World Communism, 1917–Present </meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 21: Revolution, Socialism, and Global Conflict: The Rise and
+                            Fall of World Communism, 1917–Present </meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__75B41C9B__1EBB__4488__81F8__EB3A426B7DE1"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:04.423Z" creationby="7"
+                modifieddate="2013-01-07T21:02:12.29Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>f</sequence>
+                    <title>Silver and Global Commerce</title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_14_Silver_and_Global_Commerce&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421271</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-75B41C9B-1EBB-4488-81F8-EB3A426B7DE1</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__2__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="f"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 14: Economic Transformations: Commerce and Consequence,
+                        1450–1750</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 14: Economic Transformations: Commerce and Consequence,
+                            1450–1750</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__7A5D91B5__37B6__483B__8D2F__491E479D40C5" version="0.7"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:04.767Z" creationby="7"
+                modifieddate="2013-01-07T21:02:12.65Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>i</sequence>
+                    <title>The Globalization of Christianity </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_15_The_Globalization_of_Christianity&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <meta-topic>Chapter 15: Cultural Transformations: Religion and Science,
+                        1450-1750 </meta-topic>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421275</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-7A5D91B5-37B6-483B-8D2F-491E479D40C5</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__3__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="i"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topics>
+                        <meta-topic>Chapter 15: Cultural Transformations: Religion and Science,
+                            1450-1750 </meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__7E6B3262__058F__474A__9D81__68FEC25B2507"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:06.933Z" creationby="7"
+                modifieddate="2013-01-07T21:02:14.79Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>y</sequence>
+                    <title>The Recovery of Europe </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_20_THE_RECOVERY_OF_EUROPE&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421298</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-7E6B3262-058F-474A-9D81-68FEC25B2507</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__7__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="y"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 20: Collapse at the Center: World War, Depression, and the
+                        Rebalancing of Global Power, 1914–1970s</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 20: Collapse at the Center: World War, Depression, and the
+                            Rebalancing of Global Power, 1914–1970s</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__96ED4A73__2790__4CCC__ABCE__A4810FD4BBE2"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:05.39Z" creationby="7"
+                modifieddate="2013-01-07T21:02:13.277Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>i</sequence>
+                    <title>Explaining the Industrial Revolution </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_17_EXPLAINING_THE_INDUSTRIAL_REVOLUTION&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421282</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-96ED4A73-2790-4CCC-ABCE-A4810FD4BBE2</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__4__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="i"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 17: Revolutions of Industrialization, 1750–1914</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 17: Revolutions of Industrialization, 1750–1914</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__97101527__D853__4075__946E__BE1188345C5E"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:06.077Z" creationby="7"
+                modifieddate="2013-01-07T21:02:13.917Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>p</sequence>
+                    <title>Ways of Working: Comparing Colonial Economies</title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_18_WAYS_OF_WORKING&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421289</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-97101527-D853-4075-946E-BE1188345C5E</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__5__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="p"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 18: Colonial Encounters in Asia and Africa,
+                        1750–1950</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 18: Colonial Encounters in Asia and Africa,
+                            1750–1950</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__AE1AC85B__9698__489C__B656__D29B4026BA05"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:07.357Z" creationby="7"
+                modifieddate="2013-01-07T21:02:15.23Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>zc</sequence>
+                    <title>East versus West: A Global Divide and a Cold War </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_21_EAST_VERSUS_WEST&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421302</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-AE1AC85B-9698-489C-B656-D29B4026BA05</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__8__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="zc"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 21: Revolution, Socialism, and Global Conflict: The Rise and
+                        Fall of World Communism, 1917–Present </meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 21: Revolution, Socialism, and Global Conflict: The Rise and
+                            Fall of World Communism, 1917–Present </meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__B24C87E7__454C__40C2__B5D5__020AF9C100C1"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:06.28Z" creationby="7"
+                modifieddate="2013-01-07T21:02:14.197Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>r</sequence>
+                    <title>Reversal of Fortune</title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_19_REVERSAL_OF_FORTUNE</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421291</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-B24C87E7-454C-40C2-B5D5-020AF9C100C1</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__6__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="r"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 19: Empire in Collision: Europe, the Middle East, and East
+                        Asia, 1800–1914 </meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 19: Empire in Collision: Europe, the Middle East, and East
+                            Asia, 1800–1914 </meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__B74DBD6F__09C6__450B__B09A__6A903EB8F0E1"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:07.073Z" creationby="7"
+                modifieddate="2013-01-07T21:02:14.93Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>z</sequence>
+                    <title>Global Communism </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_21_GLOBAL_COMMUNISM&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421299</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-B74DBD6F-09C6-450B-B09A-6A903EB8F0E1</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__8__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="z"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 21: Revolution, Socialism, and Global Conflict: The Rise and
+                        Fall of World Communism, 1917–Present </meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 21: Revolution, Socialism, and Global Conflict: The Rise and
+                            Fall of World Communism, 1917–Present </meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__C9FF3E7D__656C__4059__B12A__0B23239674F5"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:03.283Z" creationby="7"
+                modifieddate="2013-01-07T21:02:11.383Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>zm</sequence>
+                    <title>Civilizations of the Fifteenth Century: Comparing China and Europe </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_12_Civilizations_of_the_Fifteenth_Century_Comparing_China_and_Europe&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421316</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-C9FF3E7D-656C-4059-B12A-0B23239674F5</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents parentid="bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="zm"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 12: The Worlds of the Fifteenth Century</meta-topic>
+                    <meta-topics>
+                        <meta-topic dlaptype="exact">Chapter 12: The Worlds of the Fifteenth Century
+                        </meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__CB9CC4CB__18D9__4B0D__923D__3E8503F170D6"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:05.657Z" creationby="7"
+                modifieddate="2013-01-07T21:02:13.493Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>l</sequence>
+                    <title>The Industrial Revolution and Latin America in the Nineteenth Century </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_17_The_Industrial_Revolution_and_Latin_America_in_the_Nineteenth_Century&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421285</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-CB9CC4CB-18D9-4B0D-923D-3E8503F170D6</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__4__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="l"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 17: Revolutions of Industrialization, 1750–1914</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 17: Revolutions of Industrialization, 1750–1914</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__CC2E8947__A0B2__4F86__AFE8__5C962A12193A"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:06.437Z" creationby="7"
+                modifieddate="2013-01-07T21:02:14.353Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>t</sequence>
+                    <title>The Japanese Difference</title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_19_THE_JAPANESE_DIFFERENCE&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421293</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-CC2E8947-A0B2-4F86-AFE8-5C962A12193A</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__6__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="t"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 19: Empire in Collision: Europe, the Middle East, and East
+                        Asia, 1800–1914 </meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 19: Empire in Collision: Europe, the Middle East, and East
+                            Asia, 1800–1914 </meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__CF9DF32B__09E2__4F38__8B7C__6064AAC6EFC9"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:05.903Z" creationby="7"
+                modifieddate="2013-01-07T21:02:13.76Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>n</sequence>
+                    <title>A Second Wave of European Conquests </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_18_A_SECOND_WAVE_OF_EUROPEAN_CONQUESTS&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421287</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-CF9DF32B-09E2-4F38-8B7C-6064AAC6EFC9</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__5__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="n"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 18: Colonial Encounters in Asia and Africa,
+                        1750–1950</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 18: Colonial Encounters in Asia and Africa,
+                            1750–1950</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__D46C162F__C7BE__4C1C__A960__9D7090391505"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:03.72Z" creationby="7"
+                modifieddate="2013-01-07T21:02:11.633Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>zp</sequence>
+                    <title>Webs of Connection and A Preview of Coming Attractions</title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_12_Webs_of_Connection_and_A_Preview_of_Coming_Attractions&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421317</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-D46C162F-C7BE-4C1C-A960-9D7090391505</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents parentid="bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="zp"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 12: The Worlds of the Fifteenth Century</meta-topic>
+                    <meta-topics>
+                        <meta-topic dlaptype="exact">Chapter 12: The Worlds of the Fifteenth Century
+                        </meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__E95BA96B__4037__4C69__BCDD__9C0727237619"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:06Z" creationby="7"
+                modifieddate="2013-01-07T21:02:13.823Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>o</sequence>
+                    <title>Under European Rule</title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_18_UNDER_EUROPEAN_RULE&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421288</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-E95BA96B-4037-4C69-BCDD-9C0727237619</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__5__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="o"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 18: Colonial Encounters in Asia and Africa,
+                        1750–1950</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 18: Colonial Encounters in Asia and Africa,
+                            1750–1950</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__EA96DA71__1F32__4B5B__93BE__9F6CA754B984"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:04Z" creationby="7"
+                modifieddate="2013-01-07T21:02:11.823Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>a</sequence>
+                    <title>European Empires in the Americas </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_13_European_Empires_in_the_Americas&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421265</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-EA96DA71-1F32-4B5B-93BE-9F6CA754B984</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__1__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="a"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 13: Political Transformations: Empires and Encounters,
+                        1450–1750</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 13: Political Transformations: Empires and Encounters,
+                            1450–1750</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__EE8A9B73__E294__42FF__9BEE__0560503B89DE"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:07.777Z" creationby="7"
+                modifieddate="2013-01-07T21:02:15.587Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>zf</sequence>
+                    <title>Comparing Freedom Struggles </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_22_COMPARING_FREEDOM_STRUGGLES&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421305</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-EE8A9B73-E294-42FF-9BEE-0560503B89DE</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__9__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="zf"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 22: The End of Empire: The Global South on the Global Stage,
+                        1914–Present</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 22: The End of Empire: The Global South on the Global Stage,
+                            1914–Present</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__F3FE9516__A4CD__498C__A0D6__6E7A9B66C830"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:04.5Z" creationby="7"
+                modifieddate="2013-01-07T21:02:12.383Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>g</sequence>
+                    <title>The “World Hunt”: Fur in Global Commerce</title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_14_The_World_Hunt_Fur_in_Global_Commerce&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421272</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-F3FE9516-A4CD-498C-A0D6-6E7A9B66C830</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__2__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="g"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 14: Economic Transformations: Commerce and Consequence,
+                        1450–1750</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 14: Economic Transformations: Commerce and Consequence,
+                            1450–1750</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__F4BD8DAE__96B7__42EF__A5DA__84F15C21318B"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:07.917Z" creationby="7"
+                modifieddate="2013-01-07T21:02:15.68Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>zg</sequence>
+                    <title>Experiments with Freedom</title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_22_EXPERIMENTS_WITH_FREEDOM&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421306</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-F4BD8DAE-96B7-42EF-A5DA-84F15C21318B</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__9__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="zg"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 22: The End of Empire: The Global South on the Global Stage,
+                        1914–Present</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 22: The End of Empire: The Global South on the Global Stage,
+                            1914–Present</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__FA4A7AD2__1E27__4C5B__9A98__D4288BEEB6C0"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:05.827Z" creationby="7"
+                modifieddate="2013-01-07T21:02:13.68Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>m</sequence>
+                    <title>Industry and Empire </title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_18_INDUSTRY_AND_EMPIRE&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421286</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-FA4A7AD2-1E27-4C5B-9A98-D4288BEEB6C0</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__5__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="m"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 18: Colonial Encounters in Asia and Africa,
+                        1750–1950</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 18: Colonial Encounters in Asia and Africa,
+                            1750–1950</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+            <item itemid="bsi__FFD7EA02__80D9__4D1F__AE95__E31EE3D040CD"
+                entityid="22808"
+                creationdate="2012-10-09T18:42:05.467Z" creationby="7"
+                modifieddate="2013-01-07T21:02:13.337Z" modifiedby="7" origindepth="1"
+                derivativedepth="1">
+                <data>
+                    <type>CustomActivity</type>
+                    <parent>bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622</parent>
+                    <sequence>j</sequence>
+                    <title>The First Industrial Society</title>
+                    <href>http://learningcurve.bfwpub.com/index.php?file=history/Strayer_2e/Strayer_2e_Chapter_17_THE_FIRST_INDUSTRIAL_SOCIETY&amp;st=200</href>
+                    <timetocomplete>PT1M</timetocomplete>
+                    <category>0</category>
+                    <period inherit="true">0</period>
+                    <groupsetid>-1</groupsetid>
+                    <duedate>0001-01-01T00:00:00Z</duedate>
+                    <weight>100</weight>
+                    <gradeentry>1</gradeentry>
+                    <inputtable inherit="true">0</inputtable>
+                    <sco>true</sco>
+                    <bfw_type>ExternalContent</bfw_type>
+                    <bfw_subtype>LearningCurve</bfw_subtype>
+                    <bfw_meta>
+                        <bfw_metadata name="bsi_item_id">5421283</bfw_metadata>
+                        <bfw_metadata name="bsi_site_id">4585</bfw_metadata>
+                        <bfw_metadata name="bsi_bfw_uid"
+                            >bsi-FFD7EA02-80D9-4D1F-AE95-E31EE3D040CD</bfw_metadata>
+                        <bfw_metadata name="bfw_allowcomments" type="Boolean">True</bfw_metadata>
+                    </bfw_meta>
+                    <bfw_properties>
+                        <bfw_property name="HideFromStudents" type="Boolean">False</bfw_property>
+                    </bfw_properties>
+                    <bfw_tocs>
+                        <bfw_toc_contents
+                            parentid="Copy__4__bsi__98673353__C1F2__4F14__8E71__EBEDBBD22622"
+                            sequence="j"/>
+                    </bfw_tocs>
+                    <meta-content-type dlaptype="exact">LearningCurve</meta-content-type>
+                    <meta-topic>Chapter 17: Revolutions of Industrialization, 1750–1914</meta-topic>
+                    <meta-topics>
+                        <meta-topic>Chapter 17: Revolutions of Industrialization, 1750–1914</meta-topic>
+                    </meta-topics>
+                </data>
+            </item>
+        
+    
+</requests>

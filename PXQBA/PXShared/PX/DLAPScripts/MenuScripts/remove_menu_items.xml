@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<requests>
+  <item itemid="PX_MENU_ITEM_EPORTFOLIO_TEMPLATE" version="0.1" entityid="-entityid-">
+    <data>
+      <type>CustomActivity</type>
+      <parent>PX_DELETED</parent>
+      <sequence>c</sequence>
+      <title>Eportfolio</title>
+      <abbreviation>EPORTFOLIO</abbreviation>
+      <bfw_type>MenutItem</bfw_type>
+      <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+      <bfw_display_flags>
+        <allow>
+          <role>instructor</role>
+          <coursetype>any</coursetype>
+        </allow>
+        <allow>
+          <role>student</role>
+          <coursetype>any</coursetype>
+        </allow>
+      </bfw_display_flags>
+      <bfw_menu_callbacks>
+        <method name="" controller="" action="" url="" type="" route="MyEPortfolios">
+          <parameter name="itemid" value="{item-id}" />
+        </method>
+      </bfw_menu_callbacks>
+    </data>
+  </item>
+  <item itemid="PX_MENU_ITEM_EPORTFOLIO" entityid="-entityid-">
+    <data>
+      <type>CustomActivity</type>
+      <parent>PX_DELETED</parent>
+      <sequence>d</sequence>
+      <title>Eportfolio</title>
+      <abbreviation>EPORTFOLIO</abbreviation>
+      <bfw_type>MenutItem</bfw_type>
+      <bfw_menu_created_by>PX_MENU_ITEM_EPORTFOLIO_TEMPLATE</bfw_menu_created_by>
+      <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+      <bfw_display_flags>
+        <allow>
+          <role>instructor</role>
+          <coursetype>any</coursetype>
+        </allow>
+        <allow>
+          <role>student</role>
+          <coursetype>any</coursetype>
+        </allow>
+      </bfw_display_flags>
+      <bfw_menu_callbacks>
+        <method name="" controller="" action="" url="" type="" route="MyEPortfolios">
+          <parameter name="itemid" value="{item-id}" />
+        </method>
+      </bfw_menu_callbacks>
+    </data>
+  </item>
+  <item itemid="PX_MENU_ITEM_WRITING_TEMPLATE" entityid="-entityid-">
+    <data>
+      <type>CustomActivity</type>
+      <parent>PX_MENUITEM_TEMPLATES</parent>
+      <sequence>g</sequence>
+      <title>My Writing</title>
+      <abbreviation>MYWRITING</abbreviation>
+      <duedate>0001-01-01T00:00:00Z</duedate>
+      <bfw_type>MenutItem</bfw_type>
+      <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+      <bfw_display_flags>
+        <allow>
+          <role>instructor</role>
+          <coursetype>any</coursetype>
+        </allow>
+        <allow>
+          <role>student</role>
+          <coursetype>any</coursetype>
+        </allow>
+      </bfw_display_flags>
+      <bfw_menu_callbacks>
+        <method name="Writing" controller="WritingTab" action="Index" url="" type="" route="">
+          <parameter name="itemid" value="{item-id}" />
+        </method>
+      </bfw_menu_callbacks>
+    </data>
+  </item>
+  <item itemid="PX_MENU_ITEM_WRITING" entityid="-entityid-">
+    <data>
+      <type>CustomActivity</type>
+      <parent>PX_PRIMARY</parent>
+      <sequence>g</sequence>
+      <title>My Writing</title>
+      <abbreviation>MYWRITING</abbreviation>
+      <bfw_type>MenutItem</bfw_type>
+      <bfw_menu_created_by>PX_MENU_ITEM_WRITING_TEMPLATE</bfw_menu_created_by>
+      <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+      <bfw_display_flags>
+        <allow>
+          <role>instructor</role>
+          <coursetype>any</coursetype>
+        </allow>
+        <allow>
+          <role>student</role>
+          <coursetype>any</coursetype>
+        </allow>
+      </bfw_display_flags>
+      <bfw_menu_callbacks>
+        <method name="Writing" controller="WritingTab" action="Index" url="" type="" route="">
+          <parameter name="itemid" value="{item-id}" />
+        </method>
+      </bfw_menu_callbacks>
+    </data>
+  </item>
+  <item itemid="TMP_0ff1477de3264ec7a29728406906adf3" entityid="-entityid-">
+    <data>
+      <type>Wiki</type>
+      <parent>PX_DELETED</parent>
+      <sequence>l</sequence>
+      <title>Wiki</title>
+      <folder>0ff1477de3264ec7a29728406906adf3</folder>
+      <href>Templates/Data/0ff1477de3264ec7a29728406906adf3/index.html</href>
+      <category>0</category>
+      <bfw_properties>
+        <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+      </bfw_properties>
+    </data>
+  </item>
+  <item itemid="TMP_c2e80347203e4b9b98f1b85d8b605e0f" entityid="-entityid-">
+    <data>
+      <type>RssFeed</type>
+      <parent>PX_DELETED</parent>
+      <sequence>l</sequence>
+      <title>RSS Feed</title>
+      <folder>c2e80347203e4b9b98f1b85d8b605e0f</folder>
+      <category>0</category>
+      <bfw_properties>
+        <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+      </bfw_properties>
+    </data>
+  </item>
+</requests>

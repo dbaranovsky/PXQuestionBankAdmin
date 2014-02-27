@@ -1,0 +1,35 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js <% Html.RenderAction("GetHtmlClassHack", "Course"); %>">
+<head>
+    <title>
+        <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+    </title>
+    <% Html.RenderPartial("BaseStyle"); %>
+    <asp:ContentPlaceHolder ID="HeaderAdditions" runat="server" />
+</head>
+<body class="home-layout product-type-<% Html.RenderAction("GetProductType", "Course"); %> course-type-<% Html.RenderAction("GetCourseSubType", "Course"); %> <% Html.RenderPartial("Browser"); %>">
+    <% Html.RenderAction("LoadingSplashScreen", "Home"); %>
+    
+    <% Html.RenderPartial("BaseHeaderScripts"); %>
+
+    <div class="single-column product-type-<% Html.RenderAction("GetProductType", "Course"); %> course-type-<% Html.RenderAction("GetCourseSubType", "Course"); %> <% Html.RenderPartial("Browser"); %>">
+       
+
+    <% Html.RenderAction("HomePageCourseHeader", "Header"); %>
+      <% Html.RenderAction("Menu", "Home"); %>
+         <div id="main">
+            <asp:ContentPlaceHolder ID="CenterContent" runat="server" />
+        </div>
+    </div>
+        <% Html.RenderPartial("BaseScripts"); %>
+        <% Html.RenderAction("ProductScripts", "Course"); %>
+        <% Html.RenderPartial("Footer"); %>
+        <% Html.RenderAction("RenderFne","Course"); %>
+    <% Html.RenderPartial("ModalWindows"); %>    
+    
+    <% Html.RenderAction("AnalyticsBase", "SiteAnalytics"); %>
+    
+</body>
+</html>

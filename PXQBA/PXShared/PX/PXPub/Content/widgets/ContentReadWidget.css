@@ -1,0 +1,20 @@
+﻿
+#read-content-xbook-image 
+{
+    width: 131px;
+    height: 180px;
+    float: left;
+}
+
+#read-content-list 
+{
+    float: left;
+    margin-left: 10px;
+    height: 180px;
+    overflow: auto;
+}
+
+#read-content-list ul.read li
+{
+    margin-bottom: 5px;
+}

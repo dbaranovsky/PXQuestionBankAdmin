@@ -1,0 +1,138 @@
+/* Myers10 Stylesheet */ 
+
+/* Only Alter these 5 values */ 
+
+/* Main Gradient */ 
+
+@Gradienttopcolor: {{Gradienttopcolor}};
+
+@Gradientbottomcolor: {{Gradientbottomcolor}};
+
+
+/* Typography Color */
+@Typecolor: {{Typecolor}} ;
+
+/* Left and Right Column Border Color */
+@Columnborder: {{Columnborder}};
+
+@BookCover: '{{bookcover}}';
+
+@TitleColor: {{TitleColor}};
+
+@CourseBannerLogo: '{{course-banner-logo}}';
+
+@CourseTitleImage: '{{course-title-image}}';
+
+
+/* Don't Touch Styles Under Here!!! please */ 
+
+/* Main Gradient */ 
+
+ 
+.gradient-vertical(@startColor, @endColor) {
+     // IE9 prep
+    @dataPrefix: ~"url(data:image/svg+xml;base64,";
+    @dataSuffix: ~")";
+    @dataContent: ~'<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1 1" preserveAspectRatio="none"><linearGradient id="g743" gradientUnits="userSpaceOnUse" x1="0%" y1="0%" x2="0%" y2="100%"><stop stop-color="@{startColor}" offset="0"/><stop stop-color="@{endColor}" offset="1"/></linearGradient><rect x="0" y="0" width="1" height="1" fill="url(#g743)"/></svg>';
+    @b64Out: ~"(function(a,b,c){function e(a){a=a.replace(/\r\n/g,'\n');var b='';for(var c=0;c<a.length;c++){var d=a.charCodeAt(c);if(d<128){b+=String.fromCharCode(d)}else if(d>127&&d<2048){b+=String.fromCharCode(d>>6|192);b+=String.fromCharCode(d&63|128)}else{b+=String.fromCharCode(d>>12|224);b+=String.fromCharCode(d>>6&63|128);b+=String.fromCharCode(d&63|128)}}return b}function f(a){var b='';var c,f,g,h,i,j,l;var m=0;a=e(a);while(m<a.length){c=a.charCodeAt(m++);f=a.charCodeAt(m++);g=a.charCodeAt(m++);h=c>>2;i=(c&3)<<4|f>>4;j=(f&15)<<2|g>>6;l=g&63;if(isNaN(f)){j=l=64}else if(isNaN(g)){l=64}b=b+d.charAt(h)+d.charAt(i)+d.charAt(j)+d.charAt(l)}return b}var d='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';return a+f(b)+c})('@{dataPrefix}','@{dataContent}','@{dataSuffix}')";
+
+    background-color: mix(@startColor, @endColor, 60%); // Base solid colour fallback
+    background-image: ~"@{b64Out}"; // IE9
+    background-image: -moz-linear-gradient(top, @startColor, @endColor); // FF 3.6+
+    background-image: -ms-linear-gradient(top, @startColor, @endColor); // IE10
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
+    background-image: -webkit-linear-gradient(top, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+    background-image: -o-linear-gradient(top, @startColor, @endColor); // Opera 11.10
+    background-image: linear-gradient(top, @startColor, @endColor); // The standard
+    background-repeat: no-repeat;
+ 
+}
+
+html{
+    .gradient-vertical(@Gradienttopcolor, @Gradientbottomcolor);
+    background-position: 0 0;
+}
+
+
+/* End Gradient Styling */
+
+
+/* Left and Right Column Border Color */
+#PX_HOME_FACEPLATE_ZONE_2{
+    border-left: 5px solid @Columnborder;
+	border-right: 5px solid @Columnborder;
+	border-top: 5px solid @Columnborder;
+    behavior: url("style/pie/PIE.htc");   
+}
+
+#PX_HOME_FACEPLATE_ZONE_3,
+.page-action-EnrollmentConfirmation #PX_HOME_ZONE_2,
+.page-action-Enroll #PX_HOME_ZONE_2{
+    border: 5px solid @Columnborder;
+     behavior: url("style/pie/PIE.htc");   
+}
+
+#PX_HOME_FACEPLATE_ZONE_MENUCONTENT  {
+    border-left: 5px solid @Columnborder;
+	border-right: 5px solid @Columnborder;
+	border-bottom:5px solid @Columnborder;
+}
+
+#PX_DashboardWidget.widgetItem{
+	border: 5px solid @Columnborder;
+}
+/* Typography Color */
+
+
+#PX_FacePlate_RSS_Feed_Widget .customRssLink,
+.rss-more-resources-link,
+.faceplate-unit-subitems li div.faux-tree-node-title a,
+.faceplateitemlist .fptitle,
+.faceplateitemlist .unitfptitle {
+	color: @Typecolor;
+}
+
+/* Graphic Images */ 
+
+#ecom-marketing .bookcover {
+    background-image: url("@{BookCover}");
+    background-size: contain;
+    height: 230px;
+    background-color:transparent;
+}
+
+.homepage-course-info .course-banner-logo {
+    background-color: transparent;
+    background-image: url("@{CourseBannerLogo}");
+    background-repeat: no-repeat;
+    background-position: center center;
+	border: 0px;
+	height: 80px;
+	width: 70px;
+}
+
+.welcome .book,
+.marketing .book {
+    background: url("@{BookCover}") no-repeat scroll 0 0 transparent;
+    background-size:contain;
+}	
+
+.homepage-course-info .course-banner-logo{
+    background-image: url("@{CourseBannerLogo}");
+}
+
+.course-title-lable{
+    background-image: url("@{CourseTitleImage}") !important;
+    background-position: 5px 0;
+}
+
+.course-title-lable-text
+{
+	color: @TitleColor;
+}
+
+.login-course-info .book-cover {
+    background: url("@{BookCover}") no-repeat scroll 0 0 transparent;
+    background-size:contain;
+}	
+

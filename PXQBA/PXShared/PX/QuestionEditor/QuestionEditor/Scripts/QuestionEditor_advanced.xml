@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<iproblem maxpoints="0">
+  <itemmetadata> …</itemmetadata>
+  <iprostep id="step0" stopifcorrect="no" maxtries="unlimited" points="0">
+    <iproelement_mc elid="question0" scramble="yes" correct="1" points="0" version="2">
+      <ipro_mcchoice choiceid="1" fixed="no" id="@step.mc@id" mcid="question0" version="2"><![CDATA[<h2>QUESTION TEXT</h2>]]><iproformula>[MATH EXPRESSION]</iproformula></ipro_mcchoice>
+    </iproelement_mc>
+    <iproelement_short elid="question1" type="text, numeric, or math" correct="Answer Text" answerrule="exact | any | similar | nodecimal | list | ordered_list" tolerance="0" format="[NUMERIC FORMAT]" points="0" size="2" id="@step.s@id" version="2" allowedwords="[COMMA DELIMITED LIST OF WORDS ALLOWED]" checksyntax="on"><![CDATA[<h2>QUESTION TEXT</h2>]]><ipro_alt_correct correct="Answer Text" answerrule="exact | any | similar | nodecimal | list | ordered_list" tolerance="0" points="0" /></iproelement_short>
+    <ipronav navtype="next | hint | correct | incorrect | maxtries" stepid="[ID OF THE STEP TO JUMP TO ON NEXT]" next="[ID OF THE STEP TO JUMP TO ON NEXT]" condition="[BOOLEAN EXPRESSION]" />
+  </iprostep>
+  <iprostep id="solution" stopifcorrect="no" maxtries="unlimited" points="0">
+    <iproelement_mc elid="question0" scramble="yes" correct="1" points="0" version="2">
+      <ipro_mcchoice choiceid="1" fixed="no" id="@step.mc@id" mcid="question0" version="2"><![CDATA[<h2>QUESTION TEXT</h2>]]><iproformula>[MATH EXPRESSION]</iproformula></ipro_mcchoice>
+    </iproelement_mc>
+    <iproelement_short elid="question1" type="text, numeric, or math" correct="Answer Text" answerrule="exact | any | similar | nodecimal | list | ordered_list" tolerance="0" format="[NUMERIC FORMAT]" points="0" size="2" id="@step.s@id" version="2" allowedwords="[COMMA DELIMITED LIST OF WORDS ALLOWED]" checksyntax="on"><![CDATA[<h2>QUESTION TEXT</h2>]]><ipro_alt_correct correct="Answer Text" answerrule="exact | any | similar | nodecimal | list | ordered_list" tolerance="0" points="0" /></iproelement_short>
+  </iprostep>
+  <ipronav navtype="" stepid="" next="" />
+</iproblem>

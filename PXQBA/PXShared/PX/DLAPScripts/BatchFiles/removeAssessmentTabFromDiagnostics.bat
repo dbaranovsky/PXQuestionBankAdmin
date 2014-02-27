@@ -1,0 +1,1 @@
+..\..\Tools\Metadata\Metadata\bin\metadata.exe /a:executedlapscript /d:"C:\Development\PX\Trunk\PX\DLAPScripts\CourseScripts\Course Specific Scripts\Diagnostics\RemoveAssignmentsTab.xml" /m:6650 /ti="test" /c:93868 /e:dev 

@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{614C450E-6DB7-432B-BA19-CB6EB8CD89C3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bfw.Agilix.Commands.Tests.Integration</RootNamespace>
+    <AssemblyName>Bfw.Agilix.Commands.Tests.Integration</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="NSubstitute">
+      <HintPath>..\..\ThirdParty\NSubstitute-1.6.0.0\lib\NET40\NSubstitute.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helper\DlapConnectionHelper.cs" />
+    <Compile Include="ListCoursesTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Bfw.Agilix\Bfw.Agilix.Commands\Bfw.Agilix.Commands.csproj">
+      <Project>{19e52c79-1fe3-4385-a035-b603213c099e}</Project>
+      <Name>Bfw.Agilix.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Agilix\Bfw.Agilix.DataContracts\Bfw.Agilix.DataContracts.csproj">
+      <Project>{4d185f8e-c2a0-442a-a05e-78b566361562}</Project>
+      <Name>Bfw.Agilix.DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Bfw.Agilix.Dlap.Components.csproj">
+      <Project>{bffd6b7a-4ea1-431a-916a-8214bd16e049}</Project>
+      <Name>Bfw.Agilix.Dlap.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Agilix\Bfw.Agilix.Dlap\Bfw.Agilix.Dlap.csproj">
+      <Project>{f5a60c36-aa1f-4849-a9e7-465f7963df9f}</Project>
+      <Name>Bfw.Agilix.Dlap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.PX.Biz\Bfw.PX.Biz.DataContracts\Bfw.PX.Biz.DataContracts.csproj">
+      <Project>{71124912-42b5-49bf-acbd-e38f09faca70}</Project>
+      <Name>Bfw.PX.Biz.DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.PX.Biz\Bfw.PX.Biz.Direct.Services\Bfw.PX.Biz.Direct.Services.csproj">
+      <Project>{756a544b-3923-4a7e-847a-9aab50feb106}</Project>
+      <Name>Bfw.PX.Biz.Direct.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.PX.Biz\Bfw.PX.Biz.ServiceContracts\Bfw.PX.Biz.ServiceContracts.csproj">
+      <Project>{392A9467-B225-4300-BC1A-F34983AFBC3D}</Project>
+      <Name>Bfw.PX.Biz.ServiceContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PX\Bfw.PX.PXPub.Components\Bfw.PX.PXPub.Components.csproj">
+      <Project>{424d97dd-5be0-4259-9323-ef576a651f18}</Project>
+      <Name>Bfw.PX.PXPub.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PX\TestHelper\TestHelper.csproj">
+      <Project>{81a20d60-246e-48e5-8d95-bf5452dc7d66}</Project>
+      <Name>TestHelper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

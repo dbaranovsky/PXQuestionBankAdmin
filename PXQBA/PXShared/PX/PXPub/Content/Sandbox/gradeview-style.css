@@ -1,0 +1,126 @@
+﻿
+div.level1{
+    background-color:#999;
+}
+div.level2{
+    background-color:#777;
+    
+}
+.top-view{
+    height:155px;
+}
+.bottom-view{
+    bottom: 0;
+    position: absolute;
+    top: 182px;
+}
+
+.left-top{
+     position:relative;
+    margin-right:330px;
+     height:inherit;
+}
+
+.right-top{
+    width:300px;
+    height:inherit;
+    float:right;
+}
+
+.left-bottom{
+    position:relative;
+    margin-right:330px;
+    height:100%;
+    
+}
+
+.right-bottom{
+    width:300px;
+    height:100%;
+    float:right;
+}
+
+.scroll-wrapper{
+    height:125px;
+    
+}
+.left-nav-wrapper{
+    float:left;
+}
+.nav-buttons{
+    float: left;
+    height: 72px;
+    margin-right: 10px;
+    width: 22px;
+    background-color:blue;
+}
+
+.node{
+    background-color: #F0F0F0;
+    border: 2px solid #D1D3D4;
+    border-radius: 5px 5px 5px 5px;
+    display: inline-block;
+    height: 70px;
+    overflow: hidden;
+    padding: 10px 0 0 10px;
+    text-align: left;
+    vertical-align: top;
+    width: 180px;
+    white-space:normal;
+    
+}
+.title-node{
+    margin-right:5px;
+}
+.gradeview-scroll-container{
+      padding: 10px 0 0 10px;
+    
+}
+.rubric-summary{
+    margin-top:6px;
+    height:25px;
+}
+.rubricsOptionSelector{
+    font-size: 12px;
+    margin-left: 12px;
+    padding-top: 2px;
+}
+.grade-wrapper{
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom:7px;
+}
+.grade-score:hover{
+    background-color: #E5F6EE;
+    border: 2px solid #00A651;
+    font-weight: bold;
+    
+}
+.grade-score:hover span.colSelected {
+  display: block;
+  float: right;
+  height: 30px;
+  margin: 0 5px;
+  width: 30px;
+  background-color:Green;
+}
+
+hr{
+  margin-right:4px;  
+}
+.rubric-score-guides-header{
+    white-space: normal; /* css-3 */
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+    -ms-word-wrap: break-word;
+}
+.grade-score:hover .rubric-score-guides-header{
+    display: block;
+    width: 135px;
+}
+.rubric-summary .rubric-total{
+    float:right;
+    margin-right:10px;
+}

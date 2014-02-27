@@ -1,0 +1,150 @@
+﻿.facePlateStartPageBody .ui-dialog .ui-dialog-content .custom-widget-labels li {
+    list-style:none;
+}
+
+.ui-dialog.custom_widget .ui-dialog-title {
+    margin-left:8px;
+}
+
+.CustomWidgetLabel {
+    padding-left:10px;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+.CustomWidgetText {
+    padding-left:10px;
+}
+
+.customWidgetOuterDiv {
+    height: 135px; 
+    overflow: auto;
+    padding: 12px;
+}
+
+.customWidgetWaterMarkedTextBox {
+    color: #ccc !important; 
+    font-style: italic !important;      
+}
+
+#btnCustomWidgetSave {
+    width: 60px;
+    height: 25px;
+    font-weight:bold;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.btnCustomWidgetSavehover {
+    background-color:#5EFB6E;
+}
+
+.linkCancelClass{
+    color: Red;
+    cursor: pointer;
+    margin-left: 6px;
+}
+
+/* Course Information Widget */ 
+
+.confirmDeleteModal .removeMessage {
+    font-size: 14px;
+    height: 60px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.confirmDeleteModal .deleteConfirmButtons {
+    float: left;
+}
+
+.confirmDeleteModal .divDeleteConfirm {
+    float: left;
+    padding-right: 10px;
+}
+
+.confirmDeleteModal .divDeleteCancel {
+    float: left;
+}
+
+.courseinformationwidget .addremove {
+    float: right;
+    width: 256px;
+    margin-top: 4px;
+}
+.courseinformationwidget .addremove a  {
+    text-decoration: none; 
+    color:#467CBE;   
+}
+.syllabuswrapper{
+    float:right;
+}
+
+.editor-field.urlform{
+    float:left;
+    margin-top: 18px;
+}
+
+.editor-field .editor-label{
+    float:left;
+    width: 120px;
+}
+
+.courseinformationwidget  .feildtext {
+    float: left;
+    width: 50px;
+}
+
+.courseinformationwidget .field {
+    float: left; 
+}
+
+#syllabusblock{
+    margin-top:4px;
+}
+
+.subtractfield {
+margin-right: 3px;
+float: right;
+}
+
+.courseinformationwidget .subtractfield a {
+    text-decoration: none;
+    font-size: 2em;
+    line-height: 7px;
+    display: block;
+    height: 6px;
+    line-height:16px;
+}
+
+.courseinformationwidget .contactInfoHolder {
+    margin-bottom: 6px;
+    float: right;
+    width: 255px;
+}
+
+.courseinformationwidget .removeContactInfo {
+    cursor: pointer;
+}
+
+.courseinformationwidget .ddlContactType {
+    float: left;
+    width: 70px
+}
+
+.courseinformationwidget .water_mark {
+    color: #CCC;
+    width: 245px;
+}
+.courseinformationwidget #UploadResults {
+    display: block;
+    padding-top: 5px;
+}
+
+.courseinformationwidget .removeSyllabus {
+    color: #467CBE;
+    cursor: pointer;
+    width: 20px;
+    float: left;
+    clear: both;
+}

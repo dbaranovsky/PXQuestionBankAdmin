@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Page API Test</title>
+    <script type="text/javascript" language="javascript" src="/Scripts/jquery/1.4.4-jquery.min.js"></script>
+    <script type="text/javascript" language="javascript" src="/Scripts/Common/PxPage.js"></script>
+    <script type="text/javascript" language="javascript">
+        var BoxWidget = function($) {
+            var defaults = {
+                css: {
+                    backgroundColor: 'black',
+                    color: "white",
+                    width: "200px",
+                    height: "200px",
+                    textAlign: "center"
+                }
+            };
+            var _init = null;
+
+            var def = function() {
+                return {
+                    init: _init
+                };
+            };
+
+            _init = function(config) {
+                var settings = $.extend(true, {}, defaults, config);
+                if (settings.container != undefined) {
+                    $(settings.container).append("<div id='" + settings.name + "'></div>");
+                    $("#" + settings.name).css(settings.css).text("I am " + settings.name);
+
+                    if (settings.connected !== undefined) {
+                        PxPage.registerListener("talk", function(message) { $("#" + settings.name).append("<br />" + message); }, settings.connected, settings.name);
+                    }
+
+                    $("#" + settings.name).click(function() {
+                        PxPage.fireEvent(settings.name, "talk", [settings.name + " is talking"]);
+                    });
+                }
+            };
+
+            return def;
+        } (jQuery);
+
+        PxPage.registerComponent({ name: "blackbox", config: { name: "blackbox", container: "#boxOne", connected: "greenbox" } }, new BoxWidget());
+        PxPage.registerComponent({ name: "greenbox", config: { name: "greenbox", container: "#boxTwo", css: { backgroundColor: "darkgreen", color: "white"}} }, new BoxWidget());
+        PxPage.registerComponent({ name: "redbox", config: { name: "redbox", container: "#boxThree", css: { backgroundColor: "darkred", color: "white"}} }, new BoxWidget());
+        PxPage.init();
+    </script>    
+</head>
+<body>
+    <div id="boxOne"></div>
+    <div id="boxTwo"></div>
+    <div id="boxThree"></div>
+</body>
+</html>

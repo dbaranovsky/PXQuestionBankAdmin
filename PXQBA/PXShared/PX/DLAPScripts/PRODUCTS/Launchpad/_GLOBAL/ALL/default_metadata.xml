@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<batch>
+	<request cmd="putitems">
+		<requests>
+		 <item itemid="PX_default_metadata_defination" entityid="-entityid-">
+            <data>
+                <sequence>m</sequence>
+                <title>Generic</title>
+                <timetocomplete>PT1M</timetocomplete>
+                <category>0</category>
+                <period inherit="true">0</period>
+                <groupsetid>-1</groupsetid>
+                <weight>100</weight>
+                <gradeentry>1</gradeentry>
+                <inputtable inherit="true">0</inputtable>
+                <bfw_metadata_admin>
+                    <metaDataElements>
+                        <metaDataElement name="ResourceType" displayOrder="1" action="MetaDataStaticText" controller="AdminMetaData" xPath="./bfw_subtype" description="Resource Type" defaultValue="Quiz">
+                            <elasticMetaNodeToSave name="bfw_subtype">
+                                <bfw_subtype dlaptype="exact">{value}</bfw_subtype>
+                            </elasticMetaNodeToSave>
+                        </metaDataElement>
+                        <metaDataElement name="ResourceSubType" displayOrder="2" action="MetaDataResourceSubType" controller="AdminMetaData" xPath="./meta-content-type" description="Resource Sub-Type" defaultValue="0">
+                            <elasticMetaNodeToSave name="meta-content-type">
+                                <meta-content-type dlaptype="exact">{value}</meta-content-type>
+                            </elasticMetaNodeToSave>
+                        </metaDataElement>
+                        <metaDataElement name="ResourceUserGroup" displayOrder="3" action="MetaDataRadioButtonList" controller="AdminMetaData" xPath="./meta-content-type" description="Resource User Group" defaultValue="0">
+                            <elasticMetaNodeToSave name="meta-content-type">
+                                <meta-content-type dlaptype="exact">{value}</meta-content-type>
+                            </elasticMetaNodeToSave>
+                            <elasticMetaContorl>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input type="radio" value="instructor_" id="ResourceUserGroup" name="ResourceUserGroup" />
+                                        </td>
+                                        <td>Instructor resource</td>
+                                        <td>
+                                            <input type="radio" value="student_" id="ResourceUserGroup" name="ResourceUserGroup" />
+                                        </td>
+                                        <td>Student resource</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">This will be hidden from students by default</td>
+                                    </tr>
+                                </table>
+                            </elasticMetaContorl>
+                        </metaDataElement>
+                        <metaDataElement name="EBooksAssociations" displayOrder="5" action="MetaDataChaptersAssociations" controller="AdminMetaData" xPath="./meta-topics" description="EBooks Associations" defaultValue="ebookfilter">
+                            <elasticMetaNodeToSave name="meta-topic">
+                                <meta-topics>
+                                    <meta-topic toc="ebookfilter" dlaptype="exact">{value}</meta-topic>
+                                </meta-topics>
+                            </elasticMetaNodeToSave>
+                        </metaDataElement>
+                        <metaDataElement name="LaunchpadUnitAssociations" displayOrder="6" action="MetaDataChaptersAssociations" controller="AdminMetaData" xPath="./meta-topics" description="Launchpad Unit Associations" defaultValue="syllabusfilter">
+                            <elasticMetaNodeToSave name="meta-topic">
+                                <meta-topics>
+                                    <meta-topic toc="syllabusfilter" dlaptype="exact">{value}</meta-topic>
+                                </meta-topics>
+                            </elasticMetaNodeToSave>
+                        </metaDataElement>
+                    </metaDataElements>
+                </bfw_metadata_admin>
+            </data>
+        </item>
+		<item itemid="TMP_88161c2783b949ed805d56fc5a1a1349" entityid="-entityid-">
+        <data>
+          <type>Assessment</type>
+          <parent>PX_TEMPLATES</parent>
+          <sequence>k</sequence>
+          <title>Quiz</title>
+          <description>
+            &lt;br/&gt;
+            An assignment primarily designed to assess
+            knowledge. Quizzes replicate the experience
+            of traditional in-class quizzes, in that they are
+            often timed and do not incorporate support
+            opportunities.
+            &lt;br/&gt;
+            &lt;br/&gt;
+            Typical Uses
+            &lt;br/&gt;
+            • Reading verification
+            &lt;br/&gt;
+            • Summative Assessment
+            &lt;br/&gt;
+          </description>
+          <folder>88161c2783b949ed805d56fc5a1a1349</folder>
+          <href>a</href>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+		  <graderule>2</graderule>
+          <inputtable inherit="true">0</inputtable>
+		  <completiontrigger>1</completiontrigger>
+          <bfw_properties>
+            <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+            <bfw_property name="bfw_test" type="String">testing</bfw_property>
+          </bfw_properties>
+          <bfw_type>Quiz</bfw_type>
+          <bfw_template>Quiz</bfw_template>
+            <bfw_metadata_admin>
+                <metaDataElements>
+                    <metaDataElement name="ResourceType" displayOrder="1" action="MetaDataStaticText" controller="AdminMetaData" xPath="./bfw_subtype" description="Resource Type" defaultValue="Quiz">
+                        <elasticMetaNodeToSave name="bfw_subtype">
+                            <bfw_subtype dlaptype="exact">{value}</bfw_subtype>
+                        </elasticMetaNodeToSave>
+                    </metaDataElement>
+                    <metaDataElement name="ResourceSubType" displayOrder="2" action="MetaDataResourceSubType" controller="AdminMetaData" xPath="./meta-content-type" description="Resource Sub-Type" defaultValue="0">
+                        <elasticMetaNodeToSave name="meta-content-type">
+                            <meta-content-type dlaptype="exact">{value}</meta-content-type>
+                        </elasticMetaNodeToSave>
+                    </metaDataElement>
+                    <metaDataElement name="ResourceUserGroup" displayOrder="3" action="MetaDataRadioButtonList" controller="AdminMetaData" xPath="./meta-content-type" description="Resource User Group" defaultValue="0">
+                        <elasticMetaNodeToSave name="meta-content-type">
+                            <meta-content-type dlaptype="exact">{value}</meta-content-type>
+                        </elasticMetaNodeToSave>
+                        <elasticMetaContorl>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <input type="radio" value="instructor_" id="ResourceUserGroup" name="ResourceUserGroup" />
+                                    </td>
+                                    <td>Instructor resource</td>
+                                    <td>
+                                        <input type="radio" value="student_" id="ResourceUserGroup" name="ResourceUserGroup" />
+                                    </td>
+                                    <td>Student resource</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">This will be hidden from students by default</td>
+                                </tr>
+                            </table>
+                        </elasticMetaContorl>
+                    </metaDataElement>
+                    <metaDataElement name="DefaultGradeBookValue" displayOrder="4" action="MetaDataInputText" controller="AdminMetaData" xPath="./weight" description="Default Grade Book Value" defaultValue="">
+                        <elasticMetaNodeToSave name="weight">
+                            <weight>{value}</weight>
+                        </elasticMetaNodeToSave>
+                    </metaDataElement>
+                    <metaDataElement name="EBooksAssociations" displayOrder="5" action="MetaDataChaptersAssociations" controller="AdminMetaData" xPath="./meta-topics" description="EBooks Associations" defaultValue="ebookfilter">
+                        <elasticMetaNodeToSave name="meta-topic">
+                            <meta-topics>
+                                <meta-topic toc="ebookfilter" dlaptype="exact">{value}</meta-topic>
+                            </meta-topics>
+                        </elasticMetaNodeToSave>
+                    </metaDataElement>
+                    <metaDataElement name="LaunchpadUnitAssociations" displayOrder="6" action="MetaDataChaptersAssociations" controller="AdminMetaData" xPath="./meta-topics" description="Launchpad Unit Associations" defaultValue="syllabusfilter">
+                        <elasticMetaNodeToSave name="meta-topic">
+                            <meta-topics>
+                                <meta-topic toc="syllabusfilter" dlaptype="exact">{value}</meta-topic>
+                            </meta-topics>
+                        </elasticMetaNodeToSave>
+                    </metaDataElement>
+                </metaDataElements>
+            </bfw_metadata_admin>
+          <bfw_custom_settings controller="CustomSettings" action="Quiz">custom settings</bfw_custom_settings>
+			<AssignmentSettings>
+				<AvailableCompletionTriggers>1|2</AvailableCompletionTriggers>
+				<DefaultCompletionTrigger>1</DefaultCompletionTrigger>
+				<AvailableSubmissionGradeActions>0|2</AvailableSubmissionGradeActions>
+				<DefaultSubmissionGradeAction>0</DefaultSubmissionGradeAction>
+			</AssignmentSettings>
+        </data>
+      </item>
+		</requests>
+	</request>
+</batch>
+			

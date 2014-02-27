@@ -1,0 +1,17 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<dsml:batchRequest xmlns:dsml="urn:oasis:names:tc:DSML:2:0:core" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+   <dsml:modifyRequest  dn="cn=cjhones,o=test">
+
+      <modification name="telephoneNumber" operation="add">
+          <value>536 354 2343</value>
+          <value>234 212 4534</value>
+      </modification>
+      <modification name="sn" operation="replace">
+          <value>Richard</value>
+      </modification>
+
+   </dsml:modifyRequest>
+
+</dsml:batchRequest>
+ 

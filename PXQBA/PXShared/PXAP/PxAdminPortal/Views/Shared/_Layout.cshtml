@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    @RenderSection("Header", false)
+    
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+
+    <script src="@Url.Content("~/Scripts/jquery-1.6.2.min.js")" type="text/javascript"></script>
+    @*<script src="@Url.Content("~/Scripts/jquery-ui-1.8.15.min.js")" type="text/javascript"></script>*@
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.8.15.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    <link href="@Url.Content("~/Content/ui.jqgrid.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/ui.multiselect.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/grid.locale-en.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.jqGrid.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/PAPX/PAPX.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.blockUI.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/PAPX/LogSearch.js")" type="text/javascript"></script>
+
+    <style type="text/css">
+        
+    </style>
+    
+    <script type="text/javascript">
+        window.PXAPRoutes = {
+            LogSearchGrid : '@Url.Action("LogSearchGrid", "LogSearch")',
+            LogSearchGetErrorMessage : '@Url.Action("GetErrorMessage", "LogSearch")'
+        };
+
+        $(function () {
+            $("#Environment").change(function () {
+                var env = $(this).find(":selected").text();
+                if (env != "") {
+                    env = "/" + env;
+                }
+                var urlArray = window.location.pathname.split('/');
+                urlArray.splice(1, 2); //remove env term
+                var path = urlArray.join("/");
+                var loc = window.location.protocol + "//" + window.location.host + "/pxap" + env + path;
+                window.location = loc;
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+    <div class="page">
+        <div id="header">
+            <div id="mainBanner">
+                <div id="title">
+                    <h1 style="color: Gray;">
+                        PX Admin Portal</h1>
+                </div>
+                <div id="logindisplay">
+                    @Html.Partial("_LogOnPartial")
+                    @{                   
+                        Bfw.PXAP.Models.LayoutModel model = ViewBag.LayoutModel as Bfw.PXAP.Models.LayoutModel;                                                          
+                    }
+                    @Html.DropDownList("Environment", model.EnvironmentOptions)
+                </div>
+                <div id="ExternalMenu">
+                    @Html.Partial("_MenuPartial", model.ExternalMenuModel)
+                </div>
+                
+
+            @Html.Partial("_MainMenuPartial", model.MainMenuModel)    
+                <br />
+            </div>
+
+            <div class="missingEnvMessages">               
+               @{ 
+                   string envMissingMessage = "";
+                   if (string.IsNullOrEmpty(model.CurrentEnvironment))
+                   {
+                       envMissingMessage = "No environment is currenly selected. Please select an environment from the dropdown in the top right corner.";
+
+                   }
+                }
+
+                @envMissingMessage               
+            </div>        
+        </div>
+        <div id="main1">
+            @RenderBody()
+        </div>
+        <div id="footer1">
+        </div>
+    </div>
+    <div id="loading">
+        <div style="margin-left: 40%; margin-top: 25%;">
+            <div id="divSpinner">
+            </div>
+            <div style="float: left; padding-top: 40px; font-size: 16px; color: Maroon;">
+                Please Wait</div>
+        </div>
+    </div>
+</body>
+</html>

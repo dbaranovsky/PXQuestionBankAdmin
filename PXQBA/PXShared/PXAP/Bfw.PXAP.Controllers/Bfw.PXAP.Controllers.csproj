@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4583005C-01AE-4054-8314-F33D09DB915A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bfw.PXAP.Controllers</RootNamespace>
+    <AssemblyName>Bfw.PXAP.Controllers</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountController.cs" />
+    <Compile Include="AppFabricCacheController.cs" />
+    <Compile Include="ApplicationController.cs" />
+    <Compile Include="ContentController.cs" />
+    <Compile Include="DlapCommandController.cs" />
+    <Compile Include="EnrollmentController.cs" />
+    <Compile Include="EnvironmentController.cs" />
+    <Compile Include="HomeController.cs" />
+    <Compile Include="LogonAuthorize.cs" />
+    <Compile Include="LogSearchController.cs" />
+    <Compile Include="MetadataController.cs" />
+    <Compile Include="ProgressController.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PxWebUserController.cs" />
+    <Compile Include="UserController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common\Bfw.Common.csproj">
+      <Project>{4F1BF9DB-1226-4867-9E41-129B214F24F2}</Project>
+      <Name>Bfw.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PX\PxWebUserAdmin\PxWebUser\PxWebUser.csproj">
+      <Project>{63B45011-8967-41AC-B6BB-0A2C42D01CB8}</Project>
+      <Name>PxWebUser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bfw.PXAP.Components\Bfw.PXAP.Components.csproj">
+      <Project>{B9F89678-56F1-4951-8A54-FA99DF5A4226}</Project>
+      <Name>Bfw.PXAP.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bfw.PXAP.Models\Bfw.PXAP.Models.csproj">
+      <Project>{94760FDA-B80F-40FD-89FE-77B6E145DE19}</Project>
+      <Name>Bfw.PXAP.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bfw.PXAP.ServiceContracts\Bfw.PXAP.ServiceContracts.csproj">
+      <Project>{B27F8420-A37D-4DF5-9489-FAE456A0DE6E}</Project>
+      <Name>Bfw.PXAP.ServiceContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bfw.PXAP.Services\Bfw.PXAP.Services.csproj">
+      <Project>{18292769-D9C0-4B30-B1D6-5550A5A6DEF3}</Project>
+      <Name>Bfw.PXAP.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

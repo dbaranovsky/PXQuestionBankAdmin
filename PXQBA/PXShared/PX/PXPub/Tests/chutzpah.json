@@ -1,0 +1,10 @@
+﻿{
+    "Framework": "jasmine",
+    
+    "TestFileTimeout": "50000",  	
+	
+	"CodeCoverageExcludes": ["*\\jquery\\*",
+								"*\\Tests\\lib\\*",
+								],
+    
+}

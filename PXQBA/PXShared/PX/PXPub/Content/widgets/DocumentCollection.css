@@ -1,0 +1,622 @@
+﻿/*start document collection */
+div#editForm {
+margin: 0 0 20px 5px;
+}
+
+div#editForm input#showUploadForm {
+float: none;
+}
+
+div#editForm input#docTitle {
+width: 400px;
+}
+
+div#editForm input#linkTitle {
+	width: 400px;
+}
+
+div#editForm input#linkUrl {
+	width: 400px;
+}
+
+div#editForm span.field.buttons input {
+	margin: 0 10px 0 115px;
+}
+
+div#editForm span.field label {
+	text-align: right;
+	width: 105px;
+	display: block;
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+div#editForm span.field {
+	display: block;
+}
+
+.document-list td input,
+.document-list td{
+	line-height: 16px;
+}
+
+.document-list td{
+	border-right: solid 12px #fff;
+}
+.document-list td a{
+	 line-height: 16px;
+}
+
+ul.document-list-controls input {
+text-transform: uppercase;
+float: none;
+border: none;
+cursor: pointer;
+background-color: Transparent;
+width: 90px;
+background:none;
+}
+
+ul.document-list-controls input:hover{
+    background:none;
+}
+
+ul.document-list-controls input.docclear{
+	width: 60px;
+	padding-right: 10px;
+}
+
+#content ul.document-list-controls li.last input{
+	width: 130px;
+}
+#doc-collection #editForm #showUploadForm {
+width: 115px;
+}
+
+#doc-collection #editForm #uploadForm {
+margin: 10px 0;
+}
+
+#doc-collection #editForm #uploadForm .help {
+margin: 10px 0 10px 115px;
+}
+
+#doc-collection #editForm #uploadForm .field {
+margin: 5px 0;
+}
+
+#doc-collection #editForm #uploadForm input[type = "submit"] {
+margin: 5px 0 0 115px;
+display: block;
+}
+#document-list-table{
+	border: solid 1px #C2C4C6;
+	float:left;
+	clear:both;
+	margin: 12px 0px !important;
+	border-collapse: separate;
+}
+
+#document-list-table td
+{
+    border: solid 1px #C2C4C6;
+}
+.document-list-table-spacing
+{
+ padding:5px !important;   
+    
+}
+
+.td-background
+{
+    background-color:#FEF1B5 !important; 
+    padding: 5px !important;  
+}
+
+#document-list-table .doc-list-header{
+	background-color: #DDDBCE !important;
+}
+#document-list-table li{
+	background-color:transparent !important;
+	display: inline;
+}
+
+table .document-list span{
+	vertical-align:text-top;
+	line-height: 12px;
+}
+
+#docUploadWin{
+width: 390px;
+}
+
+#docUploadWin .field label {
+	display: block;
+	float: left;
+	margin: 0 10px 0 0;
+	text-align: right;
+	width: 105px;
+	line-height: 18px;
+}
+
+#docUploadWin .field #docFile {
+margin: 0 0 0 115px;
+}
+
+#docUploadWin .field #uploadFile {
+	margin: 0 0 0 80px;
+}
+
+#docUploadWin .field #uploadFile,
+#docUploadWin .field #uploadTitle{
+	float:left;
+}
+
+#docUploadWin .field #btnCancel{
+	float:left;
+}
+
+#docUploadWin .field #btnSave{
+	float:left;
+	clear:both;
+}
+#docUploadWin input[type="submit"] {
+display: block;
+margin: 5px 5px 5px 115px;
+}
+
+
+#docUploadWin input[type="button"] {
+	display: block;
+	margin: 5px;
+}
+
+#docUploadWin .confirm-buttons {
+	overflow:hidden;
+}
+
+/* Doc Collection Content Type Styles -- across product types*/ 
+
+.currentSubmittedFile .removeStudentSubmittedFile{
+    width: 22px;
+    height: 22px;
+    background-image: url('style/images/platx_sprite.png');
+    background-position: -199px -49px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    cursor:pointer;
+    display: block;
+    float: right;
+    position: relative;
+}
+
+/* Dropbox styles */ 
+.dropboxsubmission {
+    float: left;
+    border: 1px solid #DDDFE3;
+    width: 100%;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.dropboxsubmission .title {
+    font-weight:bold;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-right:20px;
+}
+
+.dropboxsubmission .title a {
+    color: #333;
+}
+
+.dropboxsubmission .submission {
+   font-size: 12px;
+   color:gray;
+   margin-bottom:14px;
+}
+
+ .dropboxsubmission .submissioncomment {
+     font-size: .813rem;
+     margin-bottom: 20px;
+}
+
+.dropboxsubmission .submissionlinks {
+    margin-bottom: 20px;
+    font-size: .813rem;
+    color: #7F7F7F;
+}
+
+.dropboxsubmission .submissionlinks a {
+    text-decoration: none;
+    font-size: .813rem;
+    color: #057ee0; 
+}
+
+.dropboxsubmission .submissionlinks a:hover {
+    text-decoration: underline;
+}
+
+.submissionlinks .downloadLink {
+    float: left;
+    margin-right: 14px;
+}
+
+.dropboxsubmission .gradecontainer {
+    font-size: 12px;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:20px;
+    font-weight:bold;
+}
+
+.dropboxsubmission .gradecomments {
+    font-size: 12px;
+    padding-bottom:20px;
+    padding-left:20px;
+}
+
+.gradeattachments{
+    float:left;
+    font-size: 12px;
+    padding-bottom:10px;
+}
+
+.gradeattachments .attachmentname{
+    float:left;
+    padding-right: 20px;
+    text-decoration: underline;
+}
+
+.attachmentlink {
+    float: left;
+}
+
+#divComposeItems #dropboxSubmission {
+    float: left;
+    border-bottom: 1px solid #DDDFE3;
+    width: 100%;
+}
+
+/* Dropbox Submission Edit Modal */ 
+ 
+.showUploadandSubmitModal .editcontainer{
+    float: left;
+    padding-top: 5px;
+    clear: both;
+}
+
+.showUploadandSubmitModal .editcontainer .label {
+    margin: 12px 0;
+}
+
+.showUploadandSubmitModal .currentSubmittedFile {
+    border: 1px solid #ccc;
+    background-color: #F3EAEA;
+    height: 40px;
+    float: left;
+    width: 90%;
+}
+
+#dropboxSubmission #dropboxSubmissionImage {
+    float:left;
+    width:10%
+}
+
+#dropboxSubmission #dropboxSubmissionDesc 
+{
+    float:right;
+    width:88%;
+}
+
+#link-collection #dropboxSubmissionDesc{
+    float:left;
+}
+
+#link-collection #dropboxSubmissionDesc a{
+    color: #333;
+    font-weight:bold;
+    font-size:14px;
+    margin-bottom:12px;
+    display:block;
+}
+
+#link-collection #dropboxSubmissionDesc a.link{
+    color: #B2B2B2;
+    font-weight:normal;
+    font-size:12px;
+    text-decoration:none;
+}
+
+#link-collection .link-table{
+    margin-top:12px;
+}
+
+#link-collection .link-wrapper{
+    border: 1px solid #D5CCCC;
+    float:left;
+    width:100%;
+    padding:12px 0 12px 12px;
+}
+
+#divComposeItems #dropboxGrade {
+    float: left;
+    width: 100%;
+    background-color: #F8F9F9;
+}
+
+#dropboxSubmission #dropboxSubmissionImage .docx 
+{
+    background-image: url("style/images/platx_sprite_filetypes.png");
+    background-position: 0px 0px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    position: absolute;
+    height: 100px;
+    width: 100px !important;
+}
+
+#dropboxSubmission #dropboxSubmissionImage .doc 
+{
+    background-image: url("style/images/platx_sprite_filetypes.png");
+    background-position: -100px 0px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    position: absolute;
+    height: 100px;
+    width: 100px !important;
+}
+
+#dropboxSubmission #dropboxSubmissionImage .pdf
+{
+    background-image: url("style/images/platx_sprite_filetypes.png");
+    background-position: -200px 0px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    position: absolute;
+    height: 100px;
+    width: 100px !important;
+}
+
+#dropboxSubmission #dropboxSubmissionImage .rtf
+{
+    background-image: url("style/images/platx_sprite_filetypes.png");
+    background-position: -300px 0px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    position: absolute;
+    height: 100px;
+    width: 100px !important;
+}
+
+#dropboxSubmission #dropboxSubmissionImage .nofile
+{
+    background-image: url("style/images/platx_sprite_filetypes.png");
+    background-position: -400px -100px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    position: absolute;
+    height: 100px;
+    width: 100px !important;
+}
+
+#dropboxSubmission #dropboxSubmissionImage .unknown
+{
+    background-image: url("style/images/platx_sprite_filetypes.png");
+    background-position: -200px -200px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    position: absolute;
+    height: 100px;
+    width: 100px !important;
+}
+
+#dropboxSubmission #dropboxSubmissionImage .txt
+{
+    background-image: url("style/images/platx_sprite_filetypes.png");
+    background-position: -400px 0px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    position: absolute;
+    height: 100px;
+    width: 100px !important;
+}
+
+#dropboxSubmission #dropboxSubmissionImage .jpeg
+{
+    background-image: url("style/images/platx_sprite_filetypes.png");
+    background-position: 0px -100px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    position: absolute;
+    height: 100px;
+    width: 100px !important;
+}
+
+#dropboxSubmission #dropboxSubmissionImage .jpg
+{
+    background-image: url("style/images/platx_sprite_filetypes.png");
+    background-position: 0px -100px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    position: absolute;
+    height: 100px;
+    width: 100px !important;
+}
+
+#dropboxSubmission #dropboxSubmissionImage .png
+{
+    background-image: url("style/images/platx_sprite_filetypes.png");
+    background-position: -100px -100px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    position: absolute;
+    height: 100px;
+    width: 100px !important;
+}
+
+#dropboxSubmission #dropboxSubmissionImage .tiff,
+#dropboxSubmission #dropboxSubmissionImage .tif
+{
+    background-image: url("style/images/platx_sprite_filetypes.png");
+    background-position: -200px -100px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    position: absolute;
+    height: 100px;
+    width: 100px !important;
+}
+
+#dropboxSubmission #dropboxSubmissionImage .gif
+{
+    background-image: url("style/images/platx_sprite_filetypes.png");
+    background-position: -300px -100px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    position: absolute;
+    height: 100px;
+    width: 100px !important;
+}
+
+#dropboxSubmission #dropboxSubmissionImage .xls
+{
+    background-image: url("style/images/platx_sprite_filetypes.png");
+    background-position: 0px -200px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    position: absolute;
+    height: 100px;
+    width: 100px !important;
+}
+
+#dropboxSubmission #dropboxSubmissionImage .xlsx
+{
+    background-image: url("style/images/platx_sprite_filetypes.png");
+    background-position: -100px -200px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    position: absolute;
+    height: 100px;
+    width: 100px !important;
+}
+.doc-collection-content-view .docTitle{
+    font-weight:bold;
+    padding-top:10px;
+    padding-bottom:20px;
+    padding-right:20px;
+}
+.doc-collection-content-view .docTitle a{
+    color:#000000;
+}
+.doc-collection-content-view .downloadLink{
+    font-size:13px;
+    color: Gray;
+}
+.doc-collection-content-view .downloadLink a{
+    color:#057EE0;
+    text-decoration:none;
+}
+.documentcollection .create-new-wrapper .docTitle,
+.link-collection .create-new-wrapper .docTitle{
+    font-weight:bold;
+    padding-top:10px;
+    padding-bottom:5px;
+    padding-right:20px;
+}
+.documentcollection .create-new-wrapper .docTitle a,
+.link-collection .create-new-wrapper .docTitle a{
+    color: #000000;
+    font-size: 14px;
+    font-weight: normal;
+}
+.documentcollection .create-new-wrapper .docFilename,
+.link-collection .create-new-wrapper .docFilename a{
+    padding-right:20px;
+    float:left;
+    width:65%;
+    font-size:13px;
+    color: Gray;
+}
+.documentcollection .create-new-wrapper .docFilesize,
+.link-collection .create-new-wrapper .docFilesize{
+    padding-right:20px;
+    float:left;
+    width:10%;
+    font-size:13px;
+    color: Gray;
+}
+.documentcollection .create-new-wrapper #docControls,
+.link-collection .create-new-wrapper #docControls{
+    float: right;
+}
+.documentcollection .create-new-wrapper #docControls a,
+.link-collection .create-new-wrapper #docControls a{
+    color: Red;
+    font-size:13px;
+    text-decoration:none;
+}
+.documentcollection .create-new-wrapper #editForm .doc-collection-content-view,
+.link-collection .create-new-wrapper #editForm .doc-collection-content-view{
+    padding:10px 0 !important;
+}
+
+.link-collection  #editForm{
+    margin-bottom:24px;
+}
+
+#doc-upload-window #uploadFile{
+    margin-bottom: 18px;
+}
+#doc-upload-window .field span{
+    font-weight:bold;
+}
+#doc-upload-window #uploadTitle{
+     margin-bottom: 40px;
+}
+#doc-upload-window .create-new-btn-wrapper{
+     padding: 8px 20px;
+     height:auto;
+}
+#doc-upload-window .create-new-btn-wrapper .btnUploadDoc{
+    margin-right:8px;
+}
+#doc-upload-window .create-new-btn-wrapper .confirm-buttons.cancel{
+    background:transparent;
+    border:none !important;
+    padding:0;
+    color:#057EE0;
+    text-shadow:none;
+    font-weight:normal;
+}
+.uploadandsubmit-link-disabled
+{
+    color: Gray !important;    
+}

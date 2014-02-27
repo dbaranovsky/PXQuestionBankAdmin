@@ -1,0 +1,130 @@
+<script src='http://coursesdev.bfwpub.com/Intellipro/htsplayer/hts.js' type='text/javascript'></script>
+<script src='http://coursesdev.bfwpub.com/Intellipro/htsplayer/qsutils_1.js' type='text/javascript'></script>
+<script src='http://coursesdev.bfwpub.com/Intellipro/htsplayer/PopupWindow.js' type='text/javascript'></script>
+<script src='http://coursesdev.bfwpub.com/Intellipro/htsplayer/divPopup.js' type='text/javascript'></script>
+
+                <script  type='text/javascript'>
+                    var _serverURL = 'http://coursesdev.bfwpub.com/Intellipro/';
+                    function jsGetServerURL()
+                    { return _serverURL; }
+
+                    var resp$QUESTIONID$ = '<iproblem>Z+U2SdsP9nD2vd526Lm4AHp4rdRYyAHyaVbHvOpuDVfjDxkDFn9b4fRDsDB1Irus5okHNBsvIgszUAzooJz8g2ShaWrpMKCJGI7OhdsYh6mu41K1PN+Ou731m0eaiGtr9z20RhwwXIYs6qE28Q/50wf6Hhq3tNaDNt2ag17thXiPFrf7yea2fRPak1nU/lMpFTXNBHSZCfrc4ikR6cm9uDK0PfBh8sce1HahAXjNwte7jRT2EuP7pc4rj4pfRTjg5aU9jZYX2CRwosThkLm5iir0Z1oCLVoB76Wo/s8Me+SbR/oITu8z7fyfkvfLel+6h7PZu7H4ehKbuuQkHK92BSwL3TTXL8dbbL7gujx2EdOXyuU9rnpbiBZ7Y7UIMPFUISenJfWto4dVpKBH08tiRi0nXcrSdqOBVxEs/MZfHqrMeCRUq4HHxd7E7bWtMmsfjZX3CGv5R8P8aSDpdU61jsCK4H0cUTEMqPYMcAyf6SAE+zqtRPA/bUzuCcrjfNxIxFFztqHCfaZSndf/LOqb7aUff45tMAKpWeRFZ0uvBrDm/uHMlNbdm34tYsIJRN6lSUjUxGkTDgze7c+IpBF7iVgfSA+FXfkCHPK6m+yQSlIbv808HKHNrSdLrEcwxVx+Braywoz2Kte5J2elhSf0lcud8kjEdlTYiIsK5mQvNspW0ipp9mYVmCooemBA7AYMo4QxFwGqRp3kkipQ52nW/AScP4dVMIVah630Ao/O/BO8bI89z9ksoXQGbQuV/GfezkM1m8Ppd7Ki+lur3v0VhQ==</iproblem>';
+
+                    function saveMethod$QUESTIONID$() {
+                        saveInfo = CQ.getInfo($QUESTIONID$);
+                        CQ.setAnswer($QUESTIONID$, '<response>' + resp$QUESTIONID$ +
+getNumericAnswer('hts$QUESTIONID$.step0.EnterField1') +
+getNumericAnswer('hts$QUESTIONID$.step0.EnterField2') +
+getNumericAnswer('hts$QUESTIONID$.step0.EnterField3') +
+getNumericAnswer('hts$QUESTIONID$.step0.EnterField4') +
+getNumericAnswer('hts$QUESTIONID$.step0.EnterField5') +
+getNumericAnswer('hts$QUESTIONID$.step0.EnterField6') +
+                    '</response>'
+                    );
+                    }
+
+                    info = CQ.getInfo($QUESTIONID$);
+                    // Find the div that should contain the question body
+                    myDiv = document.getElementById(info.divId);
+                    var divtext = '<div id="popupdiv$QUESTIONID$" style="position:absolute;visibility:hidden;z-index:100;background-color:#FFFFFF;"></div>' +
+'<div class="cq_hts_masterdiv">' +
+'  <div class="cq_hts_step" id="hts$QUESTIONID$.step0">' +
+'    <div>' +
+'      <p>Match the inequalities with the corresponding statements:</p>' +
+'      <p>1. <img alt=" " src="http://coursesdev.bfwpub.com/Intellipro/geteq.ashx?eqtext=+a+%26gt%3b+2" style="margin-bottom:-3px; vertical-align:middle" /></p>' +
+'      <p>2. <img alt=" " src="http://coursesdev.bfwpub.com/Intellipro/geteq.ashx?eqtext=%40abs%7ba-8%7d+%26lt%3b+%40DIV%7b1%3b2%7d+" style="margin-bottom:0px; vertical-align:middle" /></p>' +
+'      <p>3. <img alt=" " src="http://coursesdev.bfwpub.com/Intellipro/geteq.ashx?eqtext=%40abs%7ba-%40DIV%7b1%3b2%7d%7d+%26lt%3b+8" style="margin-bottom:0px; vertical-align:middle" /></p>' +
+'      <p>4. <img alt=" " src="http://coursesdev.bfwpub.com/Intellipro/geteq.ashx?eqtext=%40abs%7ba%7d+%26gt%3b+8" style="margin-bottom:-3px; vertical-align:middle" /></p>' +
+'      <p>5. <img alt=" " src="http://coursesdev.bfwpub.com/Intellipro/geteq.ashx?eqtext=%40abs%7ba-5%7d+%26lt%3b+2" style="margin-bottom:-3px; vertical-align:middle" /></p>' +
+'      <p>6. <img alt=" " src="http://coursesdev.bfwpub.com/Intellipro/geteq.ashx?eqtext=1+%26lt%3b+a+%26lt%3b+8" style="margin-bottom:-3px; vertical-align:middle" /></p>' +
+'      <p>(Enter the number written by each inequality into the statement box.)</p>' +
+'      <p>' +
+'        <SPAN class="field">' +
+'          <INPUT TYPE="text" onkeypress="javascript:onKeyPressed(event,this)" id="hts$QUESTIONID$.step0.EnterField1" style="OVERFLOW: visible" onchange="javascript:enterfieldAnswer(\'hts$QUESTIONID$.step0.EnterField1\'); " size="2" allowedwords="" value="" />' +
+'        </SPAN>' +
+'        <A id="hts$QUESTIONID$.step0.anchor1" name="hts$QUESTIONID$.step0.anchor1"><img onmouseover="popupTextAndNum(\'hts$QUESTIONID$.step0.anchor1\',\'6 <span style=color:Blue>(0)</span>\')"" onmouseout="hidepopup()" src="http://coursesdev.bfwpub.com/Intellipro/pictures/fail_input.gif" /></A> The distance from <img alt=" " src="http://coursesdev.bfwpub.com/Intellipro/geteq.ashx?eqtext=a" style="margin-bottom:-3px; vertical-align:middle" /> to <img alt=" " src="http://coursesdev.bfwpub.com/Intellipro/geteq.ashx?eqtext=4.5" style="margin-bottom:-3px; vertical-align:middle" /> is at most <img alt=" " src="http://coursesdev.bfwpub.com/Intellipro/geteq.ashx?eqtext=3.5" style="margin-bottom:-3px; vertical-align:middle" />.</p>' +
+'      <p>' +
+'        <SPAN class="field">' +
+'          <INPUT TYPE="text" onkeypress="javascript:onKeyPressed(event,this)" id="hts$QUESTIONID$.step0.EnterField2" style="OVERFLOW: visible" onchange="javascript:enterfieldAnswer(\'hts$QUESTIONID$.step0.EnterField2\'); " size="2" allowedwords="" value="" />' +
+'        </SPAN>' +
+'        <A id="hts$QUESTIONID$.step0.anchor2" name="hts$QUESTIONID$.step0.anchor2"><img onmouseover="popupTextAndNum(\'hts$QUESTIONID$.step0.anchor2\',\'2 <span style=color:Blue>(0)</span>\')"" onmouseout="hidepopup()" src="http://coursesdev.bfwpub.com/Intellipro/pictures/fail_input.gif" /></A> The distance from <img alt=" " src="http://coursesdev.bfwpub.com/Intellipro/geteq.ashx?eqtext=a" style="margin-bottom:-3px; vertical-align:middle" /> to <img alt=" " src="http://coursesdev.bfwpub.com/Intellipro/geteq.ashx?eqtext=8" style="margin-bottom:-3px; vertical-align:middle" /> is less than <img alt=" " src="http://coursesdev.bfwpub.com/Intellipro/geteq.ashx?eqtext=%40div%7b1%3b2%7d" style="margin-bottom:0px; vertical-align:middle" />.</p>' +
+'      <p>' +
+'        <SPAN class="field">' +
+'          <INPUT TYPE="text" onkeypress="javascript:onKeyPressed(event,this)" id="hts$QUESTIONID$.step0.EnterField3" style="OVERFLOW: visible" onchange="javascript:enterfieldAnswer(\'hts$QUESTIONID$.step0.EnterField3\'); " size="2" allowedwords="" value="" />' +
+'        </SPAN>' +
+'        <A id="hts$QUESTIONID$.step0.anchor3" name="hts$QUESTIONID$.step0.anchor3"><img onmouseover="popupTextAndNum(\'hts$QUESTIONID$.step0.anchor3\',\'5 <span style=color:Blue>(0)</span>\')"" onmouseout="hidepopup()" src="http://coursesdev.bfwpub.com/Intellipro/pictures/fail_input.gif" /></A>' +
+'        <img alt=" " src="http://coursesdev.bfwpub.com/Intellipro/geteq.ashx?eqtext=a" style="margin-bottom:-3px; vertical-align:middle" /> lies between <img alt=" " src="http://coursesdev.bfwpub.com/Intellipro/geteq.ashx?eqtext=3" style="margin-bottom:-3px; vertical-align:middle" /> and <img alt=" " src="http://coursesdev.bfwpub.com/Intellipro/geteq.ashx?eqtext=7" style="margin-bottom:-3px; vertical-align:middle" />.</p>' +
+'      <p>' +
+'        <SPAN class="field">' +
+'          <INPUT TYPE="text" onkeypress="javascript:onKeyPressed(event,this)" id="hts$QUESTIONID$.step0.EnterField4" style="OVERFLOW: visible" onchange="javascript:enterfieldAnswer(\'hts$QUESTIONID$.step0.EnterField4\'); " size="2" allowedwords="" value="" />' +
+'        </SPAN>' +
+'        <A id="hts$QUESTIONID$.step0.anchor4" name="hts$QUESTIONID$.step0.anchor4"><img onmouseover="popupTextAndNum(\'hts$QUESTIONID$.step0.anchor4\',\'1 <span style=color:Blue>(0)</span>\')"" onmouseout="hidepopup()" src="http://coursesdev.bfwpub.com/Intellipro/pictures/fail_input.gif" /></A>' +
+'        <img alt=" " src="http://coursesdev.bfwpub.com/Intellipro/geteq.ashx?eqtext=a" style="margin-bottom:-3px; vertical-align:middle" /> lies to the right of <img alt=" " src="http://coursesdev.bfwpub.com/Intellipro/geteq.ashx?eqtext=2" style="margin-bottom:-3px; vertical-align:middle" />.</p>' +
+'      <p>' +
+'        <SPAN class="field">' +
+'          <INPUT TYPE="text" onkeypress="javascript:onKeyPressed(event,this)" id="hts$QUESTIONID$.step0.EnterField5" style="OVERFLOW: visible" onchange="javascript:enterfieldAnswer(\'hts$QUESTIONID$.step0.EnterField5\'); " size="2" allowedwords="" value="" />' +
+'        </SPAN>' +
+'        <A id="hts$QUESTIONID$.step0.anchor5" name="hts$QUESTIONID$.step0.anchor5"><img onmouseover="popupTextAndNum(\'hts$QUESTIONID$.step0.anchor5\',\'4 <span style=color:Blue>(0)</span>\')"" onmouseout="hidepopup()" src="http://coursesdev.bfwpub.com/Intellipro/pictures/fail_input.gif" /></A>' +
+'        <img alt=" " src="http://coursesdev.bfwpub.com/Intellipro/geteq.ashx?eqtext=a" style="margin-bottom:-3px; vertical-align:middle" /> lies to the left of <img alt=" " src="http://coursesdev.bfwpub.com/Intellipro/geteq.ashx?eqtext=-8" style="margin-bottom:-3px; vertical-align:middle" /> or to the right of <img alt=" " src="http://coursesdev.bfwpub.com/Intellipro/geteq.ashx?eqtext=8" style="margin-bottom:-3px; vertical-align:middle" />.</p>' +
+'      <p>' +
+'        <SPAN class="field">' +
+'          <INPUT TYPE="text" onkeypress="javascript:onKeyPressed(event,this)" id="hts$QUESTIONID$.step0.EnterField6" style="OVERFLOW: visible" onchange="javascript:enterfieldAnswer(\'hts$QUESTIONID$.step0.EnterField6\'); " size="2" allowedwords="" value="" />' +
+'        </SPAN>' +
+'        <A id="hts$QUESTIONID$.step0.anchor6" name="hts$QUESTIONID$.step0.anchor6"><img onmouseover="popupTextAndNum(\'hts$QUESTIONID$.step0.anchor6\',\'3 <span style=color:Blue>(0)</span>\')"" onmouseout="hidepopup()" src="http://coursesdev.bfwpub.com/Intellipro/pictures/fail_input.gif" /></A>' +
+'        <img alt=" " src="http://coursesdev.bfwpub.com/Intellipro/geteq.ashx?eqtext=a" style="margin-bottom:-3px; vertical-align:middle" /> is less than <img alt=" " src="http://coursesdev.bfwpub.com/Intellipro/geteq.ashx?eqtext=8" style="margin-bottom:-3px; vertical-align:middle" /> units from <img alt=" " src="http://coursesdev.bfwpub.com/Intellipro/geteq.ashx?eqtext=%40div%7b1%3b2%7d" style="margin-bottom:-3px; vertical-align:middle" /></p>' +
+'      <p>&#160;</p>' +
+'    </div>' +
+'    <div />' +
+'    <div />' +
+'    <p>' +
+'      <input class="cq_hts_check" hide="no" id="hts$QUESTIONID$.step0.CheckSyntax" onclick="javascript:checksyntax(\'hts$QUESTIONID$.step0\',\'hts$QUESTIONID$.step0.EnterField1\',\'hts$QUESTIONID$.step0.EnterField2\',\'hts$QUESTIONID$.step0.EnterField3\',\'hts$QUESTIONID$.step0.EnterField4\',\'hts$QUESTIONID$.step0.EnterField5\',\'hts$QUESTIONID$.step0.EnterField6\')" type="button" value="Check Syntax" />' +
+'      <div id="hts$QUESTIONID$.step0.CheckSyntaxResult" />' +
+'    </p>' +
+'  </div>' +
+'</div>' +
+' ';
+                    var eqedit = '<div id="theLayer$QUESTIONID$" style="position:absolute;left:220px;top:40px;display:none">' +
+        '<table border="0"  bgcolor="#0000FF" cellspacing="0" cellpadding="3">' +
+        '<tr><td width="100%">' +
+        '<table border="0" width="100%" cellspacing="0" cellpadding="0" height="50">' +
+        '<tr>' +
+        '<td id="titleBar$QUESTIONID$" style="cursor:move" width="98%" height="20">' +
+        '<ilayer width="100%" onSelectStart="return false">' +
+        '<layer width="100%" onMouseover="isHot=true" onMouseout="isHot=false">' +
+        '<font face="Arial" color="#FFFFFF">Equation Editor</font>' +
+        '</layer>' +
+        '</ilayer>' +
+        '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td width="100%" bgcolor="#FFFFFF"  colspan="2">' +
+        '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" '
+        + 'id="eqeditor$QUESTIONID$" width="500" height="270" '
+        + 'codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab"> '
+        + '<param name="movie" value="http://coursesdev.bfwpub.com/Intellipro/htsplayer/eqeditor.swf" /><param name="allowScriptAccess" value="always" /><param name="quality" value="high" /><param name="bgcolor" value="#ffffff" />'
+        + '<embed src="http://coursesdev.bfwpub.com/Intellipro/htsplayer/eqeditor.swf" quality="high" bgcolor="#ffffff" '
+        + 'width="500" height="270" name="eqeditor$QUESTIONID$" align="middle" '
+        + 'play="true" '
+        + 'loop="false" '
+        + 'quality="high" '
+        + 'allowScriptAccess="always" '
+        + 'type="application/x-shockwave-flash" '
+        + 'pluginspage="http://www.macromedia.com/go/getflashplayer">'
+        + '</embed>'
+        + '</object>' +
+        '</td>' +
+        '</tr>' +
+        '</table>' +
+        '</td>' +
+        '</tr>' +
+        '</table>' +
+    '</div>';
+
+                    // Replace the div with the information retrieved above
+                    myDiv.innerHTML = eqedit + divtext;
+                    // Register save callback method
+                    CQ.onBeforeSave(saveMethod$QUESTIONID$);  
+            </script>
+
+
+<iproblem results="edit" showcorrect="yes" hints="no" feedback="no" ><vardefs><vardef name="x" type="numeric" ><value id="1">2</value></vardef><vardef name="y" type="numeric" ><value id="1">8</value></vardef><vardef name="z" type="numeric" ><value id="1">5</value></vardef><vardef name="a" type="numeric" ><value id="1">7</value></vardef><vardef name="b" type="numeric" ><value id="1">3</value></vardef><vardef name="c" type="numeric" ><value id="1">3.5</value></vardef><vardef name="d" type="numeric" ><value id="1">4.5</value></vardef></vardefs><mc_scrambled></mc_scrambled></iproblem>

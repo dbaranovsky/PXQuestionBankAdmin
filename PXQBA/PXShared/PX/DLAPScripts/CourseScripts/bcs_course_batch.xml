@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<batch>
+  <request cmd="updatecourses">
+    <requests>
+      <course courseid="-courseid-" domainid="-domainid-" title="-title-" reference="">
+        <data>
+          <bfw_tocs>
+            <course_materials type="bfw_toc">Course Materials</course_materials>
+          </bfw_tocs>
+          <bfw_infinite_scroll>false</bfw_infinite_scroll>
+          <bfw_tab_settings>
+            <view_tab>
+              <show_policies>false</show_policies>
+              <show_assignment_details>true</show_assignment_details>
+              <show_rubrics>true</show_rubrics>
+              <show_learning_objectives>true</show_learning_objectives>
+            </view_tab>
+            <assign_tab>
+              <show_make_gradeable>true</show_make_gradeable>
+              <show_allow_late_submissions>true</show_allow_late_submissions>
+              <show_schedule_reminder>true</show_schedule_reminder>
+              <show_subcontent_creation>true</show_subcontent_creation>
+              <show_assigned_on_same_day>true</show_assigned_on_same_day>
+              <show_completion_category>true</show_completion_category>
+              <show_gradebook_category>true</show_gradebook_category>
+              <show_syllabus_category>true</show_syllabus_category>
+              <show_points_possible>true</show_points_possible>
+              <show_send_reminder>true</show_send_reminder>
+              <show_include_score>true</show_include_score>
+              <show_calculation_type>true</show_calculation_type>
+              <show_mark_as_complete>true</show_mark_as_complete>
+            </assign_tab>
+          </bfw_tab_settings>
+          <bfw_course_type>BCS</bfw_course_type>
+          <meta-bfw_course_type>BCS</meta-bfw_course_type>
+          <bfw_course_home_page>PX_HOME_BCS</bfw_course_home_page>
+          <bfw_isloadstartoninit>true</bfw_isloadstartoninit>
+          <bfw_course_home_page_start></bfw_course_home_page_start>
+          <bfw_office_hours></bfw_office_hours>
+		  <bfw_contact_info></bfw_contact_info>
+		  <bfw_syllabus_info>
+			<syllabus_type>Url</syllabus_type>
+			<syllabus_value></syllabus_value>
+		  </bfw_syllabus_info>		  
+		  <bfw_console_settings>
+     	    <show_general>true</show_general>
+			<show_navigation>true</show_navigation>
+			<show_launchpad>true</show_launchpad>
+		  </bfw_console_settings>
+          <bfw_rss_feeds>
+            <feed name="Scientific American" url="http://rss.sciam.com/sciam/feature-articles" />
+            <feed name="Arstechnica" url="http://feeds.arstechnica.com/arstechnica/index/" />
+          </bfw_rss_feeds>
+          <bfw_hide_student_view_in_header>true</bfw_hide_student_view_in_header>
+        </data>
+      </course>
+    </requests>
+  </request>
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_HOME_BCS" entityid="-entityid-">
+        <data>
+          <parent>PX_PAGES</parent>
+          <sequence>b</sequence>
+          <title>PX_HOME_BCS</title>
+          <bfw_page_editable>false</bfw_page_editable>
+          <abbreviation>PXHOMEBCS</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_HOME_BCS_ZONES" entityid="-entityid-">
+        <data>
+          <parent>PX_HOME_BCS</parent>
+          <sequence>a</sequence>
+          <title>PX_HOME_BCS_ZONES</title>
+          <abbreviation>PXZONESBCS</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_HOME_BCS_ZONE_2" entityid="-entityid-">
+        <data>
+          <parent>PX_HOME_BCS_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_HOME_BCS_ZONE_2</title>
+          <abbreviation>PXHOMEZONEBCS2</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets />
+        </data>
+      </item>
+      <item itemid="PX_HOME_BCS_ZONE_3" entityid="-entityid-">
+        <data>
+          <parent>PX_HOME_BCS_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_HOME_BCS_ZONE_3</title>
+          <abbreviation>PXHOMEZONEBCS3</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets />
+        </data>
+      </item>
+      <item itemid="PX_HOME_BCS_ZONE_4" entityid="-entityid-">
+        <data>
+          <parent>PX_HOME_BCS_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_HOME_BCS_ZONE_4</title>
+          <abbreviation>PXHOMEBCSZONE4</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets />
+        </data>
+      </item>
+      
+    </requests>
+  </request>
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_FACEPLATEHOMEPAGEWIDGET" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_BCS_ZONE_4</parent>
+          <sequence>a</sequence>
+          <title>Homepage</title>
+          <abbreviation>FHW</abbreviation>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_FACEPLATEHOMEPAGEWIDGET</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="FacePlateHomePageWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_FACEPLATEHOMEPAGEWIDGET</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+    </requests>
+
+    <requests>
+      <item itemid="PX_MENU_BCS" entityid="-entityid-">
+        <data>
+          <parent>PX_MENUS</parent>
+          <title>Primary Navigation</title>
+          <bfw_type>Menu</bfw_type>
+          <bfw_tocid>-tocid-</bfw_tocid>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+        </data>
+      </item>
+
+      <item itemid="PX_MenuWidget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_BCS_ZONE_2</parent>
+          <sequence>a</sequence>
+          <title>Menu</title>
+          <abbreviation>lcw</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_MenuWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="MenuWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_MenuWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_target_menu" type="String">PX_MENU_BCS</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+
+      <item itemid="PX_MENU_ITEM_STUDY_TOOLS" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_MENU_BCS</parent>
+          <sequence>a</sequence>
+          <title>Study Tools</title>
+          <abbreviation>STUDYTOOLS </abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="StudyTools" controller="FacePlateHomePageWidget" action="Summary" url="" type="" route="" target="#PX_HOME_BCS_ZONE_4"/>
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+
+      <item itemid="PX_MENU_ITEM_MORE_STUDY_TOOLS" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_MENU_BCS</parent>
+          <sequence>b</sequence>
+          <title>More Study Tools</title>
+          <abbreviation>MOReSTUDYTOOLS</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Projects" controller="Home" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+
+      <item itemid="PX_MENU_ITEM_EBOOK" version="1" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_MENU_BCS</parent>
+          <sequence>c</sequence>
+          <title>eBook</title>
+          <abbreviation>EBOOK</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Projects" controller="Home" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+
+      <item itemid="PX_MENU_ITEM_LEARNING_CURVE" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_MENU_BCS</parent>
+          <sequence>d</sequence>
+          <title>LearningCurve</title>
+          <abbreviation>LEARNINGCURVE </abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Projects" controller="Home" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+    </requests>
+  </request>
+</batch>

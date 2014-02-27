@@ -1,0 +1,46 @@
+<requests>   
+<item itemid="PX_DashboardWidget" entityid="-entityid-">
+    <data>
+      <type>CustomActivity</type>
+      <parent>PX_DASHBOARD_1COLUMN_ZONE_1</parent>
+      <sequence>a</sequence>
+      <abbreviation>lcw</abbreviation>
+      <timetocomplete>PT1M</timetocomplete>
+      <category>0</category>
+      <period inherit="true">0</period>
+      <groupsetid>-1</groupsetid>
+      <weight>100</weight>
+      <gradeentry>1</gradeentry>
+      <inputtable inherit="true">0</inputtable>
+      <completiontrigger>0</completiontrigger><bfw_type>Widget</bfw_type><bfw_subtype>PX_CarouselWidget</bfw_subtype><bfw_display_flags>
+  <display>instructor</display>
+  <display>student</display>
+</bfw_display_flags><bfw_widget_callbacks>
+  <method name="View" controller="DashboardCoursesWidget" action="Summary" fne="false" />
+</bfw_widget_callbacks><bfw_properties>
+  <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+  <bfw_property name="bfw_target_content_type" type="String">LearningCurve</bfw_property>
+  <bfw_property name="bfw_sortgroups" type="String">true</bfw_property>
+  <bfw_property name="allow_title_column" type="String">true</bfw_property>
+  <bfw_property name="allow_instructorname_column" type="String">true</bfw_property>
+  <bfw_property name="allow_allowdomainname_column" type="String">true</bfw_property>
+  <bfw_property name="academicterm" type="String">false</bfw_property>
+  <bfw_property name="allow_courseid_column" type="String">false</bfw_property>
+  <bfw_property name="allow_deletebutton_column" type="String">false</bfw_property>
+  <bfw_property name="allow_status_column" type="String">true</bfw_property>
+  <bfw_property name="allow_enrollmentcount_column" type="String">true</bfw_property>
+  <bfw_property name="allow_createanotherbranch_column" type="String">false</bfw_property>
+  <bfw_property name="allow_activatebutton_column" type="String">false</bfw_property>
+  <bfw_property name="allow_courseopeninnewwindow_column" type="String">false</bfw_property>
+  <bfw_property name="allow_view_roster" type="String">true</bfw_property>
+  <bfw_property name="allow_edit_course" type="String">true</bfw_property>
+</bfw_properties><bfw_tocs>
+  <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+</bfw_tocs><creationby>7</creationby><IsMarkAsCompleteChecked>false</IsMarkAsCompleteChecked><meta-bfw_assigned>false</meta-bfw_assigned>
+
+</data>
+</item>
+</requests>

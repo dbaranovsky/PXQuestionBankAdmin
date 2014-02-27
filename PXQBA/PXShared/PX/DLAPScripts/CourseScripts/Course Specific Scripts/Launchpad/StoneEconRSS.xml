@@ -1,0 +1,40 @@
+﻿<requests>
+      <item itemid="PX_FacePlate_RSS_Feed_Widget" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_HOME_FACEPLATE_ZONE_3</parent>
+          <sequence>g</sequence>
+          <title>The Economist</title>
+          <abbreviation>The Economist</abbreviation>
+          <category>0</category>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_ScientificAmerican_RSS_Feed_Compact</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+            <display>ebook</display>
+            <display>lms</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="RSSFeedWidget" action="CompactViewFacePlate" fne="true" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_FacePlate_ScientificAmerican_RSS_Feed_Compact</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_feed_items_to_show" type="String">3</bfw_property>
+            <bfw_property name="bfw_feed_name" type="String">The Economist</bfw_property>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String">custom-rss-widget summary</bfw_property>
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_feedurl" type="String">http://www.economist.com/feeds/print-sections/102/briefings2.xml</bfw_property>
+            <bfw_property name="bfw_feeddescription" type="String">  Additional HTML text required for The Economist and other premade RSS feeds</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_p" />
+          </bfw_tocs>
+          <meta-bfw_assigned>false</meta-bfw_assigned>
+        </data>
+      </item>
+    </requests>

@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{937D042C-799C-4E58-94FE-2CD10E79557F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ReportData</RootNamespace>
+    <AssemblyName>ReportData</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bfw.PX.PXPub.Components, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Bfw.PX.PXPub.Components\bin\Debug\Bfw.PX.PXPub.Components.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\ThirdParty\EnterpriseLibrary\v5_0\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Bfw.Agilix\Bfw.Agilix.Commands\Bfw.Agilix.Commands.csproj">
+      <Project>{19E52C79-1FE3-4385-A035-B603213C099E}</Project>
+      <Name>Bfw.Agilix.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Bfw.Agilix\Bfw.Agilix.DataContracts\Bfw.Agilix.DataContracts.csproj">
+      <Project>{4D185F8E-C2A0-442A-A05E-78B566361562}</Project>
+      <Name>Bfw.Agilix.DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Bfw.Agilix.Dlap.Components.csproj">
+      <Project>{BFFD6B7A-4EA1-431A-916A-8214BD16E049}</Project>
+      <Name>Bfw.Agilix.Dlap.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Bfw.Agilix\Bfw.Agilix.Dlap\Bfw.Agilix.Dlap.csproj">
+      <Project>{F5A60C36-AA1F-4849-A9E7-465F7963DF9F}</Project>
+      <Name>Bfw.Agilix.Dlap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Bfw.Agilix\Bfw.Agilix.ServiceContracts\Bfw.Agilix.ServiceContracts.csproj">
+      <Project>{59504C8E-6DDD-4B6B-A943-1CF2FEDC0FB3}</Project>
+      <Name>Bfw.Agilix.ServiceContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Bfw.Agilix\Bfw.Agilix.Services\Bfw.Agilix.Services.csproj">
+      <Project>{81E2C1AB-9681-43F3-9487-B2BD30AA2148}</Project>
+      <Name>Bfw.Agilix.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Bfw.Common\Bfw.Common.Patterns\Bfw.Common.Patterns.csproj">
+      <Project>{AD00B777-4D80-4D59-AFA0-BD3088938BFF}</Project>
+      <Name>Bfw.Common.Patterns</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Bfw.Common\Bfw.Common.Xaml\Bfw.Common.Xaml.csproj">
+      <Project>{E1052EA2-8A39-4650-B22F-728393781E13}</Project>
+      <Name>Bfw.Common.Xaml</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Bfw.Common\Bfw.Common\Bfw.Common.csproj">
+      <Project>{4F1BF9DB-1226-4867-9E41-129B214F24F2}</Project>
+      <Name>Bfw.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Bfw.PX.Biz\Bfw.PX.Biz.DataContracts\Bfw.PX.Biz.DataContracts.csproj">
+      <Project>{71124912-42B5-49BF-ACBD-E38F09FACA70}</Project>
+      <Name>Bfw.PX.Biz.DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Bfw.PX.Biz\Bfw.PX.Biz.ServiceContracts\Bfw.PX.Biz.ServiceContracts.csproj">
+      <Project>{392A9467-B225-4300-BC1A-F34983AFBC3D}</Project>
+      <Name>Bfw.PX.Biz.ServiceContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Bfw.PX.Biz\Bfw.PX.Biz.Services\Bfw.PX.Biz.Services.csproj">
+      <Project>{7C3BF7D2-126D-45D1-978E-7F3BD6CBE679}</Project>
+      <Name>Bfw.PX.Biz.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,61 @@
+﻿/** Quick Panel Rules**/
+#quick-panel {
+-moz-border-radius-bottomleft: 12px;
+-webkit-border-bottom-left-radius: 12px;
+border-bottom-left-radius: 12px;
+}
+
+#quick-panel > div {
+margin: 0 0 15px 0;
+}
+
+#quick-panel h2 {
+	position: relative;
+	width: 100%;
+}
+
+/* IE Hack for Quick Panel */
+body.ie #quick-panel h2 {
+	top: 0px;
+	width: 100%;
+}
+#quick-panel h3 {
+margin: 0 0 5px 0;
+position: relative;
+}
+
+#quick-panel h3 span {
+text-align: right;
+position: absolute;
+right: 0;
+bottom: 3px;
+}
+
+#quick-panel ul {
+margin: 0 0 10px 0;
+}
+
+#quick-panel ul li span {
+position: absolute;
+right: 5px;
+}
+
+#quick-panel #common-tags a {
+color: #666;
+}
+
+.current-discussions {
+color: #666;
+}
+
+#widgetconfig_quickpanel #quick-panel {
+	float:left;     
+} 
+
+.widgettopbar{
+	height: 32px;
+	width: 100%;
+	background-color: #FFFFCC;
+}
+
+/* END Quick Panel Rules*/

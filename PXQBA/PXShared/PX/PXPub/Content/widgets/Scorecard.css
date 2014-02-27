@@ -1,0 +1,105 @@
+﻿/** Scorecard Rules **/
+#scorecard table td .small { 
+}
+
+#scorecard table {
+width: 100%;
+}
+
+#scorecard table .title {
+width: 105px;
+}
+
+#scorecard h3 {
+width: 105px;
+text-align: right;
+}
+
+#scorecard .percent-total {
+background: #99FFFF;
+width: 100%;
+display: block;
+height: 20px;
+padding: 2px;
+position: relative;
+}
+
+#scorecard .percent-complete {
+background-color: #CCC;
+display: block;
+height: 14px;
+padding: 3px;
+position: absolute;
+left: 2px;
+top: 2px;
+z-index: 1;
+}
+
+#scorecard .percent-total a {
+z-index: 20;
+position: absolute;
+top: 4px;
+left: 4px;
+}
+
+#scorecard .date {
+}
+
+#scorecard .percentage-bar {
+padding: 0 10px 0 0;
+}
+
+.scorecard .row {
+clear: both;
+border-top: solid 1px #cccccc;
+}
+
+.scorecard .row.first {
+border-top: none;
+}
+
+.scorecard .row h5 {
+	vertical-align: middle;
+	padding: 10px 2% 0px 0;
+	text-transform: capitalize;
+}
+
+.scorecard .complete.row h5 {
+	padding: 0;
+}
+
+.scorecard .row .row-content {
+width: 80%;
+float: left;
+padding: 10px 0 20px 0;
+}
+
+.scorecard .full-bar {
+width: 45%;
+height: 20px;
+background-color: #CCC;
+border: solid 2px #CCC;
+margin: 6px 0 0 0;
+}
+
+.scorecard .part-bar {
+background-color: #99FFFF;
+}
+
+.assignment-widget h2 span {
+display: block;
+}
+
+.assignmentPopup .assignmentSettings{
+width:19%;
+}
+
+.toc-widget h2 span {
+display: none;
+}
+
+.gradebook-component {
+width: 100%;
+height: 400px;
+border: solid 1px #BAB29D;
+}

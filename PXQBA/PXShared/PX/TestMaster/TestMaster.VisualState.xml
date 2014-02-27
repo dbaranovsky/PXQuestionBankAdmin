@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
+  <TopNode>[0-1000]C:\svn_mmclarnon\PXCheckout\PX\TestMaster\TestMaster.nunit</TopNode>
+  <SelectedNode>[0-1004]Bfw.Agilix.Commands.Test.PutAnnouncementTests.TestPutAnnouncement</SelectedNode>
+  <ExcludeCategories>false</ExcludeCategories>
+  <Nodes>
+    <Node UniqueName="[0-1000]C:\svn_mmclarnon\PXCheckout\PX\TestMaster\TestMaster.nunit" Expanded="true" />
+    <Node UniqueName="[0-1007]C:\svn_mmclarnon\PXCheckout\PX\TestMaster\bin\Debug\Bfw.Agilix.Commands.Test.dll" Expanded="true" />
+    <Node UniqueName="[0-1008]Bfw" Expanded="true" />
+    <Node UniqueName="[0-1009]Bfw.Agilix" Expanded="true" />
+    <Node UniqueName="[0-1010]Bfw.Agilix.Commands" Expanded="true" />
+    <Node UniqueName="[0-1011]Bfw.Agilix.Commands.Test" Expanded="true" />
+    <Node UniqueName="[0-1005]Bfw.Agilix.Commands.Test.GetAnnouncementTests" Expanded="true" />
+    <Node UniqueName="[0-1003]Bfw.Agilix.Commands.Test.PutAnnouncementTests" Expanded="true" />
+    <Node UniqueName="[0-1001]Bfw.Agilix.Commands.Test.PutResourceTests" Expanded="true" />
+    <Node UniqueName="[0-1020]C:\svn_mmclarnon\PXCheckout\PX\TestMaster\bin\Debug\Bfw.Agilix.DataContracts.Test.dll" Expanded="true" />
+    <Node UniqueName="[0-1021]Bfw" Expanded="true" />
+    <Node UniqueName="[0-1022]Bfw.Agilix" Expanded="true" />
+    <Node UniqueName="[0-1023]Bfw.Agilix.DataContracts" Expanded="true" />
+    <Node UniqueName="[0-1024]Bfw.Agilix.DataContracts.Test" Expanded="true" />
+    <Node UniqueName="[0-1012]Bfw.Agilix.DataContracts.Test.CourseTest" Expanded="true" />
+    <Node UniqueName="[0-1018]Bfw.Agilix.DataContracts.Test.EnrollmentTest" Expanded="true" />
+    <Node UniqueName="[0-1014]Bfw.Agilix.DataContracts.Test.GradeTest" Expanded="true" />
+    <Node UniqueName="[0-1016]Bfw.Agilix.DataContracts.Test.PeerResponseTest" Expanded="true" />
+    <Node UniqueName="[0-1028]C:\svn_mmclarnon\PXCheckout\PX\TestMaster\bin\Debug\Bfw.Agilix.Services.Test.dll" Expanded="true" />
+    <Node UniqueName="[0-1029]Bfw" Expanded="true" />
+    <Node UniqueName="[0-1030]Bfw.Agilix" Expanded="true" />
+    <Node UniqueName="[0-1031]Bfw.Agilix.Services" Expanded="true" />
+    <Node UniqueName="[0-1032]Bfw.Agilix.Services.Test" Expanded="true" />
+    <Node UniqueName="[0-1025]Bfw.Agilix.Services.Test.GradeServiceTests" Expanded="true" />
+    <Node UniqueName="[0-1037]C:\svn_mmclarnon\PXCheckout\PX\TestMaster\bin\Debug\Bfw.PX.Biz.Services.Test.dll" Expanded="true" />
+    <Node UniqueName="[0-1038]Bfw" Expanded="true" />
+    <Node UniqueName="[0-1039]Bfw.PX" Expanded="true" />
+    <Node UniqueName="[0-1040]Bfw.PX.Biz" Expanded="true" />
+    <Node UniqueName="[0-1041]Bfw.PX.Biz.Services" Expanded="true" />
+    <Node UniqueName="[0-1042]Bfw.PX.Biz.Services.Test" Expanded="true" />
+    <Node UniqueName="[0-1035]Bfw.PX.Biz.Services.Test.ContentActionsTest" Expanded="true" />
+    <Node UniqueName="[0-1033]Bfw.PX.Biz.Services.Test.GradeActionsTest" Expanded="true" />
+  </Nodes>
+</VisualState>

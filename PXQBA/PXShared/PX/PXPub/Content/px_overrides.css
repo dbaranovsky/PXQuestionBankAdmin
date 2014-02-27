@@ -1,0 +1,140 @@
+.gradebook-menuitem-group-by, .gradebook-menuitem-show-nongradable, .gradebook-menuitem-show-lesson-details
+{
+    display: none;
+}
+
+.gradebook-visible-columns-dialog-start-checkbox, .gradebook-visible-columns-dialog-end-checkbox
+{
+    display: none;
+}
+
+.gradebook-visible-footers-dialog-max-points-checkbox, .gradebook-visible-footers-dialog-duedate-checkbox, .gradebook-visible-footers-dialog-resultdate-checkbox, .gradebook-visible-footers-access-date-section
+{
+    display: none;
+}
+
+.item-summary-general-grading-scale, .item-summary-general-score-visibility-date, .item-summary-stop-accepting-submission-btn, .item-summary-general-view-edit-links
+{
+    display: none;
+}
+
+.gradebook-student-grades-breadcrumb, .gradebook-student-activities-breadcrumb
+{
+    display: none;
+}
+
+.gradebook-student-grades-item-nolink
+{
+    cursor: default;
+}
+
+.gradebook-render-user-profile-picture, .grades-header-profile-picture
+{
+    display: none;
+}
+
+.gradebook-student-grades-target-enddate
+{
+    display: none;
+}
+
+div[id^="grade_header_mail"].grade_mail, div[id^="grade_header_calculator"].grade_calculator
+{
+    display: none;
+}
+
+
+.add-student-btn {
+    display: none;
+}
+
+@media print {
+    .printscroll .content {
+        page-break-after: always;
+    }
+}
+
+#message-tree .message_viewing_area {
+    margin-left: 6px;
+}
+
+.cq_hts_masterdiv em strong
+{
+	font-style: italic !important;
+}
+
+.cq_hts_masterdiv strong em
+{
+	font-weight: bolder !important;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1) { /* webkit only PX-9754 */
+  #gradebook_FrameContent .gb-list-head,
+  #gradebook_FrameContent  .gbr-head {
+  width: 100%;
+  height: 27px !important;
+  padding: 0 !important;
+  display: block;
+  }
+  /* first cells */
+  #gradebook_FrameContent .gb-list-head td:first-child div,
+  #gradebook_FrameContent  .gbr-head-stud div,
+  #gradebook_FrameContent #studentFooter_FrameContent .gbr-head td:first-child div {
+  width: 160px !important;
+  }
+  /* second cells */
+  #gradebook_FrameContent .gb-list-head td:first-child + td div a,
+  #gradebook_FrameContent .gbr-head .gbr-head-stud + td,
+  #gradebook_FrameContent #g_class_total_points_FrameContent div {
+  max-width: 96px;
+  min-width: 96px !important;
+  }
+  #gradebook_FrameContent  .gb-list-head td:first-child + td div a {
+  display: block;
+  }
+  /* other cells */
+  #gradebook_FrameContent .gb-list-head td:first-child + td ~ td div,
+  #gradebook_FrameContent .gbr-head .gbr-head-stud + td ~ td,
+  #gradebook_FrameContent .gbr-head .gbr-head-stud + td ~ td div,
+  #gradebook_FrameContent #studentFooter_FrameContent .gbr-head td:first-child + td ~ td  {
+  width: 38px !important;
+  }
+  #gradebook_FrameContent .gbr-head .gbr-head-stud + td ~ td .green-light {
+  width: 14px !important;
+  }
+  #gradebook_FrameContent .gb-list-head td:first-child + td ~ td a {
+  margin-left: 6px !important;
+  display: block;
+  position: relative;
+  left: 30%;
+  }
+  #gradebook_FrameContent .gb-list-head td:first-child + td div {
+  width: 80px !important;
+  }
+  #gradebook_FrameContent #leftPanel_FrameContent .x-panel-body.x-panel-body-noheader {
+  width: 100% !important;
+  }
+}
+
+.cq_hts_hint p,
+.cq_hts_feedback p,
+.cq_hts_incorrect_feedback p
+{
+	padding: 5px 0px 5px 0px !important;
+	margin: 0px;
+}
+
+.cq_hts_hint p
+{
+	background-color: #FAEBD7;
+}
+
+.cq_hts_feedback p, .examFeedback
+{
+	background-color:#E1EFD6;
+}
+
+.cq_hts_incorrect_feedback p
+{
+	background-color:#FFCCCC
+}

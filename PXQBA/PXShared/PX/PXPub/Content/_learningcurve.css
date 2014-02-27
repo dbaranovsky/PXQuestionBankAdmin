@@ -1,0 +1,753 @@
+﻿html{
+ overflow:hidden !important;
+}
+
+body{
+    margin:0 2% !important;    
+}
+.login-course-info .book-cover {
+background:url(style/images/everday-lc-login.png) no-repeat;
+}
+body.product-type-learningcurve .homepage-course-info #student .pxicon {
+    display: none;
+}
+body.product-type-learningcurve #student-info a {
+color:#333!important;
+}
+
+#PX_HOME_ZONE_2 {
+width:98%;
+}
+
+#PX_HOME_EPORTFOLIO_ZONE_3 .widgetItem {
+border:0;
+}
+
+.product-type-learningcurve .pageContainer {
+height:100%;
+}
+
+.course-info-widget .bottom {
+margin-top:10px;
+width:210px;
+}
+
+.course-info-widget .tutorial-links {
+list-style-type:none;
+color:#27327D;
+}
+
+.course-info-widget .tutorial-links li {
+border-bottom:dotted 1px #27327D;
+padding:6px;
+}
+
+.course-info-widget .tutorial-links li.header-row {
+border-top:4px solid #27327D;
+}
+
+.page-action-Unauthenticated .course-info-widget .tutorial-links li.header-row {
+border-top:1px dotted #27327D;
+margin-top:30px;
+}
+
+.course-info-widget .tutorial-links li.header-row h1 {
+margin:0;
+font-size:12px;
+white-space:nowrap;
+}
+
+.customWidgetOuterDiv {
+height:inherit;
+}
+
+.course-directions-widget {
+width:90%;
+margin:auto;
+}
+
+.course-directions-widget .bottom {
+font-size:11px;
+font-weight:normal;
+margin-top:20px;
+text-align:right;
+}
+
+.course-directions-widget .bottom span a{
+    text-decoration:none;
+    color:#27327D;
+}
+
+.course-directions-widget .tutorial-link {
+cursor:pointer;
+font-size:12px;
+color:#1e5ac8;
+}
+
+.course-directions-widget .top ul {
+list-style-type:disc;
+line-height:24px;
+margin-left:15px;
+}
+
+
+.course-directions-widget h1 {
+font-size:16px;
+color:#27327D;
+line-height:30px;
+}
+
+#PX_LC_HOME_2COLUMN_ZONE_2 .tablehead-border {
+border-top:5px solid #27327D;
+margin:0 auto;
+padding-bottom:10px;
+width:93%;
+}
+
+#tableHeader span {
+font-size:16px;
+color:#27327D;
+float:left;
+}
+.PX_ActivitiesWidget #sortcontainer{
+    float: right;
+    margin-right: 136px;
+}
+.PX_ActivitiesWidget #sortCheckbox{
+    float: left;
+    margin-bottom: 3px;
+}
+.PX_ActivitiesWidget #sortLabel{
+    font-size: 13px;
+    margin-top: 3px;
+    float: left;
+}
+/** integration css **/
+/* header body styles */
+
+.homepage-course-info .product-banner-logo {
+background-image:url(style/images/LC-everyday-banner.png);
+background-repeat:no-repeat;
+display:block !important;
+background-size:contain;
+}
+
+#ecom-marketing {
+margin:0;
+}
+
+#PX_HOME_ZONE_2 #ecom-marketing .marketing-content {
+border-bottom:none;
+float:none;
+padding-bottom:0;
+width:70%;
+}
+
+/** everyday writer homepage **/
+/* left region */
+.course-info-widget .top .book {
+background-image:url(style/images/everday-lc-cover.jpg);
+background-repeat:no-repeat;
+background-size:contain;
+}
+
+.course-info-widget .tutorial-links li span {
+color:#1e5ac8;
+font-size:11px;
+font-weight:normal;
+display:inline-block;
+}
+
+/* right-region */
+.marketing-content .lc-rw-logo {
+background-image:url(style/images/learning-curve-logo.png);
+display:block;
+width:251px;
+height:48px;
+background-repeat:no-repeat;
+}
+
+.lc-rw-content-header {
+margin-bottom:30px;
+}
+
+.lc-rw-content-header span {
+color:#234094;
+font-weight:normal;
+font-size:16px;
+}
+
+#PX_LC_HOME_2COLUMN_ZONE_2.zoneParent {
+background:#e7f2f8;
+}
+
+.page-action-Unauthenticated #PX_LC_HOME_2COLUMN_ZONE_2.zoneParent,
+.page-action-NotEntitled #PX_LC_HOME_2COLUMN_ZONE_2.zoneParent {
+    width: 60%;
+    -moz-box-shadow:-10px 0 16px #E6E7E8;
+	-webkit-box-shadow:-10px 0 16px #E6E7E8;
+	box-shadow: -10px 0 16px #E6E7E8;
+    min-height: 600px;
+    background: #ecf8fe; /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VjZjhmZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk1JSIgc3RvcC1jb2xvcj0iI2VjZjhmZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjN2RmZjQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(left,  #ecf8fe 0%, #ecf8fe 95%, #c7dff4 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#ecf8fe), color-stop(95%,#ecf8fe), color-stop(100%,#c7dff4)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  #ecf8fe 0%,#ecf8fe 95%,#c7dff4 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  #ecf8fe 0%,#ecf8fe 95%,#c7dff4 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  #ecf8fe 0%,#ecf8fe 95%,#c7dff4 100%); /* IE10+ */
+    background: linear-gradient(left,  #ecf8fe 0%,#ecf8fe 95%,#c7dff4 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ecf8fe', endColorstr='#c7dff4',GradientType=1 ); /* IE6-8 */
+    -moz-box-shadow:-10px 0 16px #E6E7E8;
+    -webkit-box-shadow:-10px 0 16px rgba(0, 0, 0, 0.3);
+}
+
+.lc-rw-body-copy {
+border-top:6px solid #356bce;
+padding:15px 0 30px;
+}
+
+.lc-rw-body-copy p {
+line-height:24px;
+color:#356bce;
+font-size:12px;
+}
+
+.lc-rw-body-copy b {
+font-size:20px;
+color:#234094;
+font-family:georgia;
+}
+
+.lc-rw-hmpg-links ul {
+list-style:none;
+}
+
+.lc-rw-hmpg-links li {
+border-bottom:1px solid #c7dff4;
+padding:6px 0;
+}
+
+.lc-rw-hmpg-links li.header-link {
+border-top:1px solid #c7dff4;
+}
+
+.lc-rw-hmpg-links li a {
+text-decoration:none;
+font-size:11px;
+color:#234094;
+font-weight:normal;
+}
+
+/** everyday writer welcome **/
+/* left region */
+
+.course-info-widget .tutorial-links li.header-row span {
+text-transform:uppercase;
+color:#27327d;
+font-weight:bold;
+
+}
+
+.course-info-widget .top span.book-title {
+color:#234094 ;
+}
+
+.welcome .course-info-widget .top span {
+color:#505050;
+}
+
+/* right-region */
+
+.welcome .marketing-content .lc-rw-body-copy span {
+font-family:georgia;
+color:#27327D;
+font-size:18px;
+line-height:22px;
+font-weight:normal;
+}
+
+.welcome .marketing-content .lc-rw-body-copy ul li {
+font-size:12px;
+color:#505050;
+line-height:22px;
+}
+
+.welcome .lc-rw-body-copy p {
+color:#505050;
+}
+
+.welcome .lc-rw-body-copy b {
+font-weight:normal;
+}
+
+.marketing-content .lc-action-button .ecom-btns {
+background-color:#00acdc;
+}
+
+.register-lc {
+border-radius:7px 7px 7px 7px;
+color:white;
+font-weight:bold;
+margin:0;
+padding:4px 6px;
+text-decoration:none;
+font-size:12px;
+clear:both;
+float:right;
+background-color:#00acdc;
+width:180px;
+line-height:18px;
+z-index:1;
+position:relative;
+}
+
+.register-lc .icon {
+background-color:transparent;
+background-image:url(style/images/platx_sprite.png);
+background-position:-99px -353px;
+background-repeat:no-repeat;
+display:block;
+float:right;
+height:12px;
+width:18px;
+margin-top:2px;
+}
+
+/* Learning Curve Course Dashboard styles */ 
+
+
+/* Course Dashboard Table Styles */ 
+
+#PX_DashboardWidget.widgetItem {
+    border: none;
+    height: 100%;
+    background-color: #fff;
+}
+
+.PX_DashboardWidget{
+    width: 90%;
+    background-color: white;
+    margin: auto;
+    padding: 0px 10px 10px 10px;
+}
+    
+    
+.PX_DashboardWidget .dashboardgrid{
+	font-size: 12px;
+	margin-bottom:24px;
+    width: 100%;
+    line-height: 15px;
+}
+    
+.PX_DashboardWidget .dashboardgrid tr{
+    padding:0px;
+    text-align: left;
+    border: none;
+    float: none;
+    margin: 0 auto;
+    width: 100%;
+    background-color: white;
+}
+
+.PX_DashboardWidget .dashboardgrid th
+{    
+font-weight: normal;
+padding-bottom:5px;
+text-align: left;
+text-transform: uppercase;
+border-bottom: 1px solid #767E68;
+}
+.PX_DashboardWidget .dashboardgrid td
+{
+border-bottom: 1px dashed #767E68;
+text-align: left;
+min-width: 100px;
+width: 51%;
+padding: 0px;
+vertical-align: top;
+}
+
+.PX_DashboardWidget .dashboardgrid .status-cell{
+    border-left: 1px solid #767E68;
+    float:none;    
+    min-width: 50px;
+    padding: 5px 5px 5px 5px;
+    width: 10%;
+}
+    
+.PX_DashboardWidget .dashboardgrid .domain-cell{
+    border-left: 1px solid #767E68;
+    border-right: 1px solid #767E68;
+    min-width: 50px;
+    padding: 5px 5px 5px 5px;
+    width: 15%;
+}
+    
+.PX_DashboardWidget .dashboardgrid .header-titles  {
+    padding-left:5px;
+    min-width: 50px;
+}
+
+.PX_DashboardWidget .dashboardgrid .enrollment-count-cell{  
+    width: 20%;
+    padding: 5px 5px 5px 5px;
+    border-left: 1px solid #767E68;
+    float:none;
+}
+
+.PX_DashboardWidget .dashboardgrid .title-cell .domain-name{
+    display:none;
+}
+
+.PX_DashboardWidget .dashboardgrid .title-cell .semester{
+    display:none;
+}
+
+.PX_DashboardWidget .dashboardgrid .title-cell .professor-name{
+    display:none;
+}
+
+.PX_DashboardWidget .dashboardgrid .title-cell .course-actions .activate-button
+{
+    display:none;
+}
+.PX_DashboardWidget .dashboardgrid .title-cell .course-actions .delete-button{
+    display:none;
+}
+.PX_DashboardWidget .dashboardgrid .enrollment-count-cell .show-url-view-edit{
+    display:none;
+}
+    
+.PX_DashboardWidget .dashboardgrid .title-cell,
+#studentsRosterInformation .title-cell{
+    padding: 5px 5px 5px 0px;
+    text-decoration: none; 
+}
+
+.PX_DashboardWidget .dashboardgrid .title-cell a{
+    text-decoration: none;
+    float:left;
+    width:auto;
+    color: #003D8B;
+    font-size:11px;
+}
+
+.dashboardgrid .title-cell a.show-url-hover {
+    display: none;
+    float: right;
+}
+
+.title-cell .course-info {
+    display: none;
+}
+
+/*end dashboard styles */ 
+
+/*course edit styles */
+
+.product-type-learningcurve #createcourse form .activate-btns .activate-cancel,
+.product-type-learningcurve #createcourse form .activate-btns .activate-submit
+{
+    line-height: 1.2em;
+    padding: 4px;
+}
+
+/*end course edit styles */
+
+/*PX-4476*/
+.product-type-learningcurve #fne-content .contentwrapper
+{
+    height: 100%
+}
+/*end PX-4476*/
+
+/*Course layout rules taken from learning curve widget folder css file*/
+
+/*learningCurve - 11560  */
+html body.content-layout div.single-column div#main div.pageContainer div#PX_HOME_ZONE_2.zoneParent div#ecom-marketing div#course-border
+{
+ display:none;   
+    
+}
+/*end ecom styles */ 
+
+/* Default Learning Curve Courses layout style !keep here */
+
+body.product-type-learningcurve{
+     background-color:#fff;
+}
+body.login-form.product-type-learningcurve
+{
+  background-color: #D6DBD6;
+}
+.product-type-learningcurve .course-title-lable{
+    color:#7C7C7F;
+    font-size:11px;
+}
+body.home-layout.product-type-learningcurve #main{
+    top:72px;
+}
+
+body.home-layout.product-type-learningcurve.has-student-banner #main{
+    top:125px;
+}
+.product-type-learningcurve .homepage-course-info{
+    background-color:#fff;
+    padding:4px 0;
+    border-bottom: 4px double #cccccc;
+}
+.product-type-learningcurve .homepage-course-info .instructor-name{
+    clear:none;
+    margin:0 0 0 10px;
+    font-size:11px;
+}
+.product-type-learningcurve .homepage-course-info .instructor-name a{
+    color: #7C7C7F;
+    text-decoration:none;
+}
+#PX_LC_HOME_2COLUMN_ZONE_1.zoneParent {
+    display: block;
+    float: left;
+    height: 85%;
+    min-width: 210px;
+    padding: 0 0 0 12px;
+    width: 15%;
+}
+#PX_LC_HOME_2COLUMN_ZONE_2.zoneParent {
+    background-color: #E7F2F8;
+    bottom: 0;
+    float: left;
+    height: auto;
+    margin-left: 20px;
+    position: relative;
+    top: 0;
+    width: 73%;
+}
+.page-action-Unauthenticated #PX_LC_HOME_2COLUMN_ZONE_1.zoneParent{
+    width: 34%;
+}
+
+
+.page-action-Entitled #PX_LC_HOME_2COLUMN_ZONE_1.zoneParent{
+ width: 15%;
+}
+
+.page-action-Entitled #PX_LC_HOME_2COLUMN_ZONE_2.zoneParent{
+ width: 73%;
+}
+
+.course-info-widget .top .book{
+		height:270px;
+		width:211px;
+}
+.marketing-content{
+		padding:30px 60px;
+}
+.welcome .marketing-content{
+   padding:140px 60px;
+}
+ .lc-rw-hmpg-links li span {
+ display:inline-block;
+ }
+ #PX_LC_HOME_2COLUMN_ZONE_1 .course-info-widget .top span{
+   font-size:10px;
+   line-height:16px;
+ }
+ #PX_LC_HOME_2COLUMN_ZONE_1 .course-info-widget .top span.book-title{
+  font-size:12px;
+	margin-top:10px;
+ }
+ #PX_LC_HOME_2COLUMN_ZONE_1 .top .book{
+ 	margin-bottom:5px;
+ }
+ .course-info-widget .tutorial-links li.header-row{
+  margin-top:20px;
+ }
+ .welcome .marketing-content .lc-rw-body-copy ul{
+  list-style:disc;
+	margin-left:15px;
+}
+
+.welcome .lc-rw-body-copy{
+  padding:15px 0 !important;
+  border-top:none;
+ }
+ .marketing-content .lc-action-button{
+ float:right;
+ }
+.marketing-content .lc-action-button .ecom-btns{
+    border-radius: 7px 7px 7px 7px;
+    color: #FFFFFF;
+    font-weight: bold;
+    margin: 6px 0;
+    padding: 4px 6px;
+    text-decoration: none;
+	font-size:12px;
+	clear:both;
+	float:left;
+	background-color:#98bb34;
+	width:190px;
+	line-height:18px;
+}
+
+.marketing-content .lc-action-button .ecom-btns .icon {
+    background-color: transparent;
+    background-image: url("style/images/platx_sprite.png");
+    background-position: -99px -353px;
+    background-repeat: no-repeat;
+    display: block;
+    float: right;
+    height: 12px;
+    width: 18px;
+    margin-top: 4px;
+}
+
+ .tut-link-arrow{
+    background-image: url("style/images/platx_sprite.png");
+    background-position: -151px -353px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 12px;
+    width: 13px;
+}
+
+.page-action-Entitled #PX_HOME_ZONE_3 {
+    display:none;
+}
+
+.page-action-Unauthenticated #PX_HOME_ZONE_2,
+.page-action-NotEntitled #PX_HOME_ZONE_2 {
+    width:64%;
+}
+
+#PX_LC_HOME_2COLUMN_ZONE_3.zoneParent 
+{
+    bottom: 0;
+    float: left;
+    position: relative;
+    top: 0;
+    width: 75%;
+    height: 82%;
+}
+
+#PX_LC_HOME_2COLUMN_ZONE_1 .widgetHeader, #PX_LC_HOME_2COLUMN_ZONE_2 .widgetHeader,
+#PX_LC_HOME_2COLUMN_ZONE_1 .widgetItem, #PX_LC_HOME_2COLUMN_ZONE_2 .widgetItem{
+    border: none;
+    font-weight:bold; 
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    background:none;
+}
+
+#PX_LC_HOME_2COLUMN_ZONE_1 #widgetBody ,#PX_LC_HOME_2COLUMN_ZONE_2 #widgetBody,
+#PX_LC_HOME_2COLUMN_ZONE_1 .widgetItem ,#PX_LC_HOME_2COLUMN_ZONE_2 .widgetItem {
+    border: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    background-image:none;
+}
+
+.showEportfolioCourseSettingsEditorWidgetModalTop
+{
+    top: 200px !important;    
+}
+.product-type-learningcurve .homepage-course-info .course-title{
+    position: absolute;
+    right: 0;
+    top: 37px;
+    width: auto;
+    padding-right: 42px;
+}
+
+body.home-layout.product-type-learningcurve.has-student-banner .homepage-course-info .course-title{
+    top: 52px;
+}
+
+.product-type-learningcurve #brandbanner{
+    height: 63px;
+}
+.product-type-learningcurve #headermenu{
+    background-color:#ffffff;
+}
+.product-type-learningcurve #footer{
+    border-top: 4px double #CCCCCC !important;
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+.product-type-learningcurve .homepage-course-info .course-banner-logo{
+   background-image: url("style/images/bedford-st.martins-banner.png");
+   width:158px;   
+}
+.product-type-learningcurve .customWidgetOuterDiv {
+    overflow:hidden;
+}
+
+.product-type-learningcurve #fne-title #fne-title-actions #title-text
+{
+    font-size: 1.0em !important;
+}
+.view-courses-button-hidden { display:none; }
+
+
+.invaliddate, .invalidtime 
+{
+    display:none;
+    color:Red;
+}
+
+ .completed-task {
+    background-color: transparent;
+    background-image: url("style/images/platx_sprite.png");
+    background-position: -202px -553px;
+    background-repeat: no-repeat;
+    display: block;
+    height: 18px;
+    margin: auto;
+    width: 25px;
+    margin-top: 2px;
+}
+
+.ui-dialog .ui-dialog-content #learningCurveWindow 
+{
+    width: 100%;
+    height: 100%;
+}
+
+#rightbanner{
+    float:right;
+    width:auto;
+}
+
+body.home-layout.product-type-learningcurve.has-student-banner #rightbanner{
+    padding-top: 20px;
+}
+
+/*PX-6017 Fix*/
+#fne-footer
+{
+    display: none;
+    height: 60px;
+}
+
+/* fix for buttons in the delete dialog for dashboards*/
+
+.product-type-learningcurve  .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+    float: left;
+}
+.product-type-learningcurve .ui-dialog.notitle .ui-dialog-titlebar
+{
+    top: 0;
+    width: 0;
+    z-index: 99;
+}
+
+/* fix dialog close button*/
+.product-type-learningcurve .ui-dialog-titlebar .ui-dialog-titlebar-close {
+    color: #222;
+    background: url(/content/images/ui-icons_222222_256x240.png) 5px 5px no-repeat;
+    background-position: -96px -128px;
+}
+.product-type-learningcurve .ui-dialog-titlebar .ui-dialog-titlebar-close span {
+
+    display: none;
+}

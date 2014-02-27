@@ -1,0 +1,50 @@
+<batch>
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_PRODUCT_MARKETING" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_ROOT</parent>
+          <title>Marketing Material</title>
+          <abbreviation>mm</abbreviation>
+          <description>
+            &lt;div id="main-container" class="everydaywriter5e"&gt;
+            &lt;div class="xbook-mars-nav"&gt;
+            &lt;ul&gt;
+            &lt;li&gt;&lt;a target="_blank" href="http://bedfordstmartins.com/Catalog/Product.aspx?isbn=9781457612671&amp;tab=tableofcontents"&gt;Table of Contents&lt;span class="icon"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a target="_blank" href="http://bedfordstmartins.com/catalog/other/xbook_special"&gt;What's Special&lt;span class="icon"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a target="_blank" href="http://bedfordstmartins.com/catalog/other/xbook_works"&gt;See how it Works&lt;span class="icon"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a target="_blank" href="http://bedfordstmartins.com/catalog/other/xbook_FAQs"&gt;Faqs&lt;span class="icon"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;/div&gt;
+
+            &lt;div class="xbook-mars-content"&gt;
+            &lt;div class="content-wrapper"&gt;
+            &lt;h1&gt; A book is just the beginning&lt;/h1&gt;
+            &lt;span class="subtitle"&gt;x-Book for The Everyday Writer with Exercises, Fifth Edition&lt;/span&gt;
+            &lt;span class="author"&gt; Andrea A. Lunsford &lt;/span&gt;
+            &lt;p class="description"&gt;Ever wanted a book that lets you and your students dive in, make it your own, and talk to each other right on its pages? The &lt;i&gt;x-Book for The Everyday Writer with Exercises&lt;/i&gt; reimagines what a text can do online&amp;mdash;integrating interactive content and social tools that let you and your students get into your book in a whole new way.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="xbook-mars-branding-book"&gt;&lt;/div&gt;
+            &lt;div class="xbook-mars-branding"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;/div&gt;
+          </description>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>1</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <bfw_type>ProductMarketing</bfw_type>
+          <bfw_subtype>Marketing</bfw_subtype>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_ROOT" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+    </requests>
+  </request>
+</batch>

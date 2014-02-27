@@ -1,0 +1,45 @@
+﻿/* general items */
+h1, h2, h3, h4 { color:#0000CD; font-weight:bold; }
+div#main div#header div#header-top { background-color:#dcdcdc; border-top:solid 3px blue; border-bottom:solid 5px red; color:#808080; }
+div#main div#header div#header-top h2 { color:#808080; }
+div#account-status a { color:#808080; text-decoration:none; margin-right:10px; font-weight:bold; }
+div#account-status span { background-color:Blue; color:#fff; }
+a { color:#3CB371; }
+/* end general items */
+
+/* start announcement widget */
+div.announcement-header { color:#6495ED; text-transform:uppercase; font-weight:bold; }
+div.announcement-header h4 { color:#6495ED; }
+/* end announcement widget */
+
+/* start assignment widget */ 
+.assignment-groups li ul li span.assignment-date { color:#6495ED; font-weight:bold; }
+/* end assignment widget */
+
+/* start progress-widget widget */
+.progress-widget .full-bar { background-color:#DCDCDC; }
+.progress-widget .part-bar { background-color:#3CB371; }
+/* end progress-widget widget */
+
+/* start message-list widget */
+.widget-container.message-list { border-right:solid 4px #3CB371; background-image:url(style/images/disc-widget-gradient.jpg); }
+.widget-container.message-list .widget-header h3 { color:#000; }
+.widget-container.message-list span.message-author { color:#6495ED; font-weight:bold; }
+.widget-container.message-list span.message-body { color:#808080; }
+.widget-container.message-list .widget-body { border-top:solid 1px #808080; }
+/* end message-list widget */
+
+/* start featured-content-widget */
+.widget-container.featured-content-widget a { text-decoration:none; font-size:14px; font-weight:bold; color:#000; }
+.widget-container.featured-content-widget a:hover { text-decoration:none; background-color:rgb(100, 149, 237); background-color:rgba(100, 149, 237, .1); }
+/* end featured-content-widget */
+
+/* start vertical menu */
+.vertical-menu ul { background-color:#fff; }
+.vertical-menu a { font:normal 11px/16px arial, helvetica, sans-serif; text-transform:uppercase; color:#000; text-decoration:none; }
+.vertical-menu a:hover { color:#0000CD; background:#fff; }
+/* end vertical menu */
+
+/* start discussion widget */
+.discussion-widget ul li { background-color:#FFF0EE; border:1px solid #AAAAAA; }
+/* end discussion widget */

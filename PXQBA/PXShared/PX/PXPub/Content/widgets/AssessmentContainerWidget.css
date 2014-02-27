@@ -1,0 +1,239 @@
+﻿#main .assessment-menu-tabs{	
+	height: 25px;
+	margin-top:7px;
+	margin-left:20px;
+}
+
+#PX_AssessmentContainerWidget .assessment-container
+{
+	padding: 20px;
+	font-size:12px;
+}
+
+#PX_AssessmentContainerWidget .assessment-container #title {
+    font-size: 18px;
+    padding: 8px 12px 8px 0;
+    border-top:1px dotted #aaa;
+}
+
+#PX_AssessmentContainerWidget .assessment-container #description
+{
+	padding-bottom:15px;
+}
+
+#PX_AssessmentContainerWidget .assessment-container #body
+{
+	padding:20px 20px 0 0;   
+	min-width: 875px;
+
+}
+
+#PX_AssessmentContainerWidget .assessment-container .buttons .linkButton{
+	padding:4px;       
+}
+
+#PX_AssessmentContainerWidget .assessment-container #bodyObjectives {
+	padding: 0px 10px 10px 0px;
+	float: left;
+}
+
+#PX_AssessmentContainerWidget .assessment-container .tree
+{
+	overflow-y: scroll;
+	border: 1px solid #333;
+	background-color: #F0F0F0;    
+	padding:10px 8px;
+	margin-bottom:10px;
+	width:340px;
+	height:215px;
+	font-size:1.1em;
+}
+#PX_AssessmentContainerWidget .assessment-container .tree h3{
+    line-height:24px;
+    font-size:13px;
+    font-weight:bold;
+}
+.assessment-container #showAlignLearningObjectives .tree
+{
+	height: 90%;
+	overflow-y: scroll;
+	border: 1px solid #333;
+	background-color: #F0F0F0;    
+	padding:10px 8px;
+	width:430px;
+}
+
+#showAlignLearningObjectives #learning_objectives .even  {
+	background-color: #DCDCDC;
+}
+
+#PX_AssessmentContainerWidget .assessment-container .tree-container
+{   
+	float:left;
+	height:auto;
+}
+
+#PX_AssessmentContainerWidget .assessment-container .full-width
+{
+    width: 98%;
+}
+
+.assessment-container #showAlignLearningObjectives .tree-container
+{   
+	float:left;
+	height:450px;
+	overflow-x: hidden;
+}
+
+
+#PX_AssessmentContainerWidget .tree-container .tree-heading {
+    font-weight: normal;
+    padding-bottom: 8px;
+    color:#E0201B;
+    font-size: 13px;
+}
+
+#PX_AssessmentContainerWidget .tree-container .tree-buttons .linkButton
+{
+	padding:4px;
+	background: rgb(0,116,187); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(0,116,187,1) 0%, rgba(53,106,160,1) 99%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,116,187,1)), color-stop(99%,rgba(53,106,160,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(0,116,187,1) 0%,rgba(53,106,160,1) 99%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(0,116,187,1) 0%,rgba(53,106,160,1) 99%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(0,116,187,1) 0%,rgba(53,106,160,1) 99%); /* IE10+ */
+    background: linear-gradient(top, rgba(0,116,187,1) 0%,rgba(53,106,160,1) 99%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0074bb', endColorstr='#356aa0',GradientType=0 ); /* IE6-9 */    
+    color:#fff;
+    width:140px;
+    text-align:center;
+    font-weight:bold;
+    font-size:12px !important;
+ }
+
+#PX_AssessmentContainerWidget .assessment-container #tree-buttonset
+{    
+	float: left;
+	height: 100%;
+	width: 160px;
+}
+
+#PX_AssessmentContainerWidget #tree-buttonset .tree-buttons
+{
+	position:relative;
+	top:100px;
+	left:25px;
+}
+
+#PX_AssessmentContainerWidget #tree-buttonset .tree-buttons .linkButton
+{
+	width:100px;
+	display:block;
+	margin-bottom:10px;
+	text-align:center;
+	background: #EEE;
+    background: -moz-linear-gradient(top,rgba(238, 238, 238, 1) 0,rgba(238, 238, 238, 1) 42%,rgba(224, 224, 224, 1) 66%,rgba(244, 244, 241, 1) 98%);
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,rgba(238, 238, 238, 1)),color-stop(42%,rgba(238, 238, 238, 1)),color-stop(66%,rgba(224, 224, 224, 1)),color-stop(98%,rgba(244, 244, 241, 1)));
+    background: -webkit-linear-gradient(top,rgba(238, 238, 238, 1) 0,rgba(238, 238, 238, 1) 42%,rgba(224, 224, 224, 1) 66%,rgba(244, 244, 241, 1) 98%);
+    background: -o-linear-gradient(top,rgba(238, 238, 238, 1) 0,rgba(238, 238, 238, 1) 42%,rgba(224, 224, 224, 1) 66%,rgba(244, 244, 241, 1) 98%);
+    background: -ms-linear-gradient(top,rgba(238, 238, 238, 1) 0,rgba(238, 238, 238, 1) 42%,rgba(224, 224, 224, 1) 66%,rgba(244, 244, 241, 1) 98%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee',endColorstr='#f4f4f1',GradientType=0);
+    background: linear-gradient(top,rgba(238, 238, 238, 1) 0,rgba(238, 238, 238, 1) 42%,rgba(224, 224, 224, 1) 66%,rgba(244, 244, 241, 1) 98%);
+    line-height:18px;
+    color: #7c7c7f !important;
+    font-weight:normal !important;
+    font-size:11px !important;
+}
+
+#PX_AssessmentContainerWidget #tree-buttonset .tree-buttons .linkButton:hover,
+#bodyObjectives #tree-buttonset .tree-buttons #addLO.buttonSelectedColor,
+#bodyObjectives #tree-buttonset .tree-buttons #removeLO.buttonSelectedColor,
+#body #tree-buttonset .tree-buttons #lnkAddRubrics.buttonSelectedColor,
+#body #tree-buttonset .tree-buttons #lnkRemoveRubrics.buttonSelectedColor{
+    background: rgb(169,219,128); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(169,219,128,1) 0%, rgba(150,197,111,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(169,219,128,1)), color-stop(100%,rgba(150,197,111,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(169,219,128,1) 0%,rgba(150,197,111,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(169,219,128,1) 0%,rgba(150,197,111,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(169,219,128,1) 0%,rgba(150,197,111,1) 100%); /* IE10+ */
+    background: linear-gradient(top, rgba(169,219,128,1) 0%,rgba(150,197,111,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a9db80', endColorstr='#96c56f',GradientType=0 ); /* IE6-9 */
+    color:#fff !important;
+}
+
+#PX_AssessmentContainerWidget .faux-tree-placeholder {
+	height: 2px;
+	background-color: Black;
+	z-index:100000;
+}
+
+#PX_AssessmentContainerWidget .tree-container .item-node
+{
+	font-size: 12px;
+	line-height: 18px;    
+	height:auto;
+	padding:4px 0;
+}
+
+#PX_AssessmentContainerWidget .tree-container .item-node .col
+{
+	height:100%;
+	display:inline-block;    
+}
+
+#PX_AssessmentContainerWidget .tree-container .item-node .title
+{    
+	width:70%;  
+	cursor:pointer;
+}
+#PX_AssessmentContainerWidget .tree-container .item-node .title span{
+    word-wrap:break-word;
+}
+#PX_AssessmentContainerWidget .tree-container .item-node .links
+{
+	float:right;
+}
+#PX_AssessmentContainerWidget .tree-container .item-node .links a{
+    margin-right: 3px;
+}
+#PX_AssessmentContainerWidget .tree-container .item-node .checkbox
+{
+	float: left;
+	margin-right: 5px;
+	width: 20px;
+	position:relative;
+	top:2px;
+}
+#PX_AssessmentContainerWidget .tree-container .item-node .rubricCheck{
+    margin: 0 0 0 5px;
+    padding: 0;
+}
+
+#courseRubricsContainer .even,
+#allRubricsContainer .even,
+#PX_AssessmentContainerWidget #dashboard_learning_objectives .even, 
+#PX_AssessmentContainerWidget #publisher_template_learning_objectives .even, 
+#PX_AssessmentContainerWidget #learning_objectives .even, 
+#PX_AssessmentContainerWidget #program_manager_template_learning_objectives .even  {
+	background-color: #DCDCDC;
+}
+
+#PX_AssessmentContainerWidget #dashboard_learning_objectives .AddEditLO, #PX_AssessmentContainerWidget #publisher_template_learning_objectives .AddEditLO, #PX_AssessmentContainerWidget #learning_objectives .AddEditLO, #PX_AssessmentContainerWidget #bodyLOObjectives #main_learning_objectives .AddEditLO, #PX_AssessmentContainerWidget #bodyLOObjectives #program_manager_template_learning_objectives .AddEditLO  {
+	background-color: LightYellow;
+}
+#PX_AssessmentContainerWidget .linkButton.disabledButton{
+    background: none repeat scroll 0 0 #DDDDDD !important;
+    color: #AAAAAA !important;
+}
+#PX_AssessmentContainerWidget .assessment-container .buttons .linkButton{
+    background: rgb(169,219,128); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(169,219,128,1) 0%, rgba(150,197,111,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(169,219,128,1)), color-stop(100%,rgba(150,197,111,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(169,219,128,1) 0%,rgba(150,197,111,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(169,219,128,1) 0%,rgba(150,197,111,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(169,219,128,1) 0%,rgba(150,197,111,1) 100%); /* IE10+ */
+    background: linear-gradient(top, rgba(169,219,128,1) 0%,rgba(150,197,111,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a9db80', endColorstr='#96c56f',GradientType=0 ); /* IE6-9 */
+    color:#fff;
+}
+	

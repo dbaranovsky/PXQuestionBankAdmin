@@ -1,0 +1,9 @@
+<requests>
+      <course courseid="-courseid-" domainid="-domainid-" title="-title-" reference="">
+        <data>
+          <bfw_rss_feeds>
+            <feed name="The Economist" url="http://www.economist.com/feeds/print-sections/102/briefings2.xml" />
+          </bfw_rss_feeds>          
+        </data>
+      </course>
+</requests>

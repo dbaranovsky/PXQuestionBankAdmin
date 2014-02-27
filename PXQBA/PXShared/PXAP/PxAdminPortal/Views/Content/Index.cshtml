@@ -1,0 +1,89 @@
+﻿@model Bfw.PXAP.Models.ContentModel
+@{
+    ViewBag.Title = "Content";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .longrow
+    {
+        width:700px;
+        margin-bottom:2px;
+    }
+</style>
+
+<div style="width: 400px; margin: 0 auto;">
+    @Html.Partial("_MainMenuPartial", Model.MenuModel)
+</div>
+<div>
+    &nbsp;
+</div>
+<div id="MetaForm" style="width: 75%; padding-top: 15px; margin: 0 auto;">
+    @{
+        Bfw.PXAP.Models.LayoutModel layout = this.ViewBag.LayoutModel as Bfw.PXAP.Models.LayoutModel;
+
+
+        if (string.IsNullOrEmpty(layout.CurrentEnvironment))
+        {
+            return;
+        }
+    }
+    @using (Html.BeginForm("CopyContent", "Content", FormMethod.Post, new { id = "longform" }))
+    {
+            
+        <div class="longrow">
+            Move content from course to parent course or another Course. It also copies modified quiz questions from the course.
+        </div>
+        <br />
+        <div class="row">
+            <div class="label">
+                From Entity ID:</div>
+            <div>@Html.TextBoxFor(m => m.EntityId, new { @class = "envField" })            
+            </div>
+        </div>   
+        <div class="row">
+            <div class="label"> Move to Parent?</div>
+            <div> @Html.CheckBoxFor(m => m.MoveToParent)</div>
+        </div>
+        <div class="row">
+            <div class="label">
+                To Entity ID:</div>
+            <div>@Html.TextBoxFor(m => m.MoveToEntityId)
+             
+            </div>
+        </div>   
+        <div class="row">
+            <div style="font:24px;"><b>Search Query</b></div>            
+        </div>
+        <div class="row">
+            <div class="label">
+                Parent :</div>
+            <div>@Html.TextBoxFor(m => m.ParentId)</div>
+        </div>
+        <div class="longrow"  >
+            <div class="label">
+                Parent Category:</div>
+            <div> @Html.TextBoxFor(m => m.Category)
+            </div>            
+        </div>
+        
+        <div class="longrow">
+            <div class="label">
+                Content Type:</div>
+            <div>@Html.TextBoxFor(m => m.ContentType)</div>
+        </div>
+              
+        <div class="longrow">
+            <div class="label">
+                Content Sub-Type:</div>
+            <div>@Html.TextBoxFor(m => m.ContentSubType)</div>
+        </div>
+               
+        <div class="longrow">
+            <div class="label">&nbsp;</div>
+            <div><input type="button" id="opener" value="Move" /></div>
+        </div>
+                
+    }
+</div>
+     @Html.Partial("_ProgressBarPartial")
+

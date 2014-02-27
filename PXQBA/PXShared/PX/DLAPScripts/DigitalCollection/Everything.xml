@@ -1,0 +1,1485 @@
+<?xml version="1.0" encoding="utf-8"?>
+<batch>
+  <!-- Following command updates the product course with the correct metadata values -->
+  <request cmd="updatecourses">
+    <requests>
+      <course courseid="-entityID-" domainid="-domainid-" title="Digital Collections" reference="" type="Range">
+        <data>
+          <bfw_tocs>
+            <course_materials type="bfw_toc">Course Materials</course_materials>
+          </bfw_tocs>
+          <bfw_infinite_scroll>false</bfw_infinite_scroll>
+          <show_student_view_link>true</show_student_view_link>
+          <meta-bfw_course_type>DigitalCollections</meta-bfw_course_type>
+          <bfw_course_type>DigitalCollections</bfw_course_type>
+          <bfw_course_home_page>PX_DC_HOME_2COLUMN</bfw_course_home_page>
+          <bfw_welcome_message>&amp;lt;h1&amp;gt;Welcome&amp;lt;/h1&amp;gt;
+                        &amp;lt;p&amp;gt;This Bedford e-Portfolio gives you a single place to collect and reflect on your work. You can compose directly in your e-Portfolio or uplaoad word documents, video, audio, or images that best represent who you are and what you have created. Just click on the e-Portfolio tab at the top of the page and get started!&amp;amp;nbsp;&amp;lt;/p&amp;gt;
+                        &amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;lt;/p&amp;gt;
+                        &amp;lt;div class=&amp;quot;eportfolio_PortfolioTeaching&amp;quot; style=&amp;quot;float: left;&amp;quot;&amp;gt;&amp;lt;img style=&amp;quot;width: 100%; height: 100%;&amp;quot; src=&amp;quot;/Content/images/Universe-9e-cover.jpg&amp;quot; alt=&amp;quot;&amp;quot; /&amp;gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;ul class=&amp;quot;welcome-links&amp;quot;&amp;gt;
+                        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Finding and developing your materials&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+                        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Creating your Structure&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+                        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Choosing a style and design&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+                        &amp;lt;/ul&amp;gt;
+                    </bfw_welcome_message>
+          <bfw_allow_site_search>false</bfw_allow_site_search>
+        </data>
+      </course>
+    </requests>
+  </request>
+  <!-- Creates necessary folders and other course structures including page definitions for digital collections-->
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_DC_HOME_2COLUMN" entityid="-entityID-">
+        <data>
+          <parent>PX_PAGES</parent>
+          <sequence>b</sequence>
+          <title>PX_DC_HOME_2COLUMN</title>
+          <bfw_page_editable>false</bfw_page_editable>
+          <abbreviation>PXDCHOME2COLUMN</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_DC_HOME_2COLUMN_ZONES" entityid="-entityID-">
+        <data>
+          <parent>PX_DC_HOME_2COLUMN</parent>
+          <sequence>a</sequence>
+          <title>PX_DC_HOME_2COLUMN_ZONES</title>
+          <abbreviation>PXDCHOME2COLUMNZONES</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_DC_HOME_2COLUMN_ZONE_1" entityid="-entityID-">
+        <data>
+          <parent>PX_DC_HOME_2COLUMN_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_DC_HOME_ZONE_1</title>
+          <abbreviation>PXDCHOMEZONE1</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets />
+          <bfw_support_hide>true</bfw_support_hide>
+        </data>
+      </item>
+      <item itemid="PX_DC_HOME_2COLUMN_ZONE_2" entityid="-entityID-">
+        <data>
+          <parent>PX_DC_HOME_2COLUMN_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_DC_HOME_ZONE_2</title>
+          <abbreviation>PXDCHOMEZONE2</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets>
+            <widget type="PX_ActivitiesWidget" displayName="LearningCurve Activities" />
+          </bfw_allowed_widgets>
+        </data>
+      </item>
+      <item itemid="PX_DC_ASSIGNMENT_2COLUMN" entityid="-entityID-">
+        <data>
+          <parent>PX_PAGES</parent>
+          <sequence>b</sequence>
+          <title>PX_DC_ASSIGNMENT_2COLUMN</title>
+          <bfw_page_editable>false</bfw_page_editable>
+          <abbreviation>PXDCHOME2COLUMN</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_DC_ASSIGNMENT_2COLUMN_ZONES" entityid="-entityID-">
+        <data>
+          <parent>PX_DC_ASSIGNMENT_2COLUMN</parent>
+          <sequence>a</sequence>
+          <title>PX_DC_ASSIGNMENT_2COLUMN_ZONES</title>
+          <abbreviation>PXDCHOME2COLUMNZONES</abbreviation>
+          <completiontrigger>0</completiontrigger>
+        </data>
+      </item>
+      <item itemid="PX_DC_ASSIGNMENT_2COLUMN_ZONE_1" entityid="-entityID-">
+        <data>
+          <parent>PX_DC_ASSIGNMENT_2COLUMN_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_DC_HOME_ZONE_1</title>
+          <abbreviation>PXDCHOMEZONE1</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets />
+          <bfw_support_hide>true</bfw_support_hide>
+        </data>
+      </item>
+      <item itemid="PX_DC_ASSIGNMENT_2COLUMN_ZONE_2" entityid="-entityID-">
+        <data>
+          <parent>PX_DC_ASSIGNMENT_2COLUMN_ZONES</parent>
+          <sequence>a</sequence>
+          <title>PX_DC_HOME_ZONE_2</title>
+          <abbreviation>PXDCHOMEZONE2</abbreviation>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Zone</bfw_type>
+          <bfw_allowed_widgets>
+            <widget type="PX_assignmentList" displayName="Digital Collections Assignment List" />
+          </bfw_allowed_widgets>
+        </data>
+      </item>
+	  
+    </requests>
+  </request>
+  <!-- Adds widgets to their respective zones for digital collections-->
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_MenuWidget" entityid="-entityID-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_DC_HOME_2COLUMN_ZONE_2</parent>
+          <sequence>a</sequence>
+          <title>Menu</title>
+          <abbreviation>lcw</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_MenuWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="MenuWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_MenuWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_target_menu" type="String">PX_MENU_DIGITALCOLLECTIONS</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+      <item itemid="PX_CarouselWidget" entityid="-entityID-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_DC_HOME_2COLUMN_ZONE_2</parent>
+          <sequence>b</sequence>
+          <abbreviation>lcw</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_CarouselWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="CarouselWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_properties>
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_hidealltitles" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_hidethumbnails" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_hidealldescriptions" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_hideallassignbuttons" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_loadbytoc" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_hideQtip" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_itemsperslide" type="String">4</bfw_property>
+            <bfw_property name="bfw_autogenerateprev" type="String">true</bfw_property>
+            <bfw_property name="bfw_autogeneratepagination" type="String">true</bfw_property>
+            <bfw_property name="bfw_pagination" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_startingPoint" type="string">1</bfw_property>
+            <bfw_property name="bfw_autoheight" type="String">true</bfw_property>
+            <bfw_property name="bfw_hideviewall" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_viewallurl" type="String">#</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+          <creationby>7</creationby>
+          <IsMarkAsCompleteChecked>false</IsMarkAsCompleteChecked>
+          <meta-bfw_assigned>false</meta-bfw_assigned>
+        </data>
+      </item>
+	  <item itemid="PX_AssignmentList" entityid="-entityID-">
+      <data>
+        <type>CustomActivity</type>
+        <parent>PX_DC_ASSIGNMENT_2COLUMN_ZONE_2</parent>
+        <sequence>ab</sequence>
+        <abbreviation>lcw</abbreviation>
+        <timetocomplete>PT1M</timetocomplete>
+        <category>0</category>
+        <period inherit="true">0</period>
+        <groupsetid>-1</groupsetid>
+        <weight>100</weight>
+        <gradeentry>1</gradeentry>
+        <inputtable inherit="true">0</inputtable>
+        <completiontrigger>0</completiontrigger><bfw_type>Widget</bfw_type><bfw_subtype>PX_AssignmentList</bfw_subtype><bfw_display_flags>
+  <display>instructor</display>
+  <display>student</display>
+</bfw_display_flags><bfw_widget_callbacks>
+  <method name="View" controller="AssignmentListWidget" action="Summary" fne="false" />
+</bfw_widget_callbacks><bfw_properties>
+  <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+</bfw_properties><bfw_tocs>
+  <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+</bfw_tocs><creationby>7</creationby><IsMarkAsCompleteChecked>false</IsMarkAsCompleteChecked><meta-bfw_assigned>false</meta-bfw_assigned></data>
+    </item>
+<item itemid="PX_MenuWidget_AssignmentList" entityid="-entityID-" >
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_DC_ASSIGNMENT_2COLUMN_ZONE_2</parent>
+          <sequence>a</sequence>
+          <title>Menu</title>
+          <abbreviation>lcw</abbreviation>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>0</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <completiontrigger>0</completiontrigger>
+          <bfw_type>Widget</bfw_type>
+          <bfw_subtype>PX_MenuWidget</bfw_subtype>
+          <bfw_display_flags>
+            <display>instructor</display>
+            <display>student</display>
+          </bfw_display_flags>
+          <bfw_widget_callbacks>
+            <method name="View" controller="MenuWidget" action="Summary" fne="false" />
+          </bfw_widget_callbacks>
+          <bfw_widget_template>PX_MenuWidget</bfw_widget_template>
+          <bfw_properties>
+            <bfw_property name="bfw_syllabusfilter" type="String" />
+            <bfw_property name="bfw_cssclass" type="String" />
+            <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_targetid" type="String" />
+            <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+            <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+            <bfw_property name="bfw_target_menu" type="String">PX_MENU_DIGITALCOLLECTIONS</bfw_property>
+          </bfw_properties>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+<item itemid="PX_AssignmentListOverview" entityid="-entityID-">
+      <data>
+        <type>CustomActivity</type>
+        <parent>PX_DC_ASSIGNMENT_2COLUMN_ZONE_1</parent>
+        <title>Overview</title>
+        <abbreviation>lcw</abbreviation>
+        <description>&lt;div class="welcome"&gt; &lt;div class="course-info-widget"&gt; &lt;div class="top"&gt; &lt;h1&gt;Welcome, Instructor!&lt;/h1&gt; &lt;span&gt; It’s easy to find, customize, and assign primary source projects and documents that work for your course. Your students will only see the projects that you have assigned.&lt;/span&gt; &lt;h2&gt;Get started:&lt;/h2&gt; &lt;ol&gt; &lt;li&gt;Browse the Primary Source Projects.&lt;/li&gt; &lt;li&gt;Edit them to match your course.&lt;/li&gt; &lt;li&gt;Assign them to your students.&lt;/li&gt; &lt;/ol&gt; &lt;a class="activation-link register-lc"&gt;Enable Student Registration &lt;span class="icon"&gt;&lt;/span&gt;&lt;/a&gt; &lt;/div&gt; &lt;div class="bottom"&gt; &lt;ul class="tutorial-links"&gt; &lt;li class="header-row"&gt;&lt;span rel=""&gt;Instructor Support&lt;/span&gt;&lt;/li&gt; &lt;li &gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Works" target="_blank"&gt;&lt;span rel=""&gt;How to get started&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Research" target="_blank"&gt;&lt;span rel=""&gt;FAQs&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt;</description>
+        <timetocomplete>PT1M</timetocomplete>
+        <category>0</category>
+        <period inherit="true">0</period>
+        <groupsetid>-1</groupsetid>
+        <weight>100</weight>
+        <gradeentry>1</gradeentry>
+        <inputtable inherit="true">0</inputtable>
+        <completiontrigger>0</completiontrigger><bfw_type>Widget</bfw_type><bfw_subtype>PX_Custom</bfw_subtype><bfw_display_flags>
+  <display>instructor</display>
+</bfw_display_flags><bfw_widget_callbacks>
+  <method name="View" controller="CustomWidget" action="View" fne="false" />
+  <method name="OnBeforeAdd" controller="CustomWidget" action="OnBeforeAdd" fne="false" />
+  <method name="Save" controller="CustomWidget" action="AddCustomWidget" fne="false" />
+</bfw_widget_callbacks><bfw_widget_template>PX_Custom</bfw_widget_template><bfw_properties>
+  <bfw_property name="bfw_syllabusfilter" type="String" />
+  <bfw_property name="bfw_cssclass" type="String" />
+  <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_targetid" type="String" />
+  <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+</bfw_properties><bfw_tocs>
+  <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+</bfw_tocs></data>
+    </item>
+	  
+	  <item itemid="PX_InstructorOverviewWidget" entityid="-entityID-">
+      <data>
+        <type>CustomActivity</type>
+        <parent>PX_DC_HOME_2COLUMN_ZONE_1</parent>
+        <title>Overview</title>
+        <abbreviation>lcw</abbreviation>
+        <description>&lt;div class="welcome"&gt; &lt;div class="course-info-widget"&gt; &lt;div class="top"&gt; &lt;h1&gt;Welcome, Instructor!&lt;/h1&gt; &lt;span&gt; It’s easy to find, customize, and assign primary source projects and documents that work for your course. Your students will only see the projects that you have assigned.&lt;/span&gt; &lt;h2&gt;Get started:&lt;/h2&gt; &lt;ol&gt; &lt;li&gt;Browse the Primary Source Projects.&lt;/li&gt; &lt;li&gt;Edit them to match your course.&lt;/li&gt; &lt;li&gt;Assign them to your students.&lt;/li&gt; &lt;/ol&gt; &lt;a class="activation-link register-lc"&gt;Enable Student Registration &lt;span class="icon"&gt;&lt;/span&gt;&lt;/a&gt; &lt;/div&gt; &lt;div class="bottom"&gt; &lt;ul class="tutorial-links"&gt; &lt;li class="header-row"&gt;&lt;span rel=""&gt;Instructor Support&lt;/span&gt;&lt;/li&gt; &lt;li &gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Works" target="_blank"&gt;&lt;span rel=""&gt;How to get started&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Research" target="_blank"&gt;&lt;span rel=""&gt;FAQs&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt;</description>
+        <timetocomplete>PT1M</timetocomplete>
+        <category>0</category>
+        <period inherit="true">0</period>
+        <groupsetid>-1</groupsetid>
+        <weight>100</weight>
+        <gradeentry>1</gradeentry>
+        <inputtable inherit="true">0</inputtable>
+        <completiontrigger>0</completiontrigger><bfw_type>Widget</bfw_type><bfw_subtype>PX_Custom</bfw_subtype><bfw_display_flags>
+  <display>instructor</display>
+</bfw_display_flags><bfw_widget_callbacks>
+  <method name="View" controller="CustomWidget" action="View" fne="false" />
+  <method name="OnBeforeAdd" controller="CustomWidget" action="OnBeforeAdd" fne="false" />
+  <method name="Save" controller="CustomWidget" action="AddCustomWidget" fne="false" />
+</bfw_widget_callbacks><bfw_widget_template>PX_Custom</bfw_widget_template><bfw_properties>
+  <bfw_property name="bfw_syllabusfilter" type="String" />
+  <bfw_property name="bfw_cssclass" type="String" />
+  <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_targetid" type="String" />
+  <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+</bfw_properties><bfw_tocs>
+  <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+</bfw_tocs></data>
+    </item>
+	
+    <item itemid="PX_StudentOverviewWidget" entityid="-entityID-">
+      <data>
+        <type>CustomActivity</type>
+        <parent>PX_DC_HOME_2COLUMN_ZONE_1</parent>
+        <title>Overview</title>
+        <abbreviation>lcw</abbreviation>
+        <description>&lt;div class="welcome"&gt; &lt;div class="course-info-widget"&gt; &lt;div class="top"&gt; &lt;h1&gt;Welcome, Instructor!&lt;/h1&gt; &lt;span&gt; It’s easy to find, customize, and assign primary source projects and documents that work for your course. Your students will only see the projects that you have assigned.&lt;/span&gt; &lt;h2&gt;Get started:&lt;/h2&gt; &lt;ol&gt; &lt;li&gt;Browse the Primary Source Projects.&lt;/li&gt; &lt;li&gt;Edit them to match your course.&lt;/li&gt; &lt;li&gt;Assign them to your students.&lt;/li&gt; &lt;/ol&gt; &lt;/div&gt; &lt;div class="bottom"&gt; &lt;ul class="tutorial-links"&gt; &lt;li class="header-row"&gt;&lt;span rel=""&gt;Instructor Support&lt;/span&gt;&lt;/li&gt; &lt;li &gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Works" target="_blank"&gt;&lt;span rel=""&gt;How to get started&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Research" target="_blank"&gt;&lt;span rel=""&gt;FAQs&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt;</description>
+        <timetocomplete>PT1M</timetocomplete>
+        <category>0</category>
+        <period inherit="true">0</period>
+        <groupsetid>-1</groupsetid>
+        <weight>100</weight>
+        <gradeentry>1</gradeentry>
+        <inputtable inherit="true">0</inputtable>
+        <completiontrigger>0</completiontrigger><bfw_type>Widget</bfw_type><bfw_subtype>PX_Custom</bfw_subtype><bfw_display_flags>
+  <display>student</display>
+</bfw_display_flags><bfw_widget_callbacks>
+  <method name="View" controller="CustomWidget" action="View" fne="false" />
+  <method name="OnBeforeAdd" controller="CustomWidget" action="OnBeforeAdd" fne="false" />
+  <method name="Save" controller="CustomWidget" action="AddCustomWidget" fne="false" />
+</bfw_widget_callbacks><bfw_widget_template>PX_Custom</bfw_widget_template><bfw_properties>
+  <bfw_property name="bfw_syllabusfilter" type="String" />
+  <bfw_property name="bfw_cssclass" type="String" />
+  <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_targetid" type="String" />
+  <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+</bfw_properties><bfw_tocs>
+  <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+</bfw_tocs></data>
+    </item>
+	  
+	  <item itemid="PX_AssignmentListOverview" entityid="-entityID-">
+      <data>
+        <type>CustomActivity</type>
+        <parent>PX_DC_ASSIGNMENT_2COLUMN_ZONE_1</parent>
+        <title>Overview</title>
+        <abbreviation>lcw</abbreviation>
+        <description>
+&lt;div class=&quot;welcome&quot;&gt; 
+		&lt;div class=&quot;course-info-widget&quot;&gt; 
+			&lt;div class=&quot;top&quot;&gt; 
+			&lt;a class=&quot;add-assignment-link&quot; href=&quot;#&quot; onclick=&#39;$(document).find(&quot;#PX_MENU_ITEM_PROJECTS a &quot;).click();&#39;&gt;Add an Assignment &lt;i class=&quot;icon-right-open stand-alone&quot; style=&quot;float:right&quot;&gt;&lt;/i&gt;&lt;/a&gt; 
+			&lt;span style=&quot;margin-bottom:10px; float:left;&quot;&gt;This is where we can explain to the instructor that only things that appear on this page will be visible to student&lt;/span&gt;  
+				&lt;ol style=&quot;float: left;&quot;&gt;
+				 &lt;li&gt;Do we give directions?&lt;/li&gt; 
+				 &lt;li&gt;Who shall write them&lt;/li&gt; 
+				 &lt;li&gt;Assign them to your students.&lt;/li&gt; 
+				 &lt;/ol&gt;
+			 &lt;/div&gt;
+		 &lt;/div&gt;
+	 &lt;/div&gt;
+		</description>
+        <timetocomplete>PT1M</timetocomplete>
+        <category>0</category>
+        <period inherit="true">0</period>
+        <groupsetid>-1</groupsetid>
+        <weight>100</weight>
+        <gradeentry>1</gradeentry>
+        <inputtable inherit="true">0</inputtable>
+        <completiontrigger>0</completiontrigger><bfw_type>Widget</bfw_type><bfw_subtype>PX_Custom</bfw_subtype><bfw_display_flags>
+  <display>instructor</display>
+</bfw_display_flags><bfw_widget_callbacks>
+  <method name="View" controller="CustomWidget" action="View" fne="false" />
+  <method name="OnBeforeAdd" controller="CustomWidget" action="OnBeforeAdd" fne="false" />
+  <method name="Save" controller="CustomWidget" action="AddCustomWidget" fne="false" />
+</bfw_widget_callbacks><bfw_widget_template>PX_Custom</bfw_widget_template><bfw_properties>
+  <bfw_property name="bfw_syllabusfilter" type="String" />
+  <bfw_property name="bfw_cssclass" type="String" />
+  <bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_targetid" type="String" />
+  <bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+</bfw_properties><bfw_tocs>
+  <bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+</bfw_tocs></data>
+    </item>
+	
+    </requests>
+  </request>
+  <!-- This deletes some legacy items that may be on the course -->
+  <request cmd="deleteitems">
+    <requests>
+      <item entityid="-entityID-" itemid="PX_MENU_ITEM_COURSEMATERIALS_TEMPLATE_PM" />
+      <item entityid="-entityID-" itemid="PX_MENU_ITEM_COURSEMATERIALS_PM" />
+      <item entityid="-entityID-" itemid="PX_MENU_ITEM_EBOOK_PM" />
+      <item entityid="-entityID-" itemid="PX_MENU_ITEM_PROGRAM_MANAGER_TEMPLATE" />
+      <item entityid="-entityID-" itemid="PX_MENU_ITEM_PROGRAM_MANAGER" />
+      <item entityid="-entityID-" itemid="PX_ProfileSummaryWidget" />
+    </requests>
+  </request>
+  <!--Creates the primary menu for the Digital Collections product-->
+  <request cmd="putitems">
+    <requests>
+      <item itemid="PX_MENU_DIGITALCOLLECTIONS" version="1" entityid="-entityID-" creationdate="2012-02-06T21:11:53.23Z" creationby="7" modifieddate="2012-02-06T21:11:53.23Z" modifiedby="7">
+        <data>
+          <parent>PX_MENUS</parent>
+          <title>Primary Navigation</title>
+          <bfw_type>Menu</bfw_type>
+          <bfw_tocid>-tocid-</bfw_tocid>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_PROJECTS" version="1" entityid="-entityID-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_MENU_DIGITALCOLLECTIONS</parent>
+          <sequence>a</sequence>
+          <title>Projects</title>
+          <abbreviation>PROJECTS</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Projects" controller="Home" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_PRIMARY_SOURCES" version="1" entityid="-entityID-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_MENU_DIGITALCOLLECTIONS</parent>
+          <sequence>b</sequence>
+          <title>Primary Sources</title>
+          <abbreviation>PRIMARYSOURCES</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="Source" controller="Source" action="Index" url="" type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+      <item itemid="PX_MENU_ITEM_ASSIGNMENTS" version="1" entityid="-entityID-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_MENU_DIGITALCOLLECTIONS</parent>
+          <sequence>c</sequence>
+          <title>View Your Assignments</title>
+          <abbreviation>ASSIGNMENTS</abbreviation>
+          <bfw_type>MenuItem</bfw_type>
+          <bfw_menu_created_by />
+          <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+            <allow>
+              <role>instructor</role>
+              <coursetype>any</coursetype>
+            </allow>
+            <allow>
+              <role>student</role>
+              <coursetype>any</coursetype>
+            </allow>
+          </bfw_display_flags>
+          <bfw_menu_callbacks>
+            <method name="ASSIGNMENTS" controller="Project" action="Assignments" url=""  type="" route="" />
+          </bfw_menu_callbacks>
+        </data>
+      </item>
+    </requests>
+  </request>
+    <!--Creates Projects for the Digital Collections product-->
+  <request cmd="putitems">
+<requests>
+    <item itemid="PJX_1" entityid="-entityID-">
+        <data>
+            <bfw_type>Project</bfw_type>
+            <folder></folder>
+            <parent>PX_TEMPLATES</parent>
+            <sequence>a</sequence>
+            <title>Louisa Cousselle</title>
+            <subtitle>Reconstructing a Life in the West</subtitle>
+            <description>What does the life of Louisa Cousselle reveal about women in the nineteenth-century trans-Mississippi West?</description>
+            <tooltip>&quot;Reconstructing a Life in the West&quot; introduces students to a range of primary sources centered on the life of a nineteenth-century prostitute in the American West. Using these limited sources, students will piece together the known &quot;facts&quot; about Louisa Cousselle and then use this evidence to create a plausible account of Cousselle’s life—and by extension, those of other western prostitutes. Students will be able to understand and articulate that historical evidence is oftentimes neither neat nor complete. Thus, they will need to identify evidentiary gaps and employ strategies (verification, inference, reasonable speculation) for dealing with the missing pieces</tooltip>
+            <thumbnail>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/projects/images/Cousselle-thumbnail.jpg</thumbnail>
+            <showheadnotes>true</showheadnotes>
+            <showtranscripts>true</showtranscripts>
+            <showquestions>true</showquestions>
+            <learningobjectivedescription>&quot;Reconstructing a Life in the West&quot; introduces students to a range of primary sources. Using these limited sources, students will piece together the known &quot;facts&quot; about Louisa Cousselle and then use this evidence to create a plausible account of Cousselle’s life—and by extension, those of other western prostitutes. Students will be able to understand and articulate that historical evidence is oftentimes neither neat nor complete. Thus, they will need to identify evidentiary gaps and employ strategies (verification, inference, reasonable speculation) for dealing with the missing pieces.</learningobjectivedescription>
+            <showlearningobjective>true</showlearningobjective>
+            <bfw_tocs>
+                <bfw_toc_projects parentid="PX_PROJECT_ID" sequence="a" />
+            </bfw_tocs>
+        </data>
+    </item>
+    <item itemid="PJX_2" entityid="-entityID-">
+        <data>
+            <bfw_type>Project</bfw_type>
+            <folder></folder>
+            <parent>PX_TEMPLATES</parent>
+            <sequence>b</sequence>
+            <title>School Desegregation, North and South</title>
+            <subtitle>Project Subtitle</subtitle>
+            <description>How did school desegregation efforts differ in the North and South, and what were the challenges that reformers faced in trying to desegregate American schools after the 1960s?  </description>
+            <tooltip>Students gain a better understanding of the unresolved issues from civil rights struggles of the 1960s, and how it was that despite unprecedented gains in breaking down segregated patterns of schooling in the rural South, separate and unequal public education would persist in the United States for decades to come.</tooltip>
+            <thumbnail>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/projects/images/project2-thumbnail.jpg</thumbnail>
+            <showheadnotes>true</showheadnotes>
+            <showtranscripts>true</showtranscripts>
+            <showquestions>true</showquestions>
+            <learningobjectivedescription>Testing objective 2</learningobjectivedescription>
+            <showlearningobjective>true</showlearningobjective>
+            <bfw_tocs>
+                <bfw_toc_projects parentid="PX_PROJECT_ID" sequence="a" />
+            </bfw_tocs>
+        </data>
+    </item>
+    <item itemid="PJX_3" entityid="-entityID-">
+        <data>
+            <bfw_type>Project</bfw_type>
+            <folder></folder>
+            <parent>PX_TEMPLATES</parent>
+            <sequence>c</sequence>
+            <title>The Juvenile Delinquency/Comic Book Panic of the 1950s</title>
+            <subtitle>Project Subtitle</subtitle>
+            <description>Should there be any limits to the imaginary violence to which children were exposed?  Should violence in the media be regulated and if so, by whom?</description>
+            <tooltip>Students read about the reasons why a great many Americans believed that culture caused crime, as well as understand the arguments against this assumption.  And they will also discover how the comics industry answered its critics by instituting self-censorship.</tooltip>
+            <thumbnail>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/projects/images/project3-thumbnail.jpg</thumbnail>
+            <showheadnotes>true</showheadnotes>
+            <showtranscripts>true</showtranscripts>
+            <showquestions>true</showquestions>
+            <learningobjectivedescription>Testing objective 3</learningobjectivedescription>
+            <showlearningobjective>true</showlearningobjective>
+            <bfw_tocs>
+                <bfw_toc_projects parentid="PX_PROJECT_ID" sequence="a" />
+            </bfw_tocs>
+        </data>
+    </item>
+    <item itemid="PJX_4" entityid="-entityID-">
+        <data>
+            <bfw_type>Project</bfw_type>
+            <folder></folder>
+            <parent>PX_TEMPLATES</parent>
+            <sequence>d</sequence>
+            <title>The California Gold Rush</title>
+            <subtitle>A Trans-Pacific Phenomenon</subtitle>
+            <description>How was the gold rush influenced by California’s proximity to places and diverse communities around the Pacific Ocean?</description>
+            <tooltip>Students will consider how the events in California resonated throughout the Pacific Ocean, and the ways in which different communities around the Pacific participated in and changed as a result of California’s gold rush.</tooltip>
+            <thumbnail>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/projects/images/project4-thumbnail.jpg</thumbnail>
+            <showheadnotes>true</showheadnotes>
+            <showtranscripts>true</showtranscripts>
+            <showquestions>true</showquestions>
+            <learningobjectivedescription>Project 4 test learning curve objective</learningobjectivedescription>
+            <showlearningobjective>true</showlearningobjective>
+            <bfw_tocs>
+                <bfw_toc_projects parentid="PX_PROJECT_ID" sequence="a" />
+            </bfw_tocs>
+        </data>
+    </item>
+    <item itemid="PJX_5" entityid="-entityID-">
+        <data>
+            <bfw_type>Project</bfw_type>
+            <folder></folder>
+            <parent>PX_TEMPLATES</parent>
+            <sequence>e</sequence>
+            <title>Louisa Cousselle</title>
+            <subtitle>Reconstructing a Life in the West</subtitle>
+            <description>What does the life of Louisa Cousselle reveal about women in the nineteenth-century trans-Mississippi West?</description>
+            <tooltip>&quot;Reconstructing a Life in the West&quot; introduces students to a range of primary sources centered on the life of a nineteenth-century prostitute in the American West. Using these limited sources, students will piece together the known &quot;facts&quot; about Louisa Cousselle and then use this evidence to create a plausible account of Cousselle’s life—and by extension, those of other western prostitutes. Students will be able to understand and articulate that historical evidence is oftentimes neither neat nor complete. Thus, they will need to identify evidentiary gaps and employ strategies (verification, inference, reasonable speculation) for dealing with the missing pieces</tooltip>
+            <thumbnail>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/projects/images/Cousselle-thumbnail.jpg</thumbnail>
+            <showheadnotes>true</showheadnotes>
+            <showtranscripts>true</showtranscripts>
+            <showquestions>true</showquestions>
+            <learningobjectivedescription>&quot;Reconstructing a Life in the West&quot; introduces students to a range of primary sources. Using these limited sources, students will piece together the known &quot;facts&quot; about Louisa Cousselle and then use this evidence to create a plausible account of Cousselle’s life—and by extension, those of other western prostitutes. Students will be able to understand and articulate that historical evidence is oftentimes neither neat nor complete. Thus, they will need to identify evidentiary gaps and employ strategies (verification, inference, reasonable speculation) for dealing with the missing pieces.</learningobjectivedescription>
+            <showlearningobjective>true</showlearningobjective>
+            <bfw_tocs>
+                <bfw_toc_projects parentid="PX_PROJECT_ID" sequence="e" />
+            </bfw_tocs>
+        </data>
+    </item>
+    <item itemid="PJX_6" entityid="-entityID-">
+        <data>
+            <bfw_type>Project</bfw_type>
+            <folder></folder>
+            <parent>PX_TEMPLATES</parent>
+            <sequence>f</sequence>
+            <title>School Desegregation, North and South</title>
+            <subtitle>Project Subtitle</subtitle>
+            <description>How did school desegregation efforts differ in the North and South, and what were the challenges that reformers faced in trying to desegregate American schools after the 1960s?  </description>
+            <tooltip>Students gain a better understanding of the unresolved issues from civil rights struggles of the 1960s, and how it was that despite unprecedented gains in breaking down segregated patterns of schooling in the rural South, separate and unequal public education would persist in the United States for decades to come.</tooltip>
+            <thumbnail>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/projects/images/project2-thumbnail.jpg</thumbnail>
+            <showheadnotes>true</showheadnotes>
+            <showtranscripts>true</showtranscripts>
+            <showquestions>true</showquestions>
+            <learningobjectivedescription>Testing objective 2</learningobjectivedescription>
+            <showlearningobjective>true</showlearningobjective>
+            <bfw_tocs>
+                <bfw_toc_projects parentid="PX_PROJECT_ID" sequence="f" />
+            </bfw_tocs>
+        </data>
+    </item>
+    <item itemid="PJX_7" entityid="-entityID-">
+        <data>
+            <bfw_type>Project</bfw_type>
+            <folder></folder>
+            <parent>PX_TEMPLATES</parent>
+            <sequence>g</sequence>
+            <title>The Juvenile Delinquency/Comic Book Panic of the 1950s</title>
+            <subtitle>Project Subtitle</subtitle>
+            <description>Should there be any limits to the imaginary violence to which children were exposed?  Should violence in the media be regulated and if so, by whom?</description>
+            <tooltip>Students read about the reasons why a great many Americans believed that culture caused crime, as well as understand the arguments against this assumption.  And they will also discover how the comics industry answered its critics by instituting self-censorship.</tooltip>
+            <thumbnail>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/projects/images/project3-thumbnail.jpg</thumbnail>
+            <showheadnotes>true</showheadnotes>
+            <showtranscripts>true</showtranscripts>
+            <showquestions>true</showquestions>
+            <learningobjectivedescription>Testing objective 3</learningobjectivedescription>
+            <showlearningobjective>true</showlearningobjective>
+            <bfw_tocs>
+                <bfw_toc_projects parentid="PX_PROJECT_ID" sequence="g" />
+            </bfw_tocs>
+        </data>
+    </item>
+    <item itemid="PJX_8" entityid="-entityID-">
+        <data>
+            <bfw_type>Project</bfw_type>
+            <folder></folder>
+            <parent>PX_TEMPLATES</parent>
+            <sequence>h</sequence>
+            <title>The California Gold Rush</title>
+            <subtitle>A Trans-Pacific Phenomenon</subtitle>
+            <description>How was the gold rush influenced by California’s proximity to places and diverse communities around the Pacific Ocean?</description>
+            <tooltip>Students will consider how the events in California resonated throughout the Pacific Ocean, and the ways in which different communities around the Pacific participated in and changed as a result of California’s gold rush.</tooltip>
+            <thumbnail>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/projects/images/project4-thumbnail.jpg</thumbnail>
+            <showheadnotes>true</showheadnotes>
+            <showtranscripts>true</showtranscripts>
+            <showquestions>true</showquestions>
+            <learningobjectivedescription>Project 4 test learning curve objective</learningobjectivedescription>
+            <showlearningobjective>true</showlearningobjective>
+            <bfw_tocs>
+                <bfw_toc_projects parentid="PX_PROJECT_ID" sequence="h" />
+            </bfw_tocs>
+        </data>
+    </item>
+</requests>
+</request>
+    <!--Creates the Project content for PJX_1 for the Digital Collections product-->
+  <request cmd="putitems">
+<requests>
+  <item itemid="5c20a9405d714b52b0875c5377bdb99b" entityid="-entityID-">
+    <data>
+      <type>Resource</type>
+      <parent>PJX_1</parent>
+      <sequence>a</sequence>
+      <title>Overview</title>
+      <folder>5c20a9405d714b52b0875c5377bdb99b</folder>
+      <href>Templates/Data/5c20a9405d714b52b0875c5377bdb99b/index.html</href>
+      <timetocomplete>PT1M</timetocomplete>
+      <category>1</category>
+      <period inherit="true">0</period>
+      <groupsetid>-1</groupsetid>
+      <weight>100</weight>
+      <gradeentry>1</gradeentry>
+      <inputtable inherit="true">0</inputtable>
+      <bfw_type>HtmlDocument</bfw_type>
+      <bfw_template>HtmlDocument</bfw_template>
+      <bfw_tocs>
+        <bfw_toc_PJX_1 parentid="PJX_1" sequence="a" />
+      </bfw_tocs>
+    </data>
+  </item>
+  <item itemid="46e3c96f407f44c687c1e55b7d55b4fe" entityid="-entityID-">
+    <data>
+      <type>Resource</type>
+      <parent>PJX_1</parent>
+      <sequence>b</sequence>
+      <title>Introduction</title>
+      <folder>46e3c96f407f44c687c1e55b7d55b4fe</folder>
+      <href>Templates/Data/46e3c96f407f44c687c1e55b7d55b4fe/index.html</href>
+      <timetocomplete>PT1M</timetocomplete>
+      <category>1</category>
+      <period inherit="true">0</period>
+      <groupsetid>-1</groupsetid>
+      <weight>100</weight>
+      <gradeentry>1</gradeentry>
+      <inputtable inherit="true">0</inputtable>
+      <bfw_type>HtmlDocument</bfw_type>
+      <bfw_template>HtmlDocument</bfw_template>
+      <bfw_tocs>
+        <bfw_toc_PJX_1 parentid="PJX_1" sequence="b" />
+      </bfw_tocs>
+        <bfw_metadata name="bfw_allowcomments">false</bfw_metadata>
+    </data>
+  </item>
+  <item itemid="7100d491bcdc4994bab1d7e6091b19c8" entityid="-entityID-">
+    <data>
+      <type>Resource</type>
+      <parent>PJX_1</parent>
+      <sequence>c</sequence>
+      <title>Historical Background</title>
+      <folder>7100d491bcdc4994bab1d7e6091b19c8</folder>
+      <href>Templates/Data/7100d491bcdc4994bab1d7e6091b19c8/index.html</href>
+      <timetocomplete>PT1M</timetocomplete>
+      <category>1</category>
+      <period inherit="true">0</period>
+      <groupsetid>-1</groupsetid>
+      <weight>100</weight>
+      <gradeentry>1</gradeentry>
+      <inputtable inherit="true">0</inputtable>
+      <bfw_type>HtmlDocument</bfw_type>
+      <bfw_template>HtmlDocument</bfw_template>
+      <bfw_tocs>
+        <bfw_toc_PJX_1 parentid="PJX_1" sequence="c" />
+      </bfw_tocs>
+        <bfw_metadata name="bfw_allowcomments">false</bfw_metadata>
+    </data>
+  </item>
+
+<item itemid="75f97bbc90564dc081ad39ac551df6bf" entityid="-entityID-">
+    <data>
+      <type>Resource</type>
+      <parent>PJX_1</parent>
+      <sequence>d</sequence>
+      <title>Primary Sources</title>
+      <folder>75f97bbc90564dc081ad39ac551df6bf</folder>
+      <href>Templates/Data/75f97bbc90564dc081ad39ac551df6bf/index.html</href>
+      <timetocomplete>PT1M</timetocomplete>
+      <category>1</category>
+      <period inherit="true">0</period>
+      <groupsetid>-1</groupsetid>
+      <weight>100</weight>
+      <gradeentry>1</gradeentry>
+      <inputtable inherit="true">0</inputtable>
+      <bfw_type>HtmlDocument</bfw_type>
+      <bfw_template>HtmlDocument</bfw_template>
+      <bfw_tocs>
+        <bfw_toc_PJX_1 parentid="PJX_1" sequence="d" />
+      </bfw_tocs>
+    </data>
+  </item>
+  
+ <item itemid="1955988db8064b9d9c123b3abee572bc" entityid="-entityID-" >
+     <data>
+      <type>Assessment</type>
+      <parent>PJX_1</parent>
+      <sequence>e</sequence>
+      <title>Project Questions</title>
+      <description></description>
+      <folder>88161c2783b949ed805d56fc5a1a1349</folder>
+      <href>a</href>
+      <timetocomplete>PT1M</timetocomplete>
+      <category>0</category>
+      <period inherit="true">0</period>
+      <groupsetid>-1</groupsetid>
+      <duedate>2012-11-11</duedate>
+      <gradereleasedate>0001-01-01T05:00:00Z</gradereleasedate>
+      <weight>100</weight>
+      <gradeentry>1</gradeentry>
+      <inputtable inherit="true">0</inputtable>
+      <completiontrigger>0</completiontrigger>
+      
+	 <questions>
+        <question id="B02E4372ECAB4AB029F8760E21020032" score="1" />
+        <question id="2f58ddabe0e343eda629b405759be802" score="5" />
+        <question id="44cead279c0f46dcab0c2d4ff1ce5c67" score="10" />
+      </questions>
+	  
+	  <examflags>258</examflags>
+      <attemptlimit>3</attemptlimit>
+      <examreviewrules>
+        <rule setting="Question" condition="true" />
+        <rule setting="Answer" condition="true" />
+        <rule setting="possible" condition="true" />
+        <rule setting="CorrectQuestion" condition="true" />
+        <rule setting="CorrectChoice" condition="true" />
+        <rule setting="Feedback" condition="true" />
+        <rule setting="Feedback-GROUP" condition="true" />
+      </examreviewrules><bfw_properties>
+  <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility&gt;&lt;instructor /&gt;&lt;student /&gt;&lt;/bfw_visibility&gt;</bfw_property>
+  <bfw_property name="bfw_test" type="String">testing</bfw_property>
+  <bfw_property name="bfw_syllabusfilter" type="String">PJX_1</bfw_property>
+  <bfw_property name="assessment_auto_submit_at_due_time" type="Boolean">false</bfw_property>
+  <bfw_property name="bfw_duedate_manuallyset" type="Boolean">false</bfw_property>
+</bfw_properties><bfw_type>Quiz</bfw_type><bfw_template>Quiz</bfw_template><bfw_custom_settings controller="CustomSettings" action="Quiz">custom settings</bfw_custom_settings><bfw_tocs>
+  <bfw_toc_contents parentid="PJX_1" sequence="a" />
+  <my_materials type="bfw_toc" parentid="my_materials_9339" sequence="">my_materials</my_materials>
+  <syllabusfilter type="bfw_toc" parentid="PJX_1" sequence="e">syllabusfilter</syllabusfilter>
+</bfw_tocs><bfw_in_assignment_center>true</bfw_in_assignment_center><bfw_duedate_manuallyset>false</bfw_duedate_manuallyset><IsMarkAsCompleteChecked>false</IsMarkAsCompleteChecked><meta-bfw_assigned>false</meta-bfw_assigned><allowviewhints>false</allowviewhints><percentsubstracthint>0</percentsubstracthint><allowstudentsemailinstructors>true</allowstudentsemailinstructors><meta-container>LaunchPad</meta-container><meta-subcontainerid>PJX_1</meta-subcontainerid>
+</data>
+  </item>
+  
+   <item itemid="37cf49c840a445d0b9a4d656e57342e3" entityid="-entityID-">
+    <data>
+      <type>Resource</type>
+      <parent>PJX_1</parent>
+      <sequence>f</sequence>
+      <title>Project Activities</title>
+      <folder>37cf49c840a445d0b9a4d656e57342e3</folder>
+      <href>Templates/Data/37cf49c840a445d0b9a4d656e57342e3/index.html</href>
+      <timetocomplete>PT1M</timetocomplete>
+      <category>1</category>
+      <period inherit="true">0</period>
+      <groupsetid>-1</groupsetid>
+      <weight>100</weight>
+      <gradeentry>1</gradeentry>
+      <inputtable inherit="true">0</inputtable>
+      <bfw_type>HtmlDocument</bfw_type>
+      <bfw_template>HtmlDocument</bfw_template>
+      <bfw_tocs>
+        <bfw_toc_PJX_1 parentid="PJX_1" sequence="f" />
+      </bfw_tocs>
+        <bfw_metadata name="bfw_allowcomments">false</bfw_metadata>
+    </data>
+  </item>
+  </requests>
+  </request>
+ 
+    <!--Creates the Sources for the Digital Collections product-->
+  <request cmd="putitems">
+<requests>
+  <item itemid="MarriageLicense1853" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>a</sequence>
+      <title>Joseph Cousselle and Louisa Langley, Marriage License, 1853</title>
+      <description>Source Description</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>Marriage License, 1853.</creditline_caption>
+      <source_caption>London Metropolitan Archives.</source_caption>
+      <headnote>
+        <content>A marriage license then and now is fairly straightforward: it is a record of a couple’s legal 
+          relationship. But it also contains pertinent chronological, demographic, and social information 
+          about the couple and their families.</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>pdf</format>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Cousselle-Marriage.pdf</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location></location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) What is a cordwainer? &lt;br /&gt;
+          2) What evidence is there of a class difference in the parents’ occupations?
+        </content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs>
+        <bfw_toc_PJX_1 parentid="PJX_1" sequence="a"/>
+      </bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+  <item itemid="AmericanEagle1853" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>b</sequence>
+      <title>Ship’s Passenger List, American Eagle, 1853</title>
+      <description>Source Description</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>Passenger List, Ship American Eagle, 1853.</creditline_caption>
+      <source_caption>Records of the U.S. Customs Service, Record Group 36; National Archives, Washington, D.C.</source_caption>
+      <headnote>
+        <content>Like a marriage license, a ship’s passenger list is also fairly obvious: it is a record of people going 
+          from one place to another. But it also contains occupational, geographic, and political information. 
+          The ship American Eagle made regular trips between New York and England in the 1850s. Its 
+          primary business was transporting passengers traveling to and from New York and London. Most of 
+          these passengers were, however, northern Europeans, primarily from England and Germany, 
+          emigrating to the United States.</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>jpg</format>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/PassengerList_AmericanEagle_1853.jpg</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location>/PX_TrnscriptLocationPath/FileName.htm</location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) Who are the Cousselles’ fellow travelers in terms of social class?&lt;br /&gt; 
+          2) How long after their marriage did the Cousselles emigrate to the United States?&lt;br /&gt;
+          3) What does this document list as Louisa Cousselle’s citizenship? Why?
+        </content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs>
+        <bfw_toc_PJX_1 parentid="PJX_1" sequence="b"/>
+      </bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+  <item itemid="IRS1865" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>c</sequence>
+      <title>Internal Revenue Service, Nevada Tax List, Nevada, 1865</title>
+      <description>Source Description</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>Internal Revenue List, 1865 (Document).</creditline_caption>
+      <source_caption>National Archives and Records Administration.</source_caption>
+      <headnote>
+        <content>Passed in 1862 to raise money for the Union cause during the Civil War, the Internal Revenue Act 
+          placed a tax on various goods and services. All persons, partnerships, firms, associations, and 
+          corporations, according to the legislation, submitted to a local federal assessor a list showing the 
+          amount of annual income, articles subject to special taxes and duties, and the quantity of goods 
+          made or sold that were liable to taxes or duties. While there is much we cannot learn from a tax list, 
+          it can provide clues as to where a person was living and what his or her relative wealth was in 
+          comparison with other members of the community.</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>pdf</format>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Cousselle Revenue List 1865.pdf</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location>/PX_TrnscriptLocationPath/FileName.htm</location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) What did Louisa Cousselle pay tax on?&lt;br /&gt;
+          2) In what ways did her taxable property conform (or not) to nineteenth-century gender expectations?&lt;br /&gt;
+          3) Where does Louisa Cousselle fit, in terms of taxes paid, in comparison to her neighbors?</content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs></bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+  <item itemid="FireLosses1874" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>d</sequence>
+      <title>Fire Losses, 1874, Helena, Lewis &amp; Clark County, Montana</title>
+      <description>Source Description</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>Subscription History, "Fire Losses, 1874, Helena, Lewis &amp; Clark County, Montana."</creditline_caption>
+      <source_caption>Michael Leeson, "Lewis and Clarke County," History of Montana, 1739–1885 (Chicago: Warner, Beers &amp; Company, 1885): 717–718.</source_caption>
+      <headnote>
+        <content>Many western towns were liable to fires for a host of reasons, and Helena was no exception; it 
+          suffered devastating fires in 1869, 1871, and 1874. Taken from a subscription history, the partial 
+          list enumerates resident losses in the fire.</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>pdf</format>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Cousselle Fire Loss 1874.pdf</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location>/PX_TrnscriptLocationPath/FileName.htm</location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) How many individual men and how many &lt;i&gt;individual&lt;/i&gt; women suffered losses? &lt;br /&gt;
+          2) What was the average &lt;i&gt;individual&lt;/i&gt; loss in the fire? How did Cousselle’s loss compare with the average loss? What might this comparison suggest about her financial standing?&lt;br /&gt;
+          3) Why might Cousselle have moved to Bozeman?</content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs></bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+  <item itemid="USCensus1880" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>e</sequence>
+      <title>U.S. Manuscript Census, 1880, Gallatin County, Bozeman</title>
+      <description>Source Description</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>U.S. Manuscript Census, 1880, Bozeman, Gallatin County, Montana Territory.</creditline_caption>
+      <source_caption>Tenth Census of the United States, 1880.</source_caption>
+      <headnote>
+        <content>The Census Bureau instructed enumerators to collect the following information for each 
+          household: address (name of the street; house number), occupants (name of each person and their 
+          relationship to head of family), sex, race, age, marital status, ability to read and write, birthplace, 
+          birthplace of parents, occupation (trade or profession; number of months unemployed), health 
+          (whether blind, deaf and dumb, crippled, maimed, idiotic, insane, bedridden, or otherwise 
+          disabled), number of months unemployed during the year; and the state or country of birth of 
+          every individual’s father and mother.</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>pdf</format>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Cousselle Census 1880.pdf</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location>/PX_TrnscriptLocationPath/FileName.htm</location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) Why did Louisa Cousselle move to Bozeman?&lt;br /&gt;
+          2) What was her occupation? &lt;br /&gt;
+          3) Does the data from the 1880 census change your interpretation of data from earlier documents?</content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs></bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+  <item itemid="WillProbate" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>f</sequence>
+      <title>Louisa Cousselle, Will &amp; Probate, 1883 &amp; 1886 (excerpt)</title>
+      <description>Source Description</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>Probate Court, Gallatin County, Bozeman, Montana Territory.</creditline_caption>
+      <source_caption>[[excerpt of Will]]</source_caption>
+      <headnote>
+        <content>Sample content</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>pdf</format>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Cousselle-Will-Excerpt-1883.pdf</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location>/PX_TrnscriptLocationPath/FileName.htm</location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) What were the most surprising revelations contained in the will? &lt;br /&gt;
+          2) What do these surprises suggest about Cousselle’s life? &lt;br /&gt;
+          3) What do Louisa Cousselle’s bequests suggest about her values? &lt;br /&gt;
+          4) Why is Louisa Cousselle’s will and probate so important?
+        </content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs></bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+  <item itemid="AvantCourier1886" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>g</sequence>
+      <title>"Death of Mrs. Lou," Avant Courier [Bozeman, Montana Territory], June 26, 1886</title>
+      <description>Source Description</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>Avant Courier (Bozeman, Montana Territory), June 26, 1886.</creditline_caption>
+      <source_caption></source_caption>
+      <headnote>
+        <content>Obituaries were (and are) summaries of an individual life. Death notices of notable and notorious 
+          individuals also provided some insight into the community’s view of the departed as well as the 
+          community’s values.</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>pdf</format>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Avant Courier 6-26-1886.pdf</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location>/PX_TrnscriptLocationPath/FileName.htm</location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) What parts of the obituary confirm evidence from the other sources? &lt;br /&gt;
+          2) What was the writer’s and, by extension, the community’s view of 
+          Louisa Cousselle?&lt;br /&gt;
+          3) What did the reporter apparently value when he evaluated Cousselle’s life?</content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs></bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+  <item itemid="LouisaGravestone" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>h</sequence>
+      <title>Louisa Cousselle’s Gravestone, Greenwood Cemetery, Brooklyn, New York</title>
+      <description>Source Description</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>Headstone, Greenwood Cemetery, Brooklyn, New York, 2009 (photo by Paula Petrik).</creditline_caption>
+      <source_caption></source_caption>
+      <headnote>
+        <content>In the nineteenth century it “counted” to be buried in Brooklyn’s Greenwood Cemetery. As one 
+          observer wrote, “It is the ambition of the New Yorker to live upon the Fifth Avenue, to take his 
+          airings in the Park, and to sleep with his fathers in Green-Wood.” Among those buried in 
+          Greenwood were Horace Greeley, who once advised young men to go west, and Lola Montez, a 
+          noted exotic dancer and courtesan.</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>jpg</format>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Couselle_Gravestone_2009.jpg</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location>/PX_TrnscriptLocationPath/FileName.htm</location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) Why did Cousselle choose Greenwood Cemetery as her final resting place?&lt;br /&gt;
+          2) What does her choice suggest about her aspirations?</content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs></bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+  <item itemid="TaxList1867" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>h</sequence>
+      <title>Tax List, Helena, Lewis &amp; Clark County, Montana, 1867</title>
+      <description>Source Description</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>Subscription History, Tax List 1867, Helena, Lewis &amp; Clark County, Montana.</creditline_caption>
+      <source_caption>Michael Leeson, "Lewis and Clarke County," History of 
+        Montana, 1739–1885 (Chicago: Warner, Beers &amp; 
+        Company, 1885): 681–682; 685–686.</source_caption>
+      <headnote>
+        <content>Property taxes were the mainstay of local western governments and provide an index into an 
+          individual’s economic position. Although this list is only a partial tabulation, it can be used as a 
+          rough sample for the whole.</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>pdf</format>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Cousselle Tax List 1867.pdf</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location>/PX_TrnscriptLocationPath/FileName.htm</location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) How many &lt;i&gt;individual&lt;/i&gt; men and how many &lt;i&gt;individuals&lt;/i&gt; held property?&lt;br /&gt;
+          2) What was the average &lt;i&gt;individual&lt;/i&gt; assessed property value?&lt;br /&gt;
+          3) How did Cousselle’s property value compare with the average property value? </content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs></bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+  <item itemid="USCensus1870" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>i</sequence>
+      <title>U.S. Census Bureau, Census List for Helena, Lewis &amp; Clark County, Montana Territory, 1870</title>
+      <description>Source Description</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>U.S. Manuscript Census, 1870, Helena, Lewis &amp; Clark County, Montana Territory.</creditline_caption>
+      <source_caption>National Archives and Records Administration.</source_caption>
+      <headnote>
+        <content>The Census Bureau instructed enumerators to record the names of every person in the household. 
+          Tallies included the following categories in the census: name; age at last birthday (if a child was 
+          under one year of age, months of age were to be stated as fractions, such as 1/12); sex; color; 
+          profession; occupation or trade of every male and female; value of real estate; place of birth; 
+          whether mother and father were of foreign birth; whether born or married within the year and the 
+          month; those who could not read; those who could not write; whether deaf, dumb, blind, or insane 
+          or "idiotic." No relationships were shown between members of a household.</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>pdf</format>
+        <location>/documentlocation/sample.pdf</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location>/PX_TrnscriptLocationPath/FileName.htm</location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) Is Louisa Cousselle listed on the page? How do you know?&lt;br /&gt;
+          2) If she is listed, what information does she give the census taker? Evaluate its accuracy and account for any discrepancies.</content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs></bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+  <item itemid="MontanaMention1886" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>j</sequence>
+      <title>"Montana Mention," Daily Yellowstone Journal (Miles City, Montana), March 6, 1886</title>
+      <description>Source Description</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>Daily Yellowstone Journal (Miles City, Montana), March 6, 1886.</creditline_caption>
+      <source_caption></source_caption>
+      <headnote>
+        <content>The Yellowstone Journal was the paper of record for Miles City, a cattle trans-shipment point in 
+          the eastern part of Montana, some 288 miles from Bozeman.</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>pdf</format>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/Yellowstone Journal 3-6-86.pdf</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location>/PX_TrnscriptLocationPath/FileName.htm</location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) What does the incident described in the Yellowstone Journal add to an account of Cousselle’s financial dealings? &lt;br /&gt;
+          2) Why would a newspaper publish an account of an event involving two demimonde residents in a town nearly 300 miles away?</content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs></bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+  <item itemid="BlockCarltonAvenue2009" entityid="-entityID-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>j</sequence>
+      <title>300 Block Carlton Avenue, Brooklyn, New York, 2009</title>
+      <description>Source Description</description>
+      <bfw_type>Source</bfw_type>
+      <creditline_caption>Cityscape, Carlton Avenue Block, Brooklyn, New York, 2009 (photo by Paula Petrik).</creditline_caption>
+      <source_caption></source_caption>
+      <headnote>
+        <content>Although Louisa Cousselle’s house no longer stands, the row house neighborhood in Brooklyn’s 
+          Park Slope area looks much the same as it did in 1880s when Louisa Cousselle built her brick 
+          house sometime after 1881.</content>
+        <visibility>true</visibility>
+      </headnote>
+      <video>
+        <format>mp4</format>
+        <location></location>
+        <viewersettings>none</viewersettings>
+      </video>
+      <document>
+        <format>jpg</format>
+        <location>/brainhoney/resource/6696/bcs.bedfordstmartins.com/webpub/history/ushistory/sources/CarltonAve_2009.jpg</location>
+        <viewersettings>none</viewersettings>
+      </document>
+      <transcript>
+        <location>/PX_TrnscriptLocationPath/FileName.htm</location>
+        <visibility>true</visibility>
+      </transcript>
+      <question>
+        <content>1) By its physical appearance, what kind of neighborhood does Carlton Avenue appear to be? &lt;br /&gt;
+          2) What does the Carlton Avenue neighborhood suggest about Cousselle’s life in Brooklyn? </content>
+        <visibility>true</visibility>
+      </question>
+      <bfw_template>Source</bfw_template>
+      <bfw_tocs></bfw_tocs>
+      <meta-topics>
+        <meta-topic>PJX_1</meta-topic>
+      </meta-topics>
+      <visibility>true</visibility>
+    </data>
+  </item>
+</requests>
+</request>
+
+ <request cmd="putquestions">
+  <requests>
+  <question questionid="B02E4372ECAB4AB029F8760E21020032" entityid="-entityID-">
+    <interaction type="text" flags="2" width="150" texttype="Numeric" />
+		<parameters>
+		<parameter name="a" type="Range" min="1" max="9" step="1" />
+		<parameter name="b" type="Range" min="1" max="9" step="1" />
+		<parameter name="c" type="List" >
+		<values>
+		<value>1</value>
+		<value>3</value>
+		<value>5</value>
+		<value>7</value>
+		</values>
+		</parameter>
+		</parameters>
+		<body>Sample Question - 1 </body>
+		<answer>
+		<value>This is some random answere to our question - 1</value>
+		</answer>
+  </question>
+
+  <question questionid="2f58ddabe0e343eda629b405759be802" entityid="-entityID-"  >
+		<answer />
+		<body >Match the animals with their sounds.</body>
+		<interaction type="match" flags="2" >
+		<choice id="1" >
+		<body >dog</body>
+		<answer >woof</answer>
+		</choice>
+		<choice id="2" >
+		<body >cat</body>
+		<answer >meow</answer>
+		</choice>
+		<choice id="3" >
+		<body >cow</body>
+		<answer >moo</answer>
+		</choice>
+		</interaction>
+		</question>
+  <question questionid="44cead279c0f46dcab0c2d4ff1ce5c67" entityid="-entityID-">
+		<body >Is this a multiple choice question?</body>
+		<interaction type="choice" flags="2" >
+		<choice id="1" >
+		<body >Yes</body>
+		</choice>
+		<choice id="2" >
+		<body >No</body>
+		</choice>
+		</interaction>
+		<groups >
+		<group >Group A</group>
+		</groups>
+		<answer >
+		<value >1</value>
+		</answer>
+</question>
+ </requests>
+</request>
+
+
+</batch>

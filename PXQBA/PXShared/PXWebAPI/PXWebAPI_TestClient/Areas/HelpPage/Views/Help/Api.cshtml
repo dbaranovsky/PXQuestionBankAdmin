@@ -1,0 +1,28 @@
+@using System.Web.Mvc.Html
+@using PXWebAPI_TestClient.Areas.HelpPage.Models
+@model HelpPageApiModel
+
+@{
+    var description = Model.ApiDescription;
+    ViewBag.Title = description.HttpMethod.Method + ":  " + description.RelativePath;
+}
+
+<div id="body">
+    <div class="featured">
+        <div class="content-wrapper">
+            <p>
+                @Html.ActionLink("Help Page Home", "Index")
+            </p>
+        </div>
+    </div>
+    <div class="content-wrapper main-content clear-fix">
+        @Html.DisplayFor(m => Model)
+    </div>
+</div>
+@Html.DisplayForModel("TestClientDialogs")
+@section Scripts {
+
+	<link type="text/css" href="~/Areas/HelpPage/HelpPage.css" rel="stylesheet" />
+	@Html.DisplayForModel("TestClientReferences")
+
+}

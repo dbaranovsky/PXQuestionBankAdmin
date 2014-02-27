@@ -1,0 +1,22 @@
+	<responses>
+		<response code="OK">
+			<question questionid="2f58ddabe0e343eda629b405759be802"   resourceentityid="12345" schema="2" partial="true" round="true">
+				<answer/>
+				<body>Match the animals with their sounds.</body>
+				<interaction type="match" flags="2">
+					<choice id="1">
+						<body>dog</body>
+						<answer>woof</answer>
+					</choice>
+					<choice id="2">
+						<body>cat</body>
+						<answer>meow</answer>
+					</choice>
+					<choice id="3">
+						<body>cow</body>
+						<answer>moo</answer>
+					</choice>
+				</interaction>
+			</question>			
+		</response>
+	</responses>

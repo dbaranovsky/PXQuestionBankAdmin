@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{25BBB6CD-CA04-4907-8BC1-C88CC28308EC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bfw.PXWebAPI.Models</RootNamespace>
+    <AssemblyName>Bfw.PXWebAPI.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Bfw.PXWebAPI.Models.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PRISTINE|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\PRISTINE\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>bin\Debug\Bfw.PXWebAPI.Models.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DEV_PROD_REFRESH|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DEV_PROD_REFRESH\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>bin\Debug\Bfw.PXWebAPI.Models.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\QA\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>bin\Debug\Bfw.PXWebAPI.Models.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DEV|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DEV\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>bin\Debug\Bfw.PXWebAPI.Models.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PROD|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\PROD\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>bin\Debug\Bfw.PXWebAPI.Models.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssignTabSettings.cs" />
+    <Compile Include="BaseUser.cs" />
+    <Compile Include="ContactInfo.cs" />
+    <Compile Include="ContentItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CoreServices\CheckUserAssignmentResponse.cs" />
+    <Compile Include="CoreServices\Error.cs" />
+    <Compile Include="CoreServices\IError.cs" />
+    <Compile Include="CoreServices\Institution.cs" />
+    <Compile Include="CoreServices\InstitutionInfoResponse.cs" />
+    <Compile Include="CoreServices\RegisterUserInfoResponse.cs" />
+    <Compile Include="CoreServices\UserAssignment.cs" />
+    <Compile Include="CoreServices\UserId.cs" />
+    <Compile Include="Course.cs" />
+    <Compile Include="CourseAcademicTerm.cs" />
+    <Compile Include="CourseAssessmentConfiguration.cs" />
+    <Compile Include="DataContractExtensions.cs" />
+    <Compile Include="Domain.cs" />
+    <Compile Include="DTO\CourseDto.cs" />
+    <Compile Include="DTO\DomainDto.cs" />
+    <Compile Include="DTO\UserEnrollmentDto.cs" />
+    <Compile Include="EditUser.cs" />
+    <Compile Include="Enrollment.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="FacetSearchSchema.cs" />
+    <Compile Include="GradeBookWeightCategory.cs" />
+    <Compile Include="GradesItem.cs" />
+    <Compile Include="GroupSet.cs" />
+    <Compile Include="InstructorConsoleSettings.cs" />
+    <Compile Include="ItemCustom.cs" />
+    <Compile Include="GradeItemResult.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="LaunchPadSettings.cs" />
+    <Compile Include="LearningObjective.cs" />
+    <Compile Include="MetadataValue.cs" />
+    <Compile Include="CoreServices\PackageSiteInfo.cs" />
+    <Compile Include="CoreServices\PackageSiteInfoList.cs" />
+    <Compile Include="CoreServices\PackageSiteInfoListResponse.cs" />
+    <Compile Include="PropertyValue.cs" />
+    <Compile Include="Resource.cs" />
+    <Compile Include="Response\ApiCourseResponse.cs" />
+    <Compile Include="Response\ApiSearchResultDocListResponse.cs" />
+    <Compile Include="Response\ContentItemListResponse.cs" />
+    <Compile Include="Response\CourseListResponse.cs" />
+    <Compile Include="Response\CourseResponse.cs" />
+    <Compile Include="Response\DictionaryResponse.cs" />
+    <Compile Include="Response\DomainListResponse.cs" />
+    <Compile Include="Response\DomainResponse.cs" />
+    <Compile Include="Response\EnrolleeListResponse.cs" />
+    <Compile Include="Response\EnrollmentListResponse.cs" />
+    <Compile Include="Response\FacetedSearchResultsResponse.cs" />
+    <Compile Include="Response\FacetValueListResponse.cs" />
+    <Compile Include="Response\GenericResponse.cs" />
+    <Compile Include="Response\GradeListResponse.cs" />
+    <Compile Include="Response\PxAssignmentsResponse.cs" />
+    <Compile Include="Response\PxContentItemsListResponse.cs" />
+    <Compile Include="Response\PxGradesItemListResponse.cs" />
+    <Compile Include="Response\TableofContentsItemListResponse.cs" />
+    <Compile Include="Response\UserEnrollmentDetailResponse.cs" />
+    <Compile Include="Response\UserEnrollmentListResponse.cs" />
+    <Compile Include="Response\GradesItemListResponse.cs" />
+    <Compile Include="Response\UserEnrollmentResponse.cs" />
+    <Compile Include="Response\UserPackagesResponse.cs" />
+    <Compile Include="Response\UserResponse.cs" />
+    <Compile Include="Response\BoolResponse.cs" />
+    <Compile Include="Response\EnrollmentResponse.cs" />
+    <Compile Include="Response\OAuthResponse.cs" />
+    <Compile Include="Response\Response.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Response\UserListResponse.cs" />
+    <Compile Include="RSSCourseFeed.cs" />
+    <Compile Include="SearchQuery.cs" />
+    <Compile Include="SearchResultDoc.cs" />
+    <Compile Include="Response\SearchResultDocListResponse.cs" />
+    <Compile Include="SearchSchema.cs" />
+    <Compile Include="Enrollee.cs" />
+    <Compile Include="SyncItem.cs" />
+    <Compile Include="SyncItemList.cs" />
+    <Compile Include="TableofContentsItem.cs" />
+    <Compile Include="TabSettings.cs" />
+    <Compile Include="TocCategory.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="UserEnrollment.cs" />
+    <Compile Include="UserGrade.cs" />
+    <Compile Include="Widget.cs" />
+    <Compile Include="WidgetCallback.cs" />
+    <Compile Include="WidgetDisplayOptions.cs" />
+    <Compile Include="XmlResource.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Bfw.Agilix\Bfw.Agilix.DataContracts\Bfw.Agilix.DataContracts.csproj">
+      <Project>{4D185F8E-C2A0-442A-A05E-78B566361562}</Project>
+      <Name>Bfw.Agilix.DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.PX.Biz\Bfw.PX.Biz.DataContracts\Bfw.PX.Biz.DataContracts.csproj">
+      <Project>{71124912-42B5-49BF-ACBD-E38F09FACA70}</Project>
+      <Name>Bfw.PX.Biz.DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common\Bfw.Common.csproj">
+      <Project>{4F1BF9DB-1226-4867-9E41-129B214F24F2}</Project>
+      <Name>Bfw.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PX\Bfw.PX.PXPub.Models\Bfw.PX.PXPub.Models.csproj">
+      <Project>{5D71B360-BDD7-4E5B-B551-5BE74E4339EF}</Project>
+      <Name>Bfw.PX.PXPub.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

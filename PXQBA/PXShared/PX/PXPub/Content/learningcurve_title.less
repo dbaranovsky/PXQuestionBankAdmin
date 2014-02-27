@@ -1,0 +1,155 @@
+/* Learning Curve Dynamic Style Template */
+
+/* Typography and Links Color */
+@Typecolor: {{Typecolor}};
+
+/* Border Color */
+@Bordercolor: {{Bordercolor}};
+
+/* Callout Color */
+@Calloutcolor: {{Calloutcolor}};
+
+/* Bodytext Color */
+@Bodytextcolor: {{Bodytextcolor}};
+
+/* Columnbackgroundcolor */ 
+@Columnbackgroundcolor: {{Columnbackgroundcolor}};
+
+/* ------ Images --------- */ 
+/* Book Cover image */
+@BookCover: '{{bookcover}}';
+
+@CourseBannerLogo: '{{course-banner-logo}}';
+
+/* URl Name of the Course which is the same as the named Graphics ie. Myers */
+@CourseTitleImage: '{{course-title-image}}';
+
+/* Don't Touch Styles Under Here!!! please */
+
+/* Typography and Links Color */
+
+.course-info-widget .tutorial-links li span {
+  color: @Typecolor;
+}
+
+/* book title color */
+.course-info-widget .top span.book-title {
+  color: @Typecolor;
+}
+
+/* color of subtext for LC logo */
+.lc-rw-content-header span {
+  color: @Typecolor;
+}
+
+.course-info-widget .tutorial-links li {
+border-bottom:1px dotted @Typecolor;
+}
+
+/* body copy color */
+.lc-rw-body-copy p {
+  color: @Typecolor;
+}
+
+/* "instructor support" text */
+.welcome .course-info-widget .tutorial-links li.header-row span {
+ color: @Typecolor;
+}
+
+/*left column link dotted underline color*/
+.course-info-widget .tutorial-links li {
+  border-bottom: 1px dotted @Typecolor;
+}
+
+/* Border Color */
+
+/* top colored bar above tutorial links*/
+.course-info-widget .tutorial-links li.header-row {
+  border-top: 4px solid @Bordercolor;
+}
+
+/* middle column, content, top border*/
+.lc-rw-body-copy {
+  border-top: 6px solid @Bordercolor;
+}
+
+/** Table styles **/
+/* table header top border bar */
+#PX_LC_HOME_2COLUMN_ZONE_2 .tablehead-border {
+  border-top: 5px solid @Bordercolor !important;
+}
+
+
+/* Callout Color */
+
+/* "Everybody's got a learning curve-what's yours?" */
+.lc-rw-body-copy b {
+	color: @Calloutcolor;
+}
+
+/* "how it works" text */
+.welcome .marketing-content .lc-rw-body-copy span,
+.course-directions-widget h1 {
+	color: @Calloutcolor;
+}
+
+/* "here's how it works" list items color */
+.course-directions-widget .top ul li {
+	color: @Calloutcolor;
+}
+
+/* table header title */
+#tableHeader span {
+	color: @Calloutcolor;
+}
+
+/* Bodytextcolor */
+/*body text color right column*/ /* "How it works" list items */
+.welcome .lc-rw-body-copy p,
+.welcome .marketing-content .lc-rw-body-copy ul li{
+  color: @Bodytextcolor;
+}
+
+/* Columnbackgroundcolor */ 
+/* background color middle/right column*/
+#PX_LC_HOME_2COLUMN_ZONE_2.zoneParent {
+  background: none repeat scroll 0 0 @Columnbackgroundcolor !important;
+  filter: ~'progid:DXImageTransform.Microsoft.gradient(startColorstr="@{Columnbackgroundcolor}",endColorstr="@{Columnbackgroundcolor}",GradientType=1)' !important;
+}
+
+/* --- Images --- */ 
+/*Login info */
+.login-course-info .book-cover {
+    background: url("@{BookCover}") no-repeat scroll 0 0 transparent;
+}
+
+/*Ie fix */ 
+.ie .course-info-widget .top .book {
+  filter:~'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="@{BookCover}", sizingMethod="scale")';
+  width:200px;  
+}
+
+/*book cover image*/
+.course-info-widget .top .book {
+  background-image: url("@{BookCover}");
+}
+
+
+/*middle column LC logo */
+.marketing-content .lc-rw-logo {
+  background-image: url("@{CourseBannerLogo}");
+}
+
+/**  Learning Curve -- Entitled welcome page **/
+/* Product banner logo (in header)*/
+.homepage-course-info .product-banner-logo {
+  background-image: url("@{CourseTitleImage}");
+}
+
+/* IE Fix */ 
+.ie8 .homepage-course-info .product-banner-logo {
+    background-image:none;
+    filter:~'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="@{CourseTitleImage}")';
+    height:53px;
+}
+

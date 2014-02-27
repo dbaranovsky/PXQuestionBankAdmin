@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<batch>
+	<request cmd="putitems">
+		<requests>
+			<item itemid="PX_PRODUCT_GETTING_STARTED" entityid="-entityid-">
+				<data>
+					<type>CustomActivity</type>
+					<parent>PX_ROOT</parent>
+					<title>Marketing Page</title>
+					<abbreviation>ecw</abbreviation>
+					<description>&lt;style type=&quot;text/css&quot;&gt;.action-buttons a {border-radius: 7px 7px 7px 7px; color: #FFFFFF; font-weight: bold; margin: 6px 0; padding: 4px 6px; text-decoration: none; font-size:12px; clear:both; float:left; background-color:#008ECC; width:170px; line-height:18px; text-align:center;}&lt;/style&gt;&lt;div class=&quot;action-buttons&quot; style=&#39;float:right;margin-top:50px;margin-right:20px&#39;&gt;&lt;a href=&quot;[[viewcourses]]&quot; class=&quot;ecom-btns&quot;&gt;View Your Courses&lt;span class=&quot;icon&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;a href=&quot;[[createcourse]]&quot; class=&quot;ecom-btns [[createcoursestyles]]&quot;&gt;Create a New Course&lt;span class=&quot;icon&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;a href=&quot;[[questionbank]]&quot; class=&quot;ecom-btns view-courses-button fixed view-questionbank-button-hidden &quot;&gt;Question Bank Administration&lt;span class=&quot;icon&quot;&gt;&lt;a href=&quot;[[editsandbox]]&quot; class=&quot;ecom-btns view-editsandbox-button-hidden&quot;&gt;Edit Sandbox Course&lt;span class=&quot;icon&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;div style=&#39;width:250px; clear:both; padding-top:25px;margin-left:-35px;font-size:14px;&#39;&gt;&lt;div style=&#39;border:1px solid #666; border-radius:8px; padding:8px;background-color:#eee;line-height:18px;&#39;&gt;If this is your first time accessing Launch Pad, click &quot;Create a New Course&quot; to get started.&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&#39;margin-right:300px;&#39;&gt;&lt;/div&gt;</description>
+					<timetocomplete>PT1M</timetocomplete>
+					<category>1</category>
+					<period inherit="true">0</period>
+					<groupsetid>-1</groupsetid>
+					<weight>100</weight>
+					<gradeentry>1</gradeentry>
+					<inputtable inherit="true">0</inputtable>
+					<bfw_type>ProductMarketing</bfw_type>
+					<bfw_subtype>Marketing</bfw_subtype>
+					<bfw_tocs>
+						<bfw_toc_contents parentid="PX_ROOT" sequence="_ja" />
+					</bfw_tocs>
+				</data>
+			</item>
+		</requests>
+	</request>
+</batch>
+			

@@ -1,0 +1,5 @@
+﻿<announcement entityid="1" title="Announcement" startdate="2012-06-13T11:45:32.630877-04:00" enddate="9999-12-31T23:59:59.9999999" recurse="false" creationdate="2012-06-13T11:45:32.630877-04:00">
+  <body>Sample Body</body>
+  <PrimarySortOrder>a</PrimarySortOrder>
+  <PinSortOrder>b</PinSortOrder>
+</announcement>

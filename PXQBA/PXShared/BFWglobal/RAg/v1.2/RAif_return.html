@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<title>RAif return</title>
+
+<style type="text/css">
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 20px; PADDING-TOP: 0px;
+	FONT-FAMILY: Verdana, sans-serif;
+	FONT-SIZE: 10pt;
+	TEXT-ALIGN: left;
+}
+</style>
+
+	<script src="/BFWglobal/js/RSH0.6FINAL/json2007.js" type="text/javascript"></script>
+	<script src="/BFWglobal/js/jquery/jquery-1.3.2.min.js" type="text/javascript"></script>
+	<script src="/BFWglobal/js/global.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+
+window.opener.RAreturn_uid = BFW_QStr['uid'];
+
+$(document).ready(function(){
+
+	var msg = '';
+
+//	msg += BFW_QStr['uid'] &'<br/>';
+	msg += window.opener.RAreturn_uid &'?<br/>';
+
+	$('#msg').html( msg );
+	window.close();
+})
+</script>
+
+</head>
+<body>
+
+<div id="msg2" style="width:300px;border:1px solid blue;display:none;">
+<script type="text/javascript">
+document.write( BFW_QStr['uid'] );
+</script>
+<br/>
+<script type="text/javascript">
+document.write( window.opener.RAreturn_uid );
+</script>
+<br/>
+<script type="text/javascript">
+document.write( window.opener.RA_CtrlWin.RA.CurrentSite.ID );
+</script>
+<br/>
+<script type="text/javascript">
+document.write( window.location.href );
+</script>
+<br/>
+</div>
+
+<div id="msg" style="width:300px;border:1px solid red;display:none;">
+</div>
+
+
+</body>
+
+</html>

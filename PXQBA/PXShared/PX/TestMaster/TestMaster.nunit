@@ -1,0 +1,10 @@
+﻿<NUnitProject>
+  <Settings activeconfig="Debug" />
+  <Config name="Debug" appbase="bin\Debug" configfile="TestMaster.dll.config" binpathtype="Auto">
+    <assembly path="Bfw.Agilix.Commands.Test.dll" />
+    <assembly path="Bfw.Agilix.DataContracts.Test.dll" />
+    <assembly path="Bfw.Agilix.Services.Test.dll" />
+    <assembly path="Bfw.PX.Biz.Services.Test.dll" />
+  </Config>
+  <Config name="Release" binpathtype="Auto" />
+</NUnitProject>

@@ -1,0 +1,312 @@
+﻿#form.html-doc input.title, #form.folder input.title, #form.doc-collection
+input.title, #form.link-collection input.title, #form.assignment
+input.title {
+width: 300px;
+clear:both;
+}
+
+#form.assignment #assignment-settings {
+margin-bottom: 20px;
+}
+
+#form.assignment #assignment-settings ol {
+float: left;
+}
+
+#form.assignment #assignment-settings ol li {
+width: 300px;
+}
+
+#form.assignment #assignment-settings ol li label {
+width: 105px;
+}
+
+#form.assignment .pr-create-actions{
+        margin-left: 115px;
+}
+
+#assignment-settings #form {
+        float:left;
+        margin: 20px 0 0 0;
+        padding:10px;
+        border: 1px solid #ccc;
+        font-size:16px;
+        width:95%;
+        font-family: Arial,sans-serif !important;
+}
+
+#assignment-settings #form.ShowAssignedSameDay {
+        width:auto !important;
+        margin-top:26px;
+}
+
+#unit-subitems #assignment-settings #form 
+{
+   min-width: 254px !important; 
+}
+
+#assignment-settings #form label,
+#assignment-settings #form #allowLateSubmissionsLabel {
+    text-align: left;
+    line-height: 20px;
+}
+#assignment-settings #form #allowLateSubmissionsLabel,
+#assignment-settings #form #gracePeriodDetails {
+    font-size: 0.81rem;
+    display: inline-block;
+    float: left;
+    padding-right: 10px;
+
+}
+#assignment-settings fieldset legend label{
+        width: auto !important;
+}
+
+#assignment-settings fieldset legend{
+        width: 100%;
+        border-bottom:1px solid #ccc;
+        margin:4px;
+        padding:4px;
+        height: 15px;
+}
+
+#assignment-settings fieldset legend input{
+        margin-top:0px;
+}
+
+#assignment-settings #cal-box {
+width:260px;
+float:left;
+}
+
+#assignment-settings #divSubmit {
+padding-bottom:10px;
+}
+
+#selgradebookweights {
+    margin-left: 8px;
+}
+
+#assignment-settings .relatedTemplate{
+   float:right;
+}
+
+#assignment-settings .relatedTemplateMessage{
+    color: black;
+    font-size: 12px !important;
+    font-weight: normal !important;
+    line-height: inherit;
+    width: 100%;
+}
+
+#content-item.assignment h2.assignsettingstitle{
+        margin-top: 12px !important;
+}
+
+#assignment-settings .px-calendar {
+height:auto;
+}
+#assignment-settings .datepicker {
+width:100% !important;
+height:200px;
+}
+
+.assignsettingstitle {
+        margin-top:12px;
+        line-height:16px;
+}
+#assignment-settings {
+overflow: visible !important;
+margin-top: 18px;
+}
+
+#assignment-settings #other-assignments {
+    left: 10px;
+    float:left;
+    width:400px;
+}
+
+#assignment-settings #fsGradebook label{
+        line-height: 20px;
+        text-align: left;
+        font-weight: bold;
+        min-width: 50px;
+}
+
+#assignment-settings #fsGradebook #divGradebookCategory label,
+#assignment-settings #fsGradebook #divCompletionCategory label,
+#assignment-settings #fsGradebook #liSyllabusCategory label,
+#assignment-settings #fsGradebook #liUnitrelationship label,
+#assignment-settings #fsGradebook #assignmentpoints label{
+   /* width:auto; */
+}
+
+#divGradebookCategory #ggbcategorydialog_link{
+    font-size: 12px;
+    padding-left: 12px;
+}
+
+#assignment-settings #fsGradebook #divGradePoints #lblValue{
+    margin-left:25px !important;
+    line-height: 20px;
+    text-align: left;
+    width: 35px;
+}
+
+#assignment-settings #fsGradebook #divGradePoints #lblPoints{
+    line-height: 20px;
+    text-align: left;
+    width: 100px;
+}
+
+
+#assignment-settings .reminderTitle{
+        width:600px;
+}
+    
+#ReminderEmail_Body{
+        width:600px;
+        height:200px;
+        
+}
+
+#assignment-settings .reminderDayCount{
+        width:30px;
+}
+
+#assignment-settings #form #liDueDate label{
+        width: 60px;
+}
+
+#assignment-settings #form #liDateTime{
+        padding-left: 25px;
+}
+
+#assignment-settings #form #liScheduleEmailReminder,
+#assignment-settings #form #liAllowLaterSubmissions{
+    margin-top: 14px;
+}
+
+#assignment-settings #form #divShowMarkAsComplete, #lblPoints
+#assignment-settings #form #divGradebookCategory{
+        padding-left: 25px;
+}
+
+#divShowMarkAsComplete{
+    padding-top: 20px; 
+}
+
+#assignment-settings #form #liSyllabusCategory{
+        margin: 12px 0;    
+}
+
+#assignment-settings #txtGradePoints{
+        width: 40px;
+}
+
+.txtGradePointsMGC {
+    margin-bottom: 2px;
+    margin-left: 15px;
+}
+
+#content-item #selCalculationTypeTrigger,
+#content-item #selCompletionTrigger,
+#content-item #selgradebookweights{
+    width:310px;
+}
+
+#liDueDate .datelabel,
+#liDueDate .timelabel{
+    float: left;
+    line-height: 28px;
+    padding: 0 6px;
+}
+
+#liDueDate .placeholderWrap {
+    float: left;
+}
+
+#divIncludeGbbScore,
+#divCalculationType,
+#divShowMarkAsComplete,
+#liUnitrelationship{
+    padding-top:12px;    
+}
+
+#clearDateField {
+    color: #0086ff;
+    text-decoration: none;
+    font-size: 11px;
+    margin-left: 8px;
+    line-height: 26px;
+}
+
+.assigntab .screenstepslink {
+    color: #0086ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/** styles for assign tab **/
+.assigntab .widgetCollapse,
+.assigntab .widgetExpand{
+	position: relative;
+	top: -22px;
+}
+.assigntab .sectiontitle{
+	line-height:22px;
+	border-bottom:1px solid #5B5B5B;
+	font-size: 14px;
+	font-weight: bold;
+	cursor:pointer;
+}
+
+.assigntab .sectiontitle,
+.contentsettingstab .sectiontitle{
+    border-bottom: 1px solid #e5e7ea;
+    color: #000;
+    cursor: inherit;
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
+.divAllowedTemplates .sectiontitle{
+	border-top:1px solid #5B5B5B;
+	border-bottom:none;
+	padding-top:10px;
+	
+}
+
+.assigntab .sectionbody .screenstepslink{
+	margin:2px 0;   
+}
+.assigntab #form{
+   border:none !important; 
+}
+	
+.sectionbody #form{
+	border: 1px solid #CCCCCC;
+}
+.assigntab .assignsettingstitle{
+	margin-top:12px;
+}
+.assigntab .sectionbody{
+	float:left;
+	width:100%;
+}
+.assigntab .instructions{
+	margin-bottom:14px;
+	font-size:12px !important;
+}
+#assignment-list .assignment-date-wrapper{
+	line-height:27px;
+	margin-bottom:5px;
+	font-size:12px;
+	font-weight:bold;
+}
+.settings-container {
+    overflow: hidden;
+    padding-top: 20px;
+}

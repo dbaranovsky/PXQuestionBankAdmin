@@ -1,0 +1,345 @@
+<batch>
+<request cmd="updatecourses">
+<requests>
+   <course courseid="-entityid-" title="Hacker, A Writer's Reference 7e PX CompClass" reference="" guid="68c4fd74-7892-4edb-9b70-9948c083bd91" protection="0" schema="2" domainid="6650" baseid="6651" type="Range" startdate="1753-01-01T00:00:00Z" enddate="9999-12-31T00:00:00Z" days="365" term="" creationdate="2012-08-31T18:05:43.837Z">
+      <data>
+         <description>Hacker, A Writer's Reference 7e PX CompClass</description>
+         <gradetables>
+            <table id="0" name="A,B,C,D,F" scale="Percent">
+               <bracket grade="A" score="0.9" />
+               <bracket grade="B" score="0.8" />
+               <bracket grade="C" score="0.7" />
+               <bracket grade="D" score="0.6" />
+               <bracket grade="F" score="0" />
+            </table>
+            <table id="1" name="A+,A,A-,...,F" scale="Percent">
+               <bracket grade="A+" score="0.97" />
+               <bracket grade="A" score="0.93" />
+               <bracket grade="A-" score="0.9" />
+               <bracket grade="B+" score="0.87" />
+               <bracket grade="B" score="0.83" />
+               <bracket grade="B-" score="0.8" />
+               <bracket grade="C+" score="0.77" />
+               <bracket grade="C" score="0.73" />
+               <bracket grade="C-" score="0.7" />
+               <bracket grade="D+" score="0.67" />
+               <bracket grade="D" score="0.63" />
+               <bracket grade="D-" score="0.6" />
+               <bracket grade="F" score="0" />
+            </table>
+            <table id="2" name="P/F" scale="Percent">
+               <bracket grade="P" score="0.7" />
+               <bracket grade="F" score="0" />
+            </table>
+         </gradetables>
+         <allowstaticcopy>true</allowstaticcopy>
+         <allowderivativechildcopy>true</allowderivativechildcopy>
+         <allowderivativesiblingcopy>true</allowderivativesiblingcopy>
+         <groupsets>
+            <groupset id="9999" title="Individual Group" prefix="Individual Group" algorithm="Random" />
+         </groupsets>
+         <bfw_search>
+            <searchcategory searchable="true" title="Ebook : Chapters, Headings, Topics" metadata="ebook" />
+            <searchcategory searchable="true" title="Miscellaneous Content" metadata="other" />
+            <searchcategory searchable="false" title="Exclude" metadata="exclude" />
+         </bfw_search>
+         <bfw_properties>
+            <bfw_property name="bfw_infinite_scroll" type="string">true</bfw_property>
+         </bfw_properties>
+         <bfw_tab_settings>
+            <view_tab>
+               <show_policies>true</show_policies>
+               <show_assignment_details>false</show_assignment_details>
+               <show_rubrics>false</show_rubrics>
+               <show_learning_objectives>false</show_learning_objectives>
+            </view_tab>
+            <assign_tab>
+               <show_make_gradeable>true</show_make_gradeable>
+               <show_allow_late_submissions>false</show_allow_late_submissions>
+               <show_schedule_reminder>false</show_schedule_reminder>
+               <show_subcontent_creation>false</show_subcontent_creation>
+               <show_assigned_on_same_day>true</show_assigned_on_same_day>
+               <show_completion_category>true</show_completion_category>
+               <show_gradebook_category>true</show_gradebook_category>
+               <show_syllabus_category>true</show_syllabus_category>
+               <show_points_possible>true</show_points_possible>
+               <show_send_reminder>false</show_send_reminder>
+            </assign_tab>
+         </bfw_tab_settings>
+         <bfw_allow_activation>false</bfw_allow_activation>
+
+         <bfw_course_type>XCLASS</bfw_course_type>
+         <meta-bfw_course_type>XCLASS</meta-bfw_course_type>
+         <bfw_course_home_page>PX_HOME_XCLASS</bfw_course_home_page>
+         <bfw_hide_student_view_in_header>true</bfw_hide_student_view_in_header>
+         <meta-book-isbn>000000000000X</meta-book-isbn>
+         <sourceid>6651</sourceid>
+      </data>
+   </course>
+</requests>
+</request>
+<request cmd="putitems">
+<requests>
+	<item itemid="PX_PRIMARY_XCLASS" version="1" entityid="-entityid-" creationdate="2012-02-06T21:11:53.23Z" creationby="7" modifieddate="2012-02-06T21:11:53.23Z" modifiedby="7">
+		<data>
+			<parent>PX_MENUS</parent>
+			<title>Primary Navigation</title>
+			<bfw_type>Menu</bfw_type>
+			<bfw_tocid>bsi__3E513BC8__CED8__4764__9664__B5AA33AA5F56</bfw_tocid>
+			<bfw_display_flags>
+				<allow>
+					<role>instructor</role>
+					<coursetype>any</coursetype>
+				</allow>
+			</bfw_display_flags>
+		</data>
+	</item>
+	<item itemid="PX_PRIMARY_XCLASS_TEMPLATES" version="1" entityid="-entityid-" creationdate="2012-02-06T21:11:53.23Z" creationby="7" modifieddate="2012-02-06T21:11:53.23Z" modifiedby="7">
+		<data>
+			<parent>PX_MENUS</parent>
+			<title>Primary Navigation</title>
+			<bfw_type>Menu</bfw_type>
+			<bfw_tocid>bsi__3E513BC8__CED8__4764__9664__B5AA33AA5F56</bfw_tocid>
+			<bfw_display_flags>
+				<allow>
+					<role>instructor</role>
+					<coursetype>any</coursetype>
+				</allow>
+			</bfw_display_flags>
+		</data>
+	</item>
+	<item itemid="PX_MENU_ITEM_HOME" version="1" entityid="-entityid-">
+	   <data>
+		<type>CustomActivity</type>
+		<parent>PX_PRIMARY_XCLASS</parent>
+		<sequence>a</sequence>
+		<title>Home</title>
+		<abbreviation>HOME</abbreviation>
+		<bfw_type>MenutItem</bfw_type>
+		<bfw_menu_created_by>PX_MENU_ITEM_HOME_TEMPLATE</bfw_menu_created_by>
+		<bfw_menu_productcourse_display>true</bfw_menu_productcourse_display>
+		<bfw_display_flags>
+			<allow>
+				<role>instructor</role>
+				<coursetype>any</coursetype>
+			</allow>
+			<allow>
+				<role>student</role>
+				<coursetype>any</coursetype>
+			</allow>
+		</bfw_display_flags>
+		<bfw_menu_callbacks>
+			<method name="Home" controller="" action="" url="" type="" route="CourseSectionHome">
+			</method>
+		</bfw_menu_callbacks>
+	  </data>
+       </item>
+       <item itemid="PX_MENU_ITEM_xBook" version="1" entityid="-entityid-">
+         <data>
+           <type>CustomActivity</type>
+           <parent>PX_PRIMARY_XCLASS</parent>
+           <sequence>b</sequence>
+           <title>x-Book</title>
+           <abbreviation>xbk</abbreviation>
+           <bfw_type>MenutItem</bfw_type>
+           <bfw_menu_created_by>PX_MENU_ITEM_XBOOK_TEMPLATE</bfw_menu_created_by>
+           <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+           <allow>
+             <role>instructor</role>
+             <coursetype>any</coursetype>
+           </allow>
+           <allow>
+            <role>student</role>
+            <coursetype>any</coursetype>
+           </allow>
+          </bfw_display_flags>
+         <bfw_menu_callbacks>
+          <method name="xbook" controller="xbook" action="Selection" url="" type="" route="" />
+         </bfw_menu_callbacks>
+        </data>
+       </item>
+       <item itemid="PX_MENU_ITEM_ELIBRARY" version="1" entityid="-entityid-">
+         <data>
+           <type>CustomActivity</type>
+           <parent>PX_PRIMARY_ELIBRARY</parent>
+           <sequence>c</sequence>
+           <title>e-Library</title>
+           <abbreviation>elibrary</abbreviation>
+           <bfw_type>MenutItem</bfw_type>
+           <bfw_menu_created_by>PX_MENU_ITEM_ELIBRARY_TEMPLATE</bfw_menu_created_by>
+           <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+           <allow>
+             <role>instructor</role>
+             <coursetype>any</coursetype>
+           </allow>
+           <allow>
+            <role>student</role>
+            <coursetype>any</coursetype>
+           </allow>
+          </bfw_display_flags>
+         <bfw_menu_callbacks>
+          <method name="elibrary" controller="elibrary" action="Selection" url="" type="" route="" />
+         </bfw_menu_callbacks>
+        </data>
+       </item>
+       <item itemid="PX_MENU_ITEM_ASSIGNMENTS" version="1" entityid="-entityid-">
+         <data>
+           <type>CustomActivity</type>
+           <parent>PX_PRIMARY_XCLASS</parent>
+           <sequence>d</sequence>
+           <title>Assignments</title>
+           <abbreviation>assignments</abbreviation>
+           <bfw_type>MenutItem</bfw_type>
+           <bfw_menu_created_by>PX_MENU_ITEM_ASSIGNMENTS_TEMPLATE</bfw_menu_created_by>
+           <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+           <allow>
+             <role>instructor</role>
+             <coursetype>any</coursetype>
+           </allow>
+           <allow>
+            <role>student</role>
+            <coursetype>any</coursetype>
+           </allow>
+          </bfw_display_flags>
+         <bfw_menu_callbacks>
+          <method name="assignments" controller="assignments" action="Selection" url="" type="" route="" />
+         </bfw_menu_callbacks>
+        </data>
+       </item>
+       <item itemid="PX_MENU_ITEM_GRADEBOOK" version="1" entityid="-entityid-">
+         <data>
+           <type>CustomActivity</type>
+           <parent>PX_PRIMARY_XCLASS</parent>
+           <sequence>e</sequence>
+           <title>Gradebook</title>
+           <abbreviation>gradebook</abbreviation>
+           <bfw_type>MenutItem</bfw_type>
+           <bfw_menu_created_by>PX_MENU_ITEM_GRADEBOOK_TEMPLATE</bfw_menu_created_by>
+           <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+           <allow>
+             <role>instructor</role>
+             <coursetype>any</coursetype>
+           </allow>
+           <allow>
+            <role>student</role>
+            <coursetype>any</coursetype>
+           </allow>
+          </bfw_display_flags>
+         <bfw_menu_callbacks>
+          <method name="gradebook" controller="gradebook" action="Selection" url="" type="" route="" />
+         </bfw_menu_callbacks>
+        </data>
+       </item>
+       <item itemid="PX_MENU_ITEM_MYBOOKMARKS" version="1" entityid="-entityid-">
+         <data>
+           <type>CustomActivity</type>
+           <parent>PX_PRIMARY_XCLASS</parent>
+           <sequence>f</sequence>
+           <title>My Bookmarks</title>
+           <abbreviation>mybookmarks</abbreviation>
+           <bfw_type>MenutItem</bfw_type>
+           <bfw_menu_created_by>PX_MENU_ITEM_BOOKMARK_TEMPLATE</bfw_menu_created_by>
+           <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+           <allow>
+             <role>instructor</role>
+             <coursetype>any</coursetype>
+           </allow>
+           <allow>
+            <role>student</role>
+            <coursetype>any</coursetype>
+           </allow>
+          </bfw_display_flags>
+         <bfw_menu_callbacks>
+          <method name="mybookmarks" controller="mybookmarks" action="Selection" url="" type="" route="" />
+         </bfw_menu_callbacks>
+        </data>
+       </item>
+       <item itemid="PX_MENU_ITEM_MYWRITINGS" version="1" entityid="-entityid-">
+         <data>
+           <type>CustomActivity</type>
+           <parent>PX_PRIMARY_XCLASS</parent>
+           <sequence>g</sequence>
+           <title>My Writings</title>
+           <abbreviation>mywritings</abbreviation>
+           <bfw_type>MenutItem</bfw_type>
+           <bfw_menu_created_by>PX_MENU_ITEM_MYWRITINGS_TEMPLATE</bfw_menu_created_by>
+           <bfw_menu_productcourse_display>false</bfw_menu_productcourse_display>
+          <bfw_display_flags>
+           <allow>
+             <role>instructor</role>
+             <coursetype>any</coursetype>
+           </allow>
+           <allow>
+            <role>student</role>
+            <coursetype>any</coursetype>
+           </allow>
+          </bfw_display_flags>
+         <bfw_menu_callbacks>
+          <method name="mywritings" controller="mywritings" action="Selection" url="" type="" route="" />
+         </bfw_menu_callbacks>
+        </data>
+       </item>
+</requests>                                                                                                                                           
+</request>
+<request cmd="putitems">
+  <requests>
+    <item itemid="PX_HOME_XCLASS" entityid="-entityid-">
+      <data>
+        <parent>PX_PAGES</parent>
+        <sequence>a</sequence>
+        <title>PX_HOME_XCLASS</title>
+        <abbreviation>PXHOMEXCLASS</abbreviation>
+        <completiontrigger>0</completiontrigger>
+      </data>
+    </item>
+    <item itemid="PX_HOME_XCLASS_ZONES" entityid="-entityid-">
+      <data>
+        <parent>PX_HOME_XCLASS</parent>
+        <sequence>a</sequence>
+        <title>PX_HOME_XCLASS_ZONES</title>
+        <abbreviation>PXHOMEXCLASSZONES</abbreviation>
+        <completiontrigger>0</completiontrigger>
+      </data>
+    </item>
+    <item itemid="PX_HOME_XCLASS_ZONE_1" entityid="-entityid-">
+      <data>
+        <parent>PX_HOME_XCLASS_ZONES</parent>
+        <sequence>a</sequence>
+        <title>PX_HOME_XCLASS_ZONE_1</title>
+        <abbreviation>PXHOMEXCLASSZONE1</abbreviation>
+        <completiontrigger>0</completiontrigger>
+        <bfw_type>Zone</bfw_type>
+        <bfw_allowed_widgets />
+        <bfw_support_hide>true</bfw_support_hide>
+      </data>
+    </item>
+    <item itemid="PX_HOME_XCLASS_ZONE_2" entityid="-entityid-">
+      <data>
+        <parent>PX_HOME_XCLASS_ZONES</parent>
+        <sequence>a</sequence>
+        <title>PX_HOME_XCLASS_ZONE_2</title>
+        <abbreviation>PXHOMEXCLASSZONE2</abbreviation>
+        <completiontrigger>0</completiontrigger>
+        <bfw_type>Zone</bfw_type>
+        <bfw_allowed_widgets />
+      </data>
+    </item>
+    <item itemid="PX_HOME_XCLASS_ZONE_3" entityid="-entityid-">
+      <data>
+        <parent>PX_HOME_XCLASS_ZONES</parent>
+        <sequence>a</sequence>
+        <title>PX_HOME_XCLASS_ZONE_3</title>
+        <abbreviation>PXHOMEXCLASSZONE3</abbreviation>
+        <completiontrigger>0</completiontrigger>
+        <bfw_type>Zone</bfw_type>
+        <bfw_allowed_widgets />
+      </data>
+    </item>
+   </requests>
+  </request>
+</batch>

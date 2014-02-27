@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<requests>
+  <item itemid="TMP_429ef3606d6a45a695a8dd0225e_unit" entityid="-entityid-">
+    <data>
+      <parent>PX_TEMPLATES</parent>
+      <sequence>a</sequence>
+      <title>Unit</title>
+      <folder>429ef3606d6a45a695a8dd0225e_unit</folder>
+      <category>0</category>
+      <gradable>true</gradable>
+      <bfw_type>PxUnit</bfw_type>
+      <bfw_properties>
+        <bfw_property name="bfw_visibility" type="String" />
+        <bfw_property name="bfw_syllabusfilter" type="String" />
+        <bfw_property name="thumbnail" type="String" />
+        <bfw_property name="duedate" type="DateTime" />
+        <bfw_property name="associatedtocourse" type="String" />
+        <bfw_property name="bfw_startdate" type="DateTime" />
+        <bfw_property name="associatedTOCItems" type="String">
+          <associatedTOCItems />
+        </bfw_property>
+      </bfw_properties>
+      <bfw_tocs>
+        <bfw_toc_contents parentid="PX_TEMPLATES" sequence="a_" />
+      </bfw_tocs>
+    </data>
+  </item>
+  <item itemid="TMP_429ef3606d6a45a695a8dd0225ee9518" entityid="-entityid-">
+    <data>
+      <parent>PX_DELETED</parent>
+      <sequence>a</sequence>
+      <title>Module</title>
+      <folder>429ef3606d6a45a695a8dd0225ee9518</folder>
+      <category>0</category>
+      <gradable>true</gradable>
+      <bfw_type>Module</bfw_type>
+      <bfw_properties>
+        <bfw_property name="bfw_visibility" type="String">&lt;bfw_visibility /&gt;</bfw_property>
+        <bfw_property name="bfw_syllabusfilter" type="String" />
+        <bfw_property name="thumbnail" type="String" />
+        <bfw_property name="duedate" type="DateTime" />
+        <bfw_property name="associatedtocourse" type="String" />
+        <bfw_property name="bfw_startdate" type="DateTime" />
+        <bfw_property name="associatedTOCItems" type="String">&lt;associatedTOCItems /&gt;</bfw_property>
+      </bfw_properties>
+      <bfw_tocs>
+        <bfw_toc_contents parentid="PX_TEMPLATES" sequence="a" />
+      </bfw_tocs>
+    </data>
+  </item>
+</requests>

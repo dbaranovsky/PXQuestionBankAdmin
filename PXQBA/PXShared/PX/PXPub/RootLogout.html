@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; UTF-8" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="-1" />
+
+<title>Logging out...</title>
+<script type="text/javascript" src="/BFWglobal/js/jquery/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="/BFWglobal/js/global.js"></script>
+<script type="text/javascript">
+	
+	var MySite_ReturnURL = '/AGLogout';
+
+	function expireAllCookies(name, paths) {
+             var expires = new Date(0).toUTCString();
+
+        // expire null-path cookies as well
+        document.cookie = name + '=; expires=' + expires;
+
+        for (var i = 0, l = paths.length; i < l; i++) {
+        document.cookie = name + '=; path=' + paths[i] + '; expires=' + expires;
+        }
+    }
+
+    function expireActiveCookies(name) {
+        var pathname = location.pathname.replace(/\/$/, ''),
+        segments = pathname.split('/'),
+        paths = [];
+    
+        for (var i = 0, l = segments.length, path; i < l; i++) {
+        path = segments.slice(0, i + 1).join('/');
+        
+        paths.push(path);       // as file
+        paths.push(path + '/'); // as directory
+		paths.push("/beta/secure/");
+        }
+        expireAllCookies(name, paths);
+    }
+    
+	function sendRedirect() {
+            expireActiveCookies('SiteUserData');
+			expireActiveCookies('JSESSIONID');
+            top.location = MySite_ReturnURL;
+     }    
+     
+     jQuery(document).ready(function(){
+     		//MySite_ReturnURL = BFW_QStr['target'];
+     		sendRedirect();
+     });
+     
+</script>
+</head>
+<body>
+
+</body>
+</html>

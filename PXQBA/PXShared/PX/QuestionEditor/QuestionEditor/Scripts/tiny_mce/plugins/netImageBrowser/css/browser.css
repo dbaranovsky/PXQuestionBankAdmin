@@ -1,0 +1,47 @@
+﻿body
+{
+	
+}
+
+.Menu
+{
+	background-color: Gray;
+	border-bottom: 1px solid #7B9BC4;
+	color: white;
+	margin: 1em 0;
+	padding: 2px 2px 2px 10px;
+	text-transform: uppercase;
+}
+
+.folderListUl
+{
+	list-style-type: none;
+	margin: 0 0 8px;
+	padding: 0;
+}
+
+.folderListUl li a
+{
+	background: transparent url(../img/folder.png) no-repeat scroll left center;
+	padding: 2px 0 2px 19px;
+	text-decoration: none;
+	color: #752E2B;
+	font-family: Georgia;
+	font-size: 12px;
+	line-height: 20px;
+	margin-top: 8px;
+	text-decoration: none;
+}
+
+.Home
+{
+	background: transparent url(../img/folder_home.png) no-repeat scroll left center;
+	padding: 2px 0 2px 22px;
+	text-decoration: none;
+	color: #752E2B;
+	font-family: Georgia;
+	font-size: 12px;
+	line-height: 20px;
+	margin-top: 8px;
+	text-decoration: none;
+}

@@ -1,0 +1,79 @@
+﻿@model Bfw.PXAP.Models.DlapCommandModel
+@{
+    ViewBag.Title = "DLAP Command";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Header
+{
+    <link href="@Url.Content("~/Content/codemirror.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/simple-hint.css")" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/neat.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/elegant.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/erlang-dark.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/night.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/monokai.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/cobalt.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/eclipse.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/rubyblue.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/lesser-dark.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/xq-dark.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/ambiance.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/blackboard.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/vibrant-ink.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/solarized.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/Content/theme/twilight.css")"/>
+}
+<div>
+    @Html.Partial("_MainMenuPartial", Model.MenuModel)
+</div>
+
+<script src="@Url.Content("~/Scripts/codemirror/codemirror.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/codemirror/simple-hint.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/codemirror/closetag.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/codemirror/xml-hint.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/codemirror/xml.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/codemirror/foldcode.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/codemirror/formatting.js")" type="text/javascript"></script>
+<div id="ContentForm">
+    @{
+        Bfw.PXAP.Models.LayoutModel layout = this.ViewBag.LayoutModel as Bfw.PXAP.Models.LayoutModel;
+
+
+        if (string.IsNullOrEmpty(layout.CurrentEnvironment))
+        {
+            return;
+        }
+    }
+    @using (Html.BeginForm("RunCommand", "DlapCommand", FormMethod.Post))
+    {
+        <div class="longrow">
+            "Run Command" runs a GET DLAP command. "Put Items" modifies results as necessary and runs a "putitems" command.
+        </div>
+        <br />
+        <div class="longrow">
+            @*<div class="label">
+                Form Method:</div>*@
+            @*@Html.DropDownListFor(m => m.method, Enum.GetNames(typeof(Bfw.PXAP.Models.DlapCommandModel.HttpMethod)).Select(a => new SelectListItem() { Text = a, Value = a }), new { @class = "envField"})*@
+            <div style="width: 350px; display: inline-block">
+                <div class="label">
+                    Entity ID:</div>
+                @Html.EditorFor(m => m.entityid, new { @class = "envField" })
+            </div>
+        </div>
+        <div>
+            <div class="label">
+                Command:</div>
+            <div>@Html.TextBoxFor(m => m.command, new { @class = "envFieldLarge" })
+                <button type="submit" name="method" value="GET" name="submit" >Get Data</button>
+                <button type="submit" name="method" value="POST" name="submit" >Post Data</button>
+            </div>
+        </div>
+    
+        
+        <div id="resultDiv">
+            @Html.Partial("DlapResult", Model)
+        </div>
+    }
+</div>
+@Html.Partial("_ProgressBarPartial")

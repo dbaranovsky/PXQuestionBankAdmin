@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<title>Check out successful!</title>
+	<script src="/BFWglobal/js/global.js" type="text/javascript"></script>
+
+<style type="text/css">
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px;
+	FONT-FAMILY: Verdana, sans-serif;
+}
+</style>
+
+<script type="text/javascript">
+var RA_CtrlWin = null;
+
+function init () {
+	if (!window.opener) {
+		alert('not allowed!');
+	} else{
+		RA_CtrlWin = window.opener.RA_CtrlWin;
+		RA_CtrlWin.RA.RAif.app.CartFinishCheckOut();
+		window.close();
+	}
+}
+</script>
+
+</head>
+<body onload="init();">
+<div id="pp" style="display:none;">
+</div>
+</body>
+</html>

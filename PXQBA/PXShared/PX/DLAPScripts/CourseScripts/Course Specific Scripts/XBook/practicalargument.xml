@@ -1,0 +1,455 @@
+﻿  <request cmd="putitems">
+    <!-- loading the default marketing and welcome screens which will be over written by the course specific scripts -->
+    <requests>
+
+      <item itemid="PX_PRODUCT_GETTING_STARTED" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_ROOT</parent>
+          <title>Practical Argument</title>
+          <abbreviation>ecw</abbreviation>
+          <description>
+            &lt;div class=&quot;practicalargument&quot;&gt;
+            &lt;div class=&quot;zoneParent PX_XBOOK_HOME_2COLUMN_ZONE_1&quot; id=&quot;PX_XBOOK_HOME_2COLUMN_ZONE_1&quot;&gt;
+            &lt;div class=&quot;course-info-widget&quot;&gt;
+            &lt;div class=&quot;top&quot;&gt;
+            &lt;div class=&quot;book&quot;&gt;&lt;/div&gt;
+            &lt;span class=&quot;book-title&quot;&gt;Practical Argument, Second Edition&lt;/span&gt;
+            &lt;br /&gt;
+            &lt;span&gt;Laurie G. Kirszner and Stephen R. Mandell&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;bottom&quot;&gt;
+            &lt;ul class=&quot;tutorial-links&quot;&gt;
+            &lt;li class=&quot;header-row&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.bedfordstmartins.com/Catalog/product/practicalargument-secondedition-kirszner&quot;&gt;
+            &lt;span rel=&quot;&quot;&gt;About the Book&lt;/span&gt;&lt;span class=&quot;tut-link-arrow&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.bedfordstmartins.com&quot;&gt;&lt;span rel=&quot;&quot;&gt;What is Integrated
+            Media&lt;/span&gt;&lt;span class=&quot;tut-link-arrow&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.bedfordstmartins.com/Catalog/product/practicalargument-secondedition-kirszner/formatsandpackages&quot;&gt;
+            &lt;span rel=&quot;&quot;&gt;Formats and e-Books&lt;/span&gt;&lt;span class=&quot;tut-link-arrow&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://bedfordstmartins.com/rewriting&quot;&gt;&lt;span rel=&quot;&quot;&gt;Writing&lt;/span&gt;&lt;span
+            class=&quot;tut-link-arrow&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.bedfordstmartins.com/Catalog/product/practicalargument-secondedition-kirszner/instructorresources&quot;&gt;
+            &lt;span rel=&quot;&quot;&gt;Instructor Resources&lt;/span&gt;&lt;span class=&quot;tut-link-arrow&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;zoneParent welcome PX_XBOOK_HOME_2COLUMN_ZONE_2&quot; id=&quot;PX_XBOOK_HOME_2COLUMN_ZONE_2&quot;&gt;
+            &lt;div class=&quot;marketing-content&quot;&gt;
+            &lt;div class=&quot;xb-rw-body-copy xbook-body-copy&quot;&gt;
+            &lt;p&gt;
+            &lt;b&gt;Welcome, instructor.&lt;/b&gt; You can create
+            your own version of the Integrated Media for your students. Here’s how it works:
+            Browse and assign from the list of digital content integrated into your book’s table
+            of contents. Activate your course and send the URL to your students so they can
+            join your course. See your students’ progress across all pages and activities.
+            &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;xb-rw-body-copy xbook-body-copy&quot;&gt;
+            &lt;span&gt;Here's how it works:&lt;/span&gt;
+            &lt;ul&gt;
+            &lt;li&gt;Customize your table of contents and build out assignments.&lt;/li&gt;
+            &lt;li&gt;Enable student registration and enter your course information.&lt;/li&gt;
+            &lt;li&gt;See student activity across the pages and materials in the x-book.&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;xb-action-button xbook-action-button&quot;&gt;
+            &lt;a class=&quot;ecom-btns [[createcoursestyles]]&quot; href=&quot;[[createcourse]]&quot;&gt;Get into the x-Book&lt;span
+            class=&quot;icon&quot;&gt;&lt;/span&gt;&lt;/a&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;
+          </description>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>1</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <bfw_type>ProductMarketing</bfw_type>
+          <bfw_subtype>Marketing</bfw_subtype>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_ROOT" sequence="_ja"/>
+          </bfw_tocs>
+        </data>
+      </item>
+
+      <item itemid="PX_PRODUCT_MARKETING" entityid="-entityid-">
+        <data>
+          <type>CustomActivity</type>
+          <parent>PX_ROOT</parent>
+          <title>Marketing Material</title>
+          <abbreviation>mm</abbreviation>
+            <description>
+&lt;style type=&quot;text/css&quot;&gt;
+.course-info-widget .bottom {
+margin-top:10px;
+width:210px;
+}
+
+.course-info-widget .tutorial-links {
+list-style-type:none;
+color:#27327D;
+}
+
+.course-info-widget .tutorial-links li {
+border-bottom:dotted 1px #27327D;
+padding:6px;
+}
+
+.course-info-widget .tutorial-links li.header-row {
+border-top:4px solid #27327D;
+}
+
+.page-action-Unauthenticated .course-info-widget .tutorial-links li.header-row {
+border-top:1px dotted #27327D;
+margin-top:30px;
+}
+
+.course-info-widget .tutorial-links li.header-row h1 {
+margin:0;
+font-size:12px;
+white-space:nowrap;
+}
+
+.marketing-content {
+width:90%;
+margin:auto;
+}
+
+.marketing-content .bottom {
+font-size:10px;
+font-weight:normal;
+margin-top:20px;
+text-align:right;
+}
+
+.marketing-content .bottom span a{
+    text-decoration:none;
+    color:#27327D;
+}
+
+.marketing-content .tutorial-link {
+cursor:pointer;
+font-size:12px;
+color:#1e5ac8;
+}
+
+.marketing-content ul {
+list-style-type:disc;
+line-height:24px;
+margin-left:15px;
+}
+
+.marketing-content ul li {
+color:#505050;
+}
+
+.marketing-content h1 {
+font-size:16px;
+color:#27327D;
+line-height:30px;
+}
+
+body.product-type-ecom #main {
+    background-image: none!important;
+    background-position: 0 18px!important;
+    background-repeat: repeat-x!important;
+    min-width: 960px;
+    overflow-x: auto;
+    overflow-y: auto;
+    top: 72px;
+    padding-top: 32px;
+    position: relative;
+    float: none!important;
+    margin-top: 0 !important;
+}
+
+.product-type-ecom #ecom-marketing h2 {
+    line-height: 24px;
+    color: #e51937;
+    font-size: 24px;
+    font-family: TimesNewRoman, &quot;Times New Roman&quot;, Times, Baskerville, Georgia, serif;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.product-type-ecom #ecom-marketing h2 span {
+    font-style: normal;
+    font-size: 24px;
+    line-height: 24px;
+    color: #e51937;
+    font-size: 24px;
+    font-family: TimesNewRoman, &quot;Times New Roman&quot;, Times, Baskerville, Georgia, serif;
+    text-align: center;
+}
+#ecom-marketing .xbook-mars-branding-book-wrapper h2 {
+    font-size: 14px;
+    text-align: left;
+    margin: 6px 0 0 0;
+}
+
+#ecom-marketing .xbook-mars-branding-book-wrapper h2 span{
+    font-size: 14px;
+}
+
+#ecom-marketing .xbook-mars-branding-book-wrapper span {
+    font-size: 12px !important;
+    font-weight: normal;
+    font-family: TimesNewRoman, &quot;Times New Roman&quot;, Times, Baskerville, Georgia, serif;
+}
+.product-type-xbook #PX_HOME_ZONE_2, 
+.product-type-xbook #main-container{
+    height:100%;
+}
+
+#ecom-marketing .xbook-mars-nav {
+    float: left;
+    width: 100%;
+    background-color: #c9c8c8;
+    -webkit-border-top-right-radius: 18px;
+    -webkit-border-bottom-right-radius: 18px;
+    -moz-border-radius-topright: 18px;
+    -moz-border-radius-bottomright: 18px;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+    height: 35px;
+    margin: 12px 0;
+    padding-right: 12px;
+}
+
+#ecom-marketing .xbook-mars-nav ul{
+    margin: 0;
+    padding: 0;
+    width:auto;
+}
+
+#ecom-marketing .xbook-mars-nav ul li {
+    float: left;
+    margin: 0 4px;
+    list-style: none;
+    padding-right: 0;
+}
+
+#ecom-marketing .xbook-mars-nav ul li .icon {
+    background-image: url(&quot;style/images/xbook-mars-nav-icon.png&quot;);
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 26px;
+    display: block;
+    float: right;
+    background-position: 0 5px;
+    margin-left:12px;
+}
+
+#ecom-marketing .xbook-mars-nav ul li a {
+    line-height: 35px;
+    color: #666;
+    text-transform: capitalize;
+    font-family: &quot;Trebuchet MS&quot;,&quot;Helvetica&quot;,sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 0;
+}
+
+#ecom-marketing .xbook-mars-nav .pxicon.pxicon-right-open {
+    color: #e51937;    
+}
+
+#ecom-marketing .xbook-mars-content{
+    float:left;
+    width:100%;
+    text-align:left;
+    padding-left:124px;
+    position: relative;
+}
+
+#ecom-marketing .xbook-mars-content span {
+    text-align: left;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#ecom-marketing .xbook-mars-content ul {
+    font-size: 14px;
+    list-style-type: disc;
+    list-style-position: inside;
+    padding-left: 14px;
+    line-height: 24px;
+    margin-bottom: 8px;
+}
+
+#ecom-marketing .xbook-mars-content ul a {
+    color: #49929b;
+}
+
+.xbook-mars-content .bedford-media-prompt {
+    padding: 12px;
+    background-color: #eae9e9;
+    border: 1px solid #ccc;
+    white-space: normal;
+    font-size: 14px;
+    font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;
+}
+
+#ecom-marketing .xbook-mars-content .bedford-media-prompt span {
+    color: #e51937;
+}
+
+#ecom-marketing .xbook-mars-content .content-wrapper{
+    width:460px;
+    margin: 0 auto;
+    position:relative;
+}
+
+#ecom-marketing .xbook-mars-content .content-wrapper h1 {
+    font-size: 36px;
+    color: #4D4D4D !important;
+    font-family: &quot;Trebuchet MS&quot;, &quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, &quot;Lucida Sans&quot;, Tahoma, sans-serif;
+    font-weight: bold;
+    line-height: 56px !important;
+    border-bottom: 0 !important;
+    text-transform: none !important;
+    text-align: center;
+}
+
+#ecom-marketing .xbook-mars-content .content-wrapper .subtitle {
+        color: #E95A4E;
+        display: block;
+        font-family: Georgia,Times,&quot;Times New Roman&quot;,serif;
+        font-size: 22px;
+        font-style: italic;
+        line-height: 28px;
+        padding: 8px 0 0 0;
+}
+
+#ecom-marketing .xbook-mars-content .content-wrapper .author {
+    clear: both;
+    color: #333333 !important;
+    display: block;
+    font-family: Georgia,Times,&quot;Times New Roman&quot;,serif;
+    font-size: 16px !important;
+    margin: 8px 0;
+}
+
+#ecom-marketing .xbook-mars-content .content-wrapper p {
+    font-size: 14px;
+    line-height: 18px;
+    font-family: Arial,&quot;Helvetica Neue&quot;,Helvetica,sans-serif;
+    margin-top: 12px;
+}
+
+#ecom-marketing .xbook-mars-content .xbook-mars-branding {
+    clear: both;
+    width: 475px;
+    height: 217px;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    position: relative;
+    top: -295px;
+    left: -32px;
+    display: none;
+}
+
+#ecom-marketing .xbook-mars-content .xbook-mars-branding-book-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;    
+}
+
+#ecom-marketing .xbook-mars-content .xbook-mars-branding-book {
+    background-repeat: no-repeat;
+    height: 220px;
+    position: relative;
+    top: 0;
+    width: 187px;
+    left: 0;
+    margin: 0;
+}
+
+.ecom-btns .icon {
+    background-color: transparent;
+    background-image: url(&quot;style/images/platx_sprite.png&quot;);
+    background-position: -99px -353px;
+    background-repeat: no-repeat;
+    display: block;
+    float: right;
+    height: 12px;
+    width: 18px;
+}
+&lt;/style&gt;
+ &lt;div id="main-container" class="practicalargument"&gt;
+            &lt;div class="xbook-mars-nav"&gt;
+            &lt;ul class="tutorial-links"&gt;
+            &lt;li class="header-row"&gt;&lt;a target="_blank" href="http://www.bedfordstmartins.com/Catalog/product/practicalargument-secondedition-kirszner"&gt;
+            &lt;span rel=""&gt;About the Book&lt;/span&gt;&lt;span class="pxicon pxicon-right-open"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a target="_blank" href="http://www.bedfordstmartins.com"&gt;
+            &lt;span rel=""&gt;What is Integrated Media&lt;/span&gt;&lt;span class="pxicon pxicon-right-open"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a target="_blank" href="http://www.bedfordstmartins.com/Catalog/product/practicalargument-secondedition-kirszner/formatsandpackages"&gt;
+            &lt;span rel=""&gt;Formats and e-Books&lt;/span&gt;&lt;span class="pxicon pxicon-right-open"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a target="_blank" href="http://bedfordstmartins.com/rewriting"&gt;
+            &lt;span rel=""&gt;Writing&lt;/span&gt;&lt;span class="pxicon pxicon-right-open"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a target="_blank" href="http://www.bedfordstmartins.com/Catalog/product/practicalargument-secondedition-kirszner/instructorresources"&gt;
+            &lt;span rel=""&gt;Instructor Resources&lt;/span&gt;&lt;span class="pxicon pxicon-right-open"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class="xbook-mars-content"&gt;
+            &lt;div class="content-wrapper"&gt;
+            &lt;h1&gt;Bedford Media&lt;/h1&gt;
+            &lt;h2&gt;Practical Argument,&lt;span&gt; Second Edition&lt;/span&gt;&lt;/h2&gt;
+            &lt;span&gt;Students can&lt;/span&gt;
+            &lt;ul&gt;
+            &lt;li&gt;log into the Integrated Media for their book&lt;img /&gt;&lt;/li&gt;
+            &lt;li&gt;(new user register using the code printed in their book)&lt;/li&gt;
+            &lt;li&gt;purchase other &lt;a href="http://www.bedfordstmartins.com/Catalog/product/practicalargument-secondedition-kirszner/formatsandpackages"&gt;Format and e-Books&lt;/a&gt; &lt;/li&gt;
+            &lt;li&gt;use open resources in &lt;a href="http://bedfordstmartins.com/rewriting"&gt;Re:Writing&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;span&gt;Instructor can&lt;/span&gt;
+            &lt;ul&gt;
+            &lt;li&gt;log into the Integrated Media with instructor access &lt;img /&gt;&lt;/li&gt;
+            &lt;li&gt;request an exam copy from &lt;a href="http://www.bedfordstmartins.com/Catalog/product/practicalargument-secondedition-kirszner"&gt;About the Book&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;learn about other &lt;a href="http://www.bedfordstmartins.com/Catalog/product/practicalargument-secondedition-kirszner/formatsandpackages"&gt;Formats and e-Books&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;download &lt;a href="http://www.bedfordstmartins.com/Catalog/product/practicalargument-secondedition-kirszner/instructorresources"&gt;Instructor Resources&lt;/a&gt; &lt;/li&gt;
+            &lt;/ul&gt;
+       
+            &lt;div class="bedford-media-prompt"&gt;
+            &lt;span&gt;Bedford Integrated Media&lt;/span&gt; take advantage of what the Web can do.
+            &lt;p&gt;
+            Students receive access to Bedford Integrated Media with the purchase of new print book or e-book.
+            If the code does not work, It might be expired. Students may purchase access using the "Purchase Access" option
+            on the right.
+            &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;
+&lt;div class="xbook-mars-branding-book-wrapper"&gt;
+            &lt;div class="xbook-mars-branding-book"&gt;
+            &lt;/div&gt;
+ &lt;h2&gt;Practical Argument,&lt;span&gt; Second Edition&lt;/span&gt;&lt;/h2&gt;
+&lt;span&gt;Laurie G. Kirszner and Stephen R. Mandell&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="xbook-mars-branding"&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;
+            </description>
+          <timetocomplete>PT1M</timetocomplete>
+          <category>1</category>
+          <period inherit="true">0</period>
+          <groupsetid>-1</groupsetid>
+          <weight>100</weight>
+          <gradeentry>1</gradeentry>
+          <inputtable inherit="true">0</inputtable>
+          <bfw_type>ProductMarketing</bfw_type>
+          <bfw_subtype>Marketing</bfw_subtype>
+          <bfw_tocs>
+            <bfw_toc_contents parentid="PX_ROOT" sequence="_ja" />
+          </bfw_tocs>
+        </data>
+      </item>
+    </requests>
+  </request>

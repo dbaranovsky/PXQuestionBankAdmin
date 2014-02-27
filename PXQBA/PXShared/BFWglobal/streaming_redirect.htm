@@ -1,0 +1,22 @@
+<html>
+<head>
+<script src="/BFWGlobal/js/global.js" type="text/javascript"></script>
+<script language="JavaScript">
+var inuid = BFW_QStr['uid'];
+var inquality = BFW_QStr['quality'];
+
+//alert(inuid);
+
+var xwin = window.open('http://dctmws.bfwpub.com:8080/public/ContentStream?uid='+inuid+'&quality='+inquality+'','xwin')
+
+setTimeout('xwin.close()',2000);
+setTimeout('history.back()',2500);
+
+</script>
+</head>
+<body>
+<p style="">
+loading...
+</p>
+</body>
+</html>

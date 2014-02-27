@@ -1,0 +1,37 @@
+<iproblem maxpoints="10">
+  <vardef name="x" type="numeric" format="#">
+    <constraint>
+      <range type="ge">
+        <expr>1</expr>
+      </range>
+      <range type="le">
+        <expr>10</expr>
+      </range>
+    </constraint>
+  </vardef>
+  <iprostep id="step0" points="1"><div><p>Find the interval in which the function <iproformula style="margin-bottom: -3px; vertical-align: middle;" type="text" src="geteq.ashx?eqtext= f(x)=@abs{x+~x\}"/> is increasing.</p><p>(Use symbolic notation and fractions where needed. Give your answer as interval in the form (*,*).)</p><p><iproelement_short id="@step.s@id" version="2" correct="(-~x\,&amp;inf;)" tolerance="0.0" type="math" format="" answerrule="any" points="" size="2" checksyntax="true" allowedwords="" elid="1"/></p><p><a href="http://ebooks.bfwpub.com/calculus2e.php?page=1_1" target="_blank"><img src="images/uploaded_2f89a34a8ab748c8881de97827d0f9f4_eBook1.jpg" alt="ebook_image" border="0"/></a></p></div>&#160;<p/><p/><input class="next" id="@step.next" onclick="javascript:next('next', '@step')" type="button" value="Continue" hide="no"/><ipronav navtype="correct" next="step0corr"/><ipronav navtype="incorrect" next="step0inc"/></iprostep>
+  <iprostep id="step0corr">
+    <div class="correct"> Correct feedback </div>
+  </iprostep>
+  <iprostep id="step0inc">
+    <div class="incorrect"> Incorrect feedback</div>
+  </iprostep>
+  <iprostep id="solution">
+    <div>
+      <p>
+        <strong>SOLUTION</strong>
+      </p>
+      <p>A graph of the function <iproformula style="margin-bottom: -3px; vertical-align: middle;" type="text" src="geteq.ashx?eqtext= y=@abs{x+~x\}"/> is shown below. From the graph we see that the function is increasing on the interval <iproformula style="margin-bottom: -3px; vertical-align: middle;" type="text" src="geteq.ashx?eqtext=(-~x\, &amp;inf;)"/>.</p>
+      <p>
+        <iproelement class="graph" function="abs(x+~x\)"/>
+        <object align="middle" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab" height="370" id="piecewise_cont" iproclass="graph" width="350">
+          <param name="allowScriptAccess" value="always"/>
+          <param name="movie" value="graph_player_wp.swf?datafile=graphs/1-01-49graph.xml"/>
+          <param name="quality" value="high"/>
+          <param name="bgcolor" value="#ffffff"/>
+          <embed align="middle" allowScriptAccess="always" bgcolor="#ffffff" height="370" loop="false" name="piecewise_cont" play="true" pluginspage="http://www.macromedia.com/go/getflashplayer" quality="high" src="graph_player_wp.swf?datafile=graphs/1-01-49graph.xml" swLiveConnect="true" type="application/x-shockwave-flash" width="350"/>
+        </object>
+      </p>
+    </div>
+  </iprostep>
+</iproblem>

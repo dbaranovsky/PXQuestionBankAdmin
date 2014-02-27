@@ -1,0 +1,48 @@
+﻿@model Bfw.PXAP.Models.EnrollmentModel
+@{
+    ViewBag.Title = "Content";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .longrow
+    {
+        width:700px;
+        margin-bottom:2px;
+    }
+</style>
+<div>
+    &nbsp;
+</div>
+<div id="MetaForm" style="width: 75%; padding-top: 15px; margin: 0 auto;">
+    @{
+        Bfw.PXAP.Models.LayoutModel layout = this.ViewBag.LayoutModel as Bfw.PXAP.Models.LayoutModel;
+
+        if (string.IsNullOrEmpty(layout.CurrentEnvironment))
+        {
+            return;
+        }
+    }
+    @using (Html.BeginForm("EnrollStudents", "Enrollment", FormMethod.Post, new { id = "longform" }))
+    {                
+        <div class="longrow">
+            Enroll Students in to course       
+        </div>
+        <br />
+        <div class="row">
+            <div class="label">
+                Entity ID:</div>
+            <div>@Html.TextBoxFor(m => m.EntityId, new { @class = "envField" })            
+            </div>
+        </div>   
+        <div class="row">
+            <div class="label"># of Students</div>
+            <div> @Html.TextBoxFor(m => m.StudentCount)</div>
+        </div>               
+        <div class="longrow">
+            <div class="label">&nbsp;</div>
+            <div><input type="button" id="opener" value="Enroll"/></div>
+        </div>                
+    }
+</div>
+     @Html.Partial("_ProgressBarPartial")
+

@@ -1,0 +1,91 @@
+<custom>
+  <version>1</version>
+  <score>http://dev.px.bfwpub.com/BFWglobal/PxHTS/PxScore.ashx</score>
+  <display>Active,Review,Print,PrintKey</display>
+  <privatedata>a3794071-8696-451f-818c-16537d2ee8e6</privatedata>
+  <body><![CDATA[<script src='http://dev.px.bfwpub.com/BFWglobal/PxHTS/htsplayer/hts.js' type='text/javascript'></script>
+<script src='http://dev.px.bfwpub.com/BFWglobal/PxHTS/htsplayer/qsutils_1.js' type='text/javascript'></script>
+<script src='http://dev.px.bfwpub.com/BFWglobal/PxHTS/htsplayer/PopupWindow.js' type='text/javascript'></script>
+<script src='http://dev.px.bfwpub.com/BFWglobal/PxHTS/htsplayer/divPopup.js' type='text/javascript'></script>
+
+                <script  type='text/javascript'> 
+var _serverURL='http://dev.px.bfwpub.com/BFWglobal/PxHTS/';
+function jsGetServerURL() 
+            { return _serverURL; }
+
+                var resp$QUESTIONID$ = '<iproblem>r3avMfsweBZG4lPMrLuSFbngxJYiFU/II+jbuVe6o8mYcYzQthjyRpHR6iFTUHWUzs0V45F+y4j0DBOe2qRe8OgRXrgYAWy/q6FAqMe7eCigpgAxPrT68cCM6wV876HqklEuW01DokYt7mapyxV2MzvrAkU28nQ2C/UVIZF0bauTJMk88kFhjqnQ/yRYHWkPvYw/kNmnuPKPIu189Mi5vLibWcNXeF+I9OLhdRVzeTQ0xUWR0w10uKAGfsmCDj84gBksbsriLpsy/8PKt/AmvjpwbpSE3O7CbiLe9RnBN/DFArurPkBSSdY5wHKcxqRSynYOd5HiEvV3gYmwFn59RFOSgIhx0qbuP6INSCxlCWvcb0JjwQEFVi8G9DtX+O1KlGoQXbxkH93ieNbc8AlvS+bYhL22bnN1IRwUd7jutDroT2c+pic/zJ5AO7McoPP03ZylAF1y6Xh9J24a4BBxAKsU4PwqcmQsQ2K6rjX/hDsv3CqSei/ytdmVf1e9YZrhhvR1lTcrfQ075wP2ERop/zqxHueAex09QE3pyXp9HdBLB/qZXoLDnQ/Hl5/mj/3L/ShNzlrt3UxEC47HW9YwLhLyRVd9b63sp0/ZJUGtUTk+Kr3dlrloQ8qt+IvmdLsLcEm0IGvQbl+J4HvuDzyorw==</iproblem>';
+
+            function saveMethod$QUESTIONID$()
+            {
+                saveInfo = CQ.getInfo($QUESTIONID$);
+                CQ.setAnswer($QUESTIONID$, '<response>' + resp$QUESTIONID$ + 
+getTextAnswer('hts$QUESTIONID$.step0.EnterField2') + 
+getMCAnswer('hts$QUESTIONID$.step0.Checkbox1') + 
+                    '</response>' 
+                    );
+            }
+
+            info = CQ.getInfo($QUESTIONID$);
+            // Find the div that should contain the question body
+            myDiv = document.getElementById(info.divId);
+var divtext = '<div id="popupdiv$QUESTIONID$" style="position:absolute;visibility:hidden;z-index:100;background-color:#FFFFFF;"></div>' + 
+'<div class="cq_hts_masterdiv">' +
+'  <div class="cq_hts_step" id="hts$QUESTIONID$.step0">' +
+'    <p>Test Question</p>' +
+'    <p>' +
+'      <SPAN class="field">' +
+'        <INPUT TYPE="text" onkeypress="javascript:onKeyPressed(event,this)" id="hts$QUESTIONID$.step0.EnterField2" style="OVERFLOW: visible" onchange="javascript:enterfieldAnswer(\'hts$QUESTIONID$.step0.EnterField2\'); " size="auto" allowedwords="" value="" />' +
+'      </SPAN>' +
+'    </p>' +
+'    <p>math variable: @RT{33}</p>' +
+'    <p>math array: %24m </p>' +
+'    <p>math array 2: %40RT%7B33%7D </p>' +
+'    <p>math array3: %40RT%7B22%7D </p>' +
+'    <p>math array3: %40RT%7B44%7D </p>' +
+'  </div>' +
+'</div>' +
+' ';
+var eqedit = '<div id="theLayer$QUESTIONID$" style="position:absolute;left:220px;top:40px;display:none">' +
+        '<table border="0"  bgcolor="#0000FF" cellspacing="0" cellpadding="3">' +
+        '<tr><td width="100%">' +
+        '<table border="0" width="100%" cellspacing="0" cellpadding="0" height="50">' +
+        '<tr>' +
+        '<td id="titleBar$QUESTIONID$" style="cursor:move" width="98%" height="20">' +
+        '<ilayer width="100%" onSelectStart="return false">' +
+        '<layer width="100%" onMouseover="isHot=true" onMouseout="isHot=false">' +
+        '<font face="Arial" color="#FFFFFF">Equation Editor</font>' +
+        '</layer>' +
+        '</ilayer>' +
+        '</td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td width="100%" bgcolor="#FFFFFF"  colspan="2">' +       
+        '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" '
+        + 'id="eqeditor$QUESTIONID$" width="500" height="270" '
+        + 'codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab"> '
+        + '<param name="movie" value="http://dev.px.bfwpub.com/BFWglobal/PxHTS/htsplayer/eqeditor.swf" /><param name="allowScriptAccess" value="always" /><param name="quality" value="high" /><param name="bgcolor" value="#ffffff" />'
+        + '<embed src="http://dev.px.bfwpub.com/BFWglobal/PxHTS/htsplayer/eqeditor.swf" quality="high" bgcolor="#ffffff" '
+        + 'width="500" height="270" name="eqeditor$QUESTIONID$" align="middle" '
+        + 'play="true" '
+        + 'loop="false" '
+        + 'quality="high" '
+        + 'allowScriptAccess="always" '
+        + 'type="application/x-shockwave-flash" '
+        + 'pluginspage="http://www.macromedia.com/go/getflashplayer">'
+        + '</embed>'
+        + '</object>' +   
+        '</td>' +
+        '</tr>' +
+        '</table>' + 
+        '</td>' +
+        '</tr>' +
+        '</table>' +
+    '</div>';
+           
+            // Replace the div with the information retrieved above
+            myDiv.innerHTML = eqedit+divtext;
+            // Register save callback method
+            CQ.onBeforeSave(saveMethod$QUESTIONID$);  
+            </script>
+]]></body>
+</custom>

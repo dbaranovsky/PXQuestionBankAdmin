@@ -1,0 +1,1167 @@
+$B+  //Auto-increment build number (b)
+$C-  //Generate Delphi test project (c)
+$E-  //Generate a component registration unit (e)
+$R-  //Save DFM as resource (r)
+$V+  //Generate version information (v)
+$Z-  //Generate console app (z)
+
+
+COMPILER IPEqParser     
+
+DELPHI
+
+  USES (INTERFACE) IPEqNode,Contnrs,IPEqDivide,IPEqSqrt,IPEqText,IPEqChar,
+    IPEqSuperscript,IPEqSymbolW,IPEqOp,IPEqSupSub,IPEqOverUnder,IPEqLDiv,
+    IPEqABS,IPEqCIS,IPEqBar,IPEqMat,IPEqIntegral,IPEqSum,IPEqCBrace,IPEqParen,
+    IPEqObject,IPEqPrime,IPEqCheck,IPEqBigger,IPStrUtils,StrUtils,IPEqItalic,
+    IPEqMNum,IPEqPlainText,Graphics
+  
+  PRIVATE
+    FEqDocument : TIPEqDocument;
+    FNodeList : TObjectList;
+//    FOnSymVarCreate : TTDXSymVarCreateEvent;
+//    FOnSymVarGetValue: TTDXSymVarGetValueEvent;
+                                     
+    procedure Init;
+    procedure Final;
+    function AddNode(ANode:TIPEqNode):TIPEqNode;
+    function PopNode(ANode:TIPEqNode):TIPEqNode;  
+    function deQuote(const str:String):String;   
+    function GetNumArg(text:String):String;
+    function GetCNumArg(text:String):String;
+    
+  PUBLIC
+    property EqDocument: TIPEqDocument read FEqDocument write FEqDocument;
+//    property OnSymVarCreate:TTDXSymVarCreateEvent read FOnSymVarCreate write FOnSymVarCreate;
+//    property OnSymVarGetValue:TTDXSymVarGetValueEvent read FOnSymVarGetValue write FOnSymVarGetValue;
+  CREATE
+//    FTopRow := nil;
+    FNodeList := TObjectList.Create;
+  DESTROY
+    FNodeList.Free;
+//    FTopRow.Free;                                
+  ERRORS
+    200 : Result := 'Text after end of valid expression';
+END_DELPHI
+
+(* Arbitrary Code *)
+
+//const
+//  DollarChar : char = '$';
+  
+procedure T-->Grammar<--.Init;
+begin
+//  FTopRow := TIPEqRow.Create;
+end;
+
+procedure T-->Grammar<--.Final;
+begin                   
+  //Clean up in between parses just in case object stays around.
+  FNodeList.Clear;
+end;
+
+function T-->Grammar<--.AddNode(ANode:TIPEqNode):TIPEqNode;
+begin
+  FNodeList.Add(ANode);
+  Result := ANode;
+end;
+
+function T-->Grammar<--.PopNode(ANode:TIPEqNode):TIPEqNode;
+begin
+  FNodeList.Extract(ANode);
+  Result := ANode;
+end;  
+
+function T-->Grammar<--.deQuote(const str:String):String;
+var
+  p : PChar;
+begin                          
+  p := Pchar(str);
+  Result := AnsiExtractQuotedStr(p,str[1]);
+end;
+
+function T-->Grammar<--.GetNumArg(text:String):String;
+begin
+  text := Trim(text);
+  Result := deQuote(text);
+end;
+
+function T-->Grammar<--.GetCNumArg(text:String):String;
+var
+  pPos : integer;
+  fStr : String;          
+  v : Double;
+begin
+  text := Trim(text);
+  try
+    v := StrToFloat(text);
+  except
+    raise Exception.Create('Argument of CNUM must be a number');
+  end;
+  
+  pPos := Pos('.',text);
+  if pPos > 0 then
+    fStr := '#,###.'+DupeString('#',Length(text)-pPos)
+  else
+    fStr := '#,###';
+  Result := IPFormatFloat(v,fstr);
+end;
+
+
+(* End of Arbitrary Code *)
+
+IGNORE CASE
+
+CHARACTERS
+  eol      = CHR(13) .
+  letter   = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" .
+  digit    = "0123456789".
+  entchar  = letter + digit.
+  parens   = "[]".
+  rparen   = ")".
+  lparen   = "(".                  
+  specialchars = "\&;{}@^_".
+  operators = "+,=<>*/".
+  minus = "-".
+  dollar = "$".
+  yen = CHR(165) .
+  euro = CHR(128) .
+  pound = CHR(163) .
+  
+// validchar = (letter | digit) - ';' - eol - "}" - "{".
+//  validchar = CHR(1)..CHR(254) - specialchars.
+  anychar = CHR(32)..CHR(255).
+  validchar = anychar - specialchars - operators - parens - lparen - rparen - minus - dollar - yen - euro - pound.  
+IGNORE CHR(1) .. CHR(31)
+
+TOKENS
+//  text_        =  (letter | digit) {letter | digit} .
+  text_   = validchar {validchar}.
+//  qtext_  = dquote nondquote {nondquote} dquote.
+  enttext_ = "&" entchar {entchar} ";".
+  literal_ = "\" (specialchars | validchar).
+  operator_ = operators.
+  minus_ = minus.
+  dollar_ = dollar | yen | pound | euro.
+  paren_ = parens.
+  rparen_ = rparen.
+  lparen_ = lparen.
+  
+      
+//COMMENTS FROM "/*" TO "*/" NESTED
+//COMMENTS FROM "--" TO eol
+//COMMENTS FROM "//" TO eol
+
+PRODUCTIONS
+                                         
+IPEqParser 
+  =                       (. Init .)
+  EqRow<FEqDocument> 
+                          (. if fCurrentInputSymbol <> EOFSYMB then
+                               SynError(200); 
+                             Final .)
+          .
+          
+EqRow<eqRow:TIPEqRow>
+ = 
+  // EqNode<eqRow>         
+    {EqNode<eqRow> }
+   
+.
+          
+EqNode<eqRow:TIPEqRow>  
+ =
+   EqText<eqRow>
+ | EqDiv<eqRow>
+ | EqDivSM<eqRow>
+ | EqSqrt<eqRow>
+ | EqSuper<eqRow>   
+ | EqSub<eqRow>   
+ | EqEntity<eqRow>
+ | EqNum<eqRow>   
+ | EqNum1<eqRow>   
+ | EqNum2<eqRow>   
+ | EqNum3<eqRow>   
+ | EqNum4<eqRow>   
+ | EqOperator<eqRow>
+ | EqParenChar<eqRow> 
+ | EqMixedNum<eqRow>
+ | EqSupSub<eqRow>
+ | EqOverUnder<eqRow>
+ | EqOver<eqRow>
+ | EqUnder<eqRow>
+ | EqLDiv<eqRow>
+ | EqLDivQ<eqRow>
+ | EqABS<eqRow>
+ | EqABSL<eqRow>
+ | EqABSR<eqRow>
+ | EqNORM<eqRow>
+ | EqNORML<eqRow>
+ | EqNORMR<eqRow>
+ | EqCIS<eqRow>
+ | EqSyndiv<eqRow>
+ | EqOverbar<eqRow>
+ | EqUndrbar<eqRow>
+ | EqOvdbbar<eqRow>
+ | EqUndbbar<eqRow>
+ | EqArrowL<eqRow>
+ | EqArrowR<eqRow>
+ | EqArrowDB<eqRow>
+ | EqRayL<eqRow>
+ | EqRayR<eqRow>
+ | EqRayDB<eqRow>
+ | EqOverBRC<eqRow>
+ | EqUndrBRC<eqRow>
+ | EqARC<eqRow>
+ | EqSlash<eqRow>
+ | EqHat<eqRow>
+ | EqTilde<eqRow>
+ | EqAccent<eqRow>
+ | EqUmlaut<eqRow>
+ | EqPrime<eqRow>
+ | EqPrime2<eqRow>
+ | EqPrime3<eqRow>
+ | EqRep<eqRow>
+ | EqMat<eqRow>
+ | EqMatL<eqRow>
+ | EqMatR<eqRow>
+ | EqAugment<eqRow>
+ | EqAugmentL<eqRow>
+ | EqAugmentR<eqRow>
+ | EqRowC<eqRow>
+ | EqRowL<eqRow>
+ | EqRowR<eqRow>
+ | EqColumn<eqRow>
+ | EqColumnL<eqRow>
+ | EqColumnR<eqRow>
+ | EqTab<eqRow>
+ | EqTabL<eqRow>
+ | EqTabR<eqRow>
+ | EqTable<eqRow>
+ | EqTableL<eqRow>
+ | EqTableR<eqRow>
+ | EqIntegral<eqRow>
+ | EqSum<eqRow>
+ | EqCBrace<eqRow>
+ | EqCBraceL<eqRow>
+ | EqCBraceR<eqRow>
+ | EqParen<eqRow>
+ | EqParenL<eqRow>
+ | EqParenR<eqRow>
+ | EqBrace<eqRow>
+ | EqBraceL<eqRow>
+ | EqBraceR<eqRow>
+ | EqVector<eqRow>
+ | EqVectorL<eqRow>
+ | EqVectorR<eqRow>
+ | EqGrint<eqRow>
+ | EqDBraceL<eqRow>
+ | EqDBraceR<eqRow>
+ | EqHBrace<eqRow>
+ | EqHBraceT<eqRow>
+ | EqHBraceB<eqRow> 
+ | EqInput<eqRow>
+ | EqCheck<eqRow>
+ | EqBigger<eqRow>
+ | EqItalic<eqRow>
+ | EqBold<eqRow>
+ | EqPlainText<eqRow>
+ | EqDollarChar<eqRow>
+ | "{" EqRow<eqRow> "}"    
+. 
+
+EqOperator<eqRow:TIPEqRow>                     
+    (.var opType : TIPEqOpType; .)
+  = (operator_ | minus_) (.    if GetEqOpType(LexString,opType) then
+                        eqRow.AddChild(TIPEqOp.Create(opType))
+                    else
+                       eqRow.AddChild(TIPEqText.Create(LexString));
+               .)
+.
+
+
+EqParenChar <eqRow:TIPEqRow>                     
+  = ( paren_ | lparen_ | rparen_) (.  eqRow.AddChild(TIPEqParen.Create(LexString[1])); .)
+.
+
+EqDollarChar <eqRow:TIPEqRow>
+  = dollar_ (. eqRow.AddChild(TIPEqText.Create(LexString)); .)
+.
+
+
+EqText<eqRow:TIPEqRow>
+  =
+    text_   (. eqRow.AddChild(TIPEqText.Create(LexString)); .)
+// |  literal_ (. eqRow.AddChild(TIPEqChar.Create(Copy(LexString,2,2))); .)
+ |  literal_ (. eqRow.AddChild(TIPEqChar.Create(LexString[2])); .)
+.
+
+//EqQText<eqRow:TIPEqRow>
+//  =
+//    qtext_   (. eqRow.AddChild(TIPEqText.Create(Copy(LexString,2,Length(LexString)-2))); .)
+//.
+
+
+EqInput<eqRow:TIPEqRow>
+  = "@INPUT" "{" text_ (. eqRow.AddChild(TIPEqObject.Create(LexString)); .)
+    "}"
+.  
+ 
+EqDiv<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqDivide;.)
+  =            (.  eq := TIPEqDivide.Create;
+                   eqRow.AddChild(eq);
+               .)        
+    "@DIV" "{" EqRow<eq.Row[0]> ";"EqRow<eq.Row[1]> "}"   
+.
+
+EqDivSM<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqDivide;.)
+  =            (.  eq := TIPEqDivide.CreateM;
+                   eqRow.AddChild(eq);
+               .)        
+    "@DIVSM" "{" EqRow<eq.Row[0]> ";"EqRow<eq.Row[1]> "}"   
+.
+
+EqSupSub<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqSupSub;.)
+  =            (.  eq := TIPEqSupSub.Create;
+                   eqRow.AddChild(eq);
+               .)        
+    "@SUPSUB" "{" EqRow<eq.Row[0]> ";" EqRow<eq.Row[1]> ";" EqRow<eq.Row[2]> "}"  
+.
+
+EqOverUnder<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqOverUnder;.)
+  =            (.  eq := TIPEqOverUnder.Create;
+                   eqRow.AddChild(eq);
+               .)        
+    ("@OVERUNDER" | "@OVERUNDR") "{" EqRow<eq.Row[0]> ";" EqRow<eq.Row[1]> ";" EqRow<eq.Row[2]> "}" 
+.
+
+EqOver<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqOverUnder;.)
+  =            (.  eq := TIPEqOverUnder.CreateOver;
+                   eqRow.AddChild(eq);
+               .)        
+    "@OVER" "{" EqRow<eq.Row[0]> ";" EqRow<eq.Row[1]> "}"
+.
+
+EqUnder<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqOverUnder;.)
+  =            (.  eq := TIPEqOverUnder.CreateUnder;
+                   eqRow.AddChild(eq);
+               .)        
+    "@UNDER" "{" EqRow<eq.Row[0]> ";" EqRow<eq.Row[1]> "}"
+.
+
+
+EqLDiv<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqLDiv;.)
+  =            (.  eq := TIPEqLDiv.Create;
+                   eqRow.AddChild(eq);
+               .)        
+    "@LDIV" "{" EqRow<eq.Row[0]> ";" EqRow<eq.Row[1]> "}" 
+.
+EqLDivQ<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqLDiv;.)
+  =            (.  eq := TIPEqLDiv.CreateN;
+                   eqRow.AddChild(eq);
+               .)        
+    "@LDIVQ" "{" EqRow<eq.Row[0]> ";" EqRow<eq.Row[1]> ";" EqRow<eq.Row[2]> "}" 
+.
+
+EqCBrace<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqCBrace;.)
+  =            (.  eq := TIPEqCBrace.Create;
+                   eqRow.AddChild(eq);
+               .)        
+    "@CBRACE" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqCBraceL<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqCBrace;.)
+  =            (.  eq := TIPEqCBrace.CreateCBraceL;
+                   eqRow.AddChild(eq);
+               .)        
+    "@CBRACEL" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqCBraceR<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqCBrace;.)
+  =            (.  eq := TIPEqCBrace.CreateCBraceR;
+                   eqRow.AddChild(eq);
+               .)        
+    "@CBRACER" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqParen<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqCBrace;.)
+  =            (.  eq := TIPEqCBrace.CreateParen;
+                   eqRow.AddChild(eq);
+               .)        
+    "@PAREN" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqParenL<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqCBrace;.)
+  =            (.  eq := TIPEqCBrace.CreateParenL;
+                   eqRow.AddChild(eq);
+               .)        
+    "@PARENL" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqParenR<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqCBrace;.)
+  =            (.  eq := TIPEqCBrace.CreateParenR;
+                   eqRow.AddChild(eq);
+               .)        
+    "@PARENR" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqBrace<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqCBrace;.)
+  =            (.  eq := TIPEqCBrace.CreateBrace;
+                   eqRow.AddChild(eq);
+               .)        
+    "@BRACE" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqBraceL<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqCBrace;.)
+  =            (.  eq := TIPEqCBrace.CreateBraceL;
+                   eqRow.AddChild(eq);
+               .)        
+    "@BRACEL" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqBraceR<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqCBrace;.)
+  =            (.  eq := TIPEqCBrace.CreateBraceR;
+                   eqRow.AddChild(eq);
+               .)        
+    "@BRACER" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqVector<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqCBrace;.)
+  =            (.  eq := TIPEqCBrace.CreateVector;
+                   eqRow.AddChild(eq);
+               .)        
+    "@VECTOR" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqVectorL<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqCBrace;.)
+  =            (.  eq := TIPEqCBrace.CreateVectorL;
+                   eqRow.AddChild(eq);
+               .)        
+    "@VECTORL" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqVectorR<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqCBrace;.)
+  =            (.  eq := TIPEqCBrace.CreateVectorR;
+                   eqRow.AddChild(eq);
+               .)        
+    "@VECTORR" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqGrint<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqCBrace;.)
+  =            (.  eq := TIPEqCBrace.CreateGrint;
+                   eqRow.AddChild(eq);
+               .)        
+    "@GRINT" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqDBraceL<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqCBrace;.)
+  =            (.  eq := TIPEqCBrace.CreateDBraceL;
+                   eqRow.AddChild(eq);
+               .)        
+    "@DBRACEL" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqDBraceR<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqCBrace;.)
+  =            (.  eq := TIPEqCBrace.CreateDBraceR;
+                   eqRow.AddChild(eq);
+               .)        
+    "@DBRACER" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqHBrace<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqCBrace;.)
+  =            (.  eq := TIPEqCBrace.CreateHBrace;
+                   eqRow.AddChild(eq);
+               .)        
+    "@HBRACE" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqHBraceT<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqCBrace;.)
+  =            (.  eq := TIPEqCBrace.CreateHBraceT;
+                   eqRow.AddChild(eq);
+               .)        
+    "@HBRACET" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqHBraceB<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqCBrace;.)
+  =            (.  eq := TIPEqCBrace.CreateHBraceB;
+                   eqRow.AddChild(eq);
+               .)        
+    "@HBRACEB" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqABS<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqABS;.)
+  =            (.  eq := TIPEqABS.Create;
+                   eqRow.AddChild(eq);
+               .)        
+    "@ABS" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqABSL<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqABS;.)
+  =            (.  eq := TIPEqABS.CreateABSL;
+                   eqRow.AddChild(eq);
+               .)        
+    "@ABSL" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqABSR<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqABS;.)
+  =            (.  eq := TIPEqABS.CreateABSR;
+                   eqRow.AddChild(eq);
+               .)        
+    "@ABSR" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqNORM<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqABS;.)
+  =            (.  eq := TIPEqABS.CreateN;
+                   eqRow.AddChild(eq);
+               .)        
+    "@NORM" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqNORML<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqABS;.)
+  =            (.  eq := TIPEqABS.CreateDL;
+                   eqRow.AddChild(eq);
+               .)        
+    "@NORML" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqNORMR<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqABS;.)
+  =            (.  eq := TIPEqABS.CreateDR;
+                   eqRow.AddChild(eq);
+               .)        
+    "@NORMR" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqCIS<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqCIS;.)
+  =            (.  eq := TIPEqCIS.Create;
+                   eqRow.AddChild(eq);
+               .)        
+    "@CIS" "{" EqRow<eq.Row[0]> ";" EqRow<eq.Row[1]> "}" 
+.
+
+EqBigger<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqBigger; opstr:String; .)
+  =            (.  eq := TIPEqBigger.Create;
+                   eqRow.AddChild(eq);
+                   opstr := '';
+               .)        
+    "@SIZE" "{" EqRow<eq.Row[0]> [";" [(operator_ | minus_) (. opstr := LexString;.)] text_ (. eq.SetPointsFromString(opStr+LexString) .)]  "}" 
+.
+
+EqSyndiv<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqCIS;.)
+  =            (.  eq := TIPEqCIS.CreateN;
+                   eqRow.AddChild(eq);
+               .)        
+    "@SYNDIV" "{" EqRow<eq.Row[0]> ";" EqRow<eq.Row[1]> "}" 
+.
+
+EqOverbar<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqBar;.)
+  =            (.  eq := TIPEqBar.Create;
+                   eqRow.AddChild(eq);
+               .)        
+    "@OVERBAR" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqUndrbar<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqBar;.)
+  =            (.  eq := TIPEqBar.CreateUN;
+                   eqRow.AddChild(eq);
+               .)        
+    "@UNDRBAR" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqOvdbbar<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqBar;.)
+  =            (.  eq := TIPEqBar.CreateOvdb;
+                   eqRow.AddChild(eq);
+               .)        
+    "@OVDBBAR" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqUndbbar<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqBar;.)
+  =            (.  eq := TIPEqBar.CreateUndb;
+                   eqRow.AddChild(eq);
+               .)        
+    "@UNDBBAR" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqArrowL<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqBar;.)
+  =            (.  eq := TIPEqBar.CreateArrowL;
+                   eqRow.AddChild(eq);
+               .)        
+    "@ARROWL" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqArrowR<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqBar;.)
+  =            (.  eq := TIPEqBar.CreateArrowR;
+                   eqRow.AddChild(eq);
+               .)        
+    "@ARROWR" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqArrowDB<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqBar;.)
+  =            (.  eq := TIPEqBar.CreateArrowDB;
+                   eqRow.AddChild(eq);
+               .)        
+    "@ARROWDB" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqRayL<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqBar;.)
+  =            (.  eq := TIPEqBar.CreateRayL;
+                   eqRow.AddChild(eq);
+               .)        
+    "@RAYL" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqRayR<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqBar;.)
+  =            (.  eq := TIPEqBar.CreateRayR;
+                   eqRow.AddChild(eq);
+               .)        
+    "@RAYR" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqRayDB<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqBar;.)
+  =            (.  eq := TIPEqBar.CreateRayDB;
+                   eqRow.AddChild(eq);
+               .)        
+    "@RAYDB" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqOverBRC<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqBar;.)
+  =            (.  eq := TIPEqBar.CreateOverBrc;
+                   eqRow.AddChild(eq);
+               .)        
+    "@OVERBRC" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqUndrBRC<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqBar;.)
+  =            (.  eq := TIPEqBar.CreateUndrBRC;
+                   eqRow.AddChild(eq);
+               .)        
+    "@UNDRBRC" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqARC<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqBar;.)
+  =            (.  eq := TIPEqBar.CreateArc;
+                   eqRow.AddChild(eq);
+               .)        
+    "@ARC" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqSlash<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqBar;.)
+  =            (.  eq := TIPEqBar.CreateSlash;
+                   eqRow.AddChild(eq);
+               .)        
+    "@SLASH" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqHat<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqBar;.)
+  =            (.  eq := TIPEqBar.CreateHat;
+                   eqRow.AddChild(eq);
+               .)        
+    "@HAT" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqTilde<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqBar;.)
+  =            (.  eq := TIPEqBar.CreateTilde;
+                   eqRow.AddChild(eq);
+               .)        
+    "@TILDE" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqAccent<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqBar;.)
+  =            (.  eq := TIPEqBar.CreateAccent;
+                   eqRow.AddChild(eq);
+               .)        
+    "@ACCENT" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqUmlaut<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqBar;.)
+  =            (.  eq := TIPEqBar.CreateUmlaut;
+                   eqRow.AddChild(eq);
+               .)        
+    "@UMLAUT" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqPrime<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqPrime;.)
+  =            (.  eq := TIPEqPrime.Create;
+                   eqRow.AddChild(eq);
+               .)        
+    "@PRIME" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqPrime2<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqPrime;.)
+  =            (.  eq := TIPEqPrime.CreatePrime2;
+                   eqRow.AddChild(eq);
+               .)        
+    "@PRIME2" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqPrime3<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqPrime;.)
+  =            (.  eq := TIPEqPrime.CreatePrime3;
+                   eqRow.AddChild(eq);
+               .)        
+    "@PRIME3" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqRep<eqRow:TIPEqRow> 
+               (.  var eq:TIPEqBar;.)
+  =            (.  eq := TIPEqBar.CreateRep;
+                   eqRow.AddChild(eq);
+               .)        
+    "@REP" "{" EqRow<eq.Row[0]> "}" 
+.
+
+EqMixedNum<eqRow:TIPEqRow>
+               (. var eq:TIPEqDivide;
+                      eqMNum:TIPEqMNum;
+                      eqR : TIPEqRow; .)
+ =             (.  if FEqDocument.Authoring then
+                   begin
+                     eqMNum := TIPEqMNum.Create;
+                     eqRow.AddChild(eqMnum);
+                     eqR := eqMNum.Row[0];
+                   end
+                   else
+                     eqR := eqRow;
+               .)
+   ("@MNUM" | "@MIX") "{" EqRow<eqR> 
+           ";" 
+             (. if not EqDocument.Authoring then
+                begin
+                  eq :=TIPEqDivide.Create;
+                  eqRow.AddChild(eq);
+                  eqR := eq.Row[0];
+                end
+                else
+                  eqr := eqMnum.Row[1]; .)
+              EqRow<eqR> ";"
+              (. if not EqDocument.Authoring then
+                   eqR := eq.Row[1]
+                 else
+                   eqR := eqMnum.Row[2];
+              .)
+               EqRow<eqR>
+           "}" 
+ .  
+
+
+EqNum<eqRow:TIPEqRow>
+  =
+    "@NUM" "{" EqRow<eqRow>  "}"
+.
+
+EqNum1<eqRow:TIPEqRow>
+   (. var str : String; .)
+  =                           
+    (. str := '' .)
+    "NUM(" text_ (. str := LexString .) {minus_ (. str := str + LexString .) text_ (. str := str + LexString .)} rparen_  
+    (. eqRow.AddChild(TIPEqText.Create(GetNumArg(str))) .)
+.
+                            
+EqNum2<eqRow:TIPEqRow>
+   (. var str : String;
+          minusflag : boolean;
+          dollarflag : boolean;
+          parenflag : boolean; 
+          dollarchar : String;
+    .)
+=
+   (. str := ''; minusflag := false; dollarflag := false; parenflag := false; dollarchar := ''.)
+   "@CNUM" "{" [minus_ (. minusflag := true .) ][dollar_ (. dollarflag := true; dollarchar := LexString .)] 
+     (  ( lparen_ text_ (. str := str + LexString .) {operator_ (. str := str + LexString .) text_ (. str := str + LexString .)} rparen_ (. parenflag := true .) )
+      | 
+      ( text_ (. str := str + LexString .) {operator_ (. str := str + LexString .) text_ (. str := str + LexString .)}))
+    "}"
+   (.
+      if minusflag then
+        eqRow.AddChild(TIPEQOp.Create(eqoMinus));
+      if dollarflag then
+        eqRow.AddChild(TIPEqText.Create(dollarchar));  
+      if parenflag then
+        eqRow.AddChild(TIPEqParen.Create('('));
+      eqRow.AddChild(TIPEqText.Create(GetCNumArg(str))); 
+      if parenflag then
+        eqRow.AddChild(TIPEqParen.Create(')'));
+   .)
+.                                                         
+
+
+EqNum3<eqRow:TIPEqRow>
+   (. var str : String;
+          minusflag : boolean;
+          dollarflag : boolean;
+          parenflag : boolean; 
+    .)
+=
+   (. str := ''; minusflag := false; parenflag := false; .)
+   "@CURR" "{" [minus_ (. minusflag := true .) ] 
+     (  ( lparen_ text_ (. str := str + LexString .) {operator_ (. str := str + LexString .) text_ (. str := str + LexString .)} rparen_ (. parenflag := true .) )
+      | 
+      ( text_ (. str := str + LexString .) {operator_ (. str := str + LexString .) text_ (. str := str + LexString .)}))
+    "}"
+   (.
+      if minusflag then
+        eqRow.AddChild(TIPEQOp.Create(eqoMinus));
+      eqRow.AddChild(TIPEqText.Create(CurrencyChars[EqDocument.CurrencyType]));  
+      if parenflag then
+        eqRow.AddChild(TIPEqParen.Create('('));
+      eqRow.AddChild(TIPEqText.Create(Trim(str))); 
+      if parenflag then
+        eqRow.AddChild(TIPEqParen.Create(')'));
+   .)
+.                                                         
+
+EqNum4<eqRow:TIPEqRow>
+   (. var str : String;
+          minusflag : boolean;
+    .)
+=
+   (. str := ''; minusflag := false;  .)
+   "@NEGP" "{" [minus_ (. minusflag := true .) ] 
+      ( text_ (. str := str + LexString .) {operator_ (. str := str + LexString .) text_ (. str := str + LexString .)})
+    "}"
+   (.
+      if minusflag then
+      begin
+        //This is minus a minus so no parens
+        eqRow.AddChild(TIPEqText.Create(Trim(str)));
+      end
+      else
+      begin 
+        eqRow.AddChild(TIPEqParen.Create('('));
+        eqRow.AddChild(TIPEqText.Create(Trim(str))); 
+        eqRow.AddChild(TIPEqParen.Create(')'));
+      end;
+   .)
+.                                                         
+    
+EqSqrt<eqRow:TIPEqRow>
+                    (. var eq:TIPEqSqrt; .)
+  =                 (.eq := TIPEqSqrt.Create;
+                      eqRow.AddChild(eq);
+                    .)
+  "@RT" "{" EqRow<eq.Row[0]> [";" (.  eq.AddRow(TIPEqRow.Create); .)  EqRow<eq.Row[1]>] "}" 
+.   
+ 
+EqSuper<eqRow:TIPEqRow>
+                    (. var eq:TIPEqSuperscript; .)
+  =                 (. eq := TIPEqSuperscript.Create; 
+                       eqRow.AddChild(eq);
+                    .)
+  ("@SUP" | "^") "{" EqRow<eq.Row[0]> "}"   
+
+.  
+
+EqSub<eqRow:TIPEqRow>
+                    (. var eq:TIPEqSubscript; .)
+  =                 (. eq := TIPEqSubscript.Create; 
+                       eqRow.AddChild(eq);
+                    .)
+  ("@SUB" | "_") "{" EqRow<eq.Row[0]> "}"   
+
+.  
+EqMat<eqRow:TIPEqRow>   
+                 (. var eq:TIPEqMat; .)
+  =              (. eq := TIPEqMat.CreateN(0,0,1);
+                    eqRow.AddChild(eq); 
+                 .)
+    "@MAT" "{" EqMatRow<eq> { ";" EqMatRow<eq> } "}"
+.
+
+EqCheck<eqRow:TIPEqRow>
+                (. var eq:TIPEqCheck; .)
+  =             (. eq := TIPEqCheck.Create;
+                   eqRow.AddChild(eq);
+                .)
+    "@CHECK" "{"  EqRow<eq.Row[0]> ";" EqCheckCol<eq> ";" EqCheckCol<eq> "}"
+.
+
+EqCheckCol<eqCheck:TIPEqCheck>
+               (.var eqR: TIPEqRow; .)
+  = 
+    "{"  (. eqR := TIPEqRow(eqCheck.AddChild(TIPEqRow.Create)); .) EqRow<eqR>
+         { ";" (. eqR := TIPEqRow(eqCheck.AddChild(TIPEqRow.Create)); .) EqRow<eqR> }
+     "}"
+.
+    
+EqMatL<eqRow:TIPEqRow>   
+                 (. var eq:TIPEqMat; .)
+  =              (. eq := TIPEqMat.CreateN(0,0,2);
+                    eqRow.AddChild(eq); 
+                 .)
+    "@MATL" "{" EqMatRow<eq> { ";" EqMatRow<eq> } "}"
+.
+    
+EqMatR<eqRow:TIPEqRow>   
+                 (. var eq:TIPEqMat; .)
+  =              (. eq := TIPEqMat.CreateN(0,0,3);
+                    eqRow.AddChild(eq); 
+                 .)
+    "@MATR" "{" EqMatRow<eq> { ";" EqMatRow<eq> } "}"
+.
+    
+EqMatRow<eqMat:TIPEqMat>
+                (. var eqR:TIPEqRow; .)
+  =
+     "{"        (. eqR := eqMat.AddEqRow(true); .) 
+         EqRow<eqR>   
+        { ";"  (. eqR := eqMat.AddEqRow(false); .)
+           EqRow<eqR> 
+        } 
+      "}"
+.
+
+EqAugment<eqRow:TIPEqRow>   
+                 (. var eq:TIPEqMat; .)
+  =              (. eq := TIPEqMat.CreateN(0,0,4);
+                    eqRow.AddChild(eq); 
+                 .)
+    "@AUGMENT" "{" EqMatRow<eq> { ";" EqMatRow<eq> } "}"
+.
+    
+EqAugmentL<eqRow:TIPEqRow>   
+                 (. var eq:TIPEqMat; .)
+  =              (. eq := TIPEqMat.CreateN(0,0,5);
+                    eqRow.AddChild(eq); 
+                 .)
+    "@AUGMENTL" "{" EqMatRow<eq> { ";" EqMatRow<eq> } "}"
+.
+    
+EqAugmentR<eqRow:TIPEqRow>   
+                 (. var eq:TIPEqMat; .)
+  =              (. eq := TIPEqMat.CreateN(0,0,6);
+                    eqRow.AddChild(eq); 
+                 .)
+    "@AUGMENTR" "{" EqMatRow<eq> { ";" EqMatRow<eq> } "}"
+.
+    
+
+EqRowC<eqRow:TIPEqRow>   
+                 (. var eq:TIPEqMat; .)
+  =              (. eq := TIPEqMat.CreateN(0,0,7);
+                    eqRow.AddChild(eq); 
+                 .)
+    "@ROW" "{" EqMatRow<eq> { ";" EqMatRow<eq> } "}"
+.
+    
+
+EqRowL<eqRow:TIPEqRow>   
+                 (. var eq:TIPEqMat; .)
+  =              (. eq := TIPEqMat.CreateN(0,0,8);
+                    eqRow.AddChild(eq); 
+                 .)
+    "@ROWL" "{" EqMatRow<eq> { ";" EqMatRow<eq> } "}"
+.
+    
+
+EqRowR<eqRow:TIPEqRow>   
+                 (. var eq:TIPEqMat; .)
+  =              (. eq := TIPEqMat.CreateN(0,0,9);
+                    eqRow.AddChild(eq); 
+                 .)
+    "@ROWR" "{" EqMatRow<eq> { ";" EqMatRow<eq> } "}"
+.
+    
+
+EqColumn<eqRow:TIPEqRow>   
+                 (. var eq:TIPEqMat; .)
+  =              (. eq := TIPEqMat.CreateN(0,0,10);
+                    eqRow.AddChild(eq); 
+                 .)
+    "@COLUMN" "{" EqMatRow<eq> { ";" EqMatRow<eq> } "}"
+.
+    
+EqColumnL<eqRow:TIPEqRow>   
+                 (. var eq:TIPEqMat; .)
+  =              (. eq := TIPEqMat.CreateN(0,0,11);
+                    eqRow.AddChild(eq); 
+                 .)
+    "@ColumnL" "{" EqMatRow<eq> { ";" EqMatRow<eq> } "}"
+.
+    
+EqColumnR<eqRow:TIPEqRow>   
+                 (. var eq:TIPEqMat; .)
+  =              (. eq := TIPEqMat.CreateN(0,0,12);
+                    eqRow.AddChild(eq); 
+                 .)
+    "@ColumnR" "{" EqMatRow<eq> { ";" EqMatRow<eq> } "}"
+.
+    
+
+EqTab<eqRow:TIPEqRow>   
+                 (. var eq:TIPEqMat; .)
+  =              (. eq := TIPEqMat.CreateN(0,0,13);
+                    eqRow.AddChild(eq); 
+                 .)
+    "@Tab" "{" EqMatRow<eq> { ";" EqMatRow<eq> } "}"
+.
+    
+EqTabL<eqRow:TIPEqRow>   
+                 (. var eq:TIPEqMat; .)
+  =              (. eq := TIPEqMat.CreateN(0,0,14);
+                    eqRow.AddChild(eq); 
+                 .)
+    "@TabL" "{" EqMatRow<eq> { ";" EqMatRow<eq> } "}"
+.
+    
+EqTabR<eqRow:TIPEqRow>   
+                 (. var eq:TIPEqMat; .)
+  =              (. eq := TIPEqMat.CreateN(0,0,15);
+                    eqRow.AddChild(eq); 
+                 .)
+    "@TabR" "{" EqMatRow<eq> { ";" EqMatRow<eq> } "}"
+.
+    
+EqTable<eqRow:TIPEqRow>   
+                 (. var eq:TIPEqMat; .)
+  =              (. eq := TIPEqMat.CreateN(0,0,16);
+                    eqRow.AddChild(eq); 
+                 .)
+    "@Table" "{" EqMatRow<eq> { ";" EqMatRow<eq> } "}"
+.
+    
+EqTableL<eqRow:TIPEqRow>   
+                 (. var eq:TIPEqMat; .)
+  =              (. eq := TIPEqMat.CreateN(0,0,17);
+                    eqRow.AddChild(eq); 
+                 .)
+    "@TableL" "{" EqMatRow<eq> { ";" EqMatRow<eq> } "}"
+.
+    
+EqTableR<eqRow:TIPEqRow>   
+                 (. var eq:TIPEqMat; .)
+  =              (. eq := TIPEqMat.CreateN(0,0,18);
+                    eqRow.AddChild(eq); 
+                 .)
+    "@TableR" "{" EqMatRow<eq> { ";" EqMatRow<eq> } "}"
+.
+    
+EqIntegral<eqRow:TIPEqRow>
+                    (. var eq:TIPEqIntegral; .)
+  =                 (.eq := TIPEqIntegral.Create;
+                      eqRow.AddChild(eq);
+                    .)
+  "@INTEGRAL" "{"  (.  eq.AddRow(TIPEqRow.Create); .) EqRow<eq.Row[0]>
+                 ";" (.  eq.AddRow(TIPEqRow.Create); .)  EqRow<eq.Row[1]> "}" 
+                 
+                 (. eq.ReduceEmptyRows .)
+.
+   
+EqSum<eqRow:TIPEqRow>
+                    (. var eq:TIPEqSum; .)
+  =                 (.eq := TIPEqSum.Create;
+                      eqRow.AddChild(eq);
+                    .)
+  "@SUM" "{"  (.  eq.AddRow(TIPEqRow.Create); .) EqRow<eq.Row[0]>
+                 ";" (.  eq.AddRow(TIPEqRow.Create); .)  EqRow<eq.Row[1]> "}" 
+                 
+                 (. eq.ReduceEmptyRows .)
+.
+
+EqItalic<eqRow:TIPEqRow>
+                    (. var eq:TIPEqItalic; .)
+  =                 (. eq := TIPEqItalic.Create; 
+                       eqRow.AddChild(eq);
+                    .)
+  "@I" "{" EqRow<eq.Row[0]> "}"    
+.
+
+EqBold<eqRow:TIPEqRow>
+                    (. var eq:TIPEqItalic; .)
+  =                 (. eq := TIPEqItalic.Create; eq.FontStyle := fsBold; 
+                       eqRow.AddChild(eq);
+                    .)
+  "@B" "{" EqRow<eq.Row[0]> "}"    
+.
+
+EqPlainText<eqRow:TIPEqRow>
+                    (. var eq:TIPEqPlainText; .)
+  =                 (. eq := TIPEqPlainText.Create;  
+                       eqRow.AddChild(eq);
+                    .)
+  "@T" "{" EqRow<eq.Row[0]> "}"    
+.
+
+ 
+EqEntity<eqRow:TIPEqRow>
+      (. var   symbolType : TIPEqSymbolType;
+               pType : char;
+                opType : TIPEqOpType;
+      .)
+ 
+  =
+  enttext_
+  
+  (.  if GetEqOpType(LexString,opType) then
+        eqRow.AddChild(TIPEqOp.Create(opType))
+      else if GetEqSymbolType(Copy(LexString,2,Length(LexString)-2),symbolType) then
+        eqRow.AddChild(TIPEqSymbolW.Create(SymbolType))
+      else if GetEqParenType(LexString,pType) then
+        eqRow.AddChild(TIPEqParen.Create(pType))
+      else if SameText(LexString,'&integral;') then
+        eqRow.AddChild(TIPEqIntegral.CreateSymbol)
+      else if SameText(LexString,'&contourintegral;') then
+        eqRow.AddChild(TIPEqIntegral.CreateContour)
+      else if SameText(LexString,'&sum;') then
+        eqRow.AddChild(TIPEqSum.CreateSymbol)
+      else
+        eqRow.AddChild(TIPEqText.Create(LexString));
+  .)
+
+.                                       
+                                                                                                                                  
+                                                                                                                                    
+END IPEqParser.

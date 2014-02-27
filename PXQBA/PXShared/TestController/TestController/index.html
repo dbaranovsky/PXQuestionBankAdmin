@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>View Render Test</title>
+
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            var possibleAcademicTerms = [];
+            possibleAcademicTerms.push({ Name: "Summer", Id: "1" });
+            possibleAcademicTerms.push({ Name: "Winter", Id: "2" });
+
+            var courses = [];
+            courses.push({ CourseId: "1", Course: { Id: "1", Title: "Test Course", AcademicTerm: "Summer", ActivatedDate: new Date() } });
+            courses.push({ CourseId: "2", Course: { Id: "1", Title: "Test Course", AcademicTerm: "Summer", ActivatedDate: '01/01/0001' }, Status: "open" });
+
+            var data = {
+                viewPath: "DashboardCoursesWidget/Summary.ascx",
+                viewModel: JSON.stringify({
+                    LaunchPadMode: true,
+                    AllowActivateButtonColumn: true,
+                    AllowCreateAnotherBranchColumn: true,
+                    AllowCoureTitleColumn: true,
+                    AllowCourseIdColumn: true,
+                    AllowEnrollmentCountColumn: true,
+                    AllowViewingRoster: true,
+                    AllowEditingCourseInformation: true,
+                    PossibleAcademicTerms: possibleAcademicTerms,
+                    InstructorCourses: courses,
+                    Course: {
+                        Title: "Test Course",
+                        AcademicTerm: "Summer",
+                        Domain: {
+                            Id: "1",
+                            Name: "Default"
+                        }
+                    }
+                }),
+                viewModelType: "Bfw.PX.PXPub.Models.DashboardData"
+            };
+
+
+            /*
+            var possibleAcademicTerms = [];
+            possibleAcademicTerms.push({ Name: "Summer", Id: "1" });
+            possibleAcademicTerms.push({ Name: "Winter", Id: "2" });
+
+            var viewData = {
+                PossibleAcademicTerms:  {                
+                    dataType: "System.Collections.Generic.IEnumerable`1[Bfw.PX.PXPub.Models.CourseAcademicTerm]",
+                    dataValue: possibleAcademicTerms
+                }
+            };
+
+            var data = {
+                viewPath: "CourseActivationWidget/Summary.ascx",
+                viewModelType: "Bfw.PX.PXPub.Models.Course",
+                viewModel: JSON.stringify({
+                    Id: "1", Title: "Test Course", AcademicTerm: "Summer", ActivatedDate: new Date()
+                }),
+                viewData: JSON.stringify(viewData)
+            }
+            */
+
+            $.ajax({
+                type: "GET",
+                data: data,
+                async: false,
+                url: "http://localhost:8100/test/renderview",
+                dataType: 'html',
+                success: function (html) {
+                    html = html.replace(/<script/g, "<!--script");
+                    html = html.replace(/<\/script>/g, "<\/script-->");
+                    //html = html.replace(/<script.*>[\w\W]{1,}(.*?)[\w\W]{1,}<\/script>/gi, "");
+                    $('body').append(html);
+                },
+                error: function (err) {
+                    $('body').append(err.responseText);
+                }
+            });
+        });
+
+    </script>
+
+</head>
+<body>
+
+
+
+</body>
+</html>

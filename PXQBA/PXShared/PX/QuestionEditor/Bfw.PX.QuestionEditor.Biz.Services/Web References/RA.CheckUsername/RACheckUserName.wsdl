@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="RACheckUsername" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="RACheckUsername" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="RACheckUsername">
+      <s:element name="CheckUsername">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sUserName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckUsernameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckUsernameResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="sErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CheckUsernameSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckUsername" />
+  </wsdl:message>
+  <wsdl:message name="CheckUsernameSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckUsernameResponse" />
+  </wsdl:message>
+  <wsdl:portType name="RACheckUsernameSoap">
+    <wsdl:operation name="CheckUsername">
+      <wsdl:input message="tns:CheckUsernameSoapIn" />
+      <wsdl:output message="tns:CheckUsernameSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="RACheckUsernameHttpGet" />
+  <wsdl:portType name="RACheckUsernameHttpPost" />
+  <wsdl:binding name="RACheckUsernameSoap" type="tns:RACheckUsernameSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckUsername">
+      <soap:operation soapAction="RACheckUsername/CheckUsername" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RACheckUsernameSoap12" type="tns:RACheckUsernameSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckUsername">
+      <soap12:operation soapAction="RACheckUsername/CheckUsername" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RACheckUsernameHttpGet" type="tns:RACheckUsernameHttpGet">
+    <http:binding verb="GET" />
+  </wsdl:binding>
+  <wsdl:binding name="RACheckUsernameHttpPost" type="tns:RACheckUsernameHttpPost">
+    <http:binding verb="POST" />
+  </wsdl:binding>
+  <wsdl:service name="RACheckUsername">
+    <wsdl:port name="RACheckUsernameSoap" binding="tns:RACheckUsernameSoap">
+      <soap:address location="http://int-raws.bfwpub.com/RAWS3/CheckUserName/RACheckUserName.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RACheckUsernameSoap12" binding="tns:RACheckUsernameSoap12">
+      <soap12:address location="http://int-raws.bfwpub.com/RAWS3/CheckUserName/RACheckUserName.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RACheckUsernameHttpGet" binding="tns:RACheckUsernameHttpGet">
+      <http:address location="http://int-raws.bfwpub.com/RAWS3/CheckUserName/RACheckUserName.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RACheckUsernameHttpPost" binding="tns:RACheckUsernameHttpPost">
+      <http:address location="http://int-raws.bfwpub.com/RAWS3/CheckUserName/RACheckUserName.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

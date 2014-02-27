@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{46460579-CAB0-489B-8226-6F1FA76DB57B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bfw.Agilix.Commands.Tests</RootNamespace>
+    <AssemblyName>Bfw.Agilix.Commands.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DEV_PROD_REFRESH|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DEV_PROD_REFRESH\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\QA\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PRISTINE|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\PRISTINE\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'LoadTesting|AnyCPU'">
+    <OutputPath>bin\LoadTesting\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PROD|AnyCPU'">
+    <OutputPath>bin\PROD\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NSubstitute">
+      <HintPath>..\..\ThirdParty\NSubstitute-1.6.0.0\lib\NET40\NSubstitute.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="GetDueSoonListTest.cs" />
+    <Compile Include="GetEnrollment3Test.cs" />
+    <Compile Include="GetGradeListTest.cs" />
+    <Compile Include="GetUserEnrollmentListTest.cs" />
+    <Compile Include="CreateUsersTest.cs" />
+    <Compile Include="GetGradebookSummaryTest.cs" />
+    <Compile Include="GetMessagesTest.cs" />
+    <Compile Include="GetQuestionAnalysisTest.cs" />
+    <Compile Include="GetUsersBatchTest.cs" />
+    <Compile Include="ListCoursesTest.cs" />
+    <Compile Include="LoginTest.cs" />
+    <Compile Include="MergeCoursesTest.cs" />
+    <Compile Include="PutAnnouncementTest.cs" />
+    <Compile Include="SearchTests.cs" />
+    <Compile Include="DeleteCoursesTests.cs" />
+    <Compile Include="DeleteAnnouncementsTests.cs" />
+    <Compile Include="DeleteGroupsTests.cs" />
+    <Compile Include="DeleteItemsTests.cs" />
+    <Compile Include="GetGradesTest.cs" />
+    <Compile Include="GetItemsTest.cs" />
+    <Compile Include="PutItemActivityTest.cs" />
+    <Compile Include="GetItemAnalysisTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GetStatusTest.cs" />
+    <Compile Include="CommonCommandTest.cs" />
+    <Compile Include="GetStudentSubmissionTest.cs" />
+    <Compile Include="PutItemsTest.cs" />
+    <Compile Include="GetStudentSubmissionInfoTest.cs" />
+    <Compile Include="PutRawItemTest.cs" />
+    <Compile Include="PutResourceTest.cs" />
+    <Compile Include="PutStudentSubmissionTest.cs" />
+    <Compile Include="PutTeacherResponseTest.cs" />
+    <Compile Include="GetGroupListTest.cs" />
+    <Compile Include="PutQuestionsTest.cs" />
+    <Compile Include="GetRawItemTests.cs" />
+    <Compile Include="CreateCoursesTest.cs" />
+    <Compile Include="CopyCoursesTest.cs" />
+    <Compile Include="RunTaskTest.cs" />
+    <Compile Include="AddGroupMembersTest.cs" />
+    <Compile Include="GetQuestionsTest.cs" />
+    <Compile Include="GetQuestionsAdminTest.cs" />
+    <Compile Include="GetAnnouncementsTests.cs" />
+    <Compile Include="GetResourceTests.cs" />
+    <Compile Include="GetResourceListTests.cs" />
+    <Compile Include="GetSignalListTests.cs" />
+    <Compile Include="GetCourseTest.cs" />
+    <Compile Include="CopyResourcesTest.cs" />
+    <Compile Include="CoverageStub.cs" />
+    <Compile Include="CreateGroupsTest.cs" />
+    <Compile Include="CreateEnrollmentTest.cs" />
+    <Compile Include="CreateDomainsTest.cs" />
+    <Compile Include="GetDomainTest.cs" />
+    <Compile Include="GetDomainListTest.cs" />
+    <Compile Include="GetDocumentTest.cs" />
+    <Compile Include="GetEnrollmentAcitvityTest.cs" />
+    <Compile Include="DeleteQuestionsTest.cs" />
+    <Compile Include="DeleteResourcesTest.cs" />
+    <Compile Include="GetUsersTest.cs" />
+    <Compile Include="ListUsersTests.cs" />
+    <Compile Include="UpdatePasswordTest.cs" />
+    <Compile Include="UpdateEnrollmentsTests.cs" />
+    <Compile Include="UpdateCoursesTest.cs" />
+    <Compile Include="PutMessageTest.cs" />
+    <Compile Include="UpdateUsersTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Bfw.Agilix\Bfw.Agilix.Commands\Bfw.Agilix.Commands.csproj">
+      <Project>{19e52c79-1fe3-4385-a035-b603213c099e}</Project>
+      <Name>Bfw.Agilix.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Agilix\Bfw.Agilix.DataContracts\Bfw.Agilix.DataContracts.csproj">
+      <Project>{4d185f8e-c2a0-442a-a05e-78b566361562}</Project>
+      <Name>Bfw.Agilix.DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Agilix\Bfw.Agilix.Dlap\Bfw.Agilix.Dlap.csproj">
+      <Project>{f5a60c36-aa1f-4849-a9e7-465f7963df9f}</Project>
+      <Name>Bfw.Agilix.Dlap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common.HttpModules\Bfw.Common.HttpModules.csproj">
+      <Project>{36dbae21-2a80-4c92-b72d-50843a18fced}</Project>
+      <Name>Bfw.Common.HttpModules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common.Mvc\Bfw.Common.Mvc.csproj">
+      <Project>{149efe93-fbfd-4f18-8999-7c7a7007b734}</Project>
+      <Name>Bfw.Common.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common.Patterns\Bfw.Common.Patterns.csproj">
+      <Project>{ad00b777-4d80-4d59-afa0-bd3088938bff}</Project>
+      <Name>Bfw.Common.Patterns</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common.SSO.Novell\Bfw.Common.SSO.Novell.csproj">
+      <Project>{157e1189-484e-4005-ada5-38c7fc417c54}</Project>
+      <Name>Bfw.Common.SSO.Novell</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common.SSO\Bfw.Common.SSO.csproj">
+      <Project>{ab21e1bc-a01c-4c8d-8477-26f821b1e914}</Project>
+      <Name>Bfw.Common.SSO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common.Tests\Bfw.Common.Tests.csproj">
+      <Project>{1ae8e9db-8482-4c00-863b-5202efb376c0}</Project>
+      <Name>Bfw.Common.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common.Xaml\Bfw.Common.Xaml.csproj">
+      <Project>{e1052ea2-8a39-4650-b22f-728393781e13}</Project>
+      <Name>Bfw.Common.Xaml</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.Common\Bfw.Common\Bfw.Common.csproj">
+      <Project>{4f1bf9db-1226-4867-9e41-129b214f24f2}</Project>
+      <Name>Bfw.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.PX.Biz\Bfw.PX.Biz.Components.FormsAuthBusinessContext\Bfw.PX.Biz.Components.FormsAuthBusinessContext.csproj">
+      <Project>{520eb623-a99a-4f71-9b18-54983be58920}</Project>
+      <Name>Bfw.PX.Biz.Components.FormsAuthBusinessContext</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.PX.Biz\Bfw.PX.Biz.Components.SamlBusinessContext\Bfw.PX.Biz.Components.SamlBusinessContext.csproj">
+      <Project>{597a60fd-7a81-4650-9a4b-6040a5ecdf47}</Project>
+      <Name>Bfw.PX.Biz.Components.SamlBusinessContext</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.PX.Biz\Bfw.PX.Biz.DataContracts\Bfw.PX.Biz.DataContracts.csproj">
+      <Project>{71124912-42b5-49bf-acbd-e38f09faca70}</Project>
+      <Name>Bfw.PX.Biz.DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.PX.Biz\Bfw.PX.Biz.Direct.Services\Bfw.PX.Biz.Direct.Services.csproj">
+      <Project>{756a544b-3923-4a7e-847a-9aab50feb106}</Project>
+      <Name>Bfw.PX.Biz.Direct.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.PX.Biz\Bfw.PX.Biz.ServiceContracts\Bfw.PX.Biz.ServiceContracts.csproj">
+      <Project>{392a9467-b225-4300-bc1a-f34983afbc3d}</Project>
+      <Name>Bfw.PX.Biz.ServiceContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bfw.PX.Biz\Bfw.PX.Biz.Services.Mappers\Bfw.PX.Biz.Services.Mappers.csproj">
+      <Project>{abede889-2258-4429-87c8-96af317c7593}</Project>
+      <Name>Bfw.PX.Biz.Services.Mappers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PXWebAPI\BLTI\BLTI\Bfw.BLTI.csproj">
+      <Project>{c140e76b-d203-4ca3-9533-33dadd621b03}</Project>
+      <Name>Bfw.BLTI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PX\Bfw.PX.Abstractions\Bfw.PX.Abstractions.csproj">
+      <Project>{bcc9c7e8-d434-4da2-bf56-3867d97f1702}</Project>
+      <Name>Bfw.PX.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PX\Bfw.PX.Account\Bfw.PX.Account.Abstract\Bfw.PX.Account.Abstract.csproj">
+      <Project>{5a34477e-a112-43cc-a8ee-eb7b740f5226}</Project>
+      <Name>Bfw.PX.Account.Abstract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PX\Bfw.PX.Account\Bfw.PX.Account.Components\Bfw.PX.Account.Components.csproj">
+      <Project>{3bf2a15b-2d4b-448f-9a80-29e56b920cb9}</Project>
+      <Name>Bfw.PX.Account.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PX\Bfw.PX.Notes\Bfw.PX.Notes.csproj">
+      <Project>{bc9bef83-63d6-4a27-9bd2-6787ef9a8f5b}</Project>
+      <Name>Bfw.PX.Notes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PX\Bfw.PX.PXPub.Components\Bfw.PX.PXPub.Components.csproj">
+      <Project>{424d97dd-5be0-4259-9323-ef576a651f18}</Project>
+      <Name>Bfw.PX.PXPub.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PX\Bfw.PX.PXPub.Models\Bfw.PX.PXPub.Models.csproj">
+      <Project>{5d71b360-bdd7-4e5b-b551-5be74e4339ef}</Project>
+      <Name>Bfw.PX.PXPub.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PX\TestHelper\TestHelper.csproj">
+      <Project>{81a20d60-246e-48e5-8d95-bf5452dc7d66}</Project>
+      <Name>TestHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bfw.Agilix.Dlap.Components\Bfw.Agilix.Dlap.Components.csproj">
+      <Project>{bffd6b7a-4ea1-431a-916a-8214bd16e049}</Project>
+      <Name>Bfw.Agilix.Dlap.Components</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="RAEnterActivationCode" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="RAEnterActivationCode" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="RAEnterActivationCode">
+      <s:element name="EnterActivationCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sActivationCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iUserID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="iSiteID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnterActivationCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EnterActivationCodeResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sErrorMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="EnterActivationCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:EnterActivationCode" />
+  </wsdl:message>
+  <wsdl:message name="EnterActivationCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:EnterActivationCodeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="RAEnterActivationCodeSoap">
+    <wsdl:operation name="EnterActivationCode">
+      <wsdl:input message="tns:EnterActivationCodeSoapIn" />
+      <wsdl:output message="tns:EnterActivationCodeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="RAEnterActivationCodeHttpGet" />
+  <wsdl:portType name="RAEnterActivationCodeHttpPost" />
+  <wsdl:binding name="RAEnterActivationCodeSoap" type="tns:RAEnterActivationCodeSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EnterActivationCode">
+      <soap:operation soapAction="RAEnterActivationCode/EnterActivationCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RAEnterActivationCodeSoap12" type="tns:RAEnterActivationCodeSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EnterActivationCode">
+      <soap12:operation soapAction="RAEnterActivationCode/EnterActivationCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RAEnterActivationCodeHttpGet" type="tns:RAEnterActivationCodeHttpGet">
+    <http:binding verb="GET" />
+  </wsdl:binding>
+  <wsdl:binding name="RAEnterActivationCodeHttpPost" type="tns:RAEnterActivationCodeHttpPost">
+    <http:binding verb="POST" />
+  </wsdl:binding>
+  <wsdl:service name="RAEnterActivationCode">
+    <wsdl:port name="RAEnterActivationCodeSoap" binding="tns:RAEnterActivationCodeSoap">
+      <soap:address location="http://int-raws.bfwpub.com/raws3/EnterActivationCode/RAEnterActivationCode.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RAEnterActivationCodeSoap12" binding="tns:RAEnterActivationCodeSoap12">
+      <soap12:address location="http://int-raws.bfwpub.com/raws3/EnterActivationCode/RAEnterActivationCode.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RAEnterActivationCodeHttpGet" binding="tns:RAEnterActivationCodeHttpGet">
+      <http:address location="http://int-raws.bfwpub.com/raws3/EnterActivationCode/RAEnterActivationCode.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RAEnterActivationCodeHttpPost" binding="tns:RAEnterActivationCodeHttpPost">
+      <http:address location="http://int-raws.bfwpub.com/raws3/EnterActivationCode/RAEnterActivationCode.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

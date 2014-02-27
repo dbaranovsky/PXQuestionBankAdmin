@@ -1,0 +1,47 @@
+﻿@model Bfw.PXAP.Models.PxWebUserModel
+@{
+	ViewBag.Title = "PXWebUserRights";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+	.longrow
+	{
+		width:700px;
+		margin-bottom:2px;
+	}
+</style>
+
+<script src="@Url.Content("~/Scripts/PAPX/PxWebUser.js")" type="text/javascript"></script>
+<div style="width: 70%; margin: 0 auto;">
+<fieldset id="PxWebUserSearch" >
+<legend id="PxWebUserSearchLegend" title="WebUser Search" > PX WebUser </legend>
+	@{
+		Bfw.PXAP.Models.LayoutModel layout = this.ViewBag.LayoutModel as Bfw.PXAP.Models.LayoutModel;
+		if (string.IsNullOrEmpty(layout.CurrentEnvironment))
+		{
+			return;
+		}
+	}	
+	
+	@Html.ValidationSummary("Please correct the errors and try again.")
+	@using (Ajax.BeginForm("_SearchResult", "PXWebUser", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "SearchResult" , 
+                                                                                            InsertionMode = InsertionMode.Replace}, new { @id = "frmSearch" })) 
+	{
+			<table style="width: 100%;">
+				<tr>
+					<td>Email</td>
+					<td>@Html.TextBoxFor(model => model.Email)
+						@Html.ValidationMessage("Email", "*","Valid Email is Required.")
+					</td>			
+					<td>Course Id</td>
+					<td>@Html.TextBoxFor(model => model.CourseId)
+						@Html.ValidationMessage("CourseId", "*", "Valid CourseId is Required.")
+					</td>
+					<td><input type="submit" id="Search" value="Search" /></td>
+				</tr>			
+			</table>         
+	}
+</fieldset>
+
+<div id="SearchResult"></div>
+</div>

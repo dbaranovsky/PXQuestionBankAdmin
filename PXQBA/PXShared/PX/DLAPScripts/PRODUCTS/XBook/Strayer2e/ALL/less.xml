@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<batch>
+  <request cmd="updatecourses">
+    <requests>
+      <course courseid="-courseid-" domainid="-domainid-" title="-title-" reference="">
+        <data>     
+          <cssparameters>
+            <param name="Gradientinnercolor" value="#b2d4d3" />
+            <param name="Gradienttopcolor" value="#cee7e4" />
+            <param name="Gradientbottomcolor" value="#b6d5d7" />
+            <param name="Typecolor" value="#49929b" />
+            <param name="course-title-image" value="style/images/xbook_strayer_banner.png" />
+            <param name="course-banner-logo" value="style/images/bedford_xbook_logo.png" />
+              <param name="bookcover" value="style/images/strayer-mars-icons-book" />
+          </cssparameters>
+        </data>
+      </course>
+    </requests>
+  </request>
+</batch>

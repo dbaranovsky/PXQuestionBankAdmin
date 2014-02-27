@@ -1,0 +1,118 @@
+<requests>
+	<item itemid="PX_InstructorOverviewWidget" entityid="-entityid-">
+		<data>
+			<type>CustomActivity</type>
+			<parent>PX_LC_HOME_2COLUMN_ZONE_1</parent>
+			<title>Overview</title>
+			<abbreviation>lcw</abbreviation>
+			<description>
+				&lt;div class="welcome"&gt;
+				&lt;div class="course-info-widget"&gt;
+				&lt;div class="top"&gt;
+				&lt;div class="book"&gt;
+				&lt;/div&gt;
+				&lt;span class="book-title"&gt;The Everyday Writer with Exercises&lt;/span&gt;&lt;br&gt;
+				&lt;span&gt;Fifth Edition&lt;/span&gt;&lt;br&gt;
+				&lt;span&gt;Andrea Lunsford&lt;/span&gt;&lt;br&gt; 
+				&lt;/div&gt;
+				&lt;div class="bottom"&gt;
+				&lt;ul class="tutorial-links"&gt;
+				&lt;li class="header-row"&gt;&lt;span rel=""&gt;Instructor Support&lt;/span&gt;&lt;/li&gt; 
+				&lt;li &gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Works" target="_blank"&gt;&lt;span rel=""&gt;How LearningCurve Works&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Research" target="_blank"&gt;&lt;span rel=""&gt;The Research Behind LearningCurve&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Instructor_FAQ" target="_blank" &gt;&lt;span rel=""&gt; Instructor FAQs &lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Student_FAQ " target="_blank" &gt;&lt;span rel=""&gt; Student FAQs &lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;/ul&gt;
+				&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;/div&gt;
+			</description>
+			<timetocomplete>PT1M</timetocomplete>
+			<category>0</category>
+			<period inherit="true">0</period>
+			<groupsetid>-1</groupsetid>
+			<weight>100</weight>
+			<gradeentry>1</gradeentry>
+			<inputtable inherit="true">0</inputtable>
+			<completiontrigger>0</completiontrigger>
+			<bfw_type>Widget</bfw_type>
+			<bfw_subtype>PX_Custom</bfw_subtype>
+			<bfw_display_flags>
+				<display>instructor</display>
+			</bfw_display_flags>
+			<bfw_widget_callbacks>
+				<method name="View" controller="CustomWidget" action="View" fne="false" />
+				<method name="OnBeforeAdd" controller="CustomWidget" action="OnBeforeAdd" fne="false" />
+				<method name="Save" controller="CustomWidget" action="AddCustomWidget" fne="false" />
+			</bfw_widget_callbacks>
+			<bfw_widget_template>PX_Custom</bfw_widget_template>
+			<bfw_properties>
+				<bfw_property name="bfw_syllabusfilter" type="String" />
+				<bfw_property name="bfw_cssclass" type="String" />
+				<bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+				<bfw_property name="bfw_targetid" type="String" />
+				<bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+				<bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+				<bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+			</bfw_properties>
+			<bfw_tocs>
+				<bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+			</bfw_tocs>
+		</data>
+	</item>
+	<item itemid="PX_StudentOverviewWidget" entityid="-entityid-">
+		<data>
+			<type>CustomActivity</type>
+			<parent>PX_LC_HOME_2COLUMN_ZONE_1</parent>
+			<title>Overview</title>
+			<abbreviation>lcw</abbreviation>
+			<description>
+				&lt;div class="welcome"&gt;
+				&lt;div class="course-info-widget welcome"&gt;
+				&lt;div class="top"&gt;
+				&lt;div class="book"&gt;
+				&lt;/div&gt;
+				&lt;span class="book-title"&gt;The Everyday Writer with Exercises&lt;/span&gt;&lt;br&gt;
+				&lt;span&gt;Fifth Edition&lt;/span&gt;&lt;br&gt;
+				&lt;span&gt;Andrea Lunsford&lt;/span&gt;&lt;br&gt; 
+				&lt;/div&gt;
+				&lt;div class="bottom"&gt;
+				&lt;ul class="tutorial-links"&gt;
+				&lt;li class="header-row"&gt;&lt;span rel=""&gt;Student Support&lt;/span&gt;&lt;/li&gt; 
+				&lt;li &gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Works" target="_blank"&gt;&lt;span rel=""&gt;How LearningCurve Works&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Research" target="_blank"&gt;&lt;span rel=""&gt;The Research Behind LearningCurve&lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Instructor_FAQ" target="_blank" &gt;&lt;span rel=""&gt; Instructor FAQs &lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="http://www.bedfordstmartins.com/Catalog/other/LearningCurve_Student_FAQ " target="_blank" &gt;&lt;span rel=""&gt; Student FAQs &lt;/span&gt;&lt;span class="tut-link-arrow"&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+
+
+				&lt;/ul&gt;
+				&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;/div&gt;
+			</description>
+			<timetocomplete>PT1M</timetocomplete>
+			<category>0</category>
+			<period inherit="true">0</period>
+			<groupsetid>-1</groupsetid>
+			<weight>100</weight>
+			<gradeentry>1</gradeentry>
+			<inputtable inherit="true">0</inputtable>
+			<completiontrigger>0</completiontrigger><bfw_type>Widget</bfw_type><bfw_subtype>PX_Custom</bfw_subtype><bfw_display_flags>
+				<display>student</display>
+			</bfw_display_flags><bfw_widget_callbacks>
+				<method name="View" controller="CustomWidget" action="View" fne="false" />
+				<method name="OnBeforeAdd" controller="CustomWidget" action="OnBeforeAdd" fne="false" />
+				<method name="Save" controller="CustomWidget" action="AddCustomWidget" fne="false" />
+			</bfw_widget_callbacks><bfw_widget_template>PX_Custom</bfw_widget_template><bfw_properties>
+				<bfw_property name="bfw_syllabusfilter" type="String" />
+				<bfw_property name="bfw_cssclass" type="String" />
+				<bfw_property name="bfw_iscollapsed" type="Boolean">false</bfw_property>
+				<bfw_property name="bfw_targetid" type="String" />
+				<bfw_property name="bfw_ismultipleallowed" type="Boolean">false</bfw_property>
+				<bfw_property name="bfw_iscollapseallowed" type="Boolean">false</bfw_property>
+				<bfw_property name="bfw_istitlehidden" type="Boolean">true</bfw_property>
+			</bfw_properties><bfw_tocs>
+				<bfw_toc_contents parentid="PX_WIDGETS" sequence="_ja" />
+			</bfw_tocs></data>
+	</item>
+</requests>
