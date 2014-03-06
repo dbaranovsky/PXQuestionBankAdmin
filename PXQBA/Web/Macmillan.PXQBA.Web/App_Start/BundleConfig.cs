@@ -16,6 +16,10 @@ namespace Macmillan.PXQBA.Web
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/react").Include(
+                "~/Scripts/react/JSXTransformer-{version}.js",
+                "~/Scripts/react/react-with-addons-{version}.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
         }
