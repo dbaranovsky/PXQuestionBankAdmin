@@ -2,11 +2,11 @@ using System;
 using Bfw.Agilix.Dlap.Components.Session;
 using Bfw.Agilix.Dlap.Session;
 using Bfw.Common.Logging;
+using Bfw.Common.Patterns.Logging;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Services;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
-using Macmillan.PXQBA.Common.Tracing;
 using Macmillan.PXQBA.Common.Logging;
 
 namespace Macmillan.PXQBA.Web.App_Start
@@ -45,7 +45,7 @@ namespace Macmillan.PXQBA.Web.App_Start
             // TODO: Register your types here
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<ISessionManager, WebSessionManager>();
-            container.RegisterType<ITraceManager, Tracer>();
+            container.RegisterType<ITraceManager, MvcMiniProfilerTraceManager>(new PerRequestLifetimeManager());
             container.RegisterType<ILogger, Logger>(new PerRequestLifetimeManager());
             container.RegisterTypes(AllClasses.FromAssemblies(typeof(QuestionListManagementService).Assembly), WithMappings.FromAllInterfaces, WithName.Default, WithLifetime.Custom<PerRequestLifetimeManager>);
         }
