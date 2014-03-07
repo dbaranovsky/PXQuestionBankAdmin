@@ -1,8 +1,26 @@
-﻿
+﻿@using dotless.Core.Parser.Tree
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Question list page</h2>
 
+<div id="question-container"> </div>
+
+@section scripts
+{
+    <script src="../../Scripts/components/questions/question.jsx" type="text/jsx"></script>
+    <script src="../../Scripts/components/questions/questionList.jsx" type="text/jsx"></script>
+    <script src="../../Scripts/components/questions/questionBox.jsx" type="text/jsx"></script>
+
+    <script type="text/jsx">
+        /**
+        * @@jsx React.DOM
+        */
+        React.renderComponent(
+        <QuestionBox url="@Url.Action("GetQuestionData", "QuestionList")"> </QuestionBox>,
+        $('#question-container')[0]);
+    </script>
+}

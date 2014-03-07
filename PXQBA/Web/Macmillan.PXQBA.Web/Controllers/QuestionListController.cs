@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Bfw.Agilix.Dlap.Session;
+﻿using Bfw.Agilix.Dlap.Session;
 using Macmillan.PXQBA.Business.Contracts;
-using Macmillan.PXQBA.Common.Helpers;
+using System.Web.Mvc;
 
 namespace Macmillan.PXQBA.Web.Controllers
 {
@@ -28,5 +22,28 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
             return View();
         }
-	}
+
+        [HttpPost]
+        public ActionResult GetQuestionData()
+        {
+            var data = new []
+            {
+                new { title = "title1", 
+                    questionType = "questionType1",
+                    eBookChapter = "eBookChapter1",
+                    questionBank = "questionBank1", 
+                    questionSeq="1"
+                },
+
+                new { title = "title2", 
+                    questionType = "questionType2",
+                    eBookChapter = "eBookChapter2",
+                    questionBank = "questionBank2", 
+                    questionSeq="2"
+                }
+            };
+            return Json(data);
+        }
+
+    }
 }
