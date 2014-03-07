@@ -12,37 +12,38 @@ namespace Macmillan.PXQBA.Common.Logging
         public string CorrelationId { get; set; }
         public void Log(string message, LogSeverity severity)
         {
-            throw new NotImplementedException();
+            //TODO:throw new NotImplementedException();
         }
 
         public void Log(string message, LogSeverity severity, IList<string> categories)
         {
-            throw new NotImplementedException();
+            //TODO:throw new NotImplementedException();
         }
 
         public void Log(Exception ex)
         {
-            throw new NotImplementedException();
+            //TODO:throw new NotImplementedException();
         }
 
         public void Log(Exception ex, LogSeverity severity)
         {
-            throw new NotImplementedException();
+            //TODO:throw new NotImplementedException();
         }
 
         public void Log(Exception ex, LogSeverity severity, IList<string> categories)
         {
-            throw new NotImplementedException();
+            //TODO:throw new NotImplementedException();
         }
 
         public void Log(LogMessage message)
         {
-            throw new NotImplementedException();
+            //TODO:throw new NotImplementedException();
         }
 
         public bool ShouldLog(params string[] categories)
         {
-            throw new NotImplementedException();
+            return true;
+            //TODO:throw new NotImplementedException();
         }
     }
 }

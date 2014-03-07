@@ -179,10 +179,6 @@
       <Project>{45a498cc-0fdf-4b3b-833b-fd0b008aa8d9}</Project>
       <Name>Macmillan.PXQBA.Common.Logging</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Common\Macmillan.PXQBA.Common.Tracing\Macmillan.PXQBA.Common.Tracing.csproj">
-      <Project>{e0bc01e8-e2e2-4a2d-b9fa-ad7b8d3bc585}</Project>
-      <Name>Macmillan.PXQBA.Common.Tracing</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Bfw.Agilix.Dlap.Components.csproj">
       <Project>{BFFD6B7A-4EA1-431A-916A-8214BD16E049}</Project>
       <Name>Bfw.Agilix.Dlap.Components</Name>
@@ -190,6 +186,10 @@
     <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap\Bfw.Agilix.Dlap.csproj">
       <Project>{F5A60C36-AA1F-4849-A9E7-465F7963DF9F}</Project>
       <Name>Bfw.Agilix.Dlap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PXShared\Bfw.Common\Bfw.Common.Patterns\Bfw.Common.Patterns.csproj">
+      <Project>{AD00B777-4D80-4D59-AFA0-BD3088938BFF}</Project>
+      <Name>Bfw.Common.Patterns</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\PXShared\Bfw.Common\Bfw.Common\Bfw.Common.csproj">
       <Project>{4F1BF9DB-1226-4867-9E41-129B214F24F2}</Project>
