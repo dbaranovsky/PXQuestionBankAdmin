@@ -125,6 +125,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Controllers\QuestionListController.cs" />
+    <Compile Include="Controllers\TitleListController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -156,12 +158,43 @@
     <Content Include="Views\Web.config" />
     <Content Include="packages.config" />
     <None Include="readme.txt" />
+    <Content Include="Views\QuestionList\Index.cshtml" />
+    <Content Include="Views\TitleList\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Images\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Contracts\Macmillan.PXQBA.Business.Contracts.csproj">
+      <Project>{C7070F01-3D37-425D-ABD5-E02D7CFAEA43}</Project>
+      <Name>Macmillan.PXQBA.Business.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Services\Macmillan.PXQBA.Business.Services.csproj">
+      <Project>{CF2B92A9-6E1D-4472-AD9C-AED6DC86A62C}</Project>
+      <Name>Macmillan.PXQBA.Business.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Macmillan.PXQBA.Common.Logging\Macmillan.PXQBA.Common.Logging.csproj">
+      <Project>{45a498cc-0fdf-4b3b-833b-fd0b008aa8d9}</Project>
+      <Name>Macmillan.PXQBA.Common.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Macmillan.PXQBA.Common.Tracing\Macmillan.PXQBA.Common.Tracing.csproj">
+      <Project>{e0bc01e8-e2e2-4a2d-b9fa-ad7b8d3bc585}</Project>
+      <Name>Macmillan.PXQBA.Common.Tracing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Bfw.Agilix.Dlap.Components.csproj">
+      <Project>{BFFD6B7A-4EA1-431A-916A-8214BD16E049}</Project>
+      <Name>Bfw.Agilix.Dlap.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap\Bfw.Agilix.Dlap.csproj">
+      <Project>{F5A60C36-AA1F-4849-A9E7-465F7963DF9F}</Project>
+      <Name>Bfw.Agilix.Dlap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PXShared\Bfw.Common\Bfw.Common\Bfw.Common.csproj">
+      <Project>{4F1BF9DB-1226-4867-9E41-129B214F24F2}</Project>
+      <Name>Bfw.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
