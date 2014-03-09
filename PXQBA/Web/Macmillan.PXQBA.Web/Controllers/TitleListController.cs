@@ -15,14 +15,11 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
             this.titleListManagementService = titleListManagementService;
         }
-
         //
         // GET: /TitleList/
-
         public ActionResult Index()
         {
             return View();
         }
-
-    }
+	}
 }
