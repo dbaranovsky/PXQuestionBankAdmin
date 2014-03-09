@@ -13,11 +13,11 @@ namespace Macmillan.PXQBA.Business.Services
     /// </summary>
     public class QuestionListManagementService : IQuestionListManagementService
     {
-        private readonly ISessionManager sessionManager;
+        private readonly IContext businessContext;
 
-        public QuestionListManagementService(ISessionManager sessionManager)
+        public QuestionListManagementService(IContext businessContext)
         {
-            this.sessionManager = sessionManager;
+            this.businessContext = businessContext;
         }
     }
 }

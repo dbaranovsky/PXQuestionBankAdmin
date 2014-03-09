@@ -48,6 +48,10 @@
       <Project>{F5A60C36-AA1F-4849-A9E7-465F7963DF9F}</Project>
       <Name>Bfw.Agilix.Dlap</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Macmillan.PXQBA.Business.Context\Macmillan.PXQBA.Business.csproj">
+      <Project>{B1D7B9EC-976A-4C09-A46F-81C1D7933B12}</Project>
+      <Name>Macmillan.PXQBA.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Macmillan.PXQBA.Business.Contracts\Macmillan.PXQBA.Business.Contracts.csproj">
       <Project>{C7070F01-3D37-425D-ABD5-E02D7CFAEA43}</Project>
       <Name>Macmillan.PXQBA.Business.Contracts</Name>

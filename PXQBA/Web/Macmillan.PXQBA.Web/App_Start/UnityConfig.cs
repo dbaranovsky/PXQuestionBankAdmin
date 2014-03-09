@@ -1,13 +1,15 @@
 using System;
+using System.Web;
 using Bfw.Agilix.Dlap.Components.Session;
 using Bfw.Agilix.Dlap.Session;
 using Bfw.Common.Logging;
 using Bfw.Common.Patterns.Logging;
+using Macmillan.PXQBA.Business;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Services;
+using Macmillan.PXQBA.Common.Logging;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
-using Macmillan.PXQBA.Common.Logging;
 
 namespace Macmillan.PXQBA.Web.App_Start
 {
@@ -41,13 +43,17 @@ namespace Macmillan.PXQBA.Web.App_Start
         {
             // NOTE: To load from web.config uncomment the line below. Make sure to add a Microsoft.Practices.Unity.Configuration to the using statements.
             // container.LoadConfiguration();
-            //container.RegisterType<IQuestionListManagementService, QuestionListManagementService>();
+
             // TODO: Register your types here
             // container.RegisterType<IProductRepository, ProductRepository>();
-            container.RegisterType<ISessionManager, WebSessionManager>();
+            // NOTE: To load from web.config uncomment the line below. Make sure to add a Microsoft.Practices.Unity.Configuration to the using statements.
+            // container.LoadConfiguration();
+
+            container.RegisterType<ISessionManager, WebSessionManager>(new PerRequestLifetimeManager());
             container.RegisterType<ITraceManager, MvcMiniProfilerTraceManager>(new PerRequestLifetimeManager());
             container.RegisterType<ILogger, Logger>(new PerRequestLifetimeManager());
-            container.RegisterTypes(AllClasses.FromAssemblies(typeof(QuestionListManagementService).Assembly), WithMappings.FromAllInterfaces, WithName.Default, WithLifetime.Custom<PerRequestLifetimeManager>);
+            container.RegisterTypes(AllClasses.FromAssemblies(typeof(Context).Assembly), WithMappings.FromAllInterfaces, WithName.Default, WithLifetime.Custom<PerRequestLifetimeManager>);
+            container.RegisterTypes(AllClasses.FromAssemblies(typeof(QuestionListManagementService).Assembly), WithMappings.FromAllInterfaces, WithName.Default);
         }
     }
 }

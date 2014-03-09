@@ -5,7 +5,7 @@ namespace Macmillan.PXQBA.Web
 {
     public class BundleConfig
     {
-        // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
+        // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
@@ -16,12 +16,16 @@ namespace Macmillan.PXQBA.Web
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/respond").Include(
+                     "~/Scripts/respond/respond.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/react").Include(
-                "~/Scripts/react/JSXTransformer-{version}.js",
-                "~/Scripts/react/react-with-addons-{version}.js"));
+    "~/Scripts/react/JSXTransformer-{version}.js",
+    "~/Scripts/react/react-{version}.js",
+    "~/Scripts/react/react-with-addons-{version}.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
-
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/site.css"));
         }
     }
 }
