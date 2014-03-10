@@ -5,27 +5,31 @@
 var Question = React.createClass({
 	render: function() {
 		return (
-			<div className="question">
-				<div className="eBookChapter">
+			<tr className="question">
+				<td> 
+					<input type="checkbox"/>
+				</td>
+
+				<td className="eBookChapter">
 					{this.props.eBookChapter}
-				</div>
+				</td>
 
-				<div className="questionBank">
+				<td className="questionBank">
 				    {this.props.questionBank}
-				</div>
+				</td>
 
-				<div className="questionSeq">
+				<td className="questionSeq">
 					{this.props.questionSeq}
-				</div>
+				</td>
 
-				<div className="title">
+				<td className="title">
 					{this.props.title}
-				</div>
+				</td>
 
-				<div className="questionType">
+				<td className="questionType">
 					{this.props.questionType}
-				</div>
-			</div>
+				</td>
+			</tr>
 			);
 		}
 });

@@ -33,7 +33,10 @@ var QuestionBox = React.createClass({
 	render: function() {
 		return (
 			<div className="questionBox">
-				<QuestionList data={this.state.data}/> 
+			<div> 
+			     <QuestionFilter/>
+			</div>
+				<QuestionList data={this.state.data}/>
 			</div>
 			);
 	}

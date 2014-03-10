@@ -6,7 +6,6 @@ namespace Macmillan.PXQBA.Web.Controllers
 {
     public class QuestionListController : Controller
     {
-
         private readonly IQuestionListManagementService questionListManagementService;
 
         private readonly ISessionManager sessionManager;
@@ -26,6 +25,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult GetQuestionData()
         {
+            //Fake data
             var data = new []
             {
                 new { title = "title1", 
@@ -40,8 +40,46 @@ namespace Macmillan.PXQBA.Web.Controllers
                     eBookChapter = "eBookChapter2",
                     questionBank = "questionBank2", 
                     questionSeq="2"
+                },
+
+                new { title = "title3", 
+                    questionType = "questionType3",
+                    eBookChapter = "eBookChapter3",
+                    questionBank = "questionBank3", 
+                    questionSeq="3"
+                },
+
+                new { title = "title2", 
+                    questionType = "questionType2",
+                    eBookChapter = "eBookChapter2",
+                    questionBank = "questionBank2", 
+                    questionSeq="2"
+                },
+
+               new { title = "title2", 
+                    questionType = "questionType2",
+                    eBookChapter = "eBookChapter2",
+                    questionBank = "questionBank2", 
+                    questionSeq="2"
+                },
+
+               new { title = "title2", 
+                    questionType = "questionType2",
+                    eBookChapter = "eBookChapter2",
+                    questionBank = "questionBank2", 
+                    questionSeq="2"
+                },
+
+               new { title = "title2", 
+                    questionType = "questionType2",
+                    eBookChapter = "eBookChapter2",
+                    questionBank = "questionBank2", 
+                    questionSeq="2"
                 }
+  
             };
+
+ 
             return Json(data);
         }
 

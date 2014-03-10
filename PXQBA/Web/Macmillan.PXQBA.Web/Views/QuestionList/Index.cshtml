@@ -5,15 +5,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+    .hover {
+        background: grey !important;
+    }
+
+</style>
+
 <h2>Question list page</h2>
 
 <div id="question-container"> </div>
 
 @section scripts
 {
+    @*
+     extract this in view
+    *@
     <script src="../../Scripts/components/questions/question.jsx" type="text/jsx"></script>
     <script src="../../Scripts/components/questions/questionList.jsx" type="text/jsx"></script>
     <script src="../../Scripts/components/questions/questionBox.jsx" type="text/jsx"></script>
+    <script src="../../Scripts/components/questions/questionFilter.jsx" type="text/jsx"></script>
 
     <script type="text/jsx">
         /**
