@@ -156,11 +156,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap\bootstrap.css.map" />
+    <Content Include="Scripts\components\questions\questionFilter.jsx" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\components\questions\question.jsx" />
+    <Content Include="Scripts\components\questions\questionList.jsx" />
+    <Content Include="Scripts\components\questions\questionBox.jsx" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\react\JSXTransformer-0.9.0.js" />
     <Content Include="Scripts\react\react-0.9.0.js" />
@@ -184,6 +188,10 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.map" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="packages.config" />
     <Content Include="Views\QuestionList\Index.cshtml" />
     <Content Include="Views\TitleList\Index.cshtml" />
   </ItemGroup>

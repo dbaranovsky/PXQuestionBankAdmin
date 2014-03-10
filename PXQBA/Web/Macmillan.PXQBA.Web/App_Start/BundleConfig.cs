@@ -20,9 +20,8 @@ namespace Macmillan.PXQBA.Web
                      "~/Scripts/respond/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/react").Include(
-    "~/Scripts/react/JSXTransformer-{version}.js",
-    "~/Scripts/react/react-{version}.js",
-    "~/Scripts/react/react-with-addons-{version}.js"));
+                    "~/Scripts/react/JSXTransformer-{version}.js",
+                    "~/Scripts/react/react-with-addons-{version}.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/site.css"));
