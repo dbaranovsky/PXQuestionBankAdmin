@@ -230,6 +230,10 @@
       <Project>{C7070F01-3D37-425D-ABD5-E02D7CFAEA43}</Project>
       <Name>Macmillan.PXQBA.Business.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Models\Macmillan.PXQBA.Business.Models.csproj">
+      <Project>{800708c5-6692-4c91-be89-729a017b5027}</Project>
+      <Name>Macmillan.PXQBA.Business.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Services\Macmillan.PXQBA.Business.Services.csproj">
       <Project>{CF2B92A9-6E1D-4472-AD9C-AED6DC86A62C}</Project>
       <Name>Macmillan.PXQBA.Business.Services</Name>

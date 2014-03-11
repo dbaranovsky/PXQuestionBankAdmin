@@ -1,10 +1,10 @@
 ﻿/**
 * @jsx React.DOM
-*/
+*/ 
 
 var Question = React.createClass({displayName: 'Question',
 	render: function() {
-		return (
+		return ( 
 			React.DOM.tr( {className:"question"}, 
 				React.DOM.td(null,  
 					React.DOM.input( {type:"checkbox"})
@@ -23,13 +23,17 @@ var Question = React.createClass({displayName: 'Question',
 				),
 
 				React.DOM.td( {className:"title"}, 
-					this.props.title
+				    React.DOM.div(null, this.props.title, " " )
 				),
 
 				React.DOM.td( {className:"questionType"}, 
 					this.props.questionType
-				)
-			)
+				),
+
+			    React.DOM.td( {className:"actions"}  
+				
+				)  
+			) 
 			);
 		}
 });

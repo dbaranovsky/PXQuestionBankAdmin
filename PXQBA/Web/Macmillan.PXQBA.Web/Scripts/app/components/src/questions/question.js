@@ -1,10 +1,10 @@
 ﻿/**
 * @jsx React.DOM
-*/
+*/ 
 
 var Question = React.createClass({
 	render: function() {
-		return (
+		return ( 
 			<tr className="question">
 				<td> 
 					<input type="checkbox"/>
@@ -23,13 +23,17 @@ var Question = React.createClass({
 				</td>
 
 				<td className="title">
-					{this.props.title}
+				    <div>{this.props.title} </div>
 				</td>
 
 				<td className="questionType">
 					{this.props.questionType}
 				</td>
-			</tr>
+
+			    <td className="actions">  
+				
+				</td>  
+			</tr> 
 			);
 		}
 });

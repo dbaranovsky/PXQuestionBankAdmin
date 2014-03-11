@@ -1,5 +1,11 @@
-﻿using Macmillan.PXQBA.Business.Contracts;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
+using AutoMapper;
+using Bfw.Agilix.DataContracts;
+using Macmillan.PXQBA.Business.Contracts;
 using System.Web.Mvc;
+using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Web.Controllers
 {
@@ -16,69 +22,39 @@ namespace Macmillan.PXQBA.Web.Controllers
         // GET: /QuestionList/
         public ActionResult Index()
         {
-            //var questions = questionListManagementService.GetQuestionList();
             return View();
         }
 
         [HttpPost]
         public ActionResult GetQuestionData()
         {
-            //Fake data
-            var data = new []
-            {
-                new { title = "title1", 
-                    questionType = "questionType1",
-                    eBookChapter = "eBookChapter1",
-                    questionBank = "questionBank1", 
-                    questionSeq="1"
-                },
+            var questions = questionListManagementService.GetQuestionList();
+            //var data = Mapper.Map<IEnumerable<Question>, IEnumerable<Question>>(questions);
 
-                new { title = "title2", 
-                    questionType = "questionType2",
-                    eBookChapter = "eBookChapter2",
-                    questionBank = "questionBank2", 
-                    questionSeq="2"
-                },
+            //For debug paging
+             var data = GetFakeQuestions(15);
 
-                new { title = "title3", 
-                    questionType = "questionType3",
-                    eBookChapter = "eBookChapter3",
-                    questionBank = "questionBank3", 
-                    questionSeq="3"
-                },
-
-                new { title = "title2", 
-                    questionType = "questionType2",
-                    eBookChapter = "eBookChapter2",
-                    questionBank = "questionBank2", 
-                    questionSeq="2"
-                },
-
-               new { title = "title2", 
-                    questionType = "questionType2",
-                    eBookChapter = "eBookChapter2",
-                    questionBank = "questionBank2", 
-                    questionSeq="2"
-                },
-
-               new { title = "title2", 
-                    questionType = "questionType2",
-                    eBookChapter = "eBookChapter2",
-                    questionBank = "questionBank2", 
-                    questionSeq="2"
-                },
-
-               new { title = "title2", 
-                    questionType = "questionType2",
-                    eBookChapter = "eBookChapter2",
-                    questionBank = "questionBank2", 
-                    questionSeq="2"
-                }
-  
-            };
-
- 
             return Json(data);
+        }
+
+
+        private IEnumerable<Question> GetFakeQuestions(int count)
+        {
+            var questions = new List<Question>();
+
+            for (int i = 0; i < count; i++)
+            {
+                questions.Add(new Question()
+                              {
+                                  title = "title"+i,
+                                  questionType = "questionType"+i,
+                                  eBookChapter = "eBookChapter"+i,
+                                  questionBank = "questionBank"+i,
+                                  questionSeq = i.ToString()
+                              });
+            }
+
+            return questions;
         }
 
     }
