@@ -134,8 +134,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Scripts\app\dataAccess\" />
-    <Folder Include="Scripts\app\routes\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
@@ -183,10 +181,14 @@
     <Content Include="Scripts\app\components\questions\questionFilter.js" />
     <Content Include="Scripts\app\components\questions\questionList.js" />
     <Content Include="Scripts\app\components\questions\questionListPage.js" />
+    <Content Include="Scripts\app\dataAccess\questionDataManager.js" />
+    <Content Include="Scripts\app\routes\router.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\crossroads\crossroads.js" />
     <Content Include="Scripts\crossroads\crossroads.min.js" />
+    <Content Include="Scripts\crossroads\hasher.js" />
+    <Content Include="Scripts\crossroads\hasher.min.js" />
     <Content Include="Scripts\crossroads\signals.js" />
     <Content Include="Scripts\crossroads\signals.min.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.js" />

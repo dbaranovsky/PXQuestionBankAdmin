@@ -5,6 +5,8 @@ using AutoMapper;
 using Bfw.Agilix.DataContracts;
 using Macmillan.PXQBA.Business.Contracts;
 using System.Web.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -32,8 +34,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             //var data = Mapper.Map<IEnumerable<Question>, IEnumerable<Question>>(questions);
 
             //For debug paging
-             var data = GetFakeQuestions(15);
-
+            var data = GetFakeQuestions(15);
             return Json(data);
         }
 

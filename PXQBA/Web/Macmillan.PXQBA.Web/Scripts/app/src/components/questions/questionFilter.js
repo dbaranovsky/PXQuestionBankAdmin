@@ -10,7 +10,7 @@ var QuestionFilter = React.createClass({
 				 	<span>
 				 		 <strong> Filter: </strong> 
 				    </span>
-				    <span> Favourite filter</span>
+				    <a href="#filter/"> Favourite filter</a>
 				</div>
 			</div>
 			);
