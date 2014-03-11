@@ -1,5 +1,4 @@
-﻿using Bfw.Agilix.Dlap.Session;
-using Macmillan.PXQBA.Business.Contracts;
+﻿using Macmillan.PXQBA.Business.Contracts;
 using System.Web.Mvc;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -8,17 +7,16 @@ namespace Macmillan.PXQBA.Web.Controllers
     {
         private readonly IQuestionListManagementService questionListManagementService;
 
-        private readonly ISessionManager sessionManager;
-        public QuestionListController(IQuestionListManagementService questionListManagementService, ISessionManager sessionManager)
+        public QuestionListController(IQuestionListManagementService questionListManagementService)
         {
             this.questionListManagementService = questionListManagementService;
-            this.sessionManager = sessionManager;
         }
 
         //
         // GET: /QuestionList/
         public ActionResult Index()
         {
+            //var questions = questionListManagementService.GetQuestionList();
             return View();
         }
 

@@ -28,18 +28,32 @@ namespace Macmillan.PXQBA.Business.Services
         /// <returns></returns>
         public IEnumerable<Question> GetQuestionList()
         {
+            var quizSearch = new ItemSearch()
+                {
+                    EntityId = "71836",
+                    Query = "/bfw_subtype='QUIZ' AND (/parent='LOR_statsportal__bps6e__master_Chapter__3')"
+                };
+            var batch = new Batch();
+            var getItemsCommand = new GetItems()
+            {
+                SearchParameters = quizSearch
+            };
+            batch.Add(getItemsCommand);
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(getItemsCommand);
+            var items = getItemsCommand.Items;
+   
             var searchParameters = new QuestionSearch
                                    {
                                        //Hardcode
-                                       EntityId = "34724"
+                                       EntityId = "71836"
                                    };
-            var cmd = new GetQuestions
+            var getQuestionsCommand = new GetQuestions
                       {
                           SearchParameters = searchParameters
                       };
-            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(getQuestionsCommand);
 
-            return cmd.Questions;
+            return getQuestionsCommand.Questions;
         }
     }
 }

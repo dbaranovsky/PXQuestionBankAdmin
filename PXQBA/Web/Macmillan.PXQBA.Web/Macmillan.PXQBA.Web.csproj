@@ -40,6 +40,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.Unity, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -50,6 +56,9 @@
     </Reference>
     <Reference Include="Microsoft.Practices.Unity.Mvc">
       <HintPath>..\..\packages\Unity.Mvc.3.0.1304.0\lib\Net45\Microsoft.Practices.Unity.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\..\packages\NLog.2.1.0\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -125,6 +134,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\app\dataAccess\" />
+    <Folder Include="Scripts\app\routes\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
@@ -143,6 +154,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll">
+      <Link>AutoMapper.Net4.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\bootstrap\bootstrap-theme.css" />
     <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap\bootstrap.css" />
@@ -156,15 +171,26 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap\bootstrap.css.map" />
-    <Content Include="Scripts\components\questions\questionFilter.jsx" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="packages.config" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\app\components\questions\question.js" />
+    <Content Include="Scripts\app\components\questions\questionFilter.js" />
+    <Content Include="Scripts\app\components\questions\questionList.js" />
+    <Content Include="Scripts\app\components\questions\questionListPage.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\crossroads\crossroads.js" />
+    <Content Include="Scripts\crossroads\crossroads.min.js" />
+    <Content Include="Scripts\crossroads\signals.js" />
+    <Content Include="Scripts\crossroads\signals.min.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\components\questions\question.jsx" />
-    <Content Include="Scripts\components\questions\questionList.jsx" />
-    <Content Include="Scripts\components\questions\questionBox.jsx" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\react\JSXTransformer-0.9.0.js" />
     <Content Include="Scripts\react\react-0.9.0.js" />
@@ -191,9 +217,9 @@
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="packages.config" />
     <Content Include="Views\QuestionList\Index.cshtml" />
     <Content Include="Views\TitleList\Index.cshtml" />
+    <Content Include="Views\Shared\_CommonJS.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Context\Macmillan.PXQBA.Business.csproj">
@@ -216,6 +242,10 @@
       <Project>{45A498CC-0FDF-4B3B-833B-FD0B008AA8D9}</Project>
       <Name>Macmillan.PXQBA.Common.Logging</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.DataContracts\Bfw.Agilix.DataContracts.csproj">
+      <Project>{4d185f8e-c2a0-442a-a05e-78b566361562}</Project>
+      <Name>Bfw.Agilix.DataContracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Bfw.Agilix.Dlap.Components.csproj">
       <Project>{BFFD6B7A-4EA1-431A-916A-8214BD16E049}</Project>
       <Name>Bfw.Agilix.Dlap.Components</Name>
@@ -234,7 +264,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <PropertyGroup>

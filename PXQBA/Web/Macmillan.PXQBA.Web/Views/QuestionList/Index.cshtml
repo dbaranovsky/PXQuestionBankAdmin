@@ -21,17 +21,12 @@
     @*
      extract this in view
     *@
-    <script src="../../Scripts/components/questions/question.jsx" type="text/jsx"></script>
-    <script src="../../Scripts/components/questions/questionList.jsx" type="text/jsx"></script>
-    <script src="../../Scripts/components/questions/questionBox.jsx" type="text/jsx"></script>
-    <script src="../../Scripts/components/questions/questionFilter.jsx" type="text/jsx"></script>
+    <script src="../../Scripts/app/components/questions/question.js"></script>
+    <script src="../../Scripts/app/components/questions/questionList.js"></script>
+    <script src="../../Scripts/app/components/questions/questionFilter.js"></script>
+<script src="../../Scripts/app/components/questions/questionListPage.js"></script>
+<script src="../../Scripts/app/routes/router.js"></script>
 
-    <script type="text/jsx">
-        /**
-        * @@jsx React.DOM
-        */
-        React.renderComponent(
-        <QuestionBox url="@Url.Action("GetQuestionData", "QuestionList")"> </QuestionBox>,
-        $('#question-container')[0]);
-    </script>
+
+
 }

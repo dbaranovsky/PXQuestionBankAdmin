@@ -160,3 +160,6 @@ $RECYCLE.BIN/
 /PX/PXPub/Tests/Chutzpah.2.4.3/_Chutzpah.coverage.json
 /PX/PXPub/Web.config
 /PX/PXPub/Tests/lib/viewrender.js
+
+#Log files
+/PXQBA/Web/Macmillan.PXQBA.Web/App_Data/logs/*.txt

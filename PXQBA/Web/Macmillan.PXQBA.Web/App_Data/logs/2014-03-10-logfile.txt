@@ -1,0 +1,601 @@
+03/10/2014 16:12:13 | Debug | Could not resume session, starting new session 
+03/10/2014 16:12:17 | Debug | Configuring connection 
+03/10/2014 16:12:17 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 16:12:17 | Debug | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 16:12:18 | Debug | 16:12:18, DLAP call (00.087745): cmd=GetQuestionList&entityid=71836 [/] 
+03/10/2014 16:12:24 | Debug | Could not resume session, starting new session 
+03/10/2014 16:12:24 | Debug | Configuring connection 
+03/10/2014 16:12:27 | Debug | Could not resume session, starting new session 
+03/10/2014 16:12:27 | Debug | Configuring connection 
+03/10/2014 16:53:44 | Debug | Could not resume session, starting new session 
+03/10/2014 16:53:44 | Error | Configuring connection 
+03/10/2014 16:53:44 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 16:53:44 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 16:53:45 | Debug | 16:53:45, DLAP call (00.319555): cmd=GetQuestionList&entityid=71836 [/] 
+03/10/2014 16:53:51 | Debug | Could not resume session, starting new session 
+03/10/2014 16:53:51 | Error | Configuring connection 
+03/10/2014 16:53:51 | Debug | Could not resume session, starting new session 
+03/10/2014 16:53:51 | Error | Configuring connection 
+03/10/2014 17:51:56 | Debug | Could not resume session, starting new session 
+03/10/2014 17:51:56 | Error | Configuring connection 
+03/10/2014 17:51:56 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 17:51:56 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 17:51:57 | Debug | 17:51:57, DLAP call (00.135477): cmd=getitemlist&entityid=71836&query=/bfw_subtype='QUIZ' AND (/parent='LOR_statsportal__bps6e__master_Chapter__3') [/] 
+03/10/2014 18:17:44 | Debug | Could not resume session, starting new session 
+03/10/2014 18:17:44 | Error | Configuring connection 
+03/10/2014 18:17:44 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 18:17:44 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 18:17:45 | Debug | 18:17:45, DLAP call (00.127695): cmd=getitemlist&entityid=71836&query=/bfw_subtype='QUIZ' AND (/parent='LOR_statsportal__bps6e__master_Chapter__3') [/] 
+03/10/2014 18:17:48 | Debug | 18:17:48, DLAP call (00.084555): cmd=GetQuestionList&entityid=71836 [/] 
+03/10/2014 18:37:42 | Debug | Could not resume session, starting new session 
+03/10/2014 18:37:42 | Error | Configuring connection 
+03/10/2014 18:37:42 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 18:37:42 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 18:37:42 | Debug | 18:37:42, DLAP call (00.193530): cmd=getitemlist&entityid=71836&query=/bfw_subtype='QUIZ' AND (/parent='LOR_statsportal__bps6e__master_Chapter__3') [/] 
+03/10/2014 18:41:55 | Debug | Could not resume session, starting new session 
+03/10/2014 18:41:55 | Error | Configuring connection 
+03/10/2014 18:41:55 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 18:41:55 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 18:41:56 | Debug | 18:41:56, DLAP call (00.103853): cmd=getitemlist&entityid=71836&query=/bfw_subtype='QUIZ' AND (/parent='LOR_statsportal__bps6e__master_Chapter__3') [/] 
+03/10/2014 18:41:58 | Debug | 18:41:58, DLAP call (00.036109): cmd=GetQuestionList&entityid=71836 [/] 
+03/10/2014 18:42:03 | Debug | Could not resume session, starting new session 
+03/10/2014 18:42:03 | Error | Configuring connection 
+03/10/2014 18:42:04 | Debug | Could not resume session, starting new session 
+03/10/2014 18:42:04 | Error | Configuring connection 
+03/10/2014 18:43:13 | Debug | Could not resume session, starting new session 
+03/10/2014 18:43:13 | Error | Configuring connection 
+03/10/2014 18:43:13 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 18:43:13 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 18:43:14 | Debug | 18:43:14, DLAP call (00.279462): cmd=getitemlist&entityid=71836&query=/bfw_subtype='QUIZ' AND (/parent='LOR_statsportal__bps6e__master_Chapter__3') [/] 
+03/10/2014 18:43:16 | Debug | 18:43:16, DLAP call (00.040682): cmd=GetQuestionList&entityid=71836 [/] 
+03/10/2014 18:43:21 | Debug | Could not resume session, starting new session 
+03/10/2014 18:43:21 | Error | Configuring connection 
+03/10/2014 18:43:21 | Debug | Could not resume session, starting new session 
+03/10/2014 18:43:21 | Error | Configuring connection 
+03/10/2014 21:37:17 | Debug | Could not resume session, starting new session 
+03/10/2014 21:37:17 | Error | Configuring connection 
+03/10/2014 21:37:17 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 21:37:17 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 21:37:17 | Error | The remote name could not be resolved: 'dev.dlap.bfwpub.com'
+StackTrace:
+   at System.Net.HttpWebRequest.GetResponse()
+   at Bfw.Agilix.Dlap.DlapConnection.Transmit(DlapRequest request) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap\DlapConnection.cs:line 426 
+03/10/2014 21:37:17 | Debug | 21:37:17, DLAP call (00.555762): cmd=getitemlist&entityid=71836&query=/bfw_subtype='QUIZ' AND (/parent='LOR_statsportal__bps6e__master_Chapter__3') [/QuestionList/Index] 
+03/10/2014 21:38:06 | Debug | Could not resume session, starting new session 
+03/10/2014 21:38:06 | Error | Configuring connection 
+03/10/2014 21:38:06 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 21:38:06 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 21:38:13 | Debug | Could not resume session, starting new session 
+03/10/2014 21:38:13 | Error | Configuring connection 
+03/10/2014 21:38:29 | Debug | Could not resume session, starting new session 
+03/10/2014 21:38:29 | Error | Configuring connection 
+03/10/2014 21:38:29 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 21:38:29 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 21:38:31 | Debug | Could not resume session, starting new session 
+03/10/2014 21:38:31 | Error | Configuring connection 
+03/10/2014 21:39:31 | Debug | Could not resume session, starting new session 
+03/10/2014 21:39:31 | Error | Configuring connection 
+03/10/2014 21:39:31 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 21:39:31 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 21:39:37 | Debug | Could not resume session, starting new session 
+03/10/2014 21:39:37 | Error | Configuring connection 
+03/10/2014 21:39:37 | Debug | Could not resume session, starting new session 
+03/10/2014 21:39:37 | Error | Configuring connection 
+03/10/2014 21:40:27 | Debug | Could not resume session, starting new session 
+03/10/2014 21:40:27 | Error | Configuring connection 
+03/10/2014 21:40:27 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 21:40:27 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 21:40:28 | Debug | Could not resume session, starting new session 
+03/10/2014 21:40:28 | Error | Configuring connection 
+03/10/2014 21:42:53 | Debug | Could not resume session, starting new session 
+03/10/2014 21:42:53 | Error | Configuring connection 
+03/10/2014 21:42:53 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 21:42:53 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 21:43:02 | Debug | Could not resume session, starting new session 
+03/10/2014 21:43:02 | Debug | Could not resume session, starting new session 
+03/10/2014 21:43:02 | Error | Configuring connection 
+03/10/2014 21:43:02 | Error | Configuring connection 
+03/10/2014 21:45:04 | Debug | Could not resume session, starting new session 
+03/10/2014 21:45:04 | Error | Configuring connection 
+03/10/2014 21:45:04 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 21:45:04 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 21:45:13 | Debug | Could not resume session, starting new session 
+03/10/2014 21:45:13 | Error | Configuring connection 
+03/10/2014 21:45:14 | Debug | Could not resume session, starting new session 
+03/10/2014 21:45:14 | Error | Configuring connection 
+03/10/2014 21:53:21 | Debug | Could not resume session, starting new session 
+03/10/2014 21:53:21 | Error | Configuring connection 
+03/10/2014 21:53:21 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 21:53:21 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 21:53:27 | Debug | Could not resume session, starting new session 
+03/10/2014 21:53:27 | Error | Configuring connection 
+03/10/2014 21:53:28 | Debug | Could not resume session, starting new session 
+03/10/2014 21:53:28 | Error | Configuring connection 
+03/10/2014 22:04:28 | Debug | Could not resume session, starting new session 
+03/10/2014 22:04:28 | Error | Configuring connection 
+03/10/2014 22:04:29 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 22:04:29 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 22:04:34 | Debug | Could not resume session, starting new session 
+03/10/2014 22:04:34 | Error | Configuring connection 
+03/10/2014 22:05:45 | Debug | Could not resume session, starting new session 
+03/10/2014 22:05:45 | Error | Configuring connection 
+03/10/2014 22:05:45 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 22:05:45 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 22:05:45 | Debug | Could not resume session, starting new session 
+03/10/2014 22:05:45 | Error | Configuring connection 
+03/10/2014 22:06:34 | Debug | Could not resume session, starting new session 
+03/10/2014 22:06:34 | Error | Configuring connection 
+03/10/2014 22:06:34 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 22:06:34 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 22:06:39 | Debug | Could not resume session, starting new session 
+03/10/2014 22:06:39 | Error | Configuring connection 
+03/10/2014 22:06:39 | Debug | Could not resume session, starting new session 
+03/10/2014 22:06:39 | Error | Configuring connection 
+03/10/2014 22:08:06 | Debug | Could not resume session, starting new session 
+03/10/2014 22:08:06 | Error | Configuring connection 
+03/10/2014 22:08:06 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 22:08:06 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 22:08:10 | Debug | Could not resume session, starting new session 
+03/10/2014 22:08:10 | Error | Configuring connection 
+03/10/2014 22:10:18 | Debug | Could not resume session, starting new session 
+03/10/2014 22:10:18 | Error | Configuring connection 
+03/10/2014 22:10:18 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 22:10:18 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 22:10:23 | Debug | Could not resume session, starting new session 
+03/10/2014 22:10:23 | Error | Configuring connection 
+03/10/2014 22:10:29 | Debug | Could not resume session, starting new session 
+03/10/2014 22:10:29 | Error | Configuring connection 
+03/10/2014 22:10:29 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 22:10:29 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 22:10:30 | Debug | Could not resume session, starting new session 
+03/10/2014 22:10:30 | Error | Configuring connection 
+03/10/2014 22:10:46 | Debug | Could not resume session, starting new session 
+03/10/2014 22:10:46 | Error | Configuring connection 
+03/10/2014 22:11:20 | Debug | Could not resume session, starting new session 
+03/10/2014 22:11:20 | Error | Configuring connection 
+03/10/2014 22:11:20 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 22:11:20 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 22:11:21 | Debug | Could not resume session, starting new session 
+03/10/2014 22:11:21 | Error | Configuring connection 
+03/10/2014 22:11:49 | Debug | Could not resume session, starting new session 
+03/10/2014 22:11:49 | Error | Configuring connection 
+03/10/2014 22:11:50 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 22:11:50 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 22:11:54 | Debug | Could not resume session, starting new session 
+03/10/2014 22:11:54 | Error | Configuring connection 
+03/10/2014 22:11:58 | Debug | Could not resume session, starting new session 
+03/10/2014 22:11:58 | Error | Configuring connection 
+03/10/2014 22:11:58 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 22:11:58 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 22:11:59 | Debug | Could not resume session, starting new session 
+03/10/2014 22:11:59 | Error | Configuring connection 
+03/10/2014 22:12:06 | Debug | Could not resume session, starting new session 
+03/10/2014 22:12:06 | Error | Configuring connection 
+03/10/2014 22:12:06 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 22:12:06 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 22:12:07 | Debug | Could not resume session, starting new session 
+03/10/2014 22:12:07 | Error | Configuring connection 
+03/10/2014 22:12:48 | Debug | Could not resume session, starting new session 
+03/10/2014 22:12:48 | Error | Configuring connection 
+03/10/2014 22:12:48 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 22:12:48 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 22:12:54 | Debug | Could not resume session, starting new session 
+03/10/2014 22:12:54 | Error | Configuring connection 
+03/10/2014 22:12:54 | Debug | Could not resume session, starting new session 
+03/10/2014 22:12:54 | Error | Configuring connection 
+03/10/2014 22:34:10 | Debug | Could not resume session, starting new session 
+03/10/2014 22:34:10 | Error | Configuring connection 
+03/10/2014 22:34:10 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 22:34:10 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 22:34:15 | Debug | Could not resume session, starting new session 
+03/10/2014 22:34:15 | Error | Configuring connection 
+03/10/2014 22:34:16 | Debug | Could not resume session, starting new session 
+03/10/2014 22:34:16 | Error | Configuring connection 
+03/10/2014 22:34:39 | Debug | Could not resume session, starting new session 
+03/10/2014 22:34:39 | Error | Configuring connection 
+03/10/2014 22:34:39 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 22:34:39 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 22:34:43 | Debug | Could not resume session, starting new session 
+03/10/2014 22:34:43 | Error | Configuring connection 
+03/10/2014 22:34:44 | Debug | Could not resume session, starting new session 
+03/10/2014 22:34:44 | Error | Configuring connection 
+03/10/2014 22:52:56 | Debug | Could not resume session, starting new session 
+03/10/2014 22:52:56 | Error | Configuring connection 
+03/10/2014 22:52:57 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 22:52:57 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 22:53:03 | Debug | Could not resume session, starting new session 
+03/10/2014 22:53:03 | Error | Configuring connection 
+03/10/2014 22:53:18 | Debug | Could not resume session, starting new session 
+03/10/2014 22:53:18 | Error | Configuring connection 
+03/10/2014 22:54:32 | Debug | Could not resume session, starting new session 
+03/10/2014 22:54:32 | Error | Configuring connection 
+03/10/2014 22:54:32 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 22:54:32 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 22:54:37 | Debug | Could not resume session, starting new session 
+03/10/2014 22:54:37 | Error | Configuring connection 
+03/10/2014 22:54:37 | Debug | Could not resume session, starting new session 
+03/10/2014 22:54:37 | Error | Configuring connection 
+03/10/2014 22:54:44 | Debug | Could not resume session, starting new session 
+03/10/2014 22:54:44 | Error | Configuring connection 
+03/10/2014 22:54:44 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 22:54:44 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 22:54:44 | Debug | Could not resume session, starting new session 
+03/10/2014 22:54:44 | Error | Configuring connection 
+03/10/2014 22:54:45 | Debug | Could not resume session, starting new session 
+03/10/2014 22:54:45 | Error | Configuring connection 
+03/10/2014 22:58:06 | Debug | Could not resume session, starting new session 
+03/10/2014 22:58:06 | Error | Configuring connection 
+03/10/2014 22:58:06 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 22:58:06 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 22:58:09 | Debug | Could not resume session, starting new session 
+03/10/2014 22:58:09 | Error | Configuring connection 
+03/10/2014 22:58:10 | Debug | Could not resume session, starting new session 
+03/10/2014 22:58:10 | Error | Configuring connection 
+03/10/2014 22:58:44 | Debug | Could not resume session, starting new session 
+03/10/2014 22:58:44 | Error | Configuring connection 
+03/10/2014 22:58:44 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 22:58:44 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 22:58:45 | Debug | Could not resume session, starting new session 
+03/10/2014 22:58:45 | Error | Configuring connection 
+03/10/2014 22:58:45 | Debug | Could not resume session, starting new session 
+03/10/2014 22:58:45 | Error | Configuring connection 
+03/10/2014 22:59:03 | Debug | Could not resume session, starting new session 
+03/10/2014 22:59:03 | Error | Configuring connection 
+03/10/2014 22:59:03 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 22:59:03 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 22:59:03 | Debug | Could not resume session, starting new session 
+03/10/2014 22:59:03 | Error | Configuring connection 
+03/10/2014 22:59:04 | Debug | Could not resume session, starting new session 
+03/10/2014 22:59:04 | Error | Configuring connection 
+03/10/2014 22:59:38 | Debug | Could not resume session, starting new session 
+03/10/2014 22:59:38 | Error | Configuring connection 
+03/10/2014 22:59:38 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 22:59:38 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 22:59:39 | Debug | Could not resume session, starting new session 
+03/10/2014 22:59:39 | Error | Configuring connection 
+03/10/2014 22:59:39 | Debug | Could not resume session, starting new session 
+03/10/2014 22:59:39 | Error | Configuring connection 
+03/10/2014 22:59:47 | Debug | Could not resume session, starting new session 
+03/10/2014 22:59:47 | Error | Configuring connection 
+03/10/2014 22:59:47 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 22:59:47 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 22:59:47 | Debug | Could not resume session, starting new session 
+03/10/2014 22:59:47 | Error | Configuring connection 
+03/10/2014 22:59:47 | Debug | Could not resume session, starting new session 
+03/10/2014 22:59:47 | Error | Configuring connection 
+03/10/2014 22:59:58 | Debug | Could not resume session, starting new session 
+03/10/2014 22:59:58 | Error | Configuring connection 
+03/10/2014 22:59:58 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 22:59:58 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 22:59:59 | Debug | Could not resume session, starting new session 
+03/10/2014 22:59:59 | Error | Configuring connection 
+03/10/2014 22:59:59 | Debug | Could not resume session, starting new session 
+03/10/2014 22:59:59 | Error | Configuring connection 
+03/10/2014 23:00:13 | Debug | Could not resume session, starting new session 
+03/10/2014 23:00:13 | Error | Configuring connection 
+03/10/2014 23:00:13 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:00:13 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:00:13 | Debug | Could not resume session, starting new session 
+03/10/2014 23:00:13 | Error | Configuring connection 
+03/10/2014 23:00:13 | Debug | Could not resume session, starting new session 
+03/10/2014 23:00:13 | Error | Configuring connection 
+03/10/2014 23:00:22 | Debug | Could not resume session, starting new session 
+03/10/2014 23:00:22 | Error | Configuring connection 
+03/10/2014 23:00:22 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:00:22 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:00:22 | Debug | Could not resume session, starting new session 
+03/10/2014 23:00:22 | Error | Configuring connection 
+03/10/2014 23:00:23 | Debug | Could not resume session, starting new session 
+03/10/2014 23:00:23 | Error | Configuring connection 
+03/10/2014 23:00:25 | Debug | Could not resume session, starting new session 
+03/10/2014 23:00:25 | Error | Configuring connection 
+03/10/2014 23:00:25 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:00:25 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:00:26 | Debug | Could not resume session, starting new session 
+03/10/2014 23:00:26 | Error | Configuring connection 
+03/10/2014 23:00:26 | Debug | Could not resume session, starting new session 
+03/10/2014 23:00:26 | Error | Configuring connection 
+03/10/2014 23:00:31 | Debug | Could not resume session, starting new session 
+03/10/2014 23:00:31 | Error | Configuring connection 
+03/10/2014 23:00:31 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:00:31 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:00:31 | Debug | Could not resume session, starting new session 
+03/10/2014 23:00:31 | Error | Configuring connection 
+03/10/2014 23:00:32 | Debug | Could not resume session, starting new session 
+03/10/2014 23:00:32 | Error | Configuring connection 
+03/10/2014 23:01:19 | Debug | Could not resume session, starting new session 
+03/10/2014 23:01:19 | Error | Configuring connection 
+03/10/2014 23:01:19 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:01:19 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:01:20 | Debug | Could not resume session, starting new session 
+03/10/2014 23:01:20 | Error | Configuring connection 
+03/10/2014 23:01:20 | Debug | Could not resume session, starting new session 
+03/10/2014 23:01:20 | Error | Configuring connection 
+03/10/2014 23:01:26 | Debug | Could not resume session, starting new session 
+03/10/2014 23:01:26 | Error | Configuring connection 
+03/10/2014 23:01:26 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:01:26 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:01:26 | Debug | Could not resume session, starting new session 
+03/10/2014 23:01:26 | Error | Configuring connection 
+03/10/2014 23:01:27 | Debug | Could not resume session, starting new session 
+03/10/2014 23:01:27 | Error | Configuring connection 
+03/10/2014 23:01:37 | Debug | Could not resume session, starting new session 
+03/10/2014 23:01:37 | Error | Configuring connection 
+03/10/2014 23:01:37 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:01:37 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:01:37 | Debug | Could not resume session, starting new session 
+03/10/2014 23:01:37 | Error | Configuring connection 
+03/10/2014 23:01:38 | Debug | Could not resume session, starting new session 
+03/10/2014 23:01:38 | Error | Configuring connection 
+03/10/2014 23:04:01 | Debug | Could not resume session, starting new session 
+03/10/2014 23:04:01 | Error | Configuring connection 
+03/10/2014 23:04:01 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:04:01 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:04:01 | Debug | Could not resume session, starting new session 
+03/10/2014 23:04:01 | Error | Configuring connection 
+03/10/2014 23:04:02 | Debug | Could not resume session, starting new session 
+03/10/2014 23:04:02 | Error | Configuring connection 
+03/10/2014 23:05:01 | Debug | Could not resume session, starting new session 
+03/10/2014 23:05:01 | Error | Configuring connection 
+03/10/2014 23:05:01 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:05:01 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:05:09 | Debug | Could not resume session, starting new session 
+03/10/2014 23:05:09 | Error | Configuring connection 
+03/10/2014 23:05:09 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:05:09 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:05:10 | Debug | Could not resume session, starting new session 
+03/10/2014 23:05:10 | Error | Configuring connection 
+03/10/2014 23:05:10 | Debug | Could not resume session, starting new session 
+03/10/2014 23:05:10 | Error | Configuring connection 
+03/10/2014 23:05:31 | Debug | Could not resume session, starting new session 
+03/10/2014 23:05:31 | Error | Configuring connection 
+03/10/2014 23:05:31 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:05:31 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:05:31 | Debug | Could not resume session, starting new session 
+03/10/2014 23:05:31 | Error | Configuring connection 
+03/10/2014 23:06:21 | Debug | Could not resume session, starting new session 
+03/10/2014 23:06:21 | Error | Configuring connection 
+03/10/2014 23:06:21 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:06:21 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:06:22 | Debug | Could not resume session, starting new session 
+03/10/2014 23:06:22 | Error | Configuring connection 
+03/10/2014 23:06:26 | Debug | Could not resume session, starting new session 
+03/10/2014 23:06:26 | Error | Configuring connection 
+03/10/2014 23:06:32 | Debug | Could not resume session, starting new session 
+03/10/2014 23:06:32 | Error | Configuring connection 
+03/10/2014 23:06:32 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:06:32 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:06:32 | Debug | Could not resume session, starting new session 
+03/10/2014 23:06:32 | Error | Configuring connection 
+03/10/2014 23:06:36 | Debug | Could not resume session, starting new session 
+03/10/2014 23:06:36 | Error | Configuring connection 
+03/10/2014 23:10:20 | Debug | Could not resume session, starting new session 
+03/10/2014 23:10:20 | Error | Configuring connection 
+03/10/2014 23:10:20 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:10:20 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:10:20 | Debug | Could not resume session, starting new session 
+03/10/2014 23:10:20 | Error | Configuring connection 
+03/10/2014 23:10:25 | Debug | Could not resume session, starting new session 
+03/10/2014 23:10:25 | Error | Configuring connection 
+03/10/2014 23:11:25 | Debug | Could not resume session, starting new session 
+03/10/2014 23:11:25 | Error | Configuring connection 
+03/10/2014 23:11:25 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:11:25 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:11:26 | Debug | Could not resume session, starting new session 
+03/10/2014 23:11:26 | Error | Configuring connection 
+03/10/2014 23:11:29 | Debug | Could not resume session, starting new session 
+03/10/2014 23:11:29 | Error | Configuring connection 
+03/10/2014 23:11:45 | Debug | Could not resume session, starting new session 
+03/10/2014 23:11:45 | Error | Configuring connection 
+03/10/2014 23:11:45 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:11:45 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:11:46 | Debug | Could not resume session, starting new session 
+03/10/2014 23:11:46 | Error | Configuring connection 
+03/10/2014 23:11:49 | Debug | Could not resume session, starting new session 
+03/10/2014 23:11:49 | Error | Configuring connection 
+03/10/2014 23:12:28 | Debug | Could not resume session, starting new session 
+03/10/2014 23:12:28 | Error | Configuring connection 
+03/10/2014 23:12:28 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:12:28 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:12:29 | Debug | Could not resume session, starting new session 
+03/10/2014 23:12:29 | Error | Configuring connection 
+03/10/2014 23:12:38 | Debug | Could not resume session, starting new session 
+03/10/2014 23:12:38 | Error | Configuring connection 
+03/10/2014 23:13:03 | Debug | Could not resume session, starting new session 
+03/10/2014 23:13:03 | Error | Configuring connection 
+03/10/2014 23:13:03 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:13:03 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:13:03 | Debug | Could not resume session, starting new session 
+03/10/2014 23:13:03 | Error | Configuring connection 
+03/10/2014 23:13:11 | Debug | Could not resume session, starting new session 
+03/10/2014 23:13:11 | Error | Configuring connection 
+03/10/2014 23:13:21 | Debug | Could not resume session, starting new session 
+03/10/2014 23:13:21 | Error | Configuring connection 
+03/10/2014 23:13:21 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:13:21 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:13:21 | Debug | Could not resume session, starting new session 
+03/10/2014 23:13:21 | Error | Configuring connection 
+03/10/2014 23:13:26 | Debug | Could not resume session, starting new session 
+03/10/2014 23:13:26 | Error | Configuring connection 
+03/10/2014 23:15:45 | Debug | Could not resume session, starting new session 
+03/10/2014 23:15:45 | Error | Configuring connection 
+03/10/2014 23:15:45 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:15:45 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:15:48 | Debug | Could not resume session, starting new session 
+03/10/2014 23:15:48 | Error | Configuring connection 
+03/10/2014 23:15:48 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:15:48 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:15:52 | Debug | Could not resume session, starting new session 
+03/10/2014 23:15:52 | Error | Configuring connection 
+03/10/2014 23:15:57 | Debug | Could not resume session, starting new session 
+03/10/2014 23:15:57 | Error | Configuring connection 
+03/10/2014 23:20:58 | Debug | Could not resume session, starting new session 
+03/10/2014 23:20:58 | Error | Configuring connection 
+03/10/2014 23:25:58 | Debug | Could not resume session, starting new session 
+03/10/2014 23:25:58 | Error | Configuring connection 
+03/10/2014 23:26:59 | Debug | Could not resume session, starting new session 
+03/10/2014 23:26:59 | Error | Configuring connection 
+03/10/2014 23:26:59 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:26:59 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:27:00 | Debug | Could not resume session, starting new session 
+03/10/2014 23:27:00 | Error | Configuring connection 
+03/10/2014 23:27:07 | Debug | Could not resume session, starting new session 
+03/10/2014 23:27:07 | Error | Configuring connection 
+03/10/2014 23:27:22 | Debug | Could not resume session, starting new session 
+03/10/2014 23:27:22 | Error | Configuring connection 
+03/10/2014 23:27:22 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:27:22 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:28:21 | Debug | Could not resume session, starting new session 
+03/10/2014 23:28:21 | Error | Configuring connection 
+03/10/2014 23:28:21 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:28:21 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:28:22 | Debug | Could not resume session, starting new session 
+03/10/2014 23:28:22 | Error | Configuring connection 
+03/10/2014 23:28:22 | Debug | Could not resume session, starting new session 
+03/10/2014 23:28:22 | Error | Configuring connection 
+03/10/2014 23:28:58 | Debug | Could not resume session, starting new session 
+03/10/2014 23:28:58 | Error | Configuring connection 
+03/10/2014 23:28:58 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:28:58 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:28:58 | Debug | Could not resume session, starting new session 
+03/10/2014 23:28:58 | Error | Configuring connection 
+03/10/2014 23:28:58 | Debug | Could not resume session, starting new session 
+03/10/2014 23:28:58 | Error | Configuring connection 
+03/10/2014 23:29:11 | Debug | Could not resume session, starting new session 
+03/10/2014 23:29:11 | Error | Configuring connection 
+03/10/2014 23:29:11 | Debug | Using BrainHoney URL: http://bfwproducts.bhdev.whfreeman.com/BrainHoney/Controls/CredentialsUI.ashx 
+03/10/2014 23:29:11 | Warn | Object reference not set to an instance of an object.
+StackTrace:
+   at Bfw.Agilix.Dlap.Components.Session.WebSessionManager.StartBrainHoneySession(String username, String password, TimeZoneInfo timeZoneInfo) in c:\Dima\Work\git\macmillan\PXQuestionBankAdmin\PXQBA\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Session\WebSessionManager.cs:line 440 
+03/10/2014 23:29:12 | Debug | Could not resume session, starting new session 
+03/10/2014 23:29:12 | Error | Configuring connection 
+03/10/2014 23:29:12 | Debug | Could not resume session, starting new session 
+03/10/2014 23:29:12 | Error | Configuring connection 
+03/10/2014 23:34:13 | Debug | Could not resume session, starting new session 
+03/10/2014 23:34:13 | Error | Configuring connection 
+03/10/2014 23:39:13 | Debug | Could not resume session, starting new session 
+03/10/2014 23:39:13 | Error | Configuring connection 
