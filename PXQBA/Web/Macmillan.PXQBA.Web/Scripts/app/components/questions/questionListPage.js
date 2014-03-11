@@ -41,6 +41,7 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
 			);
 	}
 });
+
 React.renderComponent(
         QuestionListPage(null,  " " ),
         $('#question-container')[0]);

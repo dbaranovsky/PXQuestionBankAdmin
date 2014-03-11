@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Bfw.Agilix.DataContracts;
+using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Business.Automapper
 {
@@ -7,10 +9,12 @@ namespace Macmillan.PXQBA.Business.Automapper
 
         protected override void Configure()
         {
-            //Mapper.CreateMap<Model, Ticket>()
-            //    .ForMember(t => t.Id, opt => opt.Ignore())
-            //    .ForMember(t => t.Status, opt => opt.MapFrom(vm => vm.Status))
-            //    .ForMember(t => t.ClientTimeZone, opt => opt.Ignore());
+            Mapper.CreateMap<Bfw.Agilix.DataContracts.Question, Question>()
+                .ForMember(dto => dto.title, opt => opt.MapFrom(q => q.Title))
+                .ForMember(dto => dto.eBookChapter, opt => opt.MapFrom(q => q.eBookChapter))
+                .ForMember(dto => dto.questionBank, opt => opt.MapFrom(q => q.QuestionBank))
+                .ForMember(dto => dto.questionSeq, opt => opt.Ignore())
+                .ForMember(dto => dto.questionType, opt => opt.Ignore());
         }
     }
 }
