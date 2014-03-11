@@ -2,7 +2,7 @@
 * @jsx React.DOM
 */
 
-var QuestionBox = React.createClass({
+var QuestionListPage = React.createClass({
 
 	getInitialState: function() {
 		return { data:[] };
@@ -10,7 +10,7 @@ var QuestionBox = React.createClass({
 
 	loadQuestionFromServer: function() {
 		 $.ajax({
-		 	url: this.props.url,
+		 	url: window.actions.questionList.getQuestionListUrl,
 		 	dataType: 'json',
 		 	type: 'POST'
 		 	})
@@ -41,3 +41,6 @@ var QuestionBox = React.createClass({
 			);
 	}
 });
+React.renderComponent(
+        <QuestionListPage> </QuestionListPage>,
+        $('#question-container')[0]);

@@ -36,11 +36,12 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-
+    @Html.Partial("_CommonJS")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/respond")
     @Scripts.Render("~/bundles/react")
+    @Scripts.Render("~/bundles/crossroads")
     @RenderSection("scripts", required: false)
 </body>
 </html>
