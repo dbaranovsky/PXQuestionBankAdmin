@@ -6,10 +6,6 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
 
 		componentDidMount: function() {
 
-        var test = function() {
-          return (React.DOM.span(null,  " component"));
-        }
-
      		var mouseIn =  function(event) {
      			//ToDo: implement  show menu actions here
           var tr = $(event.target).closest('tr');

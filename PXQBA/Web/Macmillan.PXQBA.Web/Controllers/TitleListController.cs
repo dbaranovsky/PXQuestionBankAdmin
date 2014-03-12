@@ -1,6 +1,5 @@
 ﻿using System.Web.Mvc;
 using Macmillan.PXQBA.Business.Contracts;
-using Macmillan.PXQBA.Web.Controllers.Infrastructure;
 
 namespace Macmillan.PXQBA.Web.Controllers
 {
