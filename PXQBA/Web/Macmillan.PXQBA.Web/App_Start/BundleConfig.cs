@@ -28,7 +28,8 @@ namespace Macmillan.PXQBA.Web
                 "~/Scripts/crossroads/crossroads.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/paging.css"));
         }
     }
 }
