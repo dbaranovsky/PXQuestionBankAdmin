@@ -23,7 +23,11 @@ var Question = React.createClass({
 				</td>
 
 				<td className="title">
-				    <div>{this.props.title} </div>
+				    <div>
+				    <span className="glyphicon glyphicon-chevron-right"></span>
+				    {this.props.title}
+				    </div>
+				    <div className="preview-collapsed question-preview">hidden preview</div>
 				</td>
 
 				<td className="questionType">
