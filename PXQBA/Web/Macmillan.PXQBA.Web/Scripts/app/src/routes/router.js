@@ -14,7 +14,7 @@ crossroads.addRoute('/filter/:{?query}:', function(query) {
 
 crossroads.addRoute('', function() {
 	React.renderComponent(
-        QuestionListPage( {data:[]},  " " ),
+        <QuestionListPage data={[]}> </QuestionListPage>,
         $('#question-container')[0]);
 });
 

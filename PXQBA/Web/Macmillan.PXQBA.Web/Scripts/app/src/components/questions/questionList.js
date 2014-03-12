@@ -32,8 +32,8 @@ var QuestionList = React.createClass({
 
 
 			     //ToDo: not(:first) not working, need fix this !!
-            $('#question-table').on('tr:not(:first)').mouseover(mouseIn);
-			      $('#question-table').on('tr:not(:first)').mouseout(mousOut);
+            $('#question-table tr').hover(mouseIn,mousOut);
+			      //$('#question-table').on('tr:not(:first)').mouseout(mousOut);
 		},
 
 

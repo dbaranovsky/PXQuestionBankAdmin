@@ -24,6 +24,7 @@ namespace Macmillan.PXQBA.Web
 
             bundles.Add(new ScriptBundle("~/bundles/crossroads").Include(
                 "~/Scripts/crossroads/signals.js",
+                "~/Scripts/crossroads/hasher.js",
                 "~/Scripts/crossroads/crossroads.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
