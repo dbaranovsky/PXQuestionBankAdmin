@@ -143,6 +143,8 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Constants\WebKeys.cs" />
+    <Compile Include="Controllers\Infrastructure\JsonCamelCaseResult.cs" />
+    <Compile Include="Controllers\Infrastructure\MasterController.cs" />
     <Compile Include="Controllers\QuestionListController.cs" />
     <Compile Include="Controllers\TitleListController.cs" />
     <Compile Include="Filters\AuthenticationAttribute.cs" />

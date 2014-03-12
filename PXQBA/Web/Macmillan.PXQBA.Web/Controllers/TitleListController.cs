@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Macmillan.PXQBA.Business.Contracts;
+using Macmillan.PXQBA.Web.Controllers.Infrastructure;
 
 namespace Macmillan.PXQBA.Web.Controllers
 {
-    public class TitleListController : Controller
+    public class TitleListController : MasterController
     {
         private readonly ITitleListManagementService titleListManagementService;
 
