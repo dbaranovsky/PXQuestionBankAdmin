@@ -10,11 +10,11 @@ namespace Macmillan.PXQBA.Business.Automapper
         protected override void Configure()
         {
             Mapper.CreateMap<Bfw.Agilix.DataContracts.Question, Question>()
-                .ForMember(dto => dto.title, opt => opt.MapFrom(q => q.Title))
-                .ForMember(dto => dto.eBookChapter, opt => opt.MapFrom(q => q.eBookChapter))
-                .ForMember(dto => dto.questionBank, opt => opt.MapFrom(q => q.QuestionBank))
-                .ForMember(dto => dto.questionSeq, opt => opt.Ignore())
-                .ForMember(dto => dto.questionType, opt => opt.Ignore());
+                .ForMember(dto => dto.Title, opt => opt.MapFrom(q => q.Title))
+                .ForMember(dto => dto.EBookChapter, opt => opt.MapFrom(q => q.eBookChapter))
+                .ForMember(dto => dto.QuestionBank, opt => opt.MapFrom(q => q.QuestionBank))
+                .ForMember(dto => dto.QuestionSeq, opt => opt.Ignore())
+                .ForMember(dto => dto.QuestionType, opt => opt.Ignore());
         }
     }
 }

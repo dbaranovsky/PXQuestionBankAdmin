@@ -5,14 +5,14 @@
     /// </summary>
     public class Question
     {
-        public string title;
+        public string Title;
 
-        public string questionType;
+        public string QuestionType;
 
-        public string eBookChapter;
+        public string EBookChapter;
 
-        public string questionBank;
+        public string QuestionBank;
 
-        public string questionSeq;
+        public string QuestionSeq;
     }
 }

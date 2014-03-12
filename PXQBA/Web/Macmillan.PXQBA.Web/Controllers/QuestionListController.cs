@@ -1,17 +1,12 @@
-﻿using System.Collections;
+﻿using Macmillan.PXQBA.Business.Contracts;
+using Macmillan.PXQBA.Web.Controllers.Infrastructure;
 using System.Collections.Generic;
-using System.Globalization;
-using AutoMapper;
-using Bfw.Agilix.DataContracts;
-using Macmillan.PXQBA.Business.Contracts;
 using System.Web.Mvc;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Web.Controllers
 {
-    public class QuestionListController : Controller
+    public class QuestionListController : MasterController
     {
         private readonly IQuestionListManagementService questionListManagementService;
 
@@ -35,7 +30,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
             //For debug paging
             var data = GetFakeQuestions(15);
-            return Json(data);
+            return JsonCamel(data);
         }
 
 
@@ -47,11 +42,11 @@ namespace Macmillan.PXQBA.Web.Controllers
             {
                 questions.Add(new Question()
                               {
-                                  title = "title"+i,
-                                  questionType = "questionType"+i,
-                                  eBookChapter = "eBookChapter"+i,
-                                  questionBank = "questionBank"+i,
-                                  questionSeq = i.ToString()
+                                  Title = "title"+i,
+                                  QuestionType = "questionType"+i,
+                                  EBookChapter = "eBookChapter"+i,
+                                  QuestionBank = "questionBank"+i,
+                                  QuestionSeq = i.ToString()
                               });
             }
 
