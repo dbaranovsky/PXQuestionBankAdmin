@@ -1,5 +1,4 @@
 ﻿using Macmillan.PXQBA.Business.Contracts;
-using Macmillan.PXQBA.Web.Controllers.Infrastructure;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Question = Macmillan.PXQBA.Business.Models.Question;

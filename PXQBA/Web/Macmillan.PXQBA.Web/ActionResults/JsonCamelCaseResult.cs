@@ -5,7 +5,7 @@ using System.Web.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Macmillan.PXQBA.Web.Controllers.Infrastructure
+namespace Macmillan.PXQBA.Web.ActionResults
 {
     /// <summary>
     /// Serialize object to json in camel notation.

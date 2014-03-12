@@ -143,8 +143,8 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Constants\WebKeys.cs" />
-    <Compile Include="Controllers\Infrastructure\JsonCamelCaseResult.cs" />
-    <Compile Include="Controllers\Infrastructure\MasterController.cs" />
+    <Compile Include="ActionResults\JsonCamelCaseResult.cs" />
+    <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\QuestionListController.cs" />
     <Compile Include="Controllers\TitleListController.cs" />
     <Compile Include="Filters\AuthenticationAttribute.cs" />
@@ -183,6 +183,7 @@
     <Content Include="Scripts\app\components\questions\questionFilter.js" />
     <Content Include="Scripts\app\components\questions\questionList.js" />
     <Content Include="Scripts\app\components\questions\questionListPage.js" />
+    <Content Include="Scripts\app\components\questions\questionPaginator.js" />
     <Content Include="Scripts\app\dataAccess\questionDataManager.js" />
     <Content Include="Scripts\app\routes\router.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />

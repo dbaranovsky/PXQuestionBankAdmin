@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
+using Macmillan.PXQBA.Web.ActionResults;
 
-namespace Macmillan.PXQBA.Web.Controllers.Infrastructure
+namespace Macmillan.PXQBA.Web.Controllers
 {
     public abstract class MasterController: Controller
     {
