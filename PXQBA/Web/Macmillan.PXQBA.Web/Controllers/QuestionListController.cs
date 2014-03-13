@@ -1,6 +1,7 @@
 ﻿using Macmillan.PXQBA.Business.Contracts;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using Macmillan.PXQBA.Web.Models.QuestionList;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -22,18 +23,24 @@ namespace Macmillan.PXQBA.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetQuestionData()
+        public ActionResult GetQuestionData(string query, int pageNumber, int pageSize)
         {
-            var questions = questionListManagementService.GetQuestionList();
+            //var questions = questionListManagementService.GetQuestionList();
             //var data = Mapper.Map<IEnumerable<Question>, IEnumerable<Question>>(questions);
 
             //For debug paging
-            var data = GetFakeQuestions(15);
-            return JsonCamel(data);
+            var data = GetFakeQuestions(pageSize, pageNumber);
+            var model = new QuestionListDataResult()
+                        {
+                            TotalPages = 5,
+                            Data = data,
+                            PageNumber = pageNumber
+                        };
+            return JsonCamel(model);
         }
 
 
-        private IEnumerable<Question> GetFakeQuestions(int count)
+        private IEnumerable<Question> GetFakeQuestions(int count, int appender)
         {
             var questions = new List<Question>();
 
@@ -41,11 +48,11 @@ namespace Macmillan.PXQBA.Web.Controllers
             {
                 questions.Add(new Question()
                               {
-                                  Title = "title"+i,
-                                  QuestionType = "questionType"+i,
-                                  EBookChapter = "eBookChapter"+i,
-                                  QuestionBank = "questionBank"+i,
-                                  QuestionSeq = i.ToString()
+                                  Title = "title" + (i + appender),
+                                  QuestionType = "questionType" + (i + appender),
+                                  EBookChapter = "eBookChapter" + (i + appender),
+                                  QuestionBank = "questionBank" + (i + appender),
+                                  QuestionSeq = (i + appender).ToString()
                               });
             }
 
