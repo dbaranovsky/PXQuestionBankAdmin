@@ -192,6 +192,8 @@
     <Content Include="Scripts\app\src\components\questions\question.js" />
     <Content Include="Scripts\app\src\components\questions\questionFilter.js" />
     <Content Include="Scripts\app\src\components\questions\questionList.js" />
+    <Content Include="Scripts\app\src\components\questions\questionListHeader.js" />
+    <Content Include="Scripts\app\src\components\questions\questionListMenu.js" />
     <Content Include="Scripts\app\src\components\questions\questionListPage.js" />
     <Content Include="Scripts\app\src\components\questions\questionPaginator.js" />
     <Content Include="Scripts\bootstrap\bootstrap-paginator.min.js" />
