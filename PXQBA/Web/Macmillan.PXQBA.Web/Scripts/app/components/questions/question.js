@@ -11,23 +11,27 @@ var Question = React.createClass({displayName: 'Question',
 				),
 
 				React.DOM.td( {className:"eBookChapter"}, 
-					this.props.eBookChapter
+					this.props.metadata.eBookChapter
 				),
 
 				React.DOM.td( {className:"questionBank"}, 
-				    this.props.questionBank
+				    this.props.metadata.questionBank
 				),
 
 				React.DOM.td( {className:"questionSeq"}, 
-					this.props.questionSeq
+					this.props.metadata.questionSeq
 				),
 
 				React.DOM.td( {className:"title"}, 
-				    React.DOM.div(null, this.props.title, " " )
+				    React.DOM.div(null, 
+				    React.DOM.span( {className:"glyphicon glyphicon-chevron-right"}),
+				    this.props.metadata.title
+				    ),
+				    React.DOM.div( {className:"preview-collapsed question-preview"}, "hidden preview")
 				),
 
 				React.DOM.td( {className:"questionType"}, 
-					this.props.questionType
+					this.props.metadata.questionType
 				),
 
 			    React.DOM.td( {className:"actions"}  
