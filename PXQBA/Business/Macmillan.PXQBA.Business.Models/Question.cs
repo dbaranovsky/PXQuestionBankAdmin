@@ -47,7 +47,7 @@ namespace Macmillan.PXQBA.Business.Models
 
         public double PointPossible;
 
-        public List<QuestionChoice> Choices;
+      //  public List<QuestionChoice> Choices;
 
         public string Answer;
 

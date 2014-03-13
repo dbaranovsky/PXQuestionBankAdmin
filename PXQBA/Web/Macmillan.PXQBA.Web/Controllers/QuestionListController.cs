@@ -1,4 +1,5 @@
-﻿using Macmillan.PXQBA.Business.Contracts;
+﻿using AutoMapper;
+using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
 using System.Collections.Generic;
@@ -31,11 +32,13 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult GetQuestionData(string query, int pageNumber)
         {
+            var questions = questionListManagementService.GetQuestionList();
             // uncomment this for real data
             //var questions = questionListManagementService.GetQuestionList();
             //var data = Mapper.Map<IEnumerable<Question>, IEnumerable<Question>>(questions);
 
             //For debug paging
+
             var questions =  GetFakeQuestionsFromXml();
             var model = new QuestionListDataResult()
                         {
@@ -44,7 +47,11 @@ namespace Macmillan.PXQBA.Web.Controllers
                             PageNumber = pageNumber
                         };
             return JsonCamel(model);
+            //  var data = GetFakeQuestions(15);
+            var result = JsonCamel(data);
+            return JsonCamel(data);
         }
+
 
 
         /// <summary>
