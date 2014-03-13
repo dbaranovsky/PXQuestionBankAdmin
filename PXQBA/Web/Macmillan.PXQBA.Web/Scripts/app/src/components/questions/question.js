@@ -4,6 +4,13 @@
 
 var Question = React.createClass({
 	render: function() {
+
+		var questionPreview = this.props.data.map(function (questionPreview) {
+            return (<QuestionPreview 
+            		preview = {question.questionHtmlInlinePreview}
+            			     />);
+         	 });
+
 		return ( 
 			<tr className="question">
 				<td> 
@@ -27,7 +34,9 @@ var Question = React.createClass({
 				    <span className="glyphicon glyphicon-chevron-right"></span>
 				    {this.props.metadata.title}
 				    </div>
-				    <div className="preview-collapsed question-preview">hidden preview</div>
+				    <div className="preview-collapsed question-preview">
+				    {questionPreview}
+				    </div>
 				</td>
 
 				<td className="questionType">

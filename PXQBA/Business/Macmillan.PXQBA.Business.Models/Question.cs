@@ -7,15 +7,15 @@ namespace Macmillan.PXQBA.Business.Models
     /// </summary>
     public class Question
     {
-        public string title;
+        public string Title;
 
-        public string questionType;
+        public string QuestionType;
 
-        public string eBookChapter;
+        public string EBookChapter;
 
-        public string questionBank;
+        public string QuestionBank;
 
-        public string questionSeq;
+        public string QuestionSeq;
 
         public string EnrollmentId;
 
@@ -24,8 +24,6 @@ namespace Macmillan.PXQBA.Business.Models
         public string FormerId;
 
         public string Id;
-
-        public string Title;
 
         public string GeneralFeedback;
 
@@ -40,8 +38,6 @@ namespace Macmillan.PXQBA.Business.Models
         public string HtsPlayerUrl;
 
         public string Type;
-
-        public string QuestionType;
 
         public string QuestionTypeUrl;
 
@@ -69,6 +65,7 @@ namespace Macmillan.PXQBA.Business.Models
 
         public List<string> QuestionMetaData;
 
+        public string QuestionHtmlInlinePreview;
 
     }
 }
