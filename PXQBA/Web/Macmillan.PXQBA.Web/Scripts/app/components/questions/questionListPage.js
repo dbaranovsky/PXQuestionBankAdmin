@@ -14,7 +14,9 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
 					QuestionList( {data:this.props.data})
 				), 
 				React.DOM.div(null,  
-					QuestionPaginator(null)
+					QuestionPaginator( {metadata:{
+						    currentPage: this.props.currentPage,
+						    totalPages: this.props.totalPages}} )
 				) 
 			) 
 			);

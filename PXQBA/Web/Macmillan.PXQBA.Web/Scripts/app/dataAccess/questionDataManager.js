@@ -1,21 +1,29 @@
 ﻿var questionDataManager = (function() {
     var self = {};
+    self.dataCache = [];
     self.data = [];
-    self.getQuestionsByQuery = function (query) {
-        if (self.data.length > 0) {
-            return $.Deferred(function() {
-                this.resolve(self.data);
-            });
-        }
-        
+
+    self.processDataResponse = function (response) {
+        self.dataCache = response.data;
+    };
+
+    self.getQuestionsByQuery = function (query, page) {
+
+        var data = {
+            query: query,
+            pageNumber: page,
+            pageSize: window.actions.questionList.pageSize
+        };
+
         return $.ajax({
             url: window.actions.questionList.getQuestionListUrl,
+            data: data,
             dataType: 'json',
             type: 'POST'
-        }).done(function(data) {
-            self.data = data;
+        }).done(function (response) {
+            self.processDataResponse(response);
         });
-
     };
+    
     return self;
 }());

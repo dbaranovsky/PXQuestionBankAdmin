@@ -10,7 +10,7 @@ var QuestionFilter = React.createClass({displayName: 'QuestionFilter',
 				 	React.DOM.span(null, 
 				 		 React.DOM.strong(null,  " Filter: " ) 
 				    ),
-				    React.DOM.a( {href:"#filter/"},  " Favourite filter")
+				    React.DOM.a( {href:"#/filter/query/page/1"},  " Favourite filter")
 				)
 			)
 			);

@@ -133,7 +133,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
@@ -151,6 +150,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\QuestionList\QuestionListDataResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +189,7 @@
     <Content Include="Scripts\app\components\questions\questionPaginator.js" />
     <Content Include="Scripts\app\dataAccess\questionDataManager.js" />
     <Content Include="Scripts\app\routes\router.js" />
+    <Content Include="Scripts\app\routes\routsManager.js" />
     <Content Include="Scripts\app\src\components\questions\question.js" />
     <Content Include="Scripts\app\src\components\questions\questionFilter.js" />
     <Content Include="Scripts\app\src\components\questions\questionList.js" />

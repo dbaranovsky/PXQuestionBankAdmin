@@ -4,22 +4,30 @@
 
 var QuestionPaginator = React.createClass({displayName: 'QuestionPaginator',
 
-	componentDidMount: function() {
-         var options = {
-            currentPage: 1,
-            totalPages: 10,
+	paginatorInitializer: function (container) {
+		var options = {
+            currentPage: this.props.metadata.currentPage,
+            totalPages: this.props.metadata.totalPages,
             onPageChanged: function(event, oldPage, newPage) {
-            	//ToDo: Implement 
+            	routsManager.setPage(newPage);
             }
-        }
+        };
 
-        $('#question-paginator').bootstrapPaginator(options);
+        container.bootstrapPaginator(options);
+	},
+
+	componentDidMount: function() {
+         this.paginatorInitializer($(this.getDOMNode()));
+	},
+
+	componentDidUpdate: function () {
+		this.paginatorInitializer($(this.getDOMNode()));
 	},
 
 	render: function() {
 		return ( 
-			   React.DOM.div( {className:"questionPaginator", id:"question-paginator"} 
+			   React.DOM.div( {className:"questionPaginator"} 
 			   )
 			);
-		}
+	}
 });
