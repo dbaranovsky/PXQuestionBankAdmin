@@ -44,7 +44,6 @@ input[type="checkbox"].input-validation-error {
 .hover {
     background: grey !important;
 }
-}
 
 .preview-collapsed {
      display: none;

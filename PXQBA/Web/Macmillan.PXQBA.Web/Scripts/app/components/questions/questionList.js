@@ -1,67 +1,102 @@
 ﻿/**
-* @jsx React.DOM
-*/
+* @jsx React.DOM  
+*/    
 
 var QuestionList = React.createClass({displayName: 'QuestionList',
 
 		componentDidMount: function() {
 
-     		var mouseIn =  function(event) {
-     			//ToDo: implement  show menu actions here
-          var tr = $(event.target).closest('tr');
-     			tr.addClass('hover');
-           
-          //ToDo Extract to react.js component (menu)
-       		tr.find('.actions').append('<div>'
-                                      +'<button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil"></span></button>'
-                                      +'<button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-copyright-mark"></span></button>'
-                                      +'<button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-trash"></span></button>'
-                                      +'</div>');
-        }
+        var menuContainer = $('#question-menu-container');
+
+       	var mouseInRowHandler =  function(event) {
+              var tr = $(event.target).closest('tr');
+         			tr.addClass('hover');
+              tr.find('.actions').append(menuContainer.html());
+          }
         
-        var mousOut = function (event) {
-			        //ToDo: implement hide menu actions here    
+        var mousOutRowHandler = function (event) {
                var tr = $(event.target).closest('tr');
                tr.removeClass('hover');
                tr.find('.actions').empty();
         }
 
+        //ToDo: need fix:
+        // 1) not(:first) not working, need fix this. 
+        // 2) if hover in button, mouseout execute.
+        $('#question-table').on('tr:not(:first)').mouseover(mouseInRowHandler);
+        $('#question-table').on('tr:not(:first)').mouseout(mousOutRowHandler);
 
-			     //ToDo: not(:first) not working, need fix this !!
-            $('#question-table tr').hover(mouseIn,mousOut);
-			      //$('#question-table').on('tr:not(:first)').mouseout(mousOut);
+        var toggleAllPreviews = function (event){
+       //ToDO: implement change of image
+        var questionPreviews = $(event.target).closest('table').find('.question-preview');
+        var chevronIcon =  $(event.target).closest('th').find('.glyphicon');
+        $(chevronIcon).toggleClass('glyphicon-chevron-right').toggleClass('glyphicon-chevron-down');
+        if($(chevronIcon).hasClass('glyphicon-chevron-down')){
+            $.each(questionPreviews, function(index, value){
+          expandPreview($(value).closest('td'));
+        });
+
+        }
+        else{
+           $.each(questionPreviews, function(index, value){
+          collapsePreview($(value).closest('td'));
+        });
+
+       
+        }
+      
+
+        }
+
+        var toggleInlineHandler = function (event)
+        {
+          toggleInline(event.target);
+        }
+
+        var toggleInline = function (obj){
+         if ($(obj).closest('td').find('.glyphicon').hasClass('glyphicon-chevron-right'))
+         {
+          expandPreview($(obj).closest('td'));
+         }
+         else
+         {
+          collapsePreview($(obj).closest('td'));
+         }
+        }
+
+        var expandPreview = function (obj)
+        {
+           $(obj).find('.glyphicon').removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-down');
+           $(obj).find('.question-preview').removeClass('preview-collapsed');
+
+        }
+
+         var collapsePreview = function (obj)
+        {
+           $(obj).find('.glyphicon').addClass('glyphicon-chevron-right').removeClass('glyphicon-chevron-down');
+           $(obj).find('.question-preview').addClass('preview-collapsed');
+
+        }
+
+            $('#question-table').on('click', '.title-header', toggleAllPreviews);
+            $('#question-table').on('click', '.title', toggleInlineHandler);
 		},
 
 
   	    render: function() {
         var questions = this.props.data.map(function (question) {
-            return (Question( {title:question.title,
-            			     questionType:question.questionType, 
-            			     eBookChapter:question.eBookChapter,
-            			     questionBank:question.questionBank,
-            			     questionSeq:question.questionSeq}
-            			     ));
+            return (Question( {metadata:question} ));
           });
 
-
-        var header = function() {
-        	return(
-        		React.DOM.tr(null, 
-        			React.DOM.th( {style: {width:'5%'}},  " ", React.DOM.input( {type:"checkbox"})),
-         			React.DOM.th( {style: {width:'10%'}},  " Chapter"),
-        			React.DOM.th( {style: {width:'10%'}},  " Bank"),
-        			React.DOM.th( {style: {width:'10%'}},  " Seq " ),
-        			React.DOM.th( {style: {width:'40%'}},  " Title " ),
-              React.DOM.th( {style: {width:'10%'}},  " Format " ),
-              React.DOM.th( {style: {width:'15%'}},  " " )
-        		)
-        	);}
- 
         return (
           React.DOM.div( {className:"questionList"}, 
+              React.DOM.div( {id:"question-menu-container", style:{display:'none'}}, 
+                  QuestionListMenu(null )
+              ),
+
            		React.DOM.table( {className:"table table", id:"question-table"}, 
            		   React.DOM.thead(null, 
-           		  header()
+           		    QuestionListHeader(null )
            		  ),
            		  React.DOM.tbody(null,  
           		  questions

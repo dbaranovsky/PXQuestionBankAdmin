@@ -11,27 +11,27 @@ var Question = React.createClass({
 				</td>
 
 				<td className="eBookChapter">
-					{this.props.eBookChapter}
+					{this.props.metadata.eBookChapter}
 				</td>
 
 				<td className="questionBank">
-				    {this.props.questionBank}
+				    {this.props.metadata.questionBank}
 				</td>
 
 				<td className="questionSeq">
-					{this.props.questionSeq}
+					{this.props.metadata.questionSeq}
 				</td>
 
 				<td className="title">
 				    <div>
 				    <span className="glyphicon glyphicon-chevron-right"></span>
-				    {this.props.title}
+				    {this.props.metadata.title}
 				    </div>
 				    <div className="preview-collapsed question-preview">hidden preview</div>
 				</td>
 
 				<td className="questionType">
-					{this.props.questionType}
+					{this.props.metadata.questionType}
 				</td>
 
 			    <td className="actions">  
