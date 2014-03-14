@@ -16,7 +16,7 @@ namespace Macmillan.PXQBA.Web
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                 defaults: new { controller = "QuestionList", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "QuestionList", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

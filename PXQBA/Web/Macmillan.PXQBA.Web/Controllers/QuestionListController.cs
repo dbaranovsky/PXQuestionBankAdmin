@@ -1,7 +1,10 @@
 ﻿using Macmillan.PXQBA.Business.Contracts;
-using System.Collections.Generic;
-using System.Web.Mvc;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Common.Helpers;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using System.Xml;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -10,9 +13,12 @@ namespace Macmillan.PXQBA.Web.Controllers
     {
         private readonly IQuestionListManagementService questionListManagementService;
 
+        private readonly int questionPerPage;
+
         public QuestionListController(IQuestionListManagementService questionListManagementService)
         {
             this.questionListManagementService = questionListManagementService;
+            this.questionPerPage = ConfigurationHelper.GetQuestionPerPage();
         }
 
         //
@@ -23,22 +29,30 @@ namespace Macmillan.PXQBA.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetQuestionData(string query, int pageNumber, int pageSize)
+        public ActionResult GetQuestionData(string query, int pageNumber)
         {
+            // uncomment this for real data
             //var questions = questionListManagementService.GetQuestionList();
             //var data = Mapper.Map<IEnumerable<Question>, IEnumerable<Question>>(questions);
 
             //For debug paging
+            var questions =  GetFakeQuestionsFromXml();
             var model = new QuestionListDataResult()
                         {
-                            TotalPages = 5,
-                            QuestionList = GetFakeQuestions(pageSize, pageNumber),
+                            TotalPages = questions.Count / questionPerPage,
+                            QuestionList = questions.ToList().Skip(pageNumber-1 * questionPerPage).Take(questionPerPage),
                             PageNumber = pageNumber
                         };
             return JsonCamel(model);
         }
 
 
+        /// <summary>
+        /// For deubg. Get list of questions.
+        /// </summary>
+        /// <param name="count"></param>
+        /// <param name="appender"></param>
+        /// <returns></returns>
         private IEnumerable<Question> GetFakeQuestions(int count, int appender)
         {
             var questions = new List<Question>();
@@ -58,5 +72,36 @@ namespace Macmillan.PXQBA.Web.Controllers
             return questions;
         }
 
+        /// <summary>
+        /// For deubg. Get list of questions from xml.
+        /// </summary>
+        /// <returns></returns>
+        private IList<Question> GetFakeQuestionsFromXml()
+        {
+            var questions = new List<Question>();
+
+            const string xmlFilePath = @"~\App_Data\dataMar-14-2014.xml";
+
+            using (var xmlStream = System.IO.File.OpenRead(Server.MapPath(xmlFilePath)))
+            {
+                var document = new XmlDocument();
+                document.Load(xmlStream);
+                var nodes = document.SelectNodes("/records/record");
+                questions.AddRange(from XmlNode node in nodes
+                                   select new Question()
+                                   {
+                                       Title = node.SelectSingleNode("Title").InnerText,
+                                       EBookChapter = node.SelectSingleNode("Chapter").InnerText,
+                                       QuestionBank = node.SelectSingleNode("Bank").InnerText,
+                                       QuestionSeq = node.SelectSingleNode("Seq").InnerText,
+                                       QuestionType = node.SelectSingleNode("Format").InnerText
+                                   });
+            }
+
+            return questions;
+        }
     }
+
+
+
 }

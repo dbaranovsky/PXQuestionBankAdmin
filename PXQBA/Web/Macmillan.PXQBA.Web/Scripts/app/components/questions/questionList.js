@@ -4,7 +4,7 @@
 
 var QuestionList = React.createClass({displayName: 'QuestionList',
 
-		componentDidMount: function() {
+    componentDidMount: function() {
 
         var questionListContainer = $(this.getDOMNode());
         var menuContainer = questionListContainer.find('.question-menu-container');
@@ -72,7 +72,7 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
 		    
     },
 
-  	render: function() {
+    render: function() {
         var questions = this.props.data.map(function (question) {
             return (Question( {metadata:question} ));
           });

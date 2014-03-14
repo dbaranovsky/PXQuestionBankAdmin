@@ -13,9 +13,7 @@ crossroads.addRoute('/filter/{query}/page/{page}', function (query, page) {
 });
 
 crossroads.addRoute('', function() {
-	React.renderComponent(
-        QuestionListPage({ data: [], currentPage: 1, totalPages: 1 }, " "),
-        $('#question-container')[0]);
+    hasher.setHash('filter/query/page/1');
 });
 
 //setup hasher
