@@ -1,7 +1,7 @@
 ﻿using Macmillan.PXQBA.Business.Contracts;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using Macmillan.PXQBA.Web.Models.QuestionList;
+using Macmillan.PXQBA.Business.Models;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -29,11 +29,10 @@ namespace Macmillan.PXQBA.Web.Controllers
             //var data = Mapper.Map<IEnumerable<Question>, IEnumerable<Question>>(questions);
 
             //For debug paging
-            var data = GetFakeQuestions(pageSize, pageNumber);
             var model = new QuestionListDataResult()
                         {
                             TotalPages = 5,
-                            Data = data,
+                            QuestionList = GetFakeQuestions(pageSize, pageNumber),
                             PageNumber = pageNumber
                         };
             return JsonCamel(model);
