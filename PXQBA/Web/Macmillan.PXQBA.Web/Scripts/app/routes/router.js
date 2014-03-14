@@ -5,7 +5,7 @@ crossroads.addRoute('/filter/{query}/page/{page}', function (query, page) {
     var questionsData = questionDataManager.getQuestionsByQuery(query, page);
     questionsData.done(function (response) {
         React.renderComponent(
-            QuestionListPage({ data: response.data, currentPage: response.pageNumber, totalPages: response.totalPages }, " "),
+            QuestionListPage({ data: response.questionList, currentPage: response.pageNumber, totalPages: response.totalPages }, " "),
             $('#question-container')[0]);
     }).fail(function () {
         console.error("getQuestionsBy:", error);

@@ -1,15 +1,27 @@
 ﻿var questionDataManager = (function() {
     var self = {};
-    self.dataCache = [];
-    self.data = [];
+
 
     self.processDataResponse = function (response) {
-        self.dataCache = response.data;
+        //save in cache here
+    };
+
+    self.loadFromCache = function(query, page) {
+        // load from cache here
+        return null;
     };
 
     self.getQuestionsByQuery = function (query, page) {
+        
+        var cacheResult = self.loadFromCache(query, page);
 
-        var data = {
+        if (cacheResult != null) {
+            return $.Deferred(function() {
+                this.resolve(cacheResult);
+            });
+        }
+
+        var request = {
             query: query,
             pageNumber: page,
             pageSize: window.actions.questionList.pageSize
@@ -17,7 +29,7 @@
 
         return $.ajax({
             url: window.actions.questionList.getQuestionListUrl,
-            data: data,
+            data: request,
             dataType: 'json',
             type: 'POST'
         }).done(function (response) {

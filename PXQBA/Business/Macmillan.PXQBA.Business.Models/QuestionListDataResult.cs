@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using Question = Macmillan.PXQBA.Business.Models.Question;
 
-namespace Macmillan.PXQBA.Web.Models.QuestionList
+namespace Macmillan.PXQBA.Business.Models
 {
     /// <summary>
     /// Represent collection of question for react.js controls
@@ -17,7 +15,7 @@ namespace Macmillan.PXQBA.Web.Models.QuestionList
         /// <summary>
         /// List of questions
         /// </summary>
-        public IEnumerable<Question> Data { get; set; }
+        public IEnumerable<Question> QuestionList { get; set; }
 
         /// <summary>
         /// Total pages for current query
