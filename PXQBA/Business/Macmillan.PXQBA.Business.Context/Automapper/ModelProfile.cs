@@ -16,7 +16,7 @@ namespace Macmillan.PXQBA.Business.Automapper
                 .ForMember(dto => dto.QuestionBank, opt => opt.MapFrom(q => q.QuestionBank))
                 .ForMember(dto => dto.QuestionSeq, opt => opt.Ignore())
                 .ForMember(dto => dto.QuestionType, opt => opt.Ignore())
-                .ForMember(dto => dto.QuestionHtmlInlinePreview, opt => opt.MapFrom( q => QuestionHelper.GetQuestionHtmlPreview(q.InteractionData)));
+                .ForMember(dto => dto.QuestionHtmlInlinePreview, opt => opt.MapFrom( q => QuestionHelper.GetQuestionHtmlPreview(q)));
         }
     }
 }

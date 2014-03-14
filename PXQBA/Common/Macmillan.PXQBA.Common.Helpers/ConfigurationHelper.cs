@@ -50,5 +50,26 @@ namespace Macmillan.PXQBA.Common.Helpers
 
             return defaultValue;
         }
+
+
+        public static string GetHTSConverterUrl()
+        {
+            var url = ConfigurationManager.AppSettings[ConfigurationKeys.HtsConverter];
+            if (!string.IsNullOrEmpty(url))
+            {
+                return url;
+            }
+            return "http://dev.px.bfwpub.com/PxHTS/PxPlayer.ashx";
+        }
+
+        public static string GetFmaGraphConverterUrl()
+        {
+            var url = ConfigurationManager.AppSettings[ConfigurationKeys.FmaGraphConverter];
+            if (!string.IsNullOrEmpty(url))
+            {
+                return url;
+            }
+            return "http://dev.px.bfwpub.com/PxEG/authormode2.aspx";
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using System.Linq;
+using System.Web;
+using AutoMapper;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
@@ -6,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Xml;
+using Macmillan.PXQBA.Common.Helpers;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -32,10 +35,12 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult GetQuestionData(string query, int pageNumber)
         {
-            var questions = questionListManagementService.GetQuestionList();
+
             // uncomment this for real data
             //var questions = questionListManagementService.GetQuestionList();
             //var data = Mapper.Map<IEnumerable<Question>, IEnumerable<Question>>(questions);
+          
+
 
             //For debug paging
 
@@ -47,9 +52,6 @@ namespace Macmillan.PXQBA.Web.Controllers
                             PageNumber = pageNumber
                         };
             return JsonCamel(model);
-            //  var data = GetFakeQuestions(15);
-            var result = JsonCamel(data);
-            return JsonCamel(data);
         }
 
 
@@ -107,8 +109,19 @@ namespace Macmillan.PXQBA.Web.Controllers
 
             return questions;
         }
+        private IEnumerable<Question> SetMockTitles(IEnumerable<Question> questions)
+        {
+
+            foreach (var question in questions)
+            {
+                var words = question.Title.Split(' ');
+                question.EBookChapter = string.Join(" ", words.Take(2));
+                question.QuestionBank = string.Join(" ", words.Skip(2));
+                question.QuestionSeq = "Consectetur";
+                question.QuestionType = "Custom";
+            }
+            return questions;
+        }
     }
-
-
 
 }

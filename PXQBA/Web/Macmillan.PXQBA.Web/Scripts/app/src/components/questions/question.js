@@ -28,7 +28,7 @@ var Question = React.createClass({
 				    <span className="glyphicon glyphicon-chevron-right"></span>
 				    {this.props.metadata.title}
 				    </div>
-				    <QuestionPreview preview={this.props.questionHtmlInlinePreview}/>
+				    <QuestionPreview preview={this.props.metadata.questionHtmlInlinePreview}/>
 				    
 				</td>
 

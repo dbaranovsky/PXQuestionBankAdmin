@@ -30,6 +30,9 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
         /// CQ request string with placeholders
         /// </summary>
         public const string CQScriptString = "if(typeof CQ ==='undefined')CQ = window.parent.CQ; CQ.questionInfoList['{0}'] = {{ divId: '{1}', version: '{2}', mode: '{3}', question: {{ body: '{4}', data: {5}}}, response: {{ pointspossible: '{6}', pointsassigned: '{7}'}} }}";
-        
+
+        public const string HtsConverter = "HtsConverter";
+        public const string FmaGraphConverter = "FmaConverter";
+
     }
 }

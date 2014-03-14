@@ -7,28 +7,41 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Xml.Linq;
+using Bfw.Agilix.DataContracts;
 
 namespace Macmillan.PXQBA.Common.Helpers
 {
     public static class QuestionHelper
     {
-        public static string GetQuestionHtmlPreview(string interactionData)
+        public static string GetQuestionHtmlPreview(Question question)
         {
-           
-            if (String.IsNullOrEmpty(interactionData))
+
+         
+            if (String.IsNullOrEmpty(question.InteractionData))
             {
                //TODO: handle empty interaction data
                 return "Something gone wrong";
             }
 
-            return "Test";
+            if (question.InteractionType.ToLower() != "custom")
+            {
+                return "Not Custom Qeestion: to be implemented..";
+            }
+
+            if (question.CustomUrl == "HTS")
+            {
+                return GetHTSQuestionPreview(ConfigurationHelper.GetHTSConverterUrl(), question.InteractionData,
+                    question.Id);
+            }
+            return GetFmaGraphQuestionPreview(ConfigurationHelper.GetHTSConverterUrl(), question.InteractionData,
+                question.Id);
         }
 
         /// <summary>
         /// Get HTS Question Preview
         /// </summary>
-        /// <param name="sUrl"></param>
-        /// <param name="sXml"></param>
+        /// <param name="sUrl">BrainHoney Player URL</param>
+        /// <param name="sXml">Interaction Data</param>
         /// <param name="questionId"></param>
         /// <returns></returns>
         public static string GetHTSQuestionPreview(string sUrl, string sXml, string questionId)
@@ -135,10 +148,10 @@ namespace Macmillan.PXQBA.Common.Helpers
         /// Get Graph Question Preview
         /// </summary>
         /// <param name="sUrl"></param>
-        /// <param name="sXml"></param>
+        /// <param name="sXml">Interaction Data</param>
         /// <param name="questionId"></param>
         /// <returns></returns>
-        public static string GetGraphQuestionPreview(string sUrl, string sXml, string questionId)
+        public static string GetFmaGraphQuestionPreview(string sUrl, string sXml, string questionId)
         {
             string sResponse = "";
             string sQuestionData = sXml;
@@ -220,12 +233,14 @@ namespace Macmillan.PXQBA.Common.Helpers
                 }
                 catch (Exception ex2)
                 {
-                    sResponse = "There was an error: " + ex2.ToString();
+                    sResponse = "There was an error: " + ex2;
                 }
 
             
             return sResponse;
         }
 
-   }
+
+
+    }
 }
