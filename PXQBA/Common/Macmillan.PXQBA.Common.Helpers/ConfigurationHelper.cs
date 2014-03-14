@@ -33,5 +33,22 @@ namespace Macmillan.PXQBA.Common.Helpers
             }
             return "fakepassword";
         }
+
+        /// <summary>
+        /// Get question per page parameter from config
+        /// </summary>
+        /// <returns>Question per page</returns>
+        public static int GetQuestionPerPage()
+        {
+            const int defaultValue = 50;
+
+            var questionPerPage = ConfigurationManager.AppSettings[ConfigurationKeys.QuestionPerPage];
+            if (!string.IsNullOrEmpty(questionPerPage))
+            {
+                return Int32.Parse(questionPerPage);
+            }
+
+            return defaultValue;
+        }
     }
 }

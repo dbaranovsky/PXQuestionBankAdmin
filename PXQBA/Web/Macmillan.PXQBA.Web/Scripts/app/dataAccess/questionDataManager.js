@@ -24,7 +24,6 @@
         var request = {
             query: query,
             pageNumber: page,
-            pageSize: window.actions.questionList.pageSize
         };
 
         return $.ajax({

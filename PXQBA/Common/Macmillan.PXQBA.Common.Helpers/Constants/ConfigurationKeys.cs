@@ -20,5 +20,10 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
         /// Key for brain honey default password
         /// </summary>
         public const string BrainhoneyDefaultPassword = "BrainhoneyDefaultPassword";
+
+        /// <summary>
+        /// Key for number of question on the page in question list
+        /// </summary>
+        public const string QuestionPerPage = "QuestionPerPage";
     }
 }
