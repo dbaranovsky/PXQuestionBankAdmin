@@ -27,7 +27,10 @@ namespace Macmillan.PXQBA.Common.Helpers
                 element.Add(new XAttribute(to, newVal != null ? newVal : attr.Value));
                 attr.Remove();
             }
-            catch { }
+            catch
+            {
+                
+            }
         }
 
         /// <summary>

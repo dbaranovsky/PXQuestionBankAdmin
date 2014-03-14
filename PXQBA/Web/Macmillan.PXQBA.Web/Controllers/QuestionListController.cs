@@ -37,13 +37,11 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
 
             // uncomment this for real data
-            //var questions = questionListManagementService.GetQuestionList();
-            //var data = Mapper.Map<IEnumerable<Question>, IEnumerable<Question>>(questions);
-          
-
+            //var questionList = questionListManagementService.GetQuestionList();
+            //var questions = (IList<Question>) Mapper.Map<IEnumerable<Bfw.Agilix.DataContracts.Question>, IEnumerable<Question>>(questionList);
+            //questions = SetMockTitles(questions);
 
             //For debug paging
-
             var questions =  GetFakeQuestionsFromXml();
             var model = new QuestionListDataResult()
                         {
@@ -55,31 +53,6 @@ namespace Macmillan.PXQBA.Web.Controllers
         }
 
 
-
-        /// <summary>
-        /// For deubg. Get list of questions.
-        /// </summary>
-        /// <param name="count"></param>
-        /// <param name="appender"></param>
-        /// <returns></returns>
-        private IEnumerable<Question> GetFakeQuestions(int count, int appender)
-        {
-            var questions = new List<Question>();
-
-            for (int i = 0; i < count; i++)
-            {
-                questions.Add(new Question()
-                              {
-                                  Title = "title" + (i + appender),
-                                  QuestionType = "questionType" + (i + appender),
-                                  EBookChapter = "eBookChapter" + (i + appender),
-                                  QuestionBank = "questionBank" + (i + appender),
-                                  QuestionSeq = (i + appender).ToString()
-                              });
-            }
-
-            return questions;
-        }
 
         /// <summary>
         /// For deubg. Get list of questions from xml.
@@ -109,7 +82,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
             return questions;
         }
-        private IEnumerable<Question> SetMockTitles(IEnumerable<Question> questions)
+        private IList<Question> SetMockTitles(IEnumerable<Question> questions)
         {
 
             foreach (var question in questions)
@@ -120,7 +93,7 @@ namespace Macmillan.PXQBA.Web.Controllers
                 question.QuestionSeq = "Consectetur";
                 question.QuestionType = "Custom";
             }
-            return questions;
+            return (IList<Question>) questions;
         }
     }
 

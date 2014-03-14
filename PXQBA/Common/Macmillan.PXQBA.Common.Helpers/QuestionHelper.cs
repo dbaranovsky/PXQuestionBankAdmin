@@ -112,7 +112,7 @@ namespace Macmillan.PXQBA.Common.Helpers
                     sResponse = cqScript + sResponse;
 
                     //=== required if rendering question in iframe          
-                    string cqPatch = "<script type='text/javascript' src='/Scripts/Quiz/CQ.js' />";
+                    string cqPatch = "<script type='text/javascript' src='/Scripts/quiz/CQ.js' />";
                     sResponse = cqPatch + sResponse;
                     //===
 
