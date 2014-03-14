@@ -234,9 +234,9 @@
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\QuestionList\Index.cshtml" />
     <Content Include="Views\TitleList\Index.cshtml" />
     <Content Include="Views\Shared\_CommonJS.cshtml" />
+    <Content Include="Views\QuestionList\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Context\Macmillan.PXQBA.Business.csproj">

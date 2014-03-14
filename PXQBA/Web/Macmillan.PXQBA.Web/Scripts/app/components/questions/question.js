@@ -4,6 +4,7 @@
 
 var Question = React.createClass({displayName: 'Question',
 	render: function() {
+
 		return ( 
 			React.DOM.tr( {className:"question"}, 
 				React.DOM.td(null,  
@@ -27,7 +28,8 @@ var Question = React.createClass({displayName: 'Question',
 				    React.DOM.span( {className:"glyphicon glyphicon-chevron-right"}),
 				    this.props.metadata.title
 				    ),
-				    React.DOM.div( {className:"preview-collapsed question-preview"}, "hidden preview")
+				    QuestionPreview( {preview:this.props.metadata.questionHtmlInlinePreview})
+				    
 				),
 
 				React.DOM.td( {className:"questionType"}, 

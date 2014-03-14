@@ -1,10 +1,14 @@
-﻿using Macmillan.PXQBA.Business.Contracts;
+﻿using System.Linq;
+using System.Web;
+using AutoMapper;
+using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Xml;
+using Macmillan.PXQBA.Common.Helpers;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -31,9 +35,11 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult GetQuestionData(string query, int pageNumber)
         {
+
             // uncomment this for real data
-            //var questions = questionListManagementService.GetQuestionList();
-            //var data = Mapper.Map<IEnumerable<Question>, IEnumerable<Question>>(questions);
+            //var questionList = questionListManagementService.GetQuestionList();
+            //var questions = (IList<Question>) Mapper.Map<IEnumerable<Bfw.Agilix.DataContracts.Question>, IEnumerable<Question>>(questionList);
+            //questions = SetMockTitles(questions);
 
             //For debug paging
             var questions =  GetFakeQuestionsFromXml();
@@ -47,30 +53,6 @@ namespace Macmillan.PXQBA.Web.Controllers
         }
 
 
-        /// <summary>
-        /// For deubg. Get list of questions.
-        /// </summary>
-        /// <param name="count"></param>
-        /// <param name="appender"></param>
-        /// <returns></returns>
-        private IEnumerable<Question> GetFakeQuestions(int count, int appender)
-        {
-            var questions = new List<Question>();
-
-            for (int i = 0; i < count; i++)
-            {
-                questions.Add(new Question()
-                              {
-                                  Title = "title" + (i + appender),
-                                  QuestionType = "questionType" + (i + appender),
-                                  EBookChapter = "eBookChapter" + (i + appender),
-                                  QuestionBank = "questionBank" + (i + appender),
-                                  QuestionSeq = (i + appender).ToString()
-                              });
-            }
-
-            return questions;
-        }
 
         /// <summary>
         /// For deubg. Get list of questions from xml.
@@ -100,8 +82,19 @@ namespace Macmillan.PXQBA.Web.Controllers
 
             return questions;
         }
+        private IList<Question> SetMockTitles(IEnumerable<Question> questions)
+        {
+
+            foreach (var question in questions)
+            {
+                var words = question.Title.Split(' ');
+                question.EBookChapter = string.Join(" ", words.Take(2));
+                question.QuestionBank = string.Join(" ", words.Skip(2));
+                question.QuestionSeq = "Consectetur";
+                question.QuestionType = "Custom";
+            }
+            return (IList<Question>) questions;
+        }
     }
-
-
 
 }

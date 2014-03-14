@@ -119,7 +119,7 @@ namespace Bfw.Agilix.Commands
             if (DlapResponseCode.OK != response.Code)
                 throw new DlapException(string.Format("GetItems command failed with code {0}", response.Code));
 
-            Item single = null;
+            Item single;
             var results = new List<Item>();
 
             if (null == response.ResponseXml.Root)
