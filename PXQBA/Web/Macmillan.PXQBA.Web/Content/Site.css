@@ -42,9 +42,21 @@ input[type="checkbox"].input-validation-error {
 }
 
 .hover {
-    background: grey !important;
+    background: lightgray;
 }
 
 .preview-collapsed {
      display: none;
+}
+
+.add-question-action {
+    float: right;
+}
+
+.question-grid-item {
+    margin: 10px 0 10px 10px;
+}
+
+.questionFilter {
+    margin: 25px 0 10px 0;
 }

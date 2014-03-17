@@ -4,22 +4,21 @@
 
 var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
 
-	render: function() {
-		return (
-			React.DOM.div( {className:"questionBox"}, 
-				React.DOM.div(null,  
-				     QuestionFilter(null)
-				),
-				React.DOM.div(null,  
-					QuestionList( {data:this.props.data})
-				), 
-				React.DOM.div(null,  
-					QuestionPaginator( {metadata:{
-						    currentPage: this.props.currentPage,
-						    totalPages: this.props.totalPages}} )
-				) 
-			) 
-			);
-	}
+    render: function() {
+        return (
+            React.DOM.div( {className:"QuestionListPage"}, 
+                React.DOM.div( {className:"add-question-action"}, 
+                    React.DOM.a( {href:""},  " Add question")
+                ),
+                React.DOM.div(null, 
+                  QuestionTabs(
+                        {data:this.props.data,
+                        currentPage:this.props.currentPage,
+                        totalPages:this.props.totalPages}  
+                   )
+                )
+            ) 
+            );
+    }
 });
 

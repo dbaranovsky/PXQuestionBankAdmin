@@ -9,9 +9,9 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
         var questionListContainer = $(this.getDOMNode());
         var menuContainer = questionListContainer.find('.question-menu-container');
  
-       	var mouseInRowHandler =  function(event) {
+        var mouseInRowHandler =  function(event) {
               var tr = $(event.target).closest('tr');
-         			tr.addClass('hover');
+                    tr.addClass('hover');
               tr.find('.actions').append(menuContainer.html());
         };
         
@@ -69,7 +69,7 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
 
         questionListContainer.find('.question-table').on('click', '.title-header', toggleAllPreviews);
         questionListContainer.find('.question-table').on('click', '.title', toggleInlineHandler);
-		    
+            
     },
 
     render: function() {
@@ -83,14 +83,14 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
                   QuestionListMenu(null )
               ),
 
-           		React.DOM.table( {className:"table table question-table"}, 
-           		   React.DOM.thead(null, 
-           		    QuestionListHeader(null )
-           		  ),
-           		  React.DOM.tbody(null,  
-          		  questions
-          		  ) 
-           		)
+                React.DOM.table( {className:"table table question-table"}, 
+                   React.DOM.thead(null, 
+                    QuestionListHeader(null )
+                  ),
+                  React.DOM.tbody(null,  
+                  questions
+                  ) 
+                )
           )
         );
     }
