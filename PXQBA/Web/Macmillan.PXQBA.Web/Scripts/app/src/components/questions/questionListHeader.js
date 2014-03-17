@@ -8,14 +8,16 @@ var QuestionListHeader = React.createClass({
     return ( 
         <tr>
             <th style={ {width:'5%'}}> <input type="checkbox"/></th>
-            <th style={ {width:'10%'}}> Chapter</th>
-            <th style={ {width:'10%'}}> Bank</th>
-            <th style={ {width:'10%'}}> Seq </th>
-            <th style={ {width:'40%'}} className="title-header">
-                   <span className="glyphicon glyphicon-chevron-right"></span> Title
-                </th>
-                <th style={ {width:'10%'}}> Format </th>
-                <th style={ {width:'15%'}}> </th>
+ 
+            <QuestinListHeaderCell width='10%' caption="Chapter" order="asc"/>
+            <QuestinListHeaderCell width='10%' caption="Bank" order="asc"/>
+            <QuestinListHeaderCell width='10%' caption="Seq" order="asc"/>
+            <QuestinListHeaderCell width='40%' caption="Title"
+                leftIcon="glyphicon glyphicon-chevron-right" 
+                customClassName="title-header"/>
+            <QuestinListHeaderCell width='10%' caption="Format" order="asc"/>
+            <QuestinListHeaderCell width='15%' caption=""/>
+ 
           </tr>
       );
     }
