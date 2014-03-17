@@ -46,7 +46,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             var model = new QuestionListDataResult()
                         {
                             TotalPages = questions.Count / questionPerPage,
-                            QuestionList = questions.ToList().Skip(pageNumber-1 * questionPerPage).Take(questionPerPage),
+                            QuestionList = questions.ToList().Skip((pageNumber-1) * questionPerPage).Take(questionPerPage),
                             PageNumber = pageNumber
                         };
             return JsonCamel(model);

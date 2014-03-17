@@ -5,7 +5,7 @@
 var QuestionFilter = React.createClass({
 	render: function() {
 		return (
-			<div className="question-filter">
+			<div className="questionFilter">
 				 <div> 
 				 	<span>
 				 		 <strong> Filter: </strong> 
