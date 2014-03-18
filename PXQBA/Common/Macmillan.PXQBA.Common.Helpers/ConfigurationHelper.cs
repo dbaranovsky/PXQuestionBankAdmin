@@ -24,6 +24,10 @@ namespace Macmillan.PXQBA.Common.Helpers
             return "http://dev.activation.macmillanhighered.com/account/logon?target={0}";
         }
 
+        /// <summary>
+        /// Gets BH default password from config
+        /// </summary>
+        /// <returns>Default password</returns>
         public static string GetBrainhoneyDefaultPassword()
         {
             var url = ConfigurationManager.AppSettings[ConfigurationKeys.BrainhoneyDefaultPassword];
@@ -40,18 +44,19 @@ namespace Macmillan.PXQBA.Common.Helpers
         /// <returns>Question per page</returns>
         public static int GetQuestionPerPage()
         {
-            const int defaultValue = 50;
-
             var questionPerPage = ConfigurationManager.AppSettings[ConfigurationKeys.QuestionPerPage];
             if (!string.IsNullOrEmpty(questionPerPage))
             {
                 return Int32.Parse(questionPerPage);
             }
 
-            return defaultValue;
+            return 50;
         }
 
-
+        /// <summary>
+        /// Gets converter url for HTS questions
+        /// </summary>
+        /// <returns>HTS url</returns>
         public static string GetHTSConverterUrl()
         {
             var url = ConfigurationManager.AppSettings[ConfigurationKeys.HtsConverter];
@@ -62,6 +67,10 @@ namespace Macmillan.PXQBA.Common.Helpers
             return "http://dev.px.bfwpub.com/PxHTS/PxPlayer.ashx";
         }
 
+        /// <summary>
+        /// Gets Fma Graph converter url
+        /// </summary>
+        /// <returns>Fma Graph url</returns>
         public static string GetFmaGraphConverterUrl()
         {
             var url = ConfigurationManager.AppSettings[ConfigurationKeys.FmaGraphConverter];
@@ -70,6 +79,29 @@ namespace Macmillan.PXQBA.Common.Helpers
                 return url;
             }
             return "http://dev.px.bfwpub.com/PxEG/authormode2.aspx";
+        }
+
+        /// <summary>
+        /// Gets the list of available question types
+        /// </summary>
+        /// <returns>Question types list</returns>
+        public static Dictionary<string, string> GetQuestionTypes()
+        {
+            var settingString = ConfigurationManager.AppSettings[ConfigurationKeys.QuestionTypes];
+            if (!string.IsNullOrEmpty(settingString))
+            {
+                return settingString.Split('|').Select(type => type.Split(':')).ToDictionary(parts => parts[0], parts => parts[1]);
+            }
+            return new Dictionary<string, string>
+            {
+                {"choice", "Multiple Choice"},
+                {"text", "Short Answer"},
+                {"essay", "Essay"},
+                {"match", "Matching"},
+                {"answer", "Multiple Answer"},
+                {"HTS","Advanced Question"},
+                {"FMA_GRAPH", "Graph Exercise"}
+            };
         }
     }
 }

@@ -27,11 +27,6 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
         public const string QuestionPerPage = "QuestionPerPage";
 
         /// <summary>
-        /// CQ request string with placeholders
-        /// </summary>
-        public const string CQScriptString = "if(typeof CQ ==='undefined')CQ = window.parent.CQ; CQ.questionInfoList['{0}'] = {{ divId: '{1}', version: '{2}', mode: '{3}', question: {{ body: '{4}', data: {5}}}, response: {{ pointspossible: '{6}', pointsassigned: '{7}'}} }}";
-
-        /// <summary>
         /// Key for HTS converter page
         /// </summary>
         public const string HtsConverter = "HtsConverter";
@@ -41,5 +36,9 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
         /// </summary>
         public const string FmaGraphConverter = "FmaGraphConverter";
 
+        /// <summary>
+        /// Key for question types
+        /// </summary>
+        public static string QuestionTypes { get; set; }
     }
 }
