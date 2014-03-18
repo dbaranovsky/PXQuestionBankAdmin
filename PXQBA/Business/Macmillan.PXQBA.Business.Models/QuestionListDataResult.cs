@@ -20,6 +20,11 @@ namespace Macmillan.PXQBA.Business.Models
         /// <summary>
         /// Total pages for current query
         /// </summary>
-        public int TotalPages { get; set; } 
+        public int TotalPages { get; set; }
+
+        /// <summary>
+        /// Field Ordering
+        /// </summary>
+        public QuestionOrder Order { get; set; }
     }
 }

@@ -33,7 +33,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetQuestionData(string query, int pageNumber)
+        public ActionResult GetQuestionData(string query, int pageNumber, QuestionOrder order)
         {
 
             // uncomment this for real data
@@ -47,7 +47,8 @@ namespace Macmillan.PXQBA.Web.Controllers
                         {
                             TotalPages = questions.Count / questionPerPage,
                             QuestionList = questions.ToList().Skip((pageNumber-1) * questionPerPage).Take(questionPerPage),
-                            PageNumber = pageNumber
+                            PageNumber = pageNumber,
+                            Order = order
                         };
             return JsonCamel(model);
         }

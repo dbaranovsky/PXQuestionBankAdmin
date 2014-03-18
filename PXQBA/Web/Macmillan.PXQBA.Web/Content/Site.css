@@ -64,3 +64,8 @@ input[type="checkbox"].input-validation-error {
 .order-disabled {
     display: none;
 }
+
+.header-caption:hover {
+    color: blue;
+    cursor: pointer;
+}

@@ -5,11 +5,10 @@
 var QuestinListHeaderCellOrdering = React.createClass({
 
   renderClass: function (order) {
-
     switch(order) {
-        case "asc":
+        case window.enums.orderType.asc:
             return 'glyphicon glyphicon-arrow-up';
-        case "desc":
+        case window.enums.orderType.desc:
             return 'glyphicon glyphicon-arrow-down';
         default:
             return 'order-disabled';    

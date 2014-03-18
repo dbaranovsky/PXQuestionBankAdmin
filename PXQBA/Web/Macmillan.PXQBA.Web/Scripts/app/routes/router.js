@@ -1,11 +1,17 @@
 ﻿/**
 * @jsx React.DOM
 */ 
-crossroads.addRoute('/filter/{query}/page/{page}', function (query, page) {
-    var questionsData = questionDataManager.getQuestionsByQuery(query, page);
+crossroads.addRoute('/filter/{query}/page/{page}/order/{orderType}/:orderField:', function (query, page, orderType, orderField) {
+    var questionsData = questionDataManager.getQuestionsByQuery(query, page, orderType, orderField);
     questionsData.done(function (response) {
+        debugger;
         React.renderComponent(
-            QuestionListPage({ data: response.questionList, currentPage: response.pageNumber, totalPages: response.totalPages }, " "),
+            QuestionListPage({
+                data: response.questionList,
+                currentPage: response.pageNumber,
+                totalPages: response.totalPages,
+                order: response.order
+            }, " "),
             $('#question-container')[0]);
     }).fail(function () {
         console.error("getQuestionsBy:", error);
@@ -13,7 +19,7 @@ crossroads.addRoute('/filter/{query}/page/{page}', function (query, page) {
 });
 
 crossroads.addRoute('', function() {
-    hasher.setHash('filter/query/page/1');
+    hasher.setHash(window.routsManager.buildHash());
 });
 
 //setup hasher

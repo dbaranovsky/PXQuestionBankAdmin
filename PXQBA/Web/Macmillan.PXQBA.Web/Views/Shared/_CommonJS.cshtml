@@ -1,10 +1,19 @@
-﻿<script type="text/javascript">
+﻿@using Macmillan.PXQBA.Business.Models
+<script type="text/javascript">
     (function () {
 
         var actions = {};
         window.actions = actions;
         actions.questionList = {
             getQuestionListUrl: '@Url.Action("GetQuestionData", "QuestionList")',
+        };
+
+        var enums = {};
+        window.enums = enums;
+        enums.orderType = {
+            none: '@OrderType.None.ToString().ToLower()',
+            asc: '@OrderType.Asc.ToString().ToLower()',
+            desc: '@OrderType.Desc.ToString().ToLower()',
         };
     }
      )();

@@ -11,7 +11,7 @@ var QuestionGrid = React.createClass({displayName: 'QuestionGrid',
                      QuestionFilter(null)
                 ),
                 React.DOM.div( {className:"question-grid-item"},  
-                    QuestionList( {data:this.props.data})
+                    QuestionList( {data:this.props.data, order:this.props.order} )
                 ), 
                 React.DOM.div( {className:"question-grid-item"},  
                     QuestionPaginator( {metadata:{

@@ -85,7 +85,7 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
 
                 React.DOM.table( {className:"table table question-table"}, 
                    React.DOM.thead(null, 
-                    QuestionListHeader(null )
+                    QuestionListHeader( {ordering:this.props.order})
                   ),
                   React.DOM.tbody(null,  
                   questions

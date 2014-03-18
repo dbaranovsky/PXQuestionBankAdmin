@@ -33,7 +33,8 @@ var QuestionTabs = React.createClass({
                          <QuestionGrid
                              data={this.props.data}
                              currentPage={this.props.currentPage}
-                             totalPages={this.props.totalPages}     
+                             totalPages={this.props.totalPages}  
+                             order={this.props.order}   
                           />
                     </div>
                     <div className="tab-pane" id="editOrder">...</div>
