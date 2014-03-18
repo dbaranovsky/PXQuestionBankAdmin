@@ -180,6 +180,7 @@
     </None>
     <Content Include="packages.config" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\app\components\questions\addQuestionDialog.js" />
     <Content Include="Scripts\app\components\questions\question.js" />
     <Content Include="Scripts\app\components\questions\questionFilter.js" />
     <Content Include="Scripts\app\components\questions\questionGrid.js" />
@@ -192,7 +193,7 @@
     <Content Include="Scripts\app\components\questions\questionTabs.js" />
     <Content Include="Scripts\app\dataAccess\questionDataManager.js" />
     <Content Include="Scripts\app\routes\router.js" />
-    <Content Include="Scripts\app\routes\routsManager.js" />
+    <Content Include="Scripts\app\routes\routeManager.js" />
     <Content Include="Scripts\app\src\components\questions\question.js" />
     <Content Include="Scripts\app\src\components\questions\questionFilter.js" />
     <Content Include="Scripts\app\src\components\questions\questionGrid.js" />

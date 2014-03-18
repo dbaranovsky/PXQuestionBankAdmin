@@ -11,8 +11,10 @@ using Bfw.Agilix.DataContracts;
 
 namespace Macmillan.PXQBA.Common.Helpers
 {
-    public static class QuestionHelper
+    public static class QuestionPreviewHelper
     {
+        private const string CQScriptString = "if(typeof CQ ==='undefined')CQ = window.parent.CQ; CQ.questionInfoList['{0}'] = {{ divId: '{1}', version: '{2}', mode: '{3}', question: {{ body: '{4}', data: {5}}}, response: {{ pointspossible: '{6}', pointsassigned: '{7}'}} }}";
+
         public static string GetQuestionHtmlPreview(Question question)
         {
 
@@ -97,7 +99,7 @@ namespace Macmillan.PXQBA.Common.Helpers
                     string pointsAssigned = "NaN";
 
                     string cqScript = string.Format(
-                        Constants.ConfigurationKeys.CQScriptString,
+                        CQScriptString,
                         questionId,
                         divId,
                         version,
@@ -199,7 +201,7 @@ namespace Macmillan.PXQBA.Common.Helpers
                     string pointsAssigned = "NaN";
 
                     string cqScript = string.Format(
-                        Constants.ConfigurationKeys.CQScriptString,
+                        CQScriptString,
                         questionId,
                         divId,
                         version,

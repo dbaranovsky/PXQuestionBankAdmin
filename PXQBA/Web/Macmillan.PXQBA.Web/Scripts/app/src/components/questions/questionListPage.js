@@ -8,16 +8,20 @@ var QuestionListPage = React.createClass({
         return (
             <div className="QuestionListPage">
                 <div className="add-question-action">
-                    <a href=""> Add question</a>
+                    <button className="btn btn-primary " data-toggle="modal" data-target="#addQuestionModal">
+                    Add Question
+                    </button>
                 </div>
+
+                
                 <div>
                   <QuestionTabs
                         data={this.props.data}
                         currentPage={this.props.currentPage}
-                        totalPages={this.props.totalPages}  
-                   />
+                        totalPages={this.props.totalPages} />
                 </div>
-            </div> 
+                <AddQuestionDialog />
+            </div>
             );
     }
 });
