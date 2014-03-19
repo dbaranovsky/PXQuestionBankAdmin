@@ -69,3 +69,7 @@ input[type="checkbox"].input-validation-error {
     color: blue;
     cursor: pointer;
 }
+
+.actions-container {
+    min-height: 34px;
+}

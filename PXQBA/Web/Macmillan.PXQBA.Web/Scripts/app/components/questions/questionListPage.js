@@ -18,9 +18,9 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
                   QuestionTabs(
                         {data:this.props.data,
                         currentPage:this.props.currentPage,
-                        totalPages:this.props.totalPages,
-                        order:this.props.order
-} )
+                        totalPages:this.props.totalPages, 
+                        order:this.props.order} 
+                   )
                 ),
                 AddQuestionDialog(null )
             )
