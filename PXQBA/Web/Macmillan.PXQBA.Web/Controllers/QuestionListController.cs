@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Xml;
 using Macmillan.PXQBA.Common.Helpers;
+using System.Linq.Dynamic;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -33,7 +34,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetQuestionData(string query, int pageNumber)
+        public ActionResult GetQuestionData(QuestionListDataRequest request)
         {
 
             // uncomment this for real data
@@ -43,16 +44,62 @@ namespace Macmillan.PXQBA.Web.Controllers
 
             //For debug paging
             var questions =  GetFakeQuestionsFromXml();
-            var model = new QuestionListDataResult()
+            questions = ApplyFakeOrdering(questions, request.OrderType, request.OrderField);
+            var model = new QuestionListDataRespons()
                         {
                             TotalPages = questions.Count / questionPerPage,
-                            QuestionList = questions.ToList().Skip((pageNumber-1) * questionPerPage).Take(questionPerPage),
-                            PageNumber = pageNumber
+                            QuestionList = questions.ToList().Skip((request.PageNumber - 1) * questionPerPage).Take(questionPerPage),
+                            PageNumber = request.PageNumber,
+                            Order = new QuestionOrder()
+                                    {
+                                        OrderField = request.OrderField,
+                                        OrderType = request.OrderType.ToString().ToLower()
+                                    }
                         };
             return JsonCamel(model);
         }
 
+#region debug
+        /// <summary>
+        /// For deubg ordering question list.
+        /// </summary>
+        /// <returns></returns>
+        private IList<Question> ApplyFakeOrdering(IList<Question> questions, OrderType orderType, string fieldName)
+        {
+            switch (orderType)
+            {
+                case OrderType.Asc:
+                  return questions.AsQueryable().OrderBy(MappingNameForFake(fieldName)).ToList();
+                case OrderType.Desc:
+                  return questions.AsQueryable().OrderBy(MappingNameForFake(fieldName) + " descending").ToList();
+            }
+ 
+            return questions;
+        }
 
+        /// <summary>
+        /// For debug ordering question list.
+        /// </summary>
+        /// <param name="title"></param>
+        /// <returns></returns>
+        private string MappingNameForFake(string title)
+        {
+            switch (title)
+            {
+                case "Chapter":
+                    return "EBookChapter";
+                case "Bank":
+                    return "QuestionBank";
+                case "Seq":
+                    return "QuestionSeq";
+                case "Title":
+                    return "Title";
+                case "Format":
+                    return "QuestionType";
+            }
+
+            return "QuestionSeq";
+        }
 
         /// <summary>
         /// For deubg. Get list of questions from xml.
@@ -69,17 +116,28 @@ namespace Macmillan.PXQBA.Web.Controllers
                 var document = new XmlDocument();
                 document.Load(xmlStream);
                 var nodes = document.SelectNodes("/records/record");
-                questions.AddRange(from XmlNode node in nodes
-                                   select new Question()
-                                   {
-                                       Title = node.SelectSingleNode("Title").InnerText,
-                                       EBookChapter = node.SelectSingleNode("Chapter").InnerText,
-                                       QuestionBank = node.SelectSingleNode("Bank").InnerText,
-                                       QuestionSeq = node.SelectSingleNode("Seq").InnerText,
-                                       QuestionType = node.SelectSingleNode("Format").InnerText
-                                   });
-            }
+                foreach (XmlNode node in nodes)
+                {
+                    var priview = node.SelectSingleNode("Preview");
+                    string priviewText = string.Empty;
+                    if (priview != null)
+                    {
+                        priviewText = priview.InnerText;
+                    }
 
+                    questions.Add(new Question()
+                                  {
+                                      Title = node.SelectSingleNode("Title").InnerText,
+                                      EBookChapter = node.SelectSingleNode("Chapter").InnerText,
+                                      QuestionBank = node.SelectSingleNode("Bank").InnerText,
+                                      QuestionSeq = node.SelectSingleNode("Seq").InnerText,
+                                      QuestionType = node.SelectSingleNode("Format").InnerText,
+                                      QuestionHtmlInlinePreview = priviewText
+                                  });
+
+                }
+
+            }
             return questions;
         }
         private IList<Question> SetMockTitles(IEnumerable<Question> questions)
@@ -95,6 +153,9 @@ namespace Macmillan.PXQBA.Web.Controllers
             }
             return (IList<Question>) questions;
         }
+
+#endregion
+
     }
 
 }

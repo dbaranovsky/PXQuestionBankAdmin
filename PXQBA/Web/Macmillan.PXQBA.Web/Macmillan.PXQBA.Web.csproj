@@ -186,6 +186,8 @@
     <Content Include="Scripts\app\components\questions\questionGrid.js" />
     <Content Include="Scripts\app\components\questions\questionList.js" />
     <Content Include="Scripts\app\components\questions\questionListHeader.js" />
+    <Content Include="Scripts\app\components\questions\questionListHeaderCell.js" />
+    <Content Include="Scripts\app\components\questions\questionListHeaderCellOrdering.js" />
     <Content Include="Scripts\app\components\questions\questionListMenu.js" />
     <Content Include="Scripts\app\components\questions\questionListPage.js" />
     <Content Include="Scripts\app\components\questions\questionPaginator.js" />
@@ -199,6 +201,8 @@
     <Content Include="Scripts\app\src\components\questions\questionGrid.js" />
     <Content Include="Scripts\app\src\components\questions\questionList.js" />
     <Content Include="Scripts\app\src\components\questions\questionListHeader.js" />
+    <Content Include="Scripts\app\src\components\questions\questionListHeaderCell.js" />
+    <Content Include="Scripts\app\src\components\questions\questionListHeaderCellOrdering.js" />
     <Content Include="Scripts\app\src\components\questions\questionListMenu.js" />
     <Content Include="Scripts\app\src\components\questions\questionListPage.js" />
     <Content Include="Scripts\app\src\components\questions\questionPaginator.js" />

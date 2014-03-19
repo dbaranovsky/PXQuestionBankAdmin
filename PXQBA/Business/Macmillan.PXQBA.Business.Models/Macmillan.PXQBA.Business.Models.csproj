@@ -39,10 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OrderType.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuestionListDataResult.cs" />
+    <Compile Include="QuestionListDataRequest.cs" />
+    <Compile Include="QuestionListDataRespons.cs" />
     <Compile Include="QuestionChoice.cs" />
+    <Compile Include="QuestionOrder.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

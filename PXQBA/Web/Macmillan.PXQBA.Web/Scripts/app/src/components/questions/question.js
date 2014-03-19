@@ -37,7 +37,9 @@ var Question = React.createClass({
                 </td>
 
                 <td className="actions">  
-                
+                   <div className="actions-container">
+
+                   </div>
                 </td>  
             </tr> 
             );

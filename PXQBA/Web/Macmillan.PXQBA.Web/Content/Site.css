@@ -60,3 +60,16 @@ input[type="checkbox"].input-validation-error {
 .questionFilter {
     margin: 25px 0 10px 0;
 }
+
+.order-disabled {
+    display: none;
+}
+
+.header-caption:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+.actions-container {
+    min-height: 34px;
+}

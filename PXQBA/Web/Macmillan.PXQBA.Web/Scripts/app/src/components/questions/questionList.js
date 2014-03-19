@@ -12,13 +12,13 @@ var QuestionList = React.createClass({
         var mouseInRowHandler =  function(event) {
               var tr = $(event.target).closest('tr');
                     tr.addClass('hover');
-              tr.find('.actions').append(menuContainer.html());
+              tr.find('.actions-container').append(menuContainer.html());
         };
         
         var mousOutRowHandler = function (event) {
               var tr = $(event.target).closest('tr');
               tr.removeClass('hover');
-              tr.find('.actions').empty();
+              tr.find('.actions-container').empty();
         };
 
         //ToDo: need fix:
@@ -85,7 +85,7 @@ var QuestionList = React.createClass({
 
                 <table className="table table question-table">
                    <thead>
-                    <QuestionListHeader />
+                    <QuestionListHeader ordering={this.props.order}/>
                   </thead>
                   <tbody> 
                   {questions}

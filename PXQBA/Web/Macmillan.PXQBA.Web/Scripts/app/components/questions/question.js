@@ -36,8 +36,10 @@ var Question = React.createClass({displayName: 'Question',
                     this.props.metadata.questionType
                 ),
 
-                React.DOM.td( {className:"actions"}  
-                
+                React.DOM.td( {className:"actions"},   
+                   React.DOM.div( {className:"actions-container"}
+
+                   )
                 )  
             ) 
             );

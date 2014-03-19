@@ -4,19 +4,53 @@
 
 var QuestionListHeader = React.createClass({
 
+ 
+ // ToDo: replace this on property, after implementation add column functionality 
+  initializationHeaderCells: function(ordering) {
+    var columns = [
+      {width:'10%', caption:'Chapter'},
+      {width:'10%', caption:'Bank'},
+      {width:'10%', caption:'Seq'},
+      {width:'40%', caption:'Title', leftIcon:"glyphicon glyphicon-chevron-right title-header"},
+      {width:'10%', caption:'Format'},
+    ];
+     
+    //applay ordering
+    if(ordering.orderType!='none') {
+      for(var i=0; i<columns.length; i++) {
+        if(columns[i].caption==ordering.orderField) {
+           columns[i].order=ordering.orderType;
+           break;
+        }
+      }
+    }
+
+    return columns;
+  },
+
+  renderCell: function(cell) {
+      return (<QuestinListHeaderCell 
+                  width={cell.width} 
+                  caption={cell.caption}
+                  order={cell.order}
+                  leftIcon={cell.leftIcon} />);
+  },
+
   render: function() {
+    // ToDo: replace this on property, after implementation add column functionality 
+    var cells = this.initializationHeaderCells(this.props.ordering);
+ 
+    var renderedCell = cells.map(this.renderCell);
+   
+
     return ( 
         <tr>
             <th style={ {width:'5%'}}> <input type="checkbox"/></th>
-            <th style={ {width:'10%'}}> Chapter</th>
-            <th style={ {width:'10%'}}> Bank</th>
-            <th style={ {width:'10%'}}> Seq </th>
-            <th style={ {width:'40%'}} className="title-header">
-                   <span className="glyphicon glyphicon-chevron-right"></span> Title
-                </th>
-                <th style={ {width:'10%'}}> Format </th>
-                <th style={ {width:'15%'}}> </th>
+             {renderedCell}
+            <QuestinListHeaderCell width='15%' caption=""/>
+ 
           </tr>
       );
     }
 });
+

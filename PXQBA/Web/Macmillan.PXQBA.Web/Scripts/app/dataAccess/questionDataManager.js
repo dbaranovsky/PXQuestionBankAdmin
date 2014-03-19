@@ -6,14 +6,14 @@
         //save in cache here
     };
 
-    self.loadFromCache = function(query, page) {
+    self.loadFromCache = function (query, page, orderType, orderField) {
         // load from cache here
         return null;
     };
 
-    self.getQuestionsByQuery = function (query, page) {
+    self.getQuestionsByQuery = function (query, page, orderType, orderField) {
         
-        var cacheResult = self.loadFromCache(query, page);
+        var cacheResult = self.loadFromCache(query, page, orderType, orderField);
 
         if (cacheResult != null) {
             return $.Deferred(function() {
@@ -24,6 +24,8 @@
         var request = {
             query: query,
             pageNumber: page,
+            orderType: orderType, 
+            orderField: orderField
         };
 
         return $.ajax({
