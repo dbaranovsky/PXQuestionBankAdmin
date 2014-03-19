@@ -59,7 +59,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(model);
         }
 
-#region deubag
+#region debug
         /// <summary>
         /// For deubg ordering question list.
         /// </summary>
@@ -116,17 +116,28 @@ namespace Macmillan.PXQBA.Web.Controllers
                 var document = new XmlDocument();
                 document.Load(xmlStream);
                 var nodes = document.SelectNodes("/records/record");
-                questions.AddRange(from XmlNode node in nodes
-                                   select new Question()
-                                   {
-                                       Title = node.SelectSingleNode("Title").InnerText,
-                                       EBookChapter = node.SelectSingleNode("Chapter").InnerText,
-                                       QuestionBank = node.SelectSingleNode("Bank").InnerText,
-                                       QuestionSeq = node.SelectSingleNode("Seq").InnerText,
-                                       QuestionType = node.SelectSingleNode("Format").InnerText
-                                   });
-            }
+                foreach (XmlNode node in nodes)
+                {
+                    var priview = node.SelectSingleNode("Preview");
+                    string priviewText = string.Empty;
+                    if (priview != null)
+                    {
+                        priviewText = priview.InnerText;
+                    }
 
+                    questions.Add(new Question()
+                                  {
+                                      Title = node.SelectSingleNode("Title").InnerText,
+                                      EBookChapter = node.SelectSingleNode("Chapter").InnerText,
+                                      QuestionBank = node.SelectSingleNode("Bank").InnerText,
+                                      QuestionSeq = node.SelectSingleNode("Seq").InnerText,
+                                      QuestionType = node.SelectSingleNode("Format").InnerText,
+                                      QuestionHtmlInlinePreview = priviewText
+                                  });
+
+                }
+
+            }
             return questions;
         }
         private IList<Question> SetMockTitles(IEnumerable<Question> questions)
