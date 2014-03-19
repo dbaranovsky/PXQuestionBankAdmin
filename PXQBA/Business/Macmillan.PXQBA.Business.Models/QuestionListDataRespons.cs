@@ -5,7 +5,7 @@ namespace Macmillan.PXQBA.Business.Models
     /// <summary>
     /// Represent collection of question for react.js controls
     /// </summary>
-    public class QuestionListDataResult
+    public class QuestionListDataRespons
     {
         /// <summary>
         /// Current page number
