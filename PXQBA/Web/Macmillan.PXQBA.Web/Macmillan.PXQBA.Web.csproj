@@ -274,24 +274,20 @@
       <Project>{45A498CC-0FDF-4B3B-833B-FD0B008AA8D9}</Project>
       <Name>Macmillan.PXQBA.Common.Logging</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.DataContracts\Bfw.Agilix.DataContracts.csproj">
-      <Project>{4d185f8e-c2a0-442a-a05e-78b566361562}</Project>
-      <Name>Bfw.Agilix.DataContracts</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Bfw.Agilix.Dlap.Components.csproj">
-      <Project>{BFFD6B7A-4EA1-431A-916A-8214BD16E049}</Project>
+      <Project>{bffd6b7a-4ea1-431a-916a-8214bd16e049}</Project>
       <Name>Bfw.Agilix.Dlap.Components</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap\Bfw.Agilix.Dlap.csproj">
-      <Project>{F5A60C36-AA1F-4849-A9E7-465F7963DF9F}</Project>
+      <Project>{f5a60c36-aa1f-4849-a9e7-465f7963df9f}</Project>
       <Name>Bfw.Agilix.Dlap</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\PXShared\Bfw.Common\Bfw.Common.Patterns\Bfw.Common.Patterns.csproj">
-      <Project>{AD00B777-4D80-4D59-AFA0-BD3088938BFF}</Project>
+      <Project>{ad00b777-4d80-4d59-afa0-bd3088938bff}</Project>
       <Name>Bfw.Common.Patterns</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\PXShared\Bfw.Common\Bfw.Common\Bfw.Common.csproj">
-      <Project>{4F1BF9DB-1226-4867-9E41-129B214F24F2}</Project>
+      <Project>{4f1bf9db-1226-4867-9e41-129b214f24f2}</Project>
       <Name>Bfw.Common</Name>
     </ProjectReference>
   </ItemGroup>

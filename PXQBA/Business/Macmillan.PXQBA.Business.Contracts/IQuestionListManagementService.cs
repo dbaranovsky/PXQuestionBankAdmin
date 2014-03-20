@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Bfw.Agilix.DataContracts;
+using Macmillan.PXQBA.Business.Models;
+using QuestionVm = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Business.Contracts
 {
@@ -13,6 +15,6 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// Retrieves questions list
         /// </summary>
         /// <returns></returns>
-        IEnumerable<Question> GetQuestionList();
+        QuestionList GetQuestionList(string query, int page, int questionPerPage);
     }
 }
