@@ -3,6 +3,7 @@ using System.Web;
 using AutoMapper;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Business.Models.Web;
 using Macmillan.PXQBA.Common.Helpers;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,7 +46,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             //For debug paging
             var questions =  GetFakeQuestionsFromXml();
             questions = ApplyFakeOrdering(questions, request.OrderType, request.OrderField);
-            var model = new QuestionListDataRespons()
+            var model = new QuestionListDataResponse()
                         {
                             TotalPages = questions.Count / questionPerPage,
                             QuestionList = questions.ToList().Skip((request.PageNumber - 1) * questionPerPage).Take(questionPerPage),

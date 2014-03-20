@@ -67,7 +67,7 @@ var QuestionList = React.createClass({
             $(obj).find('.question-preview').addClass('preview-collapsed');
         };
 
-        questionListContainer.find('.question-table').on('click', '.title-header', toggleAllPreviews);
+        questionListContainer.find('.question-table').on('click', '.titles-expander', toggleAllPreviews);
         questionListContainer.find('.question-table').on('click', '.title', toggleInlineHandler);
             
     },

@@ -25,11 +25,11 @@ var Question = React.createClass({displayName: 'Question',
 
                 React.DOM.td( {className:"title"}, 
                     React.DOM.div(null, 
-                    React.DOM.span( {className:"glyphicon glyphicon-chevron-right"}),
+                    React.DOM.span( {className:"glyphicon glyphicon-chevron-right title-expander"}),
                     this.props.metadata.title
                     ),
-                    QuestionPreview( {preview:this.props.metadata.questionHtmlInlinePreview})
-                    
+                       QuestionPreview( {preview:this.props.metadata.questionHtmlInlinePreview})
+                 
                 ),
 
                 React.DOM.td( {className:"questionType"}, 

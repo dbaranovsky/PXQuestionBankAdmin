@@ -3,12 +3,17 @@
 */ 
 
 var QuestionPreview = React.createClass({displayName: 'QuestionPreview',
+
+        loadPreview: function (container) {
+            container.html(this.props.preview);
+        },
+
         componentDidMount: function() {
-            $(this.getDOMNode()).html(this.props.preview);
+            this.loadPreview($(this.getDOMNode()))
         },
 
         componentDidUpdate: function () {
-        	$(this.getDOMNode()).html(this.props.preview);
+            this.loadPreview($(this.getDOMNode()))
     	},
 
         render: function() {

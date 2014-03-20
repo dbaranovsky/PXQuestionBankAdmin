@@ -46,7 +46,7 @@ input[type="checkbox"].input-validation-error {
 }
 
 .preview-collapsed {
-     display: none;
+    display: none;
 }
 
 .add-question-action {
@@ -72,4 +72,12 @@ input[type="checkbox"].input-validation-error {
 
 .actions-container {
     min-height: 34px;
+}
+
+.titles-expander {
+    cursor: pointer;
+}
+
+.title-expander {
+    cursor: pointer;
 }
