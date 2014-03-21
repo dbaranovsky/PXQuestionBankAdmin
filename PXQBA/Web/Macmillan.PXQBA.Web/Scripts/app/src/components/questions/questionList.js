@@ -7,25 +7,6 @@ var QuestionList = React.createClass({
     componentDidMount: function() {
 
         var questionListContainer = $(this.getDOMNode());
-        var menuContainer = questionListContainer.find('.question-menu-container');
- 
-        var mouseInRowHandler =  function(event) {
-              var tr = $(event.target).closest('tr');
-                    tr.addClass('hover');
-              tr.find('.actions-container').append(menuContainer.html());
-        };
-        
-        var mousOutRowHandler = function (event) {
-              var tr = $(event.target).closest('tr');
-              tr.removeClass('hover');
-              tr.find('.actions-container').empty();
-        };
-
-        //ToDo: need fix:
-        // 1) not(:first) not working, need fix this. 
-        // 2) if hover in button, mouseout execute.
-        questionListContainer.find('.question-table').on('tr:not(:first)').mouseover(mouseInRowHandler);
-        questionListContainer.find('.question-table').on('tr:not(:first)').mouseout(mousOutRowHandler);
 
         var toggleAllPreviews = function (event) {
               //ToDO: implement change of image
@@ -79,10 +60,6 @@ var QuestionList = React.createClass({
 
         return (
           <div className="questionList">
-              <div className="question-menu-container" style={{display:'none'}}>
-                  <QuestionListMenu />
-              </div>
-
                 <table className="table table question-table">
                    <thead>
                     <QuestionListHeader ordering={this.props.order}/>

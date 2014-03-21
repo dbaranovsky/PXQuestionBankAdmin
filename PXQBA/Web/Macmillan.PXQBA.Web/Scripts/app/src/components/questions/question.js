@@ -3,10 +3,37 @@
 */ 
 
 var Question = React.createClass({
+
+    getInitialState: function() {
+        return { showMenu: false };
+    },
+
+    mouseOverHandler: function() {
+        this.setState({ showMenu: true });
+    },
+
+    mouseOutHandler: function() {
+        this.setState({ showMenu: false });
+    },
+
+    renderMenu: function() {
+        if(this.state.showMenu) {
+            return <QuestionListMenu />
+        }
+
+        return null;
+    },
+
     render: function() {
+        var componentClass = React.addons.classSet({
+                'question': true,
+                 hover: this.state.showMenu
+        });
 
         return ( 
-            <tr className="question">
+            <tr className={componentClass} 
+                    onMouseOver={this.mouseOverHandler}
+                    onMouseOut={this.mouseOutHandler}>
                 <td> 
                     <input type="checkbox"/>
                 </td>
@@ -29,7 +56,6 @@ var Question = React.createClass({
                     {this.props.metadata.title}
                     </div>
                        <QuestionPreview preview={this.props.metadata.questionHtmlInlinePreview}/>
-                 
                 </td>
 
                 <td className="questionType">
@@ -38,7 +64,7 @@ var Question = React.createClass({
 
                 <td className="actions">  
                    <div className="actions-container">
-
+                        {this.renderMenu()}
                    </div>
                 </td>  
             </tr> 

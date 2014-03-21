@@ -3,10 +3,37 @@
 */ 
 
 var Question = React.createClass({displayName: 'Question',
+
+    getInitialState: function() {
+        return { showMenu: false };
+    },
+
+    mouseOverHandler: function() {
+        this.setState({ showMenu: true });
+    },
+
+    mouseOutHandler: function() {
+        this.setState({ showMenu: false });
+    },
+
+    renderMenu: function() {
+        if(this.state.showMenu) {
+            return QuestionListMenu(null )
+        }
+
+        return null;
+    },
+
     render: function() {
+        var componentClass = React.addons.classSet({
+                'question': true,
+                 hover: this.state.showMenu
+        });
 
         return ( 
-            React.DOM.tr( {className:"question"}, 
+            React.DOM.tr( {className:componentClass, 
+                    onMouseOver:this.mouseOverHandler,
+                    onMouseOut:this.mouseOutHandler}, 
                 React.DOM.td(null,  
                     React.DOM.input( {type:"checkbox"})
                 ),
@@ -29,7 +56,6 @@ var Question = React.createClass({displayName: 'Question',
                     this.props.metadata.title
                     ),
                        QuestionPreview( {preview:this.props.metadata.questionHtmlInlinePreview})
-                 
                 ),
 
                 React.DOM.td( {className:"questionType"}, 
@@ -37,8 +63,8 @@ var Question = React.createClass({displayName: 'Question',
                 ),
 
                 React.DOM.td( {className:"actions"},   
-                   React.DOM.div( {className:"actions-container"}
-
+                   React.DOM.div( {className:"actions-container"}, 
+                        this.renderMenu()
                    )
                 )  
             ) 
