@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 
-namespace Macmillan.PXQBA.Business.Models
+namespace Macmillan.PXQBA.Business.Models.Web
 {
     /// <summary>
     /// Represent collection of question for react.js controls
     /// </summary>
-    public class QuestionListDataRespons
+    public class QuestionListDataResponse
     {
         /// <summary>
         /// Current page number

@@ -1,4 +1,4 @@
-﻿namespace Macmillan.PXQBA.Business.Models
+﻿namespace Macmillan.PXQBA.Business.Models.Web
 {
     public enum OrderType
     {

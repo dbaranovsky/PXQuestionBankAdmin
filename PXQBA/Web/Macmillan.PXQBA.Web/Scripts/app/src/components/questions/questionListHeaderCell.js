@@ -22,7 +22,7 @@ var QuestinListHeaderCell = React.createClass({
 
   render: function() {
       return (   
-            <th style={ {width: this.props.width}} className={this.props.customClassName}>
+            <th style={ {width: this.props.width}}>
                    <span className={this.props.leftIcon}></span>
                  <span className="header-caption" onClick={this.changeOrdering} data-title={this.props.caption}>
                      {this.props.caption}

@@ -52,6 +52,10 @@
       <Project>{F5A60C36-AA1F-4849-A9E7-465F7963DF9F}</Project>
       <Name>Bfw.Agilix.Dlap</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Macmillan.PXQBA.Business.Models\Macmillan.PXQBA.Business.Models.csproj">
+      <Project>{800708c5-6692-4c91-be89-729a017b5027}</Project>
+      <Name>Macmillan.PXQBA.Business.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

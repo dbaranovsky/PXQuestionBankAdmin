@@ -1,15 +1,11 @@
-﻿using System.Linq;
-using System.Web;
-using AutoMapper;
-using Macmillan.PXQBA.Business.Contracts;
-using Macmillan.PXQBA.Business.Models;
+﻿using Macmillan.PXQBA.Business.Contracts;
+using Macmillan.PXQBA.Business.Models.Web;
 using Macmillan.PXQBA.Common.Helpers;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Web.Mvc;
 using System.Xml;
-using Macmillan.PXQBA.Common.Helpers;
-using System.Linq.Dynamic;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -38,17 +34,16 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
 
             // uncomment this for real data
-            //var questionList = questionListManagementService.GetQuestionList();
-            //var questions = (IList<Question>) Mapper.Map<IEnumerable<Bfw.Agilix.DataContracts.Question>, IEnumerable<Question>>(questionList);
-            //questions = SetMockTitles(questions);
+            var questionList = questionListManagementService.GetQuestionList(request.Query, request.PageNumber, questionPerPage);
+
 
             //For debug paging
-            var questions =  GetFakeQuestionsFromXml();
-            questions = ApplyFakeOrdering(questions, request.OrderType, request.OrderField);
-            var model = new QuestionListDataRespons()
+            //var questions =  GetFakeQuestionsFromXml();
+            //questions = ApplyFakeOrdering(questions, request.OrderType, request.OrderField);
+            var model = new QuestionListDataResponse()
                         {
-                            TotalPages = questions.Count / questionPerPage,
-                            QuestionList = questions.ToList().Skip((request.PageNumber - 1) * questionPerPage).Take(questionPerPage),
+                            TotalPages = questionList.AllQuestionsAmount / questionPerPage,
+                            QuestionList = questionList.Questions,
                             PageNumber = request.PageNumber,
                             Order = new QuestionOrder()
                                     {
@@ -59,7 +54,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(model);
         }
 
-#region debug
+        #region debug
         /// <summary>
         /// For deubg ordering question list.
         /// </summary>
@@ -69,11 +64,11 @@ namespace Macmillan.PXQBA.Web.Controllers
             switch (orderType)
             {
                 case OrderType.Asc:
-                  return questions.AsQueryable().OrderBy(MappingNameForFake(fieldName)).ToList();
+                    return questions.AsQueryable().OrderBy(MappingNameForFake(fieldName)).ToList();
                 case OrderType.Desc:
-                  return questions.AsQueryable().OrderBy(MappingNameForFake(fieldName) + " descending").ToList();
+                    return questions.AsQueryable().OrderBy(MappingNameForFake(fieldName) + " descending").ToList();
             }
- 
+
             return questions;
         }
 
@@ -140,21 +135,8 @@ namespace Macmillan.PXQBA.Web.Controllers
             }
             return questions;
         }
-        private IList<Question> SetMockTitles(IEnumerable<Question> questions)
-        {
 
-            foreach (var question in questions)
-            {
-                var words = question.Title.Split(' ');
-                question.EBookChapter = string.Join(" ", words.Take(2));
-                question.QuestionBank = string.Join(" ", words.Skip(2));
-                question.QuestionSeq = "Consectetur";
-                question.QuestionType = "Custom";
-            }
-            return (IList<Question>) questions;
-        }
-
-#endregion
+        #endregion
 
     }
 

@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Xml.Linq;
 using Bfw.Agilix.Commands;
-using Bfw.Agilix.Dlap.Session;
 using Macmillan.PXQBA.Business.Contracts;
 using Bfw.Agilix.DataContracts;
+using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Common.Helpers;
+using QuestionVm = Macmillan.PXQBA.Business.Models.Question;
+
 
 namespace Macmillan.PXQBA.Business.Services
 {
@@ -17,69 +19,98 @@ namespace Macmillan.PXQBA.Business.Services
     {
         private readonly IContext businessContext;
 
+        /// <summary>
+        /// Limitation of the Search command
+        /// </summary>
+        private const int SearchCommandMaxRows = 25;
+
+        private readonly Dictionary<string, string> availableQuestionTypes;
+
+        private const string EntityId = "6710";
+        private const string QueryParameters = "(dlap_class:question)";
+        
         public QuestionListManagementService(IContext businessContext)
         {
             this.businessContext = businessContext;
+            this.availableQuestionTypes = ConfigurationHelper.GetQuestionTypes();
         }
 
         /// <summary>
-        /// Retrieves questions list
+        /// Get question for specify query
         /// </summary>
-        /// <returns></returns>
-        public IEnumerable<Question> GetQuestionList()
+        /// <param name="query">search query</param>
+        /// <param name="page">current page</param>
+        /// <param name="questionPerPage">question per page</param>
+        /// <returns>questions</returns>
+        public QuestionList GetQuestionList(string query, int page, int questionPerPage)
         {
-            var quizSearch = new ItemSearch()
+            var searchCommand = new Search()
+            {
+                SearchParameters = new SolrSearchParameters()
                 {
-                    EntityId = "71836",
-                    Query = "/bfw_subtype='QUIZ' AND (/parent='LOR_statsportal__bps6e__master_Chapter__3')"
-                };
-            var batch = new Batch();
-            var getItemsCommand = new GetItems()
-            {
-                SearchParameters = quizSearch
-            };
-            batch.Add(getItemsCommand);
-            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(getItemsCommand);
-            var items = getItemsCommand.Items;
-   
-            //var searchParameters = new QuestionSearch
-            //                       {
-            //                           //Hardcode
-            //                           EntityId = "71836"
-            //                       };
-
-            //Test question previews
-            var searchParameters = new QuestionSearch
-            {
-                //Hardcode
-                EntityId = "6710",
-                QuestionIds = new List<string>()
-                                                     {
-                                                         "452EF88D20AB277580BA749FA74C0062",
-                                                         "D7B4955C3EE64257848718FC9A19AB5F",
-                                                         "2a82e2b8-5d4e-4dd7-945d-ea7754b0d5f2",
-                                                         "A86E04F5461E480AAB0BA803385D1F66",
-                                                         "A4193E519BA842B1AAE062238221AC98",
-                                                         "B640D1855BD54E888FC34C3E84AD04EA",
-                                                         "4189DEBA08154FC9A15487E46BA2A110",
-                                                         "932CA591958A4D10ACC2409DCB6F1574",
-                                                         "452EF88D20AB277580BA749FA74C006C",
-                                                         "48AABB190433463986C9E819261A67FA",
-                                                         "AE72CF0E8816455B90FD356AF38517B4",
-                                                         "452EF88D20AB277580BA749FA74C0072"
-
-                                                     
-                                                     }
+                    EntityId = EntityId,
+                    Query = QueryParameters,
+                    Rows = questionPerPage,
+                    Start = ((page - 1) * questionPerPage),
+                }
             };
 
+            var resultDocs = ExecuteSearchCommand(searchCommand);
 
-            var getQuestionsCommand = new GetQuestions
-                      {
-                          SearchParameters = searchParameters
-                      };
-            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(getQuestionsCommand);
+            return PareseDocuments(resultDocs); 
+        }
 
-            return getQuestionsCommand.Questions;
+
+        private IEnumerable<XDocument> ExecuteSearchCommand(Search searchCommand)
+        {
+            var resultsDocs = new List<XDocument>();
+
+            if (searchCommand.SearchParameters.Rows > SearchCommandMaxRows)
+            {
+                ExecuteSearchCommandWithServerSidePaging(searchCommand, resultsDocs);
+            }
+            else
+            {
+                ExecuteAndAppendResult(searchCommand, resultsDocs);
+            }
+
+            return resultsDocs;
+        }
+
+
+        private void ExecuteSearchCommandWithServerSidePaging(Search searchCommand, List<XDocument> resultsDocs)
+        {
+            int numRows = searchCommand.SearchParameters.Rows;
+            searchCommand.SearchParameters.Rows = SearchCommandMaxRows;
+
+            while (numRows > 0)
+            {
+                businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(searchCommand);
+                resultsDocs.Add(searchCommand.SearchResults);
+
+                searchCommand.SearchParameters.Start += SearchCommandMaxRows;
+                numRows -= SearchCommandMaxRows;
+            }
+        }
+
+
+        private void ExecuteAndAppendResult(Search searchCommand, List<XDocument> resultsDocs)
+        {
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(searchCommand);
+            resultsDocs.Add(searchCommand.SearchResults);
+        }
+
+
+        private QuestionList PareseDocuments(IEnumerable<XDocument> documents)
+        {
+            var questionList = new QuestionList();
+
+            foreach (var xDocument in documents)
+            {
+                SerachCommandXmlParserHelper.PareseResultXDocument(xDocument, questionList, availableQuestionTypes);
+            }
+
+            return questionList;
         }
     }
 }

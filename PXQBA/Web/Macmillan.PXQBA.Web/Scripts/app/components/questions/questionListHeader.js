@@ -11,11 +11,14 @@ var QuestionListHeader = React.createClass({displayName: 'QuestionListHeader',
       {width:'10%', caption:'Chapter'},
       {width:'10%', caption:'Bank'},
       {width:'10%', caption:'Seq'},
-      {width:'40%', caption:'Title', leftIcon:"glyphicon glyphicon-chevron-right title-header"},
+      {width:'40%', caption:'Title', leftIcon:"glyphicon glyphicon-chevron-right titles-expander"}, 
       {width:'10%', caption:'Format'},
     ];
      
-    //applay ordering
+    return this.applayOrdering(columns, ordering);
+  },
+
+  applayOrdering: function(columns, ordering) {
     if(ordering.orderType!='none') {
       for(var i=0; i<columns.length; i++) {
         if(columns[i].caption==ordering.orderField) {
@@ -24,7 +27,7 @@ var QuestionListHeader = React.createClass({displayName: 'QuestionListHeader',
         }
       }
     }
-
+    
     return columns;
   },
 
@@ -41,15 +44,13 @@ var QuestionListHeader = React.createClass({displayName: 'QuestionListHeader',
     var cells = this.initializationHeaderCells(this.props.ordering);
  
     var renderedCell = cells.map(this.renderCell);
-   
 
     return ( 
         React.DOM.tr(null, 
             React.DOM.th( {style: {width:'5%'}},  " ", React.DOM.input( {type:"checkbox"})),
              renderedCell,
             QuestinListHeaderCell( {width:"15%", caption:""})
- 
-          )
+        )
       );
     }
 });

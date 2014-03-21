@@ -1,5 +1,3 @@
-using System;
-using System.Web;
 using AutoMapper;
 using Bfw.Agilix.Dlap.Components.Session;
 using Bfw.Agilix.Dlap.Session;
@@ -7,11 +5,10 @@ using Bfw.Common.Logging;
 using Bfw.Common.Patterns.Logging;
 using Macmillan.PXQBA.Business;
 using Macmillan.PXQBA.Business.Automapper;
-using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Services;
 using Macmillan.PXQBA.Common.Logging;
 using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.Configuration;
+using System;
 
 namespace Macmillan.PXQBA.Web.App_Start
 {

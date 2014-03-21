@@ -1,10 +1,6 @@
-﻿/**
-* @jsx React.DOM
-*/ 
-crossroads.addRoute('/filter/{query}/page/{page}/order/{orderType}/:orderField:', function (query, page, orderType, orderField) {
+﻿crossroads.addRoute('/filter/{query}/page/{page}/order/{orderType}/:orderField:', function (query, page, orderType, orderField) {
     var questionsData = questionDataManager.getQuestionsByQuery(query, page, orderType, orderField);
     questionsData.done(function (response) {
-        debugger;
         React.renderComponent(
             QuestionListPage({
                 data: response.questionList,

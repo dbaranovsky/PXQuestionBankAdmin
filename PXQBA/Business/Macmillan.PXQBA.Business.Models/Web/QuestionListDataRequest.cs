@@ -1,5 +1,8 @@
-﻿namespace Macmillan.PXQBA.Business.Models
+﻿namespace Macmillan.PXQBA.Business.Models.Web
 {
+    /// <summary>
+    //  Represent request for question data by react.js controls
+    /// </summary>
     public class QuestionListDataRequest
     {
         public string Query { get; set; }
