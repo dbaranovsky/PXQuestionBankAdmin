@@ -6,7 +6,7 @@ var ModalDialog = React.createClass({displayName: 'ModalDialog',
 
     render: function() {
         return (
-            React.DOM.div( {className:"modal fade", id:"addQuestionModal", tabIndex:"-1", role:"dialog", 'aria-labelledby':"addQuestionModalLabel", 'aria-hidden':"true"}, 
+            React.DOM.div( {className:"modal fade", id:this.props.dialogId, tabIndex:"-1", role:"dialog", 'aria-labelledby':"addQuestionModalLabel", 'aria-hidden':"true"}, 
                 React.DOM.div( {className:"modal-dialog"}, 
                     React.DOM.div( {className:"modal-content"}, 
                         React.DOM.div( {className:"modal-header"}, 

@@ -4,24 +4,16 @@
 
 var QuestionListHeader = React.createClass({displayName: 'QuestionListHeader',
 
- 
- // ToDo: replace this on property, after implementation add column functionality 
   initializationHeaderCells: function(ordering) {
-    var columns = [
-      {width:'10%', caption:'Chapter'},
-      {width:'10%', caption:'Bank'},
-      {width:'10%', caption:'Seq'},
-      {width:'40%', caption:'Title', leftIcon:"glyphicon glyphicon-chevron-right titles-expander"}, 
-      {width:'10%', caption:'Format'},
-    ];
+    var columns = this.props.columns;
      
-    return this.applayOrdering(columns, ordering);
+    return this.applyOrdering(columns, ordering);
   },
 
-  applayOrdering: function(columns, ordering) {
+  applyOrdering: function(columns, ordering) {
     if(ordering.orderType!='none') {
       for(var i=0; i<columns.length; i++) {
-        if(columns[i].caption==ordering.orderField) {
+        if(columns[i].metadataName==ordering.orderField) {
            columns[i].order=ordering.orderType;
            break;
         }
@@ -31,25 +23,24 @@ var QuestionListHeader = React.createClass({displayName: 'QuestionListHeader',
     return columns;
   },
 
-  renderCell: function(cell) {
+  renderCell: function(descriptor) {
       return (QuestinListHeaderCell( 
-                  {width:cell.width, 
-                  caption:cell.caption,
-                  order:cell.order,
-                  leftIcon:cell.leftIcon} ));
+                  {width:descriptor.width, 
+                  caption:descriptor.friendlyName,
+                  metadataName:descriptor.metadataName,
+                  order:descriptor.order,
+                  leftIcon:descriptor.leftIcon} ));
   },
 
   render: function() {
-    // ToDo: replace this on property, after implementation add column functionality 
     var cells = this.initializationHeaderCells(this.props.ordering);
- 
     var renderedCell = cells.map(this.renderCell);
-
     return ( 
         React.DOM.tr(null, 
             React.DOM.th( {style: {width:'5%'}},  " ", React.DOM.input( {type:"checkbox"})),
              renderedCell,
-            QuestinListHeaderCell( {width:"15%", caption:""})
+            React.DOM.th(null,  " ", QuestionListColumnAppender( {displayedFields:this.props.columns, 
+                                             allFields:questionMetadataManager.getQuestionAvailableFields()} ))
         )
       );
     }

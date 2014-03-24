@@ -44,6 +44,7 @@
     <Compile Include="IQuestionFilterManagementService.cs" />
     <Compile Include="IQuestionListManagementService.cs" />
     <Compile Include="IQuestionManagementService.cs" />
+    <Compile Include="IQuestionMetadataService.cs" />
     <Compile Include="ITitleListManagementService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

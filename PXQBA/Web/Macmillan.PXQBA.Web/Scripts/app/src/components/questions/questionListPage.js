@@ -20,6 +20,7 @@ var QuestionListPage = React.createClass({
                         currentPage={this.props.currentPage}
                         totalPages={this.props.totalPages} 
                         order={this.props.order} 
+                        columns={this.props.columns}
                    />
                 </div>
                 <AddQuestionDialog />

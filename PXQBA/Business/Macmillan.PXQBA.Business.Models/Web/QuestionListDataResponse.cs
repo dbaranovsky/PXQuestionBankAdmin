@@ -15,7 +15,7 @@ namespace Macmillan.PXQBA.Business.Models.Web
         /// <summary>
         /// List of questions
         /// </summary>
-        public IEnumerable<Question> QuestionList { get; set; }
+        public IEnumerable<QuestionMetadata> QuestionList { get; set; }
 
         /// <summary>
         /// Total pages for current query
@@ -26,5 +26,7 @@ namespace Macmillan.PXQBA.Business.Models.Web
         /// Field Ordering
         /// </summary>
         public QuestionOrder Order { get; set; }
+
+        public IEnumerable<QuestionFieldDescriptor> Columns { get; set; }
     }
 }

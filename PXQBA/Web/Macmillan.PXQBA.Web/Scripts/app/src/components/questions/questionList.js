@@ -54,15 +54,16 @@ var QuestionList = React.createClass({
     },
 
     render: function() {
+        var columns = this.props.columns;
         var questions = this.props.data.map(function (question) {
-            return (<Question metadata={question} />);
+            return (<Question metadata={question} columns={columns}/>);
           });
 
         return (
           <div className="questionList">
                 <table className="table table question-table">
                    <thead>
-                    <QuestionListHeader ordering={this.props.order}/>
+                    <QuestionListHeader ordering={this.props.order} columns={this.props.columns}/>
                   </thead>
                   <tbody> 
                   {questions}

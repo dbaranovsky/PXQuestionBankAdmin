@@ -81,3 +81,28 @@ input[type="checkbox"].input-validation-error {
 .title-expander {
     cursor: pointer;
 }
+
+.delete-button {
+    float: right;
+}
+
+.delete-button:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+.add-column-item {
+     cursor: pointer;
+}
+
+.add-column-button {
+    cursor: pointer;
+}
+
+.add-column-container {
+    /* float: right; */
+}
+
+.add-columns-message {
+    margin: 0 0 10px 10px;
+}

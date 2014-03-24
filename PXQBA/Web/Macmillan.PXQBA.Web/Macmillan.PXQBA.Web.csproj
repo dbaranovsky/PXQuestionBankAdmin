@@ -138,6 +138,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\Metadata\" />
     <Folder Include="Views\QuestionFilter\" />
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +152,7 @@
     <Compile Include="ActionResults\JsonCamelCaseResult.cs" />
     <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\QuestionFilterController.cs" />
+    <Compile Include="Controllers\QuestionMetadataController.cs" />
     <Compile Include="Controllers\QuestionListController.cs" />
     <Compile Include="Controllers\TitleListController.cs" />
     <Compile Include="Filters\AuthenticationAttribute.cs" />
@@ -195,6 +197,7 @@
     <Content Include="Scripts\app\components\questions\questionFilter.js" />
     <Content Include="Scripts\app\components\questions\questionGrid.js" />
     <Content Include="Scripts\app\components\questions\questionList.js" />
+    <Content Include="Scripts\app\components\questions\questionListColumnAppender.js" />
     <Content Include="Scripts\app\components\questions\questionListHeader.js" />
     <Content Include="Scripts\app\components\questions\questionListHeaderCell.js" />
     <Content Include="Scripts\app\components\questions\questionListHeaderCellOrdering.js" />
@@ -206,6 +209,8 @@
     <Content Include="Scripts\app\components\questions\questionTypeList.js" />
     <Content Include="Scripts\app\dataAccess\questionDataManager.js" />
     <Content Include="Scripts\app\dataAccess\questionFilterDataManager.js" />
+    <Content Include="Scripts\app\dataAccess\questionMetadataManager.js" />
+    <Content Include="Scripts\app\routes\columnHashParameterHelper.js" />
     <Content Include="Scripts\app\routes\router.js" />
     <Content Include="Scripts\app\routes\routeManager.js" />
     <Content Include="Scripts\app\src\components\common\modalDialog.js" />
@@ -214,6 +219,7 @@
     <Content Include="Scripts\app\src\components\questions\questionFilter.js" />
     <Content Include="Scripts\app\src\components\questions\questionGrid.js" />
     <Content Include="Scripts\app\src\components\questions\questionList.js" />
+    <Content Include="Scripts\app\src\components\questions\questionListColumnAppender.js" />
     <Content Include="Scripts\app\src\components\questions\questionListHeader.js" />
     <Content Include="Scripts\app\src\components\questions\questionListHeaderCell.js" />
     <Content Include="Scripts\app\src\components\questions\questionListHeaderCellOrdering.js" />

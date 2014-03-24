@@ -9,13 +9,13 @@ namespace Macmillan.PXQBA.Business.Models
     {
         public QuestionList()
         {
-            Questions = new List<Question>();
+            Questions = new List<QuestionMetadata>();
         }
 
         /// <summary>
         /// Collection of questions
         /// </summary>
-        public IList<Question> Questions { get; set; }
+        public IList<QuestionMetadata> Questions { get; set; }
 
         /// <summary>
         /// All questions count in the data store

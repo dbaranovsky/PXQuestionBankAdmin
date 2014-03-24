@@ -35,6 +35,7 @@ var QuestionTabs = React.createClass({
                              currentPage={this.props.currentPage}
                              totalPages={this.props.totalPages}  
                              order={this.props.order}   
+                             columns={this.props.columns}
                           />
                     </div>
                     <div className="tab-pane" id="editOrder">...</div>

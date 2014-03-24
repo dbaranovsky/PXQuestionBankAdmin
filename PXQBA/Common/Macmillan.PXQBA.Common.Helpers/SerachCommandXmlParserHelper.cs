@@ -36,14 +36,17 @@ namespace Macmillan.PXQBA.Common.Helpers
                 string dlap_html_text = ExtractNode(node, "str", "name", "dlap_html_text", "|");
                 string question_id = node.Attribute("questionid").Value;
 
-                questionList.Questions.Add(new Question()
-                                            {
-                                                QuestionHtmlInlinePreview = dlap_html_text,
-                                                QuestionType = GetQuestionFullType(dlap_q_type, questionTypesDictionary),
-                                                Title = question_id,
-                                                Id = question_id
-                                            }
-                );
+                var questionMetadata = new QuestionMetadata();
+
+                questionMetadata.Data.Add("questionHtmlInlinePreview", dlap_html_text);
+                questionMetadata.Data.Add("dlap_q_type", GetQuestionFullType(dlap_q_type, questionTypesDictionary));
+                questionMetadata.Data.Add("dlap_title", question_id);
+                questionMetadata.Data.Add("id", question_id);
+                questionMetadata.Data.Add("chapter", "");
+                questionMetadata.Data.Add("bank", "");
+                questionMetadata.Data.Add("seq", "");
+
+                questionList.Questions.Add(questionMetadata);
             }
 
             return questionList;

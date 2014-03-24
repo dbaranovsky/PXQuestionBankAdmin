@@ -1,6 +1,8 @@
 ﻿using System;
 using Macmillan.PXQBA.Business.Contracts;
+using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Business.Models.Web;
+using Macmillan.PXQBA.Business.Services;
 using Macmillan.PXQBA.Common.Helpers;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,14 +17,18 @@ namespace Macmillan.PXQBA.Web.Controllers
     {
         private readonly IQuestionListManagementService questionListManagementService;
         private readonly IQuestionManagementService questionManagementService;
+        private readonly QuestionMetadataService questionMetadataService;
+        private readonly IQuestionMetadataService questionMetadataService;
 
         private readonly int questionPerPage;
 
         public QuestionListController(IQuestionListManagementService questionListManagementService, IQuestionManagementService questionManagementService)
+        public QuestionListController(IQuestionListManagementService questionListManagementService, IQuestionMetadataService questionMetadataService)
         {
             this.questionListManagementService = questionListManagementService;
             this.questionManagementService = questionManagementService;
             this.questionPerPage = ConfigurationHelper.GetQuestionPerPage();
+            this.questionMetadataService = questionMetadataService;
         }
 
         //
@@ -47,6 +53,7 @@ namespace Macmillan.PXQBA.Web.Controllers
                             TotalPages = questionList.AllQuestionsAmount / questionPerPage,
                             QuestionList = questionList.Questions,
                             PageNumber = request.PageNumber,
+                            Columns = questionMetadataService.GetDataForFields(request.Columns),
                             Order = new QuestionOrder()
                                     {
                                         OrderField = request.OrderField,
