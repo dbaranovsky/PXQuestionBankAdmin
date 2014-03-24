@@ -12,7 +12,7 @@ var Question = React.createClass({
         this.setState({ showMenu: true });
     },
 
-    mouseOutHandler: function() {
+    mouseLeaveHandler: function() {
         this.setState({ showMenu: false });
     },
 
@@ -33,7 +33,7 @@ var Question = React.createClass({
         return ( 
             <tr className={componentClass} 
                     onMouseOver={this.mouseOverHandler}
-                    onMouseOut={this.mouseOutHandler}>
+                    onMouseLeave={this.mouseLeaveHandler}>
                 <td> 
                     <input type="checkbox"/>
                 </td>
