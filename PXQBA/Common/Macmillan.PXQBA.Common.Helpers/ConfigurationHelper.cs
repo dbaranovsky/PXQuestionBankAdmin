@@ -103,5 +103,75 @@ namespace Macmillan.PXQBA.Common.Helpers
                 {"FMA_GRAPH", "Graph Exercise"}
             };
         }
+
+        /// <summary>
+        /// Get admin userspace
+        /// </summary>
+        /// <returns>Admin userspace</returns>
+        public static string GetAdministratorUserspace()
+        {
+            var administratorUserspace = ConfigurationManager.AppSettings[ConfigurationKeys.AdministratorUserspace];
+            if (!string.IsNullOrEmpty(administratorUserspace))
+            {
+                return administratorUserspace;
+            }
+            return "root";
+        }
+
+        /// <summary>
+        /// Gets admin user id
+        /// </summary>
+        /// <returns>Admin user id</returns>
+        public static string GetAdministratorUserId()
+        {
+            var administratorUserId = ConfigurationManager.AppSettings[ConfigurationKeys.AdministratorUserId];
+            if (!string.IsNullOrEmpty(administratorUserId))
+            {
+                return administratorUserId;
+            }
+            return "7";
+        }
+
+        /// <summary>
+        /// Get admin password
+        /// </summary>
+        /// <returns>Admin password</returns>
+        public static string GetAdministratorPassword()
+        {
+            var administratorPassword = ConfigurationManager.AppSettings[ConfigurationKeys.AdministratorPassword];
+            if (!string.IsNullOrEmpty(administratorPassword))
+            {
+                return administratorPassword;
+            }
+            return "Px-Migration-123";
+        }
+
+        /// <summary>
+        /// Get domain id
+        /// </summary>
+        /// <returns>Domain id</returns>
+        public static string GetDomainId()
+        {
+            var domainId = ConfigurationManager.AppSettings[ConfigurationKeys.DomainId];
+            if (!string.IsNullOrEmpty(domainId))
+            {
+                return domainId;
+            }
+            return "6650";
+        }
+
+        /// <summary>
+        /// Get domain userspace
+        /// </summary>
+        /// <returns>Domain userspace</returns>
+        public static string GetDomainUserspace()
+        {
+            var domainUserspace = ConfigurationManager.AppSettings[ConfigurationKeys.DomainUserspace];
+            if (!string.IsNullOrEmpty(domainUserspace))
+            {
+                return domainUserspace;
+            }
+            return "bfwproducts";
+        }
     }
 }

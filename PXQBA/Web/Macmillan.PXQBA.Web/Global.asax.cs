@@ -3,7 +3,6 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using AutoMapper;
 using Macmillan.PXQBA.Business;
 using Macmillan.PXQBA.Business.Automapper;
 
@@ -30,7 +29,7 @@ namespace Macmillan.PXQBA.Web
             {
                 var user = HttpContext.Current.User.Identity.Name;
                 var businessContext = DependencyResolver.Current.GetService(typeof (IContext)) as IContext;
-                businessContext.InitializeSession(user);
+                businessContext.Initialize(user);
             }
         }
 
