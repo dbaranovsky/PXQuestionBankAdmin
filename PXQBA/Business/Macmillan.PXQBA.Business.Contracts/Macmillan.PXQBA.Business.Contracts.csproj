@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IQuestionFilterManagementService.cs" />
     <Compile Include="IQuestionListManagementService.cs" />
     <Compile Include="ITitleListManagementService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

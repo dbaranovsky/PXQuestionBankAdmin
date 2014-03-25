@@ -131,7 +131,9 @@
       <HintPath>..\..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\QuestionFilter\" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -142,6 +144,7 @@
     <Compile Include="Constants\WebKeys.cs" />
     <Compile Include="ActionResults\JsonCamelCaseResult.cs" />
     <Compile Include="Controllers\MasterController.cs" />
+    <Compile Include="Controllers\QuestionFilterController.cs" />
     <Compile Include="Controllers\QuestionListController.cs" />
     <Compile Include="Controllers\TitleListController.cs" />
     <Compile Include="Filters\AuthenticationAttribute.cs" />
@@ -180,6 +183,7 @@
     </None>
     <Content Include="packages.config" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\app\components\common\modalDialog.js" />
     <Content Include="Scripts\app\components\questions\addQuestionDialog.js" />
     <Content Include="Scripts\app\components\questions\question.js" />
     <Content Include="Scripts\app\components\questions\questionFilter.js" />
@@ -193,9 +197,13 @@
     <Content Include="Scripts\app\components\questions\questionPaginator.js" />
     <Content Include="Scripts\app\components\questions\questionPreview.js" />
     <Content Include="Scripts\app\components\questions\questionTabs.js" />
+    <Content Include="Scripts\app\components\questions\questionTypeList.js" />
     <Content Include="Scripts\app\dataAccess\questionDataManager.js" />
+    <Content Include="Scripts\app\dataAccess\questionFilterDataManager.js" />
     <Content Include="Scripts\app\routes\router.js" />
     <Content Include="Scripts\app\routes\routeManager.js" />
+    <Content Include="Scripts\app\src\components\common\modalDialog.js" />
+    <Content Include="Scripts\app\src\components\questions\addQuestionDialog.js" />
     <Content Include="Scripts\app\src\components\questions\question.js" />
     <Content Include="Scripts\app\src\components\questions\questionFilter.js" />
     <Content Include="Scripts\app\src\components\questions\questionGrid.js" />
@@ -208,6 +216,7 @@
     <Content Include="Scripts\app\src\components\questions\questionPaginator.js" />
     <Content Include="Scripts\app\src\components\questions\questionPreview.js" />
     <Content Include="Scripts\app\src\components\questions\questionTabs.js" />
+    <Content Include="Scripts\app\src\components\questions\questionTypeList.js" />
     <Content Include="Scripts\bootstrap\bootstrap-paginator.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
