@@ -37,7 +37,7 @@ var QuestinListHeaderCell = React.createClass({displayName: 'QuestinListHeaderCe
   },
 
  renderDeleteButton: function() {
-    if(this.state.showDeleteButton) {
+    if((this.state.showDeleteButton)&&(!this.props.canNotDelete)) {
       return React.DOM.span( {className:"delete-button", onClick:this.dleteButtonEventHandler},  " X " )
     }
     return null;

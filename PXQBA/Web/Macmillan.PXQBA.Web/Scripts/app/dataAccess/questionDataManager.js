@@ -1,6 +1,7 @@
 ﻿var questionDataManager = (function() {
     var self = {};
 
+    self.cache = {};
 
     self.processDataResponse = function (response) {
         //save in cache here

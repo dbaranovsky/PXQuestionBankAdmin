@@ -30,13 +30,7 @@ var QuestionTabs = React.createClass({displayName: 'QuestionTabs',
  
                 React.DOM.div( {className:"tab-content"}, 
                     React.DOM.div( {className:"tab-pane active", id:"view"}, 
-                         QuestionGrid(
-                             {data:this.props.data,
-                             currentPage:this.props.currentPage,
-                             totalPages:this.props.totalPages,  
-                             order:this.props.order,   
-                             columns:this.props.columns}
-                          )
+                         QuestionGrid( {response:this.props.response})
                     ),
                     React.DOM.div( {className:"tab-pane", id:"editOrder"}, "...")
                 )

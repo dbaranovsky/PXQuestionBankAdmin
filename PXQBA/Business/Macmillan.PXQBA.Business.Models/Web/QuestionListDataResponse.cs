@@ -28,5 +28,7 @@ namespace Macmillan.PXQBA.Business.Models.Web
         public QuestionOrder Order { get; set; }
 
         public IEnumerable<QuestionFieldDescriptor> Columns { get; set; }
+
+        public IEnumerable<QuestionFieldDescriptor> AllAvailableColumns { get; set; }
     }
 }

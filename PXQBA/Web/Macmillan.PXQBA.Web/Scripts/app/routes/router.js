@@ -1,24 +1,25 @@
 ﻿crossroads.addRoute('/filter/{query}/page/{page}/columns/{columns}/order/{orderType}/:orderField:',
     function (query, page, columns, orderType, orderField) {
+        asyncManager.startWait();
         var questionsData = questionDataManager.getQuestionsByQuery(query,
                                                                     page,
                                                                     columnHashParameterHelper.parse(columns),
                                                                     orderType,
                                                                     orderField);
-        questionsData.done(function (response) {
-                    React.renderComponent(
-                        QuestionListPage({
-                            data: response.questionList,
-                            currentPage: response.pageNumber,
-                            totalPages: response.totalPages,
-                            order: response.order,
-                            columns: response.columns
-                        }, " "),
-                        $('#question-container')[0]);
-                }).fail(function () {
-                    console.error("getQuestionsBy:", error);
-                });
-});
+        questionsData.done(function(response) {
+            asyncManager.questionListPage = React.renderComponent(
+                QuestionListPage({
+                    response: response
+                }, " "),
+                $('#question-container')[0]);
+             })
+            .fail(function(error) {
+                console.error("getQuestionsBy:", error);
+            })
+            .always(function() {
+                asyncManager.stopWait();
+            });
+    });
 
 crossroads.addRoute('', function() {
     hasher.setHash(window.routsManager.buildHash());

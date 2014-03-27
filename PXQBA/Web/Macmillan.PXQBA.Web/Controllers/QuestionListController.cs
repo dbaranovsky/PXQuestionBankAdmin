@@ -9,6 +9,7 @@ using System.Linq;
 using System.Linq.Dynamic;
 using System.Web.Mvc;
 using System.Xml;
+using Mono.Options;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -17,13 +18,13 @@ namespace Macmillan.PXQBA.Web.Controllers
     {
         private readonly IQuestionListManagementService questionListManagementService;
         private readonly IQuestionManagementService questionManagementService;
-        private readonly QuestionMetadataService questionMetadataService;
         private readonly IQuestionMetadataService questionMetadataService;
 
         private readonly int questionPerPage;
 
-        public QuestionListController(IQuestionListManagementService questionListManagementService, IQuestionManagementService questionManagementService)
-        public QuestionListController(IQuestionListManagementService questionListManagementService, IQuestionMetadataService questionMetadataService)
+        public QuestionListController(IQuestionListManagementService questionListManagementService,
+                                      IQuestionMetadataService questionMetadataService,
+                                      IQuestionManagementService questionManagementService)
         {
             this.questionListManagementService = questionListManagementService;
             this.questionManagementService = questionManagementService;
@@ -54,6 +55,7 @@ namespace Macmillan.PXQBA.Web.Controllers
                             QuestionList = questionList.Questions,
                             PageNumber = request.PageNumber,
                             Columns = questionMetadataService.GetDataForFields(request.Columns),
+                            AllAvailableColumns = questionMetadataService.GetAvailableFields(),
                             Order = new QuestionOrder()
                                     {
                                         OrderField = request.OrderField,

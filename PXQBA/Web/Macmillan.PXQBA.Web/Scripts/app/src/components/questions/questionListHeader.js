@@ -29,18 +29,20 @@ var QuestionListHeader = React.createClass({
                   caption={descriptor.friendlyName}
                   metadataName={descriptor.metadataName}
                   order={descriptor.order}
-                  leftIcon={descriptor.leftIcon} />);
+                  leftIcon={descriptor.leftIcon}
+                  canNotDelete={descriptor.canNotDelete} />);
   },
 
   render: function() {
     var cells = this.initializationHeaderCells(this.props.ordering);
     var renderedCell = cells.map(this.renderCell);
+    
     return ( 
         <tr>
             <th style={ {width:'5%'}}> <input type="checkbox"/></th>
              {renderedCell}
             <th> <QuestionListColumnAppender displayedFields={this.props.columns} 
-                                             allFields={questionMetadataManager.getQuestionAvailableFields()} /></th>
+                                             allFields={this.props.allAvailableColumns}  /></th>
         </tr>
       );
     }

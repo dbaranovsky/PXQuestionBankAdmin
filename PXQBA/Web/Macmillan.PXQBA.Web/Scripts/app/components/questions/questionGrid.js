@@ -11,12 +11,16 @@ var QuestionGrid = React.createClass({displayName: 'QuestionGrid',
                      QuestionFilter(null)
                 ),
                 React.DOM.div( {className:"question-grid-item"},  
-                    QuestionList( {data:this.props.data, order:this.props.order, columns:this.props.columns})
+                    QuestionList( {data:this.props.response.questionList, 
+                                        order:this.props.response.order, 
+                                        columns:this.props.response.columns,
+                                        allAvailableColumns:this.props.response.allAvailableColumns}
+                                        )
                 ), 
                 React.DOM.div( {className:"question-grid-item"},  
                     QuestionPaginator( {metadata:{
-                            currentPage: this.props.currentPage,
-                            totalPages: this.props.totalPages}} )
+                            currentPage: this.props.response.currentPage,
+                            totalPages: this.props.response.totalPages}} )
                 ) 
             ) 
             );

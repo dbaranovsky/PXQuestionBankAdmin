@@ -53,20 +53,29 @@ var QuestionList = React.createClass({
             
     },
 
-    render: function() {
-        var columns = this.props.columns;
-        var questions = this.props.data.map(function (question) {
-            return (<Question metadata={question} columns={columns}/>);
+    renderQuestion: function() {
+       var specialColumnsCount = 2;
+       var self = this;
+       var questions = this.props.data.map(function (question) {
+            return (<Question metadata={question} columns={self.props.columns}/>);
           });
 
+       if(questions.length==0) {
+           questions.push(<QuestionNoDataStub colSpan={this.props.columns.length+specialColumnsCount} />);
+        } 
+
+        return questions;
+    },
+
+    render: function() {
         return (
           <div className="questionList">
                 <table className="table table question-table">
                    <thead>
-                    <QuestionListHeader ordering={this.props.order} columns={this.props.columns}/>
+                    <QuestionListHeader ordering={this.props.order} columns={this.props.columns} allAvailableColumns={this.props.allAvailableColumns}/>
                   </thead>
                   <tbody> 
-                  {questions}
+                    {this.renderQuestion()}
                   </tbody> 
                 </table>
           </div>

@@ -13,15 +13,18 @@ var QuestionListColumnAppender = React.createClass({displayName: 'QuestionListCo
     },
 
     renderSelector: function() {
-            return (QuestionListColumnSelectDialog( {columns:this.props.columns}));
+        return (QuestionListColumnSelectDialog( {columns:this.props.columns}));
     },
 
 
     getSelectableFields: function () {
+        var allFields = this.props.allFields;
+        var displayedFields =  this.props.displayedFields;
+        
+        return this.excludeDisplayedFileds(allFields, displayedFields);
+    },
 
-      var allFields = this.props.allFields;
-      var displayedFields =  this.props.displayedFields;
-
+    excludeDisplayedFileds: function(allFields, displayedFields) {
       var resultArray = allFields.filter( function( el ) {
          for(var i=0; i<displayedFields.length; i++) {
             if(displayedFields[i].metadataName==el.metadataName) {
@@ -30,11 +33,11 @@ var QuestionListColumnAppender = React.createClass({displayName: 'QuestionListCo
          }
          return true;
       });
- 
+
       return resultArray;
     },
 
-    columnSelectorOnClickEventHandler: function(event) {
+    questionMetadataListOnClickEventHandler: function(event) {
         var field = event.target.getAttribute("data-field");
         if(field != null) {
             routsManager.addField(field);
@@ -42,30 +45,12 @@ var QuestionListColumnAppender = React.createClass({displayName: 'QuestionListCo
     },
 
     render: function() {
-
-        var fields = this.getSelectableFields();
-
-        var menuOptions = [];
-        fields.forEach(function(questionFieldDescriptor) {
-            menuOptions.push(
-                React.DOM.li(null,  " ", React.DOM.a( {className:"add-column-item", 'data-field':questionFieldDescriptor.metadataName}, questionFieldDescriptor.friendlyName))
-                ); 
-        }); 
-
-        if(menuOptions.length==0) {
-            menuOptions.push(React.DOM.li(null,  " ", React.DOM.div( {className:"add-columns-message"},  " All columns already added. " )))
-        }
-
         return (
             React.DOM.div(null, 
               React.DOM.div( {className:"dropdown"}, 
                     React.DOM.div( {className:"add-column-container"}, 
                         React.DOM.span( {'data-toggle':"dropdown", className:"dropdown-toggle add-column-button"},   "  ",  React.DOM.span( {className:"glyphicon glyphicon-plus"}), " " ),
-                        
-                        React.DOM.ul( {className:"dropdown-menu", onClick:this.columnSelectorOnClickEventHandler}, 
-                            menuOptions
-                        )
-                        
+                        QuestionMetadataList( {onClickEventHandler:this.questionMetadataListOnClickEventHandler, fields:this.getSelectableFields()} )
                     )
               )
 

@@ -29,18 +29,20 @@ var QuestionListHeader = React.createClass({displayName: 'QuestionListHeader',
                   caption:descriptor.friendlyName,
                   metadataName:descriptor.metadataName,
                   order:descriptor.order,
-                  leftIcon:descriptor.leftIcon} ));
+                  leftIcon:descriptor.leftIcon,
+                  canNotDelete:descriptor.canNotDelete} ));
   },
 
   render: function() {
     var cells = this.initializationHeaderCells(this.props.ordering);
     var renderedCell = cells.map(this.renderCell);
+    
     return ( 
         React.DOM.tr(null, 
             React.DOM.th( {style: {width:'5%'}},  " ", React.DOM.input( {type:"checkbox"})),
              renderedCell,
             React.DOM.th(null,  " ", QuestionListColumnAppender( {displayedFields:this.props.columns, 
-                                             allFields:questionMetadataManager.getQuestionAvailableFields()} ))
+                                             allFields:this.props.allAvailableColumns}  ))
         )
       );
     }

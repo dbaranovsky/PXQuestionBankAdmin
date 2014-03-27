@@ -15,32 +15,37 @@ namespace Macmillan.PXQBA.Business.Services
                                                        {
                                                            FriendlyName = "Chapter",
                                                            MetadataName = "chapter",
-                                                           Width = "10%"
+                                                           Width = "10%",
+                                                           CanNotDelete = false
                                                        },
                                                        new QuestionFieldDescriptor()
                                                        {
                                                            FriendlyName = "Bank",
                                                            MetadataName = "bank",
-                                                           Width = "10%"
+                                                           Width = "10%",
+                                                           CanNotDelete = false
                                                        },
                                                        new QuestionFieldDescriptor()
                                                        {
                                                            FriendlyName = "Seq",
                                                            MetadataName = "seq",
-                                                           Width = "10%"
+                                                           Width = "10%",
+                                                           CanNotDelete = false
                                                        },
                                                        new QuestionFieldDescriptor()
                                                        {
                                                            FriendlyName = "Title",
                                                            MetadataName = "dlap_title",
                                                            LeftIcon = "glyphicon glyphicon-chevron-right titles-expander",
-                                                           Width = "40%"
+                                                           Width = "40%",
+                                                           CanNotDelete = true
                                                        },
                                                        new QuestionFieldDescriptor()
                                                        {
                                                            FriendlyName = "Format",
                                                            MetadataName = "dlap_q_type",
-                                                           Width = "10%"
+                                                           Width = "10%",
+                                                           CanNotDelete = false
                                                        },
                                                    };
 

@@ -52,8 +52,13 @@ namespace Macmillan.PXQBA.Common.Helpers
             return questionList;
         }
 
-        private static string GetQuestionFullType(string shortType, Dictionary<string, string> questionTypesDictionary)
+        public static string GetQuestionFullType(string shortType, Dictionary<string, string> questionTypesDictionary)
         {
+            if (shortType == null)
+            {
+                return String.Empty;
+            }
+
             if (questionTypesDictionary.ContainsKey(shortType))
             {
                 return questionTypesDictionary[shortType];

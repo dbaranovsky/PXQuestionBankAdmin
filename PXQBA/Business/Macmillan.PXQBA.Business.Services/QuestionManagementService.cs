@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using AutoMapper;
-using Bfw.Agilix.Commands;
+﻿using AutoMapper;
 using Bfw.Common.Logging;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Commands.Services.SQL;
 using Macmillan.PXQBA.Business.Contracts;
-using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.DataAccess.Data;
-using Question = Macmillan.PXQBA.Business.Models.Question;
-using Agx = Bfw.Agilix.DataContracts;
+using System;
+using System.Collections.Generic;
 using InteractionType = Macmillan.PXQBA.Business.Models.InteractionType;
+using Question = Macmillan.PXQBA.Business.Models.Question;
 
 
 namespace Macmillan.PXQBA.Business.Services
