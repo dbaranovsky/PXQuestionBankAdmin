@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Macmillan.PXQBA.Business;
-using Macmillan.PXQBA.Business.Automapper;
+using Macmillan.PXQBA.Business.Services.Automapper;
 
 namespace Macmillan.PXQBA.Web
 {

@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InteractionType.cs" />
     <Compile Include="QuestionList.cs" />
     <Compile Include="Web\ContentItem.cs" />
     <Compile Include="Web\OrderType.cs" />
@@ -48,7 +49,6 @@
     <Compile Include="Web\QuestionListDataResponse.cs" />
     <Compile Include="QuestionChoice.cs" />
     <Compile Include="Web\QuestionOrder.cs" />
-    <Compile Include="Web\SelectedItem.cs" />
     <Compile Include="Web\UserInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

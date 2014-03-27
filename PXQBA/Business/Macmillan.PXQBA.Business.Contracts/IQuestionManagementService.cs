@@ -1,16 +1,18 @@
-﻿using Macmillan.PXQBA.Business.Models.Web;
+﻿using System.Collections.Generic;
+using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Business.Models.Web;
 
 namespace Macmillan.PXQBA.Business.Contracts
 {
+    /// <summary>
+    /// Service to handle operations with question
+    /// </summary>
     public interface IQuestionManagementService
     {
-        /// <summary>
-        /// Creates new question
-        /// </summary>
-        /// <param name="titleId">Title id</param>
-        /// <param name="type">Type of question</param>
-        /// <param name="bank">Question bank</param>
-        /// <param name="chapter">Chapter</param>
-        void AddNewQuestion(string titleId, SelectedItem type, SelectedItem bank, SelectedItem chapter);
+        void SaveQuestion(Question question);
+
+        void SaveQuestions(List<Question> questions);
+
+        void CreateQuestion(string questionType);
     }
 }
