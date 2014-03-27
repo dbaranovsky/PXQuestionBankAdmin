@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 
-namespace Macmillan.PXQBA.Business.Automapper
+namespace Macmillan.PXQBA.Business.Services.Automapper
 {
     public class AutomapperConfigurator
     {

@@ -1,4 +1,5 @@
-﻿using Macmillan.PXQBA.Business.Contracts;
+﻿using System;
+using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models.Web;
 using Macmillan.PXQBA.Common.Helpers;
 using System.Collections.Generic;
@@ -13,12 +14,14 @@ namespace Macmillan.PXQBA.Web.Controllers
     public class QuestionListController : MasterController
     {
         private readonly IQuestionListManagementService questionListManagementService;
+        private readonly IQuestionManagementService questionManagementService;
 
         private readonly int questionPerPage;
 
-        public QuestionListController(IQuestionListManagementService questionListManagementService)
+        public QuestionListController(IQuestionListManagementService questionListManagementService, IQuestionManagementService questionManagementService)
         {
             this.questionListManagementService = questionListManagementService;
+            this.questionManagementService = questionManagementService;
             this.questionPerPage = ConfigurationHelper.GetQuestionPerPage();
         }
 
@@ -32,7 +35,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult GetQuestionData(QuestionListDataRequest request)
         {
-
+            //questionManagementService.CreateQuestion("choice");
             // uncomment this for real data
             var questionList = questionListManagementService.GetQuestionList(request.Query, request.PageNumber, questionPerPage);
 

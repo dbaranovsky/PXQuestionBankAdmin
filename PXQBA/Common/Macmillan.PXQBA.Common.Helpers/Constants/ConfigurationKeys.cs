@@ -40,5 +40,30 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
         /// Key for question types
         /// </summary>
         public static string QuestionTypes { get; set; }
+
+        /// <summary>
+        /// Key for administrator userspace
+        /// </summary>
+        public const string AdministratorUserspace = "AdministratorUserspace";
+
+        /// <summary>
+        /// Key for administrator user id
+        /// </summary>
+        public const string AdministratorUserId = "AdministratorUserId";
+
+        /// <summary>
+        /// Key for administrator password
+        /// </summary>
+        public const string AdministratorPassword = "AdministratorPassword";
+
+        /// <summary>
+        /// Key for domain id
+        /// </summary>
+        public const string DomainId = "DomainId";
+
+        /// <summary>
+        /// Key for domain userspace
+        /// </summary>
+        public const string DomainUserspace = "DomainUserspace";
     }
 }

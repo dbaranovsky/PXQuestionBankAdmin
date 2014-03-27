@@ -67,5 +67,26 @@ namespace Macmillan.PXQBA.Business.Models
 
         public string QuestionHtmlInlinePreview;
 
+        /// <summary>
+        /// Indicates the question type (multiple choice, matching,...).
+        /// </summary>
+        public InteractionType InteractionType { get; set; }
+
+        public static string QuestionTypeShortNameFromId(string id)
+        {
+            return new Dictionary<string, string>()
+            {
+                { "answer", "A" },
+                { "choice", "MC" },
+                { "composite", "COMP" },
+                { "custom", "CUSTOM" },
+                { "hts", "HTS" },
+                { "graph", "FMA_GRAPH" },
+                { "essay", "E" },
+                { "match", "MT" },
+                { "text", "TXT" },
+                { "bank", "BANK" },
+            }[id];
+        }
     }
 }
