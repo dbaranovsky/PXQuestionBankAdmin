@@ -35,7 +35,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult GetQuestionData(QuestionListDataRequest request)
         {
-            questionManagementService.CreateQuestion("choice");
+            //questionManagementService.CreateQuestion("choice");
             // uncomment this for real data
             var questionList = questionListManagementService.GetQuestionList(request.Query, request.PageNumber, questionPerPage);
 
