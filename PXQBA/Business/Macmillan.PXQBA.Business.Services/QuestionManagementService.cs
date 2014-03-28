@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using AutoMapper;
 using Bfw.Agilix.Commands;
+using Bfw.Common.Logging;
+using Macmillan.PXQBA.Business.Commands.Contracts;
+using Macmillan.PXQBA.Business.Commands.Services.SQL;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.DataAccess.Data;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 using Agx = Bfw.Agilix.DataContracts;
+using InteractionType = Macmillan.PXQBA.Business.Models.InteractionType;
 
 
 namespace Macmillan.PXQBA.Business.Services
@@ -15,11 +20,11 @@ namespace Macmillan.PXQBA.Business.Services
     /// </summary>
     public class QuestionManagementService : IQuestionManagementService
     {
-        private readonly IContext businessContext;
+        private readonly IQuestionCommands questionCommands;
 
-        public QuestionManagementService(IContext businessContext)
+        public QuestionManagementService(IQuestionCommands questionCommands)
         {
-            this.businessContext = businessContext;
+            this.questionCommands = questionCommands;
         }
 
         /// <summary>
@@ -35,12 +40,10 @@ namespace Macmillan.PXQBA.Business.Services
         /// Saves batch of questions to dlap db
         /// </summary>
         /// <param name="questions">Question to save</param>
-        public void SaveQuestions(List<Question> questions)
+        public void SaveQuestions(IList<Question> questions)
         {
-            var cmd = new PutQuestions();
-            cmd.Add(Mapper.Map<IList<Agx.Question>>(questions));
-
-            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+            var qc = new QuestionCommands(new QBAUow(new QBADummyModelContainer(), new NullLogger()));
+            qc.SaveQuestions(questions);
         }
 
         public void CreateQuestion(string questionType)

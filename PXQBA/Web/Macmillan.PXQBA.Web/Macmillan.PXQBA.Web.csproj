@@ -46,6 +46,13 @@
     <Reference Include="AutoMapper.Net4">
       <HintPath>..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.Unity, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -62,7 +69,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -259,6 +265,10 @@
     <Content Include="Views\QuestionList\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Commands\Macmillan.PXQBA.Business.Commands.csproj">
+      <Project>{DCC579E2-F0D2-48C9-B660-DFAF8858C40C}</Project>
+      <Name>Macmillan.PXQBA.Business.Commands</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Context\Macmillan.PXQBA.Business.csproj">
       <Project>{B1D7B9EC-976A-4C09-A46F-81C1D7933B12}</Project>
       <Name>Macmillan.PXQBA.Business</Name>
@@ -282,6 +292,10 @@
     <ProjectReference Include="..\..\Common\Macmillan.PXQBA.Common.Logging\Macmillan.PXQBA.Common.Logging.csproj">
       <Project>{45A498CC-0FDF-4B3B-833B-FD0B008AA8D9}</Project>
       <Name>Macmillan.PXQBA.Common.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataAccess\Macmillan.PXQBA.DataAccess.Data\Macmillan.PXQBA.DataAccess.Data.csproj">
+      <Project>{AC937F92-418D-4F2B-820E-DD1762E24114}</Project>
+      <Name>Macmillan.PXQBA.DataAccess.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Bfw.Agilix.Dlap.Components.csproj">
       <Project>{bffd6b7a-4ea1-431a-916a-8214bd16e049}</Project>

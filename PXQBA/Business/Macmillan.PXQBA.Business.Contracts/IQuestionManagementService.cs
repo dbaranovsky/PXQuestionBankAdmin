@@ -11,7 +11,7 @@ namespace Macmillan.PXQBA.Business.Contracts
     {
         void SaveQuestion(Question question);
 
-        void SaveQuestions(List<Question> questions);
+        void SaveQuestions(IList<Question> questions);
 
         void CreateQuestion(string questionType);
     }
