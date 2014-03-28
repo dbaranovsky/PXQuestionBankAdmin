@@ -173,5 +173,19 @@ namespace Macmillan.PXQBA.Common.Helpers
             }
             return "bfwproducts";
         }
+
+        /// <summary>
+        /// Get discipline course id
+        /// </summary>
+        /// <returns>Discipline course id</returns>
+        public static string GetDisciplineCourseId()
+        {
+            var disciplineCourseId = ConfigurationManager.AppSettings[ConfigurationKeys.DisciplineCourseId];
+            if (!string.IsNullOrEmpty(disciplineCourseId))
+            {
+                return disciplineCourseId;
+            }
+            return "6710";
+        }
     }
 }

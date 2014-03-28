@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Data.Entity.ModelConfiguration.Conventions;
+using AutoMapper;
 using Bfw.Agilix.DataContracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
@@ -51,6 +52,24 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<Item, ContentItem>();
 
             Mapper.CreateMap<string, InteractionType>().ConvertUsing(modelProfileService.CreateInteractionType);
+
+
+            #region UI models to dummy models
+
+            Mapper.CreateMap<Question, DataAccess.Data.Question>()
+                .ForMember(dest => dest.Id, d => d.Ignore())
+                .ForMember(dest => dest.DlapId, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.QuestionType))
+                .ForMember(dest => dest.Preview, opt => opt.MapFrom(src => src.QuestionHtmlInlinePreview))
+                .ForMember(dest => dest.InteractionType, opt => opt.MapFrom(src => ((int) src.InteractionType).ToString()));
+
+            Mapper.CreateMap<DataAccess.Data.Question, Question>()
+               .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.DlapId))
+               .ForMember(dest => dest.QuestionType, opt => opt.MapFrom(src => src.Type))
+               .ForMember(dest => dest.QuestionHtmlInlinePreview, opt => opt.MapFrom(src => src.Preview))
+               .ForMember(dest => dest.InteractionType, opt => opt.MapFrom(src => (InteractionType)int.Parse(src.InteractionType)));
+
+            #endregion
         }
     }
 }

@@ -65,5 +65,10 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
         /// Key for domain userspace
         /// </summary>
         public const string DomainUserspace = "DomainUserspace";
+
+        /// <summary>
+        /// Key for entity id
+        /// </summary>
+        public const string DisciplineCourseId = "DisciplineCourseId";
     }
 }

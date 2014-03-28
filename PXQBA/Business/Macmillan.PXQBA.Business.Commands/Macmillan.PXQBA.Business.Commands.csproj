@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CF2B92A9-6E1D-4472-AD9C-AED6DC86A62C}</ProjectGuid>
+    <ProjectGuid>{DCC579E2-F0D2-48C9-B660-DFAF8858C40C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Macmillan.PXQBA.Business.Services</RootNamespace>
-    <AssemblyName>Macmillan.PXQBA.Business.Services</AssemblyName>
+    <RootNamespace>Macmillan.PXQBA.Business.Commands</RootNamespace>
+    <AssemblyName>Macmillan.PXQBA.Business.Commands</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,19 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=3.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="AutoMapper">
       <HintPath>..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="AutoMapper.Net4, Version=3.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="AutoMapper.Net4">
       <HintPath>..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">
-      <HintPath>..\..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -54,27 +52,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Automapper\AutomapperConfigurator.cs" />
-    <Compile Include="Automapper\ModelProfile.cs" />
-    <Compile Include="ModelProfileService.cs" />
-    <Compile Include="QbaApiStub.cs" />
-    <Compile Include="QuestionFilterManagementService.cs" />
-    <Compile Include="QuestionListManagementService.cs" />
+    <Compile Include="Contracts\IQuestionCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuestionManagementService.cs" />
-    <Compile Include="TitleListManagementService.cs" />
+    <Compile Include="Services\DLAP\QuestionCommands.cs" />
+    <Compile Include="Services\SQL\QuestionCommands.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Context\Macmillan.PXQBA.Business.csproj">
+      <Project>{B1D7B9EC-976A-4C09-A46F-81C1D7933B12}</Project>
+      <Name>Macmillan.PXQBA.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Models\Macmillan.PXQBA.Business.Models.csproj">
+      <Project>{800708C5-6692-4C91-BE89-729A017B5027}</Project>
+      <Name>Macmillan.PXQBA.Business.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Common\Macmillan.PXQBA.Common.Helpers\Macmillan.PXQBA.Common.Helpers.csproj">
-      <Project>{dc4aeaab-7123-4e1c-bd7d-fb0913c68b2c}</Project>
+      <Project>{DC4AEAAB-7123-4E1C-BD7D-FB0913C68B2C}</Project>
       <Name>Macmillan.PXQBA.Common.Helpers</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\DataAccess\Macmillan.PXQBA.DataAccess.Data\Macmillan.PXQBA.DataAccess.Data.csproj">
-      <Project>{AC937F92-418D-4F2B-820E-DD1762E24114}</Project>
-      <Name>Macmillan.PXQBA.DataAccess.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.Commands\Bfw.Agilix.Commands.csproj">
-      <Project>{19e52c79-1fe3-4385-a035-b603213c099e}</Project>
+      <Project>{19E52C79-1FE3-4385-A035-B603213C099E}</Project>
       <Name>Bfw.Agilix.Commands</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.DataContracts\Bfw.Agilix.DataContracts.csproj">
@@ -85,25 +82,9 @@
       <Project>{F5A60C36-AA1F-4849-A9E7-465F7963DF9F}</Project>
       <Name>Bfw.Agilix.Dlap</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\PXShared\Bfw.Common\Bfw.Common\Bfw.Common.csproj">
-      <Project>{4F1BF9DB-1226-4867-9E41-129B214F24F2}</Project>
-      <Name>Bfw.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Macmillan.PXQBA.Business.Commands\Macmillan.PXQBA.Business.Commands.csproj">
-      <Project>{DCC579E2-F0D2-48C9-B660-DFAF8858C40C}</Project>
-      <Name>Macmillan.PXQBA.Business.Commands</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Macmillan.PXQBA.Business.Context\Macmillan.PXQBA.Business.csproj">
-      <Project>{B1D7B9EC-976A-4C09-A46F-81C1D7933B12}</Project>
-      <Name>Macmillan.PXQBA.Business</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Macmillan.PXQBA.Business.Contracts\Macmillan.PXQBA.Business.Contracts.csproj">
-      <Project>{C7070F01-3D37-425D-ABD5-E02D7CFAEA43}</Project>
-      <Name>Macmillan.PXQBA.Business.Contracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Macmillan.PXQBA.Business.Models\Macmillan.PXQBA.Business.Models.csproj">
-      <Project>{800708c5-6692-4c91-be89-729a017b5027}</Project>
-      <Name>Macmillan.PXQBA.Business.Models</Name>
+    <ProjectReference Include="..\..\DataAccess\Macmillan.PXQBA.DataAccess.Data\Macmillan.PXQBA.DataAccess.Data.csproj">
+      <Project>{AC937F92-418D-4F2B-820E-DD1762E24114}</Project>
+      <Name>Macmillan.PXQBA.DataAccess.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -116,6 +97,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
