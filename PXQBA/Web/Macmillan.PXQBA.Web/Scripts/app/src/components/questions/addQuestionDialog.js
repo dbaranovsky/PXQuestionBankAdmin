@@ -17,7 +17,7 @@ var AddQuestionDialog = React.createClass({
                         <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
                     </div>);
         };
-        return (<ModalDialog renderHeaderText={renderHeaderText} renderBody={renderBody} renderFooterButtons={renderFooterButtons}/>
+        return (<ModalDialog renderHeaderText={renderHeaderText} renderBody={renderBody} renderFooterButtons={renderFooterButtons} dialogId="addQuestionModal"/>
                 );
     }
 });

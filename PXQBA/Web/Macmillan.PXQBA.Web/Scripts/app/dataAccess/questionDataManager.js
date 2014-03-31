@@ -1,6 +1,7 @@
 ﻿var questionDataManager = (function() {
     var self = {};
 
+    self.cache = {};
 
     self.processDataResponse = function (response) {
         //save in cache here
@@ -11,7 +12,7 @@
         return null;
     };
 
-    self.getQuestionsByQuery = function (query, page, orderType, orderField) {
+    self.getQuestionsByQuery = function (query, page, columns, orderType, orderField) {
         
         var cacheResult = self.loadFromCache(query, page, orderType, orderField);
 
@@ -25,11 +26,13 @@
             query: query,
             pageNumber: page,
             orderType: orderType, 
-            orderField: orderField
+            orderField: orderField,
+            columns: columns
         };
 
         return $.ajax({
             url: window.actions.questionList.getQuestionListUrl,
+            traditional: true,
             data: request,
             dataType: 'json',
             type: 'POST'

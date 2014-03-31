@@ -69,6 +69,9 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                .ForMember(dest => dest.QuestionHtmlInlinePreview, opt => opt.MapFrom(src => src.Preview))
                .ForMember(dest => dest.InteractionType, opt => opt.MapFrom(src => (InteractionType)int.Parse(src.InteractionType)));
 
+            Mapper.CreateMap<DataAccess.Data.Question, QuestionMetadata>()
+             .ForMember(dest => dest.Data, opt => opt.MapFrom(src => modelProfileService.CreateQuestionMetadata(src)));
+
             #endregion
         }
     }

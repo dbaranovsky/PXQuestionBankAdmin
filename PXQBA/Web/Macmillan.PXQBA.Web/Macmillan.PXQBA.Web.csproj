@@ -138,6 +138,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\Metadata\" />
     <Folder Include="Views\QuestionFilter\" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +172,7 @@
     <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap\bootstrap.css" />
     <Content Include="Content\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\img\spinning.gif" />
     <Content Include="Content\Paging.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -188,37 +190,54 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\DebugPublishToFS.pubxml" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\app\async\asyncManager.js" />
+    <Content Include="Scripts\app\components\common\loader.js" />
     <Content Include="Scripts\app\components\common\modalDialog.js" />
     <Content Include="Scripts\app\components\questions\addQuestionDialog.js" />
     <Content Include="Scripts\app\components\questions\question.js" />
+    <Content Include="Scripts\app\components\questions\questionCell.js" />
+    <Content Include="Scripts\app\components\questions\questionCellWithPreview.js" />
     <Content Include="Scripts\app\components\questions\questionFilter.js" />
     <Content Include="Scripts\app\components\questions\questionGrid.js" />
     <Content Include="Scripts\app\components\questions\questionList.js" />
+    <Content Include="Scripts\app\components\questions\questionListColumnAppender.js" />
     <Content Include="Scripts\app\components\questions\questionListHeader.js" />
     <Content Include="Scripts\app\components\questions\questionListHeaderCell.js" />
     <Content Include="Scripts\app\components\questions\questionListHeaderCellOrdering.js" />
     <Content Include="Scripts\app\components\questions\questionListMenu.js" />
     <Content Include="Scripts\app\components\questions\questionListPage.js" />
+    <Content Include="Scripts\app\components\questions\questionMetadataList.js" />
+    <Content Include="Scripts\app\components\questions\questionNoDataStub.js" />
     <Content Include="Scripts\app\components\questions\questionPaginator.js" />
     <Content Include="Scripts\app\components\questions\questionPreview.js" />
     <Content Include="Scripts\app\components\questions\questionTabs.js" />
     <Content Include="Scripts\app\components\questions\questionTypeList.js" />
+    <Content Include="Scripts\app\dataAccess\dataCache\dataCacheStorage.js" />
     <Content Include="Scripts\app\dataAccess\questionDataManager.js" />
     <Content Include="Scripts\app\dataAccess\questionFilterDataManager.js" />
+    <Content Include="Scripts\app\dataAccess\questionMetadataManager.js" />
+    <Content Include="Scripts\app\routes\columnHashParameterHelper.js" />
     <Content Include="Scripts\app\routes\router.js" />
     <Content Include="Scripts\app\routes\routeManager.js" />
+    <Content Include="Scripts\app\src\components\common\loader.js" />
     <Content Include="Scripts\app\src\components\common\modalDialog.js" />
     <Content Include="Scripts\app\src\components\questions\addQuestionDialog.js" />
     <Content Include="Scripts\app\src\components\questions\question.js" />
+    <Content Include="Scripts\app\src\components\questions\questionCell.js" />
+    <Content Include="Scripts\app\src\components\questions\questionCellWithPreview.js" />
     <Content Include="Scripts\app\src\components\questions\questionFilter.js" />
     <Content Include="Scripts\app\src\components\questions\questionGrid.js" />
     <Content Include="Scripts\app\src\components\questions\questionList.js" />
+    <Content Include="Scripts\app\src\components\questions\questionListColumnAppender.js" />
     <Content Include="Scripts\app\src\components\questions\questionListHeader.js" />
     <Content Include="Scripts\app\src\components\questions\questionListHeaderCell.js" />
     <Content Include="Scripts\app\src\components\questions\questionListHeaderCellOrdering.js" />
     <Content Include="Scripts\app\src\components\questions\questionListMenu.js" />
     <Content Include="Scripts\app\src\components\questions\questionListPage.js" />
+    <Content Include="Scripts\app\src\components\questions\questionMetadataList.js" />
+    <Content Include="Scripts\app\src\components\questions\questionNoDataStub.js" />
     <Content Include="Scripts\app\src\components\questions\questionPaginator.js" />
     <Content Include="Scripts\app\src\components\questions\questionPreview.js" />
     <Content Include="Scripts\app\src\components\questions\questionTabs.js" />

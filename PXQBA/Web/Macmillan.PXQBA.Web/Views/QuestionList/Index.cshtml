@@ -9,14 +9,24 @@
 
 <div id="question-container"> </div>
 
+
 @section scripts
 {
     @*
      extract this in view
     *@
     <script src="../../Scripts/app/components/common/modalDialog.js"></script>
+    <script src="../../Scripts/app/components/common/loader.js"></script>
+    <script src="../../Scripts/app/async/asyncManager.js"></script>
+    <script src="../../Scripts/app/components/questions/questionNoDataStub.js"></script>
+    <script src="../../Scripts/app/components/questions/questionMetadataList.js"></script>
+    <script src="../../Scripts/app/dataAccess/questionMetadataManager.js"></script>
     <script src="../../Scripts/app/dataAccess/questionFilterDataManager.js"></script>
+    <script src="../../Scripts/app/routes/columnHashParameterHelper.js"> </script>
+    <script src="../../Scripts/app/components/questions/questionCell.js"></script>
+    <script src="../../Scripts/app/components/questions/questionCellWithPreview.js"></script>
     <script src="../../Scripts/app/dataAccess/questionDataManager.js"></script>
+    <script src="../../Scripts/app/components/questions/questionListColumnAppender.js"></script>
     <script src="../../Scripts/app/components/questions/question.js"></script>
     <script src="../../Scripts/app/components/questions/questionPaginator.js"></script>
     <script src="../../Scripts/app/components/questions/questionListHeaderCellOrdering.js"></script>
@@ -31,7 +41,7 @@
     <script src="../../Scripts/app/components/questions/questionGrid.js"></script>
     <script src="../../Scripts/app/components/questions/questionTabs.js"></script>
     <script src="../../Scripts/app/components/questions/questionPreview.js"></script>
-        <script src="../../Scripts/app/routes/routeManager.js"></script>
+    <script src="../../Scripts/app/routes/routeManager.js"></script>
     <script src="../../Scripts/app/routes/router.js"></script>
 
 }
