@@ -35,16 +35,6 @@ namespace Macmillan.PXQBA.Business.Contracts
 
         List<string> GetQuestionStatusList();
 
-        void GetQuestionNotes(string questionId);
-
-        void SaveNote(string questionId);
-
-        bool IsNoteFlagged(string questionId, string noteId); // Maybe can be checked via metadata field
-
-        bool SetFlag(string noteId, bool flag); //Maybe can be done in metadata field
-
-        void DeleteNote(string questionId, string noteId);
-
         bool IsQuestionFlagged(string questionId);
 
         Question GetQuestionMetadata(string questionId);
@@ -59,5 +49,10 @@ namespace Macmillan.PXQBA.Business.Contracts
 
         void GetTitleList(string userId);
 
+        void DeleteNote(string empty, string s);
+        void GetQuestionNotes(string empty);
+        bool IsNoteFlagged(string empty, string s);
+        void SaveNote(string empty);
+        void SetFlag(string empty, bool b);
     }
 }

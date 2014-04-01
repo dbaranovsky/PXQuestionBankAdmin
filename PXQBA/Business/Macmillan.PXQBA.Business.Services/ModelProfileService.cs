@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
@@ -45,11 +47,12 @@ namespace Macmillan.PXQBA.Business.Services
             data.Add("questionHtmlInlinePreview", question.Preview);
             data.Add("dlap_q_type", SerachCommandXmlParserHelper.GetQuestionFullType(question.Type, availableQuestionTypes));
             data.Add("dlap_title", question.DlapId);
-            data.Add("id", question.DlapId);
-            data.Add("chapter", question.EBookChapter);
-            data.Add("bank", question.QuestionBank);
-            data.Add("seq", question.Sequency);
-            data.Add("dlap_q_status", question.Status);
+            data.Add("id", question.Id.ToString());
+            // TODO: This is hardcoded to a single product course in question. This is not correct.
+            data.Add("chapter", question.ProductCourses.First().Chapter);
+            data.Add("bank", question.ProductCourses.First().Bank);
+            data.Add("seq", question.ProductCourses.First().Sequence);
+            data.Add("dlap_q_status", EnumHelper.GetEnumDescription((QuestionStatus)Enum.Parse(typeof(QuestionStatus), question.Status)));
 
             return data;
         }

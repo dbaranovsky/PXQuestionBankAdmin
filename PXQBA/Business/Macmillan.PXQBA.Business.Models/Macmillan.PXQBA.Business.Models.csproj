@@ -41,8 +41,10 @@
   <ItemGroup>
     <Compile Include="InteractionType.cs" />
     <Compile Include="QuestionList.cs" />
+    <Compile Include="QuestionStatus.cs" />
     <Compile Include="Web\ContentItem.cs" />
     <Compile Include="QuestionMetadata.cs" />
+    <Compile Include="Web\Note.cs" />
     <Compile Include="Web\OrderType.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

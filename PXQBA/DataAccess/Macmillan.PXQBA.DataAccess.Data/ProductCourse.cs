@@ -12,22 +12,17 @@ namespace Macmillan.PXQBA.DataAccess.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Question
+    public partial class ProductCourse
     {
-        public Question()
-        {
-            this.ProductCourses = new HashSet<ProductCourse>();
-            this.Notes = new HashSet<Note>();
-        }
-    
         public int Id { get; set; }
-        public string InteractionType { get; set; }
-        public string DlapId { get; set; }
-        public string Status { get; set; }
-        public string Type { get; set; }
-        public string Preview { get; set; }
+        public string ProductCourseDlapId { get; set; }
+        public string Difficulty { get; set; }
+        public string Chapter { get; set; }
+        public string Bank { get; set; }
+        public string Title { get; set; }
+        public string Sequence { get; set; }
+        public int QuestionId { get; set; }
     
-        public virtual ICollection<ProductCourse> ProductCourses { get; set; }
-        public virtual ICollection<Note> Notes { get; set; }
+        public virtual Question Question { get; set; }
     }
 }
