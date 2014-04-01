@@ -18,7 +18,7 @@ var Question = React.createClass({displayName: 'Question',
 
     renderMenu: function() {
         if(this.state.showMenu) {
-            return QuestionListMenu(null )
+            return QuestionListMenu( {questionId:this.props.metadata.data["id"]})
         }
 
         return null;
