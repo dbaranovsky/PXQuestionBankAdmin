@@ -136,4 +136,16 @@ input[type="checkbox"].input-validation-error {
     background-size: 100%;
 }
 
- 
+.cell-menu-holder {
+    width: 32px;
+    float: right;
+    vert-align: top;
+}
+
+.menu-show {
+    display: block !important;
+}
+
+.edit-field-item {
+     cursor: pointer;
+}

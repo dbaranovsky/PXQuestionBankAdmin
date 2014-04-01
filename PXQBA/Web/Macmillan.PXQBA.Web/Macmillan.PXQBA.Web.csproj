@@ -140,6 +140,7 @@
   <ItemGroup>
     <Folder Include="Views\Metadata\" />
     <Folder Include="Views\QuestionFilter\" />
+    <Folder Include="Views\Question\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
@@ -151,6 +152,7 @@
     <Compile Include="Constants\WebKeys.cs" />
     <Compile Include="ActionResults\JsonCamelCaseResult.cs" />
     <Compile Include="Controllers\MasterController.cs" />
+    <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\QuestionFilterController.cs" />
     <Compile Include="Controllers\QuestionListController.cs" />
     <Compile Include="Controllers\TitleListController.cs" />
@@ -198,6 +200,7 @@
     <Content Include="Scripts\app\components\questions\addQuestionDialog.js" />
     <Content Include="Scripts\app\components\questions\question.js" />
     <Content Include="Scripts\app\components\questions\questionCell.js" />
+    <Content Include="Scripts\app\components\questions\questionCellMenu.js" />
     <Content Include="Scripts\app\components\questions\questionCellWithPreview.js" />
     <Content Include="Scripts\app\components\questions\questionFilter.js" />
     <Content Include="Scripts\app\components\questions\questionGrid.js" />
@@ -212,6 +215,7 @@
     <Content Include="Scripts\app\components\questions\questionNoDataStub.js" />
     <Content Include="Scripts\app\components\questions\questionPaginator.js" />
     <Content Include="Scripts\app\components\questions\questionPreview.js" />
+    <Content Include="Scripts\app\components\questions\questionStatusEditor.js" />
     <Content Include="Scripts\app\components\questions\questionTabs.js" />
     <Content Include="Scripts\app\components\questions\questionTypeList.js" />
     <Content Include="Scripts\app\dataAccess\dataCache\dataCacheStorage.js" />
@@ -226,6 +230,7 @@
     <Content Include="Scripts\app\src\components\questions\addQuestionDialog.js" />
     <Content Include="Scripts\app\src\components\questions\question.js" />
     <Content Include="Scripts\app\src\components\questions\questionCell.js" />
+    <Content Include="Scripts\app\src\components\questions\questionCellMenu.js" />
     <Content Include="Scripts\app\src\components\questions\questionCellWithPreview.js" />
     <Content Include="Scripts\app\src\components\questions\questionFilter.js" />
     <Content Include="Scripts\app\src\components\questions\questionGrid.js" />
@@ -242,6 +247,7 @@
     <Content Include="Scripts\app\src\components\questions\questionPreview.js" />
     <Content Include="Scripts\app\src\components\questions\questionTabs.js" />
     <Content Include="Scripts\app\src\components\questions\questionTypeList.js" />
+    <Content Include="Scripts\app\src\components\questions\questionStatusEditor.js" />
     <Content Include="Scripts\bootstrap\bootstrap-paginator.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />

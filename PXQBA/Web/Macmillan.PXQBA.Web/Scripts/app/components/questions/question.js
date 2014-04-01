@@ -32,7 +32,7 @@ var Question = React.createClass({displayName: 'Question',
                     classNameValue:"title",
                     htmlPreview:this.props.metadata.data.questionHtmlInlinePreview}));
         }
-        return ( QuestionCell( {value:this.props.metadata.data[field]} ));
+        return ( QuestionCell( {value:this.props.metadata.data[field], field:field, questionId:this.props.metadata.data.id} ));
     },
 
     render: function() {
