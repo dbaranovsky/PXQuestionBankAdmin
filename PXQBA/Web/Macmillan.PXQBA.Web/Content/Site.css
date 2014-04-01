@@ -136,6 +136,7 @@ input[type="checkbox"].input-validation-error {
     background-size: 100%;
 }
 
+
 .cell-menu-holder {
     width: 32px;
     float: right;
@@ -148,4 +149,59 @@ input[type="checkbox"].input-validation-error {
 
 .edit-field-item {
      cursor: pointer;
+}
+.clear {
+    clear: both;
+}
+ 
+.area-editor {
+    max-width: 536px;
+    min-width: 536px;
+    margin-bottom: 7px;
+
+}
+
+.note-form > .modal-footer {
+    padding-right: 0;
+ 
+
+}
+
+
+
+.note {
+    padding-left: 22px;
+    margin-bottom: 7px
+  
+}
+
+.note-body {
+     border: 1px solid #000000;
+     padding: 4px;
+     float: right;
+     width: 500px;
+}
+.note-menu {
+    float: right;
+}
+
+.note-text {
+    float: left;
+   
+}
+
+.note-form {
+   padding-right: 0;
+    width: 535px;
+}
+
+.flag {
+    float: left;
+    padding-right: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+.glyphicon-flag {
+    font-size: 20px;
 }

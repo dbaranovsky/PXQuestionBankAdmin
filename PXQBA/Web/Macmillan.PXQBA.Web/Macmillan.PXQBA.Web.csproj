@@ -198,6 +198,7 @@
     <Content Include="Scripts\app\components\common\loader.js" />
     <Content Include="Scripts\app\components\common\modalDialog.js" />
     <Content Include="Scripts\app\components\questions\addQuestionDialog.js" />
+    <Content Include="Scripts\app\components\questions\editQuestionNotesDialog.js" />
     <Content Include="Scripts\app\components\questions\question.js" />
     <Content Include="Scripts\app\components\questions\questionCell.js" />
     <Content Include="Scripts\app\components\questions\questionCellMenu.js" />
@@ -228,6 +229,7 @@
     <Content Include="Scripts\app\src\components\common\loader.js" />
     <Content Include="Scripts\app\src\components\common\modalDialog.js" />
     <Content Include="Scripts\app\src\components\questions\addQuestionDialog.js" />
+    <Content Include="Scripts\app\src\components\questions\editQuestionNotesDialog.js" />
     <Content Include="Scripts\app\src\components\questions\question.js" />
     <Content Include="Scripts\app\src\components\questions\questionCell.js" />
     <Content Include="Scripts\app\src\components\questions\questionCellMenu.js" />
