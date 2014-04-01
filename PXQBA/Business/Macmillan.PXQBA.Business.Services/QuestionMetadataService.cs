@@ -37,7 +37,7 @@ namespace Macmillan.PXQBA.Business.Services
                                                            FriendlyName = "Title",
                                                            MetadataName = "dlap_title",
                                                            LeftIcon = "glyphicon glyphicon-chevron-right titles-expander",
-                                                           Width = "40%",
+                                                           Width = "30%",
                                                            CanNotDelete = true
                                                        },
                                                        new QuestionFieldDescriptor()
@@ -47,6 +47,13 @@ namespace Macmillan.PXQBA.Business.Services
                                                            Width = "10%",
                                                            CanNotDelete = false
                                                        },
+                                                       new QuestionFieldDescriptor()
+                                                       {
+                                                           FriendlyName = "Status",
+                                                           MetadataName = "dlap_q_status",
+                                                           Width = "10%",
+                                                           CanNotDelete = false
+                                                       }
                                                    };
 
             return fields;

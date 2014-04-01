@@ -49,6 +49,7 @@ namespace Macmillan.PXQBA.Business.Services
             data.Add("chapter", question.EBookChapter);
             data.Add("bank", question.QuestionBank);
             data.Add("seq", question.Sequency);
+            data.Add("dlap_q_status", question.Status);
 
             return data;
         }
