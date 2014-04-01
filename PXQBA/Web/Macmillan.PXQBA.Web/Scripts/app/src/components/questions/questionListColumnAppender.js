@@ -12,11 +12,6 @@ var QuestionListColumnAppender = React.createClass({
         this.setState({expanded: true});
     },
 
-    renderSelector: function() {
-        return (<QuestionListColumnSelectDialog columns={this.props.columns}/>);
-    },
-
-
     getSelectableFields: function () {
         var allFields = this.props.allFields;
         var displayedFields =  this.props.displayedFields;

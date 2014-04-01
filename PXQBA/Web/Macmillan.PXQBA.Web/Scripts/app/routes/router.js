@@ -1,5 +1,6 @@
 ﻿crossroads.addRoute('/filter/{query}/page/{page}/columns/{columns}/order/{orderType}/:orderField:',
     function (query, page, columns, orderType, orderField) {
+        console.log('Has changed callback executed');
         asyncManager.startWait();
         var questionsData = questionDataManager.getQuestionsByQuery(query,
                                                                     page,
@@ -32,3 +33,4 @@ function parseHash(newHash, oldHash) {
 hasher.initialized.add(parseHash); //parse initial hash
 hasher.changed.add(parseHash); //parse hash changes
 hasher.init(); //start listening for history change
+

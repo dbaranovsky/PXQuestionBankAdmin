@@ -40,6 +40,28 @@
             self.processDataResponse(response);
         });
     };
-    
+
+
+    self.saveQuestionData = function(questionId, fieldName, fieldValue) {
+        var request = {
+            questionId: questionId,
+            fieldName: fieldName,
+            fieldValue: fieldValue
+        };
+
+        return $.ajax({
+            url: window.actions.questionList.editQuestionFieldUrl,
+            traditional: true,
+            data: request,
+            dataType: 'json',
+            type: 'POST'
+        }).done(function (response) {
+            console.log('Edited complete');
+            crossroads.resetState();
+            crossroads.parse(window.routsManager.buildHash());
+            console.log('Refrash complite');
+        });
+    };
+
     return self;
 }());
