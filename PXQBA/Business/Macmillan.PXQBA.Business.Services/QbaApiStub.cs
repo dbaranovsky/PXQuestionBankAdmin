@@ -82,7 +82,7 @@ namespace Macmillan.PXQBA.Business.Services
             throw new NotImplementedException();
         }
 
-        public bool SetFlag(string noteId, bool flag)
+        public void SetFlag(string noteId, bool flag)
         {
             throw new NotImplementedException();
         }

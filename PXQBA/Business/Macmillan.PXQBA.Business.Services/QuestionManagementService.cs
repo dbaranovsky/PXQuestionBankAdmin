@@ -39,8 +39,7 @@ namespace Macmillan.PXQBA.Business.Services
         /// <param name="questions">Question to save</param>
         public void SaveQuestions(IList<Question> questions)
         {
-            var qc = new QuestionCommands(new QBAUow(new QBADummyModelContainer(), new NullLogger()));
-            qc.SaveQuestions(questions);
+            questionCommands.SaveQuestions(questions);
         }
 
         public void CreateQuestion(string questionType)

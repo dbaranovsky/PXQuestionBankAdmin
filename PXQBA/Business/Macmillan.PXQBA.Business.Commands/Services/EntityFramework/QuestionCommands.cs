@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using AutoMapper;
 using Macmillan.PXQBA.Business.Commands.Contracts;
+using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.DataAccess.Data;
@@ -12,12 +14,12 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQL
     public class QuestionCommands : IQuestionCommands
     {
         private readonly IQBAUow qbaUow;
-        private readonly Dictionary<string, string> availableQuestionTypes;
+        private readonly IModelProfileService modelProfileService;
 
-        public QuestionCommands(IQBAUow qbaUow)
+        public QuestionCommands(IQBAUow qbaUow, IModelProfileService modelProfileService)
         {
             this.qbaUow = qbaUow;
-            this.availableQuestionTypes = ConfigurationHelper.GetQuestionTypes();
+            this.modelProfileService = modelProfileService;
         }
 
         public void SaveQuestions(IList<Question> questions)
@@ -28,12 +30,19 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQL
 
         public QuestionList GetQuestionList(string query, int page, int questionPerPage)
         {
-            var questions = qbaUow.DbContext.Questions.OrderBy(q => q.Id).Skip((page-1)*questionPerPage).Take(questionPerPage).Select(Mapper.Map<QuestionMetadata>);
+            // TODO: needs to parse query and take productCourseId (titleId) and other parameters from there
+            // After Product course is selected
+            var productCourseId = "1";
+            var questionsTotal = qbaUow.DbContext.Questions.Where(q => q.ProductCourses.Any(p => p.ProductCourseDlapId == productCourseId)).ToList();
+
+             var questionPage = questionsTotal.Skip((page - 1)*questionPerPage)
+                    .Take(questionPerPage)
+                    .Select(Mapper.Map<QuestionMetadata>);
 
             return new QuestionList
             {
-                Questions = questions.ToList(),
-                AllQuestionsAmount = qbaUow.DbContext.Questions.Count()
+                Questions = questionPage.ToList(),
+                AllQuestionsAmount = questionsTotal.Count()
             };
         }
     }

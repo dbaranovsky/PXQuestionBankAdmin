@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace Macmillan.PXQBA.Business.Models
+﻿namespace Macmillan.PXQBA.Business.Models
 {
     /// <summary>
     /// Types of Question interactions.

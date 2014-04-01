@@ -26,5 +26,10 @@ namespace Macmillan.PXQBA.DataAccess.Data
         }
     
         public virtual DbSet<Question> Questions { get; set; }
+        public virtual DbSet<ProductCourse> ProductCourses { get; set; }
+        public virtual DbSet<Course> Courses { get; set; }
+        public virtual DbSet<CourseMetaField> CourseMetaFields { get; set; }
+        public virtual DbSet<CourseMetaFieldValue> CourseMetaFieldValues { get; set; }
+        public virtual DbSet<Note> Notes { get; set; }
     }
 }
