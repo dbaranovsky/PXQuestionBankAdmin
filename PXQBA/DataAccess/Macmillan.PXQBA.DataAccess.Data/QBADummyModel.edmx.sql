@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/01/2014 12:35:32
+-- Date Created: 04/01/2014 17:53:01
 -- Generated from EDMX file: D:\Git\macmillan\PXQuestionBankAdmin\PXQBA\DataAccess\Macmillan.PXQBA.DataAccess.Data\QBADummyModel.edmx
 -- --------------------------------------------------
 
@@ -26,6 +26,9 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_CourseMetaFieldCourseMetaFieldValue]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CourseMetaFieldValues] DROP CONSTRAINT [FK_CourseMetaFieldCourseMetaFieldValue];
 GO
+IF OBJECT_ID(N'[dbo].[FK_QuestionNote]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Notes] DROP CONSTRAINT [FK_QuestionNote];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -46,6 +49,9 @@ GO
 IF OBJECT_ID(N'[dbo].[CourseMetaFieldValues]', 'U') IS NOT NULL
     DROP TABLE [dbo].[CourseMetaFieldValues];
 GO
+IF OBJECT_ID(N'[dbo].[Notes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Notes];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -56,7 +62,7 @@ CREATE TABLE [dbo].[Questions] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [InteractionType] nvarchar(max)  NOT NULL,
     [DlapId] nvarchar(max)  NULL,
-    [Status] nvarchar(max)  NULL,
+    [Status] int  NOT NULL,
     [Type] nvarchar(max)  NULL,
     [Preview] nvarchar(max)  NULL
 );

@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Bfw.Common.Logging;
 using Macmillan.PXQBA.Business.Commands.Contracts;
-using Macmillan.PXQBA.Business.Commands.Services.SQL;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.DataAccess.Data;
 using System;
@@ -67,6 +66,11 @@ namespace Macmillan.PXQBA.Business.Services
             }
             question.InteractionType = Mapper.Map<InteractionType>(question.Type);
             SaveQuestion(question);
+        }
+
+        public bool UpdateQuestionField(string questionId, string fieldName, string fieldValue)
+        {
+            return questionCommands.UpdateQuestionField(questionId, fieldName, fieldValue);
         }
     }
 }

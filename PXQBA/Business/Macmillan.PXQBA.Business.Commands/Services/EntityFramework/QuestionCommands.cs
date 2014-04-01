@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using AutoMapper;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
+using Macmillan.PXQBA.Common.Helpers.Constants;
 using Macmillan.PXQBA.DataAccess.Data;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
-namespace Macmillan.PXQBA.Business.Commands.Services.SQL
+namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
 {
     public class QuestionCommands : IQuestionCommands
     {
@@ -32,8 +32,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQL
         {
             // TODO: needs to parse query and take productCourseId (titleId) and other parameters from there
             // After Product course is selected
-            var productCourseId = "1";
-            var questionsTotal = qbaUow.DbContext.Questions.Where(q => q.ProductCourses.Any(p => p.ProductCourseDlapId == productCourseId)).ToList();
+            var questionsTotal = qbaUow.DbContext.Questions.Where(q => q.ProductCourses.Any(p => p.ProductCourseDlapId == Constants.ProductCourseId)).OrderBy(q => q.Id);
 
              var questionPage = questionsTotal.Skip((page - 1)*questionPerPage)
                     .Take(questionPerPage)
@@ -44,6 +43,28 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQL
                 Questions = questionPage.ToList(),
                 AllQuestionsAmount = questionsTotal.Count()
             };
+        }
+
+        public bool UpdateQuestionField(string questionId, string fieldName, string value)
+        {
+            int id;
+            if (int.TryParse(questionId, out id))
+            {
+                var question = qbaUow.DbContext.Questions.FirstOrDefault(q => q.Id == id);
+                if (question != null)
+                {
+                    switch (fieldName)
+                    {
+                        case MetadataFieldNames.DlapStatus:
+                            question.Status = ((int) EnumHelper.GetItemByDescription(typeof (QuestionStatus), value));
+                            break;
+                    }
+                    qbaUow.Commit();
+                    return true;
+                }
+                return false;
+            }
+            return false;
         }
     }
 }  

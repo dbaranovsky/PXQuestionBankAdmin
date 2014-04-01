@@ -8,5 +8,7 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         void SaveQuestions(IList<Question> questions);
 
         QuestionList GetQuestionList(string query, int page, int questionPerPage);
+
+        bool UpdateQuestionField(string questionId, string fieldName, string value);
     }
 }

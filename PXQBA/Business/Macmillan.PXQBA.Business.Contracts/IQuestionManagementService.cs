@@ -14,5 +14,6 @@ namespace Macmillan.PXQBA.Business.Contracts
         void SaveQuestions(IList<Question> questions);
 
         void CreateQuestion(string questionType);
+        bool UpdateQuestionField(string questionId, string fieldName, string fieldValue);
     }
 }
