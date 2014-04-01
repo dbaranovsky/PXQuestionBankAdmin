@@ -9,7 +9,8 @@ namespace Macmillan.PXQBA.Web
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-            filters.Add(new AuthenticationAttribute());
+            //TODO: need uncomment when switching to dlap
+            //filters.Add(new AuthenticationAttribute());
         }
     }
 }

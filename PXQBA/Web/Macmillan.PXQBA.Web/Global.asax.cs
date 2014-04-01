@@ -29,7 +29,8 @@ namespace Macmillan.PXQBA.Web
             {
                 var user = HttpContext.Current.User.Identity.Name;
                 var businessContext = DependencyResolver.Current.GetService(typeof (IContext)) as IContext;
-                businessContext.Initialize(user);
+                //TODO: need uncomment when switching to dlap
+                //businessContext.Initialize(user);
             }
         }
 

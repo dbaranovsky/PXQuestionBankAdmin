@@ -4,7 +4,7 @@ using Bfw.Agilix.Dlap.Session;
 using Bfw.Common.Logging;
 using Bfw.Common.Patterns.Logging;
 using Macmillan.PXQBA.Business;
-using Macmillan.PXQBA.Business.Commands.Services.SQL;
+using Macmillan.PXQBA.Business.Commands.Services.EntityFramework;
 using Macmillan.PXQBA.Business.Services;
 using Macmillan.PXQBA.Business.Services.Automapper;
 using Macmillan.PXQBA.Common.Logging;

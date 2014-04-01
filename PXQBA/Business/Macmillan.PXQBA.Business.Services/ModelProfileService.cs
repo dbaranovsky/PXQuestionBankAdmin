@@ -4,6 +4,7 @@ using System.Linq;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
+using Macmillan.PXQBA.Common.Helpers.Constants;
 
 namespace Macmillan.PXQBA.Business.Services
 {
@@ -43,16 +44,21 @@ namespace Macmillan.PXQBA.Business.Services
 
         public Dictionary<string, string> CreateQuestionMetadata(DataAccess.Data.Question question)
         {
-            var data = new Dictionary<string, string>();
-            data.Add("questionHtmlInlinePreview", question.Preview);
-            data.Add("dlap_q_type", SerachCommandXmlParserHelper.GetQuestionFullType(question.Type, availableQuestionTypes));
-            data.Add("dlap_title", question.DlapId);
-            data.Add("id", question.Id.ToString());
             // TODO: This is hardcoded to a single product course in question. This is not correct.
-            data.Add("chapter", question.ProductCourses.First().Chapter);
-            data.Add("bank", question.ProductCourses.First().Bank);
-            data.Add("seq", question.ProductCourses.First().Sequence);
-            data.Add("dlap_q_status", EnumHelper.GetEnumDescription((QuestionStatus)Enum.Parse(typeof(QuestionStatus), question.Status)));
+            var productCourse = question.ProductCourses.FirstOrDefault(p => p.ProductCourseDlapId == Constants.ProductCourseId);
+
+            var data = new Dictionary<string, string>();
+            data.Add(MetadataFieldNames.InlinePreview, question.Preview);
+            data.Add(MetadataFieldNames.DlapType, SerachCommandXmlParserHelper.GetQuestionFullType(question.Type, availableQuestionTypes));
+            data.Add(MetadataFieldNames.DlapTitle, question.DlapId);
+            data.Add(MetadataFieldNames.Id, question.Id.ToString());
+            data.Add(MetadataFieldNames.DlapStatus, EnumHelper.GetEnumDescription((QuestionStatus)Enum.Parse(typeof(QuestionStatus), question.Status.ToString())));
+            if (productCourse != null)
+            {
+                data.Add(MetadataFieldNames.Chapter, productCourse.Chapter);
+                data.Add(MetadataFieldNames.Bank, productCourse.Bank);
+                data.Add(MetadataFieldNames.Sequence, productCourse.Sequence);
+            }
 
             return data;
         }

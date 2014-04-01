@@ -23,7 +23,7 @@ namespace Macmillan.PXQBA.DataAccess.Data
         public int Id { get; set; }
         public string InteractionType { get; set; }
         public string DlapId { get; set; }
-        public string Status { get; set; }
+        public int Status { get; set; }
         public string Type { get; set; }
         public string Preview { get; set; }
     
