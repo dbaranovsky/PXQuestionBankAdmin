@@ -5,8 +5,6 @@
 var QuestionTypeList = React.createClass({displayName: 'QuestionTypeList',
 
     render: function() {
-        this.props.questionTypes = [];
-        this.props.questionTypes.push({key: "dsfs", value: "sdfsd"})
         var x = this.props.questionTypes;
         var rows = [];
         this.props.questionTypes.forEach(function(questionType) {

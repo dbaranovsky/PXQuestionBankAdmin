@@ -16,7 +16,7 @@ var Note = React.createClass({displayName: 'Note',
         React.DOM.input( {type:"hidden", value:this.props.key} ),
         React.DOM.div( {className:"flag"}, React.DOM.span( {className:"glyphicon glyphicon-flag"})),
         React.DOM.div( {className:"note-body"}, 
-        React.DOM.div( {className:"note-text"}, this.props.children, " ", this.props.key, " ", this.props.noteId),
+        React.DOM.div( {className:"note-text"}, this.props.children),
         React.DOM.div( {className:"note-menu", onClick:this.noteDeleteHandler}, React.DOM.span( {className:"delete-button"},  " X " ))
         )
       )
