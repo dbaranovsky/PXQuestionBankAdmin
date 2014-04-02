@@ -17,7 +17,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult Edit(string questionId, string fieldName, string fieldValue)
         {
             var result = questionManagementService.UpdateQuestionField(questionId, fieldName, fieldValue);
-            return JsonCamel(new { result = "success"});
+            return JsonCamel(new { isError = !result });
         }
 	}
 }

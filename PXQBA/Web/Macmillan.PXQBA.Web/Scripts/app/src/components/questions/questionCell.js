@@ -5,21 +5,24 @@
 var QuestionCell = React.createClass({
 
     getInitialState: function() {
-        return { showMenu: false,
-                 editMode: false };
+        return { 
+                 showMenu: false,
+                 editMode: false 
+               };
     },
 
     mouseOverHandler: function() {
-            this.setState({ 
-                showMenu: true,
-                editMode: this.state.editMode});
+            this.setState({
+                         showMenu: true,
+                         editMode: this.state.editMode
+                         });
     },
 
     mouseLeaveHandler: function() {
         this.setState({ 
                         showMenu: false,
                         editMode: false
-                       });
+                      });
     },
 
     onEditClickHandler: function() {
@@ -55,6 +58,7 @@ var QuestionCell = React.createClass({
                     metadata={ {field: this.props.field,
                                currentValue: this.props.value,
                                questionId:  this.props.questionId}}
+                    statusEnum={window.enums.questionStatus}
              />);
         }
         return (<div className="cell-value">{this.props.value} </div>);

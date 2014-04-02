@@ -42,7 +42,8 @@
     };
 
 
-    self.saveQuestionData = function(questionId, fieldName, fieldValue) {
+    self.saveQuestionData = function (questionId, fieldName, fieldValue) {
+        asyncManager.startWait();
         var request = {
             questionId: questionId,
             fieldName: fieldName,
@@ -56,10 +57,13 @@
             dataType: 'json',
             type: 'POST'
         }).done(function (response) {
+            if (response.isError) {
+                console.error('Editing is unsuccessful');
+            }
             console.log('Edited complete');
             crossroads.resetState();
             crossroads.parse(window.routsManager.buildHash());
-            console.log('Refrash complite');
+            console.log('Refresh complite');
         });
     };
 
