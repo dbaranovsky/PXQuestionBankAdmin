@@ -22,20 +22,20 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
         {
             Mapper.CreateMap<Bfw.Agilix.DataContracts.Question, Question>()
                 .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
-                .ForMember(dto => dto.EntityId, opt => opt.MapFrom(q => q.EntityId))
+                //.ForMember(dto => dto.EntityId, opt => opt.MapFrom(q => q.EntityId))
                 .ForMember(dto => dto.Title, opt => opt.MapFrom(q => q.Title))
-                .ForMember(dto => dto.EBookChapter, opt => opt.MapFrom(q => q.eBookChapter))
-                .ForMember(dto => dto.QuestionBank, opt => opt.MapFrom(q => q.QuestionBank))
-                .ForMember(dto => dto.QuestionSeq, opt => opt.Ignore())
-                .ForMember(dto => dto.QuestionType, opt => opt.Ignore())
-                .ForMember(dto => dto.QuestionHtmlInlinePreview, opt => opt.MapFrom( q => QuestionPreviewHelper.GetQuestionHtmlPreview(q)));
+                .ForMember(dto => dto.Chapter, opt => opt.MapFrom(q => q.eBookChapter))
+                .ForMember(dto => dto.Bank, opt => opt.MapFrom(q => q.QuestionBank))
+                .ForMember(dto => dto.Sequence, opt => opt.Ignore())
+                .ForMember(dto => dto.Type, opt => opt.Ignore())
+                .ForMember(dto => dto.Preview, opt => opt.MapFrom( q => QuestionPreviewHelper.GetQuestionHtmlPreview(q)));
 
             Mapper.CreateMap<Question, Bfw.Agilix.DataContracts.Question>()
                 .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
-                .ForMember(dto => dto.EntityId, opt => opt.MapFrom(q => q.EntityId))
+                //.ForMember(dto => dto.EntityId, opt => opt.MapFrom(q => q.EntityId))
                 .ForMember(dto => dto.Title, opt => opt.MapFrom(q => q.Title))
-                .ForMember(dto => dto.eBookChapter, opt => opt.MapFrom(q => q.EBookChapter))
-                .ForMember(dto => dto.QuestionBank, opt => opt.MapFrom(q => q.QuestionBank));
+                .ForMember(dto => dto.eBookChapter, opt => opt.MapFrom(q => q.Chapter))
+                .ForMember(dto => dto.QuestionBank, opt => opt.MapFrom(q => q.Bank));
 
             Mapper.CreateMap<AgilixUser, UserInfo>()
                 .ForMember(d => d.Id, opt => opt.MapFrom(s => s.Id))
@@ -56,6 +56,15 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
 
             #region UI models to dummy models
 
+            Mapper.CreateMap<DataAccess.Data.ProductCourse, Question>()
+                    .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Question.DlapId))
+                    .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
+                    .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Question.Type))
+                    .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Question.Status))
+                    .ForMember(dest => dest.Preview, opt => opt.MapFrom(src => src.Question.Preview));
+
+
+           /*
             Mapper.CreateMap<Question, DataAccess.Data.Question>()
                 .ForMember(dest => dest.Id, d => d.Ignore())
                 .ForMember(dest => dest.DlapId, opt => opt.MapFrom(src => src.Id))
@@ -68,8 +77,9 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                .ForMember(dest => dest.QuestionType, opt => opt.MapFrom(src => src.Type))
                .ForMember(dest => dest.QuestionHtmlInlinePreview, opt => opt.MapFrom(src => src.Preview))
                .ForMember(dest => dest.InteractionType, opt => opt.MapFrom(src => (InteractionType)int.Parse(src.InteractionType)));
+            */
 
-            Mapper.CreateMap<DataAccess.Data.Question, QuestionMetadata>()
+            Mapper.CreateMap<Question, QuestionMetadata>()
              .ForMember(dest => dest.Data, opt => opt.MapFrom(src => modelProfileService.CreateQuestionMetadata(src)));
 
             #endregion

@@ -2,10 +2,8 @@
 using Bfw.Common.Logging;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
-using Macmillan.PXQBA.DataAccess.Data;
-using System;
+using Macmillan.PXQBA.Business.Models;
 using System.Collections.Generic;
-using InteractionType = Macmillan.PXQBA.Business.Models.InteractionType;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 
@@ -21,6 +19,11 @@ namespace Macmillan.PXQBA.Business.Services
         public QuestionManagementService(IQuestionCommands questionCommands)
         {
             this.questionCommands = questionCommands;
+        }
+
+        public PagedCollection<Question> GetQuestionList(string courseId, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
+        {
+            return questionCommands.GetQuestionList(courseId, sortCriterion, startingRecordNumber, recordCount);
         }
 
         /// <summary>
@@ -41,6 +44,7 @@ namespace Macmillan.PXQBA.Business.Services
             questionCommands.SaveQuestions(questions);
         }
 
+        /*
         public void CreateQuestion(string questionType)
         {
             var shortQuestionType = Question.QuestionTypeShortNameFromId(questionType);
@@ -67,6 +71,7 @@ namespace Macmillan.PXQBA.Business.Services
             question.InteractionType = Mapper.Map<InteractionType>(question.Type);
             SaveQuestion(question);
         }
+         */
 
         public bool UpdateQuestionField(string questionId, string fieldName, string fieldValue)
         {

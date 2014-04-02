@@ -12,7 +12,7 @@ namespace Macmillan.PXQBA.Business.Models.Web
 
         public int PageNumber { get; set; }
 
-        public OrderType OrderType { get; set; }
+        public SortType OrderType { get; set; }
 
         public string OrderField { get; set; }
 
