@@ -60,7 +60,6 @@
     <Compile Include="NotesManagementService.cs" />
     <Compile Include="QbaApiStub.cs" />
     <Compile Include="QuestionFilterManagementService.cs" />
-    <Compile Include="QuestionListManagementService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionManagementService.cs" />
     <Compile Include="QuestionMetadataService.cs" />

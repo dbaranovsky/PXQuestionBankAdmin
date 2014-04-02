@@ -1,4 +1,5 @@
 ﻿using System;
+using AutoMapper;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Business.Models.Web;
@@ -16,17 +17,14 @@ namespace Macmillan.PXQBA.Web.Controllers
 {
     public class QuestionListController : MasterController
     {
-        private readonly IQuestionListManagementService questionListManagementService;
         private readonly IQuestionManagementService questionManagementService;
         private readonly IQuestionMetadataService questionMetadataService;
 
         private readonly int questionPerPage;
 
-        public QuestionListController(IQuestionListManagementService questionListManagementService,
-                                      IQuestionMetadataService questionMetadataService,
+        public QuestionListController(IQuestionMetadataService questionMetadataService,
                                       IQuestionManagementService questionManagementService)
         {
-            this.questionListManagementService = questionListManagementService;
             this.questionManagementService = questionManagementService;
             this.questionPerPage = ConfigurationHelper.GetQuestionPerPage();
             this.questionMetadataService = questionMetadataService;
@@ -42,17 +40,18 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult GetQuestionData(QuestionListDataRequest request)
         {
-            // uncomment this for real data
-            var questionList = questionListManagementService.GetQuestionList(request.Query, request.PageNumber, questionPerPage);
-            //questionManagementService.SaveQuestions(questionList.Questions);
+            var sortCriterion = new SortCriterion {ColumnName = request.OrderField, SortType = request.OrderType};
 
-            //For debug paging
-            //var questions =  GetFakeQuestionsFromXml();
-            //questions = ApplyFakeOrdering(questions, request.OrderType, request.OrderField);
+            // \todo Change to real course ID
+            var questionList = questionManagementService.GetQuestionList("1",
+                                                                          sortCriterion, 
+                                                                          (request.PageNumber - 1) * questionPerPage,
+                                                                          questionPerPage);
+
             var model = new QuestionListDataResponse()
                         {
-                            TotalPages = questionList.AllQuestionsAmount / questionPerPage,
-                            QuestionList = questionList.Questions,
+                            TotalPages = questionList.TotalItems / questionPerPage,
+                            QuestionList = questionList.CollectionPage.Select(Mapper.Map<QuestionMetadata>),
                             PageNumber = request.PageNumber,
                             Columns = questionMetadataService.GetDataForFields(request.Columns),
                             AllAvailableColumns = questionMetadataService.GetAvailableFields(),
@@ -70,13 +69,13 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// For deubg ordering question list.
         /// </summary>
         /// <returns></returns>
-        private IList<Question> ApplyFakeOrdering(IList<Question> questions, OrderType orderType, string fieldName)
+        private IList<Question> ApplyFakeOrdering(IList<Question> questions, SortType orderType, string fieldName)
         {
             switch (orderType)
             {
-                case OrderType.Asc:
+                case SortType.Asc:
                     return questions.AsQueryable().OrderBy(MappingNameForFake(fieldName)).ToList();
-                case OrderType.Desc:
+                case SortType.Desc:
                     return questions.AsQueryable().OrderBy(MappingNameForFake(fieldName) + " descending").ToList();
             }
 
@@ -106,47 +105,6 @@ namespace Macmillan.PXQBA.Web.Controllers
 
             return "QuestionSeq";
         }
-
-        /// <summary>
-        /// For deubg. Get list of questions from xml.
-        /// </summary>
-        /// <returns></returns>
-        private IList<Question> GetFakeQuestionsFromXml()
-        {
-            var questions = new List<Question>();
-
-            const string xmlFilePath = @"~\App_Data\dataMar-14-2014.xml";
-
-            using (var xmlStream = System.IO.File.OpenRead(Server.MapPath(xmlFilePath)))
-            {
-                var document = new XmlDocument();
-                document.Load(xmlStream);
-                var nodes = document.SelectNodes("/records/record");
-                foreach (XmlNode node in nodes)
-                {
-                    var priview = node.SelectSingleNode("Preview");
-                    string priviewText = string.Empty;
-                    if (priview != null)
-                    {
-                        priviewText = priview.InnerText;
-                    }
-
-                    questions.Add(new Question()
-                                  {
-                                      Title = node.SelectSingleNode("Title").InnerText,
-                                      EBookChapter = node.SelectSingleNode("Chapter").InnerText,
-                                      QuestionBank = node.SelectSingleNode("Bank").InnerText,
-                                      QuestionSeq = node.SelectSingleNode("Seq").InnerText,
-                                      QuestionType = node.SelectSingleNode("Format").InnerText,
-                                      QuestionHtmlInlinePreview = priviewText
-                                  });
-
-                }
-
-            }
-            return questions;
-        }
-
         #endregion
 
     }

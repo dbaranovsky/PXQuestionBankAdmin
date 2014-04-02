@@ -7,6 +7,6 @@ namespace Macmillan.PXQBA.Business.Contracts
     {
         InteractionType CreateInteractionType(string questionType);
 
-        Dictionary<string, string> CreateQuestionMetadata(DataAccess.Data.Question question);
+        Dictionary<string, string> CreateQuestionMetadata(Question question);
     }
 }

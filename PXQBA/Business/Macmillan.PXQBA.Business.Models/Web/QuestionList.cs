@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Macmillan.PXQBA.Business.Models
+namespace Macmillan.PXQBA.Business.Models.Web
 {
     /// <summary>
     /// Represent collection of questions 

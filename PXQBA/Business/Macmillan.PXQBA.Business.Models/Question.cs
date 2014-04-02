@@ -3,74 +3,19 @@
 namespace Macmillan.PXQBA.Business.Models
 {
     /// <summary>
-    /// Dto represent question that is used in react components.
+    /// Question DTO
     /// </summary>
     public class Question
     {
-        public string Title;
+        public string Id { get; set; }
 
-        public string QuestionType;
-
-        public string EBookChapter;
-
-        public string QuestionBank;
-
-        public string QuestionSeq;
-
-        public string EnrollmentId;
-
-        public string ItemId;
-
-        public string FormerId;
-
-        public string Id;
-
-        public string GeneralFeedback;
-
-        public string EntityId;
-
-        public string Text;
-
-        public string PreviewText;
-
-        public string CustomUrl;
-
-        public string HtsPlayerUrl;
-
-        public string Type;
-
-        public string QuestionTypeUrl;
-
-        public  string LevelFormatted;
-
-        public double PointComputed;
-
-        public double PointPossible;
-
-      //  public List<QuestionChoice> Choices;
-
-        public string Answer;
-
-        public List<string> AnswerList;
-
-        public int BankCount;
-
-        public int BankUse;
-
-        public string QuestionXml;
-
-        public string InteractionData;
-
-        public bool IsLast;
-
-        public List<string> QuestionMetaData;
-
-        public string QuestionHtmlInlinePreview;
-
-        /// <summary>
-        /// Indicates the question type (multiple choice, matching,...).
-        /// </summary>
-        public InteractionType InteractionType { get; set; }
+        public string Title { get; set; }
+        public string Chapter { get; set; }
+        public string Bank { get; set; }
+        public int Sequence { get; set; }
+        public string Type { get; set; }
+        public string Preview { get; set; }
+        public string Status { get; set; }
 
         public static string QuestionTypeShortNameFromId(string id)
         {
