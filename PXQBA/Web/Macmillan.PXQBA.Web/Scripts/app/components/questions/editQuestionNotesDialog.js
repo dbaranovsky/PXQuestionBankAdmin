@@ -13,10 +13,10 @@ var Note = React.createClass({displayName: 'Note',
    
     return (
       React.DOM.div( {className:"note clearfix"}, 
-        React.DOM.input( {type:"hidden", value:this.props.key} ),
+        React.DOM.input( {type:"hidden", value:this.props.note.id} ),
         React.DOM.div( {className:"flag"}, React.DOM.span( {className:"glyphicon glyphicon-flag"})),
         React.DOM.div( {className:"note-body"}, 
-        React.DOM.div( {className:"note-text"}, this.props.children),
+        React.DOM.div( {className:"note-text"}, this.props.note.text),
         React.DOM.div( {className:"note-menu", onClick:this.noteDeleteHandler}, React.DOM.span( {className:"delete-button"},  " X " ))
         )
       )
@@ -27,38 +27,29 @@ var Note = React.createClass({displayName: 'Note',
 
 
 var NoteBox = React.createClass({displayName: 'NoteBox',
-  loadNotesFromServer: function() {
-    $.ajax({
-      url: this.props.url,
-      success: function(data) {
-        this.setState({data: data});
-      }.bind(this)
-    });
+  loadNotes: function(data) {
+   this.setState({data: data});
+
   },
   handleNoteSubmit: function(note) {
+    alert(note.text);
     var notes = this.state.data;
-    note.noteId = Math.floor((Math.random()*100)+1);
+    note.id = Math.floor((Math.random()*100)+1);
     notes.push(note);
     this.setState({data: notes});
-  //  $.ajax({
-  //    url: this.props.url,
-  //    type: 'POST',
-  //    data: note,
-  //    success: function(data) {
-  //      this.setState({data: data});
-  //    }.bind(this)
-  //  });
+    questionDataManager.saveQuestionNote(note);
   },
 
-  noteDeleteHandler: function(noteId) {
+  noteDeleteHandler: function(note) {
     var notes = this.state.data;
     for (var i = 0; i < notes.length; i++) {
         var cur = notes[i];
-        if (cur.noteId == noteId) {
+        if (cur.id == note.id) {
             notes.splice(i, 1);
             break;
         }
     }
+    questionDataManager.deleteQuestionNote(note);
     this.setState({data: notes});
 
   },
@@ -66,15 +57,15 @@ var NoteBox = React.createClass({displayName: 'NoteBox',
   getInitialState: function() {
     return {data: []};
   },
-  componentWillMount: function() {
-    //this.loadNotesFromServer();
-    //setInterval(this.loadNotesFromServer, this.props.pollInterval);
+  componentDidMount: function() {
+    var response = questionDataManager.getQuestionNotes(this.props.questionId);
+    response.done(this.loadNotes);
   },
   render: function() {
     return (
       React.DOM.div( {className:"note-box"}, 
         NoteList( {data:this.state.data,  onNoteDelete:  this.noteDeleteHandler} ),
-        NoteForm( {onNoteSubmit:this.handleNoteSubmit} )
+        NoteForm( {onNoteSubmit:this.handleNoteSubmit, questionId:this.props.questionId} )
       )
     );
   }
@@ -84,7 +75,7 @@ var NoteList = React.createClass({displayName: 'NoteList',
   render: function() {
     var onDeleteHandler = this.props.onNoteDelete;
     var noteNodes = this.props.data.map(function (note, index) {
-      return Note( {noteId:note.noteId, author:note.author, onNoteDelete:onDeleteHandler.bind(null, note.noteId)} , note.text);
+      return Note( {note:note, author:note.author, onNoteDelete:onDeleteHandler.bind(null, note)} );
     });
     return React.DOM.div( {className:"note-list clearfix"}, noteNodes);
   }
@@ -92,24 +83,27 @@ var NoteList = React.createClass({displayName: 'NoteList',
 
 var NoteForm = React.createClass({displayName: 'NoteForm',
   handleSubmit: function() {
-  //  var author = this.refs.author.getDOMNode().value.trim();
+
     var text = this.refs.text.getDOMNode().value.trim();
-    this.props.onNoteSubmit({text: text});
+    var note = {
+      "id": 0,
+      "text": text,
+      "questionId": this.props.questionId,
+      "isFlagged": false
+    };
+    alert(note.text);
+    this.props.onNoteSubmit(note);
     this.refs.text.getDOMNode().value = '';
     return false;
   },
   render: function() {
     return (
       React.DOM.div( {className:"modal-footer clearfix"}, 
-      React.DOM.form( {className:"note-form", onSubmit:this.handleSubmit}, 
-      
-        
-        React.DOM.textarea( {className:"area-editor",  rows:"5", type:"text", placeholder:"Enter text...", ref:"text"} ),
-        React.DOM.button( {type:"submit", className:"btn btn-default"}, "Add note")
-      
-        
+          React.DOM.form( {className:"note-form", onSubmit:this.handleSubmit},       
+            React.DOM.textarea( {className:"area-editor",  rows:"5", type:"text", placeholder:"Enter text...", ref:"text"} ),
+            React.DOM.button( {type:"submit", className:"btn btn-default"}, "Add note")
+          )
       )
-        )
     );
   }
 });
@@ -117,19 +111,30 @@ var NoteForm = React.createClass({displayName: 'NoteForm',
 
 var EditQuestionNotesDialog = React.createClass({displayName: 'EditQuestionNotesDialog',
 
+	componentDidMount: function(){
+		$(this.getDOMNode()).modal("show");
+	},
+
     render: function() {
         var renderHeaderText = function() {
             return "Notes";
         };
+
+        var qId = this.props.questionId;
         var renderBody = function(){
-            return (NoteBox(null));
+            return (NoteBox( {questionId:qId} ));
         };
 
         var renderFooterButtons = function() {
             return "";
         };
        
-        return (ModalDialog( {renderHeaderText:renderHeaderText, renderBody:renderBody, renderFooterButtons:renderFooterButtons, dialogId:"editQuestionNotesModal"})
+        return (ModalDialog( {renderHeaderText:renderHeaderText,
+                             renderBody:renderBody, 
+                             renderFooterButtons:renderFooterButtons,
+                             dialogId:"editQuestionNotesModal",
+                             closeDialogHandler:this.props.closeDialogHandler})
+
                 );
     }
 });

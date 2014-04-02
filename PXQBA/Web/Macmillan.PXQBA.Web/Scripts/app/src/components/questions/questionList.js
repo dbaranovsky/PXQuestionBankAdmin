@@ -4,6 +4,10 @@
 
 var QuestionList = React.createClass({
 
+    getInitialState: function() {
+        return { showEditDialog: false, questionId: 0};
+    },
+
     componentDidMount: function() {
 
         var questionListContainer = $(this.getDOMNode());
@@ -53,11 +57,17 @@ var QuestionList = React.createClass({
             
     },
 
+     renderNotes: function(qId) {
+       this.setState({ 
+                showEditDialog: true,
+                questionId: qId});
+    },
+
     renderQuestion: function() {
        var specialColumnsCount = 2;
        var self = this;
        var questions = this.props.data.map(function (question) {
-            return (<Question metadata={question} columns={self.props.columns}/>);
+            return (<Question metadata={question} columns={self.props.columns} renderNotes={self.renderNotes}/>);
           });
 
        if(questions.length==0) {
@@ -65,6 +75,22 @@ var QuestionList = React.createClass({
         } 
 
         return questions;
+    },
+
+   
+    closeDialogHandler: function(){
+       this.setState({ 
+                showEditDialog: false,
+                questionId: 0});
+    },
+
+    renderNotesDialog: function()
+    {
+      if(this.state.showEditDialog)
+      {
+        return (<EditQuestionNotesDialog closeDialogHandler={this.closeDialogHandler} questionId={this.state.questionId}/>);
+      }
+      return null;
     },
 
     render: function() {
@@ -78,6 +104,10 @@ var QuestionList = React.createClass({
                     {this.renderQuestion()}
                   </tbody> 
                 </table>
+              <div className="dialogs-container">
+                
+                {this.renderNotesDialog()}
+              </div>
           </div>
         );
     }

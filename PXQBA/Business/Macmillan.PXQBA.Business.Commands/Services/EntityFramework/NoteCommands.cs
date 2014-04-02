@@ -18,7 +18,27 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
 
         public IEnumerable<Note> GetQuestionNotes(string questionId)
         {
-            return qbaUow.DbContext.Notes.Where(note => note.QuestionId == int.Parse(questionId)).Select(Mapper.Map<Note>);
+           
+            //return qbaUow.DbContext.Notes.Where(note => note.QuestionId == int.Parse(questionId)).Select(Mapper.Map<Note>);
+            //Mock beacuse of code failing
+            List<Note> notes  = new List<Note>
+                                {
+                                    new Note()
+                                    {
+                                       Id = 15,
+                                       IsFlagged = false,
+                                       Text = "Lorem Ipsum ",
+                                       QuestionId = 1
+                                    },
+                                     new Note()
+                                    {
+                                       Id = 16,
+                                       IsFlagged = false,
+                                       Text = "Lorem Ipsum Odor",
+                                       QuestionId = 1
+                                    },
+                                };
+            return notes;
         }
 
         public void SaveNote(Note note)
