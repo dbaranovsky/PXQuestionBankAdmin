@@ -4,7 +4,7 @@
     self.query = 'filter/query';
     self.page = 'page/1';
     self.columnsKey = 'columns/';
-    self.columnsValue = 'bank+seq+dlap_title+dlap_q_type';
+    self.columnsValue = 'bank+seq+dlap_title+dlap_q_type+dlap_q_status';
     self.order = 'order/none';
 
     self.buildColumns = function() {

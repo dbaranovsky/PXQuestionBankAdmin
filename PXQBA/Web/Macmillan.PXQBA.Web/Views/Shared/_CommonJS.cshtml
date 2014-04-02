@@ -1,4 +1,5 @@
-﻿@using Macmillan.PXQBA.Business.Models.Web
+﻿@using Macmillan.PXQBA.Business.Models
+@using Macmillan.PXQBA.Business.Models.Web
 <script type="text/javascript">
     (function () {
 
@@ -19,6 +20,12 @@
             none: '@OrderType.None.ToString().ToLower()',
             asc: '@OrderType.Asc.ToString().ToLower()',
             desc: '@OrderType.Desc.ToString().ToLower()',
+        };
+
+        enums.questionStatus = {            
+            availableToInstructors: '@Macmillan.PXQBA.Common.Helpers.EnumHelper.GetEnumDescription(QuestionStatus.AvailableToInstructors)',
+            deleted: '@Macmillan.PXQBA.Common.Helpers.EnumHelper.GetEnumDescription(QuestionStatus.Deleted)',
+            inProgress: '@Macmillan.PXQBA.Common.Helpers.EnumHelper.GetEnumDescription(QuestionStatus.InProgress)',
         };
     }
      )();
