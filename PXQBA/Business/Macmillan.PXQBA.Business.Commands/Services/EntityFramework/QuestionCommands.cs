@@ -63,6 +63,12 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
                                 ? query.OrderBy(x => x.Sequence)
                                 : query.OrderByDescending(x => x.Sequence);
                 }
+                if (sortCriterion.ColumnName == MetadataFieldNames.DlapType)
+                {
+                    return sortCriterion.IsAsc
+                                ? query.OrderBy(x => x.Question.Type)
+                                : query.OrderByDescending(x => x.Question.Type);
+                }
             }
             return query.OrderBy(x => x.Id);
         }
@@ -84,6 +90,16 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
                         questionsQuery.Skip(startingRecordNumber).Take(recordCount).Select(ConvertProductCourseQuestion).ToList()
                 };
             return result;
+        }
+
+        public Question CreateQuestion(Question question)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Question GetQuestion(string questionId)
+        {
+            throw new NotImplementedException();
         }
 
         public bool UpdateQuestionField(string questionId, string fieldName, string value)

@@ -1,11 +1,7 @@
-﻿using AutoMapper;
-using Bfw.Common.Logging;
-using Macmillan.PXQBA.Business.Commands.Contracts;
+﻿using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
-using System.Collections.Generic;
 using Question = Macmillan.PXQBA.Business.Models.Question;
-
 
 namespace Macmillan.PXQBA.Business.Services
 {
@@ -26,22 +22,14 @@ namespace Macmillan.PXQBA.Business.Services
             return questionCommands.GetQuestionList(courseId, sortCriterion, startingRecordNumber, recordCount);
         }
 
-        /// <summary>
-        /// Saves question to dlap db
-        /// </summary>
-        /// <param name="question">Question to save</param>
-        public void SaveQuestion(Question question)
+        public Question CreateQuestion(Question question)
         {
-            SaveQuestions(new List<Question>() { question });
+            throw new System.NotImplementedException();
         }
 
-        /// <summary>
-        /// Saves batch of questions to dlap db
-        /// </summary>
-        /// <param name="questions">Question to save</param>
-        public void SaveQuestions(IList<Question> questions)
+        public Question GetQuestion(string questionId)
         {
-            questionCommands.SaveQuestions(questions);
+            throw new System.NotImplementedException();
         }
 
         /*

@@ -13,11 +13,21 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// </summary>
         /// <returns></returns>
         PagedCollection<Question> GetQuestionList(string courseId, SortCriterion sortCriterion, int startingRecordNumber, int recordCount);
-        
-        //void SaveQuestion(Question question);
-        //void SaveQuestions(IList<Question> questions);
 
-        //void CreateQuestion(string questionType);
+        /// <summary>
+        /// Create a new question
+        /// </summary>
+        /// <param name="question"></param>
+        /// <returns>The updated object that was persisted</returns>
+        Question CreateQuestion(Question question);
+
+        /// <summary>
+        /// Returns question by its ID
+        /// </summary>
+        /// <param name="questionId"></param>
+        /// <returns></returns>
+        Question GetQuestion(string questionId);
+        
         bool UpdateQuestionField(string questionId, string fieldName, string fieldValue);
     }
 }
