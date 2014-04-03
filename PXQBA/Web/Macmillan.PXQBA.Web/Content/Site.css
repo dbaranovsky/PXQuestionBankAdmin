@@ -155,8 +155,8 @@ input[type="checkbox"].input-validation-error {
 }
  
 .area-editor {
-    max-width: 536px;
-    min-width: 536px;
+    max-width: 500px;
+    min-width: 500px;
     margin-bottom: 7px;
 
 }
@@ -204,4 +204,5 @@ input[type="checkbox"].input-validation-error {
 
 .glyphicon-flag {
     font-size: 20px;
+    opacity: 0.25;
 }

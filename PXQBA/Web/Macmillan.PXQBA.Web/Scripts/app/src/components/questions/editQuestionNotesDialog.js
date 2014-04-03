@@ -32,12 +32,12 @@ var NoteBox = React.createClass({
 
   },
   handleNoteSubmit: function(note) {
-    alert(note.text);
     var notes = this.state.data;
-    note.id = Math.floor((Math.random()*100)+1);
-    notes.push(note);
+    questionDataManager.saveQuestionNote(note).done(function(data){
+    notes.push(data);
     this.setState({data: notes});
-    questionDataManager.saveQuestionNote(note);
+    })
+   
   },
 
   noteDeleteHandler: function(note) {
@@ -91,7 +91,6 @@ var NoteForm = React.createClass({
       "questionId": this.props.questionId,
       "isFlagged": false
     };
-    alert(note.text);
     this.props.onNoteSubmit(note);
     this.refs.text.getDOMNode().value = '';
     return false;
@@ -99,7 +98,8 @@ var NoteForm = React.createClass({
   render: function() {
     return (
       <div className="modal-footer clearfix">
-          <form className="note-form" onSubmit={this.handleSubmit}>      
+          <form className="note-form" onSubmit={this.handleSubmit}>    
+            <div className="flag"><span className="glyphicon glyphicon-flag"></span></div>  
             <textarea className="area-editor"  rows="5" type="text" placeholder="Enter text..." ref="text" />
             <button type="submit" className="btn btn-default">Add note</button>
           </form>

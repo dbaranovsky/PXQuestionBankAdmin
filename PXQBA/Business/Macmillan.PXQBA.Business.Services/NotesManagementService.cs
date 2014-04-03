@@ -21,9 +21,9 @@ namespace Macmillan.PXQBA.Business.Services
             return noteCommands.GetQuestionNotes(questionId);
         }
 
-        public void SaveNote(Note note)
+        public Note SaveNote(Note note)
         {
-            noteCommands.SaveNote(note);
+           return noteCommands.SaveNote(note);
         }
 
         public void DeleteNote(Note note)

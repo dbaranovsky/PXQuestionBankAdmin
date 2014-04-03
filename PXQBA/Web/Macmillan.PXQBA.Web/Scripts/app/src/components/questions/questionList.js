@@ -105,7 +105,6 @@ var QuestionList = React.createClass({
                   </tbody> 
                 </table>
               <div className="dialogs-container">
-                
                 {this.renderNotesDialog()}
               </div>
           </div>

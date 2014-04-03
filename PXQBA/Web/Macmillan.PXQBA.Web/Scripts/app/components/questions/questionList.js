@@ -105,7 +105,6 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
                   ) 
                 ),
               React.DOM.div( {className:"dialogs-container"}, 
-                
                 this.renderNotesDialog()
               )
           )

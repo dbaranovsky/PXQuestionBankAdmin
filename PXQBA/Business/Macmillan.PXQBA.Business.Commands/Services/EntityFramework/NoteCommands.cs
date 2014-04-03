@@ -18,38 +18,23 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
 
         public IEnumerable<Note> GetQuestionNotes(string questionId)
         {
-           
-            //return qbaUow.DbContext.Notes.Where(note => note.QuestionId == int.Parse(questionId)).Select(Mapper.Map<Note>);
-            //Mock beacuse of code failing
-            List<Note> notes  = new List<Note>
-                                {
-                                    new Note()
-                                    {
-                                       Id = 15,
-                                       IsFlagged = false,
-                                       Text = "Lorem Ipsum ",
-                                       QuestionId = 1
-                                    },
-                                     new Note()
-                                    {
-                                       Id = 16,
-                                       IsFlagged = false,
-                                       Text = "Lorem Ipsum Odor",
-                                       QuestionId = 1
-                                    },
-                                };
-            return notes;
+            var outsideParsedQuestionId = int.Parse(questionId);
+             return qbaUow.DbContext.Notes.Where(note => note.QuestionId == outsideParsedQuestionId).Select(Mapper.Map<Note>);
         }
 
-        public void SaveNote(Note note)
+        public Note SaveNote(Note note)
         {
-            qbaUow.DbContext.Notes.Add(Mapper.Map<DataAccess.Data.Note>(note));
+            var noteToAdd = Mapper.Map<DataAccess.Data.Note>(note);
+            qbaUow.DbContext.Notes.Add(noteToAdd);
             qbaUow.Commit();
+            return Mapper.Map<Note>(noteToAdd);
         }
 
         public void DeleteNote(Note note)
         {
-            qbaUow.DbContext.Notes.Remove(Mapper.Map<DataAccess.Data.Note>(note));
+            var noteToDelete = Mapper.Map<DataAccess.Data.Note>(note);
+            qbaUow.DbContext.Notes.Attach(noteToDelete);
+            qbaUow.DbContext.Notes.Remove(noteToDelete);
             qbaUow.Commit();
         }
     }

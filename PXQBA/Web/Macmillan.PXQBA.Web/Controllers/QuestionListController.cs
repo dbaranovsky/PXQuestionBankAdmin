@@ -84,9 +84,9 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// </summary>
         /// <param name="note"></param>
         [HttpPost]
-        public void SaveQuestionNote(Note note)
+        public ActionResult SaveQuestionNote(Note note)
         {
-            notesManagementService.SaveNote(note);
+              return JsonCamel(notesManagementService.SaveNote(note));
         }
 
         /// <summary>

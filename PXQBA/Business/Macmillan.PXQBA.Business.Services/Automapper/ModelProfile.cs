@@ -82,6 +82,9 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<Question, QuestionMetadata>()
              .ForMember(dest => dest.Data, opt => opt.MapFrom(src => modelProfileService.CreateQuestionMetadata(src)));
 
+            Mapper.CreateMap<Note, DataAccess.Data.Note>();
+            Mapper.CreateMap<DataAccess.Data.Note, Note>();
+
             #endregion
         }
     }
