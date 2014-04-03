@@ -53,6 +53,7 @@ namespace Macmillan.PXQBA.Web.App_Start
             container.RegisterType<IQuestionFilterManagementService, QuestionFilterManagementService>(new PerRequestLifetimeManager());
             container.RegisterType<IQuestionManagementService, QuestionManagementService>(new PerRequestLifetimeManager());
             container.RegisterType<IQuestionMetadataService, QuestionMetadataService>(new PerRequestLifetimeManager());
+            container.RegisterType<INotesManagementService, NotesManagementService>(new PerRequestLifetimeManager());
             container.RegisterType<IModelProfileService, ModelProfileService>(new PerRequestLifetimeManager());
             container.RegisterType<Profile, ModelProfile>(new PerRequestLifetimeManager());
             container.RegisterType<QBADummyModelContainer, QBADummyModelContainer>(new PerRequestLifetimeManager());
@@ -62,6 +63,7 @@ namespace Macmillan.PXQBA.Web.App_Start
             container.RegisterType<ILogger, CommonLogger>(new PerRequestLifetimeManager());
             container.RegisterTypes(AllClasses.FromAssemblies(typeof(Context).Assembly), WithMappings.FromAllInterfaces, WithName.Default, WithLifetime.Custom<PerRequestLifetimeManager>);
             container.RegisterTypes(AllClasses.FromAssemblies(typeof(QuestionCommands).Assembly), WithMappings.FromAllInterfaces, WithName.Default);
+            container.RegisterTypes(AllClasses.FromAssemblies(typeof(NoteCommands).Assembly), WithMappings.FromAllInterfaces, WithName.Default);
         }
     }
 }
