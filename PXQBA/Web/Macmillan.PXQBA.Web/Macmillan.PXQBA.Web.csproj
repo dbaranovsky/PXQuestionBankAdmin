@@ -205,6 +205,10 @@
     <Content Include="Scripts\app\components\questions\questionCellWithPreview.js" />
     <Content Include="Scripts\app\components\questions\questionFilter.js" />
     <Content Include="Scripts\app\components\questions\questionGrid.js" />
+    <Content Include="Scripts\app\components\questions\questionInlineEditorBase.js" />
+    <Content Include="Scripts\app\components\questions\questionInlineEditorNumber.js" />
+    <Content Include="Scripts\app\components\questions\questionInlineEditorStatus.js" />
+    <Content Include="Scripts\app\components\questions\questionInlineEditorText.js" />
     <Content Include="Scripts\app\components\questions\questionList.js" />
     <Content Include="Scripts\app\components\questions\questionListColumnAppender.js" />
     <Content Include="Scripts\app\components\questions\questionListHeader.js" />
@@ -216,7 +220,6 @@
     <Content Include="Scripts\app\components\questions\questionNoDataStub.js" />
     <Content Include="Scripts\app\components\questions\questionPaginator.js" />
     <Content Include="Scripts\app\components\questions\questionPreview.js" />
-    <Content Include="Scripts\app\components\questions\questionStatusEditor.js" />
     <Content Include="Scripts\app\components\questions\questionTabs.js" />
     <Content Include="Scripts\app\components\questions\questionTypeList.js" />
     <Content Include="Scripts\app\dataAccess\dataCache\dataCacheStorage.js" />
@@ -236,6 +239,9 @@
     <Content Include="Scripts\app\src\components\questions\questionCellWithPreview.js" />
     <Content Include="Scripts\app\src\components\questions\questionFilter.js" />
     <Content Include="Scripts\app\src\components\questions\questionGrid.js" />
+    <Content Include="Scripts\app\src\components\questions\questionInlineEditorBase.js" />
+    <Content Include="Scripts\app\src\components\questions\questionInlineEditorNumber.js" />
+    <Content Include="Scripts\app\src\components\questions\questionInlineEditorText.js" />
     <Content Include="Scripts\app\src\components\questions\questionList.js" />
     <Content Include="Scripts\app\src\components\questions\questionListColumnAppender.js" />
     <Content Include="Scripts\app\src\components\questions\questionListHeader.js" />
@@ -249,7 +255,7 @@
     <Content Include="Scripts\app\src\components\questions\questionPreview.js" />
     <Content Include="Scripts\app\src\components\questions\questionTabs.js" />
     <Content Include="Scripts\app\src\components\questions\questionTypeList.js" />
-    <Content Include="Scripts\app\src\components\questions\questionStatusEditor.js" />
+    <Content Include="Scripts\app\src\components\questions\questionInlineEditorStatus.js" />
     <Content Include="Scripts\bootstrap\bootstrap-paginator.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />

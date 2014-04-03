@@ -33,12 +33,10 @@ var QuestionCell = React.createClass({
     },
 
     renderMenu: function() {
-        //Hardcoded!
-        // After implement common mechanism for editiong delete this guard
-        if(this.props.field!='dlap_q_status') {
-            return null;
-        }
         if(this.state.showMenu) {
+            if(this.props.editorType==window.enums.editorType.none) {
+                return null;
+            }
             return <QuestionCellMenu onEditClickHandler={this.onEditClickHandler} />
         }
         return null;
@@ -54,13 +52,25 @@ var QuestionCell = React.createClass({
     renderValue: function() {
 
         if(this.state.editMode) {
-            return (<QuestionStatusEditor afterEditingHandler={this.afterEditingHandler}
+            return (<QuestionInlineEditorBase afterEditingHandler={this.afterEditingHandler}
                     metadata={ {field: this.props.field,
                                currentValue: this.props.value,
-                               questionId:  this.props.questionId}}
-                    statusEnum={window.enums.questionStatus}
+                               questionId:  this.props.questionId,
+                               editorType: this.props.editorType}}
              />);
         }
+
+        if(this.props.previewInfo.hasPriview) {
+           return ( <div>
+                        <div className={this.props.previewInfo.classNameForCell}>
+                        <span className="glyphicon glyphicon-chevron-right title-expander"></span>
+                           {this.props.value}
+                        </div>
+                        <QuestionPreview preview={this.props.previewInfo.htmlPreview}/>
+                    </div>
+                    );
+        }
+
         return (<div className="cell-value">{this.props.value} </div>);
     },
 

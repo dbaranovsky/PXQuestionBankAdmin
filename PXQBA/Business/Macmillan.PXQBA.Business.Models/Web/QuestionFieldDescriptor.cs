@@ -11,5 +11,7 @@
         public string LeftIcon { get; set; }
 
         public bool CanNotDelete { get; set; }
+
+        public string EditorType { get; set; }
     }
 }

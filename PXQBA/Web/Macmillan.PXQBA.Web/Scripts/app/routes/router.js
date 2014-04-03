@@ -7,7 +7,7 @@
                                                                     columnHashParameterHelper.parse(columns),
                                                                     orderType,
                                                                     orderField);
-        questionsData.done(function(response) {
+        questionsData.done(function (response) {
             asyncManager.questionListPage = React.renderComponent(
                 QuestionListPage({
                     response: response

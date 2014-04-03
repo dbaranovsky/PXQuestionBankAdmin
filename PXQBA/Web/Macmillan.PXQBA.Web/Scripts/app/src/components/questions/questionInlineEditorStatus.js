@@ -2,7 +2,7 @@
 * @jsx React.DOM
 */ 
 
-var QuestionStatusEditor = React.createClass({
+var QuestionInlineEditorStatus = React.createClass({
 
     chengeStatusEventHandler: function(event) {
         var value = event.target.getAttribute("data-value");
