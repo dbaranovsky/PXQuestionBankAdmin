@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Macmillan.PXQBA.Business.Commands.Contracts;
@@ -18,13 +19,18 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
 
         public IEnumerable<Note> GetQuestionNotes(string questionId)
         {
-            var outsideParsedQuestionId = int.Parse(questionId);
-             return qbaUow.DbContext.Notes.Where(note => note.QuestionId == outsideParsedQuestionId).Select(Mapper.Map<Note>);
+            return qbaUow.DbContext.Notes.Where(note => note.Question.DlapId == questionId).Select(Mapper.Map<Note>);
         }
 
         public Note SaveNote(Note note)
         {
+            var question = qbaUow.DbContext.Questions.FirstOrDefault(q => q.DlapId == note.QuestionId);
+            if (question == null)
+            {
+                throw new ArgumentException("Unable to find question for note");
+            }
             var noteToAdd = Mapper.Map<DataAccess.Data.Note>(note);
+            noteToAdd.QuestionId = question.Id;
             qbaUow.DbContext.Notes.Add(noteToAdd);
             qbaUow.Commit();
             return Mapper.Map<Note>(noteToAdd);
