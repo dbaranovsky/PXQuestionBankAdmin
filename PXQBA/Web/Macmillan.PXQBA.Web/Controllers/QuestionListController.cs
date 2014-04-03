@@ -1,5 +1,6 @@
 ﻿using System;
 using AutoMapper;
+using System.Net;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Business.Models.Web;
@@ -19,15 +20,18 @@ namespace Macmillan.PXQBA.Web.Controllers
     {
         private readonly IQuestionManagementService questionManagementService;
         private readonly IQuestionMetadataService questionMetadataService;
+        private readonly INotesManagementService notesManagementService;
 
         private readonly int questionPerPage;
 
         public QuestionListController(IQuestionMetadataService questionMetadataService,
-                                      IQuestionManagementService questionManagementService)
+                                      IQuestionManagementService questionManagementService,
+                                      INotesManagementService notesManagementService)
         {
             this.questionManagementService = questionManagementService;
             this.questionPerPage = ConfigurationHelper.GetQuestionPerPage();
             this.questionMetadataService = questionMetadataService;
+            this.notesManagementService = notesManagementService;
         }
 
         //
@@ -64,11 +68,42 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(model);
         }
 
+        /// <summary>
+        /// Gets notes attached to the question by question id
+        /// </summary>
+        /// <param name="questionId"></param>
+        /// <returns></returns>
+        public ActionResult GetQuestionNotes(string questionId)
+        {
+            return JsonCamel(notesManagementService.GetQuestionNotes(questionId));
+        }
+
+        /// <summary>
+        /// Save new question note
+        /// </summary>
+        /// <param name="note"></param>
+        [HttpPost]
+        public ActionResult SaveQuestionNote(Note note)
+        {
+              return JsonCamel(notesManagementService.SaveNote(note));
+        }
+
+        /// <summary>
+        /// Delete question note
+        /// </summary>
+        /// <param name="note"></param>
+        [HttpPost]
+        public void DeleteQuestionNote(Note note)
+        {
+            notesManagementService.DeleteNote(note);
+        }
+
         #region debug
         /// <summary>
         /// For deubg ordering question list.
         /// </summary>
         /// <returns></returns>
+
         private IList<Question> ApplyFakeOrdering(IList<Question> questions, SortType orderType, string fieldName)
         {
             switch (orderType)

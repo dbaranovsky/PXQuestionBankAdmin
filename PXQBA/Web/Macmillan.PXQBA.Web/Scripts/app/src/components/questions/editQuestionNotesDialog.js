@@ -13,10 +13,10 @@ var Note = React.createClass({
    
     return (
       <div className="note clearfix">
-        <input type="hidden" value={this.props.key} />
+        <input type="hidden" value={this.props.note.id} />
         <div className="flag"><span className="glyphicon glyphicon-flag"></span></div>
         <div className="note-body">
-        <div className="note-text">{this.props.children}</div>
+        <div className="note-text">{this.props.note.text}</div>
         <div className="note-menu" onClick={this.noteDeleteHandler}><span className="delete-button"> X </span></div>
         </div>
       </div>
@@ -27,38 +27,29 @@ var Note = React.createClass({
 
 
 var NoteBox = React.createClass({
-  loadNotesFromServer: function() {
-    $.ajax({
-      url: this.props.url,
-      success: function(data) {
-        this.setState({data: data});
-      }.bind(this)
-    });
+  loadNotes: function(data) {
+   this.setState({data: data});
+
   },
   handleNoteSubmit: function(note) {
     var notes = this.state.data;
-    note.noteId = Math.floor((Math.random()*100)+1);
-    notes.push(note);
+    questionDataManager.saveQuestionNote(note).done(function(data){
+    notes.push(data);
     this.setState({data: notes});
-  //  $.ajax({
-  //    url: this.props.url,
-  //    type: 'POST',
-  //    data: note,
-  //    success: function(data) {
-  //      this.setState({data: data});
-  //    }.bind(this)
-  //  });
+    })
+   
   },
 
-  noteDeleteHandler: function(noteId) {
+  noteDeleteHandler: function(note) {
     var notes = this.state.data;
     for (var i = 0; i < notes.length; i++) {
         var cur = notes[i];
-        if (cur.noteId == noteId) {
+        if (cur.id == note.id) {
             notes.splice(i, 1);
             break;
         }
     }
+    questionDataManager.deleteQuestionNote(note);
     this.setState({data: notes});
 
   },
@@ -66,15 +57,15 @@ var NoteBox = React.createClass({
   getInitialState: function() {
     return {data: []};
   },
-  componentWillMount: function() {
-    //this.loadNotesFromServer();
-    //setInterval(this.loadNotesFromServer, this.props.pollInterval);
+  componentDidMount: function() {
+    var response = questionDataManager.getQuestionNotes(this.props.questionId);
+    response.done(this.loadNotes);
   },
   render: function() {
     return (
       <div className="note-box">
         <NoteList data={this.state.data}  onNoteDelete = {this.noteDeleteHandler} />
-        <NoteForm onNoteSubmit={this.handleNoteSubmit} />
+        <NoteForm onNoteSubmit={this.handleNoteSubmit} questionId={this.props.questionId} />
       </div>
     );
   }
@@ -84,7 +75,7 @@ var NoteList = React.createClass({
   render: function() {
     var onDeleteHandler = this.props.onNoteDelete;
     var noteNodes = this.props.data.map(function (note, index) {
-      return <Note noteId={note.noteId} author={note.author} onNoteDelete={onDeleteHandler.bind(null, note.noteId)} >{note.text}</Note>;
+      return <Note note={note} author={note.author} onNoteDelete={onDeleteHandler.bind(null, note)} />;
     });
     return <div className="note-list clearfix">{noteNodes}</div>;
   }
@@ -92,24 +83,27 @@ var NoteList = React.createClass({
 
 var NoteForm = React.createClass({
   handleSubmit: function() {
-  //  var author = this.refs.author.getDOMNode().value.trim();
+
     var text = this.refs.text.getDOMNode().value.trim();
-    this.props.onNoteSubmit({text: text});
+    var note = {
+      "id": 0,
+      "text": text,
+      "questionId": this.props.questionId,
+      "isFlagged": false
+    };
+    this.props.onNoteSubmit(note);
     this.refs.text.getDOMNode().value = '';
     return false;
   },
   render: function() {
     return (
       <div className="modal-footer clearfix">
-      <form className="note-form" onSubmit={this.handleSubmit}>
-      
-        
-        <textarea className="area-editor"  rows="5" type="text" placeholder="Enter text..." ref="text" />
-        <button type="submit" className="btn btn-default">Add note</button>
-      
-        
-      </form>
-        </div>
+          <form className="note-form" onSubmit={this.handleSubmit}>    
+            <div className="flag"><span className="glyphicon glyphicon-flag"></span></div>  
+            <textarea className="area-editor"  rows="5" type="text" placeholder="Enter text..." ref="text" />
+            <button type="submit" className="btn btn-default">Add note</button>
+          </form>
+      </div>
     );
   }
 });
@@ -117,19 +111,30 @@ var NoteForm = React.createClass({
 
 var EditQuestionNotesDialog = React.createClass({
 
+	componentDidMount: function(){
+		$(this.getDOMNode()).modal("show");
+	},
+
     render: function() {
         var renderHeaderText = function() {
             return "Notes";
         };
+
+        var qId = this.props.questionId;
         var renderBody = function(){
-            return (<NoteBox/>);
+            return (<NoteBox questionId={qId} />);
         };
 
         var renderFooterButtons = function() {
             return "";
         };
        
-        return (<ModalDialog renderHeaderText={renderHeaderText} renderBody={renderBody} renderFooterButtons={renderFooterButtons} dialogId="editQuestionNotesModal"/>
+        return (<ModalDialog renderHeaderText={renderHeaderText}
+                             renderBody={renderBody} 
+                             renderFooterButtons={renderFooterButtons}
+                             dialogId="editQuestionNotesModal"
+                             closeDialogHandler={this.props.closeDialogHandler}/>
+
                 );
     }
 });

@@ -67,5 +67,59 @@
         });
     };
 
+    self.getQuestionNotes = function(questionId) {
+        var request = {
+            questionId: questionId
+        };
+        return $.ajax({
+            url: window.actions.questionList.getQuestionNotesUrl,
+            traditional: true,
+            data: request,
+            dataType: 'json',
+            type: 'GET'
+        }).done(function (response) {
+            self.processDataResponse(response);
+        });
+
+    };
+
+    self.saveQuestionNote = function(note) {
+          var request = {
+            note: note
+        };
+        return $.ajax({
+            url: window.actions.questionList.saveQuestionNoteUrl,
+            traditional: true,
+            data: JSON.stringify(request),
+             contentType: 'application/json',
+            dataType: 'json',
+            type: 'POST'
+        }).done(function (response) {
+            console.log('Save note complete');
+            crossroads.resetState();
+            crossroads.parse(window.routsManager.buildHash());
+            console.log('Refresh complite');
+        });
+    };
+
+    self.deleteQuestionNote = function(note) {
+         var request = {
+            note: note
+        };
+         return $.ajax({
+            url: window.actions.questionList.deleteQuestionNotesUrl,
+            traditional: true,
+            data: JSON.stringify(request),
+            dataType: 'json',
+            contentType: 'application/json',
+            type: 'POST'
+        }).done(function (response) {
+            console.log('Delete note complete');
+            crossroads.resetState();
+            crossroads.parse(window.routsManager.buildHash());
+            console.log('Refresh complite');
+        });
+    };
+
     return self;
 }());

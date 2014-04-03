@@ -28,7 +28,6 @@ var QuestionListPage = React.createClass({
                   <QuestionTabs response={this.props.response} />
                 </div>
                 <AddQuestionDialog />
-                <EditQuestionNotesDialog />
             </div>
             );
     }

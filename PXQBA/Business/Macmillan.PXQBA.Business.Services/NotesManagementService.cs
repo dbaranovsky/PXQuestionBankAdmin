@@ -1,4 +1,5 @@
-﻿using Macmillan.PXQBA.Business.Commands.Contracts;
+﻿using System.Collections.Generic;
+using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models.Web;
 
@@ -15,14 +16,14 @@ namespace Macmillan.PXQBA.Business.Services
         {
             this.noteCommands = noteCommands;
         }
-        public void GetQuestionNotes(string questionId)
+        public IEnumerable<Note> GetQuestionNotes(string questionId)
         {
-            noteCommands.GetQuestionNotes(questionId);
+            return noteCommands.GetQuestionNotes(questionId);
         }
 
-        public void SaveNote(Note note)
+        public Note SaveNote(Note note)
         {
-            noteCommands.SaveNote(note);
+           return noteCommands.SaveNote(note);
         }
 
         public void DeleteNote(Note note)
