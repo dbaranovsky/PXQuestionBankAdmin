@@ -104,22 +104,17 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
 
         public bool UpdateQuestionField(string questionId, string fieldName, string value)
         {
-            int id;
-            if (int.TryParse(questionId, out id))
+            var question = qbaUow.DbContext.Questions.FirstOrDefault(q => q.DlapId == questionId);
+            if (question != null)
             {
-                var question = qbaUow.DbContext.Questions.FirstOrDefault(q => q.Id == id);
-                if (question != null)
+                switch (fieldName)
                 {
-                    switch (fieldName)
-                    {
-                        case MetadataFieldNames.DlapStatus:
-                            question.Status = ((int) EnumHelper.GetItemByDescription(typeof (QuestionStatus), value));
-                            break;
-                    }
-                    qbaUow.Commit();
-                    return true;
+                    case MetadataFieldNames.DlapStatus:
+                        question.Status = ((int) EnumHelper.GetItemByDescription(typeof (QuestionStatus), value));
+                        break;
                 }
-                return false;
+                qbaUow.Commit();
+                return true;
             }
             return false;
         }
