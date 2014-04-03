@@ -24,10 +24,9 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         private readonly int questionPerPage;
 
-                                      IQuestionMetadataService questionMetadataService,
+        public QuestionListController(IQuestionMetadataService questionMetadataService,
                                       IQuestionManagementService questionManagementService,
-                                      INotesManagementService notesManagementService
-            )
+                                      INotesManagementService notesManagementService)
         {
             this.questionManagementService = questionManagementService;
             this.questionPerPage = ConfigurationHelper.GetQuestionPerPage();
