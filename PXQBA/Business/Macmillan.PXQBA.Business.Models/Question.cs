@@ -15,7 +15,7 @@ namespace Macmillan.PXQBA.Business.Models
         public int Sequence { get; set; }
         public string Type { get; set; }
         public string Preview { get; set; }
-        public string Status { get; set; }
+        public QuestionStatus Status { get; set; }
 
         public static string QuestionTypeShortNameFromId(string id)
         {
