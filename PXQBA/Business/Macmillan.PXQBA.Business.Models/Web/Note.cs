@@ -14,6 +14,6 @@ namespace Macmillan.PXQBA.Business.Models.Web
 
         public bool IsFlagged { get; set; }
 
-        public int QuestionId { get; set; }
+        public string QuestionId { get; set; }
     }
 }
