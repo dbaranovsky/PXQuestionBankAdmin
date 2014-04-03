@@ -206,3 +206,9 @@ input[type="checkbox"].input-validation-error {
     font-size: 20px;
     opacity: 0.25;
 }
+
+.text-editor-container {
+    position: absolute !important;
+    width: 300px;
+    z-index: 200;
+}

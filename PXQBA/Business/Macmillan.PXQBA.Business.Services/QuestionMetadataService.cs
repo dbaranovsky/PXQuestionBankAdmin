@@ -16,21 +16,25 @@ namespace Macmillan.PXQBA.Business.Services
                                                            FriendlyName = "Chapter",
                                                            MetadataName = "chapter",
                                                            Width = "10%",
-                                                           CanNotDelete = false
+                                                           CanNotDelete = false,
+                                                           EditorType = EditorType.Text.ToString().ToLower()
+                                                           
                                                        },
                                                        new QuestionFieldDescriptor()
                                                        {
                                                            FriendlyName = "Bank",
                                                            MetadataName = "bank",
                                                            Width = "10%",
-                                                           CanNotDelete = false
+                                                           CanNotDelete = false,
+                                                           EditorType = EditorType.Text.ToString().ToLower()
                                                        },
                                                        new QuestionFieldDescriptor()
                                                        {
                                                            FriendlyName = "Seq",
                                                            MetadataName = "seq",
                                                            Width = "10%",
-                                                           CanNotDelete = false
+                                                           CanNotDelete = false,
+                                                           EditorType = EditorType.Number.ToString().ToLower()
                                                        },
                                                        new QuestionFieldDescriptor()
                                                        {
@@ -38,21 +42,24 @@ namespace Macmillan.PXQBA.Business.Services
                                                            MetadataName = "dlap_title",
                                                            LeftIcon = "glyphicon glyphicon-chevron-right titles-expander",
                                                            Width = "30%",
-                                                           CanNotDelete = true
+                                                           CanNotDelete = true,
+                                                           EditorType = EditorType.Text.ToString().ToLower()
                                                        },
                                                        new QuestionFieldDescriptor()
                                                        {
                                                            FriendlyName = "Format",
                                                            MetadataName = "dlap_q_type",
                                                            Width = "10%",
-                                                           CanNotDelete = false
+                                                           CanNotDelete = false,
+                                                           EditorType = EditorType.None.ToString().ToLower()
                                                        },
                                                        new QuestionFieldDescriptor()
                                                        {
                                                            FriendlyName = "Status",
                                                            MetadataName = "dlap_q_status",
                                                            Width = "10%",
-                                                           CanNotDelete = false
+                                                           CanNotDelete = false,
+                                                           EditorType = EditorType.Status.ToString().ToLower()
                                                        }
                                                    };
 

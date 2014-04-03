@@ -25,15 +25,22 @@ var Question = React.createClass({
         return null;
     },
 
-    renderCell: function(field) {
+    renderCell: function(metadataName, editorType) {
         // Hardcoded: only title has a preview
         // Refactor this after re-implement preview
-        if(field=='dlap_title') {
-            return (<QuestionCellWithPreview value={this.props.metadata.data[field]} 
-                    classNameValue="title"
-                    htmlPreview={this.props.metadata.data.questionHtmlInlinePreview}/>);
+        var previewInfo = { hasPriview: false };
+
+        if(metadataName=='dlap_title') {
+            previewInfo.hasPriview = true;
+            previewInfo.classNameForCell = "title";
+            previewInfo.htmlPreview = this.props.metadata.data.questionHtmlInlinePreview;
         }
-        return ( <QuestionCell value={this.props.metadata.data[field]} field={field} questionId={this.props.metadata.data.id} />);
+        return ( <QuestionCell value={this.props.metadata.data[metadataName]}
+                               field={metadataName} 
+                               questionId={this.props.metadata.data.id}
+                               editorType={editorType}
+                               previewInfo={previewInfo}
+                                />);
     },
 
     render: function() {
@@ -45,7 +52,7 @@ var Question = React.createClass({
             });
         
         var cells = this.props.columns.map(function(descriptor) {
-                return self.renderCell(descriptor.metadataName)
+                return self.renderCell(descriptor.metadataName, descriptor.editorType)
             });
 
         return ( 
