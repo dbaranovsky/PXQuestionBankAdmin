@@ -25,7 +25,7 @@ var Question = React.createClass({displayName: 'Question',
         return null;
     },
 
-    renderCell: function(metadataName, editorType) {
+    renderCell: function(metadataName, editorDescriptor) {
         // Hardcoded: only title has a preview
         // Refactor this after re-implement preview
         var previewInfo = { hasPriview: false };
@@ -38,7 +38,7 @@ var Question = React.createClass({displayName: 'Question',
         return ( QuestionCell( {value:this.props.metadata.data[metadataName],
                                field:metadataName, 
                                questionId:this.props.metadata.data.id,
-                               editorType:editorType,
+                               editorDescriptor:editorDescriptor,
                                previewInfo:previewInfo}
                                 ));
     },
@@ -52,7 +52,7 @@ var Question = React.createClass({displayName: 'Question',
             });
         
         var cells = this.props.columns.map(function(descriptor) {
-                return self.renderCell(descriptor.metadataName, descriptor.editorType)
+                return self.renderCell(descriptor.metadataName, descriptor.editorDescriptor)
             });
 
         return ( 

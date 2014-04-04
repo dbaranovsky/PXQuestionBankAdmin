@@ -1,4 +1,6 @@
-﻿namespace Macmillan.PXQBA.Business.Models.Web
+﻿using Macmillan.PXQBA.Business.Models.Web.Editor;
+
+namespace Macmillan.PXQBA.Business.Models.Web
 {
     public class QuestionFieldDescriptor
     {
@@ -12,6 +14,6 @@
 
         public bool CanNotDelete { get; set; }
 
-        public string EditorType { get; set; }
+        public FieldEditorDescriptor EditorDescriptor { get; set; }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Macmillan.PXQBA.Business.Contracts;
+using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Business.Models.Web;
+using Macmillan.PXQBA.Business.Models.Web.Editor;
 
 namespace Macmillan.PXQBA.Business.Services
 {
@@ -17,7 +19,7 @@ namespace Macmillan.PXQBA.Business.Services
                                                            MetadataName = "chapter",
                                                            Width = "10%",
                                                            CanNotDelete = false,
-                                                           EditorType = EditorType.Text.ToString().ToLower()
+                                                           EditorDescriptor = new FieldEditorDescriptor(EditorType.Text)
                                                            
                                                        },
                                                        new QuestionFieldDescriptor()
@@ -26,7 +28,7 @@ namespace Macmillan.PXQBA.Business.Services
                                                            MetadataName = "bank",
                                                            Width = "10%",
                                                            CanNotDelete = false,
-                                                           EditorType = EditorType.Text.ToString().ToLower()
+                                                           EditorDescriptor = new FieldEditorDescriptor(EditorType.Text)
                                                        },
                                                        new QuestionFieldDescriptor()
                                                        {
@@ -34,7 +36,7 @@ namespace Macmillan.PXQBA.Business.Services
                                                            MetadataName = "seq",
                                                            Width = "10%",
                                                            CanNotDelete = false,
-                                                           EditorType = EditorType.Number.ToString().ToLower()
+                                                           EditorDescriptor = new FieldEditorDescriptor(EditorType.Number)
                                                        },
                                                        new QuestionFieldDescriptor()
                                                        {
@@ -43,7 +45,7 @@ namespace Macmillan.PXQBA.Business.Services
                                                            LeftIcon = "glyphicon glyphicon-chevron-right titles-expander",
                                                            Width = "30%",
                                                            CanNotDelete = true,
-                                                           EditorType = EditorType.Text.ToString().ToLower()
+                                                           EditorDescriptor = new FieldEditorDescriptor(EditorType.Text)
                                                        },
                                                        new QuestionFieldDescriptor()
                                                        {
@@ -51,7 +53,7 @@ namespace Macmillan.PXQBA.Business.Services
                                                            MetadataName = "dlap_q_type",
                                                            Width = "10%",
                                                            CanNotDelete = false,
-                                                           EditorType = EditorType.None.ToString().ToLower()
+                                                           EditorDescriptor = new FieldEditorDescriptor(EditorType.None)
                                                        },
                                                        new QuestionFieldDescriptor()
                                                        {
@@ -59,7 +61,18 @@ namespace Macmillan.PXQBA.Business.Services
                                                            MetadataName = "dlap_q_status",
                                                            Width = "10%",
                                                            CanNotDelete = false,
-                                                           EditorType = EditorType.Status.ToString().ToLower()
+                                                           EditorDescriptor = new FieldEditorDescriptor(EditorType.SingleSelect)
+                                                                              {
+                                                                                  //On the ui display: Value(key)/Label(value)
+
+                                                                                  //Description from Macmillan.PXQBA.Business.Models.QuestionStatus
+                                                                                  AvailableChoice =
+                                                                                  {
+                                                                                      {QuestionStatus.AvailableToInstructors.ToString(), "Available to instructors"},
+                                                                                      {QuestionStatus.InProgress.ToString(), "In progress"},
+                                                                                      {QuestionStatus.Deleted.ToString(), "Deleted"}
+                                                                                  }
+                                                                              }
                                                        }
                                                    };
 

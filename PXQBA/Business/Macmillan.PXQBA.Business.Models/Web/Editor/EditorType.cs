@@ -1,10 +1,10 @@
-﻿namespace Macmillan.PXQBA.Business.Models.Web
+﻿namespace Macmillan.PXQBA.Business.Models.Web.Editor
 {
     public enum EditorType
     {
         None,
         Text,
-        Status,
+        SingleSelect,
         Number
     }
 }
