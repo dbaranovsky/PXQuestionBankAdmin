@@ -1,11 +1,17 @@
 ﻿var routsManager = (function () {
     var self = {};
-     
-    self.query = 'filter/query';
-    self.page = 'page/1';
-    self.columnsKey = 'columns/';
-    self.columnsValue = 'bank+seq+dlap_title+dlap_q_type+dlap_q_status';
-    self.order = 'order/none';
+    
+    self.query = new RouteItem('filter', 'query');
+    self.page = new RouteItem('page', '1');
+    self.columns = new RouteItem('columns', 'bank+seq+dlap_title+dlap_q_type+dlap_q_status');
+    self.order = new RouteItem('order', 'none');
+
+    self.setState = function (filter, page, columns, orderType, orderField) {
+        self.query.setValue(filter);
+        self.page.setValue(page);
+        self.columns.setValue(columns);
+        self.order.setValue(orderType + '/' + orderField);
+    },
 
     self.buildColumns = function() {
         return self.columnsKey + self.columnsValue;
@@ -13,33 +19,34 @@
 
     self.buildHash = function () {
         return '[filer]/[page]/[columns]/[order]'
-            .replace('[filer]', self.query)
-            .replace('[page]', self.page)
-            .replace('[columns]', self.buildColumns())
-            .replace('[order]', self.order);
+            .replace('[filer]', self.query.getRoute())
+            .replace('[page]', self.page.getRoute())
+            .replace('[columns]', self.columns.getRoute())
+            .replace('[order]', self.order.getRoute());
     };
 
     self.setPage = function (page) {
-        self.page = 'page/' + page;
+        self.page.setValue(page);
         hasher.setHash(self.buildHash());
     };
 
-    self.setOrder = function(orderType, fieldName) {
-        self.order = 'order/' + orderType;
+    self.setOrder = function (orderType, fieldName) {
+        self.order.setValue(orderType);
+        self.order.setValue(orderType);
         if (fieldName != undefined) {
-            self.order = self.order + '/' + fieldName;
+            self.order.setValue(self.order.getValue() + '/' + fieldName);
         }
         hasher.setHash(self.buildHash());
     };
 
     self.addField = function (field) {
-        self.columnsValue = columnHashParameterHelper.addField(field, self.columnsValue);
+        self.columns.setValue(columnHashParameterHelper.addField(field, self.columns.getValue()));
         hasher.setHash(self.buildHash());
     };
 
     self.deleteField = function (field) {
-        if (!columnHashParameterHelper.isLast(self.columnsValue)) {
-            self.columnsValue = columnHashParameterHelper.deleteField(field, self.columnsValue);
+        if (!columnHashParameterHelper.isLast(self.columns.getValue())) {
+            self.columns.setValue(columnHashParameterHelper.deleteField(field, self.columns.getValue()));
         }
         hasher.setHash(self.buildHash());
     };
