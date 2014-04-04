@@ -22,14 +22,22 @@ namespace Macmillan.PXQBA.Business.Services
             return questionCommands.GetQuestionList(courseId, sortCriterion, startingRecordNumber, recordCount);
         }
 
-        public Question CreateQuestion(Question question)
+        public Question CreateQuestion(string courseId, Question question)
         {
-            throw new System.NotImplementedException();
+            return questionCommands.CreateQuestion(courseId, question);
         }
 
         public Question GetQuestion(string questionId)
         {
-            throw new System.NotImplementedException();
+            return questionCommands.GetQuestion(questionId);
+        }
+
+        public Question GetNewQuestionTemplate()
+        {
+            var question = new Question();
+            question.Status = QuestionStatus.InProgress;
+            question.Title = "New question";
+            return question;
         }
 
         /*

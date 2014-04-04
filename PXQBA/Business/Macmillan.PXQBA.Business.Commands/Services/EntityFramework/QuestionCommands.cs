@@ -83,14 +83,27 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
             return result;
         }
 
-        public Question CreateQuestion(Question question)
+        public Question CreateQuestion(string courseId, Question question)
         {
-            throw new NotImplementedException();
+            DataAccess.Data.Question questionEntity = Mapper.Map<Question, DataAccess.Data.Question>(question);
+            dbContext.Questions.AddObject(questionEntity);
+            dbContext.SaveChanges();
+
+            ProductCourse courceQuestion = Mapper.Map<Question, ProductCourse>(question);
+            courceQuestion.ProductCourseDlapId = courseId;
+            courceQuestion.QuestionId = questionEntity.Id;
+
+            dbContext.ProductCourses.AddObject(courceQuestion);
+
+            dbContext.SaveChanges();
+
+            return question;
         }
 
         public Question GetQuestion(string questionId)
         {
-            throw new NotImplementedException();
+            var entity = dbContext.ProductCourses.FirstOrDefault(q => q.Question.DlapId == questionId);
+            return ConvertProductCourseQuestion(entity);
         }
 
         public bool UpdateQuestionField(string questionId, string fieldName, string value)

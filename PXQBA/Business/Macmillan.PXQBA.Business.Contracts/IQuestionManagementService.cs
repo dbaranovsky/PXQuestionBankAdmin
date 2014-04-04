@@ -17,9 +17,10 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// <summary>
         /// Create a new question
         /// </summary>
+        /// <param name="courseId"></param>
         /// <param name="question"></param>
         /// <returns>The updated object that was persisted</returns>
-        Question CreateQuestion(Question question);
+        Question CreateQuestion(string courseId, Question question);
 
         /// <summary>
         /// Returns question by its ID
@@ -27,6 +28,12 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// <param name="questionId"></param>
         /// <returns></returns>
         Question GetQuestion(string questionId);
+
+        /// <summary>
+        /// Builds template for new question populating fields with defaults
+        /// </summary>
+        /// <returns></returns>
+        Question GetNewQuestionTemplate();
         
         bool UpdateQuestionField(string questionId, string fieldName, string fieldValue);
     }

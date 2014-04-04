@@ -34,7 +34,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="InteractionType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="InteractionType" Type="nvarchar(max)" Nullable="true" />
     <Property Name="DlapId" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Status" Type="int" Nullable="false" />
     <Property Name="Type" Type="nvarchar(max)" Nullable="true" />
@@ -174,7 +174,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="InteractionType" Type="String" Nullable="false" />
+          <Property Name="InteractionType" Type="String" Nullable="true" />
           <Property Name="DlapId" Type="String" Nullable="true" />
           <Property Name="Status" Type="Int32" Nullable="false" />
           <Property Name="Type" Type="String" Nullable="true" />

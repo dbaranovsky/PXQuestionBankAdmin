@@ -1320,13 +1320,11 @@ namespace Macmillan.PXQBA.DataAccess.Data
         /// Create a new Question object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="interactionType">Initial value of the InteractionType property.</param>
         /// <param name="status">Initial value of the Status property.</param>
-        public static Question CreateQuestion(global::System.Int32 id, global::System.String interactionType, global::System.Int32 status)
+        public static Question CreateQuestion(global::System.Int32 id, global::System.Int32 status)
         {
             Question question = new Question();
             question.Id = id;
-            question.InteractionType = interactionType;
             question.Status = status;
             return question;
         }
@@ -1365,7 +1363,7 @@ namespace Macmillan.PXQBA.DataAccess.Data
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String InteractionType
         {
@@ -1377,7 +1375,7 @@ namespace Macmillan.PXQBA.DataAccess.Data
             {
                 OnInteractionTypeChanging(value);
                 ReportPropertyChanging("InteractionType");
-                _InteractionType = StructuralObject.SetValidValue(value, false, "InteractionType");
+                _InteractionType = StructuralObject.SetValidValue(value, true, "InteractionType");
                 ReportPropertyChanged("InteractionType");
                 OnInteractionTypeChanged();
             }
