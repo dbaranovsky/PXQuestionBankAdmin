@@ -212,3 +212,7 @@ input[type="checkbox"].input-validation-error {
     width: 300px;
     z-index: 200;
 }
+
+.main-item {
+    font-weight: bold;
+}
