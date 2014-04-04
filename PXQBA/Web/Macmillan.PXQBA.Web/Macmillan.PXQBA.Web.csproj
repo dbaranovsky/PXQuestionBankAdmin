@@ -139,7 +139,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Metadata\" />
     <Folder Include="Views\QuestionFilter\" />
     <Folder Include="Views\Question\" />
   </ItemGroup>
@@ -152,11 +151,14 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Constants\WebKeys.cs" />
     <Compile Include="ActionResults\JsonCamelCaseResult.cs" />
+    <Compile Include="Controllers\ImportController.cs" />
     <Compile Include="Controllers\MasterController.cs" />
+    <Compile Include="Controllers\MetadataController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\QuestionFilterController.cs" />
     <Compile Include="Controllers\QuestionListController.cs" />
     <Compile Include="Controllers\TitleListController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\AuthenticationAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -297,6 +299,10 @@
     <Content Include="Views\TitleList\Index.cshtml" />
     <Content Include="Views\Shared\_CommonJS.cshtml" />
     <Content Include="Views\QuestionList\Index.cshtml" />
+    <Content Include="Views\Import\Index.cshtml" />
+    <Content Include="Views\Metadata\Index.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Shared\MainMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Commands\Macmillan.PXQBA.Business.Commands.csproj">

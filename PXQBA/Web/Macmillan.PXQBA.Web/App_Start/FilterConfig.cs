@@ -10,7 +10,7 @@ namespace Macmillan.PXQBA.Web
         {
             filters.Add(new HandleErrorAttribute());
             //TODO: need uncomment when switching to dlap
-            //filters.Add(new AuthenticationAttribute());
+            filters.Add(new AuthenticationAttribute());
         }
     }
 }

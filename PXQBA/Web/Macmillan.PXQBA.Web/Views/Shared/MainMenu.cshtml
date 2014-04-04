@@ -1,0 +1,40 @@
+﻿
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                @MenuMainItem("Question Bank Admin", "Index", "QuestionList")
+                @MenuItem("Import", "Index", "Import")
+                @MenuItem("Metadata config", "Index", "Metadata")
+                @MenuItem("User management", "Index", "User")
+            </ul>
+            <!-- Place for login user-->
+        </div>
+    </div>
+</div>
+
+@helper MenuItem(string label, string actionName, string controllerName)
+{
+    <li class="@(IsActive(controllerName) ? "active" : null)">@Html.ActionLink(label, actionName, controllerName)</li>
+}
+
+@helper MenuMainItem(string label, string actionName, string controllerName)
+{
+    <li class="main-item @(IsActive(controllerName) ? "active" : null)">@Html.ActionLink(label, actionName, controllerName)</li>
+}
+
+@functions
+{
+    private bool IsActive(string controllerName)
+    {
+        var currentController = Html.ViewContext.RouteData.GetRequiredString("controller");
+        return string.Equals(currentController, controllerName, StringComparison.OrdinalIgnoreCase);
+    }
+}
