@@ -1,5 +1,6 @@
 ﻿@using Macmillan.PXQBA.Business.Models
 @using Macmillan.PXQBA.Business.Models.Web
+@using Macmillan.PXQBA.Business.Models.Web.Editor
 <script type="text/javascript">
     (function () {
 
@@ -26,15 +27,9 @@
             desc: '@SortType.Desc.ToString().ToLower()',
         };
 
-        enums.questionStatus = {            
-            availableToInstructors: '@Macmillan.PXQBA.Common.Helpers.EnumHelper.GetEnumDescription(QuestionStatus.AvailableToInstructors)',
-            deleted: '@Macmillan.PXQBA.Common.Helpers.EnumHelper.GetEnumDescription(QuestionStatus.Deleted)',
-            inProgress: '@Macmillan.PXQBA.Common.Helpers.EnumHelper.GetEnumDescription(QuestionStatus.InProgress)',
-        };
-
-        enums.editorType = {            
+        enums.editorType = {
             none: '@EditorType.None.ToString().ToLower()',
-            status: '@EditorType.Status.ToString().ToLower()',
+            status: '@EditorType.SingleSelect.ToString().ToLower()',
             text: '@EditorType.Text.ToString().ToLower()',
             number: '@EditorType.Number.ToString().ToLower()'
         };

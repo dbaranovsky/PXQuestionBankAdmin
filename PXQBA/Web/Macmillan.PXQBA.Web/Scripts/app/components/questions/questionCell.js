@@ -34,7 +34,7 @@ var QuestionCell = React.createClass({displayName: 'QuestionCell',
 
     renderMenu: function() {
         if(this.state.showMenu) {
-            if(this.props.editorType==window.enums.editorType.none) {
+            if(this.props.editorDescriptor.editorType==window.enums.editorType.none) {
                 return null;
             }
             return QuestionCellMenu( {onEditClickHandler:this.onEditClickHandler} )
@@ -56,7 +56,7 @@ var QuestionCell = React.createClass({displayName: 'QuestionCell',
                     metadata: {field: this.props.field,
                                currentValue: this.props.value,
                                questionId:  this.props.questionId,
-                               editorType: this.props.editorType}}
+                               editorDescriptor: this.props.editorDescriptor}}
              ));
         }
 

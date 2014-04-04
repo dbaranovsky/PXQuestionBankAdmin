@@ -45,7 +45,8 @@
     <Compile Include="SortCriterion.cs" />
     <Compile Include="Web\ContentItem.cs" />
     <Compile Include="QuestionMetadata.cs" />
-    <Compile Include="Web\EditorType.cs" />
+    <Compile Include="Web\Editor\FieldEditorDescriptor.cs" />
+    <Compile Include="Web\Editor\EditorType.cs" />
     <Compile Include="Web\Note.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

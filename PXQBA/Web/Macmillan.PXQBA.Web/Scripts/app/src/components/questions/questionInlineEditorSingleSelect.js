@@ -6,25 +6,20 @@ var QuestionInlineEditorStatus = React.createClass({
 
     chengeStatusEventHandler: function(event) {
         var value = event.target.getAttribute("data-value");
-        if(value != null) {
-            questionDataManager.saveQuestionData(this.props.metadata.questionId,
-                                                 this.props.metadata.field,
-                                                 value);
- 
-        }
-        this.props.afterEditingHandler();
+         this.props.saveVelueHandler(value)
     },
 
     renderMenuItems: function() {
+        debugger;
         var items = [];
-        for (var propertyName in this.props.statusEnum) {
-            items.push(this.renderMenuItem(this.props.statusEnum[propertyName]));
+        for (var propertyName in this.props.values) {
+            items.push(this.renderMenuItem(this.props.values[propertyName], propertyName));
         }
         return items;
     },
 
-    renderMenuItem: function(value) {
-        return (<li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" data-value={value}>{value}</a></li>);
+    renderMenuItem: function(label, value) {
+        return (<li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" data-value={value}>{label}</a></li>);
     },
 
     render: function() {

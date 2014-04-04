@@ -4,19 +4,30 @@
 
 var QuestionInlineEditorBase = React.createClass({displayName: 'QuestionInlineEditorBase',
     
+    saveVelueHandler: function(value) {
+        if(value != null) {
+          questionDataManager.saveQuestionData(this.props.metadata.questionId,
+                                               this.props.metadata.field,
+                                               value);
+ 
+        }
+        this.props.afterEditingHandler();
+    },
+
     renderSpecificEditor: function() {
-        switch (this.props.metadata.editorType) {
+        switch (this.props.metadata.editorDescriptor.editorType) {
           case window.enums.editorType.text:
-            return (QuestionInlineEditorText( {afterEditingHandler:this.props.afterEditingHandler, 
+            return (QuestionInlineEditorText( {saveVelueHandler:this.saveVelueHandler, 
+                    afterEditingHandler:this.props.afterEditingHandler,
                     metadata:this.props.metadata}));
           case window.enums.editorType.status:
-            return (QuestionInlineEditorStatus( {afterEditingHandler:this.props.afterEditingHandler,
+            return (QuestionInlineEditorStatus( {saveVelueHandler:this.saveVelueHandler, 
                         metadata:this.props.metadata,
-                        statusEnum:window.enums.questionStatus} ));
+                        values:this.props.metadata.editorDescriptor.availableChoice} ));
           case window.enums.editorType.number:
-            return (QuestionInlineEditorNumber( {afterEditingHandler:this.props.afterEditingHandler,
-                       metadata:this.props.metadata,
-                       statusEnum:window.enums.questionStatus} ));
+            return (QuestionInlineEditorNumber( {saveVelueHandler:this.saveVelueHandler, 
+                       afterEditingHandler:this.props.afterEditingHandler,
+                       metadata:this.props.metadata} ));
           default:
             return null;
         }

@@ -114,7 +114,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
                 switch (fieldName)
                 {
                     case MetadataFieldNames.DlapStatus:
-                        question.Status = ((int) EnumHelper.GetItemByDescription(typeof (QuestionStatus), value));
+                        question.Status = (int)((QuestionStatus)Enum.Parse(typeof(QuestionStatus), value, true));
                         break;
                 }
                 dbContext.SaveChanges();

@@ -6,13 +6,7 @@ var QuestionInlineEditorNumber = React.createClass({
 
   onAcceptEventHandler: function() {
         var value = this.state.value;
-        if(value != null) {
-            questionDataManager.saveQuestionData(this.props.metadata.questionId,
-                                                 this.props.metadata.field,
-                                                 value);
- 
-        }
-        this.props.afterEditingHandler();
+        this.props.saveVelueHandler(value)
   },
 
   onCancelEventHandler: function() {
