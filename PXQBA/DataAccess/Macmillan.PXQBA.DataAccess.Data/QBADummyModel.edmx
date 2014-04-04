@@ -52,6 +52,10 @@
     <Property Name="Title" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Sequence" Type="nvarchar(max)" Nullable="true" />
     <Property Name="QuestionId" Type="int" Nullable="false" />
+    <Property Name="ExcerciseNo" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Guidance" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Version" Type="nvarchar(max)" Nullable="true" DefaultValue="&quot;0&quot;" />
+    <Property Name="CognitiveLevel" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="Courses">
     <Key>
@@ -191,6 +195,10 @@
           <Property Name="Sequence" Type="String" Nullable="true" />
           <NavigationProperty Name="Question" Relationship="QBADummyModel.QuestionProductCourse" FromRole="ProductCourse" ToRole="Question" />
           <Property Name="QuestionId" Type="Int32" Nullable="false" />
+          <Property Type="String" Name="ExcerciseNo" Nullable="true" />
+          <Property Type="String" Name="Guidance" Nullable="true" />
+          <Property Type="String" Name="Version" DefaultValue="&quot;0&quot;" />
+          <Property Type="String" Name="CognitiveLevel" Nullable="true" />
         </EntityType>
         <Association Name="QuestionProductCourse">
           <End Type="QBADummyModel.Question" Role="Question" Multiplicity="1" />
@@ -310,6 +318,10 @@
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Sequence" ColumnName="Sequence" />
           <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="ExcerciseNo" ColumnName="ExcerciseNo" />
+          <ScalarProperty Name="Guidance" ColumnName="Guidance" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="CognitiveLevel" ColumnName="CognitiveLevel" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -367,7 +379,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="True" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
         <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
       </DesignerInfoPropertySet>

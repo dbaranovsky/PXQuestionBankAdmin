@@ -17,6 +17,31 @@ namespace Macmillan.PXQBA.Business.Models
         public string Preview { get; set; }
         public QuestionStatus Status { get; set; }
 
+        /// <summary>
+        /// Excercise Number for the  question.
+        /// </summary>
+        public string ExcerciseNo { get; set; }
+
+        /// <summary>
+        /// Difficulty for the  question.
+        /// </summary>
+        public string Difficulty { get; set; }
+
+        /// <summary>
+        /// Guidance for the  question.
+        /// </summary>
+        public string Guidance { get; set; }
+
+        /// <summary>
+        /// Question particular version
+        /// </summary>
+        public string Version { get; set; }
+
+        /// <summary>
+        /// Congnitive Level for the  question.
+        /// </summary>
+        public string CognitiveLevel { get; set; }
+
         public static string QuestionTypeShortNameFromId(string id)
         {
             return new Dictionary<string, string>()

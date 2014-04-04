@@ -10,38 +10,38 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
 {
     public class NoteCommands : INoteCommands
     {
-        private readonly IQBAUow qbaUow;
+        private readonly QBADummyModelContainer dbContext;
 
-        public NoteCommands(IQBAUow qbaUow)
+        public NoteCommands(QBADummyModelContainer dbContext)
         {
-            this.qbaUow = qbaUow;
+            this.dbContext = dbContext;
         }
 
         public IEnumerable<Note> GetQuestionNotes(string questionId)
         {
-            return qbaUow.DbContext.Notes.Where(note => note.Question.DlapId == questionId).Select(Mapper.Map<Note>);
+            return dbContext.Notes.Where(note => note.Question.DlapId == questionId).Select(Mapper.Map<Note>);
         }
 
         public Note SaveNote(Note note)
         {
-            var question = qbaUow.DbContext.Questions.FirstOrDefault(q => q.DlapId == note.QuestionId);
+            var question = dbContext.Questions.FirstOrDefault(q => q.DlapId == note.QuestionId);
             if (question == null)
             {
                 throw new ArgumentException("Unable to find question for note");
             }
             var noteToAdd = Mapper.Map<DataAccess.Data.Note>(note);
             noteToAdd.QuestionId = question.Id;
-            qbaUow.DbContext.Notes.Add(noteToAdd);
-            qbaUow.Commit();
+            dbContext.Notes.AddObject(noteToAdd);
+            dbContext.SaveChanges();
             return Mapper.Map<Note>(noteToAdd);
         }
 
         public void DeleteNote(Note note)
         {
             var noteToDelete = Mapper.Map<DataAccess.Data.Note>(note);
-            qbaUow.DbContext.Notes.Attach(noteToDelete);
-            qbaUow.DbContext.Notes.Remove(noteToDelete);
-            qbaUow.Commit();
+            dbContext.Notes.Attach(noteToDelete);
+            dbContext.Notes.DeleteObject(noteToDelete);
+            dbContext.SaveChanges();
         }
     }
 }

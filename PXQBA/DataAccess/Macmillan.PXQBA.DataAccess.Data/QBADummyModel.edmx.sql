@@ -1,9 +1,9 @@
 
 -- --------------------------------------------------
--- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
+-- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 04/01/2014 17:53:01
--- Generated from EDMX file: D:\Git\macmillan\PXQuestionBankAdmin\PXQBA\DataAccess\Macmillan.PXQBA.DataAccess.Data\QBADummyModel.edmx
+-- Date Created: 04/03/2014 19:57:35
+-- Generated from EDMX file: D:\Projects\MacMillan\Source\PXQuestionBankAdmin\PXQBA\DataAccess\Macmillan.PXQBA.DataAccess.Data\QBADummyModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -77,7 +77,11 @@ CREATE TABLE [dbo].[ProductCourses] (
     [Bank] nvarchar(max)  NULL,
     [Title] nvarchar(max)  NULL,
     [Sequence] nvarchar(max)  NULL,
-    [QuestionId] int  NOT NULL
+    [QuestionId] int  NOT NULL,
+    [ExcerciseNo] nvarchar(max)  NULL,
+    [Guidance] nvarchar(max)  NULL,
+    [Version] nvarchar(max)  NULL,
+    [CognitiveLevel] nvarchar(max)  NULL
 );
 GO
 
