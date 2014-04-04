@@ -1,6 +1,7 @@
 ﻿crossroads.addRoute('/filter/{query}/page/{page}/columns/{columns}/order/{orderType}/:orderField:',
     function (query, page, columns, orderType, orderField) {
         console.log('route callback executed');
+        routsManager.setState(query, page, columns, orderType, orderField);
         asyncManager.startWait();
         var questionsData = questionDataManager.getQuestionsByQuery(query,
                                                                     page,

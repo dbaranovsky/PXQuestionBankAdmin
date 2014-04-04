@@ -230,6 +230,7 @@
     <Content Include="Scripts\app\dataAccess\questionFilterDataManager.js" />
     <Content Include="Scripts\app\dataAccess\questionMetadataManager.js" />
     <Content Include="Scripts\app\routes\columnHashParameterHelper.js" />
+    <Content Include="Scripts\app\routes\routeItem.js" />
     <Content Include="Scripts\app\routes\router.js" />
     <Content Include="Scripts\app\routes\routeManager.js" />
     <Content Include="Scripts\app\src\components\common\loader.js" />
