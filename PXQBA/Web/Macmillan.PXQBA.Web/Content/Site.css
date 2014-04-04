@@ -227,15 +227,20 @@ input[type="checkbox"].input-validation-error {
 
 .tab-body {
     margin-top: 20px;
-    font-size: 30px;
+    font-size: 20px;
+}
+
+.tab-body input[type=text] {
+    max-width: 958px;
+    width: 958px;
 }
 
 .tab-body textarea{
     max-width: 958px;
     min-width: 958px;
-    max-height: 690px;
-    min-height: 690px;
-    font-size: 10px;
+    max-height: 200px;
+    min-height: 200px;
+    font-size: 20px;
 }
 .tabs-header {
     float: left;

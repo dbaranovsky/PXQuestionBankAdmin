@@ -14,14 +14,16 @@ var QuestionEditorDialog = React.createClass({
         $(this.getDOMNode()).on('hidden.bs.modal', function () {
             closeDialogHandler();
         })
+
     },
 
     render: function() {
         var renderHeaderText = function() {
             return "New Question";
         };
+        var question = this.props.question;
         var renderBody = function(){
-            return (<QuestionEditor />);
+            return (<QuestionEditor question={question} />);
         };
         var renderFooterButtons = function(){
             return ("");
@@ -54,7 +56,7 @@ var QuestionEditor = React.createClass({
                       </div>
                 
                 <div>
-                  <QuestionEditorTabs  />
+                  <QuestionEditorTabs question={this.props.question}  />
                 </div>
          </div>);
     }
@@ -98,27 +100,36 @@ var QuestionEditorTabs = React.createClass({
                 <div className="tab-content">
                     <div className="tab-pane active" id="body">
                        <div className="tab-body">
-                       <textarea className="question-body-editor"  rows="20" type="text" placeholder="Enter text..." ref="text" />
+                       <td dangerouslySetInnerHTML={{__html: this.props.question.preview}} />
                        </div>
                     </div>
                     <div className="tab-pane" id="metadata">
                         <div className="tab-body">
                            <label>Title</label>
                            <br />
-                           <input type="text" />
-                            <br />
+                           <input type="text" value={this.props.question.title}/>
+                            <br /><br />
                            <label>Chapter</label>
                            <br />
-                           <input type="text" />
-                            <br />
-                           <label>KeyWords</label>
+                           <input type="text" value={this.props.question.chapter}/>
+                            <br /><br />
+                           <label>Bank</label>
                            <br />
-                           <input type="text" />
-                            <br />
+                           <input type="text" value={this.props.question.bank} />
+                            <br /><br />
+                           <label>Excercise</label>
+                           <br />
+                           <input type="text" value={this.props.question.excerciseNo}/> 
+                           <br /><br />
+
                            <label>Format</label>
                            <br />
-                           <input type="text" />
-                           </div>
+                            <textarea className="question-body-editor"  rows="10" type="text" placeholder="Enter text..." ref="text" value={this.props.question.guidance} />
+                           </div>  
+                           <br />
+
+
+                          
                         </div>
                 </div>
                 <div className="tab-pane" id="history">

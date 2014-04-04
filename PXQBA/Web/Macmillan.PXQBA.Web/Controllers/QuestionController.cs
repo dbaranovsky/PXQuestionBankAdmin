@@ -7,10 +7,12 @@ namespace Macmillan.PXQBA.Web.Controllers
     public class QuestionController : MasterController
     {
         private readonly IQuestionManagementService questionManagementService;
+        private readonly IQuestionMetadataService questionMetadataService;
 
-        public QuestionController(IQuestionManagementService questionManagementService)
+        public QuestionController(IQuestionManagementService questionManagementService,   IQuestionMetadataService questionMetadataService)
         {
             this.questionManagementService = questionManagementService;
+            this.questionMetadataService = questionMetadataService;
         }
 
         [HttpPost]
@@ -18,6 +20,18 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
             var result = questionManagementService.UpdateQuestionField(questionId, fieldName, fieldValue);
             return JsonCamel(new { isError = !result });
+        
+        }
+
+
+        public ActionResult GetNewQuestionTemplate()
+        {
+            return JsonCamel(questionManagementService.GetNewQuestionTemplate());
+        }
+
+        public ActionResult GetAvailibleMetadata()
+        {
+            return JsonCamel(questionMetadataService.GetAvailableFields());
         }
 	}
 }
