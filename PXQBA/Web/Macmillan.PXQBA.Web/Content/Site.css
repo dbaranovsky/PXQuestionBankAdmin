@@ -216,3 +216,55 @@ input[type="checkbox"].input-validation-error {
 .main-item {
     font-weight: bold;
 }
+#questionEditorModal > .modal-dialog {
+    width: 1000px;
+
+}
+
+#questionEditorModal .modal-body {
+     height: 800px;
+} 
+
+.tab-body {
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+.tab-body textarea{
+    max-width: 958px;
+    min-width: 958px;
+    max-height: 690px;
+    min-height: 690px;
+    font-size: 10px;
+}
+.tabs-header {
+    float: left;
+}
+
+.tabs-header ul {
+    width: 100%;
+}
+
+.header-buttons {
+    float: right;
+
+}
+
+.header-buttons button{
+   margin-left: 20px;
+}
+
+.editor-header {
+     float: left;
+    width: 100%;
+
+}
+.tab-content {
+     float: left;
+
+}
+
+.header-buttons .run-question {
+     margin-right: 200px;
+}
+

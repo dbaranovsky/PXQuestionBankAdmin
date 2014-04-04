@@ -5,7 +5,7 @@
 var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
 
     getInitialState: function() {
-      return { loading: false };
+      return { loading: false, showEditor: false };
     },
 
     renderLoader: function() {
@@ -13,6 +13,25 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
             return (Loader(null ));
         }
         return null;
+    },
+
+
+    nextStepHandler: function(){
+         this.setState({showEditor: true});
+    },
+
+    renderQuestionEditorDialog: function()
+    {
+      if(this.state.showEditor)
+          {
+            return (QuestionEditorDialog( {closeDialogHandler:this.closeDialogHandler, isNew:true, showOnCreate:true}));
+          }
+      return null;
+    },
+
+    closeDialogHandler: function()
+    {
+         this.setState({showEditor: false});
     },
 
     render: function() {
@@ -27,7 +46,8 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
                 React.DOM.div(null, 
                   QuestionTabs( {response:this.props.response} )
                 ),
-                AddQuestionDialog(null )
+                AddQuestionDialog( {nextStepHandler:this.nextStepHandler}),
+                this.renderQuestionEditorDialog()
             )
             );
     }
