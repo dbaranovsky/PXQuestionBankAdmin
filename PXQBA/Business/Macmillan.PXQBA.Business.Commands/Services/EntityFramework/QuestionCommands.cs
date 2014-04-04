@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using AutoMapper;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
-using Macmillan.PXQBA.Business.Models.Web;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Common.Helpers.Constants;
 using Macmillan.PXQBA.DataAccess.Data;
@@ -16,17 +13,11 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
 {
     public class QuestionCommands : IQuestionCommands
     {
-        private readonly IQBAUow qbaUow;
+        private readonly QBADummyModelContainer dbContext;
 
-        public QuestionCommands(IQBAUow qbaUow, IModelProfileService modelProfileService)
+        public QuestionCommands(QBADummyModelContainer dbContext, IModelProfileService modelProfileService)
         {
-            this.qbaUow = qbaUow;
-        }
-
-        public void SaveQuestions(IList<Question> questions)
-        {
-            qbaUow.DbContext.Questions.AddRange(Mapper.Map<List<DataAccess.Data.Question>>(questions));
-            qbaUow.Commit();
+            this.dbContext = dbContext;
         }
 
         private static IQueryable<ProductCourse> BuildSorting(IQueryable<ProductCourse> query, SortCriterion sortCriterion)
@@ -80,7 +71,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
 
         public PagedCollection<Question> GetQuestionList(string courseId, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
         {
-            var questionsQuery = qbaUow.DbContext.ProductCourses.Where(q => q.ProductCourseDlapId == courseId);
+            var questionsQuery = dbContext.ProductCourses.Where(q => q.ProductCourseDlapId == courseId);
             questionsQuery = BuildSorting(questionsQuery, sortCriterion);
 
             var result = new PagedCollection<Question>
@@ -92,19 +83,32 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
             return result;
         }
 
-        public Question CreateQuestion(Question question)
+        public Question CreateQuestion(string courseId, Question question)
         {
-            throw new NotImplementedException();
+            DataAccess.Data.Question questionEntity = Mapper.Map<Question, DataAccess.Data.Question>(question);
+            dbContext.Questions.AddObject(questionEntity);
+            dbContext.SaveChanges();
+
+            ProductCourse courceQuestion = Mapper.Map<Question, ProductCourse>(question);
+            courceQuestion.ProductCourseDlapId = courseId;
+            courceQuestion.QuestionId = questionEntity.Id;
+
+            dbContext.ProductCourses.AddObject(courceQuestion);
+
+            dbContext.SaveChanges();
+
+            return question;
         }
 
         public Question GetQuestion(string questionId)
         {
-            throw new NotImplementedException();
+            var entity = dbContext.ProductCourses.FirstOrDefault(q => q.Question.DlapId == questionId);
+            return ConvertProductCourseQuestion(entity);
         }
 
         public bool UpdateQuestionField(string questionId, string fieldName, string value)
         {
-            var question = qbaUow.DbContext.Questions.FirstOrDefault(q => q.DlapId == questionId);
+            var question = dbContext.Questions.FirstOrDefault(q => q.DlapId == questionId);
             if (question != null)
             {
                 switch (fieldName)
@@ -113,7 +117,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
                         question.Status = ((int) EnumHelper.GetItemByDescription(typeof (QuestionStatus), value));
                         break;
                 }
-                qbaUow.Commit();
+                dbContext.SaveChanges();
                 return true;
             }
             return false;

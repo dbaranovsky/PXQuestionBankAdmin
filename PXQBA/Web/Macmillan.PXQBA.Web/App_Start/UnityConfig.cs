@@ -1,3 +1,5 @@
+using System.Data.Entity.Core.EntityClient;
+using System.Data.SqlClient;
 using AutoMapper;
 using Bfw.Agilix.Dlap.Components.Session;
 using Bfw.Agilix.Dlap.Session;
@@ -12,6 +14,7 @@ using Macmillan.PXQBA.Common.Logging;
 using Macmillan.PXQBA.DataAccess.Data;
 using Microsoft.Practices.Unity;
 using System;
+using System.Configuration;
 
 namespace Macmillan.PXQBA.Web.App_Start
 {
@@ -56,14 +59,15 @@ namespace Macmillan.PXQBA.Web.App_Start
             container.RegisterType<INotesManagementService, NotesManagementService>(new PerRequestLifetimeManager());
             container.RegisterType<IModelProfileService, ModelProfileService>(new PerRequestLifetimeManager());
             container.RegisterType<Profile, ModelProfile>(new PerRequestLifetimeManager());
-            container.RegisterType<QBADummyModelContainer, QBADummyModelContainer>(new PerRequestLifetimeManager());
-            container.RegisterType<IQBAUow, QBAUow>();
             container.RegisterType<ISessionManager, WebSessionManager>(new PerRequestLifetimeManager());
             container.RegisterType<ITraceManager, MvcMiniProfilerTraceManager>(new PerRequestLifetimeManager());
             container.RegisterType<ILogger, CommonLogger>(new PerRequestLifetimeManager());
             container.RegisterTypes(AllClasses.FromAssemblies(typeof(Context).Assembly), WithMappings.FromAllInterfaces, WithName.Default, WithLifetime.Custom<PerRequestLifetimeManager>);
             container.RegisterTypes(AllClasses.FromAssemblies(typeof(QuestionCommands).Assembly), WithMappings.FromAllInterfaces, WithName.Default);
             container.RegisterTypes(AllClasses.FromAssemblies(typeof(NoteCommands).Assembly), WithMappings.FromAllInterfaces, WithName.Default);
+
+            var cs = ConfigurationManager.ConnectionStrings["QBADummyModelContainer"];
+            container.RegisterType<QBADummyModelContainer, QBADummyModelContainer>(new InjectionConstructor(cs.ConnectionString));
         }
     }
 }
