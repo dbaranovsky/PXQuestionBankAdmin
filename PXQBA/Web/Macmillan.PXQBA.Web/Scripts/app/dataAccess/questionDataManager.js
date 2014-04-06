@@ -121,5 +121,55 @@
         });
     };
 
+
+    self.getNewQuestionTemplate = function() {
+       // var request = {
+       //     questionType: questionType
+       // };
+          return $.ajax({
+            url: window.actions.questionList.getNewQuestionTemplateUrl,
+            traditional: true,
+         //   data: request,
+            dataType: 'json',
+            type: 'GET'
+        }).done(function (response) {
+            self.processDataResponse(response);
+        });
+    };
+
+
+    self.getQuestion = function(questionId) {
+          var request = {
+            questionId: questionId
+        };
+        return $.ajax({
+            url: window.actions.questionList.getQuestionUrl,
+            traditional: true,
+            data: request,
+            dataType: 'json',
+            type: 'GET'
+        }).done(function (response) {
+            self.processDataResponse(response);
+        });
+    };
+
+
+    self.getMetadataFields = function() {
+         
+         return $.ajax({
+            url: window.actions.questionList.getMetadataFieldsUrl,
+            traditional: true,
+            data: JSON.stringify(request),
+            dataType: 'json',
+            contentType: 'application/json',
+            type: 'POST'
+        }).done(function (response) {
+            console.log('Delete note complete');
+            crossroads.resetState();
+            crossroads.parse(window.routsManager.buildHash());
+            console.log('Refresh complite');
+        });
+    };
+
     return self;
 }());

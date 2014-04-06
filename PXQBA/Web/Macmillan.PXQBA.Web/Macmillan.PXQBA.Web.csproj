@@ -206,6 +206,7 @@
     <Content Include="Scripts\app\components\questions\questionCell.js" />
     <Content Include="Scripts\app\components\questions\questionCellMenu.js" />
     <Content Include="Scripts\app\components\questions\questionCellWithPreview.js" />
+    <Content Include="Scripts\app\components\questions\questionEditor.js" />
     <Content Include="Scripts\app\components\questions\questionFilter.js" />
     <Content Include="Scripts\app\components\questions\questionGrid.js" />
     <Content Include="Scripts\app\components\questions\questionInlineEditorBase.js" />
@@ -241,6 +242,7 @@
     <Content Include="Scripts\app\src\components\questions\questionCell.js" />
     <Content Include="Scripts\app\src\components\questions\questionCellMenu.js" />
     <Content Include="Scripts\app\src\components\questions\questionCellWithPreview.js" />
+    <Content Include="Scripts\app\src\components\questions\questionEditor.js" />
     <Content Include="Scripts\app\src\components\questions\questionFilter.js" />
     <Content Include="Scripts\app\src\components\questions\questionGrid.js" />
     <Content Include="Scripts\app\src\components\questions\questionInlineEditorBase.js" />
