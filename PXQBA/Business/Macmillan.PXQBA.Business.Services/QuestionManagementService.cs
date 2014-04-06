@@ -32,6 +32,13 @@ namespace Macmillan.PXQBA.Business.Services
             return questionCommands.GetQuestion(questionId);
         }
 
+        public Question GetDuplicateQuestionTemplate(string questionId)
+        {
+            Question question = GetQuestion(questionId);
+            question.Status = QuestionStatus.InProgress;
+            return question;
+        }
+
         public Question GetNewQuestionTemplate()
         {
             var question = new Question();
