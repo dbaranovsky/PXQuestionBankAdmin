@@ -37,6 +37,7 @@ namespace Macmillan.PXQBA.Business.Services
             var question = new Question();
             question.Status = QuestionStatus.InProgress;
             question.Title = "New question";
+            question.Preview = "<h2>preview for test</h2>";
             return question;
         }
 
