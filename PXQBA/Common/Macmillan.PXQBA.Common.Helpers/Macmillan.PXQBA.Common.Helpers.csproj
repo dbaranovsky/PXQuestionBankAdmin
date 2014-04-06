@@ -45,7 +45,6 @@
     <Compile Include="ConfigurationHelper.cs" />
     <Compile Include="Constants\ConfigurationKeys.cs" />
     <Compile Include="Constants\Constants.cs" />
-    <Compile Include="Constants\MetadataFieldNames.cs" />
     <Compile Include="EnumHelper.cs" />
     <Compile Include="HtmlXmlHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

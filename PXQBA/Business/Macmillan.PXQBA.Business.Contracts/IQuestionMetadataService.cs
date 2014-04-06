@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
-using Macmillan.PXQBA.Business.Models.Web;
+using Macmillan.PXQBA.Business.Models;
 
 namespace Macmillan.PXQBA.Business.Contracts
 {
     public interface IQuestionMetadataService
     {
-        IList<QuestionFieldDescriptor> GetAvailableFields();
+        IList<QuestionMetaField> GetAvailableFields();
 
-        IList<QuestionFieldDescriptor> GetDataForFields(IEnumerable<string> fieldsNames);
+        IList<QuestionMetaField> GetDataForFields(IEnumerable<string> fieldsNames);
 
     }
 

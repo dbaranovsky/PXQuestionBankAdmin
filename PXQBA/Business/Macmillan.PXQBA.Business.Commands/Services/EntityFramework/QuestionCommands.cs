@@ -4,8 +4,6 @@ using AutoMapper;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
-using Macmillan.PXQBA.Common.Helpers;
-using Macmillan.PXQBA.Common.Helpers.Constants;
 using Macmillan.PXQBA.DataAccess.Data;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
