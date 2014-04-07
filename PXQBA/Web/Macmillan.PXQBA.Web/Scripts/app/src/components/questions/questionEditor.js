@@ -38,9 +38,29 @@ var QuestionEditorDialog = React.createClass({
 
 var QuestionEditor = React.createClass({
 
-  
-    render: function() {
+   getInitialState: function() {
+
+      return { question: this.props.question };
+    },
+
+    saveQuestion: function(){
+        if(this.props.isNew)
+        {
+            //create
+        }
+
+        //save existing
+    },
+
+    editHandler: function(){
+        alert("ok");
+    },
+
+    componentDidMount: function(){
        
+    },
+
+    render: function() {
         return (
             <div>
                       <div className="header-buttons">
@@ -50,13 +70,13 @@ var QuestionEditor = React.createClass({
                         <button className="btn btn-default" data-toggle="modal" >
                              Cancel
                         </button>
-                         <button className="btn btn-primary " data-toggle="modal" >
+                         <button className="btn btn-primary " data-toggle="modal" onClick={this.props.saveQuestion} >
                              Save
                         </button>
                       </div>
                 
                 <div>
-                  <QuestionEditorTabs question={this.props.question}  />
+                  <QuestionEditorTabs question={this.state.question} editHandler={this.editHandler} />
                 </div>
          </div>);
     }
@@ -104,33 +124,10 @@ var QuestionEditorTabs = React.createClass({
                        </div>
                     </div>
                     <div className="tab-pane" id="metadata">
-                        <div className="tab-body">
-                           <label>Title</label>
-                           <br />
-                           <input type="text" value={this.props.question.title}/>
-                            <br /><br />
-                           <label>Chapter</label>
-                           <br />
-                           <input type="text" value={this.props.question.chapter}/>
-                            <br /><br />
-                           <label>Bank</label>
-                           <br />
-                           <input type="text" value={this.props.question.bank} />
-                            <br /><br />
-                           <label>Excercise</label>
-                           <br />
-                           <input type="text" value={this.props.question.excerciseNo}/> 
-                           <br /><br />
-
-                           <label>Format</label>
-                           <br />
-                            <textarea className="question-body-editor"  rows="10" type="text" placeholder="Enter text..." ref="text" value={this.props.question.guidance} />
-                           </div>  
+                       <QuestionMetadataEditor  question={this.props.question} editHandler={this.props.editHandler} />
                            <br />
 
-
-                          
-                        </div>
+                    </div>
                 </div>
                 <div className="tab-pane" id="history">
                        <div className="tab-body">
@@ -141,5 +138,89 @@ var QuestionEditorTabs = React.createClass({
             </div>
             );
         }
+
+});
+
+var QuestionMetadataEditor = React.createClass({
+
+    getInitialState: function() {
+      return { metadata: []};
+    },
+
+    
+    loadMetadata: function(data)
+    {
+        this.setState({metadata: data});
+    },
+
+    componentDidMount: function(){
+       questionDataManager.getMetadataFields().done(this.loadMetadata); 
+    },
+    render: function() {
+       
+        return (
+             <div className="tab-body">
+                           <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"title"}/>
+                           <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"chapter"}/>
+                           <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"bank"}/>
+                           <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"excerciseNo"} title="Excercise Number"/>
+                           <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"guidance"} isMultiline={true}/>
+             </div> 
+         );
+    }
+});
+
+var MetadataFieldEditor = React.createClass({
+
+     saveValueHandler: function(){
+
+     },
+
+    renderMenuItems: function(availableChoices) {
+        var items = [];
+        for (var propertyName in availableChoices) {
+            items.push(this.renderMenuItem(availableChoices[propertyName], propertyName));
+        }
+        return items;
+    },
+
+    renderMenuItem: function(label, value) {
+        return (<option value={value}>{label}</option>);
+    },
+
+     renderBody: function(){
+
+
+       var field = this.props.field;
+       var metadataField = $.grep(this.props.metadata, function(e){ return e.name === field; });
+       var editorType = metadataField.length>0 ? metadataField[0].typeDescriptor.type : 0;
+       switch (editorType) {
+          //case window.enums.editorType.singleSelect:
+          // Magic number! Do something with that!
+          case 1:
+             return (<select> {this.renderMenuItems(metadataField[0].typeDescriptor.availableChoice)}</select> );
+          default: 
+            if(!this.props.isMultiline){
+                 return (<input type="text"  value={this.props.question[this.props.field]}/>)
+             }
+            return ( <textarea className="question-body-editor"  rows="10" type="text" placeholder="Enter text..." ref={this.props.title} value={this.props.question[this.props.field]} />);
+             
+        }
+    },
+
+
+
+    render: function() {
+        return (
+
+            <div className="metadata-field-editor">
+                   <label>{this.props.title === undefined ? this.props.field : this.props.title}</label>
+                   <br />
+                    {this.renderBody()}
+                   <br />
+                          
+            </div> 
+         );
+    }
 
 });

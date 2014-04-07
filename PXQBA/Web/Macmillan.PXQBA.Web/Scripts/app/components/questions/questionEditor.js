@@ -38,9 +38,29 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
 
 var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
 
-  
-    render: function() {
+   getInitialState: function() {
+
+      return { question: this.props.question };
+    },
+
+    saveQuestion: function(){
+        if(this.props.isNew)
+        {
+            //create
+        }
+
+        //save existing
+    },
+
+    editHandler: function(){
+        alert("ok");
+    },
+
+    componentDidMount: function(){
        
+    },
+
+    render: function() {
         return (
             React.DOM.div(null, 
                       React.DOM.div( {className:"header-buttons"}, 
@@ -50,13 +70,13 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
                         React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal"} , 
                              "Cancel"
                         ),
-                         React.DOM.button( {className:"btn btn-primary ",  'data-toggle':"modal"} , 
+                         React.DOM.button( {className:"btn btn-primary ",  'data-toggle':"modal", onClick:this.props.saveQuestion} , 
                              "Save"
                         )
                       ),
                 
                 React.DOM.div(null, 
-                  QuestionEditorTabs( {question:this.props.question}  )
+                  QuestionEditorTabs( {question:this.state.question, editHandler:this.editHandler} )
                 )
          ));
     }
@@ -104,33 +124,10 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                        )
                     ),
                     React.DOM.div( {className:"tab-pane", id:"metadata"}, 
-                        React.DOM.div( {className:"tab-body"}, 
-                           React.DOM.label(null, "Title"),
-                           React.DOM.br(null ),
-                           React.DOM.input( {type:"text", value:this.props.question.title}),
-                            React.DOM.br(null ),React.DOM.br(null ),
-                           React.DOM.label(null, "Chapter"),
-                           React.DOM.br(null ),
-                           React.DOM.input( {type:"text", value:this.props.question.chapter}),
-                            React.DOM.br(null ),React.DOM.br(null ),
-                           React.DOM.label(null, "Bank"),
-                           React.DOM.br(null ),
-                           React.DOM.input( {type:"text", value:this.props.question.bank} ),
-                            React.DOM.br(null ),React.DOM.br(null ),
-                           React.DOM.label(null, "Excercise"),
-                           React.DOM.br(null ),
-                           React.DOM.input( {type:"text", value:this.props.question.excerciseNo}), 
-                           React.DOM.br(null ),React.DOM.br(null ),
-
-                           React.DOM.label(null, "Format"),
-                           React.DOM.br(null ),
-                            React.DOM.textarea( {className:"question-body-editor",  rows:"10", type:"text", placeholder:"Enter text...", ref:"text", value:this.props.question.guidance} )
-                           ),  
+                       QuestionMetadataEditor(  {question:this.props.question, editHandler:this.props.editHandler} ),
                            React.DOM.br(null )
 
-
-                          
-                        )
+                    )
                 ),
                 React.DOM.div( {className:"tab-pane", id:"history"}, 
                        React.DOM.div( {className:"tab-body"}
@@ -141,5 +138,89 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
             )
             );
         }
+
+});
+
+var QuestionMetadataEditor = React.createClass({displayName: 'QuestionMetadataEditor',
+
+    getInitialState: function() {
+      return { metadata: []};
+    },
+
+    
+    loadMetadata: function(data)
+    {
+        this.setState({metadata: data});
+    },
+
+    componentDidMount: function(){
+       questionDataManager.getMetadataFields().done(this.loadMetadata); 
+    },
+    render: function() {
+       
+        return (
+             React.DOM.div( {className:"tab-body"}, 
+                           MetadataFieldEditor( {question:this.props.question, metadata:this.state.metadata, editHandler:this.props.editHandler, field:"title"}),
+                           MetadataFieldEditor( {question:this.props.question, metadata:this.state.metadata, editHandler:this.props.editHandler, field:"chapter"}),
+                           MetadataFieldEditor( {question:this.props.question, metadata:this.state.metadata, editHandler:this.props.editHandler, field:"bank"}),
+                           MetadataFieldEditor( {question:this.props.question, metadata:this.state.metadata, editHandler:this.props.editHandler, field:"excerciseNo", title:"Excercise Number"}),
+                           MetadataFieldEditor( {question:this.props.question, metadata:this.state.metadata, editHandler:this.props.editHandler, field:"guidance", isMultiline:true})
+             ) 
+         );
+    }
+});
+
+var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
+
+     saveValueHandler: function(){
+
+     },
+
+    renderMenuItems: function(availableChoices) {
+        var items = [];
+        for (var propertyName in availableChoices) {
+            items.push(this.renderMenuItem(availableChoices[propertyName], propertyName));
+        }
+        return items;
+    },
+
+    renderMenuItem: function(label, value) {
+        return (React.DOM.option( {value:value}, label));
+    },
+
+     renderBody: function(){
+
+
+       var field = this.props.field;
+       var metadataField = $.grep(this.props.metadata, function(e){ return e.name === field; });
+       var editorType = metadataField.length>0 ? metadataField[0].typeDescriptor.type : 0;
+       switch (editorType) {
+          //case window.enums.editorType.singleSelect:
+          // Magic number! Do something with that!
+          case 1:
+             return (React.DOM.select(null,  " ", this.renderMenuItems(metadataField[0].typeDescriptor.availableChoice)) );
+          default: 
+            if(!this.props.isMultiline){
+                 return (React.DOM.input( {type:"text",  value:this.props.question[this.props.field]}))
+             }
+            return ( React.DOM.textarea( {className:"question-body-editor",  rows:"10", type:"text", placeholder:"Enter text...", ref:this.props.title, value:this.props.question[this.props.field]} ));
+             
+        }
+    },
+
+
+
+    render: function() {
+        return (
+
+            React.DOM.div( {className:"metadata-field-editor"}, 
+                   React.DOM.label(null, this.props.title === undefined ? this.props.field : this.props.title),
+                   React.DOM.br(null ),
+                    this.renderBody(),
+                   React.DOM.br(null )
+                          
+            ) 
+         );
+    }
 
 });

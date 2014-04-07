@@ -156,16 +156,31 @@
          return $.ajax({
             url: window.actions.questionList.getMetadataFieldsUrl,
             traditional: true,
-            data: JSON.stringify(request),
             dataType: 'json',
             contentType: 'application/json',
+            type: 'GET'
+        }).done(function (response) {
+            self.processDataResponse(response);
+        });
+    };
+
+    self.getMetadataForQuestion = function(question){
+
+         var request = {
+            question: question
+        };
+        return $.ajax({
+            url: window.actions.questionList.convertQuestionToMetaDataUrl,
+            traditional: true,
+            data: JSON.stringify(request),
+             contentType: 'application/json',
+            dataType: 'json',
             type: 'POST'
         }).done(function (response) {
-            console.log('Delete note complete');
-            crossroads.resetState();
-            crossroads.parse(window.routsManager.buildHash());
-            console.log('Refresh complite');
+             self.processDataResponse(response);
+
         });
+
     };
 
 
