@@ -156,17 +156,35 @@
          return $.ajax({
             url: window.actions.questionList.getMetadataFieldsUrl,
             traditional: true,
+            dataType: 'json',
+            contentType: 'application/json',
+            type: 'GET'
+        }).done(function (response) {
+            self.processDataResponse(response);
+        });
+    };
+
+     self.createQuestion = function(courseId, question) {
+         var request = {
+            courseId: courseId,
+            question: question
+        };
+         return $.ajax({
+            url: window.actions.questionList.createQuestionUrl,
+            traditional: true,
             data: JSON.stringify(request),
             dataType: 'json',
             contentType: 'application/json',
             type: 'POST'
         }).done(function (response) {
-            console.log('Delete note complete');
+            console.log('Create question complete');
             crossroads.resetState();
             crossroads.parse(window.routsManager.buildHash());
             console.log('Refresh complite');
         });
     };
+   
+   
 
 
     self.getDuplicateQuestionTemplate = function (questionId) {

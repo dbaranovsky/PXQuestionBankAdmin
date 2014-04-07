@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using Macmillan.PXQBA.Business.Contracts;
+using Macmillan.PXQBA.Business.Models;
 using NLog.Config;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -37,6 +38,12 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult GetAvailibleMetadata()
         {
             return JsonCamel(questionMetadataService.GetAvailableFields());
+        
+        }
+
+        public void CreateQuestion(string courseId, Question question)
+        {
+            questionManagementService.CreateQuestion(courseId, question);
         }
 	}
 }
