@@ -23,6 +23,10 @@ var QuestionEditorDialog = React.createClass({
   }).show();
     },
 
+    closeDialog: function(){
+         $(this.getDOMNode()).modal("hide");
+    },
+
 
     render: function() {
         var renderHeaderText = function() {
@@ -30,8 +34,9 @@ var QuestionEditorDialog = React.createClass({
         };
         var question = this.props.question;
         var finishSaving = this.finishSaving;
+        var closeDialog = this.closeDialog;
         var renderBody = function(){
-            return (<QuestionEditor question={question} finishSaving = {finishSaving} />);
+            return (<QuestionEditor question={question} finishSaving = {finishSaving} closeDialog={closeDialog}/>);
         };
         var renderFooterButtons = function(){
             return ("");
@@ -82,7 +87,7 @@ var QuestionEditor = React.createClass({
                          <button className="btn btn-primary run-question" data-toggle="modal" >
                              <span className="glyphicon glyphicon-play"></span> Run Question
                         </button>
-                        <button className="btn btn-default" data-toggle="modal" >
+                        <button className="btn btn-default" data-toggle="modal" onClick={this.props.closeDialog}>
                              Cancel
                         </button>
                          <button className="btn btn-primary " data-toggle="modal" onClick={this.saveQuestion} >
