@@ -223,6 +223,7 @@ input[type="checkbox"].input-validation-error {
 
 #questionEditorModal .modal-body {
      height: 800px;
+     overflow-y: auto;
 } 
 
 .tab-body {
@@ -230,7 +231,7 @@ input[type="checkbox"].input-validation-error {
     font-size: 20px;
 }
 
-.tab-body input[type=text] {
+.tab-body input,select {
     max-width: 958px;
     width: 958px;
 }
@@ -273,3 +274,11 @@ input[type="checkbox"].input-validation-error {
      margin-right: 200px;
 }
 
+.metadata-field-editor {
+    margin-bottom: 20px;
+}
+
+.metadata-field-editor label {
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}

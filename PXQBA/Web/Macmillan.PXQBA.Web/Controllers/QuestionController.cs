@@ -48,6 +48,12 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult GetAvailibleMetadata()
         {
             return JsonCamel(questionMetadataService.GetAvailableFields());
+        
+        }
+
+        public void CreateQuestion(string courseId, Question question)
+        {
+            questionManagementService.CreateQuestion(courseId, question);
         }
 	}
 }

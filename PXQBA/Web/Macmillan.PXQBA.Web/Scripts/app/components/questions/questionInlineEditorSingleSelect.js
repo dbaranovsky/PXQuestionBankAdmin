@@ -2,15 +2,14 @@
 * @jsx React.DOM
 */ 
 
-var QuestionInlineEditorStatus = React.createClass({displayName: 'QuestionInlineEditorStatus',
+var QuestionInlineEditorSingleSelect = React.createClass({displayName: 'QuestionInlineEditorSingleSelect',
 
-    chengeStatusEventHandler: function(event) {
+    changeEventHandler: function(event) {
         var value = event.target.getAttribute("data-value");
          this.props.saveVelueHandler(value)
     },
 
     renderMenuItems: function() {
-        debugger;
         var items = [];
         for (var propertyName in this.props.values) {
             items.push(this.renderMenuItem(this.props.values[propertyName], propertyName));
@@ -30,7 +29,7 @@ var QuestionInlineEditorStatus = React.createClass({displayName: 'QuestionInline
                        "Dropdown",
                     React.DOM.span( {className:"caret"})
                     ),
-                    React.DOM.ul( {className:"dropdown-menu menu-show", role:"menu", 'aria-labelledby':"dropdownMenuType", onClick:this.chengeStatusEventHandler}, 
+                    React.DOM.ul( {className:"dropdown-menu menu-show", role:"menu", 'aria-labelledby':"dropdownMenuType", onClick:this.changeEventHandler}, 
                        this.renderMenuItems()
                      )
                  )
