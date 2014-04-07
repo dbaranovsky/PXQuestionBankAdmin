@@ -30,6 +30,14 @@ namespace Macmillan.PXQBA.Business.Contracts
         Question GetQuestion(string questionId);
 
         /// <summary>
+        /// Creates template for new question based on existing one. 
+        /// The question is not persisted at this point. Use CreateQuestion to persist the question after modification
+        /// </summary>
+        /// <param name="questionId"></param>
+        /// <returns></returns>
+        Question GetDuplicateQuestionTemplate(string questionId);
+
+        /// <summary>
         /// Builds template for new question populating fields with defaults
         /// </summary>
         /// <returns></returns>

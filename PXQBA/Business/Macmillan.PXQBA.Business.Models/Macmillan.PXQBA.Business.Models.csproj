@@ -40,7 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InteractionType.cs" />
+    <Compile Include="MetadataFieldNames.cs" />
     <Compile Include="PagedCollection.cs" />
+    <Compile Include="QuestionMetaField.cs" />
     <Compile Include="QuestionStatus.cs" />
     <Compile Include="SortCriterion.cs" />
     <Compile Include="Web\ContentItem.cs" />
@@ -50,7 +52,7 @@
     <Compile Include="Web\Note.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Web\QuestionFieldDescriptor.cs" />
+    <Compile Include="Web\QuestionFieldViewModel.cs" />
     <Compile Include="Web\QuestionList.cs" />
     <Compile Include="Web\QuestionListDataRequest.cs" />
     <Compile Include="Web\QuestionListDataResponse.cs" />

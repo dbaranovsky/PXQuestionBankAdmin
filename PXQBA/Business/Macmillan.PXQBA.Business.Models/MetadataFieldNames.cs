@@ -1,4 +1,4 @@
-﻿namespace Macmillan.PXQBA.Common.Helpers.Constants
+﻿namespace Macmillan.PXQBA.Business.Models
 {
     public static class MetadataFieldNames
     {
@@ -11,5 +11,6 @@
         public const string Chapter = "chapter";
         public const string Bank = "bank";
         public const string Sequence = "seq";
+        public const string Difficulty = "difficulty";
     }
 }

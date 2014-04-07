@@ -2,9 +2,10 @@
 {
     public enum EditorType
     {
-        None,
-        Text,
+        Text = 0,
         SingleSelect,
-        Number
+        MultiSelect,
+        Number,
+        None
     }
 }

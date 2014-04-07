@@ -9,79 +9,106 @@ namespace Macmillan.PXQBA.Business.Services
 {
     public class QuestionMetadataService : IQuestionMetadataService
     {
-        public IList<QuestionFieldDescriptor> GetAvailableFields()
+        public IList<QuestionMetaField> GetAvailableFields()
         {
-            var fields = new List<QuestionFieldDescriptor>()
+            var fields = new List<QuestionMetaField>
                                                    {
-                                                       new QuestionFieldDescriptor()
+                                                       new QuestionMetaField()
                                                        {
                                                            FriendlyName = "Chapter",
-                                                           MetadataName = "chapter",
-                                                           Width = "10%",
-                                                           CanNotDelete = false,
-                                                           EditorDescriptor = new FieldEditorDescriptor(EditorType.Text)
+                                                           Name = MetadataFieldNames.Chapter,
+                                                           TypeDescriptor = new MetaFieldTypeDescriptor
+                                                               {
+                                                                   Type = MetaFieldType.SingleSelect,
+                                                                   AvailableChoice = new List<string>
+                                                                       {
+                                                                           "Chapter 1",
+                                                                           "Chapter 10",
+                                                                           "Chapter 20"
+                                                                       }
+                                                               }
                                                            
                                                        },
-                                                       new QuestionFieldDescriptor()
+                                                       new QuestionMetaField()
                                                        {
                                                            FriendlyName = "Bank",
-                                                           MetadataName = "bank",
-                                                           Width = "10%",
-                                                           CanNotDelete = false,
-                                                           EditorDescriptor = new FieldEditorDescriptor(EditorType.Text)
+                                                           Name = MetadataFieldNames.Bank,
+                                                           TypeDescriptor = new MetaFieldTypeDescriptor
+                                                               {
+                                                                   Type = MetaFieldType.SingleSelect,
+                                                                   AvailableChoice = new List<string>
+                                                                       {
+                                                                           "End of Chapter Questions",
+                                                                           "Beginning of Chapter Questions",
+                                                                           "Middle of Chapter Questions"
+                                                                       }
+                                                               }      
                                                        },
-                                                       new QuestionFieldDescriptor()
+                                                       new QuestionMetaField
                                                        {
                                                            FriendlyName = "Seq",
-                                                           MetadataName = "seq",
-                                                           Width = "10%",
-                                                           CanNotDelete = false,
-                                                           EditorDescriptor = new FieldEditorDescriptor(EditorType.Number)
+                                                           Name = MetadataFieldNames.Sequence,
+                                                           TypeDescriptor = new MetaFieldTypeDescriptor(MetaFieldType.Text)
                                                        },
-                                                       new QuestionFieldDescriptor()
+                                                       new QuestionMetaField
                                                        {
                                                            FriendlyName = "Title",
-                                                           MetadataName = "dlap_title",
-                                                           LeftIcon = "glyphicon glyphicon-chevron-right titles-expander",
-                                                           Width = "30%",
-                                                           CanNotDelete = true,
-                                                           EditorDescriptor = new FieldEditorDescriptor(EditorType.Text)
+                                                           Name = MetadataFieldNames.DlapTitle,
+                                                           TypeDescriptor = new MetaFieldTypeDescriptor(MetaFieldType.Text)
                                                        },
-                                                       new QuestionFieldDescriptor()
+                                                       new QuestionMetaField()
                                                        {
                                                            FriendlyName = "Format",
-                                                           MetadataName = "dlap_q_type",
-                                                           Width = "10%",
-                                                           CanNotDelete = false,
-                                                           EditorDescriptor = new FieldEditorDescriptor(EditorType.None)
+                                                           Name = MetadataFieldNames.DlapType,
+                                                           TypeDescriptor = new MetaFieldTypeDescriptor
+                                                               {
+                                                                   Type = MetaFieldType.SingleSelect,
+                                                                   AvailableChoice = new List<string>
+                                                                       {
+                                                                           "Single Choice",
+                                                                           "Multiple Choice",
+                                                                           "Essay"
+                                                                       }
+                                                               }      
                                                        },
-                                                       new QuestionFieldDescriptor()
+                                                       new QuestionMetaField
                                                        {
                                                            FriendlyName = "Status",
-                                                           MetadataName = "dlap_q_status",
-                                                           Width = "10%",
-                                                           CanNotDelete = false,
-                                                           EditorDescriptor = new FieldEditorDescriptor(EditorType.SingleSelect)
-                                                                              {
-                                                                                  //On the ui display: Value(key)/Label(value)
-
-                                                                                  //Description from Macmillan.PXQBA.Business.Models.QuestionStatus
-                                                                                  AvailableChoice =
-                                                                                  {
-                                                                                      {QuestionStatus.AvailableToInstructors.ToString(), "Available to instructors"},
-                                                                                      {QuestionStatus.InProgress.ToString(), "In progress"},
-                                                                                      {QuestionStatus.Deleted.ToString(), "Deleted"}
-                                                                                  }
-                                                                              }
-                                                       }
+                                                           Name = MetadataFieldNames.DlapStatus,
+                                                           TypeDescriptor = new MetaFieldTypeDescriptor
+                                                               {
+                                                                   Type = MetaFieldType.SingleSelect,
+                                                                   AvailableChoice = new List<string>
+                                                                       {
+                                                                           QuestionStatus.AvailableToInstructors.ToString(),
+                                                                           QuestionStatus.InProgress.ToString(),
+                                                                           QuestionStatus.Deleted.ToString(),
+                                                                       }
+                                                               }      
+                                                       },
+                                                       new QuestionMetaField
+                                                       {
+                                                           FriendlyName = "Difficulty",
+                                                           Name = MetadataFieldNames.Difficulty,
+                                                           TypeDescriptor = new MetaFieldTypeDescriptor
+                                                               {
+                                                                   Type = MetaFieldType.SingleSelect,
+                                                                   AvailableChoice = new List<string>
+                                                                       {
+                                                                           "Easy",
+                                                                           "Medium",
+                                                                           "Hard",
+                                                                       }
+                                                               }      
+                                                       },
                                                    };
 
             return fields;
         }
 
-        public IList<QuestionFieldDescriptor> GetDataForFields(IEnumerable<string> fieldsNames)
+        public IList<QuestionMetaField> GetDataForFields(IEnumerable<string> fieldsNames)
         {
-            return GetAvailableFields().Where(f => fieldsNames.Contains(f.MetadataName)).ToList();
+            return GetAvailableFields().Where(f => fieldsNames.Contains(f.Name)).ToList();
         }
     }
 }

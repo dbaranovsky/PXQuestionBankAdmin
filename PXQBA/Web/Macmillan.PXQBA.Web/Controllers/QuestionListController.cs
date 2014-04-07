@@ -52,13 +52,13 @@ namespace Macmillan.PXQBA.Web.Controllers
                                                                           (request.PageNumber - 1) * questionPerPage,
                                                                           questionPerPage);
 
-            var model = new QuestionListDataResponse()
+            var model = new QuestionListDataResponse
                         {
                             TotalPages = questionList.TotalItems / questionPerPage,
                             QuestionList = questionList.CollectionPage.Select(Mapper.Map<QuestionMetadata>),
                             PageNumber = request.PageNumber,
-                            Columns = questionMetadataService.GetDataForFields(request.Columns),
-                            AllAvailableColumns = questionMetadataService.GetAvailableFields(),
+                            Columns = questionMetadataService.GetDataForFields(request.Columns).Select(QuestionFieldViewModel.Convert).ToList(),
+                            AllAvailableColumns = questionMetadataService.GetAvailableFields().Select(QuestionFieldViewModel.Convert).ToList(),
                             Order = new QuestionOrder()
                                     {
                                         OrderField = request.OrderField,
