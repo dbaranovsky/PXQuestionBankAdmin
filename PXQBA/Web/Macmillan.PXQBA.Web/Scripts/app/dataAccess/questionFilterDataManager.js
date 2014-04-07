@@ -1,7 +1,7 @@
 ﻿var filterDataManager = (function () {
     var self = {};
 
-    self.questionTypeList = {};
+    self.questionTypeList = [];
     $.ajax({
         url: window.actions.questionFilter.getQuestionTypeListUrl,
         dataType: 'json',

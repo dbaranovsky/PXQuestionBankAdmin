@@ -14,8 +14,8 @@ namespace Macmillan.PXQBA.Web.App_Start
 			// When <compilation debug="true" />, MVC4 will render the full readable version. When set to <compilation debug="false" />, the minified version will be rendered automatically
 			BundleTable.Bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include("~/Scripts/bootstrap/bootstrap.js"));
             BundleTable.Bundles.Add(new ScriptBundle("~/bundles/bootstrap-components").Include("~/Scripts/bootstrap/bootstrap-paginator.min.js"));
-			BundleTable.Bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/bootstrap/bootstrap.css"));
-			BundleTable.Bundles.Add(new StyleBundle("~/Content/bootstrap-theme").Include("~/Content/bootstrap/bootstrap-theme.css"));
+            BundleTable.Bundles.Add(new StyleBundle("~/bundles/bootstrapcss").Include("~/Content/bootstrap/bootstrap.css"));
+            BundleTable.Bundles.Add(new StyleBundle("~/bundles/bootstrap-theme").Include("~/Content/bootstrap/bootstrap-theme.css"));
 		}
 	}
 }

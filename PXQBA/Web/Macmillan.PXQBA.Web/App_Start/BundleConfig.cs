@@ -27,7 +27,7 @@ namespace Macmillan.PXQBA.Web
                 "~/Scripts/crossroads/hasher.js",
                 "~/Scripts/crossroads/crossroads.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new StyleBundle("~/bundles/css").Include(
                       "~/Content/site.css",
                       "~/Content/paging.css"));
         }
