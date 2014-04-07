@@ -22,8 +22,10 @@ var QuestionGrid = React.createClass({displayName: 'QuestionGrid',
                     QuestionPaginator( {metadata:{
                             currentPage: this.props.response.currentPage,
                             totalPages: this.props.response.totalPages}} )
-                ) 
+                ), 
+                 React.DOM.div( {className:"notifications bottom-right"})
             ) 
+
             );
     }
 });

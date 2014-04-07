@@ -16,14 +16,22 @@ var QuestionEditorDialog = React.createClass({
         })
 
     },
+    finishSaving: function(){
+        $(this.getDOMNode()).modal("hide");
+         $('.bottom-right').notify({
+    message: { text: 'Question created!' }
+  }).show();
+    },
+
 
     render: function() {
         var renderHeaderText = function() {
             return "New Question";
         };
         var question = this.props.question;
+        var finishSaving = this.finishSaving;
         var renderBody = function(){
-            return (<QuestionEditor question={question} />);
+            return (<QuestionEditor question={question} finishSaving = {finishSaving} />);
         };
         var renderFooterButtons = function(){
             return ("");
@@ -43,6 +51,7 @@ var QuestionEditor = React.createClass({
       return { question: this.props.question };
     },
 
+
     saveQuestion: function(){
         if(this.props.isNew)
         {
@@ -50,10 +59,16 @@ var QuestionEditor = React.createClass({
         }
 
         //save existing
+        //for duplicate and create new should be called create question. Save question should be implemented
+        var finishSaving = this.props.finishSaving;
+        questionDataManager.createQuestion("1", this.state.question).always(function(e){
+            finishSaving();
+        });
+
     },
 
-    editHandler: function(){
-        alert("ok");
+    editHandler: function(editedQuestion){
+      this.setState({question: editedQuestion});
     },
 
     componentDidMount: function(){
@@ -70,7 +85,7 @@ var QuestionEditor = React.createClass({
                         <button className="btn btn-default" data-toggle="modal" >
                              Cancel
                         </button>
-                         <button className="btn btn-primary " data-toggle="modal" onClick={this.props.saveQuestion} >
+                         <button className="btn btn-primary " data-toggle="modal" onClick={this.saveQuestion} >
                              Save
                         </button>
                       </div>
@@ -86,7 +101,7 @@ var QuestionEditor = React.createClass({
 var QuestionEditorTabs = React.createClass({
 
     tabsInitializer: function (container) {
-         container.find('a:first').tab('show')
+       //  container.find('a:first').tab('show')
     },
 
     componentDidMount: function() {
@@ -176,6 +191,27 @@ var MetadataFieldEditor = React.createClass({
 
      },
 
+     editHandler: function(){
+      
+    //   alert(this.refs.editor.getDOMNode().value.trim());
+       var node = this.refs.editor.getDOMNode();
+       var text = "";
+       if (node.selectedOptions !== undefined){
+            text = node.selectedOptions[0].text;
+       } 
+       else {
+            text = node.value.trim();
+       }
+
+      var question = this.props.question;
+      if (question[this.props.field] !== text)
+      {
+        question[this.props.field] = text;
+        this.props.editHandler(question);
+      }
+
+     },
+
     renderMenuItems: function(availableChoices) {
         var items = [];
         for (var propertyName in availableChoices) {
@@ -198,12 +234,12 @@ var MetadataFieldEditor = React.createClass({
           //case window.enums.editorType.singleSelect:
           // Magic number! Do something with that!
           case 1:
-             return (<select> {this.renderMenuItems(metadataField[0].typeDescriptor.availableChoice)}</select> );
+             return (<select ref="editor" onChange={this.editHandler}> {this.renderMenuItems(metadataField[0].typeDescriptor.availableChoice)}</select> );
           default: 
             if(!this.props.isMultiline){
-                 return (<input type="text"  value={this.props.question[this.props.field]}/>)
+                 return (<input type="text" onBlur={this.editHandler} ref="editor" value={this.props.question[this.props.field]}/>)
              }
-            return ( <textarea className="question-body-editor"  rows="10" type="text" placeholder="Enter text..." ref={this.props.title} value={this.props.question[this.props.field]} />);
+            return ( <textarea onBlur={this.editHandler}  ref="editor" className="question-body-editor"  rows="10" type="text" placeholder="Enter text..." value={this.props.question[this.props.field]} />);
              
         }
     },

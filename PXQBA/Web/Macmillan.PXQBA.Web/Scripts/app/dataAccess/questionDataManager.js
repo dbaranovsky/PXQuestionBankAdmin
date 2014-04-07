@@ -164,24 +164,27 @@
         });
     };
 
-    self.getMetadataForQuestion = function(question){
-
+     self.createQuestion = function(courseId, question) {
          var request = {
+            courseId: courseId,
             question: question
         };
-        return $.ajax({
-            url: window.actions.questionList.convertQuestionToMetaDataUrl,
+         return $.ajax({
+            url: window.actions.questionList.createQuestionUrl,
             traditional: true,
             data: JSON.stringify(request),
-             contentType: 'application/json',
             dataType: 'json',
+            contentType: 'application/json',
             type: 'POST'
         }).done(function (response) {
-             self.processDataResponse(response);
-
+            console.log('Create question complete');
+            crossroads.resetState();
+            crossroads.parse(window.routsManager.buildHash());
+            console.log('Refresh complite');
         });
-
     };
+   
+   
 
 
     self.getDuplicateQuestionTemplate = function (questionId) {

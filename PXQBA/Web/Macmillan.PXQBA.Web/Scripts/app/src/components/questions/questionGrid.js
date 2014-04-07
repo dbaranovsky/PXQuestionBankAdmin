@@ -23,7 +23,9 @@ var QuestionGrid = React.createClass({
                             currentPage: this.props.response.currentPage,
                             totalPages: this.props.response.totalPages}} />
                 </div> 
+                 <div className='notifications bottom-right'></div>
             </div> 
+
             );
     }
 });

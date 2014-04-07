@@ -45,6 +45,8 @@ namespace Macmillan.PXQBA.Business.Services
             question.Status = QuestionStatus.InProgress;
             question.Title = "New question";
             question.Preview = "<h2>preview for test</h2>";
+            question.Chapter = "Chapter 1";
+            question.Bank = "End of Chapter Questions";
             return question;
         }
 
