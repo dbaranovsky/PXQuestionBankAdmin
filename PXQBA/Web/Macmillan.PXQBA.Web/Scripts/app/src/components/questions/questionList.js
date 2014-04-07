@@ -57,7 +57,7 @@ var QuestionList = React.createClass({
             
     },
 
-     renderNotes: function(qId) {
+    renderNotes: function(qId) {
        this.setState({ 
                 showEditDialog: true,
                 questionId: qId});
@@ -67,7 +67,7 @@ var QuestionList = React.createClass({
        var specialColumnsCount = 2;
        var self = this;
        var questions = this.props.data.map(function (question) {
-            return (<Question metadata={question} columns={self.props.columns} renderNotes={self.renderNotes}/>);
+            return (<Question metadata={question} columns={self.props.columns} renderNotes={self.renderNotes} copyQuestionHandler={self.props.handlers.copyQuestionHandler}/>);
           });
 
        if(questions.length==0) {

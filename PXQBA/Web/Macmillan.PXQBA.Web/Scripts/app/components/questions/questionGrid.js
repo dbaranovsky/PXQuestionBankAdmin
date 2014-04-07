@@ -14,7 +14,8 @@ var QuestionGrid = React.createClass({displayName: 'QuestionGrid',
                     QuestionList( {data:this.props.response.questionList, 
                                         order:this.props.response.order, 
                                         columns:this.props.response.columns,
-                                        allAvailableColumns:this.props.response.allAvailableColumns}
+                                        allAvailableColumns:this.props.response.allAvailableColumns,
+                                        handlers:this.props.handlers}
                                         )
                 ), 
                 React.DOM.div( {className:"question-grid-item"},  

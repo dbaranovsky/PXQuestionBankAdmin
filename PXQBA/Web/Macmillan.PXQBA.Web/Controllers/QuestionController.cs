@@ -23,10 +23,15 @@ namespace Macmillan.PXQBA.Web.Controllers
         
         }
 
-
         public ActionResult GetNewQuestionTemplate()
         {
             return JsonCamel(questionManagementService.GetNewQuestionTemplate());
+        }
+
+        [HttpPost]
+        public ActionResult GetDuplicateQuestionTemplate(string questionId)
+        {
+            return JsonCamel(questionManagementService.GetDuplicateQuestionTemplate(questionId));
         }
 
         public ActionResult GetAvailibleMetadata()
