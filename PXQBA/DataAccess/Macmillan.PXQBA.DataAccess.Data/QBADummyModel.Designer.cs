@@ -1121,7 +1121,7 @@ namespace Macmillan.PXQBA.DataAccess.Data
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String Sequence
+        public Nullable<global::System.Int32> Sequence
         {
             get
             {
@@ -1131,13 +1131,13 @@ namespace Macmillan.PXQBA.DataAccess.Data
             {
                 OnSequenceChanging(value);
                 ReportPropertyChanging("Sequence");
-                _Sequence = StructuralObject.SetValidValue(value, true, "Sequence");
+                _Sequence = StructuralObject.SetValidValue(value, "Sequence");
                 ReportPropertyChanged("Sequence");
                 OnSequenceChanged();
             }
         }
-        private global::System.String _Sequence;
-        partial void OnSequenceChanging(global::System.String value);
+        private Nullable<global::System.Int32> _Sequence;
+        partial void OnSequenceChanging(Nullable<global::System.Int32> value);
         partial void OnSequenceChanged();
     
         /// <summary>

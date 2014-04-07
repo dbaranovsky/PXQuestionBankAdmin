@@ -104,6 +104,19 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
             return ConvertProductCourseQuestion(entity);
         }
 
+        public void UpdateQuestionSequence(string courseId, string questionId, int newSequenceValue)
+        {
+            var entity = dbContext.ProductCourses.FirstOrDefault(q => q.Question.DlapId == questionId && q.ProductCourseDlapId == courseId);
+            var sameBankQuestions =
+                dbContext.ProductCourses.Where(q => q.Bank == entity.Bank && q.ProductCourseDlapId == courseId && q.Sequence >= newSequenceValue);
+            foreach (var sameBankQuestion in sameBankQuestions)
+            {
+                ++sameBankQuestion.Sequence;
+            }
+            entity.Sequence = newSequenceValue;
+            dbContext.SaveChanges();
+        }
+
         public bool UpdateQuestionField(string questionId, string fieldName, string value)
         {
             var question = dbContext.Questions.FirstOrDefault(q => q.DlapId == questionId);

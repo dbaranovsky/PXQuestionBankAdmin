@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using Macmillan.PXQBA.Business.Contracts;
+using Macmillan.PXQBA.Business.Models;
 using NLog.Config;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -18,8 +19,18 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult Edit(string questionId, string fieldName, string fieldValue)
         {
-            var result = questionManagementService.UpdateQuestionField(questionId, fieldName, fieldValue);
-            return JsonCamel(new { isError = !result });
+            bool success = false;
+            if (fieldName.Equals(MetadataFieldNames.Sequence))
+            {
+                // \todo Pass current cource id
+                questionManagementService.UpdateQuestionSequence("1", questionId, int.Parse(fieldValue));
+                success = true;
+            }
+            else
+            {
+                success = questionManagementService.UpdateQuestionField(questionId, fieldName, fieldValue);
+            }
+            return JsonCamel(new { isError = !success });
         
         }
 

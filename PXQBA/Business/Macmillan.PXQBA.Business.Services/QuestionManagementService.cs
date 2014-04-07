@@ -48,6 +48,11 @@ namespace Macmillan.PXQBA.Business.Services
             return question;
         }
 
+        public void UpdateQuestionSequence(string courseId, string questionId, int newSequenceValue)
+        {
+            questionCommands.UpdateQuestionSequence(courseId, questionId, newSequenceValue);
+        }
+
         /*
         public void CreateQuestion(string questionType)
         {

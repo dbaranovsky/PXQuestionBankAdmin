@@ -42,6 +42,15 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// </summary>
         /// <returns></returns>
         Question GetNewQuestionTemplate();
+
+        /// <summary>
+        /// Changes question sequence number in scope of same bank questions.
+        /// As sequence is defined in scope of cource, the cource id needs to be passed as well
+        /// </summary>
+        /// <param name="courseId"></param>
+        /// <param name="questionId"></param>
+        /// <param name="newSequenceValue"></param>
+        void UpdateQuestionSequence(string courseId, string questionId, int newSequenceValue);
         
         bool UpdateQuestionField(string questionId, string fieldName, string fieldValue);
     }
