@@ -229,7 +229,6 @@
     <Content Include="Scripts\app\dataAccess\dataCache\dataCacheStorage.js" />
     <Content Include="Scripts\app\dataAccess\questionDataManager.js" />
     <Content Include="Scripts\app\dataAccess\questionFilterDataManager.js" />
-    <Content Include="Scripts\app\dataAccess\questionMetadataManager.js" />
     <Content Include="Scripts\app\routes\columnHashParameterHelper.js" />
     <Content Include="Scripts\app\routes\routeItem.js" />
     <Content Include="Scripts\app\routes\router.js" />

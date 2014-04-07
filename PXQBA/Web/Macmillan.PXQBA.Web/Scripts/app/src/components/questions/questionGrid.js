@@ -15,6 +15,7 @@ var QuestionGrid = React.createClass({
                                         order={this.props.response.order} 
                                         columns={this.props.response.columns}
                                         allAvailableColumns={this.props.response.allAvailableColumns}
+                                        handlers={this.props.handlers}
                                         />
                 </div> 
                 <div className="question-grid-item"> 

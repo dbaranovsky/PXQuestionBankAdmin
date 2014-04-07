@@ -5,7 +5,14 @@
 var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
 
     getInitialState: function() {
-      return { loading: false, showEditor: false};
+      return { 
+               loading: false, 
+               editor: {
+                        show: false,
+                        template: null, 
+                        isNew: false
+                       }
+             };
     },
 
     renderLoader: function() {
@@ -15,37 +22,50 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
         return null;
     },
 
-
     nextStepHandler: function(){
-         this.setState({showEditor: true});
+        this.setState({ loading:true} );
+        questionDataManager.getNewQuestionTemplate().done(this.loadTemplateComplete.bind(this, true));
     },
 
     renderQuestionEditorDialog: function()
     {
-      if(this.state.showEditor)
-          {          
-
-            return (QuestionEditorDialog( {closeDialogHandler:this.closeDialogHandler, isNew:true, showOnCreate:true, question:this.state.template}));
+      if(this.state.editor.show) {          
+            return (QuestionEditorDialog( {closeDialogHandler:this.closeDialogHandler,
+                                          isNew:this.state.isNew,
+                                          showOnCreate:true,
+                                          question:this.state.editor.template}));
           }
       return null;
     },
 
-
-
-    closeDialogHandler: function()
-    {
-         this.setState({showEditor: false});
+    copyQuestionHandler: function(questionId) {
+        this.setState({ loading:true} );
+        questionDataManager.getDuplicateQuestionTemplate(questionId).done(this.loadTemplateComplete.bind(this, false));
     },
 
-    loadTemplate: function(data){
-      this.setState({template: data});
+    loadTemplateComplete: function(isNew, template) {
+        this.setState({
+                 loading: false,
+                 editor: {
+                    template: template,
+                    show: true,
+                    isNew: isNew }
+                    });
     },
 
-    componentDidMount: function()
-    {
-         questionDataManager.getNewQuestionTemplate().done(this.loadTemplate);
+    closeDialogHandler: function() {
+        this.showEditor(false);
     },
 
+    showEditor: function(showEditor) {
+      this.setState({
+                editor: {
+                    template: this.state.editor.template,
+                    show: showEditor,
+                    isNew: this.state.editor.isNew }
+                });
+    },
+     
     render: function() {
        return (
             React.DOM.div( {className:"QuestionListPage"}, 
@@ -56,7 +76,7 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
                     )
                 ),
                 React.DOM.div(null, 
-                  QuestionTabs( {response:this.props.response} )
+                  QuestionTabs( {response:this.props.response, handlers:{copyQuestionHandler: this.copyQuestionHandler}})
                 ),
                 AddQuestionDialog( {nextStepHandler:this.nextStepHandler}),
                 this.renderQuestionEditorDialog()
