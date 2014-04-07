@@ -13,7 +13,7 @@ namespace Macmillan.PXQBA.Business.Models
         public string Chapter { get; set; }
         public string Bank { get; set; }
         public int Sequence { get; set; }
-        public string Type { get; set; }
+        public QuestionType Type { get; set; }
         public string Preview { get; set; }
         public QuestionStatus Status { get; set; }
 

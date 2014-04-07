@@ -1,4 +1,5 @@
-﻿using Macmillan.PXQBA.Business.Commands.Contracts;
+﻿using System.Collections.Generic;
+using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Question = Macmillan.PXQBA.Business.Models.Question;
@@ -48,6 +49,26 @@ namespace Macmillan.PXQBA.Business.Services
             question.Chapter = "Chapter 1";
             question.Bank = "End of Chapter Questions";
             return question;
+        }
+
+        public void UpdateQuestionSequence(string courseId, string questionId, int newSequenceValue)
+        {
+            questionCommands.UpdateQuestionSequence(courseId, questionId, newSequenceValue);
+        }
+
+        public IEnumerable<QuestionType> GetQuestionTypesForCourse(string courseId)
+        {
+            // \todo Populate with actual data
+            var availableTypes = new List<QuestionType>
+                {
+                    QuestionType.MultipleChoice,
+                    QuestionType.Matching,
+                    QuestionType.MultipleAnswer,
+                    QuestionType.ShortAnswer,
+                    QuestionType.Essay,
+                    QuestionType.GraphExcepcise,
+                };
+            return availableTypes;
         }
 
         /*

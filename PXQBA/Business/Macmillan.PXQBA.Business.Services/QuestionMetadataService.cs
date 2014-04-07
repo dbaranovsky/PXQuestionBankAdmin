@@ -4,6 +4,7 @@ using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Business.Models.Web;
 using Macmillan.PXQBA.Business.Models.Web.Editor;
+using Macmillan.PXQBA.Common.Helpers;
 
 namespace Macmillan.PXQBA.Business.Services
 {
@@ -80,9 +81,9 @@ namespace Macmillan.PXQBA.Business.Services
                                                                    Type = MetaFieldType.SingleSelect,
                                                                    AvailableChoice = new List<string>
                                                                        {
-                                                                           QuestionStatus.AvailableToInstructors.ToString(),
-                                                                           QuestionStatus.InProgress.ToString(),
-                                                                           QuestionStatus.Deleted.ToString(),
+                                                                           EnumHelper.GetEnumDescription(QuestionStatus.AvailableToInstructors),
+                                                                           EnumHelper.GetEnumDescription(QuestionStatus.InProgress),
+                                                                           EnumHelper.GetEnumDescription(QuestionStatus.Deleted),
                                                                        }
                                                                }      
                                                        },

@@ -8,6 +8,8 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         Question CreateQuestion(string courseId, Question question);
         Question GetQuestion(string questionId);
 
+        void UpdateQuestionSequence(string courseId, string questionId, int newSequenceValue);
+
         bool UpdateQuestionField(string questionId, string fieldName, string value);
     }
 }
