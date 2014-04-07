@@ -1437,7 +1437,7 @@ namespace Macmillan.PXQBA.DataAccess.Data
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String Type
+        public Nullable<global::System.Int32> Type
         {
             get
             {
@@ -1447,13 +1447,13 @@ namespace Macmillan.PXQBA.DataAccess.Data
             {
                 OnTypeChanging(value);
                 ReportPropertyChanging("Type");
-                _Type = StructuralObject.SetValidValue(value, true, "Type");
+                _Type = StructuralObject.SetValidValue(value, "Type");
                 ReportPropertyChanged("Type");
                 OnTypeChanged();
             }
         }
-        private global::System.String _Type;
-        partial void OnTypeChanging(global::System.String value);
+        private Nullable<global::System.Int32> _Type;
+        partial void OnTypeChanging(Nullable<global::System.Int32> value);
         partial void OnTypeChanged();
     
         /// <summary>

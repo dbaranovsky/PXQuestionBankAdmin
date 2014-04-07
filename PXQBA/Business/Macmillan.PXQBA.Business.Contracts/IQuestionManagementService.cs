@@ -1,4 +1,5 @@
-﻿using Macmillan.PXQBA.Business.Models;
+﻿using System.Collections.Generic;
+using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Business.Models.Web;
 
 namespace Macmillan.PXQBA.Business.Contracts
@@ -51,6 +52,13 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// <param name="questionId"></param>
         /// <param name="newSequenceValue"></param>
         void UpdateQuestionSequence(string courseId, string questionId, int newSequenceValue);
+
+        /// <summary>
+        /// Returns list of question types available for specified course
+        /// </summary>
+        /// <param name="courseId"></param>
+        /// <returns></returns>
+        IEnumerable<QuestionType> GetQuestionTypesForCourse(string courseId);
         
         bool UpdateQuestionField(string questionId, string fieldName, string fieldValue);
     }

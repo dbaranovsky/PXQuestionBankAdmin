@@ -37,7 +37,7 @@
     <Property Name="InteractionType" Type="nvarchar(max)" Nullable="true" />
     <Property Name="DlapId" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Status" Type="int" Nullable="false" />
-    <Property Name="Type" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Type" Type="int" Nullable="true" />
     <Property Name="Preview" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="ProductCourses">
@@ -177,7 +177,7 @@
           <Property Name="InteractionType" Type="String" Nullable="true" />
           <Property Name="DlapId" Type="String" Nullable="true" />
           <Property Name="Status" Type="Int32" Nullable="false" />
-          <Property Name="Type" Type="String" Nullable="true" />
+          <Property Name="Type" Type="Int32" Nullable="true" />
           <Property Name="Preview" Type="String" Nullable="true" />
           <NavigationProperty Name="ProductCourses" Relationship="QBADummyModel.QuestionProductCourse" FromRole="Question" ToRole="ProductCourse" />
           <NavigationProperty Name="Notes" Relationship="QBADummyModel.QuestionNote" FromRole="Question" ToRole="Note" />

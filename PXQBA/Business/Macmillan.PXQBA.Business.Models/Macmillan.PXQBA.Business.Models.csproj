@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="QuestionType.cs" />
     <Compile Include="InteractionType.cs" />
     <Compile Include="MetadataFieldNames.cs" />
     <Compile Include="PagedCollection.cs" />

@@ -47,10 +47,10 @@ namespace Macmillan.PXQBA.Business.Services
             var data = new Dictionary<string, string>();
 
             data.Add(MetadataFieldNames.InlinePreview, question.Preview);
-            data.Add(MetadataFieldNames.DlapType, SerachCommandXmlParserHelper.GetQuestionFullType(question.Type, availableQuestionTypes));
+            data.Add(MetadataFieldNames.DlapType, EnumHelper.GetEnumDescription(question.Type));
             data.Add(MetadataFieldNames.DlapTitle, question.Title);
             data.Add(MetadataFieldNames.Id, question.Id);
-            data.Add(MetadataFieldNames.DlapStatus, EnumHelper.GetEnumDescription((QuestionStatus)Enum.Parse(typeof(QuestionStatus), question.Status.ToString())));
+            data.Add(MetadataFieldNames.DlapStatus, EnumHelper.GetEnumDescription(question.Status));
             data.Add(MetadataFieldNames.Chapter, question.Chapter);
             data.Add(MetadataFieldNames.Bank, question.Bank);
             data.Add(MetadataFieldNames.Sequence, question.Sequence.ToString());

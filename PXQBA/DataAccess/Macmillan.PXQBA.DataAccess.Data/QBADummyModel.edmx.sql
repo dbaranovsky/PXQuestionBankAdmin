@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 04/07/2014 13:01:16
+-- Date Created: 04/07/2014 14:25:15
 -- Generated from EDMX file: D:\Projects\MacMillan\Source\PXQuestionBankAdmin\PXQBA\DataAccess\Macmillan.PXQBA.DataAccess.Data\QBADummyModel.edmx
 -- --------------------------------------------------
 
@@ -63,7 +63,7 @@ CREATE TABLE [dbo].[Questions] (
     [InteractionType] nvarchar(max)  NULL,
     [DlapId] nvarchar(max)  NULL,
     [Status] int  NOT NULL,
-    [Type] nvarchar(max)  NULL,
+    [Type] int  NULL,
     [Preview] nvarchar(max)  NULL
 );
 GO

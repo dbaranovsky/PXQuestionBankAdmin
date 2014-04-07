@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Common.Helpers;
@@ -10,16 +7,26 @@ namespace Macmillan.PXQBA.Web.Controllers
 {
     public class QuestionFilterController : MasterController
     {
-        private readonly IQuestionFilterManagementService questionFilterManagement;
+        private readonly IQuestionManagementService questionManagementService;
 
-        public QuestionFilterController(IQuestionFilterManagementService questionFilterManagement)
+        public QuestionFilterController(IQuestionManagementService questionManagementService)
         {
-            this.questionFilterManagement = questionFilterManagement;
+            this.questionManagementService = questionManagementService;
         }
 
         public ActionResult GetQuestionTypeList()
         {
-            return JsonCamel(questionFilterManagement.GetQuestionTypeList());  
+            // \todo Pass actual course id
+            var types = questionManagementService.GetQuestionTypesForCourse("1");
+            var typesViewModel = new List<dynamic>();
+            foreach (var type in types)
+            {
+                var value = EnumHelper.GetEnumDescription(type);
+                var key = type.ToString();
+                typesViewModel.Add(new { key, value});
+            }
+
+            return JsonCamel(typesViewModel);  
         }
     }
 }

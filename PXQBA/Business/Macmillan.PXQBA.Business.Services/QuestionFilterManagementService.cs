@@ -7,13 +7,9 @@ namespace Macmillan.PXQBA.Business.Services
 {
     public class QuestionFilterManagementService: IQuestionFilterManagementService
     {
-        /// <summary>
-        /// Gets the list of all question types from config
-        /// </summary>
-        /// <returns>Question types list</returns>
         public IEnumerable<dynamic> GetQuestionTypeList()
         {
-            return ConfigurationHelper.GetQuestionTypes().Select(item => new { item.Key, item.Value });
+            throw new System.NotImplementedException();
         }
     }
 }
