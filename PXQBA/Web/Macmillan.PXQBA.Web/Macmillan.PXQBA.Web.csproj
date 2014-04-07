@@ -139,6 +139,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Views\QuestionFilter\" />
     <Folder Include="Views\Question\" />
   </ItemGroup>
@@ -195,7 +196,6 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="packages.config" />
-    <None Include="Properties\PublishProfiles\DebugPublishToFS.pubxml" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\app\async\asyncManager.js" />
     <Content Include="Scripts\app\components\common\loader.js" />
