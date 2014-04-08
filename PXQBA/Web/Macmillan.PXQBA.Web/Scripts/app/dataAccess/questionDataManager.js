@@ -61,8 +61,7 @@
                 console.error('Editing is unsuccessful');
             }
             console.log('Edited complete');
-            crossroads.resetState();
-            crossroads.parse(window.routsManager.buildHash());
+            self.resetState();
             console.log('Refresh complite');
         });
     };
@@ -95,8 +94,7 @@
             type: 'POST'
         }).done(function (response) {
             console.log('Save note complete');
-            crossroads.resetState();
-            crossroads.parse(window.routsManager.buildHash());
+            self.resetState();
             console.log('Refresh complite');
         });
     };
@@ -114,8 +112,7 @@
             type: 'POST'
         }).done(function (response) {
             console.log('Delete note complete');
-            crossroads.resetState();
-            crossroads.parse(window.routsManager.buildHash());
+            self.resetState();
             console.log('Refresh complite');
         });
     };
@@ -178,8 +175,7 @@
             type: 'POST'
         }).done(function (response) {
             console.log('Create question complete');
-            crossroads.resetState();
-            crossroads.parse(window.routsManager.buildHash());
+            self.resetState();
             console.log('Refresh complite');
         });
     };
@@ -204,6 +200,11 @@
         });
  
  
+    };
+
+    self.resetState = function(){
+         crossroads.resetState();
+         crossroads.parse(window.routsManager.buildHash());
     };
 
     return self;

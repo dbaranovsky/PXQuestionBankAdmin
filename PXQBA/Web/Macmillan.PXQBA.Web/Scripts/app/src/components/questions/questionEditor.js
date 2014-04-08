@@ -17,10 +17,10 @@ var QuestionEditorDialog = React.createClass({
 
     },
     finishSaving: function(){
+        questionDataManager.resetState();
         $(this.getDOMNode()).modal("hide");
-         $('.bottom-right').notify({
-    message: { text: 'Question created!' }
-  }).show();
+        $('.top-center').notify({message: { text: 'Question created!' },
+                                 fadeOut: { enabled: true, delay: 3000 } }).show();
     },
 
     closeDialog: function(){
@@ -68,6 +68,7 @@ var QuestionEditor = React.createClass({
         var finishSaving = this.props.finishSaving;
         questionDataManager.createQuestion("1", this.state.question).always(function(e){
             finishSaving();
+
         });
 
     },
@@ -184,6 +185,9 @@ var QuestionMetadataEditor = React.createClass({
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"chapter"}/>
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"bank"}/>
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"excerciseNo"} title="Excercise Number"/>
+                           <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"difficulty"} />
+                           <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"cognitiveLevel"} title="CognitiveLevel"/>
+                           <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"version"} />
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"guidance"} isMultiline={true}/>
              </div> 
          );
@@ -198,14 +202,13 @@ var MetadataFieldEditor = React.createClass({
 
      editHandler: function(){
       
-    //   alert(this.refs.editor.getDOMNode().value.trim());
        var node = this.refs.editor.getDOMNode();
        var text = "";
        if (node.selectedOptions !== undefined){
             text = node.selectedOptions[0].text;
        } 
        else {
-            text = node.value.trim();
+            text = node.value;
        }
 
       var question = this.props.question;
@@ -242,9 +245,9 @@ var MetadataFieldEditor = React.createClass({
              return (<select ref="editor" onChange={this.editHandler}> {this.renderMenuItems(metadataField[0].typeDescriptor.availableChoice)}</select> );
           default: 
             if(!this.props.isMultiline){
-                 return (<input type="text" onBlur={this.editHandler} ref="editor" value={this.props.question[this.props.field]}/>)
+                 return (<input type="text" onChange={this.editHandler} ref="editor" value={this.props.question[this.props.field]}/>)
              }
-            return ( <textarea onBlur={this.editHandler}  ref="editor" className="question-body-editor"  rows="10" type="text" placeholder="Enter text..." value={this.props.question[this.props.field]} />);
+            return ( <textarea onChange={this.editHandler}  ref="editor" className="question-body-editor"  rows="10" type="text" placeholder="Enter text..." value={this.props.question[this.props.field]} />);
              
         }
     },

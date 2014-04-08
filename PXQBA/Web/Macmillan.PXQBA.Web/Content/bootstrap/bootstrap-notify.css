@@ -29,3 +29,8 @@
   z-index: 9999;
   margin: 5px 0px;
 }
+
+.notifications.top-center {
+  top: 105px;
+  width: 53%;
+}
