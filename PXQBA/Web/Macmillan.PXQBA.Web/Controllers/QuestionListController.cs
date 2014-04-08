@@ -11,6 +11,7 @@ using System.Linq;
 using System.Linq.Dynamic;
 using System.Web.Mvc;
 using System.Xml;
+using Macmillan.PXQBA.Web.Helpers;
 using Mono.Options;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
@@ -32,6 +33,9 @@ namespace Macmillan.PXQBA.Web.Controllers
             this.questionPerPage = ConfigurationHelper.GetQuestionPerPage();
             this.questionMetadataService = questionMetadataService;
             this.notesManagementService = notesManagementService;
+
+            // \todo Setup current course when the user selects one from the list
+            CourseHelper.CurrentCourse = new Course {ProductCourseId = "1", Title = "Sample Course"};
         }
 
         //
@@ -45,9 +49,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult GetQuestionData(QuestionListDataRequest request)
         {
             var sortCriterion = new SortCriterion {ColumnName = request.OrderField, SortType = request.OrderType};
-
-            // \todo Change to real course ID
-            var questionList = questionManagementService.GetQuestionList("1",
+            var questionList = questionManagementService.GetQuestionList(CourseHelper.CurrentCourse,
                                                                           sortCriterion, 
                                                                           (request.PageNumber - 1) * questionPerPage,
                                                                           questionPerPage);

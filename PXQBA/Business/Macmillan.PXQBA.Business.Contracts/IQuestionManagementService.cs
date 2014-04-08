@@ -13,15 +13,15 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// Retrieves questions list
         /// </summary>
         /// <returns></returns>
-        PagedCollection<Question> GetQuestionList(string courseId, SortCriterion sortCriterion, int startingRecordNumber, int recordCount);
+        PagedCollection<Question> GetQuestionList(Course course, SortCriterion sortCriterion, int startingRecordNumber, int recordCount);
 
         /// <summary>
         /// Create a new question
         /// </summary>
-        /// <param name="courseId"></param>
+        /// <param name="course"></param>
         /// <param name="question"></param>
         /// <returns>The updated object that was persisted</returns>
-        Question CreateQuestion(string courseId, Question question);
+        Question CreateQuestion(Course course, Question question);
 
         /// <summary>
         /// Returns question by its ID
@@ -48,17 +48,17 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// Changes question sequence number in scope of same bank questions.
         /// As sequence is defined in scope of cource, the cource id needs to be passed as well
         /// </summary>
-        /// <param name="courseId"></param>
+        /// <param name="course"></param>
         /// <param name="questionId"></param>
         /// <param name="newSequenceValue"></param>
-        void UpdateQuestionSequence(string courseId, string questionId, int newSequenceValue);
+        void UpdateQuestionSequence(Course course, string questionId, int newSequenceValue);
 
         /// <summary>
         /// Returns list of question types available for specified course
         /// </summary>
-        /// <param name="courseId"></param>
+        /// <param name="course"></param>
         /// <returns></returns>
-        IEnumerable<QuestionType> GetQuestionTypesForCourse(string courseId);
+        IEnumerable<QuestionType> GetQuestionTypesForCourse(Course course);
         
         bool UpdateQuestionField(string questionId, string fieldName, string fieldValue);
     }

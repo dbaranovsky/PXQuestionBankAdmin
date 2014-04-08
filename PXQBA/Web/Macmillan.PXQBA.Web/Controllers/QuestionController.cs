@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Web.Helpers;
 using NLog.Config;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -22,8 +23,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             bool success = false;
             if (fieldName.Equals(MetadataFieldNames.Sequence))
             {
-                // \todo Pass current cource id
-                questionManagementService.UpdateQuestionSequence("1", questionId, int.Parse(fieldValue));
+                questionManagementService.UpdateQuestionSequence(CourseHelper.CurrentCourse, questionId, int.Parse(fieldValue));
                 success = true;
             }
             else
@@ -53,7 +53,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public void CreateQuestion(string courseId, Question question)
         {
-            questionManagementService.CreateQuestion(courseId, question);
+            questionManagementService.CreateQuestion(CourseHelper.CurrentCourse, question);
         }
 	}
 }
