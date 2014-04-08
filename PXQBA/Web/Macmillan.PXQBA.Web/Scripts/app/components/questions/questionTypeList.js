@@ -4,21 +4,34 @@
 
 var QuestionTypeList = React.createClass({displayName: 'QuestionTypeList',
 
+    renderTypes: function(){
+         var self = this;
+         var types = this.props.questionTypes.map(function (type) {
+          return (QuestionType( {questionTypeValue:type.key, questionTypeText:type.value, changeHandler:self.props.changeHandler.bind(null, type.key)}));
+          });
+         return types;
+    },
+
     render: function() {
-        var x = this.props.questionTypes;
-        var rows = [];
-        this.props.questionTypes.forEach(function(questionType) {
-            rows.push(React.DOM.div( {className:"radio"}, 
-                            React.DOM.label(null, 
-                                React.DOM.input( {type:"radio", name:"questionTypes", id:questionType.key}),
-                                    questionType.value 
-                            )
-                        ));
-        }); 
+       
         return (
           	 React.DOM.div( {className:"questionTypeList"}, 
-                rows
+                this.renderTypes()
              )         
+            );
+    }
+});
+
+var QuestionType = React.createClass({displayName: 'QuestionType',
+    render: function() {
+        return (
+             React.DOM.div( {className:"radio", onClick:this.props.changeHandler}, 
+           
+                            React.DOM.label(null, 
+                                React.DOM.input( {type:"radio", name:"questionTypes", value:this.props.questionTypeValue}),
+                                    this.props.questionTypeText
+                            )
+             )     
             );
     }
 });

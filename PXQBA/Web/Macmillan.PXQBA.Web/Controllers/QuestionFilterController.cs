@@ -22,7 +22,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             foreach (var type in types)
             {
                 var value = EnumHelper.GetEnumDescription(type);
-                var key = type.ToString();
+                var key = type;
                 typesViewModel.Add(new { key, value});
             }
 

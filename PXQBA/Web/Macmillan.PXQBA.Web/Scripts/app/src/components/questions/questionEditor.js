@@ -17,10 +17,10 @@ var QuestionEditorDialog = React.createClass({
 
     },
     finishSaving: function(){
+        questionDataManager.resetState();
         $(this.getDOMNode()).modal("hide");
-         $('.bottom-right').notify({
-    message: { text: 'Question created!' }
-  }).show();
+        $('.top-center').notify({message: { text: 'Question created!' },
+                                 fadeOut: { enabled: true, delay: 3000 } }).show();
     },
 
     closeDialog: function(){
@@ -68,6 +68,7 @@ var QuestionEditor = React.createClass({
         var finishSaving = this.props.finishSaving;
         questionDataManager.createQuestion("1", this.state.question).always(function(e){
             finishSaving();
+
         });
 
     },
@@ -184,6 +185,9 @@ var QuestionMetadataEditor = React.createClass({
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"chapter"}/>
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"bank"}/>
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"excerciseNo"} title="Excercise Number"/>
+                           <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"difficulty"} />
+                           <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"cognitiveLevel"} title="CognitiveLevel"/>
+                           <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"version"} />
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"guidance"} isMultiline={true}/>
              </div> 
          );
@@ -198,14 +202,13 @@ var MetadataFieldEditor = React.createClass({
 
      editHandler: function(){
       
-    //   alert(this.refs.editor.getDOMNode().value.trim());
        var node = this.refs.editor.getDOMNode();
        var text = "";
        if (node.selectedOptions !== undefined){
             text = node.selectedOptions[0].text;
        } 
        else {
-            text = node.value.trim();
+            text = node.value;
        }
 
       var question = this.props.question;
@@ -220,13 +223,14 @@ var MetadataFieldEditor = React.createClass({
     renderMenuItems: function(availableChoices) {
         var items = [];
         for (var propertyName in availableChoices) {
-            items.push(this.renderMenuItem(availableChoices[propertyName], propertyName));
+            availableChoice = availableChoices[propertyName];
+            items.push(this.renderMenuItem(availableChoice, propertyName));
         }
         return items;
     },
 
     renderMenuItem: function(label, value) {
-        return (<option value={value}>{label}</option>);
+        return (<option value={label}>{label}</option>);
     },
 
      renderBody: function(){
@@ -235,16 +239,17 @@ var MetadataFieldEditor = React.createClass({
        var field = this.props.field;
        var metadataField = $.grep(this.props.metadata, function(e){ return e.name === field; });
        var editorType = metadataField.length>0 ? metadataField[0].typeDescriptor.type : 0;
+       var currentValue = this.props.question[this.props.field];
        switch (editorType) {
           //case window.enums.editorType.singleSelect:
           // Magic number! Do something with that!
           case 1:
-             return (<select ref="editor" onChange={this.editHandler}> {this.renderMenuItems(metadataField[0].typeDescriptor.availableChoice)}</select> );
+             return (<select ref="editor" onChange={this.editHandler} value={currentValue}> {this.renderMenuItems(metadataField[0].typeDescriptor.availableChoice)} </select> );
           default: 
             if(!this.props.isMultiline){
-                 return (<input type="text" onBlur={this.editHandler} ref="editor" value={this.props.question[this.props.field]}/>)
+                 return (<input type="text" onChange={this.editHandler} ref="editor" value={currentValue}/>)
              }
-            return ( <textarea onBlur={this.editHandler}  ref="editor" className="question-body-editor"  rows="10" type="text" placeholder="Enter text..." value={this.props.question[this.props.field]} />);
+            return ( <textarea onChange={this.editHandler}  ref="editor" className="question-body-editor"  rows="10" type="text" placeholder="Enter text..." value={currentValue} />);
              
         }
     },

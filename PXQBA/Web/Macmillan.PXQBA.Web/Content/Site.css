@@ -231,14 +231,18 @@ input[type="checkbox"].input-validation-error {
     font-size: 20px;
 }
 
-.tab-body input,select {
+.tab-body input:not([type="radio"]),select, textarea {
     max-width: 958px;
     width: 958px;
 }
 
+.tab-body input[type="radio"] {
+    float: none !important; 
+    margin-left: 0 !important;
+    margin-right: 20px;
+}
+
 .tab-body textarea{
-    max-width: 958px;
-    min-width: 958px;
     max-height: 200px;
     min-height: 200px;
     font-size: 20px;
@@ -275,7 +279,7 @@ input[type="checkbox"].input-validation-error {
 }
 
 .metadata-field-editor {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .metadata-field-editor label {

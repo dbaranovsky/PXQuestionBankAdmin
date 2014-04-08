@@ -84,6 +84,8 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
         public Question CreateQuestion(string courseId, Question question)
         {
             DataAccess.Data.Question questionEntity = Mapper.Map<Question, DataAccess.Data.Question>(question);
+            questionEntity.DlapId = Guid.NewGuid().ToString();
+           
             dbContext.Questions.AddObject(questionEntity);
             dbContext.SaveChanges();
 
