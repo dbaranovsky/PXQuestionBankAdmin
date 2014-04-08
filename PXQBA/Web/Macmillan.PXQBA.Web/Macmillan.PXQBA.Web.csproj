@@ -201,7 +201,6 @@
     <Content Include="Scripts\app\async\asyncManager.js" />
     <Content Include="Scripts\app\components\common\loader.js" />
     <Content Include="Scripts\app\components\common\modalDialog.js" />
-    <Content Include="Scripts\app\components\questions\addQuestionDialog.js" />
     <Content Include="Scripts\app\components\questions\editQuestionNotesDialog.js" />
     <Content Include="Scripts\app\components\questions\question.js" />
     <Content Include="Scripts\app\components\questions\questionCell.js" />
@@ -226,6 +225,7 @@
     <Content Include="Scripts\app\components\questions\questionPaginator.js" />
     <Content Include="Scripts\app\components\questions\questionPreview.js" />
     <Content Include="Scripts\app\components\questions\questionTabs.js" />
+    <Content Include="Scripts\app\components\questions\questionTypeDialog.js" />
     <Content Include="Scripts\app\components\questions\questionTypeList.js" />
     <Content Include="Scripts\app\dataAccess\dataCache\dataCacheStorage.js" />
     <Content Include="Scripts\app\dataAccess\questionDataManager.js" />
@@ -236,7 +236,7 @@
     <Content Include="Scripts\app\routes\routeManager.js" />
     <Content Include="Scripts\app\src\components\common\loader.js" />
     <Content Include="Scripts\app\src\components\common\modalDialog.js" />
-    <Content Include="Scripts\app\src\components\questions\addQuestionDialog.js" />
+    <Content Include="Scripts\app\src\components\questions\questionTypeDialog.js" />
     <Content Include="Scripts\app\src\components\questions\editQuestionNotesDialog.js" />
     <Content Include="Scripts\app\src\components\questions\question.js" />
     <Content Include="Scripts\app\src\components\questions\questionCell.js" />

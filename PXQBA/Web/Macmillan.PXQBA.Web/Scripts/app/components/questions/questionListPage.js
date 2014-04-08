@@ -4,11 +4,18 @@
 
 var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
 
+    editorsSteps: {
+            none: 'none',
+            step1: 'step1',
+            step2: 'step2',
+    },
+
+
     getInitialState: function() {
       return { 
                loading: false, 
                editor: {
-                        show: false,
+                        step: this.editorsSteps.none,
                         template: null, 
                         isNew: false
                        }
@@ -27,15 +34,22 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
         questionDataManager.getNewQuestionTemplate().done(this.loadTemplateComplete.bind(this, true));
     },
 
-    renderQuestionEditorDialog: function()
-    {
-      if(this.state.editor.show) {          
+    renderQuestionEditorDialog: function() {
+      
+        switch (this.state.editor.step) {
+          case this.editorsSteps.step1:
+           return ( QuestionTypeDialog( 
+                              {nextStepHandler:this.nextStepHandler, 
+                              showOnCreate:true, 
+                              questionTypes:this.state.editor.questionTypes}));
+          case this.editorsSteps.step2:
             return (QuestionEditorDialog( {closeDialogHandler:this.closeDialogHandler,
-                                          isNew:this.state.isNew,
+                                          isNew:this.state.editor.isNew,
                                           showOnCreate:true,
                                           question:this.state.editor.template}));
-          }
-      return null;
+          default:
+            return null;
+        }
     },
 
     copyQuestionHandler: function(questionId) {
@@ -48,37 +62,54 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
                  loading: false,
                  editor: {
                     template: template,
-                    show: true,
+                    step: this.editorsSteps.step2,
                     isNew: isNew }
                     });
     },
 
     closeDialogHandler: function() {
-        this.showEditor(false);
+        this.showEditor(this.editorsSteps.none);
     },
 
-    showEditor: function(showEditor) {
+    showEditor: function(step) {
       this.setState({
                 editor: {
                     template: this.state.editor.template,
-                    show: showEditor,
+                    step: step,
                     isNew: this.state.editor.isNew }
                 });
     },
      
+
+    initialCreateNewQuestion: function() {
+      this.setState({ loading:true} );
+      questionFilterDataManager.getQuestionTypeList().done(this.loadQuestionTypesComplete.bind(this))
+
+    },
+
+    loadQuestionTypesComplete: function(questionTypes) {
+        this.setState({
+              loading: false,
+               editor: {
+                   questionTypes: questionTypes,
+                   template: this.state.editor.template,
+                   step: this.editorsSteps.step1,
+                   isNew: this.state.editor.isNew }
+        });
+    },
+
     render: function() {
        return (
             React.DOM.div( {className:"QuestionListPage"}, 
              this.renderLoader(),
                 React.DOM.div( {className:"add-question-action"}, 
-                    React.DOM.button( {className:"btn btn-primary ",  'data-toggle':"modal", 'data-target':"#addQuestionModal"}, 
+                    React.DOM.button( {className:"btn btn-primary ",  onClick:this.initialCreateNewQuestion}, 
                     "Add Question"
                     )
                 ),
                 React.DOM.div(null, 
                   QuestionTabs( {response:this.props.response, handlers:{copyQuestionHandler: this.copyQuestionHandler}})
                 ),
-                AddQuestionDialog( {nextStepHandler:this.nextStepHandler}),
                 this.renderQuestionEditorDialog()
             )
             );

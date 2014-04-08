@@ -4,9 +4,16 @@
 
 var QuestionInlineEditorSingleSelect = React.createClass({displayName: 'QuestionInlineEditorSingleSelect',
 
+    cancelValue: '__cancel',
+
     changeEventHandler: function(event) {
         var value = event.target.getAttribute("data-value");
-         this.props.saveVelueHandler(value)
+        if(value==this.cancelValue) {
+            this.props.afterEditingHandler();
+            return;
+        }
+
+        this.props.saveVelueHandler(value)
     },
 
     renderMenuItems: function() {
@@ -30,7 +37,9 @@ var QuestionInlineEditorSingleSelect = React.createClass({displayName: 'Question
                     React.DOM.span( {className:"caret"})
                     ),
                     React.DOM.ul( {className:"dropdown-menu menu-show", role:"menu", 'aria-labelledby':"dropdownMenuType", onClick:this.changeEventHandler}, 
-                       this.renderMenuItems()
+                       this.renderMenuItems(),
+                    React.DOM.li( {role:"presentation", className:"divider"}),
+                    React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", 'data-value':this.cancelValue}, "Cancel"))
                      )
                  )
             )

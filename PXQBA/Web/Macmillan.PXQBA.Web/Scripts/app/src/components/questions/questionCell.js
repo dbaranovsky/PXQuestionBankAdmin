@@ -12,16 +12,16 @@ var QuestionCell = React.createClass({
     },
 
     mouseOverHandler: function() {
-            this.setState({
-                         showMenu: true,
-                         editMode: this.state.editMode
-                         });
+      if(!this.state.editMode) {
+            this.setState({ showMenu: true});
+      }
+
     },
 
     mouseLeaveHandler: function() {
         this.setState({ 
                         showMenu: false,
-                        editMode: false
+                        editMode: this.state.editMode
                       });
     },
 
@@ -75,9 +75,15 @@ var QuestionCell = React.createClass({
     },
 
     render: function() {
+          var cellClass = React.addons.classSet({
+                 'cell-edit-mode': this.state.editMode
+            });
+
         return ( 
                 <td onMouseOver={this.mouseOverHandler}
-                    onMouseLeave={this.mouseLeaveHandler}>
+                    onMouseLeave={this.mouseLeaveHandler}
+                    className={cellClass}
+                    >
 
                     <table>
                         <tr>
@@ -85,9 +91,7 @@ var QuestionCell = React.createClass({
                             {this.renderValue()}
                             </td>
                             <td className="cell-menu-holder">
-                               
                                  {this.renderMenu()}
-                               
                             </td>
                         </tr>
                     </table>

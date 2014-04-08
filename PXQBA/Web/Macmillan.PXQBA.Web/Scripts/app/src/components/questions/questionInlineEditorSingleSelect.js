@@ -4,9 +4,16 @@
 
 var QuestionInlineEditorSingleSelect = React.createClass({
 
+    cancelValue: '__cancel',
+
     changeEventHandler: function(event) {
         var value = event.target.getAttribute("data-value");
-         this.props.saveVelueHandler(value)
+        if(value==this.cancelValue) {
+            this.props.afterEditingHandler();
+            return;
+        }
+
+        this.props.saveVelueHandler(value)
     },
 
     renderMenuItems: function() {
@@ -31,6 +38,8 @@ var QuestionInlineEditorSingleSelect = React.createClass({
                     </button>
                     <ul className="dropdown-menu menu-show" role="menu" aria-labelledby="dropdownMenuType" onClick={this.changeEventHandler}>
                        {this.renderMenuItems()}
+                    <li role="presentation" className="divider"></li>
+                    <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" data-value={this.cancelValue}>Cancel</a></li>
                      </ul>
                  </div>
             </div>
