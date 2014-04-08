@@ -29,10 +29,8 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
         return null;
     },
 
-  //  nextStepHandler: function(questionType){
-     nextStepHandler: function(){
-       // this.setState({ loading:true, questionType: questionType} );
-       this.setState({ loading:true } );
+    nextStepHandler: function(questionType){
+        this.setState({ loading:true, questionType: questionType} );
         questionDataManager.getNewQuestionTemplate().done(this.loadTemplateComplete.bind(this, true));
     },
 
@@ -43,8 +41,7 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
            return ( QuestionTypeDialog( 
                               {nextStepHandler:this.nextStepHandler, 
                               showOnCreate:true, 
-                              questionTypes:this.state.editor.questionTypes,
-                              closeDialogHandler: this.closeDialogHandler}));
+                              questionTypes:this.state.editor.questionTypes} ));
           case this.editorsSteps.step2:
             return (QuestionEditorDialog( {closeDialogHandler:this.closeDialogHandler,
                                           isNew:this.state.editor.isNew,
@@ -61,9 +58,9 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
     },
 
     loadTemplateComplete: function(isNew, template) {
-        if(isNew){
-         // template.type = this.state.questionType;
-        }
+       if(isNew){
+        template.type = this.state.questionType;
+       }
              
         this.setState({
                  loading: false,

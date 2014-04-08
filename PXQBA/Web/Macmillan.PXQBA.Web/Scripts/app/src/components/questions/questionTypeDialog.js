@@ -11,7 +11,8 @@ var QuestionTypeDialog = React.createClass({
         }
         var closeDialogHandler = this.props.closeDialogHandler;
          $(this.getDOMNode()).on('hidden.bs.modal', function () {
-            closeDialogHandler();
+           //WHY?????
+           // closeDialogHandler();
         })
     },
 
@@ -64,18 +65,18 @@ var AddQuestionBox = React.createClass({
     },
    
    nextStepHandler: function(){
-    //  this.props.nextStepHandler(this.state.questionType);
-    this.props.nextStepHandler();
+      this.props.nextStepHandler(this.state.questionType);
    },
 
    changeQuestionType: function(questionType){
-   // this.setState({questionType: questionType});
+    this.setState({questionType: questionType});
    },
     render: function() {
             return (<div>
-                        <QuestionTypeList questionTypes={this.props.questionTypes} changeQuestionType={this.changeQuestionType} changeHandler={this.changeQuestionType}/>
+                    <QuestionTypeList questionTypes={this.props.questionTypes} changeQuestionType={this.changeQuestionType} changeHandler={this.changeQuestionType}/>
+
                             <div className="modal-footer clearfix">
-                                 <button type="button" className="btn btn-primary" data-dismiss="modal"  onClick={this.props.nextStepHandler}>Next</button>
+                                 <button type="button" className="btn btn-primary" data-dismiss="modal"  onClick={this.nextStepHandler}>Next</button>
                                  <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                    </div>
