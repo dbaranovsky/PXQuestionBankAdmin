@@ -81,12 +81,12 @@
 
     };
 
-    self.saveQuestionNote = function(note) {
+    self.createQuestionNote = function(note) {
           var request = {
             note: note
         };
         return $.ajax({
-            url: window.actions.questionList.saveQuestionNoteUrl,
+            url: window.actions.questionList.createQuestionNoteUrl,
             traditional: true,
             data: JSON.stringify(request),
              contentType: 'application/json',
@@ -117,6 +117,23 @@
         });
     };
 
+     self.saveQuestionNote = function(note) {
+              var request = {
+                note: note
+            };
+            return $.ajax({
+                url: window.actions.questionList.saveQuestionNoteUrl,
+                traditional: true,
+                data: JSON.stringify(request),
+                 contentType: 'application/json',
+                dataType: 'json',
+                type: 'POST'
+            }).done(function (response) {
+                console.log('Save note complete');
+                self.resetState();
+                console.log('Refresh complite');
+            });
+        };
 
     self.getNewQuestionTemplate = function() {
        // var request = {

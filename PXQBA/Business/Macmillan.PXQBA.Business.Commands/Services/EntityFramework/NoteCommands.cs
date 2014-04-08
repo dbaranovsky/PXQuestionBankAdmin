@@ -22,7 +22,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
             return dbContext.Notes.Where(note => note.Question.DlapId == questionId).Select(Mapper.Map<Note>);
         }
 
-        public Note SaveNote(Note note)
+        public Note CreateNote(Note note)
         {
             var question = dbContext.Questions.FirstOrDefault(q => q.DlapId == note.QuestionId);
             if (question == null)
