@@ -223,13 +223,14 @@ var MetadataFieldEditor = React.createClass({
     renderMenuItems: function(availableChoices) {
         var items = [];
         for (var propertyName in availableChoices) {
-            items.push(this.renderMenuItem(availableChoices[propertyName], propertyName));
+            availableChoice = availableChoices[propertyName];
+            items.push(this.renderMenuItem(availableChoice, propertyName));
         }
         return items;
     },
 
     renderMenuItem: function(label, value) {
-        return (<option value={value}>{label}</option>);
+        return (<option value={label}>{label}</option>);
     },
 
      renderBody: function(){
@@ -238,16 +239,17 @@ var MetadataFieldEditor = React.createClass({
        var field = this.props.field;
        var metadataField = $.grep(this.props.metadata, function(e){ return e.name === field; });
        var editorType = metadataField.length>0 ? metadataField[0].typeDescriptor.type : 0;
+       var currentValue = this.props.question[this.props.field];
        switch (editorType) {
           //case window.enums.editorType.singleSelect:
           // Magic number! Do something with that!
           case 1:
-             return (<select ref="editor" onChange={this.editHandler}> {this.renderMenuItems(metadataField[0].typeDescriptor.availableChoice)}</select> );
+             return (<select ref="editor" onChange={this.editHandler} value={currentValue}> {this.renderMenuItems(metadataField[0].typeDescriptor.availableChoice)} </select> );
           default: 
             if(!this.props.isMultiline){
-                 return (<input type="text" onChange={this.editHandler} ref="editor" value={this.props.question[this.props.field]}/>)
+                 return (<input type="text" onChange={this.editHandler} ref="editor" value={currentValue}/>)
              }
-            return ( <textarea onChange={this.editHandler}  ref="editor" className="question-body-editor"  rows="10" type="text" placeholder="Enter text..." value={this.props.question[this.props.field]} />);
+            return ( <textarea onChange={this.editHandler}  ref="editor" className="question-body-editor"  rows="10" type="text" placeholder="Enter text..." value={currentValue} />);
              
         }
     },

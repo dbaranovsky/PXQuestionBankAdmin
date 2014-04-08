@@ -231,9 +231,15 @@ input[type="checkbox"].input-validation-error {
     font-size: 20px;
 }
 
-.tab-body input,select, textarea {
+.tab-body input:not([type="radio"]),select, textarea {
     max-width: 958px;
     width: 958px;
+}
+
+.tab-body input[type="radio"] {
+    float: none !important; 
+    margin-left: 0 !important;
+    margin-right: 20px;
 }
 
 .tab-body textarea{
