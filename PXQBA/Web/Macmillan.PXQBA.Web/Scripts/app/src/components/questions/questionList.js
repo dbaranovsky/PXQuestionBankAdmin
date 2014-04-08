@@ -4,9 +4,21 @@
 
 var QuestionList = React.createClass({
 
-    getInitialState: function() {
-        return { showEditDialog: false, questionId: 0};
+    specialColumnsCount : 2,
+
+    getAllColumnCount: function() {
+        return this.specialColumnsCount + this.props.columns.length;
     },
+
+    getInitialState: function() {
+        return { showEditDialog: false, 
+                 questionId: 0,
+                 selectedQuestions: [],
+                 selectedAll: false
+               };
+    },
+
+
 
     componentDidMount: function() {
 
@@ -63,22 +75,60 @@ var QuestionList = React.createClass({
                 questionId: qId});
     },
 
+    //refactor
+    selectQuestionHandler: function(questionId, isSelected) {
+        var selectedQuestions = this.state.selectedQuestions;
+        if(isSelected) {
+          selectedQuestions.push(questionId)
+        } 
+        else {
+           var index = $.inArray(questionId, selectedQuestions);
+           if (index != -1) {
+               selectedQuestions.splice(index, 1);
+           }
+        }
+
+        this.setState({selectedQuestions: selectedQuestions});
+    },
+
+    //refactor
+    isQuestionSelected: function(questionId) {
+         var selectedQuestions = this.state.selectedQuestions;
+         var index = $.inArray(questionId, selectedQuestions);
+         if(index==-1) {
+            return false;
+         }
+         return true;
+    },
+
+    selectAllQuestionHandelr: function(isSelected) {
+       this.setState({selectedAll: isSelected});
+    },
+
+    deselectsAllQuestionHandler: function() {
+        this.setState({selectedQuestions: []});
+    },
+
     renderQuestion: function() {
-       var specialColumnsCount = 2;
        var self = this;
        var questions = this.props.data.map(function (question) {
-            return (<Question metadata={question} columns={self.props.columns} renderNotes={self.renderNotes} copyQuestionHandler={self.props.handlers.copyQuestionHandler}/>);
+            return (<Question metadata={question}
+                       columns={self.props.columns} 
+                       renderNotes={self.renderNotes} 
+                       copyQuestionHandler={self.props.handlers.copyQuestionHandler} 
+                       selectQuestionHandler={self.selectQuestionHandler}
+                       selected={self.isQuestionSelected(question.data.id)}/>);
           });
 
        if(questions.length==0) {
-           questions.push(<QuestionNoDataStub colSpan={this.props.columns.length+specialColumnsCount} />);
+           questions.push(<QuestionNoDataStub colSpan={this.getAllColumnCount()} />);
         } 
 
         return questions;
     },
 
    
-    closeDialogHandler: function(){
+    closeNoteDialogHandler: function(){
        this.setState({ 
                 showEditDialog: false,
                 questionId: 0});
@@ -86,9 +136,17 @@ var QuestionList = React.createClass({
 
     renderNotesDialog: function()
     {
-      if(this.state.showEditDialog)
-      {
-        return (<EditQuestionNotesDialog closeDialogHandler={this.closeDialogHandler} questionId={this.state.questionId}/>);
+      if(this.state.showEditDialog) {
+        return (<EditQuestionNotesDialog closeDialogHandler={this.closeNoteDialogHandler} questionId={this.state.questionId}/>);
+      }
+      return null;
+    },
+
+    renderBulkOperationBar: function() {
+      if(this.state.selectedQuestions.length>1) {
+        return (<QuestionBulkOperationBar colSpan={this.getAllColumnCount()} 
+                                          selectedQuestions={this.state.selectedQuestions}
+                                          deselectsAllHandler={this.deselectsAllQuestionHandler}/>);
       }
       return null;
     },
@@ -98,9 +156,14 @@ var QuestionList = React.createClass({
           <div className="questionList">
                 <table className="table table question-table">
                    <thead>
-                    <QuestionListHeader ordering={this.props.order} columns={this.props.columns} allAvailableColumns={this.props.allAvailableColumns}/>
+                    <QuestionListHeader ordering={this.props.order} 
+                                        columns={this.props.columns} 
+                                        allAvailableColumns={this.props.allAvailableColumns} 
+                                        selectAllQuestionHandelr={this.selectAllQuestionHandelr}
+                                        selectedAll={this.state.selectedAll}/>
                   </thead>
                   <tbody> 
+                    {this.renderBulkOperationBar()}
                     {this.renderQuestion()}
                   </tbody> 
                 </table>

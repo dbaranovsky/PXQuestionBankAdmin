@@ -30,6 +30,12 @@ var Question = React.createClass({displayName: 'Question',
         return null;
     },
 
+    selectQuestionHandler: function(event) {
+        var quesionId = this.props.metadata.data.id;
+        var isSelected = event.target.checked;
+        this.props.selectQuestionHandler(quesionId, isSelected);
+    },
+
     renderCell: function(metadataName, editorDescriptor) {
         // Hardcoded: only title has a preview
         // Refactor this after re-implement preview
@@ -50,10 +56,10 @@ var Question = React.createClass({displayName: 'Question',
 
     render: function() {
         var self = this;
-
         var componentClass = React.addons.classSet({
                 'question': true,
-                 hover: this.state.showMenu
+                'hover': this.state.showMenu,
+                'question-selected': this.props.selected
             });
         
         var cells = this.props.columns.map(function(descriptor) {
@@ -65,7 +71,7 @@ var Question = React.createClass({displayName: 'Question',
                     onMouseOver:this.mouseOverHandler,
                     onMouseLeave:this.mouseLeaveHandler}, 
                 React.DOM.td(null,  
-                    React.DOM.input( {type:"checkbox"})
+                    React.DOM.input( {type:"checkbox", checked:this.props.selected, onChange:this.selectQuestionHandler})
                 ),
                  cells,
                  React.DOM.td( {className:"actions"},   

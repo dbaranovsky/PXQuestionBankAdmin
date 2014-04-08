@@ -10,6 +10,11 @@ var QuestionListHeader = React.createClass({displayName: 'QuestionListHeader',
     return this.applyOrdering(columns, ordering);
   },
 
+  selectAllQuestionHandler: function(event) {
+    var isSelected = event.target.checked;
+    this.props.selectAllQuestionHandelr(isSelected);
+  },
+
   applyOrdering: function(columns, ordering) {
     if(ordering.orderType!='none') {
       for(var i=0; i<columns.length; i++) {
@@ -37,9 +42,9 @@ var QuestionListHeader = React.createClass({displayName: 'QuestionListHeader',
     var cells = this.initializationHeaderCells(this.props.ordering);
     var renderedCell = cells.map(this.renderCell);
     
-    return ( 
+    return ( //selectAllQuestionHandelr
         React.DOM.tr(null, 
-            React.DOM.th( {style: {width:'5%'}},  " ", React.DOM.input( {type:"checkbox"})),
+            React.DOM.th( {style: {width:'5%'}},  " ", React.DOM.input( {type:"checkbox", checked:this.props.selectedAll, onChange:this.selectAllQuestionHandler} )),
              renderedCell,
             React.DOM.th(null,  " ", QuestionListColumnAppender( {displayedFields:this.props.columns, 
                                              allFields:this.props.allAvailableColumns}  ))

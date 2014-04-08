@@ -295,3 +295,17 @@ input[type="checkbox"].input-validation-error {
 .cell-edit-mode {
     background: gray;
 }
+
+.question-selected {
+    font-weight: bold;
+}
+
+.deselect-button {
+    font-weight: bold;
+    float: right;
+    cursor: pointer;
+}
+
+.bulk-operation-bar {
+    background: darkgray;
+}
