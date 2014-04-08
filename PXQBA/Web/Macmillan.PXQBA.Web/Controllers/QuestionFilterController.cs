@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Common.Helpers;
+using Macmillan.PXQBA.Web.Helpers;
 
 namespace Macmillan.PXQBA.Web.Controllers
 {
@@ -16,8 +17,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult GetQuestionTypeList()
         {
-            // \todo Pass actual course id
-            var types = questionManagementService.GetQuestionTypesForCourse("1");
+            var types = questionManagementService.GetQuestionTypesForCourse(CourseHelper.CurrentCourse);
             var typesViewModel = new List<dynamic>();
             foreach (var type in types)
             {

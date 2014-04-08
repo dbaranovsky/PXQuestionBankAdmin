@@ -18,14 +18,14 @@ namespace Macmillan.PXQBA.Business.Services
             this.questionCommands = questionCommands;
         }
 
-        public PagedCollection<Question> GetQuestionList(string courseId, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
+        public PagedCollection<Question> GetQuestionList(Course course, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
         {
-            return questionCommands.GetQuestionList(courseId, sortCriterion, startingRecordNumber, recordCount);
+            return questionCommands.GetQuestionList(course.ProductCourseId, sortCriterion, startingRecordNumber, recordCount);
         }
 
-        public Question CreateQuestion(string courseId, Question question)
+        public Question CreateQuestion(Course course, Question question)
         {
-            return questionCommands.CreateQuestion(courseId, question);
+            return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
 
         public Question GetQuestion(string questionId)
@@ -51,12 +51,12 @@ namespace Macmillan.PXQBA.Business.Services
             return question;
         }
 
-        public void UpdateQuestionSequence(string courseId, string questionId, int newSequenceValue)
+        public void UpdateQuestionSequence(Course course, string questionId, int newSequenceValue)
         {
-            questionCommands.UpdateQuestionSequence(courseId, questionId, newSequenceValue);
+            questionCommands.UpdateQuestionSequence(course.ProductCourseId, questionId, newSequenceValue);
         }
 
-        public IEnumerable<QuestionType> GetQuestionTypesForCourse(string courseId)
+        public IEnumerable<QuestionType> GetQuestionTypesForCourse(Course course)
         {
             // \todo Populate with actual data
             var availableTypes = new List<QuestionType>
