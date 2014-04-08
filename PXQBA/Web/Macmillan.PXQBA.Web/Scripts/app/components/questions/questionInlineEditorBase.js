@@ -22,6 +22,7 @@ var QuestionInlineEditorBase = React.createClass({displayName: 'QuestionInlineEd
                     metadata:this.props.metadata}));
           case window.enums.editorType.singleSelect:
             return (QuestionInlineEditorSingleSelect( {saveVelueHandler:this.saveVelueHandler, 
+                        afterEditingHandler:this.props.afterEditingHandler,
                         metadata:this.props.metadata,
                         values:this.props.metadata.editorDescriptor.availableChoice} ));
           case window.enums.editorType.number:

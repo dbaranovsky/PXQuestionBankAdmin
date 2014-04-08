@@ -282,3 +282,7 @@ input[type="checkbox"].input-validation-error {
     text-transform: capitalize;
     margin-bottom: 10px;
 }
+
+.cell-edit-mode {
+    background: gray;
+}
