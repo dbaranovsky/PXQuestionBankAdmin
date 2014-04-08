@@ -2,7 +2,14 @@
 * @jsx React.DOM
 */
 
-var AddQuestionDialog = React.createClass({displayName: 'AddQuestionDialog',
+var QuestionTypeDialog = React.createClass({displayName: 'QuestionTypeDialog',
+
+    componentDidMount: function(){
+        if(this.props.showOnCreate)
+        {
+           $(this.getDOMNode()).modal("show");
+        }
+    },
 
    
     render: function() {
@@ -11,9 +18,10 @@ var AddQuestionDialog = React.createClass({displayName: 'AddQuestionDialog',
         };
 
         var nextStepHandler = this.props.nextStepHandler;
+        var questionTypes = this.props.questionTypes;
         var renderBody = function(){
 
-            return (AddQuestionBox( {nextStepHandler:nextStepHandler}));
+            return (AddQuestionBox( {nextStepHandler:nextStepHandler, questionTypes:questionTypes}));
         };
         var renderFooterButtons = function(){
             return ("");
@@ -26,21 +34,13 @@ var AddQuestionDialog = React.createClass({displayName: 'AddQuestionDialog',
 var AddQuestionBox = React.createClass({displayName: 'AddQuestionBox',
 
     render: function() {
-
             return (React.DOM.div(null, 
-                        QuestionTypeList( {questionTypes:filterDataManager.getQuestionTypeList()}),
-                        
-                        
+                        QuestionTypeList( {questionTypes:this.props.questionTypes}),
                             React.DOM.div( {className:"modal-footer clearfix"}, 
                                  React.DOM.button( {type:"button", className:"btn btn-primary", 'data-dismiss':"modal",  onClick:this.props.nextStepHandler}, "Next"),
                                  React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal"}, "Close")
                             )
-                    
-
                    )
                );
-        
-      
-       
     }
 });
