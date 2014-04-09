@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Web.Helpers;
 using NLog.Config;
 
@@ -50,7 +52,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult GetAvailibleMetadata()
         {
-            return JsonCamel(questionMetadataService.GetAvailableFields());
+            return JsonCamel(questionMetadataService.GetAvailableFields().Select(MetadataFieldsHelper.Convert).ToList());
         }
         
         public void UpdateQuestion(Question question)
