@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Web.Helpers;
@@ -44,23 +45,22 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult GetDuplicateQuestionTemplate(string questionId)
         {
-            return JsonCamel(questionManagementService.GetDuplicateQuestionTemplate(questionId));
+            return JsonCamel(questionManagementService.GetDuplicateQuestionTemplate(CourseHelper.CurrentCourse, questionId));
         }
 
         public ActionResult GetAvailibleMetadata()
         {
             return JsonCamel(questionMetadataService.GetAvailableFields());
-        
         }
-
-        //public void CreateQuestion(Question question)
-        //{
-        //    questionManagementService.CreateQuestion(CourseHelper.CurrentCourse, question);
-        //}
-
+        
         public void UpdateQuestion(Question question)
         {
             questionManagementService.UpdateQuestion(question);
+        }
+
+        public ActionResult GetQuestion(string questionId)
+        {
+            return JsonCamel(questionManagementService.GetQuestion(questionId));
         }
 	}
 }

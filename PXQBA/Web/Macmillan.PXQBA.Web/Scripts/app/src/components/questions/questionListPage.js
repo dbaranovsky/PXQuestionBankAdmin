@@ -57,6 +57,11 @@ var QuestionListPage = React.createClass({
         questionDataManager.getDuplicateQuestionTemplate(questionId).done(this.loadTemplateComplete.bind(this, false));
     },
 
+    editQuestionHandler: function(questionId) {
+       this.setState({ loading:true} );
+       questionDataManager.getQuestion(questionId).done(this.loadTemplateComplete.bind(this, false));
+    },
+              
     loadTemplateComplete: function(isNew, template) { 
         this.setState({
                  loading: false,
@@ -108,7 +113,10 @@ var QuestionListPage = React.createClass({
                     </button>
                 </div>
                 <div>
-                  <QuestionTabs response={this.props.response} handlers={{copyQuestionHandler: this.copyQuestionHandler}}/>
+                  <QuestionTabs response={this.props.response} handlers={{
+                                                                copyQuestionHandler: this.copyQuestionHandler,
+                                                                editQuestionHandler: this.editQuestionHandler
+                                                                }}/>
                 </div>
                 {this.renderQuestionEditorDialog()}
             </div>

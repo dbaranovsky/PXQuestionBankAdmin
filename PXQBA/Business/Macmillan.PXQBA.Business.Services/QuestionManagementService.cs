@@ -33,11 +33,11 @@ namespace Macmillan.PXQBA.Business.Services
             return questionCommands.GetQuestion(questionId);
         }
 
-        public Question GetDuplicateQuestionTemplate(string questionId)
+        public Question GetDuplicateQuestionTemplate(Course course, string questionId)
         {
             Question question = GetQuestion(questionId);
             question.Status = QuestionStatus.InProgress;
-            return question;
+            return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
 
         public Question GetNewQuestionTemplate()

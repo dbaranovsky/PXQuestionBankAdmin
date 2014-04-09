@@ -18,12 +18,12 @@ var Question = React.createClass({displayName: 'Question',
 
     renderMenu: function() {
         if(this.state.showMenu) {
-            
             var questionId = this.props.metadata.data["id"];
             return QuestionListMenu(
                         {questionId:questionId, 
                         renderNotes:this.props.renderNotes.bind(null, questionId),
-                        copyQuestionHandler:this.props.copyQuestionHandler.bind(null, questionId)}
+                        copyQuestionHandler:this.props.menuHandlers.copyQuestionHandler.bind(null, questionId),
+                        editQuestionHandler:this.props.menuHandlers.editQuestionHandler.bind(null, questionId)}
                         )
         }
 
