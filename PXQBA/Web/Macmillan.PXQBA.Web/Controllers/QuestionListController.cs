@@ -59,8 +59,8 @@ namespace Macmillan.PXQBA.Web.Controllers
                             TotalPages = questionList.TotalItems / questionPerPage,
                             QuestionList = questionList.CollectionPage.Select(Mapper.Map<QuestionMetadata>),
                             PageNumber = request.PageNumber,
-                            Columns = questionMetadataService.GetDataForFields(request.Columns).Select(QuestionFieldViewModel.Convert).ToList(),
-                            AllAvailableColumns = questionMetadataService.GetAvailableFields().Select(QuestionFieldViewModel.Convert).ToList(),
+                            Columns = questionMetadataService.GetDataForFields(request.Columns).Select(MetadataFieldsHelper.Convert).ToList(),
+                            AllAvailableColumns = questionMetadataService.GetAvailableFields().Select(MetadataFieldsHelper.Convert).ToList(),
                             Order = new QuestionOrder()
                                     {
                                         OrderField = request.OrderField,
