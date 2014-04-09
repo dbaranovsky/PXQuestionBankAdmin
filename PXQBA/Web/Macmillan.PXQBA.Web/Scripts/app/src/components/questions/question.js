@@ -36,7 +36,7 @@ var Question = React.createClass({
         this.props.selectQuestionHandler(quesionId, isSelected);
     },
 
-    renderCell: function(metadataName, editorDescriptor) {
+    renderCell: function(metadataName, editorDescriptor, allowedEdit) {
         // Hardcoded: only title has a preview
         // Refactor this after re-implement preview
         var previewInfo = { hasPriview: false };
@@ -50,6 +50,7 @@ var Question = React.createClass({
                                field={metadataName} 
                                questionId={this.props.metadata.data.id}
                                editorDescriptor={editorDescriptor}
+                               allowedEdit = {allowedEdit}
                                previewInfo={previewInfo}
                                 />);
     },
@@ -63,7 +64,7 @@ var Question = React.createClass({
             });
         
         var cells = this.props.columns.map(function(descriptor) {
-                return self.renderCell(descriptor.metadataName, descriptor.editorDescriptor)
+                return self.renderCell(descriptor.metadataName, descriptor.editorDescriptor, descriptor.isInlineEditingAllowed)
             });
 
         return ( 

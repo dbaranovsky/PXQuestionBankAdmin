@@ -34,7 +34,8 @@ var QuestionCell = React.createClass({displayName: 'QuestionCell',
 
     renderMenu: function() {
         if(this.state.showMenu) {
-            if(this.props.editorDescriptor.editorType==window.enums.editorType.none) {
+            if((this.props.editorDescriptor.editorType==window.enums.editorType.none)||
+              (!this.props.allowedEdit)) {
                 return null;
             }
             return QuestionCellMenu( {onEditClickHandler:this.onEditClickHandler} )
