@@ -16,9 +16,15 @@ var QuestionBulkOperationBar = React.createClass({
         return ( 
                   <tr>
                     <td colSpan={this.props.colSpan} className="bulk-operation-bar">
-
-                          <span> {this.getSelectedQuestionCount()} questions selectd </span>
-                          <span className="deselect-button" onClick={this.deselectsAllHandler}> X </span>
+                          <div className="bulk-operation-item">
+                               <span> {this.getSelectedQuestionCount()} questions selectd </span>
+                          </div>
+                          <div className="bulk-operation-item">
+                              
+                          </div>
+                          <div className="deselect-button" onClick={this.deselectsAllHandler}>
+                                <span > X </span>
+                          </div>
                     </td>
                   </tr>
             );

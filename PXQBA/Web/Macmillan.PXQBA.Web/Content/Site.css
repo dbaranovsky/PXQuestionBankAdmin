@@ -307,5 +307,10 @@ input[type="checkbox"].input-validation-error {
 }
 
 .bulk-operation-bar {
-    background: darkgray;
+    background: turquoise;
+}
+
+.bulk-operation-item {
+    float: left;
+    margin: 0 15px 0 15px
 }

@@ -18,8 +18,6 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
                };
     },
 
-
-
     componentDidMount: function() {
 
         var questionListContainer = $(this.getDOMNode());
@@ -75,23 +73,23 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
                 questionId: qId});
     },
 
-    //refactor
     selectQuestionHandler: function(questionId, isSelected) {
         var selectedQuestions = this.state.selectedQuestions;
+        var index = $.inArray(questionId, selectedQuestions);
         if(isSelected) {
-          selectedQuestions.push(questionId)
+          if (index == -1) {
+              selectedQuestions.push(questionId)
+          }
         } 
         else {
-           var index = $.inArray(questionId, selectedQuestions);
            if (index != -1) {
-               selectedQuestions.splice(index, 1);
+              selectedQuestions.splice(index, 1);
            }
         }
 
         this.setState({selectedQuestions: selectedQuestions});
     },
 
-    //refactor
     isQuestionSelected: function(questionId) {
          var selectedQuestions = this.state.selectedQuestions;
          var index = $.inArray(questionId, selectedQuestions);
@@ -102,7 +100,10 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
     },
 
     selectAllQuestionHandelr: function(isSelected) {
-       this.setState({selectedAll: isSelected});
+        for(var i=0; i<this.props.data.length; i++) {
+          this.selectQuestionHandler(this.props.data[i].data.id, isSelected)
+        }
+        this.setState({selectedAll: isSelected});
     },
 
     deselectsAllQuestionHandler: function() {

@@ -42,7 +42,7 @@ var QuestionListHeader = React.createClass({
     var cells = this.initializationHeaderCells(this.props.ordering);
     var renderedCell = cells.map(this.renderCell);
     
-    return ( //selectAllQuestionHandelr
+    return ( 
         <tr>
             <th style={ {width:'5%'}}> <input type="checkbox" checked={this.props.selectedAll} onChange={this.selectAllQuestionHandler} /></th>
              {renderedCell}

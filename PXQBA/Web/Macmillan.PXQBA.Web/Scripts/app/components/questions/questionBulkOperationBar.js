@@ -16,9 +16,15 @@ var QuestionBulkOperationBar = React.createClass({displayName: 'QuestionBulkOper
         return ( 
                   React.DOM.tr(null, 
                     React.DOM.td( {colSpan:this.props.colSpan, className:"bulk-operation-bar"}, 
-
-                          React.DOM.span(null,  " ", this.getSelectedQuestionCount(), " questions selectd " ),
-                          React.DOM.span( {className:"deselect-button", onClick:this.deselectsAllHandler},  " X " )
+                          React.DOM.div( {className:"bulk-operation-item"}, 
+                               React.DOM.span(null,  " ", this.getSelectedQuestionCount(), " questions selectd " )
+                          ),
+                          React.DOM.div( {className:"bulk-operation-item"}
+                              
+                          ),
+                          React.DOM.div( {className:"deselect-button", onClick:this.deselectsAllHandler}, 
+                                React.DOM.span(null ,  " X " )
+                          )
                     )
                   )
             );
