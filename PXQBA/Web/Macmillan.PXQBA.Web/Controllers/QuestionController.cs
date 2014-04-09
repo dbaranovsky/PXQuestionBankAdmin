@@ -45,7 +45,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult GetDuplicateQuestionTemplate(string questionId)
         {
-            return JsonCamel(questionManagementService.GetDuplicateQuestionTemplate(questionId));
+            return JsonCamel(questionManagementService.GetDuplicateQuestionTemplate(CourseHelper.CurrentCourse, questionId));
         }
 
         public ActionResult GetAvailibleMetadata()

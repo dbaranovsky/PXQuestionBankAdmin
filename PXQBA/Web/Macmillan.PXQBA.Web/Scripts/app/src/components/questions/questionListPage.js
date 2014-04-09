@@ -58,15 +58,10 @@ var QuestionListPage = React.createClass({
     },
 
     editQuestionHandler: function(questionId) {
-      this.setState({ loading:true} );
-      questionDataManager.getQuestion(questionId).done(this.loadTemplateComplete.bind(this, false));
+       this.setState({ loading:true} );
+       questionDataManager.getQuestion(questionId).done(this.loadTemplateComplete.bind(this, false));
     },
-
-    loadTemplateComplete: function(isNew, template) {
-       if(isNew){
-        template.type = this.state.questionType;
-       }
-             
+              
     loadTemplateComplete: function(isNew, template) { 
         this.setState({
                  loading: false,
