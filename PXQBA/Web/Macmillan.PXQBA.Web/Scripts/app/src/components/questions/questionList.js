@@ -12,7 +12,7 @@ var QuestionList = React.createClass({
 
     getInitialState: function() {
         return { showEditDialog: false, 
-                 questionId: 0,
+                 questionIdForNotes: 0,
                  selectedQuestions: [],
                  selectedAll: false
                };
@@ -70,7 +70,7 @@ var QuestionList = React.createClass({
     renderNotes: function(qId) {
        this.setState({ 
                 showEditDialog: true,
-                questionId: qId});
+                questionIdForNotes: qId});
     },
 
     selectQuestionHandler: function(questionId, isSelected) {
@@ -107,7 +107,7 @@ var QuestionList = React.createClass({
     },
 
     deselectsAllQuestionHandler: function() {
-        this.setState({selectedQuestions: []});
+        this.setState({selectedQuestions: [], selectedAll:false});
     },
 
     renderQuestion: function() {
@@ -132,13 +132,13 @@ var QuestionList = React.createClass({
     closeNoteDialogHandler: function(){
        this.setState({ 
                 showEditDialog: false,
-                questionId: 0});
+                questionIdForNotes: 0});
     },
 
     renderNotesDialog: function()
     {
       if(this.state.showEditDialog) {
-        return (<EditQuestionNotesDialog closeDialogHandler={this.closeNoteDialogHandler} questionId={this.state.questionId}/>);
+        return (<EditQuestionNotesDialog closeDialogHandler={this.closeNoteDialogHandler} questionId={this.state.questionIdForNotes}/>);
       }
       return null;
     },
