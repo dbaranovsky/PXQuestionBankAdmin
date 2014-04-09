@@ -21,7 +21,7 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// <param name="course"></param>
         /// <param name="question"></param>
         /// <returns>The updated object that was persisted</returns>
-        Question CreateQuestion(Course course, Question question);
+        Question CreateQuestion(Course course, QuestionType questionType);
 
         /// <summary>
         /// Returns question by its ID
@@ -37,13 +37,7 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// <param name="course"></param>
         /// <param name="questionId"></param>
         /// <returns></returns>
-        Question GetDuplicateQuestionTemplate(Course course, string questionId);
-
-        /// <summary>
-        /// Builds template for new question populating fields with defaults
-        /// </summary>
-        /// <returns></returns>
-        Question GetNewQuestionTemplate();
+        Question DuplicateQuestion(Course course, string questionId);
 
         /// <summary>
         /// Changes question sequence number in scope of same bank questions.

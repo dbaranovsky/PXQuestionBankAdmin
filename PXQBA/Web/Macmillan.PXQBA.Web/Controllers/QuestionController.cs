@@ -37,17 +37,15 @@ namespace Macmillan.PXQBA.Web.Controllers
         
         }
 
-        public ActionResult GetNewQuestionTemplate(int questionType)
+        public ActionResult CreateQuestion(int questionType)
         {
-            var template = questionManagementService.GetNewQuestionTemplate();
-            template.Type = (QuestionType) questionType;       
-            return JsonCamel(questionManagementService.CreateQuestion(CourseHelper.CurrentCourse, template));
+            return JsonCamel(questionManagementService.CreateQuestion(CourseHelper.CurrentCourse, (QuestionType)questionType));
         }
 
         [HttpPost]
-        public ActionResult GetDuplicateQuestionTemplate(string questionId)
+        public ActionResult DuplicateQuestion(string questionId)
         {
-            return JsonCamel(questionManagementService.GetDuplicateQuestionTemplate(CourseHelper.CurrentCourse, questionId));
+            return JsonCamel(questionManagementService.DuplicateQuestion(CourseHelper.CurrentCourse, questionId));
         }
 
         public ActionResult GetAvailibleMetadata()
