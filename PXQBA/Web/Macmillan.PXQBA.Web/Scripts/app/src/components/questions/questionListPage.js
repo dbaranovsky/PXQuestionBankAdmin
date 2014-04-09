@@ -30,8 +30,7 @@ var QuestionListPage = React.createClass({
     },
 
     nextStepHandler: function(questionType){
-        this.setState({ loading:true, questionType: questionType} );
-        questionDataManager.getNewQuestionTemplate().done(this.loadTemplateComplete.bind(this, true));
+        questionDataManager.getNewQuestionTemplate(questionType).done(this.loadTemplateComplete.bind(this, true));
     },
 
     renderQuestionEditorDialog: function() {
@@ -58,11 +57,7 @@ var QuestionListPage = React.createClass({
         questionDataManager.getDuplicateQuestionTemplate(questionId).done(this.loadTemplateComplete.bind(this, false));
     },
 
-    loadTemplateComplete: function(isNew, template) {
-       if(isNew){
-        template.type = this.state.questionType;
-       }
-             
+    loadTemplateComplete: function(isNew, template) { 
         this.setState({
                  loading: false,
                  editor: {

@@ -66,17 +66,11 @@ var QuestionEditor = React.createClass({
 
 
     saveQuestion: function(){
-        if(this.props.isNew)
-        {
-            //create
-        }
-
-        //save existing
-        //for duplicate and create new should be called create question. Save question should be implemented
+       // if(this.props.isNew)
+       // {
+       // }
         var finishSaving = this.props.finishSaving;
-        questionDataManager.createQuestion("1", this.state.question).always(function(e){
-            finishSaving(e);
-        });
+        questionDataManager.updateQuestion(this.state.question).always(finishSaving);
 
     },
 

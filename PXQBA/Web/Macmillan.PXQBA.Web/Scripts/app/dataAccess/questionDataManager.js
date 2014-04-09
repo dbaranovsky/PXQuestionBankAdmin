@@ -135,14 +135,14 @@
             });
         };
 
-    self.getNewQuestionTemplate = function() {
-       // var request = {
-       //     questionType: questionType
-       // };
+    self.getNewQuestionTemplate = function(questionType) {
+        var request = {
+            questionType: questionType
+        };
           return $.ajax({
             url: window.actions.questionList.getNewQuestionTemplateUrl,
             traditional: true,
-         //   data: request,
+            data: request,
             dataType: 'json',
             type: 'GET'
         }).done(function (response) {
@@ -178,9 +178,8 @@
         });
     };
 
-     self.createQuestion = function(courseId, question) {
+     self.createQuestion = function(question) {
          var request = {
-            courseId: courseId,
             question: question
         };
          return $.ajax({
@@ -192,6 +191,24 @@
             type: 'POST'
         }).done(function (response) {
             console.log('Create question complete');
+            self.resetState();
+            console.log('Refresh complite');
+        });
+    };
+
+    self.updateQuestion = function(question) {
+         var request = {
+            question: question
+        };
+         return $.ajax({
+            url: window.actions.questionList.updateQuestionUrl,
+            traditional: true,
+            data: JSON.stringify(request),
+            dataType: 'json',
+            contentType: 'application/json',
+            type: 'POST'
+        }).done(function (response) {
+            console.log('Update question complete');
             self.resetState();
             console.log('Refresh complite');
         });
