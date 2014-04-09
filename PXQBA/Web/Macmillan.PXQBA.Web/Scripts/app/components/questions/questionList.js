@@ -23,7 +23,6 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
         var questionListContainer = $(this.getDOMNode());
 
         var toggleAllPreviews = function (event) {
-              //ToDO: implement change of image
               var questionPreviews = $(event.target).closest('table').find('.question-preview');
               var chevronIcon =  $(event.target).closest('th').find('.glyphicon');
               $(chevronIcon).toggleClass('glyphicon-chevron-right').toggleClass('glyphicon-chevron-down');
@@ -170,7 +169,7 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
                 ),
               React.DOM.div( {className:"dialogs-container"}, 
                 this.renderNotesDialog(),
-                React.DOM.div( {className:"notifications top-center"} )
+                  React.DOM.div( {className:"notifications top-center center"} )
               )
           )
         );

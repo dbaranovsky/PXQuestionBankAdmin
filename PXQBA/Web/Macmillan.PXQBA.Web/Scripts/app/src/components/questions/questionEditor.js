@@ -16,11 +16,19 @@ var QuestionEditorDialog = React.createClass({
         })
 
     },
-    finishSaving: function(){
+    finishSaving: function(e){
+
         questionDataManager.resetState();
         $(this.getDOMNode()).modal("hide");
-        $('.top-center').notify({message: { text: 'Question created!' },
-                                 fadeOut: { enabled: true, delay: 3000 } }).show();
+        var notifyOptions = {message: { text: 'Question created!' }, 
+                             type: 'success',
+                             fadeOut: { enabled: true, delay: 3000 } };
+        if(e.status != 200)
+        {
+            notifyOptions.type = 'danger';
+            notifyOptions.message.text = 'Something gone wrong, try again';
+        }
+        $('.top-center').notify(notifyOptions).show();
     },
 
     closeDialog: function(){
@@ -58,18 +66,11 @@ var QuestionEditor = React.createClass({
 
 
     saveQuestion: function(){
-        if(this.props.isNew)
-        {
-            //create
-        }
-
-        //save existing
-        //for duplicate and create new should be called create question. Save question should be implemented
+       // if(this.props.isNew)
+       // {
+       // }
         var finishSaving = this.props.finishSaving;
-        questionDataManager.createQuestion("1", this.state.question).always(function(e){
-            finishSaving();
-
-        });
+        questionDataManager.updateQuestion(this.state.question).always(finishSaving);
 
     },
 
@@ -178,7 +179,7 @@ var QuestionMetadataEditor = React.createClass({
        questionDataManager.getMetadataFields().done(this.loadMetadata); 
     },
     render: function() {
-       
+       //   <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"status"} />
         return (
              <div className="tab-body">
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"title"}/>
@@ -187,7 +188,7 @@ var QuestionMetadataEditor = React.createClass({
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"excerciseNo"} title="Excercise Number"/>
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"difficulty"} />
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"cognitiveLevel"} title="CognitiveLevel"/>
-                           <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"version"} />
+                        
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"guidance"} isMultiline={true}/>
              </div> 
          );

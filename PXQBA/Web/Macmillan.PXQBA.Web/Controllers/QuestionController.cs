@@ -34,9 +34,11 @@ namespace Macmillan.PXQBA.Web.Controllers
         
         }
 
-        public ActionResult GetNewQuestionTemplate()
+        public ActionResult GetNewQuestionTemplate(int questionType)
         {
-            return JsonCamel(questionManagementService.GetNewQuestionTemplate());
+            var template = questionManagementService.GetNewQuestionTemplate();
+            template.Type = (QuestionType) questionType;       
+            return JsonCamel(questionManagementService.CreateQuestion(CourseHelper.CurrentCourse, template));
         }
 
         [HttpPost]
@@ -51,9 +53,14 @@ namespace Macmillan.PXQBA.Web.Controllers
         
         }
 
-        public void CreateQuestion(string courseId, Question question)
+        //public void CreateQuestion(Question question)
+        //{
+        //    questionManagementService.CreateQuestion(CourseHelper.CurrentCourse, question);
+        //}
+
+        public void UpdateQuestion(Question question)
         {
-            questionManagementService.CreateQuestion(CourseHelper.CurrentCourse, question);
+            questionManagementService.UpdateQuestion(question);
         }
 	}
 }
