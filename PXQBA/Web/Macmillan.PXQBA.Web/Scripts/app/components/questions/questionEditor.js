@@ -188,7 +188,7 @@ var QuestionMetadataEditor = React.createClass({displayName: 'QuestionMetadataEd
                            MetadataFieldEditor( {question:this.props.question, metadata:this.state.metadata, editHandler:this.props.editHandler, field:"excerciseNo", title:"Excercise Number"}),
                            MetadataFieldEditor( {question:this.props.question, metadata:this.state.metadata, editHandler:this.props.editHandler, field:"difficulty"} ),
                            MetadataFieldEditor( {question:this.props.question, metadata:this.state.metadata, editHandler:this.props.editHandler, field:"cognitiveLevel", title:"CognitiveLevel"}),
-                        
+                           MetadataFieldEditor( {question:this.props.question, metadata:this.state.metadata, editHandler:this.props.editHandler, field:"status"} ),
                            MetadataFieldEditor( {question:this.props.question, metadata:this.state.metadata, editHandler:this.props.editHandler, field:"guidance", isMultiline:true})
              ) 
          );
@@ -231,21 +231,22 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
     },
 
     renderMenuItem: function(label, value) {
-        return (React.DOM.option( {value:label}, label));
+        if(label.toLowerCase()== value.toLowerCase()){
+          return (React.DOM.option( {value:label}, label));
+        }
+        return (React.DOM.option( {value:value}, label));
     },
 
      renderBody: function(){
 
 
        var field = this.props.field;
-       var metadataField = $.grep(this.props.metadata, function(e){ return e.name === field; });
-       var editorType = metadataField.length>0 ? metadataField[0].typeDescriptor.type : 0;
+       var metadataField = $.grep(this.props.metadata, function(e){ return (e.metadataName === field) || (e.metadataName === "dlap_q_"+field); });
+       var editorType = metadataField.length>0 ? metadataField[0].editorDescriptor.editorType : 0;
        var currentValue = this.props.question[this.props.field];
        switch (editorType) {
-          //case window.enums.editorType.singleSelect:
-          // Magic number! Do something with that!
-          case 1:
-             return (React.DOM.select( {ref:"editor", onChange:this.editHandler, value:currentValue},  " ", this.renderMenuItems(metadataField[0].typeDescriptor.availableChoice), " " ) );
+          case window.enums.editorType.singleSelect:
+             return (React.DOM.select( {ref:"editor", onChange:this.editHandler, value:currentValue},  " ", this.renderMenuItems(metadataField[0].editorDescriptor.availableChoice), " " ) );
           default: 
             if(!this.props.isMultiline){
                  return (React.DOM.input( {type:"text", onChange:this.editHandler, ref:"editor", value:currentValue}))

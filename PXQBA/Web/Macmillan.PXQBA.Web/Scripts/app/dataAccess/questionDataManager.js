@@ -166,7 +166,6 @@
 
 
     self.getMetadataFields = function() {
-         
          return $.ajax({
             url: window.actions.questionList.getMetadataFieldsUrl,
             traditional: true,
@@ -178,23 +177,6 @@
         });
     };
 
-     self.createQuestion = function(question) {
-         var request = {
-            question: question
-        };
-         return $.ajax({
-            url: window.actions.questionList.createQuestionUrl,
-            traditional: true,
-            data: JSON.stringify(request),
-            dataType: 'json',
-            contentType: 'application/json',
-            type: 'POST'
-        }).done(function (response) {
-            console.log('Create question complete');
-            self.resetState();
-            console.log('Refresh complite');
-        });
-    };
 
     self.updateQuestion = function(question) {
          var request = {
