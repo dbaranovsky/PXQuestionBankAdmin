@@ -26,7 +26,7 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
         if(e.status != 200)
         {
             notifyOptions.type = 'danger';
-            notifyOptions.message.text = 'Something gone wrong, try again';
+            notifyOptions.message.text = 'Error occures, try again later';
         }
         $('.top-center').notify(notifyOptions).show();
     },
