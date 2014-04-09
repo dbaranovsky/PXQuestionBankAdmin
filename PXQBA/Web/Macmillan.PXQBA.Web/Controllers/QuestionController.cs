@@ -53,11 +53,6 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(questionMetadataService.GetAvailableFields());
         }
         
-        //public void CreateQuestion(Question question)
-        //{
-        //    questionManagementService.CreateQuestion(CourseHelper.CurrentCourse, question);
-        //}
-
         public void UpdateQuestion(Question question)
         {
             questionManagementService.UpdateQuestion(question);
