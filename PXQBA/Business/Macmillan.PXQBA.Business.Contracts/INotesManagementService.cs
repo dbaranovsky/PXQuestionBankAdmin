@@ -7,8 +7,9 @@ namespace Macmillan.PXQBA.Business.Contracts
     {
         IEnumerable<Note> GetQuestionNotes(string questionId);
 
-        Note SaveNote(Note note);
+        Note CreateNote(Note note);
 
         void DeleteNote(Note note);
+        void SaveNote(Note note);
     }
 }

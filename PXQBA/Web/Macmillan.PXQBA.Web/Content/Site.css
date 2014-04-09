@@ -200,11 +200,16 @@ input[type="checkbox"].input-validation-error {
     padding-right: 5px;
     width: 20px;
     height: 20px;
+    cursor: pointer;
 }
 
 .glyphicon-flag {
     font-size: 20px;
     opacity: 0.25;
+}
+
+.flagged .glyphicon-flag {
+    opacity: 1;
 }
 
 .text-editor-container {
