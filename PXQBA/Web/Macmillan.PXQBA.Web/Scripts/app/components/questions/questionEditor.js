@@ -16,11 +16,19 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
         })
 
     },
-    finishSaving: function(){
+    finishSaving: function(e){
+
         questionDataManager.resetState();
         $(this.getDOMNode()).modal("hide");
-        $('.top-center').notify({message: { text: 'Question created!' },
-                                 fadeOut: { enabled: true, delay: 3000 } }).show();
+        var notifyOptions = {message: { text: 'Question created!' }, 
+                             type: 'success',
+                             fadeOut: { enabled: true, delay: 3000 } };
+        if(e.status != 200)
+        {
+            notifyOptions.type = 'danger';
+            notifyOptions.message.text = 'Something gone wrong, try again';
+        }
+        $('.top-center').notify(notifyOptions).show();
     },
 
     closeDialog: function(){
@@ -67,8 +75,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
         //for duplicate and create new should be called create question. Save question should be implemented
         var finishSaving = this.props.finishSaving;
         questionDataManager.createQuestion("1", this.state.question).always(function(e){
-            finishSaving();
-
+            finishSaving(e);
         });
 
     },
