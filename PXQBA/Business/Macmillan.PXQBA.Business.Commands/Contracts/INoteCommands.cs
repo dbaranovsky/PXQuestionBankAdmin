@@ -8,5 +8,6 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         IEnumerable<Note> GetQuestionNotes(string questionId);
         Note CreateNote(Note note);
         void DeleteNote(Note note);
+        Note UpdateNote(Note note);
     }
 }

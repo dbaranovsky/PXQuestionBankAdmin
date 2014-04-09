@@ -83,8 +83,8 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
 
         public Question CreateQuestion(string courseId, Question question)
         {
+            question.Id = Guid.NewGuid().ToString();
             DataAccess.Data.Question questionEntity = Mapper.Map<Question, DataAccess.Data.Question>(question);
-            questionEntity.DlapId = Guid.NewGuid().ToString();
            
             dbContext.Questions.AddObject(questionEntity);
             dbContext.SaveChanges();
@@ -117,6 +117,20 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
             }
             entity.Sequence = newSequenceValue;
             dbContext.SaveChanges();
+        }
+
+        public Question UpdateQuestion(Question question)
+        {
+            var existingQuestion = dbContext.ProductCourses.FirstOrDefault(q => q.Question.DlapId == question.Id);
+            if (existingQuestion == null)
+            {
+                throw new ArgumentException("Provided question does not exist");
+            }
+
+            Mapper.Map(question, existingQuestion);
+            dbContext.SaveChanges();
+
+            return question;
         }
 
         public bool UpdateQuestionField(string questionId, string fieldName, string value)

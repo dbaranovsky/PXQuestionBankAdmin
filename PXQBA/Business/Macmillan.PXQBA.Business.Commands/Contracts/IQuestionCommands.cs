@@ -10,6 +10,8 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
 
         void UpdateQuestionSequence(string courseId, string questionId, int newSequenceValue);
 
+        Question UpdateQuestion(Question question);
+
         bool UpdateQuestionField(string questionId, string fieldName, string value);
     }
 }

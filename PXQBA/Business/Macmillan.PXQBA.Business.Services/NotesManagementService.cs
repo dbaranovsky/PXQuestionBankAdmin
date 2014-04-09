@@ -34,7 +34,7 @@ namespace Macmillan.PXQBA.Business.Services
 
         public void SaveNote(Note note)
         {
-            
+            noteCommands.UpdateNote(note);
         }
     }
 }

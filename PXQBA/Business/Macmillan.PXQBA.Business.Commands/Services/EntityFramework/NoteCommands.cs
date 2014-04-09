@@ -43,5 +43,18 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
             dbContext.Notes.DeleteObject(noteToDelete);
             dbContext.SaveChanges();
         }
+
+        public Note UpdateNote(Note note)
+        {
+            var existingNote = dbContext.Notes.FirstOrDefault(n => n.Id == note.Id);
+            if (existingNote == null)
+            {
+                throw new ArgumentException("Note passed does not exist");
+            }
+
+            Mapper.Map(note, existingNote);
+            dbContext.SaveChanges();
+            return note;
+        }
     }
 }

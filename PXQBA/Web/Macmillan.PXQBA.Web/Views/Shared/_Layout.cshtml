@@ -16,7 +16,8 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Macmillan</p>
+            @{string version = typeof(BundleConfig).Assembly.GetName().Version.ToString();}
+            <p>&copy; @DateTime.Now.Year - Macmillan. Version @version</p>
         </footer>
     </div>
     @Html.Partial("_CommonJS")
