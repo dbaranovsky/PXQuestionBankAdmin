@@ -17,6 +17,8 @@ namespace Macmillan.PXQBA.Business.Models
         public string Preview { get; set; }
         public QuestionStatus Status { get; set; }
 
+        public IEnumerable<string> Keywords { get; set; } 
+
         /// <summary>
         /// Excercise Number for the  question.
         /// </summary>
@@ -41,22 +43,5 @@ namespace Macmillan.PXQBA.Business.Models
         /// Congnitive Level for the  question.
         /// </summary>
         public string CognitiveLevel { get; set; }
-
-        public static string QuestionTypeShortNameFromId(string id)
-        {
-            return new Dictionary<string, string>()
-            {
-                { "answer", "A" },
-                { "choice", "MC" },
-                { "composite", "COMP" },
-                { "custom", "CUSTOM" },
-                { "hts", "HTS" },
-                { "graph", "FMA_GRAPH" },
-                { "essay", "E" },
-                { "match", "MT" },
-                { "text", "TXT" },
-                { "bank", "BANK" },
-            }[id];
-        }
     }
 }

@@ -59,6 +59,13 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// <param name="course"></param>
         /// <returns></returns>
         IEnumerable<QuestionType> GetQuestionTypesForCourse(Course course);
+
+        /// <summary>
+        /// Update existing question metafields
+        /// </summary>
+        /// <param name="question"></param>
+        /// <returns></returns>
+        Question UpdateQuestion(Question question);
         
         bool UpdateQuestionField(string questionId, string fieldName, string fieldValue);
     }

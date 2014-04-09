@@ -71,6 +71,11 @@ namespace Macmillan.PXQBA.Business.Services
             return availableTypes;
         }
 
+        public Question UpdateQuestion(Question question)
+        {
+            return questionCommands.UpdateQuestion(question);
+        }
+
         /*
         public void CreateQuestion(string questionType)
         {
