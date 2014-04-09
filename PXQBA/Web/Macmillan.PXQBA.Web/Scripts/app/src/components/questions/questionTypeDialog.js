@@ -11,9 +11,13 @@ var QuestionTypeDialog = React.createClass({
         }
         var closeDialogHandler = this.props.closeDialogHandler;
          $(this.getDOMNode()).on('hidden.bs.modal', function () {
-           //WHY?????
-           // closeDialogHandler();
+           closeDialogHandler();
         })
+    },
+
+    nextStepHandler: function(questionType){
+      $(this.getDOMNode()).off('hidden.bs.modal');
+       this.props.nextStepHandler(questionType);
     },
 
    
@@ -22,7 +26,7 @@ var QuestionTypeDialog = React.createClass({
             return "Add Question";
         };
 
-        var nextStepHandler = this.props.nextStepHandler;
+        var nextStepHandler = this.nextStepHandler;
         var questionTypes = this.props.questionTypes;
         var renderBody = function(){
 

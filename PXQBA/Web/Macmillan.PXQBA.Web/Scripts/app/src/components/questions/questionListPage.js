@@ -41,7 +41,8 @@ var QuestionListPage = React.createClass({
            return ( <QuestionTypeDialog 
                               nextStepHandler={this.nextStepHandler} 
                               showOnCreate={true} 
-                              questionTypes={this.state.editor.questionTypes} />);
+                              questionTypes={this.state.editor.questionTypes} 
+                              closeDialogHandler = {this.closeDialogHandler}/>);
           case this.editorsSteps.step2:
             return (<QuestionEditorDialog closeDialogHandler={this.closeDialogHandler}
                                           isNew={this.state.editor.isNew}

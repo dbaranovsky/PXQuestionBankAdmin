@@ -23,7 +23,6 @@ var QuestionList = React.createClass({
         var questionListContainer = $(this.getDOMNode());
 
         var toggleAllPreviews = function (event) {
-              //ToDO: implement change of image
               var questionPreviews = $(event.target).closest('table').find('.question-preview');
               var chevronIcon =  $(event.target).closest('th').find('.glyphicon');
               $(chevronIcon).toggleClass('glyphicon-chevron-right').toggleClass('glyphicon-chevron-down');
