@@ -115,7 +115,7 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
             return (Question( {metadata:question,
                        columns:self.props.columns, 
                        renderNotes:self.renderNotes, 
-                       copyQuestionHandler:self.props.handlers.copyQuestionHandler, 
+                       menuHandlers:self.props.handlers,
                        selectQuestionHandler:self.selectQuestionHandler,
                        selected:self.isQuestionSelected(question.data.id)}));
           });

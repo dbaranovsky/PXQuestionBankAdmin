@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Web.Helpers;
@@ -50,9 +51,8 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult GetAvailibleMetadata()
         {
             return JsonCamel(questionMetadataService.GetAvailableFields());
-        
         }
-
+        
         //public void CreateQuestion(Question question)
         //{
         //    questionManagementService.CreateQuestion(CourseHelper.CurrentCourse, question);
@@ -61,6 +61,11 @@ namespace Macmillan.PXQBA.Web.Controllers
         public void UpdateQuestion(Question question)
         {
             questionManagementService.UpdateQuestion(question);
+        }
+
+        public ActionResult GetQuestion(string questionId)
+        {
+            return JsonCamel(questionManagementService.GetQuestion(questionId));
         }
 	}
 }
