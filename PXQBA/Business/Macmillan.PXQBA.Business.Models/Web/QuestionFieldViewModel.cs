@@ -12,7 +12,7 @@ namespace Macmillan.PXQBA.Business.Models.Web
             model.FriendlyName = metaField.FriendlyName;
             model.Width = "10%";
             model.CanNotDelete = false;
-
+            model.IsInlineEditingAllowed = false;
             model.EditorDescriptor = new FieldEditorDescriptor(metaField.TypeDescriptor);
 
             // \todo Move custom field-level settings to configuration
@@ -22,6 +22,17 @@ namespace Macmillan.PXQBA.Business.Models.Web
                 model.CanNotDelete = true;
                 model.LeftIcon = "glyphicon glyphicon-chevron-right titles-expander";
             }
+
+            if (metaField.Name == MetadataFieldNames.DlapStatus)
+            {
+                model.IsInlineEditingAllowed = true;
+            }
+
+            if (metaField.Name == MetadataFieldNames.Sequence)
+            {
+                model.IsInlineEditingAllowed = true;
+            }
+
             return model;
         }
         
@@ -36,5 +47,7 @@ namespace Macmillan.PXQBA.Business.Models.Web
         public bool CanNotDelete { get; set; }
 
         public FieldEditorDescriptor EditorDescriptor { get; set; }
+
+        public bool IsInlineEditingAllowed { get; set; }
     }
 }

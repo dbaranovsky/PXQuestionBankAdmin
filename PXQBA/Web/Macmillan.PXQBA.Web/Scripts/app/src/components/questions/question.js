@@ -30,7 +30,13 @@ var Question = React.createClass({
         return null;
     },
 
-    renderCell: function(metadataName, editorDescriptor) {
+    selectQuestionHandler: function(event) {
+        var quesionId = this.props.metadata.data.id;
+        var isSelected = event.target.checked;
+        this.props.selectQuestionHandler(quesionId, isSelected);
+    },
+
+    renderCell: function(metadataName, editorDescriptor, allowedEdit) {
         // Hardcoded: only title has a preview
         // Refactor this after re-implement preview
         var previewInfo = { hasPriview: false };
@@ -44,20 +50,21 @@ var Question = React.createClass({
                                field={metadataName} 
                                questionId={this.props.metadata.data.id}
                                editorDescriptor={editorDescriptor}
+                               allowedEdit = {allowedEdit}
                                previewInfo={previewInfo}
                                 />);
     },
 
     render: function() {
         var self = this;
-
         var componentClass = React.addons.classSet({
                 'question': true,
-                 hover: this.state.showMenu
+                'hover': this.state.showMenu,
+                'question-selected': this.props.selected
             });
         
         var cells = this.props.columns.map(function(descriptor) {
-                return self.renderCell(descriptor.metadataName, descriptor.editorDescriptor)
+                return self.renderCell(descriptor.metadataName, descriptor.editorDescriptor, descriptor.isInlineEditingAllowed)
             });
 
         return ( 
@@ -65,7 +72,7 @@ var Question = React.createClass({
                     onMouseOver={this.mouseOverHandler}
                     onMouseLeave={this.mouseLeaveHandler}>
                 <td> 
-                    <input type="checkbox"/>
+                    <input type="checkbox" checked={this.props.selected} onChange={this.selectQuestionHandler}/>
                 </td>
                  {cells}
                  <td className="actions">  

@@ -214,7 +214,7 @@ input[type="checkbox"].input-validation-error {
 
 .text-editor-container {
     position: absolute !important;
-    width: 300px;
+    width: 200px;
     z-index: 200;
 }
 
@@ -294,4 +294,23 @@ input[type="checkbox"].input-validation-error {
 
 .cell-edit-mode {
     background: gray;
+}
+
+.question-selected {
+    font-weight: bold;
+}
+
+.deselect-button {
+    font-weight: bold;
+    float: right;
+    cursor: pointer;
+}
+
+.bulk-operation-bar {
+    background: turquoise;
+}
+
+.bulk-operation-item {
+    float: left;
+    margin: 0 15px 0 15px
 }

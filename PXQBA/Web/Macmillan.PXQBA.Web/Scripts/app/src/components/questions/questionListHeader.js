@@ -10,6 +10,11 @@ var QuestionListHeader = React.createClass({
     return this.applyOrdering(columns, ordering);
   },
 
+  selectAllQuestionHandler: function(event) {
+    var isSelected = event.target.checked;
+    this.props.selectAllQuestionHandelr(isSelected);
+  },
+
   applyOrdering: function(columns, ordering) {
     if(ordering.orderType!='none') {
       for(var i=0; i<columns.length; i++) {
@@ -39,7 +44,7 @@ var QuestionListHeader = React.createClass({
     
     return ( 
         <tr>
-            <th style={ {width:'5%'}}> <input type="checkbox"/></th>
+            <th style={ {width:'5%'}}> <input type="checkbox" checked={this.props.selectedAll} onChange={this.selectAllQuestionHandler} /></th>
              {renderedCell}
             <th> <QuestionListColumnAppender displayedFields={this.props.columns} 
                                              allFields={this.props.allAvailableColumns}  /></th>
