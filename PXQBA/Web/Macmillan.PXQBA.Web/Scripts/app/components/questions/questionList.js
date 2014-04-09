@@ -170,7 +170,7 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
                 ),
               React.DOM.div( {className:"dialogs-container"}, 
                 this.renderNotesDialog(),
-                React.DOM.div( {className:"notifications top-center"} )
+                  React.DOM.div( {className:"notifications top-center center"} )
               )
           )
         );

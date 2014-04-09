@@ -32,5 +32,11 @@
 
 .notifications.top-center {
   top: 105px;
-  width: 53%;
+  width: 1200px;
+  left: 50%;
+  margin: 0 0 0 -600px;
+}
+
+.center {
+     text-align:center;
 }
