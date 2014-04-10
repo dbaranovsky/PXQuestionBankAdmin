@@ -4,6 +4,20 @@
 
 var QuestionInlineEditorBase = React.createClass({
     
+    componentDidMount: function() {
+        $(document).click(this.clickOutSideControlHandler);
+    },
+
+    componentWillUnmount: function() {
+        $(document).unbind( "click", this.clickOutSideControlHandler);
+    },
+
+    clickOutSideControlHandler: function(event) {
+        if($(event.target).parents().index($('.inline-editor-container')) == -1) {
+               this.props.afterEditingHandler();
+        }
+    },
+
     saveVelueHandler: function(value) {
         if(value != null) {
           questionDataManager.saveQuestionData(this.props.metadata.questionId,
@@ -36,7 +50,7 @@ var QuestionInlineEditorBase = React.createClass({
 
      render: function() {
         return ( 
-            <div>
+            <div className='inline-editor-container'>
                {this.renderSpecificEditor()}
             </div>
             );
