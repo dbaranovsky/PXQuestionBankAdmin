@@ -20,13 +20,13 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
 
         questionDataManager.resetState();
         $(this.getDOMNode()).modal("hide");
-        var notifyOptions = {message: { text: 'Question created!' }, 
+        var notifyOptions = {message: { text: window.enums.message.successCreate }, 
                              type: 'success',
                              fadeOut: { enabled: true, delay: 3000 } };
         if(e.status != 200)
         {
             notifyOptions.type = 'danger';
-            notifyOptions.message.text = 'Error occures, try again later';
+            notifyOptions.message.text = window.enums.message.errorMessage;
         }
         $('.top-center').notify(notifyOptions).show();
     },

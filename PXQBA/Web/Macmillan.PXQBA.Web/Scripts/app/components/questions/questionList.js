@@ -66,12 +66,6 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
             
     },
 
-    renderNotes: function(qId) {
-       this.setState({ 
-                showEditDialog: true,
-                questionIdForNotes: qId});
-    },
-
     selectQuestionHandler: function(questionId, isSelected) {
         var selectedQuestions = this.state.selectedQuestions;
         var index = $.inArray(questionId, selectedQuestions);
@@ -114,7 +108,6 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
        var questions = this.props.data.map(function (question) {
             return (Question( {metadata:question,
                        columns:self.props.columns, 
-                       renderNotes:self.renderNotes, 
                        menuHandlers:self.props.handlers,
                        selectQuestionHandler:self.selectQuestionHandler,
                        selected:self.isQuestionSelected(question.data.id)}));
@@ -128,19 +121,6 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
     },
 
    
-    closeNoteDialogHandler: function(){
-       this.setState({ 
-                showEditDialog: false,
-                questionIdForNotes: 0});
-    },
-
-    renderNotesDialog: function()
-    {
-      if(this.state.showEditDialog) {
-        return (EditQuestionNotesDialog( {closeDialogHandler:this.closeNoteDialogHandler, questionId:this.state.questionIdForNotes}));
-      }
-      return null;
-    },
 
     renderBulkOperationBar: function() {
       if(this.state.selectedQuestions.length>1) {
@@ -168,7 +148,6 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
                   ) 
                 ),
               React.DOM.div( {className:"dialogs-container"}, 
-                this.renderNotesDialog(),
                   React.DOM.div( {className:"notifications top-center center"} )
               )
           )

@@ -103,6 +103,29 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
         });
     },
 
+
+    closeNoteDialogHandler: function(){
+      this.setState({
+            showNoteEditDialog: false,
+            questionIdForNotes: 0 
+       });
+    },
+
+    renderNotesDialog: function()
+    {
+      if(this.state.showNoteEditDialog) {
+        return (EditQuestionNotesDialog( {closeDialogHandler:this.closeNoteDialogHandler, questionId:this.state.questionIdForNotes}));
+      }
+      return null;
+    },
+
+    editNotesHandler: function(qId) {
+       this.setState({
+            showNoteEditDialog: true,
+            questionIdForNotes: qId 
+       });
+    },
+
     render: function() {
        return (
             React.DOM.div( {className:"QuestionListPage"}, 
@@ -115,10 +138,13 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
                 React.DOM.div(null, 
                   QuestionTabs( {response:this.props.response, handlers:{
                                                                 copyQuestionHandler: this.copyQuestionHandler,
-                                                                editQuestionHandler: this.editQuestionHandler
+                                                                editQuestionHandler: this.editQuestionHandler,
+                                                                closeNoteDialogHandler: this.closeNoteDialogHandler,
+                                                                editNotesHandler: this.editNotesHandler
                                                                 }})
                 ),
-                this.renderQuestionEditorDialog()
+                this.renderQuestionEditorDialog(),
+                this.renderNotesDialog()
             )
             );
     }

@@ -9,8 +9,8 @@
         actions.questionList = {
             getQuestionListUrl: '@Url.Action("GetQuestionData", "QuestionList")',
             editQuestionFieldUrl: '@Url.Action("Edit", "Question")',
-            getQuestionNotesUrl:  '@Url.Action("GetQuestionNotes", "QuestionList")',
-            createQuestionNoteUrl:  '@Url.Action("CreateQuestionNote", "QuestionList")',
+            getQuestionNotesUrl: '@Url.Action("GetQuestionNotes", "QuestionList")',
+            createQuestionNoteUrl: '@Url.Action("CreateQuestionNote", "QuestionList")',
             deleteQuestionNotesUrl: '@Url.Action("DeleteQuestionNote", "QuestionList")',
             saveQuestionNoteUrl: '@Url.Action("SaveQuestionNote", "QuestionList")',
             getMetadataFieldsUrl:'@Url.Action("GetAvailibleMetadata", "Question")',
@@ -18,7 +18,6 @@
             getNewQuestionTemplateUrl: '@Url.Action("CreateQuestion", "Question")',
             getQuestionUrl: '@Url.Action("GetQuestion", "Question")',
             updateQuestionUrl: '@Url.Action("UpdateQuestion", "Question")'
-            
         };
 
         actions.questionFilter = {
@@ -40,6 +39,11 @@
             number: '@EditorType.Number.ToString().ToLower()'
         };
 
+        enums.messages = {
+            succesCreate: 'Question successfully created',
+            succesUpdate: 'Question successfully updated',
+            errorMessage: 'Error occurred, please try again later'
+        };
     }
      )();
 </script>
