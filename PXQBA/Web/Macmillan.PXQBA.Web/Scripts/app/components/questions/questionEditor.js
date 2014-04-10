@@ -211,6 +211,11 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
        var text = "";
        if (node.selectedOptions !== undefined){
             text = node.selectedOptions[0].text;
+            value = node.selectedOptions[0].value;
+            if (text.toLowerCase()!= value.toLowerCase())
+            {
+              text = value;
+            }
        } 
        else {
             text = node.value;
