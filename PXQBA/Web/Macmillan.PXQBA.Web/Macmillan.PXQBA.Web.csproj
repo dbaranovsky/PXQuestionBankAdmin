@@ -276,6 +276,7 @@
     <Content Include="Scripts\app\src\components\questions\questionTabs.js" />
     <Content Include="Scripts\app\src\components\questions\questionTypeList.js" />
     <Content Include="Scripts\app\src\components\questions\questionInlineEditorSingleSelect.js" />
+    <Content Include="Scripts\bootstrap\bootstrap-notify.js" />
     <Content Include="Scripts\bootstrap\bootstrap-paginator.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
