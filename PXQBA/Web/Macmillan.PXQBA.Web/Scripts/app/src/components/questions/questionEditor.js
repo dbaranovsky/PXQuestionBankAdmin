@@ -74,7 +74,7 @@ var QuestionEditor = React.createClass({
        // {
        // }
         var finishSaving = this.props.finishSaving;
-        questionDataManager.updateQuestion(this.state.question).always(finishSaving);
+        questionDataManager.updateQuestion(this.state.question).done(finishSaving);
 
     },
 

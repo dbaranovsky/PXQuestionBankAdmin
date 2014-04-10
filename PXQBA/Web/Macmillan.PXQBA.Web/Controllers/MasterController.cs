@@ -20,7 +20,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
             StaticLogger.LogError(String.Format("Web exception: controler='{0}',action='{1}'.", controllerName, actionName),
                 filterContext.Exception);
-            filterContext.ExceptionHandled = true;   
+            filterContext.ExceptionHandled = false;   
         }
 
         protected ActionResult JsonCamel(object data)
