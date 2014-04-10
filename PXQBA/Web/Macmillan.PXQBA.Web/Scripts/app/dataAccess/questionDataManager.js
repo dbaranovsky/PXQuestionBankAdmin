@@ -233,6 +233,7 @@
         }).done(function (response) {
 
         }).error(function(e){
+             self.resetState();
              self.showErrorPopup();
         });
  
