@@ -38,6 +38,9 @@
             type: 'POST'
         }).done(function (response) {
             self.processDataResponse(response);
+        }).error(function(e){
+             self.showErrorPopup();
+             self.resetState();
         });
     };
 
@@ -63,6 +66,9 @@
             console.log('Edited complete');
             self.resetState();
             console.log('Refresh complite');
+        }).error(function(e){
+             self.showErrorPopup();
+             self.resetState();
         });
     };
 
@@ -77,6 +83,9 @@
             dataType: 'json',
             type: 'GET'
         }).done(function (response) {
+        }).error(function(e){
+             self.showErrorPopup();
+             self.resetState();
         });
 
     };
@@ -94,6 +103,9 @@
             type: 'POST'
         }).done(function (response) {
             console.log('Save note complete');
+        }).error(function(e){
+             self.showErrorPopup();
+             self.resetState();
         });
     };
 
@@ -112,6 +124,9 @@
             console.log('Delete note complete');
             self.resetState();
             console.log('Refresh complite');
+        }).error(function(e){
+             self.showErrorPopup();
+             self.resetState();
         });
     };
 
@@ -130,6 +145,9 @@
                 console.log('Save note complete');
                 self.resetState();
                 console.log('Refresh complite');
+            }).error(function(e){
+                 self.showErrorPopup();
+                 self.resetState();
             });
         };
 
@@ -144,6 +162,9 @@
             dataType: 'json',
             type: 'GET'
         }).done(function (response) {
+        }).error(function(e){
+             self.showErrorPopup();
+             self.resetState();
         });
     };
 
@@ -159,6 +180,9 @@
             dataType: 'json',
             type: 'GET'
         }).done(function (response) {
+        }).error(function(e){
+             self.showErrorPopup();
+             self.resetState();
         });
     };
 
@@ -172,6 +196,9 @@
             type: 'GET'
         }).done(function (response) {
             self.processDataResponse(response);
+        }).error(function(e){
+             self.showErrorPopup();
+             self.resetState();
         });
     };
 
@@ -191,6 +218,9 @@
             console.log('Update question complete');
             self.resetState();
             console.log('Refresh complite');
+        }).error(function(e){
+             self.showErrorPopup();
+             self.resetState();
         });
     };
    
@@ -210,7 +240,10 @@
             dataType: 'json',
             type: 'POST'
         }).done(function (response) {
- 
+
+        }).error(function(e){
+             self.showErrorPopup();
+             self.resetState();
         });
  
  
@@ -220,6 +253,14 @@
          crossroads.resetState();
          crossroads.parse(window.routsManager.buildHash());
     };
+
+    self.showErrorPopup = function(){
+
+        var notifyOptions =  {message: {text: window.enums.messages.errorMessage}, 
+                             type: 'danger',
+                             fadeOut: { enabled: true, delay: 3000 } };
+        $('.top-center').notify(notifyOptions).show();
+    }
 
     return self;
 }());
