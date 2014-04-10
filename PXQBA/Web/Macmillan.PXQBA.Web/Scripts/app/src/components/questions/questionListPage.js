@@ -17,7 +17,8 @@ var QuestionListPage = React.createClass({
                editor: {
                         step: this.editorsSteps.none,
                         template: null, 
-                        isNew: false
+                        isNew: false,
+                        caption: window.enums.dialogCaptions.newQuestion
                        }
              };
     },
@@ -46,29 +47,38 @@ var QuestionListPage = React.createClass({
             return (<QuestionEditorDialog closeDialogHandler={this.closeDialogHandler}
                                           isNew={this.state.editor.isNew}
                                           showOnCreate={true}
-                                          question={this.state.editor.template}/>);
+                                          question={this.state.editor.template}
+                                          caption={this.state.editor.caption }/>);
           default:
             return null;
         }
     },
 
     copyQuestionHandler: function(questionId) {
-        this.setState({ loading:true} );
+        this.setState({
+           loading: true,
+           editorCaption: window.enums.dialogCaptions.duplicateQuestion
+        });
         questionDataManager.getDuplicateQuestionTemplate(questionId).done(this.loadTemplateComplete.bind(this, false));
     },
 
     editQuestionHandler: function(questionId) {
-       this.setState({ loading:true} );
+        this.setState({
+           loading: true,
+           editorCaption: window.enums.dialogCaptions.editQuestion
+        });
        questionDataManager.getQuestion(questionId).done(this.loadTemplateComplete.bind(this, false));
     },
               
     loadTemplateComplete: function(isNew, template) { 
+        
         this.setState({
                  loading: false,
                  editor: {
                     template: template,
                     step: this.editorsSteps.step2,
-                    isNew: isNew }
+                    isNew: isNew,
+                    caption: isNew? window.enums.dialogCaptions.newQuestion : this.state.editorCaption}
                     });
     },
 
