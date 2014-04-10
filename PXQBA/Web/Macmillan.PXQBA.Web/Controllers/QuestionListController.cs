@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.UI.WebControls;
 using AutoMapper;
 using System.Net;
 using Macmillan.PXQBA.Business.Contracts;
@@ -48,6 +49,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult GetQuestionData(QuestionListDataRequest request)
         {
+            throw new FormatException("format is invalid");
             var sortCriterion = new SortCriterion {ColumnName = request.OrderField, SortType = request.OrderType};
             var questionList = questionManagementService.GetQuestionList(CourseHelper.CurrentCourse,
                                                                           sortCriterion, 
