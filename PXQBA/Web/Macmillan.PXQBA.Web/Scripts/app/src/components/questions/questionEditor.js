@@ -20,13 +20,19 @@ var QuestionEditorDialog = React.createClass({
 
         questionDataManager.resetState();
         $(this.getDOMNode()).modal("hide");
-        var notifyOptions = {message: { text: 'Question created!' }, 
+
+        var text = this.props.caption == window.enums.dialogCaptions.editQuestion?  
+                      window.enums.messages.succesUpdate :
+                      window.enums.messages.succesCreate;
+
+
+        var notifyOptions = {message: { text: text }, 
                              type: 'success',
                              fadeOut: { enabled: true, delay: 3000 } };
         if(e.status != 200)
         {
             notifyOptions.type = 'danger';
-            notifyOptions.message.text = 'Error occures, try again later';
+            notifyOptions.message.text = window.enums.message.errorMessage;
         }
         $('.top-center').notify(notifyOptions).show();
     },
@@ -37,14 +43,12 @@ var QuestionEditorDialog = React.createClass({
 
 
     render: function() {
+         var self = this;
         var renderHeaderText = function() {
-            return "New Question";
+            return self.props.caption;
         };
-        var question = this.props.question;
-        var finishSaving = this.finishSaving;
-        var closeDialog = this.closeDialog;
         var renderBody = function(){
-            return (<QuestionEditor question={question} finishSaving = {finishSaving} closeDialog={closeDialog}/>);
+            return (<QuestionEditor question={self.props.question} finishSaving = {self.finishSaving} closeDialog={self.closeDialog}/>);
         };
         var renderFooterButtons = function(){
             return ("");
@@ -207,6 +211,11 @@ var MetadataFieldEditor = React.createClass({
        var text = "";
        if (node.selectedOptions !== undefined){
             text = node.selectedOptions[0].text;
+            value = node.selectedOptions[0].value;
+            if (text.toLowerCase()!= value.toLowerCase())
+            {
+              text = value;
+            }
        } 
        else {
             text = node.value;

@@ -21,9 +21,9 @@ var Question = React.createClass({
             var questionId = this.props.metadata.data["id"];
             return <QuestionListMenu
                         questionId={questionId} 
-                        renderNotes={this.props.renderNotes.bind(null, questionId)}
                         copyQuestionHandler={this.props.menuHandlers.copyQuestionHandler.bind(null, questionId)}
                         editQuestionHandler={this.props.menuHandlers.editQuestionHandler.bind(null, questionId)}
+                        editNotesHandler={this.props.menuHandlers.editNotesHandler.bind(null, questionId)}
                         />
         }
 

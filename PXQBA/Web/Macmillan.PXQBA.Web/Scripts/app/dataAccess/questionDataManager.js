@@ -94,8 +94,6 @@
             type: 'POST'
         }).done(function (response) {
             console.log('Save note complete');
-            self.resetState();
-            console.log('Refresh complite');
         });
     };
 
