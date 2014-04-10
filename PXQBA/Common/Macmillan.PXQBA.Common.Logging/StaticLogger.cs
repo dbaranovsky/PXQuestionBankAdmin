@@ -25,7 +25,7 @@ namespace Macmillan.PXQBA.Common.Logging
             do
             {
                 Exception exceptionToLog = exception;
-                Log(() => logger.Error(messageText ?? String.Empty, exceptionToLog), logger.IsErrorEnabled);
+                Log(() => logger.LogException(LogLevel.Error, messageText ?? String.Empty, exceptionToLog), logger.IsErrorEnabled);
                 if (exceptionToLog != null)
                     exception = exceptionToLog.InnerException;
             } while (exception != null);
@@ -47,7 +47,7 @@ namespace Macmillan.PXQBA.Common.Logging
             do
             {
                 Exception exceptionToLog = exception;
-                Log(() => logger.Debug(messageText ?? String.Empty, exceptionToLog), logger.IsDebugEnabled);
+                Log(() => logger.LogException(LogLevel.Debug, messageText ?? String.Empty, exceptionToLog), logger.IsDebugEnabled);
                 if (exceptionToLog != null)
                     exception = exceptionToLog.InnerException;
             } while (exception != null);

@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using Macmillan.PXQBA.Common.Logging;
 using Macmillan.PXQBA.Web.ActionResults;
+using NLog;
 
 namespace Macmillan.PXQBA.Web.Controllers
 {
@@ -19,7 +20,6 @@ namespace Macmillan.PXQBA.Web.Controllers
 
             StaticLogger.LogError(String.Format("Web exception: controler='{0}',action='{1}'.", controllerName, actionName),
                 filterContext.Exception);
-
             filterContext.ExceptionHandled = true;   
         }
 
