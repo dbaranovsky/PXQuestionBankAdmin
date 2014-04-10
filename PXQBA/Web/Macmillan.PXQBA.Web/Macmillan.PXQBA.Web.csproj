@@ -64,7 +64,8 @@
     <Reference Include="Microsoft.Practices.Unity.Mvc">
       <HintPath>..\..\packages\Unity.Mvc.3.0.1304.0\lib\Net45\Microsoft.Practices.Unity.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="NLog">
+    <Reference Include="NLog, Version=2.1.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\NLog.2.1.0\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="System" />
