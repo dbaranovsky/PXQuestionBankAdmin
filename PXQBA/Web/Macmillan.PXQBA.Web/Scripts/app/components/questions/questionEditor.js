@@ -32,7 +32,7 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
         if(e.status != 200)
         {
             notifyOptions.type = 'danger';
-            notifyOptions.message.text = window.enums.message.errorMessage;
+            notifyOptions.message.text = window.enums.messages.errorMessage;
         }
         $('.top-center').notify(notifyOptions).show();
     },
