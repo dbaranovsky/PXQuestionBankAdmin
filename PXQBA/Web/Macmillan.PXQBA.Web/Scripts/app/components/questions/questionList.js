@@ -14,8 +14,37 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
         return { showEditDialog: false, 
                  questionIdForNotes: 0,
                  selectedQuestions: [],
-                 selectedAll: false
+                 selectedAll: false,
                };
+    },
+
+    componentWillReceiveProps: function(nextProps) {
+      if(this.shouldResetSelected(nextProps)) {
+         this.resetSelection();
+      }
+    }, 
+
+    shouldResetSelected: function(nextProps) {
+      var shouldResetSelected = false;
+
+      if(this.props.currentPage!=nextProps.currentPage) {
+          shouldResetSelected = true;
+      }
+
+      if(this.props.order.orderType!=nextProps.order.orderType) {
+        shouldResetSelected = true;
+      }
+ 
+      if((this.props.order.orderField!=nextProps.order.orderField)
+          &&(this.props.order.orderType!=window.enums.orderType.none)) {
+        shouldResetSelected = true;
+      }
+
+      return shouldResetSelected;
+    },
+
+    resetSelection: function() {
+       this.setState({ selectedQuestions: [], selectedAll:false });
     },
 
     componentDidMount: function() {
@@ -100,7 +129,7 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
     },
 
     deselectsAllQuestionHandler: function() {
-        this.setState({selectedQuestions: [], selectedAll:false});
+        this.resetSelection();
     },
 
     renderQuestion: function() {
