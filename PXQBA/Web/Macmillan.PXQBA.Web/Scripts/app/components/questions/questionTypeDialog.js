@@ -27,9 +27,8 @@ var QuestionTypeDialog = React.createClass({displayName: 'QuestionTypeDialog',
         };
 
         var nextStepHandler = this.nextStepHandler;
-        var questionTypes = this.props.questionTypes;
+        var metadata = this.props.metadata;
         var renderBody = function(){
-
             return (React.DOM.div(null, 
 
                     React.DOM.ul( {className:"nav nav-tabs"}, 
@@ -41,19 +40,20 @@ var QuestionTypeDialog = React.createClass({displayName: 'QuestionTypeDialog',
                   
                       React.DOM.div( {className:"tab-pane active", id:"newQuestion"}, 
                          React.DOM.div( {className:"tab-body"},        
-                            AddQuestionBox( {nextStepHandler:nextStepHandler, questionTypes:questionTypes})
+                            AddQuestionBox( {nextStepHandler:nextStepHandler, metadata:metadata})
                           )
                       )
                     
                 
 
                 )
-
-);
+            );
         };
+
         var renderFooterButtons = function(){
             return ("");
         };
+
         return (ModalDialog( {renderHeaderText:renderHeaderText, renderBody:renderBody, renderFooterButtons:renderFooterButtons, dialogId:"addQuestionModal"})
                 );
     }
@@ -61,23 +61,31 @@ var QuestionTypeDialog = React.createClass({displayName: 'QuestionTypeDialog',
 
 var AddQuestionBox = React.createClass({displayName: 'AddQuestionBox',
 
-
-    getInitialState: function() {
+ 
+   getInitialState: function() {
       return { 
-               questionType: 0
+               question: {type: 0, chapter:"", bank:""}
              };
     },
-   
+
+
    nextStepHandler: function(){
-      this.props.nextStepHandler(this.state.questionType);
+      this.props.nextStepHandler(this.state.question);
    },
 
-   changeQuestionType: function(questionType){
-    this.setState({questionType: questionType});
+   editHandler: function(question){
+
+    this.setState({question: question});
    },
+
+   
+
+
     render: function() {
             return (React.DOM.div(null, 
-                    QuestionTypeList( {questionTypes:this.props.questionTypes, changeQuestionType:this.changeQuestionType, changeHandler:this.changeQuestionType}),
+                           MetadataFieldEditor( {question:this.state.question, metadata:this.props.metadata, setDefault:true, editHandler:this.editHandler, field:"type"}),
+                           MetadataFieldEditor( {question:this.state.question, metadata:this.props.metadata, setDefault:true,  editHandler:this.editHandler, field:"chapter"}),
+                           MetadataFieldEditor( {question:this.state.question, metadata:this.props.metadata, setDefault:true,  editHandler:this.editHandler, field:"bank"}),
 
                             React.DOM.div( {className:"modal-footer clearfix"}, 
                                  React.DOM.button( {type:"button", className:"btn btn-primary", 'data-dismiss':"modal",  onClick:this.nextStepHandler}, "Next"),

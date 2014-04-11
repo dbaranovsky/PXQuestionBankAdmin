@@ -30,8 +30,10 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
         return null;
     },
 
-    nextStepHandler: function(questionType){
-        questionDataManager.getNewQuestionTemplate(questionType).done(this.loadTemplateComplete.bind(this, true));
+    nextStepHandler: function(question){
+        questionDataManager.getNewQuestionTemplate(question)
+                            .done(this.loadTemplateComplete.bind(this, true))
+                            .fail(this.resetState);
     },
 
     renderQuestionEditorDialog: function() {
@@ -41,7 +43,7 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
            return ( QuestionTypeDialog( 
                               {nextStepHandler:this.nextStepHandler, 
                               showOnCreate:true, 
-                              questionTypes:this.state.editor.questionTypes, 
+                              metadata:this.state.editor.metadata, 
                               closeDialogHandler:  this.closeDialogHandler}));
           case this.editorsSteps.step2:
             return (QuestionEditorDialog( {closeDialogHandler:this.closeDialogHandler,
@@ -52,6 +54,10 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
           default:
             return null;
         }
+    },
+
+    resetState: function(e){
+         this.closeDialogHandler();
     },
 
     copyQuestionHandler: function(questionId) {
@@ -98,15 +104,15 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
 
     initialCreateNewQuestion: function() {
       this.setState({ loading:true} );
-      questionFilterDataManager.getQuestionTypeList().done(this.loadQuestionTypesComplete.bind(this))
+      questionDataManager.getMetadataFields().done(this.loadMetadataComplete.bind(this))
 
     },
 
-    loadQuestionTypesComplete: function(questionTypes) {
+    loadMetadataComplete: function(metadata) {
         this.setState({
               loading: false,
                editor: {
-                   questionTypes: questionTypes,
+                   metadata: metadata,
                    template: this.state.editor.template,
                    step: this.editorsSteps.step1,
                    isNew: this.state.editor.isNew }

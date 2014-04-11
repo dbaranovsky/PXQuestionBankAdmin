@@ -237,7 +237,7 @@ input[type="checkbox"].input-validation-error {
 }
 
 .tab-body input:not([type="radio"]),select, textarea {
-    max-width: 958px;
+    max-width: 100%;
     width: 958px;
 }
 
