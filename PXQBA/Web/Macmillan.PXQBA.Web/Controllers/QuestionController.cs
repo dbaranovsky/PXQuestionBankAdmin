@@ -52,10 +52,11 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
             return JsonCamel(questionMetadataService.GetAvailableFields().Select(MetadataFieldsHelper.Convert).ToList());
         }
-        
-        public void UpdateQuestion(Question question)
+
+        public ActionResult UpdateQuestion(Question question)
         {
             questionManagementService.UpdateQuestion(question);
+            return JsonCamel(new { isError = false });
         }
 
         public ActionResult GetQuestion(string questionId)

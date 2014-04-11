@@ -25,15 +25,9 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
                       window.enums.messages.succesUpdate :
                       window.enums.messages.succesCreate;
 
-
         var notifyOptions = {message: { text: text }, 
                              type: 'success',
                              fadeOut: { enabled: true, delay: 3000 } };
-        if(e.status != 200)
-        {
-            notifyOptions.type = 'danger';
-            notifyOptions.message.text = window.enums.messages.errorMessage;
-        }
         $('.top-center').notify(notifyOptions).show();
     },
 
