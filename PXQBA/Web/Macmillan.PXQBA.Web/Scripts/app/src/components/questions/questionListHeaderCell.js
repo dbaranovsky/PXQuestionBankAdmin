@@ -43,12 +43,19 @@ var QuestinListHeaderCell = React.createClass({
     return null;
  },
 
+ renderExpandButton: function() {
+     if(this.props.metadataName==window.consts.questionTitleName) {
+         return (<ExpandButton expanded={this.props.expandedAll} onClickHandler={this.props.expandAllQuestionHandler}/>);  
+      }
+      return null;
+ },
+ 
   render: function() {
       return (   
             <th style={ {width: this.props.width}}
               onMouseOver={this.mouseOverHandler}
               onMouseLeave={this.mouseLeaveHandler}>
-                 <span className={this.props.leftIcon}></span>
+                  {this.renderExpandButton()}
                  <span className="header-caption" onClick={this.changeOrdering} data-title={this.props.metadataName}>
                      {this.props.caption}
                  </span>
@@ -58,3 +65,5 @@ var QuestinListHeaderCell = React.createClass({
       );
     }
 });
+
+

@@ -201,6 +201,7 @@
     <Content Include="packages.config" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\app\async\asyncManager.js" />
+    <Content Include="Scripts\app\components\common\expandButton.js" />
     <Content Include="Scripts\app\components\common\loader.js" />
     <Content Include="Scripts\app\components\common\modalDialog.js" />
     <Content Include="Scripts\app\components\questions\editQuestionNotesDialog.js" />
@@ -214,7 +215,6 @@
     <Content Include="Scripts\app\components\questions\questionBulkOperationBar.js" />
     <Content Include="Scripts\app\components\questions\questionCell.js" />
     <Content Include="Scripts\app\components\questions\questionCellMenu.js" />
-    <Content Include="Scripts\app\components\questions\questionCellWithPreview.js" />
     <Content Include="Scripts\app\components\questions\questionEditor.js" />
     <Content Include="Scripts\app\components\questions\questionFilter.js" />
     <Content Include="Scripts\app\components\questions\questionGrid.js" />
@@ -243,6 +243,7 @@
     <Content Include="Scripts\app\routes\routeItem.js" />
     <Content Include="Scripts\app\routes\router.js" />
     <Content Include="Scripts\app\routes\routeManager.js" />
+    <Content Include="Scripts\app\src\components\common\expandButton.js" />
     <Content Include="Scripts\app\src\components\common\loader.js" />
     <Content Include="Scripts\app\src\components\common\modalDialog.js" />
     <Content Include="Scripts\app\src\components\questions\notes\editQuestionNotesDialog.js" />
@@ -256,7 +257,6 @@
     <Content Include="Scripts\app\src\components\questions\question.js" />
     <Content Include="Scripts\app\src\components\questions\questionCell.js" />
     <Content Include="Scripts\app\src\components\questions\questionCellMenu.js" />
-    <Content Include="Scripts\app\src\components\questions\questionCellWithPreview.js" />
     <Content Include="Scripts\app\src\components\questions\questionEditor.js" />
     <Content Include="Scripts\app\src\components\questions\questionFilter.js" />
     <Content Include="Scripts\app\src\components\questions\questionGrid.js" />

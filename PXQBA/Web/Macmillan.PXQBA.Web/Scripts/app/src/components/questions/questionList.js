@@ -11,88 +11,44 @@ var QuestionList = React.createClass({
     },
 
     getInitialState: function() {
-        return { showEditDialog: false, 
-                 questionIdForNotes: 0,
-                 selectedQuestions: [],
+        return { selectedQuestions: [],
                  selectedAll: false,
+                 expandedQuestions: [],
+                 expandedAll: false
                };
     },
 
-    componentWillReceiveProps: function(nextProps) {
-      if(this.isShouldResetSelected(nextProps)) {
-         this.resetSelection();
-      }
-    }, 
-
-    isShouldResetSelected: function(nextProps) {
-      var shouldResetSelected = false;
-
-      if(this.props.currentPage!=nextProps.currentPage) {
-          shouldResetSelected = true;
-      }
-
-      if(this.props.order.orderType!=nextProps.order.orderType) {
-        shouldResetSelected = true;
-      }
- 
-      if((this.props.order.orderField!=nextProps.order.orderField)
-          &&(this.props.order.orderType!=window.enums.orderType.none)) {
-        shouldResetSelected = true;
-      }
-
-      return shouldResetSelected;
+    expandAllQuestionHandler: function(isExpanded) {
+        for(var i=0; i<this.props.data.length; i++) {
+          this.expandPreviewQuestionHandler(this.props.data[i].data.id, isExpanded)
+        }
+        this.setState({expandedAll:isExpanded})
     },
 
-    resetSelection: function() {
-       this.setState({ selectedQuestions: [], selectedAll:false });
+    expandPreviewQuestionHandler: function(questionId, isExpanded) {
+        var expandedQuestions = this.state.expandedQuestions;
+        var index = $.inArray(questionId, expandedQuestions);
+        if(isExpanded) {
+          if (index == -1) {
+              expandedQuestions.push(questionId)
+          }
+        } 
+        else {
+           if (index != -1) {
+              expandedQuestions.splice(index, 1);
+           }
+        }
+
+        this.setState({expandedQuestions: expandedQuestions});
     },
 
-    componentDidMount: function() {
-
-        var questionListContainer = $(this.getDOMNode());
-
-        var toggleAllPreviews = function (event) {
-              var questionPreviews = $(event.target).closest('table').find('.question-preview');
-              var chevronIcon =  $(event.target).closest('th').find('.glyphicon');
-              $(chevronIcon).toggleClass('glyphicon-chevron-right').toggleClass('glyphicon-chevron-down');
-              if($(chevronIcon).hasClass('glyphicon-chevron-down')) {
-                  $.each(questionPreviews, function(index, value) {
-                  expandPreview($(value).closest('td'));
-                  });
-              }
-              else {
-                  $.each(questionPreviews, function(index, value) {
-                  collapsePreview($(value).closest('td'));
-                  });
-              }
-        };
-
-        var toggleInlineHandler = function (event) {
-            toggleInline(event.target);
-        };
-
-        var toggleInline = function (obj) {
-          if ($(obj).closest('td').find('.glyphicon').hasClass('glyphicon-chevron-right')) {
-              expandPreview($(obj).closest('td'));
-          }
-          else {
-              collapsePreview($(obj).closest('td'));
-          }
-        };
-
-        var expandPreview = function (obj) {
-            $(obj).find('.glyphicon').removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-down');
-            $(obj).find('.question-preview').removeClass('preview-collapsed');
-        };
-
-        var collapsePreview = function (obj) {
-            $(obj).find('.glyphicon').addClass('glyphicon-chevron-right').removeClass('glyphicon-chevron-down');
-            $(obj).find('.question-preview').addClass('preview-collapsed');
-        };
-
-        questionListContainer.find('.question-table').on('click', '.titles-expander', toggleAllPreviews);
-        questionListContainer.find('.question-table').on('click', '.title', toggleInlineHandler);
-            
+    isQuestionExpanded: function(questionId) {
+         var expandedQuestions = this.state.expandedQuestions;
+         var index = $.inArray(questionId, expandedQuestions);
+         if(index==-1) {
+            return false;
+         }
+         return true;
     },
 
     selectQuestionHandler: function(questionId, isSelected) {
@@ -135,11 +91,26 @@ var QuestionList = React.createClass({
     renderQuestion: function() {
        var self = this;
        var questions = this.props.data.map(function (question) {
-            return (<Question metadata={question}
+
+            var isQuestionExpanded = self.isQuestionExpanded(question.data.id);
+
+            var questionHtml = (<Question metadata={question}
                        columns={self.props.columns} 
                        menuHandlers={self.props.handlers}
                        selectQuestionHandler={self.selectQuestionHandler}
-                       selected={self.isQuestionSelected(question.data.id)}/>);
+                       selected={self.isQuestionSelected(question.data.id)}
+                       expandPreviewQuestionHandler = {self.expandPreviewQuestionHandler}
+                       expanded={isQuestionExpanded}
+
+                       />);
+
+            var preview = null;
+
+            if(isQuestionExpanded) {
+              preview = (<QuestionPreview colSpan={self.getAllColumnCount()} preview={question.data.questionHtmlInlinePreview} />);
+            }
+
+            return [questionHtml, preview];
           });
 
        if(questions.length==0) {
@@ -169,7 +140,10 @@ var QuestionList = React.createClass({
                                         columns={this.props.columns} 
                                         allAvailableColumns={this.props.allAvailableColumns} 
                                         selectAllQuestionHandelr={this.selectAllQuestionHandelr}
-                                        selectedAll={this.state.selectedAll}/>
+                                        selectedAll={this.state.selectedAll}
+                                        expandAllQuestionHandler={this.expandAllQuestionHandler}
+                                        expandedAll={this.state.expandedAll}
+                                        />
                   </thead>
                   <tbody> 
                     {this.renderBulkOperationBar()}

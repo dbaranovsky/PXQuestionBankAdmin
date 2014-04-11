@@ -43,12 +43,19 @@ var QuestinListHeaderCell = React.createClass({displayName: 'QuestinListHeaderCe
     return null;
  },
 
+ renderExpandButton: function() {
+     if(this.props.metadataName==window.consts.questionTitleName) {
+         return (ExpandButton( {expanded:this.props.expandedAll, onClickHandler:this.props.expandAllQuestionHandler}));  
+      }
+      return null;
+ },
+ 
   render: function() {
       return (   
             React.DOM.th( {style: {width: this.props.width},
               onMouseOver:this.mouseOverHandler,
               onMouseLeave:this.mouseLeaveHandler}, 
-                 React.DOM.span( {className:this.props.leftIcon}),
+                  this.renderExpandButton(),
                  React.DOM.span( {className:"header-caption", onClick:this.changeOrdering, 'data-title':this.props.metadataName}, 
                      this.props.caption
                  ),
@@ -58,3 +65,5 @@ var QuestinListHeaderCell = React.createClass({displayName: 'QuestinListHeaderCe
       );
     }
 });
+
+
