@@ -19,12 +19,12 @@ var QuestionList = React.createClass({
     },
 
     componentWillReceiveProps: function(nextProps) {
-      if(this.shouldResetSelected(nextProps)) {
+      if(this.isShouldResetSelected(nextProps)) {
          this.resetSelection();
       }
     }, 
 
-    shouldResetSelected: function(nextProps) {
+    isShouldResetSelected: function(nextProps) {
       var shouldResetSelected = false;
 
       if(this.props.currentPage!=nextProps.currentPage) {
