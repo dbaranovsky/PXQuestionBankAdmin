@@ -27,7 +27,6 @@ namespace Macmillan.PXQBA.Common.Helpers
              {
                  model.Width = "30%";
                  model.CanNotDelete = true;
-                 model.LeftIcon = "glyphicon glyphicon-chevron-right titles-expander";
              }
 
              if (metaField.Name == MetadataFieldNames.DlapStatus)

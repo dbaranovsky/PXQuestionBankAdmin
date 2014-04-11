@@ -15,14 +15,10 @@ var QuestionCell = React.createClass({displayName: 'QuestionCell',
       if(!this.state.editMode) {
             this.setState({ showMenu: true});
       }
-
     },
 
     mouseLeaveHandler: function() {
-        this.setState({ 
-                        showMenu: false,
-                        editMode: this.state.editMode
-                      });
+        this.setState({ showMenu: false});
     },
 
     onEditClickHandler: function() {
@@ -46,12 +42,23 @@ var QuestionCell = React.createClass({displayName: 'QuestionCell',
 
     afterEditingHandler: function(){
          this.setState({ 
-                showMenu: false,
-                editMode: false});
+                        showMenu: false,
+                        editMode: false
+                      });
+    },
+
+    expandPreviewQuestionHandler: function(expanded) {
+       this.props.expandPreviewQuestionHandler(this.props.questionId, expanded)
+    },
+
+    renderExpandButton: function() {
+     if(this.props.field==window.consts.questionTitleName) {
+         return (ExpandButton( {expanded:this.props.expanded, onClickHandler:this.expandPreviewQuestionHandler}));  
+      }
+      return null;
     },
 
     renderValue: function() {
-
         if(this.state.editMode) {
             return (QuestionInlineEditorBase( {afterEditingHandler:this.afterEditingHandler,
                     metadata: {field: this.props.field,
@@ -60,19 +67,7 @@ var QuestionCell = React.createClass({displayName: 'QuestionCell',
                                editorDescriptor: this.props.editorDescriptor}}
              ));
         }
-
-        if(this.props.previewInfo.hasPriview) {
-           return ( React.DOM.div(null, 
-                        React.DOM.div( {className:this.props.previewInfo.classNameForCell}, 
-                        React.DOM.span( {className:"glyphicon glyphicon-chevron-right title-expander"}),
-                           this.props.value
-                        ),
-                        QuestionPreview( {preview:this.props.previewInfo.htmlPreview})
-                    )
-                    );
-        }
-
-        return (React.DOM.div( {className:"cell-value"}, this.props.value, " " ));
+        return (React.DOM.div( {className:"cell-value"}, this.renderExpandButton(),this.props.value, " " ));
     },
 
     render: function() {

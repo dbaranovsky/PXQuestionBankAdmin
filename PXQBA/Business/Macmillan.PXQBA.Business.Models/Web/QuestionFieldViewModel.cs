@@ -11,8 +11,6 @@ namespace Macmillan.PXQBA.Business.Models.Web
 
         public string Width { get; set; }
 
-        public string LeftIcon { get; set; }
-
         public bool CanNotDelete { get; set; }
 
         public FieldEditorDescriptor EditorDescriptor { get; set; }

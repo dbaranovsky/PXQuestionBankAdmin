@@ -314,3 +314,7 @@ input[type="checkbox"].input-validation-error {
     float: left;
     margin: 0 15px 0 15px
 }
+
+.expand-button {
+   cursor: pointer;
+}

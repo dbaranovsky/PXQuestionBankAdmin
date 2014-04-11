@@ -16,7 +16,7 @@ var QuestionListHeader = React.createClass({displayName: 'QuestionListHeader',
   },
 
   applyOrdering: function(columns, ordering) {
-    if(ordering.orderType!='none') {
+    if(ordering.orderType!=window.enums.orderType.none) {
       for(var i=0; i<columns.length; i++) {
         if(columns[i].metadataName==ordering.orderField) {
            columns[i].order=ordering.orderType;
@@ -34,8 +34,10 @@ var QuestionListHeader = React.createClass({displayName: 'QuestionListHeader',
                   caption:descriptor.friendlyName,
                   metadataName:descriptor.metadataName,
                   order:descriptor.order,
-                  leftIcon:descriptor.leftIcon,
-                  canNotDelete:descriptor.canNotDelete} ));
+                  canNotDelete:descriptor.canNotDelete, 
+                  expandAllQuestionHandler:this.props.expandAllQuestionHandler,
+                  expandedAll:this.props.expandedAll}
+                  ));
   },
 
   render: function() {
