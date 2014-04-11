@@ -31,7 +31,9 @@ var QuestionListPage = React.createClass({
     },
 
     nextStepHandler: function(questionType){
-        questionDataManager.getNewQuestionTemplate(questionType).done(this.loadTemplateComplete.bind(this, true));
+        questionDataManager.getNewQuestionTemplate(questionType)
+                            .done(this.loadTemplateComplete.bind(this, true))
+                            .fail(this.resetState);
     },
 
     renderQuestionEditorDialog: function() {
@@ -52,6 +54,10 @@ var QuestionListPage = React.createClass({
           default:
             return null;
         }
+    },
+
+    resetState: function(e){
+         this.closeDialogHandler();
     },
 
     copyQuestionHandler: function(questionId) {
