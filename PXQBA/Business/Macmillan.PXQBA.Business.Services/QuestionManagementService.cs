@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
@@ -40,6 +41,7 @@ namespace Macmillan.PXQBA.Business.Services
         public Question DuplicateQuestion(Course course, string questionId)
         {
             Question question = GetQuestion(questionId);
+            question.Id = Guid.NewGuid().ToString();
             question.Status = QuestionStatus.InProgress;
             return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
