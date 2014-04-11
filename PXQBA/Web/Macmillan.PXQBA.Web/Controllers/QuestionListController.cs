@@ -54,10 +54,11 @@ namespace Macmillan.PXQBA.Web.Controllers
                                                                           sortCriterion, 
                                                                           (request.PageNumber - 1) * questionPerPage,
                                                                           questionPerPage);
-
+            var totalPages = (questionList.TotalItems + questionPerPage - (questionList.TotalItems % questionPerPage)) /
+                             questionPerPage;
             var model = new QuestionListDataResponse
                         {
-                            TotalPages = questionList.TotalItems / questionPerPage,
+                            TotalPages = totalPages,
                             QuestionList = questionList.CollectionPage.Select(Mapper.Map<QuestionMetadata>),
                             PageNumber = request.PageNumber,
                             Columns = questionMetadataService.GetDataForFields(request.Columns).Select(MetadataFieldsHelper.Convert).ToList(),
