@@ -37,9 +37,9 @@ namespace Macmillan.PXQBA.Web.Controllers
         
         }
 
-        public ActionResult CreateQuestion(int questionType)
+        public ActionResult CreateQuestion(int questionType, string bank, string chapter)
         {
-            return JsonCamel(questionManagementService.CreateQuestion(CourseHelper.CurrentCourse, (QuestionType)questionType, "", ""));
+            return JsonCamel(questionManagementService.CreateQuestion(CourseHelper.CurrentCourse, (QuestionType)questionType, bank, chapter));
         }
 
         [HttpPost]

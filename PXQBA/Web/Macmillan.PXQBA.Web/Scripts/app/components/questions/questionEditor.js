@@ -177,7 +177,6 @@ var QuestionMetadataEditor = React.createClass({displayName: 'QuestionMetadataEd
        questionDataManager.getMetadataFields().done(this.loadMetadata); 
     },
     render: function() {
-       //   <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"status"} />
         return (
              React.DOM.div( {className:"tab-body"}, 
                            MetadataFieldEditor( {question:this.props.question, metadata:this.state.metadata, editHandler:this.props.editHandler, field:"title"}),
@@ -259,7 +258,22 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
         }
     },
 
-
+    componentDidMount: function(){
+      if (!this.props.setDefault){
+        return;
+      }
+      var field = this.props.field;
+      var metadataField = $.grep(this.props.metadata, function(e){ return (e.metadataName === field) || (e.metadataName === "dlap_q_"+field); });
+      var question = this.props.question;
+      var availableChoices = metadataField[0].editorDescriptor.availableChoice;
+        for (var propertyName in availableChoices) {
+            availableChoice = availableChoices[propertyName];
+            question[this.props.field] = (availableChoice.toLowerCase() == propertyName.toLowerCase())? availableChoice: propertyName;
+            break;
+        }
+       this.props.editHandler(question);
+      
+    },
 
     render: function() {
         return (
