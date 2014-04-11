@@ -146,9 +146,11 @@
             });
         };
 
-    self.getNewQuestionTemplate = function(questionType) {
+    self.getNewQuestionTemplate = function(question) {
         var request = {
-            questionType: questionType
+            questionType: question.type,
+            bank: question.bank,
+            chapter: question.chapter
         };
           return $.ajax({
             url: window.actions.questionList.getNewQuestionTemplateUrl,

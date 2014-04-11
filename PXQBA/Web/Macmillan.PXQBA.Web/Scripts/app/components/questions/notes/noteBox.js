@@ -48,7 +48,7 @@ var NoteBox = React.createClass({displayName: 'NoteBox',
   getInitialState: function() {
     return {data: []};
   },
-  componentDidMount: function() {
+  componentWillMount: function() {
     var response = questionDataManager.getQuestionNotes(this.props.questionId);
     response.done(this.loadNotes);
   },
