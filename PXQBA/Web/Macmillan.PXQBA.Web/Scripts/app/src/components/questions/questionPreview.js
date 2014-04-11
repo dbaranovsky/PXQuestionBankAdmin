@@ -4,22 +4,13 @@
 
 var QuestionPreview = React.createClass({
 
-        loadPreview: function (container) {
-            container.html(this.props.preview);
-        },
-
-        componentDidMount: function() {
-            this.loadPreview($(this.getDOMNode()))
-        },
-
-        componentDidUpdate: function () {
-            this.loadPreview($(this.getDOMNode()))
-    	},
-
         render: function() {
             return ( 
-                <div className="preview-collapsed question-preview">
-                </div>
+                  <tr>
+                    <td colSpan={this.props.colSpan}>
+                         <span dangerouslySetInnerHTML={{__html: this.props.preview}} />
+                    </td>
+                  </tr>
             );
         }
 });

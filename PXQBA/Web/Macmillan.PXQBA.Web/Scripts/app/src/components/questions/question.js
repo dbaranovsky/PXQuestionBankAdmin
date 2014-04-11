@@ -5,7 +5,7 @@
 var Question = React.createClass({
 
     getInitialState: function() {
-        return { showMenu: false };
+        return { showMenu: false, expanded: false};
     },
 
     mouseOverHandler: function() {
@@ -37,21 +37,13 @@ var Question = React.createClass({
     },
 
     renderCell: function(metadataName, editorDescriptor, allowedEdit) {
-        // Hardcoded: only title has a preview
-        // Refactor this after re-implement preview
-        var previewInfo = { hasPriview: false };
-
-        if(metadataName=='dlap_title') {
-            previewInfo.hasPriview = true;
-            previewInfo.classNameForCell = "title";
-            previewInfo.htmlPreview = this.props.metadata.data.questionHtmlInlinePreview;
-        }
         return ( <QuestionCell value={this.props.metadata.data[metadataName]}
                                field={metadataName} 
                                questionId={this.props.metadata.data.id}
                                editorDescriptor={editorDescriptor}
                                allowedEdit = {allowedEdit}
-                               previewInfo={previewInfo}
+                               expanded = {this.props.expanded}
+                               expandPreviewQuestionHandler = {this.props.expandPreviewQuestionHandler}
                                 />);
     },
 
