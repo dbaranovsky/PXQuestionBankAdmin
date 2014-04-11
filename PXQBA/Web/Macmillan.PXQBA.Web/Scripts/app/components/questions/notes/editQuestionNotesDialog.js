@@ -29,8 +29,7 @@ var EditQuestionNotesDialog = React.createClass({displayName: 'EditQuestionNotes
         return (ModalDialog( {renderHeaderText:renderHeaderText,
                              renderBody:renderBody, 
                              renderFooterButtons:renderFooterButtons,
-                             dialogId:"editQuestionNotesModal",
-                             closeDialogHandler:this.props.closeDialogHandler})
+                             dialogId:"editQuestionNotesModal"} )
 
                 );
     }
