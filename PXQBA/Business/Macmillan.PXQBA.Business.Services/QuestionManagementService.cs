@@ -23,10 +23,12 @@ namespace Macmillan.PXQBA.Business.Services
             return questionCommands.GetQuestionList(course.ProductCourseId, sortCriterion, startingRecordNumber, recordCount);
         }
 
-        public Question CreateQuestion(Course course, QuestionType questiontype)
+        public Question CreateQuestion(Course course, QuestionType questiontype, string bank, string chapter)
         {
             Question question = GetNewQuestionTemplate();
             question.Type = questiontype;
+            question.Bank = bank;
+            question.Chapter = chapter;
             return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
 

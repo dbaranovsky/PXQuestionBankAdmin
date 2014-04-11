@@ -21,7 +21,7 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// <param name="course"></param>
         /// <param name="question"></param>
         /// <returns>The updated object that was persisted</returns>
-        Question CreateQuestion(Course course, QuestionType questionType);
+        Question CreateQuestion(Course course, QuestionType questionType, string bank, string chapter);
 
         /// <summary>
         /// Returns question by its ID

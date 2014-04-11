@@ -66,9 +66,12 @@ namespace Macmillan.PXQBA.Business.Services
                                                                    Type = MetaFieldType.SingleSelect,
                                                                    AvailableChoice = new List<string>
                                                                        {
-                                                                           "Single Choice",
-                                                                           "Multiple Choice",
-                                                                           "Essay"
+                                                                           EnumHelper.GetEnumDescription(QuestionType.MultipleAnswer),
+                                                                           EnumHelper.GetEnumDescription(QuestionType.MultipleChoice),
+                                                                           EnumHelper.GetEnumDescription(QuestionType.Matching),
+                                                                           EnumHelper.GetEnumDescription(QuestionType.ShortAnswer),
+                                                                           EnumHelper.GetEnumDescription(QuestionType.Essay),
+                                                                           EnumHelper.GetEnumDescription(QuestionType.GraphExcepcise),
                                                                        }
                                                                }      
                                                        },
