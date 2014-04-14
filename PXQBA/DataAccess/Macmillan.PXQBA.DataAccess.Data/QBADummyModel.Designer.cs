@@ -1259,6 +1259,30 @@ namespace Macmillan.PXQBA.DataAccess.Data
         private global::System.String _CognitiveLevel;
         partial void OnCognitiveLevelChanging(global::System.String value);
         partial void OnCognitiveLevelChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Keywords
+        {
+            get
+            {
+                return _Keywords;
+            }
+            set
+            {
+                OnKeywordsChanging(value);
+                ReportPropertyChanging("Keywords");
+                _Keywords = StructuralObject.SetValidValue(value, true, "Keywords");
+                ReportPropertyChanged("Keywords");
+                OnKeywordsChanged();
+            }
+        }
+        private global::System.String _Keywords;
+        partial void OnKeywordsChanging(global::System.String value);
+        partial void OnKeywordsChanged();
 
         #endregion
 
