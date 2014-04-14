@@ -182,6 +182,7 @@ var QuestionMetadataEditor = React.createClass({
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"title"}/>
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"chapter"}/>
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"bank"}/>
+                           <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"keywords"}/>
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"excerciseNo"} title="Excercise Number"/>
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"difficulty"} allowDeselect={true} />
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"cognitiveLevel"} title="Cognitive Level"/>
@@ -253,7 +254,11 @@ var MetadataFieldEditor = React.createClass({
        var currentValue = this.props.question[this.props.field];
        switch (editorType) {
           case window.enums.editorType.singleSelect:
-             return (<select ref="editor" className="single-select-field" value={currentValue}> {this.renderMenuItems(metadataField[0].editorDescriptor.availableChoice)} </select> );
+             return (<select ref="editor" className="single-selector" value={currentValue}> {this.renderMenuItems(metadataField[0].editorDescriptor.availableChoice)} </select> );
+
+          case window.enums.editorType.multiSelect:
+             return (<MultiSelectEditor values={currentValue} metadataField={metadataField[0]} question={this.props.question} field={this.props.field} editHandler={this.props.editHandler} />);
+
           default: 
             if(!this.props.isMultiline){
                  return (<input type="text" onChange={this.editHandler} ref="editor" value={currentValue}/>)
@@ -264,6 +269,7 @@ var MetadataFieldEditor = React.createClass({
     },
 
     componentDidUpdate: function(){
+      //TODO: move to another component
     var self = this;
     var chosenOptions = {width: "100%"};
     if (self.props.allowDeselect){
@@ -271,7 +277,7 @@ var MetadataFieldEditor = React.createClass({
         chosenOptions.placeholder_text_single = "No Value";
     }
 
-      $(self.getDOMNode()).find('.single-select-field')
+      $(self.getDOMNode()).find('.single-selector')
                            .chosen(chosenOptions)
                            .change(function(e, params){
                               self.editHandler(e.currentTarget.selectedOptions);
@@ -310,4 +316,75 @@ var MetadataFieldEditor = React.createClass({
          );
     }
 
+});
+
+
+var MultiSelectEditor = React.createClass({
+
+ 
+     editHandler: function(selectedOptions){
+      
+       
+       var items = [];
+       
+       $.each(selectedOptions, function(i, option){
+          items.push(option.text);
+       });
+      
+
+      var question = this.props.question;
+      if (question[this.props.field]== null || question[this.props.field].length !== items.length)
+      {
+        question[this.props.field] = items;
+        this.props.editHandler(question);
+      }
+
+     },
+
+    renderMenuItems: function() {
+
+        var metadataValues = [];
+       // if (this.props.allowDeselect){
+        //    items.push(<option value=''></option>);
+       // }
+      var  availableChoices =  this.props.metadataField.editorDescriptor.availableChoice;
+
+        for (var propertyName in availableChoices) {
+            availableChoice = availableChoices[propertyName];
+            metadataValues.push(availableChoice);
+        }
+
+        var mergedList = $.unique($.merge(metadataValues, this.props.question[this.props.field]));
+
+        var options = [];
+         $.each(mergedList, function(i, option){
+               options.push(<option value={option}>{option}</option>);
+         });
+           
+        
+        return options;
+    },
+
+
+    componentDidMount: function(){
+        var self = this;
+    var chosenOptions = {width: "100%"};
+
+    
+
+      $(self.getDOMNode()).val(this.props.question[this.props.field])
+                          .chosen(chosenOptions)
+                          .change(function(e, params){
+                              self.editHandler(e.currentTarget.selectedOptions);
+                           });
+    },
+
+   
+    render: function() {
+        return (
+             <select data-placeholder="No Value" multiple>
+                    {this.renderMenuItems()}  
+             </select> 
+         );
+    }
 });
