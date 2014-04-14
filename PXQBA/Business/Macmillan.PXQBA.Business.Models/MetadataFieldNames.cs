@@ -12,5 +12,6 @@
         public const string Bank = "bank";
         public const string Sequence = "seq";
         public const string Difficulty = "difficulty";
+        public const string Keywords = "keywords";
     }
 }

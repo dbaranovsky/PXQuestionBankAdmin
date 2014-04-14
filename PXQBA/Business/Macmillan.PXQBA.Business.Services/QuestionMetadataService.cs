@@ -105,6 +105,22 @@ namespace Macmillan.PXQBA.Business.Services
                                                                        }
                                                                }      
                                                        },
+                                                       new QuestionMetaField()
+                                                       {
+                                                           FriendlyName = "Keywords",
+                                                           Name = MetadataFieldNames.Keywords,
+                                                           TypeDescriptor = new MetaFieldTypeDescriptor
+                                                               {
+                                                                   Type = MetaFieldType.MultiSelect,
+                                                                   AvailableChoice = new List<string>
+                                                                       {
+                                                                           "Keyword 1",
+                                                                           "Keyword 2",
+                                                                           "Keyword 3"
+                                                                       }
+                                                               }
+                                                           
+                                                       },
                                                    };
 
             return fields;
