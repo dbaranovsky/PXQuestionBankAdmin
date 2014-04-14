@@ -56,6 +56,7 @@
     <Property Name="Guidance" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Version" Type="nvarchar(max)" Nullable="true" DefaultValue="&quot;0&quot;" />
     <Property Name="CognitiveLevel" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Keywords" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="Courses">
     <Key>
@@ -199,6 +200,7 @@
           <Property Type="String" Name="Guidance" Nullable="true" />
           <Property Type="String" Name="Version" DefaultValue="&quot;0&quot;" />
           <Property Type="String" Name="CognitiveLevel" Nullable="true" />
+          <Property Type="String" Name="Keywords" Nullable="true" />
         </EntityType>
         <Association Name="QuestionProductCourse">
           <End Type="QBADummyModel.Question" Role="Question" Multiplicity="1" />
@@ -322,6 +324,7 @@
           <ScalarProperty Name="Guidance" ColumnName="Guidance" />
           <ScalarProperty Name="Version" ColumnName="Version" />
           <ScalarProperty Name="CognitiveLevel" ColumnName="CognitiveLevel" />
+          <ScalarProperty Name="Keywords" ColumnName="Keywords" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

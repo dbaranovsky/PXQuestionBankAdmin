@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 04/07/2014 14:25:15
+-- Date Created: 04/13/2014 11:19:48
 -- Generated from EDMX file: D:\Projects\MacMillan\Source\PXQuestionBankAdmin\PXQBA\DataAccess\Macmillan.PXQBA.DataAccess.Data\QBADummyModel.edmx
 -- --------------------------------------------------
 
@@ -81,7 +81,8 @@ CREATE TABLE [dbo].[ProductCourses] (
     [ExcerciseNo] nvarchar(max)  NULL,
     [Guidance] nvarchar(max)  NULL,
     [Version] nvarchar(max)  NULL,
-    [CognitiveLevel] nvarchar(max)  NULL
+    [CognitiveLevel] nvarchar(max)  NULL,
+    [Keywords] nvarchar(max)  NULL
 );
 GO
 
