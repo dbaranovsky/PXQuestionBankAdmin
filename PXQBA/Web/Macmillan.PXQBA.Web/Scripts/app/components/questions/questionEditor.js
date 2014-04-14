@@ -198,20 +198,21 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
 
      },
 
-     editHandler: function(){
+     editHandler: function(selectedOptions){
       
-       var node = this.refs.editor.getDOMNode();
+       
        var text = "";
-       if (node.selectedOptions !== undefined){
-            text = node.selectedOptions[0].text;
-            value = node.selectedOptions[0].value;
+       if (selectedOptions[0] !== undefined){
+            text = selectedOptions[0].text;
+            var value = selectedOptions[0].value;
             if (text.toLowerCase()!= value.toLowerCase())
             {
               text = value;
             }
        } 
        else {
-            text = node.value;
+            
+            text = this.refs.editor.getDOMNode().value;
        }
 
       var question = this.props.question;
@@ -248,7 +249,7 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
        var currentValue = this.props.question[this.props.field];
        switch (editorType) {
           case window.enums.editorType.singleSelect:
-             return (React.DOM.select( {ref:"editor", className:"test-shit", onChange:this.editHandler, value:currentValue},  " ", this.renderMenuItems(metadataField[0].editorDescriptor.availableChoice), " " ) );
+             return (React.DOM.select( {ref:"editor", className:"single-select-field", value:currentValue},  " ", this.renderMenuItems(metadataField[0].editorDescriptor.availableChoice), " " ) );
           default: 
             if(!this.props.isMultiline){
                  return (React.DOM.input( {type:"text", onChange:this.editHandler, ref:"editor", value:currentValue}))
@@ -258,8 +259,23 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
         }
     },
 
+    componentDidUpdate: function(){
+    var self = this;
+      $(self.getDOMNode()).find('.single-select-field')
+                           .chosen({width:"100%"})
+                           .change(function(e, params){
+                              self.editHandler(e.currentTarget.selectedOptions);
+                           });
+    },
+
     componentDidMount: function(){
-       $(this.getDOMNode()).find('.test-shit').chosen({width:"100%"});
+       var self = this;
+       $(self.getDOMNode()).find('.single-select-field')
+                           .chosen({width:"100%"})
+                           .change(function(e, params){
+                              self.editHandler(e.currentTarget.selectedOptions);
+                           });
+  
       if (!this.props.setDefault){
         return;
       }
@@ -275,6 +291,7 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
        this.props.editHandler(question);
       
     },
+
 
     render: function() {
         return (
