@@ -49,11 +49,11 @@ var QuestionInlineEditorNumber = React.createClass({
         var value = this.state.value;
         return ( 
                 <div className="text-editor-container"> 
-                          <div className="input-group">
+                          <div className="input-group input-group-sm">
                               <input type="text" value={value} onChange={this.handleChange} className="form-control" />
                               <span className="input-group-btn">
-                                <button className="btn btn-default" type="button" onClick={this.onAcceptEventHandler}>Accept</button>
-                                <button className="btn btn-default" type="button"onClick={this.onCancelEventHandler}>Cancel</button>
+                                <button type="button" className="btn btn-default btn-xs" onClick={this.onAcceptEventHandler}><span className="glyphicon glyphicon-ok"></span></button> 
+                                <button type="button" className="btn btn-default btn-xs" onClick={this.onCancelEventHandler}><span className="glyphicon glyphicon-remove"></span></button> 
                              </span>
                            </div>
                 </div>

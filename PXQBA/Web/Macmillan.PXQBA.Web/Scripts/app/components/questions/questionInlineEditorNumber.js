@@ -49,11 +49,11 @@ var QuestionInlineEditorNumber = React.createClass({displayName: 'QuestionInline
         var value = this.state.value;
         return ( 
                 React.DOM.div( {className:"text-editor-container"},  
-                          React.DOM.div( {className:"input-group"}, 
+                          React.DOM.div( {className:"input-group input-group-sm"}, 
                               React.DOM.input( {type:"text", value:value, onChange:this.handleChange, className:"form-control"} ),
                               React.DOM.span( {className:"input-group-btn"}, 
-                                React.DOM.button( {className:"btn btn-default", type:"button", onClick:this.onAcceptEventHandler}, "Accept"),
-                                React.DOM.button( {className:"btn btn-default", type:"button",onClick:this.onCancelEventHandler}, "Cancel")
+                                React.DOM.button( {type:"button", className:"btn btn-default btn-xs", onClick:this.onAcceptEventHandler}, React.DOM.span( {className:"glyphicon glyphicon-ok"})), 
+                                React.DOM.button( {type:"button", className:"btn btn-default btn-xs", onClick:this.onCancelEventHandler}, React.DOM.span( {className:"glyphicon glyphicon-remove"})) 
                              )
                            )
                 )
