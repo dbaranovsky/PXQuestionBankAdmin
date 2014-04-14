@@ -36,7 +36,7 @@ namespace Macmillan.PXQBA.Common.Helpers
              }
              if (metaField.Name == MetadataFieldNames.DlapType)
              {
-                 model.IsInlineEditingAllowed = true;
+                 model.IsInlineEditingAllowed = false;
                  model.EditorDescriptor.AvailableChoice = GetAvailibleChoicesFromEnum(typeof(QuestionType));
              }
 
