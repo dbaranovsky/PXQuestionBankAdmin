@@ -213,8 +213,9 @@ input[type="checkbox"].input-validation-error {
 }
 
 .text-editor-container {
+    margin-left: -6px;
     position: absolute !important;
-    width: 200px;
+    width: 110px;
     z-index: 200;
 }
 
