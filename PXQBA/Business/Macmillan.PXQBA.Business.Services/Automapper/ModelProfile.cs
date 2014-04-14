@@ -65,7 +65,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
 
             Mapper.CreateMap<Question, DataAccess.Data.ProductCourse>()
                   .ForMember(dest => dest.Id, opt => opt.Ignore())
-                  .ForMember(dest => dest.Keywords, opt => opt.MapFrom(src => string.Join("|", src.Keywords)));
+                  .ForMember(dest => dest.Keywords, opt => opt.MapFrom(src => src.Keywords != null ? string.Join("|", src.Keywords) : null));
             Mapper.CreateMap<Question, DataAccess.Data.Question>()
                   .ForMember(dest => dest.DlapId, opt => opt.MapFrom(src => src.Id))
                   .ForMember(dest => dest.Id, opt => opt.Ignore());
