@@ -183,8 +183,8 @@ var QuestionMetadataEditor = React.createClass({
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"chapter"}/>
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"bank"}/>
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"excerciseNo"} title="Excercise Number"/>
-                           <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"difficulty"} />
-                           <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"cognitiveLevel"} title="CognitiveLevel"/>
+                           <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"difficulty"} allowDeselect={true} />
+                           <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"cognitiveLevel"} title="Cognitive Level"/>
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"status"} />
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"guidance"} isMultiline={true}/>
              </div> 
@@ -205,6 +205,7 @@ var MetadataFieldEditor = React.createClass({
        if (selectedOptions[0] !== undefined){
             text = selectedOptions[0].text;
             var value = selectedOptions[0].value;
+            //Checking if value is text or int. Ugly code! Move the sign to the state. 
             if (text.toLowerCase()!= value.toLowerCase())
             {
               text = value;
@@ -226,6 +227,9 @@ var MetadataFieldEditor = React.createClass({
 
     renderMenuItems: function(availableChoices) {
         var items = [];
+        if (this.props.allowDeselect){
+            items.push(<option value=''></option>);
+        }
         for (var propertyName in availableChoices) {
             availableChoice = availableChoices[propertyName];
             items.push(this.renderMenuItem(availableChoice, propertyName));
@@ -261,8 +265,14 @@ var MetadataFieldEditor = React.createClass({
 
     componentDidUpdate: function(){
     var self = this;
+    var chosenOptions = {width: "100%"};
+    if (self.props.allowDeselect){
+        chosenOptions.allow_single_deselect = true;
+        chosenOptions.placeholder_text_single = "No Value";
+    }
+
       $(self.getDOMNode()).find('.single-select-field')
-                           .chosen({width:"100%"})
+                           .chosen(chosenOptions)
                            .change(function(e, params){
                               self.editHandler(e.currentTarget.selectedOptions);
                            });
@@ -270,12 +280,6 @@ var MetadataFieldEditor = React.createClass({
 
     componentDidMount: function(){
        var self = this;
-       $(self.getDOMNode()).find('.single-select-field')
-                           .chosen({width:"100%"})
-                           .change(function(e, params){
-                              self.editHandler(e.currentTarget.selectedOptions);
-                           });
-  
       if (!this.props.setDefault){
         return;
       }
