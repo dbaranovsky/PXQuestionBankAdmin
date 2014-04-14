@@ -271,13 +271,8 @@ input[type="checkbox"].input-validation-error {
 }
 
 .editor-header {
-     float: left;
+    float: left;
     width: 100%;
-
-}
-.tab-content {
-     float: left;
-
 }
 
 .header-buttons .run-question {
