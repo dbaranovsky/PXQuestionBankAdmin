@@ -80,7 +80,6 @@ namespace Macmillan.PXQBA.Business
                     SearchParameters = new UserSearch()
                     {
                         ExternalId = userId,
-                        DomainId = DomainId
                     }
                 };
 
