@@ -248,7 +248,7 @@ var MetadataFieldEditor = React.createClass({
        var currentValue = this.props.question[this.props.field];
        switch (editorType) {
           case window.enums.editorType.singleSelect:
-             return (<select ref="editor" onChange={this.editHandler} value={currentValue}> {this.renderMenuItems(metadataField[0].editorDescriptor.availableChoice)} </select> );
+             return (<select ref="editor" className="test-shit" onChange={this.editHandler} value={currentValue}> {this.renderMenuItems(metadataField[0].editorDescriptor.availableChoice)} </select> );
           default: 
             if(!this.props.isMultiline){
                  return (<input type="text" onChange={this.editHandler} ref="editor" value={currentValue}/>)
@@ -259,6 +259,7 @@ var MetadataFieldEditor = React.createClass({
     },
 
     componentDidMount: function(){
+       $(this.getDOMNode()).find('.test-shit').chosen({width:"100%"});
       if (!this.props.setDefault){
         return;
       }
