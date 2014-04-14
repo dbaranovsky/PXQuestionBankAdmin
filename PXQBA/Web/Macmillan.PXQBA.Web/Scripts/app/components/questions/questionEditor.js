@@ -322,6 +322,31 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
 var MultiSelectEditor = React.createClass({displayName: 'MultiSelectEditor',
 
  
+      getInitialState: function(){
+          var metadataValues = [];
+        var currentValues = this.props.question[this.props.field];
+     
+      var  availableChoices =  this.props.metadataField.editorDescriptor.availableChoice;
+
+        for (var propertyName in availableChoices) {
+            availableChoice = availableChoices[propertyName];
+            metadataValues.push(availableChoice);
+        }
+
+        if(currentValues !== undefined && currentValues != null && currentValues.length>0){
+             metadataValues = $.unique($.merge(metadataValues, this.props.question[this.props.field]));
+        }
+      
+
+        var options = [];
+         $.each(metadataValues, function(i, option){
+               options.push(React.DOM.option( {value:option}, option));
+         });
+           
+        
+
+        return ({options: options});
+      },
      editHandler: function(selectedOptions){
       
        
@@ -341,31 +366,6 @@ var MultiSelectEditor = React.createClass({displayName: 'MultiSelectEditor',
 
      },
 
-    renderMenuItems: function() {
-
-        var metadataValues = [];
-       // if (this.props.allowDeselect){
-        //    items.push(<option value=''></option>);
-       // }
-      var  availableChoices =  this.props.metadataField.editorDescriptor.availableChoice;
-
-        for (var propertyName in availableChoices) {
-            availableChoice = availableChoices[propertyName];
-            metadataValues.push(availableChoice);
-        }
-
-        var mergedList = $.unique($.merge(metadataValues, this.props.question[this.props.field]));
-
-        var options = [];
-         $.each(mergedList, function(i, option){
-               options.push(React.DOM.option( {value:option}, option));
-         });
-           
-        
-        return options;
-    },
-
-
     componentDidMount: function(){
         var self = this;
     var chosenOptions = {width: "100%"};
@@ -383,7 +383,7 @@ var MultiSelectEditor = React.createClass({displayName: 'MultiSelectEditor',
     render: function() {
         return (
              React.DOM.select( {'data-placeholder':"No Value", multiple:true}, 
-                    this.renderMenuItems()  
+                    this.state.options  
              ) 
          );
     }
