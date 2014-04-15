@@ -322,11 +322,11 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
 var MultiSelectEditor = React.createClass({displayName: 'MultiSelectEditor',
 
  
-      getInitialState: function(){
-          var metadataValues = [];
-        var currentValues = this.props.question[this.props.field];
+    getInitialState: function(){
+         var metadataValues = [];
+         var currentValues = this.props.question[this.props.field];
      
-      var  availableChoices =  this.props.metadataField.editorDescriptor.availableChoice;
+        var  availableChoices =  this.props.metadataField.editorDescriptor.availableChoice;
 
         for (var propertyName in availableChoices) {
             availableChoice = availableChoices[propertyName];
@@ -334,19 +334,28 @@ var MultiSelectEditor = React.createClass({displayName: 'MultiSelectEditor',
         }
 
         if(currentValues !== undefined && currentValues != null && currentValues.length>0){
-             metadataValues = $.unique($.merge(metadataValues, this.props.question[this.props.field]));
+          $.merge(metadataValues, currentValues);
         }
       
-
+        metadataValues = this.unique(metadataValues);
         var options = [];
          $.each(metadataValues, function(i, option){
                options.push(React.DOM.option( {value:option}, option));
          });
-           
-        
 
-        return ({options: options});
-      },
+         return ({options: options})
+
+    },
+
+    unique: function(list) {
+        var result = [];
+        $.each(list, function(i, e) {
+            if ($.inArray(e, result) == -1) result.push(e);
+        });
+        return result;
+    },
+
+
      editHandler: function(selectedOptions){
       
        
@@ -363,27 +372,35 @@ var MultiSelectEditor = React.createClass({displayName: 'MultiSelectEditor',
         question[this.props.field] = items;
         this.props.editHandler(question);
       }
+     
 
      },
 
+    renderMenuItems: function() {
+
+        return (this.state.options);
+    },
+
+
     componentDidMount: function(){
-        var self = this;
-    var chosenOptions = {width: "100%"};
-
-    
-
-      $(self.getDOMNode()).val(this.props.question[this.props.field])
+        var selector = this.getDOMNode();
+        var chosenOptions = {width: "100%", hide_dropdown: false};
+        var handler =  this.editHandler;
+        $(selector).val(this.props.question[this.props.field])
                           .chosen(chosenOptions)
                           .change(function(e, params){
-                              self.editHandler(e.currentTarget.selectedOptions);
+                             handler(e.currentTarget.selectedOptions);
+                              setTimeout(function(){ $(selector).trigger('chosen:open'); }, 0)
                            });
+
+                         
     },
 
    
     render: function() {
         return (
              React.DOM.select( {'data-placeholder':"No Value", multiple:true}, 
-                    this.state.options  
+                    this.renderMenuItems()  
              ) 
          );
     }
