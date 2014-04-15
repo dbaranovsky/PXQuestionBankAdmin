@@ -322,6 +322,40 @@ var MetadataFieldEditor = React.createClass({
 var MultiSelectEditor = React.createClass({
 
  
+    getInitialState: function(){
+         var metadataValues = [];
+         var currentValues = this.props.question[this.props.field];
+     
+        var  availableChoices =  this.props.metadataField.editorDescriptor.availableChoice;
+
+        for (var propertyName in availableChoices) {
+            availableChoice = availableChoices[propertyName];
+            metadataValues.push(availableChoice);
+        }
+
+        if(currentValues !== undefined && currentValues != null && currentValues.length>0){
+          $.merge(metadataValues, currentValues);
+        }
+      
+        metadataValues = this.unique(metadataValues);
+        var options = [];
+         $.each(metadataValues, function(i, option){
+               options.push(<option value={option}>{option}</option>);
+         });
+
+         return ({options: options})
+
+    },
+
+    unique: function(list) {
+        var result = [];
+        $.each(list, function(i, e) {
+            if ($.inArray(e, result) == -1) result.push(e);
+        });
+        return result;
+    },
+
+
      editHandler: function(selectedOptions){
       
        
@@ -338,45 +372,28 @@ var MultiSelectEditor = React.createClass({
         question[this.props.field] = items;
         this.props.editHandler(question);
       }
+     
 
      },
 
     renderMenuItems: function() {
 
-        var metadataValues = [];
-       // if (this.props.allowDeselect){
-        //    items.push(<option value=''></option>);
-       // }
-      var  availableChoices =  this.props.metadataField.editorDescriptor.availableChoice;
-
-        for (var propertyName in availableChoices) {
-            availableChoice = availableChoices[propertyName];
-            metadataValues.push(availableChoice);
-        }
-
-        var mergedList = $.unique($.merge(metadataValues, this.props.question[this.props.field]));
-
-        var options = [];
-         $.each(mergedList, function(i, option){
-               options.push(<option value={option}>{option}</option>);
-         });
-           
-        
-        return options;
+        return (this.state.options);
     },
 
 
     componentDidMount: function(){
-        var self = this;
-    var chosenOptions = {width: "100%"};
-
-    
-
-      $(self.getDOMNode()).val(this.props.question[this.props.field])
+        var selector = this.getDOMNode();
+        var chosenOptions = {width: "100%", hide_dropdown: false};
+        var handler =  this.editHandler;
+        $(selector).val(this.props.question[this.props.field])
                           .chosen(chosenOptions)
                           .change(function(e, params){
-                              self.editHandler(e.currentTarget.selectedOptions);
+                             handler(e.currentTarget.selectedOptions);
+                              setTimeout(function(){ $(selector).trigger('chosen:open'); }, 0)
                            });
+
+                         
     },
 
    
