@@ -181,9 +181,9 @@
     <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap\bootstrap.css" />
     <Content Include="Content\bootstrap\bootstrap.min.css" />
-    <Content Include="Content\chosen\chosen-sprite%402x.png" />
-    <Content Include="Content\chosen\chosen-sprite.png" />
-    <Content Include="Content\chosen\chosen.css" />
+    <Content Include="Content\img\chosen-sprite%402x.png" />
+    <Content Include="Content\img\chosen-sprite.png" />
+    <Content Include="Content\chosen.css" />
     <Content Include="Content\img\spinning.gif" />
     <Content Include="Content\Paging.css" />
     <Content Include="favicon.ico" />
