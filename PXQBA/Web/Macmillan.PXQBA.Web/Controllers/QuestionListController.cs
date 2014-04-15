@@ -97,9 +97,10 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// </summary>
         /// <param name="note"></param>
         [HttpPost]
-        public void DeleteQuestionNote(Note note)
+        public ActionResult DeleteQuestionNote(Note note)
         {
             notesManagementService.DeleteNote(note);
+            return JsonCamel(new { isError = false });
         }
 
         /// <summary>
@@ -107,9 +108,10 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// </summary>
         /// <param name="note"></param>
         [HttpPost]
-        public void SaveQuestionNote(Note note)
+        public ActionResult SaveQuestionNote(Note note)
         {
           notesManagementService.SaveNote(note);
+          return JsonCamel(new { isError = false });
         }
 
 
