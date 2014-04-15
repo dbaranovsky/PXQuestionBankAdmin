@@ -26,7 +26,7 @@ var QuestionPaginator = React.createClass({displayName: 'QuestionPaginator',
 
     render: function() {
         return ( 
-               React.DOM.div( {className:"questionPaginator"} 
+               React.DOM.div( {className:"pagination"} 
                )
             );
     }

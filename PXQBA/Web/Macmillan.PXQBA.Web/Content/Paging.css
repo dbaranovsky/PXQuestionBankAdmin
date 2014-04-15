@@ -1,5 +1,6 @@
 ﻿.pagination {
     margin: 20px 0;
+    cursor: pointer;
 }
 
     .pagination ul {
