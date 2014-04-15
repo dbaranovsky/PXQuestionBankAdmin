@@ -131,7 +131,7 @@ input[type="checkbox"].input-validation-error {
     width: 50px;
     height: 50px;
      z-index: 98;
-    background: url("img/spinning.gif");
+     background: url("../Content/img/spinning.gif");
     -ms-background-size: 100%;
     background-size: 100%;
 }
