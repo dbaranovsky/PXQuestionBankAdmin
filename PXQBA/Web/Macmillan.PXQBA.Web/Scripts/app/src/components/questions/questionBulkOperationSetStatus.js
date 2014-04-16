@@ -5,11 +5,9 @@
 var QuestionBulkOperationSetStatus = React.createClass({
 
     cancelHandler: function() {
-       alert('cancel');
     },
 
     selectHandler: function(value) {
-        debugger;
         questionDataManager.bulk.setStatus(this.props.selectedQuestions, value)
     },
 
