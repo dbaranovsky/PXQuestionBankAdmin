@@ -44,7 +44,14 @@ namespace Macmillan.PXQBA.Common.Helpers
              {
                  model.IsInlineEditingAllowed = true;
                  model.EditorDescriptor.EditorType = EditorType.Number.ToString().ToLower();
+             
              }
+
+             if (metaField.Name == MetadataFieldNames.Keywords)
+             {
+                 model.Width = "20%";
+             }
+            
 
              return model;
          }
