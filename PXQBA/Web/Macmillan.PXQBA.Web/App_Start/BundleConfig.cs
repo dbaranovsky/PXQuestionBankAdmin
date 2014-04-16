@@ -35,7 +35,7 @@ namespace Macmillan.PXQBA.Web
             bundles.Add(new StyleBundle("~/bundles/css").Include(
                       "~/Content/site.css",
                       "~/Content/paging.css",
-                      "~/Content/chosen/chosen.css"));
+                      "~/Content/chosen.css"));
         }
     }
 }
