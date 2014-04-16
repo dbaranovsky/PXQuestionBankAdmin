@@ -55,6 +55,7 @@ namespace Macmillan.PXQBA.Business.Services
             data.Add(MetadataFieldNames.Bank, question.Bank);
             data.Add(MetadataFieldNames.Sequence, question.Sequence.ToString());
             data.Add(MetadataFieldNames.Difficulty, question.Difficulty);
+            data.Add(MetadataFieldNames.Keywords, String.Join(", ", question.Keywords));
 
             return data;
         }
