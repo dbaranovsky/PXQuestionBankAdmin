@@ -2,18 +2,23 @@
 * @jsx React.DOM
 */ 
 
-var QuestionInlineEditorSingleSelect = React.createClass({
+var SingleSelectButton = React.createClass({
 
     cancelValue: '__cancel',
 
-    changeEventHandler: function(event) {
+    selectValueEventHandler: function(event) {
         var value = event.target.getAttribute("data-value");
-        if(value==this.cancelValue) {
-            this.props.afterEditingHandler();
+        if(value==null) {
+            this.props.cancelHandler();
             return;
         }
 
-        this.props.saveVelueHandler(value)
+        if(value==this.cancelValue) {
+            this.props.cancelHandler();
+            return;
+        }
+
+        this.props.selectHandler(value);
     },
 
     renderMenuItems: function() {
@@ -31,13 +36,16 @@ var QuestionInlineEditorSingleSelect = React.createClass({
     render: function() {
         return ( 
             <div>
-                <div className="dropdown">
-                    <ul className="dropdown-menu menu-show" role="menu" aria-labelledby="dropdownMenuType" onClick={this.changeEventHandler}>
-                       {this.renderMenuItems()}
-                    <li role="presentation" className="divider"></li>
+                 <div className="btn-group">
+                  <button type="button" className="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                    {this.props.caption} <span className="caret"></span>
+                  </button>
+                  <ul className="dropdown-menu" role="menu" onClick={this.selectValueEventHandler}>
+                     {this.renderMenuItems()}
+                    <li className="divider"></li>
                     <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" data-value={this.cancelValue}>Cancel</a></li>
-                     </ul>
-                 </div>
+                  </ul>
+                </div>
             </div>
             );
         }

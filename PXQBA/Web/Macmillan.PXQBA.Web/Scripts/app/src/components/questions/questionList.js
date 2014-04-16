@@ -163,7 +163,9 @@ var QuestionList = React.createClass({
       if(this.state.selectedQuestions.length>1) {
         return (<QuestionBulkOperationBar colSpan={this.getAllColumnCount()} 
                                           selectedQuestions={this.state.selectedQuestions}
-                                          deselectsAllHandler={this.deselectsAllQuestionHandler}/>);
+                                          deselectsAllHandler={this.deselectsAllQuestionHandler}
+                                          columns={this.props.columns}
+                                          />);
       }
       return null;
     },

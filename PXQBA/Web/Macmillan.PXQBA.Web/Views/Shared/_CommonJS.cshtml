@@ -20,6 +20,10 @@
             updateQuestionUrl: '@Url.Action("UpdateQuestion", "Question")'
         };
 
+        actions.bulkOperations = {            
+            setStatusUrl: '@Url.Action("SetStatus", "BulkOperation")'
+        };
+
         actions.questionFilter = {
             getQuestionTypeListUrl: '@Url.Action("GetQuestionTypeList", "QuestionFilter")',
         };
@@ -55,7 +59,8 @@
         var consts = {};
         window.consts = consts;
 
-        consts.questionTitleName = 'dlap_title';
+        consts.questionTitleName = '@MetadataFieldNames.DlapTitle';
+        consts.questionStatusName = '@MetadataFieldNames.DlapStatus';
     }
      )();
 </script>
