@@ -12,19 +12,42 @@ var QuestionBulkOperationBar = React.createClass({
         return this.props.selectedQuestions.length;
     },
 
+
+    getAvailableStatuses: function() {
+      var availableStatuses = [];
+        for(var i=0; i<this.props.columns.length; i++) {
+            if(this.props.columns[i].metadataName==window.consts.questionStatusName) {
+                availableStatuses=this.props.columns[i].editorDescriptor.availableChoice;
+                break;
+            }
+        }
+        return availableStatuses;
+    },
+
     render: function() {
         return ( 
                   <tr>
                     <td colSpan={this.props.colSpan} className="bulk-operation-bar">
-                          <div className="bulk-operation-item">
-                               <span> {this.getSelectedQuestionCount()} questions selected</span>
-                          </div>
-                          <div className="bulk-operation-item">
-                              
-                          </div>
-                          <div className="deselect-button" onClick={this.deselectsAllHandler}>
-                                <span > X </span>
-                          </div>
+                        <table className="bulk-operation-bar-table">
+                          <tr>
+                            <td className="bulk-operation-cell">
+                              <div className="bulk-operation-item">
+                                 <span> {this.getSelectedQuestionCount()} questions selected</span>
+                               </div>
+                            </td>
+                            <td className="bulk-operation-cell">
+                               <div className="bulk-operation-item">
+                                <QuestionBulkOperationSetStatus availableStatuses={this.getAvailableStatuses()} 
+                                                              selectedQuestions={this.props.selectedQuestions}/> 
+                               </div>
+                            </td>
+                            <td>
+                               <div className="deselect-button" onClick={this.deselectsAllHandler}>
+                                 <span > X </span>
+                               </div>
+                            </td>
+                          </tr>
+                        </table>
                     </td>
                   </tr>
             );

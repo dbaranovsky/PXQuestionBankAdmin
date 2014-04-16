@@ -236,8 +236,31 @@
              self.resetState();
              self.showErrorPopup();
         });
- 
- 
+    };
+
+    self.bulk = {};
+
+    self.bulk.setStatus = function (questionsId, newQuestionStatus) {
+        asyncManager.startWait();
+        
+        var request = {
+            questionsId: questionsId,
+            newQuestionStatus: newQuestionStatus
+        };
+
+        return $.ajax({
+            url: window.actions.bulkOperations.setStatusUrl,
+            traditional: true,
+            data: JSON.stringify(request),
+            contentType: 'application/json',
+            dataType: 'json',
+            type: 'POST'
+        }).done(function (response) {
+            self.resetState();
+        }).error(function (e) {
+            self.resetState();
+            self.showErrorPopup();
+        });
     };
 
     self.resetState = function(){
@@ -245,13 +268,14 @@
          crossroads.parse(window.routsManager.buildHash());
     };
 
-    self.showErrorPopup = function(){
-
-        var notifyOptions =  {message: {text: window.enums.messages.errorMessage}, 
-                             type: 'danger',
-                             fadeOut: { enabled: true, delay: 3000 } };
+    self.showErrorPopup = function() {
+        var notifyOptions = {
+            message: { text: window.enums.messages.errorMessage },
+            type: 'danger',
+            fadeOut: { enabled: true, delay: 3000 }
+        };
         $('.top-center').notify(notifyOptions).show();
-    }
+    };
 
     return self;
 }());

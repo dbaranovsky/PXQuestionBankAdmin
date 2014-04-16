@@ -303,7 +303,15 @@ input[type="checkbox"].input-validation-error {
 }
 
 .bulk-operation-bar {
-    background: turquoise;
+    background: antiquewhite;
+}
+
+.bulk-operation-bar-table {
+    width: 100%;
+}
+
+.bulk-operation-cell {
+    width: 200px;
 }
 
 .bulk-operation-item {

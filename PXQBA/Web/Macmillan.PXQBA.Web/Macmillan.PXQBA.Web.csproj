@@ -141,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="Views\BulkOperation\" />
     <Folder Include="Views\QuestionFilter\" />
     <Folder Include="Views\Question\" />
   </ItemGroup>
@@ -153,6 +154,7 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Constants\WebKeys.cs" />
     <Compile Include="ActionResults\JsonCamelCaseResult.cs" />
+    <Compile Include="Controllers\BulkOperationController.cs" />
     <Compile Include="Controllers\ImportController.cs" />
     <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\MetadataController.cs" />
@@ -207,6 +209,7 @@
     <Content Include="Scripts\app\components\common\expandButton.js" />
     <Content Include="Scripts\app\components\common\loader.js" />
     <Content Include="Scripts\app\components\common\modalDialog.js" />
+    <Content Include="Scripts\app\components\common\singleSelectButton.js" />
     <Content Include="Scripts\app\components\questions\editQuestionNotesDialog.js" />
     <Content Include="Scripts\app\components\questions\notes\editQuestionNotesDialog.js" />
     <Content Include="Scripts\app\components\questions\notes\flag.js" />
@@ -216,6 +219,7 @@
     <Content Include="Scripts\app\components\questions\notes\noteList.js" />
     <Content Include="Scripts\app\components\questions\question.js" />
     <Content Include="Scripts\app\components\questions\questionBulkOperationBar.js" />
+    <Content Include="Scripts\app\components\questions\questionBulkOperationSetStatus.js" />
     <Content Include="Scripts\app\components\questions\questionCell.js" />
     <Content Include="Scripts\app\components\questions\questionCellMenu.js" />
     <Content Include="Scripts\app\components\questions\questionEditor.js" />
@@ -249,6 +253,7 @@
     <Content Include="Scripts\app\src\components\common\expandButton.js" />
     <Content Include="Scripts\app\src\components\common\loader.js" />
     <Content Include="Scripts\app\src\components\common\modalDialog.js" />
+    <Content Include="Scripts\app\src\components\common\singleSelectButton.js" />
     <Content Include="Scripts\app\src\components\questions\notes\editQuestionNotesDialog.js" />
     <Content Include="Scripts\app\src\components\questions\notes\flag.js" />
     <Content Include="Scripts\app\src\components\questions\notes\note.js" />
@@ -256,6 +261,7 @@
     <Content Include="Scripts\app\src\components\questions\notes\noteForm.js" />
     <Content Include="Scripts\app\src\components\questions\notes\noteList.js" />
     <Content Include="Scripts\app\src\components\questions\questionBulkOperationBar.js" />
+    <Content Include="Scripts\app\src\components\questions\questionBulkOperationSetStatus.js" />
     <Content Include="Scripts\app\src\components\questions\questionTypeDialog.js" />
     <Content Include="Scripts\app\src\components\questions\question.js" />
     <Content Include="Scripts\app\src\components\questions\questionCell.js" />
