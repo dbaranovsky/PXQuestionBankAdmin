@@ -40,13 +40,20 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult CreateQuestion(int questionType, string bank, string chapter)
         {
-            return JsonCamel(questionManagementService.CreateQuestion(CourseHelper.CurrentCourse, (QuestionType)questionType, bank, chapter));
+            var question = Mapper.Map<Question, QuestionViewModel>(questionManagementService.CreateQuestion(CourseHelper.CurrentCourse, (QuestionType)questionType, bank, chapter));
+            question.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrl(), "200117", "AHWDG");
+            return JsonCamel(question);
+            
         }
 
         [HttpPost]
         public ActionResult DuplicateQuestion(string questionId)
         {
-            return JsonCamel(questionManagementService.DuplicateQuestion(CourseHelper.CurrentCourse, questionId));
+
+            var question = Mapper.Map<Question, QuestionViewModel>(questionManagementService.DuplicateQuestion(CourseHelper.CurrentCourse, questionId));
+            question.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrl(), "200117", "AHWDG");
+            return JsonCamel(question);
+
         }
 
         public ActionResult GetAvailibleMetadata()
