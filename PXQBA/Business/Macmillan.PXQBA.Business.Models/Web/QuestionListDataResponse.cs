@@ -8,6 +8,11 @@ namespace Macmillan.PXQBA.Business.Models.Web
     public class QuestionListDataResponse
     {
         /// <summary>
+        /// Filtration
+        /// </summary>
+        public IEnumerable<FilterFieldDescriptor> Filter { get; set; }
+
+        /// <summary>
         /// Current page number
         /// </summary>
         public int PageNumber { get; set; }

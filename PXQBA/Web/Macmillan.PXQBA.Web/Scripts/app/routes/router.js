@@ -5,7 +5,7 @@ crossroads.addRoute('/filter/{query}/page/{page}/columns/{columns}/order/{orderT
         console.log('route callback executed');
         routsManager.setState(query, page, columns, orderType, orderField);
         asyncManager.startWait(questionContainer);
-        var questionsData = questionDataManager.getQuestionsByQuery(query,
+        var questionsData = questionDataManager.getQuestionsByQuery(filterHashParameterHelper.parse(query),
                                                                     page,
                                                                     columnHashParameterHelper.parse(columns),
                                                                     orderType,

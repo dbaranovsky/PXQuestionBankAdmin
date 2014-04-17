@@ -8,7 +8,7 @@ namespace Macmillan.PXQBA.Business.Models.Web
     /// </summary>
     public class QuestionListDataRequest
     {
-        public string Query { get; set; }
+        public IEnumerable<FilterFieldDescriptor> Filter { get; set; }
 
         public int PageNumber { get; set; }
 

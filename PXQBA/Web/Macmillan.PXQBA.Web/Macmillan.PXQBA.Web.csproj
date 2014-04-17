@@ -251,6 +251,7 @@
     <Content Include="Scripts\app\dataAccess\questionFilterDataManager.js" />
     <Content Include="Scripts\app\routes\columnHashParameterHelper.js" />
     <Content Include="Scripts\app\routes\filterHashParameterHelper.js" />
+    <Content Include="Scripts\app\routes\filterItem.js" />
     <Content Include="Scripts\app\routes\routeItem.js" />
     <Content Include="Scripts\app\routes\router.js" />
     <Content Include="Scripts\app\routes\routeManager.js" />
