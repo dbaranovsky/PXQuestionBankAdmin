@@ -1,7 +1,7 @@
 ﻿var routsManager = (function () {
     var self = {};
     
-    self.query = new RouteItem('filter', 'query');
+    self.query = new RouteItem('filter', 'bank:value|~value2+dlap_title:some value');
     self.page = new RouteItem('page', '1');
     self.columns = new RouteItem('columns', 'bank+seq+dlap_title+dlap_q_type+dlap_q_status');
     self.order = new RouteItem('order', 'none');
@@ -12,10 +12,6 @@
         self.columns.setValue(columns);
         self.order.setValue(orderType + '/' + orderField);
     },
-
-    self.buildColumns = function() {
-        return self.columnsKey + self.columnsValue;
-    };
 
     self.buildHash = function () {
         return '[filer]/[page]/[columns]/[order]'

@@ -7,14 +7,14 @@
         //save in cache here
     };
 
-    self.loadFromCache = function (query, page, orderType, orderField) {
+    self.loadFromCache = function (filter, page, orderType, orderField) {
         // load from cache here
         return null;
     };
 
-    self.getQuestionsByQuery = function (query, page, columns, orderType, orderField) {
+    self.getQuestionsByQuery = function (filter, page, columns, orderType, orderField) {
         
-        var cacheResult = self.loadFromCache(query, page, orderType, orderField);
+        var cacheResult = self.loadFromCache(filter, page, orderType, orderField);
 
         if (cacheResult != null) {
             return $.Deferred(function() {
@@ -23,7 +23,7 @@
         }
 
         var request = {
-            query: query,
+            filter: filter,
             pageNumber: page,
             orderType: orderType, 
             orderField: orderField,
@@ -33,9 +33,10 @@
         return $.ajax({
             url: window.actions.questionList.getQuestionListUrl,
             traditional: true,
-            data: request,
+            data: JSON.stringify(request),
             dataType: 'json',
-            type: 'POST'
+            type: 'POST',
+            contentType: 'application/json'
         }).done(function (response) {
             self.processDataResponse(response);
         }).error(function(e){

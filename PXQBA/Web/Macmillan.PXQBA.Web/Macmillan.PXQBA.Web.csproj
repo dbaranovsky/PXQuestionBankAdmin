@@ -211,6 +211,10 @@
     <Content Include="Scripts\app\components\common\modalDialog.js" />
     <Content Include="Scripts\app\components\common\singleSelectButton.js" />
     <Content Include="Scripts\app\components\questions\editQuestionNotesDialog.js" />
+    <Content Include="Scripts\app\components\questions\filter\questionFilter.js" />
+    <Content Include="Scripts\app\components\questions\filter\questionFilterItemBase.js" />
+    <Content Include="Scripts\app\components\questions\filter\questionFilterItemsAppender.js" />
+    <Content Include="Scripts\app\components\questions\filter\questionFilterItemsContainer.js" />
     <Content Include="Scripts\app\components\questions\notes\editQuestionNotesDialog.js" />
     <Content Include="Scripts\app\components\questions\notes\flag.js" />
     <Content Include="Scripts\app\components\questions\notes\note.js" />
@@ -223,7 +227,6 @@
     <Content Include="Scripts\app\components\questions\questionCell.js" />
     <Content Include="Scripts\app\components\questions\questionCellMenu.js" />
     <Content Include="Scripts\app\components\questions\questionEditor.js" />
-    <Content Include="Scripts\app\components\questions\questionFilter.js" />
     <Content Include="Scripts\app\components\questions\questionGrid.js" />
     <Content Include="Scripts\app\components\questions\questionInlineEditorBase.js" />
     <Content Include="Scripts\app\components\questions\questionInlineEditorNumber.js" />
@@ -247,6 +250,8 @@
     <Content Include="Scripts\app\dataAccess\questionDataManager.js" />
     <Content Include="Scripts\app\dataAccess\questionFilterDataManager.js" />
     <Content Include="Scripts\app\routes\columnHashParameterHelper.js" />
+    <Content Include="Scripts\app\routes\filterHashParameterHelper.js" />
+    <Content Include="Scripts\app\routes\filterItem.js" />
     <Content Include="Scripts\app\routes\routeItem.js" />
     <Content Include="Scripts\app\routes\router.js" />
     <Content Include="Scripts\app\routes\routeManager.js" />
@@ -262,12 +267,15 @@
     <Content Include="Scripts\app\src\components\questions\notes\noteList.js" />
     <Content Include="Scripts\app\src\components\questions\questionBulkOperationBar.js" />
     <Content Include="Scripts\app\src\components\questions\questionBulkOperationSetStatus.js" />
+    <Content Include="Scripts\app\src\components\questions\filter\questionFilterItemsAppender.js" />
+    <Content Include="Scripts\app\src\components\questions\filter\questionFilterItemsContainer.js" />
+    <Content Include="Scripts\app\src\components\questions\filter\questionFilterItemBase.js" />
     <Content Include="Scripts\app\src\components\questions\questionTypeDialog.js" />
     <Content Include="Scripts\app\src\components\questions\question.js" />
     <Content Include="Scripts\app\src\components\questions\questionCell.js" />
     <Content Include="Scripts\app\src\components\questions\questionCellMenu.js" />
     <Content Include="Scripts\app\src\components\questions\questionEditor.js" />
-    <Content Include="Scripts\app\src\components\questions\questionFilter.js" />
+    <Content Include="Scripts\app\src\components\questions\filter\questionFilter.js" />
     <Content Include="Scripts\app\src\components\questions\questionGrid.js" />
     <Content Include="Scripts\app\src\components\questions\questionInlineEditorBase.js" />
     <Content Include="Scripts\app\src\components\questions\questionInlineEditorNumber.js" />

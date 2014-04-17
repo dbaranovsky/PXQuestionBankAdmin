@@ -56,8 +56,10 @@ namespace Macmillan.PXQBA.Web.Controllers
                                                                           questionPerPage);
             var totalPages = (questionList.TotalItems + questionPerPage - (questionList.TotalItems % questionPerPage)) /
                              questionPerPage;
-            var model = new QuestionListDataResponse
+
+            var response = new QuestionListDataResponse
                         {
+                            Filter = request.Filter,
                             TotalPages = totalPages,
                             QuestionList = questionList.CollectionPage.Select(Mapper.Map<QuestionMetadata>),
                             PageNumber = request.PageNumber,
@@ -69,7 +71,8 @@ namespace Macmillan.PXQBA.Web.Controllers
                                         OrderType = request.OrderType.ToString().ToLower()
                                     }
                         };
-            return JsonCamel(model);
+
+            return JsonCamel(response);
         }
 
         /// <summary>
