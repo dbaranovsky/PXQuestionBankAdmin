@@ -210,6 +210,12 @@
     <Content Include="Scripts\app\components\common\loader.js" />
     <Content Include="Scripts\app\components\common\modalDialog.js" />
     <Content Include="Scripts\app\components\common\singleSelectButton.js" />
+    <Content Include="Scripts\app\components\questions\editor\metadataFieldEditor.js" />
+    <Content Include="Scripts\app\components\questions\editor\multiSelectEditor.js" />
+    <Content Include="Scripts\app\components\questions\editor\questionEditor.js" />
+    <Content Include="Scripts\app\components\questions\editor\questionEditorDialog.js" />
+    <Content Include="Scripts\app\components\questions\editor\questionEditorTabs.js" />
+    <Content Include="Scripts\app\components\questions\editor\questionMetadataEditor.js" />
     <Content Include="Scripts\app\components\questions\editQuestionNotesDialog.js" />
     <Content Include="Scripts\app\components\questions\filter\questionFilter.js" />
     <Content Include="Scripts\app\components\questions\filter\questionFilterItemBase.js" />
@@ -227,6 +233,7 @@
     <Content Include="Scripts\app\components\questions\questionCell.js" />
     <Content Include="Scripts\app\components\questions\questionCellMenu.js" />
     <Content Include="Scripts\app\components\questions\questionEditor.js" />
+    <Content Include="Scripts\app\components\questions\questionFilter.js" />
     <Content Include="Scripts\app\components\questions\questionGrid.js" />
     <Content Include="Scripts\app\components\questions\questionInlineEditorBase.js" />
     <Content Include="Scripts\app\components\questions\questionInlineEditorNumber.js" />
@@ -259,6 +266,12 @@
     <Content Include="Scripts\app\src\components\common\loader.js" />
     <Content Include="Scripts\app\src\components\common\modalDialog.js" />
     <Content Include="Scripts\app\src\components\common\singleSelectButton.js" />
+    <Content Include="Scripts\app\src\components\questions\editor\metadataFieldEditor.js" />
+    <Content Include="Scripts\app\src\components\questions\editor\multiSelectEditor.js" />
+    <Content Include="Scripts\app\src\components\questions\editor\questionEditor.js" />
+    <Content Include="Scripts\app\src\components\questions\editor\questionEditorDialog.js" />
+    <Content Include="Scripts\app\src\components\questions\editor\questionEditorTabs.js" />
+    <Content Include="Scripts\app\src\components\questions\editor\questionMetadataEditor.js" />
     <Content Include="Scripts\app\src\components\questions\notes\editQuestionNotesDialog.js" />
     <Content Include="Scripts\app\src\components\questions\notes\flag.js" />
     <Content Include="Scripts\app\src\components\questions\notes\note.js" />
@@ -276,6 +289,7 @@
     <Content Include="Scripts\app\src\components\questions\questionCellMenu.js" />
     <Content Include="Scripts\app\src\components\questions\questionEditor.js" />
     <Content Include="Scripts\app\src\components\questions\filter\questionFilter.js" />
+    <Content Include="Scripts\app\src\components\questions\questionFilter.js" />
     <Content Include="Scripts\app\src\components\questions\questionGrid.js" />
     <Content Include="Scripts\app\src\components\questions\questionInlineEditorBase.js" />
     <Content Include="Scripts\app\src\components\questions\questionInlineEditorNumber.js" />

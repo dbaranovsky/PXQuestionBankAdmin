@@ -187,5 +187,20 @@ namespace Macmillan.PXQBA.Common.Helpers
             }
             return "6710";
         }
+
+
+        /// <summary>
+        /// Get discipline course id
+        /// </summary>
+        /// <returns>Discipline course id</returns>
+        public static string GetActionPlayerUrl()
+        {
+            var url = ConfigurationManager.AppSettings[ConfigurationKeys.ActionPlayerUrl];
+            if (!string.IsNullOrEmpty(url))
+            {
+                return url;
+            }
+            return "http://root.dev.brainhoney.bfwpub.com/BrainHoney/Component/ActivityPlayer?enrollmentid=200117&itemid=AHWDG&ShowHeader=false";
+        }
     }
 }
