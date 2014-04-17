@@ -13,10 +13,6 @@
         self.order.setValue(orderType + '/' + orderField);
     },
 
-    self.buildColumns = function() {
-        return self.columnsKey + self.columnsValue;
-    };
-
     self.buildHash = function () {
         return '[filer]/[page]/[columns]/[order]'
             .replace('[filer]', self.query.getRoute())
