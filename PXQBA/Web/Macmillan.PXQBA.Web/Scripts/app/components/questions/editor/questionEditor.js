@@ -18,6 +18,10 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
 
     },
 
+     runQuestion: function(){
+      window.open(this.props.question.actionPlayerUrl, '_blank', 'location=yes,height=600,width=600,scrollbars=yes,status=yes');
+    },
+
     editHandler: function(editedQuestion){
       this.setState({question: editedQuestion});
     },
@@ -30,7 +34,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
         return (
             React.DOM.div(null, 
                       React.DOM.div( {className:"header-buttons"}, 
-                         React.DOM.button( {className:"btn btn-primary run-question", 'data-toggle':"modal"} , 
+                         React.DOM.button( {className:"btn btn-primary run-question", 'data-toggle':"modal", onClick:this.runQuestion}, 
                              React.DOM.span( {className:"glyphicon glyphicon-play"}), " Run Question"
                         ),
                         React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal", onClick:this.props.closeDialog}, 

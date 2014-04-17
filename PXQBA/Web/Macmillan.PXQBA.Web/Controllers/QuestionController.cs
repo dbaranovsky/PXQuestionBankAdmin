@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
+using AutoMapper;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
@@ -61,7 +62,9 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult GetQuestion(string questionId)
         {
-            return JsonCamel(questionManagementService.GetQuestion(questionId));
+            var question = Mapper.Map<Question, QuestionViewModel>(questionManagementService.GetQuestion(questionId));
+            question.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrl(), "200117", "AHWDG");
+            return JsonCamel(question);
         }
 	}
 }

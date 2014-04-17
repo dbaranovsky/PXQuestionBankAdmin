@@ -41,6 +41,8 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
         /// </summary>
         public static string QuestionTypes { get; set; }
 
+        
+
         /// <summary>
         /// Key for administrator userspace
         /// </summary>
@@ -70,5 +72,10 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
         /// Key for entity id
         /// </summary>
         public const string DisciplineCourseId = "DisciplineCourseId";
+
+        /// <summary>
+        /// Key for external Action Player in BrainHoney
+        /// </summary>
+        public static string ActionPlayerUrl = "ActionPlayerUrl";
     }
 }
