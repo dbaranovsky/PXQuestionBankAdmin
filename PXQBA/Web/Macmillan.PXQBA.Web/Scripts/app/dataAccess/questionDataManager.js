@@ -243,7 +243,7 @@
 
     self.bulk.setStatus = function (questionsId, newQuestionStatus) {
         asyncManager.startWait();
-        
+
         var request = {
             questionsId: questionsId,
             newQuestionStatus: newQuestionStatus
