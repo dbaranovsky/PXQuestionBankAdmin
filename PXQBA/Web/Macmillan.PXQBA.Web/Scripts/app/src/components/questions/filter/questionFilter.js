@@ -12,6 +12,7 @@ var QuestionFilter = React.createClass({
                          <strong> Filter: </strong>  
                     </span>
                     <a href="#/filter/query/page/1"> Favourite filter</a>
+                    <QuestionFilterItemsContainer filter={this.props.filter} allAvailableColumns={this.props.allAvailableColumns}/>
                 </div>
             </div>
             );

@@ -11,7 +11,8 @@ var QuestionFilter = React.createClass({displayName: 'QuestionFilter',
                     React.DOM.span(null, 
                          React.DOM.strong(null,  " Filter: " )  
                     ),
-                    React.DOM.a( {href:"#/filter/query/page/1"},  " Favourite filter")
+                    React.DOM.a( {href:"#/filter/query/page/1"},  " Favourite filter"),
+                    QuestionFilterItemsContainer( {filter:this.props.filter, allAvailableColumns:this.props.allAvailableColumns})
                 )
             )
             );

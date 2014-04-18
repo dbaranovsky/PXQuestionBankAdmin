@@ -7,7 +7,8 @@ var QuestionFilterItemBase = React.createClass({
         return (
             <div className="questionFilterItemBase">
                  <div> 
-                     Item
+                     <span> {this.props.descriptor.caption}</span>
+                     <QuestionFilterMultiSelect allValues={this.props.descriptor.allValues}  currentValues={this.props.descriptor.currentValues}/>
                 </div>
             </div>
             );

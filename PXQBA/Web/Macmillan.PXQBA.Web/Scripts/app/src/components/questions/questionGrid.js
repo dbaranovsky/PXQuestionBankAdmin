@@ -8,7 +8,7 @@ var QuestionGrid = React.createClass({
         return (
               <div className="questionGrid">
                 <div className="question-grid-item"> 
-                     <QuestionFilter/>
+                     <QuestionFilter filter={this.props.response.filter} allAvailableColumns={this.props.response.allAvailableColumns}/>
                 </div>
                 <div className="question-grid-item"> 
                     <QuestionList data={this.props.response.questionList} 
