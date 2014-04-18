@@ -53,10 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IBulkOperation.cs" />
     <Compile Include="Contracts\INoteCommands.cs" />
     <Compile Include="Contracts\IQuestionCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DLAP\QuestionCommands.cs" />
+    <Compile Include="Services\EntityFramework\BulkOperation.cs" />
     <Compile Include="Services\EntityFramework\NoteCommands.cs" />
     <Compile Include="Services\EntityFramework\QuestionCommands.cs" />
   </ItemGroup>
