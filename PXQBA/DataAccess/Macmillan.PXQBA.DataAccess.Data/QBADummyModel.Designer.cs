@@ -1283,6 +1283,30 @@ namespace Macmillan.PXQBA.DataAccess.Data
         private global::System.String _Keywords;
         partial void OnKeywordsChanging(global::System.String value);
         partial void OnKeywordsChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SuggestedUse
+        {
+            get
+            {
+                return _SuggestedUse;
+            }
+            set
+            {
+                OnSuggestedUseChanging(value);
+                ReportPropertyChanging("SuggestedUse");
+                _SuggestedUse = StructuralObject.SetValidValue(value, true, "SuggestedUse");
+                ReportPropertyChanged("SuggestedUse");
+                OnSuggestedUseChanged();
+            }
+        }
+        private global::System.String _SuggestedUse;
+        partial void OnSuggestedUseChanging(global::System.String value);
+        partial void OnSuggestedUseChanged();
 
         #endregion
 
