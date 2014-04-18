@@ -66,7 +66,8 @@ var MultiSelectEditor = React.createClass({displayName: 'MultiSelectEditor',
 
     componentDidMount: function(){
         var selector = this.getDOMNode();
-        var chosenOptions = {width: "100%", hide_dropdown: false};
+        var chosenOptions = {width: "100%", hide_dropdown: false, allow_add_new_values: this.props.metadataField.canAddValues};
+  
         var handler =  this.editHandler;
         $(selector).val(this.props.question[this.props.field])
                    .chosen(chosenOptions)
