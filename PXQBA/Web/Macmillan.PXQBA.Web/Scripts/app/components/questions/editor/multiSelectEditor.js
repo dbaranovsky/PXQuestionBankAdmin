@@ -25,7 +25,7 @@ var MultiSelectEditor = React.createClass({displayName: 'MultiSelectEditor',
                options.push(React.DOM.option( {value:option}, option));
          });
 
-         return ({options: options})
+         return ({options: options});
 
     },
 
@@ -72,7 +72,6 @@ var MultiSelectEditor = React.createClass({displayName: 'MultiSelectEditor',
                           .chosen(chosenOptions)
                           .change(function(e, params){
                              handler(e.currentTarget.selectedOptions);
-                              setTimeout(function(){ $(selector).trigger('chosen:open'); }, 0)
                            });
 
                          

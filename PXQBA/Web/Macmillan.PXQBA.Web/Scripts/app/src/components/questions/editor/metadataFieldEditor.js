@@ -73,7 +73,6 @@ var MetadataFieldEditor = React.createClass({
     },
 
     componentDidUpdate: function(){
-      //TODO: move to another component
     var self = this;
     var chosenOptions = {width: "100%"};
     if (self.props.allowDeselect){
