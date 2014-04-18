@@ -250,7 +250,7 @@ input[type="checkbox"].input-validation-error {
 
 .tab-body textarea{
     max-height: 200px;
-    min-height: 200px;
+    min-height: 50px;
     font-size: 20px;
 }
 .tabs-header {

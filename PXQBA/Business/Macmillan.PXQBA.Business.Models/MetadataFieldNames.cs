@@ -13,7 +13,7 @@
         public const string Sequence = "seq";
         public const string Difficulty = "difficulty";
         public const string Keywords = "keywords";
-        public const string SuggestedUse = "suggesteduse";
+        public const string SuggestedUse = "suggestedUse";
         public const string Guidance = "guidance";
     }
 }

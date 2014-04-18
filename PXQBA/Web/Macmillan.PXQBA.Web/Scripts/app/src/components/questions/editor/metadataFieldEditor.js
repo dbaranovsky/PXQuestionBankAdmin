@@ -53,7 +53,7 @@ var MetadataFieldEditor = React.createClass({
 
 
        var field = this.props.field;
-       var metadataField = $.grep(this.props.metadata, function(e){ return (e.metadataName === field) || (e.metadataName === "dlap_q_"+field); });
+       var metadataField = $.grep(this.props.metadata, function(e){ return $.inArray(e.metadataName, [field, "dlap_q_"+field, "dlap_"+field])!=-1;  });
        var editorType = metadataField.length>0 ? metadataField[0].editorDescriptor.editorType : 0;
        var currentValue = this.props.question[this.props.field];
        switch (editorType) {
@@ -64,16 +64,15 @@ var MetadataFieldEditor = React.createClass({
              return (<MultiSelectEditor values={currentValue} metadataField={metadataField[0]} question={this.props.question} field={this.props.field} editHandler={this.props.editHandler} />);
 
           default: 
-            if(!this.props.isMultiline){
-                 return (<input type="text" onChange={this.editHandler} ref="editor" value={currentValue}/>)
+            if(metadataField[0]!== undefined && metadataField[0].isMultiline){
+                 return ( <textarea onChange={this.editHandler}  ref="editor" className="question-body-editor"  rows="10" type="text" placeholder="Enter text..." value={currentValue} />);  
              }
-            return ( <textarea onChange={this.editHandler}  ref="editor" className="question-body-editor"  rows="10" type="text" placeholder="Enter text..." value={currentValue} />);
-             
+           
+             return (<input type="text" onChange={this.editHandler} ref="editor" value={currentValue}/>);
         }
     },
 
     componentDidUpdate: function(){
-      //TODO: move to another component
     var self = this;
     var chosenOptions = {width: "100%"};
     if (self.props.allowDeselect){
@@ -94,7 +93,7 @@ var MetadataFieldEditor = React.createClass({
         return;
       }
       var field = this.props.field;
-      var metadataField = $.grep(this.props.metadata, function(e){ return (e.metadataName === field) || (e.metadataName === "dlap_q_"+field); });
+      var metadataField = $.grep(this.props.metadata, function(e){ return $.inArray(e.metadataName, [field, "dlap_q_"+field, "dlap_"+field])!=-1; });
       var question = this.props.question;
       var availableChoices = metadataField[0].editorDescriptor.availableChoice;
         for (var propertyName in availableChoices) {

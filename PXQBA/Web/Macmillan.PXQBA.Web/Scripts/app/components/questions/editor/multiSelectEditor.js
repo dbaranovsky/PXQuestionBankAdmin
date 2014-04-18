@@ -25,7 +25,7 @@ var MultiSelectEditor = React.createClass({displayName: 'MultiSelectEditor',
                options.push(React.DOM.option( {value:option}, option));
          });
 
-         return ({options: options})
+         return ({options: options});
 
     },
 
@@ -66,14 +66,14 @@ var MultiSelectEditor = React.createClass({displayName: 'MultiSelectEditor',
 
     componentDidMount: function(){
         var selector = this.getDOMNode();
-        var chosenOptions = {width: "100%", hide_dropdown: false};
+        var chosenOptions = {width: "100%", hide_dropdown: false, allow_add_new_values: this.props.metadataField.canAddValues};
+  
         var handler =  this.editHandler;
         $(selector).val(this.props.question[this.props.field])
-                          .chosen(chosenOptions)
-                          .change(function(e, params){
+                   .chosen(chosenOptions)
+                   .change(function(e, params){
                              handler(e.currentTarget.selectedOptions);
-                              setTimeout(function(){ $(selector).trigger('chosen:open'); }, 0)
-                           });
+                    });
 
                          
     },
