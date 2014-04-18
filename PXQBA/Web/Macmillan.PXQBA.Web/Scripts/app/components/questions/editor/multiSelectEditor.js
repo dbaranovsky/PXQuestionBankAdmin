@@ -69,10 +69,10 @@ var MultiSelectEditor = React.createClass({displayName: 'MultiSelectEditor',
         var chosenOptions = {width: "100%", hide_dropdown: false};
         var handler =  this.editHandler;
         $(selector).val(this.props.question[this.props.field])
-                          .chosen(chosenOptions)
-                          .change(function(e, params){
+                   .chosen(chosenOptions)
+                   .change(function(e, params){
                              handler(e.currentTarget.selectedOptions);
-                           });
+                    });
 
                          
     },

@@ -64,11 +64,11 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
              return (MultiSelectEditor( {values:currentValue, metadataField:metadataField[0], question:this.props.question, field:this.props.field, editHandler:this.props.editHandler} ));
 
           default: 
-            if(!this.props.isMultiline){
-                 return (React.DOM.input( {type:"text", onChange:this.editHandler, ref:"editor", value:currentValue}))
+            if(metadataField[0]!== undefined && metadataField[0].isMultiline){
+                 return ( React.DOM.textarea( {onChange:this.editHandler,  ref:"editor", className:"question-body-editor",  rows:"10", type:"text", placeholder:"Enter text...", value:currentValue} ));  
              }
-            return ( React.DOM.textarea( {onChange:this.editHandler,  ref:"editor", className:"question-body-editor",  rows:"10", type:"text", placeholder:"Enter text...", value:currentValue} ));
-             
+           
+             return (React.DOM.input( {type:"text", onChange:this.editHandler, ref:"editor", value:currentValue}));
         }
     },
 
