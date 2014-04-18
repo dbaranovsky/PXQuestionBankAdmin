@@ -43,5 +43,10 @@ namespace Macmillan.PXQBA.Business.Models
         /// Congnitive Level for the  question.
         /// </summary>
         public string CognitiveLevel { get; set; }
+
+        /// <summary>
+        /// Congnitive Level for the  question.
+        /// </summary>
+        public string SuggestedUse { get; set; }
     }
 }

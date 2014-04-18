@@ -4,145 +4,146 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="QBADummyModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="QBADummyModelStoreContainer">
-    <EntitySet Name="Questions" EntityType="QBADummyModel.Store.Questions" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ProductCourses" EntityType="QBADummyModel.Store.ProductCourses" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Courses" EntityType="QBADummyModel.Store.Courses" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CourseMetaFields" EntityType="QBADummyModel.Store.CourseMetaFields" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CourseMetaFieldValues" EntityType="QBADummyModel.Store.CourseMetaFieldValues" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Notes" EntityType="QBADummyModel.Store.Notes" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="QuestionProductCourse" Association="QBADummyModel.Store.QuestionProductCourse">
-      <End Role="Question" EntitySet="Questions" />
-      <End Role="ProductCourse" EntitySet="ProductCourses" />
-    </AssociationSet>
-    <AssociationSet Name="CourseCourseMetaField" Association="QBADummyModel.Store.CourseCourseMetaField">
-      <End Role="Course" EntitySet="Courses" />
-      <End Role="CourseMetaField" EntitySet="CourseMetaFields" />
-    </AssociationSet>
-    <AssociationSet Name="CourseMetaFieldCourseMetaFieldValue" Association="QBADummyModel.Store.CourseMetaFieldCourseMetaFieldValue">
-      <End Role="CourseMetaField" EntitySet="CourseMetaFields" />
-      <End Role="CourseMetaFieldValue" EntitySet="CourseMetaFieldValues" />
-    </AssociationSet>
-    <AssociationSet Name="QuestionNote" Association="QBADummyModel.Store.QuestionNote">
-      <End Role="Question" EntitySet="Questions" />
-      <End Role="Note" EntitySet="Notes" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="Questions">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="InteractionType" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="DlapId" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Status" Type="int" Nullable="false" />
-    <Property Name="Type" Type="int" Nullable="true" />
-    <Property Name="Preview" Type="nvarchar(max)" Nullable="true" />
-  </EntityType>
-  <EntityType Name="ProductCourses">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ProductCourseDlapId" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Difficulty" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Chapter" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Bank" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Title" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Sequence" Type="int" Nullable="true" />
-    <Property Name="QuestionId" Type="int" Nullable="false" />
-    <Property Name="ExcerciseNo" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Guidance" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Version" Type="nvarchar(max)" Nullable="true" DefaultValue="&quot;0&quot;" />
-    <Property Name="CognitiveLevel" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Keywords" Type="nvarchar(max)" Nullable="true" />
-  </EntityType>
-  <EntityType Name="Courses">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="DlapId" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="CourseMetaFields">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="XMLFieldName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Filterable" Type="bit" Nullable="false" />
-    <Property Name="FriendlyName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="CourseId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="CourseMetaFieldValues">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Sequence" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="CourseMetaFieldId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Notes">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="IsFlagged" Type="bit" Nullable="false" />
-    <Property Name="QuestionId" Type="int" Nullable="false" />
-  </EntityType>
-  <Association Name="QuestionProductCourse">
-    <End Role="Question" Type="QBADummyModel.Store.Questions" Multiplicity="1" />
-    <End Role="ProductCourse" Type="QBADummyModel.Store.ProductCourses" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Question">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ProductCourse">
-        <PropertyRef Name="QuestionId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="CourseCourseMetaField">
-    <End Role="Course" Type="QBADummyModel.Store.Courses" Multiplicity="1" />
-    <End Role="CourseMetaField" Type="QBADummyModel.Store.CourseMetaFields" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Course">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="CourseMetaField">
-        <PropertyRef Name="CourseId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="CourseMetaFieldCourseMetaFieldValue">
-    <End Role="CourseMetaField" Type="QBADummyModel.Store.CourseMetaFields" Multiplicity="1" />
-    <End Role="CourseMetaFieldValue" Type="QBADummyModel.Store.CourseMetaFieldValues" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CourseMetaField">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="CourseMetaFieldValue">
-        <PropertyRef Name="CourseMetaFieldId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="QuestionNote">
-    <End Role="Question" Type="QBADummyModel.Store.Questions" Multiplicity="1" />
-    <End Role="Note" Type="QBADummyModel.Store.Notes" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Question">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Note">
-        <PropertyRef Name="QuestionId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="QBADummyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CourseMetaFields">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="XMLFieldName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Filterable" Type="bit" Nullable="false" />
+          <Property Name="FriendlyName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CourseMetaFieldValues">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sequence" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CourseMetaFieldId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DlapId" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsFlagged" Type="bit" Nullable="false" />
+          <Property Name="QuestionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductCourses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductCourseDlapId" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Difficulty" Type="nvarchar(max)" />
+          <Property Name="Chapter" Type="nvarchar(max)" />
+          <Property Name="Bank" Type="nvarchar(max)" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Sequence" Type="int" />
+          <Property Name="QuestionId" Type="int" Nullable="false" />
+          <Property Name="ExcerciseNo" Type="nvarchar(max)" />
+          <Property Name="Guidance" Type="nvarchar(max)" />
+          <Property Name="Version" Type="nvarchar(max)" />
+          <Property Name="CognitiveLevel" Type="nvarchar(max)" />
+          <Property Name="Keywords" Type="nvarchar(max)" />
+          <Property Name="SuggestedUse" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Questions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InteractionType" Type="nvarchar(max)" />
+          <Property Name="DlapId" Type="nvarchar(max)" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Preview" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_CourseCourseMetaField">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+          <End Role="CourseMetaFields" Type="Self.CourseMetaFields" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseMetaFields">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseMetaFieldCourseMetaFieldValue">
+          <End Role="CourseMetaFields" Type="Self.CourseMetaFields" Multiplicity="1" />
+          <End Role="CourseMetaFieldValues" Type="Self.CourseMetaFieldValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseMetaFields">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseMetaFieldValues">
+              <PropertyRef Name="CourseMetaFieldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionNote">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+          <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionProductCourse">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+          <End Role="ProductCourses" Type="Self.ProductCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductCourses">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QBADummyModelStoreContainer">
+          <EntitySet Name="CourseMetaFields" EntityType="Self.CourseMetaFields" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseMetaFieldValues" EntityType="Self.CourseMetaFieldValues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductCourses" EntityType="Self.ProductCourses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CourseCourseMetaField" Association="Self.FK_CourseCourseMetaField">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="CourseMetaFields" EntitySet="CourseMetaFields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseMetaFieldCourseMetaFieldValue" Association="Self.FK_CourseMetaFieldCourseMetaFieldValue">
+            <End Role="CourseMetaFields" EntitySet="CourseMetaFields" />
+            <End Role="CourseMetaFieldValues" EntitySet="CourseMetaFieldValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionNote" Association="Self.FK_QuestionNote">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionProductCourse" Association="Self.FK_QuestionProductCourse">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="ProductCourses" EntitySet="ProductCourses" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="QBADummyModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
@@ -175,11 +176,11 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="InteractionType" Type="String" Nullable="true" />
-          <Property Name="DlapId" Type="String" Nullable="true" />
+          <Property Name="InteractionType" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DlapId" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Status" Type="Int32" Nullable="false" />
           <Property Name="Type" Type="Int32" Nullable="true" />
-          <Property Name="Preview" Type="String" Nullable="true" />
+          <Property Name="Preview" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="ProductCourses" Relationship="QBADummyModel.QuestionProductCourse" FromRole="Question" ToRole="ProductCourse" />
           <NavigationProperty Name="Notes" Relationship="QBADummyModel.QuestionNote" FromRole="Question" ToRole="Note" />
         </EntityType>
@@ -188,19 +189,20 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductCourseDlapId" Type="String" Nullable="false" />
-          <Property Name="Difficulty" Type="String" Nullable="true" />
-          <Property Name="Chapter" Type="String" Nullable="true" />
-          <Property Name="Bank" Type="String" Nullable="true" />
-          <Property Name="Title" Type="String" Nullable="true" />
+          <Property Name="ProductCourseDlapId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Difficulty" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Chapter" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Bank" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Title" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Sequence" Type="Int32" Nullable="true" />
           <NavigationProperty Name="Question" Relationship="QBADummyModel.QuestionProductCourse" FromRole="ProductCourse" ToRole="Question" />
           <Property Name="QuestionId" Type="Int32" Nullable="false" />
-          <Property Type="String" Name="ExcerciseNo" Nullable="true" />
-          <Property Type="String" Name="Guidance" Nullable="true" />
-          <Property Type="String" Name="Version" DefaultValue="&quot;0&quot;" />
-          <Property Type="String" Name="CognitiveLevel" Nullable="true" />
-          <Property Type="String" Name="Keywords" Nullable="true" />
+          <Property Type="String" Name="ExcerciseNo" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="Guidance" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="Version" DefaultValue="&quot;0&quot;" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="CognitiveLevel" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="Keywords" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="SuggestedUse" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
         <Association Name="QuestionProductCourse">
           <End Type="QBADummyModel.Question" Role="Question" Multiplicity="1" />
@@ -219,7 +221,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DlapId" Type="String" Nullable="false" />
+          <Property Name="DlapId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="CourseMetaFields" Relationship="QBADummyModel.CourseCourseMetaField" FromRole="Course" ToRole="CourseMetaField" />
         </EntityType>
         <EntityType Name="CourseMetaField">
@@ -227,10 +229,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="XMLFieldName" Type="String" Nullable="false" />
+          <Property Name="XMLFieldName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Filterable" Type="Boolean" Nullable="false" />
-          <Property Name="FriendlyName" Type="String" Nullable="false" />
-          <Property Name="Type" Type="String" Nullable="false" />
+          <Property Name="FriendlyName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Course" Relationship="QBADummyModel.CourseCourseMetaField" FromRole="CourseMetaField" ToRole="Course" />
           <Property Name="CourseId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CourseMetaFieldValues" Relationship="QBADummyModel.CourseMetaFieldCourseMetaFieldValue" FromRole="CourseMetaField" ToRole="CourseMetaFieldValue" />
@@ -240,8 +242,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Sequence" Type="String" Nullable="false" />
-          <Property Name="Text" Type="String" Nullable="false" />
+          <Property Name="Sequence" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="CourseMetaField" Relationship="QBADummyModel.CourseMetaFieldCourseMetaFieldValue" FromRole="CourseMetaFieldValue" ToRole="CourseMetaField" />
           <Property Name="CourseMetaFieldId" Type="Int32" Nullable="false" />
         </EntityType>
@@ -274,7 +276,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Text" Type="String" Nullable="false" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="IsFlagged" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Question" Relationship="QBADummyModel.QuestionNote" FromRole="Note" ToRole="Question" />
           <Property Name="QuestionId" Type="Int32" Nullable="false" />
@@ -325,6 +327,7 @@
           <ScalarProperty Name="Version" ColumnName="Version" />
           <ScalarProperty Name="CognitiveLevel" ColumnName="CognitiveLevel" />
           <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+          <ScalarProperty Name="SuggestedUse" ColumnName="SuggestedUse" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
