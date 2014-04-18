@@ -16,5 +16,9 @@ namespace Macmillan.PXQBA.Business.Models.Web
         public FieldEditorDescriptor EditorDescriptor { get; set; }
 
         public bool IsInlineEditingAllowed { get; set; }
+
+        public bool CanAddValues { get; set; }
+
+        public bool IsMultiline { get; set; }
     }
 }

@@ -19,7 +19,9 @@ namespace Macmillan.PXQBA.Common.Helpers
                              CanNotDelete = false,
                              IsInlineEditingAllowed = false,
                              EditorDescriptor =
-                                 new FieldEditorDescriptor(metaField.TypeDescriptor)
+                                 new FieldEditorDescriptor(metaField.TypeDescriptor),
+                             CanAddValues = false,
+                             IsMultiline = false
                          };
 
               // \todo Move custom field-level settings to configuration
@@ -36,7 +38,6 @@ namespace Macmillan.PXQBA.Common.Helpers
              }
              if (metaField.Name == MetadataFieldNames.DlapType)
              {
-                 model.IsInlineEditingAllowed = false;
                  model.EditorDescriptor.AvailableChoice = GetAvailibleChoicesFromEnum(typeof(QuestionType));
              }
 
@@ -49,11 +50,16 @@ namespace Macmillan.PXQBA.Common.Helpers
 
              if (metaField.Name == MetadataFieldNames.Keywords)
              {
+                 model.CanAddValues = true;
                  model.Width = "20%";
              }
-            
 
-             return model;
+             if (metaField.Name == MetadataFieldNames.Guidance)
+             {
+                 model.IsMultiline = true;
+             }
+            
+            return model;
          }
 
          private static Dictionary<string, string> GetAvailibleChoicesFromEnum(Type enumType)
