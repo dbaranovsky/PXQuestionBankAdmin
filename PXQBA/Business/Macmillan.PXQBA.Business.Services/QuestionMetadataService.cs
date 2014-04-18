@@ -121,6 +121,29 @@ namespace Macmillan.PXQBA.Business.Services
                                                                }
                                                            
                                                        },
+                                                        new QuestionMetaField()
+                                                       {
+                                                           FriendlyName = "Suggested Use",
+                                                           Name = MetadataFieldNames.SuggestedUse,
+                                                           TypeDescriptor = new MetaFieldTypeDescriptor
+                                                               {
+                                                                   Type = MetaFieldType.MultiSelect,
+                                                                   AvailableChoice = new List<string>
+                                                                       {
+                                                                           "Pre-class",
+                                                                           "In-class",
+                                                                           "Post-class",
+                                                                           "Exam"
+                                                                       }
+                                                               }
+                                                           
+                                                       },
+                                                       new QuestionMetaField()
+                                                       {
+                                                           FriendlyName = "Guidance",
+                                                           Name = MetadataFieldNames.Guidance,
+                                                           TypeDescriptor = new MetaFieldTypeDescriptor(MetaFieldType.Text)
+                                                       },
                                                    };
 
             return fields;

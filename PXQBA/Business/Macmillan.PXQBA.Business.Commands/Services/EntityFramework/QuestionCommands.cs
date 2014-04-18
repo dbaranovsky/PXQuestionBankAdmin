@@ -13,7 +13,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
     {
         private readonly QBADummyModelContainer dbContext;
 
-        public QuestionCommands(QBADummyModelContainer dbContext, IModelProfileService modelProfileService)
+        public QuestionCommands(QBADummyModelContainer dbContext)
         {
             this.dbContext = dbContext;
         }
