@@ -13,15 +13,14 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// Retrieves questions list
         /// </summary>
         /// <returns></returns>
-        PagedCollection<Question> GetQuestionList(Course course, SortCriterion sortCriterion, int startingRecordNumber, int recordCount);
+        PagedCollection<Question> GetQuestionList(SortCriterion sortCriterion, int startingRecordNumber, int recordCount);
 
         /// <summary>
         /// Create a new question
         /// </summary>
-        /// <param name="course"></param>
         /// <param name="question"></param>
         /// <returns>The updated object that was persisted</returns>
-        Question CreateQuestion(Course course, QuestionType questionType, string bank, string chapter);
+        Question CreateQuestion(QuestionType questionType, string bank, string chapter);
 
         /// <summary>
         /// Returns question by its ID
@@ -34,26 +33,24 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// Creates template for new question based on existing one. 
         /// The question is not persisted at this point. Use CreateQuestion to persist the question after modification
         /// </summary>
-        /// <param name="course"></param>
         /// <param name="questionId"></param>
         /// <returns></returns>
-        Question DuplicateQuestion(Course course, string questionId);
+        Question DuplicateQuestion(string questionId);
 
         /// <summary>
         /// Changes question sequence number in scope of same bank questions.
         /// As sequence is defined in scope of cource, the cource id needs to be passed as well
         /// </summary>
-        /// <param name="course"></param>
         /// <param name="questionId"></param>
         /// <param name="newSequenceValue"></param>
-        void UpdateQuestionSequence(Course course, string questionId, int newSequenceValue);
+        void UpdateQuestionSequence(string questionId, int newSequenceValue);
 
         /// <summary>
         /// Returns list of question types available for specified course
         /// </summary>
         /// <param name="course"></param>
         /// <returns></returns>
-        IEnumerable<QuestionType> GetQuestionTypesForCourse(Course course);
+        IEnumerable<QuestionType> GetQuestionTypesForCourse();
 
         /// <summary>
         /// Update existing question metafields

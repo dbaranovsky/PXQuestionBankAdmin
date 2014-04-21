@@ -1307,6 +1307,30 @@ namespace Macmillan.PXQBA.DataAccess.Data
         private global::System.String _SuggestedUse;
         partial void OnSuggestedUseChanging(global::System.String value);
         partial void OnSuggestedUseChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String LearningObjectives
+        {
+            get
+            {
+                return _LearningObjectives;
+            }
+            set
+            {
+                OnLearningObjectivesChanging(value);
+                ReportPropertyChanging("LearningObjectives");
+                _LearningObjectives = StructuralObject.SetValidValue(value, true, "LearningObjectives");
+                ReportPropertyChanged("LearningObjectives");
+                OnLearningObjectivesChanged();
+            }
+        }
+        private global::System.String _LearningObjectives;
+        partial void OnLearningObjectivesChanging(global::System.String value);
+        partial void OnLearningObjectivesChanged();
 
         #endregion
 

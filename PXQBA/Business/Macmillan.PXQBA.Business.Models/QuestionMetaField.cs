@@ -21,7 +21,7 @@ namespace Macmillan.PXQBA.Business.Models
         }
         
         public MetaFieldType Type { get; set; }
-        public List<string> AvailableChoice { get; set; }
+        public Dictionary<string, string> AvailableChoice { get; set; }
     }
 
     public class QuestionMetaField

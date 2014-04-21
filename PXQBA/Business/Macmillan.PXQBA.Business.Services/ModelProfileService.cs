@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
@@ -10,9 +11,12 @@ namespace Macmillan.PXQBA.Business.Services
 {
     public class ModelProfileService : IModelProfileService
     {
+        private readonly IProductCourseOperation productCourseOperation;
+
         private Dictionary<string, string> availableQuestionTypes;
-        public ModelProfileService()
+        public ModelProfileService(IProductCourseOperation productCourseOperation)
         {
+            this.productCourseOperation = productCourseOperation;
             this.availableQuestionTypes = ConfigurationHelper.GetQuestionTypes();
         }
 
@@ -58,9 +62,20 @@ namespace Macmillan.PXQBA.Business.Services
             data.Add(MetadataFieldNames.Keywords, String.Join(", ", question.Keywords));
             data.Add(MetadataFieldNames.SuggestedUse, String.Join(", ", question.SuggestedUse));
             data.Add(MetadataFieldNames.Guidance, question.Guidance);
-
+            data.Add(MetadataFieldNames.LearningObjectives, String.Join(", ", question.LearningObjectives.Select(lo => lo.Description)));
 
             return data;
+        }
+
+        public string SetLearningObjectives(IEnumerable<LearningObjective> learningObjectives)
+        {
+            return (learningObjectives != null) ? string.Join("|", learningObjectives.Select(lo => lo.Guid)) : null;
+        }
+
+        public IEnumerable<LearningObjective> GetLOByGuid(string learningObjectiveGuids)
+        {
+            var guids = learningObjectiveGuids.Split('|');
+            return productCourseOperation.GetCurrentProductCourse().LearningObjectives.Where(lo => guids.Contains(lo.Guid));
         }
     }
 }

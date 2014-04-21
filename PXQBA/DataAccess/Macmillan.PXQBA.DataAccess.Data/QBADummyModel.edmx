@@ -59,6 +59,7 @@
           <Property Name="CognitiveLevel" Type="nvarchar(max)" />
           <Property Name="Keywords" Type="nvarchar(max)" />
           <Property Name="SuggestedUse" Type="nvarchar(max)" />
+          <Property Name="LearningObjectives" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Questions">
           <Key>
@@ -203,6 +204,7 @@
           <Property Type="String" Name="CognitiveLevel" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Type="String" Name="Keywords" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="SuggestedUse" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="LearningObjectives" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
         <Association Name="QuestionProductCourse">
           <End Type="QBADummyModel.Question" Role="Question" Multiplicity="1" />
@@ -328,6 +330,7 @@
           <ScalarProperty Name="CognitiveLevel" ColumnName="CognitiveLevel" />
           <ScalarProperty Name="Keywords" ColumnName="Keywords" />
           <ScalarProperty Name="SuggestedUse" ColumnName="SuggestedUse" />
+          <ScalarProperty Name="LearningObjectives" ColumnName="LearningObjectives" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -60,7 +60,7 @@ namespace Macmillan.PXQBA.Common.Helpers
                  model.IsMultiline = true;
                  model.Width = "30%";
              }
-            
+
             return model;
          }
 

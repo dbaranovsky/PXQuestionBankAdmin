@@ -1,4 +1,7 @@
-﻿using Macmillan.PXQBA.Business.Contracts;
+﻿using System.Runtime.Caching;
+using Macmillan.PXQBA.Business.Contracts;
+using Macmillan.PXQBA.Common.Helpers;
+using Macmillan.PXQBA.Common.Helpers.Constants;
 
 namespace Macmillan.PXQBA.Business.Services
 {
@@ -7,6 +10,6 @@ namespace Macmillan.PXQBA.Business.Services
     /// </summary>
     public class TitleListManagementService : ITitleListManagementService
     {
-        
+       
     }
 }

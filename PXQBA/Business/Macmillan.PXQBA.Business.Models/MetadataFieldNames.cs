@@ -15,5 +15,6 @@
         public const string Keywords = "keywords";
         public const string SuggestedUse = "suggesteduse";
         public const string Guidance = "guidance";
+        public const string LearningObjectives = "learningobjectives";
     }
 }
