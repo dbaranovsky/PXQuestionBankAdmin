@@ -10,11 +10,11 @@
             return null;
         }
         var fieldFilters = filterUrlHash.split(fieldsSeparator);
-        var gilterItems = [];
+        var filterItems = [];
         for (var i = 0; i < fieldFilters.length; i++) {
-            gilterItems.push(new FilterItem(fieldFilters[i], valuesSeparator, fieldValueSeparator));
+            filterItems.push(new FilterItem(fieldFilters[i], valuesSeparator, fieldValueSeparator));
         }
-        return gilterItems;
+        return filterItems;
     };
 
     self.toUrlHash = function(filterItems) {
@@ -24,6 +24,28 @@
         }
 
         return stringItems.join(fieldsSeparator);
+    };
+
+    self.addFiltrationToArray = function (filterItem, filtrationArray) {
+        for (var i = 0; i < filtrationArray.length; i++) {
+            if (filtrationArray[i].field == filterItem.field) {
+                filtrationArray[i] = filterItem;
+                return;
+            }
+        }
+        
+        filtrationArray.push(filterItem);
+    };
+
+    self.addFiltration = function (field, valuesArray, filtrationUrlParameters) {
+        var filterItems = self.parse(filtrationUrlParameters);
+        if (filterItems == null) {
+            filterItems = [];
+        }
+        var filterItem = new FilterItem(field + fieldValueSeparator, valuesSeparator, fieldValueSeparator);
+        filterItem.values = valuesArray;
+        addFiltrationToArray(filterItem, filterItems);
+        return self.toUrlHash(filterItems);
     };
 
     return self;

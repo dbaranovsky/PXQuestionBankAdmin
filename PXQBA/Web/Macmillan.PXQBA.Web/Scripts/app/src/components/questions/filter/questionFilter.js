@@ -9,12 +9,15 @@ var QuestionFilter = React.createClass({
             <div className="questionFilter">
                  <div> 
                     <span>
-                         <strong> Filter: </strong>  
+                         <strong> Filter: </strong>  <QuestionFilterItemsAppender filteredFields={this.props.filter}  allFields={this.props.allAvailableColumns} /> 
                     </span>
-                    <a href="#/filter/query/page/1"> Favourite filter</a>
+               
                     <QuestionFilterItemsContainer filter={this.props.filter} allAvailableColumns={this.props.allAvailableColumns}/>
                 </div>
             </div>
             );
         }
 });
+
+
+ 
