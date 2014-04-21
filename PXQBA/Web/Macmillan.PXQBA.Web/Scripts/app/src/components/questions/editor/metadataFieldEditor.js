@@ -53,7 +53,7 @@ var MetadataFieldEditor = React.createClass({
 
 
        var field = this.props.field;
-       var metadataField = $.grep(this.props.metadata, function(e){ return $.inArray(e.metadataName, [field, "dlap_q_"+field, "dlap_"+field])!=-1;  });
+       var metadataField = $.grep(this.props.metadata, function(e){ return $.inArray(e.metadataName, [field, "dlap_q_"+field, "dlap_"+field, field.toLowerCase()])!=-1;  });
        var editorType = metadataField.length>0 ? metadataField[0].editorDescriptor.editorType : 0;
        var currentValue = this.props.question[this.props.field];
        switch (editorType) {
@@ -93,7 +93,7 @@ var MetadataFieldEditor = React.createClass({
         return;
       }
       var field = this.props.field;
-      var metadataField = $.grep(this.props.metadata, function(e){ return $.inArray(e.metadataName, [field, "dlap_q_"+field, "dlap_"+field])!=-1; });
+      var metadataField = $.grep(this.props.metadata, function(e){ return $.inArray(e.metadataName, [field, "dlap_q_"+field, "dlap_"+field, field.toLowerCase()])!=-1; });
       var question = this.props.question;
       var availableChoices = metadataField[0].editorDescriptor.availableChoice;
         for (var propertyName in availableChoices) {
