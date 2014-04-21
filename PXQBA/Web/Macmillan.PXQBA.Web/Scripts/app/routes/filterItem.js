@@ -20,6 +20,10 @@ FilterItem.prototype.parseItem = function (stringValue, valuesSeparator, fieldVa
 };
 
 FilterItem.prototype.parseValues = function (stringValues, valuesSeparator) {
+    if (stringValues == '') {
+        this.values = [];
+        return;
+    }
     var values = stringValues.split(valuesSeparator);
     this.values = values;
 };
