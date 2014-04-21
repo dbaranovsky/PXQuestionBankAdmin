@@ -39,6 +39,9 @@
 
     self.addFiltration = function (field, valuesArray, filtrationUrlParameters) {
         var filterItems = self.parse(filtrationUrlParameters);
+        if (filterItems == null) {
+            filterItems = [];
+        }
         var filterItem = new FilterItem(field + fieldValueSeparator, valuesSeparator, fieldValueSeparator);
         filterItem.values = valuesArray;
         addFiltrationToArray(filterItem, filterItems);
