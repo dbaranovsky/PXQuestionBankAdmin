@@ -3,17 +3,26 @@
 */
 var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
 
+  
     tabsInitializer: function (container) {
        //  container.find('a:first').tab('show')
     },
 
     componentDidMount: function() {
-         this.tabsInitializer($(this.getDOMNode()));
+         var tabs = this.getDOMNode();
+         this.tabsInitializer($(tabs));
+         $(tabs).find('iframe').load(function(){
+           $(tabs).find('.iframe-waiting').hide();
+           $(tabs).find('iframe').show();
+        });
+  
     },
 
     componentDidUpdate: function () {
         this.tabsInitializer($(this.getDOMNode()));
     },
+
+  
 
     render: function() {
         return ( 
@@ -38,20 +47,23 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                 React.DOM.div( {className:"tab-content"}, 
                     React.DOM.div( {className:"tab-pane active", id:"body"}, 
                        React.DOM.div( {className:"tab-body"}, 
-                       React.DOM.td( {dangerouslySetInnerHTML:{__html: this.props.question.preview}} )
+                          React.DOM.div( {className:"iframe-waiting"} ),
+                          React.DOM.iframe( {src:this.props.question.editorUrl} )
+                          
                        )
                     ),
                     React.DOM.div( {className:"tab-pane", id:"metadata"}, 
                        QuestionMetadataEditor(  {question:this.props.question, editHandler:this.props.editHandler} ),
                            React.DOM.br(null )
 
-                    )
-                ),
-                React.DOM.div( {className:"tab-pane", id:"history"}, 
-                       React.DOM.div( {className:"tab-body"}
-                       
+                    ),
+                     React.DOM.div( {className:"tab-pane", id:"history"}, 
+                       React.DOM.div( {className:"tab-body"}, 
+                       "Lorem Ipsum"
                        )
                 )
+                )
+               
 
             )
             );

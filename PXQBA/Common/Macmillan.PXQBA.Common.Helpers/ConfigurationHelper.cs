@@ -190,17 +190,31 @@ namespace Macmillan.PXQBA.Common.Helpers
 
 
         /// <summary>
-        /// Get discipline course id
+        /// Get ActionPlayer url for generatingrun question scenario
         /// </summary>
         /// <returns>Discipline course id</returns>
-        public static string GetActionPlayerUrl()
+        public static string GetActionPlayerUrlTemplate()
         {
-            var url = ConfigurationManager.AppSettings[ConfigurationKeys.ActionPlayerUrl];
+            var url = ConfigurationManager.AppSettings[ConfigurationKeys.ActionPlayerUrlTemplate];
             if (!string.IsNullOrEmpty(url))
             {
                 return url;
             }
             return "http://root.dev.brainhoney.bfwpub.com/BrainHoney/Component/ActivityPlayer?enrollmentid=200117&itemid=AHWDG&ShowHeader=false";
+        }
+
+        /// <summary>
+        /// Get Editor url for question editing
+        /// </summary>
+        /// <returns>Discipline course id</returns>
+        public static string GetEditorUrlTemplate()
+        {
+            var url = ConfigurationManager.AppSettings[ConfigurationKeys.EditorUrlTemplate];
+            if (!string.IsNullOrEmpty(url))
+            {
+                return url;
+            }
+            return "http://root.dev.brainhoney.bfwpub.com/BrainHoney/Component/QuestionEditor?enrollmentid={0}&itemid={1}&questionid={2}&showcancel=true";
         }
     }
 }

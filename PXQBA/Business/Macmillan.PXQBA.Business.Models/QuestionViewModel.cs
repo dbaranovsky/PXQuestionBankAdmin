@@ -9,6 +9,7 @@ namespace Macmillan.PXQBA.Business.Models
     {
 
         public string ActionPlayerUrl { get; set; }
+        public string EditorUrl { get; set; }
 
     }
 }

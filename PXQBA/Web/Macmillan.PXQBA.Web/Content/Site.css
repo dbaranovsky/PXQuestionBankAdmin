@@ -326,3 +326,19 @@ input[type="checkbox"].input-validation-error {
 .chosen-single, .chosen-container-multi .chosen-choices li.search-field input[type="text"]{
     height: 30px !important;
 }
+
+
+.iframe-waiting {
+    width: 100%;
+    height: 705px;
+    text-align: center;
+    vertical-align: middle;
+   background: url("../Content/img/spinning.gif"); 
+}
+
+
+.tab-body iframe {
+    width: 100%;
+    height: 705px;
+    display: none;
+}
