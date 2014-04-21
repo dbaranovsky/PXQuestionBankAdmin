@@ -76,6 +76,11 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
         /// <summary>
         /// Key for external Action Player in BrainHoney
         /// </summary>
-        public static string ActionPlayerUrl = "ActionPlayerUrl";
+        public static string ActionPlayerUrlTemplate = "ActionPlayerUrl";
+
+        /// <summary>
+        /// Key for external Editor in BrainHoney
+        /// </summary>
+        public static string EditorUrlTemplate = "EditorUrl";
     }
 }

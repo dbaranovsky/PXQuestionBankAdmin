@@ -3,17 +3,26 @@
 */
 var QuestionEditorTabs = React.createClass({
 
+  
     tabsInitializer: function (container) {
        //  container.find('a:first').tab('show')
     },
 
     componentDidMount: function() {
-         this.tabsInitializer($(this.getDOMNode()));
+         var tabs = this.getDOMNode();
+         this.tabsInitializer($(tabs));
+         $(tabs).find('iframe').load(function(){
+           $(tabs).find('.iframe-waiting').hide();
+           $(tabs).find('iframe').show();
+        });
+  
     },
 
     componentDidUpdate: function () {
         this.tabsInitializer($(this.getDOMNode()));
     },
+
+  
 
     render: function() {
         return ( 
@@ -38,7 +47,9 @@ var QuestionEditorTabs = React.createClass({
                 <div className="tab-content">
                     <div className="tab-pane active" id="body">
                        <div className="tab-body">
-                       <td dangerouslySetInnerHTML={{__html: this.props.question.preview}} />
+                          <div className="iframe-waiting" />
+                          <iframe src={this.props.question.editorUrl} />
+                          
                        </div>
                     </div>
                     <div className="tab-pane" id="metadata">
@@ -46,12 +57,13 @@ var QuestionEditorTabs = React.createClass({
                            <br />
 
                     </div>
-                </div>
-                <div className="tab-pane" id="history">
+                     <div className="tab-pane" id="history">
                        <div className="tab-body">
-                       
+                       Lorem Ipsum
                        </div>
                 </div>
+                </div>
+               
 
             </div>
             );

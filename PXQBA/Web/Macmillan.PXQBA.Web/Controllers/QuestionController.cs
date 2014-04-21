@@ -41,7 +41,8 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult CreateQuestion(int questionType, string bank, string chapter)
         {
             var question = Mapper.Map<Question, QuestionViewModel>(questionManagementService.CreateQuestion(CourseHelper.CurrentCourse, (QuestionType)questionType, bank, chapter));
-            question.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrl(), "200117", "AHWDG");
+            question.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), "200117", "AHWDG");
+            question.EditorUrl = String.Format(ConfigurationHelper.GetEditorUrlTemplate(), "200117", "AHWDG", "12c19f3103ad4da1b254dd67f17dd1b1");
             return JsonCamel(question);
             
         }
@@ -51,7 +52,8 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
 
             var question = Mapper.Map<Question, QuestionViewModel>(questionManagementService.DuplicateQuestion(CourseHelper.CurrentCourse, questionId));
-            question.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrl(), "200117", "AHWDG");
+            question.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), "200117", "AHWDG");
+            question.EditorUrl = String.Format(ConfigurationHelper.GetEditorUrlTemplate(), "200117", "AHWDG", "12c19f3103ad4da1b254dd67f17dd1b1");
             return JsonCamel(question);
 
         }
@@ -70,7 +72,8 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult GetQuestion(string questionId)
         {
             var question = Mapper.Map<Question, QuestionViewModel>(questionManagementService.GetQuestion(questionId));
-            question.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrl(), "200117", "AHWDG");
+            question.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), "200117", "AHWDG");
+            question.EditorUrl = String.Format(ConfigurationHelper.GetEditorUrlTemplate(), "200117", "AHWDG", "12c19f3103ad4da1b254dd67f17dd1b1");
             return JsonCamel(question);
         }
 	}
