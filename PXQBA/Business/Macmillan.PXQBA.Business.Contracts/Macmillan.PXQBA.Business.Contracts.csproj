@@ -39,6 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\Web\Macmillan.PXQBA.Web\Properties\ProductInfo.cs">
+      <Link>Properties\ProductInfo.cs</Link>
+    </Compile>
     <Compile Include="IBulkOperationService.cs" />
     <Compile Include="IModelProfileService.cs" />
     <Compile Include="INotesManagementService.cs" />

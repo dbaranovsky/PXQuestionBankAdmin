@@ -42,6 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\Web\Macmillan.PXQBA.Web\Properties\ProductInfo.cs">
+      <Link>Properties\ProductInfo.cs</Link>
+    </Compile>
     <Compile Include="CommonLogger.cs" />
     <Compile Include="StaticLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
