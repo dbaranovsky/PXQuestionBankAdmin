@@ -55,6 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\Web\Macmillan.PXQBA.Web\Properties\ProductInfo.cs">
+      <Link>Properties\ProductInfo.cs</Link>
+    </Compile>
     <Compile Include="Automapper\AutomapperConfigurator.cs" />
     <Compile Include="Automapper\ModelProfile.cs" />
     <Compile Include="BulkOperationService.cs" />
