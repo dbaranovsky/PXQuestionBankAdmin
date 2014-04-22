@@ -74,6 +74,10 @@ namespace Macmillan.PXQBA.Business.Services
 
         public IEnumerable<LearningObjective> GetLOByGuid(string learningObjectiveGuids)
         {
+            if (learningObjectiveGuids == null)
+            {
+                return new List<LearningObjective>();
+            }
             var guids = learningObjectiveGuids.Split('|');
             return productCourseOperation.GetCurrentProductCourse().LearningObjectives.Where(lo => guids.Contains(lo.Guid));
         }
