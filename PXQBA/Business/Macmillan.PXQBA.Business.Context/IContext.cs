@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 using Bfw.Agilix.Dlap.Session;
-using Macmillan.PXQBA.Business.Models.Web;
+using Macmillan.PXQBA.Business.Models;
 
 namespace Macmillan.PXQBA.Business
 {

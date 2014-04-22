@@ -403,6 +403,10 @@
       <Project>{4f1bf9db-1226-4867-9e41-129b214f24f2}</Project>
       <Name>Bfw.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Macmillan.PXQBA.Web.ViewModels\Macmillan.PXQBA.Web.ViewModels.csproj">
+      <Project>{718F7559-6447-4674-AFA4-61A46A1732CB}</Project>
+      <Name>Macmillan.PXQBA.Web.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Project_Readme.html" />

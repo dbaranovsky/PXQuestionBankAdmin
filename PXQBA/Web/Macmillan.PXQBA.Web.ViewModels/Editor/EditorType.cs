@@ -1,4 +1,4 @@
-﻿namespace Macmillan.PXQBA.Business.Models.Web.Editor
+﻿namespace Macmillan.PXQBA.Web.ViewModels.Editor
 {
     public enum EditorType
     {

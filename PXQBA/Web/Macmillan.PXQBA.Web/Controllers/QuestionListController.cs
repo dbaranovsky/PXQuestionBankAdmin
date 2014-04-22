@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Web.UI.WebControls;
 using AutoMapper;
 using System.Net;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
-using Macmillan.PXQBA.Business.Models.Web;
-using Macmillan.PXQBA.Business.Services;
 using Macmillan.PXQBA.Common.Helpers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic;
 using System.Web.Mvc;
+using Macmillan.PXQBA.Web.ViewModels;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -47,7 +45,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult GetQuestionData(QuestionListDataRequest request)
         {
             var sortCriterion = new SortCriterion {ColumnName = request.OrderField, SortType = request.OrderType};
-            var questionList = questionManagementService.GetQuestionList(sortCriterion, 
+            var questionList = questionManagementService.GetQuestionList(request.Filter, sortCriterion, 
                                                                           (request.PageNumber - 1) * questionPerPage,
                                                                           questionPerPage);
             var totalPages = (questionList.TotalItems + questionPerPage - (questionList.TotalItems % questionPerPage)) /

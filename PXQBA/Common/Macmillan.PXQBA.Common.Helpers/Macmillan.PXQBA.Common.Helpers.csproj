@@ -70,6 +70,10 @@
       <Project>{F5A60C36-AA1F-4849-A9E7-465F7963DF9F}</Project>
       <Name>Bfw.Agilix.Dlap</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Web\Macmillan.PXQBA.Web.ViewModels\Macmillan.PXQBA.Web.ViewModels.csproj">
+      <Project>{718F7559-6447-4674-AFA4-61A46A1732CB}</Project>
+      <Name>Macmillan.PXQBA.Web.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

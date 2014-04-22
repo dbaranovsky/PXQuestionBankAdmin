@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
-using Macmillan.PXQBA.Business.Models.Web.Filter;
+using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Web.ViewModels.Filter;
 
-namespace Macmillan.PXQBA.Business.Models.Web
+namespace Macmillan.PXQBA.Web.ViewModels
 {
     /// <summary>
     /// Represent collection of question for react.js controls

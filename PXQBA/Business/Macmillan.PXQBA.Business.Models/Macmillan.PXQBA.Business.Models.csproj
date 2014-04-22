@@ -43,7 +43,10 @@
       <Link>Properties\ProductInfo.cs</Link>
     </Compile>
     <Compile Include="Course.cs" />
+    <Compile Include="FilterFieldDescriptor.cs" />
     <Compile Include="LearningObjective.cs" />
+    <Compile Include="Note.cs" />
+    <Compile Include="QuestionList.cs" />
     <Compile Include="QuestionType.cs" />
     <Compile Include="InteractionType.cs" />
     <Compile Include="MetadataFieldNames.cs" />
@@ -52,22 +55,11 @@
     <Compile Include="QuestionStatus.cs" />
     <Compile Include="QuestionViewModel.cs" />
     <Compile Include="SortCriterion.cs" />
-    <Compile Include="Web\ContentItem.cs" />
     <Compile Include="QuestionMetadata.cs" />
-    <Compile Include="Web\Editor\FieldEditorDescriptor.cs" />
-    <Compile Include="Web\Editor\EditorType.cs" />
-    <Compile Include="Web\Filter\FilterFieldDescriptor.cs" />
-    <Compile Include="Web\Filter\FilterType.cs" />
-    <Compile Include="Web\Note.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Web\QuestionFieldViewModel.cs" />
-    <Compile Include="Web\QuestionList.cs" />
-    <Compile Include="Web\QuestionListDataRequest.cs" />
-    <Compile Include="Web\QuestionListDataResponse.cs" />
     <Compile Include="QuestionChoice.cs" />
-    <Compile Include="Web\QuestionOrder.cs" />
-    <Compile Include="Web\UserInfo.cs" />
+    <Compile Include="UserInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.DataContracts\Bfw.Agilix.DataContracts.csproj">

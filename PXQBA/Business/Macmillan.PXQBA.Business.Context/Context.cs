@@ -8,7 +8,7 @@ using Bfw.Agilix.Dlap;
 using Bfw.Agilix.Dlap.Session;
 using Bfw.Common.Collections;
 using Bfw.Common.Logging;
-using Macmillan.PXQBA.Business.Models.Web;
+using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
 
 namespace Macmillan.PXQBA.Business

@@ -3,8 +3,6 @@ using System.Linq;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
-using Macmillan.PXQBA.Business.Models.Web;
-using Macmillan.PXQBA.Business.Models.Web.Editor;
 using Macmillan.PXQBA.Common.Helpers;
 
 namespace Macmillan.PXQBA.Business.Services
@@ -33,8 +31,8 @@ namespace Macmillan.PXQBA.Business.Services
                                                                    AvailableChoice = new List<string>
                                                                        {
                                                                            "Chapter 1",
-                                                                           "Chapter 10",
-                                                                           "Chapter 20"
+                                                                           "Chapter 2",
+                                                                           "Chapter 3"
                                                                        }.ToDictionary(it => it)
                                                                }
                                                            
@@ -48,7 +46,7 @@ namespace Macmillan.PXQBA.Business.Services
                                                                    Type = MetaFieldType.SingleSelect,
                                                                    AvailableChoice = new List<string>
                                                                        {
-                                                                           "End of Chapter Questions",
+                                                                           "End of Chapter",
                                                                            "Beginning of Chapter Questions",
                                                                            "Middle of Chapter Questions"
                                                                        }.ToDictionary(it => it)

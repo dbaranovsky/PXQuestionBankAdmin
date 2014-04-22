@@ -1,7 +1,6 @@
-﻿using Macmillan.PXQBA.Business.Models.Web.Editor;
-using Macmillan.PXQBA.Business.Models.Web.Filter;
+﻿using Macmillan.PXQBA.Web.ViewModels.Editor;
 
-namespace Macmillan.PXQBA.Business.Models.Web
+namespace Macmillan.PXQBA.Web.ViewModels
 {
     public class QuestionFieldViewModel
     {
