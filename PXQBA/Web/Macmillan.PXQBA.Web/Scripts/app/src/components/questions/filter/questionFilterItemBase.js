@@ -8,14 +8,24 @@ var QuestionFilterItemBase = React.createClass({
         routsManager.addFiltration(this.props.descriptor.field, newValues);
     },
 
+    closeFilterHandler: function() {
+        routsManager.deleteFiltration(this.props.descriptor.field);
+    },
+
     render: function() {
         return (
             <div className="questionFilterItemBase">
-                 <div> 
-                     <span> {this.props.descriptor.caption}</span>
-                     <QuestionFilterMultiSelect allValues={this.props.descriptor.allValues}  currentValues={this.props.descriptor.currentValues} onChangeHandler={this.filtrationChangeHandler}/>
-                </div>
+                     <div className="filter-header"> 
+                        <span> {this.props.descriptor.caption} </span> 
+                        <span className="filter-closer" onClick={this.closeFilterHandler}> Х </span>
+                     </div>
+                     <div className="filter-body">
+                         <QuestionFilterMultiSelect allValues={this.props.descriptor.allValues}  
+                                                    currentValues={this.props.descriptor.currentValues} 
+                                                    onChangeHandler={this.filtrationChangeHandler}/>
+                     </div>
             </div>
+           
             );
         }
 });
