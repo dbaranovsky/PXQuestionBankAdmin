@@ -1,4 +1,5 @@
 ﻿using Macmillan.PXQBA.Business.Models.Web.Editor;
+using Macmillan.PXQBA.Business.Models.Web.Filter;
 
 namespace Macmillan.PXQBA.Business.Models.Web
 {
@@ -20,5 +21,7 @@ namespace Macmillan.PXQBA.Business.Models.Web
         public bool CanAddValues { get; set; }
 
         public bool IsMultiline { get; set; }
+
+        public string FilterType { get; set; }
     }
 }

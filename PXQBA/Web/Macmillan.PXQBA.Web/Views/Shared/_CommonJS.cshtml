@@ -1,6 +1,7 @@
 ﻿@using Macmillan.PXQBA.Business.Models
 @using Macmillan.PXQBA.Business.Models.Web
 @using Macmillan.PXQBA.Business.Models.Web.Editor
+@using Macmillan.PXQBA.Business.Models.Web.Filter
 <script type="text/javascript">
     (function () {
 
@@ -42,6 +43,12 @@
             text: '@EditorType.Text.ToString().ToLower()',
             number: '@EditorType.Number.ToString().ToLower()',
             multiSelect: '@EditorType.MultiSelect.ToString().ToLower()'
+        };
+
+
+        enums.filterType = {
+            none: '@FilterType.None.ToString().ToLower()',
+            multiSelectWithAddition: '@FilterType.MultiSelectWithAddition.ToString().ToLower()'
         };
 
         enums.messages = {

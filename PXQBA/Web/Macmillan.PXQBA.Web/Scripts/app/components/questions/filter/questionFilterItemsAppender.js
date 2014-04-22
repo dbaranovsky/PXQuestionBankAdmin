@@ -13,7 +13,10 @@ var QuestionFilterItemsAppender = React.createClass({displayName: 'QuestionFilte
     },
 
     getSelectableFields: function () {
-        var allFields = this.props.allFields;
+        var allFields = $.grep(this.props.allFields, function(fieldDescriptor) {
+				    return fieldDescriptor.filterType != window.enums.filterType.none;
+				});
+
         var filteredFields =  this.props.filteredFields;
         
         return this.excludeDisplayedFileds(allFields, filteredFields);

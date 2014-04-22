@@ -56,7 +56,8 @@
     <Compile Include="QuestionMetadata.cs" />
     <Compile Include="Web\Editor\FieldEditorDescriptor.cs" />
     <Compile Include="Web\Editor\EditorType.cs" />
-    <Compile Include="Web\FilterFieldDescriptor.cs" />
+    <Compile Include="Web\Filter\FilterFieldDescriptor.cs" />
+    <Compile Include="Web\Filter\FilterType.cs" />
     <Compile Include="Web\Note.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Macmillan.PXQBA.Business.Models.Web
+namespace Macmillan.PXQBA.Business.Models.Web.Filter
 {
     public class FilterFieldDescriptor
     {
