@@ -1,4 +1,4 @@
-﻿namespace Macmillan.PXQBA.Business.Models.Web
+﻿namespace Macmillan.PXQBA.Web.ViewModels
 {
     public class QuestionOrder 
     {

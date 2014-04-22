@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Macmillan.PXQBA.Business.Models.Web
+namespace Macmillan.PXQBA.Business.Models
 {
     public class UserInfo
     {

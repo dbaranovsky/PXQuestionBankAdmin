@@ -22,10 +22,10 @@ namespace Macmillan.PXQBA.Business.Services
             this.temporaryQuestionOperation = temporaryQuestionOperation;
         }
 
-        public PagedCollection<Question> GetQuestionList(SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
+        public PagedCollection<Question> GetQuestionList(IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
         {
             //temporaryQuestionOperation.CopyQuestionToTemporaryQuiz("12c19f3103ad4da1b254dd67f17dd1b1");
-            return questionCommands.GetQuestionList(CacheProvider.GetCurrentTitleId(), sortCriterion, startingRecordNumber, recordCount);
+            return questionCommands.GetQuestionList(CacheProvider.GetCurrentTitleId(), filter, sortCriterion, startingRecordNumber, recordCount);
         }
 
         public Question CreateQuestion(QuestionType questiontype, string bank, string chapter)

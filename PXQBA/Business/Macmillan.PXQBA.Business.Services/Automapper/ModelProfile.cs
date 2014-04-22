@@ -3,7 +3,6 @@ using AutoMapper;
 using Bfw.Agilix.DataContracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
-using Macmillan.PXQBA.Business.Models.Web;
 using Macmillan.PXQBA.Common.Helpers;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
@@ -48,8 +47,6 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(d => d.DomainId, opt => opt.MapFrom(s => s.Domain != null ? s.Domain.Id : ""))
                 .ForMember(d => d.DomainName, opt => opt.MapFrom(s => s.Domain != null ? s.Domain.Name : ""))
                 .ForMember(d => d.LastLogin, opt => opt.MapFrom(s => s.LastLogin));
-
-            Mapper.CreateMap<Item, ContentItem>();
 
             Mapper.CreateMap<string, InteractionType>().ConvertUsing(modelProfileService.CreateInteractionType);
 

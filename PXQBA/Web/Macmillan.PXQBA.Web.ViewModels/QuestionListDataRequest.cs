@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Macmillan.PXQBA.Business.Models.Web.Filter;
+﻿using System.Collections.Generic;
+using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Web.ViewModels.Filter;
 
-namespace Macmillan.PXQBA.Business.Models.Web
+namespace Macmillan.PXQBA.Web.ViewModels
 {
     /// <summary>
     //  Represent request for question data by react.js controls

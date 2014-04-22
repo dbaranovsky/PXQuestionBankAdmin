@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Macmillan.PXQBA.Business.Models;
-using Macmillan.PXQBA.Business.Models.Web;
 
 namespace Macmillan.PXQBA.Business.Contracts
 {
@@ -13,7 +12,7 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// Retrieves questions list
         /// </summary>
         /// <returns></returns>
-        PagedCollection<Question> GetQuestionList(SortCriterion sortCriterion, int startingRecordNumber, int recordCount);
+        PagedCollection<Question> GetQuestionList(IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount);
 
         /// <summary>
         /// Create a new question

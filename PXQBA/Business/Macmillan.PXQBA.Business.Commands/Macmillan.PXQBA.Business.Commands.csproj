@@ -98,6 +98,10 @@
       <Project>{AC937F92-418D-4F2B-820E-DD1762E24114}</Project>
       <Name>Macmillan.PXQBA.DataAccess.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Web\Macmillan.PXQBA.Web.ViewModels\Macmillan.PXQBA.Web.ViewModels.csproj">
+      <Project>{718F7559-6447-4674-AFA4-61A46A1732CB}</Project>
+      <Name>Macmillan.PXQBA.Web.ViewModels</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Macmillan.PXQBA.Business.Contracts\Macmillan.PXQBA.Business.Contracts.csproj">
       <Project>{C7070F01-3D37-425D-ABD5-E02D7CFAEA43}</Project>
       <Name>Macmillan.PXQBA.Business.Contracts</Name>

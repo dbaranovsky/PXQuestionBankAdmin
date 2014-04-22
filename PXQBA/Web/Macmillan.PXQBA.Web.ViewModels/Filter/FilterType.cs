@@ -1,4 +1,4 @@
-﻿namespace Macmillan.PXQBA.Business.Models.Web.Filter
+﻿namespace Macmillan.PXQBA.Web.ViewModels.Filter
 {
     public enum FilterType
     {

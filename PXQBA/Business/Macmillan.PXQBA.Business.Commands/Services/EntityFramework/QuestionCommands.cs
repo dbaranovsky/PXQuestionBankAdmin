@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Macmillan.PXQBA.Business.Commands.Contracts;
@@ -67,10 +68,11 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
             return Mapper.Map<ProductCourse, Question>(course);
         }
 
-        public PagedCollection<Question> GetQuestionList(string courseId, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
+        public PagedCollection<Question> GetQuestionList(string courseId, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
         {
             var questionsQuery = dbContext.ProductCourses.Where(q => q.ProductCourseDlapId == courseId);
             questionsQuery = BuildSorting(questionsQuery, sortCriterion);
+            questionsQuery = BuildFiltering(questionsQuery, filter);
 
             var result = new PagedCollection<Question>
                 {
@@ -79,6 +81,32 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
                         questionsQuery.Skip(startingRecordNumber).Take(recordCount).Select(ConvertProductCourseQuestion).ToList()
                 };
             return result;
+        }
+
+        private IQueryable<ProductCourse> BuildFiltering(IQueryable<ProductCourse> query, IEnumerable<FilterFieldDescriptor> filter)
+        {
+            if (filter.Any())
+            {
+                foreach (var filterFieldDescriptor in filter)
+                {
+                    if (filterFieldDescriptor.Field == MetadataFieldNames.Bank)
+                    {
+                        query = query.Where(x => filterFieldDescriptor.Values.Contains(x.Bank));
+                    }
+                    if (filterFieldDescriptor.Field == MetadataFieldNames.Difficulty)
+                    {
+                        query = query.Where(x => filterFieldDescriptor.Values.Contains(x.Difficulty));
+                    }
+                    if (filterFieldDescriptor.Field == MetadataFieldNames.LearningObjectives)
+                    {
+                        foreach (var fieldValue in filterFieldDescriptor.Values)
+                        {
+                            query = query.Where(x => x.LearningObjectives.Contains(fieldValue));
+                        }
+                    }
+                }
+            }
+            return query.OrderBy(x => x.Id);
         }
 
         public Question CreateQuestion(string courseId, Question question)

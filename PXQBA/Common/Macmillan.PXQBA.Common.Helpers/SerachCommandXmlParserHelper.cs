@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Macmillan.PXQBA.Business.Models;
-using Macmillan.PXQBA.Business.Models.Web;
+using Macmillan.PXQBA.Web.ViewModels;
 
 namespace Macmillan.PXQBA.Common.Helpers
 {

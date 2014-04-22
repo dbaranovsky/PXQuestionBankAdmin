@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Macmillan.PXQBA.Business.Models.Web;
+using Macmillan.PXQBA.Business.Models;
 
 namespace Macmillan.PXQBA.Business.Commands.Contracts
 {

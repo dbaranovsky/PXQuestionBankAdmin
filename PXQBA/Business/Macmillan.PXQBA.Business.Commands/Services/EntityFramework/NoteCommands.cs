@@ -4,7 +4,7 @@ using System.Linq;
 using AutoMapper;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.DataAccess.Data;
-using Note = Macmillan.PXQBA.Business.Models.Web.Note;
+using Note = Macmillan.PXQBA.Business.Models.Note;
 
 namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
 {

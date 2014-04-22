@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Macmillan.PXQBA.Business.Models;
 
-namespace Macmillan.PXQBA.Business.Models.Web.Editor
+namespace Macmillan.PXQBA.Web.ViewModels.Editor
 {
     public class FieldEditorDescriptor
     {
