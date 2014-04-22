@@ -79,6 +79,11 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
         public static string ActionPlayerUrlTemplate = "ActionPlayerUrl";
 
         /// <summary>
+        /// Represents the cache timeout in minutes
+        /// </summary>
+        public const string CacheTimeout = "cacheTimeoutInMinutes";
+
+		/// <summary>
         /// Key for external Editor in BrainHoney
         /// </summary>
         public static string EditorUrlTemplate = "EditorUrl";

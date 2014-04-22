@@ -33,6 +33,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
@@ -45,9 +46,10 @@
     <Compile Include="..\..\Web\Macmillan.PXQBA.Web\Properties\ProductInfo.cs">
       <Link>Properties\ProductInfo.cs</Link>
     </Compile>
+    <Compile Include="CacheProvider.cs" />
     <Compile Include="ConfigurationHelper.cs" />
     <Compile Include="Constants\ConfigurationKeys.cs" />
-    <Compile Include="Constants\Constants.cs" />
+    <Compile Include="Constants\CacheKeys.cs" />
     <Compile Include="EnumHelper.cs" />
     <Compile Include="HtmlXmlHelper.cs" />
     <Compile Include="MetadataFieldsHelper.cs" />

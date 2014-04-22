@@ -204,6 +204,22 @@ namespace Macmillan.PXQBA.Common.Helpers
         }
 
         /// <summary>
+        /// Get discipline course id
+        /// </summary>
+        /// <returns>Discipline course id</returns>
+        public static int GetCacheTimeout()
+        {
+            if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings[ConfigurationKeys.CacheTimeout]))
+            {
+                int cacheTimeout;
+                if (int.TryParse(ConfigurationManager.AppSettings[ConfigurationKeys.CacheTimeout], out cacheTimeout))
+                {
+                    return cacheTimeout;
+                }
+            }
+            return 60;
+        }
+		/// <summary>
         /// Get Editor url for question editing
         /// </summary>
         /// <returns>Discipline course id</returns>

@@ -8,5 +8,7 @@ namespace Macmillan.PXQBA.Business.Contracts
         InteractionType CreateInteractionType(string questionType);
 
         Dictionary<string, string> CreateQuestionMetadata(Question question);
+        string SetLearningObjectives(IEnumerable<LearningObjective> learningObjectives);
+        IEnumerable<LearningObjective> GetLOByGuid(string learningObjectiveGuids);
     }
 }

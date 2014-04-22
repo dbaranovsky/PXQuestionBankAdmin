@@ -43,6 +43,7 @@
       <Link>Properties\ProductInfo.cs</Link>
     </Compile>
     <Compile Include="Course.cs" />
+    <Compile Include="LearningObjective.cs" />
     <Compile Include="QuestionType.cs" />
     <Compile Include="InteractionType.cs" />
     <Compile Include="MetadataFieldNames.cs" />
@@ -66,6 +67,12 @@
     <Compile Include="QuestionChoice.cs" />
     <Compile Include="Web\QuestionOrder.cs" />
     <Compile Include="Web\UserInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.DataContracts\Bfw.Agilix.DataContracts.csproj">
+      <Project>{4D185F8E-C2A0-442A-A05E-78B566361562}</Project>
+      <Name>Bfw.Agilix.DataContracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

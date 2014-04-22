@@ -7,14 +7,7 @@ namespace Macmillan.PXQBA.Business.Models.Web.Editor
         public FieldEditorDescriptor(MetaFieldTypeDescriptor fieldTypeDescriptor)
         {
             EditorType = fieldTypeDescriptor.Type.ToString().ToLower();
-            AvailableChoice = new Dictionary<string, string>();
-            if (fieldTypeDescriptor.AvailableChoice != null)
-            {
-                foreach (var choice in fieldTypeDescriptor.AvailableChoice)
-                {
-                    AvailableChoice.Add(choice, choice);
-                }
-            }
+            AvailableChoice = fieldTypeDescriptor.AvailableChoice;
         }
 
         public string EditorType { get; set; }

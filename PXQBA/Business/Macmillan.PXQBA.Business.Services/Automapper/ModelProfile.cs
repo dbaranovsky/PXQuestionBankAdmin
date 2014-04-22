@@ -60,6 +60,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                     .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Question.DlapId))
                     .ForMember(dest => dest.Keywords, opt => opt.MapFrom(src => src.Keywords.Split('|')))
                     .ForMember(dest => dest.SuggestedUse, opt => opt.MapFrom(src => src.SuggestedUse.Split('|')))
+                    .ForMember(dest => dest.LearningObjectives, opt => opt.MapFrom(src => modelProfileService.GetLOByGuid(src.LearningObjectives)))
                     .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Question.Type))
                     .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Question.Status))
                     .ForMember(dest => dest.Preview, opt => opt.MapFrom(src => src.Question.Preview));
@@ -67,7 +68,9 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<Question, DataAccess.Data.ProductCourse>()
                   .ForMember(dest => dest.Id, opt => opt.Ignore())
                   .ForMember(dest => dest.Keywords, opt => opt.MapFrom(src => src.Keywords != null ? string.Join("|", src.Keywords) : null))
-                  .ForMember(dest => dest.SuggestedUse, opt => opt.MapFrom(src => src.SuggestedUse != null ? string.Join("|", src.SuggestedUse) : null));
+                  .ForMember(dest => dest.SuggestedUse, opt => opt.MapFrom(src => src.SuggestedUse != null ? string.Join("|", src.SuggestedUse) : null))
+                  .ForMember(dest => dest.LearningObjectives, opt => opt.MapFrom(src => modelProfileService.SetLearningObjectives(src.LearningObjectives)));
+
             Mapper.CreateMap<Question, DataAccess.Data.Question>()
                   .ForMember(dest => dest.DlapId, opt => opt.MapFrom(src => src.Id))
                   .ForMember(dest => dest.Id, opt => opt.Ignore());

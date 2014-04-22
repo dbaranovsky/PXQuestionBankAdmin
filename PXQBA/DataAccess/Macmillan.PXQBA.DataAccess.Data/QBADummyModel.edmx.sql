@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/18/2014 17:06:19
+-- Date Created: 04/21/2014 20:40:21
 -- Generated from EDMX file: D:\Git\macmillan\PXQuestionBankAdmin\PXQBA\DataAccess\Macmillan.PXQBA.DataAccess.Data\QBADummyModel.edmx
 -- --------------------------------------------------
 
@@ -17,9 +17,6 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_QuestionProductCourse]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ProductCourses] DROP CONSTRAINT [FK_QuestionProductCourse];
-GO
 IF OBJECT_ID(N'[dbo].[FK_CourseCourseMetaField]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CourseMetaFields] DROP CONSTRAINT [FK_CourseCourseMetaField];
 GO
@@ -29,28 +26,31 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_QuestionNote]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Notes] DROP CONSTRAINT [FK_QuestionNote];
 GO
+IF OBJECT_ID(N'[dbo].[FK_QuestionProductCourse]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProductCourses] DROP CONSTRAINT [FK_QuestionProductCourse];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[Questions]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Questions];
-GO
-IF OBJECT_ID(N'[dbo].[ProductCourses]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[ProductCourses];
-GO
-IF OBJECT_ID(N'[dbo].[Courses]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Courses];
-GO
 IF OBJECT_ID(N'[dbo].[CourseMetaFields]', 'U') IS NOT NULL
     DROP TABLE [dbo].[CourseMetaFields];
 GO
 IF OBJECT_ID(N'[dbo].[CourseMetaFieldValues]', 'U') IS NOT NULL
     DROP TABLE [dbo].[CourseMetaFieldValues];
 GO
+IF OBJECT_ID(N'[dbo].[Courses]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Courses];
+GO
 IF OBJECT_ID(N'[dbo].[Notes]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Notes];
+GO
+IF OBJECT_ID(N'[dbo].[ProductCourses]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ProductCourses];
+GO
+IF OBJECT_ID(N'[dbo].[Questions]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Questions];
 GO
 
 -- --------------------------------------------------
@@ -83,7 +83,8 @@ CREATE TABLE [dbo].[ProductCourses] (
     [Version] nvarchar(max)  NULL,
     [CognitiveLevel] nvarchar(max)  NULL,
     [Keywords] nvarchar(max)  NULL,
-    [SuggestedUse] nvarchar(max)  NULL
+    [SuggestedUse] nvarchar(max)  NULL,
+    [LearningObjectives] nvarchar(max)  NULL
 );
 GO
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Business.Models.Web;
@@ -10,8 +11,16 @@ namespace Macmillan.PXQBA.Business.Services
 {
     public class QuestionMetadataService : IQuestionMetadataService
     {
+        private readonly IProductCourseOperation productCourseOperation;
+
+        public QuestionMetadataService(IProductCourseOperation productCourseOperation)
+        {
+            this.productCourseOperation = productCourseOperation;
+        }
+
         public IList<QuestionMetaField> GetAvailableFields()
         {
+            var productCourse = productCourseOperation.GetCurrentProductCourse();
             var fields = new List<QuestionMetaField>
                                                    {
                                                        new QuestionMetaField()
@@ -26,7 +35,7 @@ namespace Macmillan.PXQBA.Business.Services
                                                                            "Chapter 1",
                                                                            "Chapter 10",
                                                                            "Chapter 20"
-                                                                       }
+                                                                       }.ToDictionary(it => it)
                                                                }
                                                            
                                                        },
@@ -42,7 +51,7 @@ namespace Macmillan.PXQBA.Business.Services
                                                                            "End of Chapter Questions",
                                                                            "Beginning of Chapter Questions",
                                                                            "Middle of Chapter Questions"
-                                                                       }
+                                                                       }.ToDictionary(it => it)
                                                                }      
                                                        },
                                                        new QuestionMetaField
@@ -72,7 +81,7 @@ namespace Macmillan.PXQBA.Business.Services
                                                                            EnumHelper.GetEnumDescription(QuestionType.ShortAnswer),
                                                                            EnumHelper.GetEnumDescription(QuestionType.Essay),
                                                                            EnumHelper.GetEnumDescription(QuestionType.GraphExcepcise),
-                                                                       }
+                                                                       }.ToDictionary(it => it)
                                                                }      
                                                        },
                                                        new QuestionMetaField
@@ -87,7 +96,7 @@ namespace Macmillan.PXQBA.Business.Services
                                                                            EnumHelper.GetEnumDescription(QuestionStatus.AvailableToInstructors),
                                                                            EnumHelper.GetEnumDescription(QuestionStatus.InProgress),
                                                                            EnumHelper.GetEnumDescription(QuestionStatus.Deleted),
-                                                                       }
+                                                                       }.ToDictionary(it => it)
                                                                }      
                                                        },
                                                        new QuestionMetaField
@@ -102,7 +111,7 @@ namespace Macmillan.PXQBA.Business.Services
                                                                            "Easy",
                                                                            "Medium",
                                                                            "Hard",
-                                                                       }
+                                                                       }.ToDictionary(it => it)
                                                                }      
                                                        },
                                                        new QuestionMetaField()
@@ -117,7 +126,7 @@ namespace Macmillan.PXQBA.Business.Services
                                                                            "Keyword 1",
                                                                            "Keyword 2",
                                                                            "Keyword 3"
-                                                                       }
+                                                                       }.ToDictionary(it => it)
                                                                }
                                                            
                                                        },
@@ -134,7 +143,7 @@ namespace Macmillan.PXQBA.Business.Services
                                                                            "In-class",
                                                                            "Post-class",
                                                                            "Exam"
-                                                                       }
+                                                                       }.ToDictionary(it => it)
                                                                }
                                                            
                                                        },
@@ -143,6 +152,18 @@ namespace Macmillan.PXQBA.Business.Services
                                                            FriendlyName = "Guidance",
                                                            Name = MetadataFieldNames.Guidance,
                                                            TypeDescriptor = new MetaFieldTypeDescriptor(MetaFieldType.Text)
+                                                       },
+
+                                                        new QuestionMetaField()
+                                                       {
+                                                           FriendlyName = "Learning Objective",
+                                                           Name = MetadataFieldNames.LearningObjectives,
+                                                           TypeDescriptor = new MetaFieldTypeDescriptor
+                                                               {
+                                                                   Type = MetaFieldType.MultiSelect,
+                                                                   AvailableChoice = productCourse.LearningObjectives.ToDictionary(lo => lo.Guid, lo => lo.Description)
+                                                               }
+                                                           
                                                        },
                                                    };
 

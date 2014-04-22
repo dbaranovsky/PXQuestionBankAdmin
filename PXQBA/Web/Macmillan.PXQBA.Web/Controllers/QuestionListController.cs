@@ -11,9 +11,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic;
 using System.Web.Mvc;
-using System.Xml;
-using Macmillan.PXQBA.Web.Helpers;
-using Mono.Options;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -36,7 +33,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             this.notesManagementService = notesManagementService;
 
             // \todo Setup current course when the user selects one from the list
-            CourseHelper.CurrentCourse = new Course {ProductCourseId = "1", Title = "Sample Course"};
+            CacheProvider.AddCurrentTitleId("1");
         }
 
         //
@@ -50,8 +47,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult GetQuestionData(QuestionListDataRequest request)
         {
             var sortCriterion = new SortCriterion {ColumnName = request.OrderField, SortType = request.OrderType};
-            var questionList = questionManagementService.GetQuestionList(CourseHelper.CurrentCourse,
-                                                                          sortCriterion, 
+            var questionList = questionManagementService.GetQuestionList(sortCriterion, 
                                                                           (request.PageNumber - 1) * questionPerPage,
                                                                           questionPerPage);
             var totalPages = (questionList.TotalItems + questionPerPage - (questionList.TotalItems % questionPerPage)) /

@@ -48,5 +48,10 @@ namespace Macmillan.PXQBA.Business.Models
         /// Suggested Use for the  question.
         /// </summary>
         public IEnumerable<string> SuggestedUse { get; set; }
+
+        /// <summary>
+        /// Learning objectives
+        /// </summary>
+        public IEnumerable<LearningObjective> LearningObjectives { get; set; } 
     }
 }

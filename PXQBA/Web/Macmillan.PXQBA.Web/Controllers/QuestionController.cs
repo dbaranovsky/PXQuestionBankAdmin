@@ -5,8 +5,6 @@ using AutoMapper;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
-using Macmillan.PXQBA.Web.Helpers;
-using NLog.Config;
 
 namespace Macmillan.PXQBA.Web.Controllers
 {
@@ -27,7 +25,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             bool success = false;
             if (fieldName.Equals(MetadataFieldNames.Sequence))
             {
-                questionManagementService.UpdateQuestionSequence(CourseHelper.CurrentCourse, questionId, int.Parse(fieldValue));
+                questionManagementService.UpdateQuestionSequence(questionId, int.Parse(fieldValue));
                 success = true;
             }
             else
@@ -40,7 +38,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult CreateQuestion(int questionType, string bank, string chapter)
         {
-            var question = Mapper.Map<Question, QuestionViewModel>(questionManagementService.CreateQuestion(CourseHelper.CurrentCourse, (QuestionType)questionType, bank, chapter));
+            var question = Mapper.Map<Question, QuestionViewModel>(questionManagementService.CreateQuestion((QuestionType)questionType, bank, chapter));
             question.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), "200117", "AHWDG");
             question.EditorUrl = String.Format(ConfigurationHelper.GetEditorUrlTemplate(), "200117", "AHWDG", "12c19f3103ad4da1b254dd67f17dd1b1");
             return JsonCamel(question);
@@ -51,7 +49,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult DuplicateQuestion(string questionId)
         {
 
-            var question = Mapper.Map<Question, QuestionViewModel>(questionManagementService.DuplicateQuestion(CourseHelper.CurrentCourse, questionId));
+            var question = Mapper.Map<Question, QuestionViewModel>(questionManagementService.DuplicateQuestion(questionId));
             question.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), "200117", "AHWDG");
             question.EditorUrl = String.Format(ConfigurationHelper.GetEditorUrlTemplate(), "200117", "AHWDG", "12c19f3103ad4da1b254dd67f17dd1b1");
             return JsonCamel(question);
