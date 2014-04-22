@@ -4,6 +4,7 @@ using System.Linq;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Business.Models.Web;
 using Macmillan.PXQBA.Business.Models.Web.Editor;
+using Macmillan.PXQBA.Business.Models.Web.Filter;
 
 namespace Macmillan.PXQBA.Common.Helpers
 {
@@ -21,8 +22,18 @@ namespace Macmillan.PXQBA.Common.Helpers
                              EditorDescriptor =
                                  new FieldEditorDescriptor(metaField.TypeDescriptor),
                              CanAddValues = false,
-                             IsMultiline = false
+                             IsMultiline = false,
+                             FilterType = FilterType.MultiSelectWithAddition.ToString().ToLower()
                          };
+
+
+            if ((metaField.Name == MetadataFieldNames.DlapStatus) ||
+                (metaField.Name == MetadataFieldNames.DlapTitle) ||
+                (metaField.Name == MetadataFieldNames.Chapter))
+            {
+                model.FilterType = FilterType.None.ToString().ToLower();
+            }
+
 
               // \todo Move custom field-level settings to configuration
              if (metaField.Name == MetadataFieldNames.DlapTitle)

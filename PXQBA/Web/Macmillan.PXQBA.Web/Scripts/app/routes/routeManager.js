@@ -52,7 +52,12 @@
         self.query.setValue(filterHashParameterHelper.addFiltration(field, valuesArray, self.query.getValue()));
         hasher.setHash(self.buildHash());
     };
-    
+
+    self.deleteFiltration = function (field) {
+        self.query.setValue(filterHashParameterHelper.deleteFiltration(field, self.query.getValue()));
+        hasher.setHash(self.buildHash());
+    };
+
     return self;
 }());
 

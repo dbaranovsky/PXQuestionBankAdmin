@@ -12,7 +12,7 @@ var QuestionMetadataList = React.createClass({
     },
 
     renderStub: function() {
-        return (<li> <div className="add-columns-message"> All columns already added. </div></li>);
+        return (<li> <div className="add-columns-message">{this.props.noValueLabel}</div></li>);
     },
 
     onClickEventHandler: function(event) {

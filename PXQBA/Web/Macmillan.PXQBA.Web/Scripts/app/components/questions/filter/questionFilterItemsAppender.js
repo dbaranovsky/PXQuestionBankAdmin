@@ -13,7 +13,10 @@ var QuestionFilterItemsAppender = React.createClass({displayName: 'QuestionFilte
     },
 
     getSelectableFields: function () {
-        var allFields = this.props.allFields;
+        var allFields = $.grep(this.props.allFields, function(fieldDescriptor) {
+				    return fieldDescriptor.filterType != window.enums.filterType.none;
+				});
+
         var filteredFields =  this.props.filteredFields;
         
         return this.excludeDisplayedFileds(allFields, filteredFields);
@@ -45,7 +48,9 @@ var QuestionFilterItemsAppender = React.createClass({displayName: 'QuestionFilte
               React.DOM.div( {className:"dropdown"}, 
                     React.DOM.div( {className:"add-column-container"}, 
                         React.DOM.span( {'data-toggle':"dropdown", className:"dropdown-toggle add-column-button"},   "  ",  React.DOM.span( {className:"glyphicon glyphicon-plus"}), " " ),
-                        QuestionMetadataList( {onClickEventHandler:this.questionMetadataListOnClickEventHandler, fields:this.getSelectableFields()} )
+                        QuestionMetadataList( {onClickEventHandler:this.questionMetadataListOnClickEventHandler, 
+                        					  fields:this.getSelectableFields(), 
+                        					  noValueLabel:"All filters already added."})
                     )
               )
 
