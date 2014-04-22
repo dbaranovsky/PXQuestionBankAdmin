@@ -9,6 +9,8 @@ var MultiSelectEditor = React.createClass({displayName: 'MultiSelectEditor',
          var currentValues = this.props.question[this.props.field];
      
         var  availableChoices =  this.props.metadataField.editorDescriptor.availableChoice;
+        var options = [];
+        if(this.props.metadataField.canAddValues){
 
         for (var propertyName in availableChoices) {
             availableChoice = availableChoices[propertyName];
@@ -20,10 +22,19 @@ var MultiSelectEditor = React.createClass({displayName: 'MultiSelectEditor',
         }
       
         metadataValues = this.unique(metadataValues);
-        var options = [];
+        
          $.each(metadataValues, function(i, option){
                options.push(React.DOM.option( {value:option}, option));
          });
+       } else{
+
+           $.each(availableChoices, function(i, option){
+               options.push(React.DOM.option( {value:option.key}, option.value));
+         });
+
+       }
+
+
 
          return ({options: options});
 
