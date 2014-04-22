@@ -211,6 +211,7 @@
     <Content Include="Scripts\app\components\common\loader.js" />
     <Content Include="Scripts\app\components\common\modalDialog.js" />
     <Content Include="Scripts\app\components\common\singleSelectButton.js" />
+    <Content Include="Scripts\app\components\questions\editor\learningObjectEditor.js" />
     <Content Include="Scripts\app\components\questions\editor\metadataFieldEditor.js" />
     <Content Include="Scripts\app\components\questions\editor\multiSelectEditor.js" />
     <Content Include="Scripts\app\components\questions\editor\questionEditor.js" />
@@ -266,6 +267,7 @@
     <Content Include="Scripts\app\src\components\common\loader.js" />
     <Content Include="Scripts\app\src\components\common\modalDialog.js" />
     <Content Include="Scripts\app\src\components\common\singleSelectButton.js" />
+    <Content Include="Scripts\app\src\components\questions\editor\learningObjectEditor.js" />
     <Content Include="Scripts\app\src\components\questions\editor\metadataFieldEditor.js" />
     <Content Include="Scripts\app\src\components\questions\editor\multiSelectEditor.js" />
     <Content Include="Scripts\app\src\components\questions\editor\questionEditor.js" />

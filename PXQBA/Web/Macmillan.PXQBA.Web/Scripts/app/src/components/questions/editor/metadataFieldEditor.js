@@ -61,6 +61,9 @@ var MetadataFieldEditor = React.createClass({
              return (<select ref="editor" className="single-selector" value={currentValue}> {this.renderMenuItems(metadataField[0].editorDescriptor.availableChoice)} </select> );
 
           case window.enums.editorType.multiSelect:
+              if(field=="learningObjectives"){
+                return (<LearningObjectEditor values={currentValue} metadataField={metadataField[0]} question={this.props.question} field={this.props.field} editHandler={this.props.editHandler} />);
+              }
              return (<MultiSelectEditor values={currentValue} metadataField={metadataField[0]} question={this.props.question} field={this.props.field} editHandler={this.props.editHandler} />);
 
           default: 

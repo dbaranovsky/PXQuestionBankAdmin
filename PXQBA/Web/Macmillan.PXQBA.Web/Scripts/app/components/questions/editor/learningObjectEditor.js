@@ -1,61 +1,31 @@
 /**
 * @jsx React.DOM
 */
-var MultiSelectEditor = React.createClass({
 
- 
+var LearningObjectEditor = React.createClass({displayName: 'LearningObjectEditor', 
     getInitialState: function(){
-         var metadataValues = [];
          var currentValues = this.props.question[this.props.field];
      
         var  availableChoices =  this.props.metadataField.editorDescriptor.availableChoice;
-        var options = [];
-        if(this.props.metadataField.canAddValues){
-
+	    var options = [];
         for (var propertyName in availableChoices) {
             availableChoice = availableChoices[propertyName];
-            metadataValues.push(availableChoice);
+            options.push(React.DOM.option( {value:propertyName}, availableChoice));
         }
-
-        if(currentValues !== undefined && currentValues != null && currentValues.length>0){
-          $.merge(metadataValues, currentValues);
-        }
-      
-        metadataValues = this.unique(metadataValues);
-        
-         $.each(metadataValues, function(i, option){
-               options.push(<option value={option}>{option}</option>);
-         });
-       } else{
-
-           $.each(availableChoices, function(i, option){
-               options.push(<option value={option.key}>{option.value}</option>);
-         });
-
-       }
-
-
 
          return ({options: options});
 
     },
 
-    unique: function(list) {
-        var result = [];
-        $.each(list, function(i, e) {
-            if ($.inArray(e, result) == -1) result.push(e);
-        });
-        return result;
-    },
-
-
+   
      editHandler: function(selectedOptions){
       
        
        var items = [];
        
        $.each(selectedOptions, function(i, option){
-          items.push(option.text);
+       	  var learningObject = { guid: option.value, description: option.text};
+          items.push(learningObject);
        });
       
 
@@ -78,9 +48,17 @@ var MultiSelectEditor = React.createClass({
     componentDidMount: function(){
         var selector = this.getDOMNode();
         var chosenOptions = {width: "100%", hide_dropdown: false, allow_add_new_values: this.props.metadataField.canAddValues};
-  
+
+  		 var currentValues = [];
+
+     
+	    var guids = [];
+
+	    $.each(this.props.question[this.props.field], function(i, objective){
+           guids.push(objective.guid);
+       });
         var handler =  this.editHandler;
-        $(selector).val(this.props.question[this.props.field])
+        $(selector).val(guids)
                    .chosen(chosenOptions)
                    .change(function(e, params){
                              handler(e.currentTarget.selectedOptions);
@@ -92,9 +70,9 @@ var MultiSelectEditor = React.createClass({
    
     render: function() {
         return (
-             <select data-placeholder="No Value" multiple>
-                    {this.renderMenuItems()}  
-             </select> 
+             React.DOM.select( {'data-placeholder':"No Value", multiple:true}, 
+                    this.renderMenuItems()  
+             ) 
          );
     }
 });
