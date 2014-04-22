@@ -33,7 +33,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             this.notesManagementService = notesManagementService;
 
             // \todo Setup current course when the user selects one from the list
-            CacheProvider.AddCurrentTitleId("1");
+            CacheProvider.AddCurrentTitleId("200117");
         }
 
         //

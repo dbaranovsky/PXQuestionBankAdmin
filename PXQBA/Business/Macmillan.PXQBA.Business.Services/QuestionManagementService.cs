@@ -14,14 +14,17 @@ namespace Macmillan.PXQBA.Business.Services
     public class QuestionManagementService : IQuestionManagementService
     {
         private readonly IQuestionCommands questionCommands;
+        private readonly ITemporaryQuestionOperation temporaryQuestionOperation;
 
-        public QuestionManagementService(IQuestionCommands questionCommands)
+        public QuestionManagementService(IQuestionCommands questionCommands, ITemporaryQuestionOperation temporaryQuestionOperation)
         {
             this.questionCommands = questionCommands;
+            this.temporaryQuestionOperation = temporaryQuestionOperation;
         }
 
         public PagedCollection<Question> GetQuestionList(SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
         {
+            //temporaryQuestionOperation.CopyQuestionToTemporaryQuiz("12c19f3103ad4da1b254dd67f17dd1b1");
             return questionCommands.GetQuestionList(CacheProvider.GetCurrentTitleId(), sortCriterion, startingRecordNumber, recordCount);
         }
 

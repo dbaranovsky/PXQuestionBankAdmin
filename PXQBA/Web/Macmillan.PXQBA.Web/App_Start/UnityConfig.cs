@@ -53,20 +53,13 @@ namespace Macmillan.PXQBA.Web.App_Start
             // container.RegisterType<IProductRepository, ProductRepository>();
             // NOTE: To load from web.config uncomment the line below. Make sure to add a Microsoft.Practices.Unity.Configuration to the using statements.
             // container.LoadConfiguration();
-            container.RegisterType<IQuestionFilterManagementService, QuestionFilterManagementService>(new PerRequestLifetimeManager());
-            container.RegisterType<IQuestionManagementService, QuestionManagementService>(new PerRequestLifetimeManager());
-            container.RegisterType<IQuestionMetadataService, QuestionMetadataService>(new PerRequestLifetimeManager());
-            container.RegisterType<INotesManagementService, NotesManagementService>(new PerRequestLifetimeManager());
-            container.RegisterType<IBulkOperationService, BulkOperationService>(new PerRequestLifetimeManager());
-            container.RegisterType<IModelProfileService, ModelProfileService>(new PerRequestLifetimeManager());
+            container.RegisterTypes(AllClasses.FromAssemblies(typeof(QuestionFilterManagementService).Assembly), WithMappings.FromAllInterfaces, WithName.Default, WithLifetime.Custom<PerRequestLifetimeManager>);
             container.RegisterType<Profile, ModelProfile>(new PerRequestLifetimeManager());
             container.RegisterType<ISessionManager, WebSessionManager>(new PerRequestLifetimeManager());
             container.RegisterType<ITraceManager, MvcMiniProfilerTraceManager>(new PerRequestLifetimeManager());
             container.RegisterType<ILogger, CommonLogger>(new PerRequestLifetimeManager());
             container.RegisterTypes(AllClasses.FromAssemblies(typeof(Context).Assembly), WithMappings.FromAllInterfaces, WithName.Default, WithLifetime.Custom<PerRequestLifetimeManager>);
             container.RegisterTypes(AllClasses.FromAssemblies(typeof(QuestionCommands).Assembly), WithMappings.FromAllInterfaces, WithName.Default);
-            container.RegisterTypes(AllClasses.FromAssemblies(typeof(NoteCommands).Assembly), WithMappings.FromAllInterfaces, WithName.Default);
-            container.RegisterTypes(AllClasses.FromAssemblies(typeof(BulkOperation).Assembly), WithMappings.FromAllInterfaces, WithName.Default);
 
             var cs = ConfigurationManager.ConnectionStrings["QBADummyModelContainer"];
             container.RegisterType<QBADummyModelContainer, QBADummyModelContainer>(new InjectionConstructor(cs.ConnectionString));
