@@ -9,5 +9,6 @@ namespace Macmillan.PXQBA.Business.Models
 
         public IEnumerable<LearningObjective> LearningObjectives;
 
+        public string QuestionCardLayout { get; set; }
     }
 }

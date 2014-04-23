@@ -92,11 +92,11 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
                 {
                     if (filterFieldDescriptor.Field == MetadataFieldNames.Bank)
                     {
-                        query = query.Where(x => filterFieldDescriptor.Values.Contains(x.Bank));
+                        query = query.Where(x => filterFieldDescriptor.Values.Select(v => v.ToUpper()).Contains(x.Bank.ToUpper()));
                     }
                     if (filterFieldDescriptor.Field == MetadataFieldNames.Difficulty)
                     {
-                        query = query.Where(x => filterFieldDescriptor.Values.Contains(x.Difficulty));
+                        query = query.Where(x => filterFieldDescriptor.Values.Select(v => v.ToUpper()).Contains(x.Difficulty.ToUpper()));
                     }
                     if (filterFieldDescriptor.Field == MetadataFieldNames.LearningObjectives)
                     {
@@ -112,7 +112,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
             var result = false;
             foreach (var value in values)
             {
-                result = result || course.LearningObjectives.Contains(value);
+                result = result || course.LearningObjectives.ToUpper().Contains(value.ToUpper());
             }
             return result;
         }

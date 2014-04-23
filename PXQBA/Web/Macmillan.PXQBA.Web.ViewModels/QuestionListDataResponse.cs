@@ -37,5 +37,7 @@ namespace Macmillan.PXQBA.Web.ViewModels
         public IEnumerable<QuestionFieldViewModel> Columns { get; set; }
 
         public IEnumerable<QuestionFieldViewModel> AllAvailableColumns { get; set; }
+
+        public string QuestionCardLayout { get; set; }
     }
 }
