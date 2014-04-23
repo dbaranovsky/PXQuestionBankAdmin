@@ -9,6 +9,7 @@ namespace Macmillan.PXQBA.Business.Contracts
 
         IList<QuestionMetaField> GetDataForFields(IEnumerable<string> fieldsNames);
 
+        string GetQuestionCardLayout();
     }
 
 }

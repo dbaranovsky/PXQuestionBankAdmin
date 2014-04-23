@@ -63,7 +63,8 @@ namespace Macmillan.PXQBA.Web.Controllers
                                     {
                                         OrderField = request.OrderField,
                                         OrderType = request.OrderType.ToString().ToLower()
-                                    }
+                                    },
+                            QuestionCardLayout = questionMetadataService.GetQuestionCardLayout()
                         };
 
             return JsonCamel(response);

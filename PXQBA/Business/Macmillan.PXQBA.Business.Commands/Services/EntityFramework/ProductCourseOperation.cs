@@ -46,7 +46,67 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
                         Description = "Use conventions of format and structure appropriate to the rhetorical situation",
                         Guid = "7a5c30a8-78a1-4ddf-9e1d-c2ee6753aac9"
                     }
-                }
+                },
+
+                QuestionCardLayout = @"<script id=""questioncard-template"" type=""text/x-handlebars-template"">
+                                            <div class=""card"">
+                                            <div class=""questioncardrow firstrow"">
+                                            {{#if difficulty}}
+                                            <div class=""difficulty"">
+                                            <h1>Difficulty:</h1>
+                                            <div class=""content"">{{difficulty}}</div>
+                                            </div>
+                                            {{/if}} {{#if cognitivelevel}}
+                                            <div class=""cognitivelevel"">
+                                            <h1>Cognitive level:</h1>
+                                            <div class=""content"">{{cognitivelevel}}</div>
+                                            </div>
+                                            {{/if}} {{#if bloomdomain}}
+                                            <div class=""bloomdomain"">
+                                            <h1>Bloom's domain:</h1>
+                                            <div class=""content"">{{bloomdomain}}</div>
+                                            </div>
+                                            {{/if}}
+                                            </div>
+                                            <div class=""questioncardrow"">
+                                            {{#if coreconcept}}
+                                            <div class=""coreconcept"">
+                                            <h1>Core Concept:</h1>
+                                            <div class=""content"">{{coreconcept}}</div>
+                                            </div>
+                                            {{/if}} {{#if relatedcontent}}
+                                            <div class=""relatedcontent"">
+                                            <h1>Related Content:</h1>
+                                            <div class=""content"">{{relatedcontent}}</div>
+                                            </div>
+                                            {{/if}}
+                                            </div>
+                                            <div class=""questioncardrow"">
+                                            {{#if guidance}}
+                                            <div class=""guidance"">
+                                            <h1>Guidance:</h1>
+                                            <div class=""content"">{{guidance}}</div>
+                                            </div>
+                                            {{/if}}
+                                            </div>
+                                            <div class=""questioncardrow"">
+                                            {{#if freeresponsequestion}}
+                                            <div class=""freeresponsequestion"">
+                                            <h1>Free response question:</h1>
+                                            <div class=""content"">{{freeresponsequestion}}</div>
+                                            </div>
+                                            {{/if}}
+                                            </div>
+                                            <div class=""questioncardrow"">
+                                            {{#if suggesteduse}}
+                                            <div class=""suggesteduse"">
+                                            <h1>Suggested use:</h1>
+                                            <div class=""content"">{{suggesteduse}}</div>
+                                            </div>
+                                            {{/if}}
+                                            </div>
+                                            </div>
+                                            </script>"
             };
         }
     }
