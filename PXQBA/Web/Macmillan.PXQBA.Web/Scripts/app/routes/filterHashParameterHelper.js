@@ -56,7 +56,7 @@
             filterItems = [];
         }
         var filterItem = new FilterItem(field + fieldValueSeparator, valuesSeparator, fieldValueSeparator);
-        filterItem.values = valuesArray;
+        filterItem.values = self.removeDangerousCharacters(valuesArray);
         addFiltrationToArray(filterItem, filterItems);
         return self.toUrlHash(filterItems);
     };
@@ -73,6 +73,21 @@
         return self.toUrlHash(filterItems);
     };
 
+    self.removeDangerousCharacters = function(values) {
+        if (values == null) {
+            return values;
+        }
+        
+        for (var i = 0; i < values.length; i++) {
+            values[i] = self.replaceSeporators(values[i]);
+        }
+
+        return values;
+    };
+
+    self.replaceSeporators = function (value) {
+        return value.replace(/\+/g, '').replace(/:/g, '').replace(/\|/g, '');
+    };
 
     return self;
 }());

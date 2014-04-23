@@ -5,19 +5,19 @@
 var QuestionFilterMultiSelect = React.createClass({
 
   getInitialState: function(){
-         return ({options: this.renderMenuItems(this.props.allValues)});
+         return ({options: this.renderMenuItems(this.props.allOptions)});
   },
 
   componentWillReceiveProps: function(nextProps) {
-     this.setState({options: this.renderMenuItems(nextProps.allValues)});
+     this.setState({options: this.renderMenuItems(nextProps.allOptions)});
   },
 
-	renderMenuItems: function(values) {
-		 var options = [];
-		 for(var i=0; i<values.length; i++) {
-               options.push(<option value={values[i]}>{values[i]}</option>);
+	renderMenuItems: function(options) {
+		 var optionsHtml = [];
+		 for(var i=0; i<options.length; i++) {
+               optionsHtml.push(<option value={options[i].value}>{options[i].text}</option>);
 		 }
-      return options;
+      return optionsHtml;
 	},
 
 
