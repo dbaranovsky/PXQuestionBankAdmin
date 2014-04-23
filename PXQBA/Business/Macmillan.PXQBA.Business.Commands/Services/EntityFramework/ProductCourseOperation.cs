@@ -48,8 +48,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
                     }
                 },
 
-                QuestionCardLayout = @"<script id=""questioncard-template"" type=""text/x-handlebars-template"">
-                                            <div class=""card"">
+                QuestionCardLayout = @"     <div class=""card"">
                                             <div class=""questioncardrow firstrow"">
                                             {{#if difficulty}}
                                             <div class=""difficulty"">
@@ -60,6 +59,16 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
                                             <div class=""cognitivelevel"">
                                             <h1>Cognitive level:</h1>
                                             <div class=""content"">{{cognitivelevel}}</div>
+                                            </div>
+                                             {{/if}} {{#if bank}}
+                                            <div class=""bank"">
+                                            <h1>Bank:</h1>
+                                            <div class=""content"">{{bank}}</div>
+                                            </div>
+                                             {{/if}} {{#if chapter}}
+                                            <div class=""chapter"">
+                                            <h1>Chapter:</h1>
+                                            <div class=""content"">{{chapter}}</div>
                                             </div>
                                             {{/if}} {{#if bloomdomain}}
                                             <div class=""bloomdomain"">
@@ -81,14 +90,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
                                             </div>
                                             {{/if}}
                                             </div>
-                                            <div class=""questioncardrow"">
-                                            {{#if guidance}}
-                                            <div class=""guidance"">
-                                            <h1>Guidance:</h1>
-                                            <div class=""content"">{{guidance}}</div>
-                                            </div>
-                                            {{/if}}
-                                            </div>
+                                            
                                             <div class=""questioncardrow"">
                                             {{#if freeresponsequestion}}
                                             <div class=""freeresponsequestion"">
@@ -105,8 +107,16 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
                                             </div>
                                             {{/if}}
                                             </div>
+                                            <div class=""questioncardrow"">
+                                            {{#if guidance}}
+                                            <div class=""guidance"">
+                                            <h1>Guidance:</h1>
+                                            <div class=""content"">{{guidance}}</div>
                                             </div>
-                                            </script>"
+                                            {{/if}}
+                                            </div>
+                                            </div>
+                                           "
             };
         }
     }

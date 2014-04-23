@@ -363,3 +363,17 @@ input[type="checkbox"].input-validation-error {
     font-weight: bold;
     cursor: pointer;
 }
+
+.question-card-template h1{
+     font-size: 24px !important;
+}
+
+.question-card-template div{
+    float: left;
+    margin-right: 50px;
+    margin-bottom: 10px;
+}
+
+.question-card-template {
+    float: left;
+}

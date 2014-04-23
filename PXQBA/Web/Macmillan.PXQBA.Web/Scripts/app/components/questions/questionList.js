@@ -137,14 +137,11 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
                        selectQuestionHandler:self.selectQuestionHandler,
                        selected:self.isQuestionSelected(question.data.id),
                        expandPreviewQuestionHandler:  self.expandPreviewQuestionHandler,
-                       expanded:isQuestionExpanded}
-
-                       ));
+                       expanded:isQuestionExpanded} ));
 
             var preview = null;
-
             if(isQuestionExpanded) {
-              preview = (QuestionPreview( {colSpan:self.getAllColumnCount(), preview:question.data.questionHtmlInlinePreview} ));
+              preview = (QuestionPreview( {colSpan:self.getAllColumnCount(), metadata:question.data, preview:question.data.questionHtmlInlinePreview, questionCardTemplate:self.props.questionCardTemplate}));
             }
 
             return [questionHtml, preview];
