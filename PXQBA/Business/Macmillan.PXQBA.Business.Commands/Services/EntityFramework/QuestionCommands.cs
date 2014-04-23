@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using AutoMapper;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
@@ -87,7 +88,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
         {
             if (filter.Any())
             {
-                foreach (var filterFieldDescriptor in filter)
+                foreach (var filterFieldDescriptor in filter.Where(f => f.Values.Any()))
                 {
                     if (filterFieldDescriptor.Field == MetadataFieldNames.Bank)
                     {
@@ -99,14 +100,21 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
                     }
                     if (filterFieldDescriptor.Field == MetadataFieldNames.LearningObjectives)
                     {
-                        foreach (var fieldValue in filterFieldDescriptor.Values)
-                        {
-                            query = query.Where(x => x.LearningObjectives.Contains(fieldValue));
-                        }
+                        query = query.Where(p => GeneratePredicateForLearningObjective(p, filterFieldDescriptor.Values));
                     }
                 }
             }
-            return query.OrderBy(x => x.Id);
+            return query;
+        }
+
+        private bool GeneratePredicateForLearningObjective(ProductCourse course, IEnumerable<string> values)
+        {
+            var result = false;
+            foreach (var value in values)
+            {
+                result = result || course.LearningObjectives.Contains(value);
+            }
+            return result;
         }
 
         public Question CreateQuestion(string courseId, Question question)

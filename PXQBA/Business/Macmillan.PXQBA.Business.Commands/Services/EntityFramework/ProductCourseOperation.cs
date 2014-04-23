@@ -38,7 +38,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
                     },
                     new LearningObjective
                     {
-                        Description = "Respond appropriately to different kinds of rhetorical situations",
+                        Description = "Respond appropriately to different kinds of rhetorical situations and added more text to show how long text is wrapped in learning objective field on metadata tab of question editor",
                         Guid = "6344b2e5-1e8d-4585-a50f-22b442692c30"
                     },
                     new LearningObjective
