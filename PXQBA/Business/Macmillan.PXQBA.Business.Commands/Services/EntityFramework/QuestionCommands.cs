@@ -100,7 +100,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
                     }
                     if (filterFieldDescriptor.Field == MetadataFieldNames.LearningObjectives)
                     {
-                        query = query.Where(p => GeneratePredicateForLearningObjective(p, filterFieldDescriptor.Values));
+                        query = query.Where(p => filterFieldDescriptor.Values.Any(v => p.LearningObjectives.ToUpper().Contains(v.ToUpper())));
                     }
                 }
             }
