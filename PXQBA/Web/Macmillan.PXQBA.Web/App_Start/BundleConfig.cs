@@ -30,6 +30,9 @@ namespace Macmillan.PXQBA.Web
                 "~/Scripts/crossroads/hasher.js",
                 "~/Scripts/crossroads/crossroads.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/handlebars").Include(
+                      "~/Scripts/handlebars/handlebars-v{version}.js"));
+
           
 
             bundles.Add(new StyleBundle("~/bundles/css").Include(
