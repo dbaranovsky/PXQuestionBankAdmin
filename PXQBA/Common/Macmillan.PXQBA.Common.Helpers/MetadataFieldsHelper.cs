@@ -40,7 +40,6 @@ namespace Macmillan.PXQBA.Common.Helpers
              {
                  model.Width = "30%";
                  model.CanNotDelete = true;
-                 model.IsMultiline = true;
              }
 
              if (metaField.Name == MetadataFieldNames.DlapStatus)
