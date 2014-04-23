@@ -20,7 +20,7 @@ var QuestionFilterItemBase = React.createClass({displayName: 'QuestionFilterItem
                         React.DOM.span( {className:"filter-closer", onClick:this.closeFilterHandler},  " Х " )
                      ),
                      React.DOM.div( {className:"filter-body"}, 
-                         QuestionFilterMultiSelect( {allValues:this.props.descriptor.allValues,  
+                         QuestionFilterMultiSelect( {allOptions:this.props.descriptor.allOptions,  
                                                     currentValues:this.props.descriptor.currentValues, 
                                                     onChangeHandler:this.filtrationChangeHandler})
                      )
