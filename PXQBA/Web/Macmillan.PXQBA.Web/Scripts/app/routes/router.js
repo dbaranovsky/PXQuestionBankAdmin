@@ -1,7 +1,7 @@
 ﻿var questionContainer = $('#question-container')[0];
 
-crossroads.addRoute('/filter/{query}/page/{page}/columns/{columns}/order/{orderType}/:orderField:',
-    function (query, page, columns, orderType, orderField) {
+crossroads.addRoute('/page/{page}/columns/{columns}/filter/{query}/order/{orderType}/:orderField:',
+    function (page, columns, query, orderType, orderField) {
         console.log('route callback executed');
         routsManager.setState(query, page, columns, orderType, orderField);
         asyncManager.startWait(questionContainer);

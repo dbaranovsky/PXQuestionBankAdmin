@@ -5,54 +5,62 @@
 var QuestionFilterItemsContainer = React.createClass({
 
    buildFiltersDescriptors: function() {
-        var descriptors = [];
-        for(var i=0; i<this.props.filter.length; i++) {
-            for(var j=0; j<this.props.allAvailableColumns.length; j++) {
-               if(this.props.filter[i].field==this.props.allAvailableColumns[j].metadataName) {
-                     descriptors.push({
-                             field: this.props.filter[i].field,
-                             caption: this.props.allAvailableColumns[j].friendlyName,
-                             allOptions: this.getAllOptions(this.props.allAvailableColumns[j].editorDescriptor.availableChoice, this.props.filter[i].values),
-                             currentValues: this.props.filter[i].values
-                     });
-               }
-           }
-        }
+      var descriptors = [];
+      for(var i=0; i<this.props.filter.length; i++) {
+            descriptors.push(this.buildFilterDescriptor(this.props.filter[i], this.props.allAvailableColumns))
+      }
       return descriptors;
    },
 
+
+   buildFilterDescriptor: function(filter, allAvailableColumns) {
+        for(var i=0; i<allAvailableColumns.length; i++) {
+            if(filter.field==allAvailableColumns[i].metadataName) {
+                return { field: filter.field,
+                         caption: allAvailableColumns[i].friendlyName,
+                         allOptions: this.getAllOptions(allAvailableColumns[i].editorDescriptor.availableChoice, filter.values),
+                         currentValues: filter.values
+                };
+            }
+        }
+        return null;
+   },
+
+
    getAllOptions: function(availableChoice, currentValuesArray) {
+        
         if(availableChoice==null) {
              availableChoice =[];
         }
         var options = [];
 
         $.each(availableChoice, function(propery,  option){
-          options.push({ value: propery,
+            options.push({ value: propery,
                          text: option
                        });
         });
 
         for(var i=0; i<currentValuesArray.length; i++) {
-
-            var index = -1;
-
-            for(var j=0; j<options.length; j++) {
-                 if(options[j].value==currentValuesArray[i]) {
-                    index = j;
-                    break;
-                 }
-            }
-             
-            if(index==-1) {
+            if (!this.isPresentInOptions(options, currentValuesArray[i])) {
              options.push({ value: currentValuesArray[i],
                             text: currentValuesArray[i]
                           });
             }
- 
         }
         
         return options;
+   },
+
+   isPresentInOptions: function(options, newValue) {
+       var isNew = true;
+       $.each(options, function(index, option) {
+            if(option.value==newValue) {
+                isNew=false;
+                return false
+            }
+       });
+
+       return !isNew;
    },
 
    renderFilterItems: function() {
