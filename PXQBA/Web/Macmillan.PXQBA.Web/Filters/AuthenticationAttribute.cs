@@ -1,36 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
+using System.IO;
 using System.Net;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Filters;
 using System.Web.Security;
-using Bfw.Agilix.Dlap.Session;
+using Bfw.Agilix.Dlap.Configuration;
 using Bfw.Common;
 using Macmillan.PXQBA.Common.Helpers;
-using Macmillan.PXQBA.Common.Helpers.Constants;
 using Macmillan.PXQBA.Web.Constants;
-using Bfw.Agilix.Dlap.Configuration;
+
 namespace Macmillan.PXQBA.Web.Filters
 {
     public class AuthenticationAttribute : ActionFilterAttribute, IAuthenticationFilter
     {
-     
         /// <summary>
-        /// Authenticates user using MARS system
+        ///     Authenticates user using MARS system
         /// </summary>
         /// <param name="filterContext"></param>
         public void OnAuthentication(AuthenticationContext filterContext)
         {
-            if(!filterContext.HttpContext.Request.IsAuthenticated)
+            if (!filterContext.HttpContext.Request.IsAuthenticated)
             {
-                var token = filterContext.HttpContext.Request.Form[WebKeys.AuthenticationToken];
+                string token = filterContext.HttpContext.Request.Form[WebKeys.AuthenticationToken];
                 if (string.IsNullOrEmpty(token))
                 {
-                    var redirectUrl = string.Format(ConfigurationHelper.GetMarsLoginUrl(), filterContext.HttpContext.Request.Url);
+                    string redirectUrl = string.Format(ConfigurationHelper.GetMarsLoginUrl(),
+                        filterContext.HttpContext.Request.Url);
                     filterContext.Result = new RedirectResult(redirectUrl);
                     return;
                 }
@@ -41,140 +39,154 @@ namespace Macmillan.PXQBA.Web.Filters
                 StartBrainHoneySession(configManager, TimeZoneInfo.Local);
                 filterContext.Result = new RedirectResult(filterContext.HttpContext.Request.Url.ToString());
             }
-           
         }
 
         public void OnAuthenticationChallenge(AuthenticationChallengeContext filterContext)
         {
-
         }
 
         private void UpdateCookie(string cookieValue)
         {
-            var ticket = FormsAuthentication.Decrypt(cookieValue);
+            FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(cookieValue);
             if (ticket != null)
             {
                 FormsAuthentication.SetAuthCookie(ticket.Name, false);
-                var newCookie = HttpContext.Current.Response.Cookies[WebKeys.AuthenticationCookie];
+                HttpCookie newCookie = HttpContext.Current.Response.Cookies[WebKeys.AuthenticationCookie];
                 HttpContext.Current.Request.Cookies.Set(newCookie);
             }
         }
 
         private void StartBrainHoneySession(SessionManagerSection config, TimeZoneInfo timeZoneInfo)
         {
+            string username = config.AdminUser.Username;
+            string password = config.AdminUser.Password;
+            string brainHoneyAuthUrl = config.BrainHoneyConnection.Url;
+            string userDomain = config.BrainHoneyConnection.UserDomain;
+            string domain = config.BrainHoneyConnection.CookieDomain;
+           
+            string cookieName = config.BrainHoneyConnection.CookieName;
+            string browserCheckCookie = "BHBrowserCheck";
+            string domainCookieName = config.BrainHoneyConnection.ActiveDomainCookieName;
+            if (!username.Contains("/"))
+            {
+                username = userDomain + "/" + username;
+            }
+            else
+            {
+                string[] parts = username.Split('/');
+                userDomain = parts[0];
+            }
 
-                    var username = config.AdminUser.Username;
-                    var password = config.AdminUser.Password;
-                    var brainHoneyAuthUrl = config.BrainHoneyConnection.Url;
-                    var userDomain = config.BrainHoneyConnection.UserDomain;
-                    var domain = config.BrainHoneyConnection.CookieDomain;
-                    var cookieJar = new CookieContainer(int.MaxValue, int.MaxValue, int.MaxValue);
-                    var cookieName = config.BrainHoneyConnection.CookieName;
-                    var browserCheckCookie = "BHBrowserCheck";
-                    var domainCookieName= config.BrainHoneyConnection.ActiveDomainCookieName;
-                        if (!username.Contains("/"))
-                        {
-                            username = userDomain + "/" + username;
-                        }
-                        else
-                        {
-                            var parts = username.Split('/');
-                            userDomain = parts[0];
-                        }
+            string uri = brainHoneyAuthUrl.Replace("{1}", userDomain);
+            var requestData = GenerateRequestData(username, password, timeZoneInfo);
 
-                        var uri = brainHoneyAuthUrl.Replace("{1}", userDomain);
+            ProccessBrainHoneyResponse(uri, requestData, cookieName, browserCheckCookie, domainCookieName, userDomain, domain);
+           
+        }
 
-                        var bhUri = new Uri(uri);
-                        var server = HttpContext.Current.Server;
+        private string GenerateRequestData(string username, string password, TimeZoneInfo timeZoneInfo)
+        {
+            HttpServerUtility server = HttpContext.Current.Server;
 
 
-                        var requestData = "action=login&username=" + server.UrlEncode(username) + "&password=" + server.UrlEncode(password);
-                        if (timeZoneInfo != null && timeZoneInfo.GetAdjustment(DateTime.Now.Year) != null)
-                        {
-                            var adjustment = timeZoneInfo.GetAdjustment(DateTime.Now.Year);
+            string requestData = "action=login&username=" + server.UrlEncode(username) + "&password=" +
+                                 server.UrlEncode(password);
+            if (timeZoneInfo != null && timeZoneInfo.GetAdjustment(DateTime.Now.Year) != null)
+            {
+                TimeZoneInfo.AdjustmentRule adjustment = timeZoneInfo.GetAdjustment(DateTime.Now.Year);
 
-                            requestData += "&standardOffset=" + -1 * timeZoneInfo.BaseUtcOffset.TotalMinutes +
-                                           "&daylightOffset=" +
-                                           -1 * (adjustment.DaylightDelta.TotalMinutes +
-                                            timeZoneInfo.BaseUtcOffset.TotalMinutes) +
-                                           "&standardStartTime=" +
-                                           server.UrlEncode(adjustment.DaylightTransitionEnd
-                                                     .GetTransitionInfo(DateTime.Now.Year)
-                                                     .ToUniversalTime()
-                                                     .ToString("s") + "Z") +
-                                           "&daylightStartTime=" +
-                                           server.UrlEncode(adjustment.DaylightTransitionStart
-                                                     .GetTransitionInfo(DateTime.Now.Year)
-                                                     .ToUniversalTime()
-                                                     .ToString("s") + "Z");
+                requestData += "&standardOffset=" + -1*timeZoneInfo.BaseUtcOffset.TotalMinutes +
+                               "&daylightOffset=" +
+                               -1*(adjustment.DaylightDelta.TotalMinutes +
+                                   timeZoneInfo.BaseUtcOffset.TotalMinutes) +
+                               "&standardStartTime=" +
+                               server.UrlEncode(adjustment.DaylightTransitionEnd
+                                   .GetTransitionInfo(DateTime.Now.Year)
+                                   .ToUniversalTime()
+                                   .ToString("s") + "Z") +
+                               "&daylightStartTime=" +
+                               server.UrlEncode(adjustment.DaylightTransitionStart
+                                   .GetTransitionInfo(DateTime.Now.Year)
+                                   .ToUniversalTime()
+                                   .ToString("s") + "Z");
+            }
+            else
+            {
+                requestData += "&standardOffset=" + -1*timeZoneInfo.BaseUtcOffset.TotalMinutes +
+                               "&daylightOffset=" + timeZoneInfo.BaseUtcOffset.TotalMinutes;
+            }
+            return requestData;
+        }
 
-                        }
-                        else
-                        {
-                            requestData += "&standardOffset=" + -1 * timeZoneInfo.BaseUtcOffset.TotalMinutes +
-                                           "&daylightOffset=" + timeZoneInfo.BaseUtcOffset.TotalMinutes;
-                        }
+        private void ProccessBrainHoneyResponse(string uri, string requestData, string cookieName, string browserCheckCookie, string domainCookieName, string userDomain, string domain)
+        {
+            var bhUri = new Uri(uri);
+            var webRequest = CreateRequest(bhUri);
+            var cookieJar = new CookieContainer(int.MaxValue, int.MaxValue, int.MaxValue);
+            cookieJar.Add(new Cookie("BHBrowserCheck", "1", "/", bhUri.Host));
+            webRequest.CookieContainer = cookieJar;
+            webRequest.ContentLength = requestData.Length;
 
-                        cookieJar.Add(new Cookie("BHBrowserCheck", "1", "/", bhUri.Host));
+            var byteData = Encoding.UTF8.GetBytes(requestData);
+            using (Stream postStream = webRequest.GetRequestStream())
+            {
+                postStream.Write(byteData, 0, requestData.Length);
+            }
 
-                        var webRequest = (HttpWebRequest)WebRequest.Create(bhUri);
+            WebResponse response = webRequest.GetResponse();
+            ProcessCookies(cookieJar, webRequest, cookieName, browserCheckCookie, domainCookieName, userDomain, domain);
 
-                        webRequest.CookieContainer = cookieJar;
-                        webRequest.Method = "POST";
-                        webRequest.Accept = "*/*";
-                        webRequest.ContentLength = requestData.Length;
-                        webRequest.ContentType = "application/x-www-form-urlencoded; charset=UTF-8";
+            response.Close();
+        }
 
-                        var byteData = Encoding.UTF8.GetBytes(requestData);
-                        using (var postStream = webRequest.GetRequestStream())
-                        {
-                            postStream.Write(byteData, 0, requestData.Length);
-                        }
+        private HttpWebRequest CreateRequest(Uri bhUri)
+        {
+            var webRequest = (HttpWebRequest)WebRequest.Create(bhUri);
+            webRequest.Method = "POST";
+            webRequest.Accept = "*/*";
+            webRequest.ContentType = "application/x-www-form-urlencoded; charset=UTF-8";
 
-                        var response = webRequest.GetResponse();
-                        foreach (Cookie c in cookieJar.GetCookies(webRequest.RequestUri))
-                        {
-                            if (c.Name.ToLowerInvariant() == cookieName.ToLowerInvariant() ||
-                                c.Name.ToLowerInvariant() == browserCheckCookie.ToLowerInvariant())
-                            {
-                                var cookie = new HttpCookie(c.Name)
-                                {
-                                    Path = c.Path,
-                                    Value = c.Value,
-                                    HttpOnly = c.HttpOnly,
-                                    Secure = c.Secure,
-                                    Expires = c.Expires
-                                };
+            return webRequest;
+        }
 
-                                var activeDomainCookie = new HttpCookie(domainCookieName)
-                                {
-                                    Path = c.Path,
-                                    Value = userDomain,
-                                    HttpOnly = c.HttpOnly,
-                                    Secure = c.Secure,
-                                    Expires = c.Expires
-                                };
+        private void ProcessCookies(CookieContainer cookieJar, HttpWebRequest webRequest, string cookieName, string browserCheckCookie, string domainCookieName, string userDomain, string domain)
+        {
+            foreach (Cookie c in cookieJar.GetCookies(webRequest.RequestUri))
+            {
+                if (c.Name.ToLowerInvariant() != cookieName.ToLowerInvariant() &&
+                    c.Name.ToLowerInvariant() != browserCheckCookie.ToLowerInvariant()) continue;
+                var cookie = NewCookieFromResponse(c, c.Name);
+                   
+                var activeDomainCookie = NewCookieFromResponse(c, domainCookieName);
+                activeDomainCookie.Value = userDomain;
 
-                                if (!string.IsNullOrEmpty(domain))
-                                {
-                                    cookie.Domain = domain;
-                                    activeDomainCookie.Domain = domain;
-                                }
+                if (!string.IsNullOrEmpty(domain))
+                {
+                    cookie.Domain = domain;
+                    activeDomainCookie.Domain = domain;
+                }
 
-                                HttpContext.Current.Response.Cookies.Add(cookie);
-                                HttpContext.Current.Response.Cookies.Add(activeDomainCookie);
-                            }
-                        }
-
-                        response.Close();
-                    
-             
+                SetCookie(cookie);
+                SetCookie(activeDomainCookie);
+            }
             
         }
 
-        
-
-
-    
+        private void SetCookie(HttpCookie cookie)
+        {
+            HttpContext.Current.Response.Cookies.Add(cookie);
         }
-   }
+
+        private HttpCookie NewCookieFromResponse(Cookie cookie, string name)
+        {
+            return new HttpCookie(name)
+            {
+                Path = cookie.Path,
+                Value = cookie.Value,
+                HttpOnly = cookie.HttpOnly,
+                Secure = cookie.Secure,
+                Expires = cookie.Expires
+            };
+        }
+    }
+}
