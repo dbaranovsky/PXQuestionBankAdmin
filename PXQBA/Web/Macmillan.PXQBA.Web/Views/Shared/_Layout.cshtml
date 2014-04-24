@@ -29,6 +29,11 @@
     @Scripts.Render("~/bundles/crossroads")
     @Scripts.Render("~/bundles/chosen")
     @Scripts.Render("~/bundles/handlebars")
+    @Scripts.Render("~/bundles/commonjs")
     @RenderSection("scripts", required: false)
+    
+    <script>
+        sessionKeeper.startSessionKeeper('@Url.Action("KeepSessionAlive", "User")', 60000);
+    </script>
 </body>
 </html>
