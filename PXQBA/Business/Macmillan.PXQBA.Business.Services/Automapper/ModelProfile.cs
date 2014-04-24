@@ -4,6 +4,7 @@ using Bfw.Agilix.DataContracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
+using Course = Macmillan.PXQBA.Business.Models.Course;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Business.Services.Automapper
@@ -19,6 +20,12 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
 
         protected override void Configure()
         {
+            Mapper.CreateMap<Bfw.Agilix.DataContracts.Course, Course>()
+                .ForMember(dest => dest.ProductCourseId, opt => opt.MapFrom(q => q.Id))
+                .ForMember(dest => dest.Title, opt => opt.MapFrom(q => q.Title))
+                .ForMember(dest => dest.LearningObjectives, opt => opt.Ignore())
+                .ForMember(dest => dest.QuestionCardLayout, opt => opt.Ignore());
+
             Mapper.CreateMap<Bfw.Agilix.DataContracts.Question, Question>()
                 .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
                 //.ForMember(dto => dto.EntityId, opt => opt.MapFrom(q => q.EntityId))

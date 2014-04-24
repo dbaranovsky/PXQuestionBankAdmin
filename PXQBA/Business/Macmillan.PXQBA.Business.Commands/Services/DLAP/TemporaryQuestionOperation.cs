@@ -98,7 +98,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         private string GetTemporaryQuizId()
         {
-            return String.Format(ItemIdTemplate, businessContext.CurrentUser.Id);
+            return String.Format(ItemIdTemplate, businessContext.CurrentUser.Id + "111");
         }
     }
 }

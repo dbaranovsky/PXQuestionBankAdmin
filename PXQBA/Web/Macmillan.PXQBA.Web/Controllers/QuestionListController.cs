@@ -34,7 +34,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             this.productCourseManagementService = productCourseManagementService;
 
             // \todo Setup current course when the user selects one from the list
-            CourseHelper.CurrentCourse = productCourseManagementService.GetProductCourse("200117");
+            CourseHelper.CurrentCourse = productCourseManagementService.GetProductCourse("71836");
                 //new Course { ProductCourseId = "200117", Title = "Sample Course" }; 
         }
 

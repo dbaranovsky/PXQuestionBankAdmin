@@ -10,5 +10,7 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
     public interface IProductCourseOperation
     {
         Course GetProductCourse(string productCourseId);
+
+        IEnumerable<Course> GetAvailableCourses();
     }
 }

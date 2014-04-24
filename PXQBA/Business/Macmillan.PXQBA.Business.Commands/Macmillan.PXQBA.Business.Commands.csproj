@@ -98,6 +98,10 @@
       <Project>{AC937F92-418D-4F2B-820E-DD1762E24114}</Project>
       <Name>Macmillan.PXQBA.DataAccess.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\PXShared\Bfw.Common\Bfw.Common\Bfw.Common.csproj">
+      <Project>{4F1BF9DB-1226-4867-9E41-129B214F24F2}</Project>
+      <Name>Bfw.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Web\Macmillan.PXQBA.Web.ViewModels\Macmillan.PXQBA.Web.ViewModels.csproj">
       <Project>{718F7559-6447-4674-AFA4-61A46A1732CB}</Project>
       <Name>Macmillan.PXQBA.Web.ViewModels</Name>
