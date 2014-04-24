@@ -141,6 +141,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Views\BulkOperation\" />
     <Folder Include="Views\QuestionFilter\" />
@@ -176,9 +177,6 @@
     <Content Include="..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll">
       <Link>AutoMapper.Net4.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="App_Data\dataMar-14-2014.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\bootstrap\bootstrap-notify.css" />
     <Content Include="Content\bootstrap\bootstrap-theme.css" />
@@ -332,6 +330,7 @@
     <Content Include="Scripts\react\react-with-addons-0.9.0.min.js" />
     <Content Include="Scripts\respond\respond.js" />
     <Content Include="Scripts\respond\respond.min.js" />
+    <Content Include="Scripts\session\sessionKeeper.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
