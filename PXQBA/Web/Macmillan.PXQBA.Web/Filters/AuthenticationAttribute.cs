@@ -18,12 +18,7 @@ namespace Macmillan.PXQBA.Web.Filters
 {
     public class AuthenticationAttribute : ActionFilterAttribute, IAuthenticationFilter
     {
-        private ISessionManager sessionManager;
-
-        public AuthenticationAttribute(ISessionManager sessionManager)
-        {
-            sessionManager = sessionManager;
-        }
+     
         /// <summary>
         /// Authenticates user using MARS system
         /// </summary>
