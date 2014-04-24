@@ -115,52 +115,6 @@ namespace Macmillan.PXQBA.Web.Controllers
           notesManagementService.SaveNote(note);
           return JsonCamel(new { isError = false });
         }
-
-
-        #region debug
-        /// <summary>
-        /// For deubg ordering question list.
-        /// </summary>
-        /// <returns></returns>
-
-        private IList<Question> ApplyFakeOrdering(IList<Question> questions, SortType orderType, string fieldName)
-        {
-            switch (orderType)
-            {
-                case SortType.Asc:
-                    return questions.AsQueryable().OrderBy(MappingNameForFake(fieldName)).ToList();
-                case SortType.Desc:
-                    return questions.AsQueryable().OrderBy(MappingNameForFake(fieldName) + " descending").ToList();
-            }
-
-            return questions;
-        }
-
-        /// <summary>
-        /// For debug ordering question list.
-        /// </summary>
-        /// <param name="title"></param>
-        /// <returns></returns>
-        private string MappingNameForFake(string title)
-        {
-            switch (title)
-            {
-                case "Chapter":
-                    return "EBookChapter";
-                case "Bank":
-                    return "QuestionBank";
-                case "Seq":
-                    return "QuestionSeq";
-                case "Title":
-                    return "Title";
-                case "Format":
-                    return "QuestionType";
-            }
-
-            return "QuestionSeq";
-        }
-        #endregion
-
     }
 
 }
