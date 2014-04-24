@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Filters;
 using System.Web.Security;
+using Bfw.Common;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Common.Helpers.Constants;
 using Macmillan.PXQBA.Web.Constants;
@@ -33,6 +36,7 @@ namespace Macmillan.PXQBA.Web.Filters
                 // That's why need redirection
                 filterContext.Result = new RedirectResult(filterContext.HttpContext.Request.Url.ToString());
             }
+           
         }
 
         public void OnAuthenticationChallenge(AuthenticationChallengeContext filterContext)
@@ -50,5 +54,134 @@ namespace Macmillan.PXQBA.Web.Filters
                 HttpContext.Current.Request.Cookies.Set(newCookie);
             }
         }
-    }
-}
+
+
+        /// <summary>
+        /// Create a new BrainHoney session cookie.
+        /// </summary>
+        /// <param name="username">The username.</param>
+        /// <param name="password">The password.</param>
+        //public void StartBrainHoneySession()
+        //{
+        //    System.Globalization.CultureInfo before = System.Threading.Thread.CurrentThread.CurrentCulture;
+        //    try
+
+        //    {
+        //        System.Threading.Thread.CurrentThread.CurrentCulture =
+        //            new System.Globalization.CultureInfo("en-US");
+        //        // Proceed with specific code
+        //    }
+        //    catch (Exception e)
+        //    {
+        //    }
+        //    var username = "root/administrator";
+        //            var password = "Password1";
+        //            var brainHoneyAuthUrl = "http://root.dev.brainhoney.bfwpub.com/BrainHoney/Controls/CredentialsUI.ashx";
+        //            var userDomain = "root";
+        //            var domain = "";
+        //            var cookieJar = new CookieContainer(int.MaxValue, int.MaxValue, int.MaxValue);
+
+             
+        //                if (!username.Contains("/"))
+        //                {
+        //                    username = userDomain + "/" + username;
+        //                }
+        //                else
+        //                {
+        //                    var parts = username.Split('/');
+        //                    userDomain = parts[0];
+        //                }
+
+        //              //  var uri = brainHoneyAuthUrl.Replace("{1}", userDomain);          
+        //                var bhUri = new Uri(brainHoneyAuthUrl);
+        //                var server = HttpContext.Current.Server;
+
+        //    var timeZoneInfo =  TimeZoneInfo.Local;
+        //                var requestData = "action=login&username=" + server.UrlEncode(username) + "&password=" + server.UrlEncode(password);
+        //                if (timeZoneInfo != null && timeZoneInfo.GetAdjustment(DateTime.Now.Year) != null)
+        //                {
+        //                    var adjustment = timeZoneInfo.GetAdjustment(DateTime.Now.Year);
+
+        //                    requestData += "&standardOffset=" + -1 * timeZoneInfo.BaseUtcOffset.TotalMinutes +
+        //                                   "&daylightOffset=" +
+        //                                   -1 * (adjustment.DaylightDelta.TotalMinutes +
+        //                                    timeZoneInfo.BaseUtcOffset.TotalMinutes) +
+        //                                   "&standardStartTime=" +
+        //                                   server.UrlEncode(adjustment.DaylightTransitionEnd
+        //                                             .GetTransitionInfo(DateTime.Now.Year)
+        //                                             .ToUniversalTime()
+        //                                             .ToString("s") + "Z") +
+        //                                   "&daylightStartTime=" +
+        //                                   server.UrlEncode(adjustment.DaylightTransitionStart
+        //                                             .GetTransitionInfo(DateTime.Now.Year)
+        //                                             .ToUniversalTime()
+        //                                             .ToString("s") + "Z");
+
+        //                }
+        //                else
+        //                {
+        //                    requestData += "&standardOffset=" + -1 * timeZoneInfo.BaseUtcOffset.TotalMinutes +
+        //                                   "&daylightOffset=" + timeZoneInfo.BaseUtcOffset.TotalMinutes;
+        //                }
+
+        //                cookieJar.Add(new Cookie("BHBrowserCheck", "1", "/", bhUri.Host));
+
+        //                var webRequest = (HttpWebRequest)WebRequest.Create(bhUri);
+
+        //                webRequest.CookieContainer = cookieJar;
+        //                webRequest.Method = "POST";
+        //                webRequest.Accept = "*/*";
+        //                webRequest.ContentLength = requestData.Length;
+        //                webRequest.ContentType = "application/x-www-form-urlencoded; charset=UTF-8";
+
+        //                var byteData = Encoding.UTF8.GetBytes(requestData);
+        //                using (var postStream = webRequest.GetRequestStream())
+        //                {
+        //                    postStream.Write(byteData, 0, requestData.Length);
+        //                }
+
+        //                var response = webRequest.GetResponse();
+        //                foreach (Cookie c in cookieJar.GetCookies(webRequest.RequestUri))
+        //                {
+        //                    if (c.Name.ToLowerInvariant() == "BHAUTH".ToLowerInvariant() ||
+        //                        c.Name.ToLowerInvariant() == "BHBrowserCheck".ToLowerInvariant())
+        //                    {
+        //                        var cookie = new HttpCookie(c.Name)
+        //                        {
+        //                            Path = c.Path,
+        //                            Value = c.Value,
+        //                            HttpOnly = c.HttpOnly,
+        //                            Secure = c.Secure,
+        //                            Expires = c.Expires
+        //                        };
+
+        //                        var activeDomainCookie = new HttpCookie("bhdomain")
+        //                        {
+        //                            Path = c.Path,
+        //                            Value = userDomain,
+        //                            HttpOnly = c.HttpOnly,
+        //                            Secure = c.Secure,
+        //                            Expires = c.Expires
+        //                        };
+
+        //                        if (!string.IsNullOrEmpty(domain))
+        //                        {
+        //                     //       cookie.Domain = domain;
+        //                       //     activeDomainCookie.Domain = domain;
+        //                        }
+
+        //                        HttpContext.Current.Response.Cookies.Add(cookie);
+        //                        HttpContext.Current.Response.Cookies.Add(activeDomainCookie);
+        //                    }
+        //                }
+
+        //                response.Close();
+                    
+                
+               
+        //    }
+
+
+    
+        }
+   }
