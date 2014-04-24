@@ -10,7 +10,6 @@ var MultiSelectEditor = React.createClass({
      
         var  availableChoices =  this.props.metadataField.editorDescriptor.availableChoice;
         var options = [];
-        if(this.props.metadataField.canAddValues){
 
         for (var propertyName in availableChoices) {
             availableChoice = availableChoices[propertyName];
@@ -26,16 +25,7 @@ var MultiSelectEditor = React.createClass({
          $.each(metadataValues, function(i, option){
                options.push(<option value={option}>{option}</option>);
          });
-       } else{
-
-           $.each(availableChoices, function(i, option){
-               options.push(<option value={option.key}>{option.value}</option>);
-         });
-
-       }
-
-
-
+       
          return ({options: options});
 
     },
