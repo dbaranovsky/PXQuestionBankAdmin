@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using AutoMapper;
 using Bfw.Agilix.Dlap.Components.Session;
 using Bfw.Agilix.Dlap.Session;
+using Bfw.Common.Database;
 using Bfw.Common.Logging;
 using Bfw.Common.Patterns.Logging;
 using Macmillan.PXQBA.Business;
@@ -63,6 +64,8 @@ namespace Macmillan.PXQBA.Web.App_Start
 
             var cs = ConfigurationManager.ConnectionStrings["QBADummyModelContainer"];
             container.RegisterType<QBADummyModelContainer, QBADummyModelContainer>(new InjectionConstructor(cs.ConnectionString));
+
+            container.RegisterType<IDatabaseManager, DatabaseManager>(new InjectionConstructor("PXData"));
         }
     }
 }

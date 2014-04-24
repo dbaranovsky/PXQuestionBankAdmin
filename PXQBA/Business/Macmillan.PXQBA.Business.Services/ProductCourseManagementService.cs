@@ -1,4 +1,5 @@
-﻿using System.Runtime.Caching;
+﻿using System.Collections.Generic;
+using System.Runtime.Caching;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
@@ -22,6 +23,11 @@ namespace Macmillan.PXQBA.Business.Services
         public Course GetProductCourse(string productCourseId)
         {
             return productCourseOperation.GetProductCourse(productCourseId);
+        }
+
+        public IEnumerable<Course> GetAvailableCourses()
+        {
+            return productCourseOperation.GetAvailableCourses();
         }
     }
 }

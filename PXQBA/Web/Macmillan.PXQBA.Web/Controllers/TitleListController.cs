@@ -15,6 +15,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         // GET: /TitleList/
         public ActionResult Index()
         {
+            productCourseManagementService.GetAvailableCourses();
             return View();
         }
 	}
