@@ -72,14 +72,14 @@ namespace Macmillan.PXQBA.Business.Services
             return (learningObjectives != null) ? string.Join("|", learningObjectives.Select(lo => lo.Guid)) : null;
         }
 
-        public IEnumerable<LearningObjective> GetLOByGuid(string learningObjectiveGuids)
+        public IEnumerable<LearningObjective> GetLOByGuid(string productCourseId, string learningObjectiveGuids)
         {
             if (learningObjectiveGuids == null)
             {
                 return new List<LearningObjective>();
             }
             var guids = learningObjectiveGuids.Split('|');
-            return productCourseOperation.GetCurrentProductCourse().LearningObjectives.Where(lo => guids.Contains(lo.Guid));
+            return productCourseOperation.GetProductCourse(productCourseId).LearningObjectives.Where(lo => guids.Contains(lo.Guid));
         }
     }
 }

@@ -49,7 +49,7 @@
     <Compile Include="IQuestionFilterManagementService.cs" />
     <Compile Include="IQuestionManagementService.cs" />
     <Compile Include="IQuestionMetadataService.cs" />
-    <Compile Include="ITitleListManagementService.cs" />
+    <Compile Include="IProductCourseManagementService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

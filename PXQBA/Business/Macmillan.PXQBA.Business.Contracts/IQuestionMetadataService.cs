@@ -5,11 +5,11 @@ namespace Macmillan.PXQBA.Business.Contracts
 {
     public interface IQuestionMetadataService
     {
-        IList<QuestionMetaField> GetAvailableFields();
+        IList<QuestionMetaField> GetAvailableFields(Course course);
 
-        IList<QuestionMetaField> GetDataForFields(IEnumerable<string> fieldsNames);
+        IList<QuestionMetaField> GetDataForFields(Course course, IEnumerable<string> fieldsNames);
 
-        string GetQuestionCardLayout();
+        string GetQuestionCardLayout(Course course);
     }
 
 }

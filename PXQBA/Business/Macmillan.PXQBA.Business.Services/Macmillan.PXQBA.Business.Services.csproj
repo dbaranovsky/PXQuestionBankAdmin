@@ -69,7 +69,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionManagementService.cs" />
     <Compile Include="QuestionMetadataService.cs" />
-    <Compile Include="TitleListManagementService.cs" />
+    <Compile Include="ProductCourseManagementService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Macmillan.PXQBA.Common.Helpers\Macmillan.PXQBA.Common.Helpers.csproj">

@@ -22,19 +22,19 @@ namespace Macmillan.PXQBA.Business.Services
             this.temporaryQuestionOperation = temporaryQuestionOperation;
         }
 
-        public PagedCollection<Question> GetQuestionList(IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
+        public PagedCollection<Question> GetQuestionList(Course course, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
         {
             //temporaryQuestionOperation.CopyQuestionToTemporaryQuiz("12c19f3103ad4da1b254dd67f17dd1b1");
-            return questionCommands.GetQuestionList(CacheProvider.GetCurrentTitleId(), filter, sortCriterion, startingRecordNumber, recordCount);
+            return questionCommands.GetQuestionList(course.ProductCourseId, filter, sortCriterion, startingRecordNumber, recordCount);
         }
 
-        public Question CreateQuestion(QuestionType questiontype, string bank, string chapter)
+        public Question CreateQuestion(Course course, QuestionType questiontype, string bank, string chapter)
         {
             Question question = GetNewQuestionTemplate();
             question.Type = questiontype;
             question.Bank = bank;
             question.Chapter = chapter;
-            return questionCommands.CreateQuestion(CacheProvider.GetCurrentTitleId(), question);
+            return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
 
         public Question GetQuestion(string questionId)
@@ -42,12 +42,12 @@ namespace Macmillan.PXQBA.Business.Services
             return questionCommands.GetQuestion(questionId);
         }
 
-        public Question DuplicateQuestion(string questionId)
+        public Question DuplicateQuestion(Course course, string questionId)
         {
             Question question = GetQuestion(questionId);
             question.Id = Guid.NewGuid().ToString();
             question.Status = QuestionStatus.InProgress;
-            return questionCommands.CreateQuestion(CacheProvider.GetCurrentTitleId(), question);
+            return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
 
         private Question GetNewQuestionTemplate()
@@ -61,9 +61,9 @@ namespace Macmillan.PXQBA.Business.Services
             return question;
         }
 
-        public void UpdateQuestionSequence(string questionId, int newSequenceValue)
+        public void UpdateQuestionSequence(Course course, string questionId, int newSequenceValue)
         {
-            questionCommands.UpdateQuestionSequence(CacheProvider.GetCurrentTitleId(), questionId, newSequenceValue);
+            questionCommands.UpdateQuestionSequence(course.ProductCourseId, questionId, newSequenceValue);
         }
 
         public IEnumerable<QuestionType> GetQuestionTypesForCourse()

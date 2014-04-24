@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic;
 using System.Web.Mvc;
+using Macmillan.PXQBA.Web.Helpers;
 using Macmillan.PXQBA.Web.ViewModels;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
@@ -18,20 +19,23 @@ namespace Macmillan.PXQBA.Web.Controllers
         private readonly IQuestionManagementService questionManagementService;
         private readonly IQuestionMetadataService questionMetadataService;
         private readonly INotesManagementService notesManagementService;
+        private readonly IProductCourseManagementService productCourseManagementService;
 
         private readonly int questionPerPage;
 
         public QuestionListController(IQuestionMetadataService questionMetadataService,
                                       IQuestionManagementService questionManagementService,
-                                      INotesManagementService notesManagementService)
+                                      INotesManagementService notesManagementService, IProductCourseManagementService productCourseManagementService)
         {
             this.questionManagementService = questionManagementService;
             this.questionPerPage = ConfigurationHelper.GetQuestionPerPage();
             this.questionMetadataService = questionMetadataService;
             this.notesManagementService = notesManagementService;
+            this.productCourseManagementService = productCourseManagementService;
 
             // \todo Setup current course when the user selects one from the list
-            CacheProvider.AddCurrentTitleId("200117");
+            CourseHelper.CurrentCourse = productCourseManagementService.GetProductCourse("200117");
+                //new Course { ProductCourseId = "200117", Title = "Sample Course" }; 
         }
 
         //
@@ -45,7 +49,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult GetQuestionData(QuestionListDataRequest request)
         {
             var sortCriterion = new SortCriterion {ColumnName = request.OrderField, SortType = request.OrderType};
-            var questionList = questionManagementService.GetQuestionList(request.Filter, sortCriterion, 
+            var questionList = questionManagementService.GetQuestionList(CourseHelper.CurrentCourse, request.Filter, sortCriterion, 
                                                                           (request.PageNumber - 1) * questionPerPage,
                                                                           questionPerPage);
             var totalPages = (questionList.TotalItems + questionPerPage - (questionList.TotalItems % questionPerPage)) /
@@ -57,14 +61,14 @@ namespace Macmillan.PXQBA.Web.Controllers
                             TotalPages = totalPages,
                             QuestionList = questionList.CollectionPage.Select(Mapper.Map<QuestionMetadata>),
                             PageNumber = request.PageNumber,
-                            Columns = questionMetadataService.GetDataForFields(request.Columns).Select(MetadataFieldsHelper.Convert).ToList(),
-                            AllAvailableColumns = questionMetadataService.GetAvailableFields().Select(MetadataFieldsHelper.Convert).ToList(),
+                            Columns = questionMetadataService.GetDataForFields(CourseHelper.CurrentCourse, request.Columns).Select(MetadataFieldsHelper.Convert).ToList(),
+                            AllAvailableColumns = questionMetadataService.GetAvailableFields(CourseHelper.CurrentCourse).Select(MetadataFieldsHelper.Convert).ToList(),
                             Order = new QuestionOrder()
                                     {
                                         OrderField = request.OrderField,
                                         OrderType = request.OrderType.ToString().ToLower()
                                     },
-                            QuestionCardLayout = questionMetadataService.GetQuestionCardLayout()
+                            QuestionCardLayout = questionMetadataService.GetQuestionCardLayout(CourseHelper.CurrentCourse)
                         };
 
             return JsonCamel(response);

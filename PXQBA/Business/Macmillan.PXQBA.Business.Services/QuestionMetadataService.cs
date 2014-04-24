@@ -9,25 +9,8 @@ namespace Macmillan.PXQBA.Business.Services
 {
     public class QuestionMetadataService : IQuestionMetadataService
     {
-        private readonly IProductCourseOperation productCourseOperation;
-
-
-        public QuestionMetadataService(IProductCourseOperation productCourseOperation)
+        public IList<QuestionMetaField> GetAvailableFields(Course course)
         {
-            this.productCourseOperation = productCourseOperation;
-        }
-
-        private Course ProductCourse
-        {
-            get
-            {
-                return productCourseOperation.GetCurrentProductCourse();
-            }
-        }
-
-        public IList<QuestionMetaField> GetAvailableFields()
-        {
-
             var fields = new List<QuestionMetaField>
             {
                 new QuestionMetaField()
@@ -169,7 +152,7 @@ namespace Macmillan.PXQBA.Business.Services
                     {
                         Type = MetaFieldType.MultiSelect,
                         AvailableChoice =
-                            ProductCourse.LearningObjectives.ToDictionary(lo => lo.Guid, lo => lo.Description)
+                            course.LearningObjectives.ToDictionary(lo => lo.Guid, lo => lo.Description)
                     }
 
                 },
@@ -178,14 +161,14 @@ namespace Macmillan.PXQBA.Business.Services
             return fields;
         }
 
-        public IList<QuestionMetaField> GetDataForFields(IEnumerable<string> fieldsNames)
+        public IList<QuestionMetaField> GetDataForFields(Course course, IEnumerable<string> fieldsNames)
         {
-            return GetAvailableFields().Where(f => fieldsNames.Contains(f.Name)).ToList();
+            return GetAvailableFields(course).Where(f => fieldsNames.Contains(f.Name)).ToList();
         }
 
-        public string GetQuestionCardLayout()
+        public string GetQuestionCardLayout(Course course)
         {
-            return ProductCourse.QuestionCardLayout;
+            return course.QuestionCardLayout;
         }
     }
 }
