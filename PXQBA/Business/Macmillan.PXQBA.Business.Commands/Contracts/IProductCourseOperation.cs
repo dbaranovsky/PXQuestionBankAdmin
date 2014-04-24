@@ -9,6 +9,6 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
 {
     public interface IProductCourseOperation
     {
-        Course GetCurrentProductCourse();
+        Course GetProductCourse(string productCourseId);
     }
 }

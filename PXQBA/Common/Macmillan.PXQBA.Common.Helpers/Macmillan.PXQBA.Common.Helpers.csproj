@@ -46,10 +46,8 @@
     <Compile Include="..\..\Web\Macmillan.PXQBA.Web\Properties\ProductInfo.cs">
       <Link>Properties\ProductInfo.cs</Link>
     </Compile>
-    <Compile Include="CacheProvider.cs" />
     <Compile Include="ConfigurationHelper.cs" />
     <Compile Include="Constants\ConfigurationKeys.cs" />
-    <Compile Include="Constants\CacheKeys.cs" />
     <Compile Include="EnumHelper.cs" />
     <Compile Include="HtmlXmlHelper.cs" />
     <Compile Include="MetadataFieldsHelper.cs" />

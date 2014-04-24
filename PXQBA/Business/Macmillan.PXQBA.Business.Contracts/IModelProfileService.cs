@@ -9,6 +9,6 @@ namespace Macmillan.PXQBA.Business.Contracts
 
         Dictionary<string, string> CreateQuestionMetadata(Question question);
         string SetLearningObjectives(IEnumerable<LearningObjective> learningObjectives);
-        IEnumerable<LearningObjective> GetLOByGuid(string learningObjectiveGuids);
+        IEnumerable<LearningObjective> GetLOByGuid(string productCourseId, string learningObjectiveGuids);
     }
 }

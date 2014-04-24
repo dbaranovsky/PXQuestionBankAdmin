@@ -5,11 +5,11 @@ namespace Macmillan.PXQBA.Web.Controllers
 {
     public class TitleListController : MasterController
     {
-        private readonly ITitleListManagementService titleListManagementService;
+        private readonly IProductCourseManagementService productCourseManagementService;
 
-        public TitleListController(ITitleListManagementService titleListManagementService)
+        public TitleListController(IProductCourseManagementService productCourseManagementService)
         {
-            this.titleListManagementService = titleListManagementService;
+            this.productCourseManagementService = productCourseManagementService;
         }
         //
         // GET: /TitleList/

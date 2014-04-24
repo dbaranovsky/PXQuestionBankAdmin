@@ -21,9 +21,9 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             this.businessContext = businessContext;
         }
 
-        public void CopyQuestionToTemporaryQuiz(string questionIdToCopy)
+        public void CopyQuestionToTemporaryQuiz(string sourceProductCourseId, string questionIdToCopy)
         {
-            var question = GetQuestion(questionIdToCopy);
+            var question = GetQuestion(sourceProductCourseId, questionIdToCopy);
             if (question == null)
             {
                 throw new NullReferenceException("There is no such question in the course");
@@ -55,12 +55,12 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return item;
         }
 
-        private Question GetQuestion(string questionId)
+        private Question GetQuestion(string productCourseId, string questionId)
         {
             var cmd = new GetQuestions();
             cmd.SearchParameters = new QuestionSearch
             {
-                EntityId = CacheProvider.GetCurrentTitleId(),
+                EntityId = productCourseId,
                 QuestionIds = new List<string> {questionId}
             };
             businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);

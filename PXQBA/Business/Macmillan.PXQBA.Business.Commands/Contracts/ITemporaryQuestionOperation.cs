@@ -9,6 +9,6 @@
         /// Copies question from real course to temp course to increase editing speed
         /// </summary>
         /// <param name="questionIdToCopy"></param>
-        void CopyQuestionToTemporaryQuiz(string questionIdToCopy);
+        void CopyQuestionToTemporaryQuiz(string sourceProductCourseId, string questionIdToCopy);
     }
 }

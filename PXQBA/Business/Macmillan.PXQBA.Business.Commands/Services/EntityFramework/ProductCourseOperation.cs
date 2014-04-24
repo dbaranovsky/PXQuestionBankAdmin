@@ -12,11 +12,11 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
 {
     public class ProductCourseOperation : IProductCourseOperation
     {
-        public Course GetCurrentProductCourse()
+        public Course GetProductCourse(string productCourseId)
         {
             return new Course
             {
-                ProductCourseId = CacheProvider.GetCurrentTitleId(),
+                ProductCourseId = productCourseId,
                 Title = "Sample title",
                 LearningObjectives = new List<LearningObjective>
                 {

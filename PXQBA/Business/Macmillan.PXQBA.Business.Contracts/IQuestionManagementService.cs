@@ -12,14 +12,14 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// Retrieves questions list
         /// </summary>
         /// <returns></returns>
-        PagedCollection<Question> GetQuestionList(IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount);
+        PagedCollection<Question> GetQuestionList(Course course, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount);
 
         /// <summary>
         /// Create a new question
         /// </summary>
         /// <param name="question"></param>
         /// <returns>The updated object that was persisted</returns>
-        Question CreateQuestion(QuestionType questionType, string bank, string chapter);
+        Question CreateQuestion(Course course, QuestionType questionType, string bank, string chapter);
 
         /// <summary>
         /// Returns question by its ID
@@ -34,7 +34,7 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// </summary>
         /// <param name="questionId"></param>
         /// <returns></returns>
-        Question DuplicateQuestion(string questionId);
+        Question DuplicateQuestion(Course course, string questionId);
 
         /// <summary>
         /// Changes question sequence number in scope of same bank questions.
@@ -42,7 +42,7 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// </summary>
         /// <param name="questionId"></param>
         /// <param name="newSequenceValue"></param>
-        void UpdateQuestionSequence(string questionId, int newSequenceValue);
+        void UpdateQuestionSequence(Course course, string questionId, int newSequenceValue);
 
         /// <summary>
         /// Returns list of question types available for specified course
