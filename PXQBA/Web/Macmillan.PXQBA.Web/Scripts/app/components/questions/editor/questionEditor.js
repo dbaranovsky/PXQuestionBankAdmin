@@ -35,7 +35,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
             React.DOM.div(null, 
                       React.DOM.div( {className:"header-buttons"}, 
                          React.DOM.button( {className:"btn btn-primary run-question", 'data-toggle':"modal", onClick:this.runQuestion}, 
-                             React.DOM.span( {className:"glyphicon glyphicon-play"}), " Run Question"
+                             React.DOM.span( {className:"glyphicon glyphicon-play"}), " Try Question"
                         ),
                         React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal", onClick:this.props.closeDialog}, 
                              "Cancel"

@@ -75,6 +75,6 @@ namespace Macmillan.PXQBA.Business.Models
 
         public IEnumerable<string> SharedFrom { get; set; }
 
-        public string SharedTo { get; set; }
+        public IEnumerable<string> SharedTo { get; set; }
     }
 }

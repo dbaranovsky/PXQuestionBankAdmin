@@ -23,7 +23,7 @@ var QuestionMetadataEditor = React.createClass({
     },
 
     renderSharingNotification: function(){
-      if (true) {
+      if (question.isDuplicateOfSharedQuestion) {
         return (<div className="shared-note">This question is a duplicate of a &nbsp;
                     <a className="shared-question-link" href="" onClick={this.loadSourceQuestion}>shared question</a>
                     <a href="" onClick={this.loadSourceQuestion}>Delete question</a>
@@ -44,7 +44,7 @@ var QuestionMetadataEditor = React.createClass({
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"keywords"}/>
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"suggestedUse"} title="Suggested Use"/>
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"learningObjectives"} title="Learning Objective"/>
-                           <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"excerciseNo"} title="Excercise Number"/>
+                           <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"excerciseNo"} title="Exercise Number"/>
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"difficulty"} allowDeselect={true} />
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"cognitiveLevel"} title="Cognitive Level"/>
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"status"} />

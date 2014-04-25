@@ -65,6 +65,11 @@ namespace Macmillan.PXQBA.Business.Services
             data.Add(MetadataFieldNames.SuggestedUse, String.Join(", ", question.SuggestedUse));
             data.Add(MetadataFieldNames.Guidance, question.Guidance);
             data.Add(MetadataFieldNames.LearningObjectives, String.Join(", ", question.LearningObjectives.Select(lo => lo.Description)));
+            data.Add(MetadataFieldNames.SharedTo, String.Join("<br />", question.SharedTo));
+            data.Add(MetadataFieldNames.SharedFrom, String.Join("<br />", question.SharedFrom));
+            data.Add(MetadataFieldNames.QuestionIdDuplicateFrom, question.QuestionIdDuplicateFrom);
+          
+          
 
             return data;
         }
@@ -125,7 +130,7 @@ namespace Macmillan.PXQBA.Business.Services
 
         public IEnumerable<string> GetHardCodedSharedFrom(int questionId)
         {
-            if (questionId/2 == 0)
+            if (questionId%2 == 0)
             {
                 return new List<string>
                 {
@@ -140,7 +145,7 @@ namespace Macmillan.PXQBA.Business.Services
 
         public IEnumerable<string> GetHardCodedSharedTo(int questionId)
         {
-            if (questionId/2 != 0)
+            if (questionId%2 != 0)
             {
                 return new List<string>
                 {

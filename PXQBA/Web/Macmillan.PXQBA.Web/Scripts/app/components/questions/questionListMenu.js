@@ -27,9 +27,21 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
       if (this.props.showAll){
         return ( 
                 React.DOM.div(null, 
-                  React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn shared-to", 'data-toggle':"popover", 'data-content':"Vivamus sagittis lacus vel"+' '+ 
- "augue laoreet rutrum faucibus."}, React.DOM.span( {className:"glyphicon icon-shared-to"} )),
-                  React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn shared-from"}, React.DOM.span( {className:"glyphicon icon-shared-from"})),
+
+                     
+                    this.props.data["sharedTo"] != "" ?
+                     React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn shared-to", 'data-content':this.props.data["sharedTo"]}, React.DOM.span( {className:"glyphicon icon-shared-to"} )) :
+                    "",
+                 
+
+                    
+                    this.props.data["sharedFrom"] != "" ?
+                     React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn shared-from", 'data-content':this.props.data["sharedFrom"]}, React.DOM.span( {className:"glyphicon icon-shared-from"})) :
+                    "",
+                 
+
+                
+                
                   React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.editNotesHandler}, React.DOM.span( {className:"glyphicon glyphicon-list-alt"})),	
                   React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.editQuestionHandler}, React.DOM.span( {className:"glyphicon glyphicon-pencil"})),
                   React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.copyQuestionHandler}, React.DOM.span( {className:"glyphicon glyphicon-copyright-mark"})),
@@ -39,9 +51,18 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
       }
 
       return (React.DOM.div(null, 
+                   
+                    this.props.data["sharedTo"] != "" ?
+                    React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn shared-to", 'data-content':this.props.data["sharedTo"]}, React.DOM.span( {className:"glyphicon icon-shared-to"})) :
+                    "",
+                 
 
-               React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn shared-to"}, React.DOM.span( {className:"glyphicon icon-shared-to"})),
-               React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn shared-from"}, React.DOM.span( {className:"glyphicon icon-shared-from"}))
+                    
+                    this.props.data["sharedFrom"] != "" ?
+                    React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn shared-from", 'data-content':this.props.data["sharedFrom"]}, React.DOM.span( {className:"glyphicon icon-shared-from"})) :
+                    ""
+                 
+              
 
              ));
   }

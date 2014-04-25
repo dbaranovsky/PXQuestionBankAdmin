@@ -35,7 +35,7 @@ var QuestionEditor = React.createClass({
             <div>
                       <div className="header-buttons">
                          <button className="btn btn-primary run-question" data-toggle="modal" onClick={this.runQuestion}>
-                             <span className="glyphicon glyphicon-play"></span> Run Question
+                             <span className="glyphicon glyphicon-play"></span> Try Question
                         </button>
                         <button className="btn btn-default" data-toggle="modal" onClick={this.props.closeDialog}>
                              Cancel

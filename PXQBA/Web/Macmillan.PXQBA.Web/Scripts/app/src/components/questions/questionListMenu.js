@@ -27,8 +27,21 @@ var QuestionListMenu = React.createClass({
       if (this.props.showAll){
         return ( 
                 <div>
-                  <button type="button" className="btn btn-default btn-sm custom-btn shared-to" data-toggle="popover" data-content="Vivamus sagittis lacus vel &#013; augue laoreet rutrum faucibus."><span className="glyphicon icon-shared-to" ></span></button>
-                  <button type="button" className="btn btn-default btn-sm custom-btn shared-from"><span className="glyphicon icon-shared-from"></span></button>
+
+                   {  
+                    this.props.data["sharedTo"] != "" ?
+                     <button type="button" className="btn btn-default btn-sm custom-btn shared-to" data-content={this.props.data["sharedTo"]}><span className="glyphicon icon-shared-to" ></span></button> :
+                    ""
+                 }
+
+                  {  
+                    this.props.data["sharedFrom"] != "" ?
+                     <button type="button" className="btn btn-default btn-sm custom-btn shared-from" data-content={this.props.data["sharedFrom"]}><span className="glyphicon icon-shared-from"></span></button> :
+                    ""
+                 }
+
+                
+                
                   <button type="button" className="btn btn-default btn-sm" onClick={this.editNotesHandler}><span className="glyphicon glyphicon-list-alt"></span></button>	
                   <button type="button" className="btn btn-default btn-sm" onClick={this.editQuestionHandler}><span className="glyphicon glyphicon-pencil"></span></button>
                   <button type="button" className="btn btn-default btn-sm" onClick={this.copyQuestionHandler}><span className="glyphicon glyphicon-copyright-mark"></span></button>
@@ -38,9 +51,18 @@ var QuestionListMenu = React.createClass({
       }
 
       return (<div>
+                 {  
+                    this.props.data["sharedTo"] != "" ?
+                    <button type="button" className="btn btn-default btn-sm custom-btn shared-to" data-content={this.props.data["sharedTo"]}><span className="glyphicon icon-shared-to"></span></button> :
+                    ""
+                 }
 
-               <button type="button" className="btn btn-default btn-sm custom-btn shared-to"><span className="glyphicon icon-shared-to"></span></button>
-               <button type="button" className="btn btn-default btn-sm custom-btn shared-from"><span className="glyphicon icon-shared-from"></span></button>
+                  {  
+                    this.props.data["sharedFrom"] != "" ?
+                    <button type="button" className="btn btn-default btn-sm custom-btn shared-from" data-content={this.props.data["sharedFrom"]}><span className="glyphicon icon-shared-from"></span></button> :
+                    ""
+                 }
+              
 
              </div>);
   }
