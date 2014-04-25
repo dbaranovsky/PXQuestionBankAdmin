@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Macmillan.PXQBA.Business.Models
 {
@@ -10,5 +11,19 @@ namespace Macmillan.PXQBA.Business.Models
         public IEnumerable<LearningObjective> LearningObjectives;
 
         public string QuestionCardLayout { get; set; }
+
+        public IEnumerable<Chapter> Chapters { get; set; }
+
+        public int QuestionsCount
+        {
+            get
+            {
+                if (Chapters != null && Chapters.Any())
+                {
+                    return Chapters.Sum(ch => ch.QuestionsCount);
+                }
+                return 0;
+            }
+        }
     }
 }

@@ -32,10 +32,6 @@ namespace Macmillan.PXQBA.Web.Controllers
             this.questionMetadataService = questionMetadataService;
             this.notesManagementService = notesManagementService;
             this.productCourseManagementService = productCourseManagementService;
-
-            // \todo Setup current course when the user selects one from the list
-            CourseHelper.CurrentCourse = productCourseManagementService.GetProductCourse("71836");
-                //new Course { ProductCourseId = "200117", Title = "Sample Course" }; 
         }
 
         //
@@ -48,6 +44,8 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult GetQuestionData(QuestionListDataRequest request)
         {
+            //TODO: Replace with real title id for filter
+            CourseHelper.CurrentCourse = productCourseManagementService.GetProductCourse("71836");
             var sortCriterion = new SortCriterion {ColumnName = request.OrderField, SortType = request.OrderType};
             var questionList = questionManagementService.GetQuestionList(CourseHelper.CurrentCourse, request.Filter, sortCriterion, 
                                                                           (request.PageNumber - 1) * questionPerPage,
