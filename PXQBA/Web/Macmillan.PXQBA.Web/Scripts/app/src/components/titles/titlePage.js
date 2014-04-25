@@ -11,7 +11,7 @@ var TitlePage = React.createClass({
     render: function() {
        return (
                 <div>
-                     Page
+                     <TitleList data={this.props.response.titles} />
                 </div>
             );
     }

@@ -377,3 +377,25 @@ input[type="checkbox"].input-validation-error {
 .question-card-template {
     float: left;
 }
+
+
+#title-container {
+    margin: 20px 0px 0px 0px;
+}
+
+.title-item {
+    margin: 5px 0px 5px 5px;
+}
+
+.chapters-container {
+    padding: 3px 0px 3px 25px;
+}
+
+.title-link {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.chapter-link {
+    text-decoration: underline;
+}

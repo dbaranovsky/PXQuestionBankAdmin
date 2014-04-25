@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using AutoMapper;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Web.ViewModels.TiteList;
 
 namespace Macmillan.PXQBA.Web.Controllers
 {
@@ -16,8 +18,6 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult Index()
         {
-           return View();
-            var courses = productCourseManagementService.GetAvailableCourses();
             return View();
         }
 
@@ -25,8 +25,11 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult GetTitleData()
         {
-            IEnumerable<Course> courses = productCourseManagementService.GetAvailableCourses();
-            return JsonCamel(courses);
+            var titles = Mapper.Map<IEnumerable<TitleViewModel>>(productCourseManagementService.GetAvailableCourses());
+            return JsonCamel(new TitleListDataResponse
+                             {
+                                 Titles = titles
+                             });
         }
 	}
 }

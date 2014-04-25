@@ -4,16 +4,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Title List</h2>
-
+<h2>Titles available:</h2>
+ 
 <div id="title-container"> </div>
-
+ 
 @section scripts
 {
     <script src="../../Scripts/app/components/common/loader.js"></script>
+    <script src="../../Scripts/app/components/common/expandButton.js"></script>
     <script src="../../Scripts/app/async/asyncManager.js"></script>
     <script src="../../Scripts/app/dataAccess/titleDataManager.js"></script>
-
+    
+    <script src="../../Scripts/app/components/titles/title.js"></script>
     <script src="../../Scripts/app/components/titles/titleList.js"></script>
     <script src="../../Scripts/app/components/titles/titlePage.js"></script>
     
