@@ -19,11 +19,11 @@ var QuestionMetadataEditor = React.createClass({
 
     loadSourceQuestion: function(event){
       event.preventDefault();
-
+      this.props.getSourceQuestion();
     },
 
     renderSharingNotification: function(){
-      if (this.props.question.isDuplicateOfSharedQuestion) {
+      if (this.props.question.isDuplicateOfSharedQuestion && this.props.isDuplicate) {
         return (<div className="shared-note">This question is a duplicate of a &nbsp;
                     <a className="shared-question-link" href="" onClick={this.loadSourceQuestion}>shared question</a>
                     <a href="" onClick={this.loadSourceQuestion}>Delete question</a>

@@ -12,7 +12,7 @@ namespace Macmillan.PXQBA.Business.Contracts
         IEnumerable<LearningObjective> GetLOByGuid(string productCourseId, string learningObjectiveGuids);
         string GetQuestionCardLayout(Bfw.Agilix.DataContracts.Course src);
         IEnumerable<Chapter> GetHardCodedQuestionChapters();
-        IEnumerable<string> GetHardCodedSharedFrom(int questionId);
+        string GetHardCodedSharedFrom(int questionId);
         IEnumerable<string> GetHardCodedSharedTo(int questionId);
         string GetHardCodedQuestionDuplicate();
     }

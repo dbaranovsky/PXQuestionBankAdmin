@@ -69,11 +69,11 @@ namespace Macmillan.PXQBA.Business.Models
         {
             get
             {
-                return (SharedFrom != null && SharedFrom.Any()) || (SharedTo !=null && SharedTo.Any());
+                return (!string.IsNullOrEmpty(SharedFrom)) || (SharedTo != null && SharedTo.Any());
             }
         }
 
-        public IEnumerable<string> SharedFrom { get; set; }
+        public string SharedFrom { get; set; }
 
         public IEnumerable<string> SharedTo { get; set; }
     }

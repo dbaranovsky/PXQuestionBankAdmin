@@ -10,7 +10,7 @@ var QuestionPreview = React.createClass({displayName: 'QuestionPreview',
        compileTemplate: function(){
 
             var template = Handlebars.compile(this.props.questionCardTemplate);
-        var html = template(this.props.metadata);
+            var html = template(this.props.metadata);
             return html;
        },
         render: function() {
