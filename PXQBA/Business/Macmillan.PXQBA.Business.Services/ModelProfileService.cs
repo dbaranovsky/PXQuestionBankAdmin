@@ -14,9 +14,11 @@ namespace Macmillan.PXQBA.Business.Services
         private readonly IProductCourseOperation productCourseOperation;
 
         private Dictionary<string, string> availableQuestionTypes;
-        public ModelProfileService(IProductCourseOperation productCourseOperation)
+        private IQuestionCommands questionCommands;
+        public ModelProfileService(IProductCourseOperation productCourseOperation, IQuestionCommands questionCommands)
         {
             this.productCourseOperation = productCourseOperation;
+            this.questionCommands = questionCommands;
             this.availableQuestionTypes = ConfigurationHelper.GetQuestionTypes();
         }
 
@@ -80,6 +82,37 @@ namespace Macmillan.PXQBA.Business.Services
             }
             var guids = learningObjectiveGuids.Split('|');
             return productCourseOperation.GetProductCourse(productCourseId).LearningObjectives.Where(lo => guids.Contains(lo.Guid));
+        }
+
+        public string GetQuestionCardLayout(Bfw.Agilix.DataContracts.Course src)
+        {
+            if (src.Data.Element("questioncardlayout") != null)
+            {
+                return src.Data.Element("questioncardlayout").ToString();
+            }
+            return string.Empty;
+        }
+
+        public IEnumerable<Chapter> GetHardCodedQuestionChapters()
+        {
+            return new List<Chapter>()
+            {
+                new Chapter()
+                {
+                    Title = "Chapter 1",
+                    QuestionsCount = 2
+                },
+                new Chapter
+                {
+                    Title = "Chapter 2",
+                    QuestionsCount = 3
+                },
+                new Chapter
+                {
+                    Title = "Chapter 3",
+                    QuestionsCount = 3
+                }
+            };
         }
     }
 }

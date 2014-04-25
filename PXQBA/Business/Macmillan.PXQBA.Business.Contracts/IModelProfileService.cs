@@ -10,5 +10,7 @@ namespace Macmillan.PXQBA.Business.Contracts
         Dictionary<string, string> CreateQuestionMetadata(Question question);
         string SetLearningObjectives(IEnumerable<LearningObjective> learningObjectives);
         IEnumerable<LearningObjective> GetLOByGuid(string productCourseId, string learningObjectiveGuids);
+        string GetQuestionCardLayout(Bfw.Agilix.DataContracts.Course src);
+        IEnumerable<Chapter> GetHardCodedQuestionChapters();
     }
 }

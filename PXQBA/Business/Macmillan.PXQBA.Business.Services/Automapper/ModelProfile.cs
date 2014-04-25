@@ -5,6 +5,7 @@ using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
 using Course = Macmillan.PXQBA.Business.Models.Course;
+using LearningObjective = Macmillan.PXQBA.Business.Models.LearningObjective;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Business.Services.Automapper
@@ -21,10 +22,17 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
         protected override void Configure()
         {
             Mapper.CreateMap<Bfw.Agilix.DataContracts.Course, Course>()
-                .ForMember(dest => dest.ProductCourseId, opt => opt.MapFrom(q => q.Id))
-                .ForMember(dest => dest.Title, opt => opt.MapFrom(q => q.Title))
-                .ForMember(dest => dest.LearningObjectives, opt => opt.Ignore())
-                .ForMember(dest => dest.QuestionCardLayout, opt => opt.Ignore());
+                .ForMember(dest => dest.ProductCourseId, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
+                .ForMember(dest => dest.LearningObjectives, opt => opt.MapFrom(src => src.LearningObjectives))
+                .ForMember(dest => dest.QuestionCardLayout, opt => opt.MapFrom(src => modelProfileService.GetQuestionCardLayout(src)))
+                .ForMember(dest => dest.Chapters, opt => opt.MapFrom(src => modelProfileService.GetHardCodedQuestionChapters()))
+                .ForMember(dest => dest.QuestionsCount, opt => opt.Ignore());
+
+            Mapper.CreateMap<Bfw.Agilix.DataContracts.LearningObjective, LearningObjective>()
+                .ForMember(dest => dest.Guid, opt => opt.MapFrom(src => src.Guid))
+                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Title));
+
 
             Mapper.CreateMap<Bfw.Agilix.DataContracts.Question, Question>()
                 .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))

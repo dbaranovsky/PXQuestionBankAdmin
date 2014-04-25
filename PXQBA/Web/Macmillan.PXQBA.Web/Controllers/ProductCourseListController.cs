@@ -3,11 +3,11 @@ using Macmillan.PXQBA.Business.Contracts;
 
 namespace Macmillan.PXQBA.Web.Controllers
 {
-    public class TitleListController : MasterController
+    public class ProductCourseListController : MasterController
     {
         private readonly IProductCourseManagementService productCourseManagementService;
 
-        public TitleListController(IProductCourseManagementService productCourseManagementService)
+        public ProductCourseListController(IProductCourseManagementService productCourseManagementService)
         {
             this.productCourseManagementService = productCourseManagementService;
         }
@@ -15,7 +15,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         // GET: /TitleList/
         public ActionResult Index()
         {
-            productCourseManagementService.GetAvailableCourses();
+            var courses = productCourseManagementService.GetAvailableCourses();
             return View();
         }
 	}

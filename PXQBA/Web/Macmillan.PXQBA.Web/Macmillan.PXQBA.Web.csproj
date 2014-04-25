@@ -163,7 +163,7 @@
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\QuestionFilterController.cs" />
     <Compile Include="Controllers\QuestionListController.cs" />
-    <Compile Include="Controllers\TitleListController.cs" />
+    <Compile Include="Controllers\ProductCourseListController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\AuthenticationAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -349,7 +349,7 @@
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\TitleList\Index.cshtml" />
+    <Content Include="Views\ProductCourseList\Index.cshtml" />
     <Content Include="Views\Shared\_CommonJS.cshtml" />
     <Content Include="Views\QuestionList\Index.cshtml" />
     <Content Include="Views\Import\Index.cshtml" />
