@@ -186,7 +186,10 @@
     <Content Include="Content\img\chosen-sprite%402x.png" />
     <Content Include="Content\img\chosen-sprite.png" />
     <Content Include="Content\chosen.css" />
+    <Content Include="Content\img\shared-from.png" />
+    <Content Include="Content\img\shared-to.png" />
     <Content Include="Content\img\spinning.gif" />
+    <Content Include="Content\img\unshare.png" />
     <Content Include="Content\Paging.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -347,6 +350,7 @@
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />

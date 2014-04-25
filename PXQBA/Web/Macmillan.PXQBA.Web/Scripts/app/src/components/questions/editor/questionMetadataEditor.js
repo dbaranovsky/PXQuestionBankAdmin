@@ -19,6 +19,7 @@ var QuestionMetadataEditor = React.createClass({
     render: function() {
         return (
              <div className="tab-body">
+                            {this.renderSharingNotification()}
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"title"}/>
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"chapter"}/>
                            <MetadataFieldEditor question={this.props.question} metadata={this.state.metadata} editHandler={this.props.editHandler} field={"bank"}/>

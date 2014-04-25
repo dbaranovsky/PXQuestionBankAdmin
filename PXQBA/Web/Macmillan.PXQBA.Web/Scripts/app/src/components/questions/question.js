@@ -17,17 +17,13 @@ var Question = React.createClass({
     },
 
     renderMenu: function() {
-        if(this.state.showMenu) {
             var questionId = this.props.metadata.data["id"];
             return <QuestionListMenu
                         questionId={questionId} 
                         copyQuestionHandler={this.props.menuHandlers.copyQuestionHandler.bind(null, questionId)}
                         editQuestionHandler={this.props.menuHandlers.editQuestionHandler.bind(null, questionId)}
                         editNotesHandler={this.props.menuHandlers.editNotesHandler.bind(null, questionId)}
-                        />
-        }
-
-        return null;
+                        showAll = {this.state.showMenu} />
     },
 
     selectQuestionHandler: function(event) {
