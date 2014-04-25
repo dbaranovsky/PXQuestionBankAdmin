@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Macmillan.PXQBA.Business.Models
 {
@@ -52,6 +53,28 @@ namespace Macmillan.PXQBA.Business.Models
         /// <summary>
         /// Learning objectives
         /// </summary>
-        public IEnumerable<LearningObjective> LearningObjectives { get; set; } 
+        public IEnumerable<LearningObjective> LearningObjectives { get; set; }
+
+        public bool IsDuplicateOfSharedQuestion
+        {
+            get
+            {
+                return !string.IsNullOrEmpty(QuestionIdDuplicateFrom);
+            }
+        }
+
+        public string QuestionIdDuplicateFrom { get; set; }
+
+        public bool IsShared
+        {
+            get
+            {
+                return (SharedFrom != null && SharedFrom.Any()) || (SharedTo !=null && SharedTo.Any());
+            }
+        }
+
+        public IEnumerable<string> SharedFrom { get; set; }
+
+        public string SharedTo { get; set; }
     }
 }

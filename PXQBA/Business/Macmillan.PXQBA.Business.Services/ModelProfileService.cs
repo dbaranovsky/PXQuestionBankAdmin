@@ -86,9 +86,17 @@ namespace Macmillan.PXQBA.Business.Services
 
         public string GetQuestionCardLayout(Bfw.Agilix.DataContracts.Course src)
         {
-            if (src.Data.Element("questioncardlayout") != null)
+            var questioncardLayout = src.Data.Element("questioncardlayout");
+            if (questioncardLayout != null)
             {
-                return src.Data.Element("questioncardlayout").ToString();
+                var scriptElement = questioncardLayout.Element("script");
+                if (scriptElement != null)
+                {
+                    if (scriptElement.Element("div") != null)
+                    {
+                        return scriptElement.Element("div").ToString();
+                    }
+                }
             }
             return string.Empty;
         }
@@ -113,6 +121,41 @@ namespace Macmillan.PXQBA.Business.Services
                     QuestionsCount = 3
                 }
             };
+        }
+
+        public IEnumerable<string> GetHardCodedSharedFrom(int questionId)
+        {
+            if (questionId/2 == 0)
+            {
+                return new List<string>
+                {
+                    "Core Economics book title",
+                    "Statistics book title",
+                    "Biology book title",
+                    "Mathematic book title"
+                };
+            }
+            return null;
+        }
+
+        public IEnumerable<string> GetHardCodedSharedTo(int questionId)
+        {
+            if (questionId/2 != 0)
+            {
+                return new List<string>
+                {
+                    "Core Economics book title",
+                    "Statistics book title",
+                    "Biology book title",
+                    "Mathematic book title"
+                };
+            }
+            return null;
+        }
+
+        public string GetHardCodedQuestionDuplicate()
+        {
+            return "9F5C1195-785D-4016-E199-A2E1D6A0A7D4";
         }
     }
 }
