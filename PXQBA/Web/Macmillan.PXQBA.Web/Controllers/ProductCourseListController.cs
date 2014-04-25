@@ -22,6 +22,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         }
 
 
+        [HttpPost]
         public ActionResult GetTitleData()
         {
             IEnumerable<Course> courses = productCourseManagementService.GetAvailableCourses();

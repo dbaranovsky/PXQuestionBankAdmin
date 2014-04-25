@@ -253,9 +253,12 @@
     <Content Include="Scripts\app\components\questions\questionTabs.js" />
     <Content Include="Scripts\app\components\questions\questionTypeDialog.js" />
     <Content Include="Scripts\app\components\questions\questionTypeList.js" />
+    <Content Include="Scripts\app\components\titles\titleList.js" />
+    <Content Include="Scripts\app\components\titles\titlePage.js" />
     <Content Include="Scripts\app\dataAccess\dataCache\dataCacheStorage.js" />
     <Content Include="Scripts\app\dataAccess\questionDataManager.js" />
     <Content Include="Scripts\app\dataAccess\questionFilterDataManager.js" />
+    <Content Include="Scripts\app\dataAccess\titleDataManager.js" />
     <Content Include="Scripts\app\routes\columnHashParameterHelper.js" />
     <Content Include="Scripts\app\routes\filterHashParameterHelper.js" />
     <Content Include="Scripts\app\routes\filterItem.js" />
@@ -308,6 +311,8 @@
     <Content Include="Scripts\app\src\components\questions\questionTabs.js" />
     <Content Include="Scripts\app\src\components\questions\questionTypeList.js" />
     <Content Include="Scripts\app\src\components\questions\questionInlineEditorSingleSelect.js" />
+    <Content Include="Scripts\app\src\components\titles\titleList.js" />
+    <Content Include="Scripts\app\src\components\titles\titlePage.js" />
     <Content Include="Scripts\bootstrap\bootstrap-notify.js" />
     <Content Include="Scripts\bootstrap\bootstrap-paginator.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />

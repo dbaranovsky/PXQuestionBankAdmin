@@ -4,6 +4,38 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Title List</h2>
 
-Title List new
+<div id="title-container"> </div>
+
+@section scripts
+{
+    <script src="../../Scripts/app/components/common/loader.js"></script>
+    <script src="../../Scripts/app/async/asyncManager.js"></script>
+    <script src="../../Scripts/app/dataAccess/titleDataManager.js"></script>
+
+    <script src="../../Scripts/app/components/titles/titleList.js"></script>
+    <script src="../../Scripts/app/components/titles/titlePage.js"></script>
+    
+    <script>
+        var titleContainer = $('#title-container')[0];
+        
+        asyncManager.startWait(titleContainer);
+        
+        var titleData = titleDataManager.getTitles();
+        
+        titleData.done(function (response) {
+                    asyncManager.page = React.renderComponent(
+                        TitlePage({
+                            response: response
+                        }, " "),
+                        titleContainer);
+                })
+                .fail(function (error) {
+                    console.error("titleDataManager.getTitles:", error);
+                })
+                .always(function () {
+                    asyncManager.stopWait();
+                });
+    </script>
+}

@@ -1,10 +1,10 @@
 ﻿var asyncManager = (function () {
 
-    self.questionListPage = null;
+    self.page = null;
 
     self.startWait = function(loaderContainer) {
-        if (questionListPage != null) {
-            questionListPage.setState({ loading: true });
+        if (self.page != null) {
+            self.page.setState({ loading: true });
         } else {
             if (loaderContainer != null) {
                 React.renderComponent(Loader({}, " "), loaderContainer);
@@ -13,8 +13,8 @@
     };
 
     self.stopWait = function() {
-        if (questionListPage != null) {
-            questionListPage.setState({ loading: false });
+        if (self.page != null) {
+            self.page.setState({ loading: false });
         }
     };
 
