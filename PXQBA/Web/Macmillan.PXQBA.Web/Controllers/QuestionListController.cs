@@ -34,9 +34,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             this.productCourseManagementService = productCourseManagementService;
         }
 
-        //
-        // GET: /QuestionList/
-        public ActionResult Index()
+        public ActionResult Index(string titleId , string chapterId)
         {
             return View();
         }

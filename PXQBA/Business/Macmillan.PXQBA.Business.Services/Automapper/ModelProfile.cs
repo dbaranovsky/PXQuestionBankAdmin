@@ -4,6 +4,7 @@ using Bfw.Agilix.DataContracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
+using Macmillan.PXQBA.Web.ViewModels.TiteList;
 using Course = Macmillan.PXQBA.Business.Models.Course;
 using LearningObjective = Macmillan.PXQBA.Business.Models.LearningObjective;
 using Question = Macmillan.PXQBA.Business.Models.Question;
@@ -65,6 +66,14 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
 
             Mapper.CreateMap<string, InteractionType>().ConvertUsing(modelProfileService.CreateInteractionType);
 
+            Mapper.CreateMap<Course, TitleViewModel>()
+                .ForMember(vm => vm.Id, opt => opt.MapFrom(c => c.ProductCourseId))
+                .ForMember(vm => vm.Title, opt => opt.MapFrom(c => c.Title))
+                .ForMember(vm => vm.Chapters, opt => opt.MapFrom(c => c.Chapters));
+
+            Mapper.CreateMap<Chapter, ChapterViewModel>()
+                .ForMember(vm => vm.Id, opt => opt.MapFrom(c => c.Title))
+                .ForMember(vm => vm.Title, opt => opt.MapFrom(c => c.Title));
 
             #region UI models to dummy models
 

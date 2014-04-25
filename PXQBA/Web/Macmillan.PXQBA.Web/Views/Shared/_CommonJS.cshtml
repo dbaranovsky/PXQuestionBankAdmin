@@ -17,7 +17,26 @@
             getDuplicateQuestionTemplateUrl: '@Url.Action("DuplicateQuestion", "Question")',
             getNewQuestionTemplateUrl: '@Url.Action("CreateQuestion", "Question")',
             getQuestionUrl: '@Url.Action("GetQuestion", "Question")',
-            updateQuestionUrl: '@Url.Action("UpdateQuestion", "Question")'
+            updateQuestionUrl: '@Url.Action("UpdateQuestion", "Question")',
+            
+            questionListIndexTamplate: '@Html.Raw(@Url.Action("Index", "QuestionList", new { titleId = "__titleId__", chapterId = "__chapterId__" }))'
+        };
+
+        actions.questionList.buildQuestionListIndexUrl = function(titleId, chapterId) {
+            if (titleId == null) {
+                titleId = '';
+            }
+
+            if (chapterId == null) {
+                chapterId = '';
+            }
+
+            return actions.questionList.questionListIndexTamplate.replace('__titleId__', titleId).replace('__chapterId__', chapterId);
+        };
+
+        actions.questionTitle = {
+            titleListUrl: '@Url.Action("Index", "ProductCourseList")',
+            getTitleDataUrl: '@Url.Action("GetTitleData", "ProductCourseList")'
         };
 
         actions.bulkOperations = {            
