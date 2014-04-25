@@ -422,10 +422,30 @@ input[type="checkbox"].input-validation-error {
     margin: 1px;
 }
 
+/* styles for bootstrap buttons with custom images*/
 .custom-btn:hover .icon-shared-from {
     background-image: url("../Content/img/unshare.png") !important;
 }
 
 .custom-btn {
     padding: 0 !important;
+}
+
+.shared-note {
+    margin-bottom: 20px;
+    font-size: 15px;
+    font-style: italic;
+
+}
+
+a.shared-question-link {
+    color: black !important;
+    text-decoration: underline !important;
+    margin-right: 10px;
+
+}
+
+a.shared-question-link:hover {
+    color: black !important;
+    text-decoration: none !important;
 }

@@ -16,6 +16,24 @@ var QuestionMetadataEditor = React.createClass({
     componentDidMount: function(){
        questionDataManager.getMetadataFields().done(this.loadMetadata); 
     },
+
+    loadSourceQuestion: function(event){
+      event.preventDefault();
+
+    },
+
+    renderSharingNotification: function(){
+      if (true) {
+        return (<div className="shared-note">This question is a duplicate of a &nbsp;
+                    <a className="shared-question-link" href="" onClick={this.loadSourceQuestion}>shared question</a>
+                    <a href="" onClick={this.loadSourceQuestion}>Delete question</a>
+               </div>);
+      }
+
+      return null;
+    },
+
+
     render: function() {
         return (
              <div className="tab-body">
