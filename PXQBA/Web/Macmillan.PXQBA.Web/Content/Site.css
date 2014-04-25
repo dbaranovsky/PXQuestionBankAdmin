@@ -377,8 +377,6 @@ input[type="checkbox"].input-validation-error {
 .question-card-template {
     float: left;
 }
-
-
 #title-container {
     margin: 20px 0px 0px 0px;
 }
@@ -398,4 +396,56 @@ input[type="checkbox"].input-validation-error {
 
 .chapter-link {
     text-decoration: underline;
+}
+
+.icon-shared-to {
+    background-image: url("../Content/img/shared-to.png");
+    background-position: center center;
+    width: 24px;
+    height: 21px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 1px;
+}
+
+.icon-shared-from {
+    background-image: url("../Content/img/shared-from.png");
+    background-position: center center;
+    width: 24px;
+    height: 21px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 1px;
+}
+
+/* styles for bootstrap buttons with custom images*/
+.custom-btn:hover .icon-shared-from {
+    background-image: url("../Content/img/unshare.png") !important;
+}
+
+.custom-btn {
+    padding: 0 !important;
+}
+
+.shared-note {
+    margin-bottom: 20px;
+    font-size: 15px;
+    font-style: italic;
+
+}
+
+a.shared-question-link {
+    color: black !important;
+    text-decoration: underline !important;
+    margin-right: 10px;
+
+}
+
+a.shared-question-link:hover {
+    color: black !important;
+    text-decoration: none !important;
 }
