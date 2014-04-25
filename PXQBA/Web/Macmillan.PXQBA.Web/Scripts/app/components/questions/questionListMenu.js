@@ -42,10 +42,10 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
 
                 
                 
-                  React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.editNotesHandler}, React.DOM.span( {className:"glyphicon glyphicon-list-alt"})),	
-                  React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.editQuestionHandler}, React.DOM.span( {className:"glyphicon glyphicon-pencil"})),
-                  React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.copyQuestionHandler}, React.DOM.span( {className:"glyphicon glyphicon-copyright-mark"})),
-                  React.DOM.button( {type:"button", className:"btn btn-default btn-sm"}, React.DOM.span( {className:"glyphicon glyphicon-trash"}))
+                  React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.editNotesHandler, 'data-toggle':"tooltip", title:"Edit Notes"}, React.DOM.span( {className:"glyphicon glyphicon-list-alt"})),	
+                  React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.editQuestionHandler,  'data-toggle':"tooltip", title:"Edit Question"}, React.DOM.span( {className:"glyphicon glyphicon-pencil"})),
+                  React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.copyQuestionHandler,  'data-toggle':"tooltip", title:"Duplicate Question"}, React.DOM.span( {className:"glyphicon glyphicon-copyright-mark"})),
+                  React.DOM.button( {type:"button", className:"btn btn-default btn-sm", 'data-toggle':"tooltip", title:"Delete Question"}, React.DOM.span( {className:"glyphicon glyphicon-trash"}))
                 )
             );
       }
