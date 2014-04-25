@@ -42,7 +42,7 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
             return self.props.caption;
         };
         var renderBody = function(){
-            return (QuestionEditor( {question:self.props.question, finishSaving:  self.finishSaving, closeDialog:self.closeDialog}));
+            return (QuestionEditor( {question:self.props.question, finishSaving:  self.finishSaving, closeDialog:self.closeDialog, isDuplicate:self.props.caption === window.enums.dialogCaptions.duplicateQuestion}));
         };
         var renderFooterButtons = function(){
             return ("");

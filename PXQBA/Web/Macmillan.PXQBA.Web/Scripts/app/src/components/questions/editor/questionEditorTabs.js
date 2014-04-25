@@ -53,7 +53,7 @@ var QuestionEditorTabs = React.createClass({
                        </div>
                     </div>
                     <div className="tab-pane" id="metadata">
-                       <QuestionMetadataEditor  question={this.props.question} editHandler={this.props.editHandler} />
+                       <QuestionMetadataEditor  question={this.props.question} editHandler={this.props.editHandler} isDuplicate={this.props.isDuplicate} getSourceQuestion={this.props.getSourceQuestion}/>
                            <br />
 
                     </div>

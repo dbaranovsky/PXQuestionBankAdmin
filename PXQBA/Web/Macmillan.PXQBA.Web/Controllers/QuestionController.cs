@@ -8,6 +8,7 @@ using AutoMapper;
 using Bfw.Common;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Business.Services;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Web.Helpers;
 
@@ -57,6 +58,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             var question = Mapper.Map<Question, QuestionViewModel>(questionManagementService.DuplicateQuestion(CourseHelper.CurrentCourse, questionId));
             question.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), "200117", "AHWDG");
             question.EditorUrl = String.Format(ConfigurationHelper.GetEditorUrlTemplate(), "200117", "AHWDG", "12c19f3103ad4da1b254dd67f17dd1b1");
+            question.QuestionIdDuplicateFrom = question.IsShared ? "9F5C1195-785D-4016-E199-A2E1D6A0A7D4" : String.Empty;
             return JsonCamel(question);
 
         }

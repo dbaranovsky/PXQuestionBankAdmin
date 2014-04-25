@@ -26,9 +26,15 @@ var QuestionEditor = React.createClass({
       this.setState({question: editedQuestion});
     },
 
-    componentDidMount: function(){
-       
+    getSourceQuestion: function(){
+         questionDataManager.getQuestion(this.state.question.questionIdDuplicateFrom).done(this.setQuestion);
     },
+
+    setQuestion: function(data) {
+        this.setState({question: data});
+        //dirty hack
+        $("#myModalLabel").text(window.enums.dialogCaptions.editQuestion);
+     },
 
     render: function() {
         return (
@@ -46,7 +52,7 @@ var QuestionEditor = React.createClass({
                       </div>
                 
                 <div>
-                  <QuestionEditorTabs question={this.state.question} editHandler={this.editHandler} />
+                  <QuestionEditorTabs question={this.state.question} editHandler={this.editHandler} isDuplicate={this.props.isDuplicate} getSourceQuestion={this.getSourceQuestion}/>
                 </div>
          </div>);
     }

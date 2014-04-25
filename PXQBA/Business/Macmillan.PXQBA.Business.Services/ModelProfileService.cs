@@ -66,7 +66,7 @@ namespace Macmillan.PXQBA.Business.Services
             data.Add(MetadataFieldNames.Guidance, question.Guidance);
             data.Add(MetadataFieldNames.LearningObjectives, String.Join(", ", question.LearningObjectives.Select(lo => lo.Description)));
             data.Add(MetadataFieldNames.SharedTo, String.Join("<br />", question.SharedTo));
-            data.Add(MetadataFieldNames.SharedFrom, String.Join("<br />", question.SharedFrom));
+            data.Add(MetadataFieldNames.SharedFrom, question.SharedFrom);
             data.Add(MetadataFieldNames.QuestionIdDuplicateFrom, question.QuestionIdDuplicateFrom);
           
           
@@ -128,31 +128,25 @@ namespace Macmillan.PXQBA.Business.Services
             };
         }
 
-        public IEnumerable<string> GetHardCodedSharedFrom(int questionId)
+        public string GetHardCodedSharedFrom(int questionId)
         {
             if (questionId%2 == 0)
             {
-                return new List<string>
-                {
-                    "Core Economics book title",
-                    "Statistics book title",
-                    "Biology book title",
-                    "Mathematic book title"
-                };
+                return "Mathematic book title";
             }
-            return null;
+            return string.Empty;
         }
 
         public IEnumerable<string> GetHardCodedSharedTo(int questionId)
         {
-            if (questionId%2 != 0)
+            if (questionId%2 != 0 && questionId != 1)
             {
                 return new List<string>
                 {
                     "Core Economics book title",
                     "Statistics book title",
-                    "Biology book title",
-                    "Mathematic book title"
+                    "History",
+                    "Informatics"
                 };
             }
             return null;

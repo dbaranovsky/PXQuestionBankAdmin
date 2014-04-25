@@ -1,4 +1,5 @@
-﻿using System.Data.Entity.ModelConfiguration.Conventions;
+﻿using System;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using AutoMapper;
 using Bfw.Agilix.DataContracts;
 using Macmillan.PXQBA.Business.Contracts;
@@ -90,7 +91,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.Preview, opt => opt.MapFrom(src => src.Question.Preview))
                 .ForMember(dest => dest.SharedFrom, opt => opt.MapFrom(src => modelProfileService.GetHardCodedSharedFrom(src.QuestionId)))
                 .ForMember(dest => dest.SharedTo, opt => opt.MapFrom(src => modelProfileService.GetHardCodedSharedTo(src.QuestionId)))
-                .ForMember(dest => dest.QuestionIdDuplicateFrom, opt => opt.MapFrom(src => modelProfileService.GetHardCodedQuestionDuplicate()));
+                .ForMember(dest => dest.QuestionIdDuplicateFrom, opt => opt.MapFrom(src => src.QuestionId%2 != 0? modelProfileService.GetHardCodedQuestionDuplicate(): String.Empty));
 
             Mapper.CreateMap<Question, DataAccess.Data.ProductCourse>()
                   .ForMember(dest => dest.Id, opt => opt.Ignore())
