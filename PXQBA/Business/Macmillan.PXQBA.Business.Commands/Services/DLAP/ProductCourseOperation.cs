@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AutoMapper;
 using Bfw.Agilix.Commands;
 using Bfw.Agilix.DataContracts;
@@ -11,7 +9,7 @@ using Bfw.Common.Database;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Course = Macmillan.PXQBA.Business.Models.Course;
 
-namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
+namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 {
     public class ProductCourseOperation : IProductCourseOperation
     {

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 using Bfw.Agilix.Commands;
 using Bfw.Agilix.DataContracts;
+using Bfw.Agilix.Dlap;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Common.Helpers;
 
@@ -13,6 +15,8 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         private readonly IContext businessContext;
 
         private const string ItemIdTemplate = "QBA_temp_quiz_{0}";
+
+        private const string QuestionIdTemplate = "QBA_temp_question_{0}";
 
         private const string TemporaryCourseId = "200117";
 
@@ -28,31 +32,58 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             {
                 throw new NullReferenceException("There is no such question in the course");
             }
-            CopyQuestionToTemporaryQuiz(question);
+            CopyQuestionToTemporaryCourse(question);
         }
 
-        private Question CopyQuestionToTemporaryQuiz(Question questionToCopy)
+        private Question CopyQuestionToTemporaryCourse(Question questionToCopy)
+        {
+            questionToCopy.EntityId = TemporaryCourseId;
+            questionToCopy.Id = string.Format(QuestionIdTemplate, Guid.NewGuid());
+            var cmd = new PutQuestions();
+            cmd.Add(questionToCopy);
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+            AddQuestionToTemporaryQuiz(questionToCopy);
+            return questionToCopy;
+        }
+
+        private void AddQuestionToTemporaryQuiz(Question questionToCopy)
         {
             var item = GetTemporaryQuiz();
-            //questionToCopy.EntityId
-            //var cmd = new PutQuestions();
-            //cmd.Add(questionToCopy);
-            //businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
-            return null;
+            var data = item.Root.Element("data");
+            var questionsElement = data.Element("questions");
+            if (questionsElement == null)
+            {
+                questionsElement = new XElement("questions");
+                data.Add(questionsElement);
+            }
+            questionsElement.RemoveAll();
+            var questionElement = new XElement("question");
+            questionElement.Add(new XAttribute("entityid", questionToCopy.EntityId));
+            questionElement.Add(new XAttribute("id", questionToCopy.Id));
+            questionsElement.Add(questionElement);
+            HtmlXmlHelper.SwitchAttributeName(item.Root, "id", "itemid", GetTemporaryQuizId());
+            HtmlXmlHelper.SwitchAttributeName(item.Root, "actualentityid", "entityid", TemporaryCourseId);
+            var cmd = new PutRawItem()
+            {
+                ItemDoc = item
+            };
+
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
         }
 
-        private Item GetTemporaryQuiz()
+        private XDocument GetTemporaryQuiz()
         {
-            var item = GetExistingTemporaryQuiz();
-            if (item == null)
+            var itemXml = GetExistingTemporaryQuiz();
+            if (itemXml == null)
             {
-                item = CreateTemporaryQuiz();
+                var item = CreateTemporaryQuiz();
                 if (item == null)
                 {
                     throw new Exception("Temporary quiz creation failed");
                 }
+                itemXml = GetTemporaryQuiz();
             }
-            return item;
+            return itemXml;
         }
 
         private Question GetQuestion(string productCourseId, string questionId)
@@ -67,16 +98,29 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return cmd.Questions.FirstOrDefault();
         }
 
-        private Item GetExistingTemporaryQuiz()
+        private XDocument GetExistingTemporaryQuiz()
         {
-            var cmd = new GetItems();
-            cmd.SearchParameters = new ItemSearch()
+            var getItem = new GetItems()
+            {
+                SearchParameters = new ItemSearch
+                {
+                    EntityId = TemporaryCourseId,
+                    ItemId = GetTemporaryQuizId()
+                }
+            };
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(getItem);
+            if (!getItem.Items.Any())
+            {
+                return null;
+            }
+            var cmd = new GetRawItem()
             {
                 EntityId = TemporaryCourseId,
                 ItemId = GetTemporaryQuizId()
             };
+           
             businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
-            return cmd.Items.FirstOrDefault();
+            return cmd.ItemDocument;
         }
 
         private Item CreateTemporaryQuiz()
@@ -92,13 +136,14 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return new Item
             {
                 EntityId = TemporaryCourseId,
-                Id = GetTemporaryQuizId()
+                Id = GetTemporaryQuizId(),
+                Type = DlapItemType.Assessment
             };
         }
 
         private string GetTemporaryQuizId()
         {
-            return String.Format(ItemIdTemplate, businessContext.CurrentUser.Id + "111");
+            return String.Format(ItemIdTemplate, businessContext.CurrentUser.Id + "1111");
         }
     }
 }
