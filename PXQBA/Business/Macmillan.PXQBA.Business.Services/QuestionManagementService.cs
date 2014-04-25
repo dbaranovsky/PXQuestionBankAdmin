@@ -24,7 +24,7 @@ namespace Macmillan.PXQBA.Business.Services
 
         public PagedCollection<Question> GetQuestionList(Course course, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
         {
-            //temporaryQuestionOperation.CopyQuestionToTemporaryQuiz(course.ProductCourseId, "12c19f3103ad4da1b254dd67f17dd1b1");
+            //temporaryQuestionOperation.CopyQuestionToTemporaryQuiz(course.ProductCourseId, "PxTempQBAQuestion_115457_Choice");
             return questionCommands.GetQuestionList(course.ProductCourseId, filter, sortCriterion, startingRecordNumber, recordCount);
         }
 
