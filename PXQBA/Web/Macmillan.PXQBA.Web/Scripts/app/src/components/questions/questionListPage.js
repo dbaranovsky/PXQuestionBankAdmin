@@ -146,6 +146,9 @@ var QuestionListPage = React.createClass({
        return (
             <div className="QuestionListPage">
              {this.renderLoader()}
+                <div>
+                  <a href={window.actions.questionTitle.titleListUrl}>  &lt;&lt; Back to the titles list </a>
+                </div>
                 <div className="add-question-action">
                     <button className="btn btn-primary " onClick={this.initialCreateNewQuestion}>
                     Add Question

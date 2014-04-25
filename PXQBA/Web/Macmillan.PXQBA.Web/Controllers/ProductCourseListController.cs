@@ -1,5 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using Macmillan.PXQBA.Business.Contracts;
+using Macmillan.PXQBA.Business.Models;
 
 namespace Macmillan.PXQBA.Web.Controllers
 {
@@ -11,12 +13,19 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
             this.productCourseManagementService = productCourseManagementService;
         }
-        //
-        // GET: /TitleList/
+
         public ActionResult Index()
         {
+           return View();
             var courses = productCourseManagementService.GetAvailableCourses();
             return View();
+        }
+
+
+        public ActionResult GetTitleData()
+        {
+            IEnumerable<Course> courses = productCourseManagementService.GetAvailableCourses();
+            return JsonCamel(courses);
         }
 	}
 }
