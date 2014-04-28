@@ -19,6 +19,7 @@
         public const string SharedTo = "sharedTo";
         public const string SharedFrom = "sharedFrom";
         public const string QuestionIdDuplicateFrom = "questionIdDuplicateFrom";
+        public const string Title = "course";
 
 
     }

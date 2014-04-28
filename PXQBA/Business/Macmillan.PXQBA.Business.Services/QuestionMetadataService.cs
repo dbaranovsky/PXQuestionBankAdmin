@@ -9,6 +9,13 @@ namespace Macmillan.PXQBA.Business.Services
 {
     public class QuestionMetadataService : IQuestionMetadataService
     {
+        private readonly IProductCourseOperation productCourseOperation;
+
+        public QuestionMetadataService(IProductCourseOperation productCourseOperation)
+        {
+            this.productCourseOperation = productCourseOperation;
+        }
+
         public IList<QuestionMetaField> GetAvailableFields(Course course)
         {
             var fields = new List<QuestionMetaField>
@@ -148,6 +155,18 @@ namespace Macmillan.PXQBA.Business.Services
                         Type = MetaFieldType.MultiSelect,
                         AvailableChoice =
                             course.LearningObjectives.ToDictionary(lo => lo.Guid, lo => lo.Description)
+                    }
+
+                },
+
+                new QuestionMetaField()
+                {
+                    FriendlyName = "Title",
+                    Name = MetadataFieldNames.LearningObjectives,
+                    TypeDescriptor = new MetaFieldTypeDescriptor
+                    {
+                        Type = MetaFieldType.SingleSelect,
+                        AvailableChoice = productCourseOperation.GetAvailableCourses().ToDictionary(pc => pc.ProductCourseId, pc => pc.Title)
                     }
 
                 },
