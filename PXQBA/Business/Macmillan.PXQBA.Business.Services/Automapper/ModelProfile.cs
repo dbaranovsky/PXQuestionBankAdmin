@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Text;
 using AutoMapper;
 using Bfw.Agilix.DataContracts;
 using Macmillan.PXQBA.Business.Contracts;
@@ -73,7 +74,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(vm => vm.Chapters, opt => opt.MapFrom(c => c.Chapters));
 
             Mapper.CreateMap<Chapter, ChapterViewModel>()
-                .ForMember(vm => vm.Id, opt => opt.MapFrom(c => c.Title))
+                .ForMember(vm => vm.Id, opt => opt.MapFrom(c => FirstCharacterToLower(c.Title)))
                 .ForMember(vm => vm.Title, opt => opt.MapFrom(c => c.Title));
 
             #region UI models to dummy models
@@ -114,6 +115,18 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<Question, QuestionViewModel>();
 
             #endregion
+        }
+
+        public static string FirstCharacterToLower(string input)
+        {
+            if (String.IsNullOrEmpty(input))
+            {
+                return input;
+            }
+
+            var stringBuilder = new StringBuilder(input);
+            stringBuilder[0] = Char.ToLower(input[0]);
+            return stringBuilder.ToString();
         }
     }
 }

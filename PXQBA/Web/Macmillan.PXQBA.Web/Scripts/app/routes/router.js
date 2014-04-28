@@ -27,6 +27,17 @@ crossroads.addRoute('/page/{page}/columns/{columns}/filter/{query}/order/{orderT
 
 crossroads.addRoute('', function () {
     asyncManager.startWait(questionContainer);
+
+    window.routsManager.query.setValue(
+        filterHashParameterHelper.addFiltration(
+            window.consts.questionCourseName, [window.questionPageParameters.currentCourseId], window.routsManager.query.getValue()));
+
+    if (window.questionPageParameters.currentChapterId != '') {
+        window.routsManager.query.setValue(
+             filterHashParameterHelper.addFiltration(
+                window.consts.questionChapterName, [window.questionPageParameters.currentChapterId], window.routsManager.query.getValue()));
+    }
+
     hasher.setHash(window.routsManager.buildHash());
 });
 

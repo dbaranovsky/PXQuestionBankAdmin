@@ -15,5 +15,16 @@ namespace Macmillan.PXQBA.Web.Helpers
             get { return HttpContext.Current.Session[CourseParamName] as Course; }
             set { HttpContext.Current.Session[CourseParamName] = value; }
         }
+
+        public static bool IsResetFiltrationNeeded(FilterFieldDescriptor courseFilterDescriptor)
+        {
+            var currentCourse = CurrentCourse;
+            if (currentCourse == null)
+            {
+                return false;
+            }
+
+            return courseFilterDescriptor.Values.First() != currentCourse.ProductCourseId;
+        }
     }
 }

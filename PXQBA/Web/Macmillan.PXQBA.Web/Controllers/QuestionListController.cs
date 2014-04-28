@@ -10,6 +10,7 @@ using System.Linq.Dynamic;
 using System.Web.Mvc;
 using Macmillan.PXQBA.Web.Helpers;
 using Macmillan.PXQBA.Web.ViewModels;
+using Macmillan.PXQBA.Web.ViewModels.Pages;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -36,14 +37,22 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult Index(string titleId , string chapterId)
         {
-            return View();
+            QuestionListViewModel viewModel = new QuestionListViewModel()
+                                              {
+                                                  CourseId = titleId,
+                                                  ChapterId = chapterId
+                                              };
+            return View(viewModel);
         }
 
         [HttpPost]
         public ActionResult GetQuestionData(QuestionListDataRequest request)
         {
-            //TODO: Replace with real title id for filter
-            CourseHelper.CurrentCourse = productCourseManagementService.GetProductCourse("71836");
+
+            var currentCourseFilter = request.Filter.SingleOrDefault(x => x.Field == MetadataFieldNames.ProductCourse);
+            CheckFiltration(currentCourseFilter, request);
+            CourseHelper.CurrentCourse = productCourseManagementService.GetProductCourse(currentCourseFilter.Values.First());
+
             var sortCriterion = new SortCriterion {ColumnName = request.OrderField, SortType = request.OrderType};
             var questionList = questionManagementService.GetQuestionList(CourseHelper.CurrentCourse, request.Filter, sortCriterion, 
                                                                           (request.PageNumber - 1) * questionPerPage,
@@ -111,6 +120,26 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
           notesManagementService.SaveNote(note);
           return JsonCamel(new { isError = false });
+        }
+
+
+        /// <summary>
+        /// Check filtration and reset if title was changed
+        /// </summary>
+        /// <param name="courseFilterDescriptor"></param>
+        /// <param name="request"></param>
+        private void CheckFiltration(FilterFieldDescriptor courseFilterDescriptor, QuestionListDataRequest request)
+        {
+            if (CourseHelper.IsResetFiltrationNeeded(courseFilterDescriptor))
+            {
+                foreach (var filterItem in request.Filter)
+                {
+                    if (filterItem.Field != courseFilterDescriptor.Field)
+                    {
+                        filterItem.Values = new List<string>();
+                    }
+                }
+            }
         }
     }
 

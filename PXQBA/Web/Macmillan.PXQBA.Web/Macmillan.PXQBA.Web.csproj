@@ -226,6 +226,7 @@
     <Content Include="Scripts\app\components\questions\filter\questionFilterItemMultiSelect.js" />
     <Content Include="Scripts\app\components\questions\filter\questionFilterItemsAppender.js" />
     <Content Include="Scripts\app\components\questions\filter\questionFilterItemsContainer.js" />
+    <Content Include="Scripts\app\components\questions\filter\questionFilterSingleSelect.js" />
     <Content Include="Scripts\app\components\questions\notes\editQuestionNotesDialog.js" />
     <Content Include="Scripts\app\components\questions\notes\flag.js" />
     <Content Include="Scripts\app\components\questions\notes\note.js" />
@@ -281,6 +282,7 @@
     <Content Include="Scripts\app\src\components\questions\editor\questionEditorTabs.js" />
     <Content Include="Scripts\app\src\components\questions\editor\questionMetadataEditor.js" />
     <Content Include="Scripts\app\src\components\questions\filter\questionFilterItemMultiSelect.js" />
+    <Content Include="Scripts\app\src\components\questions\filter\questionFilterSingleSelect.js" />
     <Content Include="Scripts\app\src\components\questions\notes\editQuestionNotesDialog.js" />
     <Content Include="Scripts\app\src\components\questions\notes\flag.js" />
     <Content Include="Scripts\app\src\components\questions\notes\note.js" />

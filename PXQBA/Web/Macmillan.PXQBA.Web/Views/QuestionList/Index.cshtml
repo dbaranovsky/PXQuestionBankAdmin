@@ -1,4 +1,4 @@
-﻿@using dotless.Core.Parser.Tree
+﻿@model Macmillan.PXQBA.Web.ViewModels.Pages.QuestionListViewModel
 
 @{
     ViewBag.Title = "Question List";
@@ -13,6 +13,14 @@
     @*
      extract this in view
     *@
+    
+    <script>
+        window.questionPageParameters = {
+           currentCourseId: '@Model.CourseId',
+           currentChapterId:'@Model.ChapterId',
+        };
+    </script>
+
     <script src="../../Scripts/app/components/common/modalDialog.js"></script>
     <script src="../../Scripts/app/components/common/loader.js"></script>
     <script src="../../Scripts/app/components/common/expandButton.js"></script>
@@ -40,6 +48,7 @@
     <script src="../../Scripts/app/components/questions/questionListHeaderCell.js"></script>
     <script src="../../Scripts/app/components/questions/questionList.js"></script>
     <script src="../../Scripts/app/components/questions/filter/questionFilterItemsAppender.js"></script>
+    <script src="../../Scripts/app/components/questions/filter/questionFilterSingleSelect.js"></script>
     <script src="../../Scripts/app/components/questions/filter/questionFilterItemMultiSelect.js"></script>
     <script src="../../Scripts/app/components/questions/filter/questionFilterItemBase.js"></script>
     <script src="../../Scripts/app/components/questions/filter/questionFilterItemsContainer.js"></script>
@@ -71,5 +80,4 @@
     <script src="../../Scripts/app/components/questions/editor/questionEditorTabs.js"></script>
     <script src="../../Scripts/app/components/questions/editor/questionMetadataEditor.js"></script>
    
-
 }

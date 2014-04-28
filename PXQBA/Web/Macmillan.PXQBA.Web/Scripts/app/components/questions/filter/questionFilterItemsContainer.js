@@ -17,6 +17,7 @@ var QuestionFilterItemsContainer = React.createClass({displayName: 'QuestionFilt
         for(var i=0; i<allAvailableColumns.length; i++) {
             if(filter.field==allAvailableColumns[i].metadataName) {
                 return { field: filter.field,
+                         filterType: allAvailableColumns[i].filterType,
                          caption: allAvailableColumns[i].friendlyName,
                          allOptions: this.getAllOptions(allAvailableColumns[i].editorDescriptor.availableChoice, filter.values),
                          currentValues: filter.values
@@ -28,7 +29,6 @@ var QuestionFilterItemsContainer = React.createClass({displayName: 'QuestionFilt
 
 
    getAllOptions: function(availableChoice, currentValuesArray) {
-        
         if(availableChoice==null) {
              availableChoice =[];
         }
