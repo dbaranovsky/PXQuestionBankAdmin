@@ -16,7 +16,7 @@ var QuestionFilterItemBase = React.createClass({displayName: 'QuestionFilterItem
         if(this.props.descriptor.filterType==window.enums.filterType.singleSelect) {
             return null;
         }
-        return React.DOM.span( {className:"filter-closer", onClick:this.closeFilterHandler},  " Х " )
+        return React.DOM.span( {className:"filter-closer", onClick:this.closeFilterHandler,  'data-toggle':"tooltip", title:"Cancel"},  " Х " )
     },
 
     renderFilterBody: function() {
@@ -40,7 +40,6 @@ var QuestionFilterItemBase = React.createClass({displayName: 'QuestionFilterItem
                      React.DOM.div( {className:"filter-header"},  
                         React.DOM.span(null,  " ", this.props.descriptor.caption, " " ), 
                          this.renderCloseButton()
-                        React.DOM.span( {className:"filter-closer", onClick:this.closeFilterHandler, 'data-toggle':"tooltip", title:"Cancel"},  " Х " )
                      ),
                      React.DOM.div( {className:"filter-body"}, 
                         this.renderFilterBody()

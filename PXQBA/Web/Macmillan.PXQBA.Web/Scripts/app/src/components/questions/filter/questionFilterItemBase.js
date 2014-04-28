@@ -16,7 +16,7 @@ var QuestionFilterItemBase = React.createClass({
         if(this.props.descriptor.filterType==window.enums.filterType.singleSelect) {
             return null;
         }
-        return <span className="filter-closer" onClick={this.closeFilterHandler}> Х </span>
+        return <span className="filter-closer" onClick={this.closeFilterHandler}  data-toggle="tooltip" title="Cancel"> Х </span>
     },
 
     renderFilterBody: function() {
@@ -40,7 +40,6 @@ var QuestionFilterItemBase = React.createClass({
                      <div className="filter-header"> 
                         <span> {this.props.descriptor.caption} </span> 
                          {this.renderCloseButton()}
-                        <span className="filter-closer" onClick={this.closeFilterHandler} data-toggle="tooltip" title="Cancel"> Х </span>
                      </div>
                      <div className="filter-body">
                         {this.renderFilterBody()}
