@@ -94,6 +94,10 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
                     {
                         query = query.Where(x => filterFieldDescriptor.Values.Select(v => v.ToUpper()).Contains(x.Bank.ToUpper()));
                     }
+                    if (filterFieldDescriptor.Field == MetadataFieldNames.Chapter)
+                    {
+                        query = query.Where(x => filterFieldDescriptor.Values.Select(v => v.ToUpper()).Contains(x.Chapter.ToUpper()));
+                    }
                     if (filterFieldDescriptor.Field == MetadataFieldNames.Difficulty)
                     {
                         query = query.Where(x => filterFieldDescriptor.Values.Select(v => v.ToUpper()).Contains(x.Difficulty.ToUpper()));
