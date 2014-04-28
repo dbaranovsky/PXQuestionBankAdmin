@@ -16,12 +16,19 @@ var QuestionListMenu = React.createClass({
         this.props.editQuestionHandler();
     },
 
-    componentDidMount: function(){
-      $(this.getDOMNode()).find('.shared-to').popover({title: 'Shared to:', trigger: 'hover', placement:'bottom', container:'body', html: true});
-      $(this.getDOMNode()).find('.shared-from').popover({title: 'Unsubscribe from:', trigger: 'hover', placement:'bottom', container:'body', html: true});
-      
-
+    componentDidUpdate: function(){
+      this.initializePopovers();
     },
+
+     componentDidMount: function(){
+       this.initializePopovers();
+    },
+
+    initializePopovers: function(){
+        $(this.getDOMNode()).find('.shared-to').popover({title: 'Shared to:', trigger: 'hover', placement:'bottom', container:'body', html: true});
+        $(this.getDOMNode()).find('.shared-from').popover({title: 'Unsubscribe from:', trigger: 'hover', placement:'bottom', container:'body', html: true});
+    },
+
 
     render: function() {
       if (this.props.showAll){
