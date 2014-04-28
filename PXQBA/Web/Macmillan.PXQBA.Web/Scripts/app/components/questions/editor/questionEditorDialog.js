@@ -33,6 +33,7 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
 
     closeDialog: function(){
          $(this.getDOMNode()).modal("hide");
+         $('.modal-backdrop').remove(); 
     },
 
 
@@ -42,7 +43,7 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
             return self.props.caption;
         };
         var renderBody = function(){
-            return (QuestionEditor( {question:self.props.question, finishSaving:  self.finishSaving, closeDialog:self.closeDialog, isDuplicate:self.props.caption === window.enums.dialogCaptions.duplicateQuestion}));
+            return (QuestionEditor( {question:self.props.question, finishSaving:  self.finishSaving, closeDialog:self.closeDialog, isNew:self.props.isNew, isDuplicate:self.props.caption === window.enums.dialogCaptions.duplicateQuestion}));
         };
         var renderFooterButtons = function(){
             return ("");
@@ -50,6 +51,7 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
         return (ModalDialog( {renderHeaderText:renderHeaderText, 
                              renderBody:renderBody, 
                              renderFooterButtons:renderFooterButtons, 
+                             closeDialogHandler:  this.closeDialog,
                              dialogId:"questionEditorModal"})
                 );
     }

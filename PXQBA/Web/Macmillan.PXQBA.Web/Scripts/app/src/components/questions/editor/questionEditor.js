@@ -36,6 +36,61 @@ var QuestionEditor = React.createClass({
         $("#myModalLabel").text(window.enums.dialogCaptions.editQuestion);
      },
 
+     showSaveWarning: function(){
+        if(!this.props.isNew && !this.props.isDuplicate){
+          this.setState({showSaveWarning: true});
+        } else{
+          this.saveQuestion();
+        }
+        
+     
+     },
+
+     closeSaveWarningDialog: function(){
+         $('.modal-backdrop').first().remove(); 
+         this.setState({showSaveWarning: false});
+     },
+
+     renderWarningDialog: function(){
+      if (this.state.showSaveWarning){
+        var self = this;
+        var renderHeaderText = function() {
+            return ("Attention");
+        };
+        var renderFooterButtons = function(){
+            return ("");
+        };
+        var renderBody = function(){
+            return (<div>
+                      The changes made will affect the version of question  that is visible  to instructor
+                      <br /><br />
+                      <button className="btn btn-primary" data-toggle="modal" onClick={self.saveQuestion}>
+                                   Make changes visible to instructors
+                      </button>
+                      <br /><br />
+                      <button className="btn btn-primary " data-toggle="modal" onClick={self.saveQuestion} >
+                                   Leave visible the previos version
+                      </button>
+                      <br /><br />
+                      <button className="btn btn-default" data-toggle="modal" onClick={self.closeSaveWarningDialog}>
+                             Cancel
+                        </button>
+                    </div>
+              );
+        };
+        return (<ModalDialog renderHeaderText={renderHeaderText} 
+                             renderBody={renderBody} 
+                             renderFooterButtons={renderFooterButtons} 
+                             dialogId="saveWarningDialog"
+                             closeDialogHandler = {this.closeSaveWarningDialog}
+                             showOnCreate = {true}
+                             preventDefaultClose ={true}/>
+                );
+      }
+
+      return null;
+     },
+
     render: function() {
         return (
             <div>
@@ -46,7 +101,7 @@ var QuestionEditor = React.createClass({
                         <button className="btn btn-default" data-toggle="modal" onClick={this.props.closeDialog}>
                              Cancel
                         </button>
-                         <button className="btn btn-primary " data-toggle="modal" onClick={this.saveQuestion} >
+                         <button className="btn btn-primary " data-toggle="modal" onClick={this.showSaveWarning} >
                              Save
                         </button>
                       </div>
@@ -54,6 +109,8 @@ var QuestionEditor = React.createClass({
                 <div>
                   <QuestionEditorTabs question={this.state.question} editHandler={this.editHandler} isDuplicate={this.props.isDuplicate} getSourceQuestion={this.getSourceQuestion}/>
                 </div>
+                {this.renderWarningDialog()}
+
          </div>);
     }
 });
