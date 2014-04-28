@@ -43,8 +43,8 @@ var QuestionListColumnAppender = React.createClass({
         return (
             <div>
               <div className="dropdown">
-                    <div className="add-column-container">
-                        <span data-toggle="dropdown" className="dropdown-toggle add-column-button">  <span className="glyphicon glyphicon-plus"></span> </span>
+                    <div className="add-column-container" >
+                        <span data-toggle="dropdown" className="dropdown-toggle add-column-button">  <span className="glyphicon glyphicon-plus" data-toggle="tooltip" title="Add column"></span> </span>
                         <QuestionMetadataList onClickEventHandler={this.questionMetadataListOnClickEventHandler} fields={this.getSelectableFields()} noValueLabel='All columns already added.'/>
                     </div>
               </div>

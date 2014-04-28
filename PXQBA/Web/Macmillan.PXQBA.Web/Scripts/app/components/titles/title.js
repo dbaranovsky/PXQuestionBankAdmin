@@ -45,7 +45,7 @@ var Title = React.createClass({displayName: 'Title',
                 React.DOM.div( {className:"title-item"}, 
                      React.DOM.div(null, 
                          React.DOM.span(null, 
-                             ExpandButton( {expanded:this.state.expanded, onClickHandler:this.expandHandler})
+                             ExpandButton( {expanded:this.state.expanded, onClickHandler:this.expandHandler, targetCaption:"course"})
                           ), 
                           React.DOM.span(null, 
                             React.DOM.a( {href:this.getUrlToList(this.props.data.id), className:"title-link"},   "  ",  this.props.data.title, " " )

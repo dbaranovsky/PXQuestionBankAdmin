@@ -17,7 +17,7 @@ var QuestionFilterItemBase = React.createClass({
             <div className="questionFilterItemBase">
                      <div className="filter-header"> 
                         <span> {this.props.descriptor.caption} </span> 
-                        <span className="filter-closer" onClick={this.closeFilterHandler}> Х </span>
+                        <span className="filter-closer" onClick={this.closeFilterHandler} data-toggle="tooltip" title="Cancel"> Х </span>
                      </div>
                      <div className="filter-body">
                          <QuestionFilterMultiSelect allOptions={this.props.descriptor.allOptions}  

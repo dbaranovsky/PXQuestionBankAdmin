@@ -33,7 +33,7 @@ namespace Macmillan.PXQBA.Business.Services
                 },
                 new QuestionMetaField()
                 {
-                    FriendlyName = "Bank",
+                    FriendlyName = "Question Bank",
                     Name = MetadataFieldNames.Bank,
                     TypeDescriptor = new MetaFieldTypeDescriptor
                     {
@@ -48,7 +48,7 @@ namespace Macmillan.PXQBA.Business.Services
                 },
                 new QuestionMetaField
                 {
-                    FriendlyName = "Seq",
+                    FriendlyName = "Sequence",
                     Name = MetadataFieldNames.Sequence,
                     TypeDescriptor = new MetaFieldTypeDescriptor(MetaFieldType.Text)
                 },

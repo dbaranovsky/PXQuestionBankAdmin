@@ -4,35 +4,12 @@
 
 var QuestionTabs = React.createClass({displayName: 'QuestionTabs',
 
-    tabsInitializer: function (container) {
-         container.find('a:first').tab('show')
-    },
-
-    componentDidMount: function() {
-         this.tabsInitializer($(this.getDOMNode()));
-    },
-
-    componentDidUpdate: function () {
-        this.tabsInitializer($(this.getDOMNode()));
-    },
-
-    render: function() {
+      render: function() {
         return ( 
-            React.DOM.div(null, 
-                React.DOM.ul( {className:"nav nav-tabs"}, 
-                     React.DOM.li( {className:"active"},  
-                         React.DOM.a( {href:"#view", 'data-toggle':"tab"}, "View")
-                     )
-                  
-                ),
- 
-                React.DOM.div( {className:"tab-content"}, 
-                    React.DOM.div( {className:"tab-pane active", id:"view"}, 
+            			React.DOM.div(null,  
+            			React.DOM.div( {className:"product-title"},  " ", this.props.response.productTitle),
                          QuestionGrid( {response:this.props.response, handlers:this.props.handlers})
-                    )
-                
-                )
-            )
+              			)
             );
         }
 

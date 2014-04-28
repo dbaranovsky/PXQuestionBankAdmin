@@ -53,7 +53,7 @@ var QuestionCell = React.createClass({
 
     renderExpandButton: function() {
      if(this.props.field==window.consts.questionTitleName) {
-         return (<ExpandButton expanded={this.props.expanded} onClickHandler={this.expandPreviewQuestionHandler}/>);  
+         return (<ExpandButton expanded={this.props.expanded} onClickHandler={this.expandPreviewQuestionHandler} targetCaption="question"/>);  
       }
       return null;
     },
