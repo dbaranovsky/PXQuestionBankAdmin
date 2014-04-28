@@ -45,6 +45,7 @@
     <Compile Include="Editor\EditorType.cs" />
     <Compile Include="Editor\FieldEditorDescriptor.cs" />
     <Compile Include="Filter\FilterType.cs" />
+    <Compile Include="Pages\QuestionListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionFieldViewModel.cs" />
     <Compile Include="QuestionListDataRequest.cs" />
