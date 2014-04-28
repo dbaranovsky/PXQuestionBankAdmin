@@ -39,7 +39,6 @@ namespace Macmillan.PXQBA.Common.Helpers
              {
                  model.Width = "30%";
                  model.CanNotDelete = true;
-                 model.FilterType = FilterType.SingleSelect.ToString().ToLower();
              }
 
              if (metaField.Name == MetadataFieldNames.ProductCourse)
