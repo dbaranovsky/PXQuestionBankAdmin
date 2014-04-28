@@ -16,7 +16,9 @@ var QuestionFilterItemsContainer = React.createClass({displayName: 'QuestionFilt
    buildFilterDescriptor: function(filter, allAvailableColumns) {
         for(var i=0; i<allAvailableColumns.length; i++) {
             if(filter.field==allAvailableColumns[i].metadataName) {
+                debugger;
                 return { field: filter.field,
+                         filterType: allAvailableColumns[i].filterType,
                          caption: allAvailableColumns[i].friendlyName,
                          allOptions: this.getAllOptions(allAvailableColumns[i].editorDescriptor.availableChoice, filter.values),
                          currentValues: filter.values

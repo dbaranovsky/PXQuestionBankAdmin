@@ -27,18 +27,19 @@ namespace Macmillan.PXQBA.Common.Helpers
                          };
 
 
+            // \todo Move custom field-level settings to configuration
+
             if ((metaField.Name == MetadataFieldNames.DlapStatus) ||
                 (metaField.Name == MetadataFieldNames.Chapter))
             {
                 model.FilterType = FilterType.None.ToString().ToLower();
             }
 
-
-              // \todo Move custom field-level settings to configuration
              if (metaField.Name == MetadataFieldNames.DlapTitle)
              {
                  model.Width = "30%";
                  model.CanNotDelete = true;
+                 model.FilterType = FilterType.SingleSelect.ToString().ToLower();
              }
 
              if (metaField.Name == MetadataFieldNames.DlapStatus)
