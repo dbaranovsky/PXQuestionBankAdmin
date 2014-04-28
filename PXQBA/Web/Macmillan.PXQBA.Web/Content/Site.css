@@ -229,8 +229,14 @@ input[type="checkbox"].input-validation-error {
 
 #questionEditorModal .modal-body {
      height: 800px;
-     overflow-y: auto;
 } 
+
+#questionEditorModal #metadata {
+    height: 715px;
+    overflow-y: auto;
+    width: 975px;
+} 
+
 
 .tab-body {
     margin-top: 20px;
@@ -449,3 +455,7 @@ a.shared-question-link:hover {
     color: black !important;
     text-decoration: none !important;
 }
+
+#saveWarningDialog .modal-body {
+     height: 300px;
+} 

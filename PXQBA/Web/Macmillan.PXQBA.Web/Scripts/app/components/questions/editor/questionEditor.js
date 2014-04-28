@@ -36,6 +36,61 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
         $("#myModalLabel").text(window.enums.dialogCaptions.editQuestion);
      },
 
+     showSaveWarning: function(){
+        if(!this.props.isNew && !this.props.isDuplicate){
+          this.setState({showSaveWarning: true});
+        } else{
+          this.saveQuestion();
+        }
+        
+     
+     },
+
+     closeSaveWarningDialog: function(){
+         $('.modal-backdrop').first().remove(); 
+         this.setState({showSaveWarning: false});
+     },
+
+     renderWarningDialog: function(){
+      if (this.state.showSaveWarning){
+        var self = this;
+        var renderHeaderText = function() {
+            return ("Attention");
+        };
+        var renderFooterButtons = function(){
+            return ("");
+        };
+        var renderBody = function(){
+            return (React.DOM.div(null, 
+                      "The changes made will affect the version of question  that is visible  to instructor",
+                      React.DOM.br(null ),React.DOM.br(null ),
+                      React.DOM.button( {className:"btn btn-primary", 'data-toggle':"modal", onClick:self.saveQuestion}, 
+                                   "Make changes visible to instructors"
+                      ),
+                      React.DOM.br(null ),React.DOM.br(null ),
+                      React.DOM.button( {className:"btn btn-primary ",  'data-toggle':"modal", onClick:self.saveQuestion} , 
+                                   "Leave visible the previos version"
+                      ),
+                      React.DOM.br(null ),React.DOM.br(null ),
+                      React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal", onClick:self.closeSaveWarningDialog}, 
+                             "Cancel"
+                        )
+                    )
+              );
+        };
+        return (ModalDialog( {renderHeaderText:renderHeaderText, 
+                             renderBody:renderBody, 
+                             renderFooterButtons:renderFooterButtons, 
+                             dialogId:"saveWarningDialog",
+                             closeDialogHandler:  this.closeSaveWarningDialog,
+                             showOnCreate:  true,
+                             preventDefaultClose: true})
+                );
+      }
+
+      return null;
+     },
+
     render: function() {
         return (
             React.DOM.div(null, 
@@ -46,14 +101,16 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
                         React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal", onClick:this.props.closeDialog}, 
                              "Cancel"
                         ),
-                         React.DOM.button( {className:"btn btn-primary ",  'data-toggle':"modal", onClick:this.saveQuestion} , 
+                         React.DOM.button( {className:"btn btn-primary ",  'data-toggle':"modal", onClick:this.showSaveWarning} , 
                              "Save"
                         )
                       ),
                 
                 React.DOM.div(null, 
                   QuestionEditorTabs( {question:this.state.question, editHandler:this.editHandler, isDuplicate:this.props.isDuplicate, getSourceQuestion:this.getSourceQuestion})
-                )
+                ),
+                this.renderWarningDialog()
+
          ));
     }
 });
