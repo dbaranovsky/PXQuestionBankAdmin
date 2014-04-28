@@ -37,13 +37,13 @@ var SingleSelectButton = React.createClass({
         return ( 
             <div>
                  <div className="btn-group">
-                  <button type="button" className="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
-                    {this.props.caption} <span className="caret"></span>
+                  <button type="button" className="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" >
+                   <div data-toggle="tooltip" title="Cancel"> {this.props.caption} <span className="caret"></span></div>
                   </button>
                   <ul className="dropdown-menu" role="menu" onClick={this.selectValueEventHandler}>
                      {this.renderMenuItems()}
                     <li className="divider"></li>
-                    <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" data-value={this.cancelValue}>Cancel</a></li>
+                    <li role="presentation" data-toggle="tooltip" title="Cancel"><a className="edit-field-item" role="menuitem" tabIndex="-1" data-value={this.cancelValue} >Cancel</a></li>
                   </ul>
                 </div>
             </div>

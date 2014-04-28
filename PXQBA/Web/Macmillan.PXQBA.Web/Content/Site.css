@@ -459,3 +459,8 @@ a.shared-question-link:hover {
 #saveWarningDialog .modal-body {
      height: 300px;
 } 
+
+.product-title {
+    font-size: 30px;
+    width: 1025px;
+}

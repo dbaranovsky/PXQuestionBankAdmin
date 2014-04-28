@@ -36,13 +36,13 @@ var QuestionBulkOperationBar = React.createClass({
                                </div>
                             </td>
                             <td className="bulk-operation-cell">
-                               <div className="bulk-operation-item">
+                               <div className="bulk-operation-item" data-toggle="tooltip" title="Change all selected questions">
                                 <QuestionBulkOperationSetStatus availableStatuses={this.getAvailableStatuses()} 
                                                               selectedQuestions={this.props.selectedQuestions}/> 
                                </div>
                             </td>
                             <td>
-                               <div className="deselect-button" onClick={this.deselectsAllHandler}>
+                               <div className="deselect-button" onClick={this.deselectsAllHandler} data-toggle="tooltip" title="Deselect all">
                                  <span > X </span>
                                </div>
                             </td>

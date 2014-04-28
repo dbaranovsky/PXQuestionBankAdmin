@@ -52,8 +52,8 @@ var QuestionInlineEditorNumber = React.createClass({
                           <div className="input-group input-group-sm">
                               <input type="text" value={value} onChange={this.handleChange} className="form-control" />
                               <span className="input-group-btn">
-                                <button type="button" className="btn btn-default btn-xs" onClick={this.onAcceptEventHandler}><span className="glyphicon glyphicon-ok"></span></button> 
-                                <button type="button" className="btn btn-default btn-xs" onClick={this.onCancelEventHandler}><span className="glyphicon glyphicon-remove"></span></button> 
+                                <button type="button" className="btn btn-default btn-xs" onClick={this.onAcceptEventHandler} data-toggle="tooltip" title="Apply"><span className="glyphicon glyphicon-ok"></span></button> 
+                                <button type="button" className="btn btn-default btn-xs" onClick={this.onCancelEventHandler} data-toggle="tooltip" title="Cancel"><span className="glyphicon glyphicon-remove"></span></button> 
                              </span>
                            </div>
                 </div>

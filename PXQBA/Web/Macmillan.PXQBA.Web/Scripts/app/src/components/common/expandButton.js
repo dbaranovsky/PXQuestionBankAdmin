@@ -16,8 +16,10 @@ var ExpandButton = React.createClass({
                 'glyphicon-chevron-down': this.props.expanded,
     });
 
+    var tooltipTitle = this.props.expanded ? "Collapse "+ this.props.targetCaption : "Expand "+ this.props.targetCaption;
+
       return (   
-             <span className={buttonIcon} onClick={this.onClickHandler}> </span>
+             <span className={buttonIcon} onClick={this.onClickHandler} data-toggle="tooltip" title={tooltipTitle}> </span>
       );
     }
 });

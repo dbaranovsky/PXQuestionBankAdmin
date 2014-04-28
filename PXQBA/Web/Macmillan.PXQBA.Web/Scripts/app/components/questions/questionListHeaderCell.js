@@ -38,14 +38,14 @@ var QuestinListHeaderCell = React.createClass({displayName: 'QuestinListHeaderCe
 
  renderDeleteButton: function() {
     if((this.state.showDeleteButton)&&(!this.props.canNotDelete)) {
-      return React.DOM.span( {className:"delete-button", onClick:this.dleteButtonEventHandler},  " X " )
+      return React.DOM.span( {className:"delete-button", onClick:this.dleteButtonEventHandler, 'data-toggle':"tooltip", title:"Remove column"},  " X " )
     }
     return null;
  },
 
  renderExpandButton: function() {
      if(this.props.metadataName==window.consts.questionTitleName) {
-         return (ExpandButton( {expanded:this.props.expandedAll, onClickHandler:this.props.expandAllQuestionHandler}));  
+         return (ExpandButton( {expanded:this.props.expandedAll, onClickHandler:this.props.expandAllQuestionHandler, targetCaption:"all"}));  
       }
       return null;
  },
