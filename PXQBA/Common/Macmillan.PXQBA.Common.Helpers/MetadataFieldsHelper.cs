@@ -28,7 +28,6 @@ namespace Macmillan.PXQBA.Common.Helpers
 
 
             if ((metaField.Name == MetadataFieldNames.DlapStatus) ||
-                (metaField.Name == MetadataFieldNames.DlapTitle) ||
                 (metaField.Name == MetadataFieldNames.Chapter))
             {
                 model.FilterType = FilterType.None.ToString().ToLower();
