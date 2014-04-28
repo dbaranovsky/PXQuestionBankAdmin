@@ -23,16 +23,14 @@ var QuestionTabs = React.createClass({
                      <li className="active"> 
                          <a href="#view" data-toggle="tab">View</a>
                      </li>
-                     <li>
-                         <a href="#editOrder" data-toggle="tab">Edit order</a>
-                     </li>
+                  
                 </ul>
  
                 <div className="tab-content">
                     <div className="tab-pane active" id="view">
                          <QuestionGrid response={this.props.response} handlers={this.props.handlers}/>
                     </div>
-                    <div className="tab-pane" id="editOrder">...</div>
+                
                 </div>
             </div>
             );
