@@ -56,7 +56,7 @@ var QuestinListHeaderCell = React.createClass({
               onMouseOver={this.mouseOverHandler}
               onMouseLeave={this.mouseLeaveHandler}>
                   {this.renderExpandButton()}
-                 <span className="header-caption" onClick={this.changeOrdering} data-title={this.props.metadataName}>
+                 <span className="header-caption" onClick={this.changeOrdering} data-title={this.props.metadataName} data-toggle="tooltip" title={"Sort by "+this.props.caption}>
                      {this.props.caption}
                  </span>
                 <QuestinListHeaderCellOrdering order={this.props.order} /> 
