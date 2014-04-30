@@ -4,6 +4,16 @@
 var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
 
   
+    getInitialState: function() {
+      return { metadata: []};
+    },
+
+    
+    loadMetadata: function(data)
+    {
+        this.setState({metadata: data});
+    },
+
     tabsInitializer: function (container) {
        //  container.find('a:first').tab('show')
     },
@@ -15,14 +25,48 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
            $(tabs).find('.iframe-waiting').hide();
            $(tabs).find('iframe').show();
         });
-  
+          
     },
 
+    componentWillMount: function(){
+      questionDataManager.getMetadataFields().done(this.loadMetadata); 
+    },
     componentDidUpdate: function () {
         this.tabsInitializer($(this.getDOMNode()));
     },
 
-  
+    loadSourceQuestion: function(event){
+      event.preventDefault();
+      this.props.getSourceQuestion();
+    },
+
+    renderSharingNotification: function(){
+      if (this.props.question.isDuplicateOfSharedQuestion && this.props.isDuplicate) {
+        return (React.DOM.div( {className:"shared-note"}, "This question is a duplicate of a  ",
+                    React.DOM.a( {className:"shared-question-link", href:"", onClick:this.loadSourceQuestion}, "shared question"),
+                    React.DOM.a( {href:"", onClick:this.loadSourceQuestion}, "Delete question")
+               ));
+      }
+
+      return null;
+    },
+
+    renderOverideControls: function(){
+
+      if ( this.props.question.sourceQuestion !=  null) {
+        return (OverideControls(null ));
+      }
+      return null; 
+
+    },
+
+
+  renderSharedMetadataEditor: function(){
+      if ( this.props.question.sourceQuestion != null) {
+         return(SharedMetadataEditor( {metadata:this.state.metadata,   question:this.props.question, editHandler:this.props.editHandler, isDuplicate:this.props.isDuplicate} ));   
+      }
+      return null;
+  },
 
     render: function() {
         return ( 
@@ -53,9 +97,14 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                        )
                     ),
                     React.DOM.div( {className:"tab-pane", id:"metadata"}, 
-                       QuestionMetadataEditor(  {question:this.props.question, editHandler:this.props.editHandler, isDuplicate:this.props.isDuplicate, getSourceQuestion:this.props.getSourceQuestion}),
+                       React.DOM.div( {className:this.props.question.sourceQuestion == null ? "tab-body" : "tab-body wide"}, 
+                            this.renderSharingNotification(),
+                           
+                            this.renderSharedMetadataEditor(),
+                             this.renderOverideControls(),
+                           QuestionMetadataEditor(  {metadata:this.state.metadata, question:this.props.question, editHandler:this.props.editHandler, isDuplicate:this.props.isDuplicate} ),
                            React.DOM.br(null )
-
+                      )
                     ),
                      React.DOM.div( {className:"tab-pane", id:"history"}, 
                        React.DOM.div( {className:"tab-body"}, 

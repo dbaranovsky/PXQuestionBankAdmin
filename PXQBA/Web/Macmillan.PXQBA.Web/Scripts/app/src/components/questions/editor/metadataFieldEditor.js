@@ -3,6 +3,10 @@
 */
 var MetadataFieldEditor = React.createClass({
 
+     getInitialState: function() {
+
+      return { editMode: this.props.editMode === undefined? true : this.props.editMode, editMenu: false };
+    },
      editHandler: function(selectedOptions){
       
        
@@ -56,6 +60,8 @@ var MetadataFieldEditor = React.createClass({
        var metadataField = $.grep(this.props.metadata, function(e){ return $.inArray(e.metadataName, [field, "dlap_q_"+field, "dlap_"+field, field.toLowerCase()])!=-1;  });
        var editorType = metadataField.length>0 ? metadataField[0].editorDescriptor.editorType : 0;
        var currentValue = this.props.question[this.props.field];
+
+       if(this.state.editMode){
        switch (editorType) {
           case window.enums.editorType.singleSelect:
              return (<select ref="editor" className="single-selector" value={currentValue}> {this.renderMenuItems(metadataField[0].editorDescriptor.availableChoice)} </select> );
@@ -73,6 +79,59 @@ var MetadataFieldEditor = React.createClass({
            
              return (<input type="text" onChange={this.editHandler} ref="editor" value={currentValue}/>);
         }
+      }
+
+      var values = [];
+
+       switch (editorType) {
+          case window.enums.editorType.singleSelect:
+              var singleSelectValue = metadataField[0].editorDescriptor.availableChoice[currentValue];  
+              values.push(<div className="current-values-view"> {singleSelectValue === undefined? currentValue : singleSelectValue} 
+                                <span className="glyphicon glyphicon-pencil btn custom-btn"  data-toggle="tooltip" title="Edit" onClick={this.switchEditMode}></span>
+                           </div>);
+              break;
+          case window.enums.editorType.multiSelect:
+                
+                  if(field=="learningObjectives"){
+                     $.each(currentValue, function(i, value){
+                       values.push(<div className="current-values-view learning-objectives label label-default"> {value.description} </div>);
+                     });
+                  }else{
+                     $.each(currentValue, function(i, value){
+                        values.push(<div className="current-values-view label label-default">{value}</div>);
+                     });
+                  }
+
+                   if (values.length == 0){
+                      values.push(<div className="current-values-view"> No value 
+                                    <span className="glyphicon glyphicon-pencil btn custom-btn"  data-toggle="tooltip" title="Edit" onClick={this.switchEditMode}></span>
+                                  </div>);
+                   } else{
+                         values.push(<div className="current-values-view"> <span className="glyphicon glyphicon-pencil btn custom-btn"  data-toggle="tooltip" title="Edit" onClick={this.switchEditMode}></span> </div>);
+                   }
+
+                 break;               
+          default: 
+            if (currentValue != null && currentValue !=''){           
+              values.push(<div className="current-values-view"> {currentValue} 
+                               <span className="glyphicon glyphicon-pencil btn custom-btn"  data-toggle="tooltip" title="Edit" onClick={this.switchEditMode}></span>
+                          </div>);
+            }
+        }
+
+      if (values.length == 0){
+         values.push(<div className="current-values-view"> No value  
+                          <span className="glyphicon glyphicon-pencil btn custom-btn"  data-toggle="tooltip" title="Edit" onClick={this.switchEditMode}></span>
+                     </div>);
+      }   
+
+      return values;
+
+    },
+
+    switchEditMode: function(){
+      $(this.getDOMNode()).find('div:not([data-reactid])').remove();
+      this.setState({editMode: !this.state.editMode, editMenu: !this.state.editMenu});
     },
 
     componentDidUpdate: function(){
@@ -108,6 +167,17 @@ var MetadataFieldEditor = React.createClass({
       
     },
 
+    renderMenu: function(){
+        if (this.state.editMenu){
+          return( <span className="input-group-btn">
+                                <button type="button" className="btn btn-default btn-xs" onClick={this.switchEditMode} data-toggle="tooltip" title="Apply"><span className="glyphicon glyphicon-ok"></span></button> 
+                                <button type="button" className="btn btn-default btn-xs" onClick={this.switchEditMode} data-toggle="tooltip" title="Cancel"><span className="glyphicon glyphicon-remove"></span></button> 
+                   </span>   );
+        }
+
+        return null;
+    },
+
 
     render: function() {
         return (
@@ -117,7 +187,8 @@ var MetadataFieldEditor = React.createClass({
                    <br />
                     {this.renderBody()}
                    <br />
-                          
+                   {this.renderMenu()}
+                    
             </div> 
          );
     }

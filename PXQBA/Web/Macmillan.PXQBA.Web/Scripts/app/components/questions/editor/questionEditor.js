@@ -69,7 +69,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
                       ),
                       React.DOM.br(null ),React.DOM.br(null ),
                       React.DOM.button( {className:"btn btn-primary ",  'data-toggle':"modal", onClick:self.saveQuestion} , 
-                                   "Leave visible the previos version"
+                                   "Leave visible the previous version"
                       ),
                       React.DOM.br(null ),React.DOM.br(null ),
                       React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal", onClick:self.closeSaveWarningDialog}, 

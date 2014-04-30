@@ -4,6 +4,16 @@
 var QuestionEditorTabs = React.createClass({
 
   
+    getInitialState: function() {
+      return { metadata: []};
+    },
+
+    
+    loadMetadata: function(data)
+    {
+        this.setState({metadata: data});
+    },
+
     tabsInitializer: function (container) {
        //  container.find('a:first').tab('show')
     },
@@ -15,14 +25,48 @@ var QuestionEditorTabs = React.createClass({
            $(tabs).find('.iframe-waiting').hide();
            $(tabs).find('iframe').show();
         });
-  
+          
     },
 
+    componentWillMount: function(){
+      questionDataManager.getMetadataFields().done(this.loadMetadata); 
+    },
     componentDidUpdate: function () {
         this.tabsInitializer($(this.getDOMNode()));
     },
 
-  
+    loadSourceQuestion: function(event){
+      event.preventDefault();
+      this.props.getSourceQuestion();
+    },
+
+    renderSharingNotification: function(){
+      if (this.props.question.isDuplicateOfSharedQuestion && this.props.isDuplicate) {
+        return (<div className="shared-note">This question is a duplicate of a &nbsp;
+                    <a className="shared-question-link" href="" onClick={this.loadSourceQuestion}>shared question</a>
+                    <a href="" onClick={this.loadSourceQuestion}>Delete question</a>
+               </div>);
+      }
+
+      return null;
+    },
+
+    renderOverideControls: function(){
+
+      if ( this.props.question.sourceQuestion !=  null) {
+        return (<OverideControls />);
+      }
+      return null; 
+
+    },
+
+
+  renderSharedMetadataEditor: function(){
+      if ( this.props.question.sourceQuestion != null) {
+         return(<SharedMetadataEditor metadata={this.state.metadata}   question={this.props.question} editHandler={this.props.editHandler} isDuplicate={this.props.isDuplicate} />);   
+      }
+      return null;
+  },
 
     render: function() {
         return ( 
@@ -53,9 +97,14 @@ var QuestionEditorTabs = React.createClass({
                        </div>
                     </div>
                     <div className="tab-pane" id="metadata">
-                       <QuestionMetadataEditor  question={this.props.question} editHandler={this.props.editHandler} isDuplicate={this.props.isDuplicate} getSourceQuestion={this.props.getSourceQuestion}/>
+                       <div className={this.props.question.sourceQuestion == null ? "tab-body" : "tab-body wide"}>
+                            {this.renderSharingNotification()}
+                           
+                            {this.renderSharedMetadataEditor()}
+                             {this.renderOverideControls()}
+                           <QuestionMetadataEditor  metadata={this.state.metadata} question={this.props.question} editHandler={this.props.editHandler} isDuplicate={this.props.isDuplicate} />
                            <br />
-
+                      </div>
                     </div>
                      <div className="tab-pane" id="history">
                        <div className="tab-body">
