@@ -50,6 +50,14 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         {
             var item = GetTemporaryQuiz();
             var data = item.Root.Element("data");
+            var hrefElement = data.Element("href");
+            
+            if (hrefElement != null)
+            {
+                hrefElement.Remove();
+                hrefElement = new XElement("href");
+            }
+            hrefElement.Value = "Templates/Data/AHWDG/index.html";
             var questionsElement = data.Element("questions");
             if (questionsElement == null)
             {
