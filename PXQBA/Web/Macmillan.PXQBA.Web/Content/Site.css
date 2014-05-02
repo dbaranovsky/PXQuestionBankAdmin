@@ -331,6 +331,7 @@ input[type="checkbox"].input-validation-error {
     width: 100px;
     padding-top: 36px;
     padding-left: 10px;
+    font-size: 13px !important;
 } 
 
 

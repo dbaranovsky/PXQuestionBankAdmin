@@ -72,7 +72,7 @@ var MetadataFieldEditor = React.createClass({
        if(this.state.editMode){
        switch (editorType) {
           case window.enums.editorType.singleSelect:
-             return (<select ref="editor" className="single-selector" value={currentValue}> {this.renderMenuItems(metadataField[0].editorDescriptor.availableChoice)} </select> );
+             return (<select ref="editor" className="single-selector" disabled={this.props.isDisabled} value={currentValue}> {this.renderMenuItems(metadataField[0].editorDescriptor.availableChoice)} </select> );
 
           case window.enums.editorType.multiSelect:
               if(field=="learningObjectives"){
@@ -82,10 +82,10 @@ var MetadataFieldEditor = React.createClass({
 
           default: 
             if(metadataField[0]!== undefined && metadataField[0].isMultiline){
-                 return ( <textarea onChange={this.editHandler}  ref="editor" className="question-body-editor"  rows="10" type="text" placeholder="Enter text..." value={currentValue} />);  
+                 return ( <textarea onChange={this.editHandler} disabled={this.props.isDisabled}  ref="editor" className="question-body-editor"  rows="10" type="text" placeholder="Enter text..." value={currentValue} />);  
              }
            
-             return (<input type="text" onChange={this.editHandler} ref="editor" value={currentValue}/>);
+             return (<input type="text" onChange={this.editHandler} disabled={this.props.isDisabled} ref="editor" value={currentValue}/>);
         }
       }
 

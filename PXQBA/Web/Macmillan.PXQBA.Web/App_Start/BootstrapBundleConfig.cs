@@ -12,9 +12,9 @@ namespace Macmillan.PXQBA.Web.App_Start
 			// For Bootstrap theme add @Styles.Render("~/Content/bootstrap-theme") in the <head/> of your _Layout.cshtml view
 			// Add @Scripts.Render("~/bundles/bootstrap") after jQuery in your _Layout.cshtml view
 			// When <compilation debug="true" />, MVC4 will render the full readable version. When set to <compilation debug="false" />, the minified version will be rendered automatically
-            BundleTable.Bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include("~/Scripts/bootstrap/bootstrap.js").Include("~/Scripts/bootstrap/bootstrap-notify.js"));
+            BundleTable.Bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include("~/Scripts/bootstrap/bootstrap.js", "~/Scripts/bootstrap/bootstrap-notify.js", "~/Scripts/bootstrap/bootstrap-switch.min.js"));
             BundleTable.Bundles.Add(new ScriptBundle("~/bundles/bootstrap-components").Include("~/Scripts/bootstrap/bootstrap-paginator.min.js"));
-            BundleTable.Bundles.Add(new StyleBundle("~/bundles/bootstrapcss").Include("~/Content/bootstrap/bootstrap.css").Include("~/Content/bootstrap/bootstrap-notify.css"));
+            BundleTable.Bundles.Add(new StyleBundle("~/bundles/bootstrapcss").Include("~/Content/bootstrap/bootstrap.css", "~/Content/bootstrap/bootstrap-notify.css", "~/Content/bootstrap/bootstrap-switch.min.css"));
             BundleTable.Bundles.Add(new StyleBundle("~/bundles/bootstrap-theme").Include("~/Content/bootstrap/bootstrap-theme.css"));
 		}
 	}

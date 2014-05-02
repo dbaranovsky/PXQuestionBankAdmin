@@ -118,7 +118,9 @@ var QuestionListPage = React.createClass({
                editor: {
                    metadata: metadata,
                    template: this.state.editor.template,
-                   isNew: false }
+                   isNew: false,
+                   step: this.editorsSteps.step2
+                   }
         });
     },
 
@@ -178,6 +180,7 @@ var QuestionListPage = React.createClass({
                 </div>
                 {this.renderQuestionEditorDialog()}
                 {this.renderNotesDialog()}
+                 
             </div>
             );
     }
