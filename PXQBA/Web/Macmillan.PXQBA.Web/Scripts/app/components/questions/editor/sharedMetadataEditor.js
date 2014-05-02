@@ -4,15 +4,15 @@
 
 var SharedMetadataEditor = React.createClass({displayName: 'SharedMetadataEditor',
 
-    sourceEditHandler: function(sourceQuestion){
-        var question = this.props.question;
-        question.sourceQuestion = sourceQuestion;
-        this.props.editHandler(question);
-    },
+   
     render: function() {
         return (
                React.DOM.div( {className:"source"}, 
-                               React.DOM.span( {className:"label label-info metadata-info-label"}, "Shared values"),
+                  React.DOM.div( {className:"row"}, 
+                    React.DOM.div( {className:"cell"},  " ", React.DOM.span( {className:"label label-info metadata-info-label"}, "Shared values"))
+                    
+                  ),
+                              
                                MetadataFieldEditor( {editMode:false, question:this.props.question.sourceQuestion, metadata:this.props.metadata, editHandler:this.sourceEditHandler, field:"title"}),
                                MetadataFieldEditor(  {editMode:false, question:this.props.question.sourceQuestion, metadata:this.props.metadata, editHandler:this.sourceEditHandler, field:"chapter"}),
                                MetadataFieldEditor(  {editMode:false, question:this.props.question.sourceQuestion, metadata:this.props.metadata, editHandler:this.sourceEditHandler, field:"bank"}),
@@ -24,7 +24,7 @@ var SharedMetadataEditor = React.createClass({displayName: 'SharedMetadataEditor
                                MetadataFieldEditor(  {editMode:false, question:this.props.question.sourceQuestion, metadata:this.props.metadata, editHandler:this.sourceEditHandler, field:"cognitiveLevel", title:"Cognitive Level"}),
                                MetadataFieldEditor(  {editMode:false, question:this.props.question.sourceQuestion, metadata:this.props.metadata, editHandler:this.sourceEditHandler, field:"status"} ),
                                MetadataFieldEditor( {editMode:false, question:this.props.question.sourceQuestion, metadata:this.props.metadata, editHandler:this.sourceEditHandler, field:"guidance"})
-                           )
+              )
 
          );
     }

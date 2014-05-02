@@ -23,7 +23,8 @@ namespace Macmillan.PXQBA.Common.Helpers
                                  new FieldEditorDescriptor(metaField.TypeDescriptor),
                              CanAddValues = false,
                              IsMultiline = false,
-                             FilterType = FilterType.MultiSelectWithAddition.ToString().ToLower()
+                             FilterType = FilterType.MultiSelectWithAddition.ToString().ToLower(),
+                             AllowDeselect = false
                          };
 
 
@@ -74,6 +75,11 @@ namespace Macmillan.PXQBA.Common.Helpers
                  model.IsMultiline = true;
                  model.Width = "30%";
              }
+
+            if (metaField.Name == MetadataFieldNames.Difficulty)
+            {
+                model.AllowDeselect = true;
+            }
 
             return model;
          }

@@ -3,16 +3,6 @@
 */
 var QuestionEditorTabs = React.createClass({
 
-  
-    getInitialState: function() {
-      return { metadata: []};
-    },
-
-    
-    loadMetadata: function(data)
-    {
-        this.setState({metadata: data});
-    },
 
     tabsInitializer: function (container) {
        //  container.find('a:first').tab('show')
@@ -28,9 +18,6 @@ var QuestionEditorTabs = React.createClass({
           
     },
 
-    componentWillMount: function(){
-      questionDataManager.getMetadataFields().done(this.loadMetadata); 
-    },
     componentDidUpdate: function () {
         this.tabsInitializer($(this.getDOMNode()));
     },
@@ -50,23 +37,6 @@ var QuestionEditorTabs = React.createClass({
 
       return null;
     },
-
-    renderOverideControls: function(){
-
-      if ( this.props.question.sourceQuestion !=  null) {
-        return (<OverideControls />);
-      }
-      return null; 
-
-    },
-
-
-  renderSharedMetadataEditor: function(){
-      if ( this.props.question.sourceQuestion != null) {
-         return(<SharedMetadataEditor metadata={this.state.metadata}   question={this.props.question} editHandler={this.props.editHandler} isDuplicate={this.props.isDuplicate} />);   
-      }
-      return null;
-  },
 
     render: function() {
         return ( 
@@ -100,9 +70,8 @@ var QuestionEditorTabs = React.createClass({
                        <div className={this.props.question.sourceQuestion == null ? "tab-body" : "tab-body wide"}>
                             {this.renderSharingNotification()}
                            
-                            {this.renderSharedMetadataEditor()}
-                             {this.renderOverideControls()}
-                           <QuestionMetadataEditor  metadata={this.state.metadata} question={this.props.question} editHandler={this.props.editHandler} isDuplicate={this.props.isDuplicate} />
+                            <QuestionMetadataEditor metadata={this.props.metadata} question={this.props.question} editHandler={this.props.editHandler} isDuplicate={this.props.isDuplicate} />
+                           
                            <br />
                       </div>
                     </div>

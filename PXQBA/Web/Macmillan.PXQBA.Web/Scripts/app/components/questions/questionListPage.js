@@ -50,7 +50,8 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
                                           isNew:this.state.editor.isNew,
                                           showOnCreate:true,
                                           question:this.state.editor.template,
-                                          caption:this.state.editor.caption }));
+                                          caption:this.state.editor.caption, 
+                                          metadata:this.state.editor.metadata} ));
           default:
             return null;
         }
@@ -65,6 +66,7 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
            loading: true,
            editorCaption: window.enums.dialogCaptions.duplicateQuestion
         });
+        questionDataManager.getMetadataFields().done(this.loadMetadataForEditingComplete);
         questionDataManager.getDuplicateQuestionTemplate(questionId).done(this.loadTemplateComplete.bind(this, false));
     },
 
@@ -73,6 +75,7 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
            loading: true,
            editorCaption: window.enums.dialogCaptions.editQuestion
         });
+        questionDataManager.getMetadataFields().done(this.loadMetadataForEditingComplete);
        questionDataManager.getQuestion(questionId).done(this.loadTemplateComplete.bind(this, false));
     },
               
@@ -84,6 +87,7 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
                     template: template,
                     step: this.editorsSteps.step2,
                     isNew: isNew,
+                    metadata: this.state.editor.metadata,
                     caption: isNew? window.enums.dialogCaptions.newQuestion : this.state.editorCaption}
                     });
     },
@@ -106,6 +110,16 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
       this.setState({ loading:true} );
       questionDataManager.getMetadataFields().done(this.loadMetadataComplete.bind(this))
 
+    },
+
+    loadMetadataForEditingComplete: function(metadata){
+         this.setState({
+              loading: true,
+               editor: {
+                   metadata: metadata,
+                   template: this.state.editor.template,
+                   isNew: false }
+        });
     },
 
     loadMetadataComplete: function(metadata) {

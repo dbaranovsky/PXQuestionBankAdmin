@@ -107,7 +107,7 @@ var QuestionEditor = React.createClass({
                       </div>
                 
                 <div>
-                  <QuestionEditorTabs question={this.state.question} editHandler={this.editHandler} isDuplicate={this.props.isDuplicate} getSourceQuestion={this.getSourceQuestion}/>
+                  <QuestionEditorTabs question={this.state.question} metadata={this.props.metadata} editHandler={this.editHandler} isDuplicate={this.props.isDuplicate} getSourceQuestion={this.getSourceQuestion}/>
                 </div>
                 {this.renderWarningDialog()}
 

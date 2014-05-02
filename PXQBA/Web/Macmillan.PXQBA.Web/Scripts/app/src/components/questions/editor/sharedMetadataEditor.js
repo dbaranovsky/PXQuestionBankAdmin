@@ -4,15 +4,15 @@
 
 var SharedMetadataEditor = React.createClass({
 
-    sourceEditHandler: function(sourceQuestion){
-        var question = this.props.question;
-        question.sourceQuestion = sourceQuestion;
-        this.props.editHandler(question);
-    },
+   
     render: function() {
         return (
                <div className="source">
-                               <span className="label label-info metadata-info-label">Shared values</span>
+                  <div className="row">
+                    <div className="cell"> <span className="label label-info metadata-info-label">Shared values</span></div>
+                    
+                  </div>
+                              
                                <MetadataFieldEditor editMode={false} question={this.props.question.sourceQuestion} metadata={this.props.metadata} editHandler={this.sourceEditHandler} field={"title"}/>
                                <MetadataFieldEditor  editMode={false} question={this.props.question.sourceQuestion} metadata={this.props.metadata} editHandler={this.sourceEditHandler} field={"chapter"}/>
                                <MetadataFieldEditor  editMode={false} question={this.props.question.sourceQuestion} metadata={this.props.metadata} editHandler={this.sourceEditHandler} field={"bank"}/>
@@ -24,7 +24,7 @@ var SharedMetadataEditor = React.createClass({
                                <MetadataFieldEditor  editMode={false} question={this.props.question.sourceQuestion} metadata={this.props.metadata} editHandler={this.sourceEditHandler} field={"cognitiveLevel"} title="Cognitive Level"/>
                                <MetadataFieldEditor  editMode={false} question={this.props.question.sourceQuestion} metadata={this.props.metadata} editHandler={this.sourceEditHandler} field={"status"} />
                                <MetadataFieldEditor editMode={false} question={this.props.question.sourceQuestion} metadata={this.props.metadata} editHandler={this.sourceEditHandler} field={"guidance"}/>
-                           </div>
+              </div>
 
          );
     }

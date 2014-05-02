@@ -5,38 +5,46 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
 
      getInitialState: function() {
 
-      return { editMode: this.props.editMode === undefined? true : this.props.editMode, editMenu: false };
+       var field = this.props.field;
+       var metadataField = $.grep(this.props.metadata, function(e){ return $.inArray(e.metadataName, [field, "dlap_q_"+field, "dlap_"+field, field.toLowerCase()])!=-1;  });
+       var allowDeselect = metadataField.length>0 ? metadataField[0].allowDeselect : false;
+      return { editMode: this.props.editMode === undefined? true : this.props.editMode,
+               editMenu: false,
+               allowDeselect: allowDeselect};
     },
      editHandler: function(selectedOptions){
-      
+        var text = "";
+         if (selectedOptions[0] !== undefined){
+              text = selectedOptions[0].text;
+              var value = selectedOptions[0].value;
+              //Checking if value is text or int. Ugly code! Move the sign to the state. 
+              if (text.toLowerCase()!= value.toLowerCase()){
+                text = value;
+              }
+         } 
+         else {
+              
+              text = this.refs.editor.getDOMNode().value;
+         }
+
+         this.updateQuestion(text);
        
-       var text = "";
-       if (selectedOptions[0] !== undefined){
-            text = selectedOptions[0].text;
-            var value = selectedOptions[0].value;
-            //Checking if value is text or int. Ugly code! Move the sign to the state. 
-            if (text.toLowerCase()!= value.toLowerCase())
-            {
-              text = value;
-            }
-       } 
-       else {
-            
-            text = this.refs.editor.getDOMNode().value;
-       }
-
-      var question = this.props.question;
-      if (question[this.props.field] !== text)
-      {
-        question[this.props.field] = text;
-        this.props.editHandler(question);
-      }
-
      },
+
+    updateQuestion: function(value){
+         var question = this.props.question;
+        if (question[this.props.field] !== value)
+        {
+          question[this.props.field] = value;
+          this.props.editHandler(question);
+        }
+       
+    },
+
 
     renderMenuItems: function(availableChoices) {
         var items = [];
-        if (this.props.allowDeselect){
+        if (this.state.allowDeselect){
             items.push(React.DOM.option( {value:""}));
         }
         for (var propertyName in availableChoices) {
@@ -130,14 +138,15 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
     },
 
     switchEditMode: function(){
+
       $(this.getDOMNode()).find('div:not([data-reactid])').remove();
-      this.setState({editMode: !this.state.editMode, editMenu: !this.state.editMenu});
+      this.setState({editMode: !this.state.editMode, editMenu: !this.state.editMenu, currentValue: this.props.question[this.props.field]});
     },
 
     componentDidUpdate: function(){
     var self = this;
     var chosenOptions = {width: "100%"};
-    if (self.props.allowDeselect){
+    if (self.state.allowDeselect){
         chosenOptions.allow_single_deselect = true;
         chosenOptions.placeholder_text_single = "No Value";
     }
@@ -151,11 +160,14 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
 
     componentDidMount: function(){
        var self = this;
+    this.componentDidUpdate();
       if (!this.props.setDefault){
         return;
       }
       var field = this.props.field;
-      var metadataField = $.grep(this.props.metadata, function(e){ return $.inArray(e.metadataName, [field, "dlap_q_"+field, "dlap_"+field, field.toLowerCase()])!=-1; });
+      var metadataField = $.grep(this.props.metadata, function(e){ 
+                                                        return $.inArray(e.metadataName, [field, "dlap_q_"+field, "dlap_"+field, field.toLowerCase()])!=-1; 
+                                                      });
       var question = this.props.question;
       var availableChoices = metadataField[0].editorDescriptor.availableChoice;
         for (var propertyName in availableChoices) {
@@ -167,11 +179,21 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
       
     },
 
+    applyChanges: function(){
+      this.switchEditMode();
+
+    },
+
+    declineChanges: function(){
+      this.updateQuestion(this.state.currentValue);
+      this.switchEditMode();
+    },
+
     renderMenu: function(){
         if (this.state.editMenu){
           return( React.DOM.span( {className:"input-group-btn"}, 
-                                React.DOM.button( {type:"button", className:"btn btn-default btn-xs", onClick:this.switchEditMode, 'data-toggle':"tooltip", title:"Apply"}, React.DOM.span( {className:"glyphicon glyphicon-ok"})), 
-                                React.DOM.button( {type:"button", className:"btn btn-default btn-xs", onClick:this.switchEditMode, 'data-toggle':"tooltip", title:"Cancel"}, React.DOM.span( {className:"glyphicon glyphicon-remove"})) 
+                                React.DOM.button( {type:"button", className:"btn btn-default btn-xs", onClick:this.applyChanges, 'data-toggle':"tooltip", title:"Apply"}, React.DOM.span( {className:"glyphicon glyphicon-ok"})), 
+                                React.DOM.button( {type:"button", className:"btn btn-default btn-xs", onClick:this.declineChanges, 'data-toggle':"tooltip", title:"Cancel"}, React.DOM.span( {className:"glyphicon glyphicon-remove"})) 
                    )   );
         }
 
@@ -183,7 +205,7 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
         return (
 
             React.DOM.div( {className:"metadata-field-editor"}, 
-                   React.DOM.label(null, this.props.title === undefined ? this.props.field : this.props.title),
+                   React.DOM.label(null, this.props.title === undefined? this.props.field : this.props.title),
                    React.DOM.br(null ),
                     this.renderBody(),
                    React.DOM.br(null ),

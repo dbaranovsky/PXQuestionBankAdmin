@@ -281,7 +281,7 @@ input[type="checkbox"].input-validation-error {
     }
 
 .metadata-info-label {
-    width: 425px;
+    width: 415px;
  /*   color: #000000 !important;
   text-align: left !important; */
     margin-bottom: 20px !important;
@@ -300,20 +300,38 @@ input[type="checkbox"].input-validation-error {
     white-space: normal !important;
     text-align: left !important;
 }
-.source {
-    width: 425px;
-    float: left;
-}
 
 .local {
-    width: 956px;
-  
+    width: 956px;  
 }
 
 .local.wide {
-    width: 425px;
     float: left;
 }
+
+.local.wide .cell {
+    width: 425px;
+}
+
+.local .cell {
+    width: 956px;
+}
+
+
+
+.cell {
+    float: left;
+}
+
+.local .row {
+    margin: 0 !important;
+}
+
+.local .cell.control {
+    width: 100px;
+    padding-top: 36px;
+    padding-left: 10px;
+} 
 
 
 .tab-body input[type="radio"] {
@@ -355,6 +373,7 @@ input[type="checkbox"].input-validation-error {
 
 .metadata-field-editor {
     margin-bottom: 30px;
+    clear: both;
 }
 
 .metadata-field-editor label {
