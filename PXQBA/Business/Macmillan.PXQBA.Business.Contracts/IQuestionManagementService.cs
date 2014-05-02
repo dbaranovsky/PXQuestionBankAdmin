@@ -56,8 +56,10 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// </summary>
         /// <param name="question"></param>
         /// <returns></returns>
-        Question UpdateQuestion(Question question);
+        Question UpdateQuestion(Course course, string sourceQuestionId, Question question);
         
         bool UpdateQuestionField(string questionId, string fieldName, string fieldValue);
+
+        Question CreateTemporaryQuestion(Course course, string questionId);
     }
 }

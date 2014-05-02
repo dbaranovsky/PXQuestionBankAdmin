@@ -15,10 +15,13 @@ namespace Macmillan.PXQBA.Business.Services
 
         private Dictionary<string, string> availableQuestionTypes;
         private IQuestionCommands questionCommands;
-        public ModelProfileService(IProductCourseOperation productCourseOperation, IQuestionCommands questionCommands)
+
+        private ITemporaryQuestionOperation temporaryQuestionOperation;
+        public ModelProfileService(IProductCourseOperation productCourseOperation, IQuestionCommands questionCommands, ITemporaryQuestionOperation temporaryQuestionOperation)
         {
             this.productCourseOperation = productCourseOperation;
             this.questionCommands = questionCommands;
+            this.temporaryQuestionOperation = temporaryQuestionOperation;
             this.availableQuestionTypes = ConfigurationHelper.GetQuestionTypes();
         }
 
@@ -155,6 +158,11 @@ namespace Macmillan.PXQBA.Business.Services
         public string GetHardCodedQuestionDuplicate()
         {
             return "9F5C1195-785D-4016-E199-A2E1D6A0A7D4";
+        }
+
+        public string GetQuizIdForQuestion(string id, string entityId)
+        {
+            return temporaryQuestionOperation.GetQuizIdForQuestion(id, entityId);
         }
     }
 }
