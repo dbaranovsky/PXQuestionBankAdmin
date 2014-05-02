@@ -24,7 +24,7 @@ namespace Macmillan.PXQBA.Business.Services
 
         public PagedCollection<Question> GetQuestionList(Course course, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
         {
-            //temporaryQuestionOperation.CopyQuestionToTemporaryQuiz(course.ProductCourseId, "PxTempQBAQuestion_115457_Choice");
+            //temporaryQuestionOperation.CopyQuestionToTemporaryCourse(course.ProductCourseId, "PxTempQBAQuestion_115457_Choice");
             return questionCommands.GetQuestionList(course.ProductCourseId, filter, sortCriterion, startingRecordNumber, recordCount);
         }
 
@@ -81,9 +81,11 @@ namespace Macmillan.PXQBA.Business.Services
             return availableTypes;
         }
 
-        public Question UpdateQuestion(Question question)
+        public Question UpdateQuestion(Course course, string sourceQuestionId, Question question)
         {
-            return questionCommands.UpdateQuestion(question);
+            var updatedTempQuestion = questionCommands.UpdateQuestion(question);
+            temporaryQuestionOperation.CopyQuestionToSourceCourse(course.ProductCourseId, "PxTempQBAQuestion_115457_Choice");
+            return questionCommands.UpdateQuestion(updatedTempQuestion);
         }
 
         /*
@@ -118,6 +120,13 @@ namespace Macmillan.PXQBA.Business.Services
         public bool UpdateQuestionField(string questionId, string fieldName, string fieldValue)
         {
             return questionCommands.UpdateQuestionField(questionId, fieldName, fieldValue);
+        }
+
+        public Question CreateTemporaryQuestion(Course course, string questionId)
+        {
+            //PxTempQBAQuestion_115457_Essay
+            //PxTempQBAQuestion_115457_Choice
+            return temporaryQuestionOperation.CopyQuestionToTemporaryCourse(course.ProductCourseId, "PxTempQBAQuestion_115457_Choice");
         }
     }
 }

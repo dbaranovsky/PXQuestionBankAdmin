@@ -1,4 +1,6 @@
-﻿namespace Macmillan.PXQBA.Business.Commands.Contracts
+﻿using Macmillan.PXQBA.Business.Models;
+
+namespace Macmillan.PXQBA.Business.Commands.Contracts
 {
     /// <summary>
     /// Is used for "workaround" operations that need to be done while editing question: copy question to temp course, editing it there, copy edited question back
@@ -9,6 +11,9 @@
         /// Copies question from real course to temp course to increase editing speed
         /// </summary>
         /// <param name="questionIdToCopy"></param>
-        void CopyQuestionToTemporaryQuiz(string sourceProductCourseId, string questionIdToCopy);
+        Question CopyQuestionToTemporaryCourse(string sourceProductCourseId, string questionIdToCopy);
+
+        string GetQuizIdForQuestion(string questionId, string entityId);
+        Question CopyQuestionToSourceCourse(string sourceProductCourseId, string sourceQuestionId);
     }
 }

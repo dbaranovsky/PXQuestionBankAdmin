@@ -39,13 +39,14 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
 
             Mapper.CreateMap<Bfw.Agilix.DataContracts.Question, Question>()
                 .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
-                //.ForMember(dto => dto.EntityId, opt => opt.MapFrom(q => q.EntityId))
+                .ForMember(dto => dto.EntityId, opt => opt.MapFrom(q => q.EntityId))
                 .ForMember(dto => dto.Title, opt => opt.MapFrom(q => q.Title))
                 .ForMember(dto => dto.Chapter, opt => opt.MapFrom(q => q.eBookChapter))
                 .ForMember(dto => dto.Bank, opt => opt.MapFrom(q => q.QuestionBank))
                 .ForMember(dto => dto.Sequence, opt => opt.Ignore())
                 .ForMember(dto => dto.Type, opt => opt.Ignore())
-                .ForMember(dto => dto.Preview, opt => opt.MapFrom( q => QuestionPreviewHelper.GetQuestionHtmlPreview(q)));
+                .ForMember(dto => dto.Preview, opt => opt.MapFrom( q => QuestionPreviewHelper.GetQuestionHtmlPreview(q)))
+                .ForMember(dto => dto.QuizId, opt => opt.MapFrom(q => modelProfileService.GetQuizIdForQuestion(q.Id, q.EntityId)));
 
             Mapper.CreateMap<Question, Bfw.Agilix.DataContracts.Question>()
                 .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
@@ -90,9 +91,17 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Question.Type))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Question.Status))
                 .ForMember(dest => dest.Preview, opt => opt.MapFrom(src => src.Question.Preview))
-                .ForMember(dest => dest.SharedFrom, opt => opt.MapFrom(src => modelProfileService.GetHardCodedSharedFrom(src.QuestionId)))
-                .ForMember(dest => dest.SharedTo, opt => opt.MapFrom(src => modelProfileService.GetHardCodedSharedTo(src.QuestionId)))
-                .ForMember(dest => dest.QuestionIdDuplicateFrom, opt => opt.MapFrom(src => src.QuestionId%2 != 0? modelProfileService.GetHardCodedQuestionDuplicate(): String.Empty));
+                .ForMember(dest => dest.SharedFrom,
+                    opt => opt.MapFrom(src => modelProfileService.GetHardCodedSharedFrom(src.QuestionId)))
+                .ForMember(dest => dest.SharedTo,
+                    opt => opt.MapFrom(src => modelProfileService.GetHardCodedSharedTo(src.QuestionId)))
+                .ForMember(dest => dest.QuestionIdDuplicateFrom,
+                    opt =>
+                        opt.MapFrom(
+                            src =>
+                                src.QuestionId%2 != 0
+                                    ? modelProfileService.GetHardCodedQuestionDuplicate()
+                                    : String.Empty));
 
             Mapper.CreateMap<Question, DataAccess.Data.ProductCourse>()
                   .ForMember(dest => dest.Id, opt => opt.Ignore())
@@ -112,7 +121,8 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<DataAccess.Data.Note, Note>()
                 .ForMember(dest => dest.QuestionId, opt => opt.MapFrom(src => src.Question.DlapId));
 
-            Mapper.CreateMap<Question, QuestionViewModel>();
+            Mapper.CreateMap<Question, QuestionViewModel>()
+                .ForMember(dest => dest.QuestionIdDuplicateFrom, opt => opt.MapFrom(src => src.IsShared ? "9F5C1195-785D-4016-E199-A2E1D6A0A7D4" : String.Empty));
 
             #endregion
         }

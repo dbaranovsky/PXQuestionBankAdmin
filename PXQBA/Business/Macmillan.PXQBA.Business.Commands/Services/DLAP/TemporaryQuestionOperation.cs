@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using AutoMapper;
 using Bfw.Agilix.Commands;
 using Bfw.Agilix.DataContracts;
 using Bfw.Agilix.Dlap;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Common.Helpers;
+
 
 namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 {
@@ -25,24 +27,47 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             this.businessContext = businessContext;
         }
 
-        public void CopyQuestionToTemporaryQuiz(string sourceProductCourseId, string questionIdToCopy)
+        public Models.Question CopyQuestionToTemporaryCourse(string sourceProductCourseId, string questionIdToCopy)
         {
-            var question = GetQuestion(sourceProductCourseId, questionIdToCopy);
-            if (question == null)
+
+            var questionToCopy = CopyQuestionToCourse(sourceProductCourseId, questionIdToCopy, TemporaryCourseId, GetTemporaryQuestionId());
+            AddQuestionToTemporaryQuiz(questionToCopy);
+            return Mapper.Map<Models.Question>(questionToCopy);
+        }
+
+        //TODO: move to QuestionCommands when it's live
+        public string GetQuizIdForQuestion(string questionId, string entityId)
+        {
+            var getItem = new GetItems()
+            {
+                SearchParameters = new ItemSearch
+                {
+                    EntityId = entityId,
+                    Query = string.Format("/Questions/question@id='{0}'",questionId)
+                }
+            };
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(getItem);
+            return getItem.Items.Any() ? getItem.Items.First().Id : string.Empty;
+        }
+
+        public Models.Question CopyQuestionToSourceCourse(string sourceProductCourseId, string sourceQuestionId)
+        {
+            var question = CopyQuestionToCourse(TemporaryCourseId, GetTemporaryQuestionId(), sourceProductCourseId, sourceQuestionId);
+            return Mapper.Map<Models.Question>(question);
+        }
+
+        private Question CopyQuestionToCourse(string sourceProductCourseId, string sourceQuestionId, string destinationProductCourseId, string destinationQuestionId)
+        {
+            var questionToCopy = GetQuestion(sourceProductCourseId, sourceQuestionId);
+            if (questionToCopy == null)
             {
                 throw new NullReferenceException("There is no such question in the course");
             }
-            CopyQuestionToTemporaryCourse(question);
-        }
-
-        private Question CopyQuestionToTemporaryCourse(Question questionToCopy)
-        {
-            questionToCopy.EntityId = TemporaryCourseId;
-            questionToCopy.Id = string.Format(QuestionIdTemplate, Guid.NewGuid());
+            questionToCopy.EntityId = destinationProductCourseId;
+            questionToCopy.Id = destinationQuestionId;
             var cmd = new PutQuestions();
             cmd.Add(questionToCopy);
             businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
-            AddQuestionToTemporaryQuiz(questionToCopy);
             return questionToCopy;
         }
 
@@ -52,10 +77,10 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             var data = item.Root.Element("data");
             var hrefElement = data.Element("href");
             
-            if (hrefElement != null)
+            if (hrefElement == null)
             {
-                hrefElement.Remove();
                 hrefElement = new XElement("href");
+                data.Add(hrefElement);
             }
             hrefElement.Value = "Templates/Data/AHWDG/index.html";
             var questionsElement = data.Element("questions");
@@ -84,7 +109,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             var itemXml = GetExistingTemporaryQuiz();
             if (itemXml == null)
             {
-                var item = CreateTemporaryQuiz();
+                var item = CreateNewTemporaryQuiz();
                 if (item == null)
                 {
                     throw new Exception("Temporary quiz creation failed");
@@ -131,7 +156,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return cmd.ItemDocument;
         }
 
-        private Item CreateTemporaryQuiz()
+        private Item CreateNewTemporaryQuiz()
         {
             var cmd = new PutItems();
             cmd.Add(CreateTemporaryItem());
@@ -151,7 +176,12 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         private string GetTemporaryQuizId()
         {
-            return String.Format(ItemIdTemplate, businessContext.CurrentUser.Id + "1111");
+            return String.Format(ItemIdTemplate, businessContext.CurrentUser.Id);
+        }
+
+        private string GetTemporaryQuestionId()
+        {
+            return String.Format(QuestionIdTemplate, businessContext.CurrentUser.Id);
         }
     }
 }

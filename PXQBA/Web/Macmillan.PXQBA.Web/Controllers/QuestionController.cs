@@ -44,22 +44,16 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult CreateQuestion(int questionType, string bank, string chapter)
         {
-            var question = Mapper.Map<Question, QuestionViewModel>(questionManagementService.CreateQuestion(CourseHelper.CurrentCourse, (QuestionType)questionType, bank, chapter));
-            question.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), "200117", "AHWDG");
-            question.EditorUrl = String.Format(ConfigurationHelper.GetEditorUrlTemplate(), "200117", "AHWDG", "12c19f3103ad4da1b254dd67f17dd1b1");
-            return JsonCamel(question);
+            var question = questionManagementService.CreateQuestion(CourseHelper.CurrentCourse, (QuestionType) questionType, bank, chapter);
+            return JsonCamel(CreateQuestionViewModelForEditing(question));
             
         }
 
         [HttpPost]
         public ActionResult DuplicateQuestion(string questionId)
         {
-
-            var question = Mapper.Map<Question, QuestionViewModel>(questionManagementService.DuplicateQuestion(CourseHelper.CurrentCourse, questionId));
-            question.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), "200117", "AHWDG");
-            question.EditorUrl = String.Format(ConfigurationHelper.GetEditorUrlTemplate(), "200117", "AHWDG", "12c19f3103ad4da1b254dd67f17dd1b1");
-            question.QuestionIdDuplicateFrom = question.IsShared ? "9F5C1195-785D-4016-E199-A2E1D6A0A7D4" : String.Empty;
-            return JsonCamel(question);
+            var question = questionManagementService.DuplicateQuestion(CourseHelper.CurrentCourse, questionId);
+            return JsonCamel(CreateQuestionViewModelForEditing(question));
 
         }
 
@@ -70,16 +64,25 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult UpdateQuestion(Question question)
         {
-            questionManagementService.UpdateQuestion(question);
+            questionManagementService.UpdateQuestion(CourseHelper.CurrentCourse, QuestionHelper.QuestionIdToEdit, question);
             return JsonCamel(new { isError = false });
         }
 
         public ActionResult GetQuestion(string questionId)
         {
-            var question = Mapper.Map<Question, QuestionViewModel>(questionManagementService.GetQuestion(questionId));
-            question.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), "200117", "AHWDG");
-            question.EditorUrl = String.Format(ConfigurationHelper.GetEditorUrlTemplate(), "200117", "AHWDG", "12c19f3103ad4da1b254dd67f17dd1b1");
-            return JsonCamel(question);
+            var question = questionManagementService.GetQuestion(questionId);
+            return JsonCamel(CreateQuestionViewModelForEditing(question));
+        }
+
+        private QuestionViewModel CreateQuestionViewModelForEditing(Question question)
+        {
+            QuestionHelper.QuestionIdToEdit = question.Id;
+            var tempQuestion = questionManagementService.CreateTemporaryQuestion(CourseHelper.CurrentCourse, question.Id);
+            //TODO: need to create question view model from temp question when moved to real API
+            var questionViewModel = Mapper.Map<Question, QuestionViewModel>(question);
+            questionViewModel.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), tempQuestion.EntityId, tempQuestion.QuizId);
+            questionViewModel.EditorUrl = String.Format(ConfigurationHelper.GetEditorUrlTemplate(), tempQuestion.EntityId, tempQuestion.QuizId, tempQuestion.Id);
+            return questionViewModel;
         }
 	}
 }
