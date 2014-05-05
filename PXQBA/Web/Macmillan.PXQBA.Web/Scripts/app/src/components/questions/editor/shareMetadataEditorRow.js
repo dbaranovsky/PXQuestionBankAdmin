@@ -44,7 +44,13 @@ var ShareMetadataEditorRow = React.createClass({
    renderSharedValue: function(){
         if (this.props.question.sourceQuestion != null){
              return  (<div className="cell shared">
-                     <MetadataFieldEditor question={this.props.question.sourceQuestion} editMode={false} metadata={this.props.metadata} editHandler={this.sourceEditHandler} field={this.props.field} title={this.props.title} />
+                     <MetadataFieldEditor question={this.props.question.sourceQuestion} 
+                                          editMode={false} 
+                                          metadata={this.props.metadata}
+                                          editHandler={this.sourceEditHandler} 
+                                          applyHandler= {this.applyHandler}
+                                          field={this.props.field} 
+                                          title={this.props.title} />
                  </div>);
         }
     },
@@ -68,16 +74,19 @@ var ShareMetadataEditorRow = React.createClass({
     },
 
     renderLocalValue: function(){
-       
- //    alert(this.state.isDisabled); 
       return  (<div className="cell">
-                 <MetadataFieldEditor question={this.props.question} isDisabled={this.state.isDisabled} metadata={this.props.metadata} editHandler={this.props.editHandler} field={this.props.field} title={this.props.title} />
+                 <MetadataFieldEditor question={this.props.question} 
+                                    isDisabled={this.state.isDisabled} 
+                                    metadata={this.props.metadata} 
+                                    editHandler={this.props.editHandler} 
+                                    field={this.props.field} 
+                                    title={this.props.title} />
                  </div>);
 
     },
 
     componentDidMount: function(){
-    	$(this.getDOMNode()).find("[name='switcher']").switchButton({labels_placement: 'both', height: 10, on_callback: this.override, off_callback: this.restore});
+    	 this.updateSwitcher();
     },
 
     toggleState: function(){
@@ -88,13 +97,28 @@ var ShareMetadataEditorRow = React.createClass({
       this.toggleState();
     },
 
-    restore: function(){
-        this.toggleState();
+    restoreField: function(){
+        this.setState({isDisabled: true});
+        this.restoreLocalQuestion();
+       
+    },
+
+    restoreLocalQuestion: function(){
         var question = this.props.question;
         question[this.props.field] = question.sourceQuestion[this.props.field];
         this.props.editHandler(question);
     },
 
+    applyHandler: function(){
+
+        this.restoreLocalQuestion();
+        this.setState({isDisabled: true});
+        $(this.getDOMNode()).find("[name='switcher']").switchButton({checked: false});
+    },
+
+    updateSwitcher: function(){
+        $(this.getDOMNode()).find("[name='switcher']").switchButton({labels_placement: 'both', height: 10, on_callback: this.override, off_callback: this.restoreField});
+    },
 
     render: function() {
     		return(   <div className="row">

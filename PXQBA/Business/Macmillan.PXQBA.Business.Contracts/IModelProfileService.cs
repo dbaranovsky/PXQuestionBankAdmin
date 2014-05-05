@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Macmillan.PXQBA.Business.Models;
 
 namespace Macmillan.PXQBA.Business.Contracts
@@ -16,5 +17,6 @@ namespace Macmillan.PXQBA.Business.Contracts
         IEnumerable<string> GetHardCodedSharedTo(int questionId);
         string GetHardCodedQuestionDuplicate();
         string GetQuizIdForQuestion(string id, string entityId);
+        Question GetHardCodedSourceQuestion(string sharedFrom);
     }
 }

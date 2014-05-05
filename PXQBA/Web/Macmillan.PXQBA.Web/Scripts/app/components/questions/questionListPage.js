@@ -66,7 +66,6 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
            loading: true,
            editorCaption: window.enums.dialogCaptions.duplicateQuestion
         });
-        questionDataManager.getMetadataFields().done(this.loadMetadataForEditingComplete);
         questionDataManager.getDuplicateQuestionTemplate(questionId).done(this.loadTemplateComplete.bind(this, false));
     },
 
@@ -75,12 +74,15 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
            loading: true,
            editorCaption: window.enums.dialogCaptions.editQuestion
         });
-        questionDataManager.getMetadataFields().done(this.loadMetadataForEditingComplete);
        questionDataManager.getQuestion(questionId).done(this.loadTemplateComplete.bind(this, false));
     },
               
     loadTemplateComplete: function(isNew, template) { 
         
+        if(!isNew){
+          questionDataManager.getMetadataFields().done(this.loadMetadataForEditingComplete.bind(this, template));
+          return;
+        }
         this.setState({
                  loading: false,
                  editor: {
@@ -112,14 +114,15 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
 
     },
 
-    loadMetadataForEditingComplete: function(metadata){
+    loadMetadataForEditingComplete: function(template, metadata){
          this.setState({
-              loading: true,
+              loading: false,
                editor: {
                    metadata: metadata,
-                   template: this.state.editor.template,
+                   template: template,
                    isNew: false,
-                   step: this.editorsSteps.step2
+                   step: this.editorsSteps.step2,
+                   caption: this.state.editorCaption
                    }
         });
     },

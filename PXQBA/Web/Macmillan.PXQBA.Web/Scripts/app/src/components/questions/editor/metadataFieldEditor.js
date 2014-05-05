@@ -10,7 +10,8 @@ var MetadataFieldEditor = React.createClass({
        var allowDeselect = metadataField.length>0 ? metadataField[0].allowDeselect : false;
       return { editMode: this.props.editMode === undefined? true : this.props.editMode,
                editMenu: false,
-               allowDeselect: allowDeselect};
+               allowDeselect: allowDeselect,
+               metadataField: metadataField.length>0 ? metadataField[0] : null};
     },
      editHandler: function(selectedOptions){
         var text = "";
@@ -65,23 +66,23 @@ var MetadataFieldEditor = React.createClass({
 
 
        var field = this.props.field;
-       var metadataField = $.grep(this.props.metadata, function(e){ return $.inArray(e.metadataName, [field, "dlap_q_"+field, "dlap_"+field, field.toLowerCase()])!=-1;  });
-       var editorType = metadataField.length>0 ? metadataField[0].editorDescriptor.editorType : 0;
+       var metadataField = this.state.metadataField;
+       var editorType = metadataField != null  ? metadataField.editorDescriptor.editorType : 0;
        var currentValue = this.props.question[this.props.field];
 
        if(this.state.editMode){
        switch (editorType) {
           case window.enums.editorType.singleSelect:
-             return (<select ref="editor" className="single-selector" disabled={this.props.isDisabled} value={currentValue}> {this.renderMenuItems(metadataField[0].editorDescriptor.availableChoice)} </select> );
+             return (<select ref="editor" className="single-selector" disabled={this.props.isDisabled} value={currentValue}> {this.renderMenuItems(metadataField.editorDescriptor.availableChoice)} </select> );
 
           case window.enums.editorType.multiSelect:
               if(field=="learningObjectives"){
-                return (<LearningObjectEditor values={currentValue} isDisabled={this.props.isDisabled} metadataField={metadataField[0]} question={this.props.question} field={this.props.field} editHandler={this.props.editHandler} />);
+                return (<LearningObjectEditor values={currentValue} isDisabled={this.props.isDisabled} metadataField={metadataField} question={this.props.question} field={this.props.field} editHandler={this.props.editHandler} />);
               }
-             return (<MultiSelectEditor values={currentValue} isDisabled={this.props.isDisabled} metadataField={metadataField[0]} question={this.props.question} field={this.props.field} editHandler={this.props.editHandler} />);
+             return (<MultiSelectEditor values={currentValue} isDisabled={this.props.isDisabled} metadataField={metadataField} question={this.props.question} field={this.props.field} editHandler={this.props.editHandler} />);
 
           default: 
-            if(metadataField[0]!== undefined && metadataField[0].isMultiline){
+            if(metadataField!= null && metadataField.isMultiline){
                  return ( <textarea onChange={this.editHandler} disabled={this.props.isDisabled}  ref="editor" className={this.props.isDisabled? "disabled" : ""}  rows="10" type="text" placeholder="Enter text..." value={currentValue} />);  
              }
            
@@ -93,7 +94,7 @@ var MetadataFieldEditor = React.createClass({
 
        switch (editorType) {
           case window.enums.editorType.singleSelect:
-              var singleSelectValue = metadataField[0].editorDescriptor.availableChoice[currentValue];  
+              var singleSelectValue = metadataField.editorDescriptor.availableChoice[currentValue];  
               values.push(<div className="current-values-view"> {singleSelectValue === undefined? currentValue : singleSelectValue} 
                                 <span className="glyphicon glyphicon-pencil btn custom-btn"  data-toggle="tooltip" title="Edit" onClick={this.switchEditMode}></span>
                            </div>);
@@ -161,16 +162,14 @@ var MetadataFieldEditor = React.createClass({
 
     componentDidMount: function(){
        var self = this;
-    this.componentDidUpdate();
+       this.componentDidUpdate();
       if (!this.props.setDefault){
         return;
       }
       var field = this.props.field;
-      var metadataField = $.grep(this.props.metadata, function(e){ 
-                                                        return $.inArray(e.metadataName, [field, "dlap_q_"+field, "dlap_"+field, field.toLowerCase()])!=-1; 
-                                                      });
+      var metadataField = this.state.metadataField;
       var question = this.props.question;
-      var availableChoices = metadataField[0].editorDescriptor.availableChoice;
+      var availableChoices = metadataField.editorDescriptor.availableChoice;
         for (var propertyName in availableChoices) {
             availableChoice = availableChoices[propertyName];
             question[this.props.field] = (availableChoice.toLowerCase() == propertyName.toLowerCase())? availableChoice: propertyName;
@@ -181,13 +180,20 @@ var MetadataFieldEditor = React.createClass({
     },
 
     applyChanges: function(){
+       this.saveMetafieldValue();
+      this.props.applyHandler();
       this.switchEditMode();
-
     },
 
     declineChanges: function(){
       this.updateQuestion(this.state.currentValue);
       this.switchEditMode();
+    },
+
+    saveMetafieldValue: function(){
+      questionDataManager.saveQuestionData(this.props.question.id,
+                                           this.state.metadataField== null? this.props.field : this.state.metadataField.metadataName, 
+                                           this.props.question[this.props.field]);
     },
 
     renderMenu: function(){
