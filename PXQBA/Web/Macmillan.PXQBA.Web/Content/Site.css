@@ -309,9 +309,31 @@ input[type="checkbox"].input-validation-error {
     float: left;
 }
 
+.cell.shared {
+    border-right: 1px #dcdcdc solid;
+    height: 100%;
+   
+}
+
 .local.wide .cell {
     width: 425px;
+    
 }
+
+.local.wide textarea {
+    width: 425px !important;
+}
+
+.override-control {
+     float: left;
+    margin-bottom: -50px;
+}
+
+input.disabled, textarea.disabled {
+    background-color: #dcdcdc;
+    color: #808080;
+}
+
 
 .local .cell {
     width: 956px;
@@ -320,7 +342,7 @@ input[type="checkbox"].input-validation-error {
 
 
 .cell {
-    float: left;
+    display: table-cell;
 }
 
 .local .row {
@@ -329,10 +351,19 @@ input[type="checkbox"].input-validation-error {
 
 .local .cell.control {
     width: 100px;
-    padding-top: 36px;
+    padding-top: 20px;
     padding-left: 10px;
-    font-size: 13px !important;
+    font-size: 15px !important;
+    text-align: center;
 } 
+
+
+.switch-wrapper .switch-button-background {
+    margin-right: 2px;
+    margin-left: 2px;
+    margin-top: 3px;  
+}
+
 
 
 .tab-body input[type="radio"] {

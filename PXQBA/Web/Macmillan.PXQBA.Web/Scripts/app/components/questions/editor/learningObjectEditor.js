@@ -45,6 +45,17 @@ var LearningObjectEditor = React.createClass({displayName: 'LearningObjectEditor
     },
 
 
+    componentDidUpdate: function(){
+      var guids = [];
+      $.each(this.props.question[this.props.field], function(i, objective){
+           guids.push(objective.guid);
+       });
+      
+      var selector = this.getDOMNode();
+      $(selector).val(guids);
+      $(selector).trigger("chosen:updated");
+    },
+
     componentDidMount: function(){
         var selector = this.getDOMNode();
         var chosenOptions = {width: "100%", hide_dropdown: false, allow_add_new_values: this.props.metadataField.canAddValues};
@@ -70,7 +81,7 @@ var LearningObjectEditor = React.createClass({displayName: 'LearningObjectEditor
    
     render: function() {
         return (
-             React.DOM.select( {'data-placeholder':"No Value", multiple:true}, 
+             React.DOM.select( {'data-placeholder':"No Value", multiple:true, disabled:this.props.isDisabled}, 
                     this.renderMenuItems()  
              ) 
          );

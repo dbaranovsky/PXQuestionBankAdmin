@@ -76,16 +76,16 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
 
           case window.enums.editorType.multiSelect:
               if(field=="learningObjectives"){
-                return (LearningObjectEditor( {values:currentValue, metadataField:metadataField[0], question:this.props.question, field:this.props.field, editHandler:this.props.editHandler} ));
+                return (LearningObjectEditor( {values:currentValue, isDisabled:this.props.isDisabled, metadataField:metadataField[0], question:this.props.question, field:this.props.field, editHandler:this.props.editHandler} ));
               }
-             return (MultiSelectEditor( {values:currentValue, metadataField:metadataField[0], question:this.props.question, field:this.props.field, editHandler:this.props.editHandler} ));
+             return (MultiSelectEditor( {values:currentValue, isDisabled:this.props.isDisabled, metadataField:metadataField[0], question:this.props.question, field:this.props.field, editHandler:this.props.editHandler} ));
 
           default: 
             if(metadataField[0]!== undefined && metadataField[0].isMultiline){
-                 return ( React.DOM.textarea( {onChange:this.editHandler, disabled:this.props.isDisabled,  ref:"editor", className:"question-body-editor",  rows:"10", type:"text", placeholder:"Enter text...", value:currentValue} ));  
+                 return ( React.DOM.textarea( {onChange:this.editHandler, disabled:this.props.isDisabled,  ref:"editor", className:this.props.isDisabled? "disabled" : "",  rows:"10", type:"text", placeholder:"Enter text...", value:currentValue} ));  
              }
            
-             return (React.DOM.input( {type:"text", onChange:this.editHandler, disabled:this.props.isDisabled, ref:"editor", value:currentValue}));
+             return (React.DOM.input( {type:"text", onChange:this.editHandler, disabled:this.props.isDisabled, className:this.props.isDisabled? "disabled" : "", ref:"editor", value:currentValue}));
         }
       }
 
@@ -102,11 +102,11 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
                 
                   if(field=="learningObjectives"){
                      $.each(currentValue, function(i, value){
-                       values.push(React.DOM.div( {className:"current-values-view learning-objectives label label-default"},  " ", value.description, " " ));
+                       values.push(React.DOM.div( {className:"current-values-view learning-objectives label label-warning"},  " ", value.description, " " ));
                      });
                   }else{
                      $.each(currentValue, function(i, value){
-                        values.push(React.DOM.div( {className:"current-values-view label label-default"}, value));
+                        values.push(React.DOM.div( {className:"current-values-view label label-warning"}, value));
                      });
                   }
 
@@ -156,6 +156,7 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
                            .change(function(e, params){
                               self.editHandler(e.currentTarget.selectedOptions);
                            });
+       $(self.getDOMNode()).find('.single-selector').trigger("chosen:updated");
     },
 
     componentDidMount: function(){

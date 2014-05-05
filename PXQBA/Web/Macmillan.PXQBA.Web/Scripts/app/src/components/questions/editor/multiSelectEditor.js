@@ -65,7 +65,7 @@ var MultiSelectEditor = React.createClass({
     },
 
 
-    componentDidMount: function(){
+   componentDidMount: function(){
         var selector = this.getDOMNode();
         var chosenOptions = {width: "100%", hide_dropdown: false, allow_add_new_values: this.props.metadataField.canAddValues};
   
@@ -79,10 +79,16 @@ var MultiSelectEditor = React.createClass({
                          
     },
 
+    componentDidUpdate: function(){
+       var selector = this.getDOMNode();
+       $(selector).val(this.props.question[this.props.field]);
+       $(selector).trigger("chosen:updated");
+    },
+
    
     render: function() {
         return (
-             <select data-placeholder="No Value" multiple>
+             <select data-placeholder="No Value" multiple disabled={this.props.isDisabled}>
                     {this.renderMenuItems()}  
              </select> 
          );
