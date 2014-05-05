@@ -122,7 +122,8 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.QuestionId, opt => opt.MapFrom(src => src.Question.DlapId));
 
             Mapper.CreateMap<Question, QuestionViewModel>()
-                .ForMember(dest => dest.QuestionIdDuplicateFrom, opt => opt.MapFrom(src => src.IsShared ? "9F5C1195-785D-4016-E199-A2E1D6A0A7D4" : String.Empty));
+                .ForMember(dest => dest.QuestionIdDuplicateFrom, opt => opt.MapFrom(src => src.IsShared ? "9F5C1195-785D-4016-E199-A2E1D6A0A7D4" : String.Empty))
+                .ForMember(dest => dest.SourceQuestion, opt => opt.MapFrom(src => modelProfileService.GetHardCodedSourceQuestion(src.SharedFrom)));
 
             #endregion
         }
