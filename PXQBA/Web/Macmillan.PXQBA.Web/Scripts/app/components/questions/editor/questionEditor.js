@@ -69,7 +69,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
                       ),
                       React.DOM.br(null ),React.DOM.br(null ),
                       React.DOM.button( {className:"btn btn-primary ",  'data-toggle':"modal", onClick:self.saveQuestion} , 
-                                   "Leave visible the previos version"
+                                   "Leave visible the previous version"
                       ),
                       React.DOM.br(null ),React.DOM.br(null ),
                       React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal", onClick:self.closeSaveWarningDialog}, 
@@ -107,7 +107,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
                       ),
                 
                 React.DOM.div(null, 
-                  QuestionEditorTabs( {question:this.state.question, editHandler:this.editHandler, isDuplicate:this.props.isDuplicate, getSourceQuestion:this.getSourceQuestion})
+                  QuestionEditorTabs( {question:this.state.question, metadata:this.props.metadata, editHandler:this.editHandler, isDuplicate:this.props.isDuplicate, getSourceQuestion:this.getSourceQuestion})
                 ),
                 this.renderWarningDialog()
 

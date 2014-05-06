@@ -157,7 +157,16 @@ namespace Macmillan.PXQBA.Business.Services
 
         public string GetHardCodedQuestionDuplicate()
         {
-            return "9F5C1195-785D-4016-E199-A2E1D6A0A7D4";
+            return "B1D5E8B8-2798-9051-B1D1-86320975868A";
+        }
+
+        public Question GetHardCodedSourceQuestion(string sharedFrom)
+        {
+            if (string.IsNullOrEmpty(sharedFrom))
+            {
+                return null;
+            }
+            return questionCommands.GetQuestion(GetHardCodedQuestionDuplicate());
         }
 
         public string GetQuizIdForQuestion(string id, string entityId)

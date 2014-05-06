@@ -180,6 +180,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\bootstrap\bootstrap-notify.css" />
+    <Content Include="Content\bootstrap\bootstrap-switch.min.css" />
     <Content Include="Content\bootstrap\bootstrap-theme.css" />
     <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap\bootstrap.css" />
@@ -191,6 +192,7 @@
     <Content Include="Content\img\shared-to.png" />
     <Content Include="Content\img\spinning.gif" />
     <Content Include="Content\img\unshare.png" />
+    <Content Include="Content\jquery.switchButton.css" />
     <Content Include="Content\Paging.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -217,10 +219,12 @@
     <Content Include="Scripts\app\components\questions\editor\learningObjectEditor.js" />
     <Content Include="Scripts\app\components\questions\editor\metadataFieldEditor.js" />
     <Content Include="Scripts\app\components\questions\editor\multiSelectEditor.js" />
+    <Content Include="Scripts\app\components\questions\editor\overideControls.js" />
     <Content Include="Scripts\app\components\questions\editor\questionEditor.js" />
     <Content Include="Scripts\app\components\questions\editor\questionEditorDialog.js" />
     <Content Include="Scripts\app\components\questions\editor\questionEditorTabs.js" />
     <Content Include="Scripts\app\components\questions\editor\questionMetadataEditor.js" />
+    <Content Include="Scripts\app\components\questions\editor\shareMetadataEditorRow.js" />
     <Content Include="Scripts\app\components\questions\editQuestionNotesDialog.js" />
     <Content Include="Scripts\app\components\questions\filter\questionFilter.js" />
     <Content Include="Scripts\app\components\questions\filter\questionFilterItemBase.js" />
@@ -278,10 +282,12 @@
     <Content Include="Scripts\app\src\components\questions\editor\learningObjectEditor.js" />
     <Content Include="Scripts\app\src\components\questions\editor\metadataFieldEditor.js" />
     <Content Include="Scripts\app\src\components\questions\editor\multiSelectEditor.js" />
+    <Content Include="Scripts\app\src\components\questions\editor\overideControls.js" />
     <Content Include="Scripts\app\src\components\questions\editor\questionEditor.js" />
     <Content Include="Scripts\app\src\components\questions\editor\questionEditorDialog.js" />
     <Content Include="Scripts\app\src\components\questions\editor\questionEditorTabs.js" />
     <Content Include="Scripts\app\src\components\questions\editor\questionMetadataEditor.js" />
+    <Content Include="Scripts\app\src\components\questions\editor\shareMetadataEditorRow.js" />
     <Content Include="Scripts\app\src\components\questions\filter\questionFilterItemMultiSelect.js" />
     <Content Include="Scripts\app\src\components\questions\filter\questionFilterSingleSelect.js" />
     <Content Include="Scripts\app\src\components\questions\notes\editQuestionNotesDialog.js" />
@@ -323,6 +329,7 @@
     <Content Include="Scripts\app\src\components\titles\titlePage.js" />
     <Content Include="Scripts\bootstrap\bootstrap-notify.js" />
     <Content Include="Scripts\bootstrap\bootstrap-paginator.min.js" />
+    <Content Include="Scripts\bootstrap\bootstrap-switch.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\chosen\chosen.js" />
@@ -335,6 +342,8 @@
     <Content Include="Scripts\handlebars\handlebars-v1.3.0.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery\jquery-ui-1.10.4.min.js" />
+    <Content Include="Scripts\jquery\jquery.switchButton.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\react\JSXTransformer-0.9.0.js" />
     <Content Include="Scripts\react\react-0.9.0.js" />

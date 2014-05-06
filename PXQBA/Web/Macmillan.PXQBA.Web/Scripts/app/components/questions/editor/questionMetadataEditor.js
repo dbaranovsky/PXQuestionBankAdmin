@@ -2,54 +2,31 @@
 * @jsx React.DOM
 */
 var QuestionMetadataEditor = React.createClass({displayName: 'QuestionMetadataEditor',
-
-    getInitialState: function() {
-      return { metadata: []};
-    },
-
-    
-    loadMetadata: function(data)
-    {
-        this.setState({metadata: data});
-    },
-
-    componentDidMount: function(){
-       questionDataManager.getMetadataFields().done(this.loadMetadata); 
-    },
-
-    loadSourceQuestion: function(event){
-      event.preventDefault();
-      this.props.getSourceQuestion();
-    },
-
-    renderSharingNotification: function(){
-      if (this.props.question.isDuplicateOfSharedQuestion && this.props.isDuplicate) {
-        return (React.DOM.div( {className:"shared-note"}, "This question is a duplicate of a  ",
-                    React.DOM.a( {className:"shared-question-link", href:"", onClick:this.loadSourceQuestion}, "shared question"),
-                    React.DOM.a( {href:"", onClick:this.loadSourceQuestion}, "Delete question")
-               ));
-      }
-
-      return null;
-    },
-
-
+   
     render: function() {
-        return (
-             React.DOM.div( {className:"tab-body"}, 
-                            this.renderSharingNotification(),
-                           MetadataFieldEditor( {question:this.props.question, metadata:this.state.metadata, editHandler:this.props.editHandler, field:"title"}),
-                           MetadataFieldEditor( {question:this.props.question, metadata:this.state.metadata, editHandler:this.props.editHandler, field:"chapter"}),
-                           MetadataFieldEditor( {question:this.props.question, metadata:this.state.metadata, editHandler:this.props.editHandler, field:"bank"}),
-                           MetadataFieldEditor( {question:this.props.question, metadata:this.state.metadata, editHandler:this.props.editHandler, field:"keywords"}),
-                           MetadataFieldEditor( {question:this.props.question, metadata:this.state.metadata, editHandler:this.props.editHandler, field:"suggestedUse", title:"Suggested Use"}),
-                           MetadataFieldEditor( {question:this.props.question, metadata:this.state.metadata, editHandler:this.props.editHandler, field:"learningObjectives", title:"Learning Objective"}),
-                           MetadataFieldEditor( {question:this.props.question, metadata:this.state.metadata, editHandler:this.props.editHandler, field:"excerciseNo", title:"Exercise Number"}),
-                           MetadataFieldEditor( {question:this.props.question, metadata:this.state.metadata, editHandler:this.props.editHandler, field:"difficulty", allowDeselect:true} ),
-                           MetadataFieldEditor( {question:this.props.question, metadata:this.state.metadata, editHandler:this.props.editHandler, field:"cognitiveLevel", title:"Cognitive Level"}),
-                           MetadataFieldEditor( {question:this.props.question, metadata:this.state.metadata, editHandler:this.props.editHandler, field:"status"} ),
-                           MetadataFieldEditor( {question:this.props.question, metadata:this.state.metadata, editHandler:this.props.editHandler, field:"guidance"})
-             ) 
+        var style = this.props.question.sourceQuestion != null? {} : {display: "none !important"};
+        return ( React.DOM.div( {className:this.props.question.sourceQuestion == null ? "local" : "local wide"}, 
+                      React.DOM.div( {className:"row", style:style}, 
+                        React.DOM.div( {className:"cell"},  " ", React.DOM.span( {className:"label label-info metadata-info-label"}, "Shared values")),
+                        React.DOM.div( {className:"cell control"}),
+                        React.DOM.div( {className:"cell"},  " ", React.DOM.span( {className:"label label-info metadata-info-label"}, "Local values"))
+                      ),
+
+                         
+                        ShareMetadataEditorRow( {question:this.props.question, metadata:this.props.metadata, editHandler:this.props.editHandler, field:"title"} ),
+                        ShareMetadataEditorRow( {question:this.props.question, metadata:this.props.metadata, editHandler:this.props.editHandler, field:"chapter"} ),
+                        ShareMetadataEditorRow( {question:this.props.question, metadata:this.props.metadata, editHandler:this.props.editHandler, field:"bank"} ),
+                        ShareMetadataEditorRow( {question:this.props.question, metadata:this.props.metadata, editHandler:this.props.editHandler, field:"keywords"} ),
+                        ShareMetadataEditorRow( {question:this.props.question, metadata:this.props.metadata, editHandler:this.props.editHandler, field:"suggestedUse", title:"Suggested Use"}),
+                        ShareMetadataEditorRow( {question:this.props.question, metadata:this.props.metadata, editHandler:this.props.editHandler, field:"learningObjectives",  title:"Learning Objective"}),
+                        ShareMetadataEditorRow( {question:this.props.question, metadata:this.props.metadata, editHandler:this.props.editHandler, field:"excerciseNo", title:"Exercise Number"}),
+                        ShareMetadataEditorRow( {question:this.props.question, metadata:this.props.metadata, editHandler:this.props.editHandler, field:"difficulty"} ),
+                        ShareMetadataEditorRow( {question:this.props.question, metadata:this.props.metadata, editHandler:this.props.editHandler, field:"cognitiveLevel", title:"Cognitive Level"}),
+                        ShareMetadataEditorRow( {question:this.props.question, metadata:this.props.metadata, editHandler:this.props.editHandler, field:"status"} ),
+                        ShareMetadataEditorRow( {question:this.props.question, metadata:this.props.metadata, editHandler:this.props.editHandler, field:"guidance"} )            
+                 )
+
+           
          );
     }
 });

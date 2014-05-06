@@ -50,7 +50,8 @@ var QuestionListPage = React.createClass({
                                           isNew={this.state.editor.isNew}
                                           showOnCreate={true}
                                           question={this.state.editor.template}
-                                          caption={this.state.editor.caption }/>);
+                                          caption={this.state.editor.caption }
+                                          metadata={this.state.editor.metadata} />);
           default:
             return null;
         }
@@ -78,12 +79,17 @@ var QuestionListPage = React.createClass({
               
     loadTemplateComplete: function(isNew, template) { 
         
+        if(!isNew){
+          questionDataManager.getMetadataFields().done(this.loadMetadataForEditingComplete.bind(this, template));
+          return;
+        }
         this.setState({
                  loading: false,
                  editor: {
                     template: template,
                     step: this.editorsSteps.step2,
                     isNew: isNew,
+                    metadata: this.state.editor.metadata,
                     caption: isNew? window.enums.dialogCaptions.newQuestion : this.state.editorCaption}
                     });
     },
@@ -106,6 +112,19 @@ var QuestionListPage = React.createClass({
       this.setState({ loading:true} );
       questionDataManager.getMetadataFields().done(this.loadMetadataComplete.bind(this))
 
+    },
+
+    loadMetadataForEditingComplete: function(template, metadata){
+         this.setState({
+              loading: false,
+               editor: {
+                   metadata: metadata,
+                   template: template,
+                   isNew: false,
+                   step: this.editorsSteps.step2,
+                   caption: this.state.editorCaption
+                   }
+        });
     },
 
     loadMetadataComplete: function(metadata) {
@@ -164,6 +183,7 @@ var QuestionListPage = React.createClass({
                 </div>
                 {this.renderQuestionEditorDialog()}
                 {this.renderNotesDialog()}
+                 
             </div>
             );
     }

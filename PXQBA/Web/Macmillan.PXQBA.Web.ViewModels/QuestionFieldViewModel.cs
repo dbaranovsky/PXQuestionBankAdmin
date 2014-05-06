@@ -22,5 +22,7 @@ namespace Macmillan.PXQBA.Web.ViewModels
         public bool IsMultiline { get; set; }
 
         public string FilterType { get; set; }
+
+        public bool AllowDeselect { get; set; }
     }
 }

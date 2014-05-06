@@ -3,7 +3,7 @@
 */
 var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
 
-  
+
     tabsInitializer: function (container) {
        //  container.find('a:first').tab('show')
     },
@@ -15,14 +15,28 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
            $(tabs).find('.iframe-waiting').hide();
            $(tabs).find('iframe').show();
         });
-  
+          
     },
 
     componentDidUpdate: function () {
         this.tabsInitializer($(this.getDOMNode()));
     },
 
-  
+    loadSourceQuestion: function(event){
+      event.preventDefault();
+      this.props.getSourceQuestion();
+    },
+
+    renderSharingNotification: function(){
+      if (this.props.question.isDuplicateOfSharedQuestion && this.props.isDuplicate) {
+        return (React.DOM.div( {className:"shared-note"}, "This question is a duplicate of a  ",
+                    React.DOM.a( {className:"shared-question-link", href:"", onClick:this.loadSourceQuestion}, "shared question"),
+                    React.DOM.a( {href:"", onClick:this.loadSourceQuestion}, "Delete question")
+               ));
+      }
+
+      return null;
+    },
 
     render: function() {
         return ( 
@@ -53,9 +67,13 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                        )
                     ),
                     React.DOM.div( {className:"tab-pane", id:"metadata"}, 
-                       QuestionMetadataEditor(  {question:this.props.question, editHandler:this.props.editHandler, isDuplicate:this.props.isDuplicate, getSourceQuestion:this.props.getSourceQuestion}),
+                       React.DOM.div( {className:this.props.question.sourceQuestion == null ? "tab-body" : "tab-body wide"}, 
+                            this.renderSharingNotification(),
+                           
+                            QuestionMetadataEditor( {metadata:this.props.metadata, question:this.props.question, editHandler:this.props.editHandler, isDuplicate:this.props.isDuplicate} ),
+                           
                            React.DOM.br(null )
-
+                      )
                     ),
                      React.DOM.div( {className:"tab-pane", id:"history"}, 
                        React.DOM.div( {className:"tab-body"}, 
