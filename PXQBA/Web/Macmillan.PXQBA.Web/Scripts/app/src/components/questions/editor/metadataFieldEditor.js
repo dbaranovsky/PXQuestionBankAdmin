@@ -94,10 +94,12 @@ var MetadataFieldEditor = React.createClass({
 
        switch (editorType) {
           case window.enums.editorType.singleSelect:
-              var singleSelectValue = metadataField.editorDescriptor.availableChoice[currentValue];  
+              var singleSelectValue = metadataField.editorDescriptor.availableChoice[currentValue];
+              if(currentValue!= ''){  
               values.push(<div className="current-values-view"> {singleSelectValue === undefined? currentValue : singleSelectValue} 
                                 <span className="glyphicon glyphicon-pencil btn custom-btn"  data-toggle="tooltip" title="Edit" onClick={this.switchEditMode}></span>
                            </div>);
+            }
               break;
           case window.enums.editorType.multiSelect:
                 

@@ -101,8 +101,9 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                             src =>
                                 src.QuestionId%2 != 0
                                     ? modelProfileService.GetHardCodedQuestionDuplicate()
-                                    : String.Empty))
-                .ForMember(dest => dest.SharedMetadata, opt => opt.MapFrom(src => src));
+                                    : String.Empty));
+               // .ForMember(dest => dest.SharedMetadata, opt => opt.MapFrom(src => src));
+              //   .ForMember(dest => dest.SharedMetadata, opt => opt.MapFrom(src => src.));
 
             Mapper.CreateMap<DataAccess.Data.ProductCourse, SharedMetadata>()
                 .ForMember(dest => dest.Keywords, opt => opt.MapFrom(src => src.Keywords.Split('|')))
@@ -133,7 +134,8 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
 
             Mapper.CreateMap<Question, QuestionViewModel>()
                 .ForMember(dest => dest.QuestionIdDuplicateFrom, opt => opt.MapFrom(src => src.IsShared ? "9F5C1195-785D-4016-E199-A2E1D6A0A7D4" : String.Empty))
-                .ForMember(dest => dest.SourceQuestion, opt => opt.MapFrom(src => modelProfileService.GetHardCodedSourceQuestion(src.SharedFrom)));
+                .ForMember(dest => dest.SharedMetadata, opt => opt.MapFrom(src => modelProfileService.GetHardCodedSourceQuestion(src.SharedFrom)));
+            Mapper.CreateMap<Question, SharedMetadata>();
 
             #endregion
         }

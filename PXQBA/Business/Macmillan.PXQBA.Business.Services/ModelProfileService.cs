@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
@@ -160,13 +161,13 @@ namespace Macmillan.PXQBA.Business.Services
             return "B1D5E8B8-2798-9051-B1D1-86320975868A";
         }
 
-        public Question GetHardCodedSourceQuestion(string sharedFrom)
+        public SharedMetadata GetHardCodedSourceQuestion(string sharedFrom)
         {
             if (string.IsNullOrEmpty(sharedFrom))
             {
                 return null;
             }
-            return questionCommands.GetQuestion(GetHardCodedQuestionDuplicate());
+            return Mapper.Map<Question, SharedMetadata>(questionCommands.GetQuestion(GetHardCodedQuestionDuplicate())); 
         }
 
         public string GetQuizIdForQuestion(string id, string entityId)
