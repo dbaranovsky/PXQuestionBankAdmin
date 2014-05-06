@@ -33,7 +33,7 @@ var QuestionEditorDialog = React.createClass({
     },
 
     closeDialog: function(){
-         monitorChanges(".local", true);
+         monitorChanges(".local", false);
          $(this.getDOMNode()).modal("hide");
          $('.modal-backdrop').remove(); 
     },

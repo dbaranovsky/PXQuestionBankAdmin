@@ -94,10 +94,12 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
 
        switch (editorType) {
           case window.enums.editorType.singleSelect:
-              var singleSelectValue = metadataField.editorDescriptor.availableChoice[currentValue];  
+              var singleSelectValue = metadataField.editorDescriptor.availableChoice[currentValue];
+              if(currentValue!= ''){  
               values.push(React.DOM.div( {className:"current-values-view"},  " ", singleSelectValue === undefined? currentValue : singleSelectValue, 
                                 React.DOM.span( {className:"glyphicon glyphicon-pencil btn custom-btn",  'data-toggle':"tooltip", title:"Edit", onClick:this.switchEditMode})
                            ));
+            }
               break;
           case window.enums.editorType.multiSelect:
                 

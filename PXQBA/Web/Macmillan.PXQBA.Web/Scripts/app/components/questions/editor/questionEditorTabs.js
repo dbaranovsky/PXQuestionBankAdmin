@@ -67,7 +67,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                        )
                     ),
                     React.DOM.div( {className:"tab-pane", id:"metadata"}, 
-                       React.DOM.div( {className:this.props.question.sourceQuestion == null ? "tab-body" : "tab-body wide"}, 
+                       React.DOM.div( {className:this.props.question.sharedMetadata == null ? "tab-body" : "tab-body wide"}, 
                             this.renderSharingNotification(),
                            
                             QuestionMetadataEditor( {metadata:this.props.metadata, question:this.props.question, editHandler:this.props.editHandler, isDuplicate:this.props.isDuplicate} ),

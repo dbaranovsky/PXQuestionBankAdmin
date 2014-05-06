@@ -17,6 +17,6 @@ namespace Macmillan.PXQBA.Business.Contracts
         IEnumerable<string> GetHardCodedSharedTo(int questionId);
         string GetHardCodedQuestionDuplicate();
         string GetQuizIdForQuestion(string id, string entityId);
-        Question GetHardCodedSourceQuestion(string sharedFrom);
+        SharedMetadata GetHardCodedSourceQuestion(string sharedFrom);
     }
 }

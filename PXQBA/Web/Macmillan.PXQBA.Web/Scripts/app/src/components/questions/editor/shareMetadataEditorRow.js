@@ -7,7 +7,7 @@ var ShareMetadataEditorRow = React.createClass({
 
     var field = this.props.field; 
     var isDisabled = false;
-    if (this.props.question.sourceQuestion == null){
+    if (this.props.question.sharedMetadata == null){
       return ({isDisabled: isDisabled});
     }
 
@@ -20,17 +20,17 @@ var ShareMetadataEditorRow = React.createClass({
 
         var sharedGuids = [];
 
-          $.each(this.props.question.sourceQuestion[field], function(i, objective){
+          $.each(this.props.question.sharedMetadata[field], function(i, objective){
            sharedGuids.push(objective.guid);
        });
       return { isDisabled: this.compareArray(localGuids, sharedGuids)};
     }
 
     if ($.isArray(this.props.question[field])){
-       isDisabled = this.compareArray(this.props.question[field], this.props.question.sourceQuestion[field]);
+       isDisabled = this.compareArray(this.props.question[field], this.props.question.sharedMetadata[field]);
 
     }else {
-      isDisabled = this.props.question[field] === this.props.question.sourceQuestion[field];
+      isDisabled = this.props.question[field] === this.props.question.sharedMetadata[field];
     }
 
       return { isDisabled: isDisabled};
@@ -42,9 +42,9 @@ var ShareMetadataEditorRow = React.createClass({
     },
 
    renderSharedValue: function(){
-        if (this.props.question.sourceQuestion != null){
+        if (this.props.question.sharedMetadata != null){
              return  (<div className="cell shared">
-                     <MetadataFieldEditor question={this.props.question.sourceQuestion} 
+                     <MetadataFieldEditor question={this.props.question.sharedMetadata} 
                                           editMode={false} 
                                           metadata={this.props.metadata}
                                           editHandler={this.sourceEditHandler} 
@@ -56,7 +56,7 @@ var ShareMetadataEditorRow = React.createClass({
     },
 
     renderSwitchControl: function(){
-       if (this.props.question.sourceQuestion != null){
+       if (this.props.question.sharedMetadata != null){
          return  (<div className="cell control">
                      <div className="override-control">
                           <p> </p>
@@ -67,9 +67,9 @@ var ShareMetadataEditorRow = React.createClass({
        }
     },
 
-    sourceEditHandler: function(sourceQuestion){
+    sourceEditHandler: function(sharedMetadata){
         var question = this.props.question;
-        question.sourceQuestion = sourceQuestion;
+        question.sharedMetadata = sharedMetadata;
         this.props.editHandler(question);
     },
 
@@ -105,7 +105,7 @@ var ShareMetadataEditorRow = React.createClass({
 
     restoreLocalQuestion: function(){
         var question = this.props.question;
-        question[this.props.field] = question.sourceQuestion[this.props.field];
+        question[this.props.field] = question.sharedMetadata[this.props.field];
         this.props.editHandler(question);
     },
 
