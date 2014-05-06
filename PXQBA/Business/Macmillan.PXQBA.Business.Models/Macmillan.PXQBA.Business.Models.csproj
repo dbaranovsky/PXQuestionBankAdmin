@@ -61,6 +61,7 @@
     <Compile Include="QuestionMetaField.cs" />
     <Compile Include="QuestionStatus.cs" />
     <Compile Include="QuestionViewModel.cs" />
+    <Compile Include="SharedMetadata.cs" />
     <Compile Include="SortCriterion.cs" />
     <Compile Include="QuestionMetadata.cs" />
     <Compile Include="Question.cs" />
