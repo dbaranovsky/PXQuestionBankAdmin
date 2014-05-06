@@ -91,6 +91,17 @@ var QuestionEditor = React.createClass({
       return null;
      },
 
+     closeDialog: function(){
+      if(hasUnsavedData()){
+       if (confirm("You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?")){
+          this.props.closeDialog();
+       }
+     } else{
+
+       this.props.closeDialog(); 
+     }
+     },
+
     render: function() {
         return (
             <div>
@@ -98,7 +109,7 @@ var QuestionEditor = React.createClass({
                          <button className="btn btn-primary run-question" data-toggle="modal" onClick={this.runQuestion}>
                              <span className="glyphicon glyphicon-play"></span> Try Question
                         </button>
-                        <button className="btn btn-default" data-toggle="modal" onClick={this.props.closeDialog}>
+                        <button className="btn btn-default" data-toggle="modal" onClick={this.closeDialog}>
                              Cancel
                         </button>
                          <button className="btn btn-primary " data-toggle="modal" onClick={this.showSaveWarning} >

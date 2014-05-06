@@ -10,6 +10,7 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
         {
            $(this.getDOMNode()).modal("show");
         }
+         monitorChanges(".local", false);
         var closeDialogHandler = this.props.closeDialogHandler;
         $(this.getDOMNode()).on('hidden.bs.modal', function () {
             closeDialogHandler();
@@ -32,6 +33,7 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
     },
 
     closeDialog: function(){
+         monitorChanges(".local", true);
          $(this.getDOMNode()).modal("hide");
          $('.modal-backdrop').remove(); 
     },

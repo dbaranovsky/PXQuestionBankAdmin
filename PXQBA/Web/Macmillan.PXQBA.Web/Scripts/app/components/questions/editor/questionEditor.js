@@ -91,6 +91,17 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
       return null;
      },
 
+     closeDialog: function(){
+      if(hasUnsavedData()){
+       if (confirm("You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?")){
+          this.props.closeDialog();
+       }
+     } else{
+
+       this.props.closeDialog(); 
+     }
+     },
+
     render: function() {
         return (
             React.DOM.div(null, 
@@ -98,7 +109,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
                          React.DOM.button( {className:"btn btn-primary run-question", 'data-toggle':"modal", onClick:this.runQuestion}, 
                              React.DOM.span( {className:"glyphicon glyphicon-play"}), " Try Question"
                         ),
-                        React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal", onClick:this.props.closeDialog}, 
+                        React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal", onClick:this.closeDialog}, 
                              "Cancel"
                         ),
                          React.DOM.button( {className:"btn btn-primary ",  'data-toggle':"modal", onClick:this.showSaveWarning} , 

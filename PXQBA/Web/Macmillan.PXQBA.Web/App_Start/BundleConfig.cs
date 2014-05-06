@@ -36,7 +36,8 @@ namespace Macmillan.PXQBA.Web
                       "~/Scripts/handlebars/handlebars-v{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/commonjs").Include(
-                      "~/Scripts/session/sessionKeeper.js"));
+                      "~/Scripts/session/sessionKeeper.js",
+                      "~/Scripts/changesMonitor.js"));
 
 
             bundles.Add(new StyleBundle("~/bundles/css").Include(

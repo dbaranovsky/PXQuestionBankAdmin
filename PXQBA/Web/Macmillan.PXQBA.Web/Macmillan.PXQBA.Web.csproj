@@ -332,6 +332,7 @@
     <Content Include="Scripts\bootstrap\bootstrap-switch.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\changesMonitor.js" />
     <Content Include="Scripts\chosen\chosen.js" />
     <Content Include="Scripts\crossroads\crossroads.js" />
     <Content Include="Scripts\crossroads\crossroads.min.js" />
