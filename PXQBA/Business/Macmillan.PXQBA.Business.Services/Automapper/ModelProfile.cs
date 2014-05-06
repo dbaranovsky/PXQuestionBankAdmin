@@ -101,7 +101,17 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                             src =>
                                 src.QuestionId%2 != 0
                                     ? modelProfileService.GetHardCodedQuestionDuplicate()
-                                    : String.Empty));
+                                    : String.Empty))
+                .ForMember(dest => dest.SharedMetadata, opt => opt.MapFrom(src => src));
+
+            Mapper.CreateMap<DataAccess.Data.ProductCourse, SharedMetadata>()
+                .ForMember(dest => dest.Keywords, opt => opt.MapFrom(src => src.Keywords.Split('|')))
+                .ForMember(dest => dest.SuggestedUse, opt => opt.MapFrom(src => src.SuggestedUse.Split('|')))
+                .ForMember(dest => dest.LearningObjectives,
+                    opt =>
+                        opt.MapFrom(
+                            src => modelProfileService.GetLOByGuid(src.ProductCourseDlapId, src.LearningObjectives)))
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Question.Status));
 
             Mapper.CreateMap<Question, DataAccess.Data.ProductCourse>()
                   .ForMember(dest => dest.Id, opt => opt.Ignore())

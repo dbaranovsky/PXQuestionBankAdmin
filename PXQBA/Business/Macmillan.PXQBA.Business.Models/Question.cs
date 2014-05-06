@@ -80,5 +80,7 @@ namespace Macmillan.PXQBA.Business.Models
         public string EntityId { get; set; }
 
         public string QuizId { get; set; }
+
+        public SharedMetadata SharedMetadata { get; set; }
     }
 }
