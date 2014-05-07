@@ -11,6 +11,7 @@ using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Business.Services;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Web.Helpers;
+using Macmillan.PXQBA.Web.ViewModels;
 
 namespace Macmillan.PXQBA.Web.Controllers
 {

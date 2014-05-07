@@ -55,14 +55,6 @@ namespace Macmillan.PXQBA.Business.Models
         /// </summary>
         public IEnumerable<LearningObjective> LearningObjectives { get; set; }
 
-        public bool IsDuplicateOfSharedQuestion
-        {
-            get
-            {
-                return !string.IsNullOrEmpty(QuestionIdDuplicateFrom);
-            }
-        }
-
         public string QuestionIdDuplicateFrom { get; set; }
 
         private List<ProductCourseSection> productCourses;
