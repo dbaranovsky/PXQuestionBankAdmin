@@ -35,7 +35,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=3.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Web\Macmillan.PXQBA.Web\bin\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Web\Macmillan.PXQBA.Web\bin\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data.Entity" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -55,8 +64,17 @@
     </Compile>
     <Compile Include="QbaAPiTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionManagementServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Commands\Macmillan.PXQBA.Business.Commands.csproj">
+      <Project>{DCC579E2-F0D2-48C9-B660-DFAF8858C40C}</Project>
+      <Name>Macmillan.PXQBA.Business.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Context\Macmillan.PXQBA.Business.csproj">
+      <Project>{B1D7B9EC-976A-4C09-A46F-81C1D7933B12}</Project>
+      <Name>Macmillan.PXQBA.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Contracts\Macmillan.PXQBA.Business.Contracts.csproj">
       <Project>{c7070f01-3d37-425d-abd5-e02d7cfaea43}</Project>
       <Name>Macmillan.PXQBA.Business.Contracts</Name>
@@ -68,6 +86,30 @@
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Services\Macmillan.PXQBA.Business.Services.csproj">
       <Project>{cf2b92a9-6e1d-4472-ad9c-aed6dc86a62c}</Project>
       <Name>Macmillan.PXQBA.Business.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Macmillan.PXQBA.Common.Logging\Macmillan.PXQBA.Common.Logging.csproj">
+      <Project>{45A498CC-0FDF-4B3B-833B-FD0B008AA8D9}</Project>
+      <Name>Macmillan.PXQBA.Common.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataAccess\Macmillan.PXQBA.DataAccess.Data\Macmillan.PXQBA.DataAccess.Data.csproj">
+      <Project>{AC937F92-418D-4F2B-820E-DD1762E24114}</Project>
+      <Name>Macmillan.PXQBA.DataAccess.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Bfw.Agilix.Dlap.Components.csproj">
+      <Project>{BFFD6B7A-4EA1-431A-916A-8214BD16E049}</Project>
+      <Name>Bfw.Agilix.Dlap.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap\Bfw.Agilix.Dlap.csproj">
+      <Project>{F5A60C36-AA1F-4849-A9E7-465F7963DF9F}</Project>
+      <Name>Bfw.Agilix.Dlap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PXShared\Bfw.Common\Bfw.Common.Patterns\Bfw.Common.Patterns.csproj">
+      <Project>{AD00B777-4D80-4D59-AFA0-BD3088938BFF}</Project>
+      <Name>Bfw.Common.Patterns</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PXShared\Bfw.Common\Bfw.Common\Bfw.Common.csproj">
+      <Project>{4F1BF9DB-1226-4867-9E41-129B214F24F2}</Project>
+      <Name>Bfw.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
