@@ -4,6 +4,11 @@
 
 var QuestionListMenu = React.createClass({
 
+    getInitialState: function(){
+      return ({ isShared: this.props.data.sharedTo != "",
+                titleCount:  this.props.data.sharedTo.split("<br />").length});
+    },
+
     editNotesHandler: function(){
       this.props.editNotesHandler();
     },
@@ -13,64 +18,124 @@ var QuestionListMenu = React.createClass({
     },
 
     editQuestionHandler: function() {
-        this.props.editQuestionHandler();
+        if(!this.state.isShared){
+          this.props.editQuestionHandler();
+          return;
+        }
+
+
+        
     },
 
     componentDidUpdate: function(){
+
       this.initializePopovers();
     },
 
      componentDidMount: function(){
-       this.initializePopovers();
+    
+      this.initializePopovers();
     },
 
     initializePopovers: function(){
-        $(this.getDOMNode()).find('.shared-to').popover({title: 'Shared to:', trigger: 'hover', placement:'bottom', container:'body', html: true});
-        $(this.getDOMNode()).find('.shared-from').popover({title: 'Unsubscribe from:', trigger: 'hover', placement:'bottom', container:'body', html: true});
+        if (this.state.isShared){
+          $(this.getDOMNode()).popover({title: 'Shared to:',
+                                        selector: '[rel="popover"]',
+                                        trigger: 'click', 
+                                        placement:'bottom', 
+                                       
+                                        html: true});  
+          return;
+        } 
+            $(this.getDOMNode()).popover({
+                                        selector: '[rel="popover"]',
+                                        trigger: 'click', 
+                                        placement:'bottom', 
+                                        content: '<b>Not Shared</b>',
+                                        html: true
+                                        });  
+        
+        
+      
+    },
+
+    renderSharedButtons: function(){
+      if(this.props.showAll){
+
+
+    return ( <div className="shared-placeholder"> 
+              <button type="button" className="btn btn-default btn-sm custom-btn shared-to" rel="popover"  data-content={this.props.data["sharedTo"]}>
+                 <span className="glyphicon icon-shared-to" ></span> <span className="counter">{this.state.isShared? this.state.titleCount : ""} </span>
+               </button>
+               <button type="button" className="btn btn-default btn-sm tiny" onClick={this.editNotesHandler} data-toggle="tooltip" title="Add title"><span className="glyphicon glyphicon-plus-sign"></span></button> 
+                    {this.state.isShared?
+                      <button type="button" className="btn btn-default btn-sm tiny" onClick={this.editNotesHandler} data-toggle="tooltip" title="Remove title"><span className="glyphicon glyphicon-minus-sign"></span></button> :
+                    ""}
+               </div>);
+     }
+
+      if(this.state.isShared){
+      return(
+         <div className="shared-placeholder">
+                           
+                         
+           <button type="button" className="btn btn-default btn-sm custom-btn shared-to"  data-content={this.props.data["sharedTo"]}>
+                    <span className="glyphicon icon-shared-to" ></span> <span className="counter">{this.state.isShared? this.state.titleCount : ""} </span>
+           </button> 
+           <button type="button" className="btn btn-default btn-sm tiny" onClick={this.editNotesHandler} data-toggle="tooltip" title="Add title"><span className="glyphicon glyphicon-plus-sign"></span></button> 
+            { this.state.isShared?
+              <button type="button" className="btn btn-default btn-sm tiny" onClick={this.editNotesHandler} data-toggle="tooltip" title="Add title"><span className="glyphicon glyphicon-minus-sign"></span></button> :
+               ""}
+                             
+          </div>);
+    } 
+
+     
+
+    return ( <div className="shared-placeholder"> </div>);
+
+    },
+
+    renderEditMenu: function(){
+                  if (!this.state.isShared){
+                    return null;
+                  }
+                  return(
+                     <ul className="dropdown-menu show-menu" role="menu" aria-labelledby="dropdownMenuType" onClick={this.changeEventHandler} aria-labelledby="edit-question">
+                        <li role="presentation" className="dropdown-header">Edit options</li>
+                       <li role="presentation" className="divider"></li>
+                       <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.editQuestionHandler}>Edit in {this.state.titleCount == 1? "1 title" : "all "+this.state.titleCount+" titles"}</a></li>
+                       <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.copyQuestionHandler}>Create a copy</a></li>
+                     </ul>);
     },
 
 
     render: function() {
       if (this.props.showAll){
+
         return ( 
                 <div>
+                  
+                   {this.renderSharedButtons()}
+                   <div className="menu-container">
+                     <button type="button" className="btn btn-default btn-sm" onClick={this.editNotesHandler} data-toggle="tooltip" title="Edit Notes"><span className="glyphicon glyphicon-list-alt"></span>
+                     </button> 
+                     <div className="dropdown">
+                     <button id="edit-question" type="button" className="btn btn-default btn-sm" onClick={this.editQuestionHandler}  data-target="#" data-toggle="dropdown" title="Edit Question">
+                           <span className="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Edit Question"></span>
+                     </button>
+                      {this.renderEditMenu()}
+                     </div>
 
-                   {  
-                    this.props.data["sharedTo"] != "" ?
-                     <button type="button" className="btn btn-default btn-sm custom-btn shared-to" data-content={this.props.data["sharedTo"]}><span className="glyphicon icon-shared-to" ></span></button> :
-                    ""
-                 }
 
-                  {  
-                    this.props.data["sharedFrom"] != "" ?
-                     <button type="button" className="btn btn-default btn-sm custom-btn shared-from" data-content={this.props.data["sharedFrom"]}><span className="glyphicon icon-shared-from"></span></button> :
-                    ""
-                 }
+                     <button type="button" className="btn btn-default btn-sm" onClick={this.copyQuestionHandler}  data-toggle="tooltip" title="Duplicate Question"><span className="glyphicon glyphicon-copyright-mark"></span></button>
+                  </div>
 
-                
-                
-                  <button type="button" className="btn btn-default btn-sm" onClick={this.editNotesHandler} data-toggle="tooltip" title="Edit Notes"><span className="glyphicon glyphicon-list-alt"></span></button>	
-                  <button type="button" className="btn btn-default btn-sm" onClick={this.editQuestionHandler}  data-toggle="tooltip" title="Edit Question"><span className="glyphicon glyphicon-pencil"></span></button>
-                  <button type="button" className="btn btn-default btn-sm" onClick={this.copyQuestionHandler}  data-toggle="tooltip" title="Duplicate Question"><span className="glyphicon glyphicon-copyright-mark"></span></button>
-                  <button type="button" className="btn btn-default btn-sm" data-toggle="tooltip" title="Delete Question"><span className="glyphicon glyphicon-trash"></span></button>
+                           
                 </div>
             );
       }
 
-      return (<div>
-                 {  
-                    this.props.data["sharedTo"] != "" ?
-                    <button type="button" className="btn btn-default btn-sm custom-btn shared-to" data-content={this.props.data["sharedTo"]}><span className="glyphicon icon-shared-to"></span></button> :
-                    ""
-                 }
-
-                  {  
-                    this.props.data["sharedFrom"] != "" ?
-                    <button type="button" className="btn btn-default btn-sm custom-btn shared-from" data-content={this.props.data["sharedFrom"]}><span className="glyphicon icon-shared-from"></span></button> :
-                    ""
-                 }
-              
-
-             </div>);
+       return (<div> {this.renderSharedButtons()}</div>);
   }
 });

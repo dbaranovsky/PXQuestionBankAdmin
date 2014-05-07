@@ -532,13 +532,15 @@ input.disabled, textarea.disabled {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    margin: 1px;
+    margin-left: 1px;
 }
 
+.counter {
+}
 .icon-shared-from {
     background-image: url("../Content/img/shared-from.png");
     background-position: center center;
-    width: 24px;
+    width: 22px;
     height: 21px;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -553,8 +555,22 @@ input.disabled, textarea.disabled {
 }
 
 .custom-btn {
-    padding: 0 !important;
+    height: 30px;
+    padding-left: 0 !important;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    width: auto;
+    font-size: 21px !important;
+    padding-right: 5px !important;
+   
 }
+
+.custom-btn span {
+    margin-top: 0;
+}
+
+
+
 
 .shared-note {
     margin-bottom: 20px;
@@ -582,4 +598,40 @@ a.shared-question-link:hover {
 .product-title {
     font-size: 30px;
     width: 1025px;
+}
+
+.btn.tiny {
+    padding-bottom: 2px;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+    padding-top: 3px !important;
+    color: blue;
+   
+}
+
+.btn.tiny .glyphicon {
+    font-size: 18px;
+}
+
+/* Menu items*/
+.shared-placeholder {
+    width: 100px;
+    margin-bottom: 1px;
+    float: left;
+    margin-right: 5px;
+}
+
+.menu-container {
+    float: left;
+   
+}
+
+.menu-container .dropdown {
+    float: left;
+}
+
+.menu-container .dropdown-header {
+    color: #000000;
+    font-size: 12px;
+    font-weight: bold;
 }
