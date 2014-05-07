@@ -51,7 +51,7 @@ namespace Macmillan.PXQBA.Business.Services.Tests
         [TestMethod]
         public void CopyQuestionTest()
         {
-            var question = questionManagementService.GetQuestion("123");
+            //var question = questionManagementService.GetQuestion("123");
         }
     }
 }
