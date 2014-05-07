@@ -1,5 +1,5 @@
 ﻿
-using AutoMapper;
+//using AutoMapper;
 using Bfw.Agilix.Dlap.Components.Session;
 using Bfw.Agilix.Dlap.Session;
 using Bfw.Common.Database;
@@ -7,7 +7,7 @@ using Bfw.Common.Logging;
 using Bfw.Common.Patterns.Logging;
 using Macmillan.PXQBA.Business.Commands.Services.EntityFramework;
 using Macmillan.PXQBA.Business.Contracts;
-using Macmillan.PXQBA.Business.Services.Automapper;
+//using Macmillan.PXQBA.Business.Services.Automapper;
 using Macmillan.PXQBA.Common.Logging;
 using Macmillan.PXQBA.DataAccess.Data;
 using Microsoft.Practices.Unity;
@@ -31,6 +31,7 @@ namespace Macmillan.PXQBA.Business.Services.Tests
 
         private void InitializeUnity()
         {
+            /*
             container = new UnityContainer();
 
             container.RegisterTypes(AllClasses.FromAssemblies(typeof(QuestionFilterManagementService).Assembly), WithMappings.FromAllInterfaces, WithName.Default);
@@ -41,9 +42,9 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             container.RegisterTypes(AllClasses.FromAssemblies(typeof(Context).Assembly), WithMappings.FromAllInterfaces, WithName.Default);
             container.RegisterTypes(AllClasses.FromAssemblies(typeof(QuestionCommands).Assembly), WithMappings.FromAllInterfaces, WithName.Default);
 
-            container.RegisterType<QBADummyModelContainer, QBADummyModelContainer>(new InjectionConstructor("metadata=res://*/QBADummyModel.csdl|res://*/QBADummyModel.ssdl|res://*/QBADummyModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=localhost;initial catalog=QBADummyData;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;"));
 
             container.RegisterType<IDatabaseManager, DatabaseManager>(new InjectionConstructor("PXData"));
+             */
         }
 
 

@@ -12,5 +12,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCulture("")]
 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("1.0.12.*")]
-[assembly: AssemblyFileVersion("1.0.12.*")]
+[assembly: AssemblyVersion("1.0.13.*")]
+[assembly: AssemblyFileVersion("1.0.13.*")]
