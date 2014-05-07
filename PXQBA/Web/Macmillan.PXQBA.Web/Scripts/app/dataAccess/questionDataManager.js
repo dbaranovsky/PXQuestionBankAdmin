@@ -239,6 +239,30 @@
         });
     };
 
+     self.removeTitle= function (questionId) {
+        var request = {            
+            questionId: questionId
+        };
+        
+        return $.ajax({
+            url: window.actions.questionList.removeFromTitleUrl,
+            traditional: true,
+            data: JSON.stringify(request),
+            contentType: 'application/json',
+            dataType: 'json',
+            type: 'POST'
+        }).done(function (response) {
+
+            self.resetState();
+            self.showSuccessPopup("The shared question has been deleted");
+
+        }).error(function(e){
+             self.resetState();
+             self.showErrorPopup();
+        });
+    };
+
+
     self.bulk = {};
 
     self.bulk.setStatus = function (questionsId, newQuestionStatus) {
@@ -264,6 +288,29 @@
         });
     };
 
+    self.bulk.removeTitle = function (questionsId) {
+        asyncManager.startWait();
+
+        var request = {
+            questionsId: questionsId,
+        };
+
+        return $.ajax({
+            url: window.actions.bulkOperations.removeFromTitleUrl,
+            traditional: true,
+            data: JSON.stringify(request),
+            contentType: 'application/json',
+            dataType: 'json',
+            type: 'POST'
+        }).done(function (response) {
+            self.resetState();
+            self.showSuccessPopup("Shared questions has been deleted");
+        }).error(function (e) {
+            self.resetState();
+            self.showErrorPopup();
+        });
+    };
+
     self.resetState = function(){
          crossroads.resetState();
          crossroads.parse(window.routsManager.buildHash());
@@ -276,6 +323,16 @@
             fadeOut: { enabled: true, delay: 3000 }
         };
         $('.top-center').notify(notifyOptions).show();
+    };
+
+    self.showSuccessPopup = function(message){
+         var notifyOptions = {
+            message: { text: message },
+            type: 'success',
+            fadeOut: { enabled: true, delay: 3000 }
+        };
+        $('.top-center').notify(notifyOptions).show();
+
     };
 
     return self;

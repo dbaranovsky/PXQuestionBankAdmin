@@ -18,6 +18,7 @@
             getNewQuestionTemplateUrl: '@Url.Action("CreateQuestion", "Question")',
             getQuestionUrl: '@Url.Action("GetQuestion", "Question")',
             updateQuestionUrl: '@Url.Action("UpdateQuestion", "Question")',
+            removeFromTitleUrl: '@Url.Action("RemoveFromTitle", "Question")',
             
             questionListIndexTamplate: '@Html.Raw(@Url.Action("Index", "QuestionList", new { titleId = "__titleId__", chapterId = "__chapterId__" }))'
         };
@@ -40,7 +41,8 @@
         };
 
         actions.bulkOperations = {            
-            setStatusUrl: '@Url.Action("SetStatus", "BulkOperation")'
+            setStatusUrl: '@Url.Action("SetStatus", "BulkOperation")',
+            removeFromTitleUrl: '@Url.Action("RemoveFromTitle", "BulkOperation")'
         };
 
         actions.questionFilter = {

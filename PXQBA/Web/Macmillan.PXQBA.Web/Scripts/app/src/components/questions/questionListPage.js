@@ -47,6 +47,7 @@ var QuestionListPage = React.createClass({
                               closeDialogHandler = {this.closeDialogHandler}/>);
           case this.editorsSteps.step2:
             return (<QuestionEditorDialog closeDialogHandler={this.closeDialogHandler}
+                                          editSourceQuestionHandler={this.editSourceQuestionHandler}
                                           isNew={this.state.editor.isNew}
                                           showOnCreate={true}
                                           question={this.state.editor.template}
@@ -96,6 +97,11 @@ var QuestionListPage = React.createClass({
 
     closeDialogHandler: function() {
         this.showEditor(this.editorsSteps.none);
+    },
+
+    editSourceQuestionHandler: function(questionId){
+       this.showEditor(this.editorsSteps.none);
+       this.editQuestionHandler(questionId);
     },
 
     showEditor: function(step) {

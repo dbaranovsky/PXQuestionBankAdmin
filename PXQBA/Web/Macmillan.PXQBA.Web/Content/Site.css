@@ -232,7 +232,7 @@ input[type="checkbox"].input-validation-error {
 }
 
 #questionEditorModal .modal-body {
-     height: 800px;
+     height: 820px;
 } 
 
 #questionEditorModal #metadata {
@@ -417,6 +417,7 @@ input.disabled, textarea.disabled {
     background: gray;
 }
 
+/* Bulk operations*/
 .question-selected {
     font-weight: bold;
 }
@@ -443,6 +444,14 @@ input.disabled, textarea.disabled {
     float: left;
     margin: 0 15px 0 15px
 }
+
+.bulk-operation-remove {
+    text-align: right;
+}
+
+
+
+
 
 .expand-button {
    cursor: pointer;
@@ -532,13 +541,15 @@ input.disabled, textarea.disabled {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    margin: 1px;
+    margin-left: 1px;
 }
 
+.counter {
+}
 .icon-shared-from {
     background-image: url("../Content/img/shared-from.png");
     background-position: center center;
-    width: 24px;
+    width: 22px;
     height: 21px;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -553,14 +564,29 @@ input.disabled, textarea.disabled {
 }
 
 .custom-btn {
+    height: 30px;
     padding: 0 !important;
+    width: auto;
+    font-size: 21px !important;
+
+   
 }
+
+.custom-btn span {
+    margin-top: 0;
+}
+
+
+
 
 .shared-note {
     margin-bottom: 20px;
     font-size: 15px;
     font-style: italic;
-
+    display: inline-table;
+    background-color: #5BC0DE;
+    border-radius: 0.25em;
+    width: 100%;
 }
 
 a.shared-question-link {
@@ -582,4 +608,48 @@ a.shared-question-link:hover {
 .product-title {
     font-size: 30px;
     width: 1025px;
+}
+
+.btn.tiny {
+    padding-bottom: 2px;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+    padding-top: 3px !important;
+    color:  #0e6cde;
+   
+}
+
+.btn.tiny .glyphicon {
+    font-size: 18px;
+}
+
+/* Menu items*/
+.shared-placeholder {
+    width: 100px;
+    margin-bottom: 1px;
+    float: left;
+    margin-right: 5px;
+}
+
+.menu-container {
+    float: left;
+   
+}
+
+.menu-container .dropdown {
+    float: left;
+}
+
+.menu-container .dropdown-header {
+    color: #000000;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.shared-placeholder .badge {
+        left: -5px !important;
+        top: -5px !important;
+        padding: 3px 5px !important;
+        font-size: 12px !important;
+        background-color:  #0e6cde !important;
 }

@@ -85,5 +85,15 @@ namespace Macmillan.PXQBA.Web.Controllers
             questionViewModel.EditorUrl = String.Format(ConfigurationHelper.GetEditorUrlTemplate(), tempQuestion.EntityId, tempQuestion.QuizId, tempQuestion.Id);
             return questionViewModel;
         }
+
+        [HttpPost]
+        public ActionResult RemoveFromTitle(string questionId)
+        {
+            //TODO: implement removing question
+            //questionManagementService.RemoveFromTitle(questionId, CourseHelper.CurrentCourse);
+            return JsonCamel(new { isError = false });
+
+        }
+
 	}
 }
