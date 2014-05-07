@@ -19,5 +19,13 @@ namespace Macmillan.PXQBA.Web.Controllers
             bool isSuccess = bulkOperationService.SetStatus(questionsId, newQuestionStatus);
             return JsonCamel(new { isError = !isSuccess });
         }
+
+
+        [HttpPost]
+        public ActionResult RemoveFromTitle(string[] questionsId)
+        {   //Todo: implement remove questions from title
+           // bool isSuccess = bulkOperationService.RemoveFromTitle(questionsId);
+            return JsonCamel(new { isError = false });
+        }
 	}
 }

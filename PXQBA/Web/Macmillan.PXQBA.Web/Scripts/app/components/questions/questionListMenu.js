@@ -22,9 +22,16 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
           this.props.editQuestionHandler();
           return;
         }
+    },
 
+    removeTitleHandler: function(){
+      if(confirm("Are you sure you want to remove this question from the current title?")){
+         questionDataManager.removeTitle(this.props.data.id);
+      }
+    },
 
-        
+    addTitleHandler: function(){
+
     },
 
     componentDidUpdate: function(){
@@ -76,7 +83,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
                ),
                React.DOM.button( {type:"button", className:"btn btn-default btn-sm tiny", onClick:this.editNotesHandler, 'data-toggle':"tooltip", title:"Share this question"}, React.DOM.span( {className:"glyphicon glyphicon-plus-sign"})), 
                     this.state.isShared?
-                      React.DOM.button( {type:"button", className:"btn btn-default btn-sm tiny", onClick:this.editNotesHandler, 'data-toggle':"tooltip", title:"Remove title"}, React.DOM.span( {className:"glyphicon glyphicon-minus-sign"})) :
+                      React.DOM.button( {type:"button", className:"btn btn-default btn-sm tiny", onClick:this.removeTitleHandler, 'data-toggle':"tooltip", title:"Remove title"}, React.DOM.span( {className:"glyphicon glyphicon-minus-sign"})) :
                     ""
                ));
      }

@@ -24,6 +24,11 @@ var QuestionBulkOperationBar = React.createClass({
         return availableStatuses;
     },
 
+
+    bulkRemoveFromTitle: function(){
+       questionDataManager.bulk.removeTitle(this.props.selectedQuestions);
+    },
+
     render: function() {
         return ( 
                   <tr>
@@ -40,6 +45,9 @@ var QuestionBulkOperationBar = React.createClass({
                                 <QuestionBulkOperationSetStatus availableStatuses={this.getAvailableStatuses()} 
                                                               selectedQuestions={this.props.selectedQuestions}/> 
                                </div>
+                            </td>
+                            <td className="bulk-operation-remove">
+                              <button type="button" className="btn btn-default" onClick={this.bulkRemoveFromTitle}>Remove from this title</button>
                             </td>
                             <td>
                                <div className="deselect-button" onClick={this.deselectsAllHandler} data-toggle="tooltip" title="Deselect all">
