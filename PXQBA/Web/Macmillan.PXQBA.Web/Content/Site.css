@@ -556,12 +556,10 @@ input.disabled, textarea.disabled {
 
 .custom-btn {
     height: 30px;
-    padding-left: 0 !important;
-    padding-bottom: 0 !important;
-    padding-top: 0 !important;
+    padding: 0 !important;
     width: auto;
     font-size: 21px !important;
-    padding-right: 5px !important;
+
    
 }
 
@@ -644,5 +642,5 @@ a.shared-question-link:hover {
         top: -5px !important;
         padding: 3px 5px !important;
         font-size: 12px !important;
-        background-color:  #31b0d5 !important;
+        background-color:  #206281 !important;
 }

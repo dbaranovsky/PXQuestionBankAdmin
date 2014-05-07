@@ -39,7 +39,7 @@ var QuestionListMenu = React.createClass({
 
     initializePopovers: function(){
         if (this.state.isShared){
-          $(this.getDOMNode()).popover({title: 'Shared to:',
+          $(this.getDOMNode()).popover({title: 'Shared with:',
                                         selector: '[rel="popover"]',
                                         trigger: 'click', 
                                         placement:'bottom', 
@@ -74,7 +74,7 @@ var QuestionListMenu = React.createClass({
               <button type="button" className="btn btn-default btn-sm custom-btn shared-to" rel="popover"  data-content={this.props.data["sharedWith"]}>
                  <span className="glyphicon icon-shared-to" ></span>{this.renderCourseCountBadge()} 
                </button>
-               <button type="button" className="btn btn-default btn-sm tiny" onClick={this.editNotesHandler} data-toggle="tooltip" title="Add title"><span className="glyphicon glyphicon-plus-sign"></span></button> 
+               <button type="button" className="btn btn-default btn-sm tiny" onClick={this.editNotesHandler} data-toggle="tooltip" title="Share this question"><span className="glyphicon glyphicon-plus-sign"></span></button> 
                     {this.state.isShared?
                       <button type="button" className="btn btn-default btn-sm tiny" onClick={this.editNotesHandler} data-toggle="tooltip" title="Remove title"><span className="glyphicon glyphicon-minus-sign"></span></button> :
                     ""}

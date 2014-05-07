@@ -39,7 +39,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
 
     initializePopovers: function(){
         if (this.state.isShared){
-          $(this.getDOMNode()).popover({title: 'Shared to:',
+          $(this.getDOMNode()).popover({title: 'Shared with:',
                                         selector: '[rel="popover"]',
                                         trigger: 'click', 
                                         placement:'bottom', 
@@ -74,7 +74,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
               React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn shared-to", rel:"popover",  'data-content':this.props.data["sharedWith"]}, 
                  React.DOM.span( {className:"glyphicon icon-shared-to"} ),this.renderCourseCountBadge() 
                ),
-               React.DOM.button( {type:"button", className:"btn btn-default btn-sm tiny", onClick:this.editNotesHandler, 'data-toggle':"tooltip", title:"Add title"}, React.DOM.span( {className:"glyphicon glyphicon-plus-sign"})), 
+               React.DOM.button( {type:"button", className:"btn btn-default btn-sm tiny", onClick:this.editNotesHandler, 'data-toggle':"tooltip", title:"Share this question"}, React.DOM.span( {className:"glyphicon glyphicon-plus-sign"})), 
                     this.state.isShared?
                       React.DOM.button( {type:"button", className:"btn btn-default btn-sm tiny", onClick:this.editNotesHandler, 'data-toggle':"tooltip", title:"Remove title"}, React.DOM.span( {className:"glyphicon glyphicon-minus-sign"})) :
                     ""
