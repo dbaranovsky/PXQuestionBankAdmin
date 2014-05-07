@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Linq;
 using System.Text;
 using AutoMapper;
 using Bfw.Agilix.DataContracts;
@@ -91,10 +92,8 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Question.Type))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Question.Status))
                 .ForMember(dest => dest.Preview, opt => opt.MapFrom(src => src.Question.Preview))
-                .ForMember(dest => dest.SharedFrom,
-                    opt => opt.MapFrom(src => modelProfileService.GetHardCodedSharedFrom(src.QuestionId)))
-                .ForMember(dest => dest.SharedTo,
-                    opt => opt.MapFrom(src => modelProfileService.GetHardCodedSharedTo(src.QuestionId)))
+                .ForMember(dest => dest.ProductCourses, opt => opt.MapFrom(src => modelProfileService.GetHardCodedSharedProductCourses(src)))
+                .ForMember(dest => dest.SharedMetadata, opt => opt.MapFrom(src => modelProfileService.GetHardCodedSourceQuestion(src.QuestionId)))
                 .ForMember(dest => dest.QuestionIdDuplicateFrom,
                     opt =>
                         opt.MapFrom(
@@ -102,17 +101,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                                 src.QuestionId%2 != 0
                                     ? modelProfileService.GetHardCodedQuestionDuplicate()
                                     : String.Empty));
-               // .ForMember(dest => dest.SharedMetadata, opt => opt.MapFrom(src => src));
-              //   .ForMember(dest => dest.SharedMetadata, opt => opt.MapFrom(src => src.));
-
-            Mapper.CreateMap<DataAccess.Data.ProductCourse, SharedMetadata>()
-                .ForMember(dest => dest.Keywords, opt => opt.MapFrom(src => src.Keywords.Split('|')))
-                .ForMember(dest => dest.SuggestedUse, opt => opt.MapFrom(src => src.SuggestedUse.Split('|')))
-                .ForMember(dest => dest.LearningObjectives,
-                    opt =>
-                        opt.MapFrom(
-                            src => modelProfileService.GetLOByGuid(src.ProductCourseDlapId, src.LearningObjectives)))
-                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Question.Status));
+              
 
             Mapper.CreateMap<Question, DataAccess.Data.ProductCourse>()
                   .ForMember(dest => dest.Id, opt => opt.Ignore())
@@ -133,9 +122,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.QuestionId, opt => opt.MapFrom(src => src.Question.DlapId));
 
             Mapper.CreateMap<Question, QuestionViewModel>()
-                .ForMember(dest => dest.QuestionIdDuplicateFrom, opt => opt.MapFrom(src => src.IsShared ? "9F5C1195-785D-4016-E199-A2E1D6A0A7D4" : String.Empty))
-                .ForMember(dest => dest.SharedMetadata, opt => opt.MapFrom(src => modelProfileService.GetHardCodedSourceQuestion(src.SharedFrom)));
-            Mapper.CreateMap<Question, SharedMetadata>();
+                .ForMember(dest => dest.ProductCourses, opt => opt.MapFrom(src => src.ProductCourses.Select(p => p.Title)));
 
             #endregion
         }

@@ -65,22 +65,27 @@ namespace Macmillan.PXQBA.Business.Models
 
         public string QuestionIdDuplicateFrom { get; set; }
 
-        public bool IsShared
+        private List<ProductCourseSection> productCourses;
+        public List<ProductCourseSection> ProductCourses
         {
             get
             {
-                return (!string.IsNullOrEmpty(SharedFrom)) || (SharedTo != null && SharedTo.Any());
+                if (productCourses == null)
+                {
+                    productCourses = new List<ProductCourseSection>();
+                }
+                return productCourses;
             }
-        }
-
-        public string SharedFrom { get; set; }
-
-        public IEnumerable<string> SharedTo { get; set; }
+            set
+            {
+                productCourses = value;
+            }
+        } 
 
         public string EntityId { get; set; }
 
         public string QuizId { get; set; }
 
-        public SharedMetadata SharedMetadata { get; set; }
+        public Question SharedMetadata { get; set; }
     }
 }
