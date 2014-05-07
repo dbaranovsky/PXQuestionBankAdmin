@@ -59,13 +59,20 @@ var QuestionListMenu = React.createClass({
       
     },
 
+    renderCourseCountBadge: function(){
+      if (!this.state.isShared){
+        return "";
+      }
+      return(<span className="badge">{this.state.titleCount}</span>);
+    },
+
     renderSharedButtons: function(){
       if(this.props.showAll){
 
 
     return ( <div className="shared-placeholder"> 
               <button type="button" className="btn btn-default btn-sm custom-btn shared-to" rel="popover"  data-content={this.props.data["sharedWith"]}>
-                 <span className="glyphicon icon-shared-to" ></span> <span className="counter">{this.state.isShared? this.state.titleCount : ""} </span>
+                 <span className="glyphicon icon-shared-to" ></span>{this.renderCourseCountBadge()} 
                </button>
                <button type="button" className="btn btn-default btn-sm tiny" onClick={this.editNotesHandler} data-toggle="tooltip" title="Add title"><span className="glyphicon glyphicon-plus-sign"></span></button> 
                     {this.state.isShared?
@@ -80,7 +87,7 @@ var QuestionListMenu = React.createClass({
                            
                          
            <button type="button" className="btn btn-default btn-sm custom-btn shared-to"  data-content={this.props.data["sharedWith"]}>
-                    <span className="glyphicon icon-shared-to" ></span> <span className="counter">{this.state.isShared? this.state.titleCount : ""} </span>
+                    <span className="glyphicon icon-shared-to" ></span>{this.renderCourseCountBadge()}
            </button> 
            <button type="button" className="btn btn-default btn-sm tiny" onClick={this.editNotesHandler} data-toggle="tooltip" title="Add title"><span className="glyphicon glyphicon-plus-sign"></span></button> 
             { this.state.isShared?
