@@ -5,8 +5,8 @@
 var QuestionListMenu = React.createClass({
 
     getInitialState: function(){
-      return ({ isShared: this.props.data.sharedTo != "",
-                titleCount:  this.props.data.sharedTo.split("<br />").length});
+      return ({ isShared: this.props.data.sharedWith != "",
+                titleCount:  this.props.data.sharedWith.split("<br />").length});
     },
 
     editNotesHandler: function(){
@@ -64,7 +64,7 @@ var QuestionListMenu = React.createClass({
 
 
     return ( <div className="shared-placeholder"> 
-              <button type="button" className="btn btn-default btn-sm custom-btn shared-to" rel="popover"  data-content={this.props.data["sharedTo"]}>
+              <button type="button" className="btn btn-default btn-sm custom-btn shared-to" rel="popover"  data-content={this.props.data["sharedWith"]}>
                  <span className="glyphicon icon-shared-to" ></span> <span className="counter">{this.state.isShared? this.state.titleCount : ""} </span>
                </button>
                <button type="button" className="btn btn-default btn-sm tiny" onClick={this.editNotesHandler} data-toggle="tooltip" title="Add title"><span className="glyphicon glyphicon-plus-sign"></span></button> 
@@ -79,7 +79,7 @@ var QuestionListMenu = React.createClass({
          <div className="shared-placeholder">
                            
                          
-           <button type="button" className="btn btn-default btn-sm custom-btn shared-to"  data-content={this.props.data["sharedTo"]}>
+           <button type="button" className="btn btn-default btn-sm custom-btn shared-to"  data-content={this.props.data["sharedWith"]}>
                     <span className="glyphicon icon-shared-to" ></span> <span className="counter">{this.state.isShared? this.state.titleCount : ""} </span>
            </button> 
            <button type="button" className="btn btn-default btn-sm tiny" onClick={this.editNotesHandler} data-toggle="tooltip" title="Add title"><span className="glyphicon glyphicon-plus-sign"></span></button> 

@@ -576,7 +576,10 @@ input.disabled, textarea.disabled {
     margin-bottom: 20px;
     font-size: 15px;
     font-style: italic;
-
+    display: inline-table;
+    background-color: #5BC0DE;
+    border-radius: 0.25em;
+    width: 100%;
 }
 
 a.shared-question-link {

@@ -22,28 +22,12 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
         this.tabsInitializer($(this.getDOMNode()));
     },
 
-    loadSourceQuestion: function(event){
-      event.preventDefault();
-      this.props.getSourceQuestion();
-    },
-
-    renderSharingNotification: function(){
-      if (this.props.question.isDuplicateOfSharedQuestion && this.props.isDuplicate) {
-        return (React.DOM.div( {className:"shared-note"}, "This question is a duplicate of a  ",
-                    React.DOM.a( {className:"shared-question-link", href:"", onClick:this.loadSourceQuestion}, "shared question"),
-                    React.DOM.a( {href:"", onClick:this.loadSourceQuestion}, "Delete question")
-               ));
-      }
-
-      return null;
-    },
-
-
+   
     render: function() {
         return ( 
                 React.DOM.div(null, 
                   
-                   
+                 
                         React.DOM.ul( {className:"nav nav-tabs"}, 
                              React.DOM.li( {className:"active"},  
                                  React.DOM.a( {href:"#body", 'data-toggle':"tab"}, "Body")
@@ -55,22 +39,19 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                                  React.DOM.a( {href:"#history", 'data-toggle':"tab"}, "History")
                              )
                         ),
-             
-
-                  
+               
              
                 React.DOM.div( {className:"tab-content"}, 
                     React.DOM.div( {className:"tab-pane active", id:"body"}, 
                        React.DOM.div( {className:"tab-body"}, 
                           React.DOM.div( {className:"iframe-waiting"} ),
+                          
                           React.DOM.iframe( {src:this.props.question.editorUrl} )
                           
                        )
                     ),
                     React.DOM.div( {className:"tab-pane", id:"metadata"}, 
-                       React.DOM.div( {className:this.props.question.sharedMetadata == null ? "tab-body" : "tab-body wide"}, 
-                            this.renderSharingNotification(),
-                           
+                       React.DOM.div( {className:this.props.question.sharedMetadata == null ? "tab-body" : "tab-body wide"},                            
                             QuestionMetadataEditor( {metadata:this.props.metadata, question:this.props.question, editHandler:this.props.editHandler, isDuplicate:this.props.isDuplicate} ),
                            
                            React.DOM.br(null )

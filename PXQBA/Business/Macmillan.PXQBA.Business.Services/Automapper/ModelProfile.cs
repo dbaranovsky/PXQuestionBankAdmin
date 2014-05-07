@@ -116,8 +116,10 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                   .ForMember(dest => dest.LearningObjectives, opt => opt.MapFrom(src => modelProfileService.SetLearningObjectives(src.LearningObjectives)));
 
             Mapper.CreateMap<Question, DataAccess.Data.Question>()
-                  .ForMember(dest => dest.DlapId, opt => opt.MapFrom(src => src.Id))
-                  .ForMember(dest => dest.Id, opt => opt.Ignore());
+                .ForMember(dest => dest.DlapId, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                //Should proper mapping be here?
+                .ForMember(dest => dest.ProductCourses, opt => opt.Ignore());
 
             Mapper.CreateMap<Question, QuestionMetadata>()
              .ForMember(dest => dest.Data, opt => opt.MapFrom(src => modelProfileService.CreateQuestionMetadata(src)));

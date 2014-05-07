@@ -71,7 +71,7 @@ namespace Macmillan.PXQBA.Business.Services
             data.Add(MetadataFieldNames.SuggestedUse, String.Join(", ", question.SuggestedUse));
             data.Add(MetadataFieldNames.Guidance, question.Guidance);
             data.Add(MetadataFieldNames.LearningObjectives, String.Join(", ", question.LearningObjectives.Select(lo => lo.Description)));
-            data.Add(MetadataFieldNames.SharedWith, String.Join("<br />", question.ProductCourses.Select(c => c.Title)));
+            data.Add(MetadataFieldNames.SharedWith, question.ProductCourses.Count <= 1 ? string.Empty : String.Join("<br />", question.ProductCourses.Select(c => c.Title)));
             data.Add(MetadataFieldNames.QuestionIdDuplicateFrom, question.QuestionIdDuplicateFrom);
           
           
@@ -156,7 +156,7 @@ namespace Macmillan.PXQBA.Business.Services
 
         public string GetHardCodedQuestionDuplicate()
         {
-            return "B1D5E8B8-2798-9051-B1D1-86320975868A";
+            return "67CE313C-ACEE-9747-4EA3-AFF66696C1DE";
         }
 
         public Question GetHardCodedSourceQuestion(int sharedFrom)

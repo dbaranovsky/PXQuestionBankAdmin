@@ -5,8 +5,8 @@
 var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
 
     getInitialState: function(){
-      return ({ isShared: this.props.data.sharedTo != "",
-                titleCount:  this.props.data.sharedTo.split("<br />").length});
+      return ({ isShared: this.props.data.sharedWith != "",
+                titleCount:  this.props.data.sharedWith.split("<br />").length});
     },
 
     editNotesHandler: function(){
@@ -64,7 +64,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
 
 
     return ( React.DOM.div( {className:"shared-placeholder"},  
-              React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn shared-to", rel:"popover",  'data-content':this.props.data["sharedTo"]}, 
+              React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn shared-to", rel:"popover",  'data-content':this.props.data["sharedWith"]}, 
                  React.DOM.span( {className:"glyphicon icon-shared-to"} ), " ", React.DOM.span( {className:"counter"}, this.state.isShared? this.state.titleCount : "", " " )
                ),
                React.DOM.button( {type:"button", className:"btn btn-default btn-sm tiny", onClick:this.editNotesHandler, 'data-toggle':"tooltip", title:"Add title"}, React.DOM.span( {className:"glyphicon glyphicon-plus-sign"})), 
@@ -79,7 +79,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
          React.DOM.div( {className:"shared-placeholder"}, 
                            
                          
-           React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn shared-to",  'data-content':this.props.data["sharedTo"]}, 
+           React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn shared-to",  'data-content':this.props.data["sharedWith"]}, 
                     React.DOM.span( {className:"glyphicon icon-shared-to"} ), " ", React.DOM.span( {className:"counter"}, this.state.isShared? this.state.titleCount : "", " " )
            ), 
            React.DOM.button( {type:"button", className:"btn btn-default btn-sm tiny", onClick:this.editNotesHandler, 'data-toggle':"tooltip", title:"Add title"}, React.DOM.span( {className:"glyphicon glyphicon-plus-sign"})), 

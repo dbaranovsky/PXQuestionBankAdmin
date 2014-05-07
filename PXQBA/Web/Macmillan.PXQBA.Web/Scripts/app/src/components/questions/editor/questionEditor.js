@@ -26,15 +26,6 @@ var QuestionEditor = React.createClass({
       this.setState({question: editedQuestion});
     },
 
-    getSourceQuestion: function(){
-         questionDataManager.getQuestion(this.state.question.questionIdDuplicateFrom).done(this.setQuestion);
-    },
-
-    setQuestion: function(data) {
-        this.setState({question: data});
-        //dirty hack
-        $("#myModalLabel").text(window.enums.dialogCaptions.editQuestion);
-     },
 
      showSaveWarning: function(){
         if(!this.props.isNew && !this.props.isDuplicate){
@@ -102,9 +93,34 @@ var QuestionEditor = React.createClass({
      }
      },
 
+
+      loadSourceQuestion: function(event){
+      event.preventDefault();
+      this.props.editSourceQuestionHandler(this.state.question.questionIdDuplicateFrom);
+    },
+
+      renderSharingNotification: function(){
+         if (this.props.question.isDuplicateOfSharedQuestion && this.props.isDuplicate) {
+        return (<div className="shared-note">This question is a duplicate of &nbsp;
+                    <a className="shared-question-link" href="" onClick={this.loadSourceQuestion}>question</a>
+                    shared with  <b>{this.props.question.productCourses.join(', ')}</b> 
+               </div>);
+      }
+
+      if (this.props.question.isShared && !this.props.isDuplicate && !this.props.isNew){
+                var sharedCourses = this.props.question.productCourses.length;
+                return (<div className="shared-note">Editing this question content would affect {sharedCourses == 1 ?  "1 title" :"all "+sharedCourses+ " titles"} that use this question </div>);
+      }
+
+      return null;
+    },
+
+
+
     render: function() {
         return (
             <div>
+                   {this.renderSharingNotification()}
                       <div className="header-buttons">
                          <button className="btn btn-primary run-question" data-toggle="modal" onClick={this.runQuestion}>
                              <span className="glyphicon glyphicon-play"></span> Try Question
@@ -118,7 +134,7 @@ var QuestionEditor = React.createClass({
                       </div>
                 
                 <div>
-                  <QuestionEditorTabs question={this.state.question} metadata={this.props.metadata} editHandler={this.editHandler} isDuplicate={this.props.isDuplicate} getSourceQuestion={this.getSourceQuestion}/>
+                  <QuestionEditorTabs question={this.state.question} metadata={this.props.metadata} editHandler={this.editHandler} isDuplicate={this.props.isDuplicate}/>
                 </div>
                 {this.renderWarningDialog()}
 

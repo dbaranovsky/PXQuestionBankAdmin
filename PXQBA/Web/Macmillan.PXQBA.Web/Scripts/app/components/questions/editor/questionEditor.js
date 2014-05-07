@@ -26,15 +26,6 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
       this.setState({question: editedQuestion});
     },
 
-    getSourceQuestion: function(){
-         questionDataManager.getQuestion(this.state.question.questionIdDuplicateFrom).done(this.setQuestion);
-    },
-
-    setQuestion: function(data) {
-        this.setState({question: data});
-        //dirty hack
-        $("#myModalLabel").text(window.enums.dialogCaptions.editQuestion);
-     },
 
      showSaveWarning: function(){
         if(!this.props.isNew && !this.props.isDuplicate){
@@ -102,9 +93,34 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
      }
      },
 
+
+      loadSourceQuestion: function(event){
+      event.preventDefault();
+      this.props.editSourceQuestionHandler(this.state.question.questionIdDuplicateFrom);
+    },
+
+      renderSharingNotification: function(){
+         if (this.props.question.isDuplicateOfSharedQuestion && this.props.isDuplicate) {
+        return (React.DOM.div( {className:"shared-note"}, "This question is a duplicate of  ",
+                    React.DOM.a( {className:"shared-question-link", href:"", onClick:this.loadSourceQuestion}, "question"),
+                    "shared with  ",  React.DOM.b(null, this.props.question.productCourses.join(', ')) 
+               ));
+      }
+
+      if (this.props.question.isShared && !this.props.isDuplicate && !this.props.isNew){
+                var sharedCourses = this.props.question.productCourses.length;
+                return (React.DOM.div( {className:"shared-note"}, "Editing this question content would affect ", sharedCourses == 1 ?  "1 title" :"all "+sharedCourses+ " titles", " that use this question " ));
+      }
+
+      return null;
+    },
+
+
+
     render: function() {
         return (
             React.DOM.div(null, 
+                   this.renderSharingNotification(),
                       React.DOM.div( {className:"header-buttons"}, 
                          React.DOM.button( {className:"btn btn-primary run-question", 'data-toggle':"modal", onClick:this.runQuestion}, 
                              React.DOM.span( {className:"glyphicon glyphicon-play"}), " Try Question"
@@ -118,7 +134,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
                       ),
                 
                 React.DOM.div(null, 
-                  QuestionEditorTabs( {question:this.state.question, metadata:this.props.metadata, editHandler:this.editHandler, isDuplicate:this.props.isDuplicate, getSourceQuestion:this.getSourceQuestion})
+                  QuestionEditorTabs( {question:this.state.question, metadata:this.props.metadata, editHandler:this.editHandler, isDuplicate:this.props.isDuplicate})
                 ),
                 this.renderWarningDialog()
 
