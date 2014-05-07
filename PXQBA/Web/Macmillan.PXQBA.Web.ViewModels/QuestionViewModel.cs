@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Macmillan.PXQBA.Business.Models;
 
-namespace Macmillan.PXQBA.Business.Models
+namespace Macmillan.PXQBA.Web.ViewModels
 {
     /// <summary>
     /// Question DTO
@@ -63,7 +64,7 @@ namespace Macmillan.PXQBA.Business.Models
             }
         }
 
-        public string QuestionIdDuplicateFrom { get; set; }
+        public string QuestionIdDuplicateFrom{ get; set; }
 
         public bool IsShared
         {

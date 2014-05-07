@@ -51,6 +51,7 @@
     <Compile Include="QuestionListDataRequest.cs" />
     <Compile Include="QuestionListDataResponse.cs" />
     <Compile Include="QuestionOrder.cs" />
+    <Compile Include="QuestionViewModel.cs" />
     <Compile Include="TiteList\ChapterViewModel.cs" />
     <Compile Include="TiteList\TitleListDataResponse.cs" />
     <Compile Include="TiteList\TitleViewModel.cs" />

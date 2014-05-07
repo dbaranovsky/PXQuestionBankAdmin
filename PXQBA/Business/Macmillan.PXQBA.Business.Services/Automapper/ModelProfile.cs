@@ -7,6 +7,7 @@ using Bfw.Agilix.DataContracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
+using Macmillan.PXQBA.Web.ViewModels;
 using Macmillan.PXQBA.Web.ViewModels.TiteList;
 using Course = Macmillan.PXQBA.Business.Models.Course;
 using LearningObjective = Macmillan.PXQBA.Business.Models.LearningObjective;
@@ -79,6 +80,11 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(vm => vm.Id, opt => opt.MapFrom(c => FirstCharacterToLower(c.Title)))
                 .ForMember(vm => vm.Title, opt => opt.MapFrom(c => c.Title));
 
+            Mapper.CreateMap<Question, QuestionViewModel>()
+                .ForMember(dest => dest.ProductCourses, opt => opt.MapFrom(src => src.ProductCourses.Select(p => p.Title)));
+
+            Mapper.CreateMap<QuestionViewModel, Question>();
+
             #region UI models to dummy models
 
             Mapper.CreateMap<DataAccess.Data.ProductCourse, Question>()
@@ -121,8 +127,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<DataAccess.Data.Note, Note>()
                 .ForMember(dest => dest.QuestionId, opt => opt.MapFrom(src => src.Question.DlapId));
 
-            Mapper.CreateMap<Question, QuestionViewModel>()
-                .ForMember(dest => dest.ProductCourses, opt => opt.MapFrom(src => src.ProductCourses.Select(p => p.Title)));
+
 
             #endregion
         }
