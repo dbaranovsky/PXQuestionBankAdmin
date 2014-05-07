@@ -20,7 +20,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         private const string QuestionIdTemplate = "QBA_temp_question_{0}";
 
-        private const string TemporaryCourseId = "200117";
+        private readonly string temporaryCourseId = ConfigurationHelper.GetTemporaryCourseId();
 
         public TemporaryQuestionOperation(IContext businessContext)
         {
@@ -30,7 +30,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         public Models.Question CopyQuestionToTemporaryCourse(string sourceProductCourseId, string questionIdToCopy)
         {
 
-            var questionToCopy = CopyQuestionToCourse(sourceProductCourseId, questionIdToCopy, TemporaryCourseId, GetTemporaryQuestionId());
+            var questionToCopy = CopyQuestionToCourse(sourceProductCourseId, questionIdToCopy, temporaryCourseId, GetTemporaryQuestionId());
             AddQuestionToTemporaryQuiz(questionToCopy);
             return Mapper.Map<Models.Question>(questionToCopy);
         }
@@ -52,8 +52,27 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         public Models.Question CopyQuestionToSourceCourse(string sourceProductCourseId, string sourceQuestionId)
         {
-            var question = CopyQuestionToCourse(TemporaryCourseId, GetTemporaryQuestionId(), sourceProductCourseId, sourceQuestionId);
+            var question = CopyQuestionToCourse(temporaryCourseId, GetTemporaryQuestionId(), sourceProductCourseId, sourceQuestionId);
+            DeleteTemporaryQuestion();
             return Mapper.Map<Models.Question>(question);
+        }
+
+        private void DeleteTemporaryQuestion()
+        {
+              var questionToDelete = new XElement("question",
+                    new XAttribute("entityid", temporaryCourseId),
+                    new XAttribute("questionid", GetTemporaryQuestionId())
+                );
+
+                var deleteCmd = new DeleteQuestions()
+                {
+                    Questions = new List<XElement>()
+                    {
+                        new XElement(questionToDelete)
+                    }
+                };
+
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(deleteCmd);
         }
 
         private Question CopyQuestionToCourse(string sourceProductCourseId, string sourceQuestionId, string destinationProductCourseId, string destinationQuestionId)
@@ -95,7 +114,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             questionElement.Add(new XAttribute("id", questionToCopy.Id));
             questionsElement.Add(questionElement);
             HtmlXmlHelper.SwitchAttributeName(item.Root, "id", "itemid", GetTemporaryQuizId());
-            HtmlXmlHelper.SwitchAttributeName(item.Root, "actualentityid", "entityid", TemporaryCourseId);
+            HtmlXmlHelper.SwitchAttributeName(item.Root, "actualentityid", "entityid", temporaryCourseId);
             var cmd = new PutRawItem()
             {
                 ItemDoc = item
@@ -137,7 +156,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             {
                 SearchParameters = new ItemSearch
                 {
-                    EntityId = TemporaryCourseId,
+                    EntityId = temporaryCourseId,
                     ItemId = GetTemporaryQuizId()
                 }
             };
@@ -148,7 +167,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             }
             var cmd = new GetRawItem()
             {
-                EntityId = TemporaryCourseId,
+                EntityId = temporaryCourseId,
                 ItemId = GetTemporaryQuizId()
             };
            
@@ -168,7 +187,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         {
             return new Item
             {
-                EntityId = TemporaryCourseId,
+                EntityId = temporaryCourseId,
                 Id = GetTemporaryQuizId(),
                 Type = DlapItemType.Assessment
             };

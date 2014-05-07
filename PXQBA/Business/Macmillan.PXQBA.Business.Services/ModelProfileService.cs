@@ -7,6 +7,8 @@ using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Common.Helpers.Constants;
+using Macmillan.PXQBA.DataAccess.Data;
+using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Business.Services
 {
@@ -69,8 +71,7 @@ namespace Macmillan.PXQBA.Business.Services
             data.Add(MetadataFieldNames.SuggestedUse, String.Join(", ", question.SuggestedUse));
             data.Add(MetadataFieldNames.Guidance, question.Guidance);
             data.Add(MetadataFieldNames.LearningObjectives, String.Join(", ", question.LearningObjectives.Select(lo => lo.Description)));
-            data.Add(MetadataFieldNames.SharedTo, String.Join("<br />", question.SharedTo));
-            data.Add(MetadataFieldNames.SharedFrom, question.SharedFrom);
+            data.Add(MetadataFieldNames.SharedWith, String.Join("<br />", question.ProductCourses.Select(c => c.Title)));
             data.Add(MetadataFieldNames.QuestionIdDuplicateFrom, question.QuestionIdDuplicateFrom);
           
           
@@ -132,28 +133,25 @@ namespace Macmillan.PXQBA.Business.Services
             };
         }
 
-        public string GetHardCodedSharedFrom(int questionId)
+        public IEnumerable<ProductCourseSection> GetHardCodedSharedProductCourses(ProductCourse productCourse)
         {
-            if (questionId%2 == 0)
+            if (productCourse.QuestionId%2 != 0)
             {
-                return "Mathematic book title";
-            }
-            return string.Empty;
-        }
-
-        public IEnumerable<string> GetHardCodedSharedTo(int questionId)
-        {
-            if (questionId%2 != 0 && questionId != 1)
-            {
-                return new List<string>
+                return new List<ProductCourseSection>
                 {
-                    "Core Economics book title",
-                    "Statistics book title",
-                    "History",
-                    "Informatics"
+                    new ProductCourseSection {Id = "12345", Title = "Core Economics book title"},
+                    new ProductCourseSection {Id = "12346", Title = "Statistics book title"},
+                    new ProductCourseSection {Id = "12347", Title = "History"},
+                    new ProductCourseSection {Id = "12348", Title = "Informatics"}
                 };
             }
-            return null;
+            else
+            {
+                return new List<ProductCourseSection>()
+                {
+                    new ProductCourseSection {Id = productCourse.Id.ToString(), Title = productCourse.Title}
+                };
+            }
         }
 
         public string GetHardCodedQuestionDuplicate()
@@ -161,13 +159,13 @@ namespace Macmillan.PXQBA.Business.Services
             return "B1D5E8B8-2798-9051-B1D1-86320975868A";
         }
 
-        public SharedMetadata GetHardCodedSourceQuestion(string sharedFrom)
+        public Question GetHardCodedSourceQuestion(int sharedFrom)
         {
-            if (string.IsNullOrEmpty(sharedFrom))
+            if (sharedFrom % 2 == 0)
             {
                 return null;
             }
-            return Mapper.Map<Question, SharedMetadata>(questionCommands.GetQuestion(GetHardCodedQuestionDuplicate())); 
+            return questionCommands.GetQuestion(GetHardCodedQuestionDuplicate());
         }
 
         public string GetQuizIdForQuestion(string id, string entityId)

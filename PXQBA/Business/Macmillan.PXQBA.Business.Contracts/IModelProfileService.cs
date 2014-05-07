@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.DataAccess.Data;
+using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Business.Contracts
 {
@@ -13,10 +15,10 @@ namespace Macmillan.PXQBA.Business.Contracts
         IEnumerable<LearningObjective> GetLOByGuid(string productCourseId, string learningObjectiveGuids);
         string GetQuestionCardLayout(Bfw.Agilix.DataContracts.Course src);
         IEnumerable<Chapter> GetHardCodedQuestionChapters();
-        string GetHardCodedSharedFrom(int questionId);
-        IEnumerable<string> GetHardCodedSharedTo(int questionId);
+        IEnumerable<ProductCourseSection> GetHardCodedSharedProductCourses(ProductCourse productCourse);
         string GetHardCodedQuestionDuplicate();
         string GetQuizIdForQuestion(string id, string entityId);
-        SharedMetadata GetHardCodedSourceQuestion(string sharedFrom);
+
+        Question GetHardCodedSourceQuestion(int sharedFrom);
     }
 }

@@ -232,5 +232,15 @@ namespace Macmillan.PXQBA.Common.Helpers
             }
             return "http://root.dev.brainhoney.bfwpub.com/BrainHoney/Component/QuestionEditor?enrollmentid={0}&itemid={1}&questionid={2}&showcancel=true";
         }
+
+        public static string GetTemporaryCourseId()
+        {
+            var courseId = ConfigurationManager.AppSettings[ConfigurationKeys.TemporaryCourseId];
+            if (!string.IsNullOrEmpty(courseId))
+            {
+                return courseId;
+            }
+            return "200117";
+        }
     }
 }

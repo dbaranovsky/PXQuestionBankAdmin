@@ -39,9 +39,10 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
         /// <summary>
         /// Key for question types
         /// </summary>
-        public static string QuestionTypes { get; set; }
+        public const string QuestionTypes = "QuestionTypes";
 
-        
+        public const string TemporaryCourseId = "TemporaryCourseId";
+
 
         /// <summary>
         /// Key for administrator userspace

@@ -54,9 +54,9 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// <summary>
         /// Update existing question metafields
         /// </summary>
-        /// <param name="question"></param>
+        /// <param name="temporaryQuestion"></param>
         /// <returns></returns>
-        Question UpdateQuestion(Course course, string sourceQuestionId, Question question);
+        Question UpdateQuestion(Course course, string sourceQuestionId, Question temporaryQuestion);
         
         bool UpdateQuestionField(string questionId, string fieldName, string fieldValue);
 

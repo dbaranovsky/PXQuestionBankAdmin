@@ -81,9 +81,9 @@ namespace Macmillan.PXQBA.Business.Services
             return availableTypes;
         }
 
-        public Question UpdateQuestion(Course course, string sourceQuestionId, Question question)
+        public Question UpdateQuestion(Course course, string sourceQuestionId, Question temporaryQuestion)
         {
-            var updatedTempQuestion = questionCommands.UpdateQuestion(question);
+            var updatedTempQuestion = questionCommands.UpdateQuestion(temporaryQuestion);
             temporaryQuestionOperation.CopyQuestionToSourceCourse(course.ProductCourseId, "PxTempQBAQuestion_115457_Choice");
             return questionCommands.UpdateQuestion(updatedTempQuestion);
         }
