@@ -10,7 +10,7 @@ using Macmillan.PXQBA.Business.Contracts;
 //using Macmillan.PXQBA.Business.Services.Automapper;
 using Macmillan.PXQBA.Common.Logging;
 using Macmillan.PXQBA.DataAccess.Data;
-using Microsoft.Practices.Unity;
+//using Microsoft.Practices.Unity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Macmillan.PXQBA.Business.Services.Tests
@@ -18,15 +18,15 @@ namespace Macmillan.PXQBA.Business.Services.Tests
     [TestClass]
     public class QuestionManagementServiceTests
     {
-        private IUnityContainer container;
-        private IQuestionManagementService questionManagementService;
+        //private IUnityContainer container;
+        //private IQuestionManagementService questionManagementService;
 
         [TestInitialize]
         public void TestInitialize()
         {
             InitializeUnity();
 
-            questionManagementService = container.Resolve<IQuestionManagementService>();
+           // questionManagementService = container.Resolve<IQuestionManagementService>();
         }
 
         private void InitializeUnity()
