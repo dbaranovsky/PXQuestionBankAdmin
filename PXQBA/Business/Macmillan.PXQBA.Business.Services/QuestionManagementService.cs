@@ -32,8 +32,8 @@ namespace Macmillan.PXQBA.Business.Services
         {
             Question question = GetNewQuestionTemplate();
             question.Type = questiontype;
-            question.Bank = bank;
-            question.Chapter = chapter;
+            question.LocalMetadata.Bank = bank;
+            question.LocalMetadata.Chapter = chapter;
             return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
 
@@ -46,18 +46,18 @@ namespace Macmillan.PXQBA.Business.Services
         {
             Question question = GetQuestion(questionId);
             question.Id = Guid.NewGuid().ToString();
-            question.Status = QuestionStatus.InProgress;
+            question.LocalMetadata.Status = QuestionStatus.InProgress;
             return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
 
         private Question GetNewQuestionTemplate()
         {
             var question = new Question();
-            question.Status = QuestionStatus.InProgress;
-            question.Title = "New question";
+            question.LocalMetadata.Status = QuestionStatus.InProgress;
+            question.LocalMetadata.Title = "New question";
             question.Preview = "<h2>preview for test</h2>";
-            question.Chapter = "Chapter 1";
-            question.Bank = "End of Chapter Questions";
+            question.LocalMetadata.Chapter = "Chapter 1";
+            question.LocalMetadata.Bank = "End of Chapter Questions";
             return question;
         }
 
