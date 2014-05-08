@@ -93,7 +93,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
 
             Mapper.CreateMap<DataAccess.Data.ProductCourse, Question>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Question.DlapId))
-                .ForMember(dest => dest.LocalMetadata, opt => opt.MapFrom(src => src.Keywords.Split('|')))
+                .ForMember(dest => dest.LocalMetadata, opt => opt.MapFrom(src => src))
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Question.Type))
                 .ForMember(dest => dest.Preview, opt => opt.MapFrom(src => src.Question.Preview))
                 .ForMember(dest => dest.ProductCourses, opt => opt.MapFrom(src => modelProfileService.GetHardCodedSharedProductCourses(src)))
@@ -120,7 +120,15 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                   .ForMember(dest => dest.Id, opt => opt.Ignore())
                   .ForMember(dest => dest.Keywords, opt => opt.MapFrom(src => src.LocalMetadata.Keywords != null ? string.Join("|", src.LocalMetadata.Keywords) : null))
                   .ForMember(dest => dest.SuggestedUse, opt => opt.MapFrom(src => src.LocalMetadata.SuggestedUse != null ? string.Join("|", src.LocalMetadata.SuggestedUse) : null))
-                  .ForMember(dest => dest.LearningObjectives, opt => opt.MapFrom(src => modelProfileService.SetLearningObjectives(src.LocalMetadata.LearningObjectives)));
+                  .ForMember(dest => dest.LearningObjectives, opt => opt.MapFrom(src => modelProfileService.SetLearningObjectives(src.LocalMetadata.LearningObjectives)))
+                  .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.LocalMetadata.Title))
+                  .ForMember(dest => dest.ExcerciseNo, opt => opt.MapFrom(src => src.LocalMetadata.ExcerciseNo))
+                  .ForMember(dest => dest.Chapter, opt => opt.MapFrom(src => src.LocalMetadata.Chapter))
+                  .ForMember(dest => dest.Bank, opt => opt.MapFrom(src => src.LocalMetadata.Bank))
+                  .ForMember(dest => dest.Difficulty, opt => opt.MapFrom(src => src.LocalMetadata.Difficulty))
+                  .ForMember(dest => dest.CognitiveLevel, opt => opt.MapFrom(src => src.LocalMetadata.CognitiveLevel))
+                  .ForMember(dest => dest.Guidance, opt => opt.MapFrom(src => src.LocalMetadata.Guidance));
+          
 
             Mapper.CreateMap<Question, DataAccess.Data.Question>()
                 .ForMember(dest => dest.DlapId, opt => opt.MapFrom(src => src.Id))

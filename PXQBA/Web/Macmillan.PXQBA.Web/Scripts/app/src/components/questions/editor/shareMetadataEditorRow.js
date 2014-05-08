@@ -14,7 +14,7 @@ var ShareMetadataEditorRow = React.createClass({
     if (field == 'learningObjectives'){
 
         var localGuids =[];
-        $.each(this.props.question[field], function(i, objective){
+        $.each(this.props.question.localMetadata[field], function(i, objective){
            localGuids.push(objective.guid);
        });
 
@@ -26,11 +26,11 @@ var ShareMetadataEditorRow = React.createClass({
       return { isDisabled: this.compareArray(localGuids, sharedGuids)};
     }
 
-    if ($.isArray(this.props.question[field])){
-       isDisabled = this.compareArray(this.props.question[field], this.props.question.sharedMetadata[field]);
+    if ($.isArray(this.props.question.localMetadata[field])){
+       isDisabled = this.compareArray(this.props.question.localMetadata[field], this.props.question.sharedMetadata[field]);
 
     }else {
-      isDisabled = this.props.question[field] === this.props.question.sharedMetadata[field];
+      isDisabled = this.props.question.localMetadata[field] === this.props.question.sharedMetadata[field];
     }
 
       return { isDisabled: isDisabled};
@@ -47,7 +47,7 @@ var ShareMetadataEditorRow = React.createClass({
                      <MetadataFieldEditor question={this.props.question.sharedMetadata} 
                                           editMode={false} 
                                           metadata={this.props.metadata}
-                                          editHandler={this.sourceEditHandler} 
+                                          editHandler={this.sharedEditHandler} 
                                           applyHandler= {this.applyHandler}
                                           field={this.props.field} 
                                           title={this.props.title} />
@@ -67,18 +67,24 @@ var ShareMetadataEditorRow = React.createClass({
        }
     },
 
-    sourceEditHandler: function(sharedMetadata){
+    sharedEditHandler: function(sharedMetadata){
         var question = this.props.question;
         question.sharedMetadata = sharedMetadata;
         this.props.editHandler(question);
     },
 
+    localEditHandler: function(localMetadata){
+        var question = this.props.question;
+        question.localMetadata = localMetadata;
+        this.props.editHandler(question);
+    },
+
     renderLocalValue: function(){
       return  (<div className="cell">
-                 <MetadataFieldEditor question={this.props.question} 
+                 <MetadataFieldEditor question={this.props.question.localMetadata} 
                                     isDisabled={this.state.isDisabled} 
                                     metadata={this.props.metadata} 
-                                    editHandler={this.props.editHandler} 
+                                    editHandler={this.localEditHandler} 
                                     field={this.props.field} 
                                     title={this.props.title} />
                  </div>);
@@ -99,13 +105,12 @@ var ShareMetadataEditorRow = React.createClass({
 
     restoreField: function(){
         this.setState({isDisabled: true});
-        this.restoreLocalQuestion();
-       
+        this.restoreLocalQuestion();   
     },
 
     restoreLocalQuestion: function(){
         var question = this.props.question;
-        question[this.props.field] = question.sharedMetadata[this.props.field];
+        question.localMetadata[this.props.field] = question.sharedMetadata[this.props.field];
         this.props.editHandler(question);
     },
 

@@ -82,6 +82,7 @@ var MetadataFieldEditor = React.createClass({
              return (<MultiSelectEditor values={currentValue} isDisabled={this.props.isDisabled} metadataField={metadataField} question={this.props.question} field={this.props.field} editHandler={this.props.editHandler} />);
 
           default: 
+          currentValue = currentValue || "";
             if(metadataField!= null && metadataField.isMultiline){
                  return ( <textarea onChange={this.editHandler} disabled={this.props.isDisabled}  ref="editor" className={this.props.isDisabled? "disabled" : ""}  rows="10" type="text" placeholder="Enter text..." value={currentValue} />);  
              }
