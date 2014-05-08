@@ -467,19 +467,36 @@ input.disabled, textarea.disabled {
 }
 
 
-.iframe-waiting {
+
+.iframe.waiting {
     width: 100%;
-    height: 705px;
-    text-align: center;
-    vertical-align: middle;
+    height: 692px !important;
+   
+}
+
+.waiting {
+    height: 300px !important;
+   text-align: center;
+   vertical-align: middle;
    background: url("../Content/img/spinning.gif") no-repeat;
    background-position: center center;  
+}
+
+.waiting.small {
+     
+    height: 20px !important;
+    margin-top: -20px;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+    
 }
 
 
 .tab-body iframe {
     width: 100%;
-    height: 705px;
+    height: 692px;
     display: none;
 }
 

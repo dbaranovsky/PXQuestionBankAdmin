@@ -44,7 +44,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                 React.DOM.div( {className:"tab-content"}, 
                     React.DOM.div( {className:"tab-pane active", id:"body"}, 
                        React.DOM.div( {className:"tab-body"}, 
-                          React.DOM.div( {className:"iframe-waiting"} ),
+                          React.DOM.div( {className:"iframe waiting"} ),
                           
                           React.DOM.iframe( {src:this.props.question.editorUrl} )
                           

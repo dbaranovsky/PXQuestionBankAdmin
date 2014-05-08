@@ -5,13 +5,12 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
 
      getInitialState: function() {
 
-       var field = this.props.field;
-       var metadataField = $.grep(this.props.metadata, function(e){ return $.inArray(e.metadataName, [field, "dlap_q_"+field, "dlap_"+field, field.toLowerCase()])!=-1;  });
-       var allowDeselect = metadataField.length>0 ? metadataField[0].allowDeselect : false;
+      var metadataField = this.getMetaField();
+       var allowDeselect = metadataField != null ? metadataField.allowDeselect : false;
       return { editMode: this.props.editMode === undefined? true : this.props.editMode,
                editMenu: false,
                allowDeselect: allowDeselect,
-               metadataField: metadataField.length>0 ? metadataField[0] : null};
+               metadataField:  metadataField};
     },
      editHandler: function(selectedOptions){
         var text = "";
@@ -30,6 +29,13 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
 
          this.updateQuestion(text);
        
+     },
+
+     getMetaField: function(){
+       var field = this.props.field;
+       var metadataField = $.grep(this.props.metadata, function(e){ return $.inArray(e.metadataName, [field, "dlap_q_"+field, "dlap_"+field, field.toLowerCase()])!=-1;  });
+       
+       return metadataField.length>0 ? metadataField[0]: null;
      },
 
     updateQuestion: function(value){
@@ -66,8 +72,8 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
 
 
        var field = this.props.field;
-       var metadataField = this.state.metadataField;
-       var editorType = metadataField != null  ? metadataField.editorDescriptor.editorType : 0;
+       var metadataField = this.props.reload? this.getMetaField() : this.state.metadataField;
+       var editorType = metadataField != null ? metadataField.editorDescriptor.editorType : 0;
        var currentValue = this.props.question[this.props.field];
 
        if(this.state.editMode){

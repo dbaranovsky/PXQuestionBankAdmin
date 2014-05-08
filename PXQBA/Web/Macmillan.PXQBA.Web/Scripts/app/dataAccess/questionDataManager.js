@@ -265,6 +265,24 @@
         });
     };
 
+    self.getCourseMetadata= function (courseId) {
+        
+        var request = {            
+            courseId: courseId
+        };
+        
+        return $.ajax({
+            url: window.actions.questionList.getCourseMetadataUrl,
+            traditional: true,
+            data: JSON.stringify(request),
+            contentType: 'application/json',
+            dataType: 'json',
+            type: 'POST'
+        }).error(function(e){
+             self.showErrorPopup();
+        });
+    };
+
     
     self.bulk = {};
 
@@ -319,11 +337,13 @@
 
         var request = {
             questionsId: questionsId,
-            courseViewModel: courseViewModel
+            courseId: courseViewModel.course,
+            bank: courseViewModel.bank,
+            chapter: courseViewModel.chapter 
         };
 
         return $.ajax({
-            url: window.actions.bulkOperations.shareTitleUrl,
+            url: window.actions.bulkOperations.publishToTitle,
             traditional: true,
             data: JSON.stringify(request),
             contentType: 'application/json',
@@ -331,7 +351,6 @@
             type: 'POST'
         }).done(function (response) {
             self.resetState();
-            self.showSuccessPopup("Shared questions has been shared");
         }).error(function (e) {
             self.resetState();
             self.showErrorPopup();

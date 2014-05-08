@@ -44,7 +44,7 @@ var QuestionEditorTabs = React.createClass({
                 <div className="tab-content">
                     <div className="tab-pane active" id="body">
                        <div className="tab-body">
-                          <div className="iframe-waiting" />
+                          <div className="iframe waiting" />
                           
                           <iframe src={this.props.question.editorUrl} />
                           

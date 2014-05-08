@@ -21,7 +21,7 @@ var QuestionShareDialog = React.createClass({
     },
 
     loadMetadata: function(data){
-      this.setState({metadata: data});
+        this.setState({metadata: data});       
     },
 
    
@@ -33,7 +33,7 @@ var QuestionShareDialog = React.createClass({
        var self = this;
         var renderBody = function(){
           if (self.state === undefined || self.state == null){
-            return (<div></div>);
+            return (<div> <div className="waiting" /></div>);
           }
 
             return (<div>
@@ -54,7 +54,10 @@ var ShareQuestionBox = React.createClass({
  
    getInitialState: function() {
       return { 
-               shareViewModel: {course: 0, chapter:"", bank:""}
+               shareViewModel: {course: 0, chapter:"", bank:""},
+               metadata: this.props.metadata,
+               setDefaults: true,
+               loading: false
              };
     },
 
@@ -64,8 +67,18 @@ var ShareQuestionBox = React.createClass({
     this.setState({shareViewModel: question});
    },
 
-   productTitleEditHandler: function(question){
-    //get titles
+   productTitleEditHandler: function(shareViewModel){
+     this.setState({loading: true});
+     questionDataManager.getCourseMetadata(shareViewModel.course).done(this.changeCourseMetadata.bind(this, shareViewModel.course));
+   },
+
+   changeCourseMetadata: function(courseId, metadata){
+      this.setState({
+               shareViewModel: {course: courseId, chapter:"", bank:""},
+               metadata: metadata,
+               setDefaults: false,
+               loading: false
+      });
    },
 
    componentDidMount: function()   {
@@ -77,12 +90,20 @@ var ShareQuestionBox = React.createClass({
         this.props.closeDialogHandler();
     },
 
+    renderWaiter: function(){
+        if (this.state.loading){
+           return (<div className="waiting small"></div>);
+        }
+
+        return (<div></div>);
+    },
     render: function() {
             return (<div>
                            
-                           <MetadataFieldEditor question={this.state.shareViewModel} metadata={this.props.metadata} setDefault={true} editHandler={this.productTitleEditHandler} field={"course"} title={"Target title"}/>
-                           <MetadataFieldEditor question={this.state.shareViewModel} metadata={this.props.metadata} setDefault={true}  editHandler={this.editHandler} field={"chapter"} title={"Target chapter"}/>
-                           <MetadataFieldEditor question={this.state.shareViewModel} metadata={this.props.metadata} setDefault={true}  editHandler={this.editHandler} field={"bank"} title={"Target bank"}/>
+                           <MetadataFieldEditor question={this.state.shareViewModel} metadata={this.state.metadata} setDefault={this.state.setDefaults} editHandler={this.productTitleEditHandler} field={"course"} title={"Target title"}/>
+                           {this.renderWaiter()}
+                           <MetadataFieldEditor question={this.state.shareViewModel} metadata={this.state.metadata} setDefault={true} isDisabled={this.state.loading} reload={true} editHandler={this.editHandler} field={"chapter"} title={"Target chapter"}/>
+                           <MetadataFieldEditor question={this.state.shareViewModel} metadata={this.state.metadata} setDefault={true} isDisabled={this.state.loading}  reload={true} editHandler={this.editHandler} field={"bank"} title={"Target bank"}/>
 
                             <div className="modal-footer clearfix">
                                  <button type="button" className="btn btn-default" data-dismiss="modal" onClick={this.props.closeDialogHandler}>Cancel</button>
