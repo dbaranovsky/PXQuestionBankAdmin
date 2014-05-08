@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Web.Helpers;
 
 namespace Macmillan.PXQBA.Web.Controllers
 {
@@ -23,9 +24,15 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         [HttpPost]
         public ActionResult RemoveFromTitle(string[] questionsId)
-        {   //Todo: implement remove questions from title
-           // bool isSuccess = bulkOperationService.RemoveFromTitle(questionsId);
-            return JsonCamel(new { isError = false });
+        {
+            bool isSuccess = bulkOperationService.RemoveFromTitle(questionsId, CourseHelper.CurrentCourse);
+            return JsonCamel(new { isError = !isSuccess });
+        }
+
+        public ActionResult PublishToTitle(string[] questionsId, int courseId, string bank, string chapter)
+        {
+            bool isSuccess = bulkOperationService.PublishToTitle(questionsId, courseId, bank, chapter);
+            return JsonCamel(new {isError = !isSuccess});
         }
 	}
 }

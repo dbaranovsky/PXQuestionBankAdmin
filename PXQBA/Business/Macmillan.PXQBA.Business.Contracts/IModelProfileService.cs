@@ -20,5 +20,6 @@ namespace Macmillan.PXQBA.Business.Contracts
         string GetQuizIdForQuestion(string id, string entityId);
 
         Question GetHardCodedSourceQuestion(int sharedFrom);
+        IEnumerable<string> GetHardCodedQuestionBanks();
     }
 }

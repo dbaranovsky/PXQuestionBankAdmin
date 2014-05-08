@@ -37,14 +37,6 @@ namespace Macmillan.PXQBA.Business.Contracts
         Question DuplicateQuestion(Course course, string questionId);
 
         /// <summary>
-        /// Changes question sequence number in scope of same bank questions.
-        /// As sequence is defined in scope of cource, the cource id needs to be passed as well
-        /// </summary>
-        /// <param name="questionId"></param>
-        /// <param name="newSequenceValue"></param>
-        void UpdateQuestionSequence(Course course, string questionId, int newSequenceValue);
-
-        /// <summary>
         /// Returns list of question types available for specified course
         /// </summary>
         /// <param name="course"></param>
@@ -58,8 +50,17 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// <returns></returns>
         Question UpdateQuestion(Course course, string sourceQuestionId, Question temporaryQuestion);
         
-        bool UpdateQuestionField(string questionId, string fieldName, string fieldValue);
+        bool UpdateQuestionField(Course course, string questionId, string fieldName, string fieldValue);
 
         Question CreateTemporaryQuestion(Course course, string questionId);
+
+        /// <summary>
+        /// Updates shared value of the question
+        /// </summary>
+        /// <param name="questionId"></param>
+        /// <param name="fieldName"></param>
+        /// <param name="fieldValue"></param>
+        /// <returns></returns>
+        bool UpdateSharedQuestionField(string questionId, string fieldName, string fieldValue);
     }
 }

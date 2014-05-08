@@ -27,18 +27,18 @@ namespace Macmillan.PXQBA.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(string questionId, string fieldName, string fieldValue)
+        public ActionResult UpdateMetadataField(string questionId, string fieldName, string fieldValue, bool isSharedField = false)
         {
-            bool success = false;
-            if (fieldName.Equals(MetadataFieldNames.Sequence))
+            bool success;
+            if (isSharedField)
             {
-                questionManagementService.UpdateQuestionSequence(CourseHelper.CurrentCourse, questionId, int.Parse(fieldValue));
-                success = true;
+                success = questionManagementService.UpdateSharedQuestionField(questionId,fieldName, fieldValue);
             }
             else
             {
-                success = questionManagementService.UpdateQuestionField(questionId, fieldName, fieldValue);
+                success = questionManagementService.UpdateQuestionField(CourseHelper.CurrentCourse, questionId, fieldName, fieldValue);
             }
+           
             return JsonCamel(new { isError = !success });
         
         }
@@ -84,15 +84,6 @@ namespace Macmillan.PXQBA.Web.Controllers
             questionViewModel.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), tempQuestion.EntityId, tempQuestion.QuizId);
             questionViewModel.EditorUrl = String.Format(ConfigurationHelper.GetEditorUrlTemplate(), tempQuestion.EntityId, tempQuestion.QuizId, tempQuestion.Id);
             return questionViewModel;
-        }
-
-        [HttpPost]
-        public ActionResult RemoveFromTitle(string questionId)
-        {
-            //TODO: implement removing question
-            //questionManagementService.RemoveFromTitle(questionId, CourseHelper.CurrentCourse);
-            return JsonCamel(new { isError = false });
-
         }
 
 	}
