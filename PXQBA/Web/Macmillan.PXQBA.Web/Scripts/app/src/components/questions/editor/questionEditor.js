@@ -48,9 +48,7 @@ var QuestionEditor = React.createClass({
         var renderHeaderText = function() {
             return ("Attention");
         };
-        var renderFooterButtons = function(){
-            return ("");
-        };
+        
         var renderBody = function(){
             return (<div>
                       The changes made will affect the version of question  that is visible  to instructor
@@ -71,7 +69,6 @@ var QuestionEditor = React.createClass({
         };
         return (<ModalDialog renderHeaderText={renderHeaderText} 
                              renderBody={renderBody} 
-                             renderFooterButtons={renderFooterButtons} 
                              dialogId="saveWarningDialog"
                              closeDialogHandler = {this.closeSaveWarningDialog}
                              showOnCreate = {true}
@@ -95,9 +92,9 @@ var QuestionEditor = React.createClass({
 
 
       loadSourceQuestion: function(event){
-      event.preventDefault();
-      this.props.editSourceQuestionHandler(this.state.question.questionIdDuplicateFrom);
-    },
+         event.preventDefault();
+         this.props.editSourceQuestionHandler(this.state.question.questionIdDuplicateFrom);
+     },
 
       renderSharingNotification: function(){
          if (this.props.question.isDuplicateOfSharedQuestion && this.props.isDuplicate) {

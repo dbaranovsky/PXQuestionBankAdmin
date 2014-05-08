@@ -30,8 +30,8 @@ var QuestionListMenu = React.createClass({
       }
     },
 
-    addTitleHandler: function(){
-
+    shareHandler: function(){
+        this.props.shareHandler();
     },
 
     componentDidUpdate: function(){
@@ -81,9 +81,9 @@ var QuestionListMenu = React.createClass({
               <button type="button" className="btn btn-default btn-sm custom-btn shared-to" rel="popover"  data-content={this.props.data["sharedWith"]}>
                  <span className="glyphicon icon-shared-to" ></span>{this.renderCourseCountBadge()} 
                </button>
-               <button type="button" className="btn btn-default btn-sm tiny" onClick={this.editNotesHandler} data-toggle="tooltip" title="Share this question"><span className="glyphicon glyphicon-plus-sign"></span></button> 
+               <button type="button" className="btn btn-default btn-sm tiny" onClick={this.shareHandler} data-toggle="tooltip" title="Share this question"><span className="glyphicon glyphicon-plus-sign"></span></button> 
                     {this.state.isShared?
-                      <button type="button" className="btn btn-default btn-sm tiny" onClick={this.removeTitleHandler} data-toggle="tooltip" title="Remove title"><span className="glyphicon glyphicon-minus-sign"></span></button> :
+                      <button type="button" className="btn btn-default btn-sm tiny" onClick={this.removeTitleHandler} data-toggle="tooltip" title="Remove from title"><span className="glyphicon glyphicon-minus-sign"></span></button> :
                     ""}
                </div>);
      }
@@ -96,9 +96,9 @@ var QuestionListMenu = React.createClass({
            <button type="button" className="btn btn-default btn-sm custom-btn shared-to"  data-content={this.props.data["sharedWith"]}>
                     <span className="glyphicon icon-shared-to" ></span>{this.renderCourseCountBadge()}
            </button> 
-           <button type="button" className="btn btn-default btn-sm tiny" onClick={this.editNotesHandler} data-toggle="tooltip" title="Add title"><span className="glyphicon glyphicon-plus-sign"></span></button> 
+           <button type="button" className="btn btn-default btn-sm tiny" onClick={this.shareHandler} data-toggle="tooltip" title="Share this question"><span className="glyphicon glyphicon-plus-sign"></span></button> 
             { this.state.isShared?
-              <button type="button" className="btn btn-default btn-sm tiny" onClick={this.editNotesHandler} data-toggle="tooltip" title="Add title"><span className="glyphicon glyphicon-minus-sign"></span></button> :
+              <button type="button" className="btn btn-default btn-sm tiny" onClick={this.removeTitleHandler} data-toggle="tooltip" title="Remove from title"><span className="glyphicon glyphicon-minus-sign"></span></button> :
                ""}
                              
           </div>);

@@ -240,12 +240,15 @@
     };
 
      self.removeTitle= function (questionId) {
+        var questions = [];
+        questions.push(questionId);
+        
         var request = {            
-            questionId: questionId
+            questionsId: questions
         };
         
         return $.ajax({
-            url: window.actions.questionList.removeFromTitleUrl,
+            url: window.actions.bulkOperations.removeFromTitleUrl,
             traditional: true,
             data: JSON.stringify(request),
             contentType: 'application/json',
@@ -262,7 +265,7 @@
         });
     };
 
-
+    
     self.bulk = {};
 
     self.bulk.setStatus = function (questionsId, newQuestionStatus) {
@@ -305,6 +308,30 @@
         }).done(function (response) {
             self.resetState();
             self.showSuccessPopup("Shared questions has been deleted");
+        }).error(function (e) {
+            self.resetState();
+            self.showErrorPopup();
+        });
+    };
+
+     self.bulk.shareTitle = function (questionsId, courseViewModel) {
+        asyncManager.startWait();
+
+        var request = {
+            questionsId: questionsId,
+            courseViewModel: courseViewModel
+        };
+
+        return $.ajax({
+            url: window.actions.bulkOperations.shareTitleUrl,
+            traditional: true,
+            data: JSON.stringify(request),
+            contentType: 'application/json',
+            dataType: 'json',
+            type: 'POST'
+        }).done(function (response) {
+            self.resetState();
+            self.showSuccessPopup("Shared questions has been shared");
         }).error(function (e) {
             self.resetState();
             self.showErrorPopup();

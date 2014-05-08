@@ -97,7 +97,10 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Question.Type))
                 .ForMember(dest => dest.Preview, opt => opt.MapFrom(src => src.Question.Preview))
                 .ForMember(dest => dest.ProductCourses, opt => opt.MapFrom(src => modelProfileService.GetHardCodedSharedProductCourses(src)))
-                .ForMember(dest => dest.SharedMetadata, opt => opt.MapFrom(src => src))
+                .ForMember(dest => dest.SharedMetadata, opt => opt.MapFrom(src => 
+                                src.QuestionId % 2 != 0
+                                    ? src
+                                    : null))
                 .ForMember(dest => dest.QuestionIdDuplicateFrom,
                     opt =>
                         opt.MapFrom(
