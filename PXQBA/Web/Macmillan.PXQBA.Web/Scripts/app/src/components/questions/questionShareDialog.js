@@ -4,6 +4,13 @@
 
 var QuestionShareDialog = React.createClass({
 
+   
+  getInitialState: function() {
+      return { 
+              waiting: true
+             };
+    },
+
     componentDidMount: function(){
         
         if(this.props.showOnCreate)
@@ -21,24 +28,56 @@ var QuestionShareDialog = React.createClass({
     },
 
     loadMetadata: function(data){
-        this.setState({metadata: data});       
+        this.setState({metadata: data, waiting: false});       
     },
 
+    shareQuestion: function(shareViewModel){
+        this.setState({waiting: true, shareViewModel: shareViewModel})
+        questionDataManager.bulk.shareTitle(this.props.questionIds, shareViewModel).done(this.finishShare); 
+    },
+
+     getUrlToList: function(titleId, chapterId) {
+      return window.actions.questionList.buildQuestionListIndexUrl(titleId, chapterId);
+    },
+
+    finishShare: function(){
+            var message = this.props.questionIds.length ==1 ?
+                         "Question was shared successfully. This question may require metadata editing." : 
+                          this.props.questionIds.length+" question were shared successfully. These questions may require metadata editing. ";
+            var url = this.getUrlToList(this.state.shareViewModel.course);
+            var link = '<a href='+url+'>Go to the target title </a>'
+           var notifyOptions = {
+            message: { html: message+link},
+            type: 'success',
+            fadeOut: { enabled: false}
+        };
+        $('.top-center').notify(notifyOptions).show();
+          this.props.closeDialogHandler();
+    },
+
+     getUrlToList: function(titleId, chapterId) {
+      return window.actions.questionList.buildQuestionListIndexUrl(titleId, chapterId)
+    },
+ 
    
     render: function() {
+       var self = this;
         var renderHeaderText = function() {
-            return "Share question";
+            if(self.props.questionIds.length>1){
+                return "Share question";
+            }
+            return "Share questions";
         };
 
-       var self = this;
+      
         var renderBody = function(){
-          if (self.state === undefined || self.state == null){
+          if (self.state.waiting){
             return (<div> <div className="waiting" /></div>);
           }
 
             return (<div>
 
-                        <ShareQuestionBox metadata={self.state.metadata} questionIds={self.props.questionIds} closeDialogHandler={self.props.closeDialogHandler}/>
+                        <ShareQuestionBox metadata={self.state.metadata} shareHandler={self.shareQuestion} closeDialogHandler={self.props.closeDialogHandler}/>
                     </div>
             );
         };
@@ -80,16 +119,9 @@ var ShareQuestionBox = React.createClass({
                loading: false
       });
    },
-
-   componentDidMount: function()   {
-
-   },
-    
     shareQuestion: function(){
-        questionDataManager.bulk.shareTitle(this.props.questionIds, this.state.shareViewModel);
-        this.props.closeDialogHandler();
-    },
-
+      this.props.shareHandler(this.state.shareViewModel);
+   } ,
     renderWaiter: function(){
         if (this.state.loading){
            return (<div className="waiting small"></div>);
@@ -97,6 +129,9 @@ var ShareQuestionBox = React.createClass({
 
         return (<div></div>);
     },
+
+  
+
     render: function() {
             return (<div>
                            
