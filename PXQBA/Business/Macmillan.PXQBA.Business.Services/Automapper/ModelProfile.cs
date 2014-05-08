@@ -42,20 +42,23 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<Bfw.Agilix.DataContracts.Question, Question>()
                 .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
                 .ForMember(dto => dto.EntityId, opt => opt.MapFrom(q => q.EntityId))
-                .ForMember(dto => dto.Title, opt => opt.MapFrom(q => q.Title))
-                .ForMember(dto => dto.Chapter, opt => opt.MapFrom(q => q.eBookChapter))
-                .ForMember(dto => dto.Bank, opt => opt.MapFrom(q => q.QuestionBank))
-                .ForMember(dto => dto.Sequence, opt => opt.Ignore())
+                .ForMember(dto => dto.LocalMetadata, opt => opt.MapFrom(q => q))
                 .ForMember(dto => dto.Type, opt => opt.Ignore())
                 .ForMember(dto => dto.Preview, opt => opt.MapFrom( q => QuestionPreviewHelper.GetQuestionHtmlPreview(q)))
                 .ForMember(dto => dto.QuizId, opt => opt.MapFrom(q => modelProfileService.GetQuizIdForQuestion(q.Id, q.EntityId)));
 
+            Mapper.CreateMap<Bfw.Agilix.DataContracts.Question, QuestionStaticMetadata>()
+                .ForMember(dto => dto.Title, opt => opt.MapFrom(q => q.Title))
+                .ForMember(dto => dto.Chapter, opt => opt.MapFrom(q => q.eBookChapter))
+                .ForMember(dto => dto.Bank, opt => opt.MapFrom(q => q.QuestionBank))
+                .ForMember(dto => dto.Sequence, opt => opt.Ignore());
+
             Mapper.CreateMap<Question, Bfw.Agilix.DataContracts.Question>()
                 .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
                 //.ForMember(dto => dto.EntityId, opt => opt.MapFrom(q => q.EntityId))
-                .ForMember(dto => dto.Title, opt => opt.MapFrom(q => q.Title))
-                .ForMember(dto => dto.eBookChapter, opt => opt.MapFrom(q => q.Chapter))
-                .ForMember(dto => dto.QuestionBank, opt => opt.MapFrom(q => q.Bank));
+                .ForMember(dto => dto.Title, opt => opt.MapFrom(q => q.LocalMetadata.Title))
+                .ForMember(dto => dto.eBookChapter, opt => opt.MapFrom(q => q.LocalMetadata.Chapter))
+                .ForMember(dto => dto.QuestionBank, opt => opt.MapFrom(q => q.LocalMetadata.Bank));
 
             Mapper.CreateMap<AgilixUser, UserInfo>()
                 .ForMember(d => d.Id, opt => opt.MapFrom(s => s.Id))
@@ -89,17 +92,11 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
 
             Mapper.CreateMap<DataAccess.Data.ProductCourse, Question>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Question.DlapId))
-                .ForMember(dest => dest.Keywords, opt => opt.MapFrom(src => src.Keywords.Split('|')))
-                .ForMember(dest => dest.SuggestedUse, opt => opt.MapFrom(src => src.SuggestedUse.Split('|')))
-                .ForMember(dest => dest.LearningObjectives,
-                    opt =>
-                        opt.MapFrom(
-                            src => modelProfileService.GetLOByGuid(src.ProductCourseDlapId, src.LearningObjectives)))
+                .ForMember(dest => dest.LocalMetadata, opt => opt.MapFrom(src => src.Keywords.Split('|')))
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Question.Type))
-                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Question.Status))
                 .ForMember(dest => dest.Preview, opt => opt.MapFrom(src => src.Question.Preview))
                 .ForMember(dest => dest.ProductCourses, opt => opt.MapFrom(src => modelProfileService.GetHardCodedSharedProductCourses(src)))
-                .ForMember(dest => dest.SharedMetadata, opt => opt.MapFrom(src => modelProfileService.GetHardCodedSourceQuestion(src.QuestionId)))
+                .ForMember(dest => dest.SharedMetadata, opt => opt.MapFrom(src => src))
                 .ForMember(dest => dest.QuestionIdDuplicateFrom,
                     opt =>
                         opt.MapFrom(
@@ -107,13 +104,22 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                                 src.QuestionId%2 != 0
                                     ? modelProfileService.GetHardCodedQuestionDuplicate()
                                     : String.Empty));
-              
+
+
+            Mapper.CreateMap<DataAccess.Data.ProductCourse, QuestionStaticMetadata>()
+                .ForMember(dest => dest.Keywords, opt => opt.MapFrom(src => src.Keywords.Split('|')))
+                .ForMember(dest => dest.SuggestedUse, opt => opt.MapFrom(src => src.SuggestedUse.Split('|')))
+                .ForMember(dest => dest.LearningObjectives,
+                    opt =>
+                        opt.MapFrom(
+                            src => modelProfileService.GetLOByGuid(src.ProductCourseDlapId, src.LearningObjectives)))
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Question.Status));
 
             Mapper.CreateMap<Question, DataAccess.Data.ProductCourse>()
                   .ForMember(dest => dest.Id, opt => opt.Ignore())
-                  .ForMember(dest => dest.Keywords, opt => opt.MapFrom(src => src.Keywords != null ? string.Join("|", src.Keywords) : null))
-                  .ForMember(dest => dest.SuggestedUse, opt => opt.MapFrom(src => src.SuggestedUse != null ? string.Join("|", src.SuggestedUse) : null))
-                  .ForMember(dest => dest.LearningObjectives, opt => opt.MapFrom(src => modelProfileService.SetLearningObjectives(src.LearningObjectives)));
+                  .ForMember(dest => dest.Keywords, opt => opt.MapFrom(src => src.LocalMetadata.Keywords != null ? string.Join("|", src.LocalMetadata.Keywords) : null))
+                  .ForMember(dest => dest.SuggestedUse, opt => opt.MapFrom(src => src.LocalMetadata.SuggestedUse != null ? string.Join("|", src.LocalMetadata.SuggestedUse) : null))
+                  .ForMember(dest => dest.LearningObjectives, opt => opt.MapFrom(src => modelProfileService.SetLearningObjectives(src.LocalMetadata.LearningObjectives)));
 
             Mapper.CreateMap<Question, DataAccess.Data.Question>()
                 .ForMember(dest => dest.DlapId, opt => opt.MapFrom(src => src.Id))

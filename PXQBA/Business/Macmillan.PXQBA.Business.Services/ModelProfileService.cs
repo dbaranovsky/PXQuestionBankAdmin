@@ -60,17 +60,17 @@ namespace Macmillan.PXQBA.Business.Services
 
             data.Add(MetadataFieldNames.InlinePreview, question.Preview);
             data.Add(MetadataFieldNames.DlapType, EnumHelper.GetEnumDescription(question.Type));
-            data.Add(MetadataFieldNames.DlapTitle, question.Title);
+            data.Add(MetadataFieldNames.DlapTitle, question.LocalMetadata.Title);
             data.Add(MetadataFieldNames.Id, question.Id);
-            data.Add(MetadataFieldNames.DlapStatus, EnumHelper.GetEnumDescription(question.Status));
-            data.Add(MetadataFieldNames.Chapter, question.Chapter);
-            data.Add(MetadataFieldNames.Bank, question.Bank);
-            data.Add(MetadataFieldNames.Sequence, question.Sequence.ToString());
-            data.Add(MetadataFieldNames.Difficulty, question.Difficulty);
-            data.Add(MetadataFieldNames.Keywords, String.Join(", ", question.Keywords));
-            data.Add(MetadataFieldNames.SuggestedUse, String.Join(", ", question.SuggestedUse));
-            data.Add(MetadataFieldNames.Guidance, question.Guidance);
-            data.Add(MetadataFieldNames.LearningObjectives, String.Join(", ", question.LearningObjectives.Select(lo => lo.Description)));
+            data.Add(MetadataFieldNames.DlapStatus, EnumHelper.GetEnumDescription(question.LocalMetadata.Status));
+            data.Add(MetadataFieldNames.Chapter, question.LocalMetadata.Chapter);
+            data.Add(MetadataFieldNames.Bank, question.LocalMetadata.Bank);
+            data.Add(MetadataFieldNames.Sequence, question.LocalMetadata.Sequence.ToString());
+            data.Add(MetadataFieldNames.Difficulty, question.LocalMetadata.Difficulty);
+            data.Add(MetadataFieldNames.Keywords, String.Join(", ", question.LocalMetadata.Keywords));
+            data.Add(MetadataFieldNames.SuggestedUse, String.Join(", ", question.LocalMetadata.SuggestedUse));
+            data.Add(MetadataFieldNames.Guidance, question.LocalMetadata.Guidance);
+            data.Add(MetadataFieldNames.LearningObjectives, String.Join(", ", question.LocalMetadata.LearningObjectives.Select(lo => lo.Description)));
             data.Add(MetadataFieldNames.SharedWith, question.ProductCourses.Count <= 1 ? string.Empty : String.Join("<br />", question.ProductCourses.Select(c => c.Title)));
             data.Add(MetadataFieldNames.QuestionIdDuplicateFrom, question.QuestionIdDuplicateFrom);
           
