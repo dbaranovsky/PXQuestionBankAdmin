@@ -32,6 +32,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.LearningObjectives, opt => opt.MapFrom(src => src.LearningObjectives))
                 .ForMember(dest => dest.QuestionCardLayout, opt => opt.MapFrom(src => modelProfileService.GetQuestionCardLayout(src)))
                 .ForMember(dest => dest.Chapters, opt => opt.MapFrom(src => modelProfileService.GetHardCodedQuestionChapters()))
+                .ForMember(dest => dest.Banks, opt => opt.MapFrom(src => modelProfileService.GetHardCodedQuestionBanks()))
                 .ForMember(dest => dest.QuestionsCount, opt => opt.Ignore());
 
             Mapper.CreateMap<Bfw.Agilix.DataContracts.LearningObjective, LearningObjective>()

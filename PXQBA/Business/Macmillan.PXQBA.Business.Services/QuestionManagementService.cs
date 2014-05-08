@@ -15,11 +15,13 @@ namespace Macmillan.PXQBA.Business.Services
     {
         private readonly IQuestionCommands questionCommands;
         private readonly ITemporaryQuestionOperation temporaryQuestionOperation;
+        private readonly IBulkOperation bulkOperation;
 
-        public QuestionManagementService(IQuestionCommands questionCommands, ITemporaryQuestionOperation temporaryQuestionOperation)
+        public QuestionManagementService(IQuestionCommands questionCommands, ITemporaryQuestionOperation temporaryQuestionOperation, IBulkOperation bulkOperation)
         {
             this.questionCommands = questionCommands;
             this.temporaryQuestionOperation = temporaryQuestionOperation;
+            this.bulkOperation = bulkOperation;
         }
 
         public PagedCollection<Question> GetQuestionList(Course course, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
@@ -47,6 +49,7 @@ namespace Macmillan.PXQBA.Business.Services
             Question question = GetQuestion(questionId);
             question.Id = Guid.NewGuid().ToString();
             question.LocalMetadata.Status = QuestionStatus.InProgress;
+            question.QuestionIdDuplicateFrom = questionId;
             return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
 
@@ -59,11 +62,6 @@ namespace Macmillan.PXQBA.Business.Services
             question.LocalMetadata.Chapter = "Chapter 1";
             question.LocalMetadata.Bank = "End of Chapter Questions";
             return question;
-        }
-
-        public void UpdateQuestionSequence(Course course, string questionId, int newSequenceValue)
-        {
-            questionCommands.UpdateQuestionSequence(course.ProductCourseId, questionId, newSequenceValue);
         }
 
         public IEnumerable<QuestionType> GetQuestionTypesForCourse()
@@ -117,8 +115,13 @@ namespace Macmillan.PXQBA.Business.Services
         }
          */
 
-        public bool UpdateQuestionField(string questionId, string fieldName, string fieldValue)
+        public bool UpdateQuestionField(Course course, string questionId, string fieldName, string fieldValue)
         {
+            if (fieldName.Equals(MetadataFieldNames.Sequence))
+            {
+                questionCommands.UpdateQuestionSequence(course.ProductCourseId, questionId, int.Parse(fieldValue));
+                return true;
+            }
             return questionCommands.UpdateQuestionField(questionId, fieldName, fieldValue);
         }
 
@@ -127,6 +130,11 @@ namespace Macmillan.PXQBA.Business.Services
             //PxTempQBAQuestion_115457_Essay
             //PxTempQBAQuestion_115457_Choice
             return temporaryQuestionOperation.CopyQuestionToTemporaryCourse(course.ProductCourseId, "PxTempQBAQuestion_115457_Choice");
+        }
+
+        public bool UpdateSharedQuestionField(string questionId, string fieldName, string fieldValue)
+        {
+            return questionCommands.UpdateSharedQuestionField(questionId, fieldName, fieldValue);
         }
     }
 }

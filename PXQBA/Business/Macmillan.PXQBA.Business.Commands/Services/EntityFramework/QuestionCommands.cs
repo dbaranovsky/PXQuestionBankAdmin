@@ -189,5 +189,11 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
             }
             return false;
         }
+
+        public bool UpdateSharedQuestionField(string questionId, string fieldName, string fieldValue)
+        {
+            //TODO: implement in real data
+            return true;
+        }
     }
 }  

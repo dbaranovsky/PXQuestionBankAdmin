@@ -38,12 +38,7 @@ namespace Macmillan.PXQBA.Business.Services
                     TypeDescriptor = new MetaFieldTypeDescriptor
                     {
                         Type = MetaFieldType.SingleSelect,
-                        AvailableChoice = new List<string>
-                        {
-                            "End of Chapter",
-                            "Beginning of Chapter Questions",
-                            "Middle of Chapter Questions"
-                        }.ToDictionary(it => it)
+                         AvailableChoice = course.Banks.ToDictionary(it => it)
                     }
                 },
                 new QuestionMetaField

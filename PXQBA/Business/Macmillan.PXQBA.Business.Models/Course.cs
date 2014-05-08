@@ -14,6 +14,8 @@ namespace Macmillan.PXQBA.Business.Models
 
         public IEnumerable<Chapter> Chapters { get; set; }
 
+        public IEnumerable<string> Banks { get; set; }
+
         public int QuestionsCount
         {
             get

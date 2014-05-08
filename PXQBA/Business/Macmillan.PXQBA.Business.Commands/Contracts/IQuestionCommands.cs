@@ -14,5 +14,6 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         Question UpdateQuestion(Question question);
 
         bool UpdateQuestionField(string questionId, string fieldName, string value);
+        bool UpdateSharedQuestionField(string questionId, string fieldName, string fieldValue);
     }
 }

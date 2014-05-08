@@ -168,6 +168,16 @@ namespace Macmillan.PXQBA.Business.Services
             return questionCommands.GetQuestion(GetHardCodedQuestionDuplicate());
         }
 
+        public IEnumerable<string> GetHardCodedQuestionBanks()
+        {
+            return new List<string>
+            {
+                "End of Chapter",
+                "Beginning of Chapter Questions",
+                "Middle of Chapter Questions"
+            };
+        }
+
         public string GetQuizIdForQuestion(string id, string entityId)
         {
             return temporaryQuestionOperation.GetQuizIdForQuestion(id, entityId);
