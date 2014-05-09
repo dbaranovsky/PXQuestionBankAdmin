@@ -152,12 +152,25 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
        });
     },
 
-    renderNotesDialog: function()
-    {
+    renderNotesDialog: function(){
       if(this.state.showNoteEditDialog) {
         return (EditQuestionNotesDialog( {closeDialogHandler:this.closeNoteDialogHandler, questionId:this.state.questionIdForNotes}));
       }
       return null;
+    },
+
+    renderShareDialog: function() {
+      if(this.state.showShareDialog) {
+        return (QuestionShareDialog( {showOnCreate:true, closeDialogHandler:this.closeShareDialogHandler, questionIds:this.state.questionIds}));
+      }
+      return null;
+    },
+
+    closeShareDialogHandler: function(){
+       this.setState({
+        showShareDialog: false,
+        questionId: 0 
+      });
     },
 
     editNotesHandler: function(qId) {
@@ -165,6 +178,13 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
             showNoteEditDialog: true,
             questionIdForNotes: qId 
        });
+    },
+
+    shareHandler: function(questionIds){
+      this.setState({
+        showShareDialog: true,
+        questionIds: questionIds
+      });
     },
 
     render: function() {
@@ -184,14 +204,16 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
                                                                 copyQuestionHandler: this.copyQuestionHandler,
                                                                 editQuestionHandler: this.editQuestionHandler,
                                                                 closeNoteDialogHandler: this.closeNoteDialogHandler,
-                                                                editNotesHandler: this.editNotesHandler
+                                                                editNotesHandler: this.editNotesHandler,
+                                                                shareHandler: this.shareHandler,
                                                                 }})
                 ),
                 this.renderQuestionEditorDialog(),
-                this.renderNotesDialog()
+                this.renderNotesDialog(),
+                this.renderShareDialog()
                  
             )
-            );
+            );          
     }
 });
 

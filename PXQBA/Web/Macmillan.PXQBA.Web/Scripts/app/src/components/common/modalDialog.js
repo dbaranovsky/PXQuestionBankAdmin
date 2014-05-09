@@ -40,7 +40,7 @@ var ModalDialog = React.createClass({
                             {this.props.renderBody()}
                         </div>
                        
-                      {this.props.renderFooterButtons()}
+                      {(this.props.renderFooterButtons !== undefined) ? this.props.renderFooterButtons() :""}
                     
                     </div>
                 </div>

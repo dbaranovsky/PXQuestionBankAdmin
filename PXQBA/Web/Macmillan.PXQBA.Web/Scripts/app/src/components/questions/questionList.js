@@ -162,6 +162,7 @@ var QuestionList = React.createClass({
                                           selectedQuestions={this.state.selectedQuestions}
                                           deselectsAllHandler={this.deselectsAllQuestionHandler}
                                           columns={this.props.columns}
+                                          bulkShareHandler = {this.props.handlers.shareHandler}
                                           />);
       }
       return null;

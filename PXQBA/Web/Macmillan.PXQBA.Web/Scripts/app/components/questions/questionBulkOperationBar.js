@@ -29,6 +29,10 @@ var QuestionBulkOperationBar = React.createClass({displayName: 'QuestionBulkOper
        questionDataManager.bulk.removeTitle(this.props.selectedQuestions);
     },
 
+    bulkShareToTitle: function(){
+      this.props.bulkShareHandler(this.props.selectedQuestions);
+    },
+
     render: function() {
         return ( 
                   React.DOM.tr(null, 
@@ -46,7 +50,8 @@ var QuestionBulkOperationBar = React.createClass({displayName: 'QuestionBulkOper
                                                               selectedQuestions:this.props.selectedQuestions}) 
                                )
                             ),
-                            React.DOM.td( {className:"bulk-operation-remove"}, 
+                            React.DOM.td( {className:"bulk-operation-sharing"}, 
+                              React.DOM.button( {type:"button", className:"btn btn-default", onClick:this.bulkShareToTitle}, "Share with another title"),
                               React.DOM.button( {type:"button", className:"btn btn-default", onClick:this.bulkRemoveFromTitle}, "Remove from this title")
                             ),
                             React.DOM.td(null, 

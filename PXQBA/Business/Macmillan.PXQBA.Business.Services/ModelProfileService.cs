@@ -8,6 +8,7 @@ using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Common.Helpers.Constants;
 using Macmillan.PXQBA.DataAccess.Data;
+using Course = Bfw.Agilix.DataContracts.Course;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Business.Services
@@ -111,26 +112,48 @@ namespace Macmillan.PXQBA.Business.Services
             return string.Empty;
         }
 
-        public IEnumerable<Chapter> GetHardCodedQuestionChapters()
+        public IEnumerable<Chapter> GetHardCodedQuestionChapters(Course src)
         {
-            return new List<Chapter>()
+            if (src.Id == "71836")
             {
-                new Chapter()
-                {
-                    Title = "Chapter 1",
-                    QuestionsCount = 2
-                },
-                new Chapter
-                {
-                    Title = "Chapter 2",
-                    QuestionsCount = 3
-                },
-                new Chapter
-                {
-                    Title = "Chapter 3",
-                    QuestionsCount = 3
-                }
-            };
+             return  new List<Chapter>()
+                    {
+                        new Chapter()
+                        {
+                            Title = "Chapter 1",
+                            QuestionsCount = 2
+                        },
+                        new Chapter
+                        {
+                            Title = "Chapter 2",
+                            QuestionsCount = 3
+                        },
+                        new Chapter
+                        {
+                            Title = "Chapter 3",
+                            QuestionsCount = 3
+                        }
+                    };
+            }
+
+            return new List<Chapter>()
+                    {
+                        new Chapter()
+                        {
+                            Title = "Introduction",
+                            QuestionsCount = 2
+                        },
+                        new Chapter
+                        {
+                            Title = "Chapter 1",
+                            QuestionsCount = 3
+                        },
+                        new Chapter
+                        {
+                            Title = "Chapter 2",
+                            QuestionsCount = 3
+                        }
+                    };
         }
 
         public IEnumerable<ProductCourseSection> GetHardCodedSharedProductCourses(ProductCourse productCourse)
@@ -168,14 +191,25 @@ namespace Macmillan.PXQBA.Business.Services
             return questionCommands.GetQuestion(GetHardCodedQuestionDuplicate());
         }
 
-        public IEnumerable<string> GetHardCodedQuestionBanks()
+        public IEnumerable<string> GetHardCodedQuestionBanks(Course src)
         {
-            return new List<string>
+            if (src.Id == "71836")
             {
-                "End of Chapter",
-                "Beginning of Chapter Questions",
-                "Middle of Chapter Questions"
-            };
+               return new List<string>
+                    {
+                        "End of Chapter",
+                        "Beginning of Chapter Questions",
+                        "Middle of Chapter Questions"
+                    };
+           }
+
+           return new List<string>
+                    {
+                        "Bank 1",
+                        "Bank 2",
+                        "Bank 3"
+                    };
+
         }
 
         public string GetQuizIdForQuestion(string id, string entityId)

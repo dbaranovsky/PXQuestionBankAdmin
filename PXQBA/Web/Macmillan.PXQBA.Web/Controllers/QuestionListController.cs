@@ -131,16 +131,26 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// <param name="request"></param>
         private void ClearFilter(FilterFieldDescriptor courseFilterDescriptor, QuestionListDataRequest request)
         {
-            if (CourseHelper.IsResetFiltrationNeeded(courseFilterDescriptor))
+            if (!CourseHelper.IsResetFiltrationNeeded(courseFilterDescriptor))
             {
-                foreach (var filterItem in request.Filter)
-                {
-                    if (filterItem.Field != courseFilterDescriptor.Field)
-                    {
-                        filterItem.Values = new List<string>();
-                    }
-                }
+                return;
             }
+
+            foreach (var filterItem in request.Filter.Where(filterItem => filterItem.Field != courseFilterDescriptor.Field))
+            {
+                filterItem.Values = new List<string>();
+            }
+        }
+
+        /// <summary>
+        /// Gets metadata for course by its Id
+        /// </summary>
+        /// <param name="courseId"></param>
+        /// <returns></returns>
+        public ActionResult GetMetadataForCourse(string courseId)
+        {
+            var course = productCourseManagementService.GetProductCourse(courseId);
+            return JsonCamel(questionMetadataService.GetAvailableFields(course).Select(MetadataFieldsHelper.Convert));
         }
     }
 
