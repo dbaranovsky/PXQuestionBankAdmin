@@ -45,12 +45,14 @@
     };
 
 
-    self.saveQuestionData = function (questionId, fieldName, fieldValue) {
+    self.saveQuestionData = function (questionId, fieldName, fieldValue, isSharedField) {
         asyncManager.startWait();
+
         var request = {
             questionId: questionId,
             fieldName: fieldName,
-            fieldValue: fieldValue
+            fieldValue: fieldValue,
+            isSharedField: isSharedField === undefined? false : isSharedField
         };
 
         return $.ajax({

@@ -208,7 +208,7 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
     saveMetafieldValue: function(){
       questionDataManager.saveQuestionData(this.props.question.id,
                                            this.state.metadataField== null? this.props.field : this.state.metadataField.metadataName, 
-                                           this.props.question[this.props.field]);
+                                           this.props.question[this.props.field], true);
     },
 
     renderMenu: function(){
