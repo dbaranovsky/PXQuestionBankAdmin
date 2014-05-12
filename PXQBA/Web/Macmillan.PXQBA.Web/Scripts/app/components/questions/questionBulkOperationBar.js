@@ -36,7 +36,7 @@ var QuestionBulkOperationBar = React.createClass({displayName: 'QuestionBulkOper
     getTextMessage: function() {
         var count = this.getSelectedQuestionCount();
         if(count==1) {
-          return "1 question selected";
+          return "1 question selected:";
         }
         else {
           return "Bulk action ( " + count + " questions selected ):";
