@@ -97,7 +97,7 @@ var QuestionEditor = React.createClass({
      },
 
       renderSharingNotification: function(){
-         if (this.props.question.isDuplicateOfSharedQuestion && this.props.isDuplicate) {
+         if (this.props.question.isDuplicateOfSharedQuestion && this.props.isDuplicate && this.props.question.isShared) {
         return (<div className="shared-note">This question is a duplicate of a&nbsp;
                     <a className="shared-question-link" href="" onClick={this.loadSourceQuestion}>shared question</a>
                     from <b>{this.props.question.productCourses.join(', ')}</b> 
