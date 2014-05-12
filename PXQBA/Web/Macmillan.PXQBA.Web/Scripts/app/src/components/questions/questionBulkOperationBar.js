@@ -33,6 +33,16 @@ var QuestionBulkOperationBar = React.createClass({
       this.props.bulkShareHandler(this.props.selectedQuestions);
     },
 
+    getTextMessage: function() {
+        var count = this.getSelectedQuestionCount();
+        if(count==1) {
+          return "1 question selected";
+        }
+        else {
+          return "Bulk action ( " + count + " questions selected ):";
+        }
+    },
+
     render: function() {
         return ( 
                   <tr>
@@ -41,7 +51,7 @@ var QuestionBulkOperationBar = React.createClass({
                           <tr>
                             <td className="bulk-operation-cell">
                               <div className="bulk-operation-item">
-                                 <span> {this.getSelectedQuestionCount()} questions selected</span>
+                                 <span> {this.getTextMessage()}  </span>
                                </div>
                             </td>
                             <td className="bulk-operation-cell">
