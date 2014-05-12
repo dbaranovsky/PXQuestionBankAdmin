@@ -13,6 +13,12 @@
         self.order.setValue(orderType + '/' + orderField);
     },
 
+    self.setHashSilently = function(hash) {
+        hasher.changed.active = false;  
+        hasher.setHash(hash);  
+        hasher.changed.active = true;  
+    },
+
     self.buildHash = function () {
         return '[page]/[columns]/[filer]/[order]'
             .replace('[filer]', self.query.getRoute())
@@ -55,6 +61,16 @@
     self.deleteFiltration = function (field) {
         self.query.setValue(filterHashParameterHelper.deleteFiltration(field, self.query.getValue()));
         hasher.setHash(self.buildHash());
+    };
+
+    self.copyFiltration = function (filtersObjects) {
+        for (var i = 0; i < filtersObjects.length; i++) {
+            self.query.setValue(
+                filterHashParameterHelper.addFiltration(
+                filtersObjects[i].field, filtersObjects[i].values, self.query.getValue()));
+        }
+
+        self.setHashSilently(self.buildHash());
     };
 
     return self;
