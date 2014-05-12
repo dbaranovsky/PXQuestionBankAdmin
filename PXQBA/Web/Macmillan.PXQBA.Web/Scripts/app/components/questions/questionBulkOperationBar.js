@@ -33,6 +33,16 @@ var QuestionBulkOperationBar = React.createClass({displayName: 'QuestionBulkOper
       this.props.bulkShareHandler(this.props.selectedQuestions);
     },
 
+    getTextMessage: function() {
+        var count = this.getSelectedQuestionCount();
+        if(count==1) {
+          return "1 question selected";
+        }
+        else {
+          return "Bulk action ( " + count + " questions selected ):";
+        }
+    },
+
     render: function() {
         return ( 
                   React.DOM.tr(null, 
@@ -41,7 +51,7 @@ var QuestionBulkOperationBar = React.createClass({displayName: 'QuestionBulkOper
                           React.DOM.tr(null, 
                             React.DOM.td( {className:"bulk-operation-cell"}, 
                               React.DOM.div( {className:"bulk-operation-item"}, 
-                                 React.DOM.span(null,  " ", this.getSelectedQuestionCount(), " questions selected")
+                                 React.DOM.span(null,  " ", this.getTextMessage(),  "  "  )
                                )
                             ),
                             React.DOM.td( {className:"bulk-operation-cell"}, 

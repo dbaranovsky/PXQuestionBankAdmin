@@ -179,7 +179,7 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
    
 
     renderBulkOperationBar: function() {
-      if(this.state.selectedQuestions.length>1) {
+      if(this.state.selectedQuestions.length>0) {
         return (QuestionBulkOperationBar( {colSpan:this.getAllColumnCount(), 
                                           selectedQuestions:this.state.selectedQuestions,
                                           deselectsAllHandler:this.deselectsAllQuestionHandler,
