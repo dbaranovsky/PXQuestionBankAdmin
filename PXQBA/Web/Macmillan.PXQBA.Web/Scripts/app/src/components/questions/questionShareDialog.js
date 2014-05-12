@@ -64,9 +64,9 @@ var QuestionShareDialog = React.createClass({
        var self = this;
         var renderHeaderText = function() {
             if(self.props.questionIds.length>1){
-                return "Share question";
+                return "Share questions";
             }
-            return "Share questions";
+            return "Share question";
         };
 
       

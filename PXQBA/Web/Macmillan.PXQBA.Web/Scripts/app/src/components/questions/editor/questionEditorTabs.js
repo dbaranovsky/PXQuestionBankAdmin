@@ -12,7 +12,7 @@ var QuestionEditorTabs = React.createClass({
          var tabs = this.getDOMNode();
          this.tabsInitializer($(tabs));
          $(tabs).find('iframe').load(function(){
-           $(tabs).find('.iframe-waiting').hide();
+           $(tabs).find('.waiting').hide();
            $(tabs).find('iframe').show();
         });
           
