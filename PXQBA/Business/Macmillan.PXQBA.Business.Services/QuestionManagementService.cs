@@ -56,11 +56,13 @@ namespace Macmillan.PXQBA.Business.Services
         private Question GetNewQuestionTemplate()
         {
             var question = new Question();
+            question.LocalMetadata = new QuestionStaticMetadata();
             question.LocalMetadata.Status = QuestionStatus.InProgress;
             question.LocalMetadata.Title = "New question";
             question.Preview = "<h2>preview for test</h2>";
             question.LocalMetadata.Chapter = "Chapter 1";
             question.LocalMetadata.Bank = "End of Chapter Questions";
+            question.LocalMetadata.LearningObjectives = new List<LearningObjective>();
             return question;
         }
 

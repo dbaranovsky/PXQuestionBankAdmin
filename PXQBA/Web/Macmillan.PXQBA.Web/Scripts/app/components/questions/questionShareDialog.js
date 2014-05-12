@@ -12,7 +12,7 @@ var QuestionShareDialog = React.createClass({displayName: 'QuestionShareDialog',
     },
 
     componentDidMount: function(){
-        
+          questionDataManager.getMetadataFields().done(this.loadMetadata);
         if(this.props.showOnCreate)
         {
            $(this.getDOMNode()).modal("show");
@@ -21,10 +21,6 @@ var QuestionShareDialog = React.createClass({displayName: 'QuestionShareDialog',
          $(this.getDOMNode()).on('hidden.bs.modal', function () {
            closeDialogHandler();
         })
-    },
-
-    componentWillMount: function(){
-        questionDataManager.getMetadataFields().done(this.loadMetadata);
     },
 
     loadMetadata: function(data){
@@ -53,12 +49,16 @@ var QuestionShareDialog = React.createClass({displayName: 'QuestionShareDialog',
         };
         $('.top-center').notify(notifyOptions).show();
           this.props.closeDialogHandler();
+         questionDataManager.resetState(); 
     },
 
      getUrlToList: function(titleId, chapterId) {
       return window.actions.questionList.buildQuestionListIndexUrl(titleId, chapterId)
     },
  
+    closeHandler: function(){
+         $(this.getDOMNode()).modal("hide");
+    },
    
     render: function() {
        var self = this;
@@ -77,7 +77,7 @@ var QuestionShareDialog = React.createClass({displayName: 'QuestionShareDialog',
 
             return (React.DOM.div(null, 
 
-                        ShareQuestionBox( {metadata:self.state.metadata, shareHandler:self.shareQuestion, closeDialogHandler:self.props.closeDialogHandler})
+                        ShareQuestionBox( {metadata:self.state.metadata, shareHandler:self.shareQuestion, closeDialogHandler:self.closeHandler})
                     )
             );
         };
@@ -111,9 +111,48 @@ var ShareQuestionBox = React.createClass({displayName: 'ShareQuestionBox',
      questionDataManager.getCourseMetadata(shareViewModel.course).done(this.changeCourseMetadata.bind(this, shareViewModel.course));
    },
 
+    getMetaField: function(field, metadata){
+      
+      var metadataField = this.state.metadataField;
+      var question = this.props.question;
+     
+       return metadataField.length>0 ? metadataField[0]: null;
+     },
+
+   getShareViewModel: function(metadata, courseId){
+     var shareViewModel = this.state.shareViewModel;
+     shareViewModel.course = courseId;
+
+     var chapterMeta = this.getMetaField("chapter", metadata);
+     var bankMeta = this.getMetaField("bank", metadata);
+
+     shareViewModel.bank = this.getDefaultValue(bankMeta);
+     shareViewModel.chapter = this.getDefaultValue(chapterMeta);
+
+     return shareViewModel;
+   },
+
+   getDefaultValue: function(metadataField){
+      var defaultValue = "";
+       var availableChoices = metadataField.editorDescriptor.availableChoice;
+        for (var propertyName in availableChoices) {
+            availableChoice = availableChoices[propertyName];
+            defaultValue = (availableChoice.toLowerCase() == propertyName.toLowerCase())? availableChoice: propertyName;
+            break;
+        }
+      return defaultValue
+   },
+
+    getMetaField: function(field, metadata){
+       var metadataField = $.grep(metadata, function(e){ return $.inArray(e.metadataName, [field, "dlap_q_"+field, "dlap_"+field, field.toLowerCase()])!=-1;  });    
+       return metadataField.length>0 ? metadataField[0]: null;
+     },
+
    changeCourseMetadata: function(courseId, metadata){
+
+      var shareViewModel = this.getShareViewModel(metadata, courseId);
       this.setState({
-               shareViewModel: {course: courseId, chapter:"", bank:""},
+               shareViewModel: shareViewModel,
                metadata: metadata,
                setDefaults: false,
                loading: false

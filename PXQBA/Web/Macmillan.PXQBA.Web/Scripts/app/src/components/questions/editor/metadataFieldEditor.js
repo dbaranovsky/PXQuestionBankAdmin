@@ -7,6 +7,7 @@ var MetadataFieldEditor = React.createClass({
 
       var metadataField = this.getMetaField();
        var allowDeselect = metadataField != null ? metadataField.allowDeselect : false;
+       var field = this.props.field;
       return { editMode: this.props.editMode === undefined? true : this.props.editMode,
                editMenu: false,
                allowDeselect: allowDeselect,
@@ -109,7 +110,6 @@ var MetadataFieldEditor = React.createClass({
             }
               break;
           case window.enums.editorType.multiSelect:
-                
                   if(field=="learningObjectives"){
                      $.each(currentValue, function(i, value){
                        values.push(<div className="current-values-view learning-objectives label label-warning"> {value.description} </div>);
@@ -161,6 +161,8 @@ var MetadataFieldEditor = React.createClass({
         chosenOptions.placeholder_text_single = "No Value";
     }
 
+  
+
       $(self.getDOMNode()).find('.single-selector')
                            .chosen(chosenOptions)
                            .change(function(e, params){
@@ -175,6 +177,11 @@ var MetadataFieldEditor = React.createClass({
       if (!this.props.setDefault){
         return;
       }
+     this.resetDefaults();
+      
+    },
+
+    resetDefaults: function(){
       var field = this.props.field;
       var metadataField = this.state.metadataField;
       var question = this.props.question;
@@ -185,7 +192,6 @@ var MetadataFieldEditor = React.createClass({
             break;
         }
        this.props.editHandler(question);
-      
     },
 
     applyChanges: function(){
