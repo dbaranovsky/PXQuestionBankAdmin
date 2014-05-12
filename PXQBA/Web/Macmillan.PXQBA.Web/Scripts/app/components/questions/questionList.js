@@ -112,6 +112,28 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
          shouldResetState = true;
        }
  
+
+       if(this.props.filter.length!=nextProps.filter.length) {
+          shouldResetState = true;
+       }
+       else {
+          for(var i=0; i<this.props.filter.length; i++) {
+            if(this.props.filter[i].field!=nextProps.filter[i].field) {
+              shouldResetState = true;
+            }
+            if(this.props.filter[i].values.length!=nextProps.filter[i].values.length) {
+              shouldResetState = true;
+            }
+            else {
+              for(var j=0; j<this.props.filter.length; j++) {
+                if(this.props.filter[i].values[j]!=nextProps.filter[i].values[j])  {
+                  shouldResetState = true;
+                }
+              }
+            }
+          }
+       }
+  
        return shouldResetState;
      },
  

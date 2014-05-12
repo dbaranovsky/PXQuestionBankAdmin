@@ -49,7 +49,7 @@ namespace Macmillan.PXQBA.Business.Services
                 },
                 new QuestionMetaField
                 {
-                    FriendlyName = "Title",
+                    FriendlyName = "Question title",
                     Name = MetadataFieldNames.DlapTitle,
                     TypeDescriptor = new MetaFieldTypeDescriptor(MetaFieldType.Text)
                 },
@@ -156,7 +156,7 @@ namespace Macmillan.PXQBA.Business.Services
 
                 new QuestionMetaField()
                 {
-                    FriendlyName = "Title",
+                    FriendlyName = "Textbook title",
                     Name = MetadataFieldNames.ProductCourse,
                     TypeDescriptor = new MetaFieldTypeDescriptor
                     {

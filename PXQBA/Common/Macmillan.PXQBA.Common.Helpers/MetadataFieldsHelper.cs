@@ -29,7 +29,7 @@ namespace Macmillan.PXQBA.Common.Helpers
 
 
             // \todo Move custom field-level settings to configuration
-
+            
             if ((metaField.Name == MetadataFieldNames.DlapStatus) ||
                 (metaField.Name == MetadataFieldNames.DlapTitle))
             {
@@ -45,6 +45,7 @@ namespace Macmillan.PXQBA.Common.Helpers
              if (metaField.Name == MetadataFieldNames.ProductCourse)
              {
                  model.FilterType = FilterType.SingleSelect.ToString().ToLower();
+                 model.Width = "30%";
              }
 
              if (metaField.Name == MetadataFieldNames.DlapStatus)

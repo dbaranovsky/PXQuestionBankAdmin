@@ -74,7 +74,7 @@ namespace Macmillan.PXQBA.Business.Services
             data.Add(MetadataFieldNames.LearningObjectives, String.Join(", ", question.LocalMetadata.LearningObjectives.Select(lo => lo.Description)));
             data.Add(MetadataFieldNames.SharedWith, question.ProductCourses.Count <= 1 ? string.Empty : String.Join("<br />", question.ProductCourses.Select(c => c.Title)));
             data.Add(MetadataFieldNames.QuestionIdDuplicateFrom, question.QuestionIdDuplicateFrom);
-          
+            data.Add(MetadataFieldNames.ProductCourse, String.Join(", ", question.ProductCourses.Select(pc=>pc.Title)));
           
 
             return data;
