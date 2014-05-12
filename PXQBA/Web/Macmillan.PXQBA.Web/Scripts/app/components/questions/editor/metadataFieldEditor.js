@@ -161,6 +161,8 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
         chosenOptions.placeholder_text_single = "No Value";
     }
 
+  
+
       $(self.getDOMNode()).find('.single-selector')
                            .chosen(chosenOptions)
                            .change(function(e, params){
@@ -175,6 +177,11 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
       if (!this.props.setDefault){
         return;
       }
+     this.resetDefaults();
+      
+    },
+
+    resetDefaults: function(){
       var field = this.props.field;
       var metadataField = this.state.metadataField;
       var question = this.props.question;
@@ -185,7 +192,6 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
             break;
         }
        this.props.editHandler(question);
-      
     },
 
     applyChanges: function(){
