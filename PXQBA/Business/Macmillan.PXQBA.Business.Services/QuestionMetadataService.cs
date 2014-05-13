@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
@@ -18,26 +19,30 @@ namespace Macmillan.PXQBA.Business.Services
 
         public IList<QuestionMetaField> GetAvailableFields(Course course)
         {
+            var chapter = course.FieldDescriptors.SingleOrDefault(v => v.Name == MetadataFieldNames.Chapter);
+
+            var questionMetaFieldChapter = Mapper.Map<QuestionMetaField>(chapter);
+
             var fields = new List<QuestionMetaField>
             {
-                new QuestionMetaField()
-                {
-                    FriendlyName = "Chapter",
-                    Name = MetadataFieldNames.Chapter,
-                    TypeDescriptor = new MetaFieldTypeDescriptor
-                    {
-                        Type = MetaFieldType.SingleSelect,
-                        AvailableChoice = course.Chapters.Select(ch => ch.Title).ToDictionary(it => it)
-                    }
+                //new QuestionMetaField()
+                //{
+                //    FriendlyName = "Chapter",
+                //    Name = MetadataFieldNames.Chapter,
+                //    TypeDescriptor = new MetaFieldTypeDescriptor
+                //    {
+                //        Type = MetaFieldType.SingleSelect,
+                //        AvailableChoice = course.Chapters.Select(ch => ch.Title).ToDictionary(it => it)
+                //    }
 
-                },
+                //},
                 new QuestionMetaField()
                 {
                     FriendlyName = "Question Bank",
                     Name = MetadataFieldNames.Bank,
                     TypeDescriptor = new MetaFieldTypeDescriptor
                     {
-                        Type = MetaFieldType.SingleSelect,
+                        Type = MetadataFieldType.SingleSelect,
                          AvailableChoice = course.Banks.ToDictionary(it => it)
                     }
                 },
@@ -45,13 +50,13 @@ namespace Macmillan.PXQBA.Business.Services
                 {
                     FriendlyName = "Sequence",
                     Name = MetadataFieldNames.Sequence,
-                    TypeDescriptor = new MetaFieldTypeDescriptor(MetaFieldType.Text)
+                    TypeDescriptor = new MetaFieldTypeDescriptor(MetadataFieldType.Text)
                 },
                 new QuestionMetaField
                 {
                     FriendlyName = "Question title",
                     Name = MetadataFieldNames.DlapTitle,
-                    TypeDescriptor = new MetaFieldTypeDescriptor(MetaFieldType.Text)
+                    TypeDescriptor = new MetaFieldTypeDescriptor(MetadataFieldType.Text)
                 },
                 new QuestionMetaField()
                 {
@@ -59,7 +64,7 @@ namespace Macmillan.PXQBA.Business.Services
                     Name = MetadataFieldNames.DlapType,
                     TypeDescriptor = new MetaFieldTypeDescriptor
                     {
-                        Type = MetaFieldType.SingleSelect,
+                        Type = MetadataFieldType.SingleSelect,
                         AvailableChoice = new List<string>
                         {
                             EnumHelper.GetEnumDescription(QuestionType.MultipleAnswer),
@@ -77,7 +82,7 @@ namespace Macmillan.PXQBA.Business.Services
                     Name = MetadataFieldNames.DlapStatus,
                     TypeDescriptor = new MetaFieldTypeDescriptor
                     {
-                        Type = MetaFieldType.SingleSelect,
+                        Type = MetadataFieldType.SingleSelect,
                         AvailableChoice = new List<string>
                         {
                             EnumHelper.GetEnumDescription(QuestionStatus.AvailableToInstructors),
@@ -92,7 +97,7 @@ namespace Macmillan.PXQBA.Business.Services
                     Name = MetadataFieldNames.Difficulty,
                     TypeDescriptor = new MetaFieldTypeDescriptor
                     {
-                        Type = MetaFieldType.SingleSelect,
+                        Type = MetadataFieldType.SingleSelect,
                         AvailableChoice = new List<string>
                         {
                             "Easy",
@@ -107,7 +112,7 @@ namespace Macmillan.PXQBA.Business.Services
                     Name = MetadataFieldNames.Keywords,
                     TypeDescriptor = new MetaFieldTypeDescriptor
                     {
-                        Type = MetaFieldType.MultiSelect,
+                        Type = MetadataFieldType.MultiSelect,
                         AvailableChoice = new List<string>
                         {
                             "Keyword 1",
@@ -123,7 +128,7 @@ namespace Macmillan.PXQBA.Business.Services
                     Name = MetadataFieldNames.SuggestedUse,
                     TypeDescriptor = new MetaFieldTypeDescriptor
                     {
-                        Type = MetaFieldType.MultiSelect,
+                        Type = MetadataFieldType.MultiSelect,
                         AvailableChoice = new List<string>
                         {
                             "Pre-class",
@@ -138,7 +143,7 @@ namespace Macmillan.PXQBA.Business.Services
                 {
                     FriendlyName = "Guidance",
                     Name = MetadataFieldNames.Guidance,
-                    TypeDescriptor = new MetaFieldTypeDescriptor(MetaFieldType.Text)
+                    TypeDescriptor = new MetaFieldTypeDescriptor(MetadataFieldType.Text)
                 },
 
                 new QuestionMetaField()
@@ -147,7 +152,7 @@ namespace Macmillan.PXQBA.Business.Services
                     Name = MetadataFieldNames.LearningObjectives,
                     TypeDescriptor = new MetaFieldTypeDescriptor
                     {
-                        Type = MetaFieldType.MultiSelect,
+                        Type = MetadataFieldType.MultiSelect,
                         AvailableChoice =
                             course.LearningObjectives.ToDictionary(lo => lo.Guid, lo => lo.Description)
                     }
@@ -160,12 +165,14 @@ namespace Macmillan.PXQBA.Business.Services
                     Name = MetadataFieldNames.ProductCourse,
                     TypeDescriptor = new MetaFieldTypeDescriptor
                     {
-                        Type = MetaFieldType.SingleSelect,
+                        Type = MetadataFieldType.SingleSelect,
                         AvailableChoice = productCourseOperation.GetAvailableCourses().ToDictionary(pc => pc.ProductCourseId, pc => pc.Title)
                     }
 
                 },
             };
+
+            fields.Add(questionMetaFieldChapter);
 
             return fields;
         }

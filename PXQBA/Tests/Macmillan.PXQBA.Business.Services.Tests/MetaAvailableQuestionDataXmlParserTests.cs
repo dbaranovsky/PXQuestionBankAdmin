@@ -42,10 +42,10 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             var fields = MetaAvailableQuestionDataXmlParser.Parse(courseDataXml);
 
             Assert.IsTrue(fields.Count()==8);
-            Assert.IsTrue(fields.SingleOrDefault(x => x.Friendlyname == "Difficulty").FilterMetadataValues.Count()==3);
+            Assert.IsTrue(fields.SingleOrDefault(x => x.Friendlyname == "Difficulty").CourseMetadataFieldValues.Count()==3);
             Assert.IsTrue(fields.SingleOrDefault(x => x.Name == "guidance").Filterable==false);
 
-            Assert.IsFalse(fields.SingleOrDefault(x => x.Friendlyname == "Core Concept").FilterMetadataValues.Any());
+            Assert.IsFalse(fields.SingleOrDefault(x => x.Friendlyname == "Core Concept").CourseMetadataFieldValues.Any());
         }
     }
 }

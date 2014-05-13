@@ -17,7 +17,7 @@ namespace Macmillan.PXQBA.Business.Models
 
         public bool Hidden { get; set; }
 
-        public IEnumerable<CourseMetadataFieldValue> FilterMetadataValues { get; set; }
+        public IEnumerable<CourseMetadataFieldValue> CourseMetadataFieldValues { get; set; }
 
     }
 }

@@ -40,6 +40,19 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.FieldDescriptors,
                     opt => opt.MapFrom(src => modelProfileService.GetCourseMetadataFieldDescriptors(src)));
 
+
+            Mapper.CreateMap<CourseMetadataFieldDescriptor, QuestionMetaField>()
+                .ForMember(dest => dest.FriendlyName, opt => opt.MapFrom(src => src.Friendlyname))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.TypeDescriptor,
+                    opt => opt.MapFrom(src => Mapper.Map<MetaFieldTypeDescriptor>(src)));
+
+            Mapper.CreateMap<CourseMetadataFieldDescriptor, MetaFieldTypeDescriptor>()
+                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type))
+                .ForMember(dest => dest.AvailableChoice,
+                    opt => opt.MapFrom(src => src.CourseMetadataFieldValues.Select(i => i.Text).ToDictionary(t=>t)));
+ 
+
             Mapper.CreateMap<Bfw.Agilix.DataContracts.LearningObjective, LearningObjective>()
                 .ForMember(dest => dest.Guid, opt => opt.MapFrom(src => src.Guid))
                 .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Title));
@@ -86,7 +99,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(vm => vm.Chapters, opt => opt.MapFrom(c => c.GetChaptersList()));
 
             Mapper.CreateMap<CourseMetadataFieldValue, ChapterViewModel>()
-                .ForMember(vm => vm.Id, opt => opt.MapFrom(c => c.Sequence))
+                .ForMember(vm => vm.Id, opt => opt.MapFrom(c => FirstCharacterToLower(c.Text)))
                 .ForMember(vm => vm.Title, opt => opt.MapFrom(c => c.Text));
 
             Mapper.CreateMap<Question, QuestionViewModel>()
@@ -155,6 +168,18 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
 
 
             #endregion
+        }
+
+        public static string FirstCharacterToLower(string input)
+        {
+            if (String.IsNullOrEmpty(input))
+            {
+                return input;
+            }
+
+            var stringBuilder = new StringBuilder(input);
+            stringBuilder[0] = Char.ToLower(input[0]);
+            return stringBuilder.ToString();
         }
     }
 }

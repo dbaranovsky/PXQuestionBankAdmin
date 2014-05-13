@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 using Macmillan.PXQBA.Business.Models;
 
@@ -47,7 +48,7 @@ namespace Macmillan.PXQBA.Common.Helpers
                     
                     if (xmlField.Attribute("type") != null)
                     {
-                        field.Type = ParseFieldType(xmlField.Value);
+                        field.Type = ParseFieldType(xmlField.Attribute("type").Value);
                     }
                     else
                     {
@@ -56,14 +57,14 @@ namespace Macmillan.PXQBA.Common.Helpers
 
                     if (xmlField.Attribute("hidden") != null)
                     {
-                        field.Filterable = Convert.ToBoolean(xmlField.Attribute("filterable").Value);
+                        field.Filterable = Convert.ToBoolean(xmlField.Attribute("hidden").Value);
                     }
                     else
                     {
                         field.Filterable = false;
                     }
 
-                    field.FilterMetadataValues = ParseCourseMetadataFieldValues(xmlField);
+                    field.CourseMetadataFieldValues = ParseCourseMetadataFieldValues(xmlField);
 
                     fieldsList.Add(field);
                 }
@@ -101,7 +102,7 @@ namespace Macmillan.PXQBA.Common.Helpers
                 valuesList.Add(fieldValue); 
             }
 
-            return valuesList;
+            return valuesList.OrderBy(fv=>fv.Sequence);
         }
 
         private static MetadataFieldType ParseFieldType(string typeValue)
@@ -111,7 +112,7 @@ namespace Macmillan.PXQBA.Common.Helpers
                 return MetadataFieldType.SingleSelect;
             }
 
-            return MetadataFieldType.None;
+            return MetadataFieldType.Text;
         }
     }
 }

@@ -32,7 +32,7 @@ namespace Macmillan.PXQBA.Business.Models
                 return new List<CourseMetadataFieldValue>();
             }
 
-            return chapter.FilterMetadataValues;
+            return chapter.CourseMetadataFieldValues;
         }
     }
 }

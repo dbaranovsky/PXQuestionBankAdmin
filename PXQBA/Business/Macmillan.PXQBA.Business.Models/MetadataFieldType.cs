@@ -2,8 +2,8 @@
 {
     public enum MetadataFieldType
     {
-        None = 0,
-        Text = 1,
-        SingleSelect = 2
+        Text = 0,
+        SingleSelect = 1,
+        MultiSelect = 2,
     }
 }
