@@ -22,6 +22,22 @@ var QuestionEditorTabs = React.createClass({
         this.tabsInitializer($(this.getDOMNode()));
     },
 
+    renderSharingNotification: function(){
+         if (this.props.question.isDuplicateOfSharedQuestion && this.props.isDuplicate && this.props.question.isShared) {
+        return (<div className="shared-note">This question is a duplicate of a&nbsp;
+                    <a className="shared-question-link" href="" onClick={this.loadSourceQuestion}>shared question</a>
+                    from <b>{this.props.question.productCourses.join(', ')}</b> 
+               </div>);
+      }
+
+      if (this.props.question.isShared && !this.props.isDuplicate && !this.props.isNew){
+                var sharedCourses = this.props.question.productCourses.length;
+                return (<div className="shared-note">Editing this question content would affect {sharedCourses == 1 ?  "1 title" :"all "+sharedCourses+ " titles"} that use this question </div>);
+      }
+
+      return null;
+    },
+
    
     render: function() {
         return ( 
@@ -42,20 +58,35 @@ var QuestionEditorTabs = React.createClass({
                
              
                 <div className="tab-content">
+
                     <div className="tab-pane active" id="body">
+                      {this.renderSharingNotification()}
                        <div className="tab-body">
-                          <div className="iframe waiting" />
+
+                          <div  className="iframe waiting" />
                           
-                          <iframe src={this.props.question.editorUrl} />
+                          <iframe src={this.props.question.editorUrl} className={this.props.question.isShared && !this.props.isDuplicate && !this.props.isNew? "shared": ""} />
                           
                        </div>
                     </div>
                     <div className="tab-pane" id="metadata">
+                    {this.renderSharingNotification()}
                        <div className={this.props.question.sharedMetadata == null ? "tab-body" : "tab-body wide"}>                           
                             <QuestionMetadataEditor metadata={this.props.metadata} question={this.props.question} editHandler={this.props.editHandler} isDuplicate={this.props.isDuplicate} />
                            
-                           <br />
+                    
+                      <div className="modal-footer">
+                                <button className="btn btn-default" data-toggle="modal" onClick={this.props.closeDialog}>
+                             Cancel
+                        </button>
+                         <button className="btn btn-primary " data-toggle="modal" onClick={this.props.showSaveWarning} >
+                             Save
+                        </button>
                       </div>
+                      </div>
+                       
+
+                      
                     </div>
                      <div className="tab-pane" id="history">
                        <div className="tab-body">

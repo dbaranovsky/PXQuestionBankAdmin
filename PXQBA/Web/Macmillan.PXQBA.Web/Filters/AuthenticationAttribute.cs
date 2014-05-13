@@ -35,9 +35,15 @@ namespace Macmillan.PXQBA.Web.Filters
                 UpdateCookie(token);
                 // SetAuthCookie only sets cookie to the response. In current request IsAuthenticated is still false
                 // That's why need redirection
-                var configManager = ConfigurationManager.GetSection("agilixSessionManager") as SessionManagerSection;
-                StartBrainHoneySession(configManager, TimeZoneInfo.Local);
+               
+                
                 filterContext.Result = new RedirectResult(filterContext.HttpContext.Request.Url.ToString());
+            }
+
+            var configManager = ConfigurationManager.GetSection("agilixSessionManager") as SessionManagerSection;
+            if (IsBrainHoneySessionExpired(configManager))
+            {
+                StartBrainHoneySession(configManager, TimeZoneInfo.Local);
             }
         }
 
@@ -54,6 +60,32 @@ namespace Macmillan.PXQBA.Web.Filters
                 HttpCookie newCookie = HttpContext.Current.Response.Cookies[WebKeys.AuthenticationCookie];
                 HttpContext.Current.Request.Cookies.Set(newCookie);
             }
+        
+        }
+
+        private bool IsBrainHoneySessionExpired(SessionManagerSection configManager)
+        {
+            var context = HttpContext.Current;
+            var cookie = context.Request.Cookies[configManager.BrainHoneyConnection.CookieName];
+            var domainCookie = context.Request.Cookies[configManager.BrainHoneyConnection.ActiveDomainCookieName];
+
+            if (null == cookie || null == domainCookie)
+            {
+                return true;
+            }
+
+            FormsAuthenticationTicket ticket = null;
+
+            try
+            {
+                ticket = FormsAuthentication.Decrypt(cookie.Value);
+            }
+            catch
+            {
+                // not much we can do here, so just reauth the user...
+            }
+
+            return ticket != null && ticket.Expired;
         }
 
         private void StartBrainHoneySession(SessionManagerSection config, TimeZoneInfo timeZoneInfo)
