@@ -100,6 +100,10 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
 
       var values = [];
 
+      if(this.props.isUnique){
+        return (React.DOM.span(null, "This field is unique for the current title and has no corresponding shared analogue"));
+      }
+
        switch (editorType) {
           case window.enums.editorType.singleSelect:
               var singleSelectValue = metadataField.editorDescriptor.availableChoice[currentValue];
@@ -169,6 +173,36 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
                               self.editHandler(e.currentTarget.selectedOptions);
                            });
        $(self.getDOMNode()).find('.single-selector').trigger("chosen:updated");
+
+       //todo: refactor
+        if (this.state.editMenu){
+             var metadataField = this.state.metadataField;
+             var editorType = metadataField != null ? metadataField.editorDescriptor.editorType : 0;
+             if(editorType != window.enums.editorType.singleSelect && editorType != window.enums.editorType.multiSelect){ 
+
+                var node = this.getDOMNode();
+                var self = this;
+                $(node).find("input, textarea").on("keyup", function(){
+                    self.updateValidatorState(node);
+                });
+                this.updateValidatorState(node);
+
+         }
+        }
+
+    },
+
+    updateValidatorState: function(node){
+       var text_length = $(node).find("input, textarea").val().length;
+       var text_remaining = 50 - text_length;
+       $(node).find('.shared-validator').html(text_remaining + ' characters');
+       if(text_remaining<0){
+          $(node).find('.shared-validator').addClass('red');
+          $(node).find("input, textarea").addClass("red-border");
+        } else{
+          $(node).find('.shared-validator').removeClass('red');
+          $(node).find("input, textarea").removeClass("red-border");
+         }
     },
 
     componentDidMount: function(){
@@ -213,13 +247,30 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
 
     renderMenu: function(){
         if (this.state.editMenu){
-          return( React.DOM.span( {className:"input-group-btn"}, 
-                                React.DOM.button( {type:"button", className:"btn btn-default btn-xs", onClick:this.applyChanges, 'data-toggle':"tooltip", title:"Apply"}, React.DOM.span( {className:"glyphicon glyphicon-ok"})), 
-                                React.DOM.button( {type:"button", className:"btn btn-default btn-xs", onClick:this.declineChanges, 'data-toggle':"tooltip", title:"Cancel"}, React.DOM.span( {className:"glyphicon glyphicon-remove"})) 
-                   )   );
+
+          return( React.DOM.div( {className:"shared-menu-container"}, 
+                    
+                     React.DOM.div( {className:"shared-field-menu"}, 
+                     React.DOM.span( {className:"input-group-btn"}, 
+                                  React.DOM.button( {type:"button", className:"btn btn-default btn-xs", onClick:this.applyChanges, 'data-toggle':"tooltip", title:"Apply"}, React.DOM.span( {className:"glyphicon glyphicon-ok"})), 
+                                  React.DOM.button( {type:"button", className:"btn btn-default btn-xs", onClick:this.declineChanges, 'data-toggle':"tooltip", title:"Cancel"}, React.DOM.span( {className:"glyphicon glyphicon-remove"})) 
+                     )
+                     ), 
+                       this.renderValidator()
+                  )  );
         }
 
         return null;
+    },
+
+    renderValidator: function(){
+         var metadataField = this.state.metadataField;
+         var editorType = metadataField != null ? metadataField.editorDescriptor.editorType : 0;
+         if(editorType != window.enums.editorType.singleSelect && editorType != window.enums.editorType.multiSelect){
+           return (React.DOM.div( {className:"shared-validator"}, 
+                        "20 characters"
+                      ));
+         }
     },
 
 

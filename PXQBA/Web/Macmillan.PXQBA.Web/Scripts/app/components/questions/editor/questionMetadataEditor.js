@@ -6,11 +6,12 @@ var QuestionMetadataEditor = React.createClass({displayName: 'QuestionMetadataEd
     render: function() {
         var style = this.props.question.sharedMetadata != null? {} : {display: "none !important"};
         return ( React.DOM.div( {className:this.props.question.sharedMetadata == null ? "local" : "local wide"}, 
-                      React.DOM.div( {className:"row", style:style}, 
-                        React.DOM.div( {className:"cell"},  " ", React.DOM.span( {className:"label label-info metadata-info-label"}, "Shared values")),
+                      React.DOM.div( {className:"row header", style:style}, 
+                        React.DOM.div( {className:"cell"},  " ", React.DOM.span( {className:"label label-default metadata-info-label"}, "Shared values")),
                         React.DOM.div( {className:"cell control"}),
-                        React.DOM.div( {className:"cell"},  " ", React.DOM.span( {className:"label label-info metadata-info-label"}, "Local values"))
+                        React.DOM.div( {className:"cell"},  " ", React.DOM.span( {className:"label label-default metadata-info-label"}, "Local values"))
                       ),
+                      React.DOM.div( {className:"body-container"}, 
 
                          
                         ShareMetadataEditorRow( {question:this.props.question, metadata:this.props.metadata, editHandler:this.props.editHandler, field:"title"} ),
@@ -23,7 +24,9 @@ var QuestionMetadataEditor = React.createClass({displayName: 'QuestionMetadataEd
                         ShareMetadataEditorRow( {question:this.props.question, metadata:this.props.metadata, editHandler:this.props.editHandler, field:"difficulty"} ),
                         ShareMetadataEditorRow( {question:this.props.question, metadata:this.props.metadata, editHandler:this.props.editHandler, field:"cognitiveLevel", title:"Cognitive Level"}),
                         ShareMetadataEditorRow( {question:this.props.question, metadata:this.props.metadata, editHandler:this.props.editHandler, field:"status"} ),
-                        ShareMetadataEditorRow( {question:this.props.question, metadata:this.props.metadata, editHandler:this.props.editHandler, field:"guidance"} )            
+                        ShareMetadataEditorRow( {question:this.props.question, metadata:this.props.metadata, editHandler:this.props.editHandler, field:"guidance"} ),  
+                        ShareMetadataEditorRow( {question:this.props.question, metadata:this.props.metadata,  isUnique:true, field:"Field"} )  
+                     )          
                  )
 
            

@@ -96,42 +96,18 @@ var QuestionEditor = React.createClass({
          this.props.editSourceQuestionHandler(this.state.question.questionIdDuplicateFrom);
      },
 
-      renderSharingNotification: function(){
-         if (this.props.question.isDuplicateOfSharedQuestion && this.props.isDuplicate && this.props.question.isShared) {
-        return (<div className="shared-note">This question is a duplicate of a&nbsp;
-                    <a className="shared-question-link" href="" onClick={this.loadSourceQuestion}>shared question</a>
-                    from <b>{this.props.question.productCourses.join(', ')}</b> 
-               </div>);
-      }
-
-      if (this.props.question.isShared && !this.props.isDuplicate && !this.props.isNew){
-                var sharedCourses = this.props.question.productCourses.length;
-                return (<div className="shared-note">Editing this question content would affect {sharedCourses == 1 ?  "1 title" :"all "+sharedCourses+ " titles"} that use this question </div>);
-      }
-
-      return null;
-    },
-
-
 
     render: function() {
         return (
             <div>
-                   {this.renderSharingNotification()}
                       <div className="header-buttons">
                          <button className="btn btn-primary run-question" data-toggle="modal" onClick={this.runQuestion}>
                              <span className="glyphicon glyphicon-play"></span> Try Question
                         </button>
-                        <button className="btn btn-default" data-toggle="modal" onClick={this.closeDialog}>
-                             Cancel
-                        </button>
-                         <button className="btn btn-primary " data-toggle="modal" onClick={this.showSaveWarning} >
-                             Save
-                        </button>
                       </div>
                 
                 <div>
-                  <QuestionEditorTabs question={this.state.question} metadata={this.props.metadata} editHandler={this.editHandler} isDuplicate={this.props.isDuplicate}/>
+                  <QuestionEditorTabs question={this.state.question} closeDialog={this.closeDialog} showSaveWarning={this.showSaveWarning}  metadata={this.props.metadata} editHandler={this.editHandler} isDuplicate={this.props.isDuplicate}/>
                 </div>
                 {this.renderWarningDialog()}
 

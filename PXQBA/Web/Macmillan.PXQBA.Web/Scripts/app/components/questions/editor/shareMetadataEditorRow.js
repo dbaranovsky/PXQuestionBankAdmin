@@ -7,6 +7,7 @@ var ShareMetadataEditorRow = React.createClass({displayName: 'ShareMetadataEdito
 
     var field = this.props.field; 
     var isDisabled = false;
+    var isUnique = false;
     if (this.props.question.sharedMetadata == null){
       return ({isDisabled: isDisabled});
     }
@@ -33,7 +34,11 @@ var ShareMetadataEditorRow = React.createClass({displayName: 'ShareMetadataEdito
       isDisabled = this.props.question.localMetadata[field] === this.props.question.sharedMetadata[field];
     }
 
-      return { isDisabled: isDisabled};
+      if (this.props.isUnique){
+        isDisabled = false;
+      }
+      
+      return { isDisabled: isDisabled, isUnique: this.props.isUnique};
     },
 
 
@@ -43,20 +48,21 @@ var ShareMetadataEditorRow = React.createClass({displayName: 'ShareMetadataEdito
 
    renderSharedValue: function(){
         if (this.props.question.sharedMetadata != null){
-             return  (React.DOM.div( {className:"cell shared"}, 
+             return  (React.DOM.div( {className:this.props.isUnique? "cell shared unique" : "cell shared"}, 
                      MetadataFieldEditor( {question:this.props.question.sharedMetadata, 
                                           editMode:false, 
                                           metadata:this.props.metadata,
                                           editHandler:this.sharedEditHandler, 
                                           applyHandler: this.applyHandler,
                                           field:this.props.field, 
-                                          title:this.props.title} )
+                                          title:this.props.title, 
+                                          isUnique:this.state.isUnique})
                  ));
         }
     },
 
     renderSwitchControl: function(){
-       if (this.props.question.sharedMetadata != null){
+       if (this.props.question.sharedMetadata != null && this.state.isUnique != true){
          return  (React.DOM.div( {className:"cell control"}, 
                      React.DOM.div( {className:"override-control"}, 
                           React.DOM.p(null,  " " ),
@@ -76,7 +82,10 @@ var ShareMetadataEditorRow = React.createClass({displayName: 'ShareMetadataEdito
     localEditHandler: function(localMetadata){
         var question = this.props.question;
         question.localMetadata = localMetadata;
-        this.props.editHandler(question);
+        if (this.props.editHandler !== undefined){
+          this.props.editHandler(question);  
+        }
+        
     },
 
     renderLocalValue: function(){
