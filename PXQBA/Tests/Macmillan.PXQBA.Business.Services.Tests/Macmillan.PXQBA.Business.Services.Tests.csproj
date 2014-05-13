@@ -45,6 +45,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -64,6 +66,7 @@
     </Compile>
     <Compile Include="QbaAPiTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MetaAvailableQuestionDataXmlParserTests.cs" />
     <Compile Include="QuestionManagementServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -86,6 +89,10 @@
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Services\Macmillan.PXQBA.Business.Services.csproj">
       <Project>{cf2b92a9-6e1d-4472-ad9c-aed6dc86a62c}</Project>
       <Name>Macmillan.PXQBA.Business.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Macmillan.PXQBA.Common.Helpers\Macmillan.PXQBA.Common.Helpers.csproj">
+      <Project>{dc4aeaab-7123-4e1c-bd7d-fb0913c68b2c}</Project>
+      <Name>Macmillan.PXQBA.Common.Helpers</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Common\Macmillan.PXQBA.Common.Logging\Macmillan.PXQBA.Common.Logging.csproj">
       <Project>{45A498CC-0FDF-4B3B-833B-FD0B008AA8D9}</Project>

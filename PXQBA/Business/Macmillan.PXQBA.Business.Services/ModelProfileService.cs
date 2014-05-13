@@ -112,6 +112,47 @@ namespace Macmillan.PXQBA.Business.Services
             return string.Empty;
         }
 
+        public IEnumerable<CourseMetadataFieldDescriptor> GetCourseMetadataFieldDescriptors(
+            Bfw.Agilix.DataContracts.Course src)
+        {
+            return AddMocksData(MetaAvailableQuestionDataXmlParser.Parse(src.Data));
+        }
+
+        private IEnumerable<CourseMetadataFieldDescriptor> AddMocksData(IEnumerable<CourseMetadataFieldDescriptor> data)
+        {
+            CourseMetadataFieldDescriptor chapter = new CourseMetadataFieldDescriptor()
+                                                    {
+                                                        Name = "chapter",
+                                                        Filterable = true,
+                                                        Friendlyname = "Module",
+                                                        Type = MetadataFieldType.SingleSelect,
+                                                        Hidden = false,
+                                                        Searchterm = "chapter:",
+                                                        FilterMetadataValues = new List<CourseMetadataFieldValue>()
+                                                                               {
+                                                                                   new CourseMetadataFieldValue()
+                                                                                   {
+                                                                                       Text = "Chapter 1",
+                                                                                       Sequence = 1
+                                                                                   },
+                                                                                   new CourseMetadataFieldValue()
+                                                                                   {
+                                                                                       Text = "Chapter 10",
+                                                                                       Sequence = 2
+                                                                                   },
+                                                                                   new CourseMetadataFieldValue()
+                                                                                   {
+                                                                                       Text = "Chapter 20",
+                                                                                       Sequence = 3
+                                                                                   }
+                                                                               }
+
+                                                    };
+            var list = data.ToList();
+            list.Add(chapter);
+            return list;
+        }
+
         public IEnumerable<Chapter> GetHardCodedQuestionChapters(Course src)
         {
             if (src.Id == "71836")

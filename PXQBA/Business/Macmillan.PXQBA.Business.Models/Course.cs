@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Macmillan.PXQBA.Business.Models
@@ -16,16 +17,22 @@ namespace Macmillan.PXQBA.Business.Models
 
         public IEnumerable<string> Banks { get; set; }
 
-        public int QuestionsCount
+
+        public IEnumerable<CourseMetadataFieldDescriptor> FieldDescriptors { get; set; } 
+
+    }
+
+    public static class CourseExtensions
+    {
+        public static IEnumerable<CourseMetadataFieldValue> GetChaptersList(this Course course)
         {
-            get
+            var chapter = course.FieldDescriptors.SingleOrDefault(v => v.Name == MetadataFieldNames.Chapter);
+            if (chapter == null)
             {
-                if (Chapters != null && Chapters.Any())
-                {
-                    return Chapters.Sum(ch => ch.QuestionsCount);
-                }
-                return 0;
+                return new List<CourseMetadataFieldValue>();
             }
+
+            return chapter.FilterMetadataValues;
         }
     }
 }

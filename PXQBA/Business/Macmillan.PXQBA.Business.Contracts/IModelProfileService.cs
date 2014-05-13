@@ -22,5 +22,8 @@ namespace Macmillan.PXQBA.Business.Contracts
 
         Question GetHardCodedSourceQuestion(int sharedFrom);
         IEnumerable<string> GetHardCodedQuestionBanks(Course src);
+
+        IEnumerable<CourseMetadataFieldDescriptor> GetCourseMetadataFieldDescriptors(
+            Bfw.Agilix.DataContracts.Course src);
     }
 }
