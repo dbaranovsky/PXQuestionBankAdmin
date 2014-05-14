@@ -25,7 +25,7 @@ var QuestionEditorTabs = React.createClass({
 
      loadSourceQuestion: function(event){
          event.preventDefault();
-         this.props.editSourceQuestionHandler(this.state.question.questionIdDuplicateFrom);
+         this.props.editSourceQuestionHandler();
      },
 
 
