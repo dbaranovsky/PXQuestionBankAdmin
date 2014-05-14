@@ -765,6 +765,10 @@ a.shared-question-link:hover {
     font-weight: bold;
 }
 
+.menu-container.static {
+    margin-bottom: 1px;
+}
+
 .shared-placeholder .badge {
         left: -5px !important;
         top: -5px !important;

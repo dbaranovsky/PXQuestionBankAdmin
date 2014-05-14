@@ -111,15 +111,9 @@ var QuestionListMenu = React.createClass({
                      </ul>);
     },
 
-
-    render: function() {
+    renderMenu: function(){
       if (this.props.showAll){
-
-        return ( 
-                <div>
-                  
-                   {this.renderSharedButtons()}
-                   <div className="menu-container">
+      return(<div className="menu-container">
                      <button type="button" className="btn btn-default btn-sm" onClick={this.editNotesHandler} data-toggle="tooltip" title="Edit Notes"><span className="glyphicon glyphicon-list-alt"></span>
                      </button> 
                      <div className="dropdown">
@@ -131,13 +125,37 @@ var QuestionListMenu = React.createClass({
 
 
                      <button type="button" className="btn btn-default btn-sm" onClick={this.copyQuestionHandler}  data-toggle="tooltip" title="Duplicate Question"><span className="glyphicon glyphicon-copyright-mark"></span></button>
-                  </div>
-
-                           
-                </div>
-            );
+                  </div>);
       }
 
-       return (<div> {this.renderSharedButtons()}</div>);
+      return (<div className="menu-container"></div>);
+
+    },
+
+    renderStaticMenu: function(){
+     //   if (this.props.showAll){
+          return(<div className="menu-container static">
+                     <button type="button" className="btn btn-default btn-sm" onClick={this.editNotesHandler} data-toggle="tooltip" title="Question if flaged, see notes"><span className="glyphicon glyphicon-flag"></span>
+                     </button> 
+                  </div>);
+     // }
+
+     // return (<div className="static-menu-container"></div>);
+    },
+
+
+
+    render: function() {
+
+        return ( 
+                <div>
+                   {this.renderSharedButtons()}
+                   {this.renderStaticMenu()}
+                   {this.renderMenu()}      
+                </div>
+            );
+    
+
+
   }
 });

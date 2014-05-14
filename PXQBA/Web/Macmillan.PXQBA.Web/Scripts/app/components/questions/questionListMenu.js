@@ -111,15 +111,9 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
                      ));
     },
 
-
-    render: function() {
+    renderMenu: function(){
       if (this.props.showAll){
-
-        return ( 
-                React.DOM.div(null, 
-                  
-                   this.renderSharedButtons(),
-                   React.DOM.div( {className:"menu-container"}, 
+      return(React.DOM.div( {className:"menu-container"}, 
                      React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.editNotesHandler, 'data-toggle':"tooltip", title:"Edit Notes"}, React.DOM.span( {className:"glyphicon glyphicon-list-alt"})
                      ), 
                      React.DOM.div( {className:"dropdown"}, 
@@ -131,13 +125,37 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
 
 
                      React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.copyQuestionHandler,  'data-toggle':"tooltip", title:"Duplicate Question"}, React.DOM.span( {className:"glyphicon glyphicon-copyright-mark"}))
-                  )
-
-                           
-                )
-            );
+                  ));
       }
 
-       return (React.DOM.div(null,  " ", this.renderSharedButtons()));
+      return (React.DOM.div( {className:"menu-container"}));
+
+    },
+
+    renderStaticMenu: function(){
+     //   if (this.props.showAll){
+          return(React.DOM.div( {className:"menu-container static"}, 
+                     React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.editNotesHandler, 'data-toggle':"tooltip", title:"Question if flaged, see notes"}, React.DOM.span( {className:"glyphicon glyphicon-flag"})
+                     ) 
+                  ));
+     // }
+
+     // return (<div className="static-menu-container"></div>);
+    },
+
+
+
+    render: function() {
+
+        return ( 
+                React.DOM.div(null, 
+                   this.renderSharedButtons(),
+                   this.renderStaticMenu(),
+                   this.renderMenu()      
+                )
+            );
+    
+
+
   }
 });
