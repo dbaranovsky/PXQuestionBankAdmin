@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using AutoMapper;
 using Bfw.Agilix.Commands;
 using Bfw.Agilix.DataContracts;
 using Bfw.Common.Collections;
 using Bfw.Common.Database;
 using Macmillan.PXQBA.Business.Commands.Contracts;
+using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Common.Helpers;
 using Course = Macmillan.PXQBA.Business.Models.Course;
+using Question = Bfw.Agilix.DataContracts.Question;
 
 namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 {
@@ -46,6 +50,8 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         private IEnumerable<Course> GetCoursesByCourseIds(IEnumerable<string> courseIds)
         {
+            //GetQuestions();
+            //GetQuestionList("71836", null, null, 1, 50);
             var courses = new List<Course>();
             var batch = new Batch { RunAsync = true };
 

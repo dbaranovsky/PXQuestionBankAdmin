@@ -16,16 +16,19 @@ namespace Macmillan.PXQBA.Business.Services
         private readonly IQuestionCommands questionCommands;
         private readonly ITemporaryQuestionOperation temporaryQuestionOperation;
         private readonly IBulkOperation bulkOperation;
+        private readonly IProductCourseOperation productCourseOperation;
 
-        public QuestionManagementService(IQuestionCommands questionCommands, ITemporaryQuestionOperation temporaryQuestionOperation, IBulkOperation bulkOperation)
+        public QuestionManagementService(IQuestionCommands questionCommands, ITemporaryQuestionOperation temporaryQuestionOperation, IBulkOperation bulkOperation, IProductCourseOperation productCourseOperation)
         {
             this.questionCommands = questionCommands;
             this.temporaryQuestionOperation = temporaryQuestionOperation;
             this.bulkOperation = bulkOperation;
+            this.productCourseOperation = productCourseOperation;
         }
 
         public PagedCollection<Question> GetQuestionList(Course course, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
         {
+            //productCourseOperation.GetQuestionList(course.ProductCourseId, filter, sortCriterion, startingRecordNumber, recordCount);
             //temporaryQuestionOperation.CopyQuestionToTemporaryCourse(course.ProductCourseId, "PxTempQBAQuestion_115457_Choice");
             return questionCommands.GetQuestionList(course.ProductCourseId, filter, sortCriterion, startingRecordNumber, recordCount);
         }
