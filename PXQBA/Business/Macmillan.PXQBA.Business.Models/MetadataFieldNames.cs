@@ -10,7 +10,7 @@
         public const string Id = "id";
         public const string Chapter = "chapter";
         public const string Bank = "bank";
-        public const string Sequence = "seq";
+        public const string Sequence = "sequence";
         public const string Difficulty = "difficulty";
         public const string Keywords = "keywords";
         public const string SuggestedUse = "suggesteduse";
@@ -19,6 +19,7 @@
         public const string SharedWith = "sharedWith";
         public const string QuestionIdDuplicateFrom = "questionIdDuplicateFrom";
         public const string ProductCourse = "course";
+        public const string Flag = "flag";
 
 
     }

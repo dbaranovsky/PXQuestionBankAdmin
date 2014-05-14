@@ -120,49 +120,7 @@ namespace Macmillan.PXQBA.Business.Services
 
 
 
-        public IEnumerable<Chapter> GetHardCodedQuestionChapters(Course src)
-        {
-            if (src.Id == "71836")
-            {
-             return  new List<Chapter>()
-                    {
-                        new Chapter()
-                        {
-                            Title = "Chapter 1",
-                            QuestionsCount = 2
-                        },
-                        new Chapter
-                        {
-                            Title = "Chapter 2",
-                            QuestionsCount = 3
-                        },
-                        new Chapter
-                        {
-                            Title = "Chapter 3",
-                            QuestionsCount = 3
-                        }
-                    };
-            }
 
-            return new List<Chapter>()
-                    {
-                        new Chapter()
-                        {
-                            Title = "Introduction",
-                            QuestionsCount = 2
-                        },
-                        new Chapter
-                        {
-                            Title = "Chapter 1",
-                            QuestionsCount = 3
-                        },
-                        new Chapter
-                        {
-                            Title = "Chapter 2",
-                            QuestionsCount = 3
-                        }
-                    };
-        }
 
         public IEnumerable<ProductCourseSection> GetHardCodedSharedProductCourses(ProductCourse productCourse)
         {
@@ -197,27 +155,6 @@ namespace Macmillan.PXQBA.Business.Services
                 return null;
             }
             return questionCommands.GetQuestion(GetHardCodedQuestionDuplicate());
-        }
-
-        public IEnumerable<string> GetHardCodedQuestionBanks(Course src)
-        {
-            if (src.Id == "71836")
-            {
-               return new List<string>
-                    {
-                        "End of Chapter",
-                        "Beginning of Chapter Questions",
-                        "Middle of Chapter Questions"
-                    };
-           }
-
-           return new List<string>
-                    {
-                        "Bank 1",
-                        "Bank 2",
-                        "Bank 3"
-                    };
-
         }
 
         public string GetQuizIdForQuestion(string id, string entityId)

@@ -19,45 +19,18 @@ namespace Macmillan.PXQBA.Business.Services
 
         public IList<QuestionMetaField> GetAvailableFields(Course course)
         {
-            var chapter = course.FieldDescriptors.SingleOrDefault(v => v.Name == MetadataFieldNames.Chapter);
+            var availableFields = course.FieldDescriptors.Select(Mapper.Map<QuestionMetaField>).ToList();
 
-            var questionMetaFieldChapter = Mapper.Map<QuestionMetaField>(chapter);
-
-            var fields = new List<QuestionMetaField>
+            var customFields = new List<QuestionMetaField>
             {
-                //new QuestionMetaField()
-                //{
-                //    FriendlyName = "Chapter",
-                //    Name = MetadataFieldNames.Chapter,
-                //    TypeDescriptor = new MetaFieldTypeDescriptor
-                //    {
-                //        Type = MetaFieldType.SingleSelect,
-                //        AvailableChoice = course.Chapters.Select(ch => ch.Title).ToDictionary(it => it)
-                //    }
 
-                //},
-                new QuestionMetaField()
-                {
-                    FriendlyName = "Question Bank",
-                    Name = MetadataFieldNames.Bank,
-                    TypeDescriptor = new MetaFieldTypeDescriptor
-                    {
-                        Type = MetadataFieldType.SingleSelect,
-                         AvailableChoice = course.Banks.ToDictionary(it => it)
-                    }
-                },
-                new QuestionMetaField
-                {
-                    FriendlyName = "Sequence",
-                    Name = MetadataFieldNames.Sequence,
-                    TypeDescriptor = new MetaFieldTypeDescriptor(MetadataFieldType.Text)
-                },
                 new QuestionMetaField
                 {
                     FriendlyName = "Question title",
                     Name = MetadataFieldNames.DlapTitle,
                     TypeDescriptor = new MetaFieldTypeDescriptor(MetadataFieldType.Text)
                 },
+
                 new QuestionMetaField()
                 {
                     FriendlyName = "Format",
@@ -65,15 +38,7 @@ namespace Macmillan.PXQBA.Business.Services
                     TypeDescriptor = new MetaFieldTypeDescriptor
                     {
                         Type = MetadataFieldType.SingleSelect,
-                        AvailableChoice = new List<string>
-                        {
-                            EnumHelper.GetEnumDescription(QuestionType.MultipleAnswer),
-                            EnumHelper.GetEnumDescription(QuestionType.MultipleChoice),
-                            EnumHelper.GetEnumDescription(QuestionType.Matching),
-                            EnumHelper.GetEnumDescription(QuestionType.ShortAnswer),
-                            EnumHelper.GetEnumDescription(QuestionType.Essay),
-                            EnumHelper.GetEnumDescription(QuestionType.GraphExcepcise),
-                        }.ToDictionary(it => it)
+                        AvailableChoice = ConfigurationHelper.GetQuestionTypes().Select(d=>d.Value).ToDictionary(v=>v)
                     }
                 },
                 new QuestionMetaField
@@ -88,21 +53,6 @@ namespace Macmillan.PXQBA.Business.Services
                             EnumHelper.GetEnumDescription(QuestionStatus.AvailableToInstructors),
                             EnumHelper.GetEnumDescription(QuestionStatus.InProgress),
                             EnumHelper.GetEnumDescription(QuestionStatus.Deleted),
-                        }.ToDictionary(it => it)
-                    }
-                },
-                new QuestionMetaField
-                {
-                    FriendlyName = "Difficulty",
-                    Name = MetadataFieldNames.Difficulty,
-                    TypeDescriptor = new MetaFieldTypeDescriptor
-                    {
-                        Type = MetadataFieldType.SingleSelect,
-                        AvailableChoice = new List<string>
-                        {
-                            "Easy",
-                            "Medium",
-                            "Hard",
                         }.ToDictionary(it => it)
                     }
                 },
@@ -122,30 +72,6 @@ namespace Macmillan.PXQBA.Business.Services
                     }
 
                 },
-                new QuestionMetaField()
-                {
-                    FriendlyName = "Suggested Use",
-                    Name = MetadataFieldNames.SuggestedUse,
-                    TypeDescriptor = new MetaFieldTypeDescriptor
-                    {
-                        Type = MetadataFieldType.MultiSelect,
-                        AvailableChoice = new List<string>
-                        {
-                            "Pre-class",
-                            "In-class",
-                            "Post-class",
-                            "Exam"
-                        }.ToDictionary(it => it)
-                    }
-
-                },
-                new QuestionMetaField()
-                {
-                    FriendlyName = "Guidance",
-                    Name = MetadataFieldNames.Guidance,
-                    TypeDescriptor = new MetaFieldTypeDescriptor(MetadataFieldType.Text)
-                },
-
                 new QuestionMetaField()
                 {
                     FriendlyName = "Learning Objective",
@@ -168,13 +94,78 @@ namespace Macmillan.PXQBA.Business.Services
                         Type = MetadataFieldType.SingleSelect,
                         AvailableChoice = productCourseOperation.GetAvailableCourses().ToDictionary(pc => pc.ProductCourseId, pc => pc.Title)
                     }
-
                 },
+
+                //new QuestionMetaField
+                //{
+                //    FriendlyName = "Difficulty",
+                //    Name = MetadataFieldNames.Difficulty,
+                //    TypeDescriptor = new MetaFieldTypeDescriptor
+                //    {
+                //        Type = MetadataFieldType.SingleSelect,
+                //        AvailableChoice = new List<string>
+                //        {
+                //            "Easy",
+                //            "Medium",
+                //            "Hard",
+                //        }.ToDictionary(it => it)
+                //    }
+                //},
+                //new QuestionMetaField()
+                //{
+                //    FriendlyName = "Suggested Use",
+                //    Name = MetadataFieldNames.SuggestedUse,
+                //    TypeDescriptor = new MetaFieldTypeDescriptor
+                //    {
+                //        Type = MetadataFieldType.MultiSelect,
+                //        AvailableChoice = new List<string>
+                //        {
+                //            "Pre-class",
+                //            "In-class",
+                //            "Post-class",
+                //            "Exam"
+                //        }.ToDictionary(it => it)
+                //    }
+
+                //},
+                //new QuestionMetaField()
+                //{
+                //    FriendlyName = "Guidance",
+                //    Name = MetadataFieldNames.Guidance,
+                //    TypeDescriptor = new MetaFieldTypeDescriptor(MetadataFieldType.Text)
+                //},
+                //new QuestionMetaField()
+                //{
+                //    FriendlyName = "Chapter",
+                //    Name = MetadataFieldNames.Chapter,
+                //    TypeDescriptor = new MetaFieldTypeDescriptor
+                //    {
+                //        Type = MetaFieldType.SingleSelect,
+                //        AvailableChoice = course.Chapters.Select(ch => ch.Title).ToDictionary(it => it)
+                //    }
+
+                //},
+                //new QuestionMetaField()
+                //{
+                //    FriendlyName = "Question Bank",
+                //    Name = MetadataFieldNames.Bank,
+                //    TypeDescriptor = new MetaFieldTypeDescriptor
+                //    {
+                //        Type = MetadataFieldType.SingleSelect,
+                //         AvailableChoice = course.Banks.ToDictionary(it => it)
+                //    }
+                //},
+                //new QuestionMetaField
+                //{
+                //    FriendlyName = "Sequence",
+                //    Name = MetadataFieldNames.Sequence,
+                //    TypeDescriptor = new MetaFieldTypeDescriptor(MetadataFieldType.Text)
+                //},
             };
 
-            fields.Add(questionMetaFieldChapter);
+            availableFields.AddRange(customFields);
 
-            return fields;
+            return availableFields;
         }
 
         public IList<QuestionMetaField> GetDataForFields(Course course, IEnumerable<string> fieldsNames)

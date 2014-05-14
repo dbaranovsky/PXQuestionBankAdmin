@@ -15,13 +15,10 @@ namespace Macmillan.PXQBA.Business.Contracts
         string SetLearningObjectives(IEnumerable<LearningObjective> learningObjectives);
         IEnumerable<LearningObjective> GetLOByGuid(string productCourseId, string learningObjectiveGuids);
         string GetQuestionCardLayout(Bfw.Agilix.DataContracts.Course src);
-        IEnumerable<Chapter> GetHardCodedQuestionChapters(Course src);
         IEnumerable<ProductCourseSection> GetHardCodedSharedProductCourses(ProductCourse productCourse);
         string GetHardCodedQuestionDuplicate();
         string GetQuizIdForQuestion(string id, string entityId);
-
         Question GetHardCodedSourceQuestion(int sharedFrom);
-        IEnumerable<string> GetHardCodedQuestionBanks(Course src);
 
         IEnumerable<CourseMetadataFieldDescriptor> GetCourseMetadataFieldDescriptors(
             Bfw.Agilix.DataContracts.Course src);

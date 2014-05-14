@@ -13,11 +13,6 @@ namespace Macmillan.PXQBA.Business.Models
 
         public string QuestionCardLayout { get; set; }
 
-        public IEnumerable<Chapter> Chapters { get; set; }
-
-        public IEnumerable<string> Banks { get; set; }
-
-
         public IEnumerable<CourseMetadataFieldDescriptor> FieldDescriptors { get; set; } 
 
     }
