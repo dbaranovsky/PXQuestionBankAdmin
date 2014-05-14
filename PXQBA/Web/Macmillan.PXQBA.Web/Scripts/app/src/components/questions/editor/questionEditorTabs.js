@@ -23,6 +23,12 @@ var QuestionEditorTabs = React.createClass({
         this.tabsInitializer($(this.getDOMNode()));
     },
 
+     loadSourceQuestion: function(event){
+         event.preventDefault();
+         this.props.editSourceQuestionHandler();
+     },
+
+
     renderSharingNotification: function(){
          if (this.props.question.isDuplicateOfSharedQuestion && this.props.isDuplicate && this.props.question.isShared) {
         return (<div className="shared-note">This question is a duplicate of a&nbsp;

@@ -91,11 +91,7 @@ var QuestionEditor = React.createClass({
      },
 
 
-      loadSourceQuestion: function(event){
-         event.preventDefault();
-         this.props.editSourceQuestionHandler(this.state.question.questionIdDuplicateFrom);
-     },
-
+     
 
     render: function() {
         return (
@@ -107,7 +103,7 @@ var QuestionEditor = React.createClass({
                       </div>
                 
                 <div>
-                  <QuestionEditorTabs question={this.state.question} closeDialog={this.closeDialog} showSaveWarning={this.showSaveWarning}  metadata={this.props.metadata} editHandler={this.editHandler} isDuplicate={this.props.isDuplicate}/>
+                  <QuestionEditorTabs question={this.state.question} closeDialog={this.closeDialog}  editSourceQuestionHandler={this.props.editSourceQuestionHandler.bind(this,this.state.question.questionIdDuplicateFrom)} showSaveWarning={this.showSaveWarning}  metadata={this.props.metadata} editHandler={this.editHandler} isDuplicate={this.props.isDuplicate}/>
                 </div>
                 {this.renderWarningDialog()}
 
