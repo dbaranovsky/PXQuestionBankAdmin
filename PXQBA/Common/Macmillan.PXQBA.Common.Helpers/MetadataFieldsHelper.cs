@@ -52,18 +52,12 @@ namespace Macmillan.PXQBA.Common.Helpers
              if (metaField.Name == MetadataFieldNames.DlapStatus)
              {
                  model.IsInlineEditingAllowed = true;
-                 model.EditorDescriptor.AvailableChoice = GetAvailibleChoicesFromEnum(typeof(QuestionStatus));
-             }
-             if (metaField.Name == MetadataFieldNames.DlapType)
-             {
-                 model.EditorDescriptor.AvailableChoice = GetAvailibleChoicesFromEnum(typeof(QuestionType));
              }
 
              if (metaField.Name == MetadataFieldNames.Sequence)
              {
                  model.IsInlineEditingAllowed = true;
                  model.EditorDescriptor.EditorType = EditorType.Number.ToString().ToLower();
-             
              }
 
              if (metaField.Name == MetadataFieldNames.Keywords)
