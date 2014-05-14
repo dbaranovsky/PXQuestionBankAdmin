@@ -6,9 +6,9 @@ using Macmillan.PXQBA.Business.Models;
 
 namespace Macmillan.PXQBA.Common.Helpers
 {
-    public static class MetaAvailableQuestionDataXmlParser
+    public static class CourseDataXmlParser
     {
-        public static IEnumerable<CourseMetadataFieldDescriptor> Parse(XElement xmlCourseData)
+        public static IEnumerable<CourseMetadataFieldDescriptor> ParseMetaAvailableQuestionData(XElement xmlCourseData)
         {
 
             var fieldsList = new List<CourseMetadataFieldDescriptor>();
@@ -71,6 +71,17 @@ namespace Macmillan.PXQBA.Common.Helpers
             }
 
             return fieldsList;
+        }
+
+        public static string ParseQuestionBankRepositoryCourse(XElement xmlCourseData)
+        {
+            XElement questionBankRepositoryCourse = xmlCourseData.Element("QuestionBankRepositoryCourse");
+            if (questionBankRepositoryCourse != null)
+            {
+                return questionBankRepositoryCourse.Value;
+            }
+
+            return String.Empty;
         }
 
         private static IEnumerable<CourseMetadataFieldValue> ParseCourseMetadataFieldValues(XElement xmlField)

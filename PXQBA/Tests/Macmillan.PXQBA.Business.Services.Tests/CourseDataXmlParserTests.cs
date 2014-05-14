@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Macmillan.PXQBA.Business.Services.Tests
 {
     [TestClass]
-    public class MetaAvailableQuestionDataXmlParserTests
+    public class CourseDataXmlParserTests
     {
 
         public static string XmlString = @"
@@ -36,10 +36,10 @@ namespace Macmillan.PXQBA.Business.Services.Tests
                       </data>";
 
         [TestMethod]
-        public void ParseQuestionFilter()
+        public void ParseMetaAvailableQuestionData()
         {
             XElement courseDataXml = XElement.Parse(XmlString);
-            var fields = MetaAvailableQuestionDataXmlParser.Parse(courseDataXml);
+            var fields = CourseDataXmlParser.ParseMetaAvailableQuestionData(courseDataXml);
 
             Assert.IsTrue(fields.Count()==8);
             Assert.IsTrue(fields.SingleOrDefault(x => x.Friendlyname == "Difficulty").CourseMetadataFieldValues.Count()==3);

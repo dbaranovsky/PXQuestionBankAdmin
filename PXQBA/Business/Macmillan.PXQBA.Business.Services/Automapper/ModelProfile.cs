@@ -34,7 +34,9 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.QuestionCardLayout,
                     opt => opt.MapFrom(src => modelProfileService.GetQuestionCardLayout(src)))
                 .ForMember(dest => dest.FieldDescriptors,
-                    opt => opt.MapFrom(src => modelProfileService.GetCourseMetadataFieldDescriptors(src)));
+                    opt => opt.MapFrom(src => modelProfileService.GetCourseMetadataFieldDescriptors(src)))
+                .ForMember(dest => dest.QuestionBankRepositoryCourse, 
+                    opt => opt.MapFrom(src => modelProfileService.GetQuestionBankRepositoryCourse(src)));
 
 
             Mapper.CreateMap<CourseMetadataFieldDescriptor, QuestionMetaField>()

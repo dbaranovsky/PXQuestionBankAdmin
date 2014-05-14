@@ -9,7 +9,9 @@ namespace Macmillan.PXQBA.Business.Models
         public string Title { get; set; }
         public string ProductCourseId { get; set; }
 
-        public IEnumerable<LearningObjective> LearningObjectives;
+        public IEnumerable<LearningObjective> LearningObjectives { get; set; }
+
+        public string QuestionBankRepositoryCourse { get; set; }
 
         public string QuestionCardLayout { get; set; }
 

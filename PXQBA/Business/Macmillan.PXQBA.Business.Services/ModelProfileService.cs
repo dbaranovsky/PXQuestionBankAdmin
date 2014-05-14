@@ -115,11 +115,13 @@ namespace Macmillan.PXQBA.Business.Services
         public IEnumerable<CourseMetadataFieldDescriptor> GetCourseMetadataFieldDescriptors(
             Bfw.Agilix.DataContracts.Course src)
         {
-            return MetaAvailableQuestionDataXmlParser.Parse(src.Data);
+            return CourseDataXmlParser.ParseMetaAvailableQuestionData(src.Data);
         }
 
-
-
+        public string GetQuestionBankRepositoryCourse(Course src)
+        {
+            return CourseDataXmlParser.ParseQuestionBankRepositoryCourse(src.Data);
+        }
 
 
         public IEnumerable<ProductCourseSection> GetHardCodedSharedProductCourses(ProductCourse productCourse)
