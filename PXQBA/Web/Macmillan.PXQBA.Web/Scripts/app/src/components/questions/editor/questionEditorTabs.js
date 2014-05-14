@@ -9,6 +9,7 @@ var QuestionEditorTabs = React.createClass({
     },
 
     componentDidMount: function() {
+      //todo: refactor
          var tabs = this.getDOMNode();
          this.tabsInitializer($(tabs));
          $(tabs).find('iframe').load(function(){
