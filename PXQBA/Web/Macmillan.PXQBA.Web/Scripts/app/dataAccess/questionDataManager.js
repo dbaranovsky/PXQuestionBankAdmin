@@ -285,6 +285,29 @@
         });
     };
 
+      self.flagQuestion= function (questionId, isFlagged) {
+        
+        var request = {            
+            questionId: questionId,
+            isFlagged: isFlagged
+        };
+        
+        return $.ajax({
+            url: window.actions.questionList.flagQuestionUrl,
+            traditional: true,
+            data: JSON.stringify(request),
+            contentType: 'application/json',
+            dataType: 'json',
+            type: 'POST'
+        }).done(function (response) {
+
+            self.showSuccessPopup("Question successfully "+ (isFlagged? "flagged": "unflagged"));
+
+        }).error(function(e){
+             self.showErrorPopup();
+        });
+    };
+
     
     self.bulk = {};
 

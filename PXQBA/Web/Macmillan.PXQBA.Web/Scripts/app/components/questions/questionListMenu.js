@@ -5,6 +5,10 @@
 var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
 
 
+     getInitialState: function() {
+
+       return { isFlagged: false };
+    },
     editNotesHandler: function(){
       this.props.editNotesHandler();
     },
@@ -29,6 +33,15 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
     shareHandler: function(){
         this.props.shareHandler();
     },
+
+    toggleFlag: function(){
+
+      questionDataManager.flagQuestion(this.props.data.id, !this.state.isFlagged);
+      this.setState( {isFlagged: !this.state.isFlagged});
+
+    },
+
+
 
     componentDidUpdate: function(){
       this.initializePopovers();
@@ -126,21 +139,26 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
 
                      React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.copyQuestionHandler,  'data-toggle':"tooltip", title:"Duplicate Question"}, React.DOM.span( {className:"glyphicon glyphicon-copyright-mark"}))
                   ));
-      }
+     }
 
       return (React.DOM.div( {className:"menu-container"}));
 
     },
 
     renderStaticMenu: function(){
-     //   if (this.props.showAll){
+        if (this.props.showAll){
           return(React.DOM.div( {className:"menu-container static"}, 
-                     React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.editNotesHandler, 'data-toggle':"tooltip", title:"Question if flaged, see notes"}, React.DOM.span( {className:"glyphicon glyphicon-flag"})
+                     React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.toggleFlag, 'data-toggle':"tooltip", title:this.state.isFlagged? "Unflag question" : "Flag question"}, 
+                     React.DOM.span( {className:this.state.isFlagged? "glyphicon glyphicon-flag flagged" : "glyphicon glyphicon-flag"})
                      ) 
                   ));
-     // }
+      }
 
-     // return (<div className="static-menu-container"></div>);
+      return (React.DOM.div( {className:"static-menu-container"}, 
+                React.DOM.div( {className:"notification-icons-container"}, 
+                    this.state.isFlagged ? React.DOM.span( {className:"glyphicon glyphicon-flag flagged"}) : ""
+                )
+              ));
     },
 
 
