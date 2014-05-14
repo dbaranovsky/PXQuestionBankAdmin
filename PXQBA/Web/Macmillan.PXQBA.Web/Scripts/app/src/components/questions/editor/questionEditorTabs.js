@@ -65,7 +65,7 @@ var QuestionEditorTabs = React.createClass({
 
                           <div  className="iframe waiting" />
                           
-                          <iframe src={this.props.question.editorUrl} className={this.props.question.isShared && !this.props.isDuplicate && !this.props.isNew? "shared": ""} />
+                          <iframe src={this.props.question.editorUrl} className={this.props.question.isShared && !this.props.isNew? "shared": ""} />
                           
                        </div>
                     </div>
