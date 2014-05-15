@@ -42,7 +42,7 @@ namespace Macmillan.PXQBA.Web.Controllers
                                                   CourseId = titleId,
                                                   ChapterId = chapterId
                                               };
-            CourseHelper.CurrentCourse = productCourseManagementService.GetProductCourse(titleId);
+            UpdateCurrentCourse(titleId);
             return View(viewModel);
         }
 
@@ -52,7 +52,8 @@ namespace Macmillan.PXQBA.Web.Controllers
 
             var currentCourseFilter = request.Filter.SingleOrDefault(x => x.Field == MetadataFieldNames.ProductCourse);
             ClearFilter(currentCourseFilter, request);
-            CourseHelper.CurrentCourse = productCourseManagementService.GetProductCourse(currentCourseFilter.Values.First());
+
+            UpdateCurrentCourse(currentCourseFilter.Values.First());
 
             var sortCriterion = new SortCriterion {ColumnName = request.OrderField, SortType = request.OrderType};
             var questionList = questionManagementService.GetQuestionList(CourseHelper.CurrentCourse, request.Filter, sortCriterion, 
@@ -139,6 +140,18 @@ namespace Macmillan.PXQBA.Web.Controllers
             foreach (var filterItem in request.Filter.Where(filterItem => filterItem.Field != courseFilterDescriptor.Field))
             {
                 filterItem.Values = new List<string>();
+            }
+        }
+
+        /// <summary>
+        /// Update current course in session
+        /// </summary>
+        /// <param name="courseId"></param>
+        private void UpdateCurrentCourse(string courseId)
+        {
+            if (CourseHelper.NeedGetCourse(courseId))
+            {
+                CourseHelper.CurrentCourse = productCourseManagementService.GetProductCourse(courseId);
             }
         }
 
