@@ -259,7 +259,7 @@
         }).done(function (response) {
 
             self.resetState();
-            self.showSuccessPopup("The shared question has been deleted");
+            self.showSuccessPopup("The shared question has been removed");
 
         }).error(function(e){
              self.resetState();
