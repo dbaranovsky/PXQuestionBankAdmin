@@ -2,25 +2,18 @@
 
 namespace Macmillan.PXQBA.Business.Models
 {
-    public enum MetaFieldType
-    {
-        Text = 0,
-        SingleSelect,
-        MultiSelect,
-    }
-    
     public class MetaFieldTypeDescriptor
     {
         public MetaFieldTypeDescriptor()
         {
         }
 
-        public MetaFieldTypeDescriptor(MetaFieldType type)
+        public MetaFieldTypeDescriptor(MetadataFieldType type)
         {
             Type = type;
         }
-        
-        public MetaFieldType Type { get; set; }
+
+        public MetadataFieldType Type { get; set; }
         public Dictionary<string, string> AvailableChoice { get; set; }
     }
 

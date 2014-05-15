@@ -31,7 +31,8 @@ namespace Macmillan.PXQBA.Common.Helpers
             // \todo Move custom field-level settings to configuration
             
             if ((metaField.Name == MetadataFieldNames.DlapStatus) ||
-                (metaField.Name == MetadataFieldNames.DlapTitle))
+                (metaField.Name == MetadataFieldNames.DlapTitle) ||
+                (metaField.Name == MetadataFieldNames.Flag))
             {
                 model.FilterType = FilterType.None.ToString().ToLower();
             }
@@ -51,18 +52,12 @@ namespace Macmillan.PXQBA.Common.Helpers
              if (metaField.Name == MetadataFieldNames.DlapStatus)
              {
                  model.IsInlineEditingAllowed = true;
-                 model.EditorDescriptor.AvailableChoice = GetAvailibleChoicesFromEnum(typeof(QuestionStatus));
-             }
-             if (metaField.Name == MetadataFieldNames.DlapType)
-             {
-                 model.EditorDescriptor.AvailableChoice = GetAvailibleChoicesFromEnum(typeof(QuestionType));
              }
 
              if (metaField.Name == MetadataFieldNames.Sequence)
              {
                  model.IsInlineEditingAllowed = true;
                  model.EditorDescriptor.EditorType = EditorType.Number.ToString().ToLower();
-             
              }
 
              if (metaField.Name == MetadataFieldNames.Keywords)
@@ -84,12 +79,5 @@ namespace Macmillan.PXQBA.Common.Helpers
 
             return model;
          }
-
-         private static Dictionary<string, string> GetAvailibleChoicesFromEnum(Type enumType)
-         {
-             return EnumHelper.GetEnumValues(enumType).ToDictionary(x => x.Key, x => x.Value);
-         }
-
-
     }
 }

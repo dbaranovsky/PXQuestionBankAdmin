@@ -3,7 +3,7 @@
 
     self.query = new RouteItem('filter', filterHashParameterHelper.emptyValue);
     self.page = new RouteItem('page', '1');
-    self.columns = new RouteItem('columns', 'bank+seq+dlap_title+dlap_q_type+dlap_q_status');
+    self.columns = new RouteItem('columns', window.consts.grid.initialFieldSet);
     self.order = new RouteItem('order', 'none');
 
     self.setState = function (filter, page, columns, orderType, orderField) {

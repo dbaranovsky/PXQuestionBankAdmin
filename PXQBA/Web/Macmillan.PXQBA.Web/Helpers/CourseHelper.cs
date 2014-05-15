@@ -16,6 +16,21 @@ namespace Macmillan.PXQBA.Web.Helpers
             set { HttpContext.Current.Session[CourseParamName] = value; }
         }
 
+        public static bool NeedGetCourse(string currentCourseId)
+        {
+            var currentCourse = CurrentCourse;
+            if (currentCourse == null)
+            {
+                return true;
+            }
+            if (currentCourse.ProductCourseId != currentCourseId)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public static bool IsResetFiltrationNeeded(FilterFieldDescriptor courseFilterDescriptor)
         {
             var currentCourse = CurrentCourse;

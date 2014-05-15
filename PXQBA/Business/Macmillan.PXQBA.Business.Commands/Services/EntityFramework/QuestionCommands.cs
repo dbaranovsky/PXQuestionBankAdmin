@@ -6,6 +6,7 @@ using AutoMapper;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.DataAccess.Data;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
@@ -181,7 +182,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
                 switch (fieldName)
                 {
                     case MetadataFieldNames.DlapStatus:
-                        question.Status = (int)((QuestionStatus)Enum.Parse(typeof(QuestionStatus), value, true));
+                        question.Status = ((int)EnumHelper.GetItemByDescription(typeof(QuestionStatus), value));
                         break;
                 }
                 dbContext.SaveChanges();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using AutoMapper;
@@ -30,10 +31,25 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.ProductCourseId, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
                 .ForMember(dest => dest.LearningObjectives, opt => opt.MapFrom(src => src.LearningObjectives))
-                .ForMember(dest => dest.QuestionCardLayout, opt => opt.MapFrom(src => modelProfileService.GetQuestionCardLayout(src)))
-                .ForMember(dest => dest.Chapters, opt => opt.MapFrom(src => modelProfileService.GetHardCodedQuestionChapters(src)))
-                .ForMember(dest => dest.Banks, opt => opt.MapFrom(src => modelProfileService.GetHardCodedQuestionBanks(src)))
-                .ForMember(dest => dest.QuestionsCount, opt => opt.Ignore());
+                .ForMember(dest => dest.QuestionCardLayout,
+                    opt => opt.MapFrom(src => modelProfileService.GetQuestionCardLayout(src)))
+                .ForMember(dest => dest.FieldDescriptors,
+                    opt => opt.MapFrom(src => modelProfileService.GetCourseMetadataFieldDescriptors(src)))
+                .ForMember(dest => dest.QuestionBankRepositoryCourse, 
+                    opt => opt.MapFrom(src => modelProfileService.GetQuestionBankRepositoryCourse(src)));
+
+
+            Mapper.CreateMap<CourseMetadataFieldDescriptor, QuestionMetaField>()
+                .ForMember(dest => dest.FriendlyName, opt => opt.MapFrom(src => src.Friendlyname))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.TypeDescriptor,
+                    opt => opt.MapFrom(src => Mapper.Map<MetaFieldTypeDescriptor>(src)));
+
+            Mapper.CreateMap<CourseMetadataFieldDescriptor, MetaFieldTypeDescriptor>()
+                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type))
+                .ForMember(dest => dest.AvailableChoice,
+                    opt => opt.MapFrom(src => src.CourseMetadataFieldValues.Select(i => i.Text).ToDictionary(t=>t)));
+ 
 
             Mapper.CreateMap<Bfw.Agilix.DataContracts.LearningObjective, LearningObjective>()
                 .ForMember(dest => dest.Guid, opt => opt.MapFrom(src => src.Guid))
@@ -78,11 +94,11 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<Course, TitleViewModel>()
                 .ForMember(vm => vm.Id, opt => opt.MapFrom(c => c.ProductCourseId))
                 .ForMember(vm => vm.Title, opt => opt.MapFrom(c => c.Title))
-                .ForMember(vm => vm.Chapters, opt => opt.MapFrom(c => c.Chapters));
+                .ForMember(vm => vm.Chapters, opt => opt.MapFrom(c => c.GetChaptersList()));
 
-            Mapper.CreateMap<Chapter, ChapterViewModel>()
-                .ForMember(vm => vm.Id, opt => opt.MapFrom(c => FirstCharacterToLower(c.Title)))
-                .ForMember(vm => vm.Title, opt => opt.MapFrom(c => c.Title));
+            Mapper.CreateMap<CourseMetadataFieldValue, ChapterViewModel>()
+                .ForMember(vm => vm.Id, opt => opt.MapFrom(c => FirstCharacterToLower(c.Text)))
+                .ForMember(vm => vm.Title, opt => opt.MapFrom(c => c.Text));
 
             Mapper.CreateMap<Question, QuestionViewModel>()
                 .ForMember(dest => dest.ProductCourses, opt => opt.MapFrom(src => src.ProductCourses.Select(p => p.Title)));

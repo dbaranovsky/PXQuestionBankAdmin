@@ -1,4 +1,5 @@
 ﻿@using Macmillan.PXQBA.Business.Models
+@using Macmillan.PXQBA.Web.Helpers
 @using Macmillan.PXQBA.Web.ViewModels.Editor
 @using Macmillan.PXQBA.Web.ViewModels.Filter
 <script type="text/javascript">
@@ -93,6 +94,10 @@
         consts.questionStatusName = '@MetadataFieldNames.DlapStatus';
         consts.questionCourseName = '@MetadataFieldNames.ProductCourse';
         consts.questionChapterName = '@MetadataFieldNames.Chapter';
+
+        consts.grid = {
+            initialFieldSet : '@GridHelper.GetInitialFieldSet()',
+        };
     }
      )();
 </script>
