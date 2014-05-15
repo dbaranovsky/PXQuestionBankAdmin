@@ -350,7 +350,7 @@
             type: 'POST'
         }).done(function (response) {
             self.resetState();
-            var message = questionsId.length == 1? "Shared question has been deleted" : "Shared questions have been deleted" ;
+            var message = questionsId.length == 1? "Shared question has been removed" : "Shared questions have been removed" ;
             self.showSuccessPopup(message);
         }).error(function (e) {
             self.resetState();
