@@ -69,7 +69,55 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 }
                 courses.Add(Mapper.Map<Course>(batch.CommandAs<GetCourse>(index).Courses.First()));
             }
+
             return courses;
+        }
+
+        /// <summary>
+        /// Get QuestionBankRepositoryCourse from items (property HrefDisciplineCourseId)
+        /// </summary>
+        /// <param name="courseIds"></param>
+        /// <returns>Dictionary contains key=courseId value=QuestionBankRepositoryCourse </returns>
+        private Dictionary<string, string> GetQuestionBankRepositoryCourseFromItems(string[] courseIds)
+        {
+            var resultDictionary = new Dictionary<string, string>();
+
+            var batch = new Batch { RunAsync = true };
+
+            foreach (var courseId in courseIds)
+            {
+                batch.Add(new GetItems()
+                {
+                    SearchParameters = new ItemSearch()
+                    {
+                        EntityId = courseId,
+                        Query = @"/bfw_meta/bfw_metadata@name=""AgilixDisciplineId"""
+                    }
+                });
+            }
+
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(batch);
+
+            for (int index = 0; index < batch.Commands.Count(); index++)
+            {
+                var command = batch.CommandAs<GetItems>(index);
+
+                string courseId = command.SearchParameters.EntityId;
+                string hrefDisciplineCourseId = String.Empty;
+
+                if (!command.Items.IsNullOrEmpty())
+                {
+                    var firstItem = command.Items.FirstOrDefault();
+                    if (firstItem != null)
+                    {
+                        hrefDisciplineCourseId = firstItem.HrefDisciplineCourseId;
+                    }
+                }
+
+                resultDictionary.Add(courseId, hrefDisciplineCourseId);
+            }
+
+            return resultDictionary;
         }
 
         public Course GetProductCourse(string productCourseId)
@@ -83,7 +131,14 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             };
 
             businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
-            return Mapper.Map<Course>(cmd.Courses.FirstOrDefault());
+            var course = Mapper.Map<Course>(cmd.Courses.FirstOrDefault());
+
+            if (String.IsNullOrEmpty(course.QuestionBankRepositoryCourse))
+            {
+                var result = GetQuestionBankRepositoryCourseFromItems(new[] {course.ProductCourseId});
+                course.QuestionBankRepositoryCourse = result.GetValue(course.ProductCourseId, String.Empty);
+            }
+            return course;
         }
     }
 }
