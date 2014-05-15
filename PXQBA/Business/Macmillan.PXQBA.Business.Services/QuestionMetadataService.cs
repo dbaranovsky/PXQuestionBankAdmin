@@ -95,6 +95,7 @@ namespace Macmillan.PXQBA.Business.Services
                         AvailableChoice = productCourseOperation.GetAvailableCourses().ToDictionary(pc => pc.ProductCourseId, pc => pc.Title)
                     }
                 },
+
             };
 
             availableFields.AddRange(customFields);

@@ -210,7 +210,7 @@ input[type="checkbox"].input-validation-error {
     opacity: 0.25;
 }
 
-.flagged .glyphicon-flag {
+.flagged.glyphicon-flag {
     opacity: 1;
 }
 
@@ -413,7 +413,7 @@ input.disabled, textarea.disabled {
     width: 956px;
 }
 
-.tab-body .modal-footer {
+.editor-tabs .tab-body .modal-footer {
     float: left;
     width: 100%;
     margin:0;
@@ -763,6 +763,19 @@ a.shared-question-link:hover {
     color: #000000;
     font-size: 12px;
     font-weight: bold;
+}
+
+.menu-container.static {
+    margin-bottom: 1px;
+}
+
+.menu-container.static button{
+    padding: 2px 5px;
+}
+
+.notification-icons-container span {
+    margin-top: 3px;
+    margin-left: 6px;
 }
 
 .shared-placeholder .badge {

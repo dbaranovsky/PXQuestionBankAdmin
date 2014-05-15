@@ -259,7 +259,7 @@
         }).done(function (response) {
 
             self.resetState();
-            self.showSuccessPopup("The shared question has been deleted");
+            self.showSuccessPopup("The shared question has been removed");
 
         }).error(function(e){
              self.resetState();
@@ -280,6 +280,29 @@
             contentType: 'application/json',
             dataType: 'json',
             type: 'POST'
+        }).error(function(e){
+             self.showErrorPopup();
+        });
+    };
+
+      self.flagQuestion= function (questionId, isFlagged) {
+        
+        var request = {            
+            questionId: questionId,
+            isFlagged: isFlagged
+        };
+        
+        return $.ajax({
+            url: window.actions.questionList.flagQuestionUrl,
+            traditional: true,
+            data: JSON.stringify(request),
+            contentType: 'application/json',
+            dataType: 'json',
+            type: 'POST'
+        }).done(function (response) {
+
+            self.showSuccessPopup("Question successfully "+ (isFlagged? "flagged": "unflagged"));
+
         }).error(function(e){
              self.showErrorPopup();
         });
@@ -327,7 +350,8 @@
             type: 'POST'
         }).done(function (response) {
             self.resetState();
-            self.showSuccessPopup("Shared questions has been deleted");
+            var message = questionsId.length == 1? "Shared question has been removed" : "Shared questions have been removed" ;
+            self.showSuccessPopup(message);
         }).error(function (e) {
             self.resetState();
             self.showErrorPopup();

@@ -20,7 +20,5 @@
         public const string QuestionIdDuplicateFrom = "questionIdDuplicateFrom";
         public const string ProductCourse = "course";
         public const string Flag = "flag";
-
-
     }
 }

@@ -20,7 +20,8 @@
             getQuestionUrl: '@Url.Action("GetQuestion", "Question")',
             updateQuestionUrl: '@Url.Action("UpdateQuestion", "Question")',
             removeFromTitleUrl: '@Url.Action("RemoveFromTitle", "Question")',
-            getCourseMetadataUrl:  '@Url.Action("GetMetadataForCourse", "QuestionList")',
+            getCourseMetadataUrl: '@Url.Action("GetMetadataForCourse", "QuestionList")',
+            flagQuestionUrl: '@Url.Action("FlagQuestion", "Question")',
             
             questionListIndexTamplate: '@Html.Raw(@Url.Action("Index", "QuestionList", new { titleId = "__titleId__", chapterId = "__chapterId__" }))'
         };

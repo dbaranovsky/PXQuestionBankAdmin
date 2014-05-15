@@ -5,6 +5,10 @@
 var QuestionListMenu = React.createClass({
 
 
+     getInitialState: function() {
+
+       return { isFlagged: false };
+    },
     editNotesHandler: function(){
       this.props.editNotesHandler();
     },
@@ -30,27 +34,41 @@ var QuestionListMenu = React.createClass({
         this.props.shareHandler();
     },
 
+    toggleFlag: function(){
+
+      questionDataManager.flagQuestion(this.props.data.id, !this.state.isFlagged);
+      this.setState( {isFlagged: !this.state.isFlagged});
+
+    },
+
+
+
     componentDidUpdate: function(){
+      
       this.initializePopovers();
+    },
+
+    componentDidMount: function(){
+   //   this.initializePopovers();
     },
 
    
     initializePopovers: function(){
-
-        if (!this.props.showAll){
-          return;
-        }
-
-       
-            $(this.getDOMNode()).popover({
+      
+       $(this.getDOMNode()).find('[rel="popover"]').popover('destroy'); 
+       $(this.getDOMNode()).popover({
                                         selector: '[rel="popover"]',
                                         trigger: 'click', 
                                         placement:'bottom',           
-                                        html: true
+                                        html: true,
+                                        container: 'body'
                                         });  
-        
-        
-      
+       if(!this.props.showAll){
+         $('.popover').remove();
+       }
+
+
+               
     },
 
     renderCourseCountBadge: function(){
@@ -60,13 +78,20 @@ var QuestionListMenu = React.createClass({
       return(<span className="badge">{this.props.titleCount}</span>);
     },
 
+    showPopover: function(){
+        //  $(this.getDOMNode()).find('[rel="popover"]').popover('toggle');
+    },
+
+    hidePopover: function(){
+        // $(this.getDOMNode()).find('[rel="popover"]').popover('hide');
+    },
 
     renderSharedButtons: function(){
       if(this.props.showAll){
 
 
-    return ( <div className="shared-placeholder"> 
-              <button type="button" className="btn btn-default btn-sm custom-btn shared-to" rel="popover"  data-title={this.props.isShared? "Shared with:" : ""}  data-content={this.props.isShared? this.props.data["sharedWith"] : "<b>Not Shared</b>"} >
+    return ( <div className="shared-placeholder" > 
+              <button type="button" className="btn btn-default btn-sm custom-btn shared-to" rel="popover" onClick={this.showPopover}  data-toggle="popover"  data-title={this.props.isShared? "Shared with:" : ""}  data-content={this.props.isShared? this.props.data["sharedWith"] : "<b>Not Shared</b>"} >
                  <span className="glyphicon icon-shared-to" ></span>{this.renderCourseCountBadge()} 
                </button>
                <button type="button" className="btn btn-default btn-sm tiny" onClick={this.shareHandler} data-toggle="tooltip" title="Share this question"><span className="glyphicon glyphicon-plus-sign"></span></button> 
@@ -81,13 +106,10 @@ var QuestionListMenu = React.createClass({
          <div className="shared-placeholder">
                            
                          
-           <button type="button" className="btn btn-default btn-sm custom-btn shared-to">
+           <button type="button" className="btn btn-default btn-sm custom-btn shared-to"  rel="popover" >
                     <span className="glyphicon icon-shared-to" ></span>{this.renderCourseCountBadge()}
            </button> 
-           <button type="button" className="btn btn-default btn-sm tiny" onClick={this.shareHandler} data-toggle="tooltip" title="Share this question"><span className="glyphicon glyphicon-plus-sign"></span></button> 
-            { this.props.isShared?
-              <button type="button" className="btn btn-default btn-sm tiny" onClick={this.removeTitleHandler} data-toggle="tooltip" title="Remove from title"><span className="glyphicon glyphicon-minus-sign"></span></button> :
-               ""}
+          
                              
           </div>);
     } 
@@ -111,15 +133,9 @@ var QuestionListMenu = React.createClass({
                      </ul>);
     },
 
-
-    render: function() {
+    renderMenu: function(){
       if (this.props.showAll){
-
-        return ( 
-                <div>
-                  
-                   {this.renderSharedButtons()}
-                   <div className="menu-container">
+      return(<div className="menu-container">
                      <button type="button" className="btn btn-default btn-sm" onClick={this.editNotesHandler} data-toggle="tooltip" title="Edit Notes"><span className="glyphicon glyphicon-list-alt"></span>
                      </button> 
                      <div className="dropdown">
@@ -131,13 +147,42 @@ var QuestionListMenu = React.createClass({
 
 
                      <button type="button" className="btn btn-default btn-sm" onClick={this.copyQuestionHandler}  data-toggle="tooltip" title="Duplicate Question"><span className="glyphicon glyphicon-copyright-mark"></span></button>
-                  </div>
+                  </div>);
+     }
 
-                           
-                </div>
-            );
+      return (<div className="menu-container"></div>);
+
+    },
+
+    renderStaticMenu: function(){
+        if (this.props.showAll){
+          return(<div className="menu-container static">
+                     <button type="button" className="btn btn-default btn-sm" onClick={this.toggleFlag} data-toggle="tooltip" title={this.state.isFlagged? "Unflag question" : "Flag question"}>
+                     <span className={this.state.isFlagged? "glyphicon glyphicon-flag flagged" : "glyphicon glyphicon-flag"}></span>
+                     </button> 
+                  </div>);
       }
 
-       return (<div> {this.renderSharedButtons()}</div>);
+      return (<div className="static-menu-container">
+                <div className="notification-icons-container">
+                    {this.state.isFlagged ? <span className="glyphicon glyphicon-flag flagged"></span> : ""}
+                </div>
+              </div>);
+    },
+
+
+
+    render: function() {
+
+        return ( 
+                <div onmouseover={this.hidePopover}>
+                   {this.renderSharedButtons()}
+                   {this.renderStaticMenu()}
+                   {this.renderMenu()}      
+                </div>
+            );
+    
+
+
   }
 });
