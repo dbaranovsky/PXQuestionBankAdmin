@@ -413,7 +413,7 @@ input.disabled, textarea.disabled {
     width: 956px;
 }
 
-.tab-body .modal-footer {
+.editor-tabs .tab-body .modal-footer {
     float: left;
     width: 100%;
     margin:0;

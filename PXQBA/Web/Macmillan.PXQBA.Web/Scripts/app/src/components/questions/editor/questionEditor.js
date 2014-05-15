@@ -102,7 +102,7 @@ var QuestionEditor = React.createClass({
                         </button>
                       </div>
                 
-                <div>
+                <div className="editor-tabs">
                   <QuestionEditorTabs question={this.state.question} closeDialog={this.closeDialog}  editSourceQuestionHandler={this.props.editSourceQuestionHandler.bind(this,this.state.question.questionIdDuplicateFrom)} showSaveWarning={this.showSaveWarning}  metadata={this.props.metadata} editHandler={this.editHandler} isDuplicate={this.props.isDuplicate}/>
                 </div>
                 {this.renderWarningDialog()}

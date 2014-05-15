@@ -96,21 +96,6 @@ namespace Macmillan.PXQBA.Business.Services
                     }
                 },
 
-                 new QuestionMetaField()
-                {
-                    FriendlyName = "Flag",
-                    Name = MetadataFieldNames.Flag,
-                    TypeDescriptor = new MetaFieldTypeDescriptor
-                    {
-                        Type = MetaFieldType.MultiSelect,
-                        AvailableChoice = new List<string>
-                        {
-                            "Flagged",
-                            "Not flagged"
-                        }.ToDictionary(it => it)
-                    }
-
-                },
             };
 
             availableFields.AddRange(customFields);
