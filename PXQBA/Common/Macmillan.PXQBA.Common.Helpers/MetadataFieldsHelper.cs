@@ -79,12 +79,5 @@ namespace Macmillan.PXQBA.Common.Helpers
 
             return model;
          }
-
-         private static Dictionary<string, string> GetAvailibleChoicesFromEnum(Type enumType)
-         {
-             return EnumHelper.GetEnumValues(enumType).ToDictionary(x => x.Key, x => x.Value);
-         }
-
-
     }
 }

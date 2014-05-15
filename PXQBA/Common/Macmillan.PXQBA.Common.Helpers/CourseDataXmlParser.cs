@@ -123,6 +123,11 @@ namespace Macmillan.PXQBA.Common.Helpers
                 return MetadataFieldType.SingleSelect;
             }
 
+            if (typeValue == "multi-select")
+            {
+                return MetadataFieldType.MultiSelect;
+            }
+
             return MetadataFieldType.Text;
         }
     }

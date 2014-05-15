@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.DataAccess.Data;
 using Course = Bfw.Agilix.DataContracts.Course;
