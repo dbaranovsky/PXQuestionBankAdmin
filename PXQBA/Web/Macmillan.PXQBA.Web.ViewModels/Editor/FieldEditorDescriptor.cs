@@ -13,10 +13,7 @@ namespace Macmillan.PXQBA.Web.ViewModels.Editor
 
         public string EditorType { get; set; }
 
-        /// <summary>
-        /// On the ui display: Value(key)/Label(value)
-        /// </summary>
-        public Dictionary<string, string> AvailableChoice { get; set; } 
+        public List<AvailableChoiceItem> AvailableChoice { get; set; } 
         
     }
 }

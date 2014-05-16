@@ -7,7 +7,9 @@ var LearningObjectEditor = React.createClass({displayName: 'LearningObjectEditor
          var currentValues = this.props.question[this.props.field];
      
         var  availableChoices =  this.props.metadataField.editorDescriptor.availableChoice;
-	    var options = [];
+	      var options = [];
+
+
         for (var propertyName in availableChoices) {
             availableChoice = availableChoices[propertyName];
             options.push(React.DOM.option( {value:propertyName}, availableChoice));

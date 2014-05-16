@@ -55,17 +55,23 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
         if (this.state.allowDeselect){
             items.push(React.DOM.option( {value:""}));
         }
-        for (var propertyName in availableChoices) {
-            availableChoice = availableChoices[propertyName];
-            items.push(this.renderMenuItem(availableChoice, propertyName));
+
+        for(var i=0; i<availableChoices.length; i++) {
+           items.push(this.renderMenuItem(availableChoices[i].text, availableChoices[i].value));
         }
+
+   //     for (var propertyName in availableChoices) {
+    //        availableChoice = availableChoices[propertyName];
+    //        items.push(this.renderMenuItem(availableChoice, propertyName));
+    //    }
         return items;
     },
 
     renderMenuItem: function(label, value) {
-        if(label.toLowerCase()== value.toLowerCase()){
-          return (React.DOM.option( {value:label}, label));
-        }
+      //  debugger;
+     //   if(label.toLowerCase()== value.toLowerCase()){
+     //     return (<option value={label}>{label}</option>);
+     //   }
         return (React.DOM.option( {value:value}, label));
     },
 
@@ -220,11 +226,16 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
       var metadataField = this.state.metadataField;
       var question = this.props.question;
       var availableChoices = metadataField.editorDescriptor.availableChoice;
-        for (var propertyName in availableChoices) {
-            availableChoice = availableChoices[propertyName];
-            question[this.props.field] = (availableChoice.toLowerCase() == propertyName.toLowerCase())? availableChoice: propertyName;
-            break;
-        }
+
+     
+      question[this.props.field] = availableChoices[0].value;
+      
+
+      //  for (var propertyName in availableChoices) {
+        //    availableChoice = availableChoices[propertyName];
+          //  question[this.props.field] = (availableChoice.toLowerCase() == propertyName.toLowerCase())? availableChoice: propertyName;
+            //break;
+        //}
        this.props.editHandler(question);
     },
 

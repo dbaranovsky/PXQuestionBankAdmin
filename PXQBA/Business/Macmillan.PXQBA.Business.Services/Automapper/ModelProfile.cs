@@ -48,7 +48,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<CourseMetadataFieldDescriptor, MetaFieldTypeDescriptor>()
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type))
                 .ForMember(dest => dest.AvailableChoice,
-                    opt => opt.MapFrom(src => src.CourseMetadataFieldValues.Select(i => i.Text).ToDictionary(t=>t)));
+                    opt => opt.MapFrom(src => src.CourseMetadataFieldValues.Select(i => new AvailableChoiceItem(i.Text)).ToList()));
  
 
             Mapper.CreateMap<Bfw.Agilix.DataContracts.LearningObjective, LearningObjective>()
