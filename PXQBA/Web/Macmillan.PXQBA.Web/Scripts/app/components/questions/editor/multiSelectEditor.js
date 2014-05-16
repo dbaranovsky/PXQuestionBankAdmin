@@ -8,14 +8,13 @@ var MultiSelectEditor = React.createClass({displayName: 'MultiSelectEditor',
          var metadataValues = [];
          var currentValues = this.props.question[this.props.field];
      
-        var  availableChoices =  this.props.metadataField.editorDescriptor.availableChoice;
-        var options = [];
+         var  availableChoices =  this.props.metadataField.editorDescriptor.availableChoice;
+         var options = [];
 
-        for (var propertyName in availableChoices) {
-            availableChoice = availableChoices[propertyName];
-            metadataValues.push(availableChoice);
+        for(var i=0; i<availableChoices.length; i++) {
+           metadataValues.push(availableChoices[i].value);
         }
-
+  
         if(currentValues !== undefined && currentValues != null && currentValues.length>0){
           $.merge(metadataValues, currentValues);
         }

@@ -1,9 +1,9 @@
 ﻿
-using AutoMapper;
-using Bfw.Agilix.Dlap.Components.Session;
-using Bfw.Agilix.Dlap.Session;
-using Bfw.Common.Database;
-using Bfw.Common.Logging;
+//using AutoMapper;
+//using Bfw.Agilix.Dlap.Components.Session;
+//using Bfw.Agilix.Dlap.Session;
+//using Bfw.Common.Database;
+//using Bfw.Common.Logging;
 //using Bfw.Common.Patterns.Logging;
 //using Macmillan.PXQBA.Business.Commands.Services.EntityFramework;
 //using Macmillan.PXQBA.Business.Contracts;

@@ -43,9 +43,10 @@ namespace Macmillan.PXQBA.Web.Controllers
         
         }
 
-        public ActionResult CreateQuestion(int questionType, string bank, string chapter)
+        public ActionResult CreateQuestion(string questionType, string bank, string chapter)
         {
-            var question = questionManagementService.CreateQuestion(CourseHelper.CurrentCourse, (QuestionType) questionType, bank, chapter);
+            var type = (QuestionType)EnumHelper.GetItemByDescription(typeof(QuestionType), questionType);
+            var question = questionManagementService.CreateQuestion(CourseHelper.CurrentCourse, type, bank, chapter);
             return JsonCamel(CreateQuestionViewModelForEditing(question));
             
         }
