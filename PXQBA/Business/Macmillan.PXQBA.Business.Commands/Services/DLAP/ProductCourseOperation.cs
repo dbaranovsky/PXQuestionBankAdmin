@@ -120,7 +120,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return resultDictionary;
         }
 
-        public Course GetProductCourse(string productCourseId)
+        public Course GetProductCourse(string productCourseId, bool requiredQuestionBankRepository=false)
         {
             var cmd = new GetCourse()
             {
@@ -133,9 +133,10 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
             var course = Mapper.Map<Course>(cmd.Courses.FirstOrDefault());
 
-            if (String.IsNullOrEmpty(course.QuestionBankRepositoryCourse))
+            if ((String.IsNullOrEmpty(course.QuestionBankRepositoryCourse))&&
+                (requiredQuestionBankRepository))
             {
-                var result = GetQuestionBankRepositoryCourseFromItems(new[] {course.ProductCourseId});
+                var result = GetQuestionBankRepositoryCourseFromItems(new[] { course.ProductCourseId });
                 course.QuestionBankRepositoryCourse = result.GetValue(course.ProductCourseId, String.Empty);
             }
             return course;

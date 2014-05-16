@@ -6,7 +6,7 @@ namespace Macmillan.PXQBA.Business.Contracts
 {
     public interface IProductCourseManagementService
     {
-        Course GetProductCourse(string productCourseId);
+        Course GetProductCourse(string productCourseId, bool requiredQuestionBankRepository = false);
         IEnumerable<Course> GetAvailableCourses();
     }
 }
