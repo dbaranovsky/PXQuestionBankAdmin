@@ -60,18 +60,10 @@ var MetadataFieldEditor = React.createClass({
            items.push(this.renderMenuItem(availableChoices[i].text, availableChoices[i].value));
         }
 
-   //     for (var propertyName in availableChoices) {
-    //        availableChoice = availableChoices[propertyName];
-    //        items.push(this.renderMenuItem(availableChoice, propertyName));
-    //    }
         return items;
     },
 
     renderMenuItem: function(label, value) {
-      //  debugger;
-     //   if(label.toLowerCase()== value.toLowerCase()){
-     //     return (<option value={label}>{label}</option>);
-     //   }
         return (<option value={value}>{label}</option>);
     },
 
@@ -226,17 +218,10 @@ var MetadataFieldEditor = React.createClass({
       var metadataField = this.state.metadataField;
       var question = this.props.question;
       var availableChoices = metadataField.editorDescriptor.availableChoice;
-
      
       question[this.props.field] = availableChoices[0].value;
       
-
-      //  for (var propertyName in availableChoices) {
-        //    availableChoice = availableChoices[propertyName];
-          //  question[this.props.field] = (availableChoice.toLowerCase() == propertyName.toLowerCase())? availableChoice: propertyName;
-            //break;
-        //}
-       this.props.editHandler(question);
+      this.props.editHandler(question);
     },
 
     applyChanges: function(){

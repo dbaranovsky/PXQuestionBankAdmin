@@ -64,6 +64,8 @@
     };
 
     self.copyFiltration = function (filtersObjects) {
+        self.query.setValue(filterHashParameterHelper.emptyValue);
+        
         for (var i = 0; i < filtersObjects.length; i++) {
             self.query.setValue(
                 filterHashParameterHelper.addFiltration(

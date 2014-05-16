@@ -137,10 +137,11 @@ namespace Macmillan.PXQBA.Web.Controllers
                 return;
             }
 
-            foreach (var filterItem in request.Filter.Where(filterItem => filterItem.Field != courseFilterDescriptor.Field))
-            {
-                filterItem.Values = new List<string>();
-            }
+            var courseFilter = request.Filter.SingleOrDefault(f => f.Field == courseFilterDescriptor.Field);
+            request.Filter = new List<FilterFieldDescriptor>()
+                             {
+                                 courseFilter
+                             };
         }
 
         /// <summary>
