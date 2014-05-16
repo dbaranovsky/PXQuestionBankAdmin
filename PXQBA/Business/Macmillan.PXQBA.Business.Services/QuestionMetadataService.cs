@@ -97,7 +97,13 @@ namespace Macmillan.PXQBA.Business.Services
 
             };
 
-            availableFields.AddRange(customFields);
+            foreach (var customField in customFields)
+            {
+                if (availableFields.All(f => f.Name != customField.Name))
+                {
+                    availableFields.Add(customField);
+                }
+            }
             
             return availableFields;
         }
