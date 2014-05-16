@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
 using System.Linq;
 using AutoMapper;
+using Bfw.Common.Database;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.DataAccess.Data;
 using Note = Macmillan.PXQBA.Business.Models.Note;
@@ -10,51 +14,137 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
 {
     public class NoteCommands : INoteCommands
     {
-        private readonly QBADummyModelContainer dbContext;
+        private readonly IDatabaseManager databaseManager;
 
-        public NoteCommands(QBADummyModelContainer dbContext)
+        public NoteCommands(IDatabaseManager databaseManager)
         {
-            this.dbContext = dbContext;
+
+        #if DEBUG
+            databaseManager = new DatabaseManager(@"TestPXData");
+        #endif
+            this.databaseManager = databaseManager;
         }
 
         public IEnumerable<Note> GetQuestionNotes(string questionId)
         {
-            return dbContext.Notes.Where(note => note.Question.DlapId == questionId).Select(Mapper.Map<Note>);
+            DbCommand command = new SqlCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "dbo.GetQBANotes";
+
+            var questionIdParam = new SqlParameter("@questionId", questionId);
+            command.Parameters.Add(questionIdParam);
+
+            var dbRecords = databaseManager.Query(command);
+
+            return GetNotesFromRecords(dbRecords);
         }
 
         public Note CreateNote(Note note)
         {
-            var question = dbContext.Questions.FirstOrDefault(q => q.DlapId == note.QuestionId);
-            if (question == null)
+            DbCommand command = new SqlCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "dbo.CreateQBANote";
+           
+
+            var questionIdParam = new SqlParameter("@questionId", note.QuestionId);
+            command.Parameters.Add(questionIdParam);
+
+            var text = new SqlParameter("@noteText", note.Text);
+            command.Parameters.Add(text);
+
+
+            var noteId = new SqlParameter("@noteId", SqlDbType.BigInt);
+            noteId.Direction = ParameterDirection.ReturnValue;
+            command.Parameters.Add(noteId);
+            try
             {
-                throw new ArgumentException("Unable to find question for note");
+                databaseManager.StartSession();
+                databaseManager.ExecuteNonQuery(command);
             }
-            var noteToAdd = Mapper.Map<DataAccess.Data.Note>(note);
-            noteToAdd.QuestionId = question.Id;
-            dbContext.Notes.AddObject(noteToAdd);
-            dbContext.SaveChanges();
-            return Mapper.Map<Note>(noteToAdd);
+            finally 
+            {
+                
+                databaseManager.EndSession();
+            }
+           
+            
+            note.Id = (int) noteId.Value;
+            return note;
         }
 
         public void DeleteNote(Note note)
         {
-            var noteToDelete = Mapper.Map<DataAccess.Data.Note>(note);
-            dbContext.Notes.Attach(noteToDelete);
-            dbContext.Notes.DeleteObject(noteToDelete);
-            dbContext.SaveChanges();
+            DbCommand command = new SqlCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "dbo.DeleteQBANote";
+
+            var noteId = new SqlParameter("@noteId", note.Id);
+            command.Parameters.Add(noteId);
+            try
+            {
+                databaseManager.StartSession();
+                databaseManager.ExecuteNonQuery(command);
+            }
+            finally
+            {
+
+                databaseManager.EndSession();
+            }
+
+           
         }
 
         public Note UpdateNote(Note note)
         {
-            var existingNote = dbContext.Notes.FirstOrDefault(n => n.Id == note.Id);
-            if (existingNote == null)
+
+            DbCommand command = new SqlCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "dbo.UpdateQBANote";
+
+            var noteId = new SqlParameter("@noteId", note.Id);
+            command.Parameters.Add(noteId);
+
+            var text = new SqlParameter("@noteText", note.Text);
+            command.Parameters.Add(text);
+
+            try
             {
-                throw new ArgumentException("Note passed does not exist");
+                databaseManager.StartSession();
+                databaseManager.ExecuteNonQuery(command);
+            }
+            finally
+            {
+
+                databaseManager.EndSession();
             }
 
-            Mapper.Map(note, existingNote);
-            dbContext.SaveChanges();
             return note;
+        }
+
+        private IEnumerable<Note> GetNotesFromRecords(IEnumerable<DatabaseRecord> dbRecords)
+        {
+            return dbRecords.Select(databaseRecord => new Note()
+                                                           {
+                                                               Id = (long) databaseRecord["Id"],
+                                                               QuestionId = (string) databaseRecord["QuestionId"], 
+                                                               Text = (string) databaseRecord["NoteText"]
+                                                           }).ToList();
+            
+        }
+
+        private void ExecureNonQueryCommand(DbCommand command)
+        {
+            try
+            {
+                databaseManager.StartSession();
+                databaseManager.ExecuteNonQuery(command);
+            }
+            finally
+            {
+
+                databaseManager.EndSession();
+            }
+            
         }
     }
 }

@@ -23,7 +23,7 @@ var Note = React.createClass({
     return (
       <div className="note clearfix">
         <input type="hidden" value={this.props.note.id} />
-        <Flag flaggingHandler={this.noteUpdateHandler} isFlagged={this.props.note.isFlagged}/>
+
         <div className="note-body">
         <div className="note-text">{this.props.note.text}</div>
         <div className="note-menu" onClick={this.noteDeleteHandler}><span className="delete-button"> X </span></div>
