@@ -22,6 +22,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
         #if DEBUG
             databaseManager = new DatabaseManager(@"TestPXData");
         #endif
+
             this.databaseManager = databaseManager;
         }
 
