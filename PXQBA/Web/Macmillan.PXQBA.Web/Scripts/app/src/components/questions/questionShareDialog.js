@@ -134,12 +134,15 @@ var ShareQuestionBox = React.createClass({
 
    getDefaultValue: function(metadataField){
       var defaultValue = "";
+      //To do resolve underfined exception
        var availableChoices = metadataField.editorDescriptor.availableChoice;
-        for (var propertyName in availableChoices) {
-            availableChoice = availableChoices[propertyName];
-            defaultValue = (availableChoice.toLowerCase() == propertyName.toLowerCase())? availableChoice: propertyName;
-            break;
-        }
+
+       defaultValue = metadataField.editorDescriptor.availableChoice[0].value;
+       // for (var propertyName in availableChoices) {
+      //      availableChoice = availableChoices[propertyName];
+      //      defaultValue = (availableChoice.toLowerCase() == propertyName.toLowerCase())? availableChoice: propertyName;
+      //      break;
+     //   }
       return defaultValue
    },
 

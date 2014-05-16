@@ -48,6 +48,7 @@
     <Compile Include="..\..\Web\Macmillan.PXQBA.Web\Properties\ProductInfo.cs">
       <Link>Properties\ProductInfo.cs</Link>
     </Compile>
+    <Compile Include="AvailableChoiceItem.cs" />
     <Compile Include="Chapter.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="CourseMetadataFieldDescriptor.cs" />

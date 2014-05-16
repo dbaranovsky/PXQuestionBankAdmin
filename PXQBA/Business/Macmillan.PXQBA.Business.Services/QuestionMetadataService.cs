@@ -20,7 +20,7 @@ namespace Macmillan.PXQBA.Business.Services
         public IList<QuestionMetaField> GetAvailableFields(Course course)
         {
             var availableFields = course.FieldDescriptors.Select(Mapper.Map<QuestionMetaField>).ToList();
-
+ 
             var customFields = new List<QuestionMetaField>
             {
 
@@ -38,7 +38,7 @@ namespace Macmillan.PXQBA.Business.Services
                     TypeDescriptor = new MetaFieldTypeDescriptor
                     {
                         Type = MetadataFieldType.SingleSelect,
-                        AvailableChoice = ConfigurationHelper.GetQuestionTypes().Select(d=>d.Value).ToDictionary(v=>v)
+                        AvailableChoice = ConfigurationHelper.GetQuestionTypes().Select(d=>new AvailableChoiceItem(d.Value)).ToList()
                     }
                 },
                 new QuestionMetaField
@@ -48,12 +48,13 @@ namespace Macmillan.PXQBA.Business.Services
                     TypeDescriptor = new MetaFieldTypeDescriptor
                     {
                         Type = MetadataFieldType.SingleSelect,
-                        AvailableChoice = new List<string>
-                        {
-                            EnumHelper.GetEnumDescription(QuestionStatus.AvailableToInstructors),
-                            EnumHelper.GetEnumDescription(QuestionStatus.InProgress),
-                            EnumHelper.GetEnumDescription(QuestionStatus.Deleted),
-                        }.ToDictionary(it => it)
+                        AvailableChoice = new List<AvailableChoiceItem>()
+                                          {
+                                              new AvailableChoiceItem(EnumHelper.GetEnumDescription(QuestionStatus.AvailableToInstructors)),
+                                              new AvailableChoiceItem(EnumHelper.GetEnumDescription(QuestionStatus.InProgress)),
+                                              new AvailableChoiceItem(EnumHelper.GetEnumDescription(QuestionStatus.Deleted)),
+                                          }
+
                     }
                 },
                 new QuestionMetaField()
@@ -63,14 +64,13 @@ namespace Macmillan.PXQBA.Business.Services
                     TypeDescriptor = new MetaFieldTypeDescriptor
                     {
                         Type = MetadataFieldType.MultiSelect,
-                        AvailableChoice = new List<string>
-                        {
-                            "Keyword 1",
-                            "Keyword 2",
-                            "Keyword 3"
-                        }.ToDictionary(it => it)
+                        AvailableChoice = new List<AvailableChoiceItem>()
+                                          {
+                                              new AvailableChoiceItem("Keyword 1"),
+                                              new AvailableChoiceItem("Keyword 2"),
+                                              new AvailableChoiceItem("Keyword 3"),
+                                          }
                     }
-
                 },
                 new QuestionMetaField()
                 {
@@ -79,8 +79,7 @@ namespace Macmillan.PXQBA.Business.Services
                     TypeDescriptor = new MetaFieldTypeDescriptor
                     {
                         Type = MetadataFieldType.MultiSelect,
-                        AvailableChoice =
-                            course.LearningObjectives.ToDictionary(lo => lo.Guid, lo => lo.Description)
+                        AvailableChoice =  course.LearningObjectives.Select(l => new AvailableChoiceItem(l.Guid, l.Description)).ToList()
                     }
 
                 },
@@ -92,14 +91,14 @@ namespace Macmillan.PXQBA.Business.Services
                     TypeDescriptor = new MetaFieldTypeDescriptor
                     {
                         Type = MetadataFieldType.SingleSelect,
-                        AvailableChoice = productCourseOperation.GetAvailableCourses().ToDictionary(pc => pc.ProductCourseId, pc => pc.Title)
+                        AvailableChoice =  productCourseOperation.GetAvailableCourses().Select(pc=> new AvailableChoiceItem(pc.ProductCourseId, pc.Title)).ToList()
                     }
-                },
+                }
 
             };
 
             availableFields.AddRange(customFields);
-
+            
             return availableFields;
         }
 

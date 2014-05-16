@@ -34,11 +34,11 @@ var QuestionFilterItemsContainer = React.createClass({
         }
         var options = [];
 
-        $.each(availableChoice, function(propery,  option){
-            options.push({ value: propery,
-                         text: option
-                       });
-        });
+        for(var i=0; i<availableChoice.length; i++) {
+           options.push({ value: availableChoice[i].value,
+                          text: availableChoice[i].text
+           });
+        }
 
         for(var i=0; i<currentValuesArray.length; i++) {
             if (!this.isPresentInOptions(options, currentValuesArray[i])) {
@@ -80,7 +80,6 @@ var QuestionFilterItemsContainer = React.createClass({
 
 
    render: function() {
-        this.buildFiltersDescriptors();
         return (
             <div className="questionFilterContainer">
                  <div> 
