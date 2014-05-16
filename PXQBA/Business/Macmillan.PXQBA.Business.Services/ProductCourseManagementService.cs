@@ -20,9 +20,9 @@ namespace Macmillan.PXQBA.Business.Services
             this.productCourseOperation = productCourseOperation;
         }
 
-        public Course GetProductCourse(string productCourseId)
+        public Course GetProductCourse(string productCourseId, bool requiredQuestionBankRepository = false)
         {
-            return productCourseOperation.GetProductCourse(productCourseId);
+            return productCourseOperation.GetProductCourse(productCourseId, requiredQuestionBankRepository);
         }
 
         public IEnumerable<Course> GetAvailableCourses()

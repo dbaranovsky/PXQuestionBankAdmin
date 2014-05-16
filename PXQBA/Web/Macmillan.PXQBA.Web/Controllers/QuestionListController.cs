@@ -151,7 +151,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
             if (CourseHelper.NeedGetCourse(courseId))
             {
-                CourseHelper.CurrentCourse = productCourseManagementService.GetProductCourse(courseId);
+                CourseHelper.CurrentCourse = productCourseManagementService.GetProductCourse(courseId, true);
             }
         }
 
@@ -162,7 +162,15 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// <returns></returns>
         public ActionResult GetMetadataForCourse(string courseId)
         {
-            var course = productCourseManagementService.GetProductCourse(courseId);
+            Course course = null;
+            if (CourseHelper.CurrentCourse.ProductCourseId == courseId)
+            {
+                course = CourseHelper.CurrentCourse;
+            }
+            if (course == null)
+            {
+                course = productCourseManagementService.GetProductCourse(courseId);
+            }
             return JsonCamel(questionMetadataService.GetAvailableFields(course).Select(MetadataFieldsHelper.Convert));
         }
     }
