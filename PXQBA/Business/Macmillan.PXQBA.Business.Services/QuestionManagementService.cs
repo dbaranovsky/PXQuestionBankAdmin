@@ -16,39 +16,42 @@ namespace Macmillan.PXQBA.Business.Services
         private readonly IQuestionCommands questionCommands;
         private readonly ITemporaryQuestionOperation temporaryQuestionOperation;
         private readonly IBulkOperation bulkOperation;
+        private readonly IProductCourseOperation productCourseOperation;
 
-        public QuestionManagementService(IQuestionCommands questionCommands, ITemporaryQuestionOperation temporaryQuestionOperation, IBulkOperation bulkOperation)
+        public QuestionManagementService(IQuestionCommands questionCommands, ITemporaryQuestionOperation temporaryQuestionOperation, IBulkOperation bulkOperation, IProductCourseOperation productCourseOperation)
         {
             this.questionCommands = questionCommands;
             this.temporaryQuestionOperation = temporaryQuestionOperation;
             this.bulkOperation = bulkOperation;
+            this.productCourseOperation = productCourseOperation;
         }
 
         public PagedCollection<Question> GetQuestionList(Course course, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
         {
+            //productCourseOperation.GetQuestionList(course.ProductCourseId, filter, sortCriterion, startingRecordNumber, recordCount);
             //temporaryQuestionOperation.CopyQuestionToTemporaryCourse(course.ProductCourseId, "PxTempQBAQuestion_115457_Choice");
-            return questionCommands.GetQuestionList(course.ProductCourseId, filter, sortCriterion, startingRecordNumber, recordCount);
+            return questionCommands.GetQuestionList(course.QuestionRepositoryCourseId, course.ProductCourseId, filter, sortCriterion, startingRecordNumber, recordCount);
         }
 
         public Question CreateQuestion(Course course, QuestionType questiontype, string bank, string chapter)
         {
             Question question = GetNewQuestionTemplate();
             question.Type = questiontype;
-            question.LocalMetadata.Bank = bank;
-            question.LocalMetadata.Chapter = chapter;
+            //question.LocalMetadata.Bank = bank;
+            //question.LocalMetadata.Chapter = chapter;
             return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
 
-        public Question GetQuestion(string questionId)
+        public Question GetQuestion(Course course, string questionId)
         {
-            return questionCommands.GetQuestion(questionId);
+            return questionCommands.GetQuestion(course.QuestionRepositoryCourseId, questionId);
         }
 
         public Question DuplicateQuestion(Course course, string questionId)
         {
-            Question question = GetQuestion(questionId);
+            Question question = GetQuestion(course, questionId);
             question.Id = Guid.NewGuid().ToString();
-            question.LocalMetadata.Status = QuestionStatus.InProgress;
+            //question.LocalMetadata.Status = QuestionStatus.InProgress;
             question.QuestionIdDuplicateFrom = questionId;
             return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
@@ -56,13 +59,13 @@ namespace Macmillan.PXQBA.Business.Services
         private Question GetNewQuestionTemplate()
         {
             var question = new Question();
-            question.LocalMetadata = new QuestionStaticMetadata();
-            question.LocalMetadata.Status = QuestionStatus.InProgress;
-            question.LocalMetadata.Title = "New question";
-            question.Preview = "<h2>preview for test</h2>";
-            question.LocalMetadata.Chapter = "Chapter 1";
-            question.LocalMetadata.Bank = "End of Chapter Questions";
-            question.LocalMetadata.LearningObjectives = new List<LearningObjective>();
+            //question.LocalMetadata = new QuestionStaticMetadata();
+            //question.LocalMetadata.Status = QuestionStatus.InProgress;
+            //question.LocalMetadata.Title = "New question";
+            //question.Preview = "<h2>preview for test</h2>";
+            //question.LocalMetadata.Chapter = "Chapter 1";
+            //question.LocalMetadata.Bank = "End of Chapter Questions";
+            //question.LocalMetadata.LearningObjectives = new List<LearningObjective>();
             return question;
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.SqlClient;
 using System.Linq;
@@ -35,7 +36,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                     opt => opt.MapFrom(src => modelProfileService.GetQuestionCardLayout(src)))
                 .ForMember(dest => dest.FieldDescriptors,
                     opt => opt.MapFrom(src => modelProfileService.GetCourseMetadataFieldDescriptors(src)))
-                .ForMember(dest => dest.QuestionBankRepositoryCourse, 
+                .ForMember(dest => dest.QuestionRepositoryCourseId, 
                     opt => opt.MapFrom(src => modelProfileService.GetQuestionBankRepositoryCourse(src)));
 
 
@@ -56,26 +57,37 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Title));
 
 
-            Mapper.CreateMap<Bfw.Agilix.DataContracts.Question, Question>()
-                .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
-                .ForMember(dto => dto.EntityId, opt => opt.MapFrom(q => q.EntityId))
-                .ForMember(dto => dto.LocalMetadata, opt => opt.MapFrom(q => q))
-                .ForMember(dto => dto.Type, opt => opt.Ignore())
-                .ForMember(dto => dto.Preview, opt => opt.MapFrom( q => QuestionPreviewHelper.GetQuestionHtmlPreview(q)))
-                .ForMember(dto => dto.QuizId, opt => opt.MapFrom(q => modelProfileService.GetQuizIdForQuestion(q.Id, q.EntityId)));
+            //Mapper.CreateMap<Bfw.Agilix.DataContracts.Question, Question>()
+            //    .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
+            //    .ForMember(dto => dto.EntityId, opt => opt.MapFrom(q => q.EntityId))
+            //    .ForMember(dto => dto.LocalMetadata, opt => opt.MapFrom(q => q))
+            //    .ForMember(dto => dto.Type, opt => opt.Ignore())
+            //    .ForMember(dto => dto.Preview, opt => opt.MapFrom( q => QuestionPreviewHelper.GetQuestionHtmlPreview(q)))
+            //    .ForMember(dto => dto.QuizId, opt => opt.MapFrom(q => modelProfileService.GetQuizIdForQuestion(q.Id, q.EntityId)));
 
-            Mapper.CreateMap<Bfw.Agilix.DataContracts.Question, QuestionStaticMetadata>()
-                .ForMember(dto => dto.Title, opt => opt.MapFrom(q => q.Title))
-                .ForMember(dto => dto.Chapter, opt => opt.MapFrom(q => q.eBookChapter))
-                .ForMember(dto => dto.Bank, opt => opt.MapFrom(q => q.QuestionBank))
-                .ForMember(dto => dto.Sequence, opt => opt.Ignore());
+            Mapper.CreateMap<Bfw.Agilix.DataContracts.Question, Question>()
+               .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
+               .ForMember(dto => dto.EntityId, opt => opt.MapFrom(q => q.EntityId))
+               .ForMember(dto => dto.DefaultValues, opt => opt.MapFrom(q => modelProfileService.GetQuestionDefaultValues(q)))
+               .ForMember(dto => dto.ProductCourseSections, opt => opt.MapFrom(q => modelProfileService.GetProductCourseSections(q)))
+               .ForMember(dto => dto.Type, opt => opt.Ignore())
+               .ForMember(dto => dto.Preview, opt => opt.MapFrom(q => QuestionPreviewHelper.GetQuestionHtmlPreview(q)));
+               //.ForMember(dto => dto.QuizId, opt => opt.MapFrom(q => modelProfileService.GetQuizIdForQuestion(q.Id, q.EntityId)));
+
+            Mapper.CreateMap<Question, QuestionMetadata>().ConvertUsing(new QuestionToQuestionMetadataConverter(modelProfileService));
+
+            //Mapper.CreateMap<Bfw.Agilix.DataContracts.Question, QuestionStaticMetadata>()
+            //    .ForMember(dto => dto.Title, opt => opt.MapFrom(q => q.Title))
+            //    .ForMember(dto => dto.Chapter, opt => opt.MapFrom(q => q.eBookChapter))
+            //    .ForMember(dto => dto.Bank, opt => opt.MapFrom(q => q.QuestionBank))
+            //    .ForMember(dto => dto.Sequence, opt => opt.Ignore());
 
             Mapper.CreateMap<Question, Bfw.Agilix.DataContracts.Question>()
-                .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
+                .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id));
                 //.ForMember(dto => dto.EntityId, opt => opt.MapFrom(q => q.EntityId))
-                .ForMember(dto => dto.Title, opt => opt.MapFrom(q => q.LocalMetadata.Title))
-                .ForMember(dto => dto.eBookChapter, opt => opt.MapFrom(q => q.LocalMetadata.Chapter))
-                .ForMember(dto => dto.QuestionBank, opt => opt.MapFrom(q => q.LocalMetadata.Bank));
+                //.ForMember(dto => dto.Title, opt => opt.MapFrom(q => q.LocalMetadata.Title))
+                //.ForMember(dto => dto.eBookChapter, opt => opt.MapFrom(q => q.LocalMetadata.Chapter))
+                //.ForMember(dto => dto.QuestionBank, opt => opt.MapFrom(q => q.LocalMetadata.Bank));
 
             Mapper.CreateMap<AgilixUser, UserInfo>()
                 .ForMember(d => d.Id, opt => opt.MapFrom(s => s.Id))
@@ -101,67 +113,68 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(vm => vm.Title, opt => opt.MapFrom(c => c.Text));
 
             Mapper.CreateMap<Question, QuestionViewModel>()
-                .ForMember(dest => dest.ProductCourses, opt => opt.MapFrom(src => src.ProductCourses.Select(p => p.Title)));
+                .ForMember(dest => dest.QuizId, opt => opt.MapFrom(src => modelProfileService.GetQuizIdForQuestion(src.Id, src.EntityId)))
+                .ForMember(dest => dest.ProductCourses, opt => opt.MapFrom(src => src.ProductCourseSections.Select(p => p.ProductCourseId)));
 
             Mapper.CreateMap<QuestionViewModel, Question>();
 
             #region UI models to dummy models
 
-            Mapper.CreateMap<DataAccess.Data.ProductCourse, Question>()
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Question.DlapId))
-                .ForMember(dest => dest.LocalMetadata, opt => opt.MapFrom(src => src))
-                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Question.Type))
-                .ForMember(dest => dest.Preview, opt => opt.MapFrom(src => src.Question.Preview))
-                .ForMember(dest => dest.ProductCourses, opt => opt.MapFrom(src => modelProfileService.GetHardCodedSharedProductCourses(src)))
-                .ForMember(dest => dest.SharedMetadata, opt => opt.MapFrom(src => 
-                                src.QuestionId % 2 != 0
-                                    ? src
-                                    : null))
-                .ForMember(dest => dest.QuestionIdDuplicateFrom,
-                    opt =>
-                        opt.MapFrom(
-                            src =>
-                                src.QuestionId%2 != 0
-                                    ? modelProfileService.GetHardCodedQuestionDuplicate()
-                                    : String.Empty));
+            //Mapper.CreateMap<DataAccess.Data.ProductCourse, Question>()
+            //    .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Question.DlapId))
+            //    .ForMember(dest => dest.LocalMetadata, opt => opt.MapFrom(src => src))
+            //    .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Question.Type))
+            //    .ForMember(dest => dest.Preview, opt => opt.MapFrom(src => src.Question.Preview))
+            //    .ForMember(dest => dest.ProductCourses, opt => opt.MapFrom(src => modelProfileService.GetHardCodedSharedProductCourses(src)))
+            //    .ForMember(dest => dest.SharedMetadata, opt => opt.MapFrom(src => 
+            //                    src.QuestionId % 2 != 0
+            //                        ? src
+            //                        : null))
+            //    .ForMember(dest => dest.QuestionIdDuplicateFrom,
+            //        opt =>
+            //            opt.MapFrom(
+            //                src =>
+            //                    src.QuestionId%2 != 0
+            //                        ? modelProfileService.GetHardCodedQuestionDuplicate()
+            //                        : String.Empty));
 
 
-            Mapper.CreateMap<DataAccess.Data.ProductCourse, QuestionStaticMetadata>()
-                .ForMember(dest => dest.Keywords, opt => opt.MapFrom(src => src.Keywords.Split('|')))
-                .ForMember(dest => dest.SuggestedUse, opt => opt.MapFrom(src => src.SuggestedUse.Split('|')))
-                .ForMember(dest => dest.LearningObjectives,
-                    opt =>
-                        opt.MapFrom(
-                            src => modelProfileService.GetLOByGuid(src.ProductCourseDlapId, src.LearningObjectives)))
-                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Question.Status));
+            //Mapper.CreateMap<DataAccess.Data.ProductCourse, QuestionStaticMetadata>()
+            //    .ForMember(dest => dest.Keywords, opt => opt.MapFrom(src => src.Keywords.Split('|')))
+            //    .ForMember(dest => dest.SuggestedUse, opt => opt.MapFrom(src => src.SuggestedUse.Split('|')))
+            //    .ForMember(dest => dest.LearningObjectives,
+            //        opt =>
+            //            opt.MapFrom(
+            //                src => modelProfileService.GetLOByGuid(src.ProductCourseDlapId, src.LearningObjectives)))
+            //    .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Question.Status));
 
-            Mapper.CreateMap<Question, DataAccess.Data.ProductCourse>()
-                  .ForMember(dest => dest.Id, opt => opt.Ignore())
-                  .ForMember(dest => dest.Keywords, opt => opt.MapFrom(src => src.LocalMetadata.Keywords != null ? string.Join("|", src.LocalMetadata.Keywords) : null))
-                  .ForMember(dest => dest.SuggestedUse, opt => opt.MapFrom(src => src.LocalMetadata.SuggestedUse != null ? string.Join("|", src.LocalMetadata.SuggestedUse) : null))
-                  .ForMember(dest => dest.LearningObjectives, opt => opt.MapFrom(src => modelProfileService.SetLearningObjectives(src.LocalMetadata.LearningObjectives)))
-                  .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.LocalMetadata.Title))
-                  .ForMember(dest => dest.ExcerciseNo, opt => opt.MapFrom(src => src.LocalMetadata.ExcerciseNo))
-                  .ForMember(dest => dest.Chapter, opt => opt.MapFrom(src => src.LocalMetadata.Chapter))
-                  .ForMember(dest => dest.Bank, opt => opt.MapFrom(src => src.LocalMetadata.Bank))
-                  .ForMember(dest => dest.Difficulty, opt => opt.MapFrom(src => src.LocalMetadata.Difficulty))
-                  .ForMember(dest => dest.CognitiveLevel, opt => opt.MapFrom(src => src.LocalMetadata.CognitiveLevel))
-                  .ForMember(dest => dest.Guidance, opt => opt.MapFrom(src => src.LocalMetadata.Guidance));
+            //Mapper.CreateMap<Question, DataAccess.Data.ProductCourse>()
+            //      .ForMember(dest => dest.Id, opt => opt.Ignore())
+            //      .ForMember(dest => dest.Keywords, opt => opt.MapFrom(src => src.LocalMetadata.Keywords != null ? string.Join("|", src.LocalMetadata.Keywords) : null))
+            //      .ForMember(dest => dest.SuggestedUse, opt => opt.MapFrom(src => src.LocalMetadata.SuggestedUse != null ? string.Join("|", src.LocalMetadata.SuggestedUse) : null))
+            //      .ForMember(dest => dest.LearningObjectives, opt => opt.MapFrom(src => modelProfileService.SetLearningObjectives(src.LocalMetadata.LearningObjectives)))
+            //      .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.LocalMetadata.Title))
+            //      .ForMember(dest => dest.ExcerciseNo, opt => opt.MapFrom(src => src.LocalMetadata.ExcerciseNo))
+            //      .ForMember(dest => dest.Chapter, opt => opt.MapFrom(src => src.LocalMetadata.Chapter))
+            //      .ForMember(dest => dest.Bank, opt => opt.MapFrom(src => src.LocalMetadata.Bank))
+            //      .ForMember(dest => dest.Difficulty, opt => opt.MapFrom(src => src.LocalMetadata.Difficulty))
+            //      .ForMember(dest => dest.CognitiveLevel, opt => opt.MapFrom(src => src.LocalMetadata.CognitiveLevel))
+            //      .ForMember(dest => dest.Guidance, opt => opt.MapFrom(src => src.LocalMetadata.Guidance));
           
 
-            Mapper.CreateMap<Question, DataAccess.Data.Question>()
-                .ForMember(dest => dest.DlapId, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.Id, opt => opt.Ignore())
-                //Should proper mapping be here?
-                .ForMember(dest => dest.ProductCourses, opt => opt.Ignore());
+            //Mapper.CreateMap<Question, DataAccess.Data.Question>()
+            //    .ForMember(dest => dest.DlapId, opt => opt.MapFrom(src => src.Id))
+            //    .ForMember(dest => dest.Id, opt => opt.Ignore())
+            //    //Should proper mapping be here?
+            //    .ForMember(dest => dest.ProductCourses, opt => opt.Ignore());
 
-            Mapper.CreateMap<Question, QuestionMetadata>()
-             .ForMember(dest => dest.Data, opt => opt.MapFrom(src => modelProfileService.CreateQuestionMetadata(src)));
+            //Mapper.CreateMap<Question, QuestionMetadata>()
+            // .ForMember(dest => dest.Data, opt => opt.MapFrom(src => modelProfileService.CreateQuestionMetadata(src)));
 
-            Mapper.CreateMap<Note, DataAccess.Data.Note>()
-                  .ForMember(dest => dest.QuestionId, opt => opt.Ignore());
-            Mapper.CreateMap<DataAccess.Data.Note, Note>()
-                .ForMember(dest => dest.QuestionId, opt => opt.MapFrom(src => src.Question.DlapId));
+            //Mapper.CreateMap<Note, DataAccess.Data.Note>()
+            //      .ForMember(dest => dest.QuestionId, opt => opt.Ignore());
+            //Mapper.CreateMap<DataAccess.Data.Note, Note>()
+            //    .ForMember(dest => dest.QuestionId, opt => opt.MapFrom(src => src.Question.DlapId));
 
 
 
@@ -180,4 +193,41 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             return stringBuilder.ToString();
         }
     }
+
+    public class QuestionToQuestionMetadataConverter : ITypeConverter<Question, QuestionMetadata>
+    {
+        private readonly IModelProfileService modelProfileService;
+
+        public QuestionToQuestionMetadataConverter(IModelProfileService modelProfileService)
+        {
+            this.modelProfileService = modelProfileService;
+        }
+        public QuestionMetadata Convert(ResolutionContext context)
+        {
+            //var x = context.Options.Items.First();
+            if (context.Options.Items.Any())
+            {
+                return modelProfileService.GetQuestionMetadataForCourse((Question)context.SourceValue,
+                    context.Options.Items.First().Value.ToString());
+            }
+            return modelProfileService.GetQuestionMetadataForCourse((Question)context.SourceValue);
+        }
+    }
+
+    //public class ValueResolver : IValueResolver
+    //{
+    //    public ResolutionResult Resolve(ResolutionResult source)
+    //    {
+    //        return source;
+    //    }
+    //}
+
+    //public class ValueResolver1 : ValueResolver <Question, QuestionMetadata>
+    //{
+    //    protected override QuestionMetadata ResolveCore(Question source)
+    //    {
+            
+    //        throw new NotImplementedException();
+    //    }
+    //}
 }

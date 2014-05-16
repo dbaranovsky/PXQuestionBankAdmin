@@ -226,7 +226,10 @@ namespace Bfw.Agilix.DataContracts
         /// </summary>
         public string QuestionStatus { get; set; }
 
-
+        /// <summary>
+        /// All the first level elements inside meta tag
+        /// </summary>
+        public Dictionary<string, XElement> MetadataElements { get; set; } 
        
 
 
@@ -314,7 +317,15 @@ namespace Bfw.Agilix.DataContracts
             if (null != searchablemetaData)
             {
                 SearchableMetaData = new Dictionary<string, string>();
-                foreach (XElement meta in searchablemetaData.Elements())
+                MetadataElements = new Dictionary<string, XElement>();
+                foreach (XElement xElement in searchablemetaData.Elements())
+                {
+                    if (!MetadataElements.ContainsKey(xElement.Name.ToString()))
+                    {
+                        MetadataElements.Add(xElement.Name.ToString(), xElement);
+                    }
+                }
+                foreach (XElement meta in searchablemetaData.Elements().Where(m => m.Name != ElStrings.ProductCourseDefaults && !m.Name.ToString().Contains(ElStrings.ProductCourseSection.ToString())))
                 {
                     if (meta.Name == ElStrings.title)
                     {
@@ -683,6 +694,18 @@ namespace Bfw.Agilix.DataContracts
                             }
                         }
                         metas.Add(learningCurveQuestoinSettings);
+                    }
+                }
+
+                if (!MetadataElements.IsNullOrEmpty())
+                {
+                    foreach (var data in MetadataElements)
+                    {
+                        var meta_element = meta.Element(data.Key);
+                        if (meta_element == null)
+                        {
+                            meta.Add(data.Value);
+                        }
                     }
                 }
 

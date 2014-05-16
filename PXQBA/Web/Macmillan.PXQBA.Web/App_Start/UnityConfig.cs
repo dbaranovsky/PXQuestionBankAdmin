@@ -7,6 +7,7 @@ using Bfw.Common.Database;
 using Bfw.Common.Logging;
 using Bfw.Common.Patterns.Logging;
 using Macmillan.PXQBA.Business;
+using Macmillan.PXQBA.Business.Commands.Services.DLAP;
 using Macmillan.PXQBA.Business.Commands.Services.EntityFramework;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Services;

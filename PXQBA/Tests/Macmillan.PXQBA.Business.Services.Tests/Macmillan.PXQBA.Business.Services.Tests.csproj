@@ -67,6 +67,7 @@
     <Compile Include="QbaAPiTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CourseDataXmlParserTests.cs" />
+    <Compile Include="QuestionDataXmlParserTests.cs" />
     <Compile Include="QuestionManagementServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
