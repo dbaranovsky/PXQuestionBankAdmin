@@ -26,7 +26,7 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// </summary>
         /// <param name="questionId"></param>
         /// <returns></returns>
-        Question GetQuestion(string questionId);
+        Question GetQuestion(Course course, string questionId);
 
         /// <summary>
         /// Creates template for new question based on existing one. 

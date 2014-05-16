@@ -72,7 +72,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult GetQuestion(string questionId)
         {
-            var question = questionManagementService.GetQuestion(questionId);
+            var question = questionManagementService.GetQuestion(CourseHelper.CurrentCourse, questionId);
             return JsonCamel(CreateQuestionViewModelForEditing(question));
         }
 
@@ -82,8 +82,8 @@ namespace Macmillan.PXQBA.Web.Controllers
             var tempQuestion = questionManagementService.CreateTemporaryQuestion(CourseHelper.CurrentCourse, question.Id);
             //TODO: need to create question view model from the temp question when moved to real API
             var questionViewModel = Mapper.Map<Question, QuestionViewModel>(question);
-            questionViewModel.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), tempQuestion.EntityId, tempQuestion.QuizId);
-            questionViewModel.EditorUrl = String.Format(ConfigurationHelper.GetEditorUrlTemplate(), tempQuestion.EntityId, tempQuestion.QuizId, tempQuestion.Id);
+            questionViewModel.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), questionViewModel.EntityId, questionViewModel.QuizId);
+            questionViewModel.EditorUrl = String.Format(ConfigurationHelper.GetEditorUrlTemplate(), tempQuestion.EntityId, questionViewModel.QuizId, tempQuestion.Id);
             return questionViewModel;
         }
 

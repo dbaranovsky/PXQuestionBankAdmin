@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Macmillan.PXQBA.Business.Commands.Contracts;
+using Macmillan.PXQBA.Business.Commands.Helpers;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
@@ -61,20 +62,20 @@ namespace Macmillan.PXQBA.Business.Services
 
             data.Add(MetadataFieldNames.InlinePreview, question.Preview);
             data.Add(MetadataFieldNames.DlapType, EnumHelper.GetEnumDescription(question.Type));
-            data.Add(MetadataFieldNames.DlapTitle, question.LocalMetadata.Title);
+            //data.Add(MetadataFieldNames.DlapTitle, question.LocalMetadata.Title);
             data.Add(MetadataFieldNames.Id, question.Id);
-            data.Add(MetadataFieldNames.DlapStatus, EnumHelper.GetEnumDescription(question.LocalMetadata.Status));
-            data.Add(MetadataFieldNames.Chapter, question.LocalMetadata.Chapter);
-            data.Add(MetadataFieldNames.Bank, question.LocalMetadata.Bank);
-            data.Add(MetadataFieldNames.Sequence, question.LocalMetadata.Sequence.ToString());
-            data.Add(MetadataFieldNames.Difficulty, question.LocalMetadata.Difficulty);
-            data.Add(MetadataFieldNames.Keywords, String.Join(", ", question.LocalMetadata.Keywords));
-            data.Add(MetadataFieldNames.SuggestedUse, String.Join(", ", question.LocalMetadata.SuggestedUse));
-            data.Add(MetadataFieldNames.Guidance, question.LocalMetadata.Guidance);
-            data.Add(MetadataFieldNames.LearningObjectives, String.Join(", ", question.LocalMetadata.LearningObjectives.Select(lo => lo.Description)));
-            data.Add(MetadataFieldNames.SharedWith, question.ProductCourses.Count <= 1 ? string.Empty : String.Join("<br />", question.ProductCourses.Select(c => c.Title)));
+            //data.Add(MetadataFieldNames.DlapStatus, EnumHelper.GetEnumDescription(question.LocalMetadata.Status));
+            //data.Add(MetadataFieldNames.Chapter, question.LocalMetadata.Chapter);
+            //data.Add(MetadataFieldNames.Bank, question.LocalMetadata.Bank);
+            //data.Add(MetadataFieldNames.Sequence, question.LocalMetadata.Sequence.ToString());
+            //data.Add(MetadataFieldNames.Difficulty, question.LocalMetadata.Difficulty);
+            //data.Add(MetadataFieldNames.Keywords, String.Join(", ", question.LocalMetadata.Keywords));
+            //data.Add(MetadataFieldNames.SuggestedUse, String.Join(", ", question.LocalMetadata.SuggestedUse));
+            //data.Add(MetadataFieldNames.Guidance, question.LocalMetadata.Guidance);
+            //data.Add(MetadataFieldNames.LearningObjectives, String.Join(", ", question.LocalMetadata.LearningObjectives.Select(lo => lo.Description)));
+            //data.Add(MetadataFieldNames.SharedWith, question.ProductCourses.Count <= 1 ? string.Empty : String.Join("<br />", question.ProductCourses.Select(c => c.Title)));
             data.Add(MetadataFieldNames.QuestionIdDuplicateFrom, question.QuestionIdDuplicateFrom);
-            data.Add(MetadataFieldNames.ProductCourse, String.Join(", ", question.ProductCourses.Select(pc=>pc.Title)));
+            //data.Add(MetadataFieldNames.ProductCourse, String.Join(", ", question.ProductCourses.Select(pc=>pc.Title)));
           
 
             return data;
@@ -123,6 +124,35 @@ namespace Macmillan.PXQBA.Business.Services
             return CourseDataXmlParser.ParseQuestionBankRepositoryCourse(src.Data);
         }
 
+        public Dictionary<string, IEnumerable<string>> GetQuestionDefaultValues(Bfw.Agilix.DataContracts.Question question)
+        {
+            return QuestionDataXmlParser.GetDefaultSectionValues(question.MetadataElements);
+        }
+
+        public IEnumerable<ProductCourseSectionNew> GetProductCourseSections(Bfw.Agilix.DataContracts.Question question)
+        {
+            return QuestionDataXmlParser.GetProductCourseSectionValues(question.MetadataElements);
+        }
+
+        public QuestionMetadata GetQuestionMetadataForCourse(Question question, string courseId = null)
+        {
+            var metadata = new QuestionMetadata();
+
+            metadata.Data.Add(MetadataFieldNames.InlinePreview, question.Preview);
+            metadata.Data.Add(MetadataFieldNames.DlapType, EnumHelper.GetEnumDescription(question.Type));
+            metadata.Data.Add(MetadataFieldNames.Id, question.Id);
+            metadata.Data.Add(MetadataFieldNames.QuestionIdDuplicateFrom, question.QuestionIdDuplicateFrom);
+            var productCourseSection = !string.IsNullOrEmpty(courseId)
+                ? question.ProductCourseSections.FirstOrDefault(p => p.ProductCourseId == courseId)
+                : question.ProductCourseSections.FirstOrDefault();
+            if(productCourseSection != null)
+            foreach (var metadataValue in productCourseSection.ProductCourseValues)
+            {
+                metadata.Data.Add(metadataValue.Key, string.Join(", ",metadataValue.Value));
+            }
+            return metadata;
+        }
+
 
         public IEnumerable<ProductCourseSection> GetHardCodedSharedProductCourses(ProductCourse productCourse)
         {
@@ -156,7 +186,7 @@ namespace Macmillan.PXQBA.Business.Services
             {
                 return null;
             }
-            return questionCommands.GetQuestion(GetHardCodedQuestionDuplicate());
+            return questionCommands.GetQuestion("", GetHardCodedQuestionDuplicate());
         }
 
         public string GetQuizIdForQuestion(string id, string entityId)

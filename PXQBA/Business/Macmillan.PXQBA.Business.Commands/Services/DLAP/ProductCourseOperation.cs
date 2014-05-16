@@ -109,18 +109,18 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 var command = batch.CommandAs<GetItems>(index);
 
                 string courseId = command.SearchParameters.EntityId;
-                string hrefDisciplineCourseId = String.Empty;
+                string questionRepositoryCourseId = String.Empty;
 
                 if (!command.Items.IsNullOrEmpty())
                 {
                     var firstItem = command.Items.FirstOrDefault();
                     if (firstItem != null)
                     {
-                        hrefDisciplineCourseId = firstItem.HrefDisciplineCourseId;
+                        questionRepositoryCourseId = firstItem.QuestionRepositoryCourseId;
                     }
                 }
 
-                resultDictionary.Add(courseId, hrefDisciplineCourseId);
+                resultDictionary.Add(courseId, questionRepositoryCourseId);
             }
 
             return resultDictionary;
@@ -139,11 +139,11 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
             var course = Mapper.Map<Course>(cmd.Courses.FirstOrDefault());
 
-            if ((String.IsNullOrEmpty(course.QuestionBankRepositoryCourse))&&
+            if ((String.IsNullOrEmpty(course.QuestionRepositoryCourseId))&&
                 (requiredQuestionBankRepository))
             {
                 var result = GetQuestionBankRepositoryCourseFromItems(new[] { course.ProductCourseId });
-                course.QuestionBankRepositoryCourse = result.GetValue(course.ProductCourseId, String.Empty);
+                course.QuestionRepositoryCourseId = result.GetValue(course.ProductCourseId, String.Empty);
             }
             return course;
         }

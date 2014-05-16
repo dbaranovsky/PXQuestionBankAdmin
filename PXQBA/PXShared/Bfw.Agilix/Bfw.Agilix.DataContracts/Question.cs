@@ -325,7 +325,7 @@ namespace Bfw.Agilix.DataContracts
                         MetadataElements.Add(xElement.Name.ToString(), xElement);
                     }
                 }
-                foreach (XElement meta in searchablemetaData.Elements().Where(m => m.Name != ElStrings.Defaults && !m.Name.ToString().Contains(ElStrings.ProductCourseSection.ToString())))
+                foreach (XElement meta in searchablemetaData.Elements().Where(m => m.Name != ElStrings.ProductCourseDefaults && !m.Name.ToString().Contains(ElStrings.ProductCourseSection.ToString())))
                 {
                     if (meta.Name == ElStrings.title)
                     {

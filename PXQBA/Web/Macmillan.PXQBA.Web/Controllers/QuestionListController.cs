@@ -61,12 +61,11 @@ namespace Macmillan.PXQBA.Web.Controllers
                                                                           questionPerPage);
             var totalPages = (questionList.TotalItems + questionPerPage - (questionList.TotalItems % questionPerPage)) /
                              questionPerPage;
-
             var response = new QuestionListDataResponse
                         {
                             Filter = request.Filter,
                             TotalPages = totalPages,
-                            QuestionList = questionList.CollectionPage.Select(Mapper.Map<QuestionMetadata>),
+                            QuestionList = questionList.CollectionPage.Select(q => Mapper.Map<QuestionMetadata>(q, opt => opt.Items.Add(CourseHelper.CurrentCourse.ProductCourseId, CourseHelper.CurrentCourse.ProductCourseId))),
                             PageNumber = request.PageNumber,
                             Columns = questionMetadataService.GetDataForFields(CourseHelper.CurrentCourse, request.Columns).Select(MetadataFieldsHelper.Convert).ToList(),
                             AllAvailableColumns = questionMetadataService.GetAvailableFields(CourseHelper.CurrentCourse).Select(MetadataFieldsHelper.Convert).ToList(),

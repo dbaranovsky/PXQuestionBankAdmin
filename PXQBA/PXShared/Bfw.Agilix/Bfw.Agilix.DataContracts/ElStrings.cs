@@ -876,8 +876,9 @@ namespace Bfw.Agilix.DataContracts
         public static readonly XName FreeResponseQuestion = "freeresponsequestion";
 
         public static readonly XName QuestionStatus = "questionstatus";
-        public static readonly XName Defaults = "product-course-defaults";
-        public static readonly XName ProductCourseSection = "product-course-id";
+        public static readonly XName ProductCourseDefaults = "product-course-defaults";
+        public static readonly XName ProductCourseSection = "product-course-id-";
+        public static readonly XName bfw_meta = "bfw_meta";
 
 
         //public static readonly XName group = "group";

@@ -94,6 +94,12 @@ namespace Bfw.Agilix.DataContracts
         public string HrefDisciplineCourseId { get; set; }
 
         /// <summary>
+        /// Question repository course id
+        /// </summary>
+        [DataMember]
+        public string QuestionRepositoryCourseId { get; set; }
+
+        /// <summary>
         /// Identifies the Item as a specific Dlap type.  If Type == DlapItemType.Custom then the CustomType
         /// property contains the "raw" string that was stored in the type element.
         /// </summary>
@@ -660,6 +666,7 @@ namespace Bfw.Agilix.DataContracts
 			var ownerId = Data.Element(ElStrings.OwnerId);
 			var gradeFlags = Data.Element(ElStrings.GradeFlags);
 			var passingScore = Data.Element(ElStrings.PassingScore);
+		    var bfw_meta = Data.Element(ElStrings.bfw_meta);
 
 			ParseChildrenItems(data);
 			ParseDueDate(due);
@@ -700,7 +707,8 @@ namespace Bfw.Agilix.DataContracts
 			ParseStudentsCanEmailInstructors(studentsCanEmail);
             ParseGraceDueDate(data);
             ParseAdjustedGroups(data);
-		
+		    ParseQuestionRepositoryCourseId(bfw_meta);
+
 			if (null != lockedCourseType) LockedCourseType = lockedCourseType.Value;
 			if (null != passingScore) PassingScore = Double.Parse(passingScore.Value);
 			if (null != assignmentFolderId) AssignmentFolderId = assignmentFolderId.Value;
@@ -716,6 +724,18 @@ namespace Bfw.Agilix.DataContracts
 			if (null != subtype) SubType = subtype.Value;
 		    if (null != gradeFlags) GradeFlags = (GradeFlags) Enum.Parse(typeof (GradeFlags), gradeFlags.Value);
 		}
+
+        private void ParseQuestionRepositoryCourseId(XElement bfw_meta)
+        {
+            if (bfw_meta != null)
+            {
+                var agilixDisciplineId = bfw_meta.Elements().FirstOrDefault(elem => elem.Attribute("name") != null && elem.Attribute("name").Value == "AgilixDisciplineId");
+                if (agilixDisciplineId != null)
+                {
+                    QuestionRepositoryCourseId = agilixDisciplineId.Value;
+                }
+            }
+        }
 
         private void ParseAdjustedGroups(XElement data)
         {

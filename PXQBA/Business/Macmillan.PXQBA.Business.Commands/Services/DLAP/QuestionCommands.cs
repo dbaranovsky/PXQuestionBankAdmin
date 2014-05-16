@@ -7,6 +7,8 @@ using Bfw.Agilix.Commands;
 using Bfw.Agilix.DataContracts;
 using Bfw.Common.Database;
 using Macmillan.PXQBA.Business.Commands.Contracts;
+using Macmillan.PXQBA.Business.Commands.DataContracts;
+using Macmillan.PXQBA.Business.Commands.Helpers;
 using Macmillan.PXQBA.Business.Models;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
@@ -22,36 +24,83 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             this.businessContext = businessContext;
         }
 
-        private const int SearchCommandMaxRows = 10;
+        private const int SearchCommandMaxRows = 25;
 
         /// <summary>
         /// Get question for specify query
         /// </summary>
-        /// <param name="query">search query</param>
-        /// <param name="page">current page</param>
-        /// <param name="questionPerPage">question per page</param>
         /// <returns>questions</returns>
-        public PagedCollection<Question> GetQuestionList(string courseId, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
+        public PagedCollection<Question> GetQuestionList(string questionRepositoryCourseId, string currentCourseId, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
         {
+            var searchResults = GetSearchResults(questionRepositoryCourseId, currentCourseId, filter, sortCriterion);
+            searchResults = SortSearchResults(searchResults, sortCriterion);
+
+            var cmd = new GetQuestions()
+            {
+                SearchParameters = new QuestionSearch()
+                {
+                    EntityId = questionRepositoryCourseId,
+                    QuestionIds =  searchResults.Skip(startingRecordNumber).Take(recordCount).Select(r => r.QuestionId)
+                }
+            };
+
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+            var questions = cmd.Questions;
+            var result = new PagedCollection<Question>
+            {
+                TotalItems = searchResults.Count(),
+                CollectionPage = Mapper.Map<IEnumerable<Question>>(questions)
+            };
+            return result;
+        }
+
+        private IEnumerable<QuestionSearchResult> GetSearchResults(string questionRepositoryCourseId, string currentCourseId, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion)
+        {
+            var results = new List<XElement>();
+            IEnumerable<XElement> docElements = new List<XElement>();
             var i = 0;
-            Search searchCommand;
             var query = BuildQueryString(filter);
+            var sortingField = string.Format("{0}{1}/{2}", ElStrings.ProductCourseSection, currentCourseId,
+                sortCriterion.ColumnName);
             do
             {
-                searchCommand = new Search()
-                {
-                    SearchParameters = new SolrSearchParameters()
-                    {
-                        EntityId = courseId,
-                        Query = query,
-                        Rows = SearchCommandMaxRows,
-                        Start = (i * SearchCommandMaxRows),
-                    }
-                };
+                var searchCommand = new Search()
+                                    {
+                                        SearchParameters = new SolrSearchParameters()
+                                                           {
+                                                               Fields = sortingField,
+                                                               EntityId = questionRepositoryCourseId,
+                                                               Query = query,
+                                                               Rows = SearchCommandMaxRows,
+                                                               Start = (i*SearchCommandMaxRows),
+                                                           }
+                                    };
                 i++;
+                
                 businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(searchCommand);
-            } while (searchCommand.SearchResults.Element("results").Element("result").Elements("doc").Count() == SearchCommandMaxRows);
-            return null;
+                if (searchCommand.SearchResults.Element("results") != null)
+                {
+                    if (searchCommand.SearchResults.Element("results").Element("result") != null)
+                    {
+                        docElements = searchCommand.SearchResults.Element("results").Element("result").Elements("doc");
+                    }
+                }
+                results.AddRange(docElements);
+            } while (docElements.Count() == SearchCommandMaxRows);
+
+            var searchResults = results.Select(doc => QuestionDataXmlParser.ToSearchResultEntity(doc, sortingField));
+            return searchResults;
+        }
+
+        private IEnumerable<QuestionSearchResult> SortSearchResults(IEnumerable<QuestionSearchResult> searchResults, SortCriterion sortCriterion)
+        {
+            if (sortCriterion != null && sortCriterion.SortType != SortType.None)
+            {
+                return sortCriterion.IsAsc
+                    ? searchResults.OrderBy(r => r.SortingField)
+                    : searchResults.OrderByDescending(r => r.SortingField);
+            }
+            return searchResults;
         }
 
         public Question CreateQuestion(string courseId, Question question)
@@ -59,9 +108,19 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             throw new System.NotImplementedException();
         }
 
-        public Question GetQuestion(string questionId)
+        public Question GetQuestion(string repositoryCourseId, string questionId)
         {
-            throw new System.NotImplementedException();
+            var cmd = new GetQuestions()
+            {
+                SearchParameters = new QuestionSearch()
+                {
+                    EntityId = repositoryCourseId,
+                    QuestionIds = new List<string>{questionId}
+                }
+            };
+
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+            return Mapper.Map<Question>(cmd.Questions.FirstOrDefault());
         }
 
         public void UpdateQuestionSequence(string courseId, string questionId, int newSequenceValue)
@@ -95,7 +154,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                     var productCourseId = productCourseFilterField.Values.First();
                     if (productCourseId != null)
                     {
-                        var productCourseSection = string.Format("product-course-id-{0}", productCourseId);
+                        var productCourseSection = string.Format("{0}{1}", ElStrings.ProductCourseSection, productCourseId);
                         foreach (var filterFieldDescriptor in filter)
                         {
                             foreach (var value in filterFieldDescriptor.Values)

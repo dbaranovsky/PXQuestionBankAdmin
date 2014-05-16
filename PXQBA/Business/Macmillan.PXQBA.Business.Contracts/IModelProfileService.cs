@@ -23,5 +23,8 @@ namespace Macmillan.PXQBA.Business.Contracts
             Bfw.Agilix.DataContracts.Course src);
 
         string GetQuestionBankRepositoryCourse(Bfw.Agilix.DataContracts.Course src);
+        Dictionary<string, IEnumerable<string>> GetQuestionDefaultValues(Bfw.Agilix.DataContracts.Question question);
+        IEnumerable<ProductCourseSectionNew> GetProductCourseSections(Bfw.Agilix.DataContracts.Question question);
+        QuestionMetadata GetQuestionMetadataForCourse(Question question, string courseId = null);
     }
 }
