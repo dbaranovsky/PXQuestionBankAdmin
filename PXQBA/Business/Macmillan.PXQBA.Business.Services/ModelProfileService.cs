@@ -129,7 +129,7 @@ namespace Macmillan.PXQBA.Business.Services
             return QuestionDataXmlParser.GetDefaultSectionValues(question.MetadataElements);
         }
 
-        public IEnumerable<ProductCourseSectionNew> GetProductCourseSections(Bfw.Agilix.DataContracts.Question question)
+        public IEnumerable<ProductCourseSection> GetProductCourseSections(Bfw.Agilix.DataContracts.Question question)
         {
             return QuestionDataXmlParser.GetProductCourseSectionValues(question.MetadataElements);
         }
@@ -160,17 +160,14 @@ namespace Macmillan.PXQBA.Business.Services
             {
                 return new List<ProductCourseSection>
                 {
-                    new ProductCourseSection {Id = "12345", Title = "Core Economics book title"},
-                    new ProductCourseSection {Id = "12346", Title = "Statistics book title"},
-                    new ProductCourseSection {Id = "12347", Title = "History"},
-                    new ProductCourseSection {Id = "12348", Title = "Informatics"}
+                   
                 };
             }
             else
             {
                 return new List<ProductCourseSection>()
                 {
-                    new ProductCourseSection {Id = productCourse.Id.ToString(), Title = productCourse.Title}
+                   // new ProductCourseSection {Id = productCourse.Id.ToString(), Title = productCourse.Title}
                 };
             }
         }

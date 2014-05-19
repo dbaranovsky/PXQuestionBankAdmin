@@ -80,8 +80,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
             QuestionHelper.QuestionIdToEdit = question.Id;
             var tempQuestion = questionManagementService.CreateTemporaryQuestion(CourseHelper.CurrentCourse, question.Id);
-            //TODO: need to create question view model from the temp question when moved to real API
-            var questionViewModel = Mapper.Map<Question, QuestionViewModel>(question);
+            var questionViewModel = Mapper.Map<Question, QuestionViewModel>(tempQuestion);
             questionViewModel.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), questionViewModel.EntityId, questionViewModel.QuizId);
             questionViewModel.EditorUrl = String.Format(ConfigurationHelper.GetEditorUrlTemplate(), tempQuestion.EntityId, questionViewModel.QuizId, tempQuestion.Id);
             return questionViewModel;
