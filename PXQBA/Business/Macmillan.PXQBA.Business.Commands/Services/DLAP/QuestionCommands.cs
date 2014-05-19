@@ -123,7 +123,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return Mapper.Map<Question>(cmd.Questions.FirstOrDefault());
         }
 
-        public void UpdateQuestionSequence(string courseId, string questionId, int newSequenceValue)
+        private bool UpdateQuestionSequence(string courseId, string questionId, int newSequenceValue)
         {
             throw new System.NotImplementedException();
         }
@@ -133,12 +133,16 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             throw new System.NotImplementedException();
         }
 
-        public bool UpdateQuestionField(string questionId, string fieldName, string value)
+        public bool UpdateQuestionField(string repositoryCourseId, string questionId, string fieldName, string fieldValue)
         {
-            throw new System.NotImplementedException();
+            if (fieldName.Equals(MetadataFieldNames.Sequence))
+            {
+                return UpdateQuestionSequence(repositoryCourseId, questionId, int.Parse(fieldValue));
+            }
+            return true;
         }
 
-        public bool UpdateSharedQuestionField(string questionId, string fieldName, string fieldValue)
+        public bool UpdateSharedQuestionField(string repositoryCourseId, string questionId, string fieldName, string fieldValue)
         {
             throw new System.NotImplementedException();
         }
@@ -148,7 +152,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             var query = new StringBuilder("dlap_class:question");
             if (filter != null)
             {
-                var productCourseFilterField = filter.First(field => field.Field == MetadataFieldNames.ProductCourseId);
+                var productCourseFilterField = filter.First(field => field.Field == MetadataFieldNames.ProductCourse);
                 if (productCourseFilterField != null)
                 {
                     var productCourseId = productCourseFilterField.Values.First();

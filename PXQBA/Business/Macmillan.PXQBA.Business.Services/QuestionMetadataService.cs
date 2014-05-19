@@ -64,7 +64,7 @@ namespace Macmillan.PXQBA.Business.Services
                 new QuestionMetaField()
                 {
                     FriendlyName = "Textbook title",
-                    Name = MetadataFieldNames.ProductCourseName,
+                    Name = MetadataFieldNames.ProductCourse,
                     TypeDescriptor = new MetaFieldTypeDescriptor
                     {
                         Type = MetadataFieldType.SingleSelect,
