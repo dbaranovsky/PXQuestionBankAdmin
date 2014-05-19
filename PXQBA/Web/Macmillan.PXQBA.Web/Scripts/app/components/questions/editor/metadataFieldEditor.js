@@ -49,9 +49,11 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
 
     updateQuestion: function(value){
          var question = this.props.question;
-        if (question[this.props.field] !== value)
+        if (question[this.props.field][0] !== value)
         {
-          question[this.props.field] = value;
+          var valueArr=[];
+          valueArr.push(value);
+          question[this.props.field] = valueArr;
           this.props.editHandler(question);
         }
        
@@ -92,6 +94,7 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
        if(this.state.editMode){
        switch (editorType) {
           case window.enums.editorType.singleSelect:
+             currentValue = currentValue === undefined? "" : currentValue[0];
              return (React.DOM.select( {ref:"editor", className:"single-selector", disabled:this.props.isDisabled, value:currentValue},  " ", this.renderMenuItems(availableChoice), " " ) );
 
           case window.enums.editorType.multiSelect:
@@ -285,10 +288,17 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
 
 
     render: function() {
+      var label = '';
+      if (this.props.title === undefined){
+        label = this.state.metadataField  == null? this.props.field : this.state.metadataField.friendlyName;
+      } else{
+        label = this.props.field;
+      }
+
         return (
 
             React.DOM.div( {className:"metadata-field-editor"}, 
-                   React.DOM.label(null, this.props.title === undefined? this.props.field : this.props.title),
+                   React.DOM.label(null, label),
                    React.DOM.br(null ),
                     this.renderBody(),
                    React.DOM.br(null ),
@@ -296,6 +306,7 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
                     
             ) 
          );
-    }
+   }
+    
 
 });

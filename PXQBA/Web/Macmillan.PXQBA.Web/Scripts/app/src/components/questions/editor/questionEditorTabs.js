@@ -81,13 +81,12 @@ var QuestionEditorTabs = React.createClass({
                   switch (event) {
                       //Handle each event using the 'arguments' variable           
                       case 'componentsaved':
-                          
-                             self.props.saveQuestion();
+
+                             //maybe should call save question after BH saved?
+                            // self.props.saveQuestion();
                           
                           break;
                       case 'componentcancelled':
-                          
-                              alert('componentcancelled');
                         
                           break;
                   }
@@ -140,7 +139,7 @@ var QuestionEditorTabs = React.createClass({
                         <div  className="iframe waiting" />
                           
                           <div id="editoriframecontainer" className={this.props.question.isShared && !this.props.isNew? "shared": ""}></div>
-  <div className="modal-footer">
+                          <div className="modal-footer">
                                 <button className="btn btn-default" data-toggle="modal" onClick={this.props.closeDialog}>
                              Cancel
                         </button>
@@ -154,7 +153,7 @@ var QuestionEditorTabs = React.createClass({
                     </div>
                     <div className="tab-pane" id="metadata">
                     {this.renderSharingNotification()}
-                       <div className={this.props.question.sharedMetadata == null ? "tab-body" : "tab-body wide"}>                           
+                       <div className={this.props.question.defaultValues == null ? "tab-body" : "tab-body wide"}>                           
                             <QuestionMetadataEditor metadata={this.props.metadata} question={this.props.question} editHandler={this.props.editHandler} isDuplicate={this.props.isDuplicate} />
                            
                     

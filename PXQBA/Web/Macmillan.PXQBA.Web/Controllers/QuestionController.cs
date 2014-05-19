@@ -55,9 +55,10 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(questionMetadataService.GetAvailableFields(CourseHelper.CurrentCourse).Select(MetadataFieldsHelper.Convert).ToList());
         }
 
-        public ActionResult UpdateQuestion(Question question)
+        public ActionResult UpdateQuestion(QuestionViewModel question)
         {
-            questionManagementService.UpdateQuestion(CourseHelper.CurrentCourse, QuestionHelper.QuestionIdToEdit, question);
+            var questionModel = Mapper.Map<Question>(question);
+            questionManagementService.UpdateQuestion(CourseHelper.CurrentCourse, QuestionHelper.QuestionIdToEdit, questionModel);
             return JsonCamel(new { isError = false });
         }
 

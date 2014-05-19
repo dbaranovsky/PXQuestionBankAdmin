@@ -81,13 +81,12 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                   switch (event) {
                       //Handle each event using the 'arguments' variable           
                       case 'componentsaved':
-                          
-                             self.props.saveQuestion();
+
+                             //maybe should call save question after BH saved?
+                            // self.props.saveQuestion();
                           
                           break;
                       case 'componentcancelled':
-                          
-                              alert('componentcancelled');
                         
                           break;
                   }
@@ -140,7 +139,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                         React.DOM.div(  {className:"iframe waiting"} ),
                           
                           React.DOM.div( {id:"editoriframecontainer", className:this.props.question.isShared && !this.props.isNew? "shared": ""}),
-  React.DOM.div( {className:"modal-footer"}, 
+                          React.DOM.div( {className:"modal-footer"}, 
                                 React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal", onClick:this.props.closeDialog}, 
                              "Cancel"
                         ),
@@ -154,7 +153,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                     ),
                     React.DOM.div( {className:"tab-pane", id:"metadata"}, 
                     this.renderSharingNotification(),
-                       React.DOM.div( {className:this.props.question.sharedMetadata == null ? "tab-body" : "tab-body wide"},                            
+                       React.DOM.div( {className:this.props.question.defaultValues == null ? "tab-body" : "tab-body wide"},                            
                             QuestionMetadataEditor( {metadata:this.props.metadata, question:this.props.question, editHandler:this.props.editHandler, isDuplicate:this.props.isDuplicate} ),
                            
                     

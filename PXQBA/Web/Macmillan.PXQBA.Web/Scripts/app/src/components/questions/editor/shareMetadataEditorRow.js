@@ -21,7 +21,7 @@ var ShareMetadataEditorRow = React.createClass({
 
         var sharedGuids = [];
 
-          $.each(this.props.question.sharedMetadata[field], function(i, objective){
+          $.each(this.props.question.defaultValues[field], function(i, objective){
            sharedGuids.push(objective.guid);
        });
       return { isDisabled: this.compareArray(localGuids, sharedGuids)};
@@ -47,7 +47,7 @@ var ShareMetadataEditorRow = React.createClass({
     },
 
    renderSharedValue: function(){
-        if (this.props.question.sharedMetadata != null){
+        if (this.props.question.defaultValues != null){
              return  (<div className={this.props.isUnique? "cell shared unique" : "cell shared"}>
                      <MetadataFieldEditor question={this.props.question.defaultValues} 
                                           editMode={false} 
@@ -75,13 +75,13 @@ var ShareMetadataEditorRow = React.createClass({
 
     sharedEditHandler: function(sharedMetadata){
         var question = this.props.question;
-        question.sharedMetadata = sharedMetadata;
+        question.defaultValues = sharedMetadata;
         this.props.editHandler(question);
     },
 
     localEditHandler: function(localMetadata){
         var question = this.props.question;
-        question.localMetadata = localMetadata;
+        question.localValues = localMetadata;
         if (this.props.editHandler !== undefined){
           this.props.editHandler(question);  
         }
@@ -119,7 +119,7 @@ var ShareMetadataEditorRow = React.createClass({
 
     restoreLocalQuestion: function(){
         var question = this.props.question;
-        question.localMetadata[this.props.field] = question.sharedMetadata[this.props.field];
+        question.localValues[this.props.field] = question.defaultValues[this.props.field];
         this.props.editHandler(question);
     },
 
