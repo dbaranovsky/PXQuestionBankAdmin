@@ -192,7 +192,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         private string BuildQueryString(IEnumerable<FilterFieldDescriptor> filter)
         {
-            var query = new StringBuilder("dlap_class:question");
+            var query = new StringBuilder("(dlap_class:question)");
             if (filter != null)
             {
                 var productCourseFilterField = filter.First(field => field.Field == MetadataFieldNames.ProductCourse);
@@ -204,10 +204,13 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                         var productCourseSection = string.Format("{0}{1}", ElStrings.ProductCourseSection, productCourseId);
                         foreach (var filterFieldDescriptor in filter)
                         {
-                            foreach (var value in filterFieldDescriptor.Values)
+                            var fieldQuery = string.Join(" OR ",
+                                filterFieldDescriptor.Values.Select(v =>
+                                        string.Format("{0}/{1}:\"{2}\"", productCourseSection, filterFieldDescriptor.Field, v)));
+                           
+                            if (!string.IsNullOrEmpty(fieldQuery))
                             {
-                                query.Append(string.Format(" AND {0}/{1}:{2}", productCourseSection,
-                                    filterFieldDescriptor.Field, value));
+                                query.Append(string.Format(" AND ({0})", fieldQuery));
                             }
                         }
                     }
