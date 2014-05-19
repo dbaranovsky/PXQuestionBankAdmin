@@ -23,14 +23,6 @@ namespace Macmillan.PXQBA.Business.Services
  
             var customFields = new List<QuestionMetaField>
             {
-
-                new QuestionMetaField
-                {
-                    FriendlyName = "Question title",
-                    Name = MetadataFieldNames.DlapTitle,
-                    TypeDescriptor = new MetaFieldTypeDescriptor(MetadataFieldType.Text)
-                },
-
                 new QuestionMetaField()
                 {
                     FriendlyName = "Format",
@@ -55,21 +47,6 @@ namespace Macmillan.PXQBA.Business.Services
                                               new AvailableChoiceItem(EnumHelper.GetEnumDescription(QuestionStatus.Deleted)),
                                           }
 
-                    }
-                },
-                new QuestionMetaField()
-                {
-                    FriendlyName = "Keywords",
-                    Name = MetadataFieldNames.Keywords,
-                    TypeDescriptor = new MetaFieldTypeDescriptor
-                    {
-                        Type = MetadataFieldType.MultiSelect,
-                        AvailableChoice = new List<AvailableChoiceItem>()
-                                          {
-                                              new AvailableChoiceItem("Keyword 1"),
-                                              new AvailableChoiceItem("Keyword 2"),
-                                              new AvailableChoiceItem("Keyword 3"),
-                                          }
                     }
                 },
                 new QuestionMetaField()
