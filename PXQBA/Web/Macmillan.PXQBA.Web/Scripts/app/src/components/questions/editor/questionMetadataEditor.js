@@ -15,17 +15,7 @@ var QuestionMetadataEditor = React.createClass({
 
                          
                         <ShareMetadataEditorRow question={this.props.question} metadata={this.props.metadata} editHandler={this.props.editHandler} field="title" />
-                        <ShareMetadataEditorRow question={this.props.question} metadata={this.props.metadata} editHandler={this.props.editHandler} field="chapter" />
-                        <ShareMetadataEditorRow question={this.props.question} metadata={this.props.metadata} editHandler={this.props.editHandler} field="bank" />
-                        <ShareMetadataEditorRow question={this.props.question} metadata={this.props.metadata} editHandler={this.props.editHandler} field="keywords" />
-                        <ShareMetadataEditorRow question={this.props.question} metadata={this.props.metadata} editHandler={this.props.editHandler} field="suggestedUse" title="Suggested Use"/>
-                        <ShareMetadataEditorRow question={this.props.question} metadata={this.props.metadata} editHandler={this.props.editHandler} field="learningObjectives"  title="Learning Objective"/>
-                        <ShareMetadataEditorRow question={this.props.question} metadata={this.props.metadata} editHandler={this.props.editHandler} field="excerciseNo" title="Exercise Number"/>
-                        <ShareMetadataEditorRow question={this.props.question} metadata={this.props.metadata} editHandler={this.props.editHandler} field="difficulty" />
-                        <ShareMetadataEditorRow question={this.props.question} metadata={this.props.metadata} editHandler={this.props.editHandler} field="cognitiveLevel" title="Cognitive Level"/>
-                        <ShareMetadataEditorRow question={this.props.question} metadata={this.props.metadata} editHandler={this.props.editHandler} field="status" />
-                        <ShareMetadataEditorRow question={this.props.question} metadata={this.props.metadata} editHandler={this.props.editHandler} field="guidance" />  
-                        <ShareMetadataEditorRow question={this.props.question} metadata={this.props.metadata}  isUnique={true} field="Field" />  
+                 
                      </div>          
                  </div>
 
