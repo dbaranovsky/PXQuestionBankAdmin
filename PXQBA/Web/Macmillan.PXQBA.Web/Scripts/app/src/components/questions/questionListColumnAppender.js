@@ -13,7 +13,7 @@ var QuestionListColumnAppender = React.createClass({
     },
 
     getSelectableFields: function () {
-        var allFields = this.props.allFields;
+        var allFields = $.grep(this.props.allFields, function(element, i){ return element.columnAppendAllowed});
         var displayedFields =  this.props.displayedFields;
         
         return this.excludeDisplayedFileds(allFields, displayedFields);

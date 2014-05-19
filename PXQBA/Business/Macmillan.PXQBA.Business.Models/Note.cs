@@ -1,8 +1,10 @@
-﻿namespace Macmillan.PXQBA.Business.Models
+﻿using System;
+
+namespace Macmillan.PXQBA.Business.Models
 {
     public class Note
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         public string Text { get; set; }
 

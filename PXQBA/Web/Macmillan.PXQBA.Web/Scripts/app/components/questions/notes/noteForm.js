@@ -28,7 +28,6 @@ var NoteForm = React.createClass({displayName: 'NoteForm',
     return (
       React.DOM.div( {className:"modal-footer clearfix"}, 
           React.DOM.form( {className:"note-form", onSubmit:this.handleSubmit},     
-            Flag( {flaggingHandler:this.flaggingHandler, isFlagged:false}),
             React.DOM.textarea( {className:"area-editor",  rows:"5", type:"text", placeholder:"Enter text...", ref:"text"} ),
             React.DOM.button( {type:"submit", className:"btn btn-default"}, "Add note")
           )

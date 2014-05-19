@@ -24,7 +24,8 @@ namespace Macmillan.PXQBA.Common.Helpers
                              CanAddValues = false,
                              IsMultiline = false,
                              FilterType = FilterType.MultiSelectWithAddition.ToString().ToLower(),
-                             AllowDeselect = false
+                             AllowDeselect = false,
+                             ColumnAppendAllowed = true
                          };
 
 
@@ -75,6 +76,11 @@ namespace Macmillan.PXQBA.Common.Helpers
             if (metaField.Name == MetadataFieldNames.Difficulty)
             {
                 model.AllowDeselect = true;
+            }
+
+            if (metaField.Name == MetadataFieldNames.Flag)
+            {
+                model.ColumnAppendAllowed = false;
             }
 
             return model;

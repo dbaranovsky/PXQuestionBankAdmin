@@ -122,8 +122,6 @@
             type: 'POST'
         }).done(function (response) {
             console.log('Delete note complete');
-            self.resetState();
-            console.log('Refresh complite');
         }).error(function(e){
              self.showErrorPopup();
         });
