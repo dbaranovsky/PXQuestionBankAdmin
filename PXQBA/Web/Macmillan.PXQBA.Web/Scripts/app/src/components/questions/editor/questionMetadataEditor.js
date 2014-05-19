@@ -10,6 +10,7 @@ var QuestionMetadataEditor = React.createClass({
       var defaultFieldsName = [];
 
       for (var localName in this.props.question.localValues){
+        if(localName!= "sequence" && localName != "productcourseid" && localName != "flag")
         localFieldsName.push(localName);
       }
 
