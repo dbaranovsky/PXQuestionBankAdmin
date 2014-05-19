@@ -76,15 +76,15 @@ namespace Macmillan.PXQBA.Business.Models
             }
         }
 
-        private IList<ProductCourseSectionNew> productCourseSections;
+        private IList<ProductCourseSection> productCourseSections;
 
-        public IList<ProductCourseSectionNew> ProductCourseSections
+        public IList<ProductCourseSection> ProductCourseSections
         {
             get
             {
                 if (productCourseSections == null)
                 {
-                    productCourseSections = new List<ProductCourseSectionNew>();
+                    productCourseSections = new List<ProductCourseSection>();
                 }
                 return productCourseSections;
             }
@@ -96,7 +96,7 @@ namespace Macmillan.PXQBA.Business.Models
 
     }
 
-    public class ProductCourseSectionNew
+    public class ProductCourseSection
     {
         public string ProductCourseId { get; set; }
 

@@ -39,7 +39,7 @@ namespace Macmillan.PXQBA.Business.Services
             question.Type = questiontype;
             //question.LocalMetadata.Bank = bank;
             //question.LocalMetadata.Chapter = chapter;
-            return questionCommands.CreateQuestion(course.ProductCourseId, question);
+            return questionCommands.CreateQuestion(course.QuestionRepositoryCourseId, question);
         }
 
         public Question GetQuestion(Course course, string questionId)
@@ -87,7 +87,7 @@ namespace Macmillan.PXQBA.Business.Services
         public Question UpdateQuestion(Course course, string sourceQuestionId, Question temporaryQuestion)
         {
             var updatedTempQuestion = questionCommands.UpdateQuestion(temporaryQuestion);
-            temporaryQuestionOperation.CopyQuestionToSourceCourse(course.ProductCourseId, "PxTempQBAQuestion_115457_Choice");
+            temporaryQuestionOperation.CopyQuestionToSourceCourse(course.QuestionRepositoryCourseId, sourceQuestionId);
             return questionCommands.UpdateQuestion(updatedTempQuestion);
         }
 
@@ -134,7 +134,7 @@ namespace Macmillan.PXQBA.Business.Services
         {
             //PxTempQBAQuestion_115457_Essay
             //PxTempQBAQuestion_115457_Choice
-            return temporaryQuestionOperation.CopyQuestionToTemporaryCourse(course.ProductCourseId, "PxTempQBAQuestion_115457_Choice");
+            return temporaryQuestionOperation.CopyQuestionToTemporaryCourse(course.QuestionRepositoryCourseId, questionId);
         }
 
         public bool UpdateSharedQuestionField(string questionId, string fieldName, string fieldValue)

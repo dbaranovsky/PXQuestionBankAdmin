@@ -34,7 +34,7 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
                                 var productCourse = question.ProductCourseSections.FirstOrDefault(c => c.ProductCourseId == productCourseId);
                                 if (productCourse == null)
                                 {
-                                    productCourse = new ProductCourseSectionNew();
+                                    productCourse = new ProductCourseSection();
                                     productCourse.ProductCourseId = productCourseId;
                                     question.ProductCourseSections.Add(productCourse);
                                 }
@@ -76,13 +76,13 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
             return defaultsSection.Elements().GroupBy(elem => elem.Name.LocalName).ToDictionary(group => group.Key, group => group.Select(elem => elem.Value));
         }
 
-        public static IEnumerable<ProductCourseSectionNew> GetProductCourseSectionValues(Dictionary<string, XElement> metadataElements)
+        public static IEnumerable<ProductCourseSection> GetProductCourseSectionValues(Dictionary<string, XElement> metadataElements)
         {
             var productCourseSections = metadataElements.Where(elem => elem.Key.Contains(ElStrings.ProductCourseSection.ToString()));
-            var productCourseSectionValues = new List<ProductCourseSectionNew>();
+            var productCourseSectionValues = new List<ProductCourseSection>();
             foreach (var productCourseSection in productCourseSections)
             {
-                productCourseSectionValues.Add(new ProductCourseSectionNew
+                productCourseSectionValues.Add(new ProductCourseSection
                                                {
                                                    ProductCourseId = productCourseSection.Key.Split(new[] { ElStrings.ProductCourseSection.ToString(), "/" }, StringSplitOptions.RemoveEmptyEntries)[0],
                                                    ProductCourseValues = productCourseSection.Value.Elements().GroupBy(elem => elem.Name.LocalName).ToDictionary(group => group.Key, group => group.Select(elem => elem.Value))
