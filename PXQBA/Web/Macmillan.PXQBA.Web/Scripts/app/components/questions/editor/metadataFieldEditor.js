@@ -13,6 +13,14 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
                allowDeselect: allowDeselect,
                metadataField:  metadataField};
     },
+
+  getDefaultProps: function() {
+    return {
+      defaultType: window.enums.editorType.text
+    };
+   },
+  
+
      editHandler: function(selectedOptions){
         var text = "";
          if (selectedOptions[0] !== undefined){
@@ -69,16 +77,22 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
 
      renderBody: function(){
 
-
        var field = this.props.field;
        var metadataField = this.props.reload? this.getMetaField() : this.state.metadataField;
-       var editorType = metadataField != null ? metadataField.editorDescriptor.editorType : 0;
+       var editorType = metadataField != null ? metadataField.editorDescriptor.editorType : this.props.defaultType;  
        var currentValue = this.props.question[this.props.field];
+
+       var availableChoice = [];
+       if(metadataField!=null) {
+           availableChoice = metadataField.editorDescriptor.availableChoice;
+       } 
+
+
 
        if(this.state.editMode){
        switch (editorType) {
           case window.enums.editorType.singleSelect:
-             return (React.DOM.select( {ref:"editor", className:"single-selector", disabled:this.props.isDisabled, value:currentValue},  " ", this.renderMenuItems(metadataField.editorDescriptor.availableChoice), " " ) );
+             return (React.DOM.select( {ref:"editor", className:"single-selector", disabled:this.props.isDisabled, value:currentValue},  " ", this.renderMenuItems(availableChoice), " " ) );
 
           case window.enums.editorType.multiSelect:
               if(field=="learningObjectives"){
