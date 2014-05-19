@@ -208,9 +208,9 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             if (context.Options.Items.Any())
             {
                 return modelProfileService.GetQuestionMetadataForCourse((Question)context.SourceValue,
-                    context.Options.Items.First().Value.ToString());
+                    (Course)context.Options.Items.First().Value);
             }
-            return modelProfileService.GetQuestionMetadataForCourse((Question)context.SourceValue, string.Empty);
+            return modelProfileService.GetQuestionMetadataForCourse((Question)context.SourceValue);
         }
     }
 

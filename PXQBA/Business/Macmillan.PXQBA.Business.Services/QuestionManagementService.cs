@@ -120,14 +120,13 @@ namespace Macmillan.PXQBA.Business.Services
         }
          */
 
-        public bool UpdateQuestionField(Course course, string questionId, string fieldName, string fieldValue)
+        public bool UpdateQuestionField(Course course, string questionId, string fieldName, string fieldValue, bool isSharedField = false)
         {
-            if (fieldName.Equals(MetadataFieldNames.Sequence))
+            if (isSharedField)
             {
-                questionCommands.UpdateQuestionSequence(course.ProductCourseId, questionId, int.Parse(fieldValue));
-                return true;
+                return questionCommands.UpdateSharedQuestionField(course.QuestionRepositoryCourseId, questionId, fieldName, fieldValue);
             }
-            return questionCommands.UpdateQuestionField(questionId, fieldName, fieldValue);
+            return questionCommands.UpdateQuestionField(course.QuestionRepositoryCourseId, questionId, fieldName, fieldValue);
         }
 
         public Question CreateTemporaryQuestion(Course course, string questionId)
@@ -135,11 +134,6 @@ namespace Macmillan.PXQBA.Business.Services
             //PxTempQBAQuestion_115457_Essay
             //PxTempQBAQuestion_115457_Choice
             return temporaryQuestionOperation.CopyQuestionToTemporaryCourse(course.QuestionRepositoryCourseId, questionId);
-        }
-
-        public bool UpdateSharedQuestionField(string questionId, string fieldName, string fieldValue)
-        {
-            return questionCommands.UpdateSharedQuestionField(questionId, fieldName, fieldValue);
         }
     }
 }

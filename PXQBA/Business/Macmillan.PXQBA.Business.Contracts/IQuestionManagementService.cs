@@ -50,17 +50,9 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// <returns></returns>
         Question UpdateQuestion(Course course, string sourceQuestionId, Question temporaryQuestion);
         
-        bool UpdateQuestionField(Course course, string questionId, string fieldName, string fieldValue);
+        bool UpdateQuestionField(Course course, string questionId, string fieldName, string fieldValue, bool isSharedField = false);
 
         Question CreateTemporaryQuestion(Course course, string questionId);
 
-        /// <summary>
-        /// Updates shared value of the question
-        /// </summary>
-        /// <param name="questionId"></param>
-        /// <param name="fieldName"></param>
-        /// <param name="fieldValue"></param>
-        /// <returns></returns>
-        bool UpdateSharedQuestionField(string questionId, string fieldName, string fieldValue);
     }
 }

@@ -56,31 +56,6 @@ namespace Macmillan.PXQBA.Business.Services
             return InteractionType.Custom;
         }
 
-        public Dictionary<string, string> CreateQuestionMetadata(Question question)
-        {
-            var data = new Dictionary<string, string>();
-
-            data.Add(MetadataFieldNames.InlinePreview, question.Preview);
-            data.Add(MetadataFieldNames.DlapType, EnumHelper.GetEnumDescription(question.Type));
-            //data.Add(MetadataFieldNames.DlapTitle, question.LocalMetadata.Title);
-            data.Add(MetadataFieldNames.Id, question.Id);
-            //data.Add(MetadataFieldNames.DlapStatus, EnumHelper.GetEnumDescription(question.LocalMetadata.Status));
-            //data.Add(MetadataFieldNames.Chapter, question.LocalMetadata.Chapter);
-            //data.Add(MetadataFieldNames.Bank, question.LocalMetadata.Bank);
-            //data.Add(MetadataFieldNames.Sequence, question.LocalMetadata.Sequence.ToString());
-            //data.Add(MetadataFieldNames.Difficulty, question.LocalMetadata.Difficulty);
-            //data.Add(MetadataFieldNames.Keywords, String.Join(", ", question.LocalMetadata.Keywords));
-            //data.Add(MetadataFieldNames.SuggestedUse, String.Join(", ", question.LocalMetadata.SuggestedUse));
-            //data.Add(MetadataFieldNames.Guidance, question.LocalMetadata.Guidance);
-            //data.Add(MetadataFieldNames.LearningObjectives, String.Join(", ", question.LocalMetadata.LearningObjectives.Select(lo => lo.Description)));
-            //data.Add(MetadataFieldNames.SharedWith, question.ProductCourses.Count <= 1 ? string.Empty : String.Join("<br />", question.ProductCourses.Select(c => c.Title)));
-            data.Add(MetadataFieldNames.QuestionIdDuplicateFrom, question.QuestionIdDuplicateFrom);
-            //data.Add(MetadataFieldNames.ProductCourse, String.Join(", ", question.ProductCourses.Select(pc=>pc.Title)));
-          
-
-            return data;
-        }
-
         public string SetLearningObjectives(IEnumerable<LearningObjective> learningObjectives)
         {
             return (learningObjectives != null) ? string.Join("|", learningObjectives.Select(lo => lo.Guid)) : null;
@@ -134,7 +109,7 @@ namespace Macmillan.PXQBA.Business.Services
             return QuestionDataXmlParser.GetProductCourseSectionValues(question.MetadataElements);
         }
 
-        public QuestionMetadata GetQuestionMetadataForCourse(Question question, string courseId)
+        public QuestionMetadata GetQuestionMetadataForCourse(Question question, Course course = null)
         {
             var metadata = new QuestionMetadata();
 
@@ -142,21 +117,19 @@ namespace Macmillan.PXQBA.Business.Services
             metadata.Data.Add(MetadataFieldNames.DlapType, EnumHelper.GetEnumDescription(question.Type));
             metadata.Data.Add(MetadataFieldNames.Id, question.Id);
             metadata.Data.Add(MetadataFieldNames.QuestionIdDuplicateFrom, question.QuestionIdDuplicateFrom);
-            var courseName = string.Empty;
-            if (!string.IsNullOrEmpty(courseId))
-            {
-                var course = productCourseOperation.GetProductCourse(courseId);
-                courseName = course != null ? course.Title : string.Empty;
-            }
-            metadata.Data.Add(MetadataFieldNames.ProductCourseName, courseName);
-            var productCourseSection = !string.IsNullOrEmpty(courseId)
-                ? question.ProductCourseSections.FirstOrDefault(p => p.ProductCourseId == courseId)
+            var courseName = course != null ? course.Title : string.Empty;
+            metadata.Data.Add(MetadataFieldNames.ProductCourse, courseName);
+            var productCourseSection = course != null
+                ? question.ProductCourseSections.FirstOrDefault(p => p.ProductCourseId == course.ProductCourseId)
                 : question.ProductCourseSections.FirstOrDefault();
             if (productCourseSection != null)
             {
                 foreach (var metadataValue in productCourseSection.ProductCourseValues)
                 {
-                    metadata.Data.Add(metadataValue.Key, string.Join(", ", metadataValue.Value));
+                    if (!metadata.Data.ContainsKey(metadataValue.Key))
+                    {
+                        metadata.Data.Add(metadataValue.Key, string.Join(", ", metadataValue.Value));
+                    }
                 }
             }
             return metadata;

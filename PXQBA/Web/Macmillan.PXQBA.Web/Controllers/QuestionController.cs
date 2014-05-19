@@ -29,16 +29,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult UpdateMetadataField(string questionId, string fieldName, string fieldValue, bool isSharedField = false)
         {
-            bool success;
-            if (isSharedField)
-            {
-                success = questionManagementService.UpdateSharedQuestionField(questionId,fieldName, fieldValue);
-            }
-            else
-            {
-                success = questionManagementService.UpdateQuestionField(CourseHelper.CurrentCourse, questionId, fieldName, fieldValue);
-            }
-           
+            bool success = questionManagementService.UpdateQuestionField(CourseHelper.CurrentCourse, questionId, fieldName, fieldValue, isSharedField);
             return JsonCamel(new { isError = !success });
         
         }
