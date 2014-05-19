@@ -109,7 +109,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(vm => vm.Chapters, opt => opt.MapFrom(c => c.GetChaptersList()));
 
             Mapper.CreateMap<CourseMetadataFieldValue, ChapterViewModel>()
-                .ForMember(vm => vm.Id, opt => opt.MapFrom(c => FirstCharacterToLower(c.Text)))
+                .ForMember(vm => vm.Id, opt => opt.MapFrom(c => c.Text))
                 .ForMember(vm => vm.Title, opt => opt.MapFrom(c => c.Text));
 
             Mapper.CreateMap<Question, QuestionViewModel>()
@@ -179,18 +179,6 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
 
 
             #endregion
-        }
-
-        public static string FirstCharacterToLower(string input)
-        {
-            if (String.IsNullOrEmpty(input))
-            {
-                return input;
-            }
-
-            var stringBuilder = new StringBuilder(input);
-            stringBuilder[0] = Char.ToLower(input[0]);
-            return stringBuilder.ToString();
         }
     }
 
