@@ -53,6 +53,7 @@ namespace Macmillan.PXQBA.Business.Models
         public string Preview { get; set; }
 
         public string EntityId { get; set; }
+        public string QuizId { get; set; }
 
         public string QuestionIdDuplicateFrom { get; set; }
 

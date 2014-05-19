@@ -63,6 +63,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult GetQuestion(string questionId)
         {
+            questionId = "02E31F06ADB849895CFE3E26F2420258";
             var question = questionManagementService.GetQuestion(CourseHelper.CurrentCourse, questionId);
             return JsonCamel(CreateQuestionViewModelForEditing(question));
         }

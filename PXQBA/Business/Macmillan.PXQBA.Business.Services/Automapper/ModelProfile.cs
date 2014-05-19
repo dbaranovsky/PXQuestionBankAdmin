@@ -55,16 +55,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<Bfw.Agilix.DataContracts.LearningObjective, LearningObjective>()
                 .ForMember(dest => dest.Guid, opt => opt.MapFrom(src => src.Guid))
                 .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Title));
-
-
-            //Mapper.CreateMap<Bfw.Agilix.DataContracts.Question, Question>()
-            //    .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
-            //    .ForMember(dto => dto.EntityId, opt => opt.MapFrom(q => q.EntityId))
-            //    .ForMember(dto => dto.LocalMetadata, opt => opt.MapFrom(q => q))
-            //    .ForMember(dto => dto.Type, opt => opt.Ignore())
-            //    .ForMember(dto => dto.Preview, opt => opt.MapFrom( q => QuestionPreviewHelper.GetQuestionHtmlPreview(q)))
-            //    .ForMember(dto => dto.QuizId, opt => opt.MapFrom(q => modelProfileService.GetQuizIdForQuestion(q.Id, q.EntityId)));
-
+           
             Mapper.CreateMap<Bfw.Agilix.DataContracts.Question, Question>()
                .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
                .ForMember(dto => dto.EntityId, opt => opt.MapFrom(q => q.EntityId))
@@ -79,19 +70,6 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                .ForMember(dto => dto.MetadataElements, opt => opt.MapFrom(q => modelProfileService.GetXmlMetadataElements(q)));
 
             Mapper.CreateMap<Question, QuestionMetadata>().ConvertUsing(new QuestionToQuestionMetadataConverter(modelProfileService));
-
-            //Mapper.CreateMap<Bfw.Agilix.DataContracts.Question, QuestionStaticMetadata>()
-            //    .ForMember(dto => dto.Title, opt => opt.MapFrom(q => q.Title))
-            //    .ForMember(dto => dto.Chapter, opt => opt.MapFrom(q => q.eBookChapter))
-            //    .ForMember(dto => dto.Bank, opt => opt.MapFrom(q => q.QuestionBank))
-            //    .ForMember(dto => dto.Sequence, opt => opt.Ignore());
-
-            Mapper.CreateMap<Question, Bfw.Agilix.DataContracts.Question>()
-                .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id));
-                //.ForMember(dto => dto.EntityId, opt => opt.MapFrom(q => q.EntityId))
-                //.ForMember(dto => dto.Title, opt => opt.MapFrom(q => q.LocalMetadata.Title))
-                //.ForMember(dto => dto.eBookChapter, opt => opt.MapFrom(q => q.LocalMetadata.Chapter))
-                //.ForMember(dto => dto.QuestionBank, opt => opt.MapFrom(q => q.LocalMetadata.Bank));
 
             Mapper.CreateMap<AgilixUser, UserInfo>()
                 .ForMember(d => d.Id, opt => opt.MapFrom(s => s.Id))
@@ -117,13 +95,14 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(vm => vm.Title, opt => opt.MapFrom(c => c.Text));
 
             Mapper.CreateMap<Question, QuestionViewModel>()
-                .ForMember(dest => dest.QuizId, opt => opt.MapFrom(src => modelProfileService.GetQuizIdForQuestion(src.Id, src.EntityId)))
                 .ForMember(dest => dest.ProductCourses, opt => opt.MapFrom(src => src.ProductCourseSections.Select(p => p.ProductCourseId)))
                 .ForMember(dest => dest.LocalValues, opt => opt.MapFrom(src => src.ProductCourseSections));
 
-            Mapper.CreateMap<IList<ProductCourseSection>, Dictionary<string, IEnumerable<string>>>().ConvertUsing(new QuestionToQuestionViewModelConverter(modelProfileService));
+            Mapper.CreateMap<IList<ProductCourseSection>, Dictionary<string, IEnumerable<string>>>().ConvertUsing(new ProductSectionToLocalValuesConverter());
 
-            Mapper.CreateMap<QuestionViewModel, Question>();
+            Mapper.CreateMap<QuestionViewModel, Question>()
+                .ForMember(dest => dest.ProductCourseSections, opt => opt.MapFrom(src => modelProfileService.GetProductCourseSections(src)));
+
 
             #region UI models to dummy models
 
@@ -209,14 +188,8 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
         }
     }
 
-    public class QuestionToQuestionViewModelConverter : ITypeConverter<IList<ProductCourseSection>, Dictionary<string, IEnumerable<string>>>
+    public class ProductSectionToLocalValuesConverter : ITypeConverter<IList<ProductCourseSection>, Dictionary<string, IEnumerable<string>>>
     {
-        private readonly IModelProfileService modelProfileService;
-
-        public QuestionToQuestionViewModelConverter(IModelProfileService modelProfileService)
-        {
-            this.modelProfileService = modelProfileService;
-        }
         public Dictionary<string, IEnumerable<string>> Convert(ResolutionContext context)
         {
             var values = new Dictionary<string, IEnumerable<string>>();
@@ -235,6 +208,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             return values;
         }
     }
+
 
     //public class ValueResolver : IValueResolver
     //{

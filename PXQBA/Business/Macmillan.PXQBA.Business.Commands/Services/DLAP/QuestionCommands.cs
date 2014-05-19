@@ -35,17 +35,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             var searchResults = GetSearchResults(questionRepositoryCourseId, currentCourseId, filter, sortCriterion);
             searchResults = SortSearchResults(searchResults, sortCriterion);
 
-            var cmd = new GetQuestions()
-            {
-                SearchParameters = new QuestionSearch()
-                {
-                    EntityId = questionRepositoryCourseId,
-                    QuestionIds =  searchResults.Skip(startingRecordNumber).Take(recordCount).Select(r => r.QuestionId)
-                }
-            };
-
-            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
-            var questions = cmd.Questions;
+            var questions = GetAgilixQuestions(questionRepositoryCourseId, searchResults.Skip(startingRecordNumber).Take(recordCount).Select(r => r.QuestionId));
             var result = new PagedCollection<Question>
             {
                 TotalItems = searchResults.Count(),
@@ -110,17 +100,29 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         public Question GetQuestion(string repositoryCourseId, string questionId)
         {
+            return Mapper.Map<Question>(GetAgilixQuestion(repositoryCourseId, questionId));
+        }
+
+        private Bfw.Agilix.DataContracts.Question GetAgilixQuestion(string repositoryCourseId,
+            string questionId)
+        {
+            return GetAgilixQuestions(repositoryCourseId, new List<string>() {questionId}).FirstOrDefault();
+        }
+
+        private IEnumerable<Bfw.Agilix.DataContracts.Question> GetAgilixQuestions(string repositoryCourseId,
+            IEnumerable<string> questionIds)
+        {
             var cmd = new GetQuestions()
             {
                 SearchParameters = new QuestionSearch()
                 {
                     EntityId = repositoryCourseId,
-                    QuestionIds = new List<string>{questionId}
+                    QuestionIds = questionIds
                 }
             };
 
             businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
-            return Mapper.Map<Question>(cmd.Questions.FirstOrDefault());
+            return cmd.Questions;
         }
 
         public string GetQuizIdForQuestion(string questionId, string entityId)
@@ -144,14 +146,12 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         public Question UpdateQuestion(Question question)
         {
-            var questionId = "02E31F06ADB849895CFE3E26F2420258";
-            var entityid = "39768";
-            var x = GetQuestion(entityid, questionId);
-
-            var cmd1 = new PutQuestions();
-            cmd1.Add(Mapper.Map<Bfw.Agilix.DataContracts.Question>(x));
-            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd1);
-            return x;
+            var agilixQuestion = GetAgilixQuestion(question.EntityId, question.Id);
+            Mapper.Map(question, agilixQuestion);
+            var cmd = new PutQuestions();
+            cmd.Add(Mapper.Map<Bfw.Agilix.DataContracts.Question>(agilixQuestion));
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+            return question;
         }
 
         public bool UpdateQuestionField(string productCourseId, string repositoryCourseId, string questionId, string fieldName, string fieldValue)
@@ -216,26 +216,26 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return query.ToString();
         }
 
-        public void GetQuestions()
-        {
-            var questionId = "02E31F06ADB849895CFE3E26F2420258";
-            var entityid = "39768";
-            var cmd = new GetQuestions()
-            {
-                SearchParameters = new QuestionSearch()
-                {
-                    EntityId = entityid,
-                    QuestionIds = new List<string>() { questionId }
-                }
-            };
+        //public void GetQuestions()
+        //{
+        //    var questionId = "02E31F06ADB849895CFE3E26F2420258";
+        //    var entityid = "39768";
+        //    var cmd = new GetQuestions()
+        //    {
+        //        SearchParameters = new QuestionSearch()
+        //        {
+        //            EntityId = entityid,
+        //            QuestionIds = new List<string>() { questionId }
+        //        }
+        //    };
 
-            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
-            var x = cmd.Questions;
+        //    businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+        //    var x = cmd.Questions;
 
-            var cmd1 = new PutQuestions();
-            cmd1.Add(x);
-            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd1);
-        }
+        //    var cmd1 = new PutQuestions();
+        //    cmd1.Add(x);
+        //    businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd1);
+        //}
     //    private readonly IContext businessContext;
 
     //    /// <summary>

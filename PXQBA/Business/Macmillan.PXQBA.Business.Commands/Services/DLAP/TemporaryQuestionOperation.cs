@@ -29,10 +29,11 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         public Models.Question CopyQuestionToTemporaryCourse(string sourceProductCourseId, string questionIdToCopy)
         {
-
             var questionToCopy = CopyQuestionToCourse(sourceProductCourseId, questionIdToCopy, temporaryCourseId, GetTemporaryQuestionId());
             AddQuestionToTemporaryQuiz(questionToCopy);
-            return Mapper.Map<Models.Question>(questionToCopy);
+            var question = Mapper.Map<Models.Question>(questionToCopy);
+            question.QuizId = GetTemporaryQuizId();
+            return question;
         }
 
         public Models.Question CopyQuestionToSourceCourse(string sourceProductCourseId, string sourceQuestionId)

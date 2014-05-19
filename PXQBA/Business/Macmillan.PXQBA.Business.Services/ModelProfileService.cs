@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using AutoMapper;
+using Bfw.Agilix.DataContracts;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Commands.Helpers;
 using Macmillan.PXQBA.Business.Contracts;
@@ -10,7 +11,9 @@ using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Common.Helpers.Constants;
 using Macmillan.PXQBA.DataAccess.Data;
+using Macmillan.PXQBA.Web.ViewModels;
 using Course = Macmillan.PXQBA.Business.Models.Course;
+using LearningObjective = Macmillan.PXQBA.Business.Models.LearningObjective;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Business.Services
@@ -110,6 +113,22 @@ namespace Macmillan.PXQBA.Business.Services
             return QuestionDataXmlParser.GetProductCourseSectionValues(question.MetadataElements);
         }
 
+        public IEnumerable<ProductCourseSection> GetProductCourseSections(QuestionViewModel viewModel)
+        {
+            var currentProductCourseId = viewModel.LocalValues[MetadataFieldNames.ProductCourse].First();
+            var sections = new List<ProductCourseSection>()
+                           {
+                               new ProductCourseSection()
+                               {
+                                   ProductCourseId = currentProductCourseId,
+                                   ProductCourseValues = viewModel.LocalValues
+                               }
+                           };
+            var question = questionCommands.GetQuestion(viewModel.EntityId, viewModel.Id);
+            sections.AddRange(question.ProductCourseSections.Where(s => s.ProductCourseId != currentProductCourseId));
+            return sections;
+        }
+
         public QuestionMetadata GetQuestionMetadataForCourse(Question question, Course course = null)
         {
             var metadata = new QuestionMetadata();
@@ -155,10 +174,6 @@ namespace Macmillan.PXQBA.Business.Services
             }
             return questionCommands.GetQuestion("", GetHardCodedQuestionDuplicate());
         }
-
-        public string GetQuizIdForQuestion(string id, string entityId)
-        {
-            return questionCommands.GetQuizIdForQuestion(id, entityId);
-        }
+       
     }
 }
