@@ -21,8 +21,19 @@ var Question = React.createClass({
             var questionIds = [];
             questionIds.push(questionId);
 
-            var isShared =  this.props.metadata.data.sharedWith != "";
-            var titleCount = this.props.metadata.data.sharedWith.split("<br />").length;
+            var isShared = true;
+
+            if(this.props.metadata.data.sharedWith==null) {
+                isShared = false;
+            }
+            else {
+                isShared =  this.props.metadata.data.sharedWith != "";
+            }
+
+            var titleCount=0;
+            if(isShared) {
+               titleCount = this.props.metadata.data.sharedWith.split("<br />").length;
+            }
 
             return <QuestionListMenu
                         data={this.props.metadata.data} 
