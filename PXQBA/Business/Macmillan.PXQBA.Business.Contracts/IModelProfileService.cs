@@ -18,13 +18,13 @@ namespace Macmillan.PXQBA.Business.Contracts
         string GetHardCodedQuestionDuplicate();
         Question GetHardCodedSourceQuestion(int sharedFrom);
 
-        IEnumerable<CourseMetadataFieldDescriptor> GetCourseMetadataFieldDescriptors(
+        List<CourseMetadataFieldDescriptor> GetCourseMetadataFieldDescriptors(
             Bfw.Agilix.DataContracts.Course src);
 
         string GetQuestionBankRepositoryCourse(Bfw.Agilix.DataContracts.Course src);
-        Dictionary<string, IEnumerable<string>> GetQuestionDefaultValues(Bfw.Agilix.DataContracts.Question question);
-        IEnumerable<ProductCourseSection> GetProductCourseSections(Bfw.Agilix.DataContracts.Question question);
-        IEnumerable<ProductCourseSection> GetProductCourseSections(QuestionViewModel viewModel);
+        Dictionary<string, List<string>> GetQuestionDefaultValues(Bfw.Agilix.DataContracts.Question question);
+        List<ProductCourseSection> GetProductCourseSections(Bfw.Agilix.DataContracts.Question question);
+        List<ProductCourseSection> GetProductCourseSections(QuestionViewModel viewModel);
         QuestionMetadata GetQuestionMetadataForCourse(Question question, Course course = null);
         Dictionary<string, XElement> GetXmlMetadataElements(Question question);
     }

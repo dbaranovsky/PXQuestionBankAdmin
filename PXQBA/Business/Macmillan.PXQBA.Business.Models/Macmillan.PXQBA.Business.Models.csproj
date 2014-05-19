@@ -57,6 +57,7 @@
     <Compile Include="LearningObjective.cs" />
     <Compile Include="MetadataFieldType.cs" />
     <Compile Include="Note.cs" />
+    <Compile Include="ProductCourseSection.cs" />
     <Compile Include="QuestionList.cs" />
     <Compile Include="QuestionType.cs" />
     <Compile Include="InteractionType.cs" />

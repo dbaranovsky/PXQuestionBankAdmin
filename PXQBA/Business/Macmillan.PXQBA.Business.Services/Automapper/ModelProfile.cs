@@ -58,7 +58,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
            
             Mapper.CreateMap<Bfw.Agilix.DataContracts.Question, Question>()
                .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
-               .ForMember(dto => dto.EntityId, opt => opt.MapFrom(q => q.EntityId))
+               .ForMember(dto => dto.Status, opt => opt.MapFrom(q => q.QuestionStatus))
                .ForMember(dto => dto.DefaultValues, opt => opt.MapFrom(q => modelProfileService.GetQuestionDefaultValues(q)))
                .ForMember(dto => dto.ProductCourseSections, opt => opt.MapFrom(q => modelProfileService.GetProductCourseSections(q)))
                .ForMember(dto => dto.Type, opt => opt.Ignore())
@@ -66,8 +66,12 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
 
             Mapper.CreateMap<Question, Bfw.Agilix.DataContracts.Question>()
                .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
-               .ForMember(dto => dto.EntityId, opt => opt.MapFrom(q => q.EntityId))
-               .ForMember(dto => dto.MetadataElements, opt => opt.MapFrom(q => modelProfileService.GetXmlMetadataElements(q)));
+               .ForMember(dto => dto.QuestionStatus, opt => opt.MapFrom(q => q.Status))
+               .ForMember(dto => dto.MetadataElements, opt => opt.MapFrom(q => modelProfileService.GetXmlMetadataElements(q)))
+               .ForMember(dto => dto.Body, opt => opt.Condition(cont => cont.DestinationValue == null))
+               .ForMember(dto => dto.Answer, opt => opt.Condition(cont => cont.DestinationValue == null))
+               .ForMember(dto => dto.InteractionData, opt => opt.Condition(cont => cont.DestinationValue == null))
+               .ForMember(dto => dto.InteractionType, opt => opt.Condition(cont => cont.DestinationValue == null));
 
             Mapper.CreateMap<Question, QuestionMetadata>().ConvertUsing(new QuestionToQuestionMetadataConverter(modelProfileService));
 
@@ -98,7 +102,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.ProductCourses, opt => opt.MapFrom(src => src.ProductCourseSections.Select(p => p.ProductCourseId)))
                 .ForMember(dest => dest.LocalValues, opt => opt.MapFrom(src => src.ProductCourseSections));
 
-            Mapper.CreateMap<IList<ProductCourseSection>, Dictionary<string, IEnumerable<string>>>().ConvertUsing(new ProductSectionToLocalValuesConverter());
+            Mapper.CreateMap<List<ProductCourseSection>, Dictionary<string, List<string>>>().ConvertUsing(new ProductSectionToLocalValuesConverter());
 
             Mapper.CreateMap<QuestionViewModel, Question>()
                 .ForMember(dest => dest.ProductCourseSections, opt => opt.MapFrom(src => modelProfileService.GetProductCourseSections(src)));
@@ -188,16 +192,16 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
         }
     }
 
-    public class ProductSectionToLocalValuesConverter : ITypeConverter<IList<ProductCourseSection>, Dictionary<string, IEnumerable<string>>>
+    public class ProductSectionToLocalValuesConverter : ITypeConverter<List<ProductCourseSection>, Dictionary<string, List<string>>>
     {
-        public Dictionary<string, IEnumerable<string>> Convert(ResolutionContext context)
+        public Dictionary<string, List<string>> Convert(ResolutionContext context)
         {
-            var values = new Dictionary<string, IEnumerable<string>>();
+            var values = new Dictionary<string, List<string>>();
             if (context.Options.Items.Any())
             {
                 var productCourseId = context.Options.Items.First().Value.ToString();
                 var section =
-                    ((IList<ProductCourseSection>) context.SourceValue).FirstOrDefault(
+                    ((List<ProductCourseSection>)context.SourceValue).FirstOrDefault(
                         s => s.ProductCourseId == productCourseId);
                 if (section != null)
                 {

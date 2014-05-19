@@ -11,14 +11,14 @@ namespace Macmillan.PXQBA.Web.ViewModels
     {
         public string Id { get; set; }
 
-        private Dictionary<string, IList<string>> defaultValues;
-        public Dictionary<string, IList<string>> DefaultValues
+        private Dictionary<string, List<string>> defaultValues;
+        public Dictionary<string, List<string>> DefaultValues
         {
             get
             {
                 if (defaultValues == null)
                 {
-                    defaultValues = new Dictionary<string, IList<string>>();
+                    defaultValues = new Dictionary<string, List<string>>();
                 }
                 return defaultValues;
             }
@@ -27,6 +27,8 @@ namespace Macmillan.PXQBA.Web.ViewModels
                 defaultValues = value;
             }
         }
+
+        public string Status { get; set; }
 
         public QuestionType Type { get; set; }
         public string Preview { get; set; }
@@ -64,14 +66,14 @@ namespace Macmillan.PXQBA.Web.ViewModels
         public string QuizId { get; set; }
         public string ActionPlayerUrl { get; set; }
         public string EditorUrl { get; set; }
-        private Dictionary<string, IEnumerable<string>> localValues;
-        public Dictionary<string, IEnumerable<string>> LocalValues
+        private Dictionary<string, List<string>> localValues;
+        public Dictionary<string, List<string>> LocalValues
         {
             get
             {
                 if (localValues == null)
                 {
-                    localValues = new Dictionary<string, IEnumerable<string>>();
+                    localValues = new Dictionary<string, List<string>>();
                 }
                 return localValues;
             }

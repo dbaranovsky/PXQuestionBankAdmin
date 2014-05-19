@@ -93,9 +93,12 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return searchResults;
         }
 
-        public Question CreateQuestion(string courseId, Question question)
+        public Question CreateQuestion(Question question)
         {
-            throw new System.NotImplementedException();
+            var cmd = new PutQuestions();
+            cmd.Add(Mapper.Map<Bfw.Agilix.DataContracts.Question>(question));
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+            return question;
         }
 
         public Question GetQuestion(string repositoryCourseId, string questionId)
@@ -149,7 +152,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             var agilixQuestion = GetAgilixQuestion(question.EntityId, question.Id);
             Mapper.Map(question, agilixQuestion);
             var cmd = new PutQuestions();
-            cmd.Add(Mapper.Map<Bfw.Agilix.DataContracts.Question>(agilixQuestion));
+            cmd.Add(agilixQuestion);
             businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
             return question;
         }
@@ -159,6 +162,10 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             if (fieldName.Equals(MetadataFieldNames.Sequence))
             {
                 return UpdateQuestionSequence(productCourseId, repositoryCourseId, questionId, int.Parse(fieldValue));
+            }
+            if (fieldName.Equals(MetadataFieldNames.DlapStatus))
+            {
+                return UpdateQuestionStatus(repositoryCourseId, questionId, fieldValue);
             }
             var question = GetQuestion(repositoryCourseId, questionId);
             if (question != null)
@@ -174,6 +181,18 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 }
             }
             return true;
+        }
+
+        private bool UpdateQuestionStatus(string repositoryCourseId, string questionId, string newValue)
+        {
+            var question = GetQuestion(repositoryCourseId, questionId);
+            if (question != null)
+            {
+                question.Status = newValue;
+                UpdateQuestion(question);
+                return true;
+            }
+            return false;
         }
 
         public bool UpdateSharedQuestionField(string repositoryCourseId, string questionId, string fieldName, string fieldValue)
