@@ -10,13 +10,13 @@ using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Commands.DataContracts;
 using Macmillan.PXQBA.Business.Commands.Helpers;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Common.Helpers;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 {
     public class QuestionCommands : IQuestionCommands
     {
-
         private readonly IContext businessContext;
 
         public QuestionCommands(IContext businessContext)
@@ -178,7 +178,8 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         public bool UpdateSharedQuestionField(string repositoryCourseId, string questionId, string fieldName, string fieldValue)
         {
-            var question = GetQuestion(repositoryCourseId, questionId);
+            var temporaryRepositoryCourseId = ConfigurationHelper.GetTemporaryCourseId();
+            var question = GetQuestion(temporaryRepositoryCourseId, questionId);
             if (question != null)
             {
                 if (question.DefaultValues != null && question.DefaultValues.ContainsKey(fieldName))
@@ -192,7 +193,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         private string BuildQueryString(IEnumerable<FilterFieldDescriptor> filter)
         {
-            var query = new StringBuilder("dlap_class:question");
+            var query = new StringBuilder("(dlap_class:question)");
             if (filter != null)
             {
                 var productCourseFilterField = filter.First(field => field.Field == MetadataFieldNames.ProductCourse);
@@ -204,10 +205,13 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                         var productCourseSection = string.Format("{0}{1}", ElStrings.ProductCourseSection, productCourseId);
                         foreach (var filterFieldDescriptor in filter)
                         {
-                            foreach (var value in filterFieldDescriptor.Values)
+                            var fieldQuery = string.Join(" OR ",
+                                filterFieldDescriptor.Values.Select(v =>
+                                        string.Format("{0}/{1}:\"{2}\"", productCourseSection, filterFieldDescriptor.Field, v)));
+                           
+                            if (!string.IsNullOrEmpty(fieldQuery))
                             {
-                                query.Append(string.Format(" AND {0}/{1}:{2}", productCourseSection,
-                                    filterFieldDescriptor.Field, value));
+                                query.Append(string.Format(" AND ({0})", fieldQuery));
                             }
                         }
                     }
@@ -215,128 +219,5 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             }
             return query.ToString();
         }
-
-        //public void GetQuestions()
-        //{
-        //    var questionId = "02E31F06ADB849895CFE3E26F2420258";
-        //    var entityid = "39768";
-        //    var cmd = new GetQuestions()
-        //    {
-        //        SearchParameters = new QuestionSearch()
-        //        {
-        //            EntityId = entityid,
-        //            QuestionIds = new List<string>() { questionId }
-        //        }
-        //    };
-
-        //    businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
-        //    var x = cmd.Questions;
-
-        //    var cmd1 = new PutQuestions();
-        //    cmd1.Add(x);
-        //    businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd1);
-        //}
-    //    private readonly IContext businessContext;
-
-    //    /// <summary>
-    //    /// Limitation of the Search command
-    //    /// </summary>
-    //    private const int SearchCommandMaxRows = 25;
-
-    //    private readonly Dictionary<string, string> availableQuestionTypes;
-
-    //    private const string QueryParameters = "(dlap_class:question)";
-
-
-    //    public QuestionCommands(IContext businessContext)
-    //    {
-    //        this.businessContext = businessContext;
-    //        this.availableQuestionTypes = ConfigurationHelper.GetQuestionTypes();
-    //    }
-
-    //    public void SaveQuestions(IList<Question> questions)
-    //    {
-    //        var cmd = new PutQuestions();
-    //        cmd.Add(Mapper.Map<IList<Bfw.Agilix.DataContracts.Question>>(questions));
-    //        businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
-    //    }
-
-    //    /// <summary>
-    //    /// Get question for specify query
-    //    /// </summary>
-    //    /// <param name="query">search query</param>
-    //    /// <param name="page">current page</param>
-    //    /// <param name="questionPerPage">question per page</param>
-    //    /// <returns>questions</returns>
-    //    public PagedCollection<Question> GetQuestionList(string courseId, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
-    //    {
-    //        var searchCommand = new Search()
-    //        {
-    //            SearchParameters = new SolrSearchParameters()
-    //            {
-    //                EntityId = ConfigurationHelper.GetDisciplineCourseId(),
-    //                Query = QueryParameters,
-    //                Rows = questionPerPage,
-    //                Start = ((page - 1) * questionPerPage),
-    //            }
-    //        };
-
-    //        var resultDocs = ExecuteSearchCommand(searchCommand);
-
-    //        return PareseDocuments(resultDocs);
-    //    }
-
-
-    //    private IEnumerable<XDocument> ExecuteSearchCommand(Search searchCommand)
-    //    {
-    //        var resultsDocs = new List<XDocument>();
-
-    //        if (searchCommand.SearchParameters.Rows > SearchCommandMaxRows)
-    //        {
-    //            ExecuteSearchCommandWithServerSidePaging(searchCommand, resultsDocs);
-    //        }
-    //        else
-    //        {
-    //            ExecuteAndAppendResult(searchCommand, resultsDocs);
-    //        }
-
-    //        return resultsDocs;
-    //    }
-
-
-    //    private void ExecuteSearchCommandWithServerSidePaging(Search searchCommand, List<XDocument> resultsDocs)
-    //    {
-    //        int numRows = searchCommand.SearchParameters.Rows;
-    //        searchCommand.SearchParameters.Rows = SearchCommandMaxRows;
-
-    //        while (numRows > 0)
-    //        {
-    //            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(searchCommand);
-    //            resultsDocs.Add(searchCommand.SearchResults);
-
-    //            searchCommand.SearchParameters.Start += SearchCommandMaxRows;
-    //            numRows -= SearchCommandMaxRows;
-    //        }
-    //    }
-
-
-    //    private void ExecuteAndAppendResult(Search searchCommand, List<XDocument> resultsDocs)
-    //    {
-    //        businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(searchCommand);
-    //        resultsDocs.Add(searchCommand.SearchResults);
-    //    }
-
-
-    //    private QuestionList PareseDocuments(IEnumerable<XDocument> documents)
-    //    {
-    //        var questionList = new QuestionList();
-
-    //        foreach (var xDocument in documents)
-    //        {
-    //            SerachCommandXmlParserHelper.PareseResultXDocument(xDocument, questionList, availableQuestionTypes);
-    //        }
-
-    //        return questionList;
-    //    }
     }
 }
