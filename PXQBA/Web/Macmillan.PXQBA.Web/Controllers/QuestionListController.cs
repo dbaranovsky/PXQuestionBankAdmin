@@ -50,7 +50,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult GetQuestionData(QuestionListDataRequest request)
         {
 
-            var currentCourseFilter = request.Filter.SingleOrDefault(x => x.Field == MetadataFieldNames.ProductCourse);
+            var currentCourseFilter = request.Filter.SingleOrDefault(x => x.Field == MetadataFieldNames.ProductCourseId);
             ClearFilter(currentCourseFilter, request);
 
             UpdateCurrentCourse(currentCourseFilter.Values.First());

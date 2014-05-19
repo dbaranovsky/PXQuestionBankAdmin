@@ -148,7 +148,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             var query = new StringBuilder("dlap_class:question");
             if (filter != null)
             {
-                var productCourseFilterField = filter.First(field => field.Field == MetadataFieldNames.ProductCourse);
+                var productCourseFilterField = filter.First(field => field.Field == MetadataFieldNames.ProductCourseId);
                 if (productCourseFilterField != null)
                 {
                     var productCourseId = productCourseFilterField.Values.First();
