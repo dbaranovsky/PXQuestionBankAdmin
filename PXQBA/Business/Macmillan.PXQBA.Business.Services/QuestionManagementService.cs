@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
@@ -33,11 +34,8 @@ namespace Macmillan.PXQBA.Business.Services
 
         public Question CreateQuestion(Course course, QuestionType questiontype, string bank, string chapter)
         {
-            Question question = GetNewQuestionTemplate();
-            question.Type = questiontype;
-            //question.LocalMetadata.Bank = bank;
-            //question.LocalMetadata.Chapter = chapter;
-            return questionCommands.CreateQuestion(course.QuestionRepositoryCourseId, question);
+            Question question = GetNewQuestionTemplate(course, questiontype, bank, chapter);
+            return questionCommands.CreateQuestion(question);
         }
 
         public Question GetQuestion(Course course, string questionId)
@@ -49,21 +47,36 @@ namespace Macmillan.PXQBA.Business.Services
         {
             Question question = GetQuestion(course, questionId);
             question.Id = Guid.NewGuid().ToString();
-            //question.LocalMetadata.Status = QuestionStatus.InProgress;
+            question.Status = QuestionStatus.InProgress.ToString();
             question.QuestionIdDuplicateFrom = questionId;
-            return questionCommands.CreateQuestion(course.ProductCourseId, question);
+            return questionCommands.CreateQuestion(question);
         }
 
-        private Question GetNewQuestionTemplate()
+        private Question GetNewQuestionTemplate(Course course, QuestionType questionType, string bank, string chapter)
         {
             var question = new Question();
-            //question.LocalMetadata = new QuestionStaticMetadata();
-            //question.LocalMetadata.Status = QuestionStatus.InProgress;
-            //question.LocalMetadata.Title = "New question";
-            //question.Preview = "<h2>preview for test</h2>";
-            //question.LocalMetadata.Chapter = "Chapter 1";
-            //question.LocalMetadata.Bank = "End of Chapter Questions";
-            //question.LocalMetadata.LearningObjectives = new List<LearningObjective>();
+            question.Id = Guid.NewGuid().ToString();
+            question.EntityId = course.QuestionRepositoryCourseId;
+            question.Type = questionType;
+            var values = new Dictionary<string, List<String>>
+                         {
+                             { MetadataFieldNames.ProductCourse, new List<string> {course.ProductCourseId}},
+                             { MetadataFieldNames.DlapTitle, new List<string> {string.Empty}},
+                             {MetadataFieldNames.Bank, new List<string> {bank}},
+                             {MetadataFieldNames.Chapter, new List<string> {chapter}}
+                         };
+            question.DefaultValues = values.Skip(1).ToDictionary(item => item.Key, item => item.Value);
+            question.ProductCourseSections.Add(new ProductCourseSection
+                                               {
+                                                   ProductCourseId = course.ProductCourseId,
+                                                   ProductCourseValues = values
+                                               });
+            question.Status = QuestionStatus.InProgress.ToString();
+            question.Body = string.Empty;
+            question.InteractionData = string.Empty;
+            //TODO: set question type from central storage
+            question.InteractionType = "choice";
+            question.Answer = string.Empty;
             return question;
         }
 
@@ -88,35 +101,6 @@ namespace Macmillan.PXQBA.Business.Services
             temporaryQuestionOperation.CopyQuestionToSourceCourse(course.QuestionRepositoryCourseId, sourceQuestionId);
             return questionCommands.UpdateQuestion(updatedTempQuestion);
         }
-
-        /*
-        public void CreateQuestion(string questionType)
-        {
-            var shortQuestionType = Question.QuestionTypeShortNameFromId(questionType);
-            var question = new Question
-            {
-                Id = Guid.NewGuid().ToString(),
-                EntityId = "6710",
-                Type = shortQuestionType,
-                InteractionType = Mapper.Map<InteractionType>(questionType)
-            };
-            if (shortQuestionType == "HTS" || shortQuestionType == "CUSTOM")
-            {
-                question.Text = "Advanced Question";
-                question.CustomUrl = "HTS";
-                question.Type = "CUSTOM";
-            }
-
-            if (shortQuestionType == "FMA_GRAPH")
-            {
-                question.Text = "Graphing exercise";
-                question.CustomUrl = "FMA_GRAPH";
-                question.Type = "CUSTOM";
-            }
-            question.InteractionType = Mapper.Map<InteractionType>(question.Type);
-            SaveQuestion(question);
-        }
-         */
 
         public bool UpdateQuestionField(Course course, string questionId, string fieldName, string fieldValue, bool isSharedField = false)
         {

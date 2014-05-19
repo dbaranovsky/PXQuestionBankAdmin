@@ -8,7 +8,7 @@ namespace Macmillan.PXQBA.Common.Helpers
 {
     public static class CourseDataXmlParser
     {
-        public static IEnumerable<CourseMetadataFieldDescriptor> ParseMetaAvailableQuestionData(XElement xmlCourseData)
+        public static List<CourseMetadataFieldDescriptor> ParseMetaAvailableQuestionData(XElement xmlCourseData)
         {
 
             var fieldsList = new List<CourseMetadataFieldDescriptor>();

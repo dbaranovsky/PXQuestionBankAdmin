@@ -92,7 +92,7 @@ namespace Macmillan.PXQBA.Business.Services
             return string.Empty;
         }
 
-        public IEnumerable<CourseMetadataFieldDescriptor> GetCourseMetadataFieldDescriptors(
+        public List<CourseMetadataFieldDescriptor> GetCourseMetadataFieldDescriptors(
             Bfw.Agilix.DataContracts.Course src)
         {
             return CourseDataXmlParser.ParseMetaAvailableQuestionData(src.Data);
@@ -103,17 +103,17 @@ namespace Macmillan.PXQBA.Business.Services
             return CourseDataXmlParser.ParseQuestionBankRepositoryCourse(src.Data);
         }
 
-        public Dictionary<string, IEnumerable<string>> GetQuestionDefaultValues(Bfw.Agilix.DataContracts.Question question)
+        public Dictionary<string, List<string>> GetQuestionDefaultValues(Bfw.Agilix.DataContracts.Question question)
         {
             return QuestionDataXmlParser.GetDefaultSectionValues(question.MetadataElements);
         }
 
-        public IEnumerable<ProductCourseSection> GetProductCourseSections(Bfw.Agilix.DataContracts.Question question)
+        public List<ProductCourseSection> GetProductCourseSections(Bfw.Agilix.DataContracts.Question question)
         {
             return QuestionDataXmlParser.GetProductCourseSectionValues(question.MetadataElements);
         }
 
-        public IEnumerable<ProductCourseSection> GetProductCourseSections(QuestionViewModel viewModel)
+        public List<ProductCourseSection> GetProductCourseSections(QuestionViewModel viewModel)
         {
             var currentProductCourseId = viewModel.LocalValues[MetadataFieldNames.ProductCourse].First();
             var sections = new List<ProductCourseSection>()

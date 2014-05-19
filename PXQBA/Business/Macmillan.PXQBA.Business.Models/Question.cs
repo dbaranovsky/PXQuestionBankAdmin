@@ -3,54 +3,13 @@ using System.Linq;
 
 namespace Macmillan.PXQBA.Business.Models
 {
-    /// <summary>
-    /// Question DTO
-    /// </summary>
-    //public class Question
-    //{
-    //    public string Id { get; set; }
-
-    //    public QuestionStaticMetadata LocalMetadata { get; set; }
-
-    //    public QuestionType Type { get; set; }
-    //    public string Preview { get; set; }
-
-    //    /// <summary>
-    //    /// Question particular version
-    //    /// </summary>
-    //    public string Version { get; set; }
-
-    //    public string QuestionIdDuplicateFrom { get; set; }
-
-    //    private List<ProductCourseSection> productCourses;
-    //    public List<ProductCourseSection> ProductCourses
-    //    {
-    //        get
-    //        {
-    //            if (productCourses == null)
-    //            {
-    //                productCourses = new List<ProductCourseSection>();
-    //            }
-    //            return productCourses;
-    //        }
-    //        set
-    //        {
-    //            productCourses = value;
-    //        }
-    //    } 
-
-    //    public string EntityId { get; set; }
-
-    //    public string QuizId { get; set; }
-
-    //    public QuestionStaticMetadata SharedMetadata { get; set; }
-    //}
-
     public class Question
     {
         public string Id { get; set; }
 
         public string Preview { get; set; }
+
+        public string Status { get; set; }
 
         public string EntityId { get; set; }
         public string QuizId { get; set; }
@@ -59,15 +18,15 @@ namespace Macmillan.PXQBA.Business.Models
 
         public QuestionType Type { get; set; }
 
-        private Dictionary<string, IList<string>> defaultValues;
+        private Dictionary<string, List<string>> defaultValues;
 
-        public Dictionary<string, IList<string>> DefaultValues
+        public Dictionary<string, List<string>> DefaultValues
         {
             get
             {
                 if (defaultValues == null)
                 {
-                    defaultValues = new Dictionary<string, IList<string>>();
+                    defaultValues = new Dictionary<string, List<string>>();
                 }
                 return defaultValues;
             }
@@ -77,9 +36,9 @@ namespace Macmillan.PXQBA.Business.Models
             }
         }
 
-        private IList<ProductCourseSection> productCourseSections;
+        private List<ProductCourseSection> productCourseSections;
 
-        public IList<ProductCourseSection> ProductCourseSections
+        public List<ProductCourseSection> ProductCourseSections
         {
             get
             {
@@ -95,29 +54,9 @@ namespace Macmillan.PXQBA.Business.Models
             }
         }
 
+        public string Body { get; set; }
+        public string InteractionType { get; set; }
+        public string InteractionData { get; set; }
+        public string Answer { get; set; }
     }
-
-    public class ProductCourseSection
-    {
-        public string ProductCourseId { get; set; }
-
-        private Dictionary<string, IEnumerable<string>> productCourseValues;
-
-        public Dictionary<string, IEnumerable<string>> ProductCourseValues
-        {
-            get
-            {
-                if (productCourseValues == null)
-                {
-                    productCourseValues = new Dictionary<string, IEnumerable<string>>();
-                }
-                return productCourseValues;
-            }
-            set
-            {
-                productCourseValues = value;
-            }
-        }
-    }
-
 }
