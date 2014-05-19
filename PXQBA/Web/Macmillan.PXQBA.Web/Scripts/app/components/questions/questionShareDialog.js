@@ -11,7 +11,7 @@ var QuestionShareDialog = React.createClass({displayName: 'QuestionShareDialog',
              };
     },
 
-    componentDidMount: function(){
+  componentDidMount: function(){
           questionDataManager.getMetadataFields().done(this.loadMetadata);
         if(this.props.showOnCreate)
         {
@@ -123,26 +123,25 @@ var ShareQuestionBox = React.createClass({displayName: 'ShareQuestionBox',
      var shareViewModel = this.state.shareViewModel;
      shareViewModel.course = courseId;
 
-     var chapterMeta = this.getMetaField("chapter", metadata);
-     var bankMeta = this.getMetaField("bank", metadata);
+     var chapterMeta = this.getMetaField(window.consts.questionChapterName, metadata);
+     var bankMeta = this.getMetaField(window.consts.questionBankName, metadata);
 
-     shareViewModel.bank = this.getDefaultValue(bankMeta);
-     shareViewModel.chapter = this.getDefaultValue(chapterMeta);
+     shareViewModel[window.consts.questionBankName] = this.getDefaultValue(bankMeta);
+     shareViewModel[window.consts.questionChapterName] = this.getDefaultValue(chapterMeta);
 
      return shareViewModel;
    },
 
    getDefaultValue: function(metadataField){
       var defaultValue = "";
-      //To do resolve underfined exception
+
+      if(metadataField==null) {
+        return defaultValue;
+      }
        var availableChoices = metadataField.editorDescriptor.availableChoice;
 
        defaultValue = metadataField.editorDescriptor.availableChoice[0].value;
-       // for (var propertyName in availableChoices) {
-      //      availableChoice = availableChoices[propertyName];
-      //      defaultValue = (availableChoice.toLowerCase() == propertyName.toLowerCase())? availableChoice: propertyName;
-      //      break;
-     //   }
+
       return defaultValue
    },
 
@@ -177,10 +176,10 @@ var ShareQuestionBox = React.createClass({displayName: 'ShareQuestionBox',
     render: function() {
             return (React.DOM.div(null, 
                            
-                           MetadataFieldEditor( {question:this.state.shareViewModel, metadata:this.state.metadata, setDefault:this.state.setDefaults, editHandler:this.productTitleEditHandler, field:"course", title:"Target title"}),
+                           MetadataFieldEditor( {question:this.state.shareViewModel, metadata:this.state.metadata, setDefault:this.state.setDefaults, editHandler:this.productTitleEditHandler, field:window.consts.questionCourseName, title:"Target title"}),
                            this.renderWaiter(),
-                           MetadataFieldEditor( {question:this.state.shareViewModel, metadata:this.state.metadata, setDefault:true, isDisabled:this.state.loading, reload:true, editHandler:this.editHandler, field:"chapter", title:"Target chapter"}),
-                           MetadataFieldEditor( {question:this.state.shareViewModel, metadata:this.state.metadata, setDefault:true, isDisabled:this.state.loading,  reload:true, editHandler:this.editHandler, field:"bank", title:"Target bank"}),
+                           MetadataFieldEditor( {question:this.state.shareViewModel, metadata:this.state.metadata, setDefault:true, defaultType:window.enums.editorType.singleSelect, isDisabled:this.state.loading, reload:true, editHandler:this.editHandler, field:window.consts.questionChapterName, title:"Target chapter"}),
+                           MetadataFieldEditor( {question:this.state.shareViewModel, metadata:this.state.metadata, setDefault:true, defaultType:window.enums.editorType.singleSelect, isDisabled:this.state.loading,  reload:true, editHandler:this.editHandler, field:window.consts.questionBankName, title:"Target bank"}),
 
                             React.DOM.div( {className:"modal-footer clearfix"}, 
                                  React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal", onClick:this.props.closeDialogHandler}, "Cancel"),
