@@ -28,6 +28,7 @@ namespace Macmillan.PXQBA.Business.Services
 
         public PagedCollection<Question> GetQuestionList(Course course, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
         {
+            questionCommands.UpdateQuestion(new Question());
             //productCourseOperation.GetQuestionList(course.ProductCourseId, filter, sortCriterion, startingRecordNumber, recordCount);
             //temporaryQuestionOperation.CopyQuestionToTemporaryCourse(course.ProductCourseId, "PxTempQBAQuestion_115457_Choice");
             return questionCommands.GetQuestionList(course.QuestionRepositoryCourseId, course.ProductCourseId, filter, sortCriterion, startingRecordNumber, recordCount);
@@ -126,7 +127,7 @@ namespace Macmillan.PXQBA.Business.Services
             {
                 return questionCommands.UpdateSharedQuestionField(course.QuestionRepositoryCourseId, questionId, fieldName, fieldValue);
             }
-            return questionCommands.UpdateQuestionField(course.QuestionRepositoryCourseId, questionId, fieldName, fieldValue);
+            return questionCommands.UpdateQuestionField(course.ProductCourseId, course.QuestionRepositoryCourseId, questionId, fieldName, fieldValue);
         }
 
         public Question CreateTemporaryQuestion(Course course, string questionId)

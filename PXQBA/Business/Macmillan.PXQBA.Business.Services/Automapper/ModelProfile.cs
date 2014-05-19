@@ -72,7 +72,11 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                .ForMember(dto => dto.ProductCourseSections, opt => opt.MapFrom(q => modelProfileService.GetProductCourseSections(q)))
                .ForMember(dto => dto.Type, opt => opt.Ignore())
                .ForMember(dto => dto.Preview, opt => opt.MapFrom(q => QuestionPreviewHelper.GetQuestionHtmlPreview(q)));
-               //.ForMember(dto => dto.QuizId, opt => opt.MapFrom(q => modelProfileService.GetQuizIdForQuestion(q.Id, q.EntityId)));
+
+            Mapper.CreateMap<Question, Bfw.Agilix.DataContracts.Question>()
+               .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
+               .ForMember(dto => dto.EntityId, opt => opt.MapFrom(q => q.EntityId))
+               .ForMember(dto => dto.MetadataElements, opt => opt.MapFrom(q => modelProfileService.GetXmlMetadataElements(q)));
 
             Mapper.CreateMap<Question, QuestionMetadata>().ConvertUsing(new QuestionToQuestionMetadataConverter(modelProfileService));
 
@@ -114,7 +118,8 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
 
             Mapper.CreateMap<Question, QuestionViewModel>()
                 .ForMember(dest => dest.QuizId, opt => opt.MapFrom(src => modelProfileService.GetQuizIdForQuestion(src.Id, src.EntityId)))
-                .ForMember(dest => dest.ProductCourses, opt => opt.MapFrom(src => src.ProductCourseSections.Select(p => p.ProductCourseId)));
+                .ForMember(dest => dest.ProductCourses, opt => opt.MapFrom(src => src.ProductCourseSections.Select(p => p.ProductCourseId)))
+                .ForMember(dest => dest.LocalValues, opt => opt.MapFrom(src => src.ProductCourseSections.Select(p => p.ProductCourseId)));
 
             Mapper.CreateMap<QuestionViewModel, Question>();
 

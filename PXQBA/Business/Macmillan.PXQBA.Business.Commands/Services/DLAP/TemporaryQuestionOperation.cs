@@ -35,21 +35,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return Mapper.Map<Models.Question>(questionToCopy);
         }
 
-        //TODO: move to QuestionCommands when it's live
-        public string GetQuizIdForQuestion(string questionId, string entityId)
-        {
-            var getItem = new GetItems()
-            {
-                SearchParameters = new ItemSearch
-                {
-                    EntityId = entityId,
-                    Query = string.Format("/Questions/question@id='{0}'",questionId)
-                }
-            };
-            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(getItem);
-            return getItem.Items.Any() ? getItem.Items.First().Id : string.Empty;
-        }
-
         public Models.Question CopyQuestionToSourceCourse(string sourceProductCourseId, string sourceQuestionId)
         {
             var question = CopyQuestionToCourse(temporaryCourseId, GetTemporaryQuestionId(), sourceProductCourseId, sourceQuestionId);

@@ -12,8 +12,6 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         /// </summary>
         /// <param name="questionIdToCopy"></param>
         Question CopyQuestionToTemporaryCourse(string sourceProductCourseId, string questionIdToCopy);
-
-        string GetQuizIdForQuestion(string questionId, string entityId);
         Question CopyQuestionToSourceCourse(string sourceProductCourseId, string sourceQuestionId);
     }
 }

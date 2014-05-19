@@ -62,17 +62,7 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
 
         public static Dictionary<string, IEnumerable<string>> GetDefaultSectionValues(Dictionary<string, XElement> metadataElements)
         {
-            //var defaultsSectionValues = new Dictionary<string, List<string>>();
             var defaultsSection = metadataElements[ElStrings.ProductCourseDefaults.ToString()];
-            //foreach (var xElement in defaultsSection.Elements())
-            //{
-            //    if (!defaultsSectionValues.ContainsKey(xElement.Name.LocalName))
-            //    {
-            //        var values = new List<string>();
-            //        values.Add(xElement.Value);
-            //        defaultsSectionValues.Add(xElement.Name.LocalName, values);
-            //    }
-            //}
             return defaultsSection.Elements().GroupBy(elem => elem.Name.LocalName).ToDictionary(group => group.Key, group => group.Select(elem => elem.Value));
         }
 
@@ -89,6 +79,35 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
                                                });
             }
             return productCourseSectionValues;
+        }
+
+        public static Dictionary<string, XElement> ToXmlElements(Question question)
+        {
+            var elements = new Dictionary<string, XElement>();
+            var defaultsSection = new XElement(ElStrings.ProductCourseDefaults);
+            foreach (var defaultValue in question.DefaultValues)
+            {
+                foreach (var value in defaultValue.Value)
+                {
+                    defaultsSection.Add(new XElement(defaultValue.Key, value));
+                }
+            }
+            elements.Add(ElStrings.ProductCourseDefaults.ToString(), defaultsSection);
+
+            foreach (var productCourseSection in question.ProductCourseSections)
+            {
+                var productCourseSectionName = string.Format("{0}{1}", ElStrings.ProductCourseSection, productCourseSection.ProductCourseId);
+                var section = new XElement(productCourseSectionName);
+                foreach (var productCourseValue in productCourseSection.ProductCourseValues)
+                {
+                    foreach (var value in productCourseValue.Value)
+                    {
+                        section.Add(new XElement(productCourseValue.Key, value));
+                    }
+                }
+                elements.Add(productCourseSectionName, section);
+            }
+            return elements;
         }
     }
 }
