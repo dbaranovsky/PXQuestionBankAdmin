@@ -39,6 +39,9 @@ namespace Macmillan.PXQBA.Web
                       "~/Scripts/session/sessionKeeper.js",
                       "~/Scripts/changesMonitor.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/easyXDM").Include(
+                   "~/Scripts/easyXDM/easyXDM.debug.js"));
+
 
             bundles.Add(new StyleBundle("~/bundles/css").Include(
                       "~/Content/site.css",

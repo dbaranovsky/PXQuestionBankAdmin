@@ -13,9 +13,16 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
        // if(this.props.isNew)
        // {
        // }
+     
         var finishSaving = this.props.finishSaving;
         questionDataManager.updateQuestion(this.state.question).done(finishSaving);
 
+    },
+
+    saveBHEditor: function(frameApi){
+          if (frameApi !== undefined){
+          frameApi.saveComponent('questioneditor', 'editoriframecontainer');
+       }
     },
 
      runQuestion: function(){
@@ -27,11 +34,11 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
     },
 
 
-     showSaveWarning: function(){
+     showSaveWarning: function(frameApi){
         if(!this.props.isNew && !this.props.isDuplicate){
-          this.setState({showSaveWarning: true});
+          this.setState({showSaveWarning: true, frameApi: frameApi});
         } else{
-          this.saveQuestion();
+          this.saveBHEditor(frameApi);
         }
         
      
@@ -40,6 +47,11 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
      closeSaveWarningDialog: function(){
          $('.modal-backdrop').first().remove(); 
          this.setState({showSaveWarning: false});
+     },
+
+     makeChangesVisibleToInstructor: function(){
+        this.closeSaveWarningDialog();
+        this.saveBHEditor(this.state.frameApi);
      },
 
      renderWarningDialog: function(){
@@ -53,11 +65,11 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
             return (React.DOM.div(null, 
                       "The changes made will affect the version of question  that is visible  to instructor",
                       React.DOM.br(null ),React.DOM.br(null ),
-                      React.DOM.button( {className:"btn btn-primary", 'data-toggle':"modal", onClick:self.saveQuestion}, 
+                      React.DOM.button( {className:"btn btn-primary", 'data-toggle':"modal", onClick:self.makeChangesVisibleToInstructor}, 
                                    "Make changes visible to instructors"
                       ),
                       React.DOM.br(null ),React.DOM.br(null ),
-                      React.DOM.button( {className:"btn btn-primary ",  'data-toggle':"modal", onClick:self.saveQuestion} , 
+                      React.DOM.button( {className:"btn btn-primary ",  'data-toggle':"modal", onClick:self.makeChangesVisibleToInstructor} , 
                                    "Leave visible the previous version"
                       ),
                       React.DOM.br(null ),React.DOM.br(null ),
@@ -103,7 +115,14 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
                       ),
                 
                 React.DOM.div( {className:"editor-tabs"}, 
-                  QuestionEditorTabs( {question:this.state.question, closeDialog:this.closeDialog,  editSourceQuestionHandler:this.props.editSourceQuestionHandler.bind(this,this.state.question.questionIdDuplicateFrom), showSaveWarning:this.showSaveWarning,  metadata:this.props.metadata, editHandler:this.editHandler, isDuplicate:this.props.isDuplicate})
+                  QuestionEditorTabs( {question:this.state.question, 
+                                      closeDialog:this.closeDialog,  
+                                      editSourceQuestionHandler:this.props.editSourceQuestionHandler.bind(this,this.state.question.questionIdDuplicateFrom), 
+                                      showSaveWarning:this.showSaveWarning,  
+                                      saveQuestion:  this.saveQuestion,
+                                      metadata:this.props.metadata, 
+                                      editHandler:this.editHandler, 
+                                      isDuplicate:this.props.isDuplicate})
                 ),
                 this.renderWarningDialog()
 
