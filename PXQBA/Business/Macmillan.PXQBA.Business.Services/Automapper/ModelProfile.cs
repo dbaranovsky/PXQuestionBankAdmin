@@ -210,7 +210,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 return modelProfileService.GetQuestionMetadataForCourse((Question)context.SourceValue,
                     context.Options.Items.First().Value.ToString());
             }
-            return modelProfileService.GetQuestionMetadataForCourse((Question)context.SourceValue);
+            return modelProfileService.GetQuestionMetadataForCourse((Question)context.SourceValue, string.Empty);
         }
     }
 

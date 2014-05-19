@@ -9,7 +9,7 @@ using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Common.Helpers.Constants;
 using Macmillan.PXQBA.DataAccess.Data;
-using Course = Bfw.Agilix.DataContracts.Course;
+using Course = Macmillan.PXQBA.Business.Models.Course;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Business.Services
@@ -119,7 +119,7 @@ namespace Macmillan.PXQBA.Business.Services
             return CourseDataXmlParser.ParseMetaAvailableQuestionData(src.Data);
         }
 
-        public string GetQuestionBankRepositoryCourse(Course src)
+        public string GetQuestionBankRepositoryCourse(Bfw.Agilix.DataContracts.Course src)
         {
             return CourseDataXmlParser.ParseQuestionBankRepositoryCourse(src.Data);
         }
@@ -134,7 +134,7 @@ namespace Macmillan.PXQBA.Business.Services
             return QuestionDataXmlParser.GetProductCourseSectionValues(question.MetadataElements);
         }
 
-        public QuestionMetadata GetQuestionMetadataForCourse(Question question, string courseId = null)
+        public QuestionMetadata GetQuestionMetadataForCourse(Question question, string courseId)
         {
             var metadata = new QuestionMetadata();
 
@@ -142,13 +142,22 @@ namespace Macmillan.PXQBA.Business.Services
             metadata.Data.Add(MetadataFieldNames.DlapType, EnumHelper.GetEnumDescription(question.Type));
             metadata.Data.Add(MetadataFieldNames.Id, question.Id);
             metadata.Data.Add(MetadataFieldNames.QuestionIdDuplicateFrom, question.QuestionIdDuplicateFrom);
+            var courseName = string.Empty;
+            if (!string.IsNullOrEmpty(courseId))
+            {
+                var course = productCourseOperation.GetProductCourse(courseId);
+                courseName = course != null ? course.Title : string.Empty;
+            }
+            metadata.Data.Add(MetadataFieldNames.ProductCourseName, courseName);
             var productCourseSection = !string.IsNullOrEmpty(courseId)
                 ? question.ProductCourseSections.FirstOrDefault(p => p.ProductCourseId == courseId)
                 : question.ProductCourseSections.FirstOrDefault();
-            if(productCourseSection != null)
-            foreach (var metadataValue in productCourseSection.ProductCourseValues)
+            if (productCourseSection != null)
             {
-                metadata.Data.Add(metadataValue.Key, string.Join(", ",metadataValue.Value));
+                foreach (var metadataValue in productCourseSection.ProductCourseValues)
+                {
+                    metadata.Data.Add(metadataValue.Key, string.Join(", ", metadataValue.Value));
+                }
             }
             return metadata;
         }

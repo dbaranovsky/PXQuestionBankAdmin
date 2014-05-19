@@ -44,7 +44,7 @@ namespace Macmillan.PXQBA.Common.Helpers
                  model.CanNotDelete = true;
              }
 
-             if (metaField.Name == MetadataFieldNames.ProductCourse)
+             if (metaField.Name == MetadataFieldNames.ProductCourseId)
              {
                  model.FilterType = FilterType.SingleSelect.ToString().ToLower();
                  model.Width = "30%";
