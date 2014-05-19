@@ -583,13 +583,13 @@ input.disabled, textarea.disabled {
 
 .tab-body iframe {
     width: 98%;
-    height: 738px;
-    display: none;
+    height: 693px;
+ 
     border: 0;
 }
 
-.tab-body iframe.shared {
-    height: 690px;
+.tab-body .shared iframe {
+    height: 664px;
 }
 
 
