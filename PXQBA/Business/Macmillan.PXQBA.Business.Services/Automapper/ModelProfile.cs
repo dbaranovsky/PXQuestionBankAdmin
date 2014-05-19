@@ -72,7 +72,11 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                .ForMember(dto => dto.ProductCourseSections, opt => opt.MapFrom(q => modelProfileService.GetProductCourseSections(q)))
                .ForMember(dto => dto.Type, opt => opt.Ignore())
                .ForMember(dto => dto.Preview, opt => opt.MapFrom(q => QuestionPreviewHelper.GetQuestionHtmlPreview(q)));
-               //.ForMember(dto => dto.QuizId, opt => opt.MapFrom(q => modelProfileService.GetQuizIdForQuestion(q.Id, q.EntityId)));
+
+            Mapper.CreateMap<Question, Bfw.Agilix.DataContracts.Question>()
+               .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
+               .ForMember(dto => dto.EntityId, opt => opt.MapFrom(q => q.EntityId))
+               .ForMember(dto => dto.MetadataElements, opt => opt.MapFrom(q => modelProfileService.GetXmlMetadataElements(q)));
 
             Mapper.CreateMap<Question, QuestionMetadata>().ConvertUsing(new QuestionToQuestionMetadataConverter(modelProfileService));
 
@@ -114,7 +118,10 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
 
             Mapper.CreateMap<Question, QuestionViewModel>()
                 .ForMember(dest => dest.QuizId, opt => opt.MapFrom(src => modelProfileService.GetQuizIdForQuestion(src.Id, src.EntityId)))
-                .ForMember(dest => dest.ProductCourses, opt => opt.MapFrom(src => src.ProductCourseSections.Select(p => p.ProductCourseId)));
+                .ForMember(dest => dest.ProductCourses, opt => opt.MapFrom(src => src.ProductCourseSections.Select(p => p.ProductCourseId)))
+                .ForMember(dest => dest.LocalValues, opt => opt.MapFrom(src => src.ProductCourseSections));
+
+            Mapper.CreateMap<IList<ProductCourseSection>, Dictionary<string, IEnumerable<string>>>().ConvertUsing(new QuestionToQuestionViewModelConverter(modelProfileService));
 
             Mapper.CreateMap<QuestionViewModel, Question>();
 
@@ -199,6 +206,33 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                     (Course)context.Options.Items.First().Value);
             }
             return modelProfileService.GetQuestionMetadataForCourse((Question)context.SourceValue);
+        }
+    }
+
+    public class QuestionToQuestionViewModelConverter : ITypeConverter<IList<ProductCourseSection>, Dictionary<string, IEnumerable<string>>>
+    {
+        private readonly IModelProfileService modelProfileService;
+
+        public QuestionToQuestionViewModelConverter(IModelProfileService modelProfileService)
+        {
+            this.modelProfileService = modelProfileService;
+        }
+        public Dictionary<string, IEnumerable<string>> Convert(ResolutionContext context)
+        {
+            var values = new Dictionary<string, IEnumerable<string>>();
+            if (context.Options.Items.Any())
+            {
+                var productCourseId = context.Options.Items.First().Value.ToString();
+                var section =
+                    ((IList<ProductCourseSection>) context.SourceValue).FirstOrDefault(
+                        s => s.ProductCourseId == productCourseId);
+                if (section != null)
+                {
+                    return section.ProductCourseValues;
+                }
+                
+            }
+            return values;
         }
     }
 

@@ -1,5 +1,6 @@
 using System.Data.Entity.Core.EntityClient;
 using System.Data.SqlClient;
+using System.Linq;
 using AutoMapper;
 using Bfw.Agilix.Dlap.Components.Session;
 using Bfw.Agilix.Dlap.Session;
@@ -55,7 +56,8 @@ namespace Macmillan.PXQBA.Web.App_Start
             // container.RegisterType<IProductRepository, ProductRepository>();
             // NOTE: To load from web.config uncomment the line below. Make sure to add a Microsoft.Practices.Unity.Configuration to the using statements.
             // container.LoadConfiguration();
-            container.RegisterTypes(AllClasses.FromAssemblies(typeof(QuestionFilterManagementService).Assembly), WithMappings.FromAllInterfaces, WithName.Default, WithLifetime.Custom<PerRequestLifetimeManager>);
+            //container.RegisterTypes((AllClasses.FromAssemblies(typeof(QuestionFilterManagementService).Assembly)), WithMappings.FromAllInterfaces, WithName.Default, WithLifetime.Custom<PerRequestLifetimeManager>);
+            container.RegisterTypes(typeof(QuestionManagementService).Assembly.GetTypes().Where(t => t.Name.EndsWith("Service")), WithMappings.FromAllInterfaces, WithName.Default, WithLifetime.Custom<PerRequestLifetimeManager>);
             container.RegisterType<Profile, ModelProfile>(new PerRequestLifetimeManager());
             container.RegisterType<ISessionManager, WebSessionManager>(new PerRequestLifetimeManager());
             container.RegisterType<ITraceManager, MvcMiniProfilerTraceManager>(new PerRequestLifetimeManager());

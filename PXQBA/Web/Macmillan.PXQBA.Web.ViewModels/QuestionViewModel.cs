@@ -64,14 +64,14 @@ namespace Macmillan.PXQBA.Web.ViewModels
         public string QuizId { get; set; }
         public string ActionPlayerUrl { get; set; }
         public string EditorUrl { get; set; }
-        private Dictionary<string, IList<string>> localValues;
-        public Dictionary<string, IList<string>> LocalValues
+        private Dictionary<string, IEnumerable<string>> localValues;
+        public Dictionary<string, IEnumerable<string>> LocalValues
         {
             get
             {
                 if (localValues == null)
                 {
-                    localValues = new Dictionary<string, IList<string>>();
+                    localValues = new Dictionary<string, IEnumerable<string>>();
                 }
                 return localValues;
             }

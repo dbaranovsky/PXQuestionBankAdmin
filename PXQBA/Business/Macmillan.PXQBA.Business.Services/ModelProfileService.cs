@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 using AutoMapper;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Commands.Helpers;
@@ -135,24 +136,11 @@ namespace Macmillan.PXQBA.Business.Services
             return metadata;
         }
 
-
-        public IEnumerable<ProductCourseSection> GetHardCodedSharedProductCourses(ProductCourse productCourse)
+        public Dictionary<string, XElement> GetXmlMetadataElements(Question question)
         {
-            if (productCourse.QuestionId%2 != 0)
-            {
-                return new List<ProductCourseSection>
-                {
-                   
-                };
-            }
-            else
-            {
-                return new List<ProductCourseSection>()
-                {
-                   // new ProductCourseSection {Id = productCourse.Id.ToString(), Title = productCourse.Title}
-                };
-            }
+            return QuestionDataXmlParser.ToXmlElements(question);
         }
+
 
         public string GetHardCodedQuestionDuplicate()
         {
@@ -170,7 +158,7 @@ namespace Macmillan.PXQBA.Business.Services
 
         public string GetQuizIdForQuestion(string id, string entityId)
         {
-            return temporaryQuestionOperation.GetQuizIdForQuestion(id, entityId);
+            return questionCommands.GetQuizIdForQuestion(id, entityId);
         }
     }
 }

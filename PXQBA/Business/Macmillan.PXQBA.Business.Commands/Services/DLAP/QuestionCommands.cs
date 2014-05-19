@@ -123,28 +123,71 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return Mapper.Map<Question>(cmd.Questions.FirstOrDefault());
         }
 
-        private bool UpdateQuestionSequence(string courseId, string questionId, int newSequenceValue)
+        public string GetQuizIdForQuestion(string questionId, string entityId)
+        {
+            var getItem = new GetItems()
+            {
+                SearchParameters = new ItemSearch
+                {
+                    EntityId = entityId,
+                    Query = string.Format("/Questions/question@id='{0}'", questionId)
+                }
+            };
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(getItem);
+            return getItem.Items.Any() ? getItem.Items.First().Id : string.Empty;
+        }
+
+        private bool UpdateQuestionSequence(string productCourseId, string courseId, string questionId, int newSequenceValue)
         {
             throw new System.NotImplementedException();
         }
 
         public Question UpdateQuestion(Question question)
         {
-            throw new System.NotImplementedException();
+            var questionId = "02E31F06ADB849895CFE3E26F2420258";
+            var entityid = "39768";
+            var x = GetQuestion(entityid, questionId);
+
+            var cmd1 = new PutQuestions();
+            cmd1.Add(Mapper.Map<Bfw.Agilix.DataContracts.Question>(x));
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd1);
+            return x;
         }
 
-        public bool UpdateQuestionField(string repositoryCourseId, string questionId, string fieldName, string fieldValue)
+        public bool UpdateQuestionField(string productCourseId, string repositoryCourseId, string questionId, string fieldName, string fieldValue)
         {
             if (fieldName.Equals(MetadataFieldNames.Sequence))
             {
-                return UpdateQuestionSequence(repositoryCourseId, questionId, int.Parse(fieldValue));
+                return UpdateQuestionSequence(productCourseId, repositoryCourseId, questionId, int.Parse(fieldValue));
+            }
+            var question = GetQuestion(repositoryCourseId, questionId);
+            if (question != null)
+            {
+                var productCourseSection = question.ProductCourseSections.FirstOrDefault(s => s.ProductCourseId == productCourseId);
+                if (productCourseSection != null)
+                {
+                    if (productCourseSection.ProductCourseValues != null && productCourseSection.ProductCourseValues.ContainsKey(fieldName))
+                    {
+                        productCourseSection.ProductCourseValues[fieldName] = new List<string>() { fieldValue };
+                    }
+                    UpdateQuestion(question);
+                }
             }
             return true;
         }
 
         public bool UpdateSharedQuestionField(string repositoryCourseId, string questionId, string fieldName, string fieldValue)
         {
-            throw new System.NotImplementedException();
+            var question = GetQuestion(repositoryCourseId, questionId);
+            if (question != null)
+            {
+                if (question.DefaultValues != null && question.DefaultValues.ContainsKey(fieldName))
+                {
+                    question.DefaultValues[fieldName] = new List<string>(){fieldValue};
+                }
+                UpdateQuestion(question);
+            }
+            return true;
         }
 
         private string BuildQueryString(IEnumerable<FilterFieldDescriptor> filter)
@@ -175,8 +218,8 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         public void GetQuestions()
         {
-            var questionId = "B8B35A1E8D1A4A70A2E622727A135D4A";
-            var entityid = "71836";
+            var questionId = "02E31F06ADB849895CFE3E26F2420258";
+            var entityid = "39768";
             var cmd = new GetQuestions()
             {
                 SearchParameters = new QuestionSearch()
