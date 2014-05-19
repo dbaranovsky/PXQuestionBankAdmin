@@ -20,9 +20,11 @@ var QuestionEditor = React.createClass({
     },
 
     saveBHEditor: function(frameApi){
-          if (frameApi !== undefined){
+        if (frameApi !== undefined){
           frameApi.saveComponent('questioneditor', 'editoriframecontainer');
        }
+          this.saveQuestion();
+       
     },
 
      runQuestion: function(){

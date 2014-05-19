@@ -8,30 +8,30 @@ var ShareMetadataEditorRow = React.createClass({
     var field = this.props.field; 
     var isDisabled = false;
     var isUnique = false;
-    if (this.props.question.sharedMetadata == null){
+    if (this.props.question.defaultValues == null){
       return ({isDisabled: isDisabled});
     }
 
     if (field == 'learningObjectives'){
 
         var localGuids =[];
-        $.each(this.props.question.localMetadata[field], function(i, objective){
+        $.each(this.props.question.localValues[field], function(i, objective){
            localGuids.push(objective.guid);
        });
 
         var sharedGuids = [];
 
-          $.each(this.props.question.sharedMetadata[field], function(i, objective){
+          $.each(this.props.question.defaultValues[field], function(i, objective){
            sharedGuids.push(objective.guid);
        });
       return { isDisabled: this.compareArray(localGuids, sharedGuids)};
     }
 
-    if ($.isArray(this.props.question.localMetadata[field])){
-       isDisabled = this.compareArray(this.props.question.localMetadata[field], this.props.question.sharedMetadata[field]);
+    if ($.isArray(this.props.question.localValues[field])){
+       isDisabled = this.compareArray(this.props.question.localValues[field], this.props.question.defaultValues[field]);
 
     }else {
-      isDisabled = this.props.question.localMetadata[field] === this.props.question.sharedMetadata[field];
+      isDisabled = this.props.question.localValues[field] === this.props.question.defaultValues[field];
     }
 
       if (this.props.isUnique){
@@ -47,9 +47,9 @@ var ShareMetadataEditorRow = React.createClass({
     },
 
    renderSharedValue: function(){
-        if (this.props.question.sharedMetadata != null){
+        if (this.props.question.defaultValues != null){
              return  (<div className={this.props.isUnique? "cell shared unique" : "cell shared"}>
-                     <MetadataFieldEditor question={this.props.question.sharedMetadata} 
+                     <MetadataFieldEditor question={this.props.question.defaultValues} 
                                           editMode={false} 
                                           metadata={this.props.metadata}
                                           editHandler={this.sharedEditHandler} 
@@ -62,7 +62,7 @@ var ShareMetadataEditorRow = React.createClass({
     },
 
     renderSwitchControl: function(){
-       if (this.props.question.sharedMetadata != null && this.state.isUnique != true){
+       if (this.props.question.defaultValues != null && this.state.isUnique != true){
          return  (<div className="cell control">
                      <div className="override-control">
                           <p> </p>
@@ -75,13 +75,13 @@ var ShareMetadataEditorRow = React.createClass({
 
     sharedEditHandler: function(sharedMetadata){
         var question = this.props.question;
-        question.sharedMetadata = sharedMetadata;
+        question.defaultValues = sharedMetadata;
         this.props.editHandler(question);
     },
 
     localEditHandler: function(localMetadata){
         var question = this.props.question;
-        question.localMetadata = localMetadata;
+        question.localValues = localMetadata;
         if (this.props.editHandler !== undefined){
           this.props.editHandler(question);  
         }
@@ -90,7 +90,7 @@ var ShareMetadataEditorRow = React.createClass({
 
     renderLocalValue: function(){
       return  (<div className="cell">
-                 <MetadataFieldEditor question={this.props.question.localMetadata} 
+                 <MetadataFieldEditor question={this.props.question.localValues} 
                                     isDisabled={this.state.isDisabled} 
                                     metadata={this.props.metadata} 
                                     editHandler={this.localEditHandler} 
@@ -119,7 +119,7 @@ var ShareMetadataEditorRow = React.createClass({
 
     restoreLocalQuestion: function(){
         var question = this.props.question;
-        question.localMetadata[this.props.field] = question.sharedMetadata[this.props.field];
+        question.localValues[this.props.field] = question.defaultValues[this.props.field];
         this.props.editHandler(question);
     },
 
