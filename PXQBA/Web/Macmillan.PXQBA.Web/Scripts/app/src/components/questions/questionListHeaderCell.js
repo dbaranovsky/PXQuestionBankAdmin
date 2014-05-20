@@ -20,7 +20,7 @@ var QuestinListHeaderCell = React.createClass({
   },
 
   changeOrdering: function(event) {
-    var title = $(event.target).data('title');
+    var title = event.target.getAttribute("data-title");
     routsManager.setOrder(this.getNextOrdering(this.props.order), title);
  },
 
