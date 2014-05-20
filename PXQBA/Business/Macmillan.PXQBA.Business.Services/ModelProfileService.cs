@@ -4,6 +4,7 @@ using System.Linq;
 using System.Xml.Linq;
 using AutoMapper;
 using Bfw.Agilix.DataContracts;
+using Bfw.Common;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Commands.Helpers;
 using Macmillan.PXQBA.Business.Contracts;
@@ -132,6 +133,12 @@ namespace Macmillan.PXQBA.Business.Services
         public QuestionMetadata GetQuestionMetadataForCourse(Question question, Course course = null)
         {
             var metadata = new QuestionMetadata();
+
+            long status;
+            if (long.TryParse(question.Status, out status))
+            {
+                metadata.Data.Add(MetadataFieldNames.DlapStatus, ((QuestionStatus) status).GetDescription());
+            }
 
             metadata.Data.Add(MetadataFieldNames.InlinePreview, question.Preview);
             metadata.Data.Add(MetadataFieldNames.DlapType, EnumHelper.GetEnumDescription(question.Type));
