@@ -82,8 +82,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                       //Handle each event using the 'arguments' variable           
                       case 'componentsaved':
 
-                             //maybe should call save question after BH saved?
-                        //     self.props.saveQuestion();
+                             self.props.saveQuestion();
                           
                           break;
                       case 'componentcancelled':
