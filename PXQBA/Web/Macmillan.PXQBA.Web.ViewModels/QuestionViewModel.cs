@@ -30,7 +30,6 @@ namespace Macmillan.PXQBA.Web.ViewModels
 
         public string Status { get; set; }
 
-        public QuestionType Type { get; set; }
         public string Preview { get; set; }
       
         /// <summary>

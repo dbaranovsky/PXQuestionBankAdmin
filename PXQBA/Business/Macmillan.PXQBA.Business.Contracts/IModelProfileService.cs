@@ -10,8 +10,6 @@ namespace Macmillan.PXQBA.Business.Contracts
 {
     public interface IModelProfileService
     {
-        InteractionType CreateInteractionType(string questionType);
-
         string SetLearningObjectives(IEnumerable<LearningObjective> learningObjectives);
         IEnumerable<LearningObjective> GetLOByGuid(string productCourseId, string learningObjectiveGuids);
         string GetQuestionCardLayout(Bfw.Agilix.DataContracts.Course src);

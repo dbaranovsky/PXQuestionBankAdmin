@@ -16,8 +16,6 @@ namespace Macmillan.PXQBA.Business.Models
 
         public string QuestionIdDuplicateFrom { get; set; }
 
-        public QuestionType Type { get; set; }
-
         private Dictionary<string, List<string>> defaultValues;
 
         public Dictionary<string, List<string>> DefaultValues
@@ -58,5 +56,7 @@ namespace Macmillan.PXQBA.Business.Models
         public string InteractionType { get; set; }
         public string InteractionData { get; set; }
         public string Answer { get; set; }
+
+        public string CustomUrl { get; set; }
     }
 }

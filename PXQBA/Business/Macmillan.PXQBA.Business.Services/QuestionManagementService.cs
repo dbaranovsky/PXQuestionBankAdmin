@@ -30,7 +30,7 @@ namespace Macmillan.PXQBA.Business.Services
             return questionCommands.GetQuestionList(course.QuestionRepositoryCourseId, course.ProductCourseId, filter, sortCriterion, startingRecordNumber, recordCount);
         }
 
-        public Question CreateQuestion(Course course, QuestionType questiontype, string bank, string chapter)
+        public Question CreateQuestion(Course course, string questiontype, string bank, string chapter)
         {
             Question question = GetNewQuestionTemplate(course, questiontype, bank, chapter);
             return questionCommands.CreateQuestion(question);
@@ -45,17 +45,16 @@ namespace Macmillan.PXQBA.Business.Services
         {
             Question question = GetQuestion(course, questionId);
             question.Id = Guid.NewGuid().ToString();
-            question.Status = QuestionStatus.InProgress.ToString();
+            question.Status = ((int)QuestionStatus.InProgress).ToString();
             question.QuestionIdDuplicateFrom = questionId;
             return questionCommands.CreateQuestion(question);
         }
 
-        private Question GetNewQuestionTemplate(Course course, QuestionType questionType, string bank, string chapter)
+        private Question GetNewQuestionTemplate(Course course, string questionType, string bank, string chapter)
         {
             var question = new Question();
             question.Id = Guid.NewGuid().ToString();
             question.EntityId = course.QuestionRepositoryCourseId;
-            question.Type = questionType;
             var values = new Dictionary<string, List<String>>
                          {
                              { MetadataFieldNames.ProductCourse, new List<string> {course.ProductCourseId}},
@@ -69,28 +68,14 @@ namespace Macmillan.PXQBA.Business.Services
                                                    ProductCourseId = course.ProductCourseId,
                                                    ProductCourseValues = values
                                                });
-            question.Status = QuestionStatus.InProgress.ToString();
+            question.Status = ((int)QuestionStatus.InProgress).ToString();
             question.Body = string.Empty;
             question.InteractionData = string.Empty;
-            //TODO: set question type from central storage
-            question.InteractionType = "choice";
+            var type = QuestionTypeHelper.GetQuestionType(questionType);
+            question.InteractionType = string.IsNullOrEmpty(type.Custom) ? type.Key : type.Custom;
+            question.CustomUrl = string.IsNullOrEmpty(type.Custom) ? type.Custom : type.Key;
             question.Answer = string.Empty;
             return question;
-        }
-
-        public IEnumerable<QuestionType> GetQuestionTypesForCourse()
-        {
-            // \todo Populate with actual data
-            var availableTypes = new List<QuestionType>
-                {
-                    QuestionType.MultipleChoice,
-                    QuestionType.Matching,
-                    QuestionType.MultipleAnswer,
-                    QuestionType.ShortAnswer,
-                    QuestionType.Essay,
-                    QuestionType.GraphExcepcise,
-                };
-            return availableTypes;
         }
 
         public Question UpdateQuestion(Course course, string sourceQuestionId, Question temporaryQuestion)

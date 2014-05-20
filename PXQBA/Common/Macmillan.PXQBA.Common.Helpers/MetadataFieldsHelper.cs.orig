@@ -31,7 +31,13 @@ namespace Macmillan.PXQBA.Common.Helpers
 
             // \todo Move custom field-level settings to configuration
             
+<<<<<<< HEAD
             if (metaField.Name == MetadataFieldNames.DlapTitle)
+=======
+            if ((metaField.Name == MetadataFieldNames.QuestionStatus) ||
+                (metaField.Name == MetadataFieldNames.DlapTitle)
+               )
+>>>>>>> ! fix status sorting
             {
                 model.FilterType = FilterType.None.ToString().ToLower();
             }

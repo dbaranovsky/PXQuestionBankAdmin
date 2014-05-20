@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Macmillan.PXQBA.Common.Helpers.Constants;
 
@@ -85,22 +86,22 @@ namespace Macmillan.PXQBA.Common.Helpers
         /// Gets the list of available question types
         /// </summary>
         /// <returns>Question types list</returns>
-        public static Dictionary<string, string> GetQuestionTypes()
+        public static IEnumerable<List<string>> GetQuestionTypes()
         {
             var settingString = ConfigurationManager.AppSettings[ConfigurationKeys.QuestionTypes];
             if (!string.IsNullOrEmpty(settingString))
             {
-                return settingString.Split('|').Select(type => type.Split(':')).ToDictionary(parts => parts[0], parts => parts[1]);
+                return settingString.Split('|').Select(type => type.Split(':')).Select(parts => parts.ToList());
             }
-            return new Dictionary<string, string>
+            return new List<List<string>>
             {
-                {"choice", "Multiple Choice"},
-                {"text", "Short Answer"},
-                {"essay", "Essay"},
-                {"match", "Matching"},
-                {"answer", "Multiple Answer"},
-                {"HTS","Advanced Question"},
-                {"FMA_GRAPH", "Graph Exercise"}
+                new List<string>(){"choice", "Multiple Choice"},
+                new List<string>(){"text", "Short Answer"},
+                new List<string>(){"essay", "Essay"},
+                new List<string>(){"match", "Matching"},
+                new List<string>(){"answer", "Multiple Answer"},
+                new List<string>(){"HTS","Advanced Question", "custom"},
+                new List<string>(){"FMA_GRAPH", "Graph Exercise", "custom"}
             };
         }
 

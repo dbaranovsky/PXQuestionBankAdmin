@@ -2,7 +2,7 @@
 {
     public static class MetadataFieldNames
     {
-        public const string DlapStatus = "dlap_q_status";
+        public const string QuestionStatus = "questionstatus";
 
         public const string InlinePreview = "questionHtmlInlinePreview";
         public const string DlapType = "dlap_q_type";

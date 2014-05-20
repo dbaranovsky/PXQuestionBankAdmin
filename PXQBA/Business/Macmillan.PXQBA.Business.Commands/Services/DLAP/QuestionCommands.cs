@@ -50,8 +50,9 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             IEnumerable<XElement> docElements = new List<XElement>();
             var i = 0;
             var query = BuildQueryString(filter);
-            var sortingField = string.Format("{0}{1}/{2}", ElStrings.ProductCourseSection, currentCourseId,
-                sortCriterion.ColumnName);
+            var sortingField = sortCriterion.ColumnName == ElStrings.QuestionStatus
+                ? sortCriterion.ColumnName
+                : string.Format("{0}{1}/{2}", ElStrings.ProductCourseSection, currentCourseId, sortCriterion.ColumnName);
             do
             {
                 var searchCommand = new Search()
@@ -163,7 +164,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             {
                 return UpdateQuestionSequence(productCourseId, repositoryCourseId, questionId, int.Parse(fieldValue));
             }
-            if (fieldName.Equals(MetadataFieldNames.DlapStatus))
+            if (fieldName.Equals(MetadataFieldNames.QuestionStatus))
             {
                 return UpdateQuestionStatus(repositoryCourseId, questionId, fieldValue);
             }
@@ -188,7 +189,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             var question = GetQuestion(repositoryCourseId, questionId);
             if (question != null)
             {
-                question.Status = ((long)((QuestionStatus)EnumHelper.GetItemByDescription(typeof(QuestionStatus), newValue))).ToString(); 
+                question.Status = ((int)((QuestionStatus)EnumHelper.GetItemByDescription(typeof(QuestionStatus), newValue))).ToString(); 
                 UpdateQuestion(question);
                 return true;
             }
@@ -224,10 +225,15 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                         var productCourseSection = string.Format("{0}{1}", ElStrings.ProductCourseSection, productCourseId);
                         foreach (var filterFieldDescriptor in filter)
                         {
+                            var fieldFormat = "{0}/{1}:\"{2}\"";
+                            if (filterFieldDescriptor.Field == ElStrings.QuestionStatus ||
+                                filterFieldDescriptor.Field == "dlap_q_" + ElStrings.type)
+                            {
+                                fieldFormat = "{1}:\"{2}\"";
+                            }
                             var fieldQuery = string.Join(" OR ",
                                 filterFieldDescriptor.Values.Select(v =>
-                                        string.Format("{0}/{1}:\"{2}\"", productCourseSection, filterFieldDescriptor.Field, v)));
-                           
+                                    string.Format(fieldFormat, productCourseSection, filterFieldDescriptor.Field, v)));
                             if (!string.IsNullOrEmpty(fieldQuery))
                             {
                                 query.Append(string.Format(" AND ({0})", fieldQuery));

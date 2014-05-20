@@ -30,21 +30,21 @@ namespace Macmillan.PXQBA.Business.Services
                     TypeDescriptor = new MetaFieldTypeDescriptor
                     {
                         Type = MetadataFieldType.SingleSelect,
-                        AvailableChoice = ConfigurationHelper.GetQuestionTypes().Select(d=>new AvailableChoiceItem(d.Value)).ToList()
+                        AvailableChoice = QuestionTypeHelper.GetTypes().Select(t => new AvailableChoiceItem(t.Key, t.DisplayValue)).ToList()
                     }
                 },
                 new QuestionMetaField
                 {
                     FriendlyName = "Status",
-                    Name = MetadataFieldNames.DlapStatus,
+                    Name = MetadataFieldNames.QuestionStatus,
                     TypeDescriptor = new MetaFieldTypeDescriptor
                     {
                         Type = MetadataFieldType.SingleSelect,
                         AvailableChoice = new List<AvailableChoiceItem>()
                                           {
-                                              new AvailableChoiceItem(EnumHelper.GetEnumDescription(QuestionStatus.AvailableToInstructors)),
-                                              new AvailableChoiceItem(EnumHelper.GetEnumDescription(QuestionStatus.InProgress)),
-                                              new AvailableChoiceItem(EnumHelper.GetEnumDescription(QuestionStatus.Deleted)),
+                                              new AvailableChoiceItem(((int)QuestionStatus.AvailableToInstructors).ToString(), EnumHelper.GetEnumDescription(QuestionStatus.AvailableToInstructors)),
+                                              new AvailableChoiceItem(((int)QuestionStatus.InProgress).ToString(),EnumHelper.GetEnumDescription(QuestionStatus.InProgress)),
+                                              new AvailableChoiceItem(((int)QuestionStatus.Deleted).ToString(),EnumHelper.GetEnumDescription(QuestionStatus.Deleted)),
                                           }
 
                     }
