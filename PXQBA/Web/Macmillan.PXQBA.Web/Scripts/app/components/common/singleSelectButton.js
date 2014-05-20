@@ -23,9 +23,10 @@ var SingleSelectButton = React.createClass({displayName: 'SingleSelectButton',
 
     renderMenuItems: function() {
         var items = [];
-        for (var propertyName in this.props.values) {
-            items.push(this.renderMenuItem(this.props.values[propertyName], propertyName));
+        for(var i=0; i<this.props.values.length; i++) {
+            items.push(this.renderMenuItem(this.props.values[i].text, this.props.values[i].value));
         }
+
         return items;
     },
 

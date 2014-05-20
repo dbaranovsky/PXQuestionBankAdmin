@@ -192,7 +192,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             var question = GetQuestion(repositoryCourseId, questionId);
             if (question != null)
             {
-                question.Status = newValue;
+                question.Status = ((long)((QuestionStatus)EnumHelper.GetItemByDescription(typeof(QuestionStatus), newValue))).ToString(); 
                 UpdateQuestion(question);
                 return true;
             }
