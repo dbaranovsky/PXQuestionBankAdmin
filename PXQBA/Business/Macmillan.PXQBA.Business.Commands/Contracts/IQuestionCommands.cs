@@ -15,5 +15,8 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         bool UpdateSharedQuestionField(string repositoryCourseId, string questionId, string fieldName, string fieldValue);
 
         string GetQuizIdForQuestion(string questionId, string entityId);
+
+        bool RemoveFromTitle(string[] questionsId, string questionRepositoryCourseId, string currentCourseId);
+        bool PublishToTitle(string[] questionsId, int courseId, string bank, string chapter);
     }
 }

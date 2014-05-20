@@ -93,5 +93,30 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(new { isError = false });
         }
 
+        /// <summary>
+        /// Remove shared questions from current title 
+        /// </summary>
+        /// <param name="questionsId"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult RemoveFromTitle(string[] questionsId)
+        {
+            bool isSuccess = questionManagementService.RemoveFromTitle(questionsId, CourseHelper.CurrentCourse);
+            return JsonCamel(new { isError = !isSuccess });
+        }
+
+        /// <summary>
+        /// Share questions with selected  title, bank and chapter
+        /// </summary>
+        /// <param name="questionsId"></param>
+        /// <param name="courseId"></param>
+        /// <param name="bank"></param>
+        /// <param name="chapter"></param>
+        /// <returns></returns>
+        public ActionResult PublishToTitle(string[] questionsId, int courseId, string bank, string chapter)
+        {
+            bool isSuccess = questionManagementService.PublishToTitle(questionsId, courseId, bank, chapter);
+            return JsonCamel(new { isError = !isSuccess });
+        }
 	}
 }

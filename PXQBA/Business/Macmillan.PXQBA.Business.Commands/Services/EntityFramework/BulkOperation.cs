@@ -25,16 +25,5 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
             return true;
         }
 
-        public bool RemoveFromTitle(string[] questionsId, string productCourseId)
-        {
-            //TODO implement in real data
-            return true;
-        }
-
-        public bool PublishToTitle(string[] questionsId, int courseId, string bank, string chapter)
-        {
-            //TODO implement in real data
-            return true;
-        }
     }
 }

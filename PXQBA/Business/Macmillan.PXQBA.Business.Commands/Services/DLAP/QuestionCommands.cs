@@ -95,9 +95,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         public Question CreateQuestion(Question question)
         {
-            var cmd = new PutQuestions();
-            cmd.Add(Mapper.Map<Bfw.Agilix.DataContracts.Question>(question));
-            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+            ExecutePutQuestion(Mapper.Map<Bfw.Agilix.DataContracts.Question>(question));
             return question;
         }
 
@@ -155,9 +153,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         {
             var agilixQuestion = GetAgilixQuestion(question.EntityId, question.Id);
             Mapper.Map(question, agilixQuestion);
-            var cmd = new PutQuestions();
-            cmd.Add(agilixQuestion);
-            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+            ExecutePutQuestion(agilixQuestion);
             return question;
         }
 
@@ -242,5 +238,47 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             }
             return query.ToString();
         }
+
+        public bool RemoveFromTitle(string[] questionsId, string questionRepositoryCourseId, string currentCourseId)
+        {
+            var agilixQuestions = GetAgilixQuestions(questionRepositoryCourseId, questionsId);
+
+            foreach (var question in agilixQuestions)
+            {
+                question.MetadataElements.Remove(ElStrings.ProductCourseSection + questionRepositoryCourseId);
+            }
+
+            ExecutePutQuestions(agilixQuestions);
+
+            return true;
+        }
+
+        public bool PublishToTitle(string[] questionsId, int courseId, string bank, string chapter)
+        {
+            //TODO implement in real data
+            return true;
+        }
+
+
+        public bool SetQuestionsStatus(string[] questionId, string status)
+        {
+            //TODO implement in real data
+            return true;
+        }
+
+
+        private void ExecutePutQuestion(Bfw.Agilix.DataContracts.Question  question)
+        {
+            var questions = new List<Bfw.Agilix.DataContracts.Question> {question};
+            ExecutePutQuestions(questions);
+        }
+
+        private void ExecutePutQuestions(IEnumerable<Bfw.Agilix.DataContracts.Question> questions)
+        {
+            var cmd = new PutQuestions();
+            cmd.Add(questions);
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+        }
+
     }
 }
