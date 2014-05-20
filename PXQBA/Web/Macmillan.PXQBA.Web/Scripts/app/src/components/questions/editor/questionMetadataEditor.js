@@ -9,15 +9,25 @@ var QuestionMetadataEditor = React.createClass({
       var localFieldsName = [];
       var defaultFieldsName = [];
 
+
+
       for (var localName in this.props.question.localValues){
         if(localName!= "sequence" && localName != "productcourseid" && localName != "flag")
         localFieldsName.push(localName);
       }
 
+       if (this.props.question.defaultValues == null || this.props.question.defaultValues.length == 0 ){
+             $.each(localFieldsName, function( index, value ) {
+                 rows.push( <ShareMetadataEditorRow question={self.props.question} metadata={self.props.metadata} editHandler={self.props.editHandler} field={value} />);
+            });
+
+             return rows;
+      }
+
+
       for (var defaultFieldName in this.props.question.defaultValues){
         defaultFieldsName.push(defaultFieldName);
       }
-
 
       var fieldsWithAnalouges = $.grep(localFieldsName, function(e){ return $.inArray(e, defaultFieldsName)!=-1;});
       var fieldsWithoutAnalouges = $.grep(localFieldsName, function(e){ return $.inArray(e, defaultFieldsName)==-1;});
