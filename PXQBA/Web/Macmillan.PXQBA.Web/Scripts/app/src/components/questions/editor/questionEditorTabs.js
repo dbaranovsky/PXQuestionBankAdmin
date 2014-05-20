@@ -83,7 +83,7 @@ var QuestionEditorTabs = React.createClass({
                       case 'componentsaved':
 
                              //maybe should call save question after BH saved?
-                            // self.props.saveQuestion();
+                        //     self.props.saveQuestion();
                           
                           break;
                       case 'componentcancelled':
