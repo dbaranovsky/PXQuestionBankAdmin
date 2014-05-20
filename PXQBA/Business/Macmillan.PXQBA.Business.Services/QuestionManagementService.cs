@@ -16,14 +16,12 @@ namespace Macmillan.PXQBA.Business.Services
     {
         private readonly IQuestionCommands questionCommands;
         private readonly ITemporaryQuestionOperation temporaryQuestionOperation;
-        private readonly IBulkOperation bulkOperation;
         private readonly IProductCourseOperation productCourseOperation;
 
-        public QuestionManagementService(IQuestionCommands questionCommands, ITemporaryQuestionOperation temporaryQuestionOperation, IBulkOperation bulkOperation, IProductCourseOperation productCourseOperation)
+        public QuestionManagementService(IQuestionCommands questionCommands, ITemporaryQuestionOperation temporaryQuestionOperation,  IProductCourseOperation productCourseOperation)
         {
             this.questionCommands = questionCommands;
             this.temporaryQuestionOperation = temporaryQuestionOperation;
-            this.bulkOperation = bulkOperation;
             this.productCourseOperation = productCourseOperation;
         }
 
@@ -115,6 +113,21 @@ namespace Macmillan.PXQBA.Business.Services
             //PxTempQBAQuestion_115457_Essay
             //PxTempQBAQuestion_115457_Choice
             return temporaryQuestionOperation.CopyQuestionToTemporaryCourse(course.QuestionRepositoryCourseId, questionId);
+        }
+
+
+
+    
+        public bool RemoveFromTitle(string[] questionsId, Course currentCourse)
+        {
+            bool isSuccess = questionCommands.RemoveFromTitle(questionsId, currentCourse.QuestionRepositoryCourseId, currentCourse.ProductCourseId);
+            return isSuccess;
+        }
+
+        public bool PublishToTitle(string[] questionsId, int courseId, string bank, string chapter)
+        {
+            bool isSuccess = questionCommands.PublishToTitle(questionsId, courseId, bank, chapter);
+            return isSuccess;
         }
     }
 }

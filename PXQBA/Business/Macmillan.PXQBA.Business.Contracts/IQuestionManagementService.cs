@@ -54,5 +54,9 @@ namespace Macmillan.PXQBA.Business.Contracts
 
         Question CreateTemporaryQuestion(Course course, string questionId);
 
+        bool RemoveFromTitle(string[] questionsId, Course currentCourse);
+
+        bool PublishToTitle(string[] questionsId, int courseId, string bank, string chapter);
+
     }
 }

@@ -10,7 +10,5 @@ namespace Macmillan.PXQBA.Business.Contracts
     public interface IBulkOperationService
     {
         bool SetStatus(string[] questionIds, QuestionStatus status);
-        bool RemoveFromTitle(string[] questionsId, Course currentCourse);
-        bool PublishToTitle(string[] questionsId, int courseId, string bank, string chapter);
     }
 }

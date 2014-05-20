@@ -21,18 +21,5 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(new { isError = !isSuccess });
         }
 
-
-        [HttpPost]
-        public ActionResult RemoveFromTitle(string[] questionsId)
-        {
-            bool isSuccess = bulkOperationService.RemoveFromTitle(questionsId, CourseHelper.CurrentCourse);
-            return JsonCamel(new { isError = !isSuccess });
-        }
-
-        public ActionResult PublishToTitle(string[] questionsId, int courseId, string bank, string chapter)
-        {
-            bool isSuccess = bulkOperationService.PublishToTitle(questionsId, courseId, bank, chapter);
-            return JsonCamel(new {isError = !isSuccess});
-        }
 	}
 }
