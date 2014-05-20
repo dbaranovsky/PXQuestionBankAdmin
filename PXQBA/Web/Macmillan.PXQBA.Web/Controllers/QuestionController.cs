@@ -12,6 +12,7 @@ using Macmillan.PXQBA.Business.Services;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Web.Helpers;
 using Macmillan.PXQBA.Web.ViewModels;
+using Newtonsoft.Json;
 
 namespace Macmillan.PXQBA.Web.Controllers
 {
@@ -55,10 +56,12 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(questionMetadataService.GetAvailableFields(CourseHelper.CurrentCourse).Select(MetadataFieldsHelper.Convert).ToList());
         }
 
-        public ActionResult UpdateQuestion(QuestionViewModel question)
+        public ActionResult UpdateQuestion(string questionJsonString)
         {
-            var questionModel = Mapper.Map<Question>(question);
-            questionManagementService.UpdateQuestion(CourseHelper.CurrentCourse, QuestionHelper.QuestionIdToEdit, questionModel);
+            // manual JSON deserialize is nessessary becauese of invalid model mapping on controller
+            var questionViewModel = JsonConvert.DeserializeObject<QuestionViewModel>(questionJsonString);
+            var question = Mapper.Map<Question>(questionViewModel);
+            questionManagementService.UpdateQuestion(CourseHelper.CurrentCourse, QuestionHelper.QuestionIdToEdit, question);
             return JsonCamel(new { isError = false });
         }
 

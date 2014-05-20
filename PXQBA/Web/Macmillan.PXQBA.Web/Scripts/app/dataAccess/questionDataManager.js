@@ -198,14 +198,11 @@
 
     self.updateQuestion = function(question) {
          var request = {
-            question: question
+            questionJsonString:  JSON.stringify(question),
         };
          return $.ajax({
             url: window.actions.questionList.updateQuestionUrl,
-            traditional: true,
-            data: JSON.stringify(request),
-            dataType: 'json',
-            contentType: 'application/json',
+            data: request,
             type: 'POST'
         }).done(function (response) {
             console.log('Update question complete');

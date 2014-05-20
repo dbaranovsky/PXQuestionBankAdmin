@@ -50,6 +50,7 @@ var ShareMetadataEditorRow = React.createClass({
         if (this.props.question.defaultValues != null){
              return  (<div className={this.props.isUnique? "cell shared unique" : "cell shared"}>
                      <MetadataFieldEditor question={this.props.question.defaultValues} 
+                                           questionId = {this.props.question.id}
                                           editMode={false} 
                                           metadata={this.props.metadata}
                                           editHandler={this.sharedEditHandler} 
