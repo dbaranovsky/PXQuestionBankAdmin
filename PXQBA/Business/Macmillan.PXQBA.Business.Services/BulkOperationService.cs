@@ -23,14 +23,6 @@ namespace Macmillan.PXQBA.Business.Services
             return bulkOperation.SetStatus(questionIds, status);
         }
 
-        public bool RemoveFromTitle(string[] questionsId, Course currentCourse)
-        {
-            return bulkOperation.RemoveFromTitle(questionsId, currentCourse.ProductCourseId);
-        }
 
-        public bool PublishToTitle(string[] questionsId, int courseId, string bank, string chapter)
-        {
-            return bulkOperation.PublishToTitle(questionsId, courseId, bank, chapter);
-        }
     }
 }
