@@ -111,7 +111,7 @@ namespace Macmillan.PXQBA.Business.Services
             }
 
             metadata.Data.Add(MetadataFieldNames.InlinePreview, question.Preview);
-            metadata.Data.Add(MetadataFieldNames.DlapType, QuestionTypeHelper.GetDisplayName(question.InteractionType));
+            metadata.Data.Add(MetadataFieldNames.DlapType, QuestionTypeHelper.GetDisplayName(question.InteractionType, question.CustomUrl));
             metadata.Data.Add(MetadataFieldNames.Id, question.Id);
             metadata.Data.Add(MetadataFieldNames.QuestionIdDuplicateFrom, question.QuestionIdDuplicateFrom);
             var courseName = course != null ? course.Title : string.Empty;
