@@ -115,6 +115,10 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         private IEnumerable<Bfw.Agilix.DataContracts.Question> GetAgilixQuestions(string repositoryCourseId,
             IEnumerable<string> questionIds)
         {
+            if (!questionIds.Any())
+            {
+                return new List<Bfw.Agilix.DataContracts.Question>();
+            }
             var cmd = new GetQuestions()
             {
                 SearchParameters = new QuestionSearch()
