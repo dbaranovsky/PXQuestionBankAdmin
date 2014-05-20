@@ -31,9 +31,7 @@ namespace Macmillan.PXQBA.Common.Helpers
 
             // \todo Move custom field-level settings to configuration
             
-            if ((metaField.Name == MetadataFieldNames.DlapStatus) ||
-                (metaField.Name == MetadataFieldNames.DlapTitle)
-               )
+            if (metaField.Name == MetadataFieldNames.DlapTitle)
             {
                 model.FilterType = FilterType.None.ToString().ToLower();
             }
