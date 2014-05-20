@@ -61,7 +61,6 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                .ForMember(dto => dto.Status, opt => opt.MapFrom(q => q.QuestionStatus))
                .ForMember(dto => dto.DefaultValues, opt => opt.MapFrom(q => modelProfileService.GetQuestionDefaultValues(q)))
                .ForMember(dto => dto.ProductCourseSections, opt => opt.MapFrom(q => modelProfileService.GetProductCourseSections(q)))
-               .ForMember(dto => dto.Type, opt => opt.Ignore())
                .ForMember(dto => dto.Preview, opt => opt.MapFrom(q => QuestionPreviewHelper.GetQuestionHtmlPreview(q)));
 
             Mapper.CreateMap<Question, Bfw.Agilix.DataContracts.Question>()
@@ -71,7 +70,8 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                .ForMember(dto => dto.Body, opt => opt.Condition(cont => cont.DestinationValue == null))
                .ForMember(dto => dto.Answer, opt => opt.Condition(cont => cont.DestinationValue == null))
                .ForMember(dto => dto.InteractionData, opt => opt.Condition(cont => cont.DestinationValue == null))
-               .ForMember(dto => dto.InteractionType, opt => opt.Condition(cont => cont.DestinationValue == null));
+               .ForMember(dto => dto.InteractionType, opt =>opt.Condition(cont => cont.DestinationValue == null))
+               .ForMember(dto => dto.CustomUrl, opt =>opt.Condition(cont => cont.DestinationValue == null));
 
             Mapper.CreateMap<Question, QuestionMetadata>().ConvertUsing(new QuestionToQuestionMetadataConverter(modelProfileService));
 
@@ -86,8 +86,6 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(d => d.DomainId, opt => opt.MapFrom(s => s.Domain != null ? s.Domain.Id : ""))
                 .ForMember(d => d.DomainName, opt => opt.MapFrom(s => s.Domain != null ? s.Domain.Name : ""))
                 .ForMember(d => d.LastLogin, opt => opt.MapFrom(s => s.LastLogin));
-
-            Mapper.CreateMap<string, InteractionType>().ConvertUsing(modelProfileService.CreateInteractionType);
 
             Mapper.CreateMap<Course, TitleViewModel>()
                 .ForMember(vm => vm.Id, opt => opt.MapFrom(c => c.ProductCourseId))
@@ -106,6 +104,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
 
             Mapper.CreateMap<QuestionViewModel, Question>()
                 .ForMember(dest => dest.ProductCourseSections, opt => opt.MapFrom(src => modelProfileService.GetProductCourseSections(src)));
+                
 
 
             #region UI models to dummy models

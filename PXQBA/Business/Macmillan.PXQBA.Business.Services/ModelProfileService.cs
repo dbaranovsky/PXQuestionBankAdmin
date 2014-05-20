@@ -23,42 +23,12 @@ namespace Macmillan.PXQBA.Business.Services
     {
         private readonly IProductCourseOperation productCourseOperation;
 
-        private Dictionary<string, string> availableQuestionTypes;
-        private IQuestionCommands questionCommands;
+        private readonly IQuestionCommands questionCommands;
 
-        private ITemporaryQuestionOperation temporaryQuestionOperation;
-        public ModelProfileService(IProductCourseOperation productCourseOperation, IQuestionCommands questionCommands, ITemporaryQuestionOperation temporaryQuestionOperation)
+        public ModelProfileService(IProductCourseOperation productCourseOperation, IQuestionCommands questionCommands)
         {
             this.productCourseOperation = productCourseOperation;
             this.questionCommands = questionCommands;
-            this.temporaryQuestionOperation = temporaryQuestionOperation;
-            this.availableQuestionTypes = ConfigurationHelper.GetQuestionTypes();
-        }
-
-        /// <summary>
-        /// A helper method to generate a dictionary object Interation Types
-        /// </summary>
-        private static readonly Dictionary<string, InteractionType> interactionTypes = new Dictionary<string, InteractionType>() {
-            { "A", InteractionType.Answer },
-            { "MC", InteractionType.Choice },
-            { "COMP", InteractionType.Composite },
-            { "CUSTOM", InteractionType.Custom },
-            { "HTS", InteractionType.Custom },
-            { "E", InteractionType.Essay },
-            { "MT", InteractionType.Match },
-            { "TXT", InteractionType.Text },
-            { "BANK", InteractionType.Bank },
-            {"1", InteractionType.NotBank},
-            {"2", InteractionType.Bank},
-        };
-
-        public InteractionType CreateInteractionType(string questionType)
-        {
-            if (interactionTypes.ContainsKey(questionType))
-            {
-                return interactionTypes[questionType];
-            }
-            return InteractionType.Custom;
         }
 
         public string SetLearningObjectives(IEnumerable<LearningObjective> learningObjectives)
@@ -134,14 +104,14 @@ namespace Macmillan.PXQBA.Business.Services
         {
             var metadata = new QuestionMetadata();
 
-            long status;
-            if (long.TryParse(question.Status, out status))
+            int status;
+            if (int.TryParse(question.Status, out status))
             {
                 metadata.Data.Add(MetadataFieldNames.QuestionStatus, ((QuestionStatus) status).GetDescription());
             }
 
             metadata.Data.Add(MetadataFieldNames.InlinePreview, question.Preview);
-            metadata.Data.Add(MetadataFieldNames.DlapType, EnumHelper.GetEnumDescription(question.Type));
+            metadata.Data.Add(MetadataFieldNames.DlapType, QuestionTypeHelper.GetDisplayName(question.InteractionType));
             metadata.Data.Add(MetadataFieldNames.Id, question.Id);
             metadata.Data.Add(MetadataFieldNames.QuestionIdDuplicateFrom, question.QuestionIdDuplicateFrom);
             var courseName = course != null ? course.Title : string.Empty;
@@ -166,7 +136,6 @@ namespace Macmillan.PXQBA.Business.Services
         {
             return QuestionDataXmlParser.ToXmlElements(question);
         }
-
 
         public string GetHardCodedQuestionDuplicate()
         {

@@ -189,7 +189,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             var question = GetQuestion(repositoryCourseId, questionId);
             if (question != null)
             {
-                question.Status = ((long)((QuestionStatus)EnumHelper.GetItemByDescription(typeof(QuestionStatus), newValue))).ToString(); 
+                question.Status = ((int)((QuestionStatus)EnumHelper.GetItemByDescription(typeof(QuestionStatus), newValue))).ToString(); 
                 UpdateQuestion(question);
                 return true;
             }
@@ -225,10 +225,15 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                         var productCourseSection = string.Format("{0}{1}", ElStrings.ProductCourseSection, productCourseId);
                         foreach (var filterFieldDescriptor in filter)
                         {
+                            var fieldFormat = "{0}/{1}:\"{2}\"";
+                            if (filterFieldDescriptor.Field == ElStrings.QuestionStatus ||
+                                filterFieldDescriptor.Field == "dlap_q_" + ElStrings.type)
+                            {
+                                fieldFormat = "{1}:\"{2}\"";
+                            }
                             var fieldQuery = string.Join(" OR ",
                                 filterFieldDescriptor.Values.Select(v =>
-                                        string.Format("{0}/{1}:\"{2}\"", productCourseSection, filterFieldDescriptor.Field, v)));
-                           
+                                    string.Format(fieldFormat, productCourseSection, filterFieldDescriptor.Field, v)));
                             if (!string.IsNullOrEmpty(fieldQuery))
                             {
                                 query.Append(string.Format(" AND ({0})", fieldQuery));

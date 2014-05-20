@@ -19,7 +19,7 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// </summary>
         /// <param name="question"></param>
         /// <returns>The updated object that was persisted</returns>
-        Question CreateQuestion(Course course, QuestionType questionType, string bank, string chapter);
+        Question CreateQuestion(Course course, string questionType, string bank, string chapter);
 
         /// <summary>
         /// Returns question by its ID
@@ -35,13 +35,6 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// <param name="questionId"></param>
         /// <returns></returns>
         Question DuplicateQuestion(Course course, string questionId);
-
-        /// <summary>
-        /// Returns list of question types available for specified course
-        /// </summary>
-        /// <param name="course"></param>
-        /// <returns></returns>
-        IEnumerable<QuestionType> GetQuestionTypesForCourse();
 
         /// <summary>
         /// Update existing question metafields
