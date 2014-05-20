@@ -50,8 +50,9 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             IEnumerable<XElement> docElements = new List<XElement>();
             var i = 0;
             var query = BuildQueryString(filter);
-            var sortingField = string.Format("{0}{1}/{2}", ElStrings.ProductCourseSection, currentCourseId,
-                sortCriterion.ColumnName);
+            var sortingField = sortCriterion.ColumnName == ElStrings.QuestionStatus
+                ? sortCriterion.ColumnName
+                : string.Format("{0}{1}/{2}", ElStrings.ProductCourseSection, currentCourseId, sortCriterion.ColumnName);
             do
             {
                 var searchCommand = new Search()
@@ -163,7 +164,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             {
                 return UpdateQuestionSequence(productCourseId, repositoryCourseId, questionId, int.Parse(fieldValue));
             }
-            if (fieldName.Equals(MetadataFieldNames.DlapStatus))
+            if (fieldName.Equals(MetadataFieldNames.QuestionStatus))
             {
                 return UpdateQuestionStatus(repositoryCourseId, questionId, fieldValue);
             }

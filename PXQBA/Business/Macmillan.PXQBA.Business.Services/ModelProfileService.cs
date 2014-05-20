@@ -137,7 +137,7 @@ namespace Macmillan.PXQBA.Business.Services
             long status;
             if (long.TryParse(question.Status, out status))
             {
-                metadata.Data.Add(MetadataFieldNames.DlapStatus, ((QuestionStatus) status).GetDescription());
+                metadata.Data.Add(MetadataFieldNames.QuestionStatus, ((QuestionStatus) status).GetDescription());
             }
 
             metadata.Data.Add(MetadataFieldNames.InlinePreview, question.Preview);

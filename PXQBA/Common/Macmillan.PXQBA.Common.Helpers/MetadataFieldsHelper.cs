@@ -48,7 +48,7 @@ namespace Macmillan.PXQBA.Common.Helpers
                  model.Width = "30%";
              }
 
-             if (metaField.Name == MetadataFieldNames.DlapStatus)
+             if (metaField.Name == MetadataFieldNames.QuestionStatus)
              {
                  model.IsInlineEditingAllowed = true;
              }

@@ -36,7 +36,7 @@ namespace Macmillan.PXQBA.Business.Services
                 new QuestionMetaField
                 {
                     FriendlyName = "Status",
-                    Name = MetadataFieldNames.DlapStatus,
+                    Name = MetadataFieldNames.QuestionStatus,
                     TypeDescriptor = new MetaFieldTypeDescriptor
                     {
                         Type = MetadataFieldType.SingleSelect,

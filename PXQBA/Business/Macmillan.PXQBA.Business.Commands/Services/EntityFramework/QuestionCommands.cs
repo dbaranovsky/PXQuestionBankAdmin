@@ -43,7 +43,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
     //                            ? query.OrderBy(x => x.Title)
     //                            : query.OrderByDescending(x => x.Title);
     //            }
-    //            if (sortCriterion.ColumnName == MetadataFieldNames.DlapStatus)
+    //            if (sortCriterion.ColumnName == MetadataFieldNames.QuestionStatus)
     //            {
     //                return sortCriterion.IsAsc
     //                            ? query.OrderBy(x => x.Question.Status)
@@ -181,7 +181,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
     //        {
     //            switch (fieldName)
     //            {
-    //                case MetadataFieldNames.DlapStatus:
+    //                case MetadataFieldNames.QuestionStatus:
     //                    question.Status = ((int)EnumHelper.GetItemByDescription(typeof(QuestionStatus), value));
     //                    break;
     //            }

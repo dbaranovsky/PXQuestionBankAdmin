@@ -13,7 +13,7 @@ namespace Macmillan.PXQBA.Web.Helpers
                          .Append(MetadataFieldNames.Sequence).Append("+")
                          .Append(MetadataFieldNames.DlapTitle).Append("+")
                          .Append(MetadataFieldNames.DlapType).Append("+")
-                         .Append(MetadataFieldNames.DlapStatus);
+                         .Append(MetadataFieldNames.QuestionStatus);
             return stringBuilder.ToString();
         }
     }
