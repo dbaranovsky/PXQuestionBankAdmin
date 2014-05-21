@@ -90,7 +90,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<Course, TitleViewModel>()
                 .ForMember(vm => vm.Id, opt => opt.MapFrom(c => c.ProductCourseId))
                 .ForMember(vm => vm.Title, opt => opt.MapFrom(c => c.Title))
-                .ForMember(vm => vm.Chapters, opt => opt.MapFrom(c => c.GetChaptersList()));
+                .ForMember(vm => vm.Chapters, opt => opt.MapFrom(c => modelProfileService.GetChaptersViewModel(c)));
 
             Mapper.CreateMap<CourseMetadataFieldValue, ChapterViewModel>()
                 .ForMember(vm => vm.Id, opt => opt.MapFrom(c => c.Text))

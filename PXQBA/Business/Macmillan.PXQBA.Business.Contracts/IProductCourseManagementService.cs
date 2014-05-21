@@ -8,5 +8,7 @@ namespace Macmillan.PXQBA.Business.Contracts
     {
         Course GetProductCourse(string productCourseId, bool requiredQuestionBankRepository = false);
         IEnumerable<Course> GetAvailableCourses();
+
+        IEnumerable<Course> GetCourseList();
     }
 }

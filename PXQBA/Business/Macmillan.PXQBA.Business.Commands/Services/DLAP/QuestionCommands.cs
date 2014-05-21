@@ -105,6 +105,26 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return Mapper.Map<Question>(GetAgilixQuestion(repositoryCourseId, questionId));
         }
 
+        public Dictionary<string, int> GetQuestionCountByChapters(string questionRepositoryCourseId, string currentCourseId)
+        {
+            var sortCriterion = new SortCriterion()
+                                          {
+                                              ColumnName = MetadataFieldNames.Chapter,
+                                              SortType = SortType.Asc
+                                          };
+            var filterFieldDescriptor = new FilterFieldDescriptor()
+                                        {
+                                            Field = MetadataFieldNames.ProductCourse,
+                                            Values = new[] {currentCourseId}
+                                        };
+            var searchResults = GetSearchResults(questionRepositoryCourseId,
+                                                 currentCourseId,
+                                                 new List<FilterFieldDescriptor>() { filterFieldDescriptor },
+                                                 sortCriterion);
+
+            return searchResults.GroupBy(x => x.SortingField).ToDictionary(groupItem => groupItem.Key, groupItem => groupItem.Count());
+        }
+
         private Bfw.Agilix.DataContracts.Question GetAgilixQuestion(string repositoryCourseId,
             string questionId)
         {

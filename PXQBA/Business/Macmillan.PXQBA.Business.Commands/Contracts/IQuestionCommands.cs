@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Macmillan.PXQBA.Business.Commands.DataContracts;
 using Macmillan.PXQBA.Business.Models;
 
 namespace Macmillan.PXQBA.Business.Commands.Contracts
@@ -9,6 +10,7 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         Question CreateQuestion(Question question);
         Question GetQuestion(string repositoryCourseId, string questionId);
 
+        Dictionary<string, int> GetQuestionCountByChapters(string questionRepositoryCourseId, string currentCourseId);
         Question UpdateQuestion(Question question);
 
         bool UpdateQuestionField(string productCourseId, string repositoryCourseId, string questionId, string fieldName, string value);

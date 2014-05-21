@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using AutoMapper;
+using System.Collections.Generic;
 using System.Web.Mvc;
-using AutoMapper;
 using Macmillan.PXQBA.Business.Contracts;
-using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Web.ViewModels.TiteList;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -25,7 +24,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult GetTitleData()
         {
-            var titles = Mapper.Map<IEnumerable<TitleViewModel>>(productCourseManagementService.GetAvailableCourses());
+            var titles = Mapper.Map<IEnumerable<TitleViewModel>>(productCourseManagementService.GetCourseList());
             return JsonCamel(new TitleListDataResponse
                              {
                                  Titles = titles

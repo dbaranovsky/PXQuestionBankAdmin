@@ -13,6 +13,7 @@ using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Common.Helpers.Constants;
 using Macmillan.PXQBA.DataAccess.Data;
 using Macmillan.PXQBA.Web.ViewModels;
+using Macmillan.PXQBA.Web.ViewModels.TiteList;
 using Course = Macmillan.PXQBA.Business.Models.Course;
 using LearningObjective = Macmillan.PXQBA.Business.Models.LearningObjective;
 using Question = Macmillan.PXQBA.Business.Models.Question;
@@ -135,6 +136,24 @@ namespace Macmillan.PXQBA.Business.Services
         public Dictionary<string, XElement> GetXmlMetadataElements(Question question)
         {
             return QuestionDataXmlParser.ToXmlElements(question);
+        }
+
+        public IEnumerable<ChapterViewModel> GetChaptersViewModel(Course course)
+        {
+            IEnumerable<ChapterViewModel> chapters = course.GetChaptersList().Select(Mapper.Map<ChapterViewModel>).ToList();
+
+            var questionCounts = questionCommands.GetQuestionCountByChapters(course.QuestionRepositoryCourseId, course.ProductCourseId);
+
+            foreach (var questionCount in questionCounts)
+            {
+                var chapter = chapters.SingleOrDefault(ch => ch.Title == questionCount.Key);
+                if (chapter != null)
+                {
+                    chapter.QuestionsCount = questionCount.Value;
+                }
+            }
+
+            return chapters;
         }
 
         public string GetHardCodedQuestionDuplicate()

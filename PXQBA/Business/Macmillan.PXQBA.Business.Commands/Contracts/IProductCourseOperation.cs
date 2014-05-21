@@ -11,6 +11,6 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
     {
         Course GetProductCourse(string productCourseId, bool requiredQuestionBankRepository = false);
 
-        IEnumerable<Course> GetAvailableCourses();
+        IEnumerable<Course> GetAvailableCourses(bool requiredQuestionBankRepository = false);
     }
 }
