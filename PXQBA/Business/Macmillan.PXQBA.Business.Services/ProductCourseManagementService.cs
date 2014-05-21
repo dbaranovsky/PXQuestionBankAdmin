@@ -29,5 +29,10 @@ namespace Macmillan.PXQBA.Business.Services
         {
             return productCourseOperation.GetAvailableCourses();
         }
+
+        public IEnumerable<Course> GetCourseList()
+        {
+            return productCourseOperation.GetAvailableCourses(true);
+        }
     }
 }

@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using AutoMapper;
+﻿using AutoMapper;
 using Bfw.Agilix.Commands;
 using Bfw.Agilix.DataContracts;
 using Bfw.Common.Collections;
 using Bfw.Common.Database;
 using Macmillan.PXQBA.Business.Commands.Contracts;
-using Macmillan.PXQBA.Business.Models;
-using Macmillan.PXQBA.Common.Helpers;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Course = Macmillan.PXQBA.Business.Models.Course;
-using Question = Bfw.Agilix.DataContracts.Question;
 
 namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 {
@@ -28,8 +24,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             this.businessContext = businessContext;
         }
 
-
-        public IEnumerable<Course> GetAvailableCourses()
+        public IEnumerable<Course> GetAvailableCourses(bool requiredQuestionBankRepository=false)
         {
             var query = String.Format(@"
                     DECLARE @webRight int
@@ -45,14 +40,14 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             var dbRecords = databaseManager.Query(query);
 
             var courseIds = dbRecords.Select(record => record.String(DbColumnProductCourseId)).ToList();
-            return GetCoursesByCourseIds(courseIds);
+            return GetCoursesByCourseIds(courseIds, requiredQuestionBankRepository);
         }
 
-        private IEnumerable<Course> GetCoursesByCourseIds(IEnumerable<string> courseIds)
+        private IEnumerable<Course> GetCoursesByCourseIds(IEnumerable<string> courseIds, bool requiredQuestionBankRepository)
         {
             //GetQuestions();
             //GetQuestionList("71836", null, null, 1, 50);
-            var courses = new List<Course>();
+            IList<Course> courses = new List<Course>();
             var batch = new Batch { RunAsync = true };
 
             foreach (var courseId in courseIds)
@@ -76,6 +71,25 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 courses.Add(Mapper.Map<Course>(batch.CommandAs<GetCourse>(index).Courses.First()));
             }
 
+            if (requiredQuestionBankRepository)
+            {
+                courses = GetQuestionBankRepository(courses);
+            }
+
+            return courses;
+        }
+
+        private IList<Course> GetQuestionBankRepository(IList<Course> courses)
+        {
+            var results = GetQuestionBankRepositoryCourseFromItems(
+                courses.Where(c => String.IsNullOrEmpty(c.QuestionRepositoryCourseId)).Select(c => c.ProductCourseId));
+
+            foreach (var result in results)
+            {
+                var course = courses.SingleOrDefault(c => c.ProductCourseId == result.Key);
+                course.QuestionRepositoryCourseId = result.Value;
+            }
+
             return courses;
         }
 
@@ -83,8 +97,8 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         /// Get QuestionBankRepositoryCourse from items (property HrefDisciplineCourseId)
         /// </summary>
         /// <param name="courseIds"></param>
-        /// <returns>Dictionary contains key=courseId value=QuestionBankRepositoryCourse </returns>
-        private Dictionary<string, string> GetQuestionBankRepositoryCourseFromItems(string[] courseIds)
+        /// <returns>Dictionary contains key=courseId value=questionRepositoryCourseId </returns>
+        private Dictionary<string, string> GetQuestionBankRepositoryCourseFromItems(IEnumerable<string> courseIds)
         {
             var resultDictionary = new Dictionary<string, string>();
 
@@ -145,7 +159,9 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 var result = GetQuestionBankRepositoryCourseFromItems(new[] { course.ProductCourseId });
                 course.QuestionRepositoryCourseId = result.GetValue(course.ProductCourseId, String.Empty);
             }
+
             return course;
         }
+
     }
 }

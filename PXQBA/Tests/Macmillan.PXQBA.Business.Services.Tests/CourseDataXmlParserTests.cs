@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Xml.Linq;
-using Macmillan.PXQBA.Common.Helpers;
+using Macmillan.PXQBA.Business.Commands.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Macmillan.PXQBA.Business.Services.Tests

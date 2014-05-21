@@ -50,7 +50,6 @@
     <Compile Include="Constants\ConfigurationKeys.cs" />
     <Compile Include="EnumHelper.cs" />
     <Compile Include="HtmlXmlHelper.cs" />
-    <Compile Include="CourseDataXmlParser.cs" />
     <Compile Include="MetadataFieldsHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionPreviewHelper.cs" />

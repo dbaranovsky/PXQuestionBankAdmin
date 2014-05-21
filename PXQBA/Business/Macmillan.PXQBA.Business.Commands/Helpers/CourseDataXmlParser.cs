@@ -4,7 +4,7 @@ using System.Linq;
 using System.Xml.Linq;
 using Macmillan.PXQBA.Business.Models;
 
-namespace Macmillan.PXQBA.Common.Helpers
+namespace Macmillan.PXQBA.Business.Commands.Helpers
 {
     public static class CourseDataXmlParser
     {

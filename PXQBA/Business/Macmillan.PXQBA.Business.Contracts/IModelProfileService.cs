@@ -3,6 +3,7 @@ using System.Xml.Linq;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.DataAccess.Data;
 using Macmillan.PXQBA.Web.ViewModels;
+using Macmillan.PXQBA.Web.ViewModels.TiteList;
 using Course = Macmillan.PXQBA.Business.Models.Course;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
@@ -25,5 +26,7 @@ namespace Macmillan.PXQBA.Business.Contracts
         List<ProductCourseSection> GetProductCourseSections(QuestionViewModel viewModel);
         QuestionMetadata GetQuestionMetadataForCourse(Question question, Course course = null);
         Dictionary<string, XElement> GetXmlMetadataElements(Question question);
+
+        IEnumerable<ChapterViewModel> GetChaptersViewModel(Course course);
     }
 }
