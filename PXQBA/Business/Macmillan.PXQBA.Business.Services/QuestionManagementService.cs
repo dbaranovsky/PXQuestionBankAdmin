@@ -57,11 +57,17 @@ namespace Macmillan.PXQBA.Business.Services
             question.EntityId = course.QuestionRepositoryCourseId;
             var values = new Dictionary<string, List<String>>
                          {
-                             { MetadataFieldNames.ProductCourse, new List<string> {course.ProductCourseId}},
-                             { MetadataFieldNames.DlapTitle, new List<string> {string.Empty}},
+                             {MetadataFieldNames.ProductCourse, new List<string> {course.ProductCourseId}},
+                             {MetadataFieldNames.DlapTitle, new List<string> {string.Empty}},
                              {MetadataFieldNames.Bank, new List<string> {bank}},
                              {MetadataFieldNames.Chapter, new List<string> {chapter}}
                          };
+
+
+            foreach (var field in course.FieldDescriptors.Where(field => !values.ContainsKey(field.Name)))
+            {
+                values.Add(field.Name, new List<string> { string.Empty });
+            }
             question.DefaultValues = values.Skip(1).ToDictionary(item => item.Key, item => item.Value);
             question.ProductCourseSections.Add(new ProductCourseSection
                                                {
@@ -91,6 +97,12 @@ namespace Macmillan.PXQBA.Business.Services
                 return questionCommands.UpdateSharedQuestionField(course.QuestionRepositoryCourseId, questionId, fieldName, fieldValue);
             }
             return questionCommands.UpdateQuestionField(course.ProductCourseId, course.QuestionRepositoryCourseId, questionId, fieldName, fieldValue);
+        }
+
+        public bool BulklUpdateQuestionField(Course course, string[] questionId, string fieldName, string fieldValue,
+            bool isSharedField = false)
+        {
+            return questionCommands.BulklUpdateQuestionField(course.ProductCourseId, course.QuestionRepositoryCourseId, questionId, fieldName, fieldValue);
         }
 
         public Question CreateTemporaryQuestion(Course course, string questionId)

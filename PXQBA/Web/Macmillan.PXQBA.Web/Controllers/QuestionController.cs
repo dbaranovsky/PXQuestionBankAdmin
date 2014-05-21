@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -33,6 +34,14 @@ namespace Macmillan.PXQBA.Web.Controllers
             bool success = questionManagementService.UpdateQuestionField(CourseHelper.CurrentCourse, questionId, fieldName, fieldValue, isSharedField);
             return JsonCamel(new { isError = !success });
         
+        }
+
+        [HttpPost]
+        public ActionResult BulkUpdateMetadataField(string[] questionIds, string fieldName, string fieldValue, bool isSharedField = false)
+        {
+            bool success = questionManagementService.BulklUpdateQuestionField(CourseHelper.CurrentCourse, questionIds, fieldName, fieldValue, isSharedField);
+            return JsonCamel(new { isError = !success });
+
         }
 
         public ActionResult CreateQuestion(string questionType, string bank, string chapter)
@@ -117,5 +126,6 @@ namespace Macmillan.PXQBA.Web.Controllers
             bool isSuccess = questionManagementService.PublishToTitle(questionsId, courseId, bank, chapter);
             return JsonCamel(new { isError = !isSuccess });
         }
+
 	}
 }

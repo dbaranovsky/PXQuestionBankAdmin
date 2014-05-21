@@ -2,6 +2,7 @@
 @using Macmillan.PXQBA.Web.Helpers
 @using Macmillan.PXQBA.Web.ViewModels.Editor
 @using Macmillan.PXQBA.Web.ViewModels.Filter
+@using EnumHelper = Macmillan.PXQBA.Common.Helpers.EnumHelper
 <script type="text/javascript">
     (function () {
 
@@ -44,7 +45,7 @@
         };
 
         actions.bulkOperations = {            
-            setStatusUrl: '@Url.Action("SetStatus", "BulkOperation")',
+            bulkUpdateMetadataFieldUrl: '@Url.Action("BulkUpdateMetadataField", "Question")',
             removeFromTitleUrl: '@Url.Action("RemoveFromTitle", "Question")',
             publishToTitle: '@Url.Action("PublishToTitle", "Question")'
         };
@@ -86,6 +87,11 @@
             newQuestion: 'New Question',
             duplicateQuestion: 'Duplicate Question',
             editQuestion: 'Edit Question'
+        };
+
+        enums.flag = {            
+            flagged: '@EnumHelper.GetEnumDescription(QuestionFlag.Flagged)',
+            notFlagged: '@EnumHelper.GetEnumDescription(QuestionFlag.NotFlagged)'
         };
 
         var consts = {};
