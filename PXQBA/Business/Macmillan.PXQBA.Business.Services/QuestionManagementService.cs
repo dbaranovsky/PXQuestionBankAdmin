@@ -98,6 +98,12 @@ namespace Macmillan.PXQBA.Business.Services
             return questionCommands.UpdateQuestionField(course.ProductCourseId, course.QuestionRepositoryCourseId, questionId, fieldName, fieldValue);
         }
 
+        public bool BulklUpdateQuestionField(Course course, string[] questionId, string fieldName, string fieldValue,
+            bool isSharedField = false)
+        {
+            return questionCommands.BulklUpdateQuestionField(course.ProductCourseId, course.QuestionRepositoryCourseId, questionId, fieldName, fieldValue);
+        }
+
         public Question CreateTemporaryQuestion(Course course, string questionId)
         {
             //PxTempQBAQuestion_115457_Essay

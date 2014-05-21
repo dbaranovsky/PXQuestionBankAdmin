@@ -45,6 +45,8 @@ namespace Macmillan.PXQBA.Business.Contracts
         
         bool UpdateQuestionField(Course course, string questionId, string fieldName, string fieldValue, bool isSharedField = false);
 
+        bool BulklUpdateQuestionField(Course course, string[] questionId, string fieldName, string fieldValue, bool isSharedField = false);
+
         Question CreateTemporaryQuestion(Course course, string questionId);
 
         bool RemoveFromTitle(string[] questionsId, Course currentCourse);

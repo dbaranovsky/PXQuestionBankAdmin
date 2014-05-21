@@ -184,18 +184,19 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return true;
         }
 
-        private bool UpdateQuestionStatus(string repositoryCourseId, string questionId, string newValue)
+        public bool BulklUpdateQuestionField(string productCourseId, string repositoryCourseId, string[] questionId, string fieldName, string fieldValue)
         {
-            var question = GetQuestion(repositoryCourseId, questionId);
-            if (question != null)
+            if (fieldName.Equals(MetadataFieldNames.QuestionStatus))
             {
-                question.Status = ((int)((QuestionStatus)EnumHelper.GetItemByDescription(typeof(QuestionStatus), newValue))).ToString(); 
-                UpdateQuestion(question);
-                return true;
+                return UpdateQuestionsStatuses(repositoryCourseId, questionId, fieldValue);
             }
-            return false;
+
+            return true;
         }
 
+
+
+       
         public bool UpdateSharedQuestionField(string repositoryCourseId, string questionId, string fieldName, string fieldValue)
         {
             var temporaryRepositoryCourseId = ConfigurationHelper.GetTemporaryCourseId();
@@ -273,10 +274,38 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         }
 
 
+        private bool UpdateQuestionStatus(string repositoryCourseId, string questionId, string newValue)
+        {
+            return UpdateQuestionsStatuses(repositoryCourseId, new List<string> { questionId }, newValue);
+        }
+
+
+        private bool UpdateQuestionsStatuses(string repositoryCourseId, IEnumerable<string> questionId, string newValue)
+        {
+
+            var questions = GetAgilixQuestions(repositoryCourseId, questionId);
+            if (questions == null)
+            {
+                return false;
+            }
+
+           // var newStatus = ((int)((QuestionStatus)EnumHelper.GetItemByDescription(typeof(QuestionStatus), newValue))).ToString();
+
+            foreach (var question in questions)
+            {
+                question.QuestionStatus = newValue;
+            }
+
+            ExecutePutQuestions(questions);
+
+            return true;
+
+        }
+
+
         private void ExecutePutQuestion(Bfw.Agilix.DataContracts.Question  question)
         {
-            var questions = new List<Bfw.Agilix.DataContracts.Question> {question};
-            ExecutePutQuestions(questions);
+            ExecutePutQuestions(new List<Bfw.Agilix.DataContracts.Question> {question});
         }
 
         private void ExecutePutQuestions(IEnumerable<Bfw.Agilix.DataContracts.Question> questions)

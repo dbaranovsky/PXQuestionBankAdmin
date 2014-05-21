@@ -311,26 +311,32 @@
     
     self.bulk = {};
 
-    self.bulk.setStatus = function (questionsId, newQuestionStatus) {
+    self.bulk.updateMetadataField = function (questionIds, fieldName, fieldValue, isSharedField) {
         asyncManager.startWait();
 
         var request = {
-            questionsId: questionsId,
-            newQuestionStatus: newQuestionStatus
+            questionIds: questionIds,
+            fieldName: fieldName,
+            fieldValue: fieldValue,
+            isSharedField: isSharedField === undefined? false : isSharedField
         };
 
         return $.ajax({
-            url: window.actions.bulkOperations.setStatusUrl,
+            url: window.actions.bulkOperations.bulkUpdateMetadataFieldUrl,
             traditional: true,
-            data: JSON.stringify(request),
-            contentType: 'application/json',
+            data: request,
             dataType: 'json',
             type: 'POST'
         }).done(function (response) {
+            if (response.isError) {
+                console.error('Bulk Editing is unsuccessful');
+            }
+            console.log('Bulk Edit complete');
+            self.showSuccessPopup("Questions updated successfully");
             self.resetState();
-        }).error(function (e) {
-            self.resetState();
-            self.showErrorPopup();
+            console.log('Refresh complite');
+        }).error(function(e){
+             self.showErrorPopup();
         });
     };
 
