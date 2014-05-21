@@ -33,7 +33,7 @@ namespace Macmillan.PXQBA.Business.Services
         public Question CreateQuestion(Course course, string questiontype, string bank, string chapter)
         {
             Question question = GetNewQuestionTemplate(course, questiontype, bank, chapter);
-            return questionCommands.CreateQuestion(question);
+            return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
 
         public Question GetQuestion(Course course, string questionId)
@@ -47,7 +47,7 @@ namespace Macmillan.PXQBA.Business.Services
             question.Id = Guid.NewGuid().ToString();
             question.Status = ((int)QuestionStatus.InProgress).ToString();
             question.QuestionIdDuplicateFrom = questionId;
-            return questionCommands.CreateQuestion(question);
+            return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
 
         private Question GetNewQuestionTemplate(Course course, string questionType, string bank, string chapter)
@@ -66,7 +66,7 @@ namespace Macmillan.PXQBA.Business.Services
 
             foreach (var field in course.FieldDescriptors.Where(field => !values.ContainsKey(field.Name)))
             {
-                values.Add(field.Name, new List<string> { string.Empty });
+                values.Add(field.Name, new List<string>());
             }
             question.DefaultValues = values.Skip(1).ToDictionary(item => item.Key, item => item.Value);
             question.ProductCourseSections.Add(new ProductCourseSection

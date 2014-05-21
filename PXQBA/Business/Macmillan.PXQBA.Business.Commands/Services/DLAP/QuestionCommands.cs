@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
@@ -32,16 +33,60 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         /// <returns>questions</returns>
         public PagedCollection<Question> GetQuestionList(string questionRepositoryCourseId, string currentCourseId, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
         {
-            var searchResults = GetSearchResults(questionRepositoryCourseId, currentCourseId, filter, sortCriterion);
-            searchResults = SortSearchResults(searchResults, sortCriterion);
-
-            var questions = GetAgilixQuestions(questionRepositoryCourseId, searchResults.Skip(startingRecordNumber).Take(recordCount).Select(r => r.QuestionId));
+            var questionsSortedBySequence = GetSolrResultsSortedBySequence(questionRepositoryCourseId, currentCourseId);
+            var searchResults = GetSortedAndFilteredSolrResults(questionRepositoryCourseId, currentCourseId, filter, sortCriterion);
+            
+            var agilixQuestions = GetAgilixQuestions(questionRepositoryCourseId, searchResults.Skip(startingRecordNumber).Take(recordCount).Select(r => r.QuestionId));
+            var questions = Mapper.Map<IEnumerable<Question>>(agilixQuestions);
+            SetCorrectSequenceDisplayValue(currentCourseId, questions, questionsSortedBySequence);
             var result = new PagedCollection<Question>
             {
                 TotalItems = searchResults.Count(),
-                CollectionPage = Mapper.Map<IEnumerable<Question>>(questions)
+                CollectionPage = questions
             };
             return result;
+        }
+
+        private void SetCorrectSequenceDisplayValue(string productCourseId, IEnumerable<Question> questions, IEnumerable<QuestionSearchResult> questionsSortedBySequence)
+        {
+            foreach (var question in questions)
+            {
+                var section = question.ProductCourseSections.First(s => s.ProductCourseId == productCourseId);
+                var sequenceDisplayValue = 0;
+                if (questionsSortedBySequence.Any(q => q.QuestionId == question.Id))
+                {
+                    sequenceDisplayValue = questionsSortedBySequence.ToList().FindIndex(q => q.QuestionId == question.Id) + 1;
+                }
+                section.ProductCourseValues[MetadataFieldNames.Sequence] = new List<string>(){sequenceDisplayValue.ToString()};
+            }
+        }
+
+        private IEnumerable<QuestionSearchResult> GetSortedAndFilteredSolrResults(string questionRepositoryCourseId, string currentCourseId, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion)
+        {
+            var searchResults = GetSearchResults(questionRepositoryCourseId, currentCourseId, filter, sortCriterion);
+            return SortSearchResults(searchResults, sortCriterion);
+        }
+
+        private IEnumerable<QuestionSearchResult> GetSolrResultsSortedBySequence(string questionRepositoryCourseId, string currentCourseId)
+        {
+             var filter = new List<FilterFieldDescriptor>
+                         {
+                             new FilterFieldDescriptor
+                             {
+                                 Field = MetadataFieldNames.ProductCourse,
+                                 Values =
+                                     new List<string>
+                                     {
+                                         currentCourseId
+                                     }
+                             }
+                         };
+            var sortCriterion = new SortCriterion
+                               {
+                                   ColumnName = MetadataFieldNames.Sequence,
+                                   SortType = SortType.Asc
+                               };
+            return GetSortedAndFilteredSolrResults(questionRepositoryCourseId, currentCourseId, filter, sortCriterion);
         }
 
         private IEnumerable<QuestionSearchResult> GetSearchResults(string questionRepositoryCourseId, string currentCourseId, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion)
@@ -87,6 +132,12 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         {
             if (sortCriterion != null && sortCriterion.SortType != SortType.None)
             {
+                if (sortCriterion.ColumnName == MetadataFieldNames.Sequence)
+                {
+                    return sortCriterion.IsAsc
+                    ? searchResults.Where(r => !string.IsNullOrEmpty(r.SortingField)).OrderBy(r => double.Parse(r.SortingField))
+                    : searchResults.Where(r => !string.IsNullOrEmpty(r.SortingField)).OrderByDescending(r => double.Parse(r.SortingField)); 
+                }
                 return sortCriterion.IsAsc
                     ? searchResults.OrderBy(r => r.SortingField)
                     : searchResults.OrderByDescending(r => r.SortingField);
@@ -94,10 +145,35 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return searchResults;
         }
 
-        public Question CreateQuestion(Question question)
+        public Question CreateQuestion(string productCourseId, Question question)
         {
+            CheckIfSequenceIsSet(productCourseId, question);
             ExecutePutQuestion(Mapper.Map<Bfw.Agilix.DataContracts.Question>(question));
             return question;
+        }
+
+        private void CheckIfSequenceIsSet(string productCourseId, Question question)
+        {
+            var section = question.ProductCourseSections.First(s => s.ProductCourseId == productCourseId);
+            if (!section.ProductCourseValues.ContainsKey(MetadataFieldNames.Sequence))
+            {
+                section.ProductCourseValues.Add(MetadataFieldNames.Sequence, new List<string>());
+            }
+            if (section.ProductCourseValues[MetadataFieldNames.Sequence].All(string.IsNullOrEmpty))
+            {
+                section.ProductCourseValues[MetadataFieldNames.Sequence] = new List<string> { GetNewSequenceValue(question.EntityId, productCourseId) };
+            }
+        }
+
+        private string GetNewSequenceValue(string repositoryCourseId, string courseId)
+        {
+            var last = GetSolrResultsSortedBySequence(repositoryCourseId, courseId).LastOrDefault();
+            if (last != null)
+            {
+                var lastValue = double.Parse(last.SortingField);
+                return (Math.Floor(lastValue) + 1).ToString();
+            }
+            return "1";
         }
 
         public Question GetQuestion(string repositoryCourseId, string questionId)
@@ -165,9 +241,12 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return getItem.Items.Any() ? getItem.Items.First().Id : string.Empty;
         }
 
-        private bool UpdateQuestionSequence(string productCourseId, string courseId, string questionId, int newSequenceValue)
+        private bool UpdateQuestionSequence(string productCourseId, string repositoryCourseId, string questionId, int newSequenceValue)
         {
-            throw new System.NotImplementedException();
+            var questions = GetSolrResultsSortedBySequence(repositoryCourseId, productCourseId).ToList();
+            var updated = QuestionSequenceHelper.UpdateSequence(questions.ToList(), questionId, newSequenceValue);
+            UpdateQuestionFieldForce(productCourseId, repositoryCourseId, questionId, MetadataFieldNames.Sequence, updated.SortingField);
+            return true;
         }
 
         public Question UpdateQuestion(Question question)
@@ -188,20 +267,34 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             {
                 return UpdateQuestionStatus(repositoryCourseId, questionId, fieldValue);
             }
+            UpdateQuestionFieldForce(productCourseId, repositoryCourseId, questionId, fieldName, fieldValue);
+            return true;
+        }
+
+        private void UpdateQuestionFieldForce(string productCourseId, string repositoryCourseId, string questionId, string fieldName,
+            string fieldValue)
+        {
             var question = GetQuestion(repositoryCourseId, questionId);
             if (question != null)
             {
-                var productCourseSection = question.ProductCourseSections.FirstOrDefault(s => s.ProductCourseId == productCourseId);
+                var productCourseSection =
+                    question.ProductCourseSections.FirstOrDefault(s => s.ProductCourseId == productCourseId);
                 if (productCourseSection != null)
                 {
-                    if (productCourseSection.ProductCourseValues != null && productCourseSection.ProductCourseValues.ContainsKey(fieldName))
+                    if (productCourseSection.ProductCourseValues != null)
                     {
-                        productCourseSection.ProductCourseValues[fieldName] = new List<string>() { fieldValue };
+                        if (productCourseSection.ProductCourseValues.ContainsKey(fieldName))
+                        {
+                            productCourseSection.ProductCourseValues[fieldName] = new List<string>() {fieldValue};
+                        }
+                        else
+                        {
+                            productCourseSection.ProductCourseValues.Add(fieldName, new List<string>() {fieldValue});
+                        }
                     }
                     UpdateQuestion(question);
                 }
             }
-            return true;
         }
 
         public bool BulklUpdateQuestionField(string productCourseId, string repositoryCourseId, string[] questionId, string fieldName, string fieldValue)
@@ -213,9 +306,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
             return true;
         }
-
-
-
        
         public bool UpdateSharedQuestionField(string repositoryCourseId, string questionId, string fieldName, string fieldValue)
         {
