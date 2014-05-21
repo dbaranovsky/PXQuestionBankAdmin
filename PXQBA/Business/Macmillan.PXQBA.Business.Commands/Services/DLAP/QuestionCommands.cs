@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
@@ -165,9 +166,9 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return getItem.Items.Any() ? getItem.Items.First().Id : string.Empty;
         }
 
-        private bool UpdateQuestionSequence(string productCourseId, string courseId, string questionId, int newSequenceValue)
+        private bool UpdateQuestionSequence(string productCourseId, string repositoryCourseId, string questionId, int newSequenceValue)
         {
-            throw new System.NotImplementedException();
+           throw new NotImplementedException();
         }
 
         public Question UpdateQuestion(Question question)
@@ -194,9 +195,16 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 var productCourseSection = question.ProductCourseSections.FirstOrDefault(s => s.ProductCourseId == productCourseId);
                 if (productCourseSection != null)
                 {
-                    if (productCourseSection.ProductCourseValues != null && productCourseSection.ProductCourseValues.ContainsKey(fieldName))
+                    if (productCourseSection.ProductCourseValues != null)
                     {
-                        productCourseSection.ProductCourseValues[fieldName] = new List<string>() { fieldValue };
+                        if (productCourseSection.ProductCourseValues.ContainsKey(fieldName))
+                        {
+                            productCourseSection.ProductCourseValues[fieldName] = new List<string>() {fieldValue};
+                        }
+                        else
+                        {
+                            productCourseSection.ProductCourseValues.Add(fieldName, new List<string>() { fieldValue });
+                        }
                     }
                     UpdateQuestion(question);
                 }
