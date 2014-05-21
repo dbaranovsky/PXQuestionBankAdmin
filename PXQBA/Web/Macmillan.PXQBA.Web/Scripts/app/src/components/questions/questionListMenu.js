@@ -7,7 +7,7 @@ var QuestionListMenu = React.createClass({
 
      getInitialState: function() {
 
-       return { isFlagged: false };
+       return { isFlagged: this.props.data.flag == window.enums.flag.flagged };
     },
     editNotesHandler: function(){
       this.props.editNotesHandler();

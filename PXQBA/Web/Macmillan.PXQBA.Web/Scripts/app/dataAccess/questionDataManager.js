@@ -281,26 +281,31 @@
     };
 
       self.flagQuestion= function (questionId, isFlagged) {
-        
-        var request = {            
+
+         var request = {
             questionId: questionId,
-            isFlagged: isFlagged
+            fieldName: "flag",
+            fieldValue: isFlagged? window.enums.flag.flagged : window.enums.flag.notFlagged,
+            isSharedField: false
         };
-        
+
         return $.ajax({
-            url: window.actions.questionList.flagQuestionUrl,
+            url: window.actions.questionList.editQuestionFieldUrl,
             traditional: true,
-            data: JSON.stringify(request),
-            contentType: 'application/json',
+            data: request,
             dataType: 'json',
             type: 'POST'
         }).done(function (response) {
-
+            if (response.isError) {
+                console.error('Editing is unsuccessful');
+            }
+            console.log('Edited complete');
             self.showSuccessPopup("Question successfully "+ (isFlagged? "flagged": "unflagged"));
-
+            console.log('Refresh complite');
         }).error(function(e){
              self.showErrorPopup();
         });
+       
     };
 
     
