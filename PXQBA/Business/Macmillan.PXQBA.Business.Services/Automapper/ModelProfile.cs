@@ -198,15 +198,17 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             var values = new Dictionary<string, List<string>>();
             if (context.Options.Items.Any())
             {
-                var productCourseId = context.Options.Items.First().Value.ToString();
-                var section =
-                    ((List<ProductCourseSection>)context.SourceValue).FirstOrDefault(
-                        s => s.ProductCourseId == productCourseId);
+                var course = (Course) context.Options.Items.First().Value;
+                var productCourseId = course.ProductCourseId;
+                var section = ((List<ProductCourseSection>)context.SourceValue).FirstOrDefault(s => s.ProductCourseId == productCourseId);
                 if (section != null)
                 {
-                    return section.ProductCourseValues;
+                    values = section.ProductCourseValues;
                 }
-                
+                foreach (var courseMetadataFieldDescriptor in course.FieldDescriptors.Where(courseMetadataFieldDescriptor => !values.ContainsKey(courseMetadataFieldDescriptor.Name)))
+                {
+                    values.Add(courseMetadataFieldDescriptor.Name, new List<string>());
+                }
             }
             return values;
         }

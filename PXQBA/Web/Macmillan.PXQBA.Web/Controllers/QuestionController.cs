@@ -74,7 +74,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
             QuestionHelper.QuestionIdToEdit = question.Id;
             var tempQuestion = questionManagementService.CreateTemporaryQuestion(CourseHelper.CurrentCourse, question.Id);
-            var questionViewModel = Mapper.Map<Question, QuestionViewModel>(tempQuestion, opt => opt.Items.Add(CourseHelper.CurrentCourse.ProductCourseId, CourseHelper.CurrentCourse.ProductCourseId));
+            var questionViewModel = Mapper.Map<Question, QuestionViewModel>(tempQuestion, opt => opt.Items.Add(CourseHelper.CurrentCourse.ProductCourseId, CourseHelper.CurrentCourse));
             questionViewModel.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), questionViewModel.EntityId, questionViewModel.QuizId);
             questionViewModel.EditorUrl = String.Format(ConfigurationHelper.GetEditorUrlTemplate(), questionViewModel.EntityId, questionViewModel.QuizId, questionViewModel.Id);
             return questionViewModel;
