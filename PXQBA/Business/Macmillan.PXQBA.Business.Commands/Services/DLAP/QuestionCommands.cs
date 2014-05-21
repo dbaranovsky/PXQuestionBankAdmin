@@ -134,6 +134,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             {
                 if (sortCriterion.ColumnName == MetadataFieldNames.Sequence)
                 {
+                    //TODO: questions with empty Sequence are skipped. Need to fix this
                     return sortCriterion.IsAsc
                     ? searchResults.Where(r => !string.IsNullOrEmpty(r.SortingField)).OrderBy(r => double.Parse(r.SortingField))
                     : searchResults.Where(r => !string.IsNullOrEmpty(r.SortingField)).OrderByDescending(r => double.Parse(r.SortingField)); 
