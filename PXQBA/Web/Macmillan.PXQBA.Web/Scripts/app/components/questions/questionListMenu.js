@@ -77,7 +77,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
       return(React.DOM.span( {className:"badge"}, this.props.titleCount));
     },
 
-    renderSharedButtons: function(){
+    renderSharedMenu: function(){
       if(this.props.showAll){
 
 
@@ -143,7 +143,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
 
     },
 
-    renderStaticMenu: function(){
+    renderFlagMenu: function(){
         if (this.props.showAll){
           return(React.DOM.div( {className:"menu-container-flag"}, 
                      React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.toggleFlag, 'data-toggle':"tooltip", title:this.state.isFlagged? "Unflag question" : "Flag question"}, 
@@ -166,8 +166,8 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
         return ( 
                 React.DOM.div( {onmouseover:this.hidePopover}, 
                    this.renderMenu(),  
-                   this.renderStaticMenu(),  
-                   this.renderSharedButtons()
+                   this.renderFlagMenu(),  
+                   this.renderSharedMenu()
                  )
             );
     
