@@ -49,8 +49,8 @@ var QuestionMetadataEditor = React.createClass({displayName: 'QuestionMetadataEd
     },
 
     render: function() {
-        var style = this.props.question.defaultValues != null? {} : {display: "none !important"};
-        return ( React.DOM.div( {className:this.props.question.defaultValues == null ? "local" : "local wide"}, 
+        var style = this.props.question.isShared? {} : {display: "none !important"};
+        return ( React.DOM.div( {className:this.props.question.isShared? "local wide" : "local" }, 
                       React.DOM.div( {className:"row header", style:style}, 
                         React.DOM.div( {className:"cell"},  " ", React.DOM.span( {className:"label label-default metadata-info-label"}, "Shared values")),
                         React.DOM.div( {className:"cell control"}),

@@ -49,8 +49,8 @@ var QuestionMetadataEditor = React.createClass({
     },
 
     render: function() {
-        var style = this.props.question.defaultValues != null? {} : {display: "none !important"};
-        return ( <div className={this.props.question.defaultValues == null ? "local" : "local wide"}>
+        var style = this.props.question.isShared? {} : {display: "none !important"};
+        return ( <div className={this.props.question.isShared? "local wide" : "local" }>
                       <div className="row header" style={style}>
                         <div className="cell"> <span className="label label-default metadata-info-label">Shared values</span></div>
                         <div className="cell control"></div>

@@ -8,7 +8,7 @@ var ShareMetadataEditorRow = React.createClass({
     var field = this.props.field; 
     var isDisabled = false;
     var isUnique = false;
-    if (this.props.question.defaultValues == null){
+    if (!this.props.question.isShared){
       return ({isDisabled: isDisabled});
     }
 
@@ -47,7 +47,7 @@ var ShareMetadataEditorRow = React.createClass({
     },
 
    renderSharedValue: function(){
-        if (this.props.question.defaultValues != null){
+        if (this.props.question.isShared ){
              return  (<div className={this.props.isUnique? "cell shared unique" : "cell shared"}>
                      <MetadataFieldEditor question={this.props.question.defaultValues} 
                                            questionId = {this.props.question.id}
@@ -63,7 +63,7 @@ var ShareMetadataEditorRow = React.createClass({
     },
 
     renderSwitchControl: function(){
-       if (this.props.question.defaultValues != null && this.state.isUnique != true){
+       if (this.props.question.isShared && this.state.isUnique != true){
          return  (<div className="cell control">
                      <div className="override-control">
                           <p> </p>
