@@ -51,7 +51,7 @@ namespace Macmillan.PXQBA.Business.Contracts
 
         bool RemoveFromTitle(string[] questionsId, Course currentCourse);
 
-        bool PublishToTitle(string[] questionsId, int courseId, string bank, string chapter);
+        bool PublishToTitle(string[] questionsId, int courseIdToPublish, string bank, string chapter, Course currentCourse);
 
     }
 }

@@ -55,6 +55,14 @@ namespace Macmillan.PXQBA.Web.ViewModels
             }
         }
 
+        public string SharedWith
+        {
+            get
+            {
+                return string.Join(", ", ProductCourses);
+            }
+        }
+
         public IEnumerable<string> ProductCourses
         {
             get; set;

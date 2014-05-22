@@ -88,5 +88,10 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
         /// Key for external Editor in BrainHoney
         /// </summary>
         public static string EditorUrlTemplate = "EditorUrl";
+
+        /// <summary>
+        /// Task id to update solr with latest data 
+        /// </summary>
+        public static string SolrUpdateTaskId = "SolrUpdateTaskId";
     }
 }

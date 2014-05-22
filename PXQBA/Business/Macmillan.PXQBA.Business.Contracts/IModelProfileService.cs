@@ -14,8 +14,6 @@ namespace Macmillan.PXQBA.Business.Contracts
         string SetLearningObjectives(IEnumerable<LearningObjective> learningObjectives);
         IEnumerable<LearningObjective> GetLOByGuid(string productCourseId, string learningObjectiveGuids);
         string GetQuestionCardLayout(Bfw.Agilix.DataContracts.Course src);
-        string GetHardCodedQuestionDuplicate();
-        Question GetHardCodedSourceQuestion(int sharedFrom);
 
         List<CourseMetadataFieldDescriptor> GetCourseMetadataFieldDescriptors(
             Bfw.Agilix.DataContracts.Course src);
@@ -28,5 +26,6 @@ namespace Macmillan.PXQBA.Business.Contracts
         Dictionary<string, XElement> GetXmlMetadataElements(Question question);
 
         IEnumerable<ChapterViewModel> GetChaptersViewModel(Course course);
+        IEnumerable<string> GetTitleNames(IEnumerable<string> titleIds);
     }
 }

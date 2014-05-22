@@ -158,7 +158,6 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Constants\WebKeys.cs" />
     <Compile Include="ActionResults\JsonCamelCaseResult.cs" />
-    <Compile Include="Controllers\BulkOperationController.cs" />
     <Compile Include="Controllers\ImportController.cs" />
     <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\MetadataController.cs" />

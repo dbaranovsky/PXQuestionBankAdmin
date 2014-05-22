@@ -80,7 +80,6 @@ namespace Macmillan.PXQBA.Business.Services
             var type = QuestionTypeHelper.GetQuestionType(questionType);
             question.InteractionType = string.IsNullOrEmpty(type.Custom) ? type.Key : type.Custom;
             question.CustomUrl = string.IsNullOrEmpty(type.Custom) ? type.Custom : type.Key;
-            question.Answer = string.Empty;
             return question;
         }
 
@@ -111,9 +110,6 @@ namespace Macmillan.PXQBA.Business.Services
             //PxTempQBAQuestion_115457_Choice
             return temporaryQuestionOperation.CopyQuestionToTemporaryCourse(course.QuestionRepositoryCourseId, questionId);
         }
-
-
-
     
         public bool RemoveFromTitle(string[] questionsId, Course currentCourse)
         {
@@ -121,9 +117,24 @@ namespace Macmillan.PXQBA.Business.Services
             return isSuccess;
         }
 
-        public bool PublishToTitle(string[] questionsId, int courseId, string bank, string chapter)
+        public bool PublishToTitle(string[] questionsId, int courseIdToPublish, string bank, string chapter, Course currentCourse)
         {
-            bool isSuccess = questionCommands.PublishToTitle(questionsId, courseId, bank, chapter);
+            var questions = questionCommands.GetQuestions(currentCourse.QuestionRepositoryCourseId, questionsId);
+            foreach (var question in questions)
+            {
+                var newProductCourseValues = question.DefaultValues;
+                newProductCourseValues[MetadataFieldNames.Chapter] = new List<string> { chapter };
+                newProductCourseValues[MetadataFieldNames.Bank] = new List<string> { bank };
+                var newProductCourseSection = question.ProductCourseSections.FirstOrDefault(s => s.ProductCourseId == courseIdToPublish.ToString());
+                if (newProductCourseSection == null)
+                {
+                    newProductCourseSection = new ProductCourseSection { ProductCourseId = courseIdToPublish.ToString() };
+                }
+                newProductCourseSection.ProductCourseValues = newProductCourseValues;
+                question.ProductCourseSections.Add(newProductCourseSection);
+            }
+            
+            bool isSuccess = questionCommands.UpdateQuestions(questions, currentCourse.QuestionRepositoryCourseId);
             return isSuccess;
         }
     }

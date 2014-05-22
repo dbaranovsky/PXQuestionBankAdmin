@@ -123,7 +123,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// <returns></returns>
         public ActionResult PublishToTitle(string[] questionsId, int courseId, string bank, string chapter)
         {
-            bool isSuccess = questionManagementService.PublishToTitle(questionsId, courseId, bank, chapter);
+            bool isSuccess = questionManagementService.PublishToTitle(questionsId, courseId, bank, chapter, CourseHelper.CurrentCourse);
             return JsonCamel(new { isError = !isSuccess });
         }
 
