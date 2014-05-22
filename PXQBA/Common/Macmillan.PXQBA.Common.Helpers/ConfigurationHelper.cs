@@ -243,5 +243,18 @@ namespace Macmillan.PXQBA.Common.Helpers
             }
             return "200117";
         }
+
+        public static int? GetSolrUpdateTaskId()
+        {
+            if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings[ConfigurationKeys.SolrUpdateTaskId]))
+            {
+                int taskId;
+                if (int.TryParse(ConfigurationManager.AppSettings[ConfigurationKeys.SolrUpdateTaskId], out taskId))
+                {
+                    return taskId;
+                }
+            }
+            return null;
+        }
     }
 }

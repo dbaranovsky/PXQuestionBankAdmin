@@ -164,7 +164,22 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         {
             CheckIfSequenceIsSet(productCourseId, question);
             ExecutePutQuestion(Mapper.Map<Bfw.Agilix.DataContracts.Question>(question));
+            ExecuteSolrUpdateTask();
             return question;
+        }
+
+        private void ExecuteSolrUpdateTask()
+        {
+            var taskId = ConfigurationHelper.GetSolrUpdateTaskId();
+            if (taskId.HasValue)
+            {
+                var cmd = new RunTask();
+                cmd.SearchParameters = new TaskSearch()
+                                       {
+                                           TaskId = taskId.Value.ToString()
+                                       };
+                businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+            }
         }
 
         private void CheckIfSequenceIsSet(string productCourseId, Question question)
@@ -190,6 +205,11 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         public Question GetQuestion(string repositoryCourseId, string questionId)
         {
             return Mapper.Map<Question>(GetAgilixQuestion(repositoryCourseId, questionId));
+        }
+
+        public IEnumerable<Question> GetQuestions(string repositoryCourseId, string[] questionsId)
+        {
+            return Mapper.Map<IEnumerable<Question>>(GetAgilixQuestions(repositoryCourseId, questionsId));
         }
 
         public Dictionary<string, int> GetQuestionCountByChapters(string questionRepositoryCourseId, string currentCourseId)
@@ -269,6 +289,14 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             Mapper.Map(question, agilixQuestion);
             ExecutePutQuestion(agilixQuestion);
             return question;
+        }
+
+        public bool UpdateQuestions(IEnumerable<Question> questions, string repositoryCourseId)
+        {
+            var agilixQuestions = GetAgilixQuestions(repositoryCourseId, questions.Select(q => q.Id));
+            Mapper.Map(questions, agilixQuestions);
+            ExecutePutQuestions(agilixQuestions);
+            return true;
         }
 
         public bool UpdateQuestionField(string productCourseId, string repositoryCourseId, string questionId, string fieldName, string fieldValue)
@@ -383,20 +411,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
             return true;
         }
-
-        public bool PublishToTitle(string[] questionsId, int courseId, string bank, string chapter)
-        {
-            //TODO implement in real data
-            return true;
-        }
-
-
-        public bool SetQuestionsStatus(string[] questionId, string status)
-        {
-            //TODO implement in real data
-            return true;
-        }
-
 
         private bool UpdateQuestionStatus(string repositoryCourseId, string questionId, string newValue)
         {

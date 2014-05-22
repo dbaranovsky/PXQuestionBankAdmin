@@ -156,19 +156,10 @@ namespace Macmillan.PXQBA.Business.Services
             return chapters;
         }
 
-        public string GetHardCodedQuestionDuplicate()
+        public IEnumerable<string> GetTitleNames(IEnumerable<string> titleIds)
         {
-            return "67CE313C-ACEE-9747-4EA3-AFF66696C1DE";
+            return productCourseOperation.GetCoursesByCourseIds(titleIds).Select(c => c.Title);
         }
 
-        public Question GetHardCodedSourceQuestion(int sharedFrom)
-        {
-            if (sharedFrom % 2 == 0)
-            {
-                return null;
-            }
-            return questionCommands.GetQuestion("", GetHardCodedQuestionDuplicate());
-        }
-       
     }
 }

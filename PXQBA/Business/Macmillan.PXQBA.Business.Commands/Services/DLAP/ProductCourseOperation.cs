@@ -43,10 +43,8 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return GetCoursesByCourseIds(courseIds, requiredQuestionBankRepository);
         }
 
-        private IEnumerable<Course> GetCoursesByCourseIds(IEnumerable<string> courseIds, bool requiredQuestionBankRepository)
+        public IEnumerable<Course> GetCoursesByCourseIds(IEnumerable<string> courseIds, bool requiredQuestionBankRepository = false)
         {
-            //GetQuestions();
-            //GetQuestionList("71836", null, null, 1, 50);
             IList<Course> courses = new List<Course>();
             var batch = new Batch { RunAsync = true };
 

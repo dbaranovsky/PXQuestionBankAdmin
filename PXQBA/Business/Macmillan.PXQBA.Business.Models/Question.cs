@@ -55,8 +55,34 @@ namespace Macmillan.PXQBA.Business.Models
         public string Body { get; set; }
         public string InteractionType { get; set; }
         public string InteractionData { get; set; }
-        public string Answer { get; set; }
-
         public string CustomUrl { get; set; }
+
+        /// <summary>
+        /// Choice list if this is a multiple choice question.
+        /// </summary>
+        public IList<QuestionChoice> Choices;
+
+        /// <summary>
+        /// Correct answer.
+        /// </summary>
+        public string Answer
+        {
+            get
+            {
+                string result = string.Empty;
+
+                if (AnswerList != null && AnswerList.Count > 0)
+                {
+                    result = AnswerList.First();
+                }
+
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// Answer List
+        /// </summary>
+        public IList<string> AnswerList; 
     }
 }

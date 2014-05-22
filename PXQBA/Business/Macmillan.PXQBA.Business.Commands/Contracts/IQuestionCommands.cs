@@ -21,6 +21,9 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         string GetQuizIdForQuestion(string questionId, string entityId);
 
         bool RemoveFromTitle(string[] questionsId, string questionRepositoryCourseId, string currentCourseId);
-        bool PublishToTitle(string[] questionsId, int courseId, string bank, string chapter);
+
+        IEnumerable<Question> GetQuestions(string repositoryCourseId, string[] questionsId);
+
+        bool UpdateQuestions(IEnumerable<Question> questions, string repositoryCourseId);
     }
 }
