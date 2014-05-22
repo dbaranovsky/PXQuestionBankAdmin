@@ -762,40 +762,49 @@ a.shared-question-link:hover {
     font-size: 18px;
 }
 
+.actions-cloumn {
+    width: 280px;
+    overflow: visible;
+}
+.actions-container {
+      width: 280px;
+    overflow: visible;
+}
+
 /* Menu items*/
 .shared-placeholder {
-    width: 100px;
-    margin-bottom: 1px;
-    float: left;
-    margin-right: 5px;
+    display: inline-block;
 }
 
-.menu-container {
-    float: left;
-   
+.menu-container-main {
+   width: 110px;
+   margin-bottom: 1px;
+   display: inline-block;
 }
 
-.menu-container .dropdown {
+.menu-container-main .dropdown {
     float: left;
 }
 
-.menu-container .dropdown-header {
+.menu-container-main .dropdown-header {
     color: #000000;
     font-size: 12px;
     font-weight: bold;
 }
 
-.menu-container.static {
-    margin-bottom: 1px;
+.menu-container-flag {
+    width: 38px;
+    display: inline-block;
 }
 
-.menu-container.static button{
+
+.menu-container-flag button{
     padding: 2px 5px;
 }
 
 .notification-icons-container span {
-    margin-top: 3px;
-    margin-left: 6px;
+    padding-top: 3px;
+    padding-left: 6px;
 }
 
 .shared-placeholder .badge {

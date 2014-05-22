@@ -49,7 +49,6 @@ var QuestionListMenu = React.createClass({
     },
 
     componentDidMount: function(){
-   //   this.initializePopovers();
     },
 
    
@@ -78,14 +77,6 @@ var QuestionListMenu = React.createClass({
       return(<span className="badge">{this.props.titleCount}</span>);
     },
 
-    showPopover: function(){
-        //  $(this.getDOMNode()).find('[rel="popover"]').popover('toggle');
-    },
-
-    hidePopover: function(){
-        // $(this.getDOMNode()).find('[rel="popover"]').popover('hide');
-    },
-
     renderSharedButtons: function(){
       if(this.props.showAll){
 
@@ -104,12 +95,12 @@ var QuestionListMenu = React.createClass({
       if(this.props.isShared){
       return(
          <div className="shared-placeholder">
-                           
+                    
                          
            <button type="button" className="btn btn-default btn-sm custom-btn shared-to"  rel="popover" >
                     <span className="glyphicon icon-shared-to" ></span>{this.renderCourseCountBadge()}
            </button> 
-          
+         
                              
           </div>);
     } 
@@ -135,35 +126,33 @@ var QuestionListMenu = React.createClass({
 
     renderMenu: function(){
       if (this.props.showAll){
-      return(<div className="menu-container">
-                     <button type="button" className="btn btn-default btn-sm" onClick={this.editNotesHandler} data-toggle="tooltip" title="Edit Notes"><span className="glyphicon glyphicon-list-alt"></span>
-                     </button> 
-                     <div className="dropdown">
-                     <button id="edit-question" type="button" className="btn btn-default btn-sm" onClick={this.editQuestionHandler}  data-target="#" data-toggle="dropdown" title="Edit Question">
-                           <span className="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Edit Question"></span>
-                     </button>
-                      {this.renderEditMenu()}
-                     </div>
+      return(<div className="menu-container-main">
 
-
-                     <button type="button" className="btn btn-default btn-sm" onClick={this.copyQuestionHandler}  data-toggle="tooltip" title="Duplicate Question"><span className="glyphicon glyphicon-copyright-mark"></span></button>
-                  </div>);
+               <div className="dropdown">
+                  <button id="edit-question" type="button" className="btn btn-default btn-sm" onClick={this.editQuestionHandler}  data-target="#" data-toggle="dropdown" title="Edit Question">
+                         <span className="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Edit Question"></span>
+                  </button>
+                    {this.renderEditMenu()}
+                </div>
+                <button type="button" className="btn btn-default btn-sm" onClick={this.copyQuestionHandler}  data-toggle="tooltip" title="Duplicate Question"><span className="glyphicon glyphicon-copyright-mark"></span></button>
+               <button type="button" className="btn btn-default btn-sm" onClick={this.editNotesHandler} data-toggle="tooltip" title="Edit Notes"><span className="glyphicon glyphicon-list-alt"></span> </button> 
+               </div>);
      }
 
-      return (<div className="menu-container"></div>);
+      return (<div className="menu-container-main"></div>);
 
     },
 
     renderStaticMenu: function(){
         if (this.props.showAll){
-          return(<div className="menu-container static">
+          return(<div className="menu-container-flag">
                      <button type="button" className="btn btn-default btn-sm" onClick={this.toggleFlag} data-toggle="tooltip" title={this.state.isFlagged? "Unflag question" : "Flag question"}>
                      <span className={this.state.isFlagged? "glyphicon glyphicon-flag flagged" : "glyphicon glyphicon-flag"}></span>
                      </button> 
                   </div>);
       }
 
-      return (<div className="static-menu-container">
+      return (<div className="menu-container-flag">
                 <div className="notification-icons-container">
                     {this.state.isFlagged ? <span className="glyphicon glyphicon-flag flagged"></span> : ""}
                 </div>
@@ -176,10 +165,10 @@ var QuestionListMenu = React.createClass({
 
         return ( 
                 <div onmouseover={this.hidePopover}>
+                   {this.renderMenu()}  
+                   {this.renderStaticMenu()}  
                    {this.renderSharedButtons()}
-                   {this.renderStaticMenu()}
-                   {this.renderMenu()}      
-                </div>
+                 </div>
             );
     
 
