@@ -82,7 +82,7 @@ var Question = React.createClass({
                     <input type="checkbox" checked={this.props.selected} onChange={this.selectQuestionHandler}/>
                 </td>
                  {cells}
-                 <td className="actions">  
+                 <td className="actions-cloumn">  
                    <div className="actions-container">
                         {this.renderMenu()}
                    </div>

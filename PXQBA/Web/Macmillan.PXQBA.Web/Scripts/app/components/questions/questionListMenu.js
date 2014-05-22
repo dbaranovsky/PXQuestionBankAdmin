@@ -49,7 +49,6 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
     },
 
     componentDidMount: function(){
-   //   this.initializePopovers();
     },
 
    
@@ -78,15 +77,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
       return(React.DOM.span( {className:"badge"}, this.props.titleCount));
     },
 
-    showPopover: function(){
-        //  $(this.getDOMNode()).find('[rel="popover"]').popover('toggle');
-    },
-
-    hidePopover: function(){
-        // $(this.getDOMNode()).find('[rel="popover"]').popover('hide');
-    },
-
-    renderSharedButtons: function(){
+    renderSharedMenu: function(){
       if(this.props.showAll){
 
 
@@ -104,12 +95,12 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
       if(this.props.isShared){
       return(
          React.DOM.div( {className:"shared-placeholder"}, 
-                           
+                    
                          
            React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn shared-to",  rel:"popover"} , 
                     React.DOM.span( {className:"glyphicon icon-shared-to"} ),this.renderCourseCountBadge()
            ) 
-          
+         
                              
           ));
     } 
@@ -135,35 +126,33 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
 
     renderMenu: function(){
       if (this.props.showAll){
-      return(React.DOM.div( {className:"menu-container"}, 
-                     React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.editNotesHandler, 'data-toggle':"tooltip", title:"Edit Notes"}, React.DOM.span( {className:"glyphicon glyphicon-list-alt"})
-                     ), 
-                     React.DOM.div( {className:"dropdown"}, 
-                     React.DOM.button( {id:"edit-question", type:"button", className:"btn btn-default btn-sm", onClick:this.editQuestionHandler,  'data-target':"#", 'data-toggle':"dropdown", title:"Edit Question"}, 
-                           React.DOM.span( {className:"glyphicon glyphicon-pencil", 'data-toggle':"tooltip", title:"Edit Question"})
-                     ),
-                      this.renderEditMenu()
-                     ),
+      return(React.DOM.div( {className:"menu-container-main"}, 
 
-
-                     React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.copyQuestionHandler,  'data-toggle':"tooltip", title:"Duplicate Question"}, React.DOM.span( {className:"glyphicon glyphicon-copyright-mark"}))
-                  ));
+               React.DOM.div( {className:"dropdown"}, 
+                  React.DOM.button( {id:"edit-question", type:"button", className:"btn btn-default btn-sm", onClick:this.editQuestionHandler,  'data-target':"#", 'data-toggle':"dropdown", title:"Edit Question"}, 
+                         React.DOM.span( {className:"glyphicon glyphicon-pencil", 'data-toggle':"tooltip", title:"Edit Question"})
+                  ),
+                    this.renderEditMenu()
+                ),
+                React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.copyQuestionHandler,  'data-toggle':"tooltip", title:"Duplicate Question"}, React.DOM.span( {className:"glyphicon glyphicon-copyright-mark"})),
+               React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.editNotesHandler, 'data-toggle':"tooltip", title:"Edit Notes"}, React.DOM.span( {className:"glyphicon glyphicon-list-alt"}), " " ) 
+               ));
      }
 
-      return (React.DOM.div( {className:"menu-container"}));
+      return (React.DOM.div( {className:"menu-container-main"}));
 
     },
 
-    renderStaticMenu: function(){
+    renderFlagMenu: function(){
         if (this.props.showAll){
-          return(React.DOM.div( {className:"menu-container static"}, 
+          return(React.DOM.div( {className:"menu-container-flag"}, 
                      React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.toggleFlag, 'data-toggle':"tooltip", title:this.state.isFlagged? "Unflag question" : "Flag question"}, 
                      React.DOM.span( {className:this.state.isFlagged? "glyphicon glyphicon-flag flagged" : "glyphicon glyphicon-flag"})
                      ) 
                   ));
       }
 
-      return (React.DOM.div( {className:"static-menu-container"}, 
+      return (React.DOM.div( {className:"menu-container-flag"}, 
                 React.DOM.div( {className:"notification-icons-container"}, 
                     this.state.isFlagged ? React.DOM.span( {className:"glyphicon glyphicon-flag flagged"}) : ""
                 )
@@ -176,10 +165,10 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
 
         return ( 
                 React.DOM.div( {onmouseover:this.hidePopover}, 
-                   this.renderSharedButtons(),
-                   this.renderStaticMenu(),
-                   this.renderMenu()      
-                )
+                   this.renderMenu(),  
+                   this.renderFlagMenu(),  
+                   this.renderSharedMenu()
+                 )
             );
     
 
