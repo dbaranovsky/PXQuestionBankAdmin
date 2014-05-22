@@ -12,6 +12,17 @@ var Title = React.createClass({
        this.setState({expanded: !this.state.expanded});
     },
 
+    getQuestionCountText: function(count) {
+      if(count==0) {
+        return null;
+      }
+      if(count==1) {
+        return '1 question';
+      }
+
+      return count + ' questions'
+    },
+
     renderChapters: function() {
        var chapters = [];
        for(var i=0; i<this.props.data.chapters.length; i++) {
@@ -23,9 +34,14 @@ var Title = React.createClass({
 
     renderChapter: function(chapter) {
         return (<div>   
-                  <a href={this.getUrlToList(this.props.data.id, chapter.id)} className="chapter-link">
-                     {chapter.title} 
-                  </a>
+                  <span className="chapter-list-title">
+                    <a href={this.getUrlToList(this.props.data.id, chapter.id)} className="chapter-link">
+                       {chapter.title} 
+                    </a>
+                  </span>
+                  <span className="chapter-list-count">
+                    {this.getQuestionCountText(chapter.questionsCount)}
+                  </span>
                 </div>);
     },
 
@@ -47,9 +63,16 @@ var Title = React.createClass({
                          <span>
                              <ExpandButton expanded={this.state.expanded} onClickHandler={this.expandHandler} targetCaption="course"/>
                           </span> 
-                          <span>
-                            <a href={this.getUrlToList(this.props.data.id)} className="title-link">  {this.props.data.title} </a>
+                          <span className="course-list-title">
+                            <a href={this.getUrlToList(this.props.data.id)} className="title-link">  
+                                 <span>  
+                                       {this.props.data.title} 
+                                 </span>
+                            </a>
                            </span>
+                            <span className="course-list-count">
+                                   {this.getQuestionCountText(this.props.data.questionsCount)}
+                            </span>
                       </div>
                       {this.renderExpanded()}
                 </div>
