@@ -22,22 +22,14 @@ var MetadataFieldEditor = React.createClass({
   
 
      editHandler: function(selectedOptions){
-        var text = "";
+        var value = "";
          if (selectedOptions[0] !== undefined){
-              text = selectedOptions[0].text;
-              var value = selectedOptions[0].value;
-              //Checking if value is text or int. Ugly code! Move the sign to the state. 
-              if (text.toLowerCase()!= value.toLowerCase()){
-                text = value;
-              }
+             value=selectedOptions[0].value;
          } 
          else {
-              
-              text = this.refs.editor.getDOMNode().value;
+             value = this.refs.editor.getDOMNode().value;
          }
-
-         this.updateQuestion(text);
-       
+         this.updateQuestion(value);
      },
 
      getMetaField: function(){
