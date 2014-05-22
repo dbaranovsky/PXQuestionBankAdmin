@@ -10,7 +10,7 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
     public class QuestionSequenceHelper
     {
         private static readonly string DecimalSeparator = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
-        private static IList<QuestionSearchResult> updated = new List<QuestionSearchResult>(); 
+        private static IList<QuestionSearchResult> updated = new List<QuestionSearchResult>();
         public static IList<QuestionSearchResult> UpdateSequence(IList<QuestionSearchResult> questions, string questionId, int newSequenceValue)
         {
             questions.Insert(0, new QuestionSearchResult
@@ -40,7 +40,7 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
                     var nextValue = decimal.Parse(nextPosition.SortingField);
                     if (nextValue == previousValue)
                     {
-                        nextPosition = UpdateEqualValues(previousPosition, nextPosition, questionsWithDecimalSequence, newSequenceValue);
+                        nextPosition = UpdateEqualValues(previousPosition, nextPosition, questionsWithDecimalSequence, newSequenceValue, 0);
                         nextValue = decimal.Parse(nextPosition.SortingField);
                     }
 
@@ -51,10 +51,10 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
             return updated;
         }
 
-        private static QuestionSearchResult UpdateEqualValues(QuestionSearchResult previousPosition, QuestionSearchResult nextPosition, List<QuestionSearchResult> questionsWithDecimalSequence, int newSequenceValue)
+        private static QuestionSearchResult UpdateEqualValues(QuestionSearchResult previousPosition, QuestionSearchResult nextPosition, List<QuestionSearchResult> questionsWithDecimalSequence, int newSequenceValue, int counter)
         {
+            var recursionDepth = counter;
             var next = nextPosition;
-
             if (decimal.Parse(previousPosition.SortingField) == decimal.Parse(nextPosition.SortingField))
             {
                 newSequenceValue++;
@@ -64,12 +64,16 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
                 }
                 else
                 {
-                    next = UpdateEqualValues(nextPosition, questionsWithDecimalSequence[newSequenceValue],questionsWithDecimalSequence, newSequenceValue);
+                    next = UpdateEqualValues(nextPosition, questionsWithDecimalSequence[newSequenceValue], questionsWithDecimalSequence, newSequenceValue, recursionDepth + 1);
                 }
             }
-            previousPosition.SortingField = NewInsertedValue(decimal.Parse(previousPosition.SortingField), decimal.Parse(next.SortingField)).ToString();
-            updated.Add(previousPosition);
-            return previousPosition;
+            if (recursionDepth != 0)
+            {
+                previousPosition.SortingField = NewInsertedValue(decimal.Parse(previousPosition.SortingField), decimal.Parse(next.SortingField)).ToString();
+                updated.Add(previousPosition);
+                return previousPosition;
+            }
+            return next;
         }
 
         public static string GetNewLastValue(IEnumerable<QuestionSearchResult> questionsWithDecimalSequence)
