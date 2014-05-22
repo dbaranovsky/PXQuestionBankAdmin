@@ -89,5 +89,8 @@ namespace Macmillan.PXQBA.Web.ViewModels
             }
         }
 
+        public string QuestionType { get; set; }
+
+
     }
 }

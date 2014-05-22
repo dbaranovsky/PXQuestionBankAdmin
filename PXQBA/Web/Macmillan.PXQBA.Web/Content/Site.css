@@ -584,8 +584,21 @@ input.disabled, textarea.disabled {
 .tab-body iframe {
     width: 98%;
     height: 693px;
- 
+    overflow: hidden;
     border: 0;
+
+}
+
+#editoriframecontainer.hts{
+    
+ background:rgba(221, 221, 221, 0.0);
+}
+
+#editoriframecontainer.hts iframe{
+
+     width: 99% !important;
+     height: 749px !important;
+  
 }
 
 .tab-body .shared iframe {
