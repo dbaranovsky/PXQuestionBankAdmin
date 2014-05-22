@@ -10,7 +10,8 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
     public class QuestionSequenceHelper
     {
         private static readonly string DecimalSeparator = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
-        public static QuestionSearchResult UpdateSequence(IList<QuestionSearchResult> questions, string questionId, int newSequenceValue)
+        private static IList<QuestionSearchResult> updated = new List<QuestionSearchResult>(); 
+        public static IList<QuestionSearchResult> UpdateSequence(IList<QuestionSearchResult> questions, string questionId, int newSequenceValue)
         {
             questions.Insert(0, new QuestionSearchResult
             {
@@ -18,44 +19,86 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
                 SortingField = "0"
             });
             var oldSequenceValue = questions.ToList().FindIndex(q => q.QuestionId == questionId);
-            var currentPosition = questions[oldSequenceValue];
+            var oldPosition = questions[oldSequenceValue];
             if (oldSequenceValue != newSequenceValue)
             {
                 if (oldSequenceValue < newSequenceValue)
                 {
                     newSequenceValue++;
                 }
-                if (newSequenceValue >= questions.Count())
+                decimal seq;
+                var questionsWithDecimalSequence = questions.Where(q => decimal.TryParse(q.SortingField, out seq)).ToList();
+                if (newSequenceValue >= questionsWithDecimalSequence.Count())
                 {
-                    var last = questions.LastOrDefault();
-                    if (last != null)
-                    {
-                        var lastValue = double.Parse(last.SortingField);
-                        currentPosition.SortingField = (Math.Floor(lastValue) + 1).ToString();
-                        return currentPosition;
-                    }
-                    currentPosition.SortingField = "1";
+                    oldPosition.SortingField = GetNewLastValue(questionsWithDecimalSequence);
                 }
                 else
                 {
-                    var nextValue = double.Parse(questions[newSequenceValue].SortingField);
-                    var previousValue = double.Parse(questions[newSequenceValue - 1].SortingField);
-                    var decimalDigitsToRound = Math.Max(GetDecimalDigitsCount(questions[newSequenceValue].SortingField),
-                        GetDecimalDigitsCount(questions[newSequenceValue - 1].SortingField));
-                    var averageValueWithTolerance = Math.Abs(nextValue + previousValue) / 2 + 1 / Math.Pow(10, GetDecimalDigitsCount((Math.Abs(nextValue + previousValue) / 2).ToString()));
-                    var averageValue = Math.Round(averageValueWithTolerance, decimalDigitsToRound, MidpointRounding.AwayFromZero);
+                    var nextPosition = questionsWithDecimalSequence[newSequenceValue];
+                    var previousPosition = questionsWithDecimalSequence[newSequenceValue - 1];
+                    var previousValue = decimal.Parse(previousPosition.SortingField);
+                    var nextValue = decimal.Parse(nextPosition.SortingField);
+                    if (nextValue == previousValue)
+                    {
+                        nextPosition = UpdateEqualValues(previousPosition, nextPosition, questionsWithDecimalSequence, newSequenceValue);
+                        nextValue = decimal.Parse(nextPosition.SortingField);
+                    }
 
-                    if (averageValue == nextValue)
-                    {
-                        currentPosition.SortingField = (Math.Abs(nextValue + previousValue) / 2).ToString();
-                    }
-                    else
-                    {
-                        currentPosition.SortingField = averageValue.ToString();
-                    }
+                    oldPosition.SortingField = NewInsertedValue(previousValue, nextValue).ToString();
+                }
+                updated.Add(oldPosition);
+            }
+            return updated;
+        }
+
+        private static QuestionSearchResult UpdateEqualValues(QuestionSearchResult previousPosition, QuestionSearchResult nextPosition, List<QuestionSearchResult> questionsWithDecimalSequence, int newSequenceValue)
+        {
+            var next = nextPosition;
+
+            if (decimal.Parse(previousPosition.SortingField) == decimal.Parse(nextPosition.SortingField))
+            {
+                newSequenceValue++;
+                if (newSequenceValue >= questionsWithDecimalSequence.Count())
+                {
+                    next.SortingField = GetNewLastValue(questionsWithDecimalSequence);
+                }
+                else
+                {
+                    next = UpdateEqualValues(nextPosition, questionsWithDecimalSequence[newSequenceValue],questionsWithDecimalSequence, newSequenceValue);
                 }
             }
-            return currentPosition;
+            previousPosition.SortingField = NewInsertedValue(decimal.Parse(previousPosition.SortingField), decimal.Parse(next.SortingField)).ToString();
+            updated.Add(previousPosition);
+            return previousPosition;
+        }
+
+        public static string GetNewLastValue(IEnumerable<QuestionSearchResult> questionsWithDecimalSequence)
+        {
+            var last = questionsWithDecimalSequence.LastOrDefault();
+            if (last != null)
+            {
+                var lastValue = decimal.Parse(last.SortingField);
+                return (Math.Floor(lastValue) + 1).ToString();
+            }
+            return "1";
+        }
+
+
+        private static decimal NewInsertedValue(decimal previousValue, decimal nextValue)
+        {
+            var decimalDigitsToRound = Math.Max(GetDecimalDigitsCount(nextValue.ToString()),
+                        GetDecimalDigitsCount(previousValue.ToString()));
+            var averageValueWithTolerance = Math.Abs(nextValue + previousValue) / 2; //+ 1 / Math.Pow(10, GetDecimalDigitsCount((Math.Abs(nextValue + previousValue) / 2).ToString()));
+            var averageValueRounded = Math.Round(averageValueWithTolerance, decimalDigitsToRound, MidpointRounding.AwayFromZero);
+
+            if (averageValueRounded == nextValue)
+            {
+                return Math.Abs(nextValue + previousValue) / 2;
+            }
+            else
+            {
+                return averageValueRounded;
+            }
         }
 
         private static int GetDecimalDigitsCount(string number)
