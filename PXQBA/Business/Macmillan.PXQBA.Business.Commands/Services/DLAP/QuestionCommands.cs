@@ -52,12 +52,18 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             foreach (var question in questions)
             {
                 var section = question.ProductCourseSections.First(s => s.ProductCourseId == productCourseId);
-                var sequenceDisplayValue = 0;
-                if (questionsSortedBySequence.Any(q => q.QuestionId == question.Id))
+                var sequenceDisplayValue = string.Empty;
+                var first = questionsSortedBySequence.FirstOrDefault(q => q.QuestionId == question.Id);
+                if (first != null)
                 {
-                    sequenceDisplayValue = questionsSortedBySequence.ToList().FindIndex(q => q.QuestionId == question.Id) + 1;
+                    decimal seq;
+                    if (decimal.TryParse(first.SortingField, out seq))
+                    {
+                        sequenceDisplayValue =
+                            (questionsSortedBySequence.ToList().FindIndex(q => q.QuestionId == question.Id) + 1).ToString();
+                    }
                 }
-                section.ProductCourseValues[MetadataFieldNames.Sequence] = new List<string>(){sequenceDisplayValue.ToString()};
+                section.ProductCourseValues[MetadataFieldNames.Sequence] = new List<string>(){sequenceDisplayValue};
             }
         }
 
@@ -134,10 +140,18 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             {
                 if (sortCriterion.ColumnName == MetadataFieldNames.Sequence)
                 {
-                    //TODO: questions with empty Sequence are skipped. Need to fix this
-                    return sortCriterion.IsAsc
-                    ? searchResults.Where(r => !string.IsNullOrEmpty(r.SortingField)).OrderBy(r => double.Parse(r.SortingField))
-                    : searchResults.Where(r => !string.IsNullOrEmpty(r.SortingField)).OrderByDescending(r => double.Parse(r.SortingField)); 
+                    decimal seq;
+                    var questionsWithNonDecimalSequence = searchResults.Where(r => !decimal.TryParse(r.SortingField, out seq)).ToList();
+                    if (sortCriterion.IsAsc)
+                    {
+                        var sorted = searchResults.Where(r => decimal.TryParse(r.SortingField, out seq))
+                            .OrderBy(r => decimal.Parse(r.SortingField))
+                            .ToList();
+                        sorted.AddRange(questionsWithNonDecimalSequence);
+                        return sorted;
+                    }
+                    questionsWithNonDecimalSequence.AddRange(searchResults.Where(r => decimal.TryParse(r.SortingField, out seq)).OrderByDescending(r => decimal.Parse(r.SortingField)));
+                    return questionsWithNonDecimalSequence;
                 }
                 return sortCriterion.IsAsc
                     ? searchResults.OrderBy(r => r.SortingField)
@@ -168,13 +182,9 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         private string GetNewSequenceValue(string repositoryCourseId, string courseId)
         {
-            var last = GetSolrResultsSortedBySequence(repositoryCourseId, courseId).LastOrDefault();
-            if (last != null)
-            {
-                var lastValue = double.Parse(last.SortingField);
-                return (Math.Floor(lastValue) + 1).ToString();
-            }
-            return "1";
+            decimal seq;
+            var questionsWithDecimalSequence = GetSolrResultsSortedBySequence(repositoryCourseId, courseId).Where(q => decimal.TryParse(q.SortingField, out seq));
+            return QuestionSequenceHelper.GetNewLastValue(questionsWithDecimalSequence);
         }
 
         public Question GetQuestion(string repositoryCourseId, string questionId)
@@ -246,7 +256,10 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         {
             var questions = GetSolrResultsSortedBySequence(repositoryCourseId, productCourseId).ToList();
             var updated = QuestionSequenceHelper.UpdateSequence(questions.ToList(), questionId, newSequenceValue);
-            UpdateQuestionFieldForce(productCourseId, repositoryCourseId, questionId, MetadataFieldNames.Sequence, updated.SortingField);
+            foreach (var questionSearchResult in updated)
+            {
+                UpdateQuestionFieldForce(productCourseId, repositoryCourseId, questionSearchResult.QuestionId, MetadataFieldNames.Sequence, questionSearchResult.SortingField);                
+            }
             return true;
         }
 
