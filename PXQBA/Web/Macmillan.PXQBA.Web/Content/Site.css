@@ -648,6 +648,26 @@ input.disabled, textarea.disabled {
     text-decoration: underline;
 }
 
+.course-list-title {
+    display: inline-block;
+    width: 550px;
+}
+
+.course-list-count {
+    display: inline-block;
+    font-weight: bold;
+}
+
+.chapter-list-title {
+    width: 540px;
+    display: inline-block;
+}
+
+.chapter-list-count {
+    display: inline-block;
+}
+
+
 .icon-shared-to {
     background-image: url("../Content/img/shared-to.png");
     background-position: center center;
@@ -793,3 +813,4 @@ a.shared-question-link:hover {
 #shareQuestionModal {
     font-size: 20px;
 }
+
