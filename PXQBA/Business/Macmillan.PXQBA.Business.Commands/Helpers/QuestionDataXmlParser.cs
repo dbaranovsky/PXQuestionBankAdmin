@@ -100,6 +100,7 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
                 if (!elements.ContainsKey(productCourseSectionName))
                 {
                     var section = new XElement(productCourseSectionName);
+                    //section.Add(new XElement(productCourseValue.Key, value));
                     foreach (var productCourseValue in productCourseSection.ProductCourseValues)
                     {
                         foreach (var value in productCourseValue.Value)
