@@ -51,7 +51,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         {
             foreach (var question in questions)
             {
-                var section = question.ProductCourseSections.First(s => s.ProductCourseId == productCourseId);
+                var section = question.ProductCourseSections.FirstOrDefault(s => s.ProductCourseId == productCourseId);
                 if (section != null)
                 {
                     var sequenceDisplayValue = string.Empty;
@@ -414,7 +414,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             }
 
             ExecutePutQuestions(agilixQuestions);
-
+            ExecuteSolrUpdateTask();
             return true;
         }
 
