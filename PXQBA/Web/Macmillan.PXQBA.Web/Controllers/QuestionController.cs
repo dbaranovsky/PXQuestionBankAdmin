@@ -88,23 +88,20 @@ namespace Macmillan.PXQBA.Web.Controllers
             questionViewModel.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), questionViewModel.EntityId, questionViewModel.QuizId);
 
             questionViewModel.QuestionType = question.CustomUrl;
-            if (question.CustomUrl == "HTS")
-            {
-                questionViewModel.EditorUrl = String.Format(ConfigurationHelper.GetHTSEditorUrlTemplate(), questionViewModel.Id, questionViewModel.QuizId, questionViewModel.EntityId);
-            }
-            else
-            {
-                questionViewModel.EditorUrl = String.Format(ConfigurationHelper.GetEditorUrlTemplate(), questionViewModel.EntityId, questionViewModel.QuizId, questionViewModel.Id);
-            }
+            questionViewModel.EditorUrl = CustomQuestionHelper.GetEditorUrl(questionViewModel.QuestionType,
+                                                                            questionViewModel.Id,
+                                                                            questionViewModel.EntityId,
+                                                                            questionViewModel.QuizId);          
+           
 
-            questionViewModel.GraphEditorHtml = question.CustomUrl == "FMA_GRAPH"
-                ? CustomQuestionHelper.GetGraphEditor(question.InteractionData, questionViewModel.Id,
-                question.CustomUrl) : null;
+            questionViewModel.GraphEditorHtml = CustomQuestionHelper.GetGraphEditor(question.InteractionData,
+                                                                                    questionViewModel.Id,
+                                                                                    question.CustomUrl);
 
             return questionViewModel;
         }
 
-        /// <summary>
+        
         /// Remove shared questions from current title 
         /// </summary>
         /// <param name="questionsId"></param>

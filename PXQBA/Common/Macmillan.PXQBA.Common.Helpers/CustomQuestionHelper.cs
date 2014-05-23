@@ -15,7 +15,10 @@ namespace Macmillan.PXQBA.Common.Helpers
     public static class CustomQuestionHelper
     {
         private const string CQScriptString = "if(typeof CQ ==='undefined')CQ = window.parent.CQ; CQ.questionInfoList['{0}'] = {{ divId: '{1}', version: '{2}', mode: '{3}', question: {{ body: '{4}', data: {5}}}, response: {{ pointspossible: '{6}', pointsassigned: '{7}'}} }}";
-                                                                                    
+        
+        public const string HTSType = "HTS";
+        public const string GraphType = "FMA_GRAPH";
+                                                          
         public static string GetQuestionHtmlPreview(Question question)
         {
 
@@ -246,6 +249,13 @@ namespace Macmillan.PXQBA.Common.Helpers
 
         public static string GetGraphEditor(string customXML, string questionId, string questionType)
         {
+
+
+            if (string.IsNullOrEmpty(questionType) || questionType != GraphType)
+            {
+                return null;
+            }
+
             string sResponse = "";
             customXML = RemoveCData(HttpUtility.HtmlDecode(customXML));
             //customXML = HttpUtility.HtmlEncode(customXML);
@@ -336,7 +346,7 @@ namespace Macmillan.PXQBA.Common.Helpers
                 }
                 catch (Exception ex2)
                 {
-                    sResponse = "There was an error: " + ex2.ToString();
+                    sResponse = "There was an error: " + ex2;
                 }
 
             
@@ -345,7 +355,15 @@ namespace Macmillan.PXQBA.Common.Helpers
         }
 
 
-       private static string RemoveCData(string sXML)
+
+        public static string GetEditorUrl(string questionType, string questionId, string entityId, string quizId)
+        {
+            return questionType == HTSType ? 
+                    String.Format(ConfigurationHelper.GetHTSEditorUrlTemplate(), questionId, quizId, entityId) : 
+                    String.Format(ConfigurationHelper.GetEditorUrlTemplate(), entityId, quizId, questionId);
+        }
+
+        private static string RemoveCData(string sXML)
         {
             string outputXML = "";
 
