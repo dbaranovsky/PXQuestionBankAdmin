@@ -14,8 +14,6 @@ namespace Macmillan.PXQBA.Business.Models
         public string EntityId { get; set; }
         public string QuizId { get; set; }
 
-        public string QuestionIdDuplicateFrom { get; set; }
-
         private Dictionary<string, List<string>> defaultValues;
 
         public Dictionary<string, List<string>> DefaultValues

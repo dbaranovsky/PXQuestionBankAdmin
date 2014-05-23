@@ -37,28 +37,12 @@ namespace Macmillan.PXQBA.Web.ViewModels
         /// </summary>
         public string Version { get; set; }
 
-        public bool IsDuplicateOfSharedQuestion
-        {
-            get
-            {
-                return LocalValues.ContainsKey(MetadataFieldNames.QuestionIdDuplicateFromShared) &&
-                       !string.IsNullOrEmpty(LocalValues[MetadataFieldNames.QuestionIdDuplicateFromShared].FirstOrDefault());
-            }
-        }
-
+        public SharedQuestionDuplicateFromViewModel SharedQuestionDuplicateFrom { get; set; }
         public bool IsShared
         {
             get
             {
                 return ProductCourses != null && ProductCourses.Count() > 1;
-            }
-        }
-
-        public string SharedWith
-        {
-            get
-            {
-                return string.Join(", ", ProductCourses);
             }
         }
 
