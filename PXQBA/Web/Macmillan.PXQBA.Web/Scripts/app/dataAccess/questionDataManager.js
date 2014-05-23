@@ -157,7 +157,10 @@
             data: request,
             dataType: 'json',
             type: 'GET'
-        }).done(function (response) {
+          }).done(function (response) {
+              console.log('Create question template complete');
+              self.resetState();
+              console.log('Refresh complite');
         }).error(function(e){
              self.showErrorPopup();
         });
