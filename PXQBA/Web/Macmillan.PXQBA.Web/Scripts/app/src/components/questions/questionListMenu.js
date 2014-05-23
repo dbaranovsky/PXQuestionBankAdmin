@@ -82,7 +82,7 @@ var QuestionListMenu = React.createClass({
 
 
     return ( <div className="shared-placeholder" > 
-              <button type="button" className="btn btn-default btn-sm custom-btn shared-to" rel="popover" onClick={this.showPopover}  data-toggle="popover"  data-title={this.props.isShared? "Shared with:" : ""}  data-content={this.props.isShared? this.props.data["sharedWith"] : "<b>Not Shared</b>"} >
+              <button type="button" className="btn btn-default btn-sm custom-btn shared-to" rel="popover" onClick={this.showPopover}  data-toggle="popover"  data-title={this.props.isShared? "Shared with:" : ""}  data-content={this.props.isShared? this.props.data[window.consts.questionSharedWithName] : "<b>Not Shared</b>"} >
                  <span className="glyphicon icon-shared-to" ></span>{this.renderCourseCountBadge()} 
                </button>
                <button type="button" className="btn btn-default btn-sm tiny" onClick={this.shareHandler} data-toggle="tooltip" title="Share this question"><span className="glyphicon glyphicon-plus-sign"></span></button> 
