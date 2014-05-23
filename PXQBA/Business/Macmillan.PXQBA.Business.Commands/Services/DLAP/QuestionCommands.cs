@@ -52,18 +52,22 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             foreach (var question in questions)
             {
                 var section = question.ProductCourseSections.First(s => s.ProductCourseId == productCourseId);
-                var sequenceDisplayValue = string.Empty;
-                var first = questionsSortedBySequence.FirstOrDefault(q => q.QuestionId == question.Id);
-                if (first != null)
+                if (section != null)
                 {
-                    decimal seq;
-                    if (decimal.TryParse(first.SortingField, out seq))
+                    var sequenceDisplayValue = string.Empty;
+                    var first = questionsSortedBySequence.FirstOrDefault(q => q.QuestionId == question.Id);
+                    if (first != null)
                     {
-                        sequenceDisplayValue =
-                            (questionsSortedBySequence.ToList().FindIndex(q => q.QuestionId == question.Id) + 1).ToString();
+                        decimal seq;
+                        if (decimal.TryParse(first.SortingField, out seq))
+                        {
+                            sequenceDisplayValue =
+                                (questionsSortedBySequence.ToList().FindIndex(q => q.QuestionId == question.Id) + 1)
+                                    .ToString();
+                        }
                     }
+                    section.ProductCourseValues[MetadataFieldNames.Sequence] = new List<string>() {sequenceDisplayValue};
                 }
-                section.ProductCourseValues[MetadataFieldNames.Sequence] = new List<string>(){sequenceDisplayValue};
             }
         }
 
@@ -297,6 +301,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             var agilixQuestions = GetAgilixQuestions(repositoryCourseId, questions.Select(q => q.Id));
             Mapper.Map(questions, agilixQuestions);
             ExecutePutQuestions(agilixQuestions);
+            ExecuteSolrUpdateTask();
             return true;
         }
 
@@ -405,7 +410,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
             foreach (var question in agilixQuestions)
             {
-                question.MetadataElements.Remove(ElStrings.ProductCourseSection + questionRepositoryCourseId);
+                question.MetadataElements.Remove(ElStrings.ProductCourseSection + currentCourseId);
             }
 
             ExecutePutQuestions(agilixQuestions);

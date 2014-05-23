@@ -132,6 +132,7 @@ namespace Macmillan.PXQBA.Business.Services
                 var newProductCourseValues = question.DefaultValues;
                 newProductCourseValues[MetadataFieldNames.Chapter] = new List<string> { chapter };
                 newProductCourseValues[MetadataFieldNames.Bank] = new List<string> { bank };
+                newProductCourseValues[MetadataFieldNames.ProductCourse] = new List<string>{courseIdToPublish.ToString()};
                 var newProductCourseSection = question.ProductCourseSections.FirstOrDefault(s => s.ProductCourseId == courseIdToPublish.ToString());
                 if (newProductCourseSection == null)
                 {
