@@ -49,11 +49,11 @@ namespace Macmillan.PXQBA.Business.Services
             var section = question.ProductCourseSections.First(s => s.ProductCourseId == course.ProductCourseId);
             if (question.ProductCourseSections.Count > 1)
             {
-                if (!section.ProductCourseValues.ContainsKey(MetadataFieldNames.QuestionIdDuplicateFrom))
+                if (!section.ProductCourseValues.ContainsKey(MetadataFieldNames.QuestionIdDuplicateFromShared))
                 {
-                    section.ProductCourseValues.Add(MetadataFieldNames.QuestionIdDuplicateFrom, new List<string>{questionId});
+                    section.ProductCourseValues.Add(MetadataFieldNames.QuestionIdDuplicateFromShared, new List<string>{questionId});
                 }
-                section.ProductCourseValues[MetadataFieldNames.QuestionIdDuplicateFrom] = new List<string>(){questionId};
+                section.ProductCourseValues[MetadataFieldNames.QuestionIdDuplicateFromShared] = new List<string>(){questionId};
             }
             return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
