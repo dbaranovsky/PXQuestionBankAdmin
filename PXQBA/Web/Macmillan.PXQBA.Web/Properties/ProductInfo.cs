@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright © Macmillan 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-
+   
 
 // by using the '*' as shown below:
 [assembly: AssemblyVersion("1.0.17.*")]
