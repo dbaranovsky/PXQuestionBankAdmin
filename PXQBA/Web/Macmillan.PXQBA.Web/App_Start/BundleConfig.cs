@@ -48,6 +48,12 @@ namespace Macmillan.PXQBA.Web
                       "~/Content/paging.css",
                       "~/Content/chosen.css",
                       "~/Content/jquery.switchButton.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/customQuestions").Include(
+                "~/Scripts/customQuestions/CQ.js",
+                "~/Scripts/customQuestions/tiny_mce.js",
+                  "~/Scripts/customQuestions/tinymce.js",
+                "~/Scripts/customQuestions/XMLWriter.js"));
         }
     }
 }

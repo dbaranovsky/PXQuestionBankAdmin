@@ -266,5 +266,15 @@ namespace Macmillan.PXQBA.Common.Helpers
             }
             return "http://dev.whfreeman.com/hts?questionId={0}&amp;quizId={1}&amp;entityId={2}&amp;enrollmentId={3}&amp;playerUrl=http%3a%2f%2fdev.px.bfwpub.com%2fPxHTS%2fPxPlayer.ashx&amp;convert=True";
         }
+
+        public static string GetFmaGraphEditorUrl()
+        {
+            var url = ConfigurationManager.AppSettings[ConfigurationKeys.GraphEditorUrl];
+            if (!string.IsNullOrEmpty(url))
+            {
+                return url;
+            }
+            return "http://dev.px.bfwpub.com/PxEG/authormode2.aspx";
+        }
     }
 }

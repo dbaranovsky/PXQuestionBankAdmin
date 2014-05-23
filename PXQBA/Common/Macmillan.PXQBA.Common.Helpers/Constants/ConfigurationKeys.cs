@@ -98,5 +98,10 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
         /// Key for Advanced Question editor
         /// </summary>
         public static string HTSEditorUrlTemplate = "HTSEditorUrl";
+
+        /// <summary>
+        /// Server access point URL where from comes html with Graph Editor
+        /// </summary>
+        public static string GraphEditorUrl = "GraphEditorUrl";
     }
 }

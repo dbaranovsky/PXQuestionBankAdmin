@@ -96,7 +96,11 @@ namespace Macmillan.PXQBA.Web.Controllers
             {
                 questionViewModel.EditorUrl = String.Format(ConfigurationHelper.GetEditorUrlTemplate(), questionViewModel.EntityId, questionViewModel.QuizId, questionViewModel.Id);
             }
-            
+
+            questionViewModel.GraphEditorHtml = question.CustomUrl == "FMA_GRAPH"
+                ? CustomQuestionHelper.GetGraphEditor(question.InteractionData, questionViewModel.Id,
+                question.CustomUrl) : null;
+
             return questionViewModel;
         }
 

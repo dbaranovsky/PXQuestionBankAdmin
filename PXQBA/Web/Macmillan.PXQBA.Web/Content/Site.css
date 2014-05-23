@@ -601,10 +601,20 @@ input.disabled, textarea.disabled {
   
 }
 
+#editoriframecontainer.graph {
+    height: 700px !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 .tab-body .shared iframe {
     height: 664px;
 }
 
+#editoriframecontainer.graph > div {
+     margin-top: -40px;
+
+}
 
 
 .questionFilterItemBase {

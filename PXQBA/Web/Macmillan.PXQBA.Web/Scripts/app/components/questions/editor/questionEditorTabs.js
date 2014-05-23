@@ -6,7 +6,8 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
 
     getInitialState: function(){
       return {isHTS: this.props.question.questionType!= null && this.props.question.questionType.toLowerCase()=="hts"? true: false,
-              isCustom: this.props.question.questionType!= null }
+              isCustom: this.props.question.questionType!= null,
+              isGraph: this.props.question.graphEditorHtml != null }
     },
 
     tabsInitializer: function (container) {
@@ -22,8 +23,12 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
       //     $(tabs).find('.waiting').hide();
       //     $(tabs).find('iframe').show();
        // });
+    if (this.props.question.graphEditorHtml != null){
+      $(this.getDOMNode()).find("#editoriframecontainer").html(this.props.question.graphEditorHtml);
 
+    }else{
     this.loadQuestionEditor(this.props.question.editorUrl);
+    }
           
     },
 
@@ -180,6 +185,11 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
    
 
     saveClickHandler: function(){
+      if(this.state.isGraph){
+        var question = this.props.question;
+        question.interactionData =  document.getElementById("flash").getXML();
+        this.props.editHandler(question);
+      }
       if (this.state.isHTS){
         this.state.frameApi.saveQuestion();
       } else{
@@ -196,6 +206,10 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
 
        if (this.state.isHTS){
         iframeClass = iframeClass + " hts";
+       }
+
+       if (this.state.isGraph){
+        iframeClass = iframeClass + " graph";
        }
 
         return ( 
@@ -223,11 +237,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                       
                           
                           React.DOM.div( {id:"editoriframecontainer", className:iframeClass}),
-
-                             this.renderFooterButtons(true)
-                         
-                    
-                      
+                           this.renderFooterButtons(true)
                           
                        )
                     ),
@@ -235,8 +245,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                     this.renderSharingNotification(),
                        React.DOM.div( {className:!this.props.question.isShared  ? "tab-body" : "tab-body wide"},                            
                             QuestionMetadataEditor( {metadata:this.props.metadata, question:this.props.question, editHandler:this.props.editHandler, isDuplicate:this.props.isDuplicate} ),
-                           
-                     this.renderFooterButtons()
+                           this.renderFooterButtons()
                        )
                     ),
                      React.DOM.div( {className:"tab-pane", id:"history"}, 
