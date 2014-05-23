@@ -160,5 +160,29 @@ namespace Macmillan.PXQBA.Business.Services
             return productCourseOperation.GetCoursesByCourseIds(titleIds).Select(c => c.Title);
         }
 
+        public SharedQuestionDuplicateFromViewModel GetSourceQuestionSharedWith(ProductCourseSection section, Course course)
+        {
+            if (section != null)
+            {
+                if (section.ProductCourseValues.Any() &&
+                    section.ProductCourseValues.ContainsKey(MetadataFieldNames.QuestionIdDuplicateFromShared))
+                {
+                    var value = section.ProductCourseValues[MetadataFieldNames.QuestionIdDuplicateFromShared].FirstOrDefault();
+                    if (value != null)
+                    {
+                        var sharedWith =
+                            string.Join(", ", productCourseOperation.GetCoursesByCourseIds(
+                                questionCommands.GetQuestion(course.QuestionRepositoryCourseId, value)
+                                    .ProductCourseSections.Select(s => s.ProductCourseId)).Select(c => c.Title));
+                        return new SharedQuestionDuplicateFromViewModel
+                               {
+                                   QuestionId = value,
+                                   ShareWith = sharedWith
+                               };
+                    }
+                }
+            }
+            return null;
+        }
     }
 }

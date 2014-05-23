@@ -135,9 +135,9 @@ namespace Macmillan.PXQBA.Business.Services
                 if (newProductCourseSection == null)
                 {
                     newProductCourseSection = new ProductCourseSection { ProductCourseId = courseIdToPublish.ToString() };
+                    question.ProductCourseSections.Add(newProductCourseSection);
                 }
                 newProductCourseSection.ProductCourseValues = newProductCourseValues;
-                question.ProductCourseSections.Add(newProductCourseSection);
             }
             
             bool isSuccess = questionCommands.UpdateQuestions(questions, currentCourse.QuestionRepositoryCourseId);

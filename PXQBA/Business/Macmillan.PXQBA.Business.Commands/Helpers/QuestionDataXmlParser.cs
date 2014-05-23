@@ -97,15 +97,18 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
             foreach (var productCourseSection in question.ProductCourseSections)
             {
                 var productCourseSectionName = string.Format("{0}{1}", ElStrings.ProductCourseSection, productCourseSection.ProductCourseId);
-                var section = new XElement(productCourseSectionName);
-                foreach (var productCourseValue in productCourseSection.ProductCourseValues)
+                if (!elements.ContainsKey(productCourseSectionName))
                 {
-                    foreach (var value in productCourseValue.Value)
+                    var section = new XElement(productCourseSectionName);
+                    foreach (var productCourseValue in productCourseSection.ProductCourseValues)
                     {
-                        section.Add(new XElement(productCourseValue.Key, value));
+                        foreach (var value in productCourseValue.Value)
+                        {
+                            section.Add(new XElement(productCourseValue.Key, value));
+                        }
                     }
+                    elements.Add(productCourseSectionName, section);
                 }
-                elements.Add(productCourseSectionName, section);
             }
             return elements;
         }
