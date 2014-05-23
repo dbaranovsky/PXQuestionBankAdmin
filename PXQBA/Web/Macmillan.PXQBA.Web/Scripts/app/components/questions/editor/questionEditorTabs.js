@@ -39,15 +39,16 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
 
      loadSourceQuestion: function(event){
          event.preventDefault();
-         this.props.editSourceQuestionHandler();
+         this.props.editSourceQuestionHandler(this.props.question.sharedQuestionDuplicateFrom.questionId);
      },
 
 
     renderSharingNotification: function(){
-         if (this.props.question.isDuplicateOfSharedQuestion && this.props.isDuplicate && this.props.question.isShared) {
-        return (React.DOM.div( {className:"shared-note"}, "This question is a duplicate of a ",
+
+     if(this.props.question.sharedQuestionDuplicateFrom!=null){
+            return (React.DOM.div( {className:"shared-note"}, "This question is a duplicate of a ",
                     React.DOM.a( {className:"shared-question-link", href:"", onClick:this.loadSourceQuestion}, "shared question"),
-                    "from ", React.DOM.b(null, this.props.question.productCourses.join(', ')) 
+                    "from ", React.DOM.b(null, this.props.question.sharedQuestionDuplicateFrom.sharedWith) 
                ));
       }
 

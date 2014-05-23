@@ -16,25 +16,30 @@ var Question = React.createClass({
         this.setState({ showMenu: false });
     },
 
+    getTitleCount: function() {
+        var isShared = true;
+        var shareWith = this.props.metadata.data[window.consts.questionSharedWithName];
+        var titleCount=0;
+        if(shareWith==null) {
+            isShared = false;
+        }
+        else {
+            isShared =  shareWith != "";
+        }
+        if(isShared) {
+            titleCount = shareWith.split("<br>").length;
+        }
+
+        return titleCount;
+    },
+
     renderMenu: function() {
             var questionId = this.props.metadata.data["id"];
             var questionIds = [];
             questionIds.push(questionId);
 
-            var isShared = true;
-
-            if(this.props.metadata.data.sharedWith==null) {
-                isShared = false;
-            }
-            else {
-                isShared =  this.props.metadata.data.sharedWith != "";
-            }
-
-            var titleCount=0;
-            if(isShared) {
-               titleCount = this.props.metadata.data.sharedWith.split("<br />").length;
-            }
-
+           var titleCount = this.getTitleCount();
+            var isShared = titleCount > 0;
             return <QuestionListMenu
                         data={this.props.metadata.data} 
                         copyQuestionHandler={this.props.menuHandlers.copyQuestionHandler.bind(null, questionId)}

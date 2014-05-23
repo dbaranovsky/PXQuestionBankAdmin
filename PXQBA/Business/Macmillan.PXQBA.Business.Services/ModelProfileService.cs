@@ -114,6 +114,18 @@ namespace Macmillan.PXQBA.Business.Services
             metadata.Data.Add(MetadataFieldNames.InlinePreview, question.Preview);
             metadata.Data.Add(MetadataFieldNames.DlapType, QuestionTypeHelper.GetDisplayName(question.InteractionType, question.CustomUrl));
             metadata.Data.Add(MetadataFieldNames.Id, question.Id);
+
+            // to do:
+
+            string currentCourseId = String.Empty;
+            if (course != null)
+            {
+                currentCourseId = course.ProductCourseId;
+            }
+            var productCourses = GetTitleNames(question.ProductCourseSections.Where(p => p.ProductCourseId != currentCourseId).Select(p => p.ProductCourseId));
+
+            metadata.Data.Add(MetadataFieldNames.SharedWith, string.Join("<br>", productCourses));
+
             var courseName = course != null ? course.Title : string.Empty;
             metadata.Data.Add(MetadataFieldNames.ProductCourse, courseName);
             var productCourseSection = course != null
@@ -177,7 +189,7 @@ namespace Macmillan.PXQBA.Business.Services
                         return new SharedQuestionDuplicateFromViewModel
                                {
                                    QuestionId = value,
-                                   ShareWith = sharedWith
+                                   SharedWith = sharedWith
                                };
                     }
                 }

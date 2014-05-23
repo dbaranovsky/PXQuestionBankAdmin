@@ -93,7 +93,7 @@ var ShareQuestionBox = React.createClass({displayName: 'ShareQuestionBox',
  
    getInitialState: function() {
       return { 
-               shareViewModel: {course: 0, chapter:"", bank:""},
+               shareViewModel: {},
                metadata: this.props.metadata,
                setDefaults: true,
                loading: false
@@ -107,8 +107,14 @@ var ShareQuestionBox = React.createClass({displayName: 'ShareQuestionBox',
    },
 
    productTitleEditHandler: function(shareViewModel){
+
      this.setState({loading: true});
-     questionDataManager.getCourseMetadata(shareViewModel.course).done(this.changeCourseMetadata.bind(this, shareViewModel.course));
+     //In some case questionMetadataEditor return not array
+     if(typeof shareViewModel[window.consts.questionCourseName] === 'string' ) {
+        shareViewModel[window.consts.questionCourseName]=[shareViewModel[window.consts.questionCourseName]];
+     }
+
+     questionDataManager.getCourseMetadata(shareViewModel[window.consts.questionCourseName][0]).done(this.changeCourseMetadata.bind(this, shareViewModel[window.consts.questionCourseName][0]));
    },
 
     getMetaField: function(field, metadata){
@@ -121,13 +127,13 @@ var ShareQuestionBox = React.createClass({displayName: 'ShareQuestionBox',
 
    getShareViewModel: function(metadata, courseId){
      var shareViewModel = this.state.shareViewModel;
-     shareViewModel.course = courseId;
+     shareViewModel[window.consts.questionCourseName]=[courseId];
 
      var chapterMeta = this.getMetaField(window.consts.questionChapterName, metadata);
      var bankMeta = this.getMetaField(window.consts.questionBankName, metadata);
 
-     shareViewModel[window.consts.questionBankName] = this.getDefaultValue(bankMeta);
-     shareViewModel[window.consts.questionChapterName] = this.getDefaultValue(chapterMeta);
+     shareViewModel[window.consts.questionBankName] = [this.getDefaultValue(bankMeta)];
+     shareViewModel[window.consts.questionChapterName] = [this.getDefaultValue(chapterMeta)];
 
      return shareViewModel;
    },
@@ -151,7 +157,7 @@ var ShareQuestionBox = React.createClass({displayName: 'ShareQuestionBox',
      },
 
    changeCourseMetadata: function(courseId, metadata){
-
+                    
       var shareViewModel = this.getShareViewModel(metadata, courseId);
       this.setState({
                shareViewModel: shareViewModel,

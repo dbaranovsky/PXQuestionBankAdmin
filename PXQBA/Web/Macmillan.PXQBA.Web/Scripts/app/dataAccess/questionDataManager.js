@@ -157,7 +157,10 @@
             data: request,
             dataType: 'json',
             type: 'GET'
-        }).done(function (response) {
+          }).done(function (response) {
+              console.log('Create question template complete');
+              self.resetState();
+              console.log('Refresh complite');
         }).error(function(e){
              self.showErrorPopup();
         });
@@ -364,14 +367,14 @@
         });
     };
 
-     self.bulk.shareTitle = function (questionsId, courseViewModel) {
+    self.bulk.shareTitle = function (questionsId, courseViewModel) {
         asyncManager.startWait();
 
         var request = {
             questionsId: questionsId,
-            courseId: courseViewModel.course,
-            bank: courseViewModel.bank,
-            chapter: courseViewModel.chapter 
+            courseId: courseViewModel[window.consts.questionCourseName][0],
+            bank: courseViewModel[window.consts.questionBankName][0],
+            chapter: courseViewModel[window.consts.questionChapterName][0]
         };
 
         return $.ajax({
