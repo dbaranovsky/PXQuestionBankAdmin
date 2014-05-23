@@ -46,9 +46,10 @@ namespace Macmillan.PXQBA.Business.Services
             Question question = GetQuestion(course, questionId);
             question.Id = Guid.NewGuid().ToString();
             question.Status = ((int)QuestionStatus.InProgress).ToString();
-            var section = question.ProductCourseSections.First(s => s.ProductCourseId == course.ProductCourseId);
             if (question.ProductCourseSections.Count > 1)
             {
+                question.ProductCourseSections.RemoveAll(s => s.ProductCourseId != course.ProductCourseId);
+                var section = question.ProductCourseSections.First(s => s.ProductCourseId == course.ProductCourseId);
                 if (!section.ProductCourseValues.ContainsKey(MetadataFieldNames.QuestionIdDuplicateFromShared))
                 {
                     section.ProductCourseValues.Add(MetadataFieldNames.QuestionIdDuplicateFromShared, new List<string>{questionId});
