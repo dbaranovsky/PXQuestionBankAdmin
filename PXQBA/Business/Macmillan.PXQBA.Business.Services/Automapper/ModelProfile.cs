@@ -62,7 +62,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                .ForMember(dto => dto.Status, opt => opt.MapFrom(q => q.QuestionStatus))
                .ForMember(dto => dto.DefaultValues, opt => opt.MapFrom(q => modelProfileService.GetQuestionDefaultValues(q)))
                .ForMember(dto => dto.ProductCourseSections, opt => opt.MapFrom(q => modelProfileService.GetProductCourseSections(q)))
-               .ForMember(dto => dto.Preview, opt => opt.MapFrom(q => QuestionPreviewHelper.GetQuestionHtmlPreview(q)));
+               .ForMember(dto => dto.Preview, opt => opt.MapFrom(q => CustomQuestionHelper.GetQuestionHtmlPreview(q)));
 
             Mapper.CreateMap<Bfw.Agilix.DataContracts.QuestionChoice, QuestionChoice>();
 
@@ -74,7 +74,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                .ForMember(dto => dto.Answer, opt => opt.Condition(cont => cont.DestinationValue == null))
                .ForMember(dto => dto.AnswerList, opt => opt.Condition(cont => cont.DestinationValue == null))
                .ForMember(dto => dto.Choices, opt => opt.Condition(cont => cont.DestinationValue == null))
-               .ForMember(dto => dto.InteractionData, opt => opt.Condition(cont => cont.DestinationValue == null))
+               .ForMember(dto => dto.InteractionData, opt => opt.MapFrom(src => src.InteractionData))
                .ForMember(dto => dto.InteractionType, opt =>opt.Condition(cont => cont.DestinationValue == null))
                .ForMember(dto => dto.CustomUrl, opt =>opt.Condition(cont => cont.DestinationValue == null));
 

@@ -93,5 +93,15 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
         /// Task id to update solr with latest data 
         /// </summary>
         public static string SolrUpdateTaskId = "SolrUpdateTaskId";
+
+        /// <summary>
+        /// Key for Advanced Question editor
+        /// </summary>
+        public static string HTSEditorUrlTemplate = "HTSEditorUrl";
+
+        /// <summary>
+        /// Server access point URL where from comes html with Graph Editor
+        /// </summary>
+        public static string GraphEditorUrl = "GraphEditorUrl";
     }
 }

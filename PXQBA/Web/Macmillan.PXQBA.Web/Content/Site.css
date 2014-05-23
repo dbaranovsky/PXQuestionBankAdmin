@@ -558,6 +558,8 @@ input.disabled, textarea.disabled {
 .iframe.waiting {
     width: 100%;
     height: 692px !important;
+    z-index: 1;
+    position: fixed;
    
 }
 
@@ -584,14 +586,43 @@ input.disabled, textarea.disabled {
 .tab-body iframe {
     width: 98%;
     height: 693px;
- 
+    overflow: hidden;
     border: 0;
+
+}
+
+#editoriframecontainer.hts{
+    z-index: 2;
+    width: 97%;
+    position: fixed;
+}
+
+#editoriframecontainer.hts{
+    
+ background:rgba(221, 221, 221, 0.0);
+}
+
+#editoriframecontainer.hts iframe{
+
+     width: 99% !important;
+     height: 749px !important;
+  
+}
+
+#editoriframecontainer.graph {
+    height: 700px !important;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .tab-body .shared iframe {
     height: 664px;
 }
 
+#editoriframecontainer.graph > div {
+     margin-top: -40px;
+
+}
 
 
 .questionFilterItemBase {

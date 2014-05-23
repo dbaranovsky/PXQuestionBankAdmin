@@ -64,6 +64,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(questionMetadataService.GetAvailableFields(CourseHelper.CurrentCourse).Select(MetadataFieldsHelper.Convert).ToList());
         }
 
+        [HttpPost, ValidateInput(false)]
         public ActionResult UpdateQuestion(string questionJsonString)
         {
             // manual JSON deserialize is nessessary becauese of invalid model mapping on controller
@@ -85,7 +86,18 @@ namespace Macmillan.PXQBA.Web.Controllers
             var tempQuestion = questionManagementService.CreateTemporaryQuestion(CourseHelper.CurrentCourse, question.Id);
             var questionViewModel = Mapper.Map<Question, QuestionViewModel>(tempQuestion, opt => opt.Items.Add(CourseHelper.CurrentCourse.ProductCourseId, CourseHelper.CurrentCourse));
             questionViewModel.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), questionViewModel.EntityId, questionViewModel.QuizId);
-            questionViewModel.EditorUrl = String.Format(ConfigurationHelper.GetEditorUrlTemplate(), questionViewModel.EntityId, questionViewModel.QuizId, questionViewModel.Id);
+
+            questionViewModel.QuestionType = question.CustomUrl;
+            questionViewModel.EditorUrl = CustomQuestionHelper.GetEditorUrl(questionViewModel.QuestionType,
+                                                                            questionViewModel.Id,
+                                                                            questionViewModel.EntityId,
+                                                                            questionViewModel.QuizId);          
+           
+
+            questionViewModel.GraphEditorHtml = CustomQuestionHelper.GetGraphEditor(question.InteractionData,
+                                                                                    questionViewModel.Id,
+                                                                                    question.CustomUrl);
+
             return questionViewModel;
         }
 

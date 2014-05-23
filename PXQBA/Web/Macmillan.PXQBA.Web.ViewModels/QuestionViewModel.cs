@@ -89,5 +89,12 @@ namespace Macmillan.PXQBA.Web.ViewModels
             }
         }
 
+        public string QuestionType { get; set; }
+
+        public string GraphEditorHtml { get; set; }
+
+        public string InteractionData { get; set; }
+
+
     }
 }
