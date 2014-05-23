@@ -41,11 +41,10 @@ namespace Macmillan.PXQBA.Web.ViewModels
         {
             get
             {
-                return !string.IsNullOrEmpty(QuestionIdDuplicateFrom);
+                return LocalValues.ContainsKey(MetadataFieldNames.QuestionIdDuplicateFrom) &&
+                       !string.IsNullOrEmpty(LocalValues[MetadataFieldNames.QuestionIdDuplicateFrom].FirstOrDefault());
             }
         }
-
-        public string QuestionIdDuplicateFrom{ get; set; }
 
         public bool IsShared
         {

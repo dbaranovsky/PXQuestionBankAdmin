@@ -46,7 +46,15 @@ namespace Macmillan.PXQBA.Business.Services
             Question question = GetQuestion(course, questionId);
             question.Id = Guid.NewGuid().ToString();
             question.Status = ((int)QuestionStatus.InProgress).ToString();
-            question.QuestionIdDuplicateFrom = questionId;
+            var section = question.ProductCourseSections.First(s => s.ProductCourseId == course.ProductCourseId);
+            if (question.ProductCourseSections.Count > 1)
+            {
+                if (!section.ProductCourseValues.ContainsKey(MetadataFieldNames.QuestionIdDuplicateFrom))
+                {
+                    section.ProductCourseValues.Add(MetadataFieldNames.QuestionIdDuplicateFrom, new List<string>{questionId});
+                }
+                section.ProductCourseValues[MetadataFieldNames.QuestionIdDuplicateFrom] = new List<string>(){questionId};
+            }
             return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
 
@@ -106,8 +114,6 @@ namespace Macmillan.PXQBA.Business.Services
 
         public Question CreateTemporaryQuestion(Course course, string questionId)
         {
-            //PxTempQBAQuestion_115457_Essay
-            //PxTempQBAQuestion_115457_Choice
             return temporaryQuestionOperation.CopyQuestionToTemporaryCourse(course.QuestionRepositoryCourseId, questionId);
         }
     
