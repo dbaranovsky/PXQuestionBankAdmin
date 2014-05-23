@@ -90,18 +90,6 @@ namespace Macmillan.PXQBA.Web.Controllers
         }
 
         /// <summary>
-        ///  Flag a question, in order to indicate to other editors that the question needs to be reviewed and possibly revised
-        /// </summary>
-        /// <param name="questionId"></param>
-        /// <param name="isFlagged"></param>
-        /// <returns></returns>
-        public ActionResult FlagQuestion(string questionId, bool isFlagged)
-        {
-            // todo: imlement service call
-            return JsonCamel(new { isError = false });
-        }
-
-        /// <summary>
         /// Remove shared questions from current title 
         /// </summary>
         /// <param name="questionsId"></param>
