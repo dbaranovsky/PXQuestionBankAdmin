@@ -25,6 +25,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
        // });
     if (this.props.question.graphEditorHtml != null){
       $(this.getDOMNode()).find("#editoriframecontainer").html(this.props.question.graphEditorHtml);
+      this.iframeLoaded();
 
     }else{
     this.loadQuestionEditor(this.props.question.editorUrl);
@@ -71,6 +72,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
     
     //move to helper
     hookupBHEditor: function(url){
+      var self = this;
           rpc = new easyXDM.Rpc({
             //Standalone component URL for the BrainHoney component to display
             remote: url,
@@ -235,7 +237,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                       this.renderSharingNotification(),
                        React.DOM.div( {className:"tab-body .shared"}, 
                       
-                          
+                           React.DOM.div(  {className:"iframe waiting"} ),
                           React.DOM.div( {id:"editoriframecontainer", className:iframeClass}),
                            this.renderFooterButtons(true)
                           
