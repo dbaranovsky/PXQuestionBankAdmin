@@ -74,7 +74,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                .ForMember(dto => dto.Answer, opt => opt.Condition(cont => cont.DestinationValue == null))
                .ForMember(dto => dto.AnswerList, opt => opt.Condition(cont => cont.DestinationValue == null))
                .ForMember(dto => dto.Choices, opt => opt.Condition(cont => cont.DestinationValue == null))
-               .ForMember(dto => dto.InteractionData, opt => opt.MapFrom(src => src.InteractionData))
+               .ForMember(dto => dto.InteractionData, opt => opt.Condition(q => q.CustomUrl == QuestionTypeHelper.GraphType))
                .ForMember(dto => dto.InteractionType, opt =>opt.Condition(cont => cont.DestinationValue == null))
                .ForMember(dto => dto.CustomUrl, opt =>opt.Condition(cont => cont.DestinationValue == null));
 
@@ -114,7 +114,8 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ConvertUsing(new ProductSectionToSharedQuestionDuplicateConverter(modelProfileService));
                 
             Mapper.CreateMap<QuestionViewModel, Question>()
-                .ForMember(dest => dest.ProductCourseSections, opt => opt.MapFrom(src => modelProfileService.GetProductCourseSections(src)));
+                 .ForMember(dest => dest.ProductCourseSections, opt => opt.MapFrom(src => modelProfileService.GetProductCourseSections(src)))
+                .ForMember(dest => dest.CustomUrl, opt => opt.MapFrom(src => src.QuestionType));
         }
     }
 

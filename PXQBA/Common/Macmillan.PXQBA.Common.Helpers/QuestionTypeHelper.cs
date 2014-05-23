@@ -10,6 +10,9 @@ namespace Macmillan.PXQBA.Common.Helpers
     public static class QuestionTypeHelper
     {
         private static readonly IEnumerable<QuestionType> AvailableTypes = ConfigurationHelper.GetQuestionTypes().Select(CreateQuestionType);
+        public const string HTSType = "HTS";
+        public const string GraphType = "FMA_GRAPH";
+
 
         public static string GetDisplayName(string key, string customUrl = null)
         {
@@ -39,7 +42,6 @@ namespace Macmillan.PXQBA.Common.Helpers
         {
             return AvailableTypes;
         }
-
     }
 
     public class QuestionType

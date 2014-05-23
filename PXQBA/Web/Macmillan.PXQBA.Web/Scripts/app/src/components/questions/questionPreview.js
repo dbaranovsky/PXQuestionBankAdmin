@@ -4,8 +4,8 @@
 
 var QuestionPreview = React.createClass({
 
-       componentDidMount: function(){
-            
+       componentDidUpdate: function(){
+          //  $(this.getDOMNode()).find(".question-preview").html(this.props.preview);
        },
        compileTemplate: function(){
 
@@ -17,7 +17,8 @@ var QuestionPreview = React.createClass({
             return ( 
                   <tr>
                     <td colSpan={this.props.colSpan}>
-                         <span dangerouslySetInnerHTML={{__html: this.props.preview}} />
+                      //   <span className="question-preview" dangerouslySetInnerHTML={{__html: this.props.preview}} />
+                       <span className="question-preview"></span>
                          <hr />
                          <div className="question-card-template" dangerouslySetInnerHTML={{__html: this.compileTemplate()}} />
                     </td>
