@@ -3,6 +3,6 @@
     public class SharedQuestionDuplicateFromViewModel
     {
         public string QuestionId { get; set; }
-        public string ShareWith { get; set; }
+        public string SharedWith { get; set; }
     }
 }
