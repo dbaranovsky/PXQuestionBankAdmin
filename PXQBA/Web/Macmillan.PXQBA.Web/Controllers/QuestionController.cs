@@ -101,7 +101,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             return questionViewModel;
         }
 
-        
+        /// <summary>
         /// Remove shared questions from current title 
         /// </summary>
         /// <param name="questionsId"></param>
