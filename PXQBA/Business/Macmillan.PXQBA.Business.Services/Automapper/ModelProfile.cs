@@ -126,7 +126,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             //                    src.QuestionId % 2 != 0
             //                        ? src
             //                        : null))
-            //    .ForMember(dest => dest.QuestionIdDuplicateFrom,
+            //    .ForMember(dest => dest.QuestionIdDuplicateFromShared,
             //        opt =>
             //            opt.MapFrom(
             //                src =>

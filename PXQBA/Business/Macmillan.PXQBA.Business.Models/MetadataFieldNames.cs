@@ -17,7 +17,7 @@
         public const string Guidance = "guidance";
         public const string LearningObjectives = "learningobjectives";
         public const string SharedWith = "sharedWith";
-        public const string QuestionIdDuplicateFrom = "questionIdDuplicateFrom";
+        public const string QuestionIdDuplicateFromShared = "questionIdDuplicateFromShared";
         public const string ProductCourse = "productcourseid";
         public const string Flag = "flag";
     }
