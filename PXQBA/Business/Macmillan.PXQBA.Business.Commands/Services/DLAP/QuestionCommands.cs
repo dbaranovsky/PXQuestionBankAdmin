@@ -288,6 +288,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             var agilixQuestion = GetAgilixQuestion(question.EntityId, question.Id);
             Mapper.Map(question, agilixQuestion);
             ExecutePutQuestion(agilixQuestion);
+            ExecuteSolrUpdateTask();
             return question;
         }
 
