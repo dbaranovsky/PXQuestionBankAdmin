@@ -15,10 +15,8 @@ namespace Macmillan.PXQBA.Common.Helpers
     public static class CustomQuestionHelper
     {
         private const string CQScriptString = "if(typeof CQ ==='undefined')CQ = window.parent.CQ; CQ.questionInfoList['{0}'] = {{ divId: '{1}', version: '{2}', mode: '{3}', question: {{ body: '{4}', data: {5}}}, response: {{ pointspossible: '{6}', pointsassigned: '{7}'}} }}";
-        
-        public const string HTSType = "HTS";
-        public const string GraphType = "FMA_GRAPH";
-                                                          
+
+
         public static string GetQuestionHtmlPreview(Question question)
         {
 
@@ -118,7 +116,7 @@ namespace Macmillan.PXQBA.Common.Helpers
                     sResponse = cqScript + sResponse;
 
                     //=== required if rendering question in iframe          
-                    string cqPatch = "<script type='text/javascript' src='/Scripts/quiz/CQ.js' />";
+                    string cqPatch = "<script type='text/javascript' src='/Scripts/customQuestion/CQ.js' />";
                     sResponse = cqPatch + sResponse;
                     //===
 
@@ -251,7 +249,7 @@ namespace Macmillan.PXQBA.Common.Helpers
         {
 
 
-            if (string.IsNullOrEmpty(questionType) || questionType != GraphType)
+            if (string.IsNullOrEmpty(questionType) || questionType != QuestionTypeHelper.GraphType)
             {
                 return null;
             }
@@ -358,7 +356,7 @@ namespace Macmillan.PXQBA.Common.Helpers
 
         public static string GetEditorUrl(string questionType, string questionId, string entityId, string quizId)
         {
-            return questionType == HTSType ? 
+            return questionType == QuestionTypeHelper.HTSType ? 
                     String.Format(ConfigurationHelper.GetHTSEditorUrlTemplate(), questionId, quizId, entityId) : 
                     String.Format(ConfigurationHelper.GetEditorUrlTemplate(), entityId, quizId, questionId);
         }
