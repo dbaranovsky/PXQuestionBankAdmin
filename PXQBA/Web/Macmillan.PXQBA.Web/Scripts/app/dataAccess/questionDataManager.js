@@ -412,7 +412,15 @@
             fadeOut: { enabled: true, delay: 3000 }
         };
         $('.top-center').notify(notifyOptions).show();
+    };
 
+    self.showWarningPopup = function (message) {
+        var notifyOptions = {
+            message: { text: message },
+            type: 'warning',
+            fadeOut: { enabled: true, delay: 3000 }
+        };
+        $('.top-center').notify(notifyOptions).show();
     };
 
     return self;

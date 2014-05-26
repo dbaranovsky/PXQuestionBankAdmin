@@ -165,7 +165,7 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
             if(isQuestionExpanded) {
               preview = (QuestionPreview( {colSpan:self.getAllColumnCount(), metadata:question.data, preview:question.data.questionHtmlInlinePreview, questionCardTemplate:self.props.questionCardTemplate}));
             }
-
+ 
             return [questionHtml, preview];
           });
 
@@ -210,7 +210,7 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
                   ) 
                 ),
               React.DOM.div( {className:"dialogs-container"}, 
-                  React.DOM.div( {className:"notifications top-center center"} )
+                  React.DOM.div( {className:"notifications top-center center notifications-displair"} )
               )
           )
         );
