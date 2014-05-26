@@ -10,19 +10,25 @@ var QuestionEditor = React.createClass({
 
 
     saveQuestion: function(){
-       // if(this.props.isNew)
-       // {
-       // }
-     
-        var finishSaving = this.props.finishSaving;
-        questionDataManager.updateQuestion(this.state.question).done(finishSaving);
+        questionDataManager.updateQuestion(this.state.question).done(this.updateQuestionHandler);
+    },
 
+    updateQuestionHandler: function(response) {
+      if(!response.isError) {
+          this.props.finishSaving();
+      } 
+      else {
+        window.questionDataManager.showWarningPopup(window.enums.messages.warningQuestionEditorMessage);
+      }
     },
 
     saveBHEditor: function(frameApi){
       var self = this;
         if (frameApi !== undefined && frameApi.saveComponent !== undefined ){
           frameApi.saveComponent('questioneditor', 'editoriframecontainer', function(result){
+            if(!result) {
+                window.questionDataManager.showWarningPopup(window.enums.messages.warningQuestionEditorMessage);
+            }
         });
        } else{
          this.saveQuestion();

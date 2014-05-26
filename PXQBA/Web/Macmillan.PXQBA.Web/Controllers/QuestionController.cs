@@ -70,7 +70,16 @@ namespace Macmillan.PXQBA.Web.Controllers
             // manual JSON deserialize is nessessary becauese of invalid model mapping on controller
             var questionViewModel = JsonConvert.DeserializeObject<QuestionViewModel>(questionJsonString);
             var question = Mapper.Map<Question>(questionViewModel);
-            questionManagementService.UpdateQuestion(CourseHelper.CurrentCourse, QuestionHelper.QuestionIdToEdit, question);
+
+            try
+            {
+                questionManagementService.UpdateQuestion(CourseHelper.CurrentCourse, QuestionHelper.QuestionIdToEdit,
+                    question);
+            }
+            catch (Exception ex)
+            {
+                return JsonCamel(new { isError = true });
+            }
             return JsonCamel(new { isError = false });
         }
 

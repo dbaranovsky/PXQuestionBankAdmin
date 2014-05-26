@@ -854,3 +854,6 @@ a.shared-question-link:hover {
     font-size: 20px;
 }
 
+.notifications-displair {
+    z-index: 9999;
+}

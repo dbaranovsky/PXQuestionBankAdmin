@@ -165,7 +165,7 @@ var QuestionList = React.createClass({
             if(isQuestionExpanded) {
               preview = (<QuestionPreview colSpan={self.getAllColumnCount()} metadata={question.data} preview={question.data.questionHtmlInlinePreview} questionCardTemplate={self.props.questionCardTemplate}/>);
             }
-
+ 
             return [questionHtml, preview];
           });
 
@@ -210,7 +210,7 @@ var QuestionList = React.createClass({
                   </tbody> 
                 </table>
               <div className="dialogs-container">
-                  <div className='notifications top-center center' />
+                  <div className='notifications top-center center notifications-displair' />
               </div>
           </div>
         );
