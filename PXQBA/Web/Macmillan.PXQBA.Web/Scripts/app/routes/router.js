@@ -12,7 +12,10 @@ crossroads.addRoute('/page/{page}/columns/{columns}/filter/{query}/order/{orderT
                                                                     orderField);
         questionsData.done(function (response) {
 
-            routsManager.copyFiltration(response.filter);
+            routsManager.copyAndApplyState(response.filter,
+                                            response.pageNumber,
+                                            response.order.orderField,
+                                            response.order.orderType);
             
             asyncManager.page = React.renderComponent(
                 QuestionListPage({

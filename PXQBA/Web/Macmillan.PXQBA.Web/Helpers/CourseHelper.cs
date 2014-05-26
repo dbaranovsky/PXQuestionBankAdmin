@@ -31,7 +31,7 @@ namespace Macmillan.PXQBA.Web.Helpers
             return false;
         }
 
-        public static bool IsResetFiltrationNeeded(FilterFieldDescriptor courseFilterDescriptor)
+        public static bool IsResetParameterNeeded(FilterFieldDescriptor courseFilterDescriptor)
         {
             var currentCourse = CurrentCourse;
             if (currentCourse == null)
