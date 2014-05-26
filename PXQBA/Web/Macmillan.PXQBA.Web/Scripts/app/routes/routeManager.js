@@ -34,7 +34,6 @@
 
     self.setOrder = function (orderType, fieldName) {
         self.order.setValue(orderType);
-        self.order.setValue(orderType);
         if (fieldName != undefined) {
             self.order.setValue(self.order.getValue() + '/' + fieldName);
         }
@@ -63,6 +62,14 @@
         hasher.setHash(self.buildHash());
     };
 
+
+    self.copyAndApplyState = function (filter, page, orderType, orderField) {
+        self.copyFiltration(filter);
+        self.copyPage(page);
+        self.copyOrder(orderType, orderField);
+        self.setHashSilently(self.buildHash());
+    },
+
     self.copyFiltration = function (filtersObjects) {
         self.query.setValue(filterHashParameterHelper.emptyValue);
         
@@ -71,8 +78,17 @@
                 filterHashParameterHelper.addFiltration(
                 filtersObjects[i].field, filtersObjects[i].values, self.query.getValue()));
         }
+    };
 
-        self.setHashSilently(self.buildHash());
+    self.copyPage = function (page) {
+        self.page.setValue(page);
+    };
+
+    self.copyOrder = function (orderType, fieldName) {
+        self.order.setValue(orderType);
+        if (fieldName != undefined) {
+            self.order.setValue(self.order.getValue() + '/' + fieldName);
+        }
     };
 
     return self;

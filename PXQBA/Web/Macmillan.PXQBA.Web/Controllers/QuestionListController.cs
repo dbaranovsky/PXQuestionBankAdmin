@@ -51,7 +51,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
 
             var currentCourseFilter = request.Filter.SingleOrDefault(x => x.Field == MetadataFieldNames.ProductCourse);
-            ClearFilter(currentCourseFilter, request);
+            ClearParameters(currentCourseFilter, request);
 
             UpdateCurrentCourse(currentCourseFilter.Values.First());
 
@@ -129,9 +129,9 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// </summary>
         /// <param name="courseFilterDescriptor"></param>
         /// <param name="request"></param>
-        private void ClearFilter(FilterFieldDescriptor courseFilterDescriptor, QuestionListDataRequest request)
+        private void ClearParameters(FilterFieldDescriptor courseFilterDescriptor, QuestionListDataRequest request)
         {
-            if (!CourseHelper.IsResetFiltrationNeeded(courseFilterDescriptor))
+            if (!CourseHelper.IsResetParameterNeeded(courseFilterDescriptor))
             {
                 return;
             }
@@ -141,6 +141,10 @@ namespace Macmillan.PXQBA.Web.Controllers
                              {
                                  courseFilter
                              };
+
+            request.PageNumber = 1;
+            request.OrderField = null;
+            request.OrderType = SortType.None;
         }
 
         /// <summary>
