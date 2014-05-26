@@ -147,7 +147,6 @@
     <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Views\BulkOperation\" />
     <Folder Include="Views\QuestionFilter\" />
-    <Folder Include="Views\Question\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
@@ -385,6 +384,7 @@
     <Content Include="Views\Metadata\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Shared\MainMenu.cshtml" />
+    <Content Include="Views\Question\QuestionPreview.cshtml" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -20,19 +20,21 @@ namespace Macmillan.PXQBA.Common.Helpers
         public static string GetQuestionHtmlPreview(Question question)
         {
 
-         
+
+            if (String.IsNullOrEmpty(question.CustomUrl))
+            {
+                return null;
+            }
+            
+            
             if (String.IsNullOrEmpty(question.InteractionData))
             {
                //TODO: handle empty interaction data
                 return "Body is empty, no preview available";
             }
 
-            if (question.InteractionType.ToLower() != "custom")
-            {
-                return "Not Custom Qeestion: to be implemented..";
-            }
-
-            if (question.CustomUrl == "HTS")
+           
+            if (question.CustomUrl == QuestionTypeHelper.HTSType)
             {
                 return GetHTSQuestionPreview(ConfigurationHelper.GetHTSConverterUrl(), question.InteractionData,
                     question.Id);

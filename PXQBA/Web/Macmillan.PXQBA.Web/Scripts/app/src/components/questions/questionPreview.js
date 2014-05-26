@@ -6,7 +6,7 @@ var QuestionPreview = React.createClass({
 
       
         reloadPreview: function(){
-            $(this.getDOMNode()).find(".question-preview").html(this.props.preview);
+            $(this.getDOMNode()).find(".question-preview-container").html(this.props.preview);
         },
        componentDidUpdate: function(){
             this.reloadPreview();
@@ -22,25 +22,10 @@ var QuestionPreview = React.createClass({
             return html;
        },
         render: function() {
-          var questionType = this.props.metadata[window.consts.questionTypeName];
-          var isCustom = false;
-          var className = "question-preview";
-
-
-          if (questionType== window.enums.questionType.graphDisplayName) {
-              className += " graph";
-              isCustom = true;
-          }
-
-          if (questionType == window.enums.questionType.htsDisplayName){
-            className+= " hts";
-            isCustom = true;
-          }
-
             return ( 
                   <tr>
                     <td colSpan={this.props.colSpan}>
-                       <div className={className}></div>
+                       <div className="question-preview-container"></div>
                          <hr />
                          <div className="question-card-template" dangerouslySetInnerHTML={{__html: this.compileTemplate()}} />
                     </td>

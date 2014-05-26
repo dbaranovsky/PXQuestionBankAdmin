@@ -665,6 +665,12 @@ input.disabled, textarea.disabled {
     height: auto;
 }
 
+.question-preview .question-body{
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
 .question-preview.graph {
      height: 500px;
 }
