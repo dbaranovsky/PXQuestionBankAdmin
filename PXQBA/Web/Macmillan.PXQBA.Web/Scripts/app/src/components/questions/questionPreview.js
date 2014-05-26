@@ -4,8 +4,16 @@
 
 var QuestionPreview = React.createClass({
 
+      
+        reloadPreview: function(){
+            $(this.getDOMNode()).find(".question-preview").html(this.props.preview);
+        },
        componentDidUpdate: function(){
-          //  $(this.getDOMNode()).find(".question-preview").html(this.props.preview);
+            this.reloadPreview();
+       },
+
+       componentDidMount: function(){
+          this.reloadPreview();
        },
        compileTemplate: function(){
 
@@ -14,11 +22,25 @@ var QuestionPreview = React.createClass({
             return html;
        },
         render: function() {
+          var questionType = this.props.metadata[window.consts.questionTypeName];
+          var isCustom = false;
+          var className = "question-preview";
+
+
+          if (questionType== window.enums.questionType.graphDisplayName) {
+              className += " graph";
+              isCustom = true;
+          }
+
+          if (questionType == window.enums.questionType.htsDisplayName){
+            className+= " hts";
+            isCustom = true;
+          }
+
             return ( 
                   <tr>
                     <td colSpan={this.props.colSpan}>
-                      //   <span className="question-preview" dangerouslySetInnerHTML={{__html: this.props.preview}} />
-                       <span className="question-preview"></span>
+                       <div className={className}></div>
                          <hr />
                          <div className="question-card-template" dangerouslySetInnerHTML={{__html: this.compileTemplate()}} />
                     </td>

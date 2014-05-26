@@ -190,7 +190,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
     saveClickHandler: function(){
       if(this.state.isGraph){
         var question = this.props.question;
-        question.interactionData =  document.getElementById("flash").getXML();
+        question.interactionData =  $(this.getDOMNode()).find("#flash")[0].getXML();
         this.props.editHandler(question);
       }
       if (this.state.isHTS){

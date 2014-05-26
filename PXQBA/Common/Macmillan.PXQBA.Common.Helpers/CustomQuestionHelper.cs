@@ -24,7 +24,7 @@ namespace Macmillan.PXQBA.Common.Helpers
             if (String.IsNullOrEmpty(question.InteractionData))
             {
                //TODO: handle empty interaction data
-                return "Something gone wrong";
+                return "Body is empty, no preview available";
             }
 
             if (question.InteractionType.ToLower() != "custom")
@@ -37,7 +37,7 @@ namespace Macmillan.PXQBA.Common.Helpers
                 return GetHTSQuestionPreview(ConfigurationHelper.GetHTSConverterUrl(), question.InteractionData,
                     question.Id);
             }
-            return GetFmaGraphQuestionPreview(ConfigurationHelper.GetHTSConverterUrl(), question.InteractionData,
+            return GetFmaGraphQuestionPreview(ConfigurationHelper.GetFmaGraphConverterUrl(), question.InteractionData,
                 question.Id);
         }
 
@@ -116,7 +116,7 @@ namespace Macmillan.PXQBA.Common.Helpers
                     sResponse = cqScript + sResponse;
 
                     //=== required if rendering question in iframe          
-                    string cqPatch = "<script type='text/javascript' src='/Scripts/customQuestion/CQ.js' />";
+                    string cqPatch = "<script type='text/javascript' src='/Scripts/customQuestions/CQ.js' />";
                     sResponse = cqPatch + sResponse;
                     //===
 
@@ -232,7 +232,7 @@ namespace Macmillan.PXQBA.Common.Helpers
                     }
                     sResponse = sResponse.Replace("getElementById(questionInfo.divId)", "getElementById('questionInfo.divId')");
                     sResponse = sResponse.Replace("questionInfo.divId", "questionInfo.divId" + questionId);
-
+                    sResponse = sResponse.Replace("saveMethod" + questionId, "saveMethod");
                     //sResponse = sResponse.Replace("[~]", "/BrainHoney/Resource/" + entityId);
                 }
                 catch (Exception ex2)
