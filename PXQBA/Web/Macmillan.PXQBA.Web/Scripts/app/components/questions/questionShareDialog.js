@@ -40,7 +40,7 @@ var QuestionShareDialog = React.createClass({displayName: 'QuestionShareDialog',
             var message = this.props.questionIds.length ==1 ?
                          "Question was shared successfully. This question may require metadata editing." : 
                           this.props.questionIds.length+" question were shared successfully. These questions may require metadata editing. ";
-            var url = this.getUrlToList(this.state.shareViewModel.course);
+            var url = this.getUrlToList(this.state.shareViewModel[window.consts.questionCourseName][0]);
             var link = '<a href='+url+'>Go to the target title </a>'
            var notifyOptions = {
             message: { html: message+link},
