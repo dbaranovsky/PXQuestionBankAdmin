@@ -172,7 +172,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return question;
         }
 
-        private void ExecuteSolrUpdateTask()
+        public void ExecuteSolrUpdateTask()
         {
             var taskId = ConfigurationHelper.GetSolrUpdateTaskId();
             if (taskId.HasValue)
@@ -293,6 +293,14 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             Mapper.Map(question, agilixQuestion);
             ExecutePutQuestion(agilixQuestion);
             ExecuteSolrUpdateTask();
+            return question;
+        }
+
+        public Question UpdateQuestionInTempQuiz(Question question)
+        {
+            var agilixQuestion = GetAgilixQuestion(question.EntityId, question.Id);
+            Mapper.Map(question, agilixQuestion);
+            ExecutePutQuestion(agilixQuestion);
             return question;
         }
 
@@ -447,8 +455,9 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
             ExecutePutQuestions(questions);
 
-            return true;
+            ExecuteSolrUpdateTask();
 
+            return true;
         }
 
 
