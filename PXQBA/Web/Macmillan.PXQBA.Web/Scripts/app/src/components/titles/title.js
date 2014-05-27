@@ -13,9 +13,6 @@ var Title = React.createClass({
     },
 
     getQuestionCountText: function(count) {
-      if(count==0) {
-        return null;
-      }
       if(count==1) {
         return '1 question';
       }
