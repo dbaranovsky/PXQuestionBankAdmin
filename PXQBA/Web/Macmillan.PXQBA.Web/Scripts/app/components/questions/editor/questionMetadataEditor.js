@@ -12,7 +12,7 @@ var QuestionMetadataEditor = React.createClass({displayName: 'QuestionMetadataEd
 
 
       for (var localName in this.props.question.localValues){
-        if(localName!= "sequence" && localName != "productcourseid" && localName != "flag")
+        if($.inArray(localName,["sequence", "productcourseid", "flag", "questionIdDuplicateFromShared"]) ==-1)
         localFieldsName.push(localName);
       }
 
@@ -50,7 +50,13 @@ var QuestionMetadataEditor = React.createClass({displayName: 'QuestionMetadataEd
 
     render: function() {
         var style = this.props.question.isShared? {} : {display: "none !important"};
-        return ( React.DOM.div( {className:this.props.question.isShared? "local wide" : "local" }, 
+        var localClass = "local";
+        if (this.props.question.isShared){
+          localClass+= " wide";
+        } else if(this.props.question.sharedQuestionDuplicateFrom != null && this.props.isDuplicate){
+          localClass +=" with-notification";
+        }
+        return ( React.DOM.div( {className:localClass}, 
                       React.DOM.div( {className:"row header", style:style}, 
                         React.DOM.div( {className:"cell"},  " ", React.DOM.span( {className:"label label-default metadata-info-label"}, "Shared values")),
                         React.DOM.div( {className:"cell control"}),

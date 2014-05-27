@@ -261,6 +261,12 @@ input[type="checkbox"].input-validation-error {
      width: 977px;
 } 
 
+#questionEditorModal #metadata .tab-body .local.with-notification .body-container {
+     height: 650px !important;
+      width: 977px;
+} 
+
+
 
 
 .tab-body {
@@ -618,7 +624,7 @@ input.disabled, textarea.disabled {
 }
 
 .tab-body .shared iframe {
-    height: 664px;
+    height: 643px;
 }
 
 #editoriframecontainer.graph > div {
