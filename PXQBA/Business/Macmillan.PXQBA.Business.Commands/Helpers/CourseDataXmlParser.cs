@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using Bfw.Agilix.DataContracts;
 using Macmillan.PXQBA.Business.Models;
 
 namespace Macmillan.PXQBA.Business.Commands.Helpers
