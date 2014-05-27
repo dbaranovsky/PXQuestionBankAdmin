@@ -17,6 +17,7 @@ namespace Macmillan.PXQBA.Common.Helpers
     {
         private const string CQScriptString = "if(typeof CQ ==='undefined')CQ = window.parent.CQ; CQ.questionInfoList['{0}'] = {{ divId: '{1}', version: '{2}', mode: '{3}', question: {{ body: '{4}', data: {5}}}, response: {{ pointspossible: '{6}', pointsassigned: '{7}'}} }}";
         private const string customXmlPattern = "<info id=\"0\" mode=\"{0}\"><question schema=\"2\" partial=\"false\"><answer /><body></body><customurl>HTS</customurl><interaction type=\"custom\"><data><![CDATA[{1}]]></data></interaction></question></info>";
+        private static readonly Regex regexConverter = new Regex(@"\s+");
 
         public static string GetQuestionHtmlPreview(Question question)
         {
@@ -34,93 +35,123 @@ namespace Macmillan.PXQBA.Common.Helpers
              var html = new StringBuilder(String.Format(@"<div class=""{0}"">", question.CustomUrl == QuestionTypeHelper.GraphType? "question-preview  graph" : "question-preview"));
             html.AppendFormat(@"<div class=""question-body"">{0}</div>", question.Body);
 
-            var re = new Regex(@"\s+");
+        
             switch (question.InteractionType)
             {
                 case "custom":
                     html.Append(RenderCustomQuestion(question));
                     break;
+
                 case "answer":
-                    
-                    if (question.Choices != null && question.Choices.Count > 0)
-                    {
-                        var answers = question.AnswerList;
-                        html.Append("<ul>");
-                            foreach (var choice in question.Choices)
-                            {
-                                string cid = re.Replace(choice.Id, "").ToLower();
-                                string answerChecked = answers.Contains(cid) ? "checked=checked" : "";
-
-                                html.Append("<li>");
-                                html.AppendFormat(@"<input disabled=""disabled"" type=""checkbox"" {0} />", answerChecked );
-                                html.AppendFormat(@"<span class=""option-text"">{0}</span >",choice.Text);
-                                html.Append("</li>");
-                            }
-                        html.Append("</ul>");
-                    }
-                    else
-                    {
-                        html.Append("<p>This question has no options.</p>");
-                    }
+                    html.Append(RenderMultiAnswer(question.AnswerList, question.Choices));
                     break;
+
                 case "choice":
-                    if (question.Choices != null && question.Choices.Count > 0)
-                    {
-                        string answer = question.Answer != null ? re.Replace(question.Answer, "").ToLower() : "No answer provided";
-                        html.Append("<ul>");
-                        foreach (var choice in question.Choices)
-                        {
-                            string choiceValue = re.Replace(choice.Text, "").ToLower();
-                            string chioceId = re.Replace(choice.Id, "").ToLower();
-
-                            html.Append("<li>");
-                            html.AppendFormat(@"<input disabled=""disabled"" type=""radio"" {0} />", (answer == choiceValue || answer == chioceId) ? "checked='checked'" : "");
-                            html.AppendFormat(@"<span class=""option-text"">{0}</span >", choice.Text);
-                            html.Append("</li>");
-                        }
-                        html.Append("</ul>");
-                    }
-                    else
-                    {
-                        html.Append("<p>This question has no options.</p>");
-                    }
+                    html.Append(RenderMultiChoice(question.Choices, question.Answer));
                     break;
+
                 case "text":
-                      if (question.AnswerList != null && question.AnswerList.Count > 1)
-                        {
-                            html.Append("<b>Correct answers:</b>");
-                           
-                        }
-                        else
-                        {
-                             html.Append("<b>Correct answer:</b>");
-                             html.AppendFormat("<p>{0}</p>", string.IsNullOrEmpty(question.Answer) ? "No answer provided" : question.Answer);
-                        }
+                    html.Append(RenderShortAnswer(question.AnswerList, question.Answer));
+                    break;
 
-                    break;
                 case "match":
-                    if (question.Choices != null && question.Choices.Count > 0)
-                    {
-                      
-                        html.Append("<ul>");
-                        foreach (var choice in question.Choices)
-                        {
-                            html.Append("<li>");
-                            html.AppendFormat(@"<span class=""option-text"">{0} = {1}</span >", choice.Text, choice.Answer);
-                            html.Append("</li>");
-                        }
-                        html.Append("</ul>");
-                    }
-                    else
-                    {
-                        html.Append("<p>This question has no options.</p>");
-                    }
+                    html.Append(RenderMatching(question.Choices));
                     break;
-                default:
-                    break;
+
             }
 
             html.Append("<div />");
+            return html.ToString();
+        }
+
+        private static string RenderMatching(IEnumerable<QuestionChoice> choices)
+        {
+            var html = new StringBuilder();
+            if (choices != null && choices.Any())
+            {
+
+                html.Append("<ul>");
+                foreach (var choice in choices)
+                {
+                    html.Append("<li>");
+                    html.AppendFormat(@"<span class=""option-text"">{0} = {1}</span >", choice.Text, choice.Answer);
+                    html.Append("</li>");
+                }
+                html.Append("</ul>");
+            }
+            else
+            {
+                html.Append("<p>This question has no options.</p>");
+            }
+            return html.ToString();
+        }
+
+        private static string RenderShortAnswer(IEnumerable<string> answerList, string answer)
+        {
+            var html = new StringBuilder();
+            if (answerList != null && answerList.Any())
+            {
+                html.Append("<b>Correct answers:</b>");
+
+            }
+            else
+            {
+                html.Append("<b>Correct answer:</b>");
+                html.AppendFormat("<p>{0}</p>", string.IsNullOrEmpty(answer) ? "No answer provided" : answer);
+            }
+
+            return html.ToString();
+        }
+
+        private static string RenderMultiChoice(IEnumerable<QuestionChoice> choices, string answer)
+        {
+            var html = new StringBuilder();
+            if (choices != null && choices.Any())
+            {
+                string answerValue = !string.IsNullOrEmpty(answer) ? regexConverter.Replace(answer, "").ToLower() : "No answer provided";
+                html.Append("<ul>");
+                foreach (var choice in choices)
+                {
+                    string choiceValue = regexConverter.Replace(choice.Text, "").ToLower();
+                    string chioceId = regexConverter.Replace(choice.Id, "").ToLower();
+
+                    html.Append("<li>");
+                    html.AppendFormat(@"<input disabled=""disabled"" type=""radio"" {0} />", (answerValue == choiceValue || answerValue == chioceId) ? "checked='checked'" : "");
+                    html.AppendFormat(@"<span class=""option-text"">{0}</span >", choice.Text);
+                    html.Append("</li>");
+                }
+                html.Append("</ul>");
+            }
+            else
+            {
+                html.Append("<p>This question has no options.</p>");
+            }
+            return html.ToString();
+        }
+
+        private static string RenderMultiAnswer(IEnumerable<string> answerList, IEnumerable<QuestionChoice> choices)
+        {
+            var html = new StringBuilder();
+            if (choices != null && choices.Any())
+            {
+               
+                html.Append("<ul>");
+                foreach (var choice in choices)
+                {
+                    string cid = regexConverter.Replace(choice.Id, "").ToLower();
+                    string answerChecked = answerList != null && answerList.Contains(cid) ? "checked=checked" : "";
+
+                    html.Append("<li>");
+                    html.AppendFormat(@"<input disabled=""disabled"" type=""checkbox"" {0} />", answerChecked);
+                    html.AppendFormat(@"<span class=""option-text"">{0}</span >", choice.Text);
+                    html.Append("</li>");
+                }
+                html.Append("</ul>");
+            }
+            else
+            {
+                html.Append("<p>This question has no options.</p>");
+            }
             return html.ToString();
         }
 
