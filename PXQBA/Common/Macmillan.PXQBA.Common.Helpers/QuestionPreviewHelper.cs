@@ -23,7 +23,7 @@ namespace Macmillan.PXQBA.Common.Helpers
         {
 
             var html = new StringBuilder(String.Format(@"<div class=""{0}"">", question.CustomUrl == QuestionTypeHelper.GraphType ? "question-preview  graph" : "question-preview"));
-            html.AppendFormat(@"<div class=""question-body"">{0}</div>", question.Body);
+            html.AppendFormat(@"<div class=""question-body"">{0}</div>", question.CustomUrl == QuestionTypeHelper.GraphType && string.IsNullOrEmpty(question.Body)? question.Title : question.Body);
 
 
             switch (question.InteractionType)
@@ -50,7 +50,7 @@ namespace Macmillan.PXQBA.Common.Helpers
 
             }
 
-            html.Append("<div />");
+            html.Append("</div>");
             return html.ToString();
             
             
@@ -83,7 +83,7 @@ namespace Macmillan.PXQBA.Common.Helpers
         private static string RenderShortAnswer(IEnumerable<string> answerList, string answer)
         {
             var html = new StringBuilder();
-            if (answerList != null && answerList.Any())
+            if (answerList != null && answerList.Count() > 1)
             {
                 html.Append("<b>Correct answers:</b>");
 
