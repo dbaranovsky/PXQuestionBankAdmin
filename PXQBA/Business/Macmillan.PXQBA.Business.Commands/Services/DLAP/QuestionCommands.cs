@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Configuration;
 using System.Text;
 using System.Xml.Linq;
 using AutoMapper;
@@ -371,11 +372,30 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             {
                 if (question.DefaultValues != null && question.DefaultValues.ContainsKey(fieldName))
                 {
+                    var sharedCourses = question.ProductCourseSections.Where(
+                        c => c.ProductCourseValues.ContainsKey(fieldName))
+                        .Where(c => IsValuesTheSame(c.ProductCourseValues[fieldName], question.DefaultValues[fieldName])).ToList();
+
                     question.DefaultValues[fieldName] = new List<string>(){fieldValue};
+
+                    foreach (var sharedCourse in sharedCourses)
+                    {
+                        sharedCourse.ProductCourseValues[fieldName] = question.DefaultValues[fieldName];
+                    }
                 }
                 UpdateQuestion(question);
             }
             return true;
+        }
+
+        private bool IsValuesTheSame(IList<string> values, IList<string> comparedValues)
+        {
+            if (values.Count != comparedValues.Count)
+            {
+                return false;
+            }
+
+            return !values.Where((t, i) => t != comparedValues[i]).Any();
         }
 
         private string BuildQueryString(IEnumerable<FilterFieldDescriptor> filter)
