@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Script.Serialization;
@@ -15,25 +16,124 @@ namespace Macmillan.PXQBA.Common.Helpers
     public static class CustomQuestionHelper
     {
         private const string CQScriptString = "if(typeof CQ ==='undefined')CQ = window.parent.CQ; CQ.questionInfoList['{0}'] = {{ divId: '{1}', version: '{2}', mode: '{3}', question: {{ body: '{4}', data: {5}}}, response: {{ pointspossible: '{6}', pointsassigned: '{7}'}} }}";
-
+        private const string customXmlPattern = "<info id=\"0\" mode=\"{0}\"><question schema=\"2\" partial=\"false\"><answer /><body></body><customurl>HTS</customurl><interaction type=\"custom\"><data><![CDATA[{1}]]></data></interaction></question></info>";
 
         public static string GetQuestionHtmlPreview(Question question)
         {
 
 
-            if (String.IsNullOrEmpty(question.CustomUrl))
+          
+                return RenderQuestionPreview(question);
+            
+            
+         
+        }
+
+        private static string RenderQuestionPreview(Question question)
+        {
+             var html = new StringBuilder(String.Format(@"<div class=""{0}"">", question.CustomUrl == QuestionTypeHelper.GraphType? "question-preview  graph" : "question-preview"));
+            html.AppendFormat(@"<div class=""question-body"">{0}</div>", question.Body);
+
+            var re = new Regex(@"\s+");
+            switch (question.InteractionType)
             {
-                return null;
+                case "custom":
+                    html.Append(RenderCustomQuestion(question));
+                    break;
+                case "answer":
+                    
+                    if (question.Choices != null && question.Choices.Count > 0)
+                    {
+                        var answers = question.AnswerList;
+                        html.Append("<ul>");
+                            foreach (var choice in question.Choices)
+                            {
+                                string cid = re.Replace(choice.Id, "").ToLower();
+                                string answerChecked = answers.Contains(cid) ? "checked=checked" : "";
+
+                                html.Append("<li>");
+                                html.AppendFormat(@"<input disabled=""disabled"" type=""checkbox"" {0} />", answerChecked );
+                                html.AppendFormat(@"<span class=""option-text"">{0}</span >",choice.Text);
+                                html.Append("</li>");
+                            }
+                        html.Append("</ul>");
+                    }
+                    else
+                    {
+                        html.Append("<p>This question has no options.</p>");
+                    }
+                    break;
+                case "choice":
+                    if (question.Choices != null && question.Choices.Count > 0)
+                    {
+                        string answer = question.Answer != null ? re.Replace(question.Answer, "").ToLower() : "No answer provided";
+                        html.Append("<ul>");
+                        foreach (var choice in question.Choices)
+                        {
+                            string choiceValue = re.Replace(choice.Text, "").ToLower();
+                            string chioceId = re.Replace(choice.Id, "").ToLower();
+
+                            html.Append("<li>");
+                            html.AppendFormat(@"<input disabled=""disabled"" type=""radio"" {0} />", (answer == choiceValue || answer == chioceId) ? "checked='checked'" : "");
+                            html.AppendFormat(@"<span class=""option-text"">{0}</span >", choice.Text);
+                            html.Append("</li>");
+                        }
+                        html.Append("</ul>");
+                    }
+                    else
+                    {
+                        html.Append("<p>This question has no options.</p>");
+                    }
+                    break;
+                case "text":
+                      if (question.AnswerList != null && question.AnswerList.Count > 1)
+                        {
+                            html.Append("<b>Correct answers:</b>");
+                           
+                        }
+                        else
+                        {
+                             html.Append("<b>Correct answer:</b>");
+                             html.AppendFormat("<p>{0}</p>", string.IsNullOrEmpty(question.Answer) ? "No answer provided" : question.Answer);
+                        }
+
+                    break;
+                case "match":
+                    if (question.Choices != null && question.Choices.Count > 0)
+                    {
+                      
+                        html.Append("<ul>");
+                        foreach (var choice in question.Choices)
+                        {
+                            html.Append("<li>");
+                            html.AppendFormat(@"<span class=""option-text"">{0} = {1}</span >", choice.Text, choice.Answer);
+                            html.Append("</li>");
+                        }
+                        html.Append("</ul>");
+                    }
+                    else
+                    {
+                        html.Append("<p>This question has no options.</p>");
+                    }
+                    break;
+                default:
+                    break;
             }
-            
-            
+
+            html.Append("<div />");
+            return html.ToString();
+        }
+
+        private static string RenderCustomQuestion(Question question)
+        {
+
             if (String.IsNullOrEmpty(question.InteractionData))
             {
-               //TODO: handle empty interaction data
+                //TODO: handle empty interaction data
                 return "Body is empty, no preview available";
             }
 
-           
+
             if (question.CustomUrl == QuestionTypeHelper.HTSType)
             {
                 return GetHTSQuestionPreview(ConfigurationHelper.GetHTSConverterUrl(), question.InteractionData,
@@ -60,7 +160,7 @@ namespace Macmillan.PXQBA.Common.Helpers
            
                 try
                 {
-                    sXml = "<info id=\"0\" mode=\"PrintKey\"><question schema=\"2\" partial=\"false\"><answer /><body></body><customurl>HTS</customurl><interaction type=\"custom\"><data><![CDATA[" + sXml + "]]></data></interaction></question></info>";
+                    sXml = String.Format(customXmlPattern, "PrintKey", sXml);
                     byte[] buffer = Encoding.UTF8.GetBytes(sXml);
 
                     var webReq = WebRequest.Create(sUrl);
@@ -164,8 +264,7 @@ namespace Macmillan.PXQBA.Common.Helpers
          
                 try
                 {
-                    sXml = "<info id=\"0\" mode=\"Active\"><question schema=\"2\" partial=\"false\"><answer /><body></body><customurl>HTS</customurl><interaction type=\"custom\"><data><![CDATA["
-                        + sXml + "]]></data></interaction></question></info>";
+                    sXml = String.Format(customXmlPattern, "Active", sXml); 
                     byte[] buffer = Encoding.UTF8.GetBytes(sXml);
 
                     HttpWebRequest webReq = (HttpWebRequest)WebRequest.Create(sUrl);
@@ -268,8 +367,7 @@ namespace Macmillan.PXQBA.Common.Helpers
 
                 try
                 {
-                    customXML = "<info id=\"0\" mode=\"Review\"><question schema=\"2\" partial=\"false\"><answer /><body></body><customurl>HTS</customurl><interaction type=\"custom\"><data><![CDATA["
-                        + customXML + "]]></data></interaction></question></info>";
+                    customXML = String.Format(customXmlPattern, "Review", customXML);
                     byte[] buffer = Encoding.UTF8.GetBytes(customXML);
 
                     HttpWebRequest WebReq = (HttpWebRequest)WebRequest.Create(editorURL);

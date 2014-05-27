@@ -67,18 +67,12 @@ namespace Macmillan.PXQBA.Web.Controllers
             
             var totalPages = (questionList.TotalItems + questionPerPage - (questionList.TotalItems % questionPerPage)) /
                              questionPerPage;
-            var collectionPage = questionList.CollectionPage;
-
-            foreach (var question in collectionPage)
-            {
-                question.Preview = RenderRazorViewToString("~/Views/Question/QuestionPreview.cshtml", question);
-            }
 
             var response = new QuestionListDataResponse
                         {
                             Filter = request.Filter,
                             TotalPages = totalPages,
-                            QuestionList = collectionPage.Select(q => Mapper.Map<QuestionMetadata>(q, opt => opt.Items.Add(CourseHelper.CurrentCourse.ProductCourseId, CourseHelper.CurrentCourse))),
+                            QuestionList = questionList.CollectionPage.Select(q => Mapper.Map<QuestionMetadata>(q, opt => opt.Items.Add(CourseHelper.CurrentCourse.ProductCourseId, CourseHelper.CurrentCourse))),
                             PageNumber = request.PageNumber,
                             Columns = questionMetadataService.GetDataForFields(CourseHelper.CurrentCourse, request.Columns).Select(MetadataFieldsHelper.Convert).ToList(),
                             AllAvailableColumns = questionMetadataService.GetAvailableFields(CourseHelper.CurrentCourse).Select(MetadataFieldsHelper.Convert).ToList(),
@@ -192,63 +186,9 @@ namespace Macmillan.PXQBA.Web.Controllers
         }
 
 
-        public ActionResult PreviewQuestion()
-        {
-            return Content("new");
-        }
+     
 
-        private string RenderRazorViewToString(string viewName, object model)
-        {
-            ViewData.Model = model;
-            using (var sw = new StringWriter())
-            {
-                var viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
-                var viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
-                viewResult.View.Render(viewContext, sw);
-                return sw.GetStringBuilder().ToString();
-            }
-        }
 
-        private string RenderViewToString(string viewName, object viewData)
-        {
-            //Create memory writer
-            var sb = new StringBuilder();
-            var memWriter = new StringWriter(sb);
-
-            //Create fake http context to render the view
-            var fakeResponse = new HttpResponse(memWriter);
-            var fakeContext = new System.Web.HttpContext(System.Web.HttpContext.Current.Request, fakeResponse);
-            var fakeControllerContext = new ControllerContext(
-                new HttpContextWrapper(fakeContext),
-                ControllerContext.RouteData,
-                ControllerContext.Controller);
-
-            var oldContext = System.Web.HttpContext.Current;
-            System.Web.HttpContext.Current = fakeContext;
-
-            //Use HtmlHelper to render partial view to fake context
-            var html = new HtmlHelper(new ViewContext(fakeControllerContext, new FakeView(), new ViewDataDictionary(), new TempDataDictionary(), memWriter), new ViewPage());
-            html.RenderPartial(viewName, viewData);
-
-            //Restore context
-            System.Web.HttpContext.Current = oldContext;
-
-            //Flush memory and return output
-            memWriter.Flush();
-            return sb.ToString();
-        }
-
-        public class FakeView : IView
-        {
-            #region IView Members
-
-            public void Render(ViewContext viewContext, System.IO.TextWriter writer)
-            {
-                throw new NotImplementedException();
-            }
-
-            #endregion
-        }
     }
 
 }
