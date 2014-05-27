@@ -119,7 +119,7 @@ var QuestionListMenu = React.createClass({
                      <ul className="dropdown-menu show-menu" role="menu" aria-labelledby="dropdownMenuType" onClick={this.changeEventHandler} aria-labelledby="edit-question">
                         <li role="presentation" className="dropdown-header">Edit options</li>
                        <li role="presentation" className="divider"></li>
-                       <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.editQuestionHandler}>Edit in {this.props.titleCount == 1? "1 title" : "all "+this.props.titleCount+" titles"}</a></li>
+                       <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.editQuestionHandler}>Edit in {this.props.titleCount+1 == 1? "1 title" : "all "+(this.props.titleCount+1)+" titles"}</a></li>
                        <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.copyQuestionHandler}>Create a copy</a></li>
                      </ul>);
     },
