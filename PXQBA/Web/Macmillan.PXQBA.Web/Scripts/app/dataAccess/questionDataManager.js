@@ -39,8 +39,11 @@
             contentType: 'application/json'
         }).done(function (response) {
             self.processDataResponse(response);
-        }).error(function(e){
-             self.showErrorPopup();
+        }).error(function (httpRequest, textStatus, errorThrown) {
+            if (httpRequest.readyState == 0 || httpRequest.status == 0) {
+                return;  
+            }
+            self.showErrorPopup();
         });
     };
 

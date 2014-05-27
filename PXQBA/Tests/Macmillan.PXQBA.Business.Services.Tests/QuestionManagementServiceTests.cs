@@ -1,18 +1,18 @@
 ﻿
-using System.Linq;
-using AutoMapper;
-using Bfw.Agilix.Dlap.Components.Session;
-using Bfw.Agilix.Dlap.Session;
-using Bfw.Common.Database;
-using Bfw.Common.Logging;
-using Bfw.Common.Patterns.Logging;
-using Macmillan.PXQBA.Business.Commands.Services.DLAP;
-using Macmillan.PXQBA.Business.Commands.Services.EntityFramework;
-using Macmillan.PXQBA.Business.Contracts;
-using Macmillan.PXQBA.Business.Models;
-using Macmillan.PXQBA.Business.Services.Automapper;
-using Macmillan.PXQBA.Common.Logging;
-using Microsoft.Practices.Unity;
+//using System.Linq;
+//using AutoMapper;
+//using Bfw.Agilix.Dlap.Components.Session;
+//using Bfw.Agilix.Dlap.Session;
+//using Bfw.Common.Database;
+//using Bfw.Common.Logging;
+//using Bfw.Common.Patterns.Logging;
+//using Macmillan.PXQBA.Business.Commands.Services.DLAP;
+//using Macmillan.PXQBA.Business.Commands.Services.EntityFramework;
+//using Macmillan.PXQBA.Business.Contracts;
+//using Macmillan.PXQBA.Business.Models;
+//using Macmillan.PXQBA.Business.Services.Automapper;
+//using Macmillan.PXQBA.Common.Logging;
+//using Microsoft.Practices.Unity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Macmillan.PXQBA.Business.Services.Tests
