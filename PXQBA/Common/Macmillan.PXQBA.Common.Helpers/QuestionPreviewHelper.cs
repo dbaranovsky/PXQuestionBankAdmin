@@ -22,20 +22,10 @@ namespace Macmillan.PXQBA.Common.Helpers
         public static string GetQuestionHtmlPreview(Question question)
         {
 
-
-          
-                return RenderQuestionPreview(question);
-            
-            
-         
-        }
-
-        private static string RenderQuestionPreview(Question question)
-        {
-             var html = new StringBuilder(String.Format(@"<div class=""{0}"">", question.CustomUrl == QuestionTypeHelper.GraphType? "question-preview  graph" : "question-preview"));
+            var html = new StringBuilder(String.Format(@"<div class=""{0}"">", question.CustomUrl == QuestionTypeHelper.GraphType ? "question-preview  graph" : "question-preview"));
             html.AppendFormat(@"<div class=""question-body"">{0}</div>", question.Body);
 
-        
+
             switch (question.InteractionType)
             {
                 case "custom":
@@ -62,7 +52,11 @@ namespace Macmillan.PXQBA.Common.Helpers
 
             html.Append("<div />");
             return html.ToString();
+            
+            
+         
         }
+
 
         private static string RenderMatching(IEnumerable<QuestionChoice> choices)
         {
