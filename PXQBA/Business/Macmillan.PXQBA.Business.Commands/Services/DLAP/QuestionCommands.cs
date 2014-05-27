@@ -384,15 +384,20 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                         var productCourseSection = string.Format("{0}{1}", ElStrings.ProductCourseSection, productCourseId);
                         foreach (var filterFieldDescriptor in filter)
                         {
+                            var values = filterFieldDescriptor.Values;
                             var fieldFormat = "{0}/{1}:\"{2}\"";
                             if (filterFieldDescriptor.Field == ElStrings.QuestionStatus ||
                                 filterFieldDescriptor.Field == "dlap_q_" + ElStrings.type)
                             {
                                 fieldFormat = "{1}:\"{2}\"";
                             }
+                            if (filterFieldDescriptor.Field == "dlap_q_" + ElStrings.type)
+                            {
+                                values = filterFieldDescriptor.Values.Select(v => v == QuestionTypeHelper.GraphType || v == QuestionTypeHelper.HTSType ? "custom": v);
+                            }
                             var fieldQuery = string.Join(" OR ",
-                                filterFieldDescriptor.Values.Select(v =>
-                                    string.Format(fieldFormat, productCourseSection, filterFieldDescriptor.Field, v)));
+                                    values.Select(v =>
+                                        string.Format(fieldFormat, productCourseSection, filterFieldDescriptor.Field, v)));
                             if (!string.IsNullOrEmpty(fieldQuery))
                             {
                                 query.Append(string.Format(" AND ({0})", fieldQuery));
