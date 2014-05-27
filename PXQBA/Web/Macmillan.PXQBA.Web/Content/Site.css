@@ -49,6 +49,8 @@ input[type="checkbox"].input-validation-error {
     display: none;
 }
 
+
+
 .add-question-action {
     float: right;
 }
@@ -258,6 +260,12 @@ input[type="checkbox"].input-validation-error {
      overflow-y: auto;
      width: 977px;
 } 
+
+#questionEditorModal #metadata .tab-body .local.with-notification .body-container {
+     height: 650px !important;
+      width: 977px;
+} 
+
 
 
 
@@ -616,7 +624,7 @@ input.disabled, textarea.disabled {
 }
 
 .tab-body .shared iframe {
-    height: 664px;
+    height: 643px;
 }
 
 #editoriframecontainer.graph > div {
@@ -657,6 +665,20 @@ input.disabled, textarea.disabled {
 
 .question-card-template {
     float: left;
+}
+
+.question-preview {
+    height: auto;
+}
+
+.question-preview .question-body{
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.question-preview.graph {
+     height: 500px;
 }
 #title-container {
     margin: 20px 0px 0px 0px;

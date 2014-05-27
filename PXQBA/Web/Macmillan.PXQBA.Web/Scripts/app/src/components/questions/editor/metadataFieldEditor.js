@@ -284,7 +284,7 @@ var MetadataFieldEditor = React.createClass({
       if (this.props.title === undefined){
         label = this.state.metadataField  == null? this.props.field : this.state.metadataField.friendlyName;
       } else{
-        label = this.props.field;
+        label = this.props.title;
       }
 
         return (

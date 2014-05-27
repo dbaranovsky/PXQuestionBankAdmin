@@ -190,7 +190,7 @@ var QuestionEditorTabs = React.createClass({
     saveClickHandler: function(){
       if(this.state.isGraph){
         var question = this.props.question;
-        question.interactionData =  document.getElementById("flash").getXML();
+        question.interactionData =  $(this.getDOMNode()).find("#flash")[0].getXML();
         this.props.editHandler(question);
       }
       if (this.state.isHTS){
@@ -203,7 +203,7 @@ var QuestionEditorTabs = React.createClass({
     render: function() {
 
        var iframeClass = ""
-       if (this.props.question.isShared && !this.props.isNew){
+       if ((this.props.question.isShared && !this.props.isNew) || (this.props.question.sharedQuestionDuplicateFrom != null && this.props.isDuplicate)){
         iframeClass = "shared";
        }
 

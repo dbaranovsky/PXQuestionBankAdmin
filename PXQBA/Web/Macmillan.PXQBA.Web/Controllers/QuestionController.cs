@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Mvc.Html;
 using AutoMapper;
 using Bfw.Common;
 using Macmillan.PXQBA.Business.Contracts;
@@ -106,6 +108,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             questionViewModel.GraphEditorHtml = CustomQuestionHelper.GetGraphEditor(question.InteractionData,
                                                                                     questionViewModel.Id,
                                                                                     question.CustomUrl);
+           
 
             return questionViewModel;
         }
@@ -136,5 +139,8 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(new { isError = !isSuccess });
         }
 
+
+      
 	}
+  
 }

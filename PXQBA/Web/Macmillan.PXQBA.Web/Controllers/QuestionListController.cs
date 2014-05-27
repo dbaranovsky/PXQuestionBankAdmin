@@ -1,4 +1,8 @@
 ﻿using System;
+using System.IO;
+using System.Text;
+using System.Web;
+using System.Web.Mvc.Html;
 using AutoMapper;
 using System.Net;
 using Macmillan.PXQBA.Business.Contracts;
@@ -59,8 +63,11 @@ namespace Macmillan.PXQBA.Web.Controllers
             var questionList = questionManagementService.GetQuestionList(CourseHelper.CurrentCourse, request.Filter, sortCriterion, 
                                                                           (request.PageNumber - 1) * questionPerPage,
                                                                           questionPerPage);
+
+            
             var totalPages = (questionList.TotalItems + questionPerPage - (questionList.TotalItems % questionPerPage)) /
                              questionPerPage;
+
             var response = new QuestionListDataResponse
                         {
                             Filter = request.Filter,
@@ -177,6 +184,11 @@ namespace Macmillan.PXQBA.Web.Controllers
             }
             return JsonCamel(questionMetadataService.GetAvailableFields(course).Select(MetadataFieldsHelper.Convert));
         }
+
+
+     
+
+
     }
 
 }
