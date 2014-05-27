@@ -94,8 +94,10 @@ namespace Macmillan.PXQBA.Business.Services
 
         public Question UpdateQuestion(Course course, string sourceQuestionId, Question temporaryQuestion)
         {
-            questionCommands.UpdateQuestion(temporaryQuestion);
-            return temporaryQuestionOperation.CopyQuestionToSourceCourse(course.QuestionRepositoryCourseId, sourceQuestionId);
+            questionCommands.UpdateQuestionInTempQuiz(temporaryQuestion);
+            var question = temporaryQuestionOperation.CopyQuestionToSourceCourse(course.QuestionRepositoryCourseId, sourceQuestionId);
+            questionCommands.ExecuteSolrUpdateTask();
+            return question;
         }
 
         public bool UpdateQuestionField(Course course, string questionId, string fieldName, string fieldValue, bool isSharedField = false)

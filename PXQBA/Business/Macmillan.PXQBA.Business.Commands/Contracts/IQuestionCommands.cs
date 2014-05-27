@@ -12,7 +12,7 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
 
         Dictionary<string, int> GetQuestionCountByChapters(string questionRepositoryCourseId, string currentCourseId);
         Question UpdateQuestion(Question question);
-
+        Question UpdateQuestionInTempQuiz(Question question);
         bool UpdateQuestionField(string productCourseId, string repositoryCourseId, string questionId, string fieldName, string value);
 
         bool BulklUpdateQuestionField(string productCourseId, string repositoryCourseId, string[] questionId, string fieldName, string value);
@@ -25,5 +25,7 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         IEnumerable<Question> GetQuestions(string repositoryCourseId, string[] questionsId);
 
         bool UpdateQuestions(IEnumerable<Question> questions, string repositoryCourseId);
+
+        void ExecuteSolrUpdateTask();
     }
 }

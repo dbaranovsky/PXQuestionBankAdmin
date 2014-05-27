@@ -14,8 +14,8 @@ crossroads.addRoute('/page/{page}/columns/{columns}/filter/{query}/order/{orderT
 
             routsManager.copyAndApplyState(response.filter,
                                             response.pageNumber,
-                                            response.order.orderField,
-                                            response.order.orderType);
+                                            response.order.orderType,
+                                            response.order.orderField);
             
             asyncManager.page = React.renderComponent(
                 QuestionListPage({
