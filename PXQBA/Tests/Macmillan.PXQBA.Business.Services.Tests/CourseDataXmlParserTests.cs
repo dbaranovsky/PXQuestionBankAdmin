@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Xml.Linq;
 using Macmillan.PXQBA.Business.Commands.Helpers;
+using Macmillan.PXQBA.Business.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Macmillan.PXQBA.Business.Services.Tests
@@ -11,6 +12,7 @@ namespace Macmillan.PXQBA.Business.Services.Tests
 
         public static string XmlString = @"
                       <data>
+                        <QuestionBankRepositoryCourse>22250</QuestionBankRepositoryCourse>
                         <meta-available-question-data>
                             <coreconcept filterable=""true"" friendlyname=""Core Concept"" />
                             <difficulty filterable=""true"" searchterm=""difficulty:"" friendlyname=""Difficulty"">
@@ -36,16 +38,64 @@ namespace Macmillan.PXQBA.Business.Services.Tests
                       </data>";
 
         [TestMethod]
-        public void ParseMetaAvailableQuestionData()
+        public void ParseMetaAvailableQuestionData_Parsed()
+        {
+            XElement courseDataXml = XElement.Parse(XmlString);
+            var fields = CourseDataXmlParser.ParseMetaAvailableQuestionData(courseDataXml);
+            
+            Assert.IsTrue(fields.Count()==8);
+            Assert.IsTrue(fields.SingleOrDefault(x => x.Friendlyname == "Difficulty").CourseMetadataFieldValues.Count()==3);
+            Assert.IsTrue(fields.SingleOrDefault(x => x.Friendlyname == "Difficulty")
+                            .CourseMetadataFieldValues.Where(i => i.Sequence == 1)
+                            .SingleOrDefault().Text == "Easy");
+
+            Assert.IsTrue(fields.SingleOrDefault(x => x.Name == "guidance").Filterable==false);
+            Assert.IsFalse(fields.SingleOrDefault(x => x.Friendlyname == "Core Concept").CourseMetadataFieldValues.Any());
+        }
+
+        [TestMethod]
+        public void ParseMetaAvailableQuestionData_Difficulty_Parsed()
         {
             XElement courseDataXml = XElement.Parse(XmlString);
             var fields = CourseDataXmlParser.ParseMetaAvailableQuestionData(courseDataXml);
 
-            Assert.IsTrue(fields.Count()==8);
-            Assert.IsTrue(fields.SingleOrDefault(x => x.Friendlyname == "Difficulty").CourseMetadataFieldValues.Count()==3);
-            Assert.IsTrue(fields.SingleOrDefault(x => x.Name == "guidance").Filterable==false);
+            var difficultyFieldValues = fields.SingleOrDefault(x => x.Friendlyname == "Difficulty").CourseMetadataFieldValues;
 
-            Assert.IsFalse(fields.SingleOrDefault(x => x.Friendlyname == "Core Concept").CourseMetadataFieldValues.Any());
+             Assert.IsTrue(difficultyFieldValues.Where(i => i.Sequence == 1)
+                           .SingleOrDefault().Text == "Easy");
+             Assert.IsTrue(difficultyFieldValues.Where(i => i.Sequence == 2)
+                           .SingleOrDefault().Text == "Medium");
+             Assert.IsTrue(difficultyFieldValues.Where(i => i.Sequence == 3)
+                           .SingleOrDefault().Text == "Hard");
+        }
+
+
+        [TestMethod]
+        public void ParseMetaAvailableQuestionData_SingleSelect_Parsed()
+        {
+            XElement courseDataXml = XElement.Parse(XmlString);
+            var fields = CourseDataXmlParser.ParseMetaAvailableQuestionData(courseDataXml);
+
+            Assert.IsTrue(fields.SingleOrDefault(x => x.Friendlyname == "Module").Type == MetadataFieldType.SingleSelect);
+            Assert.IsTrue(fields.SingleOrDefault(x => x.Name == "bank").Type == MetadataFieldType.SingleSelect);
+        }
+
+        [TestMethod]
+        public void ParseMetaAvailableQuestionData_Type_TextByDefault()
+        {
+            XElement courseDataXml = XElement.Parse(XmlString);
+            var fields = CourseDataXmlParser.ParseMetaAvailableQuestionData(courseDataXml);
+
+            Assert.IsTrue(fields.SingleOrDefault(x => x.Name == "coreconcept").Type == MetadataFieldType.Text);
+        }
+
+        [TestMethod]
+        public void ParseQuestionBankRepositoryCourse_Parsed()
+        {
+            XElement courseDataXml = XElement.Parse(XmlString);
+            var questionBankRepositoryCourse = CourseDataXmlParser.ParseQuestionBankRepositoryCourse(courseDataXml);
+
+            Assert.AreEqual("22250", questionBankRepositoryCourse);
         }
     }
 }
