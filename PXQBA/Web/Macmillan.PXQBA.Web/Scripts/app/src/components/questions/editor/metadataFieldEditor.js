@@ -58,8 +58,16 @@ var MetadataFieldEditor = React.createClass({
             items.push(<option value=''></option>);
         }
 
-        for(var i=0; i<availableChoices.length; i++) {
-           items.push(this.renderMenuItem(availableChoices[i].text, availableChoices[i].value));
+        var filteredAvailibleChoices = availableChoices;
+
+        if(this.props.excludeValue !== undefined){
+           var self = this;
+           filteredAvailibleChoices = $.grep(filteredAvailibleChoices, function(e){ return e.text != self.props.excludeValue});
+        }
+
+        for(var i=0; i<filteredAvailibleChoices.length; i++) {
+
+           items.push(this.renderMenuItem(filteredAvailibleChoices[i].text, filteredAvailibleChoices[i].value));
         }
 
         return items;
@@ -227,6 +235,11 @@ var MetadataFieldEditor = React.createClass({
       var metadataField = this.state.metadataField;
       var question = this.props.question;
       var availableChoices = metadataField.editorDescriptor.availableChoice;
+
+        if(this.props.excludeValue !== undefined){
+           var self = this;
+           availableChoices = $.grep(availableChoices, function(e){ return e.text != self.props.excludeValue});
+        }
      
       question[this.props.field] = availableChoices[0].value;
       

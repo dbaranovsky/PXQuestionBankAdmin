@@ -77,7 +77,7 @@ var QuestionShareDialog = React.createClass({displayName: 'QuestionShareDialog',
 
             return (React.DOM.div(null, 
 
-                        ShareQuestionBox( {metadata:self.state.metadata, shareHandler:self.shareQuestion, closeDialogHandler:self.closeHandler})
+                        ShareQuestionBox( {metadata:self.state.metadata, shareHandler:self.shareQuestion, closeDialogHandler:self.closeHandler, currentTitle:self.props.currentTitle})
                     )
             );
         };
@@ -182,7 +182,7 @@ var ShareQuestionBox = React.createClass({displayName: 'ShareQuestionBox',
     render: function() {
             return (React.DOM.div(null, 
                            
-                           MetadataFieldEditor( {question:this.state.shareViewModel, metadata:this.state.metadata, setDefault:this.state.setDefaults, editHandler:this.productTitleEditHandler, field:window.consts.questionCourseName, title:"Target title"}),
+                           MetadataFieldEditor( {question:this.state.shareViewModel, metadata:this.state.metadata, setDefault:this.state.setDefaults, editHandler:this.productTitleEditHandler, field:window.consts.questionCourseName, title:"Target title", excludeValue:this.props.currentTitle}),
                            this.renderWaiter(),
                            MetadataFieldEditor( {question:this.state.shareViewModel, metadata:this.state.metadata, setDefault:true, defaultType:window.enums.editorType.singleSelect, isDisabled:this.state.loading, reload:true, editHandler:this.editHandler, field:window.consts.questionChapterName, title:"Target chapter"}),
                            MetadataFieldEditor( {question:this.state.shareViewModel, metadata:this.state.metadata, setDefault:true, defaultType:window.enums.editorType.singleSelect, isDisabled:this.state.loading,  reload:true, editHandler:this.editHandler, field:window.consts.questionBankName, title:"Target bank"}),

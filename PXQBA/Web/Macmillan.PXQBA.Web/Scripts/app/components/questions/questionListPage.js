@@ -161,7 +161,7 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
 
     renderShareDialog: function() {
       if(this.state.showShareDialog) {
-        return (QuestionShareDialog( {showOnCreate:true, closeDialogHandler:this.closeShareDialogHandler, questionIds:this.state.questionIds}));
+        return (QuestionShareDialog( {showOnCreate:true, closeDialogHandler:this.closeShareDialogHandler, questionIds:this.state.questionIds, currentTitle:this.props.response.productTitle}));
       }
       return null;
     },
