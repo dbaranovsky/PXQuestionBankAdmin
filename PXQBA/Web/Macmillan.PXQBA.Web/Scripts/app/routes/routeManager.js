@@ -53,12 +53,24 @@
     };
 
     self.addFiltration = function (field, valuesArray) {
+        var isFiltrationChenged = filterHashParameterHelper.isFiltrationChenged(field, valuesArray, self.query.getValue(), false);
         self.query.setValue(filterHashParameterHelper.addFiltration(field, valuesArray, self.query.getValue()));
+        
+        if (isFiltrationChenged) {
+            self.page.setValue(1);
+        }
+
         hasher.setHash(self.buildHash());
     };
 
     self.deleteFiltration = function (field) {
+        var isFiltrationChenged = filterHashParameterHelper.isFiltrationChenged(field, null, self.query.getValue(), false);
         self.query.setValue(filterHashParameterHelper.deleteFiltration(field, self.query.getValue()));
+        
+        if (isFiltrationChenged) {
+            self.page.setValue(1);
+        }
+
         hasher.setHash(self.buildHash());
     };
 

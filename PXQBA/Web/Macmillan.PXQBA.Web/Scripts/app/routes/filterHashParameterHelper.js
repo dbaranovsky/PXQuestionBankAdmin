@@ -26,15 +26,57 @@
         return stringItems.join(fieldsSeparator);
     };
 
-    self.addFiltrationToArray = function (filterItem, filtrationArray) {
-        for (var i = 0; i < filtrationArray.length; i++) {
-            if (filtrationArray[i].field == filterItem.field) {
-                filtrationArray[i] = filterItem;
-                return;
-            }
+
+    self.isFiltrationChenged = function(field, valuesArray, filtrationUrlParameters, isDelete) {
+        var filterItems = self.parse(filtrationUrlParameters);
+        if (filterItems == null) {
+            filterItems = [];
+        }
+        var filterItem = new FilterItem(field + fieldValueSeparator, valuesSeparator, fieldValueSeparator);
+        filterItem.values = self.removeDangerousCharacters(valuesArray);
+        
+        var currentFilterItem = self.getFiltration(filterItem.field, filterItems);
+        var currentValues = [];
+        if (currentFilterItem != null) {
+            currentValues = currentFilterItem.values;
         }
         
-        filtrationArray.push(filterItem);
+        if (currentValues.length==0) {
+            if (isDelete) {
+                return false;
+            }
+            
+            if (filterItem.values == null) {
+                return false;
+            }
+            
+            if (filterItem.values.length==0) {
+                return false;
+            }
+        }
+
+        return true;
+    };
+    
+
+    self.getFiltration = function(fieldName, filtrationArray) {
+        for (var i = 0; i < filtrationArray.length; i++) {
+            if (filtrationArray[i].field == fieldName) {
+                return filtrationArray[i];
+            }
+        }
+
+        return null;
+    };
+
+    self.addFiltrationToArray = function (filterItem, filtrationArray) {
+        var currentFiltration = self.getFiltration(filterItem.field, filtrationArray);
+        if (currentFiltration != null) {
+            currentFiltration.values = filterItem.values;
+        } else {
+            filtrationArray.push(filterItem);
+        }
+        
     };
 
     self.deleteFiltrationFromArray = function (field, filtrationArray) {
