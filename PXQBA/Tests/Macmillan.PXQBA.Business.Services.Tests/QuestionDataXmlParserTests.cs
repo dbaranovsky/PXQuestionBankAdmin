@@ -169,18 +169,16 @@ namespace Macmillan.PXQBA.Business.Services.Tests
                         </arr>
                      </doc>";
 
+
         [TestMethod]
-        public void ParseQuestionData()
+        public void ToQuestionEntity_Parsed()
         {
             XElement questionXmlData = XElement.Parse(XmlString);
             var question = QuestionDataXmlParser.ToQuestionEntity(questionXmlData);
 
             Assert.IsNotNull(question);
             Assert.Equals(question.Id, "B8B35A1E8D1A4A70A2E622727A135D4A");
-            //Assert.IsTrue(fields.SingleOrDefault(x => x.Friendlyname == "Difficulty").CourseMetadataFieldValues.Count() == 3);
-            //Assert.IsTrue(fields.SingleOrDefault(x => x.Name == "guidance").Filterable == false);
-
-            //Assert.IsFalse(fields.SingleOrDefault(x => x.Friendlyname == "Core Concept").CourseMetadataFieldValues.Any());
         }
-    }
+
+ }
 }
