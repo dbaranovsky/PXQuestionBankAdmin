@@ -131,10 +131,18 @@ namespace Macmillan.PXQBA.Business.Services
             var questions = questionCommands.GetQuestions(currentCourse.QuestionRepositoryCourseId, questionsId);
             foreach (var question in questions)
             {
-                var newProductCourseValues = question.DefaultValues;
+                var newProductCourseValues = new Dictionary<string, List<string>>();
                 newProductCourseValues[MetadataFieldNames.Chapter] = new List<string> { chapter };
                 newProductCourseValues[MetadataFieldNames.Bank] = new List<string> { bank };
                 newProductCourseValues[MetadataFieldNames.ProductCourse] = new List<string>{courseIdToPublish.ToString()};
+
+                //ToDo change this when qba-217 is fixed
+                if (question.DefaultValues.ContainsKey(MetadataFieldNames.DlapTitle))
+                {
+                    newProductCourseValues[MetadataFieldNames.DlapTitle] =
+                        question.DefaultValues[MetadataFieldNames.DlapTitle];
+                }
+
                 var newProductCourseSection = question.ProductCourseSections.FirstOrDefault(s => s.ProductCourseId == courseIdToPublish.ToString());
                 if (newProductCourseSection == null)
                 {
