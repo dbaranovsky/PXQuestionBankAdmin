@@ -52,10 +52,17 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
             questionSearchResult.SortingField = string.Empty;
             var sortingElement = resultDoc.Elements()
                 .FirstOrDefault(
-                    elem => elem.Name.LocalName.Equals("arr") && elem.Attribute("name").Value == sortingField);
+                    elem => elem.Attribute("name").Value == sortingField);
             if (sortingElement != null)
             {
-                questionSearchResult.SortingField = string.Join(", ", sortingElement.Elements().Select(v => v.Value));
+                if (sortingElement.HasElements)
+                {
+                    questionSearchResult.SortingField = string.Join(", ", sortingElement.Elements().Select(v => v.Value));
+                }
+                else
+                {
+                    questionSearchResult.SortingField = string.Join(", ", sortingElement.Value);
+                }
             }
             return questionSearchResult;
         }

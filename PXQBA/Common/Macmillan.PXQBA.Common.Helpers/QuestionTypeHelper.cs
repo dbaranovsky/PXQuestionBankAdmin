@@ -14,11 +14,16 @@ namespace Macmillan.PXQBA.Common.Helpers
         public const string GraphType = "FMA_GRAPH";
 
 
-        public static string GetDisplayName(string key, string customUrl = null)
+        public static string GetDisplayName(string key, string customUrl = "")
         {
             if (key == "custom")
             {
-                return AvailableTypes.First(t => t.Key.ToUpper() == customUrl.ToUpper()).DisplayValue;
+                var questionType = AvailableTypes.FirstOrDefault(t => t.Key.ToUpper() == customUrl.ToUpper());
+                if (questionType != null)
+                {
+                    return questionType.DisplayValue;
+                }
+                return string.Empty;
             }
             return AvailableTypes.First(t => t.Key == key).DisplayValue;
         }

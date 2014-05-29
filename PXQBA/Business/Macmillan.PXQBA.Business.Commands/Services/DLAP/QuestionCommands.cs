@@ -96,8 +96,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                         if (decimal.TryParse(first.SortingField, out seq))
                         {
                             sequenceDisplayValue = first.Index;
-                            //(questionsSortedBySequence.ToList().FindIndex(q => q.QuestionId == question.Id) + 1)
-                            //    .ToString();
                         }
                     }
                     section.ProductCourseValues[MetadataFieldNames.Sequence] = new List<string>() {sequenceDisplayValue};
@@ -139,7 +137,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             IEnumerable<XElement> docElements = new List<XElement>();
             var i = 0;
             var query = BuildQueryString(filter);
-            var sortingField = sortCriterion.ColumnName == ElStrings.QuestionStatus
+            var sortingField = sortCriterion.ColumnName == ElStrings.QuestionStatus || sortCriterion.ColumnName == MetadataFieldNames.DlapType
                 ? sortCriterion.ColumnName
                 : string.Format("{0}{1}/{2}", ElStrings.ProductCourseSection, currentCourseId, sortCriterion.ColumnName);
             do
@@ -190,6 +188,12 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                     }
                     questionsWithNonDecimalSequence.AddRange(searchResults.Where(r => decimal.TryParse(r.SortingField, out seq)).OrderByDescending(r => decimal.Parse(r.SortingField)));
                     return questionsWithNonDecimalSequence;
+                }
+                if (sortCriterion.ColumnName == MetadataFieldNames.DlapType)
+                {
+                    return sortCriterion.IsAsc
+                        ? searchResults.OrderBy(r => QuestionTypeHelper.GetDisplayName(r.SortingField))
+                        : searchResults.OrderByDescending(r => QuestionTypeHelper.GetDisplayName(r.SortingField));
                 }
                 return sortCriterion.IsAsc
                     ? searchResults.OrderBy(r => r.SortingField)
@@ -448,11 +452,11 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                             var values = filterFieldDescriptor.Values;
                             var fieldFormat = "{0}/{1}:\"{2}\"";
                             if (filterFieldDescriptor.Field == ElStrings.QuestionStatus ||
-                                filterFieldDescriptor.Field == "dlap_q_" + ElStrings.type)
+                                filterFieldDescriptor.Field == MetadataFieldNames.DlapType)
                             {
                                 fieldFormat = "{1}:\"{2}\"";
                             }
-                            if (filterFieldDescriptor.Field == "dlap_q_" + ElStrings.type)
+                            if (filterFieldDescriptor.Field == MetadataFieldNames.DlapType)
                             {
                                 values = filterFieldDescriptor.Values.Select(v => v == QuestionTypeHelper.GraphType || v == QuestionTypeHelper.HTSType ? "custom": v);
                             }
