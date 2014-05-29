@@ -11,5 +11,7 @@ namespace Macmillan.PXQBA.Business.Commands.DataContracts
         public string QuestionId { get; set; }
 
         public string SortingField { get; set; }
+
+        public string Index { get; set; }
     }
 }
