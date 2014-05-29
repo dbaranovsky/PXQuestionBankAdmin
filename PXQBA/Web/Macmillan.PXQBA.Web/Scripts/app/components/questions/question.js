@@ -54,7 +54,7 @@ var Question = React.createClass({displayName: 'Question',
     selectQuestionHandler: function(event) {
         var quesionId = this.props.metadata.data.id;
         var isSelected = event.target.checked;
-        this.props.selectQuestionHandler(quesionId, isSelected);
+        this.props.selectQuestionHandler(quesionId, isSelected, this.props.metadata.data.sharedWith!=="");
     },
 
     renderCell: function(metadataName, editorDescriptor, allowedEdit) {

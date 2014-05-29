@@ -44,6 +44,22 @@ var QuestionList = React.createClass({
         return collection;
     },
 
+     changeSelectedCollection: function(itemId, collection, isInsert, isShared) {
+        var index = $.inArray(itemId, $.map(collection, function(e){ return e.id}));
+        if(isInsert) {
+          if (index == -1) {
+             var item = {id: itemId, isShared: isShared};
+              collection.push(item);
+          }
+        } 
+        else {
+           if (index != -1) {
+              collection.splice(index, 1);
+           }
+        }
+        return collection;
+    },
+
     isItemInCollection: function(item, collection) {
        var index = $.inArray(item, collection);
          if(index==-1) {
@@ -63,7 +79,8 @@ var QuestionList = React.createClass({
 
     selectAllQuestionHandelr: function(isSelected) {
         for(var i=0; i<this.props.data.length; i++) {
-          this.selectQuestionHandler(this.props.data[i].data.id, isSelected)
+          var question = this.props.data[i];
+          this.selectQuestionHandler(question.id, isSelected, question.sharedWith !== "")
         }
         this.setState({selectedAll: isSelected});
     },
@@ -75,11 +92,12 @@ var QuestionList = React.createClass({
                                   isExpanded)});
     },
 
-    selectQuestionHandler: function(questionId, isSelected) {
-        this.setState({selectedQuestions: this.changeCollection(
+    selectQuestionHandler: function(questionId, isSelected, isShared) {
+        this.setState({selectedQuestions: this.changeSelectedCollection(
                                   questionId,
                                   this.state.selectedQuestions, 
-                                  isSelected)});
+                                  isSelected, 
+                                  isShared)});
     },
 
     deselectsAllQuestionHandler: function() {
@@ -93,7 +111,11 @@ var QuestionList = React.createClass({
     },
 
     isQuestionSelected: function(questionId) {
-         return this.isItemInCollection(questionId, this.state.selectedQuestions);
+         var index = $.inArray(questionId, $.map(this.state.selectedQuestions, function(e){ return e.id;}));
+         if(index==-1) {
+            return false;
+         }
+         return true;
     },
 
     isShouldResetState: function(nextProps) {
@@ -180,12 +202,13 @@ var QuestionList = React.createClass({
 
     renderBulkOperationBar: function() {
       if(this.state.selectedQuestions.length>0) {
+        var isAllQuestionsShared = $.inArray(false, $.map(this.state.selectedQuestions, function(e){ return e.isShared;})) == -1;
         return (<QuestionBulkOperationBar colSpan={this.getAllColumnCount()} 
-                                          selectedQuestions={this.state.selectedQuestions}
+                                          selectedQuestions={ $.map(this.state.selectedQuestions,function(e){return e.id;}) }
                                           deselectsAllHandler={this.deselectsAllQuestionHandler}
                                           columns={this.props.columns}
                                           bulkShareHandler = {this.props.handlers.shareHandler}
-                                          />);
+                                          isShared = {isAllQuestionsShared} />);
       }
       return null;
     },
@@ -201,8 +224,7 @@ var QuestionList = React.createClass({
                                         selectAllQuestionHandelr={this.selectAllQuestionHandelr}
                                         selectedAll={this.state.selectedAll}
                                         expandAllQuestionHandler={this.expandAllQuestionHandler}
-                                        expandedAll={this.state.expandedAll}
-                                        />
+                                        expandedAll={this.state.expandedAll}  />
                   </thead>
                   <tbody> 
                     {this.renderBulkOperationBar()}

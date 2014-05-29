@@ -26,7 +26,8 @@ var QuestionBulkOperationBar = React.createClass({displayName: 'QuestionBulkOper
 
 
     bulkRemoveFromTitle: function(){
-       questionDataManager.bulk.removeTitle(this.props.selectedQuestions);
+      var self = this;
+       questionDataManager.bulk.removeTitle(this.props.selectedQuestions).done(function(){self.deselectsAllHandler();});
     },
 
     bulkShareToTitle: function(){
@@ -42,6 +43,16 @@ var QuestionBulkOperationBar = React.createClass({displayName: 'QuestionBulkOper
           return "Bulk action ( " + count + " questions selected ):";
         }
     },
+
+    renderRemoveButton: function(){
+
+      if (this.props.isShared){
+          return(React.DOM.button( {type:"button", className:"btn btn-default", onClick:this.bulkRemoveFromTitle}, "Remove from this title"));
+      }
+    
+      return null;
+    },
+
 
     render: function() {
         return ( 
@@ -62,7 +73,7 @@ var QuestionBulkOperationBar = React.createClass({displayName: 'QuestionBulkOper
                             ),
                             React.DOM.td( {className:"bulk-operation-sharing"}, 
                               React.DOM.button( {type:"button", className:"btn btn-default", onClick:this.bulkShareToTitle}, "Share with another title"),
-                              React.DOM.button( {type:"button", className:"btn btn-default", onClick:this.bulkRemoveFromTitle}, "Remove from this title")
+                              this.renderRemoveButton()
                             ),
                             React.DOM.td(null, 
                                React.DOM.div( {className:"deselect-button", onClick:this.deselectsAllHandler, 'data-toggle':"tooltip", title:"Deselect all"}, 
