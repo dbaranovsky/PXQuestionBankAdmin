@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Macmillan.PXQBA.Business.Models
 {
@@ -14,5 +15,9 @@ namespace Macmillan.PXQBA.Business.Models
 
         public IEnumerable<string> Values { get; set; }
 
+        public FilterFieldDescriptor Clone()
+        {
+            return new FilterFieldDescriptor {Field = Field, Values = new List<string>(Values.Select(item => item))};
+        }
     }
 }

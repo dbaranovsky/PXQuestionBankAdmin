@@ -34,8 +34,9 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         /// <returns>questions</returns>
         public PagedCollection<Question> GetQuestionList(string questionRepositoryCourseId, string currentCourseId, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
         {
-            var questionsSortedBySequence = GetSolrResultsSortedBySequence(questionRepositoryCourseId, currentCourseId);
-            var searchResults = GetSortedAndFilteredSolrResults(questionRepositoryCourseId, currentCourseId, filter, sortCriterion);
+            var filterCopy = MakeFilterCopy(filter);
+            var questionsSortedBySequence = GetSortedAndFilteredBySequenceSolrResults(questionRepositoryCourseId, currentCourseId, filterCopy);//GetSolrResultsSortedBySequence(questionRepositoryCourseId, currentCourseId);
+            var searchResults = GetSortedAndFilteredSolrResults(questionRepositoryCourseId, currentCourseId, filterCopy, sortCriterion);
             
             var agilixQuestions = GetAgilixQuestions(questionRepositoryCourseId, searchResults.Skip(startingRecordNumber).Take(recordCount).Select(r => r.QuestionId));
             var questions = Mapper.Map<IEnumerable<Question>>(agilixQuestions);
@@ -46,6 +47,38 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 CollectionPage = questions
             };
             return result;
+        }
+
+        private IEnumerable<FilterFieldDescriptor> MakeFilterCopy(IEnumerable<FilterFieldDescriptor> filter)
+        {
+            var seqFilter = filter.FirstOrDefault(item => item.Field == MetadataFieldNames.Sequence);
+            if (seqFilter != null && seqFilter.Values.Any())
+            {
+                var filterCopy = filter.Select(filterFieldDescriptor => filterFieldDescriptor.Clone()).ToList();
+                return filterCopy;
+            }
+            return filter;
+        }
+
+        private IEnumerable<QuestionSearchResult> GetSortedAndFilteredBySequenceSolrResults(string questionRepositoryCourseId, string currentCourseId, IEnumerable<FilterFieldDescriptor> filter)
+        {
+            var sorted = GetSolrResultsSortedBySequence(questionRepositoryCourseId, currentCourseId).ToList();
+            SetIndexToSearchResults(sorted);
+            var seqFilter = filter.FirstOrDefault(item => item.Field == MetadataFieldNames.Sequence);
+            if (seqFilter != null && seqFilter.Values.Any())
+            {
+                sorted.RemoveAll(s => !seqFilter.Values.Contains(s.Index));
+                seqFilter.Values = sorted.Select(s => s.SortingField);
+            }
+            return sorted;
+        }
+
+        private void SetIndexToSearchResults(IList<QuestionSearchResult> sorted)
+        {
+            for (int i = 0; i < sorted.Count(); i ++)
+            {
+                sorted[i].Index = (i + 1).ToString();
+            }
         }
 
         private void SetCorrectSequenceDisplayValue(string productCourseId, IEnumerable<Question> questions, IEnumerable<QuestionSearchResult> questionsSortedBySequence)
@@ -62,9 +95,9 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                         decimal seq;
                         if (decimal.TryParse(first.SortingField, out seq))
                         {
-                            sequenceDisplayValue =
-                                (questionsSortedBySequence.ToList().FindIndex(q => q.QuestionId == question.Id) + 1)
-                                    .ToString();
+                            sequenceDisplayValue = first.Index;
+                            //(questionsSortedBySequence.ToList().FindIndex(q => q.QuestionId == question.Id) + 1)
+                            //    .ToString();
                         }
                     }
                     section.ProductCourseValues[MetadataFieldNames.Sequence] = new List<string>() {sequenceDisplayValue};
