@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Web.ViewModels.Versions;
 
 namespace Macmillan.PXQBA.Web.ViewModels
 {
@@ -90,5 +90,7 @@ namespace Macmillan.PXQBA.Web.ViewModels
                 return localValues[MetadataFieldNames.ProductCourse].First();
             }
         }
+        public bool IsDraft { get; set; }        public IEnumerable<QuestionVersionViewModel> Versions { get; set; } 
+
     }
 }

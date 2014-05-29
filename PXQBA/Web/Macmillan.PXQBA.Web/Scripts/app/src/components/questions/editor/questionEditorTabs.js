@@ -253,7 +253,7 @@ var QuestionEditorTabs = React.createClass({
                     </div>
                      <div className="tab-pane" id="history">
                        <div className="tab-body">
-                       Lorem Ipsum
+                          <VersionHistory vesrions={this.props.question.versions}/>
                        </div>
                 </div>
                 </div>

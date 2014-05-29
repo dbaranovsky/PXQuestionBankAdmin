@@ -923,3 +923,9 @@ a.shared-question-link:hover {
     margin: 15px 20px 20px 5px;
     width: 300px;
 }
+
+/* Versions */
+
+.version-row {
+    width: 939px;
+}

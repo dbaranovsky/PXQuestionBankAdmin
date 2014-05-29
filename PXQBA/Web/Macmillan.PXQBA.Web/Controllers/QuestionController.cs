@@ -15,6 +15,7 @@ using Macmillan.PXQBA.Business.Services;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Web.Helpers;
 using Macmillan.PXQBA.Web.ViewModels;
+using Macmillan.PXQBA.Web.ViewModels.Versions;
 using Newtonsoft.Json;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -128,9 +129,51 @@ namespace Macmillan.PXQBA.Web.Controllers
             questionViewModel.GraphEditorHtml = CustomQuestionHelper.GetGraphEditor(question.InteractionData,
                                                                                     questionViewModel.Id,
                                                                                     question.CustomUrl);
+
+            questionViewModel.Versions = GetHardCodedVersions();
            
 
             return questionViewModel;
+        }
+
+        private IEnumerable<QuestionVersionViewModel> GetHardCodedVersions()
+        {
+           return new List<QuestionVersionViewModel>()
+                  {
+                      new QuestionVersionViewModel()
+                      {
+                          IsCurrent = true,
+                          IsInitial = false,
+                          ModifiedBy = "John Smith",
+                          ModifiedDate = DateTime.Now.ToShortDateString()
+                          
+                      },
+
+                      new QuestionVersionViewModel()
+                      {
+                          IsCurrent = false,
+                          IsInitial = false,
+                          ModifiedBy = "John Smith",
+                          ModifiedDate = DateTime.Now.AddDays(-1).ToShortDateString()
+                      },
+
+                        new QuestionVersionViewModel()
+                      {
+                          IsCurrent = false,
+                          IsInitial = false,
+                          ModifiedBy = "John Smith",
+                          ModifiedDate = DateTime.Now.AddDays(-2).ToShortDateString()
+                          
+                      },
+
+                      new QuestionVersionViewModel()
+                      {
+                          IsCurrent = false,
+                          IsInitial = true,
+                          ModifiedBy = "John Smith",
+                          ModifiedDate = DateTime.Now.AddDays(-3).ToShortDateString()
+                      }
+                  };
         }
 
         /// <summary>

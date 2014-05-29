@@ -74,6 +74,7 @@
     <Compile Include="TiteList\ChapterViewModel.cs" />
     <Compile Include="TiteList\TitleListDataResponse.cs" />
     <Compile Include="TiteList\TitleViewModel.cs" />
+    <Compile Include="Versions\QuestionVersion.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Models\Macmillan.PXQBA.Business.Models.csproj">
