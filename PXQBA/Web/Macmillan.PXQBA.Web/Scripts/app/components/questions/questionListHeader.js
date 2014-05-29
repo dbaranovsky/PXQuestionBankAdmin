@@ -46,6 +46,7 @@ var QuestionListHeader = React.createClass({displayName: 'QuestionListHeader',
     
     return ( 
         React.DOM.tr(null, 
+            React.DOM.th( {className:"grouped-header"},  " " ),
             React.DOM.th( {style: {width:'5%'}},  " ", React.DOM.input( {type:"checkbox", checked:this.props.selectedAll, onChange:this.selectAllQuestionHandler} )),
              renderedCell,
             React.DOM.th(null,  " ", QuestionListColumnAppender( {displayedFields:this.props.columns, 

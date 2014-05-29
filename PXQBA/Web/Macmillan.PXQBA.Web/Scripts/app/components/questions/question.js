@@ -64,15 +64,25 @@ var Question = React.createClass({displayName: 'Question',
                                editorDescriptor:editorDescriptor,
                                allowedEdit:  allowedEdit,
                                expanded:  this.props.expanded,
+                               draft:this.props.draft,
                                expandPreviewQuestionHandler:  this.props.expandPreviewQuestionHandler} ));
+    },
+      
+   renderGroupLine: function() {
+        if(this.props.grouped) {
+          return (React.DOM.td( {className:"grouped-cell"}));
+        }
+
+        return (React.DOM.td(null));
     },
 
     render: function() {
         var self = this;
         var componentClass = React.addons.classSet({
                 'question': true,
+                'question-draft': this.props.draft && !this.state.showMenu,
                 'hover': this.state.showMenu,
-                'question-selected': this.props.selected
+                'question-selected': this.props.selected,
             });
         
         var cells = this.props.columns.map(function(descriptor) {
@@ -83,6 +93,8 @@ var Question = React.createClass({displayName: 'Question',
             React.DOM.tr( {className:componentClass, 
                     onMouseOver:this.mouseOverHandler,
                     onMouseLeave:this.mouseLeaveHandler}, 
+
+                this.renderGroupLine(),
                 React.DOM.td(null,  
                     React.DOM.input( {type:"checkbox", checked:this.props.selected, onChange:this.selectQuestionHandler})
                 ),

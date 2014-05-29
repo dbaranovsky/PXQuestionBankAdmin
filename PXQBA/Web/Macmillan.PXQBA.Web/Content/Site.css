@@ -515,6 +515,20 @@ input.disabled, textarea.disabled {
 /* Bulk operations*/
 .question-selected {
     font-weight: bold;
+} 
+
+.question-draft {
+   background: lightcyan
+}
+
+.grouped-cell {
+    padding: 2px;
+    background: grey;
+}
+
+.grouped-header {
+    padding: 2px !important;
+    width: 3px;
 }
 
 .deselect-button {
@@ -878,4 +892,8 @@ a.shared-question-link:hover {
 
 .notifications-displair {
     z-index: 9999;
+}
+
+.cell-value-table td {
+    vertical-align: top;
 }

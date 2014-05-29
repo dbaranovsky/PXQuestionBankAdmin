@@ -4,7 +4,7 @@
 
 var QuestionList = React.createClass({
 
-    specialColumnsCount : 2,
+    specialColumnsCount : 3,
 
     /* Lifecycle Methods */
 
@@ -175,13 +175,23 @@ var QuestionList = React.createClass({
 
             var isQuestionExpanded = self.isQuestionExpanded(question.data.id);
 
+            var flag = question.data[window.consts.questionDraftFlagName];
+
+            var isDraft = false;
+            if(flag!="") {
+              isDraft = true;
+            }
+             
             var questionHtml = (<Question metadata={question}
                        columns={self.props.columns} 
                        menuHandlers={self.props.handlers}
                        selectQuestionHandler={self.selectQuestionHandler}
                        selected={self.isQuestionSelected(question.data.id)}
                        expandPreviewQuestionHandler = {self.expandPreviewQuestionHandler}
-                       expanded={isQuestionExpanded} />);
+                       expanded={isQuestionExpanded}
+                       grouped={isDraft}
+                       draft={isDraft}
+                        />);
 
             var preview = null;
             if(isQuestionExpanded) {

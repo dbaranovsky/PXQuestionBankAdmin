@@ -64,15 +64,25 @@ var Question = React.createClass({
                                editorDescriptor={editorDescriptor}
                                allowedEdit = {allowedEdit}
                                expanded = {this.props.expanded}
+                               draft={this.props.draft}
                                expandPreviewQuestionHandler = {this.props.expandPreviewQuestionHandler} />);
+    },
+      
+   renderGroupLine: function() {
+        if(this.props.grouped) {
+          return (<td className="grouped-cell"></td>);
+        }
+
+        return (<td></td>);
     },
 
     render: function() {
         var self = this;
         var componentClass = React.addons.classSet({
                 'question': true,
+                'question-draft': this.props.draft && !this.state.showMenu,
                 'hover': this.state.showMenu,
-                'question-selected': this.props.selected
+                'question-selected': this.props.selected,
             });
         
         var cells = this.props.columns.map(function(descriptor) {
@@ -83,6 +93,8 @@ var Question = React.createClass({
             <tr className={componentClass} 
                     onMouseOver={this.mouseOverHandler}
                     onMouseLeave={this.mouseLeaveHandler}>
+
+                {this.renderGroupLine()}
                 <td> 
                     <input type="checkbox" checked={this.props.selected} onChange={this.selectQuestionHandler}/>
                 </td>
