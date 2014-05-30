@@ -126,7 +126,7 @@
       <Name>Macmillan.PXQBA.Business</Name>
     </ProjectReference>
     <ProjectReference Include="..\Macmillan.PXQBA.Business.Contracts\Macmillan.PXQBA.Business.Contracts.csproj">
-      <Project>{C7070F01-3D37-425D-ABD5-E02D7CFAEA43}</Project>
+      <Project>{c7070f01-3d37-425d-abd5-e02d7cfaea43}</Project>
       <Name>Macmillan.PXQBA.Business.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\Macmillan.PXQBA.Business.Models\Macmillan.PXQBA.Business.Models.csproj">

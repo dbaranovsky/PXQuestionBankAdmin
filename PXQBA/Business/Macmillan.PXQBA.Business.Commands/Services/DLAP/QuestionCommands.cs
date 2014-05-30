@@ -21,9 +21,12 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
     {
         private readonly IContext businessContext;
 
-        public QuestionCommands(IContext businessContext)
+        private readonly IProductCourseOperation productCourseOperation;
+
+        public QuestionCommands(IContext businessContext, IProductCourseOperation productCourseOperation)
         {
             this.businessContext = businessContext;
+            this.productCourseOperation = productCourseOperation;
         }
 
         private const int SearchCommandMaxRows = 25;
@@ -401,7 +404,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return true;
         }
        
-        public bool UpdateSharedQuestionField(string repositoryCourseId, string questionId, string fieldName, string fieldValue)
+        public bool UpdateSharedQuestionField(string repositoryCourseId, string questionId, string fieldName, IEnumerable<string> fieldValues)
         {
             var temporaryRepositoryCourseId = ConfigurationHelper.GetTemporaryCourseId();
             var question = GetQuestion(temporaryRepositoryCourseId, questionId);
@@ -409,23 +412,26 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             {
                 if (question.DefaultValues != null && question.DefaultValues.ContainsKey(fieldName))
                 {
-                    var sharedCourses = question.ProductCourseSections.Where(
-                        c => c.ProductCourseValues.ContainsKey(fieldName))
-                        .Where(c => IsValuesTheSame(c.ProductCourseValues[fieldName], question.DefaultValues[fieldName])).ToList();
-
-                    question.DefaultValues[fieldName] = new List<string>(){fieldValue};
-
-                    foreach (var sharedCourse in sharedCourses)
+                    var initialDefaultValues = question.DefaultValues[fieldName];
+                    foreach (var section in question.ProductCourseSections.Where(s => !s.ProductCourseValues.ContainsKey(fieldName) || AreEqualValues(s.ProductCourseValues[fieldName].ToList(), initialDefaultValues)))
                     {
-                        sharedCourse.ProductCourseValues[fieldName] = question.DefaultValues[fieldName];
+                        var course = productCourseOperation.GetProductCourse(section.ProductCourseId);
+                        var fieldDescriptor = course.FieldDescriptors.FirstOrDefault(f => f.Name == fieldName);
+                        if (fieldDescriptor != null)
+                        {
+                            var intersectionValues = fieldValues.Intersect(fieldDescriptor.CourseMetadataFieldValues.Select(v => v.Text));
+                            section.ProductCourseValues[fieldName] = intersectionValues.ToList();
+                        }
                     }
+
+                    initialDefaultValues = fieldValues.ToList();
                 }
                 UpdateQuestion(question);
             }
             return true;
         }
 
-        private bool IsValuesTheSame(IList<string> values, IList<string> comparedValues)
+        private bool AreEqualValues(IList<string> values, IList<string> comparedValues)
         {
             if (values.Count != comparedValues.Count)
             {

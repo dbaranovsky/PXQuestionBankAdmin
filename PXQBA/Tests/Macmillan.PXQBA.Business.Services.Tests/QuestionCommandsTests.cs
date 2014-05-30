@@ -49,11 +49,12 @@ namespace Macmillan.PXQBA.Business.Services.Tests
         {
             context = Substitute.For<IContext>();
             modelProfileService = Substitute.For<IModelProfileService>();
+            productCourseOperation = Substitute.For<IProductCourseOperation>();
 
             automapperConfigurator = new AutomapperConfigurator(new ModelProfile(modelProfileService));
             automapperConfigurator.Configure();
 
-            questionCommands = new QuestionCommands(context);
+            questionCommands = new QuestionCommands(context, productCourseOperation);
         }
 
 

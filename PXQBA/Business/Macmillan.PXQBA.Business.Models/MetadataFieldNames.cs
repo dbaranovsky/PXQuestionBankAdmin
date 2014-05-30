@@ -21,5 +21,6 @@
         public const string ProductCourse = "productcourseid";
         public const string Flag = "flag";
         public const string Draft = "isDraft";
+        public const string ParentProductCourseId = "parentProductCourseId";
     }
 }

@@ -82,6 +82,5 @@ namespace Macmillan.PXQBA.Business.Models
         /// Answer List
         /// </summary>
         public IList<string> AnswerList;
-
     }
 }

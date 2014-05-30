@@ -79,6 +79,16 @@ namespace Macmillan.PXQBA.Web.ViewModels
 
         public string InteractionData { get; set; }
 
-
+        public string ParentProductCourseId 
+        {
+            get
+            {
+                if (LocalValues.ContainsKey(MetadataFieldNames.ParentProductCourseId))
+                {
+                    return LocalValues[MetadataFieldNames.ParentProductCourseId].First();
+                }
+                return localValues[MetadataFieldNames.ProductCourse].First();
+            }
+        }
     }
 }
