@@ -314,7 +314,25 @@
        
     };
 
+    self.getQuestionVersions = function(questionId){
+          var request = {
+            questionId: questionId
+        };
+        return $.ajax({
+            url: window.actions.questionList.getQuestionVersionsUrl,
+            traditional: true,
+            data: request,
+            contentType: 'application/json',
+            dataType: 'json',
+            type: 'GET'
+        }).error(function(e){
+             self.showErrorPopup();
+        });
+    };
+
     
+
+    /* Bulk operations */
     self.bulk = {};
 
     self.bulk.updateMetadataField = function (questionIds, fieldName, fieldValue, isSharedField) {
@@ -394,6 +412,7 @@
         });
     };
 
+    /*  Common operations  */
     self.resetState = function(){
          crossroads.resetState();
          crossroads.parse(window.routsManager.buildHash());

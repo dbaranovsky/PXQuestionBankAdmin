@@ -7,11 +7,17 @@ var QuestionEditorTabs = React.createClass({
     getInitialState: function(){
       return {isHTS: this.props.question.questionType!= null && this.props.question.questionType.toLowerCase()=="hts"? true: false,
               isCustom: this.props.question.questionType!= null,
-              isGraph: this.props.question.graphEditorHtml != null }
+              isGraph: this.props.question.graphEditorHtml != null,
+              viewHistoryMode: this.props.viewingHistory != undefined ? this.props.viewingHistory : false}
     },
 
     tabsInitializer: function (container) {
-       //  container.find('a:first').tab('show')
+      if(this.props.viewHistoryMode){
+        container.find('#history-tab').tab('show');
+      } else{
+        container.find('#body-tab').tab('show');
+      }
+         
     },
 
     componentDidMount: function() {
@@ -34,7 +40,7 @@ var QuestionEditorTabs = React.createClass({
     },
 
     componentDidUpdate: function () {
-        this.tabsInitializer($(this.getDOMNode()));
+      //  this.tabsInitializer($(this.getDOMNode()));
     },
 
      loadSourceQuestion: function(event){
@@ -45,7 +51,7 @@ var QuestionEditorTabs = React.createClass({
 
     renderSharingNotification: function(){
 
-     if(this.props.question.sharedQuestionDuplicateFrom!=null){
+     if(this.props.question.sharedQuestionDuplicateFrom!=null && this.props.isDuplicate){
             return (<div className="shared-note">This question is a duplicate of a&nbsp;
                     <a className="shared-question-link" href="" onClick={this.loadSourceQuestion}>shared question</a>
                     from <b>{this.props.question.sharedQuestionDuplicateFrom.sharedWith}</b> 
@@ -61,7 +67,7 @@ var QuestionEditorTabs = React.createClass({
     },
 
      iframeLoaded: function(){
-        $(this.getDOMNode()).find('.waiting').hide();
+        $(this.getDOMNode()).find('#body').find('.waiting').hide();
     },
      loadQuestionEditor: function(url) {
 
@@ -221,13 +227,13 @@ var QuestionEditorTabs = React.createClass({
                  
                         <ul className="nav nav-tabs">
                              <li className="active"> 
-                                 <a href="#body" data-toggle="tab">Body</a>
+                                 <a href="#body" id="body-tab"data-toggle="tab">Body</a>
                              </li>
                              <li>
                                  <a href="#metadata" data-toggle="tab">Metadata</a>
                              </li>
                               <li>
-                                 <a href="#history" data-toggle="tab">History</a>
+                                 <a href="#history" id="history-tab" data-toggle="tab">History</a>
                              </li>
                         </ul>
                
@@ -252,8 +258,9 @@ var QuestionEditorTabs = React.createClass({
                        </div>
                     </div>
                      <div className="tab-pane" id="history">
+
                        <div className="tab-body">
-                          <VersionHistory vesrions={this.props.question.versions}/>
+                          <VersionHistory question={this.props.question}/>
                        </div>
                 </div>
                 </div>

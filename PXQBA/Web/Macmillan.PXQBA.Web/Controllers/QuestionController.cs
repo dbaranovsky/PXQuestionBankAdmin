@@ -129,51 +129,53 @@ namespace Macmillan.PXQBA.Web.Controllers
             questionViewModel.GraphEditorHtml = CustomQuestionHelper.GetGraphEditor(question.InteractionData,
                                                                                     questionViewModel.Id,
                                                                                     question.CustomUrl);
-
-            questionViewModel.Versions = GetHardCodedVersions();
            
 
             return questionViewModel;
         }
 
-        private IEnumerable<QuestionVersionViewModel> GetHardCodedVersions()
+        private QuestionHistoryViewModel GetHardCodedVersions()
         {
-           return new List<QuestionVersionViewModel>()
-                  {
-                      new QuestionVersionViewModel()
-                      {
-                          IsCurrent = true,
-                          IsInitial = false,
-                          ModifiedBy = "John Smith",
-                          ModifiedDate = DateTime.Now.ToShortDateString()
-                          
-                      },
+            return new QuestionHistoryViewModel
+                   {
 
-                      new QuestionVersionViewModel()
-                      {
-                          IsCurrent = false,
-                          IsInitial = false,
-                          ModifiedBy = "John Smith",
-                          ModifiedDate = DateTime.Now.AddDays(-1).ToShortDateString()
-                      },
+                       Versions = new List<QuestionVersionViewModel>()
+                                  {
+                                      new QuestionVersionViewModel()
+                                      {
+                                          IsCurrent = true,
+                                          IsInitial = false,
+                                          ModifiedBy = "John Smith",
+                                          ModifiedDate = DateTime.Now.ToShortDateString()
 
-                        new QuestionVersionViewModel()
-                      {
-                          IsCurrent = false,
-                          IsInitial = false,
-                          ModifiedBy = "John Smith",
-                          ModifiedDate = DateTime.Now.AddDays(-2).ToShortDateString()
-                          
-                      },
+                                      },
 
-                      new QuestionVersionViewModel()
-                      {
-                          IsCurrent = false,
-                          IsInitial = true,
-                          ModifiedBy = "John Smith",
-                          ModifiedDate = DateTime.Now.AddDays(-3).ToShortDateString()
-                      }
-                  };
+                                      new QuestionVersionViewModel()
+                                      {
+                                          IsCurrent = false,
+                                          IsInitial = false,
+                                          ModifiedBy = "John Smith",
+                                          ModifiedDate = DateTime.Now.AddDays(-1).ToShortDateString()
+                                      },
+
+                                      new QuestionVersionViewModel()
+                                      {
+                                          IsCurrent = false,
+                                          IsInitial = false,
+                                          ModifiedBy = "John Smith",
+                                          ModifiedDate = DateTime.Now.AddDays(-2).ToShortDateString()
+
+                                      },
+
+                                      new QuestionVersionViewModel()
+                                      {
+                                          IsCurrent = false,
+                                          IsInitial = true,
+                                          ModifiedBy = "John Smith",
+                                          ModifiedDate = DateTime.Now.AddDays(-3).ToShortDateString()
+                                      }
+                                  }
+                   };
         }
 
         /// <summary>
@@ -202,6 +204,16 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(new { isError = !isSuccess });
         }
 
+
+        /// <summary>
+        /// Returns question's vesrion history by question id
+        /// </summary>
+        /// <param name="questionId"></param>
+        /// <returns></returns>
+        public ActionResult GetQuestionVersions(string questionId)
+        {
+            return JsonCamel(GetHardCodedVersions());
+        }
 
       
 	}

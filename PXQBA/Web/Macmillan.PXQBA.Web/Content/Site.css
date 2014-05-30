@@ -755,6 +755,16 @@ input.disabled, textarea.disabled {
     margin-left: 1px;
 }
 
+
+.icon-version-history{
+    background-image: url("../Content/img/versionHistory.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 29px;
+    height: 21px;
+    margin-left: 1px;
+}
+
 .counter {
 }
 .icon-shared-from {
@@ -852,10 +862,17 @@ a.shared-question-link:hover {
 }
 
 .menu-container-main {
-   width: 110px;
+   width: 140px;
    margin-bottom: 1px;
    display: inline-block;
 }
+
+.menu-container-main.version-history {
+     width: 170px !important;
+    float: right;
+    margin-bottom: -6px;
+}
+
 
 .menu-container-main .dropdown {
     float: left;
@@ -876,6 +893,7 @@ a.shared-question-link:hover {
 .menu-container-flag button{
     padding: 2px 5px;
 }
+
 
 .notification-icons-container span {
     padding-top: 3px;
@@ -927,5 +945,45 @@ a.shared-question-link:hover {
 /* Versions */
 
 .version-row {
+    
+    display: table-row;
+  
+}
+
+.version-cell{
+    
+    display: table-cell;
+    height: 50px;
+    border-bottom: 1px solid #000000;
+    width: 100%;
+  
+}
+
+.version-row:last-child .version-cell{
+    
+    border-bottom: none;
+
+  
+}
+
+.version-text.current {
+    font-weight: bold;
+}
+
+.versions {
     width: 939px;
+    display: table;
+   border-spacing:0 13px;
+    
+}
+
+.version-cell .version-text {
+    padding: 0;
+}
+
+#history.tab-pane {
+    height: 750px;
+    overflow-y: scroll;
+    border-bottom: 1px solid #c0c0c0;
+    
 }
