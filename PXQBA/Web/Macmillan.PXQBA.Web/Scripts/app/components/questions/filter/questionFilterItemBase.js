@@ -22,9 +22,11 @@ var QuestionFilterItemBase = React.createClass({displayName: 'QuestionFilterItem
     renderFilterBody: function() {
         switch(this.props.descriptor.filterType) {
             case window.enums.filterType.singleSelect:
-                return ( QuestionFilterSingleSelect( {allOptions:this.props.descriptor.allOptions,  
+                return ( SingleSelectSelector( {allOptions:this.props.descriptor.allOptions,  
                                                     currentValues:this.props.descriptor.currentValues, 
-                                                    onChangeHandler:this.filtrationChangeHandler}))
+                                                    onChangeHandler:this.filtrationChangeHandler,
+                                                    dataPlaceholder:"No Filtration"}
+                                                    ));
             case window.enums.filterType.multiSelectWithAddition:
                 return ( QuestionFilterMultiSelect( {allOptions:this.props.descriptor.allOptions,  
                                                     currentValues:this.props.descriptor.currentValues, 

@@ -213,6 +213,13 @@
     <Content Include="Scripts\app\components\common\loader.js" />
     <Content Include="Scripts\app\components\common\modalDialog.js" />
     <Content Include="Scripts\app\components\common\singleSelectButton.js" />
+    <Content Include="Scripts\app\components\common\singleSelectSelector.js" />
+    <Content Include="Scripts\app\components\metadata\metadataCfgRoot.js" />
+    <Content Include="Scripts\app\components\metadata\metadataChapterEditorTab.js" />
+    <Content Include="Scripts\app\components\metadata\metadataCourseSelector.js" />
+    <Content Include="Scripts\app\components\metadata\metadataMainButtonsContainer.js" />
+    <Content Include="Scripts\app\components\metadata\metadataMetaEditorTab.js" />
+    <Content Include="Scripts\app\components\metadata\metadataTabs.js" />
     <Content Include="Scripts\app\components\questions\editor\learningObjectEditor.js" />
     <Content Include="Scripts\app\components\questions\editor\metadataFieldEditor.js" />
     <Content Include="Scripts\app\components\questions\editor\multiSelectEditor.js" />
@@ -228,7 +235,6 @@
     <Content Include="Scripts\app\components\questions\filter\questionFilterItemMultiSelect.js" />
     <Content Include="Scripts\app\components\questions\filter\questionFilterItemsAppender.js" />
     <Content Include="Scripts\app\components\questions\filter\questionFilterItemsContainer.js" />
-    <Content Include="Scripts\app\components\questions\filter\questionFilterSingleSelect.js" />
     <Content Include="Scripts\app\components\questions\notes\editQuestionNotesDialog.js" />
     <Content Include="Scripts\app\components\questions\notes\flag.js" />
     <Content Include="Scripts\app\components\questions\notes\note.js" />
@@ -278,6 +284,13 @@
     <Content Include="Scripts\app\src\components\common\loader.js" />
     <Content Include="Scripts\app\src\components\common\modalDialog.js" />
     <Content Include="Scripts\app\src\components\common\singleSelectButton.js" />
+    <Content Include="Scripts\app\src\components\common\singleSelectSelector.js" />
+    <Content Include="Scripts\app\src\components\metadata\metadataCfgRoot.js" />
+    <Content Include="Scripts\app\src\components\metadata\metadataChapterEditorTab.js" />
+    <Content Include="Scripts\app\src\components\metadata\metadataCourseSelector.js" />
+    <Content Include="Scripts\app\src\components\metadata\metadataMainButtonsContainer.js" />
+    <Content Include="Scripts\app\src\components\metadata\metadataMetaEditorTab.js" />
+    <Content Include="Scripts\app\src\components\metadata\metadataTabs.js" />
     <Content Include="Scripts\app\src\components\questions\editor\learningObjectEditor.js" />
     <Content Include="Scripts\app\src\components\questions\editor\metadataFieldEditor.js" />
     <Content Include="Scripts\app\src\components\questions\editor\multiSelectEditor.js" />
@@ -288,7 +301,6 @@
     <Content Include="Scripts\app\src\components\questions\editor\questionMetadataEditor.js" />
     <Content Include="Scripts\app\src\components\questions\editor\shareMetadataEditorRow.js" />
     <Content Include="Scripts\app\src\components\questions\filter\questionFilterItemMultiSelect.js" />
-    <Content Include="Scripts\app\src\components\questions\filter\questionFilterSingleSelect.js" />
     <Content Include="Scripts\app\src\components\questions\notes\editQuestionNotesDialog.js" />
     <Content Include="Scripts\app\src\components\questions\notes\flag.js" />
     <Content Include="Scripts\app\src\components\questions\notes\note.js" />
