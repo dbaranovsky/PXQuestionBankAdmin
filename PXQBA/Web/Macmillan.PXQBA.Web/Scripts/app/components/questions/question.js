@@ -73,7 +73,7 @@ var Question = React.createClass({displayName: 'Question',
           return (React.DOM.td( {className:"grouped-cell"}));
         }
 
-        return (React.DOM.td(null));
+        return (React.DOM.td( {className:"grouped-cell-empty"}));
     },
 
     render: function() {

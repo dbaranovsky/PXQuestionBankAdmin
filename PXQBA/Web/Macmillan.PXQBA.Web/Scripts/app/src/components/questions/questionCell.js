@@ -57,7 +57,7 @@ var QuestionCell = React.createClass({
 
     renderDraftLabel: function() {
       if(this.props.draft) {
-        return (<span>(Draft) </span>)
+        return (<span className="label label-default draft-label">draft</span>)
       }
       return null;
     },

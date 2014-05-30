@@ -117,7 +117,7 @@ namespace Macmillan.PXQBA.Business.Services
 
             //ToDo: Remove after implement qba-202 backend
             Random rnd = new Random();
-            metadata.Data.Add(MetadataFieldNames.Draft, rnd.Next(0, 2) != 0 ? "draft" : "");
+            metadata.Data.Add(MetadataFieldNames.Draft, rnd.Next(0, 3) == 0 ? "draft" : "");
 
 
             string currentCourseId = String.Empty;

@@ -169,46 +169,88 @@ var QuestionList = React.createClass({
  
     /* Renders */
 
-    renderQuestion: function() {
+    renderQuestions: function() {
        var self = this;
-       var questions = this.props.data.map(function (question) {
 
-            var isQuestionExpanded = self.isQuestionExpanded(question.data.id);
+       var questionsForRender = [];
 
-            var flag = question.data[window.consts.questionDraftFlagName];
+       for(var i=0; i<this.props.data.length; i++) {
 
-            var isDraft = false;
-            if(flag!="") {
-              isDraft = true;
+          var currentQuestion = this.props.data[i];
+          var nextQuestion = this.props.data[i+1];
+          var isDraftCurrentQuestion = this.isDraftQuestion(currentQuestion)
+          
+          var isGrouped = isDraftCurrentQuestion;
+          var isSeparatorNeed = false;
+
+          if((nextQuestion!=null)) {
+            var isDraftNextQuestion = this.isDraftQuestion(nextQuestion);
+            if(isDraftCurrentQuestion) {
+              if(!isDraftNextQuestion) {
+                 isSeparatorNeed = true;
+              }
             }
-             
-            var questionHtml = (<Question metadata={question}
-                       columns={self.props.columns} 
-                       menuHandlers={self.props.handlers}
-                       selectQuestionHandler={self.selectQuestionHandler}
-                       selected={self.isQuestionSelected(question.data.id)}
-                       expandPreviewQuestionHandler = {self.expandPreviewQuestionHandler}
-                       expanded={isQuestionExpanded}
-                       grouped={isDraft}
-                       draft={isDraft}
-                        />);
-
-            var preview = null;
-            if(isQuestionExpanded) {
-              preview = (<QuestionPreview colSpan={self.getAllColumnCount()} metadata={question.data} preview={question.data.questionHtmlInlinePreview} questionCardTemplate={self.props.questionCardTemplate}/>);
+            else {
+              if(isDraftNextQuestion) {
+                isGrouped = true;
+              }
             }
- 
-            return [questionHtml, preview];
-          });
+         }
 
-       if(questions.length==0) {
-           questions.push(<QuestionNoDataStub colSpan={this.getAllColumnCount()} />);
+          questionsForRender.push(this.renderQuestion(currentQuestion, isDraftCurrentQuestion, isGrouped))
+          
+          if(isSeparatorNeed) {
+            questionsForRender.push(<QuestionListGroupSeparator colSpan={this.getAllColumnCount()} />);
+          }
+       }
+
+       
+       if(questionsForRender.length==0) {
+           questionsForRender.push(<QuestionNoDataStub colSpan={this.getAllColumnCount()} />);
         } 
 
-        return questions;
+        return questionsForRender;
+    },
+     
+    isDraftQuestion: function(question) {
+      var flag = question.data[window.consts.questionDraftFlagName];
+
+      if(flag!="") {
+          return true;
+      }
+
+      return false;
     },
 
-   
+    renderQuestion: function(question, isDraft, isGrouped) {
+       
+      var isQuestionExpanded = this.isQuestionExpanded(question.data.id);
+
+      var questionHtml = (<Question metadata={question}
+                       columns={this.props.columns} 
+                       menuHandlers={this.props.handlers}
+                       selectQuestionHandler={this.selectQuestionHandler}
+                       selected={this.isQuestionSelected(question.data.id)}
+                       expandPreviewQuestionHandler = {this.expandPreviewQuestionHandler}
+                       expanded={isQuestionExpanded}
+                       grouped={isGrouped}
+                       draft={isDraft}
+                      />);
+
+      var preview = null;
+      if(isQuestionExpanded) {
+          preview = (<QuestionPreview 
+                      colSpan={this.getAllColumnCount()-1} 
+                      metadata={question.data} 
+                      preview={question.data.questionHtmlInlinePreview} 
+                      questionCardTemplate={this.props.questionCardTemplate}
+                      grouped={isGrouped}
+                      />);
+      }
+ 
+      return [questionHtml, preview];
+   },
+
 
     renderBulkOperationBar: function() {
       if(this.state.selectedQuestions.length>0) {
@@ -238,7 +280,7 @@ var QuestionList = React.createClass({
                   </thead>
                   <tbody> 
                     {this.renderBulkOperationBar()}
-                    {this.renderQuestion()}
+                    {this.renderQuestions()}
                   </tbody> 
                 </table>
               <div className="dialogs-container">
