@@ -5,3 +5,27 @@
 
 <h2>Metadata config</h2>
 
+<div id="config-container"> </div>
+
+@section scripts
+{
+    <script src="../../Scripts/app/components/common/singleSelectSelector.js"></script>
+
+    <script src="../../Scripts/app/components/metadata/metadataMainButtonsContainer.js"></script>
+    <script src="../../Scripts/app/components/metadata/metadataCourseSelector.js"></script>
+    <script src="../../Scripts/app/components/metadata/metadataChapterEditorTab.js"></script>
+    <script src="../../Scripts/app/components/metadata/metadataMetaEditorTab.js"></script>
+    <script src="../../Scripts/app/components/metadata/metadataTabs.js"></script>
+    <script src="../../Scripts/app/components/metadata/metadataCfgRoot.js"></script>
+
+    <script>
+        var configContainer = $('#config-container')[0];
+
+        var options = {};
+    
+        React.renderComponent(MetadataCfgRoot({
+                               options: options
+                               }, " "),
+                               configContainer);
+    </script>
+}
