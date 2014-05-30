@@ -90,7 +90,6 @@
       <Link>Properties\ProductInfo.cs</Link>
     </Compile>
     <Compile Include="ProductCourseOperationTests.cs" />
-    <Compile Include="QbaAPiTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CourseDataXmlParserTests.cs" />
     <Compile Include="QuestionDataXmlParserTests.cs" />

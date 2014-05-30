@@ -16,13 +16,13 @@ namespace Macmillan.PXQBA.Business.Services
     {
         private readonly IQuestionCommands questionCommands;
         private readonly ITemporaryQuestionOperation temporaryQuestionOperation;
-        private readonly IProductCourseOperation productCourseOperation;
+        private readonly IProductCourseManagementService productCourseManagementService;
 
-        public QuestionManagementService(IQuestionCommands questionCommands, ITemporaryQuestionOperation temporaryQuestionOperation,  IProductCourseOperation productCourseOperation)
+        public QuestionManagementService(IQuestionCommands questionCommands, ITemporaryQuestionOperation temporaryQuestionOperation, IProductCourseManagementService productCourseManagementService)
         {
             this.questionCommands = questionCommands;
             this.temporaryQuestionOperation = temporaryQuestionOperation;
-            this.productCourseOperation = productCourseOperation;
+            this.productCourseManagementService = productCourseManagementService;
         }
 
         public PagedCollection<Question> GetQuestionList(Course course, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
@@ -77,7 +77,6 @@ namespace Macmillan.PXQBA.Business.Services
             {
                 values.Add(field.Name, new List<string>());
             }
-            question.DefaultValues = values.Skip(1).ToDictionary(item => item.Key, item => item.Value);
             question.ProductCourseSections.Add(new ProductCourseSection
                                                {
                                                    ProductCourseId = course.ProductCourseId,
@@ -100,13 +99,14 @@ namespace Macmillan.PXQBA.Business.Services
             return question;
         }
 
-        public bool UpdateQuestionField(Course course, string questionId, string fieldName, string fieldValue, bool isSharedField = false)
+        public bool UpdateQuestionField(Course course, string questionId, string fieldName, string fieldValue)
         {
-            if (isSharedField)
-            {
-                return questionCommands.UpdateSharedQuestionField(course.QuestionRepositoryCourseId, questionId, fieldName, fieldValue);
-            }
             return questionCommands.UpdateQuestionField(course.ProductCourseId, course.QuestionRepositoryCourseId, questionId, fieldName, fieldValue);
+        }
+
+        public bool UpdateSharedQuestionField(Course course, string questionId, string fieldName, IEnumerable<string> fieldValues)
+        {
+            return questionCommands.UpdateSharedQuestionField(course.QuestionRepositoryCourseId, questionId, fieldName, fieldValues);
         }
 
         public bool BulklUpdateQuestionField(Course course, string[] questionId, string fieldName, string fieldValue,
@@ -131,17 +131,9 @@ namespace Macmillan.PXQBA.Business.Services
             var questions = questionCommands.GetQuestions(currentCourse.QuestionRepositoryCourseId, questionsId);
             foreach (var question in questions)
             {
-                var newProductCourseValues = new Dictionary<string, List<string>>();
-                newProductCourseValues[MetadataFieldNames.Chapter] = new List<string> { chapter };
-                newProductCourseValues[MetadataFieldNames.Bank] = new List<string> { bank };
-                newProductCourseValues[MetadataFieldNames.ProductCourse] = new List<string>{courseIdToPublish.ToString()};
-
-                //ToDo change this when qba-217 is fixed
-                if (question.DefaultValues.ContainsKey(MetadataFieldNames.DlapTitle))
-                {
-                    newProductCourseValues[MetadataFieldNames.DlapTitle] =
-                        question.DefaultValues[MetadataFieldNames.DlapTitle];
-                }
+                question.DefaultValues = GetDefaultValues(question, currentCourse);
+                
+                var newProductCourseValues = GetNewProductCourseValues(courseIdToPublish, bank, chapter, currentCourse, question);
 
                 var newProductCourseSection = question.ProductCourseSections.FirstOrDefault(s => s.ProductCourseId == courseIdToPublish.ToString());
                 if (newProductCourseSection == null)
@@ -154,6 +146,43 @@ namespace Macmillan.PXQBA.Business.Services
             
             bool isSuccess = questionCommands.UpdateQuestions(questions, currentCourse.QuestionRepositoryCourseId);
             return isSuccess;
+        }
+
+        private Dictionary<string, List<string>> GetNewProductCourseValues(int courseIdToPublish, string bank, string chapter, Course currentCourse, Question question)
+        {
+            var courseToPublish = productCourseManagementService.GetProductCourse(courseIdToPublish.ToString());
+            var newProductCourseValues = new Dictionary<string, List<string>>();
+            newProductCourseValues[MetadataFieldNames.Chapter] = new List<string> {chapter};
+            newProductCourseValues[MetadataFieldNames.Bank] = new List<string> {bank};
+            newProductCourseValues[MetadataFieldNames.ProductCourse] = new List<string> {courseIdToPublish.ToString()};
+            newProductCourseValues[MetadataFieldNames.ParentProductCourseId] = new List<string> {currentCourse.ProductCourseId};
+            foreach (var defaultValue in question.DefaultValues)
+            {
+                var fieldDescriptor = courseToPublish.FieldDescriptors.FirstOrDefault(f => f.Name == defaultValue.Key);
+                if (fieldDescriptor != null && !newProductCourseValues.ContainsKey(defaultValue.Key))
+                {
+                    var intersectValues = fieldDescriptor.CourseMetadataFieldValues.Any() ? defaultValue.Value.Intersect(fieldDescriptor.CourseMetadataFieldValues.Select(v => v.Text)) : defaultValue.Value;
+                    newProductCourseValues[defaultValue.Key] = intersectValues.ToList();
+                }
+            }
+            return newProductCourseValues;
+        }
+
+        private Dictionary<string, List<string>> GetDefaultValues(Question question, Course currentCourse)
+        {
+            var result = new Dictionary<string, List<string>>();
+            var currentProductCourseSection = question.ProductCourseSections.FirstOrDefault(s => s.ProductCourseId == currentCourse.ProductCourseId);
+            if (currentProductCourseSection != null)
+            {
+                foreach (var fieldName in currentCourse.FieldDescriptors.Select(f => f.Name))
+                {
+                    var values = currentProductCourseSection.ProductCourseValues.ContainsKey(fieldName)
+                        ? currentProductCourseSection.ProductCourseValues[fieldName]
+                        : new List<string>();
+                    result.Add(fieldName, values);
+                }
+            }
+            return result;
         }
     }
 }

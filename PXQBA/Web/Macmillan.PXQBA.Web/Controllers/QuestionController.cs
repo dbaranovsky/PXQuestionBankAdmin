@@ -23,19 +23,29 @@ namespace Macmillan.PXQBA.Web.Controllers
     {
         private readonly IQuestionManagementService questionManagementService;
         private readonly IQuestionMetadataService questionMetadataService;
+        private readonly IProductCourseManagementService productCourseManagementService;
     
-        public QuestionController(IQuestionManagementService questionManagementService,   IQuestionMetadataService questionMetadataService)
+        public QuestionController(IQuestionManagementService questionManagementService,   IQuestionMetadataService questionMetadataService, IProductCourseManagementService productCourseManagementService)
         {
             this.questionManagementService = questionManagementService;
             this.questionMetadataService = questionMetadataService;
+            this.productCourseManagementService = productCourseManagementService;
         }
 
         [HttpPost]
-        public ActionResult UpdateMetadataField(string questionId, string fieldName, string fieldValue, bool isSharedField = false)
+        public ActionResult UpdateMetadataField(string questionId, string fieldName, string fieldValue)
         {
-            bool success = questionManagementService.UpdateQuestionField(CourseHelper.CurrentCourse, questionId, fieldName, fieldValue, isSharedField);
+            bool success = questionManagementService.UpdateQuestionField(CourseHelper.CurrentCourse, questionId, fieldName, fieldValue);
             return JsonCamel(new { isError = !success });
         
+        }
+
+        [HttpPost]
+        public ActionResult UpdateSharedMetadataField(string questionId, string fieldName, List<string> fieldValues)
+        {
+            bool success = questionManagementService.UpdateSharedQuestionField(CourseHelper.CurrentCourse, questionId, fieldName, fieldValues);
+            return JsonCamel(new { isError = !success });
+
         }
 
         [HttpPost]
@@ -63,6 +73,16 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult GetAvailibleMetadata()
         {
+            return JsonCamel(questionMetadataService.GetAvailableFields(CourseHelper.CurrentCourse).Select(MetadataFieldsHelper.Convert).ToList());
+        }
+
+        public ActionResult GetAvailibleMetadataByCourseId(string courseId)
+        {
+            var course = productCourseManagementService.GetProductCourse(courseId);
+            if (course != null)
+            {
+                return JsonCamel(questionMetadataService.GetAvailableFields(course).Select(MetadataFieldsHelper.Convert).ToList());
+            }
             return JsonCamel(questionMetadataService.GetAvailableFields(CourseHelper.CurrentCourse).Select(MetadataFieldsHelper.Convert).ToList());
         }
 

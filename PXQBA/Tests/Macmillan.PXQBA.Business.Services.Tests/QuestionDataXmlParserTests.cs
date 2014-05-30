@@ -177,7 +177,7 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             var question = QuestionDataXmlParser.ToQuestionEntity(questionXmlData);
 
             Assert.IsNotNull(question);
-            Assert.Equals(question.Id, "B8B35A1E8D1A4A70A2E622727A135D4A");
+            Assert.AreEqual(question.Id, "B8B35A1E8D1A4A70A2E622727A135D4A");
         }
 
  }
