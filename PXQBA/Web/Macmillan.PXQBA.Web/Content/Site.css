@@ -594,7 +594,7 @@ input.disabled, textarea.disabled {
 }
 
 .waiting {
-    height: 300px !important;
+    height: 623px !important;
    text-align: center;
    vertical-align: middle;
    background: url("../Content/img/spinning.gif") no-repeat;

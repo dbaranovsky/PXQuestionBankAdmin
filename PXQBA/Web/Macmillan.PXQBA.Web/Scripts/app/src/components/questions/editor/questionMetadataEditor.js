@@ -3,6 +3,25 @@
 */
 var QuestionMetadataEditor = React.createClass({
    
+    getInitialState: function(){
+       return ({metadataLoaded: false}); 
+    },
+    componentDidMount: function(){
+      if (this.props.question.isShared){
+        questionDataManager.getAvailibleMetadataByCourseId(this.props.question.parentProductCourseId).done(this.setCourseMetadata);
+
+      }else
+      {
+        this.setState({metadataLoaded: true, courseMetadata: []});
+      }
+
+    },
+
+    setCourseMetadata: function(data){
+        this.setState({metadataLoaded: true, courseMetadata: data});
+    },
+
+
     renderRows: function(){
       var rows = [];
       
@@ -18,7 +37,7 @@ var QuestionMetadataEditor = React.createClass({
 
        if (this.props.question.defaultValues == null || this.props.question.defaultValues.length == 0 ){
              $.each(localFieldsName, function( index, value ) {
-                 rows.push( <ShareMetadataEditorRow question={self.props.question} metadata={self.props.metadata} editHandler={self.props.editHandler} field={value} />);
+                 rows.push( <ShareMetadataEditorRow question={self.props.question} metadata={self.props.metadata} courseMetadata={self.state.courseMetadata} editHandler={self.props.editHandler} field={value} />);
             });
 
              return rows;
@@ -35,12 +54,12 @@ var QuestionMetadataEditor = React.createClass({
 
       var self = this;    
       $.each(fieldsWithAnalouges, function( index, value ) {
-             rows.push( <ShareMetadataEditorRow question={self.props.question} metadata={self.props.metadata} editHandler={self.props.editHandler} field={value} />);
+             rows.push( <ShareMetadataEditorRow question={self.props.question} courseMetadata={self.state.courseMetadata}  metadata={self.props.metadata} editHandler={self.props.editHandler} field={value} />);
       });
 
 
        $.each(fieldsWithoutAnalouges, function( index, value ) {
-             rows.push( <ShareMetadataEditorRow question={self.props.question} isUnique={true} metadata={self.props.metadata} editHandler={self.props.editHandler} field={value} />);
+             rows.push( <ShareMetadataEditorRow question={self.props.question} courseMetadata={self.state.courseMetadata}  isUnique={true} metadata={self.props.metadata} editHandler={self.props.editHandler} field={value} />);
       });
 
 
@@ -56,7 +75,9 @@ var QuestionMetadataEditor = React.createClass({
         } else if(this.props.question.sharedQuestionDuplicateFrom != null && this.props.isDuplicate){
           localClass +=" with-notification";
         }
-        return ( <div className={localClass}>
+
+        if(this.state.metadataLoaded){
+           return ( <div className={localClass}>
                       <div className="row header" style={style}>
                         <div className="cell"> <span className="label label-default metadata-info-label">Shared values</span></div>
                         <div className="cell control"></div>
@@ -65,7 +86,7 @@ var QuestionMetadataEditor = React.createClass({
                       <div className="body-container">
 
                          {this.renderRows()}
-                       
+                          
                         
                  
                      </div>          
@@ -73,5 +94,9 @@ var QuestionMetadataEditor = React.createClass({
 
            
          );
+        }
+
+        return (<div className="waiting"/>)
+       
     }
 });

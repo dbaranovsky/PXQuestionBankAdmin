@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Web.ViewModels.Versions;
 
 namespace Macmillan.PXQBA.Web.ViewModels
