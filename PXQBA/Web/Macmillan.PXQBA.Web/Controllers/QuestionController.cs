@@ -76,7 +76,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(questionMetadataService.GetAvailableFields(CourseHelper.CurrentCourse).Select(MetadataFieldsHelper.Convert).ToList());
         }
 
-        public ActionResult GetAvailibleMetadata(string courseId)
+        public ActionResult GetAvailibleMetadataByCourseId(string courseId)
         {
             var course = productCourseManagementService.GetProductCourse(courseId);
             if (course != null)

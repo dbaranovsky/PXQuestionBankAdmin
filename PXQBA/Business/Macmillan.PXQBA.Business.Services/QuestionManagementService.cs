@@ -161,7 +161,7 @@ namespace Macmillan.PXQBA.Business.Services
                 var fieldDescriptor = courseToPublish.FieldDescriptors.FirstOrDefault(f => f.Name == defaultValue.Key);
                 if (fieldDescriptor != null && !newProductCourseValues.ContainsKey(defaultValue.Key))
                 {
-                    var intersectValues = defaultValue.Value.Intersect(fieldDescriptor.CourseMetadataFieldValues.Select(v => v.Text));
+                    var intersectValues = fieldDescriptor.CourseMetadataFieldValues.Any() ? defaultValue.Value.Intersect(fieldDescriptor.CourseMetadataFieldValues.Select(v => v.Text)) : defaultValue.Value;
                     newProductCourseValues[defaultValue.Key] = intersectValues.ToList();
                 }
             }
