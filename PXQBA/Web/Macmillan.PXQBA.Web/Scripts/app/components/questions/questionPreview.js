@@ -4,10 +4,10 @@
 
 var QuestionPreview = React.createClass({displayName: 'QuestionPreview',
 
-      
-        reloadPreview: function(){
+       reloadPreview: function(){
             $(this.getDOMNode()).find(".question-preview-container").html(this.props.preview);
-        },
+       },
+
        componentDidUpdate: function(){
             this.reloadPreview();
        },
@@ -15,15 +15,25 @@ var QuestionPreview = React.createClass({displayName: 'QuestionPreview',
        componentDidMount: function(){
           this.reloadPreview();
        },
-       compileTemplate: function(){
 
+       compileTemplate: function(){
             var template = Handlebars.compile(this.props.questionCardTemplate);
             var html = template(this.props.metadata);
             return html;
        },
-        render: function() {
+
+       renderGroupLine: function() {
+        if(this.props.grouped) {
+          return (React.DOM.td( {className:"grouped-cell"}));
+        }
+
+        return (React.DOM.td( {className:"grouped-cell-empty"}));
+       },
+
+       render: function() {
             return ( 
                   React.DOM.tr(null, 
+                    this.renderGroupLine(),
                     React.DOM.td( {colSpan:this.props.colSpan}, 
                        React.DOM.div( {className:"question-preview-container"}),
                          React.DOM.hr(null ),

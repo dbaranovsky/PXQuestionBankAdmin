@@ -515,6 +515,28 @@ input.disabled, textarea.disabled {
 /* Bulk operations*/
 .question-selected {
     font-weight: bold;
+} 
+
+.question-draft {
+   background: lightcyan
+}
+
+.question-table.table > tbody > tr > td.grouped-cell, 
+.question-table.table > tbody > tr > td.grouped-cell-empty,
+.question-table.table > thead > tr > th.grouped-header {
+    padding: 2px;
+}
+
+.grouped-cell {
+    background: grey;
+}
+
+.draft-label {
+    margin: 0 0 0 4px;
+}
+
+.grouped-header {
+    width: 3px;
 }
 
 .deselect-button {
@@ -878,4 +900,8 @@ a.shared-question-link:hover {
 
 .notifications-displair {
     z-index: 9999;
+}
+
+.cell-value-table td {
+    vertical-align: top;
 }

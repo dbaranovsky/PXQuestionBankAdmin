@@ -46,6 +46,7 @@ var QuestionListHeader = React.createClass({
     
     return ( 
         <tr>
+            <th className="grouped-header"> </th>
             <th style={ {width:'5%'}}> <input type="checkbox" checked={this.props.selectedAll} onChange={this.selectAllQuestionHandler} /></th>
              {renderedCell}
             <th> <QuestionListColumnAppender displayedFields={this.props.columns} 

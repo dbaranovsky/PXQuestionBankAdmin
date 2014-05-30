@@ -247,6 +247,7 @@
     <Content Include="Scripts\app\components\questions\questionInlineEditorText.js" />
     <Content Include="Scripts\app\components\questions\questionList.js" />
     <Content Include="Scripts\app\components\questions\questionListColumnAppender.js" />
+    <Content Include="Scripts\app\components\questions\questionListGroupSeparator.js" />
     <Content Include="Scripts\app\components\questions\questionListHeader.js" />
     <Content Include="Scripts\app\components\questions\questionListHeaderCell.js" />
     <Content Include="Scripts\app\components\questions\questionListHeaderCellOrdering.js" />
@@ -299,6 +300,7 @@
     <Content Include="Scripts\app\src\components\questions\filter\questionFilterItemsAppender.js" />
     <Content Include="Scripts\app\src\components\questions\filter\questionFilterItemsContainer.js" />
     <Content Include="Scripts\app\src\components\questions\filter\questionFilterItemBase.js" />
+    <Content Include="Scripts\app\src\components\questions\questionListGroupSeparator.js" />
     <Content Include="Scripts\app\src\components\questions\questionShareDialog.js" />
     <Content Include="Scripts\app\src\components\questions\questionTypeDialog.js" />
     <Content Include="Scripts\app\src\components\questions\question.js" />

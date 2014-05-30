@@ -52,8 +52,12 @@ var QuestionCell = React.createClass({displayName: 'QuestionCell',
     },
 
     renderExpandButton: function() {
-     if(this.props.field==window.consts.questionTitleName) {
          return (ExpandButton( {expanded:this.props.expanded, onClickHandler:this.expandPreviewQuestionHandler, targetCaption:"question"}));  
+    },
+
+    renderDraftLabel: function() {
+      if(this.props.draft) {
+        return (React.DOM.span( {className:"label label-default draft-label"}, "draft"))
       }
       return null;
     },
@@ -67,7 +71,26 @@ var QuestionCell = React.createClass({displayName: 'QuestionCell',
                                editorDescriptor: this.props.editorDescriptor}}
              ));
         }
-        return (React.DOM.div( {className:"cell-value"}, this.renderExpandButton(),this.props.value, " " ));
+         
+        if(this.props.field==window.consts.questionTitleName) {
+           return (React.DOM.div( {className:"cell-value"},  
+                     React.DOM.table( {className:"cell-value-table"}, 
+                        React.DOM.tr(null, 
+                          React.DOM.td(null, 
+                             this.renderExpandButton()
+                          ),
+                          React.DOM.td(null, 
+                             this.props.value
+                          ),
+                          React.DOM.td(null, 
+                             this.renderDraftLabel()
+                         )
+                        )
+                     )
+                    ));
+        }
+
+        return (React.DOM.div( {className:"cell-value"}, this.props.value, " " ));
     },
 
     render: function() {
