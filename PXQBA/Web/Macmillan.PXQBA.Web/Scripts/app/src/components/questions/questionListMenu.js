@@ -18,7 +18,7 @@ var QuestionListMenu = React.createClass({
     },
 
     editQuestionHandler: function() {
-        if(!this.props.isShared){
+        if(!this.props.isShared && this.props.data[window.consts.questionStatusName] != window.enums.statuses.inProgress){
           this.props.editQuestionHandler();
           return;
         }
@@ -116,24 +116,41 @@ var QuestionListMenu = React.createClass({
     },
 
     renderEditMenu: function(){
-                  if (!this.props.isShared){
+      var status = this.props.data[window.consts.questionStatusName];
+
+                  if (!this.props.isShared && status == window.enums.statuses.deleted){
                     return null;
                   }
+
+                  if (this.props.isShared){
                   return(
                      <ul className="dropdown-menu show-menu" role="menu" aria-labelledby="dropdownMenuType" onClick={this.changeEventHandler} aria-labelledby="edit-question">
-                        <li role="presentation" className="dropdown-header">Edit options</li>
+                       <li role="presentation" className="dropdown-header">Edit options</li>
                        <li role="presentation" className="divider"></li>
                        <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.editQuestionHandler.bind(this, false)}>Edit in {this.props.titleCount+1 == 1? "1 title" : "all "+(this.props.titleCount+1)+" titles"}</a></li>
-                       <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.copyQuestionHandler}>Create a copy</a></li>
+                       <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.editQuestionHandler.bind(this, false)}>Create a copy</a></li>
                      </ul>);
+                }
+
+                if (status == window.enums.statuses.inProgress){
+                   return(
+                     <ul className="dropdown-menu show-menu" role="menu" aria-labelledby="dropdownMenuType" onClick={this.changeEventHandler} aria-labelledby="edit-question">
+                       <li role="presentation" className="dropdown-header">Edit options</li>
+                       <li role="presentation" className="divider"></li>
+                       <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.editQuestionHandler.bind(this, false)}>Edit in Place</a></li>
+                       <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.copyQuestionHandler}>Create a Draft</a></li>
+                     </ul>);
+                }
     },
 
     renderMenu: function(){
       if (this.props.showAll){
+      var isDeleted = this.props.data[window.consts.questionStatusName] == window.enums.statuses.deleted;
+
       return(<div className="menu-container-main">
 
                <div className="dropdown">
-                  <button id="edit-question" type="button" className="btn btn-default btn-sm" onClick={this.editQuestionHandler}  data-target="#" data-toggle="dropdown" title="Edit Question">
+                  <button id="edit-question" type="button" className="btn btn-default btn-sm" onClick={this.editQuestionHandler} disabled={isDeleted}  data-target="#" data-toggle="dropdown" title="Edit Question">
                          <span className="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Edit Question"></span>
                   </button>
                     {this.renderEditMenu()}

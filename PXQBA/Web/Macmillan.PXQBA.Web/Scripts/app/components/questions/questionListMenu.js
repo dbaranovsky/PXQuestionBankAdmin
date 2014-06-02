@@ -18,7 +18,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
     },
 
     editQuestionHandler: function() {
-        if(!this.props.isShared){
+        if(!this.props.isShared && this.props.data[window.consts.questionStatusName] != window.enums.statuses.inProgress){
           this.props.editQuestionHandler();
           return;
         }
@@ -116,24 +116,41 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
     },
 
     renderEditMenu: function(){
-                  if (!this.props.isShared){
+      var status = this.props.data[window.consts.questionStatusName];
+
+                  if (!this.props.isShared && status == window.enums.statuses.deleted){
                     return null;
                   }
+
+                  if (this.props.isShared){
                   return(
                      React.DOM.ul( {className:"dropdown-menu show-menu", role:"menu", 'aria-labelledby':"dropdownMenuType", onClick:this.changeEventHandler, 'aria-labelledby':"edit-question"}, 
-                        React.DOM.li( {role:"presentation", className:"dropdown-header"}, "Edit options"),
+                       React.DOM.li( {role:"presentation", className:"dropdown-header"}, "Edit options"),
                        React.DOM.li( {role:"presentation", className:"divider"}),
                        React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.props.editQuestionHandler.bind(this, false)}, "Edit in ", this.props.titleCount+1 == 1? "1 title" : "all "+(this.props.titleCount+1)+" titles")),
-                       React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.copyQuestionHandler}, "Create a copy"))
+                       React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.props.editQuestionHandler.bind(this, false)}, "Create a copy"))
                      ));
+                }
+
+                if (status == window.enums.statuses.inProgress){
+                   return(
+                     React.DOM.ul( {className:"dropdown-menu show-menu", role:"menu", 'aria-labelledby':"dropdownMenuType", onClick:this.changeEventHandler, 'aria-labelledby':"edit-question"}, 
+                       React.DOM.li( {role:"presentation", className:"dropdown-header"}, "Edit options"),
+                       React.DOM.li( {role:"presentation", className:"divider"}),
+                       React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.props.editQuestionHandler.bind(this, false)}, "Edit in Place")),
+                       React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.copyQuestionHandler}, "Create a Draft"))
+                     ));
+                }
     },
 
     renderMenu: function(){
       if (this.props.showAll){
+      var isDeleted = this.props.data[window.consts.questionStatusName] == window.enums.statuses.deleted;
+
       return(React.DOM.div( {className:"menu-container-main"}, 
 
                React.DOM.div( {className:"dropdown"}, 
-                  React.DOM.button( {id:"edit-question", type:"button", className:"btn btn-default btn-sm", onClick:this.editQuestionHandler,  'data-target':"#", 'data-toggle':"dropdown", title:"Edit Question"}, 
+                  React.DOM.button( {id:"edit-question", type:"button", className:"btn btn-default btn-sm", onClick:this.editQuestionHandler, disabled:isDeleted,  'data-target':"#", 'data-toggle':"dropdown", title:"Edit Question"}, 
                          React.DOM.span( {className:"glyphicon glyphicon-pencil", 'data-toggle':"tooltip", title:"Edit Question"})
                   ),
                     this.renderEditMenu()

@@ -1,4 +1,4 @@
-﻿var questionDataManager = (function() {
+var questionDataManager = (function() {
     var self = {};
 
     self.cache = {};
@@ -286,23 +286,6 @@
         });
     };
 
-      self.getAvailibleMetadataByCourseId = function (courseId) {
-        
-        var request = {            
-            courseId: courseId
-        };
-        
-        return $.ajax({
-            url: window.actions.questionList.getAvailibleMetadataByCourseIdUrl,
-            traditional: true,
-            data: JSON.stringify(request),
-            contentType: 'application/json',
-            dataType: 'json',
-            type: 'POST'
-        }).error(function(e){
-             self.showErrorPopup();
-        });
-    };
 
       self.flagQuestion= function (questionId, isFlagged) {
 

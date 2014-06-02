@@ -8,7 +8,7 @@ var QuestionMetadataEditor = React.createClass({displayName: 'QuestionMetadataEd
     },
     componentDidMount: function(){
       if (this.props.question.isShared){
-        questionDataManager.getAvailibleMetadataByCourseId(this.props.question.parentProductCourseId).done(this.setCourseMetadata);
+        questionDataManager.getCourseMetadata(this.props.question.parentProductCourseId).done(this.setCourseMetadata);
 
       }else
       {
