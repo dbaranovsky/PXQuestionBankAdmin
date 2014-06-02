@@ -4,7 +4,7 @@
 var QuestionMetadataEditor = React.createClass({
    
     getInitialState: function(){
-       return ({metadataLoaded: false}); 
+       return ({metadataLoaded: false,    staticFieldsNames: ["title","chapter", "bank"]}); 
     },
     componentDidMount: function(){
       if (this.props.question.isShared){
@@ -23,7 +23,7 @@ var QuestionMetadataEditor = React.createClass({
 
 
     renderRows: function(){
-      var rows = [];
+      var rows = this.addStaticRows();
       
       var localFieldsName = [];
       var defaultFieldsName = [];
@@ -34,6 +34,8 @@ var QuestionMetadataEditor = React.createClass({
         if($.inArray(localName,["sequence", "productcourseid", "flag", "questionIdDuplicateFromShared"]) ==-1)
         localFieldsName.push(localName);
       }
+
+
 
        if (this.props.question.defaultValues == null || this.props.question.defaultValues.length == 0 ){
              $.each(localFieldsName, function( index, value ) {
@@ -67,6 +69,16 @@ var QuestionMetadataEditor = React.createClass({
       return rows;
     },
 
+
+    addStaticRows: function(){
+      var rows=[];
+      var self = this;
+      rows.push(<ShareMetadataEditorRow question={self.props.question} courseMetadata={self.state.courseMetadata}  isStatic={true}  isUnique={false} metadata={self.props.metadata} editHandler={self.props.editHandler} field={"title"} />);
+      rows.push(<ShareMetadataEditorRow question={self.props.question} courseMetadata={self.state.courseMetadata}  isStatic={true}  isUnique={false} metadata={self.props.metadata} editHandler={self.props.editHandler} field={"chapter"} />);
+      rows.push(<ShareMetadataEditorRow question={self.props.question} courseMetadata={self.state.courseMetadata}  isStatic={true}  isUnique={false} metadata={self.props.metadata} editHandler={self.props.editHandler} field={"bank"} />);
+
+      return rows;
+    },
     render: function() {
         var style = this.props.question.isShared? {} : {display: "none !important"};
         var localClass = "local";

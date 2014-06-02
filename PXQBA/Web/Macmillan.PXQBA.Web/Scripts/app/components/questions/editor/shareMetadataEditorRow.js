@@ -8,8 +8,9 @@ var ShareMetadataEditorRow = React.createClass({displayName: 'ShareMetadataEdito
     var field = this.props.field; 
     var isDisabled = false;
     var isUnique = false;
-    if (!this.props.question.isShared){
-      return ({isDisabled: isDisabled});
+
+    if (!this.props.question.isShared || this.props.isStatic){
+      return ({isDisabled: isDisabled, isStatic: this.props.isStatic});
     }
 
     if (field == 'learningObjectives'){
@@ -38,7 +39,7 @@ var ShareMetadataEditorRow = React.createClass({displayName: 'ShareMetadataEdito
         isDisabled = false;
       }
       
-      return { isDisabled: isDisabled, isUnique: this.props.isUnique};
+      return { isDisabled: isDisabled, isUnique: this.props.isUnique, isStatic: false};
     },
 
 
