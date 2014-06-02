@@ -942,6 +942,23 @@ a.shared-question-link:hover {
     width: 300px;
 }
 
+.metadata-multi-line-container {
+    margin: 5px 15px 10px 5px;
+}
+
+.metadata-multi-line-lable {
+    font-weight: bold;
+}
+
+.metadata-multi-line-editor {
+    -moz-resize: none;
+    -ms-resize: none;
+    -o-resize: none;
+    resize: none;
+    width: 300px;
+    height: 400px;
+}
+
 /* Versions */
 
 .version-row {

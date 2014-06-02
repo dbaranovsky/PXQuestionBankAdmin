@@ -48,6 +48,12 @@
             getTitleDataUrl: '@Url.Action("GetTitleData", "ProductCourseList")'
         };
 
+        actions.metadataCfg = {            
+            getAvailableCoursesUrl: '@Url.Action("GetAvailableCourses", "Metadata")',
+            getMetadataConfigUrl: '@Url.Action("GetMetadataConfig", "Metadata")',
+            saveMetadataConfigUrl: '@Url.Action("SaveMetadataConfig", "Metadata")'
+        };
+
         actions.bulkOperations = {
             bulkUpdateMetadataFieldUrl: '@Url.Action("BulkUpdateMetadataField", "Question")',
             removeFromTitleUrl: '@Url.Action("RemoveFromTitle", "Question")',
