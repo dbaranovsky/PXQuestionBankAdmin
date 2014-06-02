@@ -87,10 +87,10 @@ namespace Macmillan.PXQBA.Business.Services
 
         public List<QuestionMetadataSection> GetProductCourseSections(QuestionViewModel viewModel)
         {
-            var currentProductCourseId = viewModel.ProductCourseSection.ProductCourseId;
+            var currentProductCourseId = viewModel.LocalSection.ProductCourseId;
             var sections = new List<QuestionMetadataSection>()
                            {
-                               viewModel.ProductCourseSection
+                               viewModel.LocalSection
                            };
             var question = questionCommands.GetQuestion(viewModel.EntityId, viewModel.Id);
             sections.AddRange(question.ProductCourseSections.Where(s => s.ProductCourseId != currentProductCourseId));
@@ -188,6 +188,21 @@ namespace Macmillan.PXQBA.Business.Services
                 }
             }
             return null;
+        }
+
+        public QuestionMetadataSection GetDefaultSectionForViewModel(Question question)
+        {
+            var section = question.DefaultSection;
+            var parentProductCourseId =
+                !string.IsNullOrEmpty(question.ProductCourseSections.First().ParentProductCourseId)
+                    ? question.ProductCourseSections.First().ParentProductCourseId
+                    : question.ProductCourseSections.First().ProductCourseId;
+            var course = productCourseOperation.GetProductCourse(parentProductCourseId);
+            foreach (var courseMetadataFieldDescriptor in course.FieldDescriptors.Where(courseMetadataFieldDescriptor => !section.DynamicValues.ContainsKey(courseMetadataFieldDescriptor.Name)))
+            {
+                section.DynamicValues.Add(courseMetadataFieldDescriptor.Name, new List<string>());
+            }
+            return section;
         }
     }
 }

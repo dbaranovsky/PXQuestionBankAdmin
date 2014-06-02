@@ -12,20 +12,20 @@ namespace Macmillan.PXQBA.Web.ViewModels
     {
         public string Id { get; set; }
 
-        private QuestionMetadataSection defaultValues;
-        public QuestionMetadataSection DefaultValues
+        private QuestionMetadataSection defaultSection;
+        public QuestionMetadataSection DefaultSection
         {
             get
             {
-                if (defaultValues == null)
+                if (defaultSection == null)
                 {
-                    defaultValues = new QuestionMetadataSection();
+                    defaultSection = new QuestionMetadataSection();
                 }
-                return defaultValues;
+                return defaultSection;
             }
             set
             {
-                defaultValues = value;
+                defaultSection = value;
             }
         }
 
@@ -57,20 +57,20 @@ namespace Macmillan.PXQBA.Web.ViewModels
         public string QuizId { get; set; }
         public string ActionPlayerUrl { get; set; }
         public string EditorUrl { get; set; }
-        private QuestionMetadataSection productCourseSection;
-        public QuestionMetadataSection ProductCourseSection
+        private QuestionMetadataSection localSection;
+        public QuestionMetadataSection LocalSection
         {
             get
             {
-                if (productCourseSection == null)
+                if (localSection == null)
                 {
-                    productCourseSection = new QuestionMetadataSection();
+                    localSection = new QuestionMetadataSection();
                 }
-                return productCourseSection;
+                return localSection;
             }
             set
             {
-                productCourseSection = value;
+                localSection = value;
             }
         }
 
@@ -84,14 +84,15 @@ namespace Macmillan.PXQBA.Web.ViewModels
         {
             get
             {
-                if (string.IsNullOrEmpty(ProductCourseSection.ParentProductCourseId))
+                if (string.IsNullOrEmpty(LocalSection.ParentProductCourseId))
                 {
-                    return ProductCourseSection.ProductCourseId;
+                    return LocalSection.ProductCourseId;
                 }
-                return ProductCourseSection.ParentProductCourseId;
+                return LocalSection.ParentProductCourseId;
             }
         }
-        public bool IsDraft { get; set; }        public IEnumerable<QuestionVersionViewModel> Versions { get; set; } 
+        public bool IsDraft { get; set; }        
+        public IEnumerable<QuestionVersionViewModel> Versions { get; set; } 
 
     }
 }
