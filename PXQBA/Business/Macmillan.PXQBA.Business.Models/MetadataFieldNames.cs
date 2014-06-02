@@ -23,7 +23,7 @@ namespace Macmillan.PXQBA.Business.Models
         public const string QuestionIdDuplicateFromShared = "questionIdDuplicateFromShared";
         public const string ProductCourse = "productcourseid";
         public const string Flag = "flag";
-        public const string Draft = "isDraft";
+        public const string DraftFrom = "draftfrom";
         public const string ParentProductCourseId = "parentProductCourseId";
 
         public static IEnumerable<string> GetStaticFieldNames()
@@ -35,7 +35,8 @@ namespace Macmillan.PXQBA.Business.Models
                 Chapter,
                 ProductCourse,
                 Sequence,
-                QuestionIdDuplicateFromShared
+                QuestionIdDuplicateFromShared,
+                DraftFrom
             };
         }
     }
