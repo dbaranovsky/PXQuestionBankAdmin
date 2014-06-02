@@ -111,11 +111,6 @@ namespace Macmillan.PXQBA.Business.Services
             metadata.Data.Add(MetadataFieldNames.DlapType, QuestionTypeHelper.GetDisplayName(question.InteractionType, question.CustomUrl));
             metadata.Data.Add(MetadataFieldNames.Id, question.Id);
 
-            //ToDo: Remove after implement qba-202 backend
-            Random rnd = new Random();
-            metadata.Data.Add(MetadataFieldNames.Draft, rnd.Next(0, 3) == 0 ? "draft" : "");
-
-
             string currentCourseId = String.Empty;
             if (course != null)
             {
@@ -136,6 +131,7 @@ namespace Macmillan.PXQBA.Business.Services
                 metadata.Data.Add(MetadataFieldNames.Chapter, productCourseSection.Chapter);
                 metadata.Data.Add(MetadataFieldNames.Bank, productCourseSection.Bank);
                 metadata.Data.Add(MetadataFieldNames.Sequence, productCourseSection.Sequence);
+                metadata.Data.Add(MetadataFieldNames.DraftFrom, productCourseSection.DraftFromQuestionId);
                 foreach (var metadataValue in productCourseSection.DynamicValues)
                 {
                     if (!metadata.Data.ContainsKey(metadataValue.Key))
