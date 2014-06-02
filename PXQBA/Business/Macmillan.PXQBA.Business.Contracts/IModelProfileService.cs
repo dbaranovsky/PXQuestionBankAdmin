@@ -28,5 +28,6 @@ namespace Macmillan.PXQBA.Business.Contracts
         IEnumerable<ChapterViewModel> GetChaptersViewModel(Course course);
         IEnumerable<string> GetTitleNames(IEnumerable<string> titleIds);
         SharedQuestionDuplicateFromViewModel GetSourceQuestionSharedWith(QuestionMetadataSection section, Course course);
+        QuestionMetadataSection GetDefaultSectionForViewModel(Question question);
     }
 }

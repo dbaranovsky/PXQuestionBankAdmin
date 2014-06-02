@@ -106,7 +106,8 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
 
             Mapper.CreateMap<Question, QuestionViewModel>()
                 .ForMember(dest => dest.ProductCourses, opt => opt.MapFrom(src => modelProfileService.GetTitleNames(src.ProductCourseSections.Select(p => p.ProductCourseId))))
-                .ForMember(dest => dest.ProductCourseSection, opt => opt.MapFrom(src => src.ProductCourseSections))
+                .ForMember(dest => dest.DefaultSection, opt => opt.MapFrom(src => modelProfileService.GetDefaultSectionForViewModel(src)))
+                .ForMember(dest => dest.LocalSection, opt => opt.MapFrom(src => src.ProductCourseSections))
                 .ForMember(dest => dest.SharedQuestionDuplicateFrom, opt => opt.MapFrom(src => src.ProductCourseSections));
 
             Mapper.CreateMap<List<QuestionMetadataSection>, QuestionMetadataSection>().ConvertUsing(new ProductSectionToLocalValuesConverter());
@@ -152,6 +153,13 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 var course = (Course) context.Options.Items.First().Value;
                 var productCourseId = course.ProductCourseId;
                 section = ((List<QuestionMetadataSection>)context.SourceValue).FirstOrDefault(s => s.ProductCourseId == productCourseId);
+                if (section != null)
+                {
+                    foreach (var courseMetadataFieldDescriptor in course.FieldDescriptors.Where(courseMetadataFieldDescriptor => !section.DynamicValues.ContainsKey(courseMetadataFieldDescriptor.Name)))
+                    {
+                        section.DynamicValues.Add(courseMetadataFieldDescriptor.Name, new List<string>());
+                    }
+                }
             }
             return section;
         }
