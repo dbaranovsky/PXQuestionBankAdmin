@@ -198,7 +198,8 @@ namespace Macmillan.PXQBA.Business.Services
                     ? question.ProductCourseSections.First().ParentProductCourseId
                     : question.ProductCourseSections.First().ProductCourseId;
             var course = productCourseOperation.GetProductCourse(parentProductCourseId);
-            foreach (var courseMetadataFieldDescriptor in course.FieldDescriptors.Where(courseMetadataFieldDescriptor => !section.DynamicValues.ContainsKey(courseMetadataFieldDescriptor.Name)))
+            var dynamicsFields = course.FieldDescriptors.Where(f => !MetadataFieldNames.GetStaticFieldNames().Contains(f.Name));
+            foreach (var courseMetadataFieldDescriptor in dynamicsFields.Where(courseMetadataFieldDescriptor => !section.DynamicValues.ContainsKey(courseMetadataFieldDescriptor.Name)))
             {
                 section.DynamicValues.Add(courseMetadataFieldDescriptor.Name, new List<string>());
             }

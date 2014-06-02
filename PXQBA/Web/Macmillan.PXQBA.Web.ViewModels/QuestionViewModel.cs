@@ -10,6 +10,7 @@ namespace Macmillan.PXQBA.Web.ViewModels
     /// </summary>
     public class QuestionViewModel
     {
+
         public string Id { get; set; }
 
         private QuestionMetadataSection defaultSection;
@@ -84,6 +85,7 @@ namespace Macmillan.PXQBA.Web.ViewModels
         {
             get
             {
+                return "70295";
                 if (string.IsNullOrEmpty(LocalSection.ParentProductCourseId))
                 {
                     return LocalSection.ProductCourseId;
