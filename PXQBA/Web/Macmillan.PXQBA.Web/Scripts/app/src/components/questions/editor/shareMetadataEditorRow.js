@@ -167,13 +167,14 @@ var ShareMetadataEditorRow = React.createClass({
 
          var localAvailibleChoices = $.map(localDescriptor.editorDescriptor.availableChoice, function(n){ return n.text;});
          var defaultAvailibleChoices = $.map(defaultDescriptor.editorDescriptor.availableChoice, function(n){ return n.text;});
+         var self = this;
          if(this.props.isStatic){
 
-            if($.isArray(question.defaultSection[this.props.field])){
-              question.localSection[this.props.field] = $.grep(question.defaultSection[this.props.field], function(el, i){  return $.inArray(el, localAvailibleChoices);});
+            if($.isArray(question.defaultSection[self.props.field])){
+              question.localSection[this.props.field] = $.grep(question.defaultSection[self.props.field], function(el, i){  return $.inArray(el, localAvailibleChoices);});
             }
             else{
-              var result = $.grep(localAvailibleChoices, function(el, i){ return el == question.defaultSection[this.props.field]; });
+              var result = $.grep(localAvailibleChoices, function(el, i){ return el == question.defaultSection[self.props.field]; });
               question.localSection[this.props.field] = result.length == 0? "" : question.defaultSection[this.props.field];
            }
 
