@@ -4,10 +4,8 @@ namespace Macmillan.PXQBA.Business.Models
 {
     public class QuestionMetadataSection
     {
-        public QuestionMetadataSection()
-        {
-            
-        }
+
+       
         public string ProductCourseId { get; set; }
 
         public string Title { get; set; }
