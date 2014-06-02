@@ -182,6 +182,11 @@ namespace Macmillan.PXQBA.Web.Controllers
             {
                 course = productCourseManagementService.GetProductCourse(courseId);
             }
+
+            if (course == null)
+            {
+                return JsonCamel(questionMetadataService.GetAvailableFields(CourseHelper.CurrentCourse).Select(MetadataFieldsHelper.Convert).ToList());
+            }
             return JsonCamel(questionMetadataService.GetAvailableFields(course).Select(MetadataFieldsHelper.Convert));
         }
 

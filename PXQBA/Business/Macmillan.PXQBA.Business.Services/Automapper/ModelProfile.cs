@@ -157,10 +157,12 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             {
                 var course = (Course) context.Options.Items.First().Value;
                 var productCourseId = course.ProductCourseId;
+                var dynamicFields =
+                    course.FieldDescriptors.Where(f => !MetadataFieldNames.GetStaticFieldNames().Contains(f.Name));
                 section = ((List<QuestionMetadataSection>)context.SourceValue).FirstOrDefault(s => s.ProductCourseId == productCourseId);
                 if (section != null)
                 {
-                    foreach (var courseMetadataFieldDescriptor in course.FieldDescriptors.Where(courseMetadataFieldDescriptor => !section.DynamicValues.ContainsKey(courseMetadataFieldDescriptor.Name)))
+                    foreach (var courseMetadataFieldDescriptor in dynamicFields.Where(courseMetadataFieldDescriptor => !section.DynamicValues.ContainsKey(courseMetadataFieldDescriptor.Name)))
                     {
                         section.DynamicValues.Add(courseMetadataFieldDescriptor.Name, new List<string>());
                     }

@@ -645,6 +645,12 @@ input.disabled, textarea.disabled {
     overflow-x: hidden;
 }
 
+#editoriframecontainer.shared.graph {
+    height: 660px !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 .tab-body .shared iframe {
     height: 643px;
 }

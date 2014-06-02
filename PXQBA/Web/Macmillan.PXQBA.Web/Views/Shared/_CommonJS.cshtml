@@ -110,10 +110,16 @@
             htsDisplayName: '@QuestionTypeHelper.GetDisplayName("custom", QuestionTypeHelper.HTSType)'
         };
 
-        var consts = {};
-        window.consts = consts;
 
-        consts.questionTitleName = '@MetadataFieldNames.DlapTitle';
+        enums.statuses = {
+            availibleToInstructor: '@EnumHelper.GetEnumDescription(QuestionStatus.AvailableToInstructors)',
+            deleted: '@EnumHelper.GetEnumDescription(QuestionStatus.Deleted)',
+            inProgress: '@EnumHelper.GetEnumDescription(QuestionStatus.InProgress)',
+    };
+    var consts = {};
+    window.consts = consts;
+
+    consts.questionTitleName = '@MetadataFieldNames.DlapTitle';
         consts.questionStatusName = '@MetadataFieldNames.QuestionStatus';
         consts.questionCourseName = '@MetadataFieldNames.ProductCourse';
         consts.questionChapterName = '@MetadataFieldNames.Chapter';

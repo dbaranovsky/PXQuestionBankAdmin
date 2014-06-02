@@ -4,11 +4,11 @@
 var QuestionMetadataEditor = React.createClass({displayName: 'QuestionMetadataEditor',
    
     getInitialState: function(){
-       return ({metadataLoaded: false}); 
+       return ({metadataLoaded: false, staticFieldsNames: ["title","chapter", "bank"]}); 
     },
     componentDidMount: function(){
       if (this.props.question.isShared){
-        questionDataManager.getAvailibleMetadataByCourseId(this.props.question.parentProductCourseId).done(this.setCourseMetadata);
+        questionDataManager.getCourseMetadata(this.props.question.parentProductCourseId).done(this.setCourseMetadata);
 
       }else
       {
@@ -23,19 +23,21 @@ var QuestionMetadataEditor = React.createClass({displayName: 'QuestionMetadataEd
 
 
     renderRows: function(){
-      var rows = [];
+      var rows = this.addStaticRows();
       
       var localFieldsName = [];
       var defaultFieldsName = [];
 
 
 
-      for (var localName in this.props.question.localValues){
+      for (var localName in this.props.question.localSection.dynamicValues){
         if($.inArray(localName,["sequence", "productcourseid", "flag", "questionIdDuplicateFromShared"]) ==-1)
         localFieldsName.push(localName);
       }
 
-       if (this.props.question.defaultValues == null || this.props.question.defaultValues.length == 0 ){
+
+
+       if (this.props.question.defaultSection.dynamicValues == null || this.props.question.defaultSection.dynamicValues == 0 ){
              $.each(localFieldsName, function( index, value ) {
                  rows.push( ShareMetadataEditorRow( {question:self.props.question, metadata:self.props.metadata, courseMetadata:self.state.courseMetadata, editHandler:self.props.editHandler, field:value} ));
             });
@@ -44,7 +46,7 @@ var QuestionMetadataEditor = React.createClass({displayName: 'QuestionMetadataEd
       }
 
 
-      for (var defaultFieldName in this.props.question.defaultValues){
+      for (var defaultFieldName in this.props.question.defaultSection.dynamicValues){
         defaultFieldsName.push(defaultFieldName);
       }
 
@@ -67,6 +69,16 @@ var QuestionMetadataEditor = React.createClass({displayName: 'QuestionMetadataEd
       return rows;
     },
 
+
+    addStaticRows: function(){
+      var rows=[];
+      var self = this;
+      rows.push(ShareMetadataEditorRow( {question:self.props.question, courseMetadata:self.state.courseMetadata,  isStatic:true,  isUnique:false, metadata:self.props.metadata, editHandler:self.props.editHandler, field:"title"} ));
+      rows.push(ShareMetadataEditorRow( {question:self.props.question, courseMetadata:self.state.courseMetadata,  isStatic:true,  isUnique:false, metadata:self.props.metadata, editHandler:self.props.editHandler, field:"chapter"} ));
+      rows.push(ShareMetadataEditorRow( {question:self.props.question, courseMetadata:self.state.courseMetadata,  isStatic:true,  isUnique:false, metadata:self.props.metadata, editHandler:self.props.editHandler, field:"bank"} ));
+
+      return rows;
+    },
     render: function() {
         var style = this.props.question.isShared? {} : {display: "none !important"};
         var localClass = "local";
