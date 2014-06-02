@@ -61,7 +61,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<Bfw.Agilix.DataContracts.Question, Question>()
                .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
                .ForMember(dto => dto.Status, opt => opt.MapFrom(q => q.QuestionStatus))
-               .ForMember(dto => dto.DefaultValues, opt => opt.MapFrom(q => modelProfileService.GetQuestionDefaultValues(q)))
+               .ForMember(dto => dto.DefaultSection, opt => opt.MapFrom(q => modelProfileService.GetQuestionDefaultValues(q)))
                .ForMember(dto => dto.ProductCourseSections, opt => opt.MapFrom(q => modelProfileService.GetProductCourseSections(q)))
                .ForMember(dto => dto.Preview, opt => opt.MapFrom(q => CustomQuestionHelper.GetQuestionHtmlPreview(q)));
 
@@ -106,12 +106,12 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
 
             Mapper.CreateMap<Question, QuestionViewModel>()
                 .ForMember(dest => dest.ProductCourses, opt => opt.MapFrom(src => modelProfileService.GetTitleNames(src.ProductCourseSections.Select(p => p.ProductCourseId))))
-                .ForMember(dest => dest.LocalValues, opt => opt.MapFrom(src => src.ProductCourseSections))
+                .ForMember(dest => dest.ProductCourseSection, opt => opt.MapFrom(src => src.ProductCourseSections))
                 .ForMember(dest => dest.SharedQuestionDuplicateFrom, opt => opt.MapFrom(src => src.ProductCourseSections));
 
-            Mapper.CreateMap<List<ProductCourseSection>, Dictionary<string, List<string>>>().ConvertUsing(new ProductSectionToLocalValuesConverter());
+            Mapper.CreateMap<List<QuestionMetadataSection>, QuestionMetadataSection>().ConvertUsing(new ProductSectionToLocalValuesConverter());
 
-            Mapper.CreateMap<List<ProductCourseSection>, SharedQuestionDuplicateFromViewModel>()
+            Mapper.CreateMap<List<QuestionMetadataSection>, SharedQuestionDuplicateFromViewModel>()
                 .ConvertUsing(new ProductSectionToSharedQuestionDuplicateConverter(modelProfileService));
                 
             Mapper.CreateMap<QuestionViewModel, Question>()
@@ -142,30 +142,22 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
         }
     }
 
-    public class ProductSectionToLocalValuesConverter : ITypeConverter<List<ProductCourseSection>, Dictionary<string, List<string>>>
+    public class ProductSectionToLocalValuesConverter : ITypeConverter<List<QuestionMetadataSection>, QuestionMetadataSection>
     {
-        public Dictionary<string, List<string>> Convert(ResolutionContext context)
+        public QuestionMetadataSection Convert(ResolutionContext context)
         {
-            var values = new Dictionary<string, List<string>>();
+            var section = new QuestionMetadataSection();
             if (context.Options.Items.Any())
             {
                 var course = (Course) context.Options.Items.First().Value;
                 var productCourseId = course.ProductCourseId;
-                var section = ((List<ProductCourseSection>)context.SourceValue).FirstOrDefault(s => s.ProductCourseId == productCourseId);
-                if (section != null)
-                {
-                    values = section.ProductCourseValues;
-                }
-                foreach (var courseMetadataFieldDescriptor in course.FieldDescriptors.Where(courseMetadataFieldDescriptor => !values.ContainsKey(courseMetadataFieldDescriptor.Name)))
-                {
-                    values.Add(courseMetadataFieldDescriptor.Name, new List<string>());
-                }
+                section = ((List<QuestionMetadataSection>)context.SourceValue).FirstOrDefault(s => s.ProductCourseId == productCourseId);
             }
-            return values;
+            return section;
         }
     }
 
-    public class ProductSectionToSharedQuestionDuplicateConverter : ITypeConverter<List<ProductCourseSection>, SharedQuestionDuplicateFromViewModel>
+    public class ProductSectionToSharedQuestionDuplicateConverter : ITypeConverter<List<QuestionMetadataSection>, SharedQuestionDuplicateFromViewModel>
     {
         private readonly IModelProfileService modelProfileService;
         public ProductSectionToSharedQuestionDuplicateConverter(IModelProfileService modelProfileService)
@@ -178,7 +170,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             {
                 var course = (Course)context.Options.Items.First().Value;
                 var productCourseId = course.ProductCourseId;
-                var section = ((List<ProductCourseSection>)context.SourceValue).FirstOrDefault(s => s.ProductCourseId == productCourseId);
+                var section = ((List<QuestionMetadataSection>)context.SourceValue).FirstOrDefault(s => s.ProductCourseId == productCourseId);
                 return modelProfileService.GetSourceQuestionSharedWith(section, course);
             }
             return null;

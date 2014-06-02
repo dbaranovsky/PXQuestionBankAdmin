@@ -25,7 +25,23 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
                             if (name.Contains(ElStrings.ProductCourseDefaults.ToString()) && !name.Contains(DlapNamePart))
                             {
                                 List<string> values = elem.Elements().Select(v => v.Value).ToList();
-                                question.DefaultValues.Add(name.Substring(name.IndexOf('/') + 1), values);
+                                var metafieldName = name.Substring(name.IndexOf('/') + 1);
+                                if (metafieldName == MetadataFieldNames.DlapTitle)
+                                {
+                                    question.DefaultSection.Title = values.FirstOrDefault();
+                                }
+                                else if (metafieldName == MetadataFieldNames.Bank)
+                                {
+                                    question.DefaultSection.Bank = values.FirstOrDefault();
+                                }
+                                else if (metafieldName == MetadataFieldNames.Chapter)
+                                {
+                                    question.DefaultSection.Chapter = values.FirstOrDefault();
+                                }
+                                else
+                                {
+                                    question.DefaultSection.DynamicValues.Add(metafieldName, values);
+                                }
                             }
                             if (name.Contains(ElStrings.ProductCourseSection.ToString()) && !name.Contains(DlapNamePart))
                             {
@@ -34,11 +50,27 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
                                 var productCourse = question.ProductCourseSections.FirstOrDefault(c => c.ProductCourseId == productCourseId);
                                 if (productCourse == null)
                                 {
-                                    productCourse = new ProductCourseSection();
+                                    productCourse = new QuestionMetadataSection();
                                     productCourse.ProductCourseId = productCourseId;
                                     question.ProductCourseSections.Add(productCourse);
                                 }
-                                productCourse.ProductCourseValues.Add(name.Substring(name.IndexOf('/') + 1), values);
+                                var metafieldName = name.Substring(name.IndexOf('/') + 1);
+                                if (metafieldName == MetadataFieldNames.DlapTitle)
+                                {
+                                    productCourse.Title = values.FirstOrDefault();
+                                }
+                                else if (metafieldName == MetadataFieldNames.Bank)
+                                {
+                                    productCourse.Bank = values.FirstOrDefault();
+                                }
+                                else if (metafieldName == MetadataFieldNames.Chapter)
+                                {
+                                    productCourse.Chapter = values.FirstOrDefault();
+                                }
+                                else
+                                {
+                                    productCourse.DynamicValues.Add(metafieldName, values);
+                                }
                             }
 
                         });
@@ -67,38 +99,43 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
             return questionSearchResult;
         }
 
-        public static Dictionary<string, List<string>> GetDefaultSectionValues(Dictionary<string, XElement> metadataElements)
+        public static QuestionMetadataSection GetDefaultSectionValues(Dictionary<string, XElement> metadataElements)
         {
-            var defaultsSection = metadataElements[ElStrings.ProductCourseDefaults.ToString()];
-            return defaultsSection.Elements().GroupBy(elem => elem.Name.LocalName).ToDictionary(group => group.Key, group => group.Select(elem => elem.Value).ToList());
+            var defaultsSection = metadataElements[ElStrings.ProductCourseDefaults.ToString()].Elements();
+            return GetSectionValues(defaultsSection);
         }
 
-        public static List<ProductCourseSection> GetProductCourseSectionValues(Dictionary<string, XElement> metadataElements)
+        public static List<QuestionMetadataSection> GetProductCourseSectionValues(Dictionary<string, XElement> metadataElements)
         {
             var productCourseSections = metadataElements.Where(elem => elem.Key.Contains(ElStrings.ProductCourseSection.ToString()));
-            var productCourseSectionValues = new List<ProductCourseSection>();
-            foreach (var productCourseSection in productCourseSections)
-            {
-                productCourseSectionValues.Add(new ProductCourseSection
-                                               {
-                                                   ProductCourseId = productCourseSection.Key.Split(new[] { ElStrings.ProductCourseSection.ToString(), "/" }, StringSplitOptions.RemoveEmptyEntries)[0],
-                                                   ProductCourseValues = productCourseSection.Value.Elements().GroupBy(elem => elem.Name.LocalName).ToDictionary(group => group.Key, group => group.Select(elem => elem.Value).ToList())
-                                               });
-            }
-            return productCourseSectionValues;
+            return productCourseSections.Select(productCourseSection => GetSectionValues(productCourseSection.Value.Elements())).ToList();
+        }
+
+        private static QuestionMetadataSection GetSectionValues(IEnumerable<XElement> sectionElements)
+        {
+            var sectionValues = new QuestionMetadataSection();
+            sectionValues.ProductCourseId = GetXElementValue(sectionElements, MetadataFieldNames.ProductCourse);
+            sectionValues.Title = GetXElementValue(sectionElements, MetadataFieldNames.DlapTitle);
+            sectionValues.Bank = GetXElementValue(sectionElements, MetadataFieldNames.Bank);
+            sectionValues.Chapter = GetXElementValue(sectionElements, MetadataFieldNames.Chapter);
+            sectionValues.Sequence = GetXElementValue(sectionElements, MetadataFieldNames.Sequence);
+            sectionValues.QuestionIdDuplicateFromShared = GetXElementValue(sectionElements, MetadataFieldNames.QuestionIdDuplicateFromShared);
+            sectionValues.DynamicValues = sectionElements.Where(g => !MetadataFieldNames.GetStaticFieldNames().Contains(g.Name.LocalName)).GroupBy(elem => elem.Name.LocalName).ToDictionary(group => group.Key, group => group.Select(elem => elem.Value).ToList());
+            return sectionValues;
+        }
+
+        private static string GetXElementValue(IEnumerable<XElement> elements, string fieldName)
+        {
+            var element = elements.FirstOrDefault(g => g.Name.LocalName == fieldName);
+            return element != null ? element.Value : string.Empty;
         }
 
         public static Dictionary<string, XElement> ToXmlElements(Question question)
         {
             var elements = new Dictionary<string, XElement>();
             var defaultsSection = new XElement(ElStrings.ProductCourseDefaults);
-            foreach (var defaultValue in question.DefaultValues)
-            {
-                foreach (var value in defaultValue.Value)
-                {
-                    defaultsSection.Add(new XElement(defaultValue.Key, value));
-                }
-            }
+            defaultsSection.Add(GetXmlElementsFromSection(question.DefaultSection));
+           
             elements.Add(ElStrings.ProductCourseDefaults.ToString(), defaultsSection);
 
             foreach (var productCourseSection in question.ProductCourseSections)
@@ -107,17 +144,29 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
                 if (!elements.ContainsKey(productCourseSectionName))
                 {
                     var section = new XElement(productCourseSectionName);
-                    //section.Add(new XElement(productCourseValue.Key, value));
-                    foreach (var productCourseValue in productCourseSection.ProductCourseValues)
-                    {
-                        foreach (var value in productCourseValue.Value)
-                        {
-                            section.Add(new XElement(productCourseValue.Key, value));
-                        }
-                    }
+                    section.Add(GetXmlElementsFromSection(productCourseSection));
                     elements.Add(productCourseSectionName, section);
                 }
             }
+            return elements;
+        }
+
+        private static IEnumerable<XElement> GetXmlElementsFromSection(QuestionMetadataSection section)
+        {
+            var elements = new List<XElement>();
+            foreach (var defaultValue in section.DynamicValues)
+            {
+                foreach (var value in defaultValue.Value)
+                {
+                    elements.Add(new XElement(defaultValue.Key, value));
+                }
+            }
+            elements.Add(new XElement(MetadataFieldNames.DlapTitle, section.Title));
+            elements.Add(new XElement(MetadataFieldNames.ProductCourse, section.ProductCourseId));
+            elements.Add(new XElement(MetadataFieldNames.Bank, section.Bank));
+            elements.Add(new XElement(MetadataFieldNames.Chapter, section.Chapter));
+            elements.Add(new XElement(MetadataFieldNames.Sequence, section.Sequence));
+            elements.Add(new XElement(MetadataFieldNames.QuestionIdDuplicateFromShared, section.QuestionIdDuplicateFromShared));
             return elements;
         }
     }

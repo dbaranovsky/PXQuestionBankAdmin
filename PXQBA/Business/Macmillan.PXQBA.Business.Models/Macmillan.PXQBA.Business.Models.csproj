@@ -77,7 +77,6 @@
     <Compile Include="LearningObjective.cs" />
     <Compile Include="MetadataFieldType.cs" />
     <Compile Include="Note.cs" />
-    <Compile Include="ProductCourseSection.cs" />
     <Compile Include="QuestionFlag.cs" />
     <Compile Include="QuestionList.cs" />
     <Compile Include="InteractionType.cs" />
@@ -86,6 +85,7 @@
     <Compile Include="QuestionMetaField.cs" />
     <Compile Include="QuestionStatus.cs" />
     <Compile Include="QuestionVersion.cs" />
+    <Compile Include="QuestionMetadataSection.cs" />
     <Compile Include="SortCriterion.cs" />
     <Compile Include="QuestionMetadata.cs" />
     <Compile Include="Question.cs" />

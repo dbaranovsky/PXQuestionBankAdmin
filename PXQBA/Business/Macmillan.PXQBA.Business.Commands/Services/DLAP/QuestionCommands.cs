@@ -101,7 +101,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                             sequenceDisplayValue = first.Index;
                         }
                     }
-                    section.ProductCourseValues[MetadataFieldNames.Sequence] = new List<string>() {sequenceDisplayValue};
+                    section.Sequence = sequenceDisplayValue;
                 }
             }
         }
@@ -230,13 +230,9 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         private void CheckIfSequenceIsSet(string productCourseId, Question question)
         {
             var section = question.ProductCourseSections.First(s => s.ProductCourseId == productCourseId);
-            if (!section.ProductCourseValues.ContainsKey(MetadataFieldNames.Sequence))
+            if (!string.IsNullOrEmpty(section.Sequence))
             {
-                section.ProductCourseValues.Add(MetadataFieldNames.Sequence, new List<string>());
-            }
-            if (section.ProductCourseValues[MetadataFieldNames.Sequence].All(string.IsNullOrEmpty))
-            {
-                section.ProductCourseValues[MetadataFieldNames.Sequence] = new List<string> { GetNewSequenceValue(question.EntityId, productCourseId) };
+                section.Sequence = GetNewSequenceValue(question.EntityId, productCourseId);
             }
         }
 
@@ -374,23 +370,42 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             var question = GetQuestion(repositoryCourseId, questionId);
             if (question != null)
             {
-                var productCourseSection =
-                    question.ProductCourseSections.FirstOrDefault(s => s.ProductCourseId == productCourseId);
+                var productCourseSection = question.ProductCourseSections.FirstOrDefault(s => s.ProductCourseId == productCourseId);
                 if (productCourseSection != null)
                 {
-                    if (productCourseSection.ProductCourseValues != null)
+                    if (MetadataFieldNames.GetStaticFieldNames().Contains(fieldName))
                     {
-                        if (productCourseSection.ProductCourseValues.ContainsKey(fieldName))
+                        UpdateStaticField(productCourseSection, fieldName, fieldValue);
+                    }
+                    if (productCourseSection.DynamicValues != null)
+                    {
+                        if (productCourseSection.DynamicValues.ContainsKey(fieldName))
                         {
-                            productCourseSection.ProductCourseValues[fieldName] = new List<string>() {fieldValue};
+                            productCourseSection.DynamicValues[fieldName] = new List<string>() {fieldValue};
                         }
                         else
                         {
-                            productCourseSection.ProductCourseValues.Add(fieldName, new List<string>() {fieldValue});
+                            productCourseSection.DynamicValues.Add(fieldName, new List<string>() {fieldValue});
                         }
                     }
                     UpdateQuestion(question);
                 }
+            }
+        }
+
+        private void UpdateStaticField(QuestionMetadataSection section, string fieldName, string fieldValue)
+        {
+            if (MetadataFieldNames.DlapTitle == fieldName)
+            {
+                section.Title = fieldValue;
+            }
+            else if (MetadataFieldNames.Chapter == fieldName)
+            {
+                section.Chapter = fieldValue;
+            }
+            else if (MetadataFieldNames.Bank == fieldName)
+            {
+                section.Bank = fieldValue;
             }
         }
 
@@ -410,17 +425,22 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             var question = GetQuestion(temporaryRepositoryCourseId, questionId);
             if (question != null)
             {
-                if (question.DefaultValues != null && question.DefaultValues.ContainsKey(fieldName))
+                if (MetadataFieldNames.GetStaticFieldNames().Contains(fieldName))
                 {
-                    var initialDefaultValues = question.DefaultValues[fieldName];
-                    foreach (var section in question.ProductCourseSections.Where(s => !s.ProductCourseValues.ContainsKey(fieldName) || AreEqualValues(s.ProductCourseValues[fieldName].ToList(), initialDefaultValues)))
+                    UpdateSharedStaticField(question, fieldName, fieldValues.FirstOrDefault());
+                    
+                }
+                else if (question.DefaultSection != null && question.DefaultSection.DynamicValues.ContainsKey(fieldName))
+                {
+                    var initialDefaultValues = question.DefaultSection.DynamicValues[fieldName];
+                    foreach (var section in question.ProductCourseSections.Where(s => !s.DynamicValues.ContainsKey(fieldName) || AreEqualValues(s.DynamicValues[fieldName].ToList(), initialDefaultValues)))
                     {
                         var course = productCourseOperation.GetProductCourse(section.ProductCourseId);
                         var fieldDescriptor = course.FieldDescriptors.FirstOrDefault(f => f.Name == fieldName);
                         if (fieldDescriptor != null)
                         {
-                            var intersectionValues = fieldValues.Intersect(fieldDescriptor.CourseMetadataFieldValues.Select(v => v.Text));
-                            section.ProductCourseValues[fieldName] = intersectionValues.ToList();
+                            var intersectionValues = fieldDescriptor.CourseMetadataFieldValues.Any() ? fieldValues.Intersect(fieldDescriptor.CourseMetadataFieldValues.Select(v => v.Text)) : fieldValues;
+                            section.DynamicValues[fieldName] = intersectionValues.ToList();
                         }
                     }
 
@@ -429,6 +449,36 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 UpdateQuestion(question);
             }
             return true;
+        }
+
+        private void UpdateSharedStaticField(Question question, string fieldName, string fieldValue)
+        {
+            var sections = new List<QuestionMetadataSection>();
+            if (MetadataFieldNames.DlapTitle == fieldName)
+            {
+                sections = question.ProductCourseSections.Where(s => s.Title == question.DefaultSection.Title).ToList();
+            }
+            else if (MetadataFieldNames.Chapter == fieldName)
+            {
+                sections = question.ProductCourseSections.Where(s => s.Title == question.DefaultSection.Chapter).ToList();
+            }
+            else if (MetadataFieldNames.Bank == fieldName)
+            {
+                sections = question.ProductCourseSections.Where(s => s.Title == question.DefaultSection.Bank).ToList();
+            }
+            foreach (var section in sections)
+            {
+                var course = productCourseOperation.GetProductCourse(section.ProductCourseId);
+                var fieldDescriptor = course.FieldDescriptors.FirstOrDefault(f => f.Name == fieldName);
+                if (fieldDescriptor != null)
+                {
+                    if (!fieldDescriptor.CourseMetadataFieldValues.Any() || fieldDescriptor.CourseMetadataFieldValues.Select(v => v.Text).Contains(fieldValue))
+                    {
+                        UpdateStaticField(section, fieldName, fieldValue);
+                    }
+                }
+            }
+            UpdateStaticField(question.DefaultSection, fieldName, fieldValue);
         }
 
         private bool AreEqualValues(IList<string> values, IList<string> comparedValues)

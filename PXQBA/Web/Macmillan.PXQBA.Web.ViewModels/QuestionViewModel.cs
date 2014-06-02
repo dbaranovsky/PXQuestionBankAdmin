@@ -12,14 +12,14 @@ namespace Macmillan.PXQBA.Web.ViewModels
     {
         public string Id { get; set; }
 
-        private Dictionary<string, List<string>> defaultValues;
-        public Dictionary<string, List<string>> DefaultValues
+        private QuestionMetadataSection defaultValues;
+        public QuestionMetadataSection DefaultValues
         {
             get
             {
                 if (defaultValues == null)
                 {
-                    defaultValues = new Dictionary<string, List<string>>();
+                    defaultValues = new QuestionMetadataSection();
                 }
                 return defaultValues;
             }
@@ -57,20 +57,20 @@ namespace Macmillan.PXQBA.Web.ViewModels
         public string QuizId { get; set; }
         public string ActionPlayerUrl { get; set; }
         public string EditorUrl { get; set; }
-        private Dictionary<string, List<string>> localValues;
-        public Dictionary<string, List<string>> LocalValues
+        private QuestionMetadataSection productCourseSection;
+        public QuestionMetadataSection ProductCourseSection
         {
             get
             {
-                if (localValues == null)
+                if (productCourseSection == null)
                 {
-                    localValues = new Dictionary<string, List<string>>();
+                    productCourseSection = new QuestionMetadataSection();
                 }
-                return localValues;
+                return productCourseSection;
             }
             set
             {
-                localValues = value;
+                productCourseSection = value;
             }
         }
 
@@ -84,11 +84,11 @@ namespace Macmillan.PXQBA.Web.ViewModels
         {
             get
             {
-                if (LocalValues.ContainsKey(MetadataFieldNames.ParentProductCourseId))
+                if (string.IsNullOrEmpty(ProductCourseSection.ParentProductCourseId))
                 {
-                    return LocalValues[MetadataFieldNames.ParentProductCourseId].First();
+                    return ProductCourseSection.ProductCourseId;
                 }
-                return localValues[MetadataFieldNames.ProductCourse].First();
+                return ProductCourseSection.ParentProductCourseId;
             }
         }
         public bool IsDraft { get; set; }        public IEnumerable<QuestionVersionViewModel> Versions { get; set; } 
