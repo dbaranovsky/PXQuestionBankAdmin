@@ -1,4 +1,7 @@
-﻿namespace Macmillan.PXQBA.Business.Models
+﻿using System.Collections;
+using System.Collections.Generic;
+
+namespace Macmillan.PXQBA.Business.Models
 {
     public static class MetadataFieldNames
     {
@@ -22,5 +25,18 @@
         public const string Flag = "flag";
         public const string Draft = "isDraft";
         public const string ParentProductCourseId = "parentProductCourseId";
+
+        public static IEnumerable<string> GetStaticFieldNames()
+        {
+            return new List<string>()
+            {
+                DlapTitle,
+                Bank,
+                Chapter,
+                ProductCourse,
+                Sequence,
+                QuestionIdDuplicateFromShared
+            };
+        }
     }
 }

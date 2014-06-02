@@ -14,33 +14,33 @@ namespace Macmillan.PXQBA.Business.Models
         public string EntityId { get; set; }
         public string QuizId { get; set; }
 
-        private Dictionary<string, List<string>> defaultValues;
+        private QuestionMetadataSection defaultSection;
 
-        public Dictionary<string, List<string>> DefaultValues
+        public QuestionMetadataSection DefaultSection
         {
             get
             {
-                if (defaultValues == null)
+                if (defaultSection == null)
                 {
-                    defaultValues = new Dictionary<string, List<string>>();
+                    defaultSection = new QuestionMetadataSection();
                 }
-                return defaultValues;
+                return defaultSection;
             }
             set
             {
-                defaultValues = value;
+                defaultSection = value;
             }
         }
 
-        private List<ProductCourseSection> productCourseSections;
+        private List<QuestionMetadataSection> productCourseSections;
 
-        public List<ProductCourseSection> ProductCourseSections
+        public List<QuestionMetadataSection> ProductCourseSections
         {
             get
             {
                 if (productCourseSections == null)
                 {
-                    productCourseSections = new List<ProductCourseSection>();
+                    productCourseSections = new List<QuestionMetadataSection>();
                 }
                 return productCourseSections;
             }
@@ -48,7 +48,42 @@ namespace Macmillan.PXQBA.Business.Models
             {
                 productCourseSections = value;
             }
-        }
+        } 
+
+        //private Dictionary<string, List<string>> defaultValues;
+
+        //public Dictionary<string, List<string>> DefaultValues
+        //{
+        //    get
+        //    {
+        //        if (defaultValues == null)
+        //        {
+        //            defaultValues = new Dictionary<string, List<string>>();
+        //        }
+        //        return defaultValues;
+        //    }
+        //    set
+        //    {
+        //        defaultValues = value;
+        //    }
+        //}
+
+
+        //public List<ProductCourseSection> ProductCourseSections
+        //{
+        //    get
+        //    {
+        //        if (productCourseSections == null)
+        //        {
+        //            productCourseSections = new List<ProductCourseSection>();
+        //        }
+        //        return productCourseSections;
+        //    }
+        //    set
+        //    {
+        //        productCourseSections = value;
+        //    }
+        //}
 
         public string Body { get; set; }
         public string InteractionType { get; set; }

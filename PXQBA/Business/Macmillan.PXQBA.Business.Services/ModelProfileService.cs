@@ -75,26 +75,22 @@ namespace Macmillan.PXQBA.Business.Services
             return CourseDataXmlParser.ParseQuestionBankRepositoryCourse(src.Data);
         }
 
-        public Dictionary<string, List<string>> GetQuestionDefaultValues(Bfw.Agilix.DataContracts.Question question)
+        public QuestionMetadataSection GetQuestionDefaultValues(Bfw.Agilix.DataContracts.Question question)
         {
             return QuestionDataXmlParser.GetDefaultSectionValues(question.MetadataElements);
         }
 
-        public List<ProductCourseSection> GetProductCourseSections(Bfw.Agilix.DataContracts.Question question)
+        public List<QuestionMetadataSection> GetProductCourseSections(Bfw.Agilix.DataContracts.Question question)
         {
             return QuestionDataXmlParser.GetProductCourseSectionValues(question.MetadataElements);
         }
 
-        public List<ProductCourseSection> GetProductCourseSections(QuestionViewModel viewModel)
+        public List<QuestionMetadataSection> GetProductCourseSections(QuestionViewModel viewModel)
         {
-            var currentProductCourseId = viewModel.LocalValues[MetadataFieldNames.ProductCourse].First();
-            var sections = new List<ProductCourseSection>()
+            var currentProductCourseId = viewModel.ProductCourseSection.ProductCourseId;
+            var sections = new List<QuestionMetadataSection>()
                            {
-                               new ProductCourseSection()
-                               {
-                                   ProductCourseId = currentProductCourseId,
-                                   ProductCourseValues = viewModel.LocalValues
-                               }
+                               viewModel.ProductCourseSection
                            };
             var question = questionCommands.GetQuestion(viewModel.EntityId, viewModel.Id);
             sections.AddRange(question.ProductCourseSections.Where(s => s.ProductCourseId != currentProductCourseId));
@@ -136,7 +132,11 @@ namespace Macmillan.PXQBA.Business.Services
                 : question.ProductCourseSections.FirstOrDefault();
             if (productCourseSection != null)
             {
-                foreach (var metadataValue in productCourseSection.ProductCourseValues)
+                metadata.Data.Add(MetadataFieldNames.DlapTitle, productCourseSection.Title);
+                metadata.Data.Add(MetadataFieldNames.Chapter, productCourseSection.Chapter);
+                metadata.Data.Add(MetadataFieldNames.Bank, productCourseSection.Bank);
+                metadata.Data.Add(MetadataFieldNames.Sequence, productCourseSection.Sequence);
+                foreach (var metadataValue in productCourseSection.DynamicValues)
                 {
                     if (!metadata.Data.ContainsKey(metadataValue.Key))
                     {
@@ -175,26 +175,20 @@ namespace Macmillan.PXQBA.Business.Services
             return productCourseOperation.GetCoursesByCourseIds(titleIds).Select(c => c.Title);
         }
 
-        public SharedQuestionDuplicateFromViewModel GetSourceQuestionSharedWith(ProductCourseSection section, Course course)
+        public SharedQuestionDuplicateFromViewModel GetSourceQuestionSharedWith(QuestionMetadataSection section, Course course)
         {
             if (section != null)
             {
-                if (section.ProductCourseValues.Any() &&
-                    section.ProductCourseValues.ContainsKey(MetadataFieldNames.QuestionIdDuplicateFromShared))
+                if (!string.IsNullOrEmpty(section.QuestionIdDuplicateFromShared))
                 {
-                    var value = section.ProductCourseValues[MetadataFieldNames.QuestionIdDuplicateFromShared].FirstOrDefault();
-                    if (value != null)
-                    {
                         var sharedWith =
-                            string.Join(", ", productCourseOperation.GetCoursesByCourseIds(
-                                questionCommands.GetQuestion(course.QuestionRepositoryCourseId, value)
+                            string.Join(", ", productCourseOperation.GetCoursesByCourseIds(questionCommands.GetQuestion(course.QuestionRepositoryCourseId, section.QuestionIdDuplicateFromShared)
                                     .ProductCourseSections.Select(s => s.ProductCourseId)).Select(c => c.Title));
                         return new SharedQuestionDuplicateFromViewModel
                                {
-                                   QuestionId = value,
+                                   QuestionId = section.QuestionIdDuplicateFromShared,
                                    SharedWith = sharedWith
                                };
-                    }
                 }
             }
             return null;

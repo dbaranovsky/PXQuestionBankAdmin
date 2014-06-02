@@ -19,14 +19,14 @@ namespace Macmillan.PXQBA.Business.Contracts
             Bfw.Agilix.DataContracts.Course src);
 
         string GetQuestionBankRepositoryCourse(Bfw.Agilix.DataContracts.Course src);
-        Dictionary<string, List<string>> GetQuestionDefaultValues(Bfw.Agilix.DataContracts.Question question);
-        List<ProductCourseSection> GetProductCourseSections(Bfw.Agilix.DataContracts.Question question);
-        List<ProductCourseSection> GetProductCourseSections(QuestionViewModel viewModel);
+        QuestionMetadataSection GetQuestionDefaultValues(Bfw.Agilix.DataContracts.Question question);
+        List<QuestionMetadataSection> GetProductCourseSections(Bfw.Agilix.DataContracts.Question question);
+        List<QuestionMetadataSection> GetProductCourseSections(QuestionViewModel viewModel);
         QuestionMetadata GetQuestionMetadataForCourse(Question question, Course course = null);
         Dictionary<string, XElement> GetXmlMetadataElements(Question question);
 
         IEnumerable<ChapterViewModel> GetChaptersViewModel(Course course);
         IEnumerable<string> GetTitleNames(IEnumerable<string> titleIds);
-        SharedQuestionDuplicateFromViewModel GetSourceQuestionSharedWith(ProductCourseSection section, Course course);
+        SharedQuestionDuplicateFromViewModel GetSourceQuestionSharedWith(QuestionMetadataSection section, Course course);
     }
 }

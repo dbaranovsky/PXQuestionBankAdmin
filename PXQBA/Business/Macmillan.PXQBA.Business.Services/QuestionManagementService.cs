@@ -50,11 +50,7 @@ namespace Macmillan.PXQBA.Business.Services
             {
                 question.ProductCourseSections.RemoveAll(s => s.ProductCourseId != course.ProductCourseId);
                 var section = question.ProductCourseSections.First(s => s.ProductCourseId == course.ProductCourseId);
-                if (!section.ProductCourseValues.ContainsKey(MetadataFieldNames.QuestionIdDuplicateFromShared))
-                {
-                    section.ProductCourseValues.Add(MetadataFieldNames.QuestionIdDuplicateFromShared, new List<string>{questionId});
-                }
-                section.ProductCourseValues[MetadataFieldNames.QuestionIdDuplicateFromShared] = new List<string>(){questionId};
+                section.QuestionIdDuplicateFromShared = questionId;
             }
             return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
@@ -64,24 +60,19 @@ namespace Macmillan.PXQBA.Business.Services
             var question = new Question();
             question.Id = Guid.NewGuid().ToString();
             question.EntityId = course.QuestionRepositoryCourseId;
-            var values = new Dictionary<string, List<String>>
+            var metadataSection = new QuestionMetadataSection
                          {
-                             {MetadataFieldNames.ProductCourse, new List<string> {course.ProductCourseId}},
-                             {MetadataFieldNames.DlapTitle, new List<string> {string.Empty}},
-                             {MetadataFieldNames.Bank, new List<string> {bank}},
-                             {MetadataFieldNames.Chapter, new List<string> {chapter}}
+                             ProductCourseId = course.ProductCourseId,
+                             Bank = bank,
+                             Chapter = chapter
                          };
 
 
-            foreach (var field in course.FieldDescriptors.Where(field => !values.ContainsKey(field.Name)))
+            foreach (var field in course.FieldDescriptors.Where(field => !MetadataFieldNames.GetStaticFieldNames().Contains(field.Name) && !metadataSection.DynamicValues.ContainsKey(field.Name)))
             {
-                values.Add(field.Name, new List<string>());
+                metadataSection.DynamicValues.Add(field.Name, new List<string>());
             }
-            question.ProductCourseSections.Add(new ProductCourseSection
-                                               {
-                                                   ProductCourseId = course.ProductCourseId,
-                                                   ProductCourseValues = values
-                                               });
+            question.ProductCourseSections.Add(metadataSection);
             question.Status = ((int)QuestionStatus.InProgress).ToString();
             question.Body = string.Empty;
             question.InteractionData = string.Empty;
@@ -131,56 +122,55 @@ namespace Macmillan.PXQBA.Business.Services
             var questions = questionCommands.GetQuestions(currentCourse.QuestionRepositoryCourseId, questionsId);
             foreach (var question in questions)
             {
-                question.DefaultValues = GetDefaultValues(question, currentCourse);
+                question.DefaultSection = GetDefaultSection(question, currentCourse);
                 
-                var newProductCourseValues = GetNewProductCourseValues(courseIdToPublish, bank, chapter, currentCourse, question);
-
-                var newProductCourseSection = question.ProductCourseSections.FirstOrDefault(s => s.ProductCourseId == courseIdToPublish.ToString());
-                if (newProductCourseSection == null)
-                {
-                    newProductCourseSection = new ProductCourseSection { ProductCourseId = courseIdToPublish.ToString() };
-                    question.ProductCourseSections.Add(newProductCourseSection);
-                }
-                newProductCourseSection.ProductCourseValues = newProductCourseValues;
+                question.ProductCourseSections.RemoveAll(s => s.ProductCourseId == courseIdToPublish.ToString());
+                question.ProductCourseSections.Add(GetNewProductCourseSection(courseIdToPublish, bank, chapter, currentCourse, question));
             }
             
             bool isSuccess = questionCommands.UpdateQuestions(questions, currentCourse.QuestionRepositoryCourseId);
             return isSuccess;
         }
 
-        private Dictionary<string, List<string>> GetNewProductCourseValues(int courseIdToPublish, string bank, string chapter, Course currentCourse, Question question)
+        private QuestionMetadataSection GetNewProductCourseSection(int courseIdToPublish, string bank, string chapter, Course currentCourse, Question question)
         {
             var courseToPublish = productCourseManagementService.GetProductCourse(courseIdToPublish.ToString());
-            var newProductCourseValues = new Dictionary<string, List<string>>();
-            newProductCourseValues[MetadataFieldNames.Chapter] = new List<string> {chapter};
-            newProductCourseValues[MetadataFieldNames.Bank] = new List<string> {bank};
-            newProductCourseValues[MetadataFieldNames.ProductCourse] = new List<string> {courseIdToPublish.ToString()};
-            newProductCourseValues[MetadataFieldNames.ParentProductCourseId] = new List<string> {currentCourse.ProductCourseId};
-            foreach (var defaultValue in question.DefaultValues)
+            var newProductCourseValues = new QuestionMetadataSection()
+            {
+                ProductCourseId = courseIdToPublish.ToString(),
+                Bank = bank,
+                Chapter = chapter,
+                ParentProductCourseId = currentCourse.ProductCourseId
+            };
+            foreach (var defaultValue in question.DefaultSection.DynamicValues)
             {
                 var fieldDescriptor = courseToPublish.FieldDescriptors.FirstOrDefault(f => f.Name == defaultValue.Key);
-                if (fieldDescriptor != null && !newProductCourseValues.ContainsKey(defaultValue.Key))
+                if (fieldDescriptor != null && !newProductCourseValues.DynamicValues.ContainsKey(defaultValue.Key))
                 {
                     var intersectValues = fieldDescriptor.CourseMetadataFieldValues.Any() ? defaultValue.Value.Intersect(fieldDescriptor.CourseMetadataFieldValues.Select(v => v.Text)) : defaultValue.Value;
-                    newProductCourseValues[defaultValue.Key] = intersectValues.ToList();
+                    newProductCourseValues.DynamicValues[defaultValue.Key] = intersectValues.ToList();
                 }
             }
             return newProductCourseValues;
         }
 
-        private Dictionary<string, List<string>> GetDefaultValues(Question question, Course currentCourse)
+        private QuestionMetadataSection GetDefaultSection(Question question, Course currentCourse)
         {
-            var result = new Dictionary<string, List<string>>();
-            var currentProductCourseSection = question.ProductCourseSections.FirstOrDefault(s => s.ProductCourseId == currentCourse.ProductCourseId);
-            if (currentProductCourseSection != null)
+            var currentProductCourseSection = question.ProductCourseSections.First(s => s.ProductCourseId == currentCourse.ProductCourseId);
+
+            var result = new QuestionMetadataSection
             {
-                foreach (var fieldName in currentCourse.FieldDescriptors.Select(f => f.Name))
-                {
-                    var values = currentProductCourseSection.ProductCourseValues.ContainsKey(fieldName)
-                        ? currentProductCourseSection.ProductCourseValues[fieldName]
-                        : new List<string>();
-                    result.Add(fieldName, values);
-                }
+                Title = currentProductCourseSection.Title,
+                Bank = currentProductCourseSection.Bank,
+                Chapter = currentProductCourseSection.Chapter,
+                Sequence = currentProductCourseSection.Sequence
+            };
+            foreach (var fieldName in currentCourse.FieldDescriptors.Where(f => !MetadataFieldNames.GetStaticFieldNames().Contains(f.Name)).Select(f => f.Name))
+            {
+                var values = currentProductCourseSection.DynamicValues.ContainsKey(fieldName)
+                    ? currentProductCourseSection.DynamicValues[fieldName]
+                    : new List<string>();
+                result.DynamicValues.Add(fieldName, values);
             }
             return result;
         }
