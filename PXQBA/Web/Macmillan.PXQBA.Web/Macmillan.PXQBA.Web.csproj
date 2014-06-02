@@ -210,11 +210,13 @@
     <Content Include="packages.config" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\app\async\asyncManager.js" />
+    <Content Include="Scripts\app\async\notificationManager.js" />
     <Content Include="Scripts\app\components\common\expandButton.js" />
     <Content Include="Scripts\app\components\common\loader.js" />
     <Content Include="Scripts\app\components\common\modalDialog.js" />
     <Content Include="Scripts\app\components\common\singleSelectButton.js" />
     <Content Include="Scripts\app\components\common\singleSelectSelector.js" />
+    <Content Include="Scripts\app\components\common\textAreaEditor.js" />
     <Content Include="Scripts\app\components\metadata\metadataCfgRoot.js" />
     <Content Include="Scripts\app\components\metadata\metadataChapterEditorTab.js" />
     <Content Include="Scripts\app\components\metadata\metadataCourseSelector.js" />
@@ -273,6 +275,7 @@
     <Content Include="Scripts\app\components\titles\titleList.js" />
     <Content Include="Scripts\app\components\titles\titlePage.js" />
     <Content Include="Scripts\app\dataAccess\dataCache\dataCacheStorage.js" />
+    <Content Include="Scripts\app\dataAccess\metadataCfgDataManager.js" />
     <Content Include="Scripts\app\dataAccess\questionDataManager.js" />
     <Content Include="Scripts\app\dataAccess\questionFilterDataManager.js" />
     <Content Include="Scripts\app\dataAccess\titleDataManager.js" />
@@ -287,6 +290,7 @@
     <Content Include="Scripts\app\src\components\common\modalDialog.js" />
     <Content Include="Scripts\app\src\components\common\singleSelectButton.js" />
     <Content Include="Scripts\app\src\components\common\singleSelectSelector.js" />
+    <Content Include="Scripts\app\src\components\common\textAreaEditor.js" />
     <Content Include="Scripts\app\src\components\metadata\metadataCfgRoot.js" />
     <Content Include="Scripts\app\src\components\metadata\metadataChapterEditorTab.js" />
     <Content Include="Scripts\app\src\components\metadata\metadataCourseSelector.js" />

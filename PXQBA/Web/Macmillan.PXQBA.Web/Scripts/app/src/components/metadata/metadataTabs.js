@@ -18,10 +18,12 @@ var MetadataTabs = React.createClass({
 
                <div className="tab-content">
                     <div className="tab-pane active" id="chaptersTab">
-                        <MetadataChapterEditorTab />
+                        <MetadataChapterEditorTab data={this.props.data}
+                            dataChangeHandler={this.props.dataChangeHandler}/>
                     </div>
                     <div className="tab-pane" id="metadataTab">
-                        <MetadataMetaEditorTab />
+                        <MetadataMetaEditorTab data={this.props.data} 
+                            dataChangeHandler={this.props.dataChangeHandler}/>
                     </div>
                 </div>
             </div>

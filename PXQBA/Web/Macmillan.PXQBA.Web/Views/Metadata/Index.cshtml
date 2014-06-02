@@ -5,11 +5,19 @@
 
 <h2>Metadata config</h2>
 
+<div id="notifications-container" class='notifications top-center center'> </div>
+
 <div id="config-container"> </div>
 
 @section scripts
 {
+    <script src="../../Scripts/app/dataAccess/metadataCfgDataManager.js"></script>
+    <script src="../../Scripts/app/components/common/loader.js"></script>
+    <script src="../../Scripts/app/async/asyncManager.js"></script>
+    <script src="../../Scripts/app/async/notificationManager.js"></script>
+
     <script src="../../Scripts/app/components/common/singleSelectSelector.js"></script>
+    <script src="../../Scripts/app/components/common/textAreaEditor.js"></script>
 
     <script src="../../Scripts/app/components/metadata/metadataMainButtonsContainer.js"></script>
     <script src="../../Scripts/app/components/metadata/metadataCourseSelector.js"></script>
@@ -20,12 +28,26 @@
 
     <script>
         var configContainer = $('#config-container')[0];
+        asyncManager.startWait(configContainer);
+
+        notificationManager.htmlContainer = $('#notifications-container')[0];
 
         var options = {};
-    
-        React.renderComponent(MetadataCfgRoot({
-                               options: options
-                               }, " "),
-                               configContainer);
+        var courseList = metadataCfgDataManager.getAvailableCourses();
+
+        courseList.done(function(response) {
+                asyncManager.page = React.renderComponent(
+                    MetadataCfgRoot({
+                        availableCourses: response,
+                        options: options
+                    }, " "),
+                    configContainer);
+                    })
+                    .fail(function (error) {
+                        console.error("metadataCfgDataManager.getAvailableCourses:", error);
+                    })
+                    .always(function () {
+                        asyncManager.stopWait();
+                    });
     </script>
 }

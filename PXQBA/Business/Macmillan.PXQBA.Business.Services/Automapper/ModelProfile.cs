@@ -10,6 +10,7 @@ using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Web.ViewModels;
+using Macmillan.PXQBA.Web.ViewModels.MetadataConfig;
 using Macmillan.PXQBA.Web.ViewModels.TiteList;
 using Macmillan.PXQBA.Web.ViewModels.Versions;
 using Course = Macmillan.PXQBA.Business.Models.Course;
@@ -118,6 +119,10 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<QuestionViewModel, Question>()
                  .ForMember(dest => dest.ProductCourseSections, opt => opt.MapFrom(src => modelProfileService.GetProductCourseSections(src)))
                 .ForMember(dest => dest.CustomUrl, opt => opt.MapFrom(src => src.QuestionType));
+
+            Mapper.CreateMap<Course, ProductCourseViewModel>()
+                .ForMember(vm => vm.Id, opt => opt.MapFrom(c => c.ProductCourseId))
+                .ForMember(vm => vm.Title, opt => opt.MapFrom(c => c.Title));
 
             Mapper.CreateMap<QuestionVersionViewModel, QuestionVersion>();
             Mapper.CreateMap<QuestionVersion, QuestionVersionViewModel>();
