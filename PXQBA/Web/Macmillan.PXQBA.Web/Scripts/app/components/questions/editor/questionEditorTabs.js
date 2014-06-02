@@ -7,11 +7,17 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
     getInitialState: function(){
       return {isHTS: this.props.question.questionType!= null && this.props.question.questionType.toLowerCase()=="hts"? true: false,
               isCustom: this.props.question.questionType!= null,
-              isGraph: this.props.question.graphEditorHtml != null }
+              isGraph: this.props.question.graphEditorHtml != null,
+              viewHistoryMode: this.props.viewingHistory != undefined ? this.props.viewingHistory : false}
     },
 
     tabsInitializer: function (container) {
-       //  container.find('a:first').tab('show')
+      if(this.props.viewHistoryMode){
+        container.find('#history-tab').tab('show');
+      } else{
+        container.find('#body-tab').tab('show');
+      }
+         
     },
 
     componentDidMount: function() {
@@ -34,7 +40,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
     },
 
     componentDidUpdate: function () {
-        this.tabsInitializer($(this.getDOMNode()));
+      //  this.tabsInitializer($(this.getDOMNode()));
     },
 
      loadSourceQuestion: function(event){
@@ -45,7 +51,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
 
     renderSharingNotification: function(){
 
-     if(this.props.question.sharedQuestionDuplicateFrom!=null){
+     if(this.props.question.sharedQuestionDuplicateFrom!=null && this.props.isDuplicate){
             return (React.DOM.div( {className:"shared-note"}, "This question is a duplicate of a ",
                     React.DOM.a( {className:"shared-question-link", href:"", onClick:this.loadSourceQuestion}, "shared question"),
                     "from ", React.DOM.b(null, this.props.question.sharedQuestionDuplicateFrom.sharedWith) 
@@ -61,7 +67,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
     },
 
      iframeLoaded: function(){
-        $(this.getDOMNode()).find('.waiting').hide();
+        $(this.getDOMNode()).find('#body').find('.waiting').hide();
     },
      loadQuestionEditor: function(url) {
 
@@ -221,13 +227,13 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                  
                         React.DOM.ul( {className:"nav nav-tabs"}, 
                              React.DOM.li( {className:"active"},  
-                                 React.DOM.a( {href:"#body", 'data-toggle':"tab"}, "Body")
+                                 React.DOM.a( {href:"#body", id:"body-tab",'data-toggle':"tab"}, "Body")
                              ),
                              React.DOM.li(null, 
                                  React.DOM.a( {href:"#metadata", 'data-toggle':"tab"}, "Metadata")
                              ),
                               React.DOM.li(null, 
-                                 React.DOM.a( {href:"#history", 'data-toggle':"tab"}, "History")
+                                 React.DOM.a( {href:"#history", id:"history-tab", 'data-toggle':"tab"}, "History")
                              )
                         ),
                
@@ -252,8 +258,9 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                        )
                     ),
                      React.DOM.div( {className:"tab-pane", id:"history"}, 
+
                        React.DOM.div( {className:"tab-body"}, 
-                       "Lorem Ipsum"
+                          VersionHistory( {question:this.props.question})
                        )
                 )
                 )

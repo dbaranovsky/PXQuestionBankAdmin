@@ -11,6 +11,7 @@ using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Web.ViewModels;
 using Macmillan.PXQBA.Web.ViewModels.TiteList;
+using Macmillan.PXQBA.Web.ViewModels.Versions;
 using Course = Macmillan.PXQBA.Business.Models.Course;
 using LearningObjective = Macmillan.PXQBA.Business.Models.LearningObjective;
 using Question = Macmillan.PXQBA.Business.Models.Question;
@@ -116,6 +117,9 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<QuestionViewModel, Question>()
                  .ForMember(dest => dest.ProductCourseSections, opt => opt.MapFrom(src => modelProfileService.GetProductCourseSections(src)))
                 .ForMember(dest => dest.CustomUrl, opt => opt.MapFrom(src => src.QuestionType));
+
+            Mapper.CreateMap<QuestionVersionViewModel, QuestionVersion>();
+            Mapper.CreateMap<QuestionVersion, QuestionVersionViewModel>();
         }
     }
 

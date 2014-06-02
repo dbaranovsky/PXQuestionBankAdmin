@@ -133,7 +133,8 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
                                       saveQuestion:  this.saveQuestion,
                                       metadata:this.props.metadata, 
                                       editHandler:this.editHandler, 
-                                      isDuplicate:this.props.isDuplicate})
+                                      isDuplicate:this.props.isDuplicate,
+                                      viewHistoryMode: this.props.viewHistoryMode})
                 ),
                 this.renderWarningDialog()
 

@@ -15,6 +15,7 @@ using Macmillan.PXQBA.Business.Services;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Web.Helpers;
 using Macmillan.PXQBA.Web.ViewModels;
+using Macmillan.PXQBA.Web.ViewModels.Versions;
 using Newtonsoft.Json;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -133,6 +134,50 @@ namespace Macmillan.PXQBA.Web.Controllers
             return questionViewModel;
         }
 
+        private QuestionHistoryViewModel GetHardCodedVersions()
+        {
+            return new QuestionHistoryViewModel
+                   {
+
+                       Versions = new List<QuestionVersionViewModel>()
+                                  {
+                                      new QuestionVersionViewModel()
+                                      {
+                                          IsCurrent = true,
+                                          IsInitial = false,
+                                          ModifiedBy = "John Smith",
+                                          ModifiedDate = DateTime.Now.ToShortDateString()
+
+                                      },
+
+                                      new QuestionVersionViewModel()
+                                      {
+                                          IsCurrent = false,
+                                          IsInitial = false,
+                                          ModifiedBy = "John Smith",
+                                          ModifiedDate = DateTime.Now.AddDays(-1).ToShortDateString()
+                                      },
+
+                                      new QuestionVersionViewModel()
+                                      {
+                                          IsCurrent = false,
+                                          IsInitial = false,
+                                          ModifiedBy = "John Smith",
+                                          ModifiedDate = DateTime.Now.AddDays(-2).ToShortDateString()
+
+                                      },
+
+                                      new QuestionVersionViewModel()
+                                      {
+                                          IsCurrent = false,
+                                          IsInitial = true,
+                                          ModifiedBy = "John Smith",
+                                          ModifiedDate = DateTime.Now.AddDays(-3).ToShortDateString()
+                                      }
+                                  }
+                   };
+        }
+
         /// <summary>
         /// Remove shared questions from current title 
         /// </summary>
@@ -159,6 +204,16 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(new { isError = !isSuccess });
         }
 
+
+        /// <summary>
+        /// Returns question's vesrion history by question id
+        /// </summary>
+        /// <param name="questionId"></param>
+        /// <returns></returns>
+        public ActionResult GetQuestionVersions(string questionId)
+        {
+            return JsonCamel(GetHardCodedVersions());
+        }
 
       
 	}

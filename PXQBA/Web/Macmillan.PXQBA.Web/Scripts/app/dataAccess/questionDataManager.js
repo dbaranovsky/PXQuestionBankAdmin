@@ -286,6 +286,24 @@
         });
     };
 
+      self.getAvailibleMetadataByCourseId = function (courseId) {
+        
+        var request = {            
+            courseId: courseId
+        };
+        
+        return $.ajax({
+            url: window.actions.questionList.getAvailibleMetadataByCourseIdUrl,
+            traditional: true,
+            data: JSON.stringify(request),
+            contentType: 'application/json',
+            dataType: 'json',
+            type: 'POST'
+        }).error(function(e){
+             self.showErrorPopup();
+        });
+    };
+
       self.flagQuestion= function (questionId, isFlagged) {
 
          var request = {
@@ -314,7 +332,47 @@
        
     };
 
+    self.getQuestionVersions = function(questionId){
+          var request = {
+            questionId: questionId
+        };
+        return $.ajax({
+            url: window.actions.questionList.getQuestionVersionsUrl,
+            traditional: true,
+            data: request,
+            contentType: 'application/json',
+            dataType: 'json',
+            type: 'GET'
+        }).error(function(e){
+             self.showErrorPopup();
+        });
+    };
+
+    self.updateSharedMetadataField = function (questionId, fieldName, fieldValues) {
+
+        var request = {
+            questionId: questionId,
+            fieldName: fieldName,
+            fieldValues: fieldValues
+        };
+
+        return $.ajax({
+            url: window.actions.questionList.updateSharedMetadataFieldUrl,
+            traditional: true,
+            data: request,
+            dataType: 'json',
+            type: 'POST'
+        }).done(function (response) {      
+            console.log('updateSharedMetadataField complete');
+            self.showSuccessPopup("Shared field updated successfully");
+        }).error(function(e){
+             self.showErrorPopup();
+        });
+    };
+
     
+
+    /* Bulk operations */
     self.bulk = {};
 
     self.bulk.updateMetadataField = function (questionIds, fieldName, fieldValue, isSharedField) {
@@ -345,6 +403,10 @@
              self.showErrorPopup();
         });
     };
+
+
+    
+
 
     self.bulk.removeTitle = function (questionsId) {
         asyncManager.startWait();
@@ -394,6 +456,7 @@
         });
     };
 
+    /*  Common operations  */
     self.resetState = function(){
          crossroads.resetState();
          crossroads.parse(window.routsManager.buildHash());

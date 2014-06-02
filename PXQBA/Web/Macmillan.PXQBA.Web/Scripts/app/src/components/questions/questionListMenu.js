@@ -24,6 +24,10 @@ var QuestionListMenu = React.createClass({
         }
     },
 
+    viewQuestionHistoryHandler: function(){
+         this.props.editQuestionHandler();
+    },
+
     removeTitleHandler: function(){
       if(confirm("Are you sure you want to remove this question from the current title?")){
          questionDataManager.removeTitle(this.props.data.id);
@@ -119,7 +123,7 @@ var QuestionListMenu = React.createClass({
                      <ul className="dropdown-menu show-menu" role="menu" aria-labelledby="dropdownMenuType" onClick={this.changeEventHandler} aria-labelledby="edit-question">
                         <li role="presentation" className="dropdown-header">Edit options</li>
                        <li role="presentation" className="divider"></li>
-                       <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.editQuestionHandler}>Edit in {this.props.titleCount+1 == 1? "1 title" : "all "+(this.props.titleCount+1)+" titles"}</a></li>
+                       <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.editQuestionHandler.bind(this, false)}>Edit in {this.props.titleCount+1 == 1? "1 title" : "all "+(this.props.titleCount+1)+" titles"}</a></li>
                        <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.copyQuestionHandler}>Create a copy</a></li>
                      </ul>);
     },
@@ -136,6 +140,7 @@ var QuestionListMenu = React.createClass({
                 </div>
                 <button type="button" className="btn btn-default btn-sm" onClick={this.copyQuestionHandler}  data-toggle="tooltip" title="Duplicate Question"><span className="glyphicon glyphicon-copyright-mark"></span></button>
                <button type="button" className="btn btn-default btn-sm" onClick={this.editNotesHandler} data-toggle="tooltip" title="Edit Notes"><span className="glyphicon glyphicon-list-alt"></span> </button> 
+               <button type="button" className="btn btn-default btn-sm custom-btn" onClick={this.props.editQuestionHandler.bind(this, true)} data-toggle="tooltip" title="View Question History"><span className="glyphicon icon-version-history" ></span></button> 
                </div>);
      }
 

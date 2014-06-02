@@ -24,6 +24,10 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
         }
     },
 
+    viewQuestionHistoryHandler: function(){
+         this.props.editQuestionHandler();
+    },
+
     removeTitleHandler: function(){
       if(confirm("Are you sure you want to remove this question from the current title?")){
          questionDataManager.removeTitle(this.props.data.id);
@@ -119,7 +123,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
                      React.DOM.ul( {className:"dropdown-menu show-menu", role:"menu", 'aria-labelledby':"dropdownMenuType", onClick:this.changeEventHandler, 'aria-labelledby':"edit-question"}, 
                         React.DOM.li( {role:"presentation", className:"dropdown-header"}, "Edit options"),
                        React.DOM.li( {role:"presentation", className:"divider"}),
-                       React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.props.editQuestionHandler}, "Edit in ", this.props.titleCount+1 == 1? "1 title" : "all "+(this.props.titleCount+1)+" titles")),
+                       React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.props.editQuestionHandler.bind(this, false)}, "Edit in ", this.props.titleCount+1 == 1? "1 title" : "all "+(this.props.titleCount+1)+" titles")),
                        React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.copyQuestionHandler}, "Create a copy"))
                      ));
     },
@@ -135,7 +139,8 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
                     this.renderEditMenu()
                 ),
                 React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.copyQuestionHandler,  'data-toggle':"tooltip", title:"Duplicate Question"}, React.DOM.span( {className:"glyphicon glyphicon-copyright-mark"})),
-               React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.editNotesHandler, 'data-toggle':"tooltip", title:"Edit Notes"}, React.DOM.span( {className:"glyphicon glyphicon-list-alt"}), " " ) 
+               React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.editNotesHandler, 'data-toggle':"tooltip", title:"Edit Notes"}, React.DOM.span( {className:"glyphicon glyphicon-list-alt"}), " " ), 
+               React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn", onClick:this.props.editQuestionHandler.bind(this, true), 'data-toggle':"tooltip", title:"View Question History"}, React.DOM.span( {className:"glyphicon icon-version-history"} )) 
                ));
      }
 
