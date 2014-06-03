@@ -101,12 +101,23 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
 
         public static QuestionMetadataSection GetDefaultSectionValues(Dictionary<string, XElement> metadataElements)
         {
-            var defaultsSection = metadataElements[ElStrings.ProductCourseDefaults.ToString()].Elements();
+            if (metadataElements == null)
+            {
+               return new QuestionMetadataSection();
+            }
+            var defaultsSection = metadataElements.First(elem => elem.Key.Contains(ElStrings.ProductCourseDefaults.ToString())).Value.Elements();
             return GetSectionValues(defaultsSection);
         }
 
         public static List<QuestionMetadataSection> GetProductCourseSectionValues(Dictionary<string, XElement> metadataElements)
         {
+            if (metadataElements == null)
+            {
+                return new List<QuestionMetadataSection>()
+                       {
+                           new QuestionMetadataSection()
+                       };
+            }
             var productCourseSections = metadataElements.Where(elem => elem.Key.Contains(ElStrings.ProductCourseSection.ToString()));
             return productCourseSections.Select(productCourseSection => GetSectionValues(productCourseSection.Value.Elements())).ToList();
         }
