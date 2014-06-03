@@ -33,7 +33,6 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(courses);
         }
 
-
         [HttpPost]
         public ActionResult GetMetadataConfig(string courseId)
         {

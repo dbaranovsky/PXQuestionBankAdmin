@@ -38,7 +38,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         public PagedCollection<Question> GetQuestionList(string questionRepositoryCourseId, string currentCourseId, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
         {
             var filterCopy = MakeFilterCopy(filter);
-            var questionsSortedBySequence = GetSortedAndFilteredBySequenceSolrResults(questionRepositoryCourseId, currentCourseId, filterCopy);//GetSolrResultsSortedBySequence(questionRepositoryCourseId, currentCourseId);
+            var questionsSortedBySequence = GetSortedAndFilteredBySequenceSolrResults(questionRepositoryCourseId, currentCourseId, filterCopy);
             var searchResults = GetSortedAndFilteredSolrResults(questionRepositoryCourseId, currentCourseId, filterCopy, sortCriterion);
             
             var agilixQuestions = GetAgilixQuestions(questionRepositoryCourseId, searchResults.Skip(startingRecordNumber).Take(recordCount).Select(r => r.QuestionId));
@@ -326,6 +326,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         public Question UpdateQuestion(Question question)
         {
+            question.ModifiedBy = businessContext.CurrentUser.Id;
             var agilixQuestion = GetAgilixQuestion(question.EntityId, question.Id);
             Mapper.Map(question, agilixQuestion);
             ExecutePutQuestion(agilixQuestion);
@@ -335,6 +336,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         public Question UpdateQuestionInTempQuiz(Question question)
         {
+            question.ModifiedBy = businessContext.CurrentUser.Id;
             var agilixQuestion = GetAgilixQuestion(question.EntityId, question.Id);
             Mapper.Map(question, agilixQuestion);
             ExecutePutQuestion(agilixQuestion);
@@ -589,7 +591,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         public IEnumerable<Question> GetVersionHistory(string questionRepositoryCourseId, string questionId)
         {
             var versions = Mapper.Map<IEnumerable<Question>>(GetAgilixQuestionsAsAdmin(questionRepositoryCourseId, new List<string>() { questionId }, true));
-            return versions;
+            return versions.ToList().OrderByDescending(v => v.Version);
         }
 
         private IEnumerable<Bfw.Agilix.DataContracts.Question> GetAgilixQuestionsAsAdmin(string repositoryCourseId,

@@ -35,5 +35,9 @@ namespace Macmillan.PXQBA.Business.Contracts
         string GetDuplicateFromShared(Bfw.Agilix.DataContracts.Question question);
         string GetDuplicateFrom(Bfw.Agilix.DataContracts.Question question);
         string GetDraftFrom(Bfw.Agilix.DataContracts.Question question);
+        string GetRestoredFromVersion(Bfw.Agilix.DataContracts.Question question);
+        bool GetPublishedFromDraft(Bfw.Agilix.DataContracts.Question question);
+        string GetModifiedBy(Bfw.Agilix.DataContracts.Question question);
+        int GetNumericVersion(string questionVersion);
     }
 }
