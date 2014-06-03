@@ -23,7 +23,7 @@ var MetadataTabs = React.createClass({displayName: 'MetadataTabs',
                     ),
                     React.DOM.div( {className:"tab-pane", id:"metadataTab"}, 
                         MetadataMetaEditorTab( {data:this.props.data, 
-                            dataChangeHandler:this.props.dataChangeHandler})
+                            metadataFieldsHandlers:this.props.metadataFieldsHandlers})
                     )
                 )
             )

@@ -29,6 +29,18 @@ var MetadataCfgRoot = React.createClass({displayName: 'MetadataCfgRoot',
 
    // Handlers
 
+   addMetadataFieldFieldHandler: function() {
+        alert('add!');
+   },
+
+   deleteMetadataFieldHandler: function(index) {
+        alert('delete!');
+   },
+
+   updateMetadataFieldHandler: function() {
+        alert('update!');
+   },
+
    selectCourseHandler: function(items) {
       var value = items[0];
       this.setState({dataLoading: true});
@@ -94,7 +106,12 @@ var MetadataCfgRoot = React.createClass({displayName: 'MetadataCfgRoot',
      if(this.state.currentCourse!=null) {
         return ( MetadataTabs( 
                   {data:this.state.metadataConfigViewModelDirty,
-                  dataChangeHandler:this.changeViewModelHandler}
+                  dataChangeHandler:this.changeViewModelHandler,
+                  metadataFieldsHandlers:{
+                      addHandler: this.addMetadataFieldFieldHandler,
+                      deleteHandler: this.deleteMetadataFieldHandler,
+                      updateHandler: this.updateMetadataFieldHandler
+                    }}
                   ));
       }
       return null;
