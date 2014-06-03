@@ -14,6 +14,7 @@ using Macmillan.PXQBA.Common.Helpers.Constants;
 using Macmillan.PXQBA.DataAccess.Data;
 using Macmillan.PXQBA.Web.ViewModels;
 using Macmillan.PXQBA.Web.ViewModels.TiteList;
+using Macmillan.PXQBA.Web.ViewModels.Versions;
 using Course = Macmillan.PXQBA.Business.Models.Course;
 using LearningObjective = Macmillan.PXQBA.Business.Models.LearningObjective;
 using Question = Macmillan.PXQBA.Business.Models.Question;
@@ -26,10 +27,13 @@ namespace Macmillan.PXQBA.Business.Services
 
         private readonly IQuestionCommands questionCommands;
 
-        public ModelProfileService(IProductCourseOperation productCourseOperation, IQuestionCommands questionCommands)
+        private readonly IUserOperation userOperation;
+
+        public ModelProfileService(IProductCourseOperation productCourseOperation, IQuestionCommands questionCommands, IUserOperation userOperation)
         {
             this.productCourseOperation = productCourseOperation;
             this.questionCommands = questionCommands;
+            this.userOperation = userOperation;
         }
 
         public string SetLearningObjectives(IEnumerable<LearningObjective> learningObjectives)
@@ -117,6 +121,9 @@ namespace Macmillan.PXQBA.Business.Services
                 currentCourseId = course.ProductCourseId;
             }
             var productCourses = GetTitleNames(question.ProductCourseSections.Where(p => p.ProductCourseId != currentCourseId).Select(p => p.ProductCourseId));
+            //TODO: QBA-202
+            Random rnd = new Random();
+            metadata.Data.Add(MetadataFieldNames.DraftFrom, rnd.Next(0, 3) == 0 ? "draft" : "");
 
             metadata.Data.Add(MetadataFieldNames.SharedWith, string.Join("<br>", productCourses));
 
@@ -131,7 +138,6 @@ namespace Macmillan.PXQBA.Business.Services
                 metadata.Data.Add(MetadataFieldNames.Chapter, productCourseSection.Chapter);
                 metadata.Data.Add(MetadataFieldNames.Bank, productCourseSection.Bank);
                 metadata.Data.Add(MetadataFieldNames.Sequence, productCourseSection.Sequence);
-                metadata.Data.Add(MetadataFieldNames.DraftFrom, productCourseSection.DraftFromQuestionId);
                 foreach (var metadataValue in productCourseSection.DynamicValues)
                 {
                     if (!metadata.Data.ContainsKey(metadataValue.Key))
@@ -171,18 +177,18 @@ namespace Macmillan.PXQBA.Business.Services
             return productCourseOperation.GetCoursesByCourseIds(titleIds).Select(c => c.Title);
         }
 
-        public SharedQuestionDuplicateFromViewModel GetSourceQuestionSharedWith(QuestionMetadataSection section, Course course)
+        public SharedQuestionDuplicateFromViewModel GetSourceQuestionSharedFrom(string questionIdDuplicateFrom, Course course)
         {
-            if (section != null)
+            if (!string.IsNullOrEmpty(questionIdDuplicateFrom))
             {
-                if (!string.IsNullOrEmpty(section.QuestionIdDuplicateFromShared))
+                if (!string.IsNullOrEmpty(questionIdDuplicateFrom))
                 {
                         var sharedWith =
-                            string.Join(", ", productCourseOperation.GetCoursesByCourseIds(questionCommands.GetQuestion(course.QuestionRepositoryCourseId, section.QuestionIdDuplicateFromShared)
+                            string.Join(", ", productCourseOperation.GetCoursesByCourseIds(questionCommands.GetQuestion(course.QuestionRepositoryCourseId, questionIdDuplicateFrom)
                                     .ProductCourseSections.Select(s => s.ProductCourseId)).Select(c => c.Title));
                         return new SharedQuestionDuplicateFromViewModel
                                {
-                                   QuestionId = section.QuestionIdDuplicateFromShared,
+                                   QuestionId = questionIdDuplicateFrom,
                                    SharedWith = sharedWith
                                };
                 }
@@ -204,6 +210,36 @@ namespace Macmillan.PXQBA.Business.Services
                 section.DynamicValues.Add(courseMetadataFieldDescriptor.Name, new List<string>());
             }
             return section;
+        }
+
+        public string GetModifierName(string modifiedByUserId)
+        {
+            var user = userOperation.GetUser(modifiedByUserId);
+            if (user != null)
+            {
+                return string.Format("{0} {1}", user.FirstName, user.LastName);
+            }
+            return string.Empty;
+        }
+
+        public Question GetDuplicateFromQuestion(string repositoryCourseId, string duplicateFrom)
+        {
+            return questionCommands.GetQuestion(repositoryCourseId, duplicateFrom);
+        }
+
+        public string GetDuplicateFromShared(Bfw.Agilix.DataContracts.Question question)
+        {
+            return QuestionDataXmlParser.GetMetadataField(question.MetadataElements, MetadataFieldNames.DuplicateFromShared);
+        }
+
+        public string GetDuplicateFrom(Bfw.Agilix.DataContracts.Question question)
+        {
+            return QuestionDataXmlParser.GetMetadataField(question.MetadataElements, MetadataFieldNames.DuplicateFrom);
+        }
+
+        public string GetDraftFrom(Bfw.Agilix.DataContracts.Question question)
+        {
+            return QuestionDataXmlParser.GetMetadataField(question.MetadataElements, MetadataFieldNames.DraftFrom);
         }
     }
 }

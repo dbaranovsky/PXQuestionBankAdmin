@@ -701,6 +701,11 @@ namespace Bfw.Agilix.DataContracts
         public static readonly XName ModifiedDate = "modifieddate";
 
         /// <summary>
+        /// ModifiedDate
+        /// </summary>
+        public static readonly XName ModifiedBy = "modifiedby";
+
+        /// <summary>
         /// Resource
         /// </summary>
         public static readonly XName Resource = "resource";

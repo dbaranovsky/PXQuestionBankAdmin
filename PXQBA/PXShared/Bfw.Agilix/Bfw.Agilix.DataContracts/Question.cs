@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Annotations;
 using System.Xml.Linq;
 using System.Linq;
 using System.Xml.XPath;
@@ -231,6 +232,15 @@ namespace Bfw.Agilix.DataContracts
         /// </summary>
         public Dictionary<string, XElement> MetadataElements { get; set; } 
        
+        /// <summary>
+        /// User the question was modified by
+        /// </summary>
+        public string ModifiedBy { get; set; }
+
+        /// <summary>
+        /// Date the question was modified
+        /// </summary>
+        public DateTime ModifiedDate { get; set; }
 
 
         #endregion
@@ -261,6 +271,19 @@ namespace Bfw.Agilix.DataContracts
             if (questionVersion != null)
             {
                 QuestionVersion = questionVersion.Value;
+            }
+
+            var modifiedDate = element.Attribute(ElStrings.ModifiedDate);
+            DateTime modifiedDateParsed;
+            if (modifiedDate != null && DateTime.TryParse(modifiedDate.Value, out modifiedDateParsed))
+            {
+                ModifiedDate = modifiedDateParsed;
+            }
+
+            var modifiedBy = element.Attribute(ElStrings.ModifiedBy);
+            if (modifiedBy != null)
+            {
+                ModifiedBy = modifiedBy.Value;
             }
 
             var feedback = element.Element(ElStrings.feedback);

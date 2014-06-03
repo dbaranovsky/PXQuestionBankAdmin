@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Macmillan.PXQBA.Business.Models
@@ -82,5 +83,17 @@ namespace Macmillan.PXQBA.Business.Models
         /// Answer List
         /// </summary>
         public IList<string> AnswerList;
+
+        public string DraftFrom { get; set; }
+
+        public string Version { get; set; }
+
+        public DateTime ModifiedDate { get; set; }
+
+        public string ModifiedBy { get; set; }
+
+        public string DuplicateFrom { get; set; }
+
+        public string DuplicateFromShared { get; set; }
     }
 }

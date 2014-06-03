@@ -76,6 +76,7 @@
     <Compile Include="TiteList\ChapterViewModel.cs" />
     <Compile Include="TiteList\TitleListDataResponse.cs" />
     <Compile Include="TiteList\TitleViewModel.cs" />
+    <Compile Include="Versions\DuplicateFromViewModel.cs" />
     <Compile Include="Versions\QuestionHistoryViewModel.cs" />
     <Compile Include="Versions\QuestionVersionViewModel.cs" />
   </ItemGroup>

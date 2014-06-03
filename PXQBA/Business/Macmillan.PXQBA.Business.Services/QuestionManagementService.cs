@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
@@ -49,9 +50,9 @@ namespace Macmillan.PXQBA.Business.Services
             if (question.ProductCourseSections.Count > 1)
             {
                 question.ProductCourseSections.RemoveAll(s => s.ProductCourseId != course.ProductCourseId);
-                var section = question.ProductCourseSections.First(s => s.ProductCourseId == course.ProductCourseId);
-                section.QuestionIdDuplicateFromShared = questionId;
+                question.DuplicateFromShared = questionId;
             }
+            question.DuplicateFrom = questionId;
             return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
 
@@ -130,6 +131,11 @@ namespace Macmillan.PXQBA.Business.Services
             
             bool isSuccess = questionCommands.UpdateQuestions(questions, currentCourse.QuestionRepositoryCourseId);
             return isSuccess;
+        }
+
+        public IEnumerable<Question> GetVersionHistory(Course currentCourse, string questionId)
+        {
+            return questionCommands.GetVersionHistory(currentCourse.QuestionRepositoryCourseId, questionId);
         }
 
         private QuestionMetadataSection GetNewProductCourseSection(int courseIdToPublish, string bank, string chapter, Course currentCourse, Question question)

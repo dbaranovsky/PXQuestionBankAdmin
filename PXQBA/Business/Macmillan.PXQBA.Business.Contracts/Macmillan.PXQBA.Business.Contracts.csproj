@@ -84,7 +84,7 @@
       <Name>Bfw.Agilix.Dlap</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Web\Macmillan.PXQBA.Web.ViewModels\Macmillan.PXQBA.Web.ViewModels.csproj">
-      <Project>{718F7559-6447-4674-AFA4-61A46A1732CB}</Project>
+      <Project>{718f7559-6447-4674-afa4-61a46a1732cb}</Project>
       <Name>Macmillan.PXQBA.Web.ViewModels</Name>
     </ProjectReference>
     <ProjectReference Include="..\Macmillan.PXQBA.Business.Models\Macmillan.PXQBA.Business.Models.csproj">

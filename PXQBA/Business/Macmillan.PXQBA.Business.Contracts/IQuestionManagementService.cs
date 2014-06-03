@@ -54,5 +54,6 @@ namespace Macmillan.PXQBA.Business.Contracts
 
         bool PublishToTitle(string[] questionsId, int courseIdToPublish, string bank, string chapter, Course currentCourse);
 
+        IEnumerable<Question> GetVersionHistory(Course currentCourse, string questionId);
     }
 }

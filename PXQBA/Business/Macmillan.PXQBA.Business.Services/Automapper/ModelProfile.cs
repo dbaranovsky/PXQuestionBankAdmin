@@ -58,13 +58,17 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<Bfw.Agilix.DataContracts.LearningObjective, LearningObjective>()
                 .ForMember(dest => dest.Guid, opt => opt.MapFrom(src => src.Guid))
                 .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Title));
-           
+
             Mapper.CreateMap<Bfw.Agilix.DataContracts.Question, Question>()
-               .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
-               .ForMember(dto => dto.Status, opt => opt.MapFrom(q => q.QuestionStatus))
-               .ForMember(dto => dto.DefaultSection, opt => opt.MapFrom(q => modelProfileService.GetQuestionDefaultValues(q)))
-               .ForMember(dto => dto.ProductCourseSections, opt => opt.MapFrom(q => modelProfileService.GetProductCourseSections(q)))
-               .ForMember(dto => dto.Preview, opt => opt.MapFrom(q => CustomQuestionHelper.GetQuestionHtmlPreview(q)));
+                .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
+                .ForMember(dto => dto.Status, opt => opt.MapFrom(q => q.QuestionStatus))
+                .ForMember(dto => dto.DefaultSection, opt => opt.MapFrom(q => modelProfileService.GetQuestionDefaultValues(q)))
+                .ForMember(dto => dto.ProductCourseSections, opt => opt.MapFrom(q => modelProfileService.GetProductCourseSections(q)))
+                .ForMember(dto => dto.Version, opt => opt.MapFrom(q => q.QuestionVersion))
+                .ForMember(dto => dto.Preview, opt => opt.MapFrom(q => CustomQuestionHelper.GetQuestionHtmlPreview(q)))
+                .ForMember(dto => dto.DuplicateFromShared, opt => opt.MapFrom(q => modelProfileService.GetDuplicateFromShared(q)))
+                .ForMember(dto => dto.DuplicateFrom, opt => opt.MapFrom(q => modelProfileService.GetDuplicateFrom(q)))
+                .ForMember(dto => dto.DraftFrom, opt => opt.MapFrom(q => modelProfileService.GetDraftFrom(q)));
 
             Mapper.CreateMap<Bfw.Agilix.DataContracts.QuestionChoice, QuestionChoice>();
 
@@ -109,11 +113,11 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.ProductCourses, opt => opt.MapFrom(src => modelProfileService.GetTitleNames(src.ProductCourseSections.Select(p => p.ProductCourseId))))
                 .ForMember(dest => dest.DefaultSection, opt => opt.MapFrom(src => modelProfileService.GetDefaultSectionForViewModel(src)))
                 .ForMember(dest => dest.LocalSection, opt => opt.MapFrom(src => src.ProductCourseSections))
-                .ForMember(dest => dest.SharedQuestionDuplicateFrom, opt => opt.MapFrom(src => src.ProductCourseSections));
+                .ForMember(dest => dest.SharedQuestionDuplicateFrom, opt => opt.MapFrom(src => src));
 
             Mapper.CreateMap<List<QuestionMetadataSection>, QuestionMetadataSection>().ConvertUsing(new ProductSectionToLocalValuesConverter());
 
-            Mapper.CreateMap<List<QuestionMetadataSection>, SharedQuestionDuplicateFromViewModel>()
+            Mapper.CreateMap<Question, SharedQuestionDuplicateFromViewModel>()
                 .ConvertUsing(new ProductSectionToSharedQuestionDuplicateConverter(modelProfileService));
                 
             Mapper.CreateMap<QuestionViewModel, Question>()
@@ -124,8 +128,14 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(vm => vm.Id, opt => opt.MapFrom(c => c.ProductCourseId))
                 .ForMember(vm => vm.Title, opt => opt.MapFrom(c => c.Title));
 
-            Mapper.CreateMap<QuestionVersionViewModel, QuestionVersion>();
-            Mapper.CreateMap<QuestionVersion, QuestionVersionViewModel>();
+            Mapper.CreateMap<IEnumerable<Question>, QuestionHistoryViewModel>()
+                .ForMember(dest => dest.Versions, opt => opt.MapFrom(src =>src));
+
+            Mapper.CreateMap<Question, QuestionVersionViewModel>()
+                .ForMember(dest => dest.ModifiedBy, opt => opt.MapFrom(src => modelProfileService.GetModifierName(src.ModifiedBy)))
+                .ForMember(dest => dest.DuplicateFrom, opt => opt.MapFrom(src => modelProfileService.GetDuplicateFromQuestion(src.EntityId, src.DuplicateFrom)));
+
+            Mapper.CreateMap<Question, DuplicateFromViewModel>().ConvertUsing(new QuestionToDuplicateFromConverter());
         }
     }
 
@@ -145,6 +155,30 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                     (Course)context.Options.Items.First().Value);
             }
             return modelProfileService.GetQuestionMetadataForCourse((Question)context.SourceValue);
+        }
+    }
+
+    public class QuestionToDuplicateFromConverter : ITypeConverter<Question, DuplicateFromViewModel>
+    {
+
+        public DuplicateFromViewModel Convert(ResolutionContext context)
+        {
+            var model = new DuplicateFromViewModel();
+            if (context.Options.Items.Any())
+            {
+                var productCourseId = (string) context.Options.Items.First().Value;
+                var question = (Question) context.SourceValue;
+                model.Id = question.Id;
+                var section = question.ProductCourseSections.FirstOrDefault(s => s.ProductCourseId == productCourseId);
+                if (section == null)
+                {
+                    section = question.DefaultSection;
+                }
+                model.Bank = section.Bank;
+                model.Chapter = section.Chapter;
+                model.Title = section.Title;
+            }
+            return model;
         }
     }
 
@@ -172,7 +206,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
         }
     }
 
-    public class ProductSectionToSharedQuestionDuplicateConverter : ITypeConverter<List<QuestionMetadataSection>, SharedQuestionDuplicateFromViewModel>
+    public class ProductSectionToSharedQuestionDuplicateConverter : ITypeConverter<Question, SharedQuestionDuplicateFromViewModel>
     {
         private readonly IModelProfileService modelProfileService;
         public ProductSectionToSharedQuestionDuplicateConverter(IModelProfileService modelProfileService)
@@ -184,29 +218,10 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             if (context.Options.Items.Any())
             {
                 var course = (Course)context.Options.Items.First().Value;
-                var productCourseId = course.ProductCourseId;
-                var section = ((List<QuestionMetadataSection>)context.SourceValue).FirstOrDefault(s => s.ProductCourseId == productCourseId);
-                return modelProfileService.GetSourceQuestionSharedWith(section, course);
+                var question = ((Question)context.SourceValue);
+                return modelProfileService.GetSourceQuestionSharedFrom(question.DuplicateFromShared, course);
             }
             return null;
         }
     }
-
-
-    //public class ValueResolver : IValueResolver
-    //{
-    //    public ResolutionResult Resolve(ResolutionResult source)
-    //    {
-    //        return source;
-    //    }
-    //}
-
-    //public class ValueResolver1 : ValueResolver <Question, QuestionMetadata>
-    //{
-    //    protected override QuestionMetadata ResolveCore(Question source)
-    //    {
-            
-    //        throw new NotImplementedException();
-    //    }
-    //}
 }
