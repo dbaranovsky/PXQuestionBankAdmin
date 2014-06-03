@@ -30,7 +30,16 @@ var VersionHistory = React.createClass({
 
     var self= this;
 
-     var vesrions = this.state.versionHistory.versions.map(function (version) {
+     var versionsCount = this.state.versionHistory.versions.length;
+     var vesrions = this.state.versionHistory.versions.map(function (version, i) {
+            if (i== 0){
+                version.isCurrent = true;
+            }
+
+            if(i+1 == versionsCount){
+                version.isInitial = true;
+            }
+
             return (<VersionHistoryRow version={version} renderPreview={self.renderPreview.bind(this, version.questionPreview)}/>);
           });
 
@@ -116,19 +125,41 @@ var VersionHistoryRow = React.createClass({
 
     },
 
+    renderDuplicateFromInfo: function(){
+           var version = this.props.version;
+        if(version.duplicateFrom.id !="" && version.duplicateFrom.id !=null){
+        return(<p>Duplicate from: <i>{version.duplicateFrom.title}</i>, <b>Chapter:</b><i>{version.duplicateFrom.chapter} </i>,<b>Bank:</b><i>{version.duplicateFrom.bank}</i></p>);
+        }
+
+        return null
+    },
+
+    renderDraftInfo: function(){
+           var version = this.props.version;
+        if(version.isPublishedFromDraft){
+            return(<p><i>Published from draft</i></p>);
+        }
+        return null;
+    },
+
+    renderRestoreInfo: function(){
+           var version = this.props.version;
+        if(!version.restoredFromVersion == ""){
+            return(<p><i>Restored from version: <b>{version.restoredFromVersion}</b></i> </p>);
+        }
+        return null;
+    },
+
     render: function() {
         var version = this.props.version;
-     //   var style = this.props.question.isShared? {} : {display: "none !important"};
-     //   var localClass = "local";
-     //   if (this.props.question.isShared){
-     //     localClass+= " wide";
-     //   } else if(this.props.question.sharedQuestionDuplicateFrom != null && this.props.isDuplicate){
-     //     localClass +=" with-notification";
-     //   }
-
+  
         return ( <div className="version-row">
                         <div className="version-cell">
                           <span className= {version.isCurrent? "version-text current" : "version-text"}> Version of {version.modifiedDate} by {version.modifiedBy} {version.isInitial? "(initial)": ""} </span>
+                          <br/>
+                           {this.renderDraftInfo()}
+                           {this.renderRestoreInfo()}
+                           {this.renderDuplicateFromInfo()}
                         </div>     
                         <div className="version-cell menu">
                          {this.renderMenu()}

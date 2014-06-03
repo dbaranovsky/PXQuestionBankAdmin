@@ -30,7 +30,16 @@ var VersionHistory = React.createClass({displayName: 'VersionHistory',
 
     var self= this;
 
-     var vesrions = this.state.versionHistory.versions.map(function (version) {
+     var versionsCount = this.state.versionHistory.versions.length;
+     var vesrions = this.state.versionHistory.versions.map(function (version, i) {
+            if (i== 0){
+                version.isCurrent = true;
+            }
+
+            if(i+1 == versionsCount){
+                version.isInitial = true;
+            }
+
             return (VersionHistoryRow( {version:version, renderPreview:self.renderPreview.bind(this, version.questionPreview)}));
           });
 
@@ -116,19 +125,41 @@ var VersionHistoryRow = React.createClass({displayName: 'VersionHistoryRow',
 
     },
 
+    renderDuplicateFromInfo: function(){
+           var version = this.props.version;
+        if(version.duplicateFrom.id !="" && version.duplicateFrom.id !=null){
+        return(React.DOM.p(null, "Duplicate from: ", React.DOM.i(null, version.duplicateFrom.title),", ", React.DOM.b(null, "Chapter:"),React.DOM.i(null, version.duplicateFrom.chapter, " " ),",",React.DOM.b(null, "Bank:"),React.DOM.i(null, version.duplicateFrom.bank)));
+        }
+
+        return null
+    },
+
+    renderDraftInfo: function(){
+           var version = this.props.version;
+        if(version.isPublishedFromDraft){
+            return(React.DOM.p(null, React.DOM.i(null, "Published from draft")));
+        }
+        return null;
+    },
+
+    renderRestoreInfo: function(){
+           var version = this.props.version;
+        if(!version.restoredFromVersion == ""){
+            return(React.DOM.p(null, React.DOM.i(null, "Restored from version: ", React.DOM.b(null, version.restoredFromVersion)), " " ));
+        }
+        return null;
+    },
+
     render: function() {
         var version = this.props.version;
-     //   var style = this.props.question.isShared? {} : {display: "none !important"};
-     //   var localClass = "local";
-     //   if (this.props.question.isShared){
-     //     localClass+= " wide";
-     //   } else if(this.props.question.sharedQuestionDuplicateFrom != null && this.props.isDuplicate){
-     //     localClass +=" with-notification";
-     //   }
-
+  
         return ( React.DOM.div( {className:"version-row"}, 
                         React.DOM.div( {className:"version-cell"}, 
-                          React.DOM.span( {className: version.isCurrent? "version-text current" : "version-text"},  " Version of ", version.modifiedDate, " by ", version.modifiedBy, " ", version.isInitial? "(initial)": "", " " )
+                          React.DOM.span( {className: version.isCurrent? "version-text current" : "version-text"},  " Version of ", version.modifiedDate, " by ", version.modifiedBy, " ", version.isInitial? "(initial)": "", " " ),
+                          React.DOM.br(null),
+                           this.renderDraftInfo(),
+                           this.renderRestoreInfo(),
+                           this.renderDuplicateFromInfo()
                         ),     
                         React.DOM.div( {className:"version-cell menu"}, 
                          this.renderMenu()
