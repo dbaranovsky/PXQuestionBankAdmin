@@ -282,7 +282,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         private IEnumerable<Bfw.Agilix.DataContracts.Question> GetAgilixQuestions(string repositoryCourseId,
             IEnumerable<string> questionIds)
         {
-            if (!questionIds.Any())
+            if (!questionIds.Any(q => !string.IsNullOrEmpty(q)))
             {
                 return new List<Bfw.Agilix.DataContracts.Question>();
             }

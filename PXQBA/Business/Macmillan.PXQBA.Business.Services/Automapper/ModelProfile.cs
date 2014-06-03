@@ -168,15 +168,19 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             {
                 var productCourseId = (string) context.Options.Items.First().Value;
                 var question = (Question) context.SourceValue;
-                model.Id = question.Id;
-                var section = question.ProductCourseSections.FirstOrDefault(s => s.ProductCourseId == productCourseId);
-                if (section == null)
+                if (question != null)
                 {
-                    section = question.DefaultSection;
+                    model.Id = question.Id;
+                    var section =
+                        question.ProductCourseSections.FirstOrDefault(s => s.ProductCourseId == productCourseId);
+                    if (section == null)
+                    {
+                        section = question.DefaultSection;
+                    }
+                    model.Bank = section.Bank;
+                    model.Chapter = section.Chapter;
+                    model.Title = section.Title;
                 }
-                model.Bank = section.Bank;
-                model.Chapter = section.Chapter;
-                model.Title = section.Title;
             }
             return model;
         }
