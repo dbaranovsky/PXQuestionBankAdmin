@@ -35,6 +35,7 @@ namespace Macmillan.PXQBA.Business.Models
                 Chapter,
                 ProductCourse,
                 Sequence,
+                ParentProductCourseId,
                 QuestionIdDuplicateFromShared,
                 DraftFrom
             };
