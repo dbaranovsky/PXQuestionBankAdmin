@@ -6,7 +6,7 @@ var VersionHistory = React.createClass({displayName: 'VersionHistory',
    
     
     getInitialState: function(){
-        return {loading: true, versionHistory: null};
+        return {loading: true, versionHistory: null, showPreview: false};
     },
 
     componentDidMount: function(){
@@ -19,7 +19,6 @@ var VersionHistory = React.createClass({displayName: 'VersionHistory',
     },
 
     renderRows: function(){
-         
         
     if (this.state.loading){
         return ( React.DOM.div( {className:"waiting"} ));
@@ -29,14 +28,53 @@ var VersionHistory = React.createClass({displayName: 'VersionHistory',
             return( React.DOM.p(null,  " No version availible for this question. " ));
     }
 
+    var self= this;
 
      var vesrions = this.state.versionHistory.versions.map(function (version) {
-            return (VersionHistoryRow( {version:version}));
+            return (VersionHistoryRow( {version:version, renderPreview:self.renderPreview.bind(this, version.questionPreview)}));
           });
 
         return vesrions;
 
     },
+
+      closePreviewDialog: function(){
+         $('.modal-backdrop').first().remove(); 
+         this.setState({showPreview: false});
+     },
+
+
+
+     renderPreviewDialog: function(htmlPreview){
+        
+      if (this.state.showPreview){
+       
+        var self = this;
+        var renderHeaderText = function() {
+            return ("Preview");
+        };
+        
+        var renderBody = function(){
+            return ("");
+        };
+  
+        return (ModalDialog( {renderHeaderText:renderHeaderText, 
+                             renderBody:renderBody, 
+                             dialogId:"versionPreview",
+                             closeDialogHandler:  this.closePreviewDialog,
+                             showOnCreate:  true,
+                             preventDefaultClose: true,
+                             setInnerHtml:true,
+                             innerHtml:this.state.htmlPreview})
+                );
+      }
+
+      return null;
+     },
+
+     renderPreview: function(htmlPreview){
+        this.setState({showPreview: true, htmlPreview: htmlPreview});
+     },
 
     render: function() {
         // var style = this.props.question.isShared? {} : {display: "none !important"};
@@ -49,7 +87,7 @@ var VersionHistory = React.createClass({displayName: 'VersionHistory',
       
 
         return ( React.DOM.div( {className:"versions"}, 
-                                         
+                          this.renderPreviewDialog(),
                           this.renderRows()                         
                  )
 
@@ -63,18 +101,14 @@ var VersionHistory = React.createClass({displayName: 'VersionHistory',
 
 var VersionHistoryRow = React.createClass({displayName: 'VersionHistoryRow',
    
-    renderRows: function(){
-         
-     // return rows;
-    },
 
     renderMenu: function(){
       return(React.DOM.div( {className:"menu-container-main version-history"}, 
                 React.DOM.button( {type:"button", className:"btn btn-default btn-sm", 'data-toggle':"tooltip",  title:"Try Question"}, React.DOM.span( {className:"glyphicon glyphicon-play"}), " " ),
-                React.DOM.button( {type:"button", className:"btn btn-default btn-sm", 'data-toggle':"tooltip", title:"Preview Question"}, React.DOM.span( {className:"glyphicon glyphicon-search"})),
-                React.DOM.button( {type:"button", className:"btn btn-default btn-sm",  'data-toggle':"tooltip", title:"New Question from this Version"}, React.DOM.span( {className:"glyphicon glyphicon-file"}), " " ), 
-                React.DOM.button( {type:"button", className:"btn btn-default btn-sm ",  'data-toggle':"tooltip", title:"New Draft from this Version"}, React.DOM.span( {className:"glyphicon glyphicon-pencil"} )), 
-                React.DOM.button( {type:"button", className:"btn btn-default btn-sm ",  'data-toggle':"tooltip", title:"Restore this Version"}, React.DOM.span( {className:"glyphicon glyphicon-repeat"} )) 
+                React.DOM.button( {type:"button", className:"btn btn-default btn-sm", 'data-toggle':"tooltip", title:"Preview Question", onClick:this.props.renderPreview}, React.DOM.span( {className:"glyphicon glyphicon-search"})),
+                React.DOM.button( {type:"button", className:"btn btn-default btn-sm", 'data-toggle':"tooltip", title:"New Question from this Version"}, React.DOM.span( {className:"glyphicon glyphicon-file"}), " " ), 
+                React.DOM.button( {type:"button", className:"btn btn-default btn-sm", 'data-toggle':"tooltip", title:"New Draft from this Version"}, React.DOM.span( {className:"glyphicon glyphicon-pencil"} )), 
+                React.DOM.button( {type:"button", className:"btn btn-default btn-sm", 'data-toggle':"tooltip", title:"Restore this Version"}, React.DOM.span( {className:"glyphicon glyphicon-repeat"} )) 
                ));
      
 

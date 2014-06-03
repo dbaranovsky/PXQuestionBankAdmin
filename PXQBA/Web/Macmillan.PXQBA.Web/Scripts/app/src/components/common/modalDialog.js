@@ -17,6 +17,10 @@ var ModalDialog = React.createClass({
         if (this.props.showOnCreate){
             $(this.getDOMNode()).modal('show');
         }
+
+        if(this.props.setInnerHtml){
+            $(this.getDOMNode()).find(".modal-body").html(this.props.innerHtml);
+        }
     },
 
     closeDialog: function(){
@@ -37,7 +41,7 @@ var ModalDialog = React.createClass({
                             <h4 className="modal-title" id="myModalLabel">{this.props.renderHeaderText()}</h4>
                         </div>
                         <div className="modal-body" >
-                            {this.props.renderBody()}
+                            {this.props.setInnerHtml? "" :this.props.renderBody()}
                         </div>
                        
                       {(this.props.renderFooterButtons !== undefined) ? this.props.renderFooterButtons() :""}
