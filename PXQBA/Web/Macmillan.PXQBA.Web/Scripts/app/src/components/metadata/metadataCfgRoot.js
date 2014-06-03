@@ -30,15 +30,30 @@ var MetadataCfgRoot = React.createClass({
    // Handlers
 
    addMetadataFieldFieldHandler: function() {
-        alert('add!');
+        var viewModel = $.extend(true, {}, this.state.metadataConfigViewModelDirty);
+        viewModel.fields.push({fieldType:0});
+        this.setState({
+                        metadataConfigViewModelDirty: viewModel,
+                        dirty: true
+                        });
    },
 
    deleteMetadataFieldHandler: function(index) {
-        alert('delete!');
+        var viewModel = $.extend(true, {}, this.state.metadataConfigViewModelDirty);
+        viewModel.fields.splice(index, 1);
+        this.setState({
+                        metadataConfigViewModelDirty: viewModel,
+                        dirty: true
+                        });
    },
 
-   updateMetadataFieldHandler: function() {
-        alert('update!');
+   updateMetadataFieldHandler: function(index, fieldName, value) {
+        var viewModel = $.extend(true, {}, this.state.metadataConfigViewModelDirty);
+        viewModel.fields[index][fieldName] = value;
+        this.setState({
+                        metadataConfigViewModelDirty: viewModel,
+                        dirty: true
+        });
    },
 
    selectCourseHandler: function(items) {
@@ -112,6 +127,7 @@ var MetadataCfgRoot = React.createClass({
                       deleteHandler: this.deleteMetadataFieldHandler,
                       updateHandler: this.updateMetadataFieldHandler
                     }}
+                  availableFieldTypes={this.state.metadataConfigViewModelDirty.availableFieldTypes}
                   />);
       }
       return null;

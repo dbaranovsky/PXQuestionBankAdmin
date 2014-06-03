@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Macmillan.PXQBA.Business.Models;
+﻿using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Web.ViewModels;
 using Macmillan.PXQBA.Web.ViewModels.Editor;
 using Macmillan.PXQBA.Web.ViewModels.Filter;
 
-namespace Macmillan.PXQBA.Common.Helpers
+namespace Macmillan.PXQBA.Web.Helpers
 {
      public static class MetadataFieldsHelper
     {

@@ -96,11 +96,9 @@
     <Compile Include="Constants\ConfigurationKeys.cs" />
     <Compile Include="EnumHelper.cs" />
     <Compile Include="HtmlXmlHelper.cs" />
-    <Compile Include="MetadataFieldsHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionPreviewHelper.cs" />
     <Compile Include="QuestionTypeHelper.cs" />
-    <Compile Include="SerachCommandXmlParserHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Models\Macmillan.PXQBA.Business.Models.csproj">
@@ -114,10 +112,6 @@
     <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap\Bfw.Agilix.Dlap.csproj">
       <Project>{F5A60C36-AA1F-4849-A9E7-465F7963DF9F}</Project>
       <Name>Bfw.Agilix.Dlap</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Web\Macmillan.PXQBA.Web.ViewModels\Macmillan.PXQBA.Web.ViewModels.csproj">
-      <Project>{718F7559-6447-4674-AFA4-61A46A1732CB}</Project>
-      <Name>Macmillan.PXQBA.Web.ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -6,9 +6,14 @@ var MetadataMetaEditorTab = React.createClass({displayName: 'MetadataMetaEditorT
 
 	renderFields: function() {
 		var fields = [];
-
 		for(var i=0; i<this.props.data.fields.length; i++) {
-			fields.push(TitleSpecificMetadataField( {data:this.props.data.fields[i], index:i}));
+			fields.push(TitleSpecificMetadataField( 
+						 {data:this.props.data.fields[i], 
+						 index:i,
+						 availableFieldTypes:this.props.availableFieldTypes,
+						 deleteHandler:this.props.metadataFieldsHandlers.deleteHandler,
+						 updateHandler:this.props.metadataFieldsHandlers.updateHandler}
+						 ));
 		}
 		return fields;
 	},
@@ -28,8 +33,9 @@ var MetadataMetaEditorTab = React.createClass({displayName: 'MetadataMetaEditorT
                			 		React.DOM.th(null,  " " )
                			 	)
                			),
-
+               		React.DOM.tbody(null, 
                			this.renderFields()
+               		)
                		)
                ),
                React.DOM.div(null, 
