@@ -138,7 +138,8 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<Question, QuestionVersionViewModel>()
                 .ForMember(dest => dest.Version, opt => opt.MapFrom(src => src.Version.ToString()))
                 .ForMember(dest => dest.ModifiedBy, opt => opt.MapFrom(src => modelProfileService.GetModifierName(src.ModifiedBy)))
-                .ForMember(dest => dest.DuplicateFrom, opt => opt.MapFrom(src => modelProfileService.GetDuplicateFromQuestion(src.EntityId, src.DuplicateFrom)));
+                .ForMember(dest => dest.DuplicateFrom, opt => opt.MapFrom(src => modelProfileService.GetDuplicateFromQuestion(src.EntityId, src.DuplicateFrom)))
+                .ForMember(dest => dest.QuestionPreview, opt => opt.MapFrom(src => src.Preview)); 
 
             Mapper.CreateMap<Question, DuplicateFromViewModel>().ConvertUsing(new QuestionToDuplicateFromConverter());
         }
