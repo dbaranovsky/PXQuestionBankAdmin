@@ -5,6 +5,7 @@ using System.Text;
 using System.Web.Mvc;
 using AutoMapper;
 using Macmillan.PXQBA.Business.Contracts;
+using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Web.ViewModels.MetadataConfig;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -61,13 +62,13 @@ namespace Macmillan.PXQBA.Web.Controllers
                                         {
                                             FieldName = "FieldName",
                                             InternalName = "internalName",
-                                            FieldType = "FieldType"
+                                            FieldType = MetadataFieldType.Text
                                         },
                                         new TitleSpecificMetadataField()
                                         {
                                             FieldName = "Field Name 2",
                                             InternalName = "internalName2",
-                                            FieldType = "Field Type"
+                                            FieldType = MetadataFieldType.Keywords
                                         }
                                     };
 

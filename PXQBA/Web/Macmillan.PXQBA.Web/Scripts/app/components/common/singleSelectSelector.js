@@ -36,6 +36,7 @@ var SingleSelectSelector = React.createClass({displayName: 'SingleSelectSelector
     $(selector).find('option:not([data-reactid])').remove();
     $(selector).trigger('chosen:updated');
     $(selector).val(this.props.currentValues);
+    $(selector).trigger('chosen:updated');
   },
 
   componentDidMount: function(){
@@ -47,6 +48,7 @@ var SingleSelectSelector = React.createClass({displayName: 'SingleSelectSelector
                          .change(function(e, params){
                            self.changeHandler(e.currentTarget.selectedOptions);
                          });
+    $(selector).trigger('chosen:updated');
   },
 
 
