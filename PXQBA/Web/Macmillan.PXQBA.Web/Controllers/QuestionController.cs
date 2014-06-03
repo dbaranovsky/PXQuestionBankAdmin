@@ -133,49 +133,6 @@ namespace Macmillan.PXQBA.Web.Controllers
             return questionViewModel;
         }
 
-        //private QuestionHistoryViewModel GetHardCodedVersions()
-        //{
-        //    return new QuestionHistoryViewModel
-        //           {
-
-        //               Versions = new List<QuestionVersionViewModel>()
-        //                          {
-        //                              new QuestionVersionViewModel()
-        //                              {
-        //                                  IsCurrent = true,
-        //                                  IsInitial = false,
-        //                                  ModifiedBy = "John Smith",
-        //                                  ModifiedDate = DateTime.Now.ToShortDateString()
-
-        //                              },
-
-        //                              new QuestionVersionViewModel()
-        //                              {
-        //                                  IsCurrent = false,
-        //                                  IsInitial = false,
-        //                                  ModifiedBy = "John Smith",
-        //                                  ModifiedDate = DateTime.Now.AddDays(-1).ToShortDateString()
-        //                              },
-
-        //                              new QuestionVersionViewModel()
-        //                              {
-        //                                  IsCurrent = false,
-        //                                  IsInitial = false,
-        //                                  ModifiedBy = "John Smith",
-        //                                  ModifiedDate = DateTime.Now.AddDays(-2).ToShortDateString()
-
-        //                              },
-
-        //                              new QuestionVersionViewModel()
-        //                              {
-        //                                  IsCurrent = false,
-        //                                  IsInitial = true,
-        //                                  ModifiedBy = "John Smith",
-        //                                  ModifiedDate = DateTime.Now.AddDays(-3).ToShortDateString()
-        //                              }
-        //                          }
-        //           };
-        //}
 
         /// <summary>
         /// Remove shared questions from current title 
@@ -205,14 +162,12 @@ namespace Macmillan.PXQBA.Web.Controllers
 
 
         /// <summary>
-        /// Returns question's vesrion history by question id
+        /// Returns current question's vesrion history 
         /// </summary>
-        /// <param name="questionId"></param>
         /// <returns></returns>
-        public ActionResult GetQuestionVersions(string questionId)
+        public ActionResult GetQuestionVersions()
         {
-            questionId = "2fb7bdf9-668f-4caf-8754-a484c3ba0f53";
-            var versionHistory = Mapper.Map<QuestionHistoryViewModel>(questionManagementService.GetVersionHistory(CourseHelper.CurrentCourse, questionId), opt => opt.Items.Add(CourseHelper.CurrentCourse.ProductCourseId, CourseHelper.CurrentCourse.ProductCourseId));
+            var versionHistory = Mapper.Map<QuestionHistoryViewModel>(questionManagementService.GetVersionHistory(CourseHelper.CurrentCourse, QuestionHelper.QuestionIdToEdit), opt => opt.Items.Add(CourseHelper.CurrentCourse.ProductCourseId, CourseHelper.CurrentCourse.ProductCourseId));
             return JsonCamel(versionHistory);
         }
 	}

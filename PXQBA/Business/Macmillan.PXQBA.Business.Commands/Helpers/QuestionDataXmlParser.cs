@@ -101,12 +101,24 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
 
         public static QuestionMetadataSection GetDefaultSectionValues(Dictionary<string, XElement> metadataElements)
         {
+
+            if (metadataElements == null || !metadataElements.ContainsKey(ElStrings.ProductCourseDefaults.ToString()))
+            {
+                return new QuestionMetadataSection();
+            }
             var defaultsSection = metadataElements[ElStrings.ProductCourseDefaults.ToString()].Elements();
             return GetSectionValues(defaultsSection);
         }
 
         public static List<QuestionMetadataSection> GetProductCourseSectionValues(Dictionary<string, XElement> metadataElements)
         {
+            if (metadataElements == null)
+            {
+                return new List<QuestionMetadataSection>()
+                       {
+                           new QuestionMetadataSection()
+                       };
+            }
             var productCourseSections = metadataElements.Where(elem => elem.Key.Contains(ElStrings.ProductCourseSection.ToString()));
             return productCourseSections.Select(productCourseSection => GetSectionValues(productCourseSection.Value.Elements())).ToList();
         }
@@ -174,7 +186,7 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
 
         public static string GetMetadataField(Dictionary<string, XElement> questionElements, string metadataFieldName)
         {
-            if (questionElements.ContainsKey(metadataFieldName))
+            if (questionElements!= null && questionElements.ContainsKey(metadataFieldName))
             {
                 return questionElements[metadataFieldName].Value;
             }
