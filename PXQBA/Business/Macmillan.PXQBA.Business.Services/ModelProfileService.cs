@@ -121,9 +121,7 @@ namespace Macmillan.PXQBA.Business.Services
                 currentCourseId = course.ProductCourseId;
             }
             var productCourses = GetTitleNames(question.ProductCourseSections.Where(p => p.ProductCourseId != currentCourseId).Select(p => p.ProductCourseId));
-            //TODO: QBA-202
-            Random rnd = new Random();
-            metadata.Data.Add(MetadataFieldNames.DraftFrom, rnd.Next(0, 3) == 0 ? "draft" : "");
+            metadata.Data.Add(MetadataFieldNames.DraftFrom, question.DraftFrom);
 
             metadata.Data.Add(MetadataFieldNames.SharedWith, string.Join("<br>", productCourses));
 
@@ -240,6 +238,31 @@ namespace Macmillan.PXQBA.Business.Services
         public string GetDraftFrom(Bfw.Agilix.DataContracts.Question question)
         {
             return QuestionDataXmlParser.GetMetadataField(question.MetadataElements, MetadataFieldNames.DraftFrom);
+        }
+
+        public string GetRestoredFromVersion(Bfw.Agilix.DataContracts.Question question)
+        {
+            return QuestionDataXmlParser.GetMetadataField(question.MetadataElements, MetadataFieldNames.RestoredFromVersion);
+        }
+
+        public bool GetPublishedFromDraft(Bfw.Agilix.DataContracts.Question question)
+        {
+            var isPublishedFromDraft = QuestionDataXmlParser.GetMetadataField(question.MetadataElements, MetadataFieldNames.IsPublishedFromDraft);
+            bool result;
+            bool.TryParse(isPublishedFromDraft, out result);
+            return result;
+        }
+
+        public string GetModifiedBy(Bfw.Agilix.DataContracts.Question question)
+        {
+            return QuestionDataXmlParser.GetMetadataField(question.MetadataElements, MetadataFieldNames.ModifiedBy);
+        }
+
+        public int GetNumericVersion(string questionVersion)
+        {
+            var version = 0;
+            int.TryParse(questionVersion, out version);
+            return version;
         }
     }
 }

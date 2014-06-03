@@ -14,5 +14,9 @@ namespace Macmillan.PXQBA.Web.ViewModels.Versions
         public string ModifiedBy { get; set; }
 
         public DuplicateFromViewModel DuplicateFrom { get; set; }
+
+        public string RestoredFromVersion { get; set; }
+
+        public bool IsPublishedFromDraft { get; set; }
     }
 }

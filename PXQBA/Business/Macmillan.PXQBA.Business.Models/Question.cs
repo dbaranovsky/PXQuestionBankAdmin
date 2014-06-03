@@ -86,7 +86,7 @@ namespace Macmillan.PXQBA.Business.Models
 
         public string DraftFrom { get; set; }
 
-        public string Version { get; set; }
+        public int Version { get; set; }
 
         public DateTime ModifiedDate { get; set; }
 
@@ -95,5 +95,9 @@ namespace Macmillan.PXQBA.Business.Models
         public string DuplicateFrom { get; set; }
 
         public string DuplicateFromShared { get; set; }
+
+        public string RestoredFromVersion { get; set; }
+
+        public bool IsPublishedFromDraft { get; set; }
     }
 }

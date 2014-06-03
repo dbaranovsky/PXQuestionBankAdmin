@@ -152,6 +152,9 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
             elements.Add(MetadataFieldNames.DuplicateFromShared, new XElement(MetadataFieldNames.DuplicateFromShared, question.DuplicateFromShared));
             elements.Add(MetadataFieldNames.DuplicateFrom, new XElement(MetadataFieldNames.DuplicateFrom, question.DuplicateFrom));
             elements.Add(MetadataFieldNames.DraftFrom, new XElement(MetadataFieldNames.DraftFrom, question.DraftFrom));
+            elements.Add(MetadataFieldNames.RestoredFromVersion, new XElement(MetadataFieldNames.RestoredFromVersion, question.RestoredFromVersion));
+            elements.Add(MetadataFieldNames.IsPublishedFromDraft, new XElement(MetadataFieldNames.IsPublishedFromDraft, question.IsPublishedFromDraft));
+            elements.Add(MetadataFieldNames.ModifiedBy, new XElement(MetadataFieldNames.ModifiedBy, question.ModifiedBy));
             foreach (var productCourseSection in question.ProductCourseSections)
             {
                 var productCourseSectionName = string.Format("{0}{1}", ElStrings.ProductCourseSection, productCourseSection.ProductCourseId);

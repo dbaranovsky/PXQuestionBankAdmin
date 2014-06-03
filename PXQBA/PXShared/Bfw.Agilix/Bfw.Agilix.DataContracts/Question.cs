@@ -233,11 +233,6 @@ namespace Bfw.Agilix.DataContracts
         public Dictionary<string, XElement> MetadataElements { get; set; } 
        
         /// <summary>
-        /// User the question was modified by
-        /// </summary>
-        public string ModifiedBy { get; set; }
-
-        /// <summary>
         /// Date the question was modified
         /// </summary>
         public DateTime ModifiedDate { get; set; }
@@ -278,12 +273,6 @@ namespace Bfw.Agilix.DataContracts
             if (modifiedDate != null && DateTime.TryParse(modifiedDate.Value, out modifiedDateParsed))
             {
                 ModifiedDate = modifiedDateParsed;
-            }
-
-            var modifiedBy = element.Attribute(ElStrings.ModifiedBy);
-            if (modifiedBy != null)
-            {
-                ModifiedBy = modifiedBy.Value;
             }
 
             var feedback = element.Element(ElStrings.feedback);

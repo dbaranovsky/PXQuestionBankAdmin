@@ -21,11 +21,14 @@ namespace Macmillan.PXQBA.Business.Models
         public const string LearningObjectives = "learningobjectives";
         public const string SharedWith = "sharedWith";
         public const string DuplicateFromShared = "duplicatefromshared";
+        public const string RestoredFromVersion = "restoredfromversion";
+        public const string IsPublishedFromDraft = "ispublishedfromdraft";
         public const string DuplicateFrom = "duplicatefrom";
         public const string ProductCourse = "productcourseid";
         public const string Flag = "flag";
         public const string DraftFrom = "draftfrom";
         public const string ParentProductCourseId = "parentProductCourseId";
+        public const string ModifiedBy = "modifiedby";
 
         public static IEnumerable<string> GetStaticFieldNames()
         {

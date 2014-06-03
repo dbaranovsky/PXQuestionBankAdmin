@@ -64,11 +64,14 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dto => dto.Status, opt => opt.MapFrom(q => q.QuestionStatus))
                 .ForMember(dto => dto.DefaultSection, opt => opt.MapFrom(q => modelProfileService.GetQuestionDefaultValues(q)))
                 .ForMember(dto => dto.ProductCourseSections, opt => opt.MapFrom(q => modelProfileService.GetProductCourseSections(q)))
-                .ForMember(dto => dto.Version, opt => opt.MapFrom(q => q.QuestionVersion))
+                .ForMember(dto => dto.Version, opt => opt.MapFrom(q => modelProfileService.GetNumericVersion(q.QuestionVersion)))
                 .ForMember(dto => dto.Preview, opt => opt.MapFrom(q => CustomQuestionHelper.GetQuestionHtmlPreview(q)))
+                .ForMember(dto => dto.ModifiedBy, opt => opt.MapFrom(q => modelProfileService.GetModifiedBy(q)))
                 .ForMember(dto => dto.DuplicateFromShared, opt => opt.MapFrom(q => modelProfileService.GetDuplicateFromShared(q)))
                 .ForMember(dto => dto.DuplicateFrom, opt => opt.MapFrom(q => modelProfileService.GetDuplicateFrom(q)))
-                .ForMember(dto => dto.DraftFrom, opt => opt.MapFrom(q => modelProfileService.GetDraftFrom(q)));
+                .ForMember(dto => dto.DraftFrom, opt => opt.MapFrom(q => modelProfileService.GetDraftFrom(q)))
+                .ForMember(dto => dto.RestoredFromVersion, opt => opt.MapFrom(q => modelProfileService.GetRestoredFromVersion(q)))
+                .ForMember(dto => dto.IsPublishedFromDraft, opt => opt.MapFrom(q => modelProfileService.GetPublishedFromDraft(q)));
 
             Mapper.CreateMap<Bfw.Agilix.DataContracts.QuestionChoice, QuestionChoice>();
 
@@ -82,7 +85,8 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                .ForMember(dto => dto.Choices, opt => opt.Condition(cont => cont.DestinationValue == null))
                .ForMember(dto => dto.InteractionData, opt => opt.Condition(q => q.CustomUrl == QuestionTypeHelper.GraphType))
                .ForMember(dto => dto.InteractionType, opt =>opt.Condition(cont => cont.DestinationValue == null))
-               .ForMember(dto => dto.CustomUrl, opt =>opt.Condition(cont => cont.DestinationValue == null));
+               .ForMember(dto => dto.CustomUrl, opt =>opt.Condition(cont => cont.DestinationValue == null))
+               .ForMember(dto => dto.ModifiedDate, opt =>opt.Ignore());
 
             Mapper.CreateMap<QuestionChoice, Bfw.Agilix.DataContracts.QuestionChoice>();
 
@@ -132,6 +136,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.Versions, opt => opt.MapFrom(src =>src));
 
             Mapper.CreateMap<Question, QuestionVersionViewModel>()
+                .ForMember(dest => dest.Version, opt => opt.MapFrom(src => src.Version.ToString()))
                 .ForMember(dest => dest.ModifiedBy, opt => opt.MapFrom(src => modelProfileService.GetModifierName(src.ModifiedBy)))
                 .ForMember(dest => dest.DuplicateFrom, opt => opt.MapFrom(src => modelProfileService.GetDuplicateFromQuestion(src.EntityId, src.DuplicateFrom)));
 
