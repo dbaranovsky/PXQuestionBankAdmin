@@ -20,7 +20,8 @@ namespace Macmillan.PXQBA.Business.Models
         public const string Guidance = "guidance";
         public const string LearningObjectives = "learningobjectives";
         public const string SharedWith = "sharedWith";
-        public const string QuestionIdDuplicateFromShared = "questionIdDuplicateFromShared";
+        public const string DuplicateFromShared = "duplicatefromshared";
+        public const string DuplicateFrom = "duplicatefrom";
         public const string ProductCourse = "productcourseid";
         public const string Flag = "flag";
         public const string DraftFrom = "draftfrom";
@@ -35,9 +36,7 @@ namespace Macmillan.PXQBA.Business.Models
                 Chapter,
                 ProductCourse,
                 Sequence,
-                ParentProductCourseId,
-                QuestionIdDuplicateFromShared,
-                DraftFrom
+                ParentProductCourseId
             };
         }
     }

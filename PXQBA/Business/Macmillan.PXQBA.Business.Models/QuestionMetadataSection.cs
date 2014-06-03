@@ -4,8 +4,6 @@ namespace Macmillan.PXQBA.Business.Models
 {
     public class QuestionMetadataSection
     {
-
-       
         public string ProductCourseId { get; set; }
 
         public string Title { get; set; }
@@ -33,10 +31,6 @@ namespace Macmillan.PXQBA.Business.Models
             }
         }
 
-        public string QuestionIdDuplicateFromShared { get; set; }
-
         public string ParentProductCourseId { get; set; }
-
-        public string DraftFromQuestionId { get; set; }
     }
 }

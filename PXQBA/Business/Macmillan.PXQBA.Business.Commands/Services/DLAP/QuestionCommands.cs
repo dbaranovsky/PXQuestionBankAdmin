@@ -586,5 +586,31 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
         }
 
+        public IEnumerable<Question> GetVersionHistory(string questionRepositoryCourseId, string questionId)
+        {
+            var versions = Mapper.Map<IEnumerable<Question>>(GetAgilixQuestionsAsAdmin(questionRepositoryCourseId, new List<string>() { questionId }, true));
+            return versions;
+        }
+
+        private IEnumerable<Bfw.Agilix.DataContracts.Question> GetAgilixQuestionsAsAdmin(string repositoryCourseId,
+            IEnumerable<string> questionIds, bool allVersions = false)
+        {
+            if (!questionIds.Any())
+            {
+                return new List<Bfw.Agilix.DataContracts.Question>();
+            }
+            var cmd = new GetQuestionsAdmin()
+            {
+                SearchParameters = new QuestionAdminSearch()
+                {
+                    EntityId = repositoryCourseId,
+                    QuestionIds = questionIds,
+                    version = allVersions
+                }
+            };
+
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+            return cmd.Questions;
+        }
     }
 }

@@ -96,8 +96,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
             try
             {
-                questionManagementService.UpdateQuestion(CourseHelper.CurrentCourse, QuestionHelper.QuestionIdToEdit,
-                    question);
+                questionManagementService.UpdateQuestion(CourseHelper.CurrentCourse, QuestionHelper.QuestionIdToEdit, question);
             }
             catch (Exception ex)
             {
@@ -134,49 +133,49 @@ namespace Macmillan.PXQBA.Web.Controllers
             return questionViewModel;
         }
 
-        private QuestionHistoryViewModel GetHardCodedVersions()
-        {
-            return new QuestionHistoryViewModel
-                   {
+        //private QuestionHistoryViewModel GetHardCodedVersions()
+        //{
+        //    return new QuestionHistoryViewModel
+        //           {
 
-                       Versions = new List<QuestionVersionViewModel>()
-                                  {
-                                      new QuestionVersionViewModel()
-                                      {
-                                          IsCurrent = true,
-                                          IsInitial = false,
-                                          ModifiedBy = "John Smith",
-                                          ModifiedDate = DateTime.Now.ToShortDateString()
+        //               Versions = new List<QuestionVersionViewModel>()
+        //                          {
+        //                              new QuestionVersionViewModel()
+        //                              {
+        //                                  IsCurrent = true,
+        //                                  IsInitial = false,
+        //                                  ModifiedBy = "John Smith",
+        //                                  ModifiedDate = DateTime.Now.ToShortDateString()
 
-                                      },
+        //                              },
 
-                                      new QuestionVersionViewModel()
-                                      {
-                                          IsCurrent = false,
-                                          IsInitial = false,
-                                          ModifiedBy = "John Smith",
-                                          ModifiedDate = DateTime.Now.AddDays(-1).ToShortDateString()
-                                      },
+        //                              new QuestionVersionViewModel()
+        //                              {
+        //                                  IsCurrent = false,
+        //                                  IsInitial = false,
+        //                                  ModifiedBy = "John Smith",
+        //                                  ModifiedDate = DateTime.Now.AddDays(-1).ToShortDateString()
+        //                              },
 
-                                      new QuestionVersionViewModel()
-                                      {
-                                          IsCurrent = false,
-                                          IsInitial = false,
-                                          ModifiedBy = "John Smith",
-                                          ModifiedDate = DateTime.Now.AddDays(-2).ToShortDateString()
+        //                              new QuestionVersionViewModel()
+        //                              {
+        //                                  IsCurrent = false,
+        //                                  IsInitial = false,
+        //                                  ModifiedBy = "John Smith",
+        //                                  ModifiedDate = DateTime.Now.AddDays(-2).ToShortDateString()
 
-                                      },
+        //                              },
 
-                                      new QuestionVersionViewModel()
-                                      {
-                                          IsCurrent = false,
-                                          IsInitial = true,
-                                          ModifiedBy = "John Smith",
-                                          ModifiedDate = DateTime.Now.AddDays(-3).ToShortDateString()
-                                      }
-                                  }
-                   };
-        }
+        //                              new QuestionVersionViewModel()
+        //                              {
+        //                                  IsCurrent = false,
+        //                                  IsInitial = true,
+        //                                  ModifiedBy = "John Smith",
+        //                                  ModifiedDate = DateTime.Now.AddDays(-3).ToShortDateString()
+        //                              }
+        //                          }
+        //           };
+        //}
 
         /// <summary>
         /// Remove shared questions from current title 
@@ -212,10 +211,10 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// <returns></returns>
         public ActionResult GetQuestionVersions(string questionId)
         {
-            return JsonCamel(GetHardCodedVersions());
+            questionId = "2fb7bdf9-668f-4caf-8754-a484c3ba0f53";
+            var versionHistory = Mapper.Map<QuestionHistoryViewModel>(questionManagementService.GetVersionHistory(CourseHelper.CurrentCourse, questionId), opt => opt.Items.Add(CourseHelper.CurrentCourse.ProductCourseId, CourseHelper.CurrentCourse.ProductCourseId));
+            return JsonCamel(versionHistory);
         }
-
-      
 	}
   
 }

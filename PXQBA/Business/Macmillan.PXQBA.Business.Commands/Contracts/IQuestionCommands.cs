@@ -27,5 +27,6 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         bool UpdateQuestions(IEnumerable<Question> questions, string repositoryCourseId);
 
         void ExecuteSolrUpdateTask();
+        IEnumerable<Question> GetVersionHistory(string questionRepositoryCourseId, string questionId);
     }
 }

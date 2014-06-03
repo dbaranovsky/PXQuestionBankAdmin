@@ -34,11 +34,6 @@ namespace Macmillan.PXQBA.Web.ViewModels
 
         public string Preview { get; set; }
       
-        /// <summary>
-        /// Question particular version
-        /// </summary>
-        public string Version { get; set; }
-
         public SharedQuestionDuplicateFromViewModel SharedQuestionDuplicateFrom { get; set; }
         public bool IsShared
         {
@@ -93,7 +88,5 @@ namespace Macmillan.PXQBA.Web.ViewModels
             }
         }
         public bool IsDraft { get; set; }        
-        public IEnumerable<QuestionVersionViewModel> Versions { get; set; } 
-
     }
 }

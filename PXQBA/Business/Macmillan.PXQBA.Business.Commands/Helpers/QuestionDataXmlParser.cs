@@ -119,9 +119,7 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
             sectionValues.Bank = GetXElementValue(sectionElements, MetadataFieldNames.Bank);
             sectionValues.Chapter = GetXElementValue(sectionElements, MetadataFieldNames.Chapter);
             sectionValues.Sequence = GetXElementValue(sectionElements, MetadataFieldNames.Sequence);
-            sectionValues.QuestionIdDuplicateFromShared = GetXElementValue(sectionElements, MetadataFieldNames.QuestionIdDuplicateFromShared);
             sectionValues.ParentProductCourseId = GetXElementValue(sectionElements, MetadataFieldNames.ParentProductCourseId);
-            sectionValues.DraftFromQuestionId = GetXElementValue(sectionElements, MetadataFieldNames.DraftFrom);
             sectionValues.DynamicValues = sectionElements.Where(g => !MetadataFieldNames.GetStaticFieldNames().Contains(g.Name.LocalName)).GroupBy(elem => elem.Name.LocalName).ToDictionary(group => group.Key, group => group.Select(elem => elem.Value).ToList());
             return sectionValues;
         }
@@ -139,7 +137,9 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
             defaultsSection.Add(GetXmlElementsFromSection(question.DefaultSection));
            
             elements.Add(ElStrings.ProductCourseDefaults.ToString(), defaultsSection);
-
+            elements.Add(MetadataFieldNames.DuplicateFromShared, new XElement(MetadataFieldNames.DuplicateFromShared, question.DuplicateFromShared));
+            elements.Add(MetadataFieldNames.DuplicateFrom, new XElement(MetadataFieldNames.DuplicateFrom, question.DuplicateFrom));
+            elements.Add(MetadataFieldNames.DraftFrom, new XElement(MetadataFieldNames.DraftFrom, question.DraftFrom));
             foreach (var productCourseSection in question.ProductCourseSections)
             {
                 var productCourseSectionName = string.Format("{0}{1}", ElStrings.ProductCourseSection, productCourseSection.ProductCourseId);
@@ -168,10 +168,17 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
             elements.Add(new XElement(MetadataFieldNames.Bank, section.Bank));
             elements.Add(new XElement(MetadataFieldNames.Chapter, section.Chapter));
             elements.Add(new XElement(MetadataFieldNames.Sequence, section.Sequence));
-            elements.Add(new XElement(MetadataFieldNames.QuestionIdDuplicateFromShared, section.QuestionIdDuplicateFromShared));
             elements.Add(new XElement(MetadataFieldNames.ParentProductCourseId, section.ParentProductCourseId));
-            elements.Add(new XElement(MetadataFieldNames.DraftFrom, section.DraftFromQuestionId));
             return elements;
+        }
+
+        public static string GetMetadataField(Dictionary<string, XElement> questionElements, string metadataFieldName)
+        {
+            if (questionElements.ContainsKey(metadataFieldName))
+            {
+                return questionElements[metadataFieldName].Value;
+            }
+            return string.Empty;
         }
     }
 }

@@ -4,6 +4,7 @@ using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.DataAccess.Data;
 using Macmillan.PXQBA.Web.ViewModels;
 using Macmillan.PXQBA.Web.ViewModels.TiteList;
+using Macmillan.PXQBA.Web.ViewModels.Versions;
 using Course = Macmillan.PXQBA.Business.Models.Course;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
@@ -27,7 +28,12 @@ namespace Macmillan.PXQBA.Business.Contracts
 
         IEnumerable<ChapterViewModel> GetChaptersViewModel(Course course);
         IEnumerable<string> GetTitleNames(IEnumerable<string> titleIds);
-        SharedQuestionDuplicateFromViewModel GetSourceQuestionSharedWith(QuestionMetadataSection section, Course course);
+        SharedQuestionDuplicateFromViewModel GetSourceQuestionSharedFrom(string questionIdDuplicateFrom, Course course);
         QuestionMetadataSection GetDefaultSectionForViewModel(Question question);
+        string GetModifierName(string modifiedByUserId);
+        Question GetDuplicateFromQuestion(string repositoryCourseId, string duplicateFrom);
+        string GetDuplicateFromShared(Bfw.Agilix.DataContracts.Question question);
+        string GetDuplicateFrom(Bfw.Agilix.DataContracts.Question question);
+        string GetDraftFrom(Bfw.Agilix.DataContracts.Question question);
     }
 }
