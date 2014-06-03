@@ -56,6 +56,23 @@ namespace Macmillan.PXQBA.Web.Controllers
                                      Banks = sb2.ToString()
                                  };
 
+            metadataConfig.Fields = new List<TitleSpecificMetadataField>()
+                                    {
+                                        new TitleSpecificMetadataField()
+                                        {
+                                            FieldName = "FieldName",
+                                            InternalName = "internalName",
+                                            FieldType = "FieldType"
+                                        },
+                                        new TitleSpecificMetadataField()
+                                        {
+                                            FieldName = "Field Name 2",
+                                            InternalName = "internalName2",
+                                            FieldType = "Field Type"
+                                        }
+                                    };
+
+
             return JsonCamel(metadataConfig);
         }
 
