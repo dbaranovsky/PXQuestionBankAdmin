@@ -85,7 +85,6 @@ namespace Macmillan.PXQBA.Web.ViewModels
         {
             get
             {
-                return "70295";
                 if (string.IsNullOrEmpty(LocalSection.ParentProductCourseId))
                 {
                     return LocalSection.ProductCourseId;
