@@ -18,5 +18,7 @@ namespace Macmillan.PXQBA.Web.ViewModels.Versions
         public string RestoredFromVersion { get; set; }
 
         public bool IsPublishedFromDraft { get; set; }
+
+        public string QuestionPreview { get; set; }
     }
 }
