@@ -140,7 +140,9 @@ namespace Macmillan.PXQBA.Business.Services
                 ProductCourseId = courseIdToPublish.ToString(),
                 Bank = bank,
                 Chapter = chapter,
-                ParentProductCourseId = currentCourse.ProductCourseId
+                ParentProductCourseId = currentCourse.ProductCourseId,
+                Title = question.DefaultSection.Title,
+                Sequence =  question.DefaultSection.Sequence
             };
             foreach (var defaultValue in question.DefaultSection.DynamicValues)
             {
