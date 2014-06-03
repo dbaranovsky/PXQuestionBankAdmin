@@ -1010,3 +1010,15 @@ a.shared-question-link:hover {
     border-bottom: 1px solid #c0c0c0;
     
 }
+
+#versionPreview .modal-body {
+    max-height: 600px!important;
+    overflow-y: auto;
+    height: auto;
+    overflow-x: hidden;
+
+}
+#versionPreview {
+   overflow-y: hidden; 
+}
+ 

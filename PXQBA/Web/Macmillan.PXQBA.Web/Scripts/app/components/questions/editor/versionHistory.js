@@ -96,8 +96,9 @@ var VersionHistory = React.createClass({displayName: 'VersionHistory',
       
 
         return ( React.DOM.div( {className:"versions"}, 
-                          this.renderPreviewDialog(),
-                          this.renderRows()                         
+                         
+                          this.renderRows(),     
+                          this.renderPreviewDialog()                    
                  )
 
            

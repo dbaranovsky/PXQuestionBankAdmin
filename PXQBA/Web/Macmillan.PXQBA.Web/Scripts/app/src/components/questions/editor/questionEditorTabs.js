@@ -262,6 +262,7 @@ var QuestionEditorTabs = React.createClass({
                        <div className="tab-body">
                           <VersionHistory question={this.props.question}/>
                        </div>
+
                 </div>
                 </div>
                
