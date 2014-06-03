@@ -11,7 +11,7 @@ var VersionHistory = React.createClass({displayName: 'VersionHistory',
 
     componentDidMount: function(){
         var self= this;
-        questionDataManager.getQuestionVersions(this.props.question.id).done(self.setVersions);
+        questionDataManager.getQuestionVersions().done(self.setVersions);
     },
 
     setVersions: function(data){

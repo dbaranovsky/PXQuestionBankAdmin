@@ -315,14 +315,11 @@ var questionDataManager = (function() {
        
     };
 
-    self.getQuestionVersions = function(questionId){
-          var request = {
-            questionId: questionId
-        };
+    self.getQuestionVersions = function(){
+
         return $.ajax({
             url: window.actions.questionList.getQuestionVersionsUrl,
             traditional: true,
-            data: request,
             contentType: 'application/json',
             dataType: 'json',
             type: 'GET'
