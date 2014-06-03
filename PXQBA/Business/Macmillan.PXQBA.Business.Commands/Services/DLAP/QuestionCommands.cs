@@ -595,7 +595,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         private IEnumerable<Bfw.Agilix.DataContracts.Question> GetAgilixQuestionsAsAdmin(string repositoryCourseId,
             IEnumerable<string> questionIds, bool allVersions = false)
         {
-            if (!questionIds.Any())
+            if (!questionIds.Any(q => !string.IsNullOrEmpty(q)))
             {
                 return new List<Bfw.Agilix.DataContracts.Question>();
             }
