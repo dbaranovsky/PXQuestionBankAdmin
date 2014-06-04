@@ -77,6 +77,21 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return courses;
         }
 
+        public Course UpdateCourse(Course course)
+        {
+            var agilixCourse = GetAgilixCourse(course.ProductCourseId);
+            Mapper.Map(course, agilixCourse);
+            ExecuteUpdateCourse(agilixCourse);
+            return course;
+        }
+
+        private void ExecuteUpdateCourse(Bfw.Agilix.DataContracts.Course agilixCourse)
+        {
+            var cmd = new UpdateCourses();
+            cmd.Add(agilixCourse);
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+        }
+
         private IList<Course> GetQuestionBankRepository(IList<Course> courses)
         {
             var results = GetQuestionBankRepositoryCourseFromItems(
@@ -140,16 +155,9 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         public Course GetProductCourse(string productCourseId, bool requiredQuestionBankRepository=false)
         {
-            var cmd = new GetCourse()
-            {
-                SearchParameters = new CourseSearch()
-                {
-                    CourseId = productCourseId
-                }
-            };
-
-            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
-            var course = Mapper.Map<Course>(cmd.Courses.FirstOrDefault());
+            var agilixCourse = GetAgilixCourse(productCourseId);
+           
+            var course = Mapper.Map<Course>(agilixCourse);
 
             if ((String.IsNullOrEmpty(course.QuestionRepositoryCourseId))&&
                 (requiredQuestionBankRepository))
@@ -161,5 +169,18 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return course;
         }
 
+        private Bfw.Agilix.DataContracts.Course GetAgilixCourse(string productCourseId)
+        {
+            var cmd = new GetCourse()
+            {
+                SearchParameters = new CourseSearch()
+                {
+                    CourseId = productCourseId
+                }
+            };
+
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+            return cmd.Courses.FirstOrDefault();
+        }
     }
 }

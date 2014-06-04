@@ -61,7 +61,6 @@
     <Compile Include="..\..\Web\Macmillan.PXQBA.Web\Properties\ProductInfo.cs">
       <Link>Properties\ProductInfo.cs</Link>
     </Compile>
-    <Compile Include="IMetadataConfigManagementService.cs" />
     <Compile Include="IModelProfileService.cs" />
     <Compile Include="INotesManagementService.cs" />
     <Compile Include="IQBA_API_interface.cs" />

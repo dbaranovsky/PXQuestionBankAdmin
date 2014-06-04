@@ -40,11 +40,11 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
 
                     if (xmlField.Attribute("friendlyname") != null)
                     {
-                        field.Friendlyname = xmlField.Attribute("friendlyname").Value;
+                        field.FriendlyName = xmlField.Attribute("friendlyname").Value;
                     }
                     else
                     {
-                        field.Friendlyname = char.ToUpper(xmlField.Name.LocalName[0]) + xmlField.Name.LocalName.Substring(1);
+                        field.FriendlyName = char.ToUpper(xmlField.Name.LocalName[0]) + xmlField.Name.LocalName.Substring(1);
                     }
                     
                     if (xmlField.Attribute("type") != null)
@@ -91,7 +91,7 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
 
             foreach (XElement xmlValue in xmlField.Nodes())
             {
-                CourseMetadataFieldValue fieldValue = new CourseMetadataFieldValue();
+                var fieldValue = new CourseMetadataFieldValue();
 
                 if (xmlValue.Attribute("text") != null)
                 {

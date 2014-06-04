@@ -43,10 +43,22 @@ namespace Bfw.Agilix.DataContracts
         public string SearchTerm { get; protected set; }
 
         /// <summary>
+        /// Field type
+        /// </summary>
+        [DataMember]
+        public string Type { get; protected set; }
+
+        /// <summary>
         /// The core data that represents the assignment
         /// </summary>
         [DataMember]
-        public List<string> QuestionValues { get; set; }
+        public List<QuestionCardDataValue> QuestionValues { get; set; }
+
+        /// <summary>
+        /// Shows if meta field should be hidden
+        /// </summary>
+        [DataMember]
+        public bool Hidden { get; set; }
 
         private string _dataString;
 
@@ -97,7 +109,7 @@ namespace Bfw.Agilix.DataContracts
         public QuestionCardData()
         {
             Data = new XElement("data");
-            QuestionValues = new List<string>();
+            QuestionValues = new List<QuestionCardDataValue>();
         }
 
         #endregion
@@ -116,7 +128,16 @@ namespace Bfw.Agilix.DataContracts
         /// <remarks></remarks>
         public XElement ToEntity()
         {
-            var element = new XElement("course");
+            var element = new XElement(QuestionCardDataName);
+            element.Add(new XAttribute("filterable", Filterable));
+            element.Add(new XAttribute("hidden", Hidden));
+            element.Add(new XAttribute("searchterm", SearchTerm));
+            element.Add(new XAttribute("friendlyname", FriendlyName));
+            element.Add(new XAttribute("type", Type));
+            for(var i=0; i<QuestionValues.Count; i++)
+            {
+                element.Add(QuestionValues[i].ToEntity(i));
+            }
             return element;
         }
 
@@ -130,6 +151,7 @@ namespace Bfw.Agilix.DataContracts
         {
             if (element != null)
             {
+                QuestionCardDataName = element.Name.LocalName;
                 bool outvalue = false;
                 if (element.Attribute("filterable") != null)
                 {
@@ -150,15 +172,29 @@ namespace Bfw.Agilix.DataContracts
 
                 }
 
-
-                var listOfValues = element.Elements("values");
-                if (listOfValues.Elements("value") != null)
+                if (element.Attribute("hidden") != null)
                 {
-                    foreach (XElement questionValues in listOfValues.Elements("value"))
+                    bool.TryParse(element.Attribute("hidden").Value.ToString(), out outvalue);
+                    this.Hidden = outvalue;
+
+                }
+
+                if (element.Attribute("type") != null)
+                {
+                    this.Type = element.Attribute("type").Value;
+                }
+
+                QuestionValues = new List<QuestionCardDataValue>();
+                var listOfValues = element.Elements("value");
+                if (listOfValues.Any())
+                {
+                    foreach (XElement questionValueElement in listOfValues)
                     {
-                        if (questionValues != null)
+                        var questionValue = new QuestionCardDataValue();
+                        if (questionValueElement != null)
                         {
-                            this.QuestionValues.Add(questionValues.Value);
+                            questionValue.ParseEntity(questionValueElement);
+                            QuestionValues.Add(questionValue);
                         }
                     }
                 }
@@ -166,5 +202,46 @@ namespace Bfw.Agilix.DataContracts
         }
 
         #endregion
+    }
+
+    /// <summary>
+    /// Possible value of the question data metafield
+    /// </summary>
+    [DataContract]
+    public class QuestionCardDataValue:IDlapEntityParser
+    {
+        /// <summary>
+        /// Display text of the value
+        /// </summary>
+        [DataMember]
+        public string Text { get; set; }
+
+        /// <summary>
+        /// Sequence of the value
+        /// </summary>
+        [DataMember]
+        public int Sequence { get; set; }
+
+        public XElement ToEntity(int i)
+        {
+            var element = new XElement("value");
+            element.Add(new XAttribute("text", Text));
+            element.Add(new XAttribute("sequence", i));
+            return element;
+        }
+
+        public void ParseEntity(XElement element)
+        {
+            int outvalue;
+            if (element.Attribute("text") != null)
+            {
+                Text = element.Attribute("text").Value;
+            }
+            if (element.Attribute("sequence") != null)
+            {
+                int.TryParse(element.Attribute("sequence").Value, out outvalue);
+                Sequence = outvalue;
+            }
+        }
     }
 }

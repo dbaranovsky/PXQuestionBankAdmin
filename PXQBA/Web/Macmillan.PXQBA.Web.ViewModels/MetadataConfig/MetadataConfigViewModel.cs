@@ -1,6 +1,7 @@
 ﻿using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
 
@@ -11,15 +12,10 @@ namespace Macmillan.PXQBA.Web.ViewModels.MetadataConfig
 
         public MetadataConfigViewModel()
         {
-            AvailableFieldTypes = new List<AvailableChoiceItem>()
-                                  {
-                 new AvailableChoiceItem(((int)MetadataFieldType.Text).ToString(), EnumHelper.GetEnumDescription(MetadataFieldType.Text)),
-                 new AvailableChoiceItem(((int)MetadataFieldType.SingleSelect).ToString(), EnumHelper.GetEnumDescription(MetadataFieldType.SingleSelect)),
-                 new AvailableChoiceItem(((int)MetadataFieldType.MultilineText).ToString(), EnumHelper.GetEnumDescription(MetadataFieldType.MultilineText)),
-                 new AvailableChoiceItem(((int)MetadataFieldType.MultiSelect).ToString(), EnumHelper.GetEnumDescription(MetadataFieldType.MultiSelect)),
-                 new AvailableChoiceItem(((int)MetadataFieldType.Keywords).ToString(), EnumHelper.GetEnumDescription(MetadataFieldType.Keywords)),
-                 new AvailableChoiceItem(((int)MetadataFieldType.ItemLink).ToString(), EnumHelper.GetEnumDescription(MetadataFieldType.ItemLink)),
-                                  };
+            AvailableFieldTypes =
+                EnumHelper.GetEnumValues(typeof (MetadataFieldType))
+                    .Select(p => new AvailableChoiceItem(p.Key, p.Value))
+                    .ToList();
         }
 
         public string CourseId { get; set; }
@@ -28,7 +24,7 @@ namespace Macmillan.PXQBA.Web.ViewModels.MetadataConfig
 
         public string Banks { get; set; }
 
-        public IList<TitleSpecificMetadataField> Fields { get; set; }
+        public IList<ProductCourseSpecificMetadataFieldViewModel> Fields { get; set; }
 
         public IList<AvailableChoiceItem> AvailableFieldTypes { get; set; }
     }
