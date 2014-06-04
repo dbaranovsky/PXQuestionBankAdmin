@@ -20,7 +20,7 @@ var InternalFieldDialog = React.createClass({displayName: 'InternalFieldDialog',
  
         var self = this;
         var renderHeaderText = function() {
-             return "Edit internal field";
+             return "Edit internal name";
         };
       
         var renderBody = function(){
