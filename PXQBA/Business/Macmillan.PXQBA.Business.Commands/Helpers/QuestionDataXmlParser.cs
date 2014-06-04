@@ -96,6 +96,13 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
                     questionSearchResult.SortingField = string.Join(", ", sortingElement.Value);
                 }
             }
+            var draftFrom = resultDoc.Elements()
+                .FirstOrDefault(
+                    elem => elem.Attribute("name").Value == MetadataFieldNames.DraftFrom);
+            if (draftFrom != null)
+            {
+                questionSearchResult.DraftFrom = string.Join(", ", draftFrom.Elements().Select(v => v.Value));
+            }
             return questionSearchResult;
         }
 
