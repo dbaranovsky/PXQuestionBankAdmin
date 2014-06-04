@@ -387,7 +387,8 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             {
                 section.Bank = fieldValue;
             }
-        }        public bool BulklUpdateQuestionField(string productCourseId, string repositoryCourseId, string[] questionId, string fieldName, string fieldValue)
+        }     
+        public bool BulklUpdateQuestionField(string productCourseId, string repositoryCourseId, string[] questionId, string fieldName, string fieldValue)
         {
             if (fieldName.Equals(MetadataFieldNames.QuestionStatus))
             {
@@ -651,20 +652,5 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             }
         }
 
-        private void UpdateStaticField(QuestionMetadataSection section, string fieldName, string fieldValue)
-        {
-            if (MetadataFieldNames.DlapTitle == fieldName)
-            {
-                section.Title = fieldValue;
-            }
-            else if (MetadataFieldNames.Chapter == fieldName)
-            {
-                section.Chapter = fieldValue;
-            }
-            else if (MetadataFieldNames.Bank == fieldName)
-            {
-                section.Bank = fieldValue;
-            }
-        }
     }
 }
