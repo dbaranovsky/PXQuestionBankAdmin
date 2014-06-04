@@ -10,5 +10,6 @@ namespace Macmillan.PXQBA.Business.Contracts
         IEnumerable<Course> GetAvailableCourses();
 
         IEnumerable<Course> GetCourseList();
+        Course UpdateMetadataConfig(Course course);
     }
 }

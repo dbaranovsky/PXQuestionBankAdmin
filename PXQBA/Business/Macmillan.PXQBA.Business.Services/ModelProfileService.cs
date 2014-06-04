@@ -13,6 +13,7 @@ using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Common.Helpers.Constants;
 using Macmillan.PXQBA.DataAccess.Data;
 using Macmillan.PXQBA.Web.ViewModels;
+using Macmillan.PXQBA.Web.ViewModels.MetadataConfig;
 using Macmillan.PXQBA.Web.ViewModels.TiteList;
 using Macmillan.PXQBA.Web.ViewModels.Versions;
 using Course = Macmillan.PXQBA.Business.Models.Course;
@@ -66,12 +67,6 @@ namespace Macmillan.PXQBA.Business.Services
                 }
             }
             return string.Empty;
-        }
-
-        public List<CourseMetadataFieldDescriptor> GetCourseMetadataFieldDescriptors(
-            Bfw.Agilix.DataContracts.Course src)
-        {
-            return CourseDataXmlParser.ParseMetaAvailableQuestionData(src.Data);
         }
 
         public string GetQuestionBankRepositoryCourse(Bfw.Agilix.DataContracts.Course src)
@@ -263,6 +258,99 @@ namespace Macmillan.PXQBA.Business.Services
             var version = 0;
             int.TryParse(questionVersion, out version);
             return version;
+        }
+
+        public string GetCourseBanks(Course course)
+        {
+            return GetMetaFieldValuesToString(course, MetadataFieldNames.Bank);
+        }
+
+        public string GetCourseChapters(Course course)
+        {
+            return GetMetaFieldValuesToString(course, MetadataFieldNames.Chapter);
+        }
+
+        public IEnumerable<AvailableChoiceItem> GetMetadataFieldValues(CourseMetadataFieldDescriptor field)
+        {
+            return field.CourseMetadataFieldValues.OrderBy(v => v.Sequence).Select(v => new AvailableChoiceItem(v.Text, v.Text));
+        }
+
+        public IEnumerable<CourseMetadataFieldDescriptor> GetCourseFieldDescriptors(MetadataConfigViewModel metadataConfigViewModel)
+        {
+            var fieldDescriptors = new List<CourseMetadataFieldDescriptor>();
+            fieldDescriptors.Add(GetFieldDescriptorWithSplitedValues(metadataConfigViewModel.Banks, MetadataFieldNames.Bank));
+            fieldDescriptors.Add(GetFieldDescriptorWithSplitedValues(metadataConfigViewModel.Chapters, MetadataFieldNames.Chapter));
+            foreach (var field in metadataConfigViewModel.Fields)
+            {
+                fieldDescriptors.Add(new CourseMetadataFieldDescriptor()
+                {
+                    Filterable = field.DisplayOptions.Filterable,
+                    FriendlyName = field.FieldName,
+                    Name = field.InternalName,
+                    Type = field.FieldType,
+                    CourseMetadataFieldValues = field.ValuesOptions == null ? null : field.ValuesOptions.Select((v, i) => new CourseMetadataFieldValue()
+                    {
+                        Text = v.Text,
+                        Sequence = i
+                    })
+                });
+            }
+            return fieldDescriptors;
+        }
+
+        public MetadataFieldType GetMetadataFieldType(string type)
+        {
+            if (type == "single-select")
+            {
+                return MetadataFieldType.SingleSelect;
+            }
+
+            if (type == "multi-select")
+            {
+                return MetadataFieldType.MultiSelect;
+            }
+
+            return MetadataFieldType.Text;
+        }
+
+        public string MetadataFieldTypeToString(MetadataFieldType type)
+        {
+            if (type == MetadataFieldType.MultiSelect)
+            {
+                return "multi-select";
+            }
+            if (type == MetadataFieldType.SingleSelect)
+            {
+                return "single-select";
+            }
+            return "text";
+        }
+
+        public IEnumerable<CourseMetaFieldValue> GetFieldValues(IEnumerable<AvailableChoiceItem> valuesOptions)
+        {
+            return valuesOptions.Select((v, i) => new CourseMetaFieldValue() {Text = v.Text, Sequence = i.ToString()});
+        }
+
+        private CourseMetadataFieldDescriptor GetFieldDescriptorWithSplitedValues(string concatedValues, string internalName)
+        {
+            return new CourseMetadataFieldDescriptor
+            {
+                Name = internalName,
+                Filterable = true,
+                CourseMetadataFieldValues =
+                    concatedValues.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries)
+                        .Select((v, i) => new CourseMetadataFieldValue() { Sequence = i, Text = v })
+            };
+        }
+
+        private string GetMetaFieldValuesToString(Course course, string fieldName)
+        {
+            var field = course.FieldDescriptors.FirstOrDefault(f => f.Name == fieldName);
+            if (field != null)
+            {
+                return string.Join("\n", field.CourseMetadataFieldValues.OrderBy(f => f.Sequence).Select(f => f.Text));
+            }
+            return string.Empty;
         }
     }
 }

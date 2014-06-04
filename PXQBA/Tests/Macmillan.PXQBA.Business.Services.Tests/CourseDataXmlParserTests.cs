@@ -44,13 +44,13 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             var fields = CourseDataXmlParser.ParseMetaAvailableQuestionData(courseDataXml);
             
             Assert.IsTrue(fields.Count()==8);
-            Assert.IsTrue(fields.SingleOrDefault(x => x.Friendlyname == "Difficulty").CourseMetadataFieldValues.Count()==3);
-            Assert.IsTrue(fields.SingleOrDefault(x => x.Friendlyname == "Difficulty")
+            Assert.IsTrue(fields.SingleOrDefault(x => x.FriendlyName == "Difficulty").CourseMetadataFieldValues.Count()==3);
+            Assert.IsTrue(fields.SingleOrDefault(x => x.FriendlyName == "Difficulty")
                             .CourseMetadataFieldValues.Where(i => i.Sequence == 1)
                             .SingleOrDefault().Text == "Easy");
 
             Assert.IsTrue(fields.SingleOrDefault(x => x.Name == "guidance").Filterable==false);
-            Assert.IsFalse(fields.SingleOrDefault(x => x.Friendlyname == "Core Concept").CourseMetadataFieldValues.Any());
+            Assert.IsFalse(fields.SingleOrDefault(x => x.FriendlyName == "Core Concept").CourseMetadataFieldValues.Any());
         }
 
         [TestMethod]
@@ -59,7 +59,7 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             XElement courseDataXml = XElement.Parse(XmlString);
             var fields = CourseDataXmlParser.ParseMetaAvailableQuestionData(courseDataXml);
 
-            var difficultyFieldValues = fields.SingleOrDefault(x => x.Friendlyname == "Difficulty").CourseMetadataFieldValues;
+            var difficultyFieldValues = fields.SingleOrDefault(x => x.FriendlyName == "Difficulty").CourseMetadataFieldValues;
 
              Assert.IsTrue(difficultyFieldValues.Where(i => i.Sequence == 1)
                            .SingleOrDefault().Text == "Easy");
@@ -76,7 +76,7 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             XElement courseDataXml = XElement.Parse(XmlString);
             var fields = CourseDataXmlParser.ParseMetaAvailableQuestionData(courseDataXml);
 
-            Assert.IsTrue(fields.SingleOrDefault(x => x.Friendlyname == "Module").Type == MetadataFieldType.SingleSelect);
+            Assert.IsTrue(fields.SingleOrDefault(x => x.FriendlyName == "Module").Type == MetadataFieldType.SingleSelect);
             Assert.IsTrue(fields.SingleOrDefault(x => x.Name == "bank").Type == MetadataFieldType.SingleSelect);
         }
 

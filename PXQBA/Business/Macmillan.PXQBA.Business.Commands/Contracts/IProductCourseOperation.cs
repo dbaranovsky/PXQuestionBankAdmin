@@ -15,5 +15,7 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
 
         IEnumerable<Course> GetCoursesByCourseIds(IEnumerable<string> courseIds,
             bool requiredQuestionBankRepository = false);
+
+        Course UpdateCourse(Course course);
     }
 }

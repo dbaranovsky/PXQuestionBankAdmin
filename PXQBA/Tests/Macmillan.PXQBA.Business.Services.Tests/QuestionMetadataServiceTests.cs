@@ -45,7 +45,7 @@ namespace Macmillan.PXQBA.Business.Services.Tests
                                                         Name = "test",
                                                         CourseMetadataFieldValues = new List<CourseMetadataFieldValue>(),
                                                         Filterable = true,
-                                                        Friendlyname = "Test",
+                                                        FriendlyName = "Test",
                                                         Hidden = false,
                                                         Searchterm = "",
                                                         Type = MetadataFieldType.Text

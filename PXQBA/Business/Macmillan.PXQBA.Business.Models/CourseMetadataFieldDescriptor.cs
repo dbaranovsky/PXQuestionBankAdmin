@@ -11,7 +11,7 @@ namespace Macmillan.PXQBA.Business.Models
 
         public string Searchterm { get; set; }
 
-        public string Friendlyname { get; set; }
+        public string FriendlyName { get; set; }
 
         public MetadataFieldType Type { get; set; }
 

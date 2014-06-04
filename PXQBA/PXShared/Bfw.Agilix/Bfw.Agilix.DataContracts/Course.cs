@@ -424,6 +424,21 @@ namespace Bfw.Agilix.DataContracts
 			    element.Add(dataElement);
 			}
 
+		    if (QuestionCardData != null)
+		    {
+		        var metaAvailableQuestionData = dataElement.Element("meta-available-question-data");
+                if(metaAvailableQuestionData == null)
+                {
+                    metaAvailableQuestionData = new XElement("meta-available-question-data");
+                    dataElement.Add(metaAvailableQuestionData);
+                }
+                
+		        foreach (var questionCardData in QuestionCardData)
+		        {
+		            metaAvailableQuestionData.Add(questionCardData.ToEntity());
+		        }
+		    }
+
 			if (!string.IsNullOrEmpty(DerivedCourseId))
 			{
 				dataElement.Add(new XElement("sourceid", DerivedCourseId));

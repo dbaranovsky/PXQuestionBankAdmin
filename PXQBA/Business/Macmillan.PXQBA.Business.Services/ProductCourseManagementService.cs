@@ -34,5 +34,10 @@ namespace Macmillan.PXQBA.Business.Services
         {
             return productCourseOperation.GetAvailableCourses(true);
         }
+
+        public Course UpdateMetadataConfig(Course course)
+        {
+            return productCourseOperation.UpdateCourse(course);
+        }
     }
 }

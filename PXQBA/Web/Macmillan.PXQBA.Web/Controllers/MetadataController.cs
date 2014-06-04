@@ -37,49 +37,15 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult GetMetadataConfig(string courseId)
         {
-            var sb1 = new StringBuilder();
-
-            sb1.AppendLine("Chapter 1 " + courseId);
-            sb1.AppendLine("Chapter 2 " + courseId);
-            sb1.AppendLine("Chapter 3 " + courseId);
-
-            var sb2 = new StringBuilder();
-
-            sb2.AppendLine("Bank 1");
-            sb2.AppendLine("Bank 2" + courseId);
-            sb2.AppendLine("Bank 3");
-
-            var metadataConfig = new MetadataConfigViewModel()
-                                 {
-                                     CourseId = courseId,
-                                     Chapters = sb1.ToString(),
-                                     Banks = sb2.ToString()
-                                 };
-
-            metadataConfig.Fields = new List<TitleSpecificMetadataField>()
-                                    {
-                                        new TitleSpecificMetadataField()
-                                        {
-                                            FieldName = "FieldName",
-                                            InternalName = "internalName",
-                                            FieldType = MetadataFieldType.Text
-                                        },
-                                        new TitleSpecificMetadataField()
-                                        {
-                                            FieldName = "Field Name 2",
-                                            InternalName = "internalName2",
-                                            FieldType = MetadataFieldType.Keywords
-                                        }
-                                    };
-
-
-            return JsonCamel(metadataConfig);
+            var course = Mapper.Map<MetadataConfigViewModel>(productCourseManagementService.GetProductCourse(courseId));
+            return JsonCamel(course);
         }
 
         [HttpPost]
         public ActionResult SaveMetadataConfig(MetadataConfigViewModel metadataConfig)
         {
-
+            var course = Mapper.Map<Course>(metadataConfig);
+            productCourseManagementService.UpdateMetadataConfig(course);
             return JsonCamel(new {IsError = false});
         }
 	}

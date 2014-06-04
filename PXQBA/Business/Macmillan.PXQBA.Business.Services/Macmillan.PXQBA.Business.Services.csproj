@@ -79,7 +79,6 @@
     </Compile>
     <Compile Include="Automapper\AutomapperConfigurator.cs" />
     <Compile Include="Automapper\ModelProfile.cs" />
-    <Compile Include="MetadataConfigManagementService.cs" />
     <Compile Include="ModelProfileService.cs" />
     <Compile Include="NotesManagementService.cs" />
     <Compile Include="QbaApiStub.cs" />

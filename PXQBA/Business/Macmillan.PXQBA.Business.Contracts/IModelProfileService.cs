@@ -3,6 +3,7 @@ using System.Xml.Linq;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.DataAccess.Data;
 using Macmillan.PXQBA.Web.ViewModels;
+using Macmillan.PXQBA.Web.ViewModels.MetadataConfig;
 using Macmillan.PXQBA.Web.ViewModels.TiteList;
 using Macmillan.PXQBA.Web.ViewModels.Versions;
 using Course = Macmillan.PXQBA.Business.Models.Course;
@@ -15,9 +16,6 @@ namespace Macmillan.PXQBA.Business.Contracts
         string SetLearningObjectives(IEnumerable<LearningObjective> learningObjectives);
         IEnumerable<LearningObjective> GetLOByGuid(string productCourseId, string learningObjectiveGuids);
         string GetQuestionCardLayout(Bfw.Agilix.DataContracts.Course src);
-
-        List<CourseMetadataFieldDescriptor> GetCourseMetadataFieldDescriptors(
-            Bfw.Agilix.DataContracts.Course src);
 
         string GetQuestionBankRepositoryCourse(Bfw.Agilix.DataContracts.Course src);
         QuestionMetadataSection GetQuestionDefaultValues(Bfw.Agilix.DataContracts.Question question);
@@ -39,5 +37,12 @@ namespace Macmillan.PXQBA.Business.Contracts
         bool GetPublishedFromDraft(Bfw.Agilix.DataContracts.Question question);
         string GetModifiedBy(Bfw.Agilix.DataContracts.Question question);
         int GetNumericVersion(string questionVersion);
+        string GetCourseBanks(Course course);
+        string GetCourseChapters(Course course);
+        IEnumerable<AvailableChoiceItem> GetMetadataFieldValues(CourseMetadataFieldDescriptor field);
+        IEnumerable<CourseMetadataFieldDescriptor> GetCourseFieldDescriptors(MetadataConfigViewModel metadataConfigViewModel);
+        MetadataFieldType GetMetadataFieldType(string type);
+        string MetadataFieldTypeToString(MetadataFieldType type);
+        IEnumerable<CourseMetaFieldValue> GetFieldValues(IEnumerable<AvailableChoiceItem> valuesOptions);
     }
 }
