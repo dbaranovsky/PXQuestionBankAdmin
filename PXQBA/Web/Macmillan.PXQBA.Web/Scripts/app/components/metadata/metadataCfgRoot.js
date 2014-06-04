@@ -57,6 +57,10 @@ var MetadataCfgRoot = React.createClass({displayName: 'MetadataCfgRoot',
    },
 
    selectCourseHandler: function(items) {
+    if(!this.confirmDiscardChanges()) {
+      this.forceUpdate()
+      return;
+    }
       var value = items[0];
       this.setState({dataLoading: true});
       metadataCfgDataManager.getMetadataConfig(value).done(this.getMetadataConfigHandler);

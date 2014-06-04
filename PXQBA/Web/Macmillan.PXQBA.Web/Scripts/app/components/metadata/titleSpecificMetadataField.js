@@ -17,13 +17,17 @@ var TitleSpecificMetadataField = React.createClass({displayName: 'TitleSpecificM
  		this.props.updateHandler(this.props.index, "fieldName", text);
  	},
 
- 	onBlurHandler: function() {
+ 	onBlurFieldNameHandler: function() {
  		if((this.props.data.internalName==null)||
  		  (this.props.data.internalName=='')) {
  		  this.props.updateHandler(this.props.index, 
  		  						   "internalName",
  		  						    this.getInternalName(this.props.data.fieldName));
  		}
+ 	},
+
+ 	openInternalNameDialogHandler: function() {
+ 		this.props.showInternalFieldDialogHandler(this.props.index, this.props.data.internalName);
  	},
 
  	getInternalName: function(name) {
@@ -45,10 +49,13 @@ var TitleSpecificMetadataField = React.createClass({displayName: 'TitleSpecificM
                		React.DOM.td(null, 
                			 TextEditor( {value:this.props.data.fieldName,
                			 			 dataChangeHandler:this.changeFieldNameHandler,
-               			 			 onBlurHandler:this.onBlurHandler}
+               			 			 onBlurHandler:this.onBlurFieldNameHandler}
                				) 
                		),
-               		React.DOM.td(null,  " ", this.props.data.internalName),
+               		React.DOM.td(null,  
+               		     React.DOM.span(null,  " ", this.props.data.internalName, " " ),
+               		     React.DOM.span(null,  " ", React.DOM.button( {type:"button", className:"btn btn-default btn-xs", onClick:this.openInternalNameDialogHandler}, React.DOM.span( {className:"glyphicon glyphicon-pencil"})), " " )
+               		),
                		React.DOM.td(null,  
                		   SingleSelectSelector( 
                         {allOptions:this.props.availableFieldTypes,

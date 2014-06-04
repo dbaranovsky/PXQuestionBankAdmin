@@ -1011,6 +1011,32 @@ a.shared-question-link:hover {
     
 }
 
+.metadata-table {
+    width: 100%;
+}
+
+.metadata-table.table > tbody > tr > td {
+    vertical-align: middle;
+}
+
+.field-column,
+.internal-column {
+    min-height: 80px;
+    width: 24%;
+}
+
+.values-column,
+.display-column {
+    width: 8%;
+}
+
+.type-column {
+    width: 26%;
+}
+
+.delete-column {
+    width: 5%;
+}
 #versionPreview .modal-body {
     max-height: 600px!important;
     overflow-y: auto;

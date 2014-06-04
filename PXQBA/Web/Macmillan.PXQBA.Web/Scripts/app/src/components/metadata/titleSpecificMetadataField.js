@@ -17,13 +17,17 @@ var TitleSpecificMetadataField = React.createClass({
  		this.props.updateHandler(this.props.index, "fieldName", text);
  	},
 
- 	onBlurHandler: function() {
+ 	onBlurFieldNameHandler: function() {
  		if((this.props.data.internalName==null)||
  		  (this.props.data.internalName=='')) {
  		  this.props.updateHandler(this.props.index, 
  		  						   "internalName",
  		  						    this.getInternalName(this.props.data.fieldName));
  		}
+ 	},
+
+ 	openInternalNameDialogHandler: function() {
+ 		this.props.showInternalFieldDialogHandler(this.props.index, this.props.data.internalName);
  	},
 
  	getInternalName: function(name) {
@@ -45,10 +49,13 @@ var TitleSpecificMetadataField = React.createClass({
                		<td>
                			 <TextEditor value={this.props.data.fieldName}
                			 			 dataChangeHandler={this.changeFieldNameHandler}
-               			 			 onBlurHandler={this.onBlurHandler}
+               			 			 onBlurHandler={this.onBlurFieldNameHandler}
                				/> 
                		</td>
-               		<td> {this.props.data.internalName}</td>
+               		<td> 
+               		     <span> {this.props.data.internalName} </span>
+               		     <span> <button type="button" className="btn btn-default btn-xs" onClick={this.openInternalNameDialogHandler}><span className="glyphicon glyphicon-pencil"></span></button> </span>
+               		</td>
                		<td> 
                		   <SingleSelectSelector 
                         allOptions={this.props.availableFieldTypes}

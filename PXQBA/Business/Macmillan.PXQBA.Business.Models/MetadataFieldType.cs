@@ -4,22 +4,22 @@ namespace Macmillan.PXQBA.Business.Models
 {
     public enum MetadataFieldType
     {
-        [Description("Text")]
+        [Description("Single Line")]
         Text = 0,
 
-        [Description("Single select")]
+        [Description("Single value")]
         SingleSelect = 1,
 
-        [Description("Multi select")]
+        [Description("Multiple values")]
         MultiSelect = 2,
 
-        [Description("Multiline text")]
+        [Description("Multiple Lines")]
         MultilineText = 3,
 
         [Description("Keywords")]
         Keywords = 4,
 
-        [Description("Item link")]
+        [Description("Pairs of ItemID/ItemTitle")]
         ItemLink = 5
     }
 }
