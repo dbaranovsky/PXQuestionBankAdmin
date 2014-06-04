@@ -288,31 +288,17 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return searchResults.GroupBy(x => x.SortingField).ToDictionary(groupItem => groupItem.Key, groupItem => groupItem.Count());
         }
 
-        private Bfw.Agilix.DataContracts.Question GetAgilixQuestion(string repositoryCourseId,
-            string questionId)
+        public Bfw.Agilix.DataContracts.Question GetAgilixQuestion(string repositoryCourseId,
+            string questionId, string version = null)
         {
-            return GetAgilixQuestions(repositoryCourseId, new List<string>() {questionId}).FirstOrDefault();
-        }
-
-        private IEnumerable<Bfw.Agilix.DataContracts.Question> GetAgilixQuestions(string repositoryCourseId,
-            IEnumerable<string> questionIds)
-        {
-            if (!questionIds.Any(q => !string.IsNullOrEmpty(q)))
+            if (string.IsNullOrEmpty(version))
             {
-                return new List<Bfw.Agilix.DataContracts.Question>();
+                return GetAgilixQuestions(repositoryCourseId, new List<string>() { questionId }).FirstOrDefault();
             }
-            var cmd = new GetQuestions()
-            {
-                SearchParameters = new QuestionSearch()
-                {
-                    EntityId = repositoryCourseId,
-                    QuestionIds = questionIds
-                }
-            };
-
-            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
-            return cmd.Questions;
+            return GetSpecificVersion(repositoryCourseId, questionId, version);
         }
+
+     
 
         public string GetQuizIdForQuestion(string questionId, string entityId)
         {
@@ -381,34 +367,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return true;
         }
 
-        private void UpdateQuestionFieldForce(string productCourseId, string repositoryCourseId, string questionId, string fieldName,
-            string fieldValue)
-        {
-            var question = GetQuestion(repositoryCourseId, questionId);
-            if (question != null)
-            {
-                var productCourseSection = question.ProductCourseSections.FirstOrDefault(s => s.ProductCourseId == productCourseId);
-                if (productCourseSection != null)
-                {
-                    if (MetadataFieldNames.GetStaticFieldNames().Contains(fieldName))
-                    {
-                        UpdateStaticField(productCourseSection, fieldName, fieldValue);
-                    }
-                    if (productCourseSection.DynamicValues != null)
-                    {
-                        if (productCourseSection.DynamicValues.ContainsKey(fieldName))
-                        {
-                            productCourseSection.DynamicValues[fieldName] = new List<string>() {fieldValue};
-                        }
-                        else
-                        {
-                            productCourseSection.DynamicValues.Add(fieldName, new List<string>() {fieldValue});
-                        }
-                    }
-                    UpdateQuestion(question);
-                }
-            }
-        }
+      
 
         private void UpdateStaticField(QuestionMetadataSection section, string fieldName, string fieldValue)
         {
@@ -428,9 +387,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             {
                 section.Bank = fieldValue;
             }
-        }
-
-        public bool BulklUpdateQuestionField(string productCourseId, string repositoryCourseId, string[] questionId, string fieldName, string fieldValue)
+        }        public bool BulklUpdateQuestionField(string productCourseId, string repositoryCourseId, string[] questionId, string fieldName, string fieldValue)
         {
             if (fieldName.Equals(MetadataFieldNames.QuestionStatus))
             {
@@ -470,6 +427,55 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 UpdateQuestion(question);
             }
             return true;
+        }
+
+        public bool RemoveFromTitle(string[] questionsId, string questionRepositoryCourseId, string currentCourseId)
+        {
+            var agilixQuestions = GetAgilixQuestions(questionRepositoryCourseId, questionsId);
+
+            foreach (var question in agilixQuestions)
+            {
+                question.MetadataElements.Remove(ElStrings.ProductCourseSection + currentCourseId);
+            }
+
+            ExecutePutQuestions(agilixQuestions);
+            ExecuteSolrUpdateTask();
+            return true;
+        }
+
+
+        public IEnumerable<Question> GetVersionHistory(string questionRepositoryCourseId, string questionId)
+        {
+            var versions = Mapper.Map<IEnumerable<Question>>(GetAgilixQuestionsAsAdmin(questionRepositoryCourseId, new List<string>() { questionId }, true));
+            return versions.ToList().OrderByDescending(v => v.Version);
+        }
+
+
+        private Bfw.Agilix.DataContracts.Question GetSpecificVersion(string repositoryCourseId, string questionId, string version)
+        {
+            return
+                GetAgilixQuestionsAsAdmin(repositoryCourseId, new List<string> { questionId }, true)
+                    .FirstOrDefault(x => x.QuestionVersion == version);
+        }
+
+        private IEnumerable<Bfw.Agilix.DataContracts.Question> GetAgilixQuestions(string repositoryCourseId,
+            IEnumerable<string> questionIds)
+        {
+            if (!questionIds.Any(q => !string.IsNullOrEmpty(q)))
+            {
+                return new List<Bfw.Agilix.DataContracts.Question>();
+            }
+            var cmd = new GetQuestions()
+            {
+                SearchParameters = new QuestionSearch()
+                {
+                    EntityId = repositoryCourseId,
+                    QuestionIds = questionIds
+                }
+            };
+
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+            return cmd.Questions;
         }
 
         private void UpdateSharedStaticField(Question question, string fieldName, string fieldValue)
@@ -551,20 +557,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return query.ToString();
         }
 
-        public bool RemoveFromTitle(string[] questionsId, string questionRepositoryCourseId, string currentCourseId)
-        {
-            var agilixQuestions = GetAgilixQuestions(questionRepositoryCourseId, questionsId);
-
-            foreach (var question in agilixQuestions)
-            {
-                question.MetadataElements.Remove(ElStrings.ProductCourseSection + currentCourseId);
-            }
-
-            ExecutePutQuestions(agilixQuestions);
-            ExecuteSolrUpdateTask();
-            return true;
-        }
-
+       
         private bool UpdateQuestionStatus(string repositoryCourseId, string questionId, string newValue)
         {
             return UpdateQuestionsStatuses(repositoryCourseId, new List<string> { questionId }, newValue);
@@ -607,11 +600,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
         }
 
-        public IEnumerable<Question> GetVersionHistory(string questionRepositoryCourseId, string questionId)
-        {
-            var versions = Mapper.Map<IEnumerable<Question>>(GetAgilixQuestionsAsAdmin(questionRepositoryCourseId, new List<string>() { questionId }, true));
-            return versions.ToList().OrderByDescending(v => v.Version);
-        }
 
         private IEnumerable<Bfw.Agilix.DataContracts.Question> GetAgilixQuestionsAsAdmin(string repositoryCourseId,
             IEnumerable<string> questionIds, bool allVersions = false)
@@ -632,6 +620,51 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
             businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
             return cmd.Questions;
+        }
+
+        private void UpdateQuestionFieldForce(string productCourseId, string repositoryCourseId, string questionId, string fieldName,
+          string fieldValue)
+        {
+            var question = GetQuestion(repositoryCourseId, questionId);
+            if (question != null)
+            {
+                var productCourseSection = question.ProductCourseSections.FirstOrDefault(s => s.ProductCourseId == productCourseId);
+                if (productCourseSection != null)
+                {
+                    if (MetadataFieldNames.GetStaticFieldNames().Contains(fieldName))
+                    {
+                        UpdateStaticField(productCourseSection, fieldName, fieldValue);
+                    }
+                    if (productCourseSection.DynamicValues != null)
+                    {
+                        if (productCourseSection.DynamicValues.ContainsKey(fieldName))
+                        {
+                            productCourseSection.DynamicValues[fieldName] = new List<string>() { fieldValue };
+                        }
+                        else
+                        {
+                            productCourseSection.DynamicValues.Add(fieldName, new List<string>() { fieldValue });
+                        }
+                    }
+                    UpdateQuestion(question);
+                }
+            }
+        }
+
+        private void UpdateStaticField(QuestionMetadataSection section, string fieldName, string fieldValue)
+        {
+            if (MetadataFieldNames.DlapTitle == fieldName)
+            {
+                section.Title = fieldValue;
+            }
+            else if (MetadataFieldNames.Chapter == fieldName)
+            {
+                section.Chapter = fieldValue;
+            }
+            else if (MetadataFieldNames.Bank == fieldName)
+            {
+                section.Bank = fieldValue;
+            }
         }
     }
 }

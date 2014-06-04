@@ -95,10 +95,11 @@ var VersionHistory = React.createClass({
         // }
       
 
-        return ( <div className="versions">
-                         
-                          {this.renderRows()}     
-                          {this.renderPreviewDialog()}                    
+        return ( <div>
+                    <div className="versions">
+                          {this.renderRows()}                     
+                    </div>
+                     {this.renderPreviewDialog()}  
                  </div>
 
            

@@ -174,10 +174,8 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult GetVersionPreviewLink(string version)
         {
-            string hardcodedQuiz = "QBA_temp_quiz_185781";
-            string hardCodedEntity = "200117";
-
-            return JsonCamel( new {Url = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), hardCodedEntity, hardcodedQuiz)});
+            var tempVersion = questionManagementService.GetTemporaryQuestionVersion(CourseHelper.CurrentCourse, QuestionHelper.QuestionIdToEdit, version);
+            return JsonCamel(new { Url = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), tempVersion.EntityId, tempVersion.QuizId) });
         }
 	}
   
