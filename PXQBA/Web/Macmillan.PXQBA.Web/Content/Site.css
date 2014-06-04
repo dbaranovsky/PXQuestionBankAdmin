@@ -708,6 +708,10 @@ input.disabled, textarea.disabled {
 .question-preview.graph {
      height: 500px;
 }
+
+.question-preview ul {
+    list-style-type: none;
+}
 #title-container {
     margin: 20px 0px 0px 0px;
 }
@@ -875,7 +879,6 @@ a.shared-question-link:hover {
 
 .menu-container-main.version-history {
      width: 170px !important;
-    float: right;
     margin-bottom: -6px;
 }
 
@@ -1048,3 +1051,8 @@ a.shared-question-link:hover {
    overflow-y: hidden; 
 }
  
+
+.version-cell .waiting.small {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

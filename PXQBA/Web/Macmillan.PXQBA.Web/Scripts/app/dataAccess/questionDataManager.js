@@ -436,6 +436,23 @@ var questionDataManager = (function() {
         });
     };
 
+    /* Versions and draft */
+    self.getVersionPreviewLink = function(version){
+       var request = {
+            version: version,
+        };
+         return $.ajax({
+            url: window.actions.questionList.getVersionPreviewLinkUrl,
+            traditional: true,
+            data: request,
+            dataType: 'json',
+            type: 'GET'
+        }).error(function(e){
+             self.showErrorPopup();
+        });
+    };
+
+
     /*  Common operations  */
     self.resetState = function(){
          crossroads.resetState();

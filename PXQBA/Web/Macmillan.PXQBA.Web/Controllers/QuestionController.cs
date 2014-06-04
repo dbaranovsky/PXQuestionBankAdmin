@@ -170,6 +170,15 @@ namespace Macmillan.PXQBA.Web.Controllers
             var versionHistory = Mapper.Map<QuestionHistoryViewModel>(questionManagementService.GetVersionHistory(CourseHelper.CurrentCourse, QuestionHelper.QuestionIdToEdit), opt => opt.Items.Add(CourseHelper.CurrentCourse.ProductCourseId, CourseHelper.CurrentCourse.ProductCourseId));
             return JsonCamel(versionHistory);
         }
+
+
+        public ActionResult GetVersionPreviewLink(string version)
+        {
+            string hardcodedQuiz = "QBA_temp_quiz_185781";
+            string hardCodedEntity = "200117";
+
+            return JsonCamel( new {Url = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), hardCodedEntity, hardcodedQuiz)});
+        }
 	}
   
 }
