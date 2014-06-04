@@ -40,16 +40,31 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             var filterCopy = MakeFilterCopy(filter);
             var questionsSortedBySequence = GetSortedAndFilteredBySequenceSolrResults(questionRepositoryCourseId, currentCourseId, filterCopy);
             var searchResults = GetSortedAndFilteredSolrResults(questionRepositoryCourseId, currentCourseId, filterCopy, sortCriterion);
-            
-            var agilixQuestions = GetAgilixQuestions(questionRepositoryCourseId, searchResults.Skip(startingRecordNumber).Take(recordCount).Select(r => r.QuestionId));
-            var questions = Mapper.Map<IEnumerable<Question>>(agilixQuestions);
+
+            var questions = PreparedQuestionPage(questionRepositoryCourseId, searchResults, startingRecordNumber, recordCount);
             SetCorrectSequenceDisplayValue(currentCourseId, questions, questionsSortedBySequence);
             var result = new PagedCollection<Question>
             {
-                TotalItems = searchResults.Count(),
+                TotalItems = searchResults.Count(r => string.IsNullOrEmpty(r.DraftFrom)),
                 CollectionPage = questions
             };
             return result;
+        }
+
+        private IEnumerable<Question> PreparedQuestionPage(string questionRepositoryCourseId, IEnumerable<QuestionSearchResult> searchResults, int startingRecordNumber, int recordCount)
+        {
+            var nonDraftResults = searchResults.Where(r => string.IsNullOrEmpty(r.DraftFrom)).Skip(startingRecordNumber).Take(recordCount);
+            var draftResults = searchResults.Where(r => nonDraftResults.Select(n => n.QuestionId).Contains(r.DraftFrom));
+
+            var nonDraftQuestions = Mapper.Map<IEnumerable<Question>>(GetAgilixQuestions(questionRepositoryCourseId, nonDraftResults.Select(r => r.QuestionId)));
+            var draftQuestions = Mapper.Map<IEnumerable<Question>>(GetAgilixQuestions(questionRepositoryCourseId, draftResults.Select(r => r.QuestionId)));
+            var questions = new List<Question>();
+            foreach (var question in nonDraftQuestions)
+            {
+                questions.Add(question);
+                questions.AddRange(draftQuestions.Where(q => q.DraftFrom == question.Id).OrderBy(q => q.ModifiedDate));
+            }
+            return questions;
         }
 
         private IEnumerable<FilterFieldDescriptor> MakeFilterCopy(IEnumerable<FilterFieldDescriptor> filter)
@@ -149,7 +164,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                                     {
                                         SearchParameters = new SolrSearchParameters()
                                                            {
-                                                               Fields = sortingField,
+                                                               Fields = string.Format("{0}|{1}", MetadataFieldNames.DraftFrom, sortingField),
                                                                EntityId = questionRepositoryCourseId,
                                                                Query = query,
                                                                Rows = SearchCommandMaxRows,
