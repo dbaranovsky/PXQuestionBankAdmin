@@ -219,6 +219,7 @@
     <Content Include="Scripts\app\components\common\singleSelectSelector.js" />
     <Content Include="Scripts\app\components\common\textAreaEditor.js" />
     <Content Include="Scripts\app\components\common\textEditor.js" />
+    <Content Include="Scripts\app\components\common\tooltipElement.js" />
     <Content Include="Scripts\app\components\metadata\internalFieldDialog.js" />
     <Content Include="Scripts\app\components\metadata\metadataCfgRoot.js" />
     <Content Include="Scripts\app\components\metadata\metadataChapterEditorTab.js" />
@@ -296,6 +297,7 @@
     <Content Include="Scripts\app\src\components\common\singleSelectSelector.js" />
     <Content Include="Scripts\app\src\components\common\textAreaEditor.js" />
     <Content Include="Scripts\app\src\components\common\textEditor.js" />
+    <Content Include="Scripts\app\src\components\common\tooltipElement.js" />
     <Content Include="Scripts\app\src\components\metadata\internalFieldDialog.js" />
     <Content Include="Scripts\app\src\components\metadata\metadataCfgRoot.js" />
     <Content Include="Scripts\app\src\components\metadata\metadataChapterEditorTab.js" />

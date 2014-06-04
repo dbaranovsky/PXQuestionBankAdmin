@@ -58,15 +58,15 @@ var MetadataMetaEditorTab = React.createClass({
                {this.renderInternalFieldDialog()}
              </div>
                <div> 
-               		<table className="table table">
+               		<table className="table table metadata-table">
                			<thead>
                			 	<tr>
-               			 		<th> Field name </th>
-               			 		<th> Internal name </th>
-               			 		<th> Type </th>
-               			 		<th> Values options</th>
-               			 		<th> Display options</th>
-               			 		<th> </th>
+               			 		<th className="field-column"> <span>Field name</span> </th>
+               			 		<th className="internal-column"> <span>Internal name </span></th>
+               			 		<th className="type-column"> <span> Type </span> <ToltipElement tooltipText="Type"/> </th>
+               			 		<th className="values-column"> <span>Values options</span> <ToltipElement tooltipText="Values options"/></th>
+               			 		<th className="display-column"> <span>Display options</span></th>
+               			 		<th className="delete-column"> </th>
                			 	</tr>
                			</thead>
                		<tbody>

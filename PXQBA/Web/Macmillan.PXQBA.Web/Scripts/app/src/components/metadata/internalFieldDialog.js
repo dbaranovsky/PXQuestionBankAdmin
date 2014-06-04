@@ -26,7 +26,7 @@ var InternalFieldDialog = React.createClass({
         var renderBody = function(){
              return (<div>
                         <div>
-                            <TextEditor value={self.state.value} dataChangeHandler={self.onChangeHandler}/>
+                            <div> Internal name: </div> <TextEditor value={self.state.value} dataChangeHandler={self.onChangeHandler}/>
                         </div>
                          <div className="modal-footer clearfix">
                                  <button type="button" className="btn btn-default" data-dismiss="modal" onClick={self.props.closeDialogHandler}>Cancel</button>

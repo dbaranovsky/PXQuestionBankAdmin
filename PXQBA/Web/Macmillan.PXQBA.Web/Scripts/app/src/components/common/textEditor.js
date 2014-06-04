@@ -11,9 +11,9 @@ var TextEditor = React.createClass({
 
   render: function() {
        return (
-             <div>  
-                  <input type="text" value={this.props.value} onChange={this.handleChange} onBlur={this.props.onBlurHandler} />
-              </div>
-    );
+                <div className="">
+                  <input type="text" className="form-control" value={this.props.value} onChange={this.handleChange} onBlur={this.props.onBlurHandler} />
+                </div>
+     );
   },
 });

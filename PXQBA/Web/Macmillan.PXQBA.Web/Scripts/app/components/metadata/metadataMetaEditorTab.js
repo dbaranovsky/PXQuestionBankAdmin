@@ -58,15 +58,15 @@ var MetadataMetaEditorTab = React.createClass({displayName: 'MetadataMetaEditorT
                this.renderInternalFieldDialog()
              ),
                React.DOM.div(null,  
-               		React.DOM.table( {className:"table table"}, 
+               		React.DOM.table( {className:"table table metadata-table"}, 
                			React.DOM.thead(null, 
                			 	React.DOM.tr(null, 
-               			 		React.DOM.th(null,  " Field name " ),
-               			 		React.DOM.th(null,  " Internal name " ),
-               			 		React.DOM.th(null,  " Type " ),
-               			 		React.DOM.th(null,  " Values options"),
-               			 		React.DOM.th(null,  " Display options"),
-               			 		React.DOM.th(null,  " " )
+               			 		React.DOM.th( {className:"field-column"},  " ", React.DOM.span(null, "Field name"), " " ),
+               			 		React.DOM.th( {className:"internal-column"},  " ", React.DOM.span(null, "Internal name " )),
+               			 		React.DOM.th( {className:"type-column"},  " ", React.DOM.span(null,  " Type " ), " ", ToltipElement( {tooltipText:"Type"}), " " ),
+               			 		React.DOM.th( {className:"values-column"},  " ", React.DOM.span(null, "Values options"), " ", ToltipElement( {tooltipText:"Values options"})),
+               			 		React.DOM.th( {className:"display-column"},  " ", React.DOM.span(null, "Display options")),
+               			 		React.DOM.th( {className:"delete-column"},  " " )
                			 	)
                			),
                		React.DOM.tbody(null, 
