@@ -56,32 +56,7 @@ namespace Macmillan.PXQBA.Business.Services
             return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
 
-        private Question GetNewQuestionTemplate(Course course, string questionType, string bank, string chapter)
-        {
-            var question = new Question();
-            question.Id = Guid.NewGuid().ToString();
-            question.EntityId = course.QuestionRepositoryCourseId;
-            var metadataSection = new QuestionMetadataSection
-                         {
-                             ProductCourseId = course.ProductCourseId,
-                             Bank = bank,
-                             Chapter = chapter
-                         };
-
-
-            foreach (var field in course.FieldDescriptors.Where(field => !MetadataFieldNames.GetStaticFieldNames().Contains(field.Name) && !metadataSection.DynamicValues.ContainsKey(field.Name)))
-            {
-                metadataSection.DynamicValues.Add(field.Name, new List<string>());
-            }
-            question.ProductCourseSections.Add(metadataSection);
-            question.Status = ((int)QuestionStatus.InProgress).ToString();
-            question.Body = string.Empty;
-            question.InteractionData = string.Empty;
-            var type = QuestionTypeHelper.GetQuestionType(questionType);
-            question.InteractionType = string.IsNullOrEmpty(type.Custom) ? type.Key : type.Custom;
-            question.CustomUrl = string.IsNullOrEmpty(type.Custom) ? type.Custom : type.Key;
-            return question;
-        }
+   
 
         public Question UpdateQuestion(Course course, string sourceQuestionId, Question temporaryQuestion)
         {
@@ -138,6 +113,11 @@ namespace Macmillan.PXQBA.Business.Services
             return questionCommands.GetVersionHistory(currentCourse.QuestionRepositoryCourseId, questionId);
         }
 
+        public Question GetTemporaryQuestionVersion(Course currentCourse, string questionId, string version)
+        {
+            return temporaryQuestionOperation.CopyQuestionToTemporaryCourse(currentCourse.QuestionRepositoryCourseId, questionId, version);
+        }
+
         private QuestionMetadataSection GetNewProductCourseSection(int courseIdToPublish, string bank, string chapter, Course currentCourse, Question question)
         {
             var courseToPublish = productCourseManagementService.GetProductCourse(courseIdToPublish.ToString());
@@ -181,6 +161,33 @@ namespace Macmillan.PXQBA.Business.Services
                 result.DynamicValues.Add(fieldName, values);
             }
             return result;
+        }
+
+        private Question GetNewQuestionTemplate(Course course, string questionType, string bank, string chapter)
+        {
+            var question = new Question();
+            question.Id = Guid.NewGuid().ToString();
+            question.EntityId = course.QuestionRepositoryCourseId;
+            var metadataSection = new QuestionMetadataSection
+            {
+                ProductCourseId = course.ProductCourseId,
+                Bank = bank,
+                Chapter = chapter
+            };
+
+
+            foreach (var field in course.FieldDescriptors.Where(field => !MetadataFieldNames.GetStaticFieldNames().Contains(field.Name) && !metadataSection.DynamicValues.ContainsKey(field.Name)))
+            {
+                metadataSection.DynamicValues.Add(field.Name, new List<string>());
+            }
+            question.ProductCourseSections.Add(metadataSection);
+            question.Status = ((int)QuestionStatus.InProgress).ToString();
+            question.Body = string.Empty;
+            question.InteractionData = string.Empty;
+            var type = QuestionTypeHelper.GetQuestionType(questionType);
+            question.InteractionType = string.IsNullOrEmpty(type.Custom) ? type.Key : type.Custom;
+            question.CustomUrl = string.IsNullOrEmpty(type.Custom) ? type.Custom : type.Key;
+            return question;
         }
     }
 }

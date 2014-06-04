@@ -25,7 +25,7 @@ var QuestionEditor = React.createClass({
     saveBHEditor: function(frameApi){
       var self = this;
         if (frameApi !== undefined && frameApi.saveComponent !== undefined ){
-          frameApi.saveComponent('questioneditor', 'editoriframecontainer', function(result){
+          frameApi.saveComponent('questioneditor', 'quizeditorcomponent', function(result){
             if(!result) {
                 window.questionDataManager.showWarningPopup(window.enums.messages.warningQuestionEditorMessage);
             }

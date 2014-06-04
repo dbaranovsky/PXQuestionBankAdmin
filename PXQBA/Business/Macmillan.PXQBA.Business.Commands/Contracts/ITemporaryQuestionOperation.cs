@@ -11,7 +11,7 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         /// Copies question from real course to temp course to increase editing speed
         /// </summary>
         /// <param name="questionIdToCopy"></param>
-        Question CopyQuestionToTemporaryCourse(string sourceProductCourseId, string questionIdToCopy);
+        Question CopyQuestionToTemporaryCourse(string sourceProductCourseId, string questionIdToCopy, string version = null);
         Question CopyQuestionToSourceCourse(string sourceProductCourseId, string sourceQuestionId);
     }
 }

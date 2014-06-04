@@ -621,31 +621,31 @@ input.disabled, textarea.disabled {
 
 }
 
-#editoriframecontainer.hts{
+#quizeditorcomponent.hts{
     z-index: 2;
     width: 97%;
     position: fixed;
 }
 
-#editoriframecontainer.hts{
+#quizeditorcomponent.hts{
     
  background:rgba(221, 221, 221, 0.0);
 }
 
-#editoriframecontainer.hts iframe{
+#quizeditorcomponent.hts iframe{
 
      width: 99% !important;
      height: 749px !important;
   
 }
 
-#editoriframecontainer.graph {
+#quizeditorcomponent.graph {
     height: 700px !important;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
-#editoriframecontainer.shared.graph {
+#quizeditorcomponent.shared.graph {
     height: 660px !important;
     overflow-y: auto;
     overflow-x: hidden;
@@ -655,7 +655,7 @@ input.disabled, textarea.disabled {
     height: 643px;
 }
 
-#editoriframecontainer.graph > div {
+#quizeditorcomponent.graph > div {
      margin-top: -40px;
 
 }
@@ -707,6 +707,10 @@ input.disabled, textarea.disabled {
 
 .question-preview.graph {
      height: 500px;
+}
+
+.question-preview ul {
+    list-style-type: none;
 }
 #title-container {
     margin: 20px 0px 0px 0px;
@@ -875,7 +879,6 @@ a.shared-question-link:hover {
 
 .menu-container-main.version-history {
      width: 170px !important;
-    float: right;
     margin-bottom: -6px;
 }
 
@@ -1048,3 +1051,8 @@ a.shared-question-link:hover {
    overflow-y: hidden; 
 }
  
+
+.version-cell .waiting.small {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

@@ -30,7 +30,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
       //     $(tabs).find('iframe').show();
        // });
     if (this.props.question.graphEditorHtml != null){
-      $(this.getDOMNode()).find("#editoriframecontainer").html(this.props.question.graphEditorHtml);
+      $(this.getDOMNode()).find("#quizeditorcomponent").html(this.props.question.graphEditorHtml);
       this.iframeLoaded();
 
     }else{
@@ -84,7 +84,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
             //Standalone component URL for the BrainHoney component to display
             remote: url,
             //Name of the <div> or other element that will contain the iframe
-            container: 'editoriframecontainer',
+            container: 'quizeditorcomponent',
             //HTML props for the created iframe
             props: {
                 frameborder: 0,
@@ -142,7 +142,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
         var self = this;
                 var rpc = new easyXDM.Rpc({
                     remote: url,
-                    container: 'editoriframecontainer',
+                    container: 'quizeditorcomponent',
                     //HTML props for the created iframe
                     props: {
                         frameborder: 0,
@@ -245,7 +245,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                        React.DOM.div( {className:"tab-body .shared"}, 
                       
                            React.DOM.div(  {className:"iframe waiting"} ),
-                          React.DOM.div( {id:"editoriframecontainer", className:iframeClass}),
+                          React.DOM.div( {id:"quizeditorcomponent", className:iframeClass}),
                            this.renderFooterButtons(true)
                           
                        )

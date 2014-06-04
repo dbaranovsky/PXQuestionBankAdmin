@@ -95,10 +95,11 @@ var VersionHistory = React.createClass({
         // }
       
 
-        return ( <div className="versions">
-                         
-                          {this.renderRows()}     
-                          {this.renderPreviewDialog()}                    
+        return ( <div>
+                    <div className="versions">
+                          {this.renderRows()}                     
+                    </div>
+                     {this.renderPreviewDialog()}  
                  </div>
 
            
@@ -112,18 +113,35 @@ var VersionHistory = React.createClass({
 var VersionHistoryRow = React.createClass({
    
 
+    getInitialState: function(){
+
+        return ({loading: false});
+    },
+
     renderMenu: function(){
       return(<div className="menu-container-main version-history">
-                <button type="button" className="btn btn-default btn-sm" data-toggle="tooltip"  title="Try Question"><span className="glyphicon glyphicon-play"></span> </button>
+                <button type="button" className="btn btn-default btn-sm" disabled={this.state.loading} data-toggle="tooltip"  title="Try Question" onClick={this.tryQuestion}><span className="glyphicon glyphicon-play"></span> </button>
                 <button type="button" className="btn btn-default btn-sm" data-toggle="tooltip" title="Preview Question" onClick={this.props.renderPreview}><span className="glyphicon glyphicon-search"></span></button>
                 <button type="button" className="btn btn-default btn-sm" data-toggle="tooltip" title="New Question from this Version"><span className="glyphicon glyphicon-file"></span> </button> 
                 <button type="button" className="btn btn-default btn-sm" data-toggle="tooltip" title="New Draft from this Version"><span className="glyphicon glyphicon-pencil" ></span></button> 
                 <button type="button" className="btn btn-default btn-sm" data-toggle="tooltip" title="Restore this Version"><span className="glyphicon glyphicon-repeat" ></span></button> 
                </div>);
-     
 
-    
+    },
 
+    tryQuestion: function(){
+        this.setState({loading: true});
+        questionDataManager.getVersionPreviewLink(this.props.version.version).done(this.startQuiz).always(this.stopLoading);
+    },
+
+    startQuiz: function(data){
+        var previewWindow = window.open(data.url, '_blank', 'location=yes,height=600,width=600,scrollbars=yes,status=yes');
+        previewWindow.focus();
+    },
+
+
+    stopLoading: function(){
+         this.setState({loading: false});
     },
 
     renderDuplicateFromInfo: function(){
@@ -151,19 +169,30 @@ var VersionHistoryRow = React.createClass({
         return null;
     },
 
+    renderWaiter: function(){
+        if (this.state.loading){
+             return (<div className="waiting small"></div>);
+        }
+       return null;
+    },
+
     render: function() {
         var version = this.props.version;
   
         return ( <div className="version-row">
                         <div className="version-cell">
+
                           <span className= {version.isCurrent? "version-text current" : "version-text"}> Version of {version.modifiedDate} by {version.modifiedBy} {version.isInitial? "(initial)": ""} </span>
                           <br/>
                            {this.renderDraftInfo()}
                            {this.renderRestoreInfo()}
                            {this.renderDuplicateFromInfo()}
                         </div>     
+
                         <div className="version-cell menu">
+
                          {this.renderMenu()}
+                         {this.renderWaiter()}
                         </div>
                  </div>
                         

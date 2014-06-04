@@ -10,6 +10,9 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         Question CreateQuestion(string productCourseId, Question question);
         Question GetQuestion(string repositoryCourseId, string questionId);
 
+        Bfw.Agilix.DataContracts.Question GetAgilixQuestion(string repositoryCourseId, string questionIdm,
+            string version = null);
+
         Dictionary<string, int> GetQuestionCountByChapters(string questionRepositoryCourseId, string currentCourseId);
         Question UpdateQuestion(Question question);
         Question UpdateQuestionInTempQuiz(Question question);

@@ -95,10 +95,11 @@ var VersionHistory = React.createClass({displayName: 'VersionHistory',
         // }
       
 
-        return ( React.DOM.div( {className:"versions"}, 
-                         
-                          this.renderRows(),     
-                          this.renderPreviewDialog()                    
+        return ( React.DOM.div(null, 
+                    React.DOM.div( {className:"versions"}, 
+                          this.renderRows()                     
+                    ),
+                     this.renderPreviewDialog()  
                  )
 
            
@@ -112,18 +113,35 @@ var VersionHistory = React.createClass({displayName: 'VersionHistory',
 var VersionHistoryRow = React.createClass({displayName: 'VersionHistoryRow',
    
 
+    getInitialState: function(){
+
+        return ({loading: false});
+    },
+
     renderMenu: function(){
       return(React.DOM.div( {className:"menu-container-main version-history"}, 
-                React.DOM.button( {type:"button", className:"btn btn-default btn-sm", 'data-toggle':"tooltip",  title:"Try Question"}, React.DOM.span( {className:"glyphicon glyphicon-play"}), " " ),
+                React.DOM.button( {type:"button", className:"btn btn-default btn-sm", disabled:this.state.loading, 'data-toggle':"tooltip",  title:"Try Question", onClick:this.tryQuestion}, React.DOM.span( {className:"glyphicon glyphicon-play"}), " " ),
                 React.DOM.button( {type:"button", className:"btn btn-default btn-sm", 'data-toggle':"tooltip", title:"Preview Question", onClick:this.props.renderPreview}, React.DOM.span( {className:"glyphicon glyphicon-search"})),
                 React.DOM.button( {type:"button", className:"btn btn-default btn-sm", 'data-toggle':"tooltip", title:"New Question from this Version"}, React.DOM.span( {className:"glyphicon glyphicon-file"}), " " ), 
                 React.DOM.button( {type:"button", className:"btn btn-default btn-sm", 'data-toggle':"tooltip", title:"New Draft from this Version"}, React.DOM.span( {className:"glyphicon glyphicon-pencil"} )), 
                 React.DOM.button( {type:"button", className:"btn btn-default btn-sm", 'data-toggle':"tooltip", title:"Restore this Version"}, React.DOM.span( {className:"glyphicon glyphicon-repeat"} )) 
                ));
-     
 
-    
+    },
 
+    tryQuestion: function(){
+        this.setState({loading: true});
+        questionDataManager.getVersionPreviewLink(this.props.version.version).done(this.startQuiz).always(this.stopLoading);
+    },
+
+    startQuiz: function(data){
+        var previewWindow = window.open(data.url, '_blank', 'location=yes,height=600,width=600,scrollbars=yes,status=yes');
+        previewWindow.focus();
+    },
+
+
+    stopLoading: function(){
+         this.setState({loading: false});
     },
 
     renderDuplicateFromInfo: function(){
@@ -151,19 +169,30 @@ var VersionHistoryRow = React.createClass({displayName: 'VersionHistoryRow',
         return null;
     },
 
+    renderWaiter: function(){
+        if (this.state.loading){
+             return (React.DOM.div( {className:"waiting small"}));
+        }
+       return null;
+    },
+
     render: function() {
         var version = this.props.version;
   
         return ( React.DOM.div( {className:"version-row"}, 
                         React.DOM.div( {className:"version-cell"}, 
+
                           React.DOM.span( {className: version.isCurrent? "version-text current" : "version-text"},  " Version of ", version.modifiedDate, " by ", version.modifiedBy, " ", version.isInitial? "(initial)": "", " " ),
                           React.DOM.br(null),
                            this.renderDraftInfo(),
                            this.renderRestoreInfo(),
                            this.renderDuplicateFromInfo()
                         ),     
+
                         React.DOM.div( {className:"version-cell menu"}, 
-                         this.renderMenu()
+
+                         this.renderMenu(),
+                         this.renderWaiter()
                         )
                  )
                         
