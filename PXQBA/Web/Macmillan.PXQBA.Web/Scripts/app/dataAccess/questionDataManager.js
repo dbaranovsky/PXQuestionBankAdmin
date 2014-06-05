@@ -222,9 +222,10 @@ var questionDataManager = (function() {
    
 
 
-    self.getDuplicateQuestionTemplate = function (questionId) {
+    self.getDuplicateQuestionTemplate = function (questionId, version) {
         var request = {            
-            questionId: questionId
+            questionId: questionId,
+            version: version
         };
         
         return $.ajax({

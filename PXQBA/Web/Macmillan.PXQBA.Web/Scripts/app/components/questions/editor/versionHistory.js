@@ -40,7 +40,7 @@ var VersionHistory = React.createClass({displayName: 'VersionHistory',
                 version.isInitial = true;
             }
 
-            return (VersionHistoryRow( {version:version, renderPreview:self.renderPreview.bind(this, version.questionPreview)}));
+            return (VersionHistoryRow( {version:version, renderPreview:self.renderPreview.bind(this, version.questionPreview), handlers:self.props.handlers} ));
           });
 
         return vesrions;
@@ -122,11 +122,19 @@ var VersionHistoryRow = React.createClass({displayName: 'VersionHistoryRow',
       return(React.DOM.div( {className:"menu-container-main version-history"}, 
                 React.DOM.button( {type:"button", className:"btn btn-default btn-sm", disabled:this.state.loading, 'data-toggle':"tooltip",  title:"Try Question", onClick:this.tryQuestion}, React.DOM.span( {className:"glyphicon glyphicon-play"}), " " ),
                 React.DOM.button( {type:"button", className:"btn btn-default btn-sm", 'data-toggle':"tooltip", title:"Preview Question", onClick:this.props.renderPreview}, React.DOM.span( {className:"glyphicon glyphicon-search"})),
-                React.DOM.button( {type:"button", className:"btn btn-default btn-sm", 'data-toggle':"tooltip", title:"New Question from this Version"}, React.DOM.span( {className:"glyphicon glyphicon-file"}), " " ), 
-                React.DOM.button( {type:"button", className:"btn btn-default btn-sm", 'data-toggle':"tooltip", title:"New Draft from this Version"}, React.DOM.span( {className:"glyphicon glyphicon-pencil"} )), 
+                React.DOM.button( {type:"button", className:"btn btn-default btn-sm", 'data-toggle':"tooltip", title:"New Question from this Version", onClick:this.newQuestionFormVersionHandler}, React.DOM.span( {className:"glyphicon glyphicon-file"}), " " ), 
+                React.DOM.button( {type:"button", className:"btn btn-default btn-sm", 'data-toggle':"tooltip", title:"New Draft from this Version", onClick:this.newDraftFormVersionHandler}, React.DOM.span( {className:"glyphicon glyphicon-pencil"} )), 
                 React.DOM.button( {type:"button", className:"btn btn-default btn-sm", 'data-toggle':"tooltip", title:"Restore this Version"}, React.DOM.span( {className:"glyphicon glyphicon-repeat"} )) 
                ));
 
+    },
+
+    newQuestionFormVersionHandler: function() {
+        this.props.handlers.createQuestionFromVersionHandler(this.props.version.id, this.props.version.version)
+    },
+
+    newDraftFormVersionHandler: function() {
+        this.props.handlers.createDraftHandler(this.props.version.id, this.props.version.version);
     },
 
     tryQuestion: function(){

@@ -55,7 +55,13 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
                                           question:this.state.editor.template,
                                           caption:this.state.editor.caption, 
                                           metadata:this.state.editor.metadata,
-                                          viewHistoryMode:this.state.editor.viewHistoryMode} ));
+                                          viewHistoryMode:this.state.editor.viewHistoryMode,
+                                          handlers:  {
+                                            createDraftHandler: this.createDraftHandler,
+                                            createQuestionFromVersionHandler: this.createQuestionFromVersionHandler
+                                          }}
+                                           ));
+                                          
           default:
             return null;
         }
@@ -89,13 +95,29 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
          questionDataManager.publishDraftToOriginal(questionId);
       }
     },
-        
+       
+    //from version 
+    createQuestionFromVersionHandler: function(questionId, version) {
+      this.showEditor(this.editorsSteps.none);
+      this.setState({
+           loading: true,
+           editorCaption: window.enums.dialogCaptions.duplicateQuestion
+        });
+
+       questionDataManager.getDuplicateQuestionTemplate(questionId, version).done(this.loadTemplateComplete.bind(this, false));
+    },
+
+    //from version
     createDraftHandler: function(questionId, version) {
+      this.showEditor(this.editorsSteps.none);
+      this.setState({
+           loading: true,
+           editorCaption: window.enums.dialogCaptions.duplicateQuestion
+        });
        questionDataManager.createDraft(questionId, version).done(this.loadTemplateComplete.bind(this, false));
     },
 
     loadTemplateComplete: function(isNew, template) { 
-        debugger;
         if(!isNew){
           questionDataManager.getMetadataFields().done(this.loadMetadataForEditingComplete.bind(this, template));
           return;
@@ -123,7 +145,7 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
        this.editQuestionHandler(questionId);
     },
 
-
+  
     showEditor: function(step) {
       this.setState({
                 editor: {
