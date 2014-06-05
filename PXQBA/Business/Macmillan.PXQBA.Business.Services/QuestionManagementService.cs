@@ -37,14 +37,14 @@ namespace Macmillan.PXQBA.Business.Services
             return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
 
-        public Question GetQuestion(Course course, string questionId)
+        public Question GetQuestion(Course course, string questionId, string version = null)
         {
-            return questionCommands.GetQuestion(course.QuestionRepositoryCourseId, questionId);
+            return questionCommands.GetQuestion(course.QuestionRepositoryCourseId, questionId, version);
         }
 
-        public Question DuplicateQuestion(Course course, string questionId)
+        public Question DuplicateQuestion(Course course, string questionId, string version = null)
         {
-            Question question = GetQuestion(course, questionId);
+            Question question = GetQuestion(course, questionId, version);
             question.Id = Guid.NewGuid().ToString();
             question.Status = ((int)QuestionStatus.InProgress).ToString();
             if (question.ProductCourseSections.Count > 1)
@@ -53,6 +53,7 @@ namespace Macmillan.PXQBA.Business.Services
                 question.DuplicateFromShared = questionId;
             }
             question.DuplicateFrom = questionId;
+            question.DraftFrom = string.Empty;
             return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
 
@@ -132,6 +133,21 @@ namespace Macmillan.PXQBA.Business.Services
                 return true;
             }
             return false;
+        }
+
+        public Question CreateDraft(Course course, string questionId, string version = null)
+        {
+            Question question = GetQuestion(course, questionId, version);
+            question.Id = Guid.NewGuid().ToString();
+            question.Status = ((int)QuestionStatus.InProgress).ToString();
+            if (question.ProductCourseSections.Count > 1)
+            {
+                question.ProductCourseSections.RemoveAll(s => s.ProductCourseId != course.ProductCourseId);
+            }
+            question.DuplicateFromShared = string.Empty;
+            question.DuplicateFrom = string.Empty;
+            question.DraftFrom = questionId;
+            return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
 
         private QuestionMetadataSection GetNewProductCourseSection(int courseIdToPublish, string bank, string chapter, Course currentCourse, Question question)
