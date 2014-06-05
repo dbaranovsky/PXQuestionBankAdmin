@@ -205,7 +205,7 @@ var QuestionListPage = React.createClass({
 
     renderNotificationDialog: function(){
       if(this.state.showNotificationDialog){
-        return (<NotificationDialog  closeDialog={this.closeNotificationDialog} proceedHandler = {this.state.proceed} message={this.state.notification.message}/>);
+        return (<NotificationDialog  closeDialog={this.closeNotificationDialog} proceedHandler = {this.state.proceed} notification={this.state.notification} isCustomCloseHandle={false}/>);
       }
     },
 

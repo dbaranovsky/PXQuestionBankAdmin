@@ -35,7 +35,31 @@ var userManager = (function() {
 
         return $.grep(self.notifications, function(el){ return el.notificationTypeId == typeId;})[0];
     }
-     self.resetNotifications();
+
+    self.dontShowForCurrentUser = function(typeId){
+
+
+        var request = {
+            type: typeId
+        };
+
+        return $.ajax({
+            url: window.actions.userOperations.dontShowForCurrentUserUrl,
+            traditional: true,
+            data: JSON.stringify(request),
+            dataType: 'json',
+            type: 'POST',
+            contentType: 'application/json'
+        }).done(function (response) {
+            
+        }).error(function (httpRequest, textStatus, errorThrown) {
+            if (httpRequest.readyState == 0 || httpRequest.status == 0) {
+                return;  
+            }
+        });
+    }
+
+    self.resetNotifications();
 
     return self;
 }());

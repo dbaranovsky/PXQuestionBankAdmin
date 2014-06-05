@@ -25,9 +25,23 @@ namespace Macmillan.PXQBA.Web.Controllers
             return new JsonResult { Data = "Success" };
         }
 
+        /// <summary>
+        /// Returns availible notification for current user
+        /// </summary>
+        /// <returns></returns>
         public ActionResult GetCurrentUserNotificationForUrl()
         {
             return  JsonCamel(GetAllNotification());
+        }
+
+        /// <summary>
+        /// Forbid notification showing for current user
+        /// </summary>
+        /// <param name="type">notification type</param>
+        /// <returns></returns>
+        public ActionResult DontShowForCurrentUser(NotificationType type)
+        {
+            return JsonCamel(new {isSuccess = true});
         }
 
         private IEnumerable<UserNotificationViewModel> GetAllNotification()
