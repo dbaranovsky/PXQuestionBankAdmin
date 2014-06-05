@@ -1,4 +1,10 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Common.Helpers;
+using Macmillan.PXQBA.Web.ViewModels.User;
 
 namespace Macmillan.PXQBA.Web.Controllers
 {
@@ -17,6 +23,22 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult KeepSessionAlive(string data)
         {
             return new JsonResult { Data = "Success" };
+        }
+
+        public ActionResult GetCurrentUserNotificationForUrl()
+        {
+            return  JsonCamel(GetAllNotification());
+        }
+
+        private IEnumerable<UserNotificationViewModel> GetAllNotification()
+        {
+           return (from notification in (NotificationType[]) Enum.GetValues(typeof (NotificationType))
+                   select new UserNotificationViewModel()
+                       {
+                           IsShown = true, 
+                           Message = EnumHelper.GetEnumDescription(notification), 
+                           NotificationTypeId = (int) notification
+                       }).ToList();
         }
 	}
 }

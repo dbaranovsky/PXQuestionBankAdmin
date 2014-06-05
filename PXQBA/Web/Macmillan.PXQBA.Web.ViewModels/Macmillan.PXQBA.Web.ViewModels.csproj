@@ -78,6 +78,7 @@
     <Compile Include="TiteList\ChapterViewModel.cs" />
     <Compile Include="TiteList\TitleListDataResponse.cs" />
     <Compile Include="TiteList\TitleViewModel.cs" />
+    <Compile Include="User\UserNotificationViewModel.cs" />
     <Compile Include="Versions\DuplicateFromViewModel.cs" />
     <Compile Include="Versions\QuestionHistoryViewModel.cs" />
     <Compile Include="Versions\QuestionVersionViewModel.cs" />
@@ -92,6 +93,7 @@
       <Name>Macmillan.PXQBA.Common.Helpers</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

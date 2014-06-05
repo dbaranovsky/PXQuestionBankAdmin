@@ -123,6 +123,8 @@ var QuestionListMenu = React.createClass({
 
     },
 
+
+
     renderEditMenu: function(){
       var status = this.props.data[window.consts.questionStatusName];
 
@@ -132,7 +134,7 @@ var QuestionListMenu = React.createClass({
 
                   if (this.props.isShared){
                   return(
-                     <ul className="dropdown-menu show-menu" role="menu" aria-labelledby="dropdownMenuType" onClick={this.changeEventHandler} aria-labelledby="edit-question">
+                     <ul className="dropdown-menu show-menu" role="menu" aria-labelledby="dropdownMenuType" aria-labelledby="edit-question">
                        <li role="presentation" className="dropdown-header">Edit options</li>
                        <li role="presentation" className="divider"></li>
                        <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.createDraftHandler}>Create a Draft</a></li>
@@ -142,7 +144,7 @@ var QuestionListMenu = React.createClass({
 
                 if (status == window.enums.statuses.inProgress){
                    return(
-                     <ul className="dropdown-menu show-menu" role="menu" aria-labelledby="dropdownMenuType" onClick={this.changeEventHandler} aria-labelledby="edit-question">
+                     <ul className="dropdown-menu show-menu" role="menu" aria-labelledby="dropdownMenuType"  aria-labelledby="edit-question">
                        <li role="presentation" className="dropdown-header">Edit options</li>
                        <li role="presentation" className="divider"></li>
                        <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.editQuestionHandler.bind(this, false)}>Edit in Place</a></li>
