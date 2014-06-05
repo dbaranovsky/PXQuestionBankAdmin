@@ -48,7 +48,6 @@ var QuestionEditorTabs = React.createClass({
          this.props.editSourceQuestionHandler(this.props.question.sharedQuestionDuplicateFrom.questionId);
      },
 
-
     renderSharingNotification: function(){
 
      if(this.props.question.sharedQuestionDuplicateFrom!=null && this.props.isDuplicate){
@@ -207,7 +206,6 @@ var QuestionEditorTabs = React.createClass({
     },
 
     render: function() {
-
        var iframeClass = ""
        if ((this.props.question.isShared && !this.props.isNew) || (this.props.question.sharedQuestionDuplicateFrom != null && this.props.isDuplicate)){
         iframeClass = "shared";
@@ -220,7 +218,6 @@ var QuestionEditorTabs = React.createClass({
        if (this.state.isGraph){
         iframeClass = iframeClass + " graph";
        }
-
         return ( 
                 <div>
                   
@@ -260,7 +257,7 @@ var QuestionEditorTabs = React.createClass({
                      <div className="tab-pane" id="history">
 
                        <div className="tab-body">
-                          <VersionHistory question={this.props.question}/>
+                          <VersionHistory question={this.props.question} handlers={this.props.handlers}/>
                        </div>
 
                 </div>

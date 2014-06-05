@@ -184,7 +184,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(new {isError = !success});
         }
 
-        public ActionResult CreateDraft(Course course, string questionId, string version = null)
+        public ActionResult CreateDraft(string questionId, string version = null)
         {
             var question = questionManagementService.CreateDraft(CourseHelper.CurrentCourse, questionId);
             return JsonCamel(CreateQuestionViewModelForEditing(question));

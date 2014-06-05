@@ -38,6 +38,10 @@ var QuestionListMenu = React.createClass({
       this.props.publishDraftHandler();
     },
 
+    createDraftHandler: function() {
+      this.props.createDraftHandler();
+    },
+
     shareHandler: function(){
         this.props.shareHandler();
     },
@@ -131,7 +135,7 @@ var QuestionListMenu = React.createClass({
                      <ul className="dropdown-menu show-menu" role="menu" aria-labelledby="dropdownMenuType" onClick={this.changeEventHandler} aria-labelledby="edit-question">
                        <li role="presentation" className="dropdown-header">Edit options</li>
                        <li role="presentation" className="divider"></li>
-                       <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.editQuestionHandler.bind(this, false)}>Edit in {this.props.titleCount+1 == 1? "1 title" : "all "+(this.props.titleCount+1)+" titles"}</a></li>
+                       <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.createDraftHandler}>Create a Draft</a></li>
                        <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.editQuestionHandler.bind(this, false)}>Create a copy</a></li>
                      </ul>);
                 }
@@ -142,7 +146,7 @@ var QuestionListMenu = React.createClass({
                        <li role="presentation" className="dropdown-header">Edit options</li>
                        <li role="presentation" className="divider"></li>
                        <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.editQuestionHandler.bind(this, false)}>Edit in Place</a></li>
-                       <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.copyQuestionHandler}>Create a Draft</a></li>
+                       <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.createDraftHandler}>Create a Draft</a></li>
                      </ul>);
                 }
     },

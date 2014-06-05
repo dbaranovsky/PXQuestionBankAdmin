@@ -38,6 +38,10 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
       this.props.publishDraftHandler();
     },
 
+    createDraftHandler: function() {
+      this.props.createDraftHandler();
+    },
+
     shareHandler: function(){
         this.props.shareHandler();
     },
@@ -131,7 +135,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
                      React.DOM.ul( {className:"dropdown-menu show-menu", role:"menu", 'aria-labelledby':"dropdownMenuType", onClick:this.changeEventHandler, 'aria-labelledby':"edit-question"}, 
                        React.DOM.li( {role:"presentation", className:"dropdown-header"}, "Edit options"),
                        React.DOM.li( {role:"presentation", className:"divider"}),
-                       React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.props.editQuestionHandler.bind(this, false)}, "Edit in ", this.props.titleCount+1 == 1? "1 title" : "all "+(this.props.titleCount+1)+" titles")),
+                       React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.createDraftHandler}, "Create a Draft")),
                        React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.props.editQuestionHandler.bind(this, false)}, "Create a copy"))
                      ));
                 }
@@ -142,7 +146,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
                        React.DOM.li( {role:"presentation", className:"dropdown-header"}, "Edit options"),
                        React.DOM.li( {role:"presentation", className:"divider"}),
                        React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.props.editQuestionHandler.bind(this, false)}, "Edit in Place")),
-                       React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.copyQuestionHandler}, "Create a Draft"))
+                       React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.createDraftHandler}, "Create a Draft"))
                      ));
                 }
     },

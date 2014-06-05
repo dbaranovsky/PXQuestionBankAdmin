@@ -55,7 +55,13 @@ var QuestionListPage = React.createClass({
                                           question={this.state.editor.template}
                                           caption={this.state.editor.caption }
                                           metadata={this.state.editor.metadata}
-                                          viewHistoryMode={this.state.editor.viewHistoryMode} />);
+                                          viewHistoryMode={this.state.editor.viewHistoryMode}
+                                          handlers = {{
+                                            createDraftHandler: this.createDraftHandler,
+                                            createQuestionFromVersionHandler: this.createQuestionFromVersionHandler
+                                          }}
+                                           />);
+                                          
           default:
             return null;
         }
@@ -86,12 +92,32 @@ var QuestionListPage = React.createClass({
 
     publishDraftHandler: function(questionId) {
       if(confirm("You are about to publish a draft. The edits reflected in this draft will replace all content in the original question. Click Proceed to continue with the publish process")){
-         questionDataManager.publishDraftToOriginalUrl(questionId);
+         questionDataManager.publishDraftToOriginal(questionId);
       }
     },
-              
+       
+    //from version 
+    createQuestionFromVersionHandler: function(questionId, version) {
+      this.showEditor(this.editorsSteps.none);
+      this.setState({
+           loading: true,
+           editorCaption: window.enums.dialogCaptions.duplicateQuestion
+        });
+
+       questionDataManager.getDuplicateQuestionTemplate(questionId, version).done(this.loadTemplateComplete.bind(this, false));
+    },
+
+    //from version
+    createDraftHandler: function(questionId, version) {
+      this.showEditor(this.editorsSteps.none);
+      this.setState({
+           loading: true,
+           editorCaption: window.enums.dialogCaptions.duplicateQuestion
+        });
+       questionDataManager.createDraft(questionId, version).done(this.loadTemplateComplete.bind(this, false));
+    },
+
     loadTemplateComplete: function(isNew, template) { 
-        
         if(!isNew){
           questionDataManager.getMetadataFields().done(this.loadMetadataForEditingComplete.bind(this, template));
           return;
@@ -119,6 +145,7 @@ var QuestionListPage = React.createClass({
        this.editQuestionHandler(questionId);
     },
 
+  
     showEditor: function(step) {
       this.setState({
                 editor: {
@@ -223,7 +250,8 @@ var QuestionListPage = React.createClass({
                                                                 closeNoteDialogHandler: this.closeNoteDialogHandler,
                                                                 editNotesHandler: this.editNotesHandler,
                                                                 shareHandler: this.shareHandler,
-                                                                publishDraftHandler: this.publishDraftHandler
+                                                                publishDraftHandler: this.publishDraftHandler,
+                                                                createDraftHandler: this.createDraftHandler
                                                                 }}/>
                 </div>
                 {this.renderQuestionEditorDialog()}

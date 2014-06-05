@@ -222,9 +222,10 @@ var questionDataManager = (function() {
    
 
 
-    self.getDuplicateQuestionTemplate = function (questionId) {
+    self.getDuplicateQuestionTemplate = function (questionId, version) {
         var request = {            
-            questionId: questionId
+            questionId: questionId,
+            version: version
         };
         
         return $.ajax({
@@ -452,7 +453,7 @@ var questionDataManager = (function() {
         });
     };
 
-    self.publishDraftToOriginalUrl = function (questionId) {
+    self.publishDraftToOriginal = function (questionId) {
         asyncManager.startWait();
         var request = {
             draftQuestionId: questionId,
@@ -467,6 +468,28 @@ var questionDataManager = (function() {
             asyncManager.stopWait();
             self.resetState();
             self.showSuccessPopup('The question was published successfully');
+        }).error(function (e) {
+            self.showErrorPopup();
+            asyncManager.stopWait();
+        });
+
+    };
+    
+    self.createDraft = function (questionId, version) {
+        asyncManager.startWait();
+        var request = {
+            questionId: questionId,
+            version: version
+        };
+        return $.ajax({
+            url: window.actions.questionList.createDraftUrl,
+            traditional: true,
+            data: request,
+            dataType: 'json',
+            type: 'POST'
+        }).done(function (response) {
+            asyncManager.stopWait();
+            self.resetState();
         }).error(function (e) {
             self.showErrorPopup();
             asyncManager.stopWait();
