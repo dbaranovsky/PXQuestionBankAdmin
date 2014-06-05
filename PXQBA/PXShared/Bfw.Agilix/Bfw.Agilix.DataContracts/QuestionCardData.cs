@@ -131,9 +131,18 @@ namespace Bfw.Agilix.DataContracts
             var element = new XElement(QuestionCardDataName);
             element.Add(new XAttribute("filterable", Filterable));
             element.Add(new XAttribute("hidden", Hidden));
-            element.Add(new XAttribute("searchterm", SearchTerm));
-            element.Add(new XAttribute("friendlyname", FriendlyName));
-            element.Add(new XAttribute("type", Type));
+            if (!string.IsNullOrEmpty(SearchTerm))
+            {
+                element.Add(new XAttribute("searchterm", SearchTerm));
+            }
+            if (!string.IsNullOrEmpty(FriendlyName))
+            {
+                element.Add(new XAttribute("friendlyname", FriendlyName));
+            }
+            if (!string.IsNullOrEmpty(Type))
+            {
+                element.Add(new XAttribute("type", Type));
+            }
             for(var i=0; i<QuestionValues.Count; i++)
             {
                 element.Add(QuestionValues[i].ToEntity(i));
@@ -202,46 +211,5 @@ namespace Bfw.Agilix.DataContracts
         }
 
         #endregion
-    }
-
-    /// <summary>
-    /// Possible value of the question data metafield
-    /// </summary>
-    [DataContract]
-    public class QuestionCardDataValue:IDlapEntityParser
-    {
-        /// <summary>
-        /// Display text of the value
-        /// </summary>
-        [DataMember]
-        public string Text { get; set; }
-
-        /// <summary>
-        /// Sequence of the value
-        /// </summary>
-        [DataMember]
-        public int Sequence { get; set; }
-
-        public XElement ToEntity(int i)
-        {
-            var element = new XElement("value");
-            element.Add(new XAttribute("text", Text));
-            element.Add(new XAttribute("sequence", i));
-            return element;
-        }
-
-        public void ParseEntity(XElement element)
-        {
-            int outvalue;
-            if (element.Attribute("text") != null)
-            {
-                Text = element.Attribute("text").Value;
-            }
-            if (element.Attribute("sequence") != null)
-            {
-                int.TryParse(element.Attribute("sequence").Value, out outvalue);
-                Sequence = outvalue;
-            }
-        }
     }
 }

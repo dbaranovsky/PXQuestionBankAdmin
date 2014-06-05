@@ -188,6 +188,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                .ForMember(dest => dest.Filterable, opt => opt.MapFrom(src => src.DisplayOptions.Filterable))
                .ForMember(dest => dest.CourseMetadataFieldValues, opt => opt.MapFrom(src => modelProfileService.GetFieldValues(src.ValuesOptions)));
 
+            Mapper.CreateMap<CourseMetadataFieldValue, QuestionCardDataValue>();
         }
     }
 

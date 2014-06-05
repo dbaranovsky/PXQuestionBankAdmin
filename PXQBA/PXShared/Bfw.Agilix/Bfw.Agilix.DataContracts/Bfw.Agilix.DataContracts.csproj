@@ -239,6 +239,7 @@
     <Compile Include="CategoryGrade.cs" />
     <Compile Include="Container.cs" />
     <Compile Include="ItemLink.cs" />
+    <Compile Include="QuestionCardDataValue.cs" />
     <Compile Include="QuestionInteraction.cs" />
     <Compile Include="DueSoonSearch.cs" />
     <Compile Include="QuestionCardData.cs" />
