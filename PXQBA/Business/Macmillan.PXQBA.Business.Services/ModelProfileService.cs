@@ -330,6 +330,7 @@ namespace Macmillan.PXQBA.Business.Services
         {
             return new CourseMetadataFieldDescriptor
             {
+                Type = MetadataFieldType.SingleSelect,
                 Name = internalName,
                 Filterable = true,
                 CourseMetadataFieldValues =
