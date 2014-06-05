@@ -27,6 +27,14 @@ var userManager = (function() {
         self.notifications = notifications;
     };
 
+    self.getNotificationById = function(typeId){
+
+        if (self.notifications.length == 0){
+            return null;
+        }
+
+        return $.grep(self.notifications, function(el){ return el.notificationTypeId == typeId;})[0];
+    }
      self.resetNotifications();
 
     return self;

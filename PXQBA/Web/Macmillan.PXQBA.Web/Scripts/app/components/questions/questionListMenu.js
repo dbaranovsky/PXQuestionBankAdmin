@@ -5,7 +5,7 @@
 var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
 
 
-     getInitialState: function() {
+    getInitialState: function() {
 
        return { isFlagged: this.props.data.flag == window.enums.flag.flagged };
     },
@@ -35,7 +35,15 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
     },
 
     publishDraftHandler: function() {
-      this.props.publishDraftHandler();
+      var notification = userManager.getNotificationById(window.enums.notificationTypes.publishChangesMadeWithinDraft);
+
+      if(notification == null || !notification.isShown){
+          this.props.publishDraftHandler();
+          return;
+      }
+
+      this.props.showNotification(notification, this.props.publishDraftHandler);
+      
     },
 
     createDraftHandler: function() {

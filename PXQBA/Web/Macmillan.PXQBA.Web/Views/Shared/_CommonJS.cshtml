@@ -51,7 +51,7 @@
             getTitleDataUrl: '@Url.Action("GetTitleData", "ProductCourseList")'
         };
 
-        actions.metadataCfg = {            
+        actions.metadataCfg = {
             getAvailableCoursesUrl: '@Url.Action("GetAvailableCourses", "Metadata")',
             getMetadataConfigUrl: '@Url.Action("GetMetadataConfig", "Metadata")',
             saveMetadataConfigUrl: '@Url.Action("SaveMetadataConfig", "Metadata")'
@@ -67,7 +67,7 @@
             getQuestionTypeListUrl: '@Url.Action("GetQuestionTypeList", "QuestionFilter")',
         };
 
-        actions.userOperations = {            
+        actions.userOperations = {
             getCurrentUserNotificationForUrl: '@Url.Action("GetCurrentUserNotificationForUrl", "User")',
         };
 
@@ -122,11 +122,20 @@
             availibleToInstructor: '@EnumHelper.GetEnumDescription(QuestionStatus.AvailableToInstructors)',
             deleted: '@EnumHelper.GetEnumDescription(QuestionStatus.Deleted)',
             inProgress: '@EnumHelper.GetEnumDescription(QuestionStatus.InProgress)',
-    };
-    var consts = {};
-    window.consts = consts;
+        };
 
-    consts.questionTitleName = '@MetadataFieldNames.DlapTitle';
+
+        enums.notificationTypes = {
+            editInPlaceQuestionInProgress: '@((int)NotificationType.EditInPlaceQuestionInProgress)',
+            newDraftForAvailableToInstructors: '@((int)NotificationType.NewDraftForAvailableToInstructors)',
+            publishChangesMadeWithinDraft: '@((int)NotificationType.PublishChangesMadeWithinDraft)'
+        };
+
+
+        var consts = {};
+        window.consts = consts;
+
+        consts.questionTitleName = '@MetadataFieldNames.DlapTitle';
         consts.questionStatusName = '@MetadataFieldNames.QuestionStatus';
         consts.questionCourseName = '@MetadataFieldNames.ProductCourse';
         consts.questionChapterName = '@MetadataFieldNames.Chapter';

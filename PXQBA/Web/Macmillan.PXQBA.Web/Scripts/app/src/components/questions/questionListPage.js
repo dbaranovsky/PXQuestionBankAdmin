@@ -91,9 +91,7 @@ var QuestionListPage = React.createClass({
     },
 
     publishDraftHandler: function(questionId) {
-      if(confirm("You are about to publish a draft. The edits reflected in this draft will replace all content in the original question. Click Proceed to continue with the publish process")){
          questionDataManager.publishDraftToOriginal(questionId);
-      }
     },
        
     //from version 
@@ -189,12 +187,7 @@ var QuestionListPage = React.createClass({
     },
 
 
-    closeNoteDialogHandler: function(){
-      this.setState({
-            showNoteEditDialog: false,
-            questionIdForNotes: 0 
-       });
-    },
+ 
 
     renderNotesDialog: function(){
       if(this.state.showNoteEditDialog) {
@@ -210,11 +203,28 @@ var QuestionListPage = React.createClass({
       return null;
     },
 
+    renderNotificationDialog: function(){
+      if(this.state.showNotificationDialog){
+        return (<NotificationDialog  closeDialog={this.closeNotificationDialog} proceedHandler = {this.state.proceed} message={this.state.notification.message}/>);
+      }
+    },
+
+   closeNoteDialogHandler: function(){
+      this.setState({
+            showNoteEditDialog: false,
+            questionIdForNotes: 0 
+       });
+    },
+
     closeShareDialogHandler: function(){
        this.setState({
         showShareDialog: false,
         questionId: 0 
       });
+    },
+
+    closeNotificationDialog: function(){
+      this.setState({showNotificationDialog: false});
     },
 
     editNotesHandler: function(qId) {
@@ -228,6 +238,14 @@ var QuestionListPage = React.createClass({
       this.setState({
         showShareDialog: true,
         questionIds: questionIds
+      });
+    },
+
+    showNotification: function(notification, proceed){
+      this.setState({
+          showNotificationDialog: true,
+          notification: notification,
+          proceed: proceed
       });
     },
 
@@ -251,12 +269,14 @@ var QuestionListPage = React.createClass({
                                                                 editNotesHandler: this.editNotesHandler,
                                                                 shareHandler: this.shareHandler,
                                                                 publishDraftHandler: this.publishDraftHandler,
-                                                                createDraftHandler: this.createDraftHandler
+                                                                createDraftHandler: this.createDraftHandler,
+                                                                showNotification: this.showNotification
                                                                 }}/>
                 </div>
                 {this.renderQuestionEditorDialog()}
                 {this.renderNotesDialog()}
                 {this.renderShareDialog()}
+                {this.renderNotificationDialog()}
                  
             </div>
             );          
