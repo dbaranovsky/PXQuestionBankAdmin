@@ -86,12 +86,16 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
 
     publishDraftHandler: function(questionId) {
       if(confirm("You are about to publish a draft. The edits reflected in this draft will replace all content in the original question. Click Proceed to continue with the publish process")){
-         questionDataManager.publishDraftToOriginalUrl(questionId);
+         questionDataManager.publishDraftToOriginal(questionId);
       }
     },
-              
-    loadTemplateComplete: function(isNew, template) { 
         
+    createDraftHandler: function(questionId, version) {
+       questionDataManager.createDraft(questionId, version).done(this.loadTemplateComplete.bind(this, false));
+    },
+
+    loadTemplateComplete: function(isNew, template) { 
+        debugger;
         if(!isNew){
           questionDataManager.getMetadataFields().done(this.loadMetadataForEditingComplete.bind(this, template));
           return;
@@ -118,6 +122,7 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
        this.showEditor(this.editorsSteps.none);
        this.editQuestionHandler(questionId);
     },
+
 
     showEditor: function(step) {
       this.setState({
@@ -223,7 +228,8 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
                                                                 closeNoteDialogHandler: this.closeNoteDialogHandler,
                                                                 editNotesHandler: this.editNotesHandler,
                                                                 shareHandler: this.shareHandler,
-                                                                publishDraftHandler: this.publishDraftHandler
+                                                                publishDraftHandler: this.publishDraftHandler,
+                                                                createDraftHandler: this.createDraftHandler
                                                                 }})
                 ),
                 this.renderQuestionEditorDialog(),
