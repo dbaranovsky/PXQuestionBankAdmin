@@ -34,6 +34,10 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
       }
     },
 
+    publishDraftHandler: function() {
+      this.props.publishDraftHandler();
+    },
+
     shareHandler: function(){
         this.props.shareHandler();
     },
@@ -146,9 +150,8 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
     renderMenu: function(){
       if (this.props.showAll){
       var isDeleted = this.props.data[window.consts.questionStatusName] == window.enums.statuses.deleted;
-
       return(React.DOM.div( {className:"menu-container-main"}, 
-
+                    this.renderDraftButton(),
                React.DOM.div( {className:"dropdown"}, 
                   React.DOM.button( {id:"edit-question", type:"button", className:"btn btn-default btn-sm", onClick:this.editQuestionHandler, disabled:isDeleted,  'data-target':"#", 'data-toggle':"dropdown", title:"Edit Question"}, 
                          React.DOM.span( {className:"glyphicon glyphicon-pencil", 'data-toggle':"tooltip", title:"Edit Question"})
@@ -162,7 +165,14 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
      }
 
       return (React.DOM.div( {className:"menu-container-main"}));
+    },
 
+    renderDraftButton: function() {
+      if(this.props.draft) {
+        return ( React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.publishDraftHandler,  'data-toggle':"tooltip", title:"Publish"}, React.DOM.span( {className:"glyphicon glyphicon-open"})));
+      }
+
+      return null;
     },
 
     renderFlagMenu: function(){

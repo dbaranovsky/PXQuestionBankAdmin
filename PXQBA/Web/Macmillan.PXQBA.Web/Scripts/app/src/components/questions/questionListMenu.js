@@ -34,6 +34,10 @@ var QuestionListMenu = React.createClass({
       }
     },
 
+    publishDraftHandler: function() {
+      this.props.publishDraftHandler();
+    },
+
     shareHandler: function(){
         this.props.shareHandler();
     },
@@ -146,9 +150,8 @@ var QuestionListMenu = React.createClass({
     renderMenu: function(){
       if (this.props.showAll){
       var isDeleted = this.props.data[window.consts.questionStatusName] == window.enums.statuses.deleted;
-
       return(<div className="menu-container-main">
-
+                    {this.renderDraftButton()}
                <div className="dropdown">
                   <button id="edit-question" type="button" className="btn btn-default btn-sm" onClick={this.editQuestionHandler} disabled={isDeleted}  data-target="#" data-toggle="dropdown" title="Edit Question">
                          <span className="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Edit Question"></span>
@@ -162,7 +165,14 @@ var QuestionListMenu = React.createClass({
      }
 
       return (<div className="menu-container-main"></div>);
+    },
 
+    renderDraftButton: function() {
+      if(this.props.draft) {
+        return ( <button type="button" className="btn btn-default btn-sm" onClick={this.publishDraftHandler}  data-toggle="tooltip" title="Publish"><span className="glyphicon glyphicon-open"></span></button>);
+      }
+
+      return null;
     },
 
     renderFlagMenu: function(){
