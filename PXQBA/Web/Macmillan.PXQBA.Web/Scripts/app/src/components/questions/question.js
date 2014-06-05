@@ -46,9 +46,12 @@ var Question = React.createClass({
                         editQuestionHandler={this.props.menuHandlers.editQuestionHandler.bind(null, questionId)}
                         editNotesHandler={this.props.menuHandlers.editNotesHandler.bind(null, questionId)}
                         shareHandler ={this.props.menuHandlers.shareHandler.bind(null, questionIds)}
+                        publishDraftHandler = {this.props.menuHandlers.publishDraftHandler.bind(null, questionId)}
                         showAll = {this.state.showMenu} 
                         isShared = {isShared}
-                        titleCount = {titleCount} />
+                        titleCount = {titleCount}
+                        draft = {this.props.draft}
+                         />
     },
 
     selectQuestionHandler: function(event) {

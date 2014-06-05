@@ -83,6 +83,12 @@ var QuestionListPage = React.createClass({
         });
        questionDataManager.getQuestion(questionId).done(this.loadTemplateComplete.bind(this, false));
     },
+
+    publishDraftHandler: function(questionId) {
+      if(confirm("You are about to publish a draft. The edits reflected in this draft will replace all content in the original question. Click Proceed to continue with the publish process")){
+         alert('published ' + questionId);
+      }
+    },
               
     loadTemplateComplete: function(isNew, template) { 
         
@@ -217,6 +223,7 @@ var QuestionListPage = React.createClass({
                                                                 closeNoteDialogHandler: this.closeNoteDialogHandler,
                                                                 editNotesHandler: this.editNotesHandler,
                                                                 shareHandler: this.shareHandler,
+                                                                publishDraftHandler: this.publishDraftHandler
                                                                 }}/>
                 </div>
                 {this.renderQuestionEditorDialog()}

@@ -862,7 +862,7 @@ a.shared-question-link:hover {
     overflow: visible;
 }
 .actions-container {
-      width: 280px;
+   width: 330px;
     overflow: visible;
 }
 
@@ -872,7 +872,7 @@ a.shared-question-link:hover {
 }
 
 .menu-container-main {
-   width: 140px;
+   width: 170px;
    margin-bottom: 1px;
    display: inline-block;
 }
@@ -884,7 +884,7 @@ a.shared-question-link:hover {
 
 
 .menu-container-main .dropdown {
-    float: left;
+    display: inline-block;
 }
 
 .menu-container-main .dropdown-header {
