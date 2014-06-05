@@ -65,9 +65,9 @@ namespace Macmillan.PXQBA.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult DuplicateQuestion(string questionId)
+        public ActionResult DuplicateQuestion(string questionId, string version = null)
         {
-            var question = questionManagementService.DuplicateQuestion(CourseHelper.CurrentCourse, questionId);
+            var question = questionManagementService.DuplicateQuestion(CourseHelper.CurrentCourse, questionId, version);
             return JsonCamel(CreateQuestionViewModelForEditing(question));
 
         }
@@ -182,6 +182,13 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
             var success = questionManagementService.PublishDraftToOriginal(CourseHelper.CurrentCourse, draftQuestionId);
             return JsonCamel(new {isError = !success});
+        }
+
+        public ActionResult CreateDraft(Course course, string questionId, string version = null)
+        {
+            var question = questionManagementService.CreateDraft(CourseHelper.CurrentCourse, questionId);
+            return JsonCamel(CreateQuestionViewModelForEditing(question));
+
         }
 	}
   

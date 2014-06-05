@@ -26,7 +26,7 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// </summary>
         /// <param name="questionId"></param>
         /// <returns></returns>
-        Question GetQuestion(Course course, string questionId);
+        Question GetQuestion(Course course, string questionId, string version = null);
 
         /// <summary>
         /// Creates template for new question based on existing one. 
@@ -34,7 +34,7 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// </summary>
         /// <param name="questionId"></param>
         /// <returns></returns>
-        Question DuplicateQuestion(Course course, string questionId);
+        Question DuplicateQuestion(Course course, string questionId, string version = null);
 
         /// <summary>
         /// Update existing question metafields
@@ -58,5 +58,6 @@ namespace Macmillan.PXQBA.Business.Contracts
 
         Question GetTemporaryQuestionVersion(Course currentCourse, string questionId, string version);
         bool PublishDraftToOriginal(Course currentCourse, string draftQuestionId);
+        Question CreateDraft(Course course, string questionId, string version = null);
     }
 }

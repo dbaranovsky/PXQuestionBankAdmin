@@ -258,9 +258,9 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return QuestionSequenceHelper.GetNewLastValue(questionsWithDecimalSequence);
         }
 
-        public Question GetQuestion(string repositoryCourseId, string questionId)
+        public Question GetQuestion(string repositoryCourseId, string questionId, string version = null)
         {
-            return Mapper.Map<Question>(GetAgilixQuestion(repositoryCourseId, questionId));
+            return Mapper.Map<Question>(GetAgilixQuestion(repositoryCourseId, questionId, version));
         }
 
         public IEnumerable<Question> GetQuestions(string repositoryCourseId, string[] questionsId)
