@@ -82,7 +82,6 @@
     <Compile Include="Contracts\ITemporaryQuestionOperation.cs" />
     <Compile Include="Contracts\IUserOperation.cs" />
     <Compile Include="DataContracts\QuestionSearchResult.cs" />
-    <Compile Include="Helpers\CourseDataXmlParser.cs" />
     <Compile Include="Helpers\QuestionDataXmlParser.cs" />
     <Compile Include="Helpers\QuestionSequenceHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

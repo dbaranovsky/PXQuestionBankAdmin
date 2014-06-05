@@ -69,11 +69,6 @@ namespace Macmillan.PXQBA.Business.Services
             return string.Empty;
         }
 
-        public string GetQuestionBankRepositoryCourse(Bfw.Agilix.DataContracts.Course src)
-        {
-            return CourseDataXmlParser.ParseQuestionBankRepositoryCourse(src.Data);
-        }
-
         public QuestionMetadataSection GetQuestionDefaultValues(Bfw.Agilix.DataContracts.Question question)
         {
             return QuestionDataXmlParser.GetDefaultSectionValues(question.MetadataElements);
