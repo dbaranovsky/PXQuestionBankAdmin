@@ -86,7 +86,7 @@ var QuestionListPage = React.createClass({
 
     publishDraftHandler: function(questionId) {
       if(confirm("You are about to publish a draft. The edits reflected in this draft will replace all content in the original question. Click Proceed to continue with the publish process")){
-         alert('published ' + questionId);
+         questionDataManager.publishDraftToOriginalUrl(questionId);
       }
     },
               

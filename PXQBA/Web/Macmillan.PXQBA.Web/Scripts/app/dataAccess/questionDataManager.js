@@ -452,6 +452,27 @@ var questionDataManager = (function() {
         });
     };
 
+    self.publishDraftToOriginalUrl = function (questionId) {
+        asyncManager.startWait();
+        var request = {
+            draftQuestionId: questionId,
+        };
+        return $.ajax({
+            url: window.actions.questionList.publishDraftToOriginalUrl,
+            traditional: true,
+            data: request,
+            dataType: 'json',
+            type: 'GET'
+        }).done(function (response) {
+            asyncManager.stopWait();
+            self.resetState();
+            self.showSuccessPopup('The question was published successfully');
+        }).error(function (e) {
+            self.showErrorPopup();
+            asyncManager.stopWait();
+        });
+
+    };
 
     /*  Common operations  */
     self.resetState = function(){
