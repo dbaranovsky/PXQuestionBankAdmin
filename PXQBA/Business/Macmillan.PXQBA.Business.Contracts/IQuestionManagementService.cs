@@ -57,5 +57,6 @@ namespace Macmillan.PXQBA.Business.Contracts
         IEnumerable<Question> GetVersionHistory(Course currentCourse, string questionId);
 
         Question GetTemporaryQuestionVersion(Course currentCourse, string questionId, string version);
+        bool PublishDraftToOriginal(Course currentCourse, string draftQuestionId);
     }
 }

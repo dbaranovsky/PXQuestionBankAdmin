@@ -451,6 +451,24 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return versions.ToList().OrderByDescending(v => v.Version);
         }
 
+        public void DeleteQuestion(string repositoryCourseId, string questionId)
+        {
+            var questionToDelete = new XElement("question",
+                   new XAttribute("entityid", repositoryCourseId),
+                   new XAttribute("questionid", questionId)
+               );
+
+            var deleteCmd = new DeleteQuestions()
+            {
+                Questions = new List<XElement>()
+                    {
+                        new XElement(questionToDelete)
+                    }
+            };
+
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(deleteCmd);
+        }
+
 
         private Bfw.Agilix.DataContracts.Question GetSpecificVersion(string repositoryCourseId, string questionId, string version)
         {

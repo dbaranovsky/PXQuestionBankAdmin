@@ -118,6 +118,22 @@ namespace Macmillan.PXQBA.Business.Services
             return temporaryQuestionOperation.CopyQuestionToTemporaryCourse(currentCourse.QuestionRepositoryCourseId, questionId, version);
         }
 
+        public bool PublishDraftToOriginal(Course currentCourse, string draftQuestionId)
+        {
+            var draftQuestion = questionCommands.GetQuestion(currentCourse.QuestionRepositoryCourseId, draftQuestionId);
+            if (!string.IsNullOrEmpty(draftQuestion.DraftFrom))
+            {
+                var originalQuestion = questionCommands.GetQuestion(currentCourse.QuestionRepositoryCourseId,
+                    draftQuestion.DraftFrom);
+                draftQuestion.Id = originalQuestion.Id;
+                draftQuestion.DraftFrom = string.Empty;
+                questionCommands.UpdateQuestion(draftQuestion);
+                questionCommands.DeleteQuestion(currentCourse.QuestionRepositoryCourseId, draftQuestionId);
+                return true;
+            }
+            return false;
+        }
+
         private QuestionMetadataSection GetNewProductCourseSection(int courseIdToPublish, string bank, string chapter, Course currentCourse, Question question)
         {
             var courseToPublish = productCourseManagementService.GetProductCourse(courseIdToPublish.ToString());
