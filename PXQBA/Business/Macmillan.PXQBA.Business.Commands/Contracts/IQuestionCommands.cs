@@ -31,5 +31,6 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
 
         void ExecuteSolrUpdateTask();
         IEnumerable<Question> GetVersionHistory(string questionRepositoryCourseId, string questionId);
+        void DeleteQuestion(string repositoryCourseId, string questionId);
     }
 }

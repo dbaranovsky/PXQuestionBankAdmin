@@ -61,26 +61,8 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         public Models.Question CopyQuestionToSourceCourse(string sourceProductCourseId, string sourceQuestionId)
         {
             var question = CopyQuestionToCourse(temporaryCourseId, GetTemporaryQuestionId(), sourceProductCourseId, sourceQuestionId);
-            DeleteTemporaryQuestion();
+            questionCommands.DeleteQuestion(temporaryCourseId, GetTemporaryQuestionId());
             return Mapper.Map<Models.Question>(question);
-        }
-
-        private void DeleteTemporaryQuestion()
-        {
-              var questionToDelete = new XElement("question",
-                    new XAttribute("entityid", temporaryCourseId),
-                    new XAttribute("questionid", GetTemporaryQuestionId())
-                );
-
-                var deleteCmd = new DeleteQuestions()
-                {
-                    Questions = new List<XElement>()
-                    {
-                        new XElement(questionToDelete)
-                    }
-                };
-
-            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(deleteCmd);
         }
 
         private Question CopyQuestionToCourse(string sourceProductCourseId, string sourceQuestionId, string destinationProductCourseId, string destinationQuestionId,string version = null)

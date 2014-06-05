@@ -177,6 +177,12 @@ namespace Macmillan.PXQBA.Web.Controllers
             var tempVersion = questionManagementService.GetTemporaryQuestionVersion(CourseHelper.CurrentCourse, QuestionHelper.QuestionIdToEdit, version);
             return JsonCamel(new { Url = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), tempVersion.EntityId, tempVersion.QuizId) });
         }
+
+        public ActionResult PublishDraftToOriginal(string draftQuestionId)
+        {
+            var success = questionManagementService.PublishDraftToOriginal(CourseHelper.CurrentCourse, draftQuestionId);
+            return JsonCamel(new {isError = !success});
+        }
 	}
   
 }
