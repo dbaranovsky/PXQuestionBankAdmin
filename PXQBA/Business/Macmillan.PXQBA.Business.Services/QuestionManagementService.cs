@@ -128,6 +128,9 @@ namespace Macmillan.PXQBA.Business.Services
                     draftQuestion.DraftFrom);
                 draftQuestion.Id = originalQuestion.Id;
                 draftQuestion.DraftFrom = string.Empty;
+                draftQuestion.DuplicateFrom = string.Empty;
+                draftQuestion.DuplicateFromShared = string.Empty;
+                draftQuestion.IsPublishedFromDraft = true;
                 questionCommands.UpdateQuestion(draftQuestion);
                 questionCommands.DeleteQuestion(currentCourse.QuestionRepositoryCourseId, draftQuestionId);
                 return true;
@@ -143,7 +146,9 @@ namespace Macmillan.PXQBA.Business.Services
             if (question.ProductCourseSections.Count > 1)
             {
                 question.ProductCourseSections.RemoveAll(s => s.ProductCourseId != course.ProductCourseId);
+                question.ProductCourseSections.First().ParentProductCourseId = string.Empty;
             }
+            question.IsPublishedFromDraft = false;
             question.DuplicateFromShared = string.Empty;
             question.DuplicateFrom = string.Empty;
             question.DraftFrom = questionId;
