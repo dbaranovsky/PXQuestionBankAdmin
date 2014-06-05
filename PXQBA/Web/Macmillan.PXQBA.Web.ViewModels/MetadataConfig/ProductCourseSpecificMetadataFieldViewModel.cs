@@ -14,8 +14,41 @@ namespace Macmillan.PXQBA.Web.ViewModels.MetadataConfig
 
 
         //Stubs for (QBA-73, BA-28, QBA-68, QBA-219, QBA-61, QBA-50, QBA-40)
-        public IEnumerable<AvailableChoiceItem> ValuesOptions { get; set; }
 
-        public MetadataFieldDisplayOptionsViewModel DisplayOptions { get; set; }
+        private IEnumerable<AvailableChoiceItem> valueOptions;
+
+        public IEnumerable<AvailableChoiceItem> ValuesOptions
+        {
+            get
+            {
+                if (valueOptions == null)
+                {
+                    valueOptions = new List<AvailableChoiceItem>();
+                }
+                return valueOptions;
+            }
+            set
+            {
+                valueOptions = value;
+            }
+        }
+
+        private MetadataFieldDisplayOptionsViewModel displayOptions;
+
+        public MetadataFieldDisplayOptionsViewModel DisplayOptions
+        {
+            get
+            {
+                if (displayOptions == null)
+                {
+                    displayOptions = new MetadataFieldDisplayOptionsViewModel();
+                }
+                return displayOptions;
+            }
+            set
+            {
+                displayOptions = value;
+            }
+        }
     }
 }

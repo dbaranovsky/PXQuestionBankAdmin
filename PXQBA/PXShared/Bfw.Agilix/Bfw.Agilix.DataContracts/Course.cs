@@ -220,6 +220,11 @@ namespace Bfw.Agilix.DataContracts
 		/// List of Question card metadata for a question
 		/// </summary>
 		public List<QuestionCardData> QuestionCardData { get; set; }
+
+        /// <summary>
+        /// Repository Course id
+        /// </summary>
+        public string QuestionBankRepositoryCourse { get; set; }
 		
 		/// <summary>
 		/// Instructor can switch domain of product. This flag is at product course level
@@ -885,6 +890,13 @@ namespace Bfw.Agilix.DataContracts
 				}
 				QuestionCardData = questionCardResults;
 			}
+
+		    var questionBankRepository = Data.Element("QuestionBankRepositoryCourse");
+            if (questionBankRepository != null)
+            {
+                QuestionBankRepositoryCourse = questionBankRepository.Value;
+            }
+
 			var objectives = Data.Element("learningobjectives");
 			if (objectives != null)
 			{
