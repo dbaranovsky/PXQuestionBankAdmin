@@ -168,31 +168,46 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
             
     },
 
-    showSaveWarning: function(){
+    showSaveWarning: function(saveAndPublish){
      
-      this.props.showSaveWarning(this.state.frameApi);
+      this.props.showSaveWarning(this.state.frameApi, saveAndPublish);
     },
 
     renderFooterButtons: function(checkForCustomQuestion){
       if(this.state.isHTS && checkForCustomQuestion){
         return null;
       }
-
-       return(
-                        React.DOM.div( {className:"modal-footer"}, 
-                         React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal", onClick:this.props.closeDialog}, 
-                              "Cancel"
+      return(
+                    React.DOM.div( {className:"modal-footer"}, 
+                        React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal", title:"Cancel", onClick:this.props.closeDialog}, 
+                             "Cancel"
                         ),
-                         React.DOM.button( {className:"btn btn-primary ",  'data-toggle':"modal", onClick:this.saveClickHandler} , 
+                         this.renderPublishButton(),
+                         React.DOM.button( {className:"btn btn-primary ",  'data-toggle':"modal",  title:"Save", onClick:this.saveClickHandler} , 
                              "Save"
                         )
                       )
-                     
                      );
     },
-   
 
-    saveClickHandler: function(){
+    renderPublishButton: function() {
+        if(this.props.question.isDraft) {
+          return (React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal", title:"Save and Publish", onClick:this.saveAndPublishHandler}, 
+                              "Save and Publish"
+                   ));
+        }
+        return null;
+    },
+   
+   saveClickHandler: function() {
+      this.saveHandler(false);
+   },
+
+   saveAndPublishHandler: function() {
+      this.saveHandler(true);
+   },
+
+   saveHandler: function(saveAndPublish){
       if(this.state.isGraph){
         var question = this.props.question;
         question.interactionData =  $(this.getDOMNode()).find("#flash")[0].getXML();
@@ -201,7 +216,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
       if (this.state.isHTS){
         this.state.frameApi.saveQuestion();
       } else{
-        this.showSaveWarning()
+        this.showSaveWarning(saveAndPublish)
       }
     },
 

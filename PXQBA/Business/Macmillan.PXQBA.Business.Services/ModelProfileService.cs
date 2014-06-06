@@ -277,18 +277,24 @@ namespace Macmillan.PXQBA.Business.Services
             fieldDescriptors.Add(GetFieldDescriptorWithSplitedValues(metadataConfigViewModel.Chapters, MetadataFieldNames.Chapter));
             foreach (var field in metadataConfigViewModel.Fields)
             {
-                fieldDescriptors.Add(new CourseMetadataFieldDescriptor()
+                if (fieldDescriptors.All(d => d.Name != field.InternalName))
                 {
-                    Filterable = field.DisplayOptions.Filterable,
-                    FriendlyName = field.FieldName,
-                    Name = field.InternalName,
-                    Type = field.FieldType,
-                    CourseMetadataFieldValues = field.ValuesOptions == null ? null : field.ValuesOptions.Select((v, i) => new CourseMetadataFieldValue()
+                    fieldDescriptors.Add(new CourseMetadataFieldDescriptor()
                     {
-                        Text = v.Text,
-                        Sequence = i
-                    })
-                });
+                        Filterable = field.DisplayOptions.Filterable,
+                        FriendlyName = field.FieldName,
+                        Name = field.InternalName,
+                        Type = field.FieldType,
+                        CourseMetadataFieldValues =
+                            field.ValuesOptions == null
+                                ? null
+                                : field.ValuesOptions.Select((v, i) => new CourseMetadataFieldValue()
+                                {
+                                    Text = v.Text,
+                                    Sequence = i
+                                })
+                    });
+                }
             }
             return fieldDescriptors;
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Web.ViewModels.Versions;
@@ -87,6 +88,8 @@ namespace Macmillan.PXQBA.Web.ViewModels
                 return LocalSection.ParentProductCourseId;
             }
         }
-        public string DraftFrom { get; set; }        
+        public string DraftFrom { get; set; }
+
+        public bool IsDraft { get { return !String.IsNullOrEmpty(DraftFrom); } }
     }
 }

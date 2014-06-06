@@ -202,7 +202,7 @@ var questionDataManager = (function() {
     };
 
 
-    self.updateQuestion = function(question) {
+    self.updateQuestion = function (question) {
          var request = {
             questionJsonString:  JSON.stringify(question),
         };
@@ -219,7 +219,23 @@ var questionDataManager = (function() {
         });
     };
    
-   
+    self.saveAndPublishDraftQuestion = function (question) {
+        
+        var request = {
+            questionJsonString: JSON.stringify(question),
+        };
+        return $.ajax({
+            url: window.actions.questionList.saveAndPublishDraftUrl,
+            data: request,
+            type: 'POST'
+        }).done(function (response) {
+            console.log('Save and publish question complete');
+            self.resetState();
+            console.log('Refresh complite');
+        }).error(function (e) {
+            self.showErrorPopup();
+        });
+    };
 
 
     self.getDuplicateQuestionTemplate = function (questionId, version) {
