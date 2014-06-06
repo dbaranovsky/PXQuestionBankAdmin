@@ -55,7 +55,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         {
             var nonDraftResults = searchResults.Where(r => string.IsNullOrEmpty(r.DraftFrom)).Skip(startingRecordNumber).Take(recordCount);
             var draftResults = searchResults.Where(r => nonDraftResults.Select(n => n.QuestionId).Contains(r.DraftFrom));
-
+            //CreateChildren(searchResults, parents);
             var nonDraftQuestions = Mapper.Map<IEnumerable<Question>>(GetAgilixQuestions(questionRepositoryCourseId, nonDraftResults.Select(r => r.QuestionId)));
             var draftQuestions = Mapper.Map<IEnumerable<Question>>(GetAgilixQuestions(questionRepositoryCourseId, draftResults.Select(r => r.QuestionId)));
             var questions = new List<Question>();
@@ -65,6 +65,26 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 questions.AddRange(draftQuestions.Where(q => q.DraftFrom == question.Id).OrderBy(q => q.ModifiedDate));
             }
             return questions;
+        }
+
+        private IEnumerable<ParentQuestion> CreateChildren(IEnumerable<QuestionSearchResult> searchResults, IEnumerable<QuestionSearchResult> parents)
+        {
+            var nonDraftQuestions = new List<ParentQuestion>();
+
+            foreach (var questionSearchResult in parents)
+            {
+                var parent = new ParentQuestion
+                {
+                    QuestionId = questionSearchResult.QuestionId
+                };
+                var drafts = searchResults.Where(r => r.DraftFrom == questionSearchResult.QuestionId);
+                if (drafts.Any())
+                {
+                    parent.Children = CreateChildren(searchResults, drafts);
+                }
+                nonDraftQuestions.Add(parent);
+            }
+            return nonDraftQuestions;
         }
 
         private IEnumerable<FilterFieldDescriptor> MakeFilterCopy(IEnumerable<FilterFieldDescriptor> filter)
@@ -151,28 +171,34 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         private IEnumerable<QuestionSearchResult> GetSearchResults(string questionRepositoryCourseId, string currentCourseId, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion)
         {
-            var results = new List<XElement>();
-            IEnumerable<XElement> docElements = new List<XElement>();
-            var i = 0;
             var query = BuildQueryString(filter);
             var sortingField = sortCriterion.ColumnName == ElStrings.QuestionStatus || sortCriterion.ColumnName == MetadataFieldNames.DlapType
                 ? sortCriterion.ColumnName
                 : string.Format("{0}{1}/{2}", ElStrings.ProductCourseSection, currentCourseId, sortCriterion.ColumnName);
+            return PerformSearch(questionRepositoryCourseId, query, sortingField);
+        }
+
+        private IEnumerable<QuestionSearchResult> PerformSearch(string questionRepositoryCourseId, string query, string sortingField)
+        {
+            var results = new List<XElement>();
+            IEnumerable<XElement> docElements = new List<XElement>();
+            var i = 0;
+
             do
             {
                 var searchCommand = new Search()
-                                    {
-                                        SearchParameters = new SolrSearchParameters()
-                                                           {
-                                                               Fields = string.Format("{0}|{1}", MetadataFieldNames.DraftFrom, sortingField),
-                                                               EntityId = questionRepositoryCourseId,
-                                                               Query = query,
-                                                               Rows = SearchCommandMaxRows,
-                                                               Start = (i*SearchCommandMaxRows),
-                                                           }
-                                    };
+                {
+                    SearchParameters = new SolrSearchParameters()
+                    {
+                        Fields = string.Format("{0}|{1}", MetadataFieldNames.DraftFrom, sortingField),
+                        EntityId = questionRepositoryCourseId,
+                        Query = query,
+                        Rows = SearchCommandMaxRows,
+                        Start = (i * SearchCommandMaxRows),
+                    }
+                };
                 i++;
-                
+
                 businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(searchCommand);
                 if (searchCommand.SearchResults.Element("results") != null)
                 {
@@ -469,6 +495,13 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(deleteCmd);
         }
 
+        public IEnumerable<Question> GetQuestionDrafts(string questionRepositoryCourseId, Question question)
+        {
+            var query = string.Format("(dlap_class:question) AND (draftfrom:{0})", question.Id);
+            var results = PerformSearch(questionRepositoryCourseId, query, string.Empty);
+            return GetQuestions(questionRepositoryCourseId, results.Select(r => r.QuestionId).ToArray());
+        }
+
 
         private Bfw.Agilix.DataContracts.Question GetSpecificVersion(string repositoryCourseId, string questionId, string version)
         {
@@ -614,9 +647,12 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         private void ExecutePutQuestions(IEnumerable<Bfw.Agilix.DataContracts.Question> questions)
         {
-            var cmd = new PutQuestions();
-            cmd.Add(questions);
-            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+            if (questions.Any())
+            {
+                var cmd = new PutQuestions();
+                cmd.Add(questions);
+                businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+            }
         }
 
 

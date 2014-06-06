@@ -132,10 +132,30 @@ namespace Macmillan.PXQBA.Business.Services
                 draftQuestion.DuplicateFromShared = string.Empty;
                 draftQuestion.IsPublishedFromDraft = true;
                 questionCommands.UpdateQuestion(draftQuestion);
-                questionCommands.DeleteQuestion(currentCourse.QuestionRepositoryCourseId, draftQuestionId);
+                DeleteDraft(currentCourse.QuestionRepositoryCourseId, draftQuestionId);
                 return true;
             }
             return false;
+        }
+
+        private void DeleteDraft(string questionRepositoryCourseId, string draftQuestionId)
+        {
+            UpdateSubDrafts(questionRepositoryCourseId, draftQuestionId);
+            questionCommands.DeleteQuestion(questionRepositoryCourseId, draftQuestionId);
+        }
+
+        private void UpdateSubDrafts(string questionRepositoryCourseId, string draftQuestionId)
+        {
+            var question = questionCommands.GetQuestion(questionRepositoryCourseId, draftQuestionId);
+            if (question != null)
+            {
+                var subDrafts = questionCommands.GetQuestionDrafts(questionRepositoryCourseId, question);
+                foreach (var draft in subDrafts)
+                {
+                    draft.DraftFrom = question.DraftFrom;
+                }
+                questionCommands.UpdateQuestions(subDrafts, questionRepositoryCourseId);
+            }
         }
 
         public Question CreateDraft(Course course, string questionId, string version = null)
