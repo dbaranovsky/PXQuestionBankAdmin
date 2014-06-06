@@ -44,7 +44,7 @@ var QuestionEditor = React.createClass({
 
     saveAndPublish: function(){
        questionDataManager.saveAndPublishDraftQuestion(this.state.question).done(this.updateQuestionHandler);
-    }
+    },
 
     updateQuestionHandler: function(response) {
       if(!response.isError) {

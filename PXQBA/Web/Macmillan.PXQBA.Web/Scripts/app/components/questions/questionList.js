@@ -80,7 +80,7 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
     selectAllQuestionHandelr: function(isSelected) {
         for(var i=0; i<this.props.data.length; i++) {
           var question = this.props.data[i];
-          this.selectQuestionHandler(question.id, isSelected, question.sharedWith !== "")
+          this.selectQuestionHandler(question.data.id, isSelected, question.data.sharedWith !== "")
         }
         this.setState({selectedAll: isSelected});
     },
