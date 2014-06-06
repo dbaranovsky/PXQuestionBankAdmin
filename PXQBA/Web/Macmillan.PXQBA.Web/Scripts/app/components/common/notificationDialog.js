@@ -34,7 +34,7 @@ var NotificationDialog =React.createClass({displayName: 'NotificationDialog',
         var renderBody = function(){
             return (React.DOM.div( {className:"notification-body"}, 
             			React.DOM.p(null, self.props.notification.message),
-            			React.DOM.input( {type:"checkbox", checked:self.state.dontShow, onChange:self.changeShowHangler}),React.DOM.span(null,  " Dont show again")
+            			React.DOM.input( {type:"checkbox", checked:self.state.dontShow, onChange:self.changeShowHangler}),React.DOM.span(null,  " Don't show again")
             		));
         };
 
