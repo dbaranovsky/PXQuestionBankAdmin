@@ -16,4 +16,11 @@ namespace Macmillan.PXQBA.Business.Commands.DataContracts
 
         public string DraftFrom { get; set; }
     }
+
+    public class ParentQuestion
+    {
+        public string QuestionId { get; set; }
+
+        public IEnumerable<ParentQuestion> Children { get; set; } 
+    }
 }
