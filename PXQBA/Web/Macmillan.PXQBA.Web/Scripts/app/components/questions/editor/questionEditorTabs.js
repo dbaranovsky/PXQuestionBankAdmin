@@ -8,7 +8,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
       return {isHTS: this.props.question.questionType!= null && this.props.question.questionType.toLowerCase()=="hts"? true: false,
               isCustom: this.props.question.questionType!= null,
               isGraph: this.props.question.graphEditorHtml != null,
-              viewHistoryMode: this.props.viewingHistory != undefined ? this.props.viewingHistory : false}
+              viewHistoryMode: this.props.viewHistoryMode != undefined ? this.props.viewHistoryMode : false}
     },
 
     tabsInitializer: function (container) {
@@ -220,6 +220,40 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
       }
     },
 
+    switchTab: function(event){
+        event.preventDefault();
+        event.stopPropagation();
+    },
+
+    renderTabsHeader: function(){
+      alert(this.state.viewHistoryMode);
+      if (this.state.viewHistoryMode){
+        return (React.DOM.ul( {className:"nav nav-tabs"}, 
+                             React.DOM.li( {className:"active"},  
+                                 React.DOM.a( {href:"#body", id:"body-tab",  onClick:this.switchTab}, "Body")
+                             ),
+                             React.DOM.li(null, 
+                                 React.DOM.a( {href:"#metadata",  onClick:this.switchTab}, "Metadata")
+                             ),
+                              React.DOM.li(null, 
+                                 React.DOM.a( {href:"#history", id:"history-tab", 'data-toggle':"tab"}, "History")
+                             )
+                        ));
+      }
+
+      return (React.DOM.ul( {className:"nav nav-tabs"}, 
+                             React.DOM.li( {className:"active"},  
+                                 React.DOM.a( {href:"#body", id:"body-tab", 'data-toggle':"tab"} , "Body")
+                             ),
+                             React.DOM.li(null, 
+                                 React.DOM.a( {href:"#metadata", 'data-toggle':"tab"} , "Metadata")
+                             ),
+                              React.DOM.li(null, 
+                                 React.DOM.a( {href:"#history", id:"history-tab", 'data-toggle':"tab"}, "History")
+                             )
+                        ));
+    },
+
     render: function() {
        var iframeClass = ""
        if ((this.props.question.isShared && !this.props.isNew) || (this.props.question.sharedQuestionDuplicateFrom != null && this.props.isDuplicate)){
@@ -233,23 +267,13 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
        if (this.state.isGraph){
         iframeClass = iframeClass + " graph";
        }
+
+       var isPreventDefault = this.state.viewHistoryMode;
         return ( 
                 React.DOM.div(null, 
                   
-                 
-                        React.DOM.ul( {className:"nav nav-tabs"}, 
-                             React.DOM.li( {className:"active"},  
-                                 React.DOM.a( {href:"#body", id:"body-tab",'data-toggle':"tab"}, "Body")
-                             ),
-                             React.DOM.li(null, 
-                                 React.DOM.a( {href:"#metadata", 'data-toggle':"tab"}, "Metadata")
-                             ),
-                              React.DOM.li(null, 
-                                 React.DOM.a( {href:"#history", id:"history-tab", 'data-toggle':"tab"}, "History")
-                             )
-                        ),
-               
-             
+                 this.renderTabsHeader(),
+
                 React.DOM.div( {className:"tab-content"}, 
 
                     React.DOM.div( {className:"tab-pane active", id:"body"}, 

@@ -18,10 +18,17 @@ var QuestionListMenu = React.createClass({
     },
 
     editQuestionHandler: function() {
+        if(this.props.data[window.consts.questionStatusName] == window.enums.statuses.availibleToInstructor){
+           this.createDraftHandler();
+          return;
+        }
+
         if(!this.props.isShared && this.props.data[window.consts.questionStatusName] != window.enums.statuses.inProgress){
           this.props.editQuestionHandler();
           return;
         }
+
+      
     },
 
     viewQuestionHistoryHandler: function(){
@@ -146,7 +153,7 @@ var QuestionListMenu = React.createClass({
                        <li role="presentation" className="dropdown-header">Edit options</li>
                        <li role="presentation" className="divider"></li>
                        <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.createDraftHandler}>Create a Draft</a></li>
-                       <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.editQuestionHandler.bind(this, false)}>Create a copy</a></li>
+                       <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.editQuestionHandler.bind(this, false, false)}>Create a copy</a></li>
                      </ul>);
                 }
 
@@ -155,7 +162,7 @@ var QuestionListMenu = React.createClass({
                      <ul className="dropdown-menu show-menu" role="menu" aria-labelledby="dropdownMenuType"  aria-labelledby="edit-question">
                        <li role="presentation" className="dropdown-header">Edit options</li>
                        <li role="presentation" className="divider"></li>
-                       <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.editQuestionHandler.bind(this, false)}>Edit in Place</a></li>
+                       <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.editQuestionHandler.bind(this, false, true)}>Edit in Place</a></li>
                        <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.createDraftHandler}>Create a Draft</a></li>
                      </ul>);
                 }
@@ -174,7 +181,7 @@ var QuestionListMenu = React.createClass({
                 </div>
                 <button type="button" className="btn btn-default btn-sm" onClick={this.copyQuestionHandler}  data-toggle="tooltip" title="Duplicate Question"><span className="glyphicon glyphicon-copyright-mark"></span></button>
                <button type="button" className="btn btn-default btn-sm" onClick={this.editNotesHandler} data-toggle="tooltip" title="Edit Notes"><span className="glyphicon glyphicon-list-alt"></span> </button> 
-               <button type="button" className="btn btn-default btn-sm custom-btn" onClick={this.props.editQuestionHandler.bind(this, true)} data-toggle="tooltip" title="View Question History"><span className="glyphicon icon-version-history" ></span></button> 
+               <button type="button" className="btn btn-default btn-sm custom-btn" onClick={this.props.editQuestionHandler.bind(this, true, false)} data-toggle="tooltip" title="View Question History"><span className="glyphicon icon-version-history" ></span></button> 
                </div>);
      }
 

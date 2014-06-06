@@ -237,6 +237,10 @@ input[type="checkbox"].input-validation-error {
      height: 820px;
 } 
 
+#notificationDialog .modal-body {
+    height: auto !important;
+}
+
 #questionEditorModal #metadata {
     height: 715px;
     width: 975px;

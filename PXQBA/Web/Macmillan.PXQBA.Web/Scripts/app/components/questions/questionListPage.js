@@ -56,11 +56,11 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
                                           caption:this.state.editor.caption, 
                                           metadata:this.state.editor.metadata,
                                           viewHistoryMode:this.state.editor.viewHistoryMode,
+                                          isEditedInPlace:  this.state.editor.isEditedInPlace,
                                           handlers:  {
                                             createDraftHandler: this.createDraftHandler,
                                             createQuestionFromVersionHandler: this.createQuestionFromVersionHandler
-                                          }}
-                                           ));
+                                          }} ));
                                           
           default:
             return null;
@@ -79,13 +79,14 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
         questionDataManager.getDuplicateQuestionTemplate(questionId).done(this.loadTemplateComplete.bind(this, false));
     },
 
-    editQuestionHandler: function(questionId, viewHistoryMode) {
+    editQuestionHandler: function(questionId, viewHistoryMode, isEditedInPlace) {
 
         this.setState({
            loading: true,
            editorCaption: window.enums.dialogCaptions.editQuestion,
            sourceQuestionId: questionId,
-           viewHistoryMode: viewHistoryMode === undefined? false : viewHistoryMode
+           viewHistoryMode: viewHistoryMode === undefined? false : viewHistoryMode,
+           isEditedInPlace: isEditedInPlace === undefined? false : isEditedInPlace
         });
        questionDataManager.getQuestion(questionId).done(this.loadTemplateComplete.bind(this, false));
     },
@@ -130,7 +131,8 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
                     metadata: this.state.editor.metadata,
                     caption: isNew? window.enums.dialogCaptions.newQuestion : this.state.editorCaption},
                     sourceQuestionId: this.state.sourceQuestionId,
-                    viewHistoryMode: this.state.viewHistoryMode
+                    viewHistoryMode: this.state.viewHistoryMode,
+                    isEditedInPlace: this.state.isEditedInPlace
                     });
     },
 
@@ -169,7 +171,8 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
                    isNew: false,
                    step: this.editorsSteps.step2,
                    caption: this.state.editorCaption,
-                   viewHistoryMode: this.state.viewHistoryMode
+                   viewHistoryMode: this.state.viewHistoryMode,
+                   isEditedInPlace: this.state.isEditedInPlace
                    }
         });
     },
@@ -182,7 +185,8 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
                    template: this.state.editor.template,
                    step: this.editorsSteps.step1,
                    isNew: this.state.editor.isNew,
-                   viewHistoryMode: this.state.viewHistoryMode }
+                   viewHistoryMode: this.state.viewHistoryMode,
+                   isEditedInPlace: this.state.isEditedInPlace }
         });
     },
 

@@ -8,7 +8,7 @@ var QuestionEditorTabs = React.createClass({
       return {isHTS: this.props.question.questionType!= null && this.props.question.questionType.toLowerCase()=="hts"? true: false,
               isCustom: this.props.question.questionType!= null,
               isGraph: this.props.question.graphEditorHtml != null,
-              viewHistoryMode: this.props.viewingHistory != undefined ? this.props.viewingHistory : false}
+              viewHistoryMode: this.props.viewHistoryMode != undefined ? this.props.viewHistoryMode : false}
     },
 
     tabsInitializer: function (container) {
@@ -220,6 +220,40 @@ var QuestionEditorTabs = React.createClass({
       }
     },
 
+    switchTab: function(event){
+        event.preventDefault();
+        event.stopPropagation();
+    },
+
+    renderTabsHeader: function(){
+      alert(this.state.viewHistoryMode);
+      if (this.state.viewHistoryMode){
+        return (<ul className="nav nav-tabs">
+                             <li className="active"> 
+                                 <a href="#body" id="body-tab"  onClick={this.switchTab}>Body</a>
+                             </li>
+                             <li>
+                                 <a href="#metadata"  onClick={this.switchTab}>Metadata</a>
+                             </li>
+                              <li>
+                                 <a href="#history" id="history-tab" data-toggle="tab">History</a>
+                             </li>
+                        </ul>);
+      }
+
+      return (<ul className="nav nav-tabs">
+                             <li className="active"> 
+                                 <a href="#body" id="body-tab" data-toggle="tab" >Body</a>
+                             </li>
+                             <li>
+                                 <a href="#metadata" data-toggle="tab" >Metadata</a>
+                             </li>
+                              <li>
+                                 <a href="#history" id="history-tab" data-toggle="tab">History</a>
+                             </li>
+                        </ul>);
+    },
+
     render: function() {
        var iframeClass = ""
        if ((this.props.question.isShared && !this.props.isNew) || (this.props.question.sharedQuestionDuplicateFrom != null && this.props.isDuplicate)){
@@ -233,23 +267,13 @@ var QuestionEditorTabs = React.createClass({
        if (this.state.isGraph){
         iframeClass = iframeClass + " graph";
        }
+
+       var isPreventDefault = this.state.viewHistoryMode;
         return ( 
                 <div>
                   
-                 
-                        <ul className="nav nav-tabs">
-                             <li className="active"> 
-                                 <a href="#body" id="body-tab"data-toggle="tab">Body</a>
-                             </li>
-                             <li>
-                                 <a href="#metadata" data-toggle="tab">Metadata</a>
-                             </li>
-                              <li>
-                                 <a href="#history" id="history-tab" data-toggle="tab">History</a>
-                             </li>
-                        </ul>
-               
-             
+                 {this.renderTabsHeader()}
+
                 <div className="tab-content">
 
                     <div className="tab-pane active" id="body">
