@@ -53,7 +53,8 @@ var QuestionEditorDialog = React.createClass({
                                      isNew={self.props.isNew} 
                                      isDuplicate={self.props.caption === window.enums.dialogCaptions.duplicateQuestion}
                                      handlers={self.props.handlers}
-                                     viewHistoryMode = {self.props.viewHistoryMode}/>);
+                                     viewHistoryMode = {self.props.viewHistoryMode}
+                                     isEditedInPlace = {self.props.isEditedInPlace} />);
         };
         var renderFooterButtons = function(){
             return ("");

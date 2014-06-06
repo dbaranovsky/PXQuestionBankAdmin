@@ -5,18 +5,46 @@ var QuestionEditor = React.createClass({
 
    getInitialState: function() {
 
-      return { question: this.props.question };
+      return { question: this.props.question, viewHistoryMode: this.props.viewHistoryMode};
     },
 
+    componentDidMount: function(){
+      if(this.props.isEditedInPlace && this.state.question.status == window.enums.statusesId.inProgress){
 
+          this.showNotificationForInProgress();
+          return;
+      }
+
+      if(this.state.question.draftFrom != ""){
+           this.showDraftNotification();
+      }
+
+
+    },
+
+    showDraftNotification: function(){
+         this.setState({showNotification: true, typeId: window.enums.notificationTypes.newDraftForAvailableToInstructors});
+    },
+
+    showNotificationForInProgress: function(){
+        this.setState({showNotification: true, typeId: window.enums.notificationTypes.editInPlaceQuestionInProgress});
+    },
+
+   showSaveAndPublish: function(){
+        this.setState({showNotification: true, typeId: window.enums.notificationTypes.saveAndPublishDraft});
+    },
     saveQuestion: function(){
       if(this.state.saveAndPublishMode) {
-           questionDataManager.saveAndPublishDraftQuestion(this.state.question).done(this.updateQuestionHandler);
+          this.showSaveAndPublish();
       }
       else {
            questionDataManager.updateQuestion(this.state.question).done(this.updateQuestionHandler);
       }
     },
+
+    saveAndPublish: function(){
+       questionDataManager.saveAndPublishDraftQuestion(this.state.question).done(this.updateQuestionHandler);
+    }
 
     updateQuestionHandler: function(response) {
       if(!response.isError) {
@@ -130,12 +158,12 @@ var QuestionEditor = React.createClass({
      },     
 
      closeNotificationDialog: function(){
-         $('.modal-backdrop').first().remove(); 
-         this.setState({showNotification: false});
+        this.closeDialog();
      },
 
      proceedHandler: function(){
-
+         $('.modal-backdrop').first().remove(); 
+         this.setState({showNotification: false});
      },
 
     render: function() {

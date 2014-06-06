@@ -126,11 +126,17 @@
             inProgress: '@EnumHelper.GetEnumDescription(QuestionStatus.InProgress)',
         };
 
+        enums.statusesId = {
+            availibleToInstructor: '@((int)QuestionStatus.AvailableToInstructors)',
+            deleted: '@((int)QuestionStatus.Deleted)',
+            inProgress: '@((int)QuestionStatus.InProgress)',
+        };
 
         enums.notificationTypes = {
             editInPlaceQuestionInProgress: '@((int)NotificationType.EditInPlaceQuestionInProgress)',
             newDraftForAvailableToInstructors: '@((int)NotificationType.NewDraftForAvailableToInstructors)',
-            publishChangesMadeWithinDraft: '@((int)NotificationType.PublishChangesMadeWithinDraft)'
+            publishChangesMadeWithinDraft: '@((int)NotificationType.PublishChangesMadeWithinDraft)',
+            saveAndPublishDraft: '@((int)NotificationType.SaveAndPublishDraft)'
         };
 
 

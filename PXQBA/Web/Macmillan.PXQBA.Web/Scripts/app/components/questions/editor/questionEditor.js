@@ -5,9 +5,30 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
 
    getInitialState: function() {
 
-      return { question: this.props.question };
+      return { question: this.props.question, viewHistoryMode: this.props.viewHistoryMode};
     },
 
+    componentDidMount: function(){
+      if(this.props.isEditedInPlace && this.state.question.status == window.enums.statusesId.inProgress){
+
+          this.showNotificationForInProgress();
+          return;
+      }
+
+      if(this.state.question.draftFrom != ""){
+           this.showDraftNotification();
+      }
+
+
+    },
+
+    showDraftNotification: function(){
+         this.setState({showNotification: true, typeId: window.enums.notificationTypes.newDraftForAvailableToInstructors});
+    },
+
+    showNotificationForInProgress: function(){
+        this.setState({showNotification: true, typeId: window.enums.notificationTypes.editInPlaceQuestionInProgress});
+    },
 
     saveQuestion: function(){
       if(this.state.saveAndPublishMode) {
@@ -130,12 +151,12 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
      },     
 
      closeNotificationDialog: function(){
-         $('.modal-backdrop').first().remove(); 
-         this.setState({showNotification: false});
+        this.closeDialog();
      },
 
      proceedHandler: function(){
-
+         $('.modal-backdrop').first().remove(); 
+         this.setState({showNotification: false});
      },
 
     render: function() {

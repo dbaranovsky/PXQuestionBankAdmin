@@ -34,23 +34,35 @@ var NotificationDialog =React.createClass({
         var renderBody = function(){
             return (<div className="notification-body">
             			<p>{self.props.notification.message}</p>
-            			<input type="checkbox" checked={self.state.dontShow} onChange={self.changeShowHangler}/><span> Don't show again</span>
+            			<input type="checkbox" checked={self.state.dontShow} onChange={self.changeShowHangler}/><span> Dont show again</span>
             		</div>);
         };
 
-        var renderFooterButtons = function(){
+        var renderFooterButtons;
+
+        if (this.props.isCustomCloseHandle){
+              renderFooterButtons = function(){
                return (<div className="modal-footer"> 
-                         <button type="button" className="btn btn-primary" data-dismiss="modal"  onClick={self.proceedHandler}>Proceed</button>
-                         <button type="button" className="btn btn-default" data-dismiss="modal" data-targer="notificationDialog">Cancel</button>
+                         <button type="button" className="btn btn-primary"  onClick={self.proceedHandler}>Proceed</button>
+                         <button type="button" className="btn btn-default" onClick={self.closeDialog}>Cancel</button>
                       </div>);
-        };
-  
+              };
+        } else{
+
+            var renderFooterButtons = function(){
+                   return (<div className="modal-footer"> 
+                             <button type="button" className="btn btn-primary" data-dismiss="modal"  onClick={self.proceedHandler}>Proceed</button>
+                             <button type="button" className="btn btn-default" data-dismiss="modal" data-targer="notificationDialog">Cancel</button>
+                          </div>);
+            };
+       }
+
         return (<ModalDialog renderHeaderText={renderHeaderText} 
                              renderBody={renderBody} 
                              dialogId="notificationDialog"
                              closeDialogHandler = {this.closeDialog}
                              showOnCreate = {true}
-                             preventDefaultClose ={this.props.isCustomCloseHandle}
+                             preventDefaultClose = {this.props.isCustomCloseHandle}
                              renderFooterButtons={renderFooterButtons} />
                 );
   
