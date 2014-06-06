@@ -87,6 +87,6 @@ namespace Macmillan.PXQBA.Web.ViewModels
                 return LocalSection.ParentProductCourseId;
             }
         }
-        public bool IsDraft { get; set; }        
+        public string DraftFrom { get; set; }        
     }
 }
