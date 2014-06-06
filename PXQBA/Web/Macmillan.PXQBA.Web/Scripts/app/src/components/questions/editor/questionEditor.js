@@ -30,14 +30,21 @@ var QuestionEditor = React.createClass({
         this.setState({showNotification: true, typeId: window.enums.notificationTypes.editInPlaceQuestionInProgress});
     },
 
+   showSaveAndPublish: function(){
+        this.setState({showNotification: true, typeId: window.enums.notificationTypes.saveAndPublishDraft});
+    },
     saveQuestion: function(){
       if(this.state.saveAndPublishMode) {
-           questionDataManager.saveAndPublishDraftQuestion(this.state.question).done(this.updateQuestionHandler);
+          this.showSaveAndPublish();
       }
       else {
            questionDataManager.updateQuestion(this.state.question).done(this.updateQuestionHandler);
       }
     },
+
+    saveAndPublish: function(){
+       questionDataManager.saveAndPublishDraftQuestion(this.state.question).done(this.updateQuestionHandler);
+    }
 
     updateQuestionHandler: function(response) {
       if(!response.isError) {

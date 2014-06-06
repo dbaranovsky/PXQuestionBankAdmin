@@ -43,6 +43,12 @@ var userManager = (function() {
             type: typeId
         };
 
+        var type = self.getNotificationById(typeId);
+        type.isShown = false;
+
+        self.notifications = $.grep(self.notifications, function(el){ return el.notificationTypeId != typeId;});
+        self.notifications.push(type);
+
         return $.ajax({
             url: window.actions.userOperations.dontShowForCurrentUserUrl,
             traditional: true,

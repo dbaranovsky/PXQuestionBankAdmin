@@ -6,7 +6,7 @@ CREATE TABLE dbo.UserNotShownNotification(
   NotificationType NVARCHAR(MAX) NOT NULL,
 
   UserId NVARCHAR(MAX) NOT NULL,
-  CONSTRAINT PK_QBANotes PRIMARY KEY (Id)
+  CONSTRAINT PK_UserNotShownNotification PRIMARY KEY (Id)
 ) 
 GO
 
