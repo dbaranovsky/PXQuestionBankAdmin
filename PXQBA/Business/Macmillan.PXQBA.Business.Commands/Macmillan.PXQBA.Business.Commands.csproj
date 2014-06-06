@@ -80,6 +80,7 @@
     <Compile Include="Contracts\IProductCourseOperation.cs" />
     <Compile Include="Contracts\IQuestionCommands.cs" />
     <Compile Include="Contracts\ITemporaryQuestionOperation.cs" />
+    <Compile Include="Contracts\IUserNotificationOperation.cs" />
     <Compile Include="Contracts\IUserOperation.cs" />
     <Compile Include="DataContracts\QuestionSearchResult.cs" />
     <Compile Include="Helpers\QuestionDataXmlParser.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Services\EntityFramework\NoteCommands.cs" />
     <Compile Include="Services\DLAP\ProductCourseOperation.cs" />
     <Compile Include="Services\EntityFramework\QuestionCommands.cs" />
+    <Compile Include="Services\EntityFramework\UserNotificationOperation.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Context\Macmillan.PXQBA.Business.csproj">

@@ -68,6 +68,7 @@
     <Compile Include="IQuestionManagementService.cs" />
     <Compile Include="IQuestionMetadataService.cs" />
     <Compile Include="IProductCourseManagementService.cs" />
+    <Compile Include="IUserManagementService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
