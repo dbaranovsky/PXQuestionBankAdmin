@@ -367,6 +367,25 @@ var questionDataManager = (function() {
         });
     };
 
+
+     self.deleteQuestion = function (questionId, fieldName, fieldValues) {
+
+        return $.ajax({
+            url: window.actions.questionList.deleteQuestionUrl,
+            traditional: true,
+            dataType: 'json',
+            type: 'GET'
+        }).done(function (response) {      
+            console.log('updateSharedMetadataField complete');
+            if(response.resetState){
+                self.resetState();
+            }
+            
+        }).error(function(e){
+             self.showErrorPopup();
+        });
+    };
+
     
 
     /* Bulk operations */

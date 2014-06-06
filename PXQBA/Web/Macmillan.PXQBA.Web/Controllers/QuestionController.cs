@@ -210,6 +210,13 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(CreateQuestionViewModelForEditing(question));
 
         }
+
+        public ActionResult DeleteQuestion()
+        {
+         
+            return JsonCamel(new { isError = false });
+
+        }
 	}
   
 }
