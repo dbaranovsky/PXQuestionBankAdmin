@@ -215,6 +215,7 @@
     <Content Include="Scripts\app\components\common\expandButton.js" />
     <Content Include="Scripts\app\components\common\loader.js" />
     <Content Include="Scripts\app\components\common\modalDialog.js" />
+    <Content Include="Scripts\app\components\common\notificationDialog.js" />
     <Content Include="Scripts\app\components\common\singleSelectButton.js" />
     <Content Include="Scripts\app\components\common\singleSelectSelector.js" />
     <Content Include="Scripts\app\components\common\textAreaEditor.js" />
@@ -284,6 +285,7 @@
     <Content Include="Scripts\app\dataAccess\questionDataManager.js" />
     <Content Include="Scripts\app\dataAccess\questionFilterDataManager.js" />
     <Content Include="Scripts\app\dataAccess\titleDataManager.js" />
+    <Content Include="Scripts\app\dataAccess\userManager.js" />
     <Content Include="Scripts\app\routes\columnHashParameterHelper.js" />
     <Content Include="Scripts\app\routes\filterHashParameterHelper.js" />
     <Content Include="Scripts\app\routes\filterItem.js" />
@@ -293,6 +295,7 @@
     <Content Include="Scripts\app\src\components\common\expandButton.js" />
     <Content Include="Scripts\app\src\components\common\loader.js" />
     <Content Include="Scripts\app\src\components\common\modalDialog.js" />
+    <Content Include="Scripts\app\src\components\common\notificationDialog.js" />
     <Content Include="Scripts\app\src\components\common\singleSelectButton.js" />
     <Content Include="Scripts\app\src\components\common\singleSelectSelector.js" />
     <Content Include="Scripts\app\src\components\common\textAreaEditor.js" />

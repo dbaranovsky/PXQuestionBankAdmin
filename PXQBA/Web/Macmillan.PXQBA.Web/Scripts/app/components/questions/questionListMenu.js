@@ -5,7 +5,7 @@
 var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
 
 
-     getInitialState: function() {
+    getInitialState: function() {
 
        return { isFlagged: this.props.data.flag == window.enums.flag.flagged };
     },
@@ -35,7 +35,15 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
     },
 
     publishDraftHandler: function() {
-      this.props.publishDraftHandler();
+      var notification = userManager.getNotificationById(window.enums.notificationTypes.publishChangesMadeWithinDraft);
+
+      if(notification == null || !notification.isShown){
+          this.props.publishDraftHandler();
+          return;
+      }
+
+      this.props.showNotification(notification, this.props.publishDraftHandler);
+      
     },
 
     createDraftHandler: function() {
@@ -123,6 +131,8 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
 
     },
 
+
+
     renderEditMenu: function(){
       var status = this.props.data[window.consts.questionStatusName];
 
@@ -132,7 +142,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
 
                   if (this.props.isShared){
                   return(
-                     React.DOM.ul( {className:"dropdown-menu show-menu", role:"menu", 'aria-labelledby':"dropdownMenuType", onClick:this.changeEventHandler, 'aria-labelledby':"edit-question"}, 
+                     React.DOM.ul( {className:"dropdown-menu show-menu", role:"menu", 'aria-labelledby':"dropdownMenuType", 'aria-labelledby':"edit-question"}, 
                        React.DOM.li( {role:"presentation", className:"dropdown-header"}, "Edit options"),
                        React.DOM.li( {role:"presentation", className:"divider"}),
                        React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.createDraftHandler}, "Create a Draft")),
@@ -142,7 +152,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
 
                 if (status == window.enums.statuses.inProgress){
                    return(
-                     React.DOM.ul( {className:"dropdown-menu show-menu", role:"menu", 'aria-labelledby':"dropdownMenuType", onClick:this.changeEventHandler, 'aria-labelledby':"edit-question"}, 
+                     React.DOM.ul( {className:"dropdown-menu show-menu", role:"menu", 'aria-labelledby':"dropdownMenuType",  'aria-labelledby':"edit-question"}, 
                        React.DOM.li( {role:"presentation", className:"dropdown-header"}, "Edit options"),
                        React.DOM.li( {role:"presentation", className:"divider"}),
                        React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.props.editQuestionHandler.bind(this, false)}, "Edit in Place")),
