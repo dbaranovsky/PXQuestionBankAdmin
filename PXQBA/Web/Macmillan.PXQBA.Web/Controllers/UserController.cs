@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Web.ViewModels.User;
@@ -10,6 +11,13 @@ namespace Macmillan.PXQBA.Web.Controllers
 {
     public class UserController : MasterController
     {
+        private readonly IUserManagementService userManagementService;
+
+        public UserController(IUserManagementService userManagementService)
+        {
+            this.userManagementService = userManagementService;
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -41,15 +49,17 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// <returns></returns>
         public ActionResult DontShowForCurrentUser(NotificationType type)
         {
+            userManagementService.CreateNotShownNotification(type);
             return JsonCamel(new {isSuccess = true});
         }
 
         private IEnumerable<UserNotificationViewModel> GetAllNotification()
         {
+            var notShownNotifications = userManagementService.GetNotShownNotification();
            return (from notification in (NotificationType[]) Enum.GetValues(typeof (NotificationType))
                    select new UserNotificationViewModel()
                        {
-                           IsShown = true, 
+                           IsShown = notShownNotifications.All(n => n.NotificationType != notification), 
                            Message = EnumHelper.GetEnumDescription(notification), 
                            NotificationTypeId = (int) notification
                        }).ToList();

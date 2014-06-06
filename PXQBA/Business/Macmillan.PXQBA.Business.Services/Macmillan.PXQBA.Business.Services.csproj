@@ -87,6 +87,7 @@
     <Compile Include="QuestionManagementService.cs" />
     <Compile Include="QuestionMetadataService.cs" />
     <Compile Include="ProductCourseManagementService.cs" />
+    <Compile Include="UserManagementService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Macmillan.PXQBA.Common.Helpers\Macmillan.PXQBA.Common.Helpers.csproj">
