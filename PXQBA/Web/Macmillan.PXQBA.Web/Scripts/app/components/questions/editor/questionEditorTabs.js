@@ -34,7 +34,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
       this.iframeLoaded();
 
     }else{
-    this.loadQuestionEditor(this.props.question.editorUrl);
+       this.loadQuestionEditor(this.props.question.editorUrl);
     }
           
     },
@@ -220,20 +220,82 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
       }
     },
 
-    switchTab: function(event){
+    switchTabBody: function(event){
         event.preventDefault();
         event.stopPropagation();
+        if (this.props.question.status == window.enums.statusesId.deleted){
+          alert("You can't edit a deleted question");
+           return;
+        }
+
+         if (this.props.question.draftFrom != ""){
+            $(this.getDOMNode()).find('#body').tab('show');
+            this.setState({viewHistoryMode: false});
+            return;
+        }
+
+        if (this.props.question.status == window.enums.statusesId.availibleToInstructor){
+           if (confirm("Do you want to create a draft question?")){
+             this.props.handlers.createDraftHandler(null, null);
+           }
+           return;
+        }
+
+         if (this.props.question.status == window.enums.statusesId.inProgress){
+           this.props.showEditInPlaceDialog(this.editInPlaceHandler.bind(this, "#body"));
+           return;
+        }
+
+
+    },
+
+    switchTabMetadata: function(event){
+        event.preventDefault();
+        event.stopPropagation();
+        if (this.props.question.status == window.enums.statusesId.deleted){
+          alert("You can't edit a deleted question");
+          return;
+        }
+
+        if (this.props.question.draftFrom != ""){
+           $(this.getDOMNode()).find('#metadata').tab('show');
+           this.setState({viewHistoryMode: false});
+            return;
+        }
+
+         if (this.props.question.status == window.enums.statusesId.availibleToInstructor){
+           if (confirm("Do you want to create a draft question?")){
+             this.props.handlers.createDraftHandler(null, null);
+           }
+           return;
+        }
+
+         if (this.props.question.status == window.enums.statusesId.inProgress){
+           this.props.showEditInPlaceDialog(this.editInPlaceHandler.bind(this, "#metadata"));
+           return;
+        }
+        
+    },
+
+    editInPlaceHandler: function(tab){
+      this.props.closeEditInPlaceDialog();
+      this.setState({viewHistoryMode: false});
+      this.props.showNotificationForInProgress(this.switchTab.bind(this, tab));
+      this.switchTab(tab);
+    },
+
+    switchTab: function(tab){
+        $(this.getDOMNode()).find(tab+'-tab').tab('show');
     },
 
     renderTabsHeader: function(){
-      alert(this.state.viewHistoryMode);
       if (this.state.viewHistoryMode){
         return (React.DOM.ul( {className:"nav nav-tabs"}, 
                              React.DOM.li( {className:"active"},  
-                                 React.DOM.a( {href:"#body", id:"body-tab",  onClick:this.switchTab}, "Body")
+                                 React.DOM.a( {href:"#body", id:"body-tab",  onClick:this.switchTabBody}, "Body")
                              ),
                              React.DOM.li(null, 
-                                 React.DOM.a( {href:"#metadata",  onClick:this.switchTab}, "Metadata")
+                                 React.DOM.a( {href:"#metadata",  onClick:this.switchTabMetadata}, "Metadata")
                              ),
                               React.DOM.li(null, 
                                  React.DOM.a( {href:"#history", id:"history-tab", 'data-toggle':"tab"}, "History")
@@ -246,7 +308,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                                  React.DOM.a( {href:"#body", id:"body-tab", 'data-toggle':"tab"} , "Body")
                              ),
                              React.DOM.li(null, 
-                                 React.DOM.a( {href:"#metadata", 'data-toggle':"tab"} , "Metadata")
+                                 React.DOM.a( {href:"#metadata", id:"metadata-tab", 'data-toggle':"tab"} , "Metadata")
                              ),
                               React.DOM.li(null, 
                                  React.DOM.a( {href:"#history", id:"history-tab", 'data-toggle':"tab"}, "History")

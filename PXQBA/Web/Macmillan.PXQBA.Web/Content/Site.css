@@ -237,6 +237,10 @@ input[type="checkbox"].input-validation-error {
      height: 820px;
 } 
 
+#editInPlace .modal-body {
+    height: auto !important;
+}
+
 #notificationDialog .modal-body {
     height: auto !important;
 }

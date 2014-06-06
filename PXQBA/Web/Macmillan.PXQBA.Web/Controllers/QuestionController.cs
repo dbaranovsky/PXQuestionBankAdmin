@@ -206,7 +206,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult CreateDraft(string questionId, string version = null)
         {
-            var question = questionManagementService.CreateDraft(CourseHelper.CurrentCourse, questionId);
+            var question = questionManagementService.CreateDraft(CourseHelper.CurrentCourse, string.IsNullOrEmpty(questionId) ? QuestionHelper.QuestionIdToEdit : questionId);
             return JsonCamel(CreateQuestionViewModelForEditing(question));
 
         }

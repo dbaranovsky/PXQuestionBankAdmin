@@ -111,9 +111,15 @@ var QuestionListPage = React.createClass({
       this.showEditor(this.editorsSteps.none);
       this.setState({
            loading: true,
-           editorCaption: window.enums.dialogCaptions.duplicateQuestion
+           editorCaption: window.enums.dialogCaptions.duplicateQuestion,
+           viewHistoryMode: false
         });
-       questionDataManager.createDraft(questionId, version).done(this.loadTemplateComplete.bind(this, false));
+
+      if (version == undefined || version == null){
+       questionDataManager.createDraft(questionId).done(this.loadTemplateComplete.bind(this, false));
+      }else{
+        questionDataManager.createDraft(questionId, version).done(this.loadTemplateComplete.bind(this, false));
+      }
     },
 
     loadTemplateComplete: function(isNew, template) { 
