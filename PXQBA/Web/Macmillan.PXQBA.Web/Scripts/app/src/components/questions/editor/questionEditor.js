@@ -10,7 +10,12 @@ var QuestionEditor = React.createClass({
 
 
     saveQuestion: function(){
-        questionDataManager.updateQuestion(this.state.question).done(this.updateQuestionHandler);
+      if(this.state.saveAndPublishMode) {
+           questionDataManager.saveAndPublishDraftQuestion(this.state.question).done(this.updateQuestionHandler);
+      }
+      else {
+           questionDataManager.updateQuestion(this.state.question).done(this.updateQuestionHandler);
+      }
     },
 
     updateQuestionHandler: function(response) {
@@ -45,7 +50,8 @@ var QuestionEditor = React.createClass({
     },
 
 
-     showSaveWarning: function(frameApi){
+     showSaveWarning: function(frameApi, saveAndPublish){
+        this.setState({saveAndPublishMode: saveAndPublish});
         if(!this.props.isNew && !this.props.isDuplicate){
           this.setState({showSaveWarning: true, frameApi: frameApi});
         } else{

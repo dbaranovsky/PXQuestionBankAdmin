@@ -168,9 +168,9 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
             
     },
 
-    showSaveWarning: function(){
+    showSaveWarning: function(saveAndPublish){
      
-      this.props.showSaveWarning(this.state.frameApi);
+      this.props.showSaveWarning(this.state.frameApi, saveAndPublish);
     },
 
     renderFooterButtons: function(checkForCustomQuestion){
@@ -192,15 +192,22 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
 
     renderPublishButton: function() {
         if(this.props.question.isDraft) {
-          return (React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal", title:"Save and Publish", onClick:this.props.closeDialog}, 
+          return (React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal", title:"Save and Publish", onClick:this.saveAndPublishHandler}, 
                               "Save and Publish"
                    ));
         }
         return null;
     },
    
+   saveClickHandler: function() {
+      this.saveHandler(false);
+   },
 
-    saveClickHandler: function(){
+   saveAndPublishHandler: function() {
+      this.saveHandler(true);
+   },
+
+   saveHandler: function(saveAndPublish){
       if(this.state.isGraph){
         var question = this.props.question;
         question.interactionData =  $(this.getDOMNode()).find("#flash")[0].getXML();
@@ -209,7 +216,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
       if (this.state.isHTS){
         this.state.frameApi.saveQuestion();
       } else{
-        this.showSaveWarning()
+        this.showSaveWarning(saveAndPublish)
       }
     },
 

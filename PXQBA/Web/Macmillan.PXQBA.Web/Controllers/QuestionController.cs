@@ -184,6 +184,26 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(new {isError = !success});
         }
 
+        [HttpPost, ValidateInput(false)]
+        public ActionResult SaveAndPublishDraft(string questionJsonString)
+        {
+            var success = false;
+            // manual JSON deserialize is nessessary becauese of invalid model mapping on controller
+            var questionViewModel = JsonConvert.DeserializeObject<QuestionViewModel>(questionJsonString);
+            var question = Mapper.Map<Question>(questionViewModel);
+
+            try
+            {
+                question = questionManagementService.UpdateQuestion(CourseHelper.CurrentCourse, QuestionHelper.QuestionIdToEdit, question);
+                success = questionManagementService.PublishDraftToOriginal(CourseHelper.CurrentCourse, question.Id);
+            }
+            catch (Exception ex)
+            {
+                return JsonCamel(new { isError = !success });
+            }
+            return JsonCamel(new { isError = !success });
+        }
+
         public ActionResult CreateDraft(string questionId, string version = null)
         {
             var question = questionManagementService.CreateDraft(CourseHelper.CurrentCourse, questionId);
