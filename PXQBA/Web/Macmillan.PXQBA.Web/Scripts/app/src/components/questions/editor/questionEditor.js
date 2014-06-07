@@ -26,8 +26,9 @@ var QuestionEditor = React.createClass({
          this.setState({showNotification: true, typeId: window.enums.notificationTypes.newDraftForAvailableToInstructors});
     },
 
-    showNotificationForInProgress: function(){
-        this.setState({showNotification: true, typeId: window.enums.notificationTypes.editInPlaceQuestionInProgress});
+    showNotificationForInProgress: function(switchTab){
+
+        this.setState({showNotification: true, typeId: window.enums.notificationTypes.editInPlaceQuestionInProgress, switchTab: switchTab== undefined? null : switchTab});
     },
 
    showSaveAndPublish: function(){
@@ -44,8 +45,8 @@ var QuestionEditor = React.createClass({
 
     saveAndPublish: function(){
        questionDataManager.saveAndPublishDraftQuestion(this.state.question).done(this.updateQuestionHandler);
+       this.closeDialog();
     },
-
     updateQuestionHandler: function(response) {
       if(!response.isError) {
           this.props.finishSaving();
@@ -145,6 +146,8 @@ var QuestionEditor = React.createClass({
 
        this.props.closeDialog(); 
      }
+
+   //   questionDataManager.deleteQuestion();
      },
 
      renderNotification: function(){
@@ -158,14 +161,80 @@ var QuestionEditor = React.createClass({
      },     
 
      closeNotificationDialog: function(){
-        this.closeDialog();
+
+         if(this.state.saveAndPublishMode) {
+             $('.modal-backdrop').first().remove(); 
+             this.setState({showNotification: false});
+         } else{
+             this.closeDialog();
+         }
+        
      },
 
      proceedHandler: function(){
-         $('.modal-backdrop').first().remove(); 
-         this.setState({showNotification: false});
+      if (this.state.saveAndPublishMode){
+          this.saveAndPublish();
+      }else{
+        $('.modal-backdrop').first().remove(); 
+          if (this.state.switchTab != undefined && this.state.switchTab != null){
+             this.state.switchTab();
+          }
+         this.setState({showNotification: false, switchTab: null});
+
+      }
+         
      },
 
+     renderEditInPlaceDialog: function(){
+       if (this.state.showEditInPlaceDialog){
+        var self = this;
+        var renderHeaderText = function() {
+            return ("Warning");
+        };
+        
+        var renderBody = function(){
+            return (<div>
+                      Do you want to create a draft question or edit in place?
+                      <br /><br />
+                      <button className="btn btn-primary" data-toggle="modal" onClick={self.state.editInPlaceHandler}>
+                                   Edit in place
+                      </button>
+                        &nbsp; &nbsp;
+                      <button className="btn btn-primary " data-toggle="modal" onClick={self.createDraft} >
+                                 Create a Draft
+                      </button>
+                         &nbsp; &nbsp;
+                      <button className="btn btn-default" data-toggle="modal" onClick={self.closeEditInPlaceDialog}>
+                             Cancel
+                        </button>
+                    </div>
+              );
+        };
+        return (<ModalDialog renderHeaderText={renderHeaderText} 
+                             renderBody={renderBody} 
+                             dialogId="editInPlace"
+                             closeDialogHandler = {this.closeSaveWarningDialog}
+                             showOnCreate = {true}
+                             preventDefaultClose ={true}/>
+                );
+      }
+
+      return null;
+     },
+
+     createDraft: function(){
+       $('.modal-backdrop').first().remove(); 
+        this.props.handlers.createDraftHandler(null, null);
+     },
+
+     showEditInPlaceDialog: function(handler){
+      this.setState({showEditInPlaceDialog: true, editInPlaceHandler: handler});
+     },
+
+     closeEditInPlaceDialog: function(){
+      $('.modal-backdrop').first().remove(); 
+      this.setState({showEditInPlaceDialog: false});
+     },
     render: function() {
         return (
             <div>
@@ -180,6 +249,9 @@ var QuestionEditor = React.createClass({
                                       closeDialog={this.closeDialog}  
                                       editSourceQuestionHandler={this.props.editSourceQuestionHandler} 
                                       showSaveWarning={this.showSaveWarning}  
+                                      showEditInPlaceDialog = {this.showEditInPlaceDialog}
+                                      closeEditInPlaceDialog = {this.closeEditInPlaceDialog}
+                                      showNotificationForInProgress = {this.showNotificationForInProgress}
                                       saveQuestion = {this.saveQuestion}
                                       metadata={this.props.metadata} 
                                       editHandler={this.editHandler} 
@@ -189,6 +261,7 @@ var QuestionEditor = React.createClass({
                 </div>
                 {this.renderWarningDialog()}
                 {this.renderNotification()}
+                {this.renderEditInPlaceDialog()}
 
 
          </div>);

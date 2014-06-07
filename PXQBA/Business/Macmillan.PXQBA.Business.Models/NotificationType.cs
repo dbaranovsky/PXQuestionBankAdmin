@@ -21,7 +21,7 @@ namespace Macmillan.PXQBA.Business.Models
                         Click Proceed to continue with the publish process.")]
         PublishChangesMadeWithinDraft = 2,
 
-         [Description(@"You are about to publish a draft. The edits reflected in this draft will replace all content in the original question.
+         [Description(@"You are about to publish a draft. The edits reflected in this draft will replace all content in the original question. 
                         Click Proceed to continue with the publish process.")]
         SaveAndPublishDraft =3 
     }

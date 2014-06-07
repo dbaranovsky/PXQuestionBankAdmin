@@ -18,7 +18,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
     },
 
     editQuestionHandler: function() {
-        if(this.props.data[window.consts.questionStatusName] == window.enums.statuses.availibleToInstructor){
+        if(this.props.data[window.consts.questionStatusName] == window.enums.statuses.availibleToInstructor  && !this.props.isShared){
            this.createDraftHandler();
           return;
         }
