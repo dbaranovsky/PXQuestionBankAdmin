@@ -203,10 +203,13 @@ namespace Macmillan.PXQBA.Business.Services
 
         public string GetModifierName(string modifiedByUserId)
         {
-            var user = userOperation.GetUser(modifiedByUserId);
-            if (user != null)
+            if (string.IsNullOrEmpty(modifiedByUserId))
             {
-                return string.Format("{0} {1}", user.FirstName, user.LastName);
+                var user = userOperation.GetUser(modifiedByUserId);
+                if (user != null)
+                {
+                    return string.Format("{0} {1}", user.FirstName, user.LastName);
+                }
             }
             return string.Empty;
         }
@@ -311,6 +314,10 @@ namespace Macmillan.PXQBA.Business.Services
             {
                 return MetadataFieldType.MultiSelect;
             }
+            if (type == "multi-line")
+            {
+                return MetadataFieldType.MultilineText;
+            }
 
             return MetadataFieldType.Text;
         }
@@ -324,6 +331,10 @@ namespace Macmillan.PXQBA.Business.Services
             if (type == MetadataFieldType.SingleSelect)
             {
                 return "single-select";
+            }
+            if (type == MetadataFieldType.MultilineText)
+            {
+                return "multi-line";
             }
             return "text";
         }

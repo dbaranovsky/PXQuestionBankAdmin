@@ -197,8 +197,8 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                     }
                 }
                 results.AddRange(docElements);
-            } //while (i <= 1);
-            while (docElements.Count() == SearchCommandMaxRows);
+            } while (i <= 1);
+            //while (docElements.Count() == SearchCommandMaxRows);
 
             var searchResults = results.Select(doc => QuestionDataXmlParser.ToSearchResultEntity(doc, sortingField));
             return searchResults;
@@ -238,6 +238,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         public Question CreateQuestion(string productCourseId, Question question)
         {
+            question.ModifiedBy = businessContext.CurrentUser.Id;
             CheckIfSequenceIsSet(productCourseId, question);
             ExecutePutQuestion(Mapper.Map<Bfw.Agilix.DataContracts.Question>(question));
             ExecuteSolrUpdateTask();
