@@ -35,7 +35,7 @@ GO
 CREATE PROCEDURE dbo.CreateUserNotShownNotification
 (
   @userId   NVARCHAR(MAX),
-  @notificationType NVARCHAR(MAX),
+  @notificationType NVARCHAR(MAX)
 )
 AS
 BEGIN
