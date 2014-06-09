@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Web.Helpers;
 using Macmillan.PXQBA.Web.ViewModels.MetadataConfig;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -46,6 +47,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
             var course = Mapper.Map<Course>(metadataConfig);
             productCourseManagementService.UpdateMetadataConfig(course);
+            CourseHelper.CurrentCourse = null;
             return JsonCamel(new {IsError = false});
         }
 	}

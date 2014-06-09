@@ -197,8 +197,8 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                     }
                 }
                 results.AddRange(docElements);
-            } while (i <= 1);
-            //while (docElements.Count() == SearchCommandMaxRows);
+            } //while (i <= 1);
+            while (docElements.Count() == SearchCommandMaxRows);
 
             var searchResults = results.Select(doc => QuestionDataXmlParser.ToSearchResultEntity(doc, sortingField));
             return searchResults;
