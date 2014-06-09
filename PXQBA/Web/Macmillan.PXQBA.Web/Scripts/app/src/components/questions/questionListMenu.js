@@ -6,9 +6,19 @@ var QuestionListMenu = React.createClass({
 
 
     getInitialState: function() {
-
-       return { isFlagged: this.props.data.flag == window.enums.flag.flagged };
+       return { isFlagged: this.props.data.flag == window.enums.flag.flagged,
+                questionId: this.props.data.id
+               };
     },
+
+    componentWillReceiveProps: function(nextProps) {
+        if(nextProps.data.id!=this.state.questionId) {
+            this.setState({ isFlagged: this.props.data.flag == window.enums.flag.flagged,
+                            questionId: this.props.data.id
+                       });
+        }
+    }, 
+
     editNotesHandler: function(){
       this.props.editNotesHandler();
     },
@@ -27,8 +37,6 @@ var QuestionListMenu = React.createClass({
           this.props.editQuestionHandler();
           return;
         }
-
-      
     },
 
     viewQuestionHistoryHandler: function(){
@@ -64,7 +72,7 @@ var QuestionListMenu = React.createClass({
     toggleFlag: function(){
 
       questionDataManager.flagQuestion(this.props.data.id, !this.state.isFlagged);
-      this.setState( {isFlagged: !this.state.isFlagged});
+      this.setState( {isFlagged: !this.state.isFlagged, questionId: this.props.data.id});
 
     },
 

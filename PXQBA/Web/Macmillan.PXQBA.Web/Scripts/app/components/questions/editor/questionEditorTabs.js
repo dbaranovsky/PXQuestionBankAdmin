@@ -210,8 +210,15 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
    saveHandler: function(saveAndPublish){
       if(this.state.isGraph){
         var question = this.props.question;
-        question.interactionData =  $(this.getDOMNode()).find("#flash")[0].getXML();
-        this.props.editHandler(question);
+        var flashElenemnt = $(this.getDOMNode()).find("#flash")[0]
+        if(flashElenemnt.getXML) {
+            question.interactionData = flashElenemnt.getXML();
+            this.props.editHandler(question);
+        } else {
+           window.questionDataManager.showWarningPopup(window.enums.messages.warningQuestionEditorMessage);
+           return;
+        }
+
       }
       if (this.state.isHTS){
         this.state.frameApi.saveQuestion();
