@@ -101,7 +101,7 @@ var QuestionEditor = React.createClass({
 
 
      showSaveWarning: function(frameApi, saveAndPublish){
-        this.setState({saveAndPublishMode: saveAndPublish});
+        this.setState({saveAndPublishMode: saveAndPublish, saving: true});
         this.saveBHEditor(frameApi);
     
      },
@@ -232,7 +232,8 @@ var QuestionEditor = React.createClass({
                                       editHandler={this.editHandler} 
                                       isDuplicate={this.props.isDuplicate}
                                       handlers={this.props.handlers}
-                                      viewHistoryMode= {this.props.viewHistoryMode}/>
+                                      viewHistoryMode= {this.props.viewHistoryMode}
+                                      saving = {this.state.saving} />
                 </div>
                 {this.renderNotification()}
                 {this.renderEditInPlaceDialog()}
