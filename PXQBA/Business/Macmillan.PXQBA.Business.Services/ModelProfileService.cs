@@ -126,6 +126,7 @@ namespace Macmillan.PXQBA.Business.Services
                 metadata.Data.Add(MetadataFieldNames.Chapter, productCourseSection.Chapter);
                 metadata.Data.Add(MetadataFieldNames.Bank, productCourseSection.Bank);
                 metadata.Data.Add(MetadataFieldNames.Sequence, productCourseSection.Sequence);
+                metadata.Data.Add(MetadataFieldNames.Flag, productCourseSection.Flag);
                 foreach (var metadataValue in productCourseSection.DynamicValues)
                 {
                     if (!metadata.Data.ContainsKey(metadataValue.Key))

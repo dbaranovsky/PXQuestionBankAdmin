@@ -32,5 +32,7 @@ namespace Macmillan.PXQBA.Business.Models
         }
 
         public string ParentProductCourseId { get; set; }
+
+        public string Flag { get; set; }
     }
 }

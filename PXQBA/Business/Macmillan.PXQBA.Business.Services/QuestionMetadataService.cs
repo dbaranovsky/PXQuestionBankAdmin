@@ -70,6 +70,16 @@ namespace Macmillan.PXQBA.Business.Services
                         Type = MetadataFieldType.SingleSelect,
                         AvailableChoice =  productCourseOperation.GetAvailableCourses().Select(pc=> new AvailableChoiceItem(pc.ProductCourseId, pc.Title)).ToList()
                     }
+                },
+                new QuestionMetaField
+                {
+                    FriendlyName = "Flag",
+                    Name = MetadataFieldNames.Flag,
+                    TypeDescriptor = new MetaFieldTypeDescriptor
+                    {
+                        Type = MetadataFieldType.MultiSelect,
+                        AvailableChoice = EnumHelper.GetEnumValues(typeof(QuestionFlag)).Select(f => new AvailableChoiceItem(f.Key, f.Value)).ToList()
+                    }
                 }
 
             };

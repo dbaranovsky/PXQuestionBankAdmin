@@ -139,6 +139,7 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
             sectionValues.Chapter = GetXElementValue(sectionElements, MetadataFieldNames.Chapter);
             sectionValues.Sequence = GetXElementValue(sectionElements, MetadataFieldNames.Sequence);
             sectionValues.ParentProductCourseId = GetXElementValue(sectionElements, MetadataFieldNames.ParentProductCourseId);
+            sectionValues.Flag = GetXElementValue(sectionElements, MetadataFieldNames.Flag);
             sectionValues.DynamicValues = sectionElements.Where(g => !MetadataFieldNames.GetStaticFieldNames().Contains(g.Name.LocalName)).GroupBy(elem => elem.Name.LocalName).ToDictionary(group => group.Key, group => group.Select(elem => elem.Value).ToList());
             return sectionValues;
         }
@@ -191,6 +192,7 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
             elements.Add(new XElement(MetadataFieldNames.Chapter, section.Chapter));
             elements.Add(new XElement(MetadataFieldNames.Sequence, section.Sequence));
             elements.Add(new XElement(MetadataFieldNames.ParentProductCourseId, section.ParentProductCourseId));
+            elements.Add(new XElement(MetadataFieldNames.Flag, section.Flag));
             return elements;
         }
 

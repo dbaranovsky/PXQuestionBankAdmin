@@ -47,13 +47,13 @@ namespace Macmillan.PXQBA.Business.Services
             Question question = GetQuestion(course, questionId, version);
             question.Id = Guid.NewGuid().ToString();
             question.Status = ((int)QuestionStatus.InProgress).ToString();
+            ClearServiceFields(question);
             if (question.ProductCourseSections.Count > 1)
             {
                 question.ProductCourseSections.RemoveAll(s => s.ProductCourseId != course.ProductCourseId);
                 question.DuplicateFromShared = questionId;
             }
             question.DuplicateFrom = questionId;
-            question.DraftFrom = string.Empty;
             return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
 
@@ -127,9 +127,7 @@ namespace Macmillan.PXQBA.Business.Services
                 var originalQuestion = questionCommands.GetQuestion(currentCourse.QuestionRepositoryCourseId,
                     draftQuestion.DraftFrom);
                 draftQuestion.Id = originalQuestion.Id;
-                draftQuestion.DraftFrom = string.Empty;
-                draftQuestion.DuplicateFrom = string.Empty;
-                draftQuestion.DuplicateFromShared = string.Empty;
+                ClearServiceFields(draftQuestion);
                 draftQuestion.IsPublishedFromDraft = true;
                 questionCommands.UpdateQuestion(draftQuestion);
                 DeleteDraft(currentCourse.QuestionRepositoryCourseId, draftQuestionId);
@@ -168,9 +166,7 @@ namespace Macmillan.PXQBA.Business.Services
                 question.ProductCourseSections.RemoveAll(s => s.ProductCourseId != course.ProductCourseId);
                 question.ProductCourseSections.First().ParentProductCourseId = string.Empty;
             }
-            question.IsPublishedFromDraft = false;
-            question.DuplicateFromShared = string.Empty;
-            question.DuplicateFrom = string.Empty;
+            ClearServiceFields(question);
             question.DraftFrom = questionId;
             return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
@@ -262,6 +258,14 @@ namespace Macmillan.PXQBA.Business.Services
             question.InteractionType = string.IsNullOrEmpty(type.Custom) ? type.Key : type.Custom;
             question.CustomUrl = string.IsNullOrEmpty(type.Custom) ? type.Custom : type.Key;
             return question;
+        }
+
+        private void ClearServiceFields(Question question)
+        {
+            question.IsPublishedFromDraft = false;
+            question.DuplicateFromShared = string.Empty;
+            question.DuplicateFrom = string.Empty;
+            question.DraftFrom = string.Empty;
         }
     }
 }
