@@ -15,7 +15,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
           return;
       }
 
-      if(this.state.question.draftFrom != ""){
+      if(this.state.question.draftFrom != "" && !this.state.viewHistoryMode){
            this.showDraftNotification();
       }
 
