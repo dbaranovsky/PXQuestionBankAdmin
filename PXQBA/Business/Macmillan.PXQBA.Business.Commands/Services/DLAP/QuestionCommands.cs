@@ -54,35 +54,24 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         private IEnumerable<Question> PreparedQuestionPage(string questionRepositoryCourseId, IEnumerable<QuestionSearchResult> searchResults, int startingRecordNumber, int recordCount)
         {
             var nonDraftResults = searchResults.Where(r => string.IsNullOrEmpty(r.DraftFrom)).Skip(startingRecordNumber).Take(recordCount);
-            var draftResults = searchResults.Where(r => nonDraftResults.Select(n => n.QuestionId).Contains(r.DraftFrom));
-            //CreateChildren(searchResults, parents);
-            var nonDraftQuestions = Mapper.Map<IEnumerable<Question>>(GetAgilixQuestions(questionRepositoryCourseId, nonDraftResults.Select(r => r.QuestionId)));
-            var draftQuestions = Mapper.Map<IEnumerable<Question>>(GetAgilixQuestions(questionRepositoryCourseId, draftResults.Select(r => r.QuestionId)));
-            var questions = new List<Question>();
-            foreach (var question in nonDraftQuestions)
-            {
-                questions.Add(question);
-                questions.AddRange(draftQuestions.Where(q => q.DraftFrom == question.Id).OrderBy(q => q.ModifiedDate));
-            }
+            var questions = CreateChildren(questionRepositoryCourseId, searchResults, nonDraftResults);
             return questions;
         }
 
-        private IEnumerable<ParentQuestion> CreateChildren(IEnumerable<QuestionSearchResult> searchResults, IEnumerable<QuestionSearchResult> parents)
+        private IEnumerable<Question> CreateChildren(string questionRepositoryCourseId, IEnumerable<QuestionSearchResult> searchResults, IEnumerable<QuestionSearchResult> parents)
         {
-            var nonDraftQuestions = new List<ParentQuestion>();
+            var nonDraftQuestions = new List<Question>();
 
             foreach (var questionSearchResult in parents)
             {
-                var parent = new ParentQuestion
-                {
-                    QuestionId = questionSearchResult.QuestionId
-                };
+                var parent = Mapper.Map<Question>(GetAgilixQuestion(questionRepositoryCourseId, questionSearchResult.QuestionId));
+                nonDraftQuestions.Add(parent);
+                
                 var drafts = searchResults.Where(r => r.DraftFrom == questionSearchResult.QuestionId);
                 if (drafts.Any())
                 {
-                    parent.Children = CreateChildren(searchResults, drafts);
+                    nonDraftQuestions.AddRange(CreateChildren(questionRepositoryCourseId, searchResults, drafts).OrderBy(q => q.ModifiedDate));
                 }
-                nonDraftQuestions.Add(parent);
             }
             return nonDraftQuestions;
         }
