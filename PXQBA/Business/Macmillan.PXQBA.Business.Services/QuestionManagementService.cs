@@ -175,6 +175,22 @@ namespace Macmillan.PXQBA.Business.Services
             return questionCommands.CreateQuestion(course.ProductCourseId, question);
         }
 
+        public bool RemoveQuestion(Course course, string questionId)
+        {
+            Question question = GetQuestion(course, questionId);
+   
+
+            if (!string.IsNullOrEmpty(question.DraftFrom) ||
+                (question.Version == 1 && string.IsNullOrEmpty(question.DuplicateFrom) && string.IsNullOrEmpty(question.DuplicateFromShared))
+                )
+            {
+                questionCommands.DeleteQuestion(course.QuestionRepositoryCourseId, questionId);
+                return true;
+            }
+
+            return false;
+        }
+
         private QuestionMetadataSection GetNewProductCourseSection(int courseIdToPublish, string bank, string chapter, Course currentCourse, Question question)
         {
             var courseToPublish = productCourseManagementService.GetProductCourse(courseIdToPublish.ToString());
