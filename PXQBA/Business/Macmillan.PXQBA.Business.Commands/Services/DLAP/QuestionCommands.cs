@@ -197,7 +197,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                     }
                 }
                 results.AddRange(docElements);
-            } //while (i <= 10);
+            } //while (i <= 1);
             while (docElements.Count() == SearchCommandMaxRows);
 
             var searchResults = results.Select(doc => QuestionDataXmlParser.ToSearchResultEntity(doc, sortingField));
@@ -576,6 +576,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                         {
                             var values = filterFieldDescriptor.Values;
                             var fieldFormat = "{0}/{1}:\"{2}\"";
+                            var fieldQuery = string.Empty;
                             if (filterFieldDescriptor.Field == ElStrings.QuestionStatus ||
                                 filterFieldDescriptor.Field == MetadataFieldNames.DlapType)
                             {
@@ -585,12 +586,44 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                             {
                                 values = filterFieldDescriptor.Values.Select(v => v == QuestionTypeHelper.GraphType || v == QuestionTypeHelper.HTSType ? "custom": v);
                             }
-                            var fieldQuery = string.Join(" OR ",
+                            if (filterFieldDescriptor.Field == MetadataFieldNames.Flag)
+                            {
+                                var flagQuery = new StringBuilder();
+                                if (filterFieldDescriptor.Values.Contains(((int) QuestionFlag.Flagged).ToString()))
+                                {
+                                    flagQuery.Append(string.Format(fieldFormat, productCourseSection, filterFieldDescriptor.Field, ((int) QuestionFlag.Flagged)));
+                                }
+                                if (filterFieldDescriptor.Values.Contains(((int) QuestionFlag.NotFlagged).ToString()))
+                                {
+                                    if (!string.IsNullOrEmpty(flagQuery.ToString()))
+                                    {
+                                        flagQuery.Clear();
+                                    }
+                                    else
+                                    {
+                                        flagQuery.Append(" NOT (");
+                                        flagQuery.Append(string.Format(fieldFormat, productCourseSection, filterFieldDescriptor.Field, ((int)QuestionFlag.Flagged)));
+                                        flagQuery.Append(")");
+                                    }
+                                }
+                                fieldQuery = flagQuery.ToString();
+                            }
+                            else
+                            {
+                                fieldQuery = string.Join(" OR ",
                                     values.Select(v =>
                                         string.Format(fieldFormat, productCourseSection, filterFieldDescriptor.Field, v)));
+                            }
                             if (!string.IsNullOrEmpty(fieldQuery))
                             {
-                                query.Append(string.Format(" AND ({0})", fieldQuery));
+                                if (filterFieldDescriptor.Field == MetadataFieldNames.Flag)
+                                {
+                                    query.Append(string.Format(" AND {0}", fieldQuery));
+                                }
+                                else
+                                {
+                                    query.Append(string.Format(" AND ({0})", fieldQuery));
+                                }
                             }
                         }
                     }

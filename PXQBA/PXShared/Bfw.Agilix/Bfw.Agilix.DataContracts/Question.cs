@@ -269,7 +269,7 @@ namespace Bfw.Agilix.DataContracts
             }
 
             var modifiedDate = element.Attribute(ElStrings.ModifiedDate);
-            DateTime modifiedDateParsed;
+            DateTime modifiedDateParsed = DateTime.MinValue;
             if (modifiedDate != null && DateTime.TryParse(modifiedDate.Value, out modifiedDateParsed))
             {
                 ModifiedDate = modifiedDateParsed;
