@@ -20,7 +20,7 @@ var QuestionEditorDialog = React.createClass({
     finishSaving: function(e){
 
         questionDataManager.resetState();
-        $(this.getDOMNode()).modal("hide");
+     //   $(this.getDOMNode()).modal("hide");
 
         var text = this.props.caption == window.enums.dialogCaptions.editQuestion?  
                       window.enums.messages.succesUpdate :
@@ -55,7 +55,8 @@ var QuestionEditorDialog = React.createClass({
                                      isDuplicate={self.props.caption === window.enums.dialogCaptions.duplicateQuestion}
                                      handlers={self.props.handlers}
                                      viewHistoryMode = {self.props.viewHistoryMode}
-                                     isEditedInPlace = {self.props.isEditedInPlace} />);
+                                     isEditedInPlace = {self.props.isEditedInPlace}
+                                     caption={self.props.caption} />);
         };
         var renderFooterButtons = function(){
             return ("");
