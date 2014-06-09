@@ -177,7 +177,8 @@ var QuestionEditorTabs = React.createClass({
       if(this.state.isHTS && checkForCustomQuestion){
         return null;
       }
-      return(
+      if (!this.props.saving){
+          return(
                     <div className="modal-footer">
                         <button className="btn btn-default" data-toggle="modal" title="Cancel" onClick={this.props.closeDialog}>
                              Cancel
@@ -188,11 +189,27 @@ var QuestionEditorTabs = React.createClass({
                         </button>
                       </div>
                      );
+      }
+
+        return(
+                    <div className="modal-footer">
+                                           <button className="btn btn-default" data-toggle="modal" title="Cancel" onClick={this.props.closeDialog}>
+                             Cancel
+                        </button>
+                         {this.renderPublishButton()}
+                         <button className="btn btn-primary " disabled="disabled" data-toggle="modal"  title="Save" onClick={this.saveClickHandler} >
+                             Save
+                        </button>
+                       <div className="waiting small" />
+
+                      </div>
+                     );
+    
     },
 
     renderPublishButton: function() {
         if(this.props.question.isDraft) {
-          return (<button className="btn btn-default" data-toggle="modal" title="Save and Publish" onClick={this.saveAndPublishHandler}>
+          return (<button className="btn btn-default" data-toggle="modal" title="Save and Publish" disabled={this.props.saving} onClick={this.saveAndPublishHandler}>
                               Save and Publish
                    </button>);
         }

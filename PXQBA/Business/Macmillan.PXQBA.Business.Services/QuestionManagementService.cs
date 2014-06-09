@@ -177,9 +177,8 @@ namespace Macmillan.PXQBA.Business.Services
    
 
             if (question != null && 
-                ((!string.IsNullOrEmpty(question.DraftFrom) && !question.IsPublishedFromDraft) ||
                 (question.Version == 1 && string.IsNullOrEmpty(question.DuplicateFrom) && string.IsNullOrEmpty(question.DuplicateFromShared))
-                ))
+               )
             {
                 questionCommands.DeleteQuestion(course.QuestionRepositoryCourseId, questionId);
                 return true;

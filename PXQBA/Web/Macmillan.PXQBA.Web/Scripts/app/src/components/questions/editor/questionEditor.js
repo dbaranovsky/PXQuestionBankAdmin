@@ -5,7 +5,7 @@ var QuestionEditor = React.createClass({
 
    getInitialState: function() {
 
-      return { question: this.props.question, viewHistoryMode: this.props.viewHistoryMode};
+      return { question: this.props.question, viewHistoryMode: this.props.viewHistoryMode, saving: false};
     },
 
     componentDidMount: function(){
@@ -44,7 +44,11 @@ var QuestionEditor = React.createClass({
           this.showSaveAndPublish();
       }
       else {
-           questionDataManager.updateQuestion(this.state.question).done(this.updateQuestionHandler);
+          var message = this.props.caption == window.enums.dialogCaptions.editQuestion?  
+                      window.enums.messages.succesUpdate :
+                      window.enums.messages.succesCreate;
+           this.setState({saving: true});
+           questionDataManager.updateQuestion(this.state.question,message).done(this.updateQuestionHandler);
       }
     },
 
@@ -64,8 +68,9 @@ var QuestionEditor = React.createClass({
        this.closeDialog();
     },
     updateQuestionHandler: function(response) {
+      this.setState({saving: false});
       if(!response.isError) {
-          this.props.finishSaving();
+         // this.props.finishSaving();
       } 
       else {
         window.questionDataManager.showWarningPopup(window.enums.messages.warningQuestionEditorMessage);
@@ -96,62 +101,16 @@ var QuestionEditor = React.createClass({
 
 
      showSaveWarning: function(frameApi, saveAndPublish){
-        this.setState({saveAndPublishMode: saveAndPublish});
-        if(!this.props.isNew && !this.props.isDuplicate){
-          this.setState({showSaveWarning: true, frameApi: frameApi});
-        } else{
-          this.saveBHEditor(frameApi);
-        }
-        
-     
+        this.setState({saveAndPublishMode: saveAndPublish, saving: true});
+        this.saveBHEditor(frameApi);
+    
      },
 
      closeSaveWarningDialog: function(){
          $('.modal-backdrop').first().remove(); 
          this.setState({showSaveWarning: false});
      },
-
-     makeChangesVisibleToInstructor: function(){
-        this.closeSaveWarningDialog();
-        this.saveBHEditor(this.state.frameApi);
-     },
-
-     renderWarningDialog: function(){
-      if (this.state.showSaveWarning){
-        var self = this;
-        var renderHeaderText = function() {
-            return ("Attention");
-        };
-        
-        var renderBody = function(){
-            return (<div>
-                      The changes made will affect the version of question  that is visible  to instructor
-                      <br /><br />
-                      <button className="btn btn-primary" data-toggle="modal" onClick={self.makeChangesVisibleToInstructor}>
-                                   Make changes visible to instructors
-                      </button>
-                      <br /><br />
-                      <button className="btn btn-primary " data-toggle="modal" onClick={self.makeChangesVisibleToInstructor} >
-                                   Leave visible the previous version
-                      </button>
-                      <br /><br />
-                      <button className="btn btn-default" data-toggle="modal" onClick={self.closeSaveWarningDialog}>
-                             Cancel
-                        </button>
-                    </div>
-              );
-        };
-        return (<ModalDialog renderHeaderText={renderHeaderText} 
-                             renderBody={renderBody} 
-                             dialogId="saveWarningDialog"
-                             closeDialogHandler = {this.closeSaveWarningDialog}
-                             showOnCreate = {true}
-                             preventDefaultClose ={true}/>
-                );
-      }
-
-      return null;
-     },
+  
 
      closeDialog: function(){
       if(hasUnsavedData()){
@@ -273,9 +232,9 @@ var QuestionEditor = React.createClass({
                                       editHandler={this.editHandler} 
                                       isDuplicate={this.props.isDuplicate}
                                       handlers={this.props.handlers}
-                                      viewHistoryMode= {this.props.viewHistoryMode}/>
+                                      viewHistoryMode= {this.props.viewHistoryMode}
+                                      saving = {this.state.saving} />
                 </div>
-                {this.renderWarningDialog()}
                 {this.renderNotification()}
                 {this.renderEditInPlaceDialog()}
 

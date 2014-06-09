@@ -202,7 +202,7 @@ var questionDataManager = (function() {
     };
 
 
-    self.updateQuestion = function (question) {
+    self.updateQuestion = function (question, message) {
          var request = {
             questionJsonString:  JSON.stringify(question),
         };
@@ -213,6 +213,7 @@ var questionDataManager = (function() {
         }).done(function (response) {
             console.log('Update question complete');
             self.resetState();
+             self.showSuccessPopup(message);
             console.log('Refresh complite');
         }).error(function(e){
              self.showErrorPopup();

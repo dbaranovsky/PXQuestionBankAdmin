@@ -61,7 +61,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         public Models.Question CopyQuestionToSourceCourse(string sourceProductCourseId, string sourceQuestionId)
         {
             var question = CopyQuestionToCourse(temporaryCourseId, GetTemporaryQuestionId(), sourceProductCourseId, sourceQuestionId);
-            questionCommands.DeleteQuestion(temporaryCourseId, GetTemporaryQuestionId());
+            //questionCommands.DeleteQuestion(temporaryCourseId, GetTemporaryQuestionId());
             return Mapper.Map<Models.Question>(question);
         }
 
