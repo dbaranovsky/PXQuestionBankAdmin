@@ -34,13 +34,29 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
    showSaveAndPublish: function(){
         this.setState({showNotification: true, typeId: window.enums.notificationTypes.saveAndPublishDraft});
     },
+
     saveQuestion: function(){
+      if(!this.validateQuestion()) {
+        return;
+      }
+
       if(this.state.saveAndPublishMode) {
           this.showSaveAndPublish();
       }
       else {
            questionDataManager.updateQuestion(this.state.question).done(this.updateQuestionHandler);
       }
+    },
+
+    validateQuestion: function() {
+      var isValid = true;
+
+      if((this.state.question.localSection.title=="")||(this.state.question.localSection.title==null)) {
+         isValid = false;
+         window.questionDataManager.showWarningPopup("Title metadata field is requaried.")
+      }
+
+      return isValid;
     },
 
     saveAndPublish: function(){

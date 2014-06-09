@@ -111,7 +111,7 @@ var QuestionListPage = React.createClass({
       this.showEditor(this.editorsSteps.none);
       this.setState({
            loading: true,
-           editorCaption: window.enums.dialogCaptions.duplicateQuestion,
+           editorCaption: window.enums.dialogCaptions.editQuestion,
            viewHistoryMode: false
         });
 
