@@ -203,7 +203,7 @@ namespace Macmillan.PXQBA.Business.Services
 
         public string GetModifierName(string modifiedByUserId)
         {
-            if (string.IsNullOrEmpty(modifiedByUserId))
+            if (!string.IsNullOrEmpty(modifiedByUserId))
             {
                 var user = userOperation.GetUser(modifiedByUserId);
                 if (user != null)
