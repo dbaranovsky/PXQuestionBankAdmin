@@ -183,7 +183,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                         EntityId = questionRepositoryCourseId,
                         Query = query,
                         Rows = SearchCommandMaxRows,
-                        Start = (i * SearchCommandMaxRows),
+                        Start = (i*SearchCommandMaxRows),
                     }
                 };
                 i++;
@@ -197,7 +197,8 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                     }
                 }
                 results.AddRange(docElements);
-            } while (docElements.Count() == SearchCommandMaxRows);
+            } //while (i <= 10);
+            while (docElements.Count() == SearchCommandMaxRows);
 
             var searchResults = results.Select(doc => QuestionDataXmlParser.ToSearchResultEntity(doc, sortingField));
             return searchResults;
