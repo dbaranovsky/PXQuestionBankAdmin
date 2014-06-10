@@ -83,6 +83,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
         if (frameApi !== undefined && frameApi.saveComponent !== undefined ){
           frameApi.saveComponent('questioneditor', 'quizeditorcomponent', function(result){
             if(!result) {
+                this.setState({saving: false});
                 window.questionDataManager.showWarningPopup(window.enums.messages.warningQuestionEditorMessage);
             }
         });
