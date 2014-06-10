@@ -274,7 +274,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         private void CheckIfSequenceIsSet(string productCourseId, Question question)
         {
             var section = question.ProductCourseSections.First(s => s.ProductCourseId == productCourseId);
-            if (!string.IsNullOrEmpty(section.Sequence))
+            if (string.IsNullOrEmpty(section.Sequence))
             {
                 section.Sequence = GetNewSequenceValue(question.EntityId, productCourseId);
             }
