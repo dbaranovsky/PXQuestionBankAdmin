@@ -66,7 +66,7 @@ var QuestinListHeaderCell = React.createClass({displayName: 'QuestinListHeaderCe
     if (this.props.metadataName == "sequence"){
       return(  React.DOM.table(null, 
           React.DOM.tr(null, 
-            React.DOM.td( {className:"header-caption seq"}, this.renderCaption(), "  "),
+            React.DOM.td( {className:"header-caption seq"}, this.renderCaption()),
             React.DOM.td(null,  " ", QuestinListHeaderCellOrdering( {order:this.props.order} )),
             React.DOM.td( {className:"delete-button seq"}, this.renderDeleteButton())
           )
