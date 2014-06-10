@@ -168,7 +168,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
                                   )
                                ),
                                React.DOM.li( {role:"presentation"}, 
-                                  React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.props.editQuestionHandler.bind(this, false, false)}, 
+                                  React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.props.copyQuestionHandler}, 
                                     "Create a copy"
                                   )
                                 ),
