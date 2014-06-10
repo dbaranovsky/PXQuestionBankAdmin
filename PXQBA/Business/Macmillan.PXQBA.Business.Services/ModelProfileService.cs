@@ -147,7 +147,7 @@ namespace Macmillan.PXQBA.Business.Services
         {
             IEnumerable<ChapterViewModel> chapters = course.GetChaptersList().Select(Mapper.Map<ChapterViewModel>).ToList();
 
-            var questionCounts = questionCommands.GetQuestionCountByChapters(course.QuestionRepositoryCourseId, course.ProductCourseId);
+            var questionCounts = questionCommands.GetQuestionCountByChapters(course.QuestionRepositoryCourseId, course.ProductCourseId, chapters.Select(c => c.Title));
 
             foreach (var questionCount in questionCounts)
             {
@@ -211,7 +211,7 @@ namespace Macmillan.PXQBA.Business.Services
                     return string.Format("{0} {1}", user.FirstName, user.LastName);
                 }
             }
-            return string.Empty;
+            return "(Unknown)";
         }
 
         public Question GetDuplicateFromQuestion(string repositoryCourseId, string duplicateFrom)
