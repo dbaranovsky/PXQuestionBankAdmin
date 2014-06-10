@@ -130,7 +130,7 @@ var QuestionEditor = React.createClass({
      renderNotification: function(){
         if (this.state.showNotification){
            var notification =  userManager.getNotificationById(this.state.typeId);
-           if (notification.isShown){
+           if (notification != null && notification.isShown){
              return ( <NotificationDialog  closeDialog={this.closeNotificationDialog} proceedHandler = {this.proceedHandler} notification={notification} isCustomCloseHandle={true}/>);
            }
         }
