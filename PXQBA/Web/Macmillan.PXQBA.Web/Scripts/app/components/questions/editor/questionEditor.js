@@ -37,6 +37,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
 
     saveQuestion: function(){
       if(!this.validateQuestion()) {
+        this.setState({saving: false});
         return;
       }
 
