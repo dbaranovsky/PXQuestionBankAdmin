@@ -204,7 +204,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 }
                 results.AddRange(docElements);
             } while (docElements.Count() == SearchCommandMaxRows);
-          //} while (i <= 1);
+              //while (i <= 1);
             
 
             var searchResults = results.Select(doc => QuestionDataXmlParser.ToSearchResultEntity(doc, sortingField));
@@ -292,21 +292,26 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return Mapper.Map<IEnumerable<Question>>(GetAgilixQuestions(repositoryCourseId, questionsId));
         }
 
-        public Dictionary<string, int> GetQuestionCountByChapters(string questionRepositoryCourseId, string currentCourseId)
+        public Dictionary<string, int> GetQuestionCountByChapters(string questionRepositoryCourseId, string currentCourseId, IEnumerable<string> chapterNames)
         {
             var sortCriterion = new SortCriterion()
                                           {
                                               ColumnName = MetadataFieldNames.Chapter,
                                               SortType = SortType.Asc
                                           };
-            var filterFieldDescriptor = new FilterFieldDescriptor()
+            var courseFilterFieldDescriptor = new FilterFieldDescriptor()
                                         {
                                             Field = MetadataFieldNames.ProductCourse,
                                             Values = new[] {currentCourseId}
                                         };
+            var chaptersFilterFieldDescriptor = new FilterFieldDescriptor()
+            {
+                Field = MetadataFieldNames.Chapter,
+                Values = chapterNames
+            };
             var searchResults = GetSearchResults(questionRepositoryCourseId,
                                                  currentCourseId,
-                                                 new List<FilterFieldDescriptor>() { filterFieldDescriptor },
+                                                 new List<FilterFieldDescriptor>() { courseFilterFieldDescriptor, chaptersFilterFieldDescriptor },
                                                  sortCriterion);
 
             return searchResults.GroupBy(x => x.SortingField).ToDictionary(groupItem => groupItem.Key, groupItem => groupItem.Count());
@@ -409,7 +414,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             }
             else if (MetadataFieldNames.Sequence == fieldName)
             {
-                section.Bank = fieldValue;
+                section.Sequence = fieldValue;
             }
         }     
         public bool BulklUpdateQuestionField(string productCourseId, string repositoryCourseId, string[] questionId, string fieldName, string fieldValue)
@@ -721,7 +726,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                     {
                         UpdateStaticField(productCourseSection, fieldName, fieldValue);
                     }
-                    if (productCourseSection.DynamicValues != null)
+                    else if (productCourseSection.DynamicValues != null)
                     {
                         if (productCourseSection.DynamicValues.ContainsKey(fieldName))
                         {

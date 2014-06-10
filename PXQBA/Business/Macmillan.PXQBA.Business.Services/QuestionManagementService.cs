@@ -165,6 +165,7 @@ namespace Macmillan.PXQBA.Business.Services
             {
                 question.ProductCourseSections.RemoveAll(s => s.ProductCourseId != course.ProductCourseId);
                 question.ProductCourseSections.First().ParentProductCourseId = string.Empty;
+                question.ProductCourseSections.First().Sequence = string.Empty;
             }
             ClearServiceFields(question);
             question.DraftFrom = questionId;
@@ -241,7 +242,8 @@ namespace Macmillan.PXQBA.Business.Services
             {
                 ProductCourseId = course.ProductCourseId,
                 Bank = bank,
-                Chapter = chapter
+                Chapter = chapter,
+                Title = "New Question"
             };
 
 

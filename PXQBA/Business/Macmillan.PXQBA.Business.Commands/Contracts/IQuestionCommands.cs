@@ -13,7 +13,7 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         Bfw.Agilix.DataContracts.Question GetAgilixQuestion(string repositoryCourseId, string questionIdm,
             string version = null);
 
-        Dictionary<string, int> GetQuestionCountByChapters(string questionRepositoryCourseId, string currentCourseId);
+        Dictionary<string, int> GetQuestionCountByChapters(string questionRepositoryCourseId, string currentCourseId, IEnumerable<string> chapterNames);
         Question UpdateQuestion(Question question);
         Question UpdateQuestionInTempQuiz(Question question);
         bool UpdateQuestionField(string productCourseId, string repositoryCourseId, string questionId, string fieldName, string value);
