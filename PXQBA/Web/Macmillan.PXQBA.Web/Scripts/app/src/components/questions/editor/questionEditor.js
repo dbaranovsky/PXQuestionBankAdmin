@@ -216,7 +216,7 @@ var QuestionEditor = React.createClass({
         return (
             <div>
                       <div className="header-buttons">
-                         <button className="btn btn-primary run-question" data-toggle="modal" onClick={this.runQuestion}>
+                         <button className="btn btn-primary run-question" data-toggle="modal" disabled={this.state.saving} onClick={this.runQuestion}>
                              <span className="glyphicon glyphicon-play"></span> Try Question
                         </button>
                       </div>
