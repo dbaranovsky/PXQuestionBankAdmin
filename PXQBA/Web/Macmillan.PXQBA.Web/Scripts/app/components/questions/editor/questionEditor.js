@@ -81,12 +81,12 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
     saveBHEditor: function(frameApi){
       var self = this;
         if (frameApi !== undefined && frameApi.saveComponent !== undefined ){
-          frameApi.saveComponent('questioneditor', 'quizeditorcomponent', function(result){
-           this.setState({saving: false});
-            if(!result) {
-                window.questionDataManager.showWarningPopup(window.enums.messages.warningQuestionEditorMessage);
-            }
-        });
+             frameApi.saveComponent('questioneditor', 'quizeditorcomponent', function(result){
+                      self.setState({saving: false});
+                      if(!result) {
+                         window.questionDataManager.showWarningPopup(window.enums.messages.warningQuestionEditorMessage);
+                      }
+              });
        } else{
          this.saveQuestion();
        }
