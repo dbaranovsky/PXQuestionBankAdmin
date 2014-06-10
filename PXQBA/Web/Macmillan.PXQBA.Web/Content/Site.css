@@ -93,6 +93,14 @@ input[type="checkbox"].input-validation-error {
     cursor: pointer;
 }
 
+.header-caption.seq {
+   padding-right: 5px;
+}
+
+.delete-button.seq {
+    width: 10px;
+}
+
 .add-column-item {
      cursor: pointer;
 }
