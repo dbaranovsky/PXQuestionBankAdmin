@@ -130,7 +130,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
      renderNotification: function(){
         if (this.state.showNotification){
            var notification =  userManager.getNotificationById(this.state.typeId);
-           if (notification.isShown){
+           if (notification != null && notification.isShown){
              return ( NotificationDialog(  {closeDialog:this.closeNotificationDialog, proceedHandler:  this.proceedHandler, notification:notification, isCustomCloseHandle:true}));
            }
         }
@@ -216,7 +216,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
         return (
             React.DOM.div(null, 
                       React.DOM.div( {className:"header-buttons"}, 
-                         React.DOM.button( {className:"btn btn-primary run-question", 'data-toggle':"modal", onClick:this.runQuestion}, 
+                         React.DOM.button( {className:"btn btn-primary run-question", 'data-toggle':"modal", disabled:this.state.saving, onClick:this.runQuestion}, 
                              React.DOM.span( {className:"glyphicon glyphicon-play"}), " Try Question"
                         )
                       ),

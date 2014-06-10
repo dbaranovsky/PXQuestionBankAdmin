@@ -181,7 +181,9 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
                        React.DOM.li( {role:"presentation", className:"dropdown-header"}, "Edit options"),
                        React.DOM.li( {role:"presentation", className:"divider"}),
                        React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.createDraftHandler}, "Create a Draft")),
+
                        React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.copyQuestionHandler}, "Create a copy"))
+                       
                      ));
                  }
 
