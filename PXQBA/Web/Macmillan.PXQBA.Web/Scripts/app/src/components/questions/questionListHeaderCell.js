@@ -38,8 +38,14 @@ var QuestinListHeaderCell = React.createClass({
 
  renderDeleteButton: function() {
     if((this.state.showDeleteButton)&&(!this.props.canNotDelete)) {
+
+      if (this.props.metadataName== "sequence"){
+        return <div className="delete-button seq" onClick={this.dleteButtonEventHandler} data-toggle="tooltip" title="Remove column"> X </div>
+      }
       return <span className="delete-button" onClick={this.dleteButtonEventHandler} data-toggle="tooltip" title="Remove column"> X </span>
     }
+
+
     return null;
  },
 
@@ -49,18 +55,40 @@ var QuestinListHeaderCell = React.createClass({
       }
       return null;
  },
+
+ renderCaption: function(){
+  return ( <span className="header-caption" onClick={this.changeOrdering} data-title={this.props.metadataName} data-toggle="tooltip" title={"Sort by "+this.props.caption}>
+                     {this.props.caption}
+                 </span>);
+ },
+
+ renderHeader: function(){
+    if (this.props.metadataName == "sequence"){
+      return(  <table>
+          <tr>
+            <td className="header-caption seq">{this.renderCaption()} &nbsp;</td>
+            <td> <QuestinListHeaderCellOrdering order={this.props.order} /></td>
+            <td className="delete-button seq">{this.renderDeleteButton()}</td>
+          </tr>
+        </table>);
+
+    }
+
+
+    return (<div>{this.renderExpandButton()}
+                  {this.renderCaption()}
+                <QuestinListHeaderCellOrdering order={this.props.order} /> 
+                {this.renderDeleteButton()}
+          </div>);
+
+ },
  
   render: function() {
       return (   
             <th style={ {width: this.props.width}}
               onMouseOver={this.mouseOverHandler}
               onMouseLeave={this.mouseLeaveHandler}>
-                  {this.renderExpandButton()}
-                 <span className="header-caption" onClick={this.changeOrdering} data-title={this.props.metadataName} data-toggle="tooltip" title={"Sort by "+this.props.caption}>
-                     {this.props.caption}
-                 </span>
-                <QuestinListHeaderCellOrdering order={this.props.order} /> 
-                {this.renderDeleteButton()}
+                  {this.renderHeader()}
             </th>
       );
     }
