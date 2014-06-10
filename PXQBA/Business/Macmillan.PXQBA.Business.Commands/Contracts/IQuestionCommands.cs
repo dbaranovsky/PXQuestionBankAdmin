@@ -33,5 +33,7 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         IEnumerable<Question> GetVersionHistory(string questionRepositoryCourseId, string questionId);
         void DeleteQuestion(string repositoryCourseId, string questionId);
         IEnumerable<Question> GetQuestionDrafts(string questionRepositoryCourseId, Question question);
+
+        void ExecutePutQuestion(Bfw.Agilix.DataContracts.Question question);
     }
 }

@@ -681,7 +681,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         }
 
 
-        private void ExecutePutQuestion(Bfw.Agilix.DataContracts.Question  question)
+        public void ExecutePutQuestion(Bfw.Agilix.DataContracts.Question  question)
         {
             ExecutePutQuestions(new List<Bfw.Agilix.DataContracts.Question> {question});
         }
@@ -690,6 +690,13 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         {
             if (questions.Any())
             {
+                foreach (var question in questions)
+                {
+                    if (question.MetadataElements.ContainsKey(MetadataFieldNames.DuplicateFromShared))
+                    {
+                        question.MetadataElements.Remove(MetadataFieldNames.DuplicateFromShared);
+                    }
+                }
                 var cmd = new PutQuestions();
                 cmd.Add(questions);
                 businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
