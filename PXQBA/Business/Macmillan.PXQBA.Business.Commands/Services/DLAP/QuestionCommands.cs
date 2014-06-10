@@ -38,6 +38,11 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         public PagedCollection<Question> GetQuestionList(string questionRepositoryCourseId, string currentCourseId, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
         {
             var filterCopy = MakeFilterCopy(filter);
+            if (string.IsNullOrEmpty(sortCriterion.ColumnName))
+            {
+                sortCriterion.ColumnName = MetadataFieldNames.Sequence;
+                sortCriterion.SortType = SortType.Asc;
+            }
             var questionsSortedBySequence = GetSortedAndFilteredBySequenceSolrResults(questionRepositoryCourseId, currentCourseId, filterCopy);
             var searchResults = GetSortedAndFilteredSolrResults(questionRepositoryCourseId, currentCourseId, filterCopy, sortCriterion);
 
