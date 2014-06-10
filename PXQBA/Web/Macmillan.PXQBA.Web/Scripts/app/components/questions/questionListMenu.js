@@ -156,6 +156,26 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
                   }
 
                   if (this.props.isShared){
+
+                      if(status==window.enums.statuses.inProgress) {
+                          return(
+                            React.DOM.ul( {className:"dropdown-menu show-menu", role:"menu", 'aria-labelledby':"dropdownMenuType", 'aria-labelledby':"edit-question"}, 
+                               React.DOM.li( {role:"presentation", className:"dropdown-header"}, "Edit options"),
+                               React.DOM.li( {role:"presentation", className:"divider"}),
+                               React.DOM.li( {role:"presentation"}, 
+                                  React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.props.editQuestionHandler.bind(this, false, true)}, 
+                                   "Edit in ", this.props.titleCount+1 == 1? "1 title" : "all "+(this.props.titleCount+1)+" titles"
+                                  )
+                               ),
+                               React.DOM.li( {role:"presentation"}, 
+                                  React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.props.editQuestionHandler.bind(this, false, false)}, 
+                                    "Create a copy"
+                                  )
+                                ),
+                               React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.createDraftHandler}, "Create a Draft"))
+                            ));
+                      }
+
                   return(
                      React.DOM.ul( {className:"dropdown-menu show-menu", role:"menu", 'aria-labelledby':"dropdownMenuType", 'aria-labelledby':"edit-question"}, 
                        React.DOM.li( {role:"presentation", className:"dropdown-header"}, "Edit options"),
@@ -163,7 +183,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
                        React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.createDraftHandler}, "Create a Draft")),
                        React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.props.editQuestionHandler.bind(this, false, false)}, "Create a copy"))
                      ));
-                }
+                 }
 
                 if (status == window.enums.statuses.inProgress){
                    return(

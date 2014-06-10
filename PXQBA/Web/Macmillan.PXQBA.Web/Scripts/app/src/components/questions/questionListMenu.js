@@ -156,6 +156,26 @@ var QuestionListMenu = React.createClass({
                   }
 
                   if (this.props.isShared){
+
+                      if(status==window.enums.statuses.inProgress) {
+                          return(
+                            <ul className="dropdown-menu show-menu" role="menu" aria-labelledby="dropdownMenuType" aria-labelledby="edit-question">
+                               <li role="presentation" className="dropdown-header">Edit options</li>
+                               <li role="presentation" className="divider"></li>
+                               <li role="presentation">
+                                  <a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.editQuestionHandler.bind(this, false, true)}>
+                                   Edit in {this.props.titleCount+1 == 1? "1 title" : "all "+(this.props.titleCount+1)+" titles"}
+                                  </a>
+                               </li>
+                               <li role="presentation">
+                                  <a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.editQuestionHandler.bind(this, false, false)}>
+                                    Create a copy
+                                  </a>
+                                </li>
+                               <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.createDraftHandler}>Create a Draft</a></li>
+                            </ul>);
+                      }
+
                   return(
                      <ul className="dropdown-menu show-menu" role="menu" aria-labelledby="dropdownMenuType" aria-labelledby="edit-question">
                        <li role="presentation" className="dropdown-header">Edit options</li>
@@ -163,7 +183,7 @@ var QuestionListMenu = React.createClass({
                        <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.createDraftHandler}>Create a Draft</a></li>
                        <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.editQuestionHandler.bind(this, false, false)}>Create a copy</a></li>
                      </ul>);
-                }
+                 }
 
                 if (status == window.enums.statuses.inProgress){
                    return(
