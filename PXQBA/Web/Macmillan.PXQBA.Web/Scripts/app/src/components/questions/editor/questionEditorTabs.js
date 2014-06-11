@@ -179,7 +179,7 @@ var QuestionEditorTabs = React.createClass({
       }
       if (!this.props.saving){
           return(
-                    <div className="modal-footer">
+                    <div>
                         <button className="btn btn-default" data-toggle="modal" title="Cancel" onClick={this.props.closeDialog}>
                              Cancel
                         </button>
@@ -192,7 +192,7 @@ var QuestionEditorTabs = React.createClass({
       }
 
         return(
-                    <div className="modal-footer">
+                    <div>
                                            <button className="btn btn-default" data-toggle="modal" title="Cancel" onClick={this.props.closeDialog}>
                              Cancel
                         </button>
@@ -363,20 +363,36 @@ var QuestionEditorTabs = React.createClass({
                 <div className="tab-content">
 
                     <div className="tab-pane active" id="body">
+                    <div>
+                       <div className="top-buttons-container">
+                         {this.renderFooterButtons(true)}
+                       </div>
+                     </div>
                       {this.renderSharingNotification()}
+
                        <div className="tab-body .shared">
-                      
+                   
                            <div  className="iframe waiting" />
                           <div id="quizeditorcomponent" className={iframeClass}></div>
+                          <div className="modal-footer">
                            {this.renderFooterButtons(true)}
-                          
+                          </div>
                        </div>
                     </div>
                     <div className="tab-pane" id="metadata">
-                    {this.renderSharingNotification()}
-                       <div className={!this.props.question.isShared  ? "tab-body" : "tab-body wide"}>                           
-                            <QuestionMetadataEditor metadata={this.props.metadata} question={this.props.question} editHandler={this.props.editHandler} isDuplicate={this.props.isDuplicate} />
+                      <div>
+                         <div className="top-buttons-container">
                            {this.renderFooterButtons()}
+                         </div>
+                       </div>
+                      {this.renderSharingNotification()}
+
+                       <div className={!this.props.question.isShared  ? "tab-body" : "tab-body wide"}>         
+
+                            <QuestionMetadataEditor metadata={this.props.metadata} question={this.props.question} editHandler={this.props.editHandler} isDuplicate={this.props.isDuplicate} />
+                            <div className="modal-footer">
+                               {this.renderFooterButtons()}
+                           </div>
                        </div>
                     </div>
                      <div className="tab-pane" id="history">
