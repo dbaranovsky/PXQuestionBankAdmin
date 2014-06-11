@@ -31,7 +31,7 @@ var QuestionMetadataEditor = React.createClass({displayName: 'QuestionMetadataEd
 
 
       for (var localName in this.props.question.localSection.dynamicValues){
-        if($.inArray(localName,["sequence", "productcourseid", "flag", "duplicatefromshared","questionIdDuplicateFromShared"]) ==-1)
+        if($.inArray(localName,["sequence", "productcourseid", "flag", "duplicatefromshared","questionIdDuplicateFromShared", "draftFrom"]) ==-1)
         localFieldsName.push(localName);
       }
 

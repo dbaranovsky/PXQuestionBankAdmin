@@ -8,7 +8,10 @@ var QuestionEditorTabs = React.createClass({
       return {isHTS: this.props.question.questionType!= null && this.props.question.questionType.toLowerCase()=="hts"? true: false,
               isCustom: this.props.question.questionType!= null,
               isGraph: this.props.question.graphEditorHtml != null,
-              viewHistoryMode: this.props.viewHistoryMode != undefined ? this.props.viewHistoryMode : false}
+              viewHistoryMode: this.props.viewHistoryMode != undefined ? this.props.viewHistoryMode : false,
+              currentTab: this.props.viewHistoryMode ? "history" : "body",
+              currentGraphEditor: this.props.question.graphEditorHtml
+             }
     },
 
     tabsInitializer: function (container) {
@@ -227,10 +230,28 @@ var QuestionEditorTabs = React.createClass({
    saveHandler: function(saveAndPublish){
       if(this.state.isGraph){
         var question = this.props.question;
-        var flashElenemnt = $(this.getDOMNode()).find("#flash")[0]
-        if(flashElenemnt.getXML) {
-            question.interactionData = flashElenemnt.getXML();
+        var flashElement = $(this.getDOMNode()).find("#flash")[0];
+        var interactionData = "";
+        if (this.state.currentTab =="body"){
+
+        try{
+            if(flashElement.getXML){
+                 interactionData = flashElement.getXML();
+            }
+           
+        }
+        finally{
+
+        };
+
+        } else{
+          interactionData = question.interactionData;
+        }
+
+        if(interactionData != ""){
+            question.interactionData = interactionData;
             this.props.editHandler(question);
+            this.getUpdatedGraph(interactionData);
         } else {
            window.questionDataManager.showWarningPopup(window.enums.messages.warningQuestionEditorMessage);
            return;
@@ -240,13 +261,22 @@ var QuestionEditorTabs = React.createClass({
       if (this.state.isHTS){
         this.state.frameApi.saveQuestion();
       } else{
-        this.showSaveWarning(saveAndPublish)
+        this.showSaveWarning(saveAndPublish);
       }
     },
 
     switchTabBody: function(event){
         event.preventDefault();
         event.stopPropagation();
+
+         if(!this.state.viewHistoryMode && this.state.isGraph){
+      //    this.loadNewGraphEditor();
+          this.switchTab("#body");
+          this.setState({currentTab: "body"});
+          return;
+        }
+
+
         if (this.props.question.status == window.enums.statusesId.deleted){
           alert("You can't edit a deleted question");
            return;
@@ -270,12 +300,18 @@ var QuestionEditorTabs = React.createClass({
            return;
         }
 
-
     },
 
     switchTabMetadata: function(event){
         event.preventDefault();
         event.stopPropagation();
+        if(!this.state.viewHistoryMode &&  this.state.isGraph){
+          this.loadNewGraphEditor();
+          this.switchTab("#metadata");
+          this.setState({currentTab: "metadata"});
+          return;
+        }
+
         if (this.props.question.status == window.enums.statusesId.deleted){
           alert("You can't edit a deleted question");
           return;
@@ -298,8 +334,48 @@ var QuestionEditorTabs = React.createClass({
            this.props.showEditInPlaceDialog(this.editInPlaceHandler.bind(this, "#metadata"));
            return;
         }
+
+     
         
     },
+
+    switchTabHistory: function(event){
+        event.preventDefault();
+        event.stopPropagation();
+
+        this.loadNewGraphEditor();
+        this.switchTab("#history");
+        this.setState({currentTab: "history"});
+    },
+
+    loadNewGraphEditor: function(){
+     if(!this.state.isGraph || this.state.currentTab != "body"){
+          return;
+     }
+
+        var question = this.props.question;
+        var flashElement = $(this.getDOMNode()).find("#flash")[0];
+        var interactionData = "";
+        try{
+            interactionData = flashElement.getXML();
+        }
+        finally{
+            if (question.interactionData != interactionData && interactionData != ""){
+               question.interactionData == interactionData;
+               this.props.editHandler(question);
+               var self = this;
+             this.getUpdatedGraph(interactionData);
+            }
+        };
+    },
+
+    getUpdatedGraph: function(interactionData){
+      var self = this;
+        questionDataManager.getUpdatedGraphEditor(interactionData).done(function(response){
+                   $(self.getDOMNode()).find("#quizeditorcomponent").html(response.editorHtml);
+               });
+    },
+
 
     editInPlaceHandler: function(tab){
       this.props.closeEditInPlaceDialog();
@@ -312,6 +388,7 @@ var QuestionEditorTabs = React.createClass({
         $(this.getDOMNode()).find(tab+'-tab').tab('show');
     },
 
+
     renderTabsHeader: function(){
       if (this.state.viewHistoryMode){
         return (<ul className="nav nav-tabs">
@@ -319,12 +396,27 @@ var QuestionEditorTabs = React.createClass({
                                  <a href="#body" id="body-tab"  onClick={this.switchTabBody}>Body</a>
                              </li>
                              <li>
-                                 <a href="#metadata"  onClick={this.switchTabMetadata}>Metadata</a>
+                                 <a href="#metadata"  id="metadata-tab"  onClick={this.switchTabMetadata}>Metadata</a>
                              </li>
                               <li>
                                  <a href="#history" id="history-tab" data-toggle="tab">History</a>
                              </li>
                         </ul>);
+      }
+
+      if (this.state.isGraph){
+        return(   <ul className="nav nav-tabs">
+                             <li className="active"> 
+                                 <a href="#body" id="body-tab" onClick={this.switchTabBody}>Body</a>
+                             </li>
+                             <li>
+                                 <a href="#metadata" id="metadata-tab" onClick={this.switchTabMetadata}>Metadata</a>
+                             </li>
+                              <li>
+                                 <a href="#history" id="history-tab" onClick={this.switchTabHistory}>History</a>
+                             </li>
+                        </ul>);
+
       }
 
       return (<ul className="nav nav-tabs">

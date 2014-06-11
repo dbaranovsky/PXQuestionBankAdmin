@@ -6,6 +6,7 @@
         SingleSelect,
         MultiSelect,
         Number,
+        MultilineText,
         None
     }
 }
