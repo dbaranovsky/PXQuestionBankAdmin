@@ -69,6 +69,7 @@
       <HintPath>..\..\packages\NSubstitute.1.7.2.0\lib\NET45\NSubstitute.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
@@ -89,6 +90,7 @@
     <Compile Include="..\..\Web\Macmillan.PXQBA.Web\Properties\ProductInfo.cs">
       <Link>Properties\ProductInfo.cs</Link>
     </Compile>
+    <Compile Include="NoteCommandsTests.cs" />
     <Compile Include="ProductCourseOperationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionDataXmlParserTests.cs" />

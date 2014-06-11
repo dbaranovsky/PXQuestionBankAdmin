@@ -16,12 +16,14 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
     {
         private readonly IDatabaseManager databaseManager;
 
-        public NoteCommands(IDatabaseManager databaseManager)
+        public NoteCommands(IDatabaseManager databaseManager, bool preventDebugDatabaseManager=false)
         {
-
-        #if DEBUG
-            databaseManager = new DatabaseManager(@"TestPXData");
-        #endif
+            if (!preventDebugDatabaseManager)
+            {
+                #if DEBUG
+                databaseManager = new DatabaseManager(@"TestPXData");
+                #endif
+            }
 
             this.databaseManager = databaseManager;
         }
@@ -67,9 +69,11 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
                 
                 databaseManager.EndSession();
             }
-           
-            
-            note.Id = (int) noteId.Value;
+
+            if (noteId.Value != null)
+            {
+                note.Id = (int) noteId.Value;
+            }
             return note;
         }
 
