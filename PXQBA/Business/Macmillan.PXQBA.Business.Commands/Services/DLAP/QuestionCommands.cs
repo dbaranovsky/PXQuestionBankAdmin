@@ -251,7 +251,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         public Question CreateQuestion(string productCourseId, Question question)
         {
             question.ModifiedBy = businessContext.CurrentUser.Id;
-            CheckIfSequenceIsSet(productCourseId, question);
+            SetSequence(productCourseId, question);
             ExecutePutQuestion(Mapper.Map<Bfw.Agilix.DataContracts.Question>(question));
             ExecuteSolrUpdateTask();
             return question;
@@ -271,13 +271,10 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             }
         }
 
-        private void CheckIfSequenceIsSet(string productCourseId, Question question)
+        private void SetSequence(string productCourseId, Question question)
         {
             var section = question.ProductCourseSections.First(s => s.ProductCourseId == productCourseId);
-            if (string.IsNullOrEmpty(section.Sequence))
-            {
-                section.Sequence = GetNewSequenceValue(question.EntityId, productCourseId);
-            }
+            section.Sequence = GetNewSequenceValue(question.EntityId, productCourseId);
         }
 
         private string GetNewSequenceValue(string repositoryCourseId, string courseId)
@@ -592,46 +589,8 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                         var productCourseSection = string.Format("{0}{1}", ElStrings.ProductCourseSection, productCourseId);
                         foreach (var filterFieldDescriptor in filter)
                         {
-                            var values = filterFieldDescriptor.Values;
-                            var fieldFormat = "{0}/{1}:\"{2}\"";
-                            var fieldQuery = string.Empty;
-                            if (filterFieldDescriptor.Field == ElStrings.QuestionStatus ||
-                                filterFieldDescriptor.Field == MetadataFieldNames.DlapType)
-                            {
-                                fieldFormat = "{1}:\"{2}\"";
-                            }
-                            if (filterFieldDescriptor.Field == MetadataFieldNames.DlapType)
-                            {
-                                values = filterFieldDescriptor.Values.Select(v => v == QuestionTypeHelper.GraphType || v == QuestionTypeHelper.HTSType ? "custom": v);
-                            }
-                            if (filterFieldDescriptor.Field == MetadataFieldNames.Flag)
-                            {
-                                var flagQuery = new StringBuilder();
-                                if (filterFieldDescriptor.Values.Contains(((int) QuestionFlag.Flagged).ToString()))
-                                {
-                                    flagQuery.Append(string.Format(fieldFormat, productCourseSection, filterFieldDescriptor.Field, ((int) QuestionFlag.Flagged)));
-                                }
-                                if (filterFieldDescriptor.Values.Contains(((int) QuestionFlag.NotFlagged).ToString()))
-                                {
-                                    if (!string.IsNullOrEmpty(flagQuery.ToString()))
-                                    {
-                                        flagQuery.Clear();
-                                    }
-                                    else
-                                    {
-                                        flagQuery.Append(" NOT (");
-                                        flagQuery.Append(string.Format(fieldFormat, productCourseSection, filterFieldDescriptor.Field, ((int)QuestionFlag.Flagged)));
-                                        flagQuery.Append(")");
-                                    }
-                                }
-                                fieldQuery = flagQuery.ToString();
-                            }
-                            else
-                            {
-                                fieldQuery = string.Join(" OR ",
-                                    values.Select(v =>
-                                        string.Format(fieldFormat, productCourseSection, filterFieldDescriptor.Field, v)));
-                            }
+                            var fieldQuery = GetFilterFieldQuery(productCourseSection, filterFieldDescriptor);
+   
                             if (!string.IsNullOrEmpty(fieldQuery))
                             {
                                 if (filterFieldDescriptor.Field == MetadataFieldNames.Flag)
@@ -648,6 +607,56 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 }
             }
             return query.ToString();
+        }
+
+        private string GetFilterFieldFormat(FilterFieldDescriptor filterFieldDescriptor)
+        {
+            if (filterFieldDescriptor.Field == ElStrings.QuestionStatus ||
+                               filterFieldDescriptor.Field == MetadataFieldNames.DlapType)
+            {
+                return "{1}:\"{2}\"";
+            }
+            return "{0}/{1}:\"{2}\"";
+        }
+
+        private IEnumerable<string> GetFilterValues(FilterFieldDescriptor filterFieldDescriptor)
+        {
+            if (filterFieldDescriptor.Field == MetadataFieldNames.DlapType)
+            {
+                return filterFieldDescriptor.Values.Select(v => v == QuestionTypeHelper.GraphType || v == QuestionTypeHelper.HTSType ? "custom" : v);
+            }
+            return filterFieldDescriptor.Values;
+        }
+
+        private string GetFilterFieldQuery(string productCourseSection, FilterFieldDescriptor filterFieldDescriptor)
+        {
+            var values = GetFilterValues(filterFieldDescriptor);
+            var fieldFormat = GetFilterFieldFormat(filterFieldDescriptor);
+            if (filterFieldDescriptor.Field == MetadataFieldNames.Flag)
+            {
+                var flagQuery = new StringBuilder();
+                if (filterFieldDescriptor.Values.Contains(((int)QuestionFlag.Flagged).ToString()))
+                {
+                    flagQuery.Append(string.Format(fieldFormat, productCourseSection, filterFieldDescriptor.Field, ((int)QuestionFlag.Flagged)));
+                }
+                if (filterFieldDescriptor.Values.Contains(((int)QuestionFlag.NotFlagged).ToString()))
+                {
+                    if (!string.IsNullOrEmpty(flagQuery.ToString()))
+                    {
+                        flagQuery.Clear();
+                    }
+                    else
+                    {
+                        flagQuery.Append(" NOT (");
+                        flagQuery.Append(string.Format(fieldFormat, productCourseSection, filterFieldDescriptor.Field, ((int)QuestionFlag.Flagged)));
+                        flagQuery.Append(")");
+                    }
+                }
+                return flagQuery.ToString();
+            }
+            return string.Join(" OR ",
+                values.Select(v =>
+                    string.Format(fieldFormat, productCourseSection, filterFieldDescriptor.Field, v)));
         }
 
        
