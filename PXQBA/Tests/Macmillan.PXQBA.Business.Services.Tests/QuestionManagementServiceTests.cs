@@ -1,71 +1,100 @@
-﻿
-//using System.Linq;
-//using AutoMapper;
-//using Bfw.Agilix.Dlap.Components.Session;
-//using Bfw.Agilix.Dlap.Session;
-//using Bfw.Common.Database;
-//using Bfw.Common.Logging;
-//using Bfw.Common.Patterns.Logging;
-//using Macmillan.PXQBA.Business.Commands.Services.DLAP;
-//using Macmillan.PXQBA.Business.Commands.Services.EntityFramework;
-//using Macmillan.PXQBA.Business.Contracts;
-//using Macmillan.PXQBA.Business.Models;
-//using Macmillan.PXQBA.Business.Services.Automapper;
-//using Macmillan.PXQBA.Common.Logging;
-//using Microsoft.Practices.Unity;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Macmillan.PXQBA.Business.Commands.Contracts;
+using Macmillan.PXQBA.Business.Contracts;
+using Macmillan.PXQBA.Business.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NSubstitute;
 
 namespace Macmillan.PXQBA.Business.Services.Tests
 {
     [TestClass]
     public class QuestionManagementServiceTests
     {
-        //private IUnityContainer container;
-        //private IQuestionManagementService questionManagementService;
-        //private AutomapperConfigurator automapperConfigurator;
+        private IQuestionManagementService questionManagementService;
+
+        private IQuestionCommands questionCommands;
+        private ITemporaryQuestionOperation temporaryQuestionOperation;
+        private IProductCourseManagementService productCourseManagementService;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            //InitializeUnity();
-            //automapperConfigurator = container.Resolve<AutomapperConfigurator>();
-            //automapperConfigurator.Configure();
-            //var businessContext = container.Resolve<IContext>();
-            //businessContext.Initialize("6670123");
-            //questionManagementService = container.Resolve<IQuestionManagementService>();
+            questionCommands = Substitute.For<IQuestionCommands>();
+            temporaryQuestionOperation = Substitute.For<ITemporaryQuestionOperation>();
+            productCourseManagementService = Substitute.For<IProductCourseManagementService>();
+
+            questionManagementService = new QuestionManagementService(questionCommands, temporaryQuestionOperation, productCourseManagementService);
         }
 
-        private void InitializeUnity()
-        {
-
-            //container = new UnityContainer();
-
-            //container.RegisterTypes(typeof(QuestionManagementService).Assembly.GetTypes().Where(t => t.Name.EndsWith("Service")), WithMappings.FromAllInterfaces, WithName.Default);
-            //container.RegisterType<Profile, ModelProfile>();
-            //container.RegisterType<ISessionManager, ThreadSessionManager>();
-            //container.RegisterType<ITraceManager, MvcMiniProfilerTraceManager>();
-            //container.RegisterType<ILogger, CommonLogger>();
-            //container.RegisterTypes(AllClasses.FromAssemblies(typeof(Context).Assembly), WithMappings.FromAllInterfaces, WithName.Default);
-            //container.RegisterTypes(AllClasses.FromAssemblies(typeof(QuestionCommands).Assembly), WithMappings.FromAllInterfaces, WithName.Default);
-
-            //string connectionString =
-            //    @"metadata=res://*/QBADummyModel.csdl|res://*/QBADummyModel.ssdl|res://*/QBADummyModel.msl;provider=System.Data.SqlClient;provider connection string=""data source=localhost;initial catalog=QBADummyData;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework""";
-            ////container.RegisterType<QBADummyModelContainer, QBADummyModelContainer>(new InjectionConstructor(connectionString));
-
-            //container.RegisterType<IDatabaseManager, DatabaseManager>(new InjectionConstructor("PXData"));
-        }
+ 
 
 
         [TestMethod]
-        public void CopyQuestionTest()
+        public void PublishToTitle_AnyParameters_TransferNotSuccessfulFromQuestionCommands()
         {
-            //var course = new Course()
-            //{
-            //    ProductCourseId = "70295",
-            //    QuestionRepositoryCourseId = "39768"
-            //};
-            //var question = questionManagementService.GetQuestion(course, "10582cc2-2d64-443e-bdc5-0ca3b1453e76");
-            //Assert.IsNotNull(question);
+          Course course = new Course();
+          string[] questionIds = new[] {"1", "2"};
+          var result = questionManagementService.PublishToTitle(questionIds, 1, "bank 1", "chapter 1", course);
+
+          Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void PublishToTitle_AnyParameters_TransferSuccessfulSuccessfulFromQuestionCommands()
+        {
+            questionCommands.UpdateQuestions(Arg.Any<IEnumerable<Question>>(), Arg.Any<string>()).Returns(true);
+
+            Course course = new Course();
+            string[] questionIds = new[] { "1", "2" };
+            var result = questionManagementService.PublishToTitle(questionIds, 1, "bank 1", "chapter 1", course);
+
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void PublishToTitle_AnyParameters_NewProductCourseSectionAdded()
+        {
+            Course course = new Course()
+                            {
+                                ProductCourseId = "123",
+                                FieldDescriptors = new List<CourseMetadataFieldDescriptor>()
+                            };
+
+            string[] questionIds = new[] { "1", "2" };
+            int newProductCourseId = 1100;
+            List<Question> questions = new List<Question>
+                                       {
+                                           new Question()
+                                           {
+                                               ProductCourseSections = new List<QuestionMetadataSection>()
+                                                                       {
+                                                                           new QuestionMetadataSection()
+                                                                           {
+                                                                               ProductCourseId = course.ProductCourseId
+                                                                           }
+                                                                       }
+                                           },
+                                           new Question()
+                                           {
+                                               ProductCourseSections = new List<QuestionMetadataSection>()
+                                                                       {
+                                                                           new QuestionMetadataSection()
+                                                                           {
+                                                                               ProductCourseId = course.ProductCourseId
+                                                                           }
+                                                                       }
+                                           }
+                                       };
+
+            questionCommands.UpdateQuestions(Arg.Any<IEnumerable<Question>>(), Arg.Any<string>()).Returns(true);
+            questionCommands.GetQuestions(Arg.Any<string>(), Arg.Any<string[]>()).Returns(questions);
+
+            var result = questionManagementService.PublishToTitle(questionIds, newProductCourseId, "bank 1", "chapter 1", course);
+
+            Assert.IsTrue(result);
+            Assert.IsTrue(questions[0].ProductCourseSections.Count(q => q.ProductCourseId == newProductCourseId.ToString()) == 1);
+            Assert.IsTrue(questions[1].ProductCourseSections.Count(q => q.ProductCourseId == newProductCourseId.ToString()) == 1);
         }
     }
 }
