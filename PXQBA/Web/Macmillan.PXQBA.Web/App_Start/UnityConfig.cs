@@ -8,6 +8,7 @@ using Bfw.Common.Database;
 using Bfw.Common.Logging;
 using Bfw.Common.Patterns.Logging;
 using Macmillan.PXQBA.Business;
+using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Commands.Services.DLAP;
 using Macmillan.PXQBA.Business.Commands.Services.EntityFramework;
 using Macmillan.PXQBA.Business.Contracts;
@@ -69,6 +70,8 @@ namespace Macmillan.PXQBA.Web.App_Start
             container.RegisterType<QBADummyModelContainer, QBADummyModelContainer>(new InjectionConstructor(cs.ConnectionString));
 
             container.RegisterType<IDatabaseManager, DatabaseManager>(new InjectionConstructor("PXData"));
+
+            container.RegisterType<INoteCommands, NoteCommands>(new InjectionConstructor(typeof(IDatabaseManager), false));
         }
     }
 }
