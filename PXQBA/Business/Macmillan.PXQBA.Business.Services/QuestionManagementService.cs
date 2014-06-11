@@ -246,6 +246,7 @@ namespace Macmillan.PXQBA.Business.Services
                 Title = "New Question"
             };
 
+            question.Score = 1;
 
             foreach (var field in course.FieldDescriptors.Where(field => !MetadataFieldNames.GetStaticFieldNames().Contains(field.Name) && !metadataSection.DynamicValues.ContainsKey(field.Name)))
             {

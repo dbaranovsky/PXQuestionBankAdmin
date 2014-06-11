@@ -51,10 +51,19 @@ namespace Macmillan.PXQBA.Common.Helpers
             }
 
             html.Append("</div>");
-            return html.ToString();
+
+
+
+
+            return question.InteractionType == "custom"? html.ToString() : UpdateImagesUrls(html.ToString(), ConfigurationHelper.GetTemporaryCourseId());
             
             
          
+        }
+
+        private static string UpdateImagesUrls(string html,string resourceCourseId)
+        {
+            return html.Replace(@"src=""[~]/", string.Format(@"src=""{0}/{1}/[~]/", "/brainhoney/Resource", resourceCourseId));
         }
 
 
@@ -286,7 +295,8 @@ namespace Macmillan.PXQBA.Common.Helpers
         {
             string sResponse = "";
             string sQuestionData = sXml;
-         
+            //for test purpose: version history preview failing, when preview on list collapsed
+            questionId = Guid.NewGuid().ToString();
                 try
                 {
                     sXml = String.Format(customXmlPattern, "Active", sXml); 
@@ -315,6 +325,7 @@ namespace Macmillan.PXQBA.Common.Helpers
 
                 try
                 {
+                    questionId = questionId.Replace("-", "_");
                     JavaScriptSerializer ser = new JavaScriptSerializer();
                     XDocument myXml = XDocument.Parse(sResponse);
                     sResponse = myXml.Element("custom").Element("body").Value; // CDATA property loaded as text.

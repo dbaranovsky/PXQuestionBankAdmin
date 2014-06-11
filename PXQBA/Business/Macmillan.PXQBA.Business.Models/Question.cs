@@ -99,5 +99,7 @@ namespace Macmillan.PXQBA.Business.Models
         public string RestoredFromVersion { get; set; }
 
         public bool IsPublishedFromDraft { get; set; }
+
+        public double Score { get; set; }
     }
 }
