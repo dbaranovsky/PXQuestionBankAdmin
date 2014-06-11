@@ -110,11 +110,11 @@ var ShareQuestionBox = React.createClass({
 
      this.setState({loading: true});
      //In some case questionMetadataEditor return not array
-     if(typeof shareViewModel[window.consts.questionCourseName] === 'string' ) {
-        shareViewModel[window.consts.questionCourseName]=[shareViewModel[window.consts.questionCourseName]];
+     if(typeof shareViewModel[window.consts.targetProductCourse] === 'string' ) {
+        shareViewModel[window.consts.targetProductCourse]=[shareViewModel[window.consts.targetProductCourse]];
      }
 
-     questionDataManager.getCourseMetadata(shareViewModel[window.consts.questionCourseName][0]).done(this.changeCourseMetadata.bind(this, shareViewModel[window.consts.questionCourseName][0]));
+     questionDataManager.getCourseMetadata(shareViewModel[window.consts.targetProductCourse][0]).done(this.changeCourseMetadata.bind(this, shareViewModel[window.consts.targetProductCourse][0]));
    },
 
     getMetaField: function(field, metadata){
@@ -127,7 +127,7 @@ var ShareQuestionBox = React.createClass({
 
    getShareViewModel: function(metadata, courseId){
      var shareViewModel = this.state.shareViewModel;
-     shareViewModel[window.consts.questionCourseName]=[courseId];
+     shareViewModel[window.consts.targetProductCourse]=[courseId];
 
      var chapterMeta = this.getMetaField(window.consts.questionChapterName, metadata);
      var bankMeta = this.getMetaField(window.consts.questionBankName, metadata);
@@ -177,12 +177,25 @@ var ShareQuestionBox = React.createClass({
         return (<div></div>);
     },
 
-  
+
+
 
     render: function() {
+
+           var metadataField = this.getMetaField( window.consts.targetProductCourse, this.state.metadata);
+
+
+
+          if (metadataField == null  || 
+              metadataField.editorDescriptor.availableChoice.length == 0 || 
+              (metadataField.editorDescriptor.availableChoice.length == 1 &&   metadataField.editorDescriptor.availableChoice[0].text == this.props.currentTitle)){
+            return (<div>There are no titles to share with <br/><br/></div>)
+          }
+
+
             return (<div>
                            
-                           <MetadataFieldEditor question={this.state.shareViewModel} metadata={this.state.metadata} setDefault={this.state.setDefaults} editHandler={this.productTitleEditHandler} field={window.consts.targetProductCourse} title={"Target title"} excludeValue={this.props.currentTitle}/>
+                           <MetadataFieldEditor question={this.state.shareViewModel} metadata={this.state.metadata} setDefault={this.state.setDefaults} editHandler={this.productTitleEditHandler} field={window.consts.targetProductCourse} excludeValue={this.props.currentTitle}/>
                            {this.renderWaiter()}
                            <MetadataFieldEditor question={this.state.shareViewModel} metadata={this.state.metadata} setDefault={true} defaultType={window.enums.editorType.singleSelect} isDisabled={this.state.loading} reload={true} editHandler={this.editHandler} field={window.consts.questionChapterName} title={"Target chapter"}/>
                            <MetadataFieldEditor question={this.state.shareViewModel} metadata={this.state.metadata} setDefault={true} defaultType={window.enums.editorType.singleSelect} isDisabled={this.state.loading}  reload={true} editHandler={this.editHandler} field={window.consts.questionBankName} title={"Target bank"}/>

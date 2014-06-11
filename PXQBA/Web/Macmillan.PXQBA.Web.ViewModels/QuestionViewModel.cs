@@ -91,5 +91,7 @@ namespace Macmillan.PXQBA.Web.ViewModels
         public string DraftFrom { get; set; }
 
         public bool IsDraft { get { return !String.IsNullOrEmpty(DraftFrom); } }
+
+        public double Score { get; set; }
     }
 }
