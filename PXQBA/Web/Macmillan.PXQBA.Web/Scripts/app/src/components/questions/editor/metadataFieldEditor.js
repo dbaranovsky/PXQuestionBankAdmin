@@ -114,7 +114,9 @@ var MetadataFieldEditor = React.createClass({
                 return (<LearningObjectEditor values={currentValue} isDisabled={this.props.isDisabled} metadataField={metadataField} question={this.props.question} field={this.props.field} editHandler={this.props.editHandler} />);
               }
              return (<MultiSelectEditor values={currentValue} isDisabled={this.props.isDisabled} metadataField={metadataField} question={this.props.question} field={this.props.field} editHandler={this.props.editHandler} />);
-
+          case window.enums.editorType.multiText:  
+               return ( <textarea onChange={this.editHandler} disabled={this.props.isDisabled}  ref="editor" className={this.props.isDisabled? "disabled" : ""}  rows="10" type="text" placeholder="Enter text..." value={currentValue} />);  
+              break;
           default: 
           currentValue = currentValue || "";
             if(metadataField!= null && metadataField.isMultiline){
@@ -159,7 +161,7 @@ var MetadataFieldEditor = React.createClass({
                          values.push(<div className="current-values-view"> <span className="glyphicon glyphicon-pencil btn custom-btn"  data-toggle="tooltip" title="Edit" onClick={this.switchEditMode}></span> </div>);
                    }
 
-                 break;               
+                 break;             
           default: 
             if (currentValue != null && currentValue !=''){           
               values.push(<div className="current-values-view"> {currentValue} 
