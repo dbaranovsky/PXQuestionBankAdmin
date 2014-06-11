@@ -188,6 +188,20 @@ namespace Macmillan.PXQBA.Business.Services
             return false;
         }
 
+        public Question RestoreQuestionVersion(Course course, string questionId, string version)
+        {
+            var questionVersion = GetQuestion(course, questionId, version);
+            if (questionVersion != null)
+            {
+                questionVersion.RestoredFromVersion = questionVersion.Version.ToString();
+                var draftFrom = questionVersion.DraftFrom;
+                ClearServiceFields(questionVersion);
+                questionVersion.DraftFrom = draftFrom;
+                questionCommands.UpdateQuestion(questionVersion);
+            }
+            return questionVersion;
+        }
+
         private QuestionMetadataSection GetNewProductCourseSection(int courseIdToPublish, string bank, string chapter, Course currentCourse, Question question)
         {
             var courseToPublish = productCourseManagementService.GetProductCourse(courseIdToPublish.ToString());

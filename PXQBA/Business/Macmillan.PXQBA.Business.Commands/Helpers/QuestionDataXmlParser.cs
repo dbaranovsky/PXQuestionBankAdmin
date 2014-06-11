@@ -186,13 +186,34 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
                     elements.Add(new XElement(defaultValue.Key, value));
                 }
             }
-            elements.Add(new XElement(MetadataFieldNames.DlapTitle, section.Title));
-            elements.Add(new XElement(MetadataFieldNames.ProductCourse, section.ProductCourseId));
-            elements.Add(new XElement(MetadataFieldNames.Bank, section.Bank));
-            elements.Add(new XElement(MetadataFieldNames.Chapter, section.Chapter));
-            elements.Add(new XElement(MetadataFieldNames.Sequence, section.Sequence));
-            elements.Add(new XElement(MetadataFieldNames.ParentProductCourseId, section.ParentProductCourseId));
-            elements.Add(new XElement(MetadataFieldNames.Flag, section.Flag));
+            if (!string.IsNullOrEmpty(section.Title))
+            {
+                elements.Add(new XElement(MetadataFieldNames.DlapTitle, section.Title));
+            }
+            if (!string.IsNullOrEmpty(section.ProductCourseId))
+            {
+                elements.Add(new XElement(MetadataFieldNames.ProductCourse, section.ProductCourseId));
+            }
+            if (!string.IsNullOrEmpty(section.Bank))
+            {
+                elements.Add(new XElement(MetadataFieldNames.Bank, section.Bank));
+            }
+            if (!string.IsNullOrEmpty(section.Chapter))
+            {
+                elements.Add(new XElement(MetadataFieldNames.Chapter, section.Chapter));
+            }
+            if (!string.IsNullOrEmpty(section.Sequence))
+            {
+                elements.Add(new XElement(MetadataFieldNames.Sequence, section.Sequence));
+            }
+            if (!string.IsNullOrEmpty(section.ParentProductCourseId))
+            {
+                elements.Add(new XElement(MetadataFieldNames.ParentProductCourseId, section.ParentProductCourseId));
+            }
+            if (!string.IsNullOrEmpty(section.Flag))
+            {
+                elements.Add(new XElement(MetadataFieldNames.Flag, section.Flag));
+            }
             return elements;
         }
 

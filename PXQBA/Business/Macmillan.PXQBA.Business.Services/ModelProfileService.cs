@@ -344,6 +344,11 @@ namespace Macmillan.PXQBA.Business.Services
             return valuesOptions.Select((v, i) => new CourseMetaFieldValue() {Text = v.Text, Sequence = i.ToString()});
         }
 
+        public Question GetQuestionVersion(string entityId, string id, string version)
+        {
+            return questionCommands.GetQuestion(entityId, id, version);
+        }
+
         private CourseMetadataFieldDescriptor GetFieldDescriptorWithSplitedValues(string concatedValues, string internalName)
         {
             return new CourseMetadataFieldDescriptor
