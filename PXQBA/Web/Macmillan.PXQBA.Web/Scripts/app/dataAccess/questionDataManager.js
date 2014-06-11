@@ -387,6 +387,25 @@ var questionDataManager = (function() {
         });
     };
 
+   self.getUpdatedGraphEditor = function (interactionData) {
+
+       var request = {
+            interactionData: interactionData
+        };
+
+        return $.ajax({
+            url: window.actions.questionList.getUpdatedGraphEditorUrl,
+            traditional: true,
+            data: JSON.stringify(request),
+            contentType: 'application/json',
+            dataType: 'json',
+            type: 'POST'
+        }).done(function (response) {      
+             console.log('getUpdatedGraphEditor complete');
+        }).error(function(e){
+             console.log('getUpdatedGraphEditor error');
+        });
+    };
     
 
     /* Bulk operations */

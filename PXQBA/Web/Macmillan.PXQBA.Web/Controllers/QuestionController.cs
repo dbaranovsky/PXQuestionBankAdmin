@@ -223,6 +223,11 @@ namespace Macmillan.PXQBA.Web.Controllers
             var questionVersion = questionManagementService.RestoreQuestionVersion(CourseHelper.CurrentCourse, QuestionHelper.QuestionIdToEdit, version);
             return JsonCamel(new { isError = false });
         }
+
+        public ActionResult GetUpdatedGraphEditor(string interactionData)
+        {
+             return  JsonCamel(new { EditorHtml = CustomQuestionHelper.GetGraphEditor(interactionData, QuestionHelper.QuestionIdToEdit, QuestionTypeHelper.GraphType)});
+        }
 	}
   
 }
