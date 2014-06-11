@@ -25,6 +25,7 @@ namespace Macmillan.PXQBA.Business.Models
         public const string IsPublishedFromDraft = "ispublishedfromdraft";
         public const string DuplicateFrom = "duplicatefrom";
         public const string ProductCourse = "productcourseid";
+        public const string TargetProductCourse = "targetproductcourse";
         public const string Flag = "flag";
         public const string DraftFrom = "draftfrom";
         public const string ParentProductCourseId = "parentProductCourseId";

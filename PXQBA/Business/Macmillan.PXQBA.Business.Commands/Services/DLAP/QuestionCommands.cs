@@ -692,9 +692,14 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             {
                 foreach (var question in questions)
                 {
-                    if (question.MetadataElements.ContainsKey(MetadataFieldNames.DuplicateFromShared))
+                    int version;
+                    if (int.TryParse(question.QuestionVersion, out version) && version >= 1)
                     {
-                        question.MetadataElements.Remove(MetadataFieldNames.DuplicateFromShared);
+                        if (question.MetadataElements.ContainsKey(MetadataFieldNames.DuplicateFromShared))
+                        {
+                            question.MetadataElements[MetadataFieldNames.DuplicateFromShared] =
+                                new XElement(MetadataFieldNames.DuplicateFromShared);
+                        }
                     }
                 }
                 var cmd = new PutQuestions();

@@ -718,6 +718,10 @@ namespace Bfw.Agilix.DataContracts
                         {
                             meta.Add(data.Value);
                         }
+                        else
+                        {
+                            meta_element.Value = data.Value.Value;
+                        }
                     }
                 }
 

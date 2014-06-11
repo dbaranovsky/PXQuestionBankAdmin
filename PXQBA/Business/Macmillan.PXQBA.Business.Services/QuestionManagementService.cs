@@ -267,6 +267,7 @@ namespace Macmillan.PXQBA.Business.Services
             question.DuplicateFromShared = string.Empty;
             question.DuplicateFrom = string.Empty;
             question.DraftFrom = string.Empty;
+            question.Version = 0;
         }
     }
 }

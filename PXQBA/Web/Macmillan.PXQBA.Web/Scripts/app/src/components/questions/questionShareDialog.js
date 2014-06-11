@@ -182,7 +182,7 @@ var ShareQuestionBox = React.createClass({
     render: function() {
             return (<div>
                            
-                           <MetadataFieldEditor question={this.state.shareViewModel} metadata={this.state.metadata} setDefault={this.state.setDefaults} editHandler={this.productTitleEditHandler} field={window.consts.questionCourseName} title={"Target title"} excludeValue={this.props.currentTitle}/>
+                           <MetadataFieldEditor question={this.state.shareViewModel} metadata={this.state.metadata} setDefault={this.state.setDefaults} editHandler={this.productTitleEditHandler} field={window.consts.targetProductCourse} title={"Target title"} excludeValue={this.props.currentTitle}/>
                            {this.renderWaiter()}
                            <MetadataFieldEditor question={this.state.shareViewModel} metadata={this.state.metadata} setDefault={true} defaultType={window.enums.editorType.singleSelect} isDisabled={this.state.loading} reload={true} editHandler={this.editHandler} field={window.consts.questionChapterName} title={"Target chapter"}/>
                            <MetadataFieldEditor question={this.state.shareViewModel} metadata={this.state.metadata} setDefault={true} defaultType={window.enums.editorType.singleSelect} isDisabled={this.state.loading}  reload={true} editHandler={this.editHandler} field={window.consts.questionBankName} title={"Target bank"}/>
