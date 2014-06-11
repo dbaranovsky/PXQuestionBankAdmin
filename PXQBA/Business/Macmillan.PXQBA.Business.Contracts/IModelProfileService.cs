@@ -43,5 +43,6 @@ namespace Macmillan.PXQBA.Business.Contracts
         MetadataFieldType GetMetadataFieldType(string type);
         string MetadataFieldTypeToString(MetadataFieldType type);
         IEnumerable<CourseMetaFieldValue> GetFieldValues(IEnumerable<AvailableChoiceItem> valuesOptions);
+        Question GetQuestionVersion(string entityId, string id, string version);
     }
 }

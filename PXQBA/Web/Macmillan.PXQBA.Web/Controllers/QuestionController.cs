@@ -216,7 +216,12 @@ namespace Macmillan.PXQBA.Web.Controllers
 
             var isDeleted = questionManagementService.RemoveQuestion(CourseHelper.CurrentCourse,QuestionHelper.QuestionIdToEdit);
             return JsonCamel(new { ResetState = isDeleted });
+        }
 
+        public ActionResult RestoreVersion(string version)
+        {
+            var questionVersion = questionManagementService.RestoreQuestionVersion(CourseHelper.CurrentCourse, QuestionHelper.QuestionIdToEdit, version);
+            return JsonCamel(new { isError = false });
         }
 	}
   

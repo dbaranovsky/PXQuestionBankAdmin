@@ -84,7 +84,6 @@ namespace Macmillan.PXQBA.Web.Controllers
                             QuestionCardLayout = questionMetadataService.GetQuestionCardLayout(CourseHelper.CurrentCourse),
                             ProductTitle = CourseHelper.CurrentCourse.Title
                         };
-
             return JsonCamel(response);
         }
 
@@ -189,10 +188,6 @@ namespace Macmillan.PXQBA.Web.Controllers
             }
             return JsonCamel(questionMetadataService.GetAvailableFields(course).Select(MetadataFieldsHelper.Convert));
         }
-
-
-     
-
 
     }
 
