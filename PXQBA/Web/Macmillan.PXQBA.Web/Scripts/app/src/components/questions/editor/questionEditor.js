@@ -58,7 +58,7 @@ var QuestionEditor = React.createClass({
 
       if((this.state.question.localSection.title=="")||(this.state.question.localSection.title==null)) {
          isValid = false;
-         window.questionDataManager.showWarningPopup("Title metadata field is requaried.")
+          window.questionDataManager.showWarningPopup("Title metadata field is required.");
       }
 
       return isValid;
