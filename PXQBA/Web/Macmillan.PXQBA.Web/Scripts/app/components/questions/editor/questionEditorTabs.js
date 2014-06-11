@@ -179,7 +179,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
       }
       if (!this.props.saving){
           return(
-                    React.DOM.div( {className:"modal-footer"}, 
+                    React.DOM.div(null, 
                         React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal", title:"Cancel", onClick:this.props.closeDialog}, 
                              "Cancel"
                         ),
@@ -192,7 +192,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
       }
 
         return(
-                    React.DOM.div( {className:"modal-footer"}, 
+                    React.DOM.div(null, 
                                            React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal", title:"Cancel", onClick:this.props.closeDialog}, 
                              "Cancel"
                         ),
@@ -363,20 +363,36 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                 React.DOM.div( {className:"tab-content"}, 
 
                     React.DOM.div( {className:"tab-pane active", id:"body"}, 
+                    React.DOM.div(null, 
+                       React.DOM.div( {className:"top-buttons-container"}, 
+                         this.renderFooterButtons(true)
+                       )
+                     ),
                       this.renderSharingNotification(),
+
                        React.DOM.div( {className:"tab-body .shared"}, 
-                      
+                   
                            React.DOM.div(  {className:"iframe waiting"} ),
                           React.DOM.div( {id:"quizeditorcomponent", className:iframeClass}),
+                          React.DOM.div( {className:"modal-footer"}, 
                            this.renderFooterButtons(true)
-                          
+                          )
                        )
                     ),
                     React.DOM.div( {className:"tab-pane", id:"metadata"}, 
-                    this.renderSharingNotification(),
-                       React.DOM.div( {className:!this.props.question.isShared  ? "tab-body" : "tab-body wide"},                            
-                            QuestionMetadataEditor( {metadata:this.props.metadata, question:this.props.question, editHandler:this.props.editHandler, isDuplicate:this.props.isDuplicate} ),
+                      React.DOM.div(null, 
+                         React.DOM.div( {className:"top-buttons-container"}, 
                            this.renderFooterButtons()
+                         )
+                       ),
+                      this.renderSharingNotification(),
+
+                       React.DOM.div( {className:!this.props.question.isShared  ? "tab-body" : "tab-body wide"},          
+
+                            QuestionMetadataEditor( {metadata:this.props.metadata, question:this.props.question, editHandler:this.props.editHandler, isDuplicate:this.props.isDuplicate} ),
+                            React.DOM.div( {className:"modal-footer"}, 
+                               this.renderFooterButtons()
+                           )
                        )
                     ),
                      React.DOM.div( {className:"tab-pane", id:"history"}, 
