@@ -16,7 +16,13 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
     {
         private readonly IDatabaseManager databaseManager;
 
-        public NoteCommands(IDatabaseManager databaseManager, bool preventDebugDatabaseManager=false)
+        public NoteCommands(IDatabaseManager databaseManager)
+            : this(databaseManager, false)
+        {
+            
+        }
+
+        public NoteCommands(IDatabaseManager databaseManager, bool preventDebugDatabaseManager)
         {
             if (!preventDebugDatabaseManager)
             {
