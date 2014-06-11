@@ -189,7 +189,7 @@ var ShareQuestionBox = React.createClass({displayName: 'ShareQuestionBox',
           if (metadataField == null  || 
               metadataField.editorDescriptor.availableChoice.length == 0 || 
               (metadataField.editorDescriptor.availableChoice.length == 1 &&   metadataField.editorDescriptor.availableChoice[0].text == this.props.currentTitle)){
-            return (React.DOM.div(null, "There is no titles to share with ", React.DOM.br(null),React.DOM.br(null)))
+            return (React.DOM.div(null, "There are no titles to share with ", React.DOM.br(null),React.DOM.br(null)))
           }
 
 
