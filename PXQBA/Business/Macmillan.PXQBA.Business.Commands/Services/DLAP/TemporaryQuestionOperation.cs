@@ -74,9 +74,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             }
             questionToCopy.EntityId = destinationProductCourseId;
             questionToCopy.Id = destinationQuestionId;
-            var cmd = new PutQuestions();
-            cmd.Add(questionToCopy);
-            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+            questionCommands.ExecutePutQuestion(questionToCopy);
             return questionToCopy;
         }
 

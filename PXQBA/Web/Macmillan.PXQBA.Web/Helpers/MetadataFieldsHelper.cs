@@ -78,6 +78,12 @@ namespace Macmillan.PXQBA.Web.Helpers
                 model.ColumnAppendAllowed = false;
             }
 
+            if (metaField.Name == MetadataFieldNames.TargetProductCourse)
+            {
+                model.ColumnAppendAllowed = false;
+                model.FilterType = FilterType.None.ToString().ToLower();
+            }
+
             return model;
          }
     }

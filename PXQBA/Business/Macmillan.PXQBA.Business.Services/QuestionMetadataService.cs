@@ -71,6 +71,16 @@ namespace Macmillan.PXQBA.Business.Services
                         AvailableChoice =  productCourseOperation.GetAvailableCourses().Select(pc=> new AvailableChoiceItem(pc.ProductCourseId, pc.Title)).ToList()
                     }
                 },
+                new QuestionMetaField()
+                {
+                    FriendlyName = "Target title",
+                    Name = MetadataFieldNames.TargetProductCourse,
+                    TypeDescriptor = new MetaFieldTypeDescriptor
+                    {
+                        Type = MetadataFieldType.SingleSelect,
+                        AvailableChoice =  productCourseOperation.GetAvailableCourses().Where(c => c.QuestionRepositoryCourseId == course.QuestionRepositoryCourseId).Select(pc=> new AvailableChoiceItem(pc.ProductCourseId, pc.Title)).ToList()
+                    }
+                },
                 new QuestionMetaField
                 {
                     FriendlyName = "Flag",

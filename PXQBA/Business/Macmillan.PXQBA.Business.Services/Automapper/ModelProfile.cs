@@ -104,6 +104,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                .ForMember(dto => dto.InteractionData, opt => opt.Condition(q => q.CustomUrl == QuestionTypeHelper.GraphType))
                .ForMember(dto => dto.InteractionType, opt =>opt.Condition(cont => cont.DestinationValue == null))
                .ForMember(dto => dto.CustomUrl, opt =>opt.Condition(cont => cont.DestinationValue == null))
+               .ForMember(dto => dto.QuestionVersion, opt => opt.MapFrom(q => q.Version))
                .ForMember(dto => dto.ModifiedDate, opt =>opt.Ignore());
 
             Mapper.CreateMap<QuestionChoice, Bfw.Agilix.DataContracts.QuestionChoice>();
