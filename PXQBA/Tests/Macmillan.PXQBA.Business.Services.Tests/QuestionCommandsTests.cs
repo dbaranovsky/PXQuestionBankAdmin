@@ -109,8 +109,127 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             var result = questionCommands.GetQuestionList(productCourseId, productCourseId, filter, criteria, 0, 10);
             Assert.IsTrue(result.TotalItems == 2);
             Assert.IsTrue(result.CollectionPage.ToList().Select(x => x.Id).Contains("4684f693-7997-4dc2-8496-56eb645e47ac"));
+        }
 
 
+        [TestMethod]
+        public void GetQuestionList_NoSortingParameters_SeqSortingByDefault()
+        {
+            const string expectedFieldsParameters = "draftfrom|product-course-id-12/sequence";
+            bool searchCommandCorrectlyBuildSortingCriteria = false;
+
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(ExecuteAsAdminFillTwoQuestions));
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(ExecuteAsAdminGetTwoAgilixQuestions));
+            
+            context.SessionManager.CurrentSession.When(x=>x.ExecuteAsAdmin(
+                                                      Arg.Is<Search>(a=>a.SearchParameters.Fields==expectedFieldsParameters)
+                                                      )).Do(x => searchCommandCorrectlyBuildSortingCriteria=true);
+
+            var filter = new List<FilterFieldDescriptor>();
+            AddNessesaryProductCourseFilter(filter);
+            var criteria = new SortCriterion();
+
+            questionCommands.GetQuestionList(productCourseId, productCourseId, filter, criteria, 0, 10);
+
+            Assert.IsTrue(searchCommandCorrectlyBuildSortingCriteria);
+        }
+
+        [TestMethod]
+        public void GetQuestionList_SortingCustomFieldDesc_ApplySortingForSearchCommand()
+        {
+            const string expectedFieldsParameters = "draftfrom|product-course-id-12/CustomField";
+            bool searchCommandCorrectlyBuildSortingCriteria = false;
+
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(ExecuteAsAdminFillTwoQuestions));
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(ExecuteAsAdminGetTwoAgilixQuestions));
+
+            context.SessionManager.CurrentSession.When(x => x.ExecuteAsAdmin(
+                                                      Arg.Is<Search>(a => a.SearchParameters.Fields == expectedFieldsParameters)
+                                                      )).Do(x => searchCommandCorrectlyBuildSortingCriteria = true);
+
+            var filter = new List<FilterFieldDescriptor>();
+            AddNessesaryProductCourseFilter(filter);
+            var criteria = new SortCriterion()
+                           {
+                               SortType = SortType.Desc,
+                               ColumnName = "CustomField"
+                           };
+
+            questionCommands.GetQuestionList(productCourseId, productCourseId, filter, criteria, 0, 10);
+
+            Assert.IsTrue(searchCommandCorrectlyBuildSortingCriteria);
+        }
+
+        [TestMethod]
+        public void GetQuestionList_OneQuestionPerPageAndPageNo2_ReturnSecondQuestion()
+        {
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(ExecuteAsAdminFillTwoQuestions));
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(ExecuteAsAdminGetAgilixQuestions));
+
+            var filter = new List<FilterFieldDescriptor>();
+            AddNessesaryProductCourseFilter(filter);
+            var criteria = new SortCriterion();
+
+            var result = questionCommands.GetQuestionList(productCourseId, productCourseId, filter, criteria, 1, 1);
+
+            Assert.IsTrue(result.TotalItems==2);
+            Assert.IsTrue(result.CollectionPage.Count() == 1);
+            Assert.IsTrue(result.CollectionPage.FirstOrDefault().Id == "4684f693-7997-4dc2-8496-56eb645e47ac");
+        }
+
+        [TestMethod]
+        public void GetQuestionList_OneQuestionPerPageAndPageNo1_ReturnFirstQuestion()
+        {
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(ExecuteAsAdminFillTwoQuestions));
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(ExecuteAsAdminGetAgilixQuestions));
+
+            var filter = new List<FilterFieldDescriptor>();
+            AddNessesaryProductCourseFilter(filter);
+            var criteria = new SortCriterion();
+
+            var result = questionCommands.GetQuestionList(productCourseId, productCourseId, filter, criteria, 0, 1);
+
+            Assert.IsTrue(result.TotalItems == 2);
+            Assert.IsTrue(result.CollectionPage.Count() == 1);
+            Assert.IsTrue(result.CollectionPage.FirstOrDefault().Id == "f13f2cd1-2ddf-430c-85c9-2577a5f009f4");
+        }
+
+
+        #region private methods
+
+        private void ExecuteAsAdminFillTwoQuestions(Search search)
+        {
+            search.SearchResults = XDocument.Parse(twoQuestionsSOLRSearchResultResponse);
+        }
+
+        private void ExecuteAsAdminFillNoQuestions(Search search)
+        {
+            search.SearchResults = new XDocument();
+
+        }
+
+        private void ExecuteAsAdminGetAgilixQuestions(GetQuestions questionSearch)
+        {
+            var questions = new List<Question>();
+            foreach (var quesionId in questionSearch.SearchParameters.QuestionIds)
+            {
+                questions.Add(new Question()
+                              {
+                                  Id = quesionId
+                              });
+            }
+
+            questionSearch.Questions = questions;
+        }
+
+        private void AddNessesaryProductCourseFilter(  List<FilterFieldDescriptor> filter)
+        {
+            filter.Add(new FilterFieldDescriptor()
+            {
+                Field = MetadataFieldNames.ProductCourse,
+                Values = new List<string>() { productCourseId }
+            });
+            
         }
 
         private void ExecuteAsAdminGetTwoAgilixQuestions(GetQuestions questionSearch)
@@ -126,27 +245,6 @@ namespace Macmillan.PXQBA.Business.Services.Tests
                                                Id = "4684f693-7997-4dc2-8496-56eb645e47ac"
                                            }
                                        };
-        }
-
-        #region private methods
-        private void ExecuteAsAdminFillTwoQuestions(Search search)
-        {
-            search.SearchResults = XDocument.Parse(twoQuestionsSOLRSearchResultResponse);
-        }
-        private void ExecuteAsAdminFillNoQuestions(Search search)
-        {
-            search.SearchResults = new XDocument();
-
-        }
-
-        private void AddNessesaryProductCourseFilter(  List<FilterFieldDescriptor> filter)
-        {
-            filter.Add(new FilterFieldDescriptor()
-            {
-                Field = MetadataFieldNames.ProductCourse,
-                Values = new List<string>() { productCourseId }
-            });
-            
         }
 
         #endregion
