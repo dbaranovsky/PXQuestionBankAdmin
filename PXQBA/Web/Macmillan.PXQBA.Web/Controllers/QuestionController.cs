@@ -13,6 +13,7 @@ using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Business.Services;
 using Macmillan.PXQBA.Common.Helpers;
+using Macmillan.PXQBA.Common.Logging;
 using Macmillan.PXQBA.Web.Helpers;
 using Macmillan.PXQBA.Web.ViewModels;
 using Macmillan.PXQBA.Web.ViewModels.Versions;
@@ -213,7 +214,6 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult DeleteQuestion()
         {
-
             var isDeleted = questionManagementService.RemoveQuestion(CourseHelper.CurrentCourse,QuestionHelper.QuestionIdToEdit);
             return JsonCamel(new { ResetState = isDeleted });
         }
