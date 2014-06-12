@@ -49,17 +49,6 @@ namespace Macmillan.PXQBA.Business.Services
 
                     }
                 },
-                new QuestionMetaField()
-                {
-                    FriendlyName = "Learning Objective",
-                    Name = MetadataFieldNames.LearningObjectives,
-                    TypeDescriptor = new MetaFieldTypeDescriptor
-                    {
-                        Type = MetadataFieldType.MultiSelect,
-                        AvailableChoice =  course.LearningObjectives.Select(l => new AvailableChoiceItem(l.Guid, l.Description)).ToList()
-                    }
-
-                },
 
                 new QuestionMetaField()
                 {

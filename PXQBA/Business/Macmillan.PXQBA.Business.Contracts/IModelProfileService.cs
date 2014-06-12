@@ -13,8 +13,6 @@ namespace Macmillan.PXQBA.Business.Contracts
 {
     public interface IModelProfileService
     {
-        string SetLearningObjectives(IEnumerable<LearningObjective> learningObjectives);
-        IEnumerable<LearningObjective> GetLOByGuid(string productCourseId, string learningObjectiveGuids);
         string GetQuestionCardLayout(Bfw.Agilix.DataContracts.Course src);
 
         QuestionMetadataSection GetQuestionDefaultValues(Bfw.Agilix.DataContracts.Question question);

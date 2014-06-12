@@ -51,7 +51,6 @@ namespace Macmillan.PXQBA.Business.Services.Tests
                                                         Type = MetadataFieldType.Text
                                                     }
                                                 },
-                            LearningObjectives = new List<LearningObjective>()
                          };
 
             var fields = questionMetadataService.GetAvailableFields(course);
