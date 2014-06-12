@@ -28,6 +28,30 @@ var QuestionInlineEditorBase = React.createClass({displayName: 'QuestionInlineEd
         this.props.afterEditingHandler();
     },
 
+    getAvailibleValues: function() {
+        if(this.props.metadata.field==window.consts.questionStatusName) {
+          return this.getAvailibleValuesForStatus();
+        }
+        
+        return this.props.metadata.editorDescriptor.availableChoice;
+    },
+
+    getAvailibleValuesForStatus: function() {
+        if(!this.props.metadata.draft) {
+          return this.props.metadata.editorDescriptor.availableChoice;
+        }
+
+        var newValues = [];
+
+        for(var i=0; i<this.props.metadata.editorDescriptor.availableChoice.length; i++) {
+            if(this.props.metadata.editorDescriptor.availableChoice[i].value!=window.enums.statusesId.availibleToInstructor) {
+              newValues.push(this.props.metadata.editorDescriptor.availableChoice[i]);
+            }
+        }
+
+        return newValues;
+    },
+
     renderSpecificEditor: function() {
         switch (this.props.metadata.editorDescriptor.editorType) {
           case window.enums.editorType.text:
@@ -38,7 +62,7 @@ var QuestionInlineEditorBase = React.createClass({displayName: 'QuestionInlineEd
             return (QuestionInlineEditorSingleSelect( {saveVelueHandler:this.saveVelueHandler, 
                         afterEditingHandler:this.props.afterEditingHandler,
                         metadata:this.props.metadata,
-                        values:this.props.metadata.editorDescriptor.availableChoice} ));
+                        values:this.getAvailibleValuesForStatus()} ));
           case window.enums.editorType.number:
             return (QuestionInlineEditorNumber( {saveVelueHandler:this.saveVelueHandler, 
                        afterEditingHandler:this.props.afterEditingHandler,

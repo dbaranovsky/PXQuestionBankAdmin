@@ -7,6 +7,7 @@ using System.Xml.Linq;
 using AutoMapper;
 using Bfw.Agilix.Commands;
 using Bfw.Agilix.DataContracts;
+using Bfw.Common.Collections;
 using Bfw.Common.Database;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Commands.DataContracts;
@@ -678,8 +679,15 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
            // var newStatus = ((int)((QuestionStatus)EnumHelper.GetItemByDescription(typeof(QuestionStatus), newValue))).ToString();
 
+            string availableForInstructorsId = ((int) QuestionStatus.AvailableToInstructors).ToString();
+
             foreach (var question in questions)
             {
+                if ((availableForInstructorsId == newValue)&&(question.IsDraft()))
+                {
+                    continue;
+                }
+
                 question.QuestionStatus = newValue;
             }
 
@@ -689,7 +697,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
             return true;
         }
-
 
         public void ExecutePutQuestion(Bfw.Agilix.DataContracts.Question  question)
         {
