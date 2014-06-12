@@ -26,5 +26,7 @@ namespace Macmillan.PXQBA.Web.ViewModels
         public bool AllowDeselect { get; set; }
 
         public bool ColumnAppendAllowed { get; set;}
+
+        public bool CanCloseOnFilter { get; set; }
     }
 }

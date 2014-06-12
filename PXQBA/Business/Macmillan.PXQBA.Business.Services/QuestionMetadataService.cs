@@ -79,6 +79,16 @@ namespace Macmillan.PXQBA.Business.Services
                         Type = MetadataFieldType.MultiSelect,
                         AvailableChoice = EnumHelper.GetEnumValues(typeof(QuestionFlag)).Select(f => new AvailableChoiceItem(f.Key, f.Value)).ToList()
                     }
+                },
+                new QuestionMetaField
+                {
+                    FriendlyName = "Contains text",
+                    Name = MetadataFieldNames.ContainsText,
+                    TypeDescriptor = new MetaFieldTypeDescriptor
+                    {
+                        Type = MetadataFieldType.Text,
+                        AvailableChoice = new List<AvailableChoiceItem>()
+                    }
                 }
 
             };

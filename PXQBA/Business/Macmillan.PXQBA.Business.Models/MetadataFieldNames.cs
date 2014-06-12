@@ -29,6 +29,7 @@ namespace Macmillan.PXQBA.Business.Models
         public const string DraftFrom = "draftfrom";
         public const string ParentProductCourseId = "parentProductCourseId";
         public const string ModifiedBy = "modifiedby";
+        public const string ContainsText = "containstext";
 
         public static IEnumerable<string> GetStaticFieldNames()
         {

@@ -22,7 +22,8 @@ namespace Macmillan.PXQBA.Web.Helpers
                              IsMultiline = false,
                              FilterType = FilterType.MultiSelectWithAddition.ToString().ToLower(),
                              AllowDeselect = false,
-                             ColumnAppendAllowed = true
+                             ColumnAppendAllowed = true,
+                             CanCloseOnFilter = true
                          };
 
 
@@ -43,6 +44,7 @@ namespace Macmillan.PXQBA.Web.Helpers
              {
                  model.FilterType = FilterType.SingleSelect.ToString().ToLower();
                  model.Width = "30%";
+                 model.CanCloseOnFilter = false;
              }
 
              if (metaField.Name == MetadataFieldNames.QuestionStatus)
@@ -82,6 +84,13 @@ namespace Macmillan.PXQBA.Web.Helpers
             {
                 model.ColumnAppendAllowed = false;
                 model.FilterType = FilterType.None.ToString().ToLower();
+            }
+
+            if (metaField.Name == MetadataFieldNames.ContainsText)
+            {
+                model.ColumnAppendAllowed = false;
+                model.CanCloseOnFilter = false;
+                model.FilterType = FilterType.Text.ToString().ToLower();
             }
 
             return model;

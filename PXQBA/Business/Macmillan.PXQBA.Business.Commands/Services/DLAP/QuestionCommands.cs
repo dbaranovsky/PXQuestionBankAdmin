@@ -632,6 +632,10 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         private string GetFilterFieldQuery(string productCourseSection, FilterFieldDescriptor filterFieldDescriptor)
         {
+            if (filterFieldDescriptor.Field == MetadataFieldNames.ContainsText && filterFieldDescriptor.Values.Any())
+            {
+                return filterFieldDescriptor.Values.First();
+            }
             var values = GetFilterValues(filterFieldDescriptor);
             var fieldFormat = GetFilterFieldFormat(filterFieldDescriptor);
             if (filterFieldDescriptor.Field == MetadataFieldNames.Flag)
