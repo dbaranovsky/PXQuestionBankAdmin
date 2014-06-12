@@ -66,21 +66,18 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         private IEnumerable<Question> CreateChildren(string questionRepositoryCourseId, IEnumerable<QuestionSearchResult> searchResults, IEnumerable<QuestionSearchResult> parents)
         {
             var nonDraftQuestions = new List<Question>();
-
-            foreach (var questionSearchResult in parents) 
+            var parentsAgilix = GetAgilixQuestions(questionRepositoryCourseId, parents.Select(p => p.QuestionId)).OrderBy(p => p.ModifiedDate);
+            foreach (var parentAgilix in parentsAgilix) 
             {
-                var parentAgilix = GetAgilixQuestion(questionRepositoryCourseId, questionSearchResult.QuestionId);
                 if (parentAgilix != null)
                 {
                     var parent = Mapper.Map<Question>(parentAgilix);
                     nonDraftQuestions.Add(parent);
 
-                    var drafts = searchResults.Where(r => r.DraftFrom == questionSearchResult.QuestionId);
+                    var drafts = searchResults.Where(r => r.DraftFrom == parentAgilix.Id);
                     if (drafts.Any())
                     {
-                        nonDraftQuestions.AddRange(
-                            CreateChildren(questionRepositoryCourseId, searchResults, drafts)
-                                .OrderBy(q => q.ModifiedDate));
+                        nonDraftQuestions.AddRange(CreateChildren(questionRepositoryCourseId, searchResults, drafts));
                     }
                 }
             }
