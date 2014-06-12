@@ -59,14 +59,18 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         private IEnumerable<Question> PreparedQuestionPage(string questionRepositoryCourseId, IEnumerable<QuestionSearchResult> searchResults, int startingRecordNumber, int recordCount)
         {
             var nonDraftResults = searchResults.Where(r => string.IsNullOrEmpty(r.DraftFrom)).Skip(startingRecordNumber).Take(recordCount);
-            var questions = CreateChildren(questionRepositoryCourseId, searchResults, nonDraftResults);
+            var questions = CreateChildren(questionRepositoryCourseId, searchResults, nonDraftResults, 0);
             return questions;
         }
 
-        private IEnumerable<Question> CreateChildren(string questionRepositoryCourseId, IEnumerable<QuestionSearchResult> searchResults, IEnumerable<QuestionSearchResult> parents)
+        private IEnumerable<Question> CreateChildren(string questionRepositoryCourseId, IEnumerable<QuestionSearchResult> searchResults, IEnumerable<QuestionSearchResult> parents, int counter)
         {
             var nonDraftQuestions = new List<Question>();
-            var parentsAgilix = GetAgilixQuestions(questionRepositoryCourseId, parents.Select(p => p.QuestionId)).OrderBy(p => p.ModifiedDate);
+            var parentsAgilix = GetAgilixQuestions(questionRepositoryCourseId, parents.Select(p => p.QuestionId));
+            if (counter > 0)
+            {
+                parentsAgilix = parentsAgilix.OrderBy(p => p.ModifiedDate);
+            }
             foreach (var parentAgilix in parentsAgilix) 
             {
                 if (parentAgilix != null)
@@ -77,7 +81,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                     var drafts = searchResults.Where(r => r.DraftFrom == parentAgilix.Id);
                     if (drafts.Any())
                     {
-                        nonDraftQuestions.AddRange(CreateChildren(questionRepositoryCourseId, searchResults, drafts));
+                        nonDraftQuestions.AddRange(CreateChildren(questionRepositoryCourseId, searchResults, drafts, counter++));
                     }
                 }
             }
