@@ -123,8 +123,6 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
 
        this.props.closeDialog(); 
      }
-
-   //   questionDataManager.deleteQuestion();
      },
 
      renderNotification: function(){

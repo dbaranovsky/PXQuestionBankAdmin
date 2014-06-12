@@ -59,7 +59,8 @@ var QuestionListPage = React.createClass({
                                           isEditedInPlace = {this.state.editor.isEditedInPlace}
                                           handlers = {{
                                             createDraftHandler: this.createDraftHandler,
-                                            createQuestionFromVersionHandler: this.createQuestionFromVersionHandler
+                                            createQuestionFromVersionHandler: this.createQuestionFromVersionHandler,
+                                            reloadEditor: this.reloadQuestion
                                           }} />);
                                           
           default:
@@ -120,6 +121,11 @@ var QuestionListPage = React.createClass({
       }else{
         questionDataManager.createDraft(questionId, version).done(this.loadTemplateComplete.bind(this, false));
       }
+    },
+
+    reloadQuestion: function(){
+       this.showEditor(this.editorsSteps.none);
+       this.editQuestionHandler(this.state.sourceQuestionId, this.state.viewHistoryMode, this.state.isEditedInPlace);
     },
 
     loadTemplateComplete: function(isNew, template) { 

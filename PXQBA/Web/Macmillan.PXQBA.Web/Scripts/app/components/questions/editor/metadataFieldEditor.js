@@ -94,7 +94,7 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
        var currentValue = this.props.question[this.props.field];
 
        var availableChoice = [];
-       if(metadataField!=null) {
+       if(metadataField != null) {
            availableChoice = metadataField.editorDescriptor.availableChoice;
        } 
 

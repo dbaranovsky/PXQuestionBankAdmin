@@ -330,7 +330,11 @@ namespace Macmillan.PXQBA.Business.Services
 
         public Question GetQuestionVersion(string entityId, string id, string version)
         {
-            return questionCommands.GetQuestion(entityId, id, version);
+            if (!string.IsNullOrEmpty(version))
+            {
+                return questionCommands.GetQuestion(entityId, id, version);
+            }
+            return null;
         }
 
         private CourseMetadataFieldDescriptor GetFieldDescriptorWithSplitedValues(string concatedValues, string internalName)

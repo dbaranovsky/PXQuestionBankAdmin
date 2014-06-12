@@ -406,6 +406,30 @@ var questionDataManager = (function() {
              console.log('getUpdatedGraphEditor error');
         });
     };
+
+
+
+   self.restoreVersion = function (version) {
+
+       var request = {
+            version: version
+        };
+
+        return $.ajax({
+            url: window.actions.questionList.restoreVersionUrl,
+            traditional: true,
+            data: JSON.stringify(request),
+            contentType: 'application/json',
+            dataType: 'json',
+            type: 'POST'
+        }).done(function (response) {      
+             console.log('restoreVersion complete');
+        }).error(function(e){
+             console.log('restoreVersion error');
+             self.showErrorPopup();
+        });
+    };
+    
     
 
     /* Bulk operations */
