@@ -71,7 +71,9 @@ namespace Macmillan.PXQBA.Web.App_Start
 
             container.RegisterType<IDatabaseManager, DatabaseManager>(new InjectionConstructor("PXData"));
 
-            container.RegisterType<INoteCommands, NoteCommands>(new InjectionConstructor(typeof(IDatabaseManager), false));
+            #if DEBUG
+                 container.RegisterType<INoteCommands, NoteCommands>(new InjectionConstructor(new DatabaseManager("TestPXData")));
+            #endif
         }
     }
 }

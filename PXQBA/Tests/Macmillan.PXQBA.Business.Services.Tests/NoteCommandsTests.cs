@@ -21,7 +21,7 @@ namespace Macmillan.PXQBA.Business.Services.Tests
         {
             databaseManager = Substitute.For<IDatabaseManager>();
 
-            noteCommands = new NoteCommands(databaseManager, true);
+            noteCommands = new NoteCommands(databaseManager);
         }
 
         [TestMethod]
