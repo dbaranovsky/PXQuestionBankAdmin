@@ -6,6 +6,7 @@ using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
+using Macmillan.PXQBA.Common.Logging;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Business.Services
@@ -31,15 +32,33 @@ namespace Macmillan.PXQBA.Business.Services
             return questionCommands.GetQuestionList(course.QuestionRepositoryCourseId, course.ProductCourseId, filter, sortCriterion, startingRecordNumber, recordCount);
         }
 
-        public Question CreateQuestion(Course course, string questiontype, string bank, string chapter)
+        public Question CreateQuestion(Course course, string questionType, string bank, string chapter)
         {
-            Question question = GetNewQuestionTemplate(course, questiontype, bank, chapter);
-            return questionCommands.CreateQuestion(course.ProductCourseId, question);
+            try
+            {
+                Question question = GetNewQuestionTemplate(course, questionType, bank, chapter);
+                return questionCommands.CreateQuestion(course.ProductCourseId, question);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("CreateQuestion: courseId: {0}, questionType:{1}, bank:{2}, chapter: {3}",
+                   course.ProductCourseId, questionType, bank,chapter), ex);
+                throw;
+            }
+
         }
 
         public Question GetQuestion(Course course, string questionId, string version = null)
         {
-            return questionCommands.GetQuestion(course.QuestionRepositoryCourseId, questionId, version);
+            try
+            {
+                return questionCommands.GetQuestion(course.QuestionRepositoryCourseId, questionId, version);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("GetQuestion: courseId: {0}, questionId:{1}, version:{2}",
+                    course.ProductCourseId, questionId, string.IsNullOrEmpty(version) ? string.Empty : version), ex);
+            }
         }
 
         public Question DuplicateQuestion(Course course, string questionId, string version = null)
@@ -61,10 +80,21 @@ namespace Macmillan.PXQBA.Business.Services
 
         public Question UpdateQuestion(Course course, string sourceQuestionId, Question temporaryQuestion)
         {
-            questionCommands.UpdateQuestionInTempQuiz(temporaryQuestion);
-            var question = temporaryQuestionOperation.CopyQuestionToSourceCourse(course.QuestionRepositoryCourseId, sourceQuestionId);
-            questionCommands.ExecuteSolrUpdateTask();
-            return question;
+            try
+            {
+                questionCommands.UpdateQuestionInTempQuiz(temporaryQuestion);
+                var question = temporaryQuestionOperation.CopyQuestionToSourceCourse(course.QuestionRepositoryCourseId, sourceQuestionId);
+                questionCommands.ExecuteSolrUpdateTask();
+                return question;
+            }
+            catch (Exception ex)
+            {
+                StaticLogger.LogError(
+                    string.Format("Update question: courseId: {0}, sourceQuestionId:{1}, temporaryQuestionId:{2}",
+                        course.ProductCourseId, sourceQuestionId, temporaryQuestion.Id), ex);
+                throw;
+            }
+            
         }
 
         public bool UpdateQuestionField(Course course, string questionId, string fieldName, string fieldValue)
@@ -111,29 +141,54 @@ namespace Macmillan.PXQBA.Business.Services
 
         public IEnumerable<Question> GetVersionHistory(Course currentCourse, string questionId)
         {
-            return questionCommands.GetVersionHistory(currentCourse.QuestionRepositoryCourseId, questionId);
+            try
+            {
+                return questionCommands.GetVersionHistory(currentCourse.QuestionRepositoryCourseId, questionId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("GetVersionHistory: courseId: {0}, questionId:{1}",
+                    currentCourse.ProductCourseId, questionId), ex);
+            }
         }
 
         public Question GetTemporaryQuestionVersion(Course currentCourse, string questionId, string version)
         {
-            return temporaryQuestionOperation.CopyQuestionToTemporaryCourse(currentCourse.QuestionRepositoryCourseId, questionId, version);
+            try
+            {
+                return temporaryQuestionOperation.CopyQuestionToTemporaryCourse(currentCourse.QuestionRepositoryCourseId, questionId, version);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("GetTemporaryQuestionVersion: courseId: {0}, questionId:{1}, verstion: {2}",
+                    currentCourse.ProductCourseId, questionId, version), ex);
+            }
         }
 
         public bool PublishDraftToOriginal(Course currentCourse, string draftQuestionId)
         {
-            var draftQuestion = questionCommands.GetQuestion(currentCourse.QuestionRepositoryCourseId, draftQuestionId);
-            if (!string.IsNullOrEmpty(draftQuestion.DraftFrom))
+            try
             {
-                var originalQuestion = questionCommands.GetQuestion(currentCourse.QuestionRepositoryCourseId,
-                    draftQuestion.DraftFrom);
-                draftQuestion.Id = originalQuestion.Id;
-                ClearServiceFields(draftQuestion);
-                draftQuestion.IsPublishedFromDraft = true;
-                questionCommands.UpdateQuestion(draftQuestion);
-                DeleteDraft(currentCourse.QuestionRepositoryCourseId, draftQuestionId);
-                return true;
+                var draftQuestion = questionCommands.GetQuestion(currentCourse.QuestionRepositoryCourseId, draftQuestionId);
+                if (!string.IsNullOrEmpty(draftQuestion.DraftFrom))
+                {
+                    var originalQuestion = questionCommands.GetQuestion(currentCourse.QuestionRepositoryCourseId,
+                        draftQuestion.DraftFrom);
+                    draftQuestion.Id = originalQuestion.Id;
+                    ClearServiceFields(draftQuestion);
+                    draftQuestion.IsPublishedFromDraft = true;
+                    questionCommands.UpdateQuestion(draftQuestion);
+                    DeleteDraft(currentCourse.QuestionRepositoryCourseId, draftQuestionId);
+                    return true;
+                }
+                return false;
             }
-            return false;
+            catch (Exception ex)
+            {
+                StaticLogger.LogError(
+                   string.Format("PublishDraftToOriginal: courseId: {0}, draftQuestionId:{1}", currentCourse.ProductCourseId, draftQuestionId), ex);
+                return false;
+            }
         }
 
         private void DeleteDraft(string questionRepositoryCourseId, string draftQuestionId)
@@ -174,18 +229,22 @@ namespace Macmillan.PXQBA.Business.Services
 
         public bool RemoveQuestion(Course course, string questionId)
         {
-            Question question = GetQuestion(course, questionId);
-   
-
-            if (question != null && 
-                (question.Version == 1 && string.IsNullOrEmpty(question.DuplicateFrom) && string.IsNullOrEmpty(question.DuplicateFromShared))
-               )
+            try
             {
-                questionCommands.DeleteQuestion(course.QuestionRepositoryCourseId, questionId);
-                return true;
+                Question question = GetQuestion(course, questionId);
+                if (question != null &&
+                    (question.Version == 1 && string.IsNullOrEmpty(question.DuplicateFrom) && string.IsNullOrEmpty(question.DuplicateFromShared))
+                   )
+                {
+                    questionCommands.DeleteQuestion(course.QuestionRepositoryCourseId, questionId);
+                    return true;
+                }
+                return false;
             }
-
-            return false;
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("RemoveQuestion: courseId: {0}, questionId:{1}", course.ProductCourseId, questionId), ex);
+            }
         }
 
         public Question RestoreQuestionVersion(Course course, string questionId, string version)

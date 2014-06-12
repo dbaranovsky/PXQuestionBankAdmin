@@ -74,7 +74,6 @@
     <Compile Include="CourseMetadataFieldDescriptor.cs" />
     <Compile Include="CourseMetadataFieldValue.cs" />
     <Compile Include="FilterFieldDescriptor.cs" />
-    <Compile Include="LearningObjective.cs" />
     <Compile Include="MetadataFieldType.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="NotificationType.cs" />

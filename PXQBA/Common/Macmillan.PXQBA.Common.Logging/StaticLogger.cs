@@ -31,6 +31,11 @@ namespace Macmillan.PXQBA.Common.Logging
             } while (exception != null);
         }
 
+        private static void Error(String messageText)
+        {
+            Log(() => logger.Error(messageText ?? String.Empty), logger.IsErrorEnabled);
+        }
+
 
         private static void Info(String message)
         {
@@ -70,6 +75,13 @@ namespace Macmillan.PXQBA.Common.Logging
         public static void LogWarning(String messageText)
         {
             Log(() => logger.Warn(messageText ?? String.Empty), logger.IsWarnEnabled);
+        }
+
+        public static Guid LogError(String messageText)
+        {
+            var id = Guid.NewGuid();
+            Error(String.Format("Error id: {0}\n ", id.ToString()) + messageText);
+            return id;
         }
     }
 }

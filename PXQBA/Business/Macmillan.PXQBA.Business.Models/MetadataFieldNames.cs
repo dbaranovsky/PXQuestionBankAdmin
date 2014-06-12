@@ -18,7 +18,6 @@ namespace Macmillan.PXQBA.Business.Models
         public const string Keywords = "keywords";
         public const string SuggestedUse = "suggesteduse";
         public const string Guidance = "guidance";
-        public const string LearningObjectives = "learningobjectives";
         public const string SharedWith = "sharedWith";
         public const string DuplicateFromShared = "duplicatefromshared";
         public const string RestoredFromVersion = "restoredfromversion";

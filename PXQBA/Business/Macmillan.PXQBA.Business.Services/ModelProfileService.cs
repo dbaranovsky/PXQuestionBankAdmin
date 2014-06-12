@@ -17,7 +17,6 @@ using Macmillan.PXQBA.Web.ViewModels.MetadataConfig;
 using Macmillan.PXQBA.Web.ViewModels.TiteList;
 using Macmillan.PXQBA.Web.ViewModels.Versions;
 using Course = Macmillan.PXQBA.Business.Models.Course;
-using LearningObjective = Macmillan.PXQBA.Business.Models.LearningObjective;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Business.Services
@@ -35,21 +34,6 @@ namespace Macmillan.PXQBA.Business.Services
             this.productCourseOperation = productCourseOperation;
             this.questionCommands = questionCommands;
             this.userOperation = userOperation;
-        }
-
-        public string SetLearningObjectives(IEnumerable<LearningObjective> learningObjectives)
-        {
-            return (learningObjectives != null) ? string.Join("|", learningObjectives.Select(lo => lo.Guid)) : null;
-        }
-
-        public IEnumerable<LearningObjective> GetLOByGuid(string productCourseId, string learningObjectiveGuids)
-        {
-            if (learningObjectiveGuids == null)
-            {
-                return new List<LearningObjective>();
-            }
-            var guids = learningObjectiveGuids.Split('|');
-            return productCourseOperation.GetProductCourse(productCourseId).LearningObjectives.Where(lo => guids.Contains(lo.Guid));
         }
 
         public string GetQuestionCardLayout(Bfw.Agilix.DataContracts.Course src)

@@ -14,7 +14,6 @@ using Macmillan.PXQBA.Web.ViewModels.MetadataConfig;
 using Macmillan.PXQBA.Web.ViewModels.TiteList;
 using Macmillan.PXQBA.Web.ViewModels.Versions;
 using Course = Macmillan.PXQBA.Business.Models.Course;
-using LearningObjective = Macmillan.PXQBA.Business.Models.LearningObjective;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 using QuestionChoice = Macmillan.PXQBA.Business.Models.QuestionChoice;
 
@@ -34,7 +33,6 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<Bfw.Agilix.DataContracts.Course, Course>()
                 .ForMember(dest => dest.ProductCourseId, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
-                .ForMember(dest => dest.LearningObjectives, opt => opt.MapFrom(src => src.LearningObjectives))
                 .ForMember(dest => dest.QuestionCardLayout,
                     opt => opt.MapFrom(src => modelProfileService.GetQuestionCardLayout(src)))
                 .ForMember(dest => dest.FieldDescriptors,
@@ -53,7 +51,6 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.ProductCourseId, opt => opt.Ignore())
                 .ForMember(dest => dest.Title, opt => opt.Ignore())
-                .ForMember(dest => dest.LearningObjectives, opt => opt.Ignore())
                 .ForMember(dest => dest.QuestionCardData, opt => opt.MapFrom(src => src.FieldDescriptors));
 
             Mapper.CreateMap<CourseMetadataFieldDescriptor, QuestionCardData>()
@@ -71,11 +68,6 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type))
                 .ForMember(dest => dest.AvailableChoice,
                     opt => opt.MapFrom(src => src.CourseMetadataFieldValues.Select(i => new AvailableChoiceItem(i.Text)).ToList()));
- 
-
-            Mapper.CreateMap<Bfw.Agilix.DataContracts.LearningObjective, LearningObjective>()
-                .ForMember(dest => dest.Guid, opt => opt.MapFrom(src => src.Guid))
-                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Title));
 
             Mapper.CreateMap<Bfw.Agilix.DataContracts.Question, Question>()
                 .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
