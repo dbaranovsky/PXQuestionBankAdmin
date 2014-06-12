@@ -67,8 +67,10 @@ var QuestionCell = React.createClass({
             return (<QuestionInlineEditorBase afterEditingHandler={this.afterEditingHandler}
                     metadata={ {field: this.props.field,
                                currentValue: this.props.value,
-                               questionId:  this.props.questionId,
-                               editorDescriptor: this.props.editorDescriptor}}
+                               questionId: this.props.questionId,
+                               editorDescriptor: this.props.editorDescriptor,
+                               draft: this.props.draft
+                             }}
              />);
         }
          
