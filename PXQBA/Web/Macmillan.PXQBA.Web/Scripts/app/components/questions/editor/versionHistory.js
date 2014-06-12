@@ -124,9 +124,19 @@ var VersionHistoryRow = React.createClass({displayName: 'VersionHistoryRow',
                 React.DOM.button( {type:"button", className:"btn btn-default btn-sm", 'data-toggle':"tooltip", title:"Preview Question", onClick:this.props.renderPreview}, React.DOM.span( {className:"glyphicon glyphicon-search"})),
                 React.DOM.button( {type:"button", className:"btn btn-default btn-sm", 'data-toggle':"tooltip", title:"New Question from this Version", onClick:this.newQuestionFormVersionHandler}, React.DOM.span( {className:"glyphicon glyphicon-file"}), " " ), 
                 React.DOM.button( {type:"button", className:"btn btn-default btn-sm", 'data-toggle':"tooltip", title:"New Draft from this Version", onClick:this.newDraftFormVersionHandler}, React.DOM.span( {className:"glyphicon glyphicon-pencil"} )), 
-                React.DOM.button( {type:"button", className:"btn btn-default btn-sm", 'data-toggle':"tooltip", title:"Restore this Version"}, React.DOM.span( {className:"glyphicon glyphicon-repeat"} )) 
+                React.DOM.button( {type:"button", className:"btn btn-default btn-sm", disabled:this.state.loading && this.state.restoring, 'data-toggle':"tooltip", title:"Restore this Version", onClick:this.restoreVersion}, React.DOM.span( {className:"glyphicon glyphicon-repeat"} )) 
                ));
 
+    },
+
+    restoreVersion: function(){
+        this.setState({loading: true, restoring: true});
+        questionDataManager.restoreVersion(this.props.version.version).done(this.reloadEditor).always(this.stopLoading);
+    },
+
+    reloadEditor: function(){
+
+            this.props.handlers.reloadEditor();
     },
 
     newQuestionFormVersionHandler: function() {
@@ -149,7 +159,7 @@ var VersionHistoryRow = React.createClass({displayName: 'VersionHistoryRow',
 
 
     stopLoading: function(){
-         this.setState({loading: false});
+         this.setState({loading: false, restoring: false});
     },
 
     renderDuplicateFromInfo: function(){
@@ -162,7 +172,7 @@ var VersionHistoryRow = React.createClass({displayName: 'VersionHistoryRow',
     },
 
     renderDraftInfo: function(){
-           var version = this.props.version;
+        var version = this.props.version;
         if(version.isPublishedFromDraft){
             return(React.DOM.p(null, React.DOM.i(null, "Published from draft")));
         }
@@ -171,8 +181,8 @@ var VersionHistoryRow = React.createClass({displayName: 'VersionHistoryRow',
 
     renderRestoreInfo: function(){
            var version = this.props.version;
-        if(!version.restoredFromVersion == ""){
-            return(React.DOM.p(null, React.DOM.i(null, "Restored from version: ", React.DOM.b(null, version.restoredFromVersion)), " " ));
+        if(version.restoredFromVersion != undefined && version.restoredFromVersion != null){
+            return(React.DOM.p(null, React.DOM.i(null, "Restored from version: ", React.DOM.b(null, version.restoredFromVersion.version), " of ", version.restoredFromVersion.versionDate, " by ", version.restoredFromVersion.versionAuthor), " " ));
         }
         return null;
     },
