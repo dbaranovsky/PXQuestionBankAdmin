@@ -34,14 +34,31 @@ var QuestionFilterItemText = React.createClass({displayName: 'QuestionFilterItem
       }
     },
 
+    onCancelEventHandler: function() {
+      this.props.onChangeHandler([""]);  //<div className="filter-text-block">
+    },
+
     render: function() {
         return (
                 React.DOM.div(null,  
-                   TextEditor( {value:this.state.value,
+                    React.DOM.table( {className:"filter-text-table"}, 
+                      React.DOM.tr(null, 
+                        React.DOM.td(null, 
+                         TextEditor( {value:this.state.value,
                                dataChangeHandler:this.onChangeHandler, 
                                classNameProps:"filter-text-input",
                                onKeyPressHandler:this.onKeyPress}
                                )
+                        ),
+                        React.DOM.td(null, 
+                         React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.onCancelEventHandler, 'data-toggle':"tooltip", title:"Cancel"}, 
+                                  React.DOM.span( {className:"glyphicon glyphicon-remove"})
+                          )
+                        )
+                      )
+                    )
+                     
+                          
                 )
             );
         }

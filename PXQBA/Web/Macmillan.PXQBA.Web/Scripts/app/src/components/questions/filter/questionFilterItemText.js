@@ -34,14 +34,31 @@ var QuestionFilterItemText = React.createClass({
       }
     },
 
+    onCancelEventHandler: function() {
+      this.props.onChangeHandler([""]);  //<div className="filter-text-block">
+    },
+
     render: function() {
         return (
                 <div> 
-                   <TextEditor value={this.state.value}
+                    <table className="filter-text-table">
+                      <tr>
+                        <td>
+                         <TextEditor value={this.state.value}
                                dataChangeHandler={this.onChangeHandler} 
                                classNameProps="filter-text-input"
                                onKeyPressHandler={this.onKeyPress}
                                />
+                        </td>
+                        <td>
+                         <button type="button" className="btn btn-default btn-sm" onClick={this.onCancelEventHandler} data-toggle="tooltip" title="Cancel">
+                                  <span className="glyphicon glyphicon-remove"></span>
+                          </button>
+                        </td>
+                      </tr>
+                    </table>
+                     
+                          
                 </div>
             );
         }
