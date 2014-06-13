@@ -5,10 +5,12 @@
 var MetadataMetaEditorTab = React.createClass({displayName: 'MetadataMetaEditorTab',
 
 	getInitialState: function() {
-        return { showInternalFieldDialog: false,
-                 indexInternalFieldDialog: -1,
-                 valueInternalFieldDialog: ""
-               };
+        return { 
+          showInternalFieldDialog: false,
+          showAvailibleValuesDialog: false,
+          indexRowForDialog: -1,
+          valueForDialog: "",
+        };
     },
 
 
@@ -21,7 +23,8 @@ var MetadataMetaEditorTab = React.createClass({displayName: 'MetadataMetaEditorT
 						 availableFieldTypes:this.props.availableFieldTypes,
 						 deleteHandler:this.props.metadataFieldsHandlers.deleteHandler,
 						 updateHandler:this.props.metadataFieldsHandlers.updateHandler,
-             showInternalFieldDialogHandler:this.showInternalFieldDialogHandler}
+             showInternalFieldDialogHandler:this.showInternalFieldDialogHandler,
+             showAvailibleValuesDialog:this.showAvailibleValuesDialog}
 						 ));
 		}
 		return fields;
@@ -31,31 +34,59 @@ var MetadataMetaEditorTab = React.createClass({displayName: 'MetadataMetaEditorT
      this.setState({showInternalFieldDialog: false});
   },
 
+  closeAvailibleValuesDialogHandler: function() {
+     this.setState({showAvailibleValuesDialog: false});
+  },
+
+
 	showInternalFieldDialogHandler: function(index, value) {
 		this.setState({
 		   	showInternalFieldDialog: true,
-        indexInternalFieldDialog: index,
-        valueInternalFieldDialog: value
+        indexRowForDialog: index,
+        valueForDialog: value
 			});
 	},
+
+  showAvailibleValuesDialog: function(index, value, fieldNameCaption) {
+        this.setState({
+        showAvailibleValuesDialog: true,
+        indexRowForDialog: index,
+        valueForDialog: value,
+        fieldNameCaption: fieldNameCaption
+      });
+  },
 
 	renderInternalFieldDialog: function() {
 		if(this.state.showInternalFieldDialog) {
 			return (InternalFieldDialog( {closeDialogHandler:this.closeInternalFieldDialogHandler, 
-                                  value:this.state.valueInternalFieldDialog, 
-                                  itemIndex:this.state.indexInternalFieldDialog,
+                                  value:this.state.valueForDialog, 
+                                  itemIndex:this.state.indexRowForDialog,
                                   updateHandler:this.props.metadataFieldsHandlers.updateHandler}
                                    ));
 		}
 
 		return null;
-  	},
+  },
 
-    render: function() {
+  renderAvailibleValuesDialog: function() {
+    if(this.state.showAvailibleValuesDialog) {
+      return (AvailibleValuesDialog( {closeDialogHandler:this.closeAvailibleValuesDialogHandler, 
+                                  value:this.state.valueForDialog, 
+                                  itemIndex:this.state.indexRowForDialog,
+                                  updateHandler:this.props.metadataFieldsHandlers.updateHandler,
+                                  fieldNameCaption:this.state.fieldNameCaption}
+                                   ));
+   }
+
+    return null;
+  },
+
+  render: function() {
        return (
        		React.DOM.div(null, 
               React.DOM.div(null, 
-               this.renderInternalFieldDialog()
+               this.renderInternalFieldDialog(),
+               this.renderAvailibleValuesDialog()
              ),
                React.DOM.div(null,  
                		React.DOM.table( {className:"table table metadata-table"}, 
@@ -64,7 +95,9 @@ var MetadataMetaEditorTab = React.createClass({displayName: 'MetadataMetaEditorT
                			 		React.DOM.th( {className:"field-column"},  " ", React.DOM.span(null, "Field name"), " " ),
                			 		React.DOM.th( {className:"internal-column"},  " ", React.DOM.span(null, "Internal name " )),
                			 		React.DOM.th( {className:"type-column"},  " ", React.DOM.span(null,  " Type " ), " ", ToltipElement( {tooltipText:"Type"}), " " ),
-               			 		React.DOM.th( {className:"values-column"},  " ", React.DOM.span(null, "Values options"), " ", ToltipElement( {tooltipText:"Values options"})),
+               			 		React.DOM.th( {className:"values-column"},  " ", React.DOM.span(null, "Values options"), 
+                             ToltipElement(   {tooltipText:"Enter the values that will be available to question authors here. Text fields don't have pre-defined values"})
+                        ),
                			 		React.DOM.th( {className:"display-column"},  " ", React.DOM.span(null, "Display options")),
                			 		React.DOM.th( {className:"delete-column"},  " " )
                			 	)

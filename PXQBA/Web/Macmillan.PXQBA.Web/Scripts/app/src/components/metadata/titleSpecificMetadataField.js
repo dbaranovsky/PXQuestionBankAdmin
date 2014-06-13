@@ -30,9 +30,23 @@ var TitleSpecificMetadataField = React.createClass({
  		this.props.showInternalFieldDialogHandler(this.props.index, this.props.data.internalName);
  	},
 
+  openAvailibleValuesDialog: function() {
+    this.props.showAvailibleValuesDialog(this.props.index, this.props.data.valuesOptions, this.props.data.fieldName);
+  },
+
+  renderAvailibleValuesButton: function() {
+    var fieldType = this.props.data.fieldType;
+     if((fieldType==window.enums.metadataFieldType.text)|| 
+        (fieldType==window.enums.metadataFieldType.itemLink)|| 
+        (fieldType==window.enums.metadataFieldType.multilineText)) {
+      return null;
+     }
+     return (<button type="button" className="btn btn-default"  onClick={this.openAvailibleValuesDialog} >Values...</button>);
+  },
+
  	getInternalName: function(name) {
-        var internalName = name.toLowerCase();
-        internalName = internalName.replace(/\s+/g, '');
+    var internalName = name.toLowerCase();
+    internalName = internalName.replace(/\s+/g, '');
  		return internalName;
  	},
 
@@ -63,7 +77,7 @@ var TitleSpecificMetadataField = React.createClass({
                        onChangeHandler={this.changeTypeHandler}
                        currentValues = {this.getCurrentTypeValues()} />
                		</td>
-               		<td> ...</td>
+               		<td>{this.renderAvailibleValuesButton()}</td>
                		<td> ...</td>
                		<td>   
                			 <button type="button" className="btn btn-default btn-sm" onClick={this.deleteHandler} 
