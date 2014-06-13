@@ -9,13 +9,27 @@ namespace Macmillan.PXQBA.Business.Models
 
         public bool Filterable { get; set; }
 
+        public bool DisplayInBanks { get; set; }
+
+        public bool ShowFilterInBanks { get; set; }
+
+        public bool MatchInBanks { get; set; }
+
+        public bool DisplayInCurrentQuiz { get; set; }
+
+        public bool DisplayInInstructorQuiz { get; set; }
+
+        public bool DisplayInResources { get; set; }
+
+        public bool ShowFilterInResources { get; set; }
+
+        public bool MatchInResources { get; set; }
+
         public string Searchterm { get; set; }
 
         public string FriendlyName { get; set; }
 
         public MetadataFieldType Type { get; set; }
-
-        public bool Hidden { get; set; }
 
         public IEnumerable<CourseMetadataFieldValue> CourseMetadataFieldValues { get; set; }
 
