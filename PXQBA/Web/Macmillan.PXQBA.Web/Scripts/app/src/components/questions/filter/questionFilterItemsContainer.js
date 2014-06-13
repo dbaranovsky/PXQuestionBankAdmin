@@ -20,7 +20,8 @@ var QuestionFilterItemsContainer = React.createClass({
                          filterType: allAvailableColumns[i].filterType,
                          caption: allAvailableColumns[i].friendlyName,
                          allOptions: this.getAllOptions(allAvailableColumns[i].editorDescriptor.availableChoice, filter.values),
-                         currentValues: filter.values
+                         currentValues: filter.values,
+                         canCloseOnFilter: allAvailableColumns[i].canCloseOnFilter
                 };
             }
         }

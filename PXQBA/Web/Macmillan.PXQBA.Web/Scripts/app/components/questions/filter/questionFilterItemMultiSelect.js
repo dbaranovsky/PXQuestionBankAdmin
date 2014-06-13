@@ -2,7 +2,7 @@
 * @jsx React.DOM
 */
 
-var QuestionFilterMultiSelect = React.createClass({displayName: 'QuestionFilterMultiSelect',
+var QuestionFilterItemMultiSelect = React.createClass({displayName: 'QuestionFilterItemMultiSelect',
 
   getInitialState: function(){
       return ({options: this.renderMenuItems(this.props.allOptions)});

@@ -37,6 +37,10 @@ crossroads.addRoute('', function () {
     window.routsManager.query.setValue(
         filterHashParameterHelper.addFiltration(
             window.consts.questionCourseName, [window.questionPageParameters.currentCourseId], window.routsManager.query.getValue()));
+    
+    window.routsManager.query.setValue(
+    filterHashParameterHelper.addFiltration(
+        window.consts.containsTextName, [], window.routsManager.query.getValue()));
 
     if (window.questionPageParameters.currentChapterId != '') {
         window.routsManager.query.setValue(

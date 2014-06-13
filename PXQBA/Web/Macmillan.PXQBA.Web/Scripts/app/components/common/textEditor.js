@@ -10,10 +10,19 @@ var TextEditor = React.createClass({displayName: 'TextEditor',
   },
 
   render: function() {
-       return (
-                React.DOM.div( {className:""}, 
-                  React.DOM.input( {type:"text", className:"form-control", value:this.props.value, onChange:this.handleChange, onBlur:this.props.onBlurHandler} )
-                )
+       
+   var classNameProps="form-control";
+   if(this.props.classNameProps!=null) {
+      classNameProps+=" "+this.props.classNameProps;
+   }
+   
+   return (
+           React.DOM.div( {className:""}, 
+              React.DOM.input( {type:"text", className:classNameProps, value:this.props.value, 
+                                                              onChange:this.handleChange, 
+                                                              onBlur:this.props.onBlurHandler, 
+                                                              onKeyPress:this.props.onKeyPressHandler})
+            )
      );
   },
 });

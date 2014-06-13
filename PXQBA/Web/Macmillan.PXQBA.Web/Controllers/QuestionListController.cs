@@ -143,9 +143,15 @@ namespace Macmillan.PXQBA.Web.Controllers
             }
 
             var courseFilter = request.Filter.SingleOrDefault(f => f.Field == courseFilterDescriptor.Field);
+            
             request.Filter = new List<FilterFieldDescriptor>()
                              {
-                                 courseFilter
+                                 courseFilter,
+                                 new FilterFieldDescriptor()
+                                 {
+                                     Field = MetadataFieldNames.ContainsText,
+                                     Values = new List<string>()
+                                 }
                              };
 
             request.PageNumber = 1;
