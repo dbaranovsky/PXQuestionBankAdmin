@@ -5,5 +5,6 @@
         None = 0,
         MultiSelectWithAddition = 1,
         SingleSelect = 2,
+        Text = 3
     }
 }
