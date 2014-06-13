@@ -5,7 +5,7 @@
 var QuestionFilterItemText = React.createClass({displayName: 'QuestionFilterItemText',
     
     getInitialState: function() {
-        return { value: this.props.currentValues[0] };
+        return { value: this.getTextFromCurrentValues(this.props.currentValues) };
     },
 
     onChangeHandler: function(text) { 
@@ -41,7 +41,6 @@ var QuestionFilterItemText = React.createClass({displayName: 'QuestionFilterItem
                                dataChangeHandler:this.onChangeHandler, 
                                classNameProps:"filter-text-input",
                                onKeyPressHandler:this.onKeyPress}
-
                                )
                 )
             );
