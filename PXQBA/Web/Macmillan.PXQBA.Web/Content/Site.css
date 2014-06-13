@@ -1106,3 +1106,40 @@ textarea.metadata-availible-values-editor {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
+
+
+/* Roles */
+
+
+.roles-table {
+    display: table;
+    font-size: 17px;
+    border-spacing:0 13px;
+}
+
+.role-cell {
+    display: table-cell;
+    border-bottom: 1px solid #c0c0c0;
+}
+
+.role-row {
+    display: table-row;
+    height: 50px;
+}
+
+.role-name {
+    font-weight: bold;
+    width: 200px;
+}
+
+.role-cell.capabilities {
+    font-style: italic;
+    text-underline: #000000;
+    width: 200px;
+}
+
+
+.role-row:last-child .role-cell{
+    border-bottom: none;  
+}

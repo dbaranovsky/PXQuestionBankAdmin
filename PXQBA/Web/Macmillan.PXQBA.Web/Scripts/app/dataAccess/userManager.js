@@ -65,6 +65,28 @@ var userManager = (function() {
         });
     }
 
+    self.getRolesForCourse = function(courseId){
+
+        var request = {
+            courseId: courseId
+        };
+        
+        return $.ajax({
+            url: window.actions.userOperations.getRolesForCourseUrl,
+            data: JSON.stringify(request),
+            dataType: 'json',
+            type: 'POST',
+            contentType: 'application/json'
+        }).done(function (response) {
+            
+        }).error(function (httpRequest, textStatus, errorThrown) {
+            if (httpRequest.readyState == 0 || httpRequest.status == 0) {
+                return;  
+            }
+            questionDataManager.showErrorPopup();
+        });
+    }
+
     self.resetNotifications();
 
     return self;

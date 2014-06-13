@@ -1,7 +1,55 @@
-﻿
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "User Management";
 }
 
-<h2>User management</h2>
+<h2>User Management</h2>
 
+<div id="notifications-container" class='notifications top-center center'> </div>
+
+<div id="user-management-container"> </div>
+
+@section scripts
+{
+    <script src="../../Scripts/app/dataAccess/metadataCfgDataManager.js"></script>
+    <script src="../../Scripts/app/components/common/loader.js"></script>
+    <script src="../../Scripts/app/async/asyncManager.js"></script>
+    <script src="../../Scripts/app/async/notificationManager.js"></script>
+    <script src="../../Scripts/app/dataAccess/userManager.js"></script>
+
+    <script src="../../Scripts/app/components/common/textEditor.js"></script>
+    <script src="../../Scripts/app/components/common/singleSelectSelector.js"></script>
+    <script src="../../Scripts/app/components/common/textAreaEditor.js"></script>
+    <script src="../../Scripts/app/components/common/modalDialog.js"></script>
+    <script src="../../Scripts/app/components/common/tooltipElement.js"></script>
+
+
+    <script src="../../Scripts/app/components/metadata/metadataCourseSelector.js"></script>
+    <script src="../../Scripts/app/components/metadata/metadataMetaEditorTab.js"></script>
+    <script src="../../Scripts/app/components/users/userTabs.js"></script>
+    <script src="../../Scripts/app/components/users/userRoot.js"></script>
+
+    <script>
+        var userContainer = $('#user-management-container')[0];
+        asyncManager.startWait(userContainer);
+
+        notificationManager.htmlContainer = $('#notifications-container')[0];
+
+        var options = {};
+        var courseList = metadataCfgDataManager.getAvailableCourses();
+
+        courseList.done(function (response) {
+            asyncManager.page = React.renderComponent(
+                UserRoot({
+                    availableCourses: response,
+                    options: options
+                }, " "),
+                userContainer);
+        })
+                    .error(function (error) {
+                        console.error("metadataCfgDataManager.getAvailableCourses:", error);
+                    })
+                    .always(function () {
+                        asyncManager.stopWait();
+                    });
+    </script>
+}

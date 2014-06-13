@@ -282,6 +282,8 @@
     <Content Include="Scripts\app\components\titles\title.js" />
     <Content Include="Scripts\app\components\titles\titleList.js" />
     <Content Include="Scripts\app\components\titles\titlePage.js" />
+    <Content Include="Scripts\app\components\users\userRoot.js" />
+    <Content Include="Scripts\app\components\users\userTabs.js" />
     <Content Include="Scripts\app\dataAccess\dataCache\dataCacheStorage.js" />
     <Content Include="Scripts\app\dataAccess\metadataCfgDataManager.js" />
     <Content Include="Scripts\app\dataAccess\questionDataManager.js" />
@@ -363,6 +365,8 @@
     <Content Include="Scripts\app\src\components\titles\title.js" />
     <Content Include="Scripts\app\src\components\titles\titleList.js" />
     <Content Include="Scripts\app\src\components\titles\titlePage.js" />
+    <Content Include="Scripts\app\src\components\users\userRoot.js" />
+    <Content Include="Scripts\app\src\components\users\userTabs.js" />
     <Content Include="Scripts\bootstrap\bootstrap-notify.js" />
     <Content Include="Scripts\bootstrap\bootstrap-paginator.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap-switch.min.js" />
