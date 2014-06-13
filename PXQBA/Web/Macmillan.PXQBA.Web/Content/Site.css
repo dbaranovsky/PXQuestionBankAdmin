@@ -711,6 +711,12 @@ input.filter-text-input {
     height: 30px;
 }
 
+.filter-text-table {
+    width: 242px;
+}
+ 
+ 
+
 .question-card-template h1{
      font-size: 24px !important;
 }
