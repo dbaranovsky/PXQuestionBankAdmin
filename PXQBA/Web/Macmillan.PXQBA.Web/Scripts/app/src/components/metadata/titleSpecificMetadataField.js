@@ -31,16 +31,17 @@ var TitleSpecificMetadataField = React.createClass({
  	},
 
   openAvailibleValuesDialog: function() {
-    this.props.showAvailibleValuesDialog(this.props.index, this.props.data.valuesOptions)
+    this.props.showAvailibleValuesDialog(this.props.index, this.props.data.valuesOptions, this.props.data.fieldName);
   },
 
   renderAvailibleValuesButton: function() {
     var fieldType = this.props.data.fieldType;
      if((fieldType==window.enums.metadataFieldType.text)|| 
+        (fieldType==window.enums.metadataFieldType.itemLink)|| 
         (fieldType==window.enums.metadataFieldType.multilineText)) {
       return null;
      }
-     return (<button type="button" className="btn btn-default metadata-button"  onClick={this.openAvailibleValuesDialog} >Values...</button>);
+     return (<button type="button" className="btn btn-default"  onClick={this.openAvailibleValuesDialog} >Values...</button>);
   },
 
  	getInternalName: function(name) {

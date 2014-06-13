@@ -994,6 +994,20 @@ a.shared-question-link:hover {
     height: 400px;
 }
 
+textarea.metadata-availible-values-editor {
+    -moz-resize: none;
+    -ms-resize: none;
+    -o-resize: none;
+    resize: none;
+    width: 560px;
+    height: 400px;
+    max-width: 560px
+}
+
+.metadata-values-label {
+    margin: 0 0 15px 0;
+}
+
 /* Versions */
 
 .version-row {

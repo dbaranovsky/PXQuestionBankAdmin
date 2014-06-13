@@ -47,11 +47,12 @@ var MetadataMetaEditorTab = React.createClass({displayName: 'MetadataMetaEditorT
 			});
 	},
 
-  showAvailibleValuesDialog: function(index, value) {
+  showAvailibleValuesDialog: function(index, value, fieldNameCaption) {
         this.setState({
         showAvailibleValuesDialog: true,
         indexRowForDialog: index,
-        valueForDialog: value
+        valueForDialog: value,
+        fieldNameCaption: fieldNameCaption
       });
   },
 
@@ -72,9 +73,10 @@ var MetadataMetaEditorTab = React.createClass({displayName: 'MetadataMetaEditorT
       return (AvailibleValuesDialog( {closeDialogHandler:this.closeAvailibleValuesDialogHandler, 
                                   value:this.state.valueForDialog, 
                                   itemIndex:this.state.indexRowForDialog,
-                                  updateHandler:this.props.metadataFieldsHandlers.updateHandler}
+                                  updateHandler:this.props.metadataFieldsHandlers.updateHandler,
+                                  fieldNameCaption:this.state.fieldNameCaption}
                                    ));
-    }
+   }
 
     return null;
   },
