@@ -97,7 +97,8 @@
         enums.filterType = {
             none: '@FilterType.None.ToString().ToLower()',
             multiSelectWithAddition: '@FilterType.MultiSelectWithAddition.ToString().ToLower()',
-            singleSelect: '@FilterType.SingleSelect.ToString().ToLower()'
+            singleSelect: '@FilterType.SingleSelect.ToString().ToLower()',
+            text: '@FilterType.Text.ToString().ToLower()',
         };
 
         enums.messages = {
@@ -161,6 +162,7 @@
         consts.questionSharedWithName = '@MetadataFieldNames.SharedWith';
         consts.questionTypeName = '@MetadataFieldNames.DlapType';
         consts.questionDraftFlagName = '@MetadataFieldNames.DraftFrom';
+        consts.containsTextName = '@MetadataFieldNames.ContainsText';
 
         consts.grid = {
             initialFieldSet: '@GridHelper.GetInitialFieldSet()',
