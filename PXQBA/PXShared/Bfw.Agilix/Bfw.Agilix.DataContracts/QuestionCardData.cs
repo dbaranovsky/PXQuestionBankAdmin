@@ -27,10 +27,59 @@ namespace Bfw.Agilix.DataContracts
         public string QuestionCardDataName { get; set; }
 
         /// <summary>
-        /// The core data that represents the assignment
+        /// If fiels is filterable
         /// </summary>
         [DataMember]
         public bool Filterable { get; set; }
+
+        /// <summary>
+        /// If field should be displayed in in question banks
+        /// </summary>
+        [DataMember]
+        public bool DisplayInBanks { get; set; }
+
+        /// <summary>
+        /// If field should be shown in filter in question banks
+        /// </summary>
+        [DataMember]
+        public bool ShowFilterInBanks { get; set; }
+
+        /// <summary>
+        /// If field should be match in question banks
+        /// </summary>
+        [DataMember]
+        public bool  MatchInBanks{ get; set; }
+
+        /// <summary>
+        /// If field should be displayed in in current quiz
+        /// </summary>
+        [DataMember]
+        public bool DisplayInCurrentQuiz { get; set; }
+
+        /// <summary>
+        /// If field should be displayed in in instructor quiz
+        /// </summary>
+        [DataMember]
+        public bool DisplayInInstructorQuiz { get; set; }
+
+        /// <summary>
+        /// If field should be displayed in in resources panel
+        /// </summary>
+        [DataMember]
+        public bool DisplayInResources { get; set; }
+
+        /// <summary>
+        /// If field should be shown in filter in resources panel
+        /// </summary>
+        [DataMember]
+        public bool ShowFilterInResources { get; set; }
+
+        /// <summary>
+        /// If field should be match in resources panel
+        /// </summary>
+        [DataMember]
+        public bool MatchInResources { get; set; }
+
         /// <summary>
         /// The core data that represents the assignment
         /// </summary>
@@ -53,12 +102,6 @@ namespace Bfw.Agilix.DataContracts
         /// </summary>
         [DataMember]
         public List<QuestionCardDataValue> QuestionValues { get; set; }
-
-        /// <summary>
-        /// Shows if meta field should be hidden
-        /// </summary>
-        [DataMember]
-        public bool Hidden { get; set; }
 
         private string _dataString;
 
@@ -130,7 +173,14 @@ namespace Bfw.Agilix.DataContracts
         {
             var element = new XElement(QuestionCardDataName);
             element.Add(new XAttribute("filterable", Filterable));
-            element.Add(new XAttribute("hidden", Hidden));
+            element.Add(new XAttribute("displayinbanks", DisplayInBanks));
+            element.Add(new XAttribute("showfilterinbanks", ShowFilterInBanks));
+            element.Add(new XAttribute("matchinbanks", MatchInBanks));
+            element.Add(new XAttribute("displayincurrentquiz", DisplayInCurrentQuiz));
+            element.Add(new XAttribute("displayininstructorquiz", DisplayInInstructorQuiz));
+            element.Add(new XAttribute("displayinresources", DisplayInResources));
+            element.Add(new XAttribute("showfilterinresources", ShowFilterInResources));
+            element.Add(new XAttribute("matchinresources", MatchInResources));
             if (!string.IsNullOrEmpty(SearchTerm))
             {
                 element.Add(new XAttribute("searchterm", SearchTerm));
@@ -169,22 +219,77 @@ namespace Bfw.Agilix.DataContracts
 
                 }
 
+                if (element.Attribute("displayinbanks") != null)
+                {
+                    bool displayInBanks;
+                    bool.TryParse(element.Attribute("displayinbanks").Value.ToString(), out displayInBanks);
+                    this.DisplayInBanks = displayInBanks;
+                }
+
+                if (element.Attribute("showfilterinbanks") != null)
+                {
+                    bool showFilterInBanks;
+                    bool.TryParse(element.Attribute("showfilterinbanks").Value.ToString(), out showFilterInBanks);
+                    this.ShowFilterInBanks = showFilterInBanks;
+
+                }
+
+                if (element.Attribute("matchinbanks") != null)
+                {
+                    bool matchInBanks;
+                    bool.TryParse(element.Attribute("matchinbanks").Value.ToString(), out matchInBanks);
+                    this.MatchInBanks = matchInBanks;
+
+                }
+
+                if (element.Attribute("displayincurrentquiz") != null)
+                {
+                    bool displayInCurrentQuiz;
+                    bool.TryParse(element.Attribute("displayincurrentquiz").Value.ToString(), out displayInCurrentQuiz);
+                    this.DisplayInCurrentQuiz = displayInCurrentQuiz;
+
+                }
+
+                if (element.Attribute("displayininstructorquiz") != null)
+                {
+                    bool displayInInstructorQuiz;
+                    bool.TryParse(element.Attribute("displayininstructorquiz").Value.ToString(), out displayInInstructorQuiz);
+                    this.DisplayInInstructorQuiz = displayInInstructorQuiz;
+
+                }
+
+                if (element.Attribute("displayinresources") != null)
+                {
+                    bool displayInResources;
+                    bool.TryParse(element.Attribute("displayinresources").Value.ToString(), out displayInResources);
+                    this.DisplayInResources = displayInResources;
+
+                }
+
+                if (element.Attribute("showfilterinresources") != null)
+                {
+                    bool showFilterInResources;
+                    bool.TryParse(element.Attribute("showfilterinresources").Value.ToString(), out showFilterInResources);
+                    this.ShowFilterInResources = showFilterInResources;
+
+                }
+
+                if (element.Attribute("matchinresources") != null)
+                {
+                    bool matchInResources;
+                    bool.TryParse(element.Attribute("matchinresources").Value.ToString(), out matchInResources);
+                    this.MatchInResources = matchInResources;
+
+                }
+
                 if (element.Attribute("friendlyname") != null)
                 {
-
                     this.FriendlyName = element.Attribute("friendlyname").Value.ToString();
                 }
 
                 if (element.Attribute("searchterm") != null)
                 {
                     this.SearchTerm = element.Attribute("searchterm").Value.ToString();
-
-                }
-
-                if (element.Attribute("hidden") != null)
-                {
-                    bool.TryParse(element.Attribute("hidden").Value.ToString(), out outvalue);
-                    this.Hidden = outvalue;
 
                 }
 

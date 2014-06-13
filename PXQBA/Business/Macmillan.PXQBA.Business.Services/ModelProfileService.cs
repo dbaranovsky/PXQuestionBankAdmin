@@ -270,6 +270,14 @@ namespace Macmillan.PXQBA.Business.Services
                     fieldDescriptors.Add(new CourseMetadataFieldDescriptor()
                     {
                         Filterable = field.DisplayOptions.Filterable,
+                        DisplayInBanks = field.DisplayOptions.DisplayInBanks,
+                        ShowFilterInBanks = field.DisplayOptions.ShowFilterInBanks,
+                        MatchInBanks = field.DisplayOptions.MatchInBanks,
+                        DisplayInCurrentQuiz = field.DisplayOptions.DisplayInCurrentQuiz,
+                        DisplayInInstructorQuiz = field.DisplayOptions.DisplayInInstructorQuiz,
+                        DisplayInResources = field.DisplayOptions.DisplayInResources,
+                        ShowFilterInResources = field.DisplayOptions.ShowFilterInResources,
+                        MatchInResources = field.DisplayOptions.MatchInResources,
                         FriendlyName = field.FieldName,
                         Name = field.InternalName,
                         Type = field.FieldType,
@@ -345,6 +353,14 @@ namespace Macmillan.PXQBA.Business.Services
                 FriendlyName = internalName[0].ToString().ToUpper() + internalName.Substring(1),
                 Name = internalName,
                 Filterable = true,
+                DisplayInBanks = true,
+                ShowFilterInBanks = true,
+                MatchInBanks = true,
+                DisplayInCurrentQuiz = true,
+                DisplayInInstructorQuiz = true,
+                DisplayInResources = true,
+                ShowFilterInResources = true,
+                MatchInResources = true,
                 CourseMetadataFieldValues =
                     concatedValues.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries)
                         .Select((v, i) => new CourseMetadataFieldValue() { Sequence = i, Text = v })

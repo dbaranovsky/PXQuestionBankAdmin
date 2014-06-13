@@ -175,21 +175,11 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.ValuesOptions, opt => opt.MapFrom(src => modelProfileService.GetMetadataFieldValues(src)))
                 .ForMember(dest => dest.DisplayOptions, opt => opt.MapFrom(src => src));
 
-            Mapper.CreateMap<CourseMetadataFieldDescriptor, MetadataFieldDisplayOptionsViewModel>()
-                .ForMember(dest => dest.Filterable, opt => opt.MapFrom(src => src.Filterable));
+            Mapper.CreateMap<CourseMetadataFieldDescriptor, MetadataFieldDisplayOptionsViewModel>();
 
             Mapper.CreateMap<MetadataConfigViewModel, Course>()
                 .ForMember(dest => dest.ProductCourseId, opt => opt.MapFrom(src => src.CourseId))
                 .ForMember(dest => dest.FieldDescriptors, opt => opt.MapFrom(src => modelProfileService.GetCourseFieldDescriptors(src)));
-
-            Mapper.CreateMap<ProductCourseSpecificMetadataFieldViewModel, CourseMetadataFieldDescriptor>()
-               .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.InternalName))
-               .ForMember(dest => dest.FriendlyName, opt => opt.MapFrom(src => src.FieldName))
-               .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.FieldType))
-               .ForMember(dest => dest.Filterable, opt => opt.MapFrom(src => src.DisplayOptions.Filterable))
-               .ForMember(dest => dest.CourseMetadataFieldValues, opt => opt.MapFrom(src => modelProfileService.GetFieldValues(src.ValuesOptions)));
-
-            Mapper.CreateMap<CourseMetadataFieldValue, QuestionCardDataValue>();
         }
     }
 

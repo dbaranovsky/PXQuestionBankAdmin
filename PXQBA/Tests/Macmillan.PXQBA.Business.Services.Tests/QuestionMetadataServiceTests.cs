@@ -46,7 +46,6 @@ namespace Macmillan.PXQBA.Business.Services.Tests
                                                         CourseMetadataFieldValues = new List<CourseMetadataFieldValue>(),
                                                         Filterable = true,
                                                         FriendlyName = "Test",
-                                                        Hidden = false,
                                                         Searchterm = "",
                                                         Type = MetadataFieldType.Text
                                                     }

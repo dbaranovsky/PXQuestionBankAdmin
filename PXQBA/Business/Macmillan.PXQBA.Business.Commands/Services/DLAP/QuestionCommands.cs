@@ -420,6 +420,10 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             {
                 section.Sequence = fieldValue;
             }
+            else if (MetadataFieldNames.Flag == fieldName)
+            {
+                section.Flag = fieldValue;
+            }
         }     
         public bool BulklUpdateQuestionField(string productCourseId, string repositoryCourseId, string[] questionId, string fieldName, string fieldValue)
         {
