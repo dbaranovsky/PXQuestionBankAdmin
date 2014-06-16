@@ -1107,6 +1107,10 @@ textarea.metadata-availible-values-editor {
     margin-bottom: 5px;
 }
 
+#displayImageDialog .modal-content {
+    width: 1000px;
+}
+
 
 
 /* Roles */

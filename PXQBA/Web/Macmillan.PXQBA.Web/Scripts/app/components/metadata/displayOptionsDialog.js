@@ -18,8 +18,9 @@ var DisplayOptionsDialog = React.createClass({displayName: 'DisplayOptionsDialog
         this.setState( {displayOptions: displayOptions} );
     },
 
-    onClickTooltipHandler: function() {
-        
+    onClickTooltipHandler: function(imgName) {
+        this.refs.modalDialog.refs.cancelButton.getDOMNode().click();
+        this.props.showDisplayImageDialogHandler(window.content.img.displayOptionsHelp[imgName]);
     },
  
 
@@ -33,8 +34,10 @@ var DisplayOptionsDialog = React.createClass({displayName: 'DisplayOptionsDialog
         var renderBody = function(){
              return (React.DOM.div(null, 
                         React.DOM.div(null, 
-                         React.DOM.div(null,  " ", React.DOM.b(null,  " Question Picker (Question in Question Banks)"), " ", ToltipElement( {tooltipText:"Click for details", onClickHandler:self.onClickTooltipHandler})),
-
+                         React.DOM.div(null,  " ", React.DOM.b(null,  " Question Picker (Question in Question Banks)"),
+                                  ToltipElement( {tooltipText:"Click for details", onClickHandler:self.onClickTooltipHandler.bind(null, "questionsInQuestionBanksUrl")})
+                         ),
+                       
                          CheckBoxEditor( {value:self.state.displayOptions.displayInBanks, 
                             label:"Display this field when listing questions", 
                             onChangeHandler:self.onChangeHandler.bind(null, "displayInBanks")}),
@@ -48,19 +51,25 @@ var DisplayOptionsDialog = React.createClass({displayName: 'DisplayOptionsDialog
                             label:"Search result match this field", 
                             onChangeHandler:self.onChangeHandler.bind(null, "matchInBanks")}),
 
-                         React.DOM.div(null,  " ", React.DOM.b(null,  " Question Picker (Question in Current Quiz)"), " ", ToltipElement( {tooltipText:"Click for details"}), " " ),
+                         React.DOM.div(null,  " ", React.DOM.b(null,  " Question Picker (Question in Current Quiz)"),
+                                  ToltipElement( {tooltipText:"Click for details", onClickHandler:self.onClickTooltipHandler.bind(null, "questionsInCurrentQuizUrl")})
+                         ),
 
                          CheckBoxEditor( {value:self.state.displayOptions.displayInCurrentQuiz, 
                             label:"Display this field when listing questions", 
                             onChangeHandler:self.onChangeHandler.bind(null, "displayInCurrentQuiz")}),
 
-                         React.DOM.div(null,  " ", React.DOM.b(null,  " Quiz Instractor View"), " ", ToltipElement( {tooltipText:"Click for details"}), " " ),
+                         React.DOM.div(null,  " ", React.DOM.b(null,  " Quiz Instractor View"),
+                                  ToltipElement( {tooltipText:"Click for details", onClickHandler:self.onClickTooltipHandler.bind(null, "quizInstructorViewUrl")}) 
+                         ),
                          
                          CheckBoxEditor( {value:self.state.displayOptions.displayInInstructorQuiz, 
                             label:"Display this field when listing questions", 
                             onChangeHandler:self.onChangeHandler.bind(null, "displayInInstructorQuiz")}),
 
-                         React.DOM.div(null,  " ", React.DOM.b(null,  " Recourse Panel"), " ", ToltipElement( {tooltipText:"Click for details"}), " " ),
+                         React.DOM.div(null,  " ", React.DOM.b(null,  " Recourse Panel"),
+                                  ToltipElement( {tooltipText:"Click for details", onClickHandler:self.onClickTooltipHandler.bind(null, "resourcePanelUrl")}) 
+                         ),
 
                          CheckBoxEditor( {value:self.state.displayOptions.displayInResources,
                              label:"Display this field when listing questions", 
@@ -77,14 +86,15 @@ var DisplayOptionsDialog = React.createClass({displayName: 'DisplayOptionsDialog
                          
                         ),
                          React.DOM.div( {className:"modal-footer clearfix"}, 
-                                 React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal", onClick:self.props.closeDialogHandler}, "Cancel"),
+                                 React.DOM.button( {ref:"cancelButton", type:"button", className:"btn btn-default", 'data-dismiss':"modal", onClick:self.props.closeDialogHandler}, "Cancel"),
                                  React.DOM.button( {type:"button", className:"btn btn-primary", 'data-dismiss':"modal", onClick:self.editInternalFieldHandler}, "Save")
-                            )
+                         )
                     )
             );
         };
 
-        return (ModalDialog( {showOnCreate:true,
+        return (ModalDialog( {ref:"modalDialog",
+                             showOnCreate:true,
                              renderHeaderText:renderHeaderText, 
                              renderBody:renderBody, 
                              closeDialogHandler:  this.props.closeDialogHandler,

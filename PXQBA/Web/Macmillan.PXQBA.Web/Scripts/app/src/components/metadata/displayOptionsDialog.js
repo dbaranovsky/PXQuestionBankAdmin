@@ -18,8 +18,9 @@ var DisplayOptionsDialog = React.createClass({
         this.setState( {displayOptions: displayOptions} );
     },
 
-    onClickTooltipHandler: function() {
-        
+    onClickTooltipHandler: function(imgName) {
+        this.refs.modalDialog.refs.cancelButton.getDOMNode().click();
+        this.props.showDisplayImageDialogHandler(window.content.img.displayOptionsHelp[imgName]);
     },
  
 
@@ -33,8 +34,10 @@ var DisplayOptionsDialog = React.createClass({
         var renderBody = function(){
              return (<div>
                         <div>
-                         <div> <b> Question Picker (Question in Question Banks)</b> <ToltipElement tooltipText="Click for details" onClickHandler={self.onClickTooltipHandler}/></div>
-
+                         <div> <b> Question Picker (Question in Question Banks)</b>
+                                  <ToltipElement tooltipText="Click for details" onClickHandler={self.onClickTooltipHandler.bind(null, "questionsInQuestionBanksUrl")}/>
+                         </div>
+                       
                          <CheckBoxEditor value={self.state.displayOptions.displayInBanks} 
                             label="Display this field when listing questions" 
                             onChangeHandler={self.onChangeHandler.bind(null, "displayInBanks")}/>
@@ -48,19 +51,25 @@ var DisplayOptionsDialog = React.createClass({
                             label="Search result match this field" 
                             onChangeHandler={self.onChangeHandler.bind(null, "matchInBanks")}/>
 
-                         <div> <b> Question Picker (Question in Current Quiz)</b> <ToltipElement tooltipText="Click for details"/> </div>
+                         <div> <b> Question Picker (Question in Current Quiz)</b>
+                                  <ToltipElement tooltipText="Click for details" onClickHandler={self.onClickTooltipHandler.bind(null, "questionsInCurrentQuizUrl")}/>
+                         </div>
 
                          <CheckBoxEditor value={self.state.displayOptions.displayInCurrentQuiz} 
                             label="Display this field when listing questions" 
                             onChangeHandler={self.onChangeHandler.bind(null, "displayInCurrentQuiz")}/>
 
-                         <div> <b> Quiz Instractor View</b> <ToltipElement tooltipText="Click for details"/> </div>
+                         <div> <b> Quiz Instractor View</b>
+                                  <ToltipElement tooltipText="Click for details" onClickHandler={self.onClickTooltipHandler.bind(null, "quizInstructorViewUrl")}/> 
+                         </div>
                          
                          <CheckBoxEditor value={self.state.displayOptions.displayInInstructorQuiz} 
                             label="Display this field when listing questions" 
                             onChangeHandler={self.onChangeHandler.bind(null, "displayInInstructorQuiz")}/>
 
-                         <div> <b> Recourse Panel</b> <ToltipElement tooltipText="Click for details"/> </div>
+                         <div> <b> Recourse Panel</b>
+                                  <ToltipElement tooltipText="Click for details" onClickHandler={self.onClickTooltipHandler.bind(null, "resourcePanelUrl")}/> 
+                         </div>
 
                          <CheckBoxEditor value={self.state.displayOptions.displayInResources}
                              label="Display this field when listing questions" 
@@ -77,14 +86,15 @@ var DisplayOptionsDialog = React.createClass({
                          
                         </div>
                          <div className="modal-footer clearfix">
-                                 <button type="button" className="btn btn-default" data-dismiss="modal" onClick={self.props.closeDialogHandler}>Cancel</button>
+                                 <button ref="cancelButton" type="button" className="btn btn-default" data-dismiss="modal" onClick={self.props.closeDialogHandler}>Cancel</button>
                                  <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={self.editInternalFieldHandler}>Save</button>
-                            </div>
+                         </div>
                     </div>
             );
         };
 
-        return (<ModalDialog showOnCreate={true}
+        return (<ModalDialog ref="modalDialog"
+                             showOnCreate={true}
                              renderHeaderText={renderHeaderText} 
                              renderBody={renderBody} 
                              closeDialogHandler = {this.props.closeDialogHandler}

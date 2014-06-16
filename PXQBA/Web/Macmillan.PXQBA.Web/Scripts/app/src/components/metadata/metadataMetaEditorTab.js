@@ -9,8 +9,10 @@ var MetadataMetaEditorTab = React.createClass({
           showInternalFieldDialog: false,
           showAvailibleValuesDialog: false,
           showDisplayOptionsDialog: false,
+          showDisplayImageDialog: false,
           indexRowForDialog: -1,
           valueForDialog: "",
+          imgUrl:""
         };
     },
 
@@ -44,6 +46,13 @@ var MetadataMetaEditorTab = React.createClass({
     this.setState({showDisplayOptionsDialog: false});
   },
 
+  closeDisplayImageDialogHandler: function() {
+     this.setState({
+        showDisplayImageDialog: false,
+        showDisplayOptionsDialog: true
+        });
+  },
+
 	showInternalFieldDialogHandler: function(index, value) {
 		this.setState({
 		   	showInternalFieldDialog: true,
@@ -66,6 +75,15 @@ var MetadataMetaEditorTab = React.createClass({
           showDisplayOptionsDialog: true,
           indexRowForDialog: index,
           valueForDialog: value,
+      });
+  },
+
+
+  showDisplayImageDialog: function(imgUrl) {
+    this.setState({
+        showDisplayOptionsDialog: false,
+        showDisplayImageDialog: true,
+        imgUrl: imgUrl,
       });
   },
 
@@ -100,10 +118,25 @@ var MetadataMetaEditorTab = React.createClass({
                                   value={this.state.valueForDialog} 
                                   itemIndex={this.state.indexRowForDialog}
                                   updateHandler={this.props.metadataFieldsHandlers.updateHandler}
+                                  showDisplayImageDialogHandler={this.showDisplayImageDialog}
                                    />);
     }
+
+    return null;
   },
 
+  renderDisplayImageDialog: function() {
+    if(this.state.showDisplayImageDialog) {
+        return (<DisplayImageDialog closeDialogHandler={this.closeDisplayImageDialogHandler} 
+                                    title="The fields you select will be displayed here:"
+                                    imageUrl={this.state.imgUrl}
+          />);
+    }
+
+    return null;
+  },
+
+ 
   render: function() {
        return (
        		<div>
@@ -111,6 +144,7 @@ var MetadataMetaEditorTab = React.createClass({
                {this.renderInternalFieldDialog()}
                {this.renderAvailibleValuesDialog()}
                {this.renderDisplayOptionsDialog()}
+               {this.renderDisplayImageDialog()}
              </div>
                <div> 
                		<table className="table table metadata-table">

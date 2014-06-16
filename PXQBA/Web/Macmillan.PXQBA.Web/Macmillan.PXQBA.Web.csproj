@@ -186,6 +186,10 @@
     <Content Include="Content\img\chosen-sprite%402x.png" />
     <Content Include="Content\img\chosen-sprite.png" />
     <Content Include="Content\chosen.css" />
+    <Content Include="Content\img\displayOptionsHelp\Screenshot_LaunchPad_Question Picker %28Questions in Current Quiz%29.png" />
+    <Content Include="Content\img\displayOptionsHelp\Screenshot_LaunchPad_Question Picker %28Questions in Question Banks%29.png" />
+    <Content Include="Content\img\displayOptionsHelp\Screenshot_LaunchPad_Quiz Instructor View.png" />
+    <Content Include="Content\img\displayOptionsHelp\Screenshot_LaunchPad_Resource_Panel.png" />
     <Content Include="Content\img\shared-from.png" />
     <Content Include="Content\img\shared-to.png" />
     <Content Include="Content\img\spinning.gif" />
@@ -213,6 +217,7 @@
     <Content Include="Scripts\app\async\asyncManager.js" />
     <Content Include="Scripts\app\async\notificationManager.js" />
     <Content Include="Scripts\app\components\common\checkBoxEditor.js" />
+    <Content Include="Scripts\app\components\common\displayImageDialog.js" />
     <Content Include="Scripts\app\components\common\expandButton.js" />
     <Content Include="Scripts\app\components\common\loader.js" />
     <Content Include="Scripts\app\components\common\modalDialog.js" />
@@ -299,6 +304,7 @@
     <Content Include="Scripts\app\routes\router.js" />
     <Content Include="Scripts\app\routes\routeManager.js" />
     <Content Include="Scripts\app\src\components\common\checkBoxEditor.js" />
+    <Content Include="Scripts\app\src\components\common\displayImageDialog.js" />
     <Content Include="Scripts\app\src\components\common\expandButton.js" />
     <Content Include="Scripts\app\src\components\common\loader.js" />
     <Content Include="Scripts\app\src\components\common\modalDialog.js" />
