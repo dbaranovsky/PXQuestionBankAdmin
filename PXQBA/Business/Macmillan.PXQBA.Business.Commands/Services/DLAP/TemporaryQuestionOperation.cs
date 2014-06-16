@@ -51,7 +51,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 GetTemporaryQuestionId = GetTemporaryQuestionIdForVersion;
                 GetTemporaryQuizId = GetTemporaryQuizIdForVersion;
             }
-            var questionToCopy = CopyQuestionToCourse(sourceProductCourseId, questionIdToCopy, temporaryCourseId, GetTemporaryQuestionId(), version);
+            var questionToCopy = CopyQuestionToCourse(sourceProductCourseId, questionIdToCopy, temporaryCourseId, GetTemporaryQuestionId(), version, true);
             AddQuestionToTemporaryQuiz(questionToCopy);
             var question = Mapper.Map<Models.Question>(questionToCopy);
             question.QuizId = GetTemporaryQuizId();
@@ -65,7 +65,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return Mapper.Map<Models.Question>(question);
         }
 
-        private Question CopyQuestionToCourse(string sourceProductCourseId, string sourceQuestionId, string destinationProductCourseId, string destinationQuestionId,string version = null)
+        private Question CopyQuestionToCourse(string sourceProductCourseId, string sourceQuestionId, string destinationProductCourseId, string destinationQuestionId,string version = null, bool resetVersion = false)
         {
             var questionToCopy = questionCommands.GetAgilixQuestion(sourceProductCourseId, sourceQuestionId, version);
             if (questionToCopy == null)
@@ -74,6 +74,10 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             }
             questionToCopy.EntityId = destinationProductCourseId;
             questionToCopy.Id = destinationQuestionId;
+            if (resetVersion)
+            {
+                questionToCopy.QuestionVersion = "0";
+            }
             questionCommands.ExecutePutQuestion(questionToCopy);
             return questionToCopy;
         }
