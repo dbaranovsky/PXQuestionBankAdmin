@@ -180,6 +180,8 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<MetadataConfigViewModel, Course>()
                 .ForMember(dest => dest.ProductCourseId, opt => opt.MapFrom(src => src.CourseId))
                 .ForMember(dest => dest.FieldDescriptors, opt => opt.MapFrom(src => modelProfileService.GetCourseFieldDescriptors(src)));
+
+            Mapper.CreateMap<CourseMetadataFieldValue, QuestionCardDataValue>();
         }
     }
 

@@ -12,15 +12,19 @@ namespace Macmillan.PXQBA.Business.Services
     {
         private readonly IProductCourseOperation productCourseOperation;
 
-        public QuestionMetadataService(IProductCourseOperation productCourseOperation)
+        private readonly IKeywordOperation keywordOperation;
+        public QuestionMetadataService(IProductCourseOperation productCourseOperation, IKeywordOperation keywordOperation)
         {
             this.productCourseOperation = productCourseOperation;
+            this.keywordOperation = keywordOperation;
         }
 
         public IList<QuestionMetaField> GetAvailableFields(Course course)
         {
             var availableFields = course.FieldDescriptors.Select(Mapper.Map<QuestionMetaField>).ToList();
- 
+
+            AddManuallyEnteredKeywords(course, availableFields);
+            
             var customFields = new List<QuestionMetaField>
             {
                 new QuestionMetaField()
@@ -102,6 +106,20 @@ namespace Macmillan.PXQBA.Business.Services
             }
             
             return availableFields;
+        }
+
+        private void AddManuallyEnteredKeywords(Course course, IEnumerable<QuestionMetaField> availableFields)
+        {
+            foreach (var questionMetaField in availableFields.Where(f => f.TypeDescriptor.Type == MetadataFieldType.Keywords))
+            {
+                var courseField = course.FieldDescriptors.FirstOrDefault(f => f.Name == questionMetaField.Name);
+                if (courseField != null)
+                {
+                    var predefinedValues = courseField.CourseMetadataFieldValues.Select(v => v.Text);
+                    var manuallyEnteredValues = keywordOperation.GetKeywordList(course.ProductCourseId, questionMetaField.Name).Where(v => !predefinedValues.Contains(v));
+                    questionMetaField.TypeDescriptor.AvailableChoice.AddRange(manuallyEnteredValues.Select(v => new AvailableChoiceItem(v)));
+                }
+            } 
         }
 
         public IList<QuestionMetaField> GetDataForFields(Course course, IEnumerable<string> fieldsNames)

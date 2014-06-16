@@ -19,12 +19,14 @@ namespace Macmillan.PXQBA.Business.Services
         private readonly IQuestionCommands questionCommands;
         private readonly ITemporaryQuestionOperation temporaryQuestionOperation;
         private readonly IProductCourseManagementService productCourseManagementService;
+        private readonly IKeywordOperation keywordOperation;
 
-        public QuestionManagementService(IQuestionCommands questionCommands, ITemporaryQuestionOperation temporaryQuestionOperation, IProductCourseManagementService productCourseManagementService)
+        public QuestionManagementService(IQuestionCommands questionCommands, ITemporaryQuestionOperation temporaryQuestionOperation, IProductCourseManagementService productCourseManagementService, IKeywordOperation keywordOperation)
         {
             this.questionCommands = questionCommands;
             this.temporaryQuestionOperation = temporaryQuestionOperation;
             this.productCourseManagementService = productCourseManagementService;
+            this.keywordOperation = keywordOperation;
         }
 
         public PagedCollection<Question> GetQuestionList(Course course, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
@@ -84,6 +86,7 @@ namespace Macmillan.PXQBA.Business.Services
             {
                 questionCommands.UpdateQuestionInTempQuiz(temporaryQuestion);
                 var question = temporaryQuestionOperation.CopyQuestionToSourceCourse(course.QuestionRepositoryCourseId, sourceQuestionId);
+                UpdateManuallyAddedKeywords(course, question.ProductCourseSections.FirstOrDefault(s => s.ProductCourseId == course.ProductCourseId));
                 questionCommands.ExecuteSolrUpdateTask();
                 return question;
             }
@@ -97,6 +100,28 @@ namespace Macmillan.PXQBA.Business.Services
             
         }
 
+        private void UpdateManuallyAddedKeywords(Course course, QuestionMetadataSection section)
+        {
+            if (section != null)
+            {
+                var keywordFields = course.FieldDescriptors.Where(f => f.Type == MetadataFieldType.Keywords);
+
+                foreach (
+                    var dynamicField in
+                        section.DynamicValues.Where(v => keywordFields.Select(k => k.Name).Contains(v.Key)))
+                {
+                    var courseKeywordField = keywordFields.FirstOrDefault(k => k.Name == dynamicField.Key);
+                    if (courseKeywordField != null)
+                    {
+                        var manuallyAddedValues =
+                            dynamicField.Value.Where(
+                                v => !courseKeywordField.CourseMetadataFieldValues.Select(f => f.Text).Contains(v));
+                        keywordOperation.AddKeywords(course.ProductCourseId, dynamicField.Key, manuallyAddedValues);
+                    }
+                }
+            }
+        }
+
         public bool UpdateQuestionField(Course course, string questionId, string fieldName, string fieldValue)
         {
             return questionCommands.UpdateQuestionField(course.ProductCourseId, course.QuestionRepositoryCourseId, questionId, fieldName, fieldValue);
@@ -104,6 +129,14 @@ namespace Macmillan.PXQBA.Business.Services
 
         public bool UpdateSharedQuestionField(Course course, string questionId, string fieldName, IEnumerable<string> fieldValues)
         {
+            var question = questionCommands.GetQuestion(course.QuestionRepositoryCourseId, questionId);
+            var questionParentCourse = course;
+            var parentCourseSection = question.ProductCourseSections.FirstOrDefault(s => string.IsNullOrEmpty(s.ParentProductCourseId));
+            if (parentCourseSection != null)
+            {
+                questionParentCourse = productCourseManagementService.GetProductCourse(parentCourseSection.ProductCourseId);
+            }
+            UpdateManuallyAddedKeywords(questionParentCourse, question.DefaultSection);
             return questionCommands.UpdateSharedQuestionField(course.QuestionRepositoryCourseId, questionId, fieldName, fieldValues);
         }
 

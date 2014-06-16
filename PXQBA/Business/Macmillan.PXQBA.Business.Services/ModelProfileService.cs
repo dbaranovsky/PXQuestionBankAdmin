@@ -310,6 +310,10 @@ namespace Macmillan.PXQBA.Business.Services
             {
                 return MetadataFieldType.MultilineText;
             }
+            if (type == "keywords")
+            {
+                return MetadataFieldType.Keywords;
+            }
 
             return MetadataFieldType.Text;
         }
@@ -327,6 +331,10 @@ namespace Macmillan.PXQBA.Business.Services
             if (type == MetadataFieldType.MultilineText)
             {
                 return "multi-line";
+            }
+            if (type == MetadataFieldType.Keywords)
+            {
+                return "keywords";
             }
             return "text";
         }
