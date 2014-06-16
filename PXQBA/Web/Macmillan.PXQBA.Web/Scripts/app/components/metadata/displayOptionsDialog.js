@@ -5,7 +5,6 @@
 var DisplayOptionsDialog = React.createClass({displayName: 'DisplayOptionsDialog',
 
     getInitialState: function() {
-        debugger;
         var displayOptions =  this.props.value;
         if(displayOptions==null) {
              displayOptions = {
