@@ -34,6 +34,10 @@ var TitleSpecificMetadataField = React.createClass({displayName: 'TitleSpecificM
     this.props.showAvailibleValuesDialog(this.props.index, this.props.data.valuesOptions, this.props.data.fieldName);
   },
 
+  openDisplayOptionsDialog: function() {
+    this.props.showDisplayOptionsDialog(this.props.index, this.props.data.displayOptions);
+  },
+
   renderAvailibleValuesButton: function() {
     var fieldType = this.props.data.fieldType;
      if((fieldType==window.enums.metadataFieldType.text)|| 
@@ -42,6 +46,10 @@ var TitleSpecificMetadataField = React.createClass({displayName: 'TitleSpecificM
       return null;
      }
      return (React.DOM.button( {type:"button", className:"btn btn-default",  onClick:this.openAvailibleValuesDialog} , "Values..."));
+  },
+
+  renderDisplayOptionsButton: function() {
+     return (React.DOM.button( {type:"button", className:"btn btn-default",  onClick:this.openDisplayOptionsDialog} , "Edit..."));
   },
 
  	getInternalName: function(name) {
@@ -78,7 +86,7 @@ var TitleSpecificMetadataField = React.createClass({displayName: 'TitleSpecificM
                        currentValues:  this.getCurrentTypeValues()} )
                		),
                		React.DOM.td(null, this.renderAvailibleValuesButton()),
-               		React.DOM.td(null,  " ..."),
+               		React.DOM.td(null,  " ", this.renderDisplayOptionsButton()),
                		React.DOM.td(null,    
                			 React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.deleteHandler, 
                		 				 'data-toggle':"tooltip",

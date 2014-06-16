@@ -212,6 +212,7 @@
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\app\async\asyncManager.js" />
     <Content Include="Scripts\app\async\notificationManager.js" />
+    <Content Include="Scripts\app\components\common\checkBoxEditor.js" />
     <Content Include="Scripts\app\components\common\expandButton.js" />
     <Content Include="Scripts\app\components\common\loader.js" />
     <Content Include="Scripts\app\components\common\modalDialog.js" />
@@ -222,6 +223,7 @@
     <Content Include="Scripts\app\components\common\textEditor.js" />
     <Content Include="Scripts\app\components\common\tooltipElement.js" />
     <Content Include="Scripts\app\components\metadata\availibleValuesDialog.js" />
+    <Content Include="Scripts\app\components\metadata\displayOptionsDialog.js" />
     <Content Include="Scripts\app\components\metadata\internalFieldDialog.js" />
     <Content Include="Scripts\app\components\metadata\metadataCfgRoot.js" />
     <Content Include="Scripts\app\components\metadata\metadataChapterEditorTab.js" />
@@ -296,6 +298,7 @@
     <Content Include="Scripts\app\routes\routeItem.js" />
     <Content Include="Scripts\app\routes\router.js" />
     <Content Include="Scripts\app\routes\routeManager.js" />
+    <Content Include="Scripts\app\src\components\common\checkBoxEditor.js" />
     <Content Include="Scripts\app\src\components\common\expandButton.js" />
     <Content Include="Scripts\app\src\components\common\loader.js" />
     <Content Include="Scripts\app\src\components\common\modalDialog.js" />
@@ -306,6 +309,7 @@
     <Content Include="Scripts\app\src\components\common\textEditor.js" />
     <Content Include="Scripts\app\src\components\common\tooltipElement.js" />
     <Content Include="Scripts\app\src\components\metadata\availibleValuesDialog.js" />
+    <Content Include="Scripts\app\src\components\metadata\displayOptionsDialog.js" />
     <Content Include="Scripts\app\src\components\metadata\internalFieldDialog.js" />
     <Content Include="Scripts\app\src\components\metadata\metadataCfgRoot.js" />
     <Content Include="Scripts\app\src\components\metadata\metadataChapterEditorTab.js" />

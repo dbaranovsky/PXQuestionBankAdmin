@@ -69,7 +69,7 @@ var AvailibleValuesDialog = React.createClass({displayName: 'AvailibleValuesDial
                              renderHeaderText:renderHeaderText, 
                              renderBody:renderBody, 
                              closeDialogHandler:  this.props.closeDialogHandler,
-                             dialogId:"internalFieldDialog"}));
+                             dialogId:"availibleValuesDialog"}));
     }
 });
 

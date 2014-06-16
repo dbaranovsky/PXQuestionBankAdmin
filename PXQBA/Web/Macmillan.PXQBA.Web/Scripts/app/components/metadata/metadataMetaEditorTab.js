@@ -8,6 +8,7 @@ var MetadataMetaEditorTab = React.createClass({displayName: 'MetadataMetaEditorT
         return { 
           showInternalFieldDialog: false,
           showAvailibleValuesDialog: false,
+          showDisplayOptionsDialog: false,
           indexRowForDialog: -1,
           valueForDialog: "",
         };
@@ -24,7 +25,8 @@ var MetadataMetaEditorTab = React.createClass({displayName: 'MetadataMetaEditorT
 						 deleteHandler:this.props.metadataFieldsHandlers.deleteHandler,
 						 updateHandler:this.props.metadataFieldsHandlers.updateHandler,
              showInternalFieldDialogHandler:this.showInternalFieldDialogHandler,
-             showAvailibleValuesDialog:this.showAvailibleValuesDialog}
+             showAvailibleValuesDialog:this.showAvailibleValuesDialog,
+             showDisplayOptionsDialog:this.showDisplayOptionsDialog}
 						 ));
 		}
 		return fields;
@@ -38,6 +40,9 @@ var MetadataMetaEditorTab = React.createClass({displayName: 'MetadataMetaEditorT
      this.setState({showAvailibleValuesDialog: false});
   },
 
+  closeDisplayOptionsDialogHandler: function() {
+    this.setState({showDisplayOptionsDialog: false});
+  },
 
 	showInternalFieldDialogHandler: function(index, value) {
 		this.setState({
@@ -49,10 +54,18 @@ var MetadataMetaEditorTab = React.createClass({displayName: 'MetadataMetaEditorT
 
   showAvailibleValuesDialog: function(index, value, fieldNameCaption) {
         this.setState({
-        showAvailibleValuesDialog: true,
-        indexRowForDialog: index,
-        valueForDialog: value,
-        fieldNameCaption: fieldNameCaption
+          showAvailibleValuesDialog: true,
+          indexRowForDialog: index,
+          valueForDialog: value,
+          fieldNameCaption: fieldNameCaption
+      });
+  },
+
+  showDisplayOptionsDialog: function(index, value) {
+        this.setState({
+          showDisplayOptionsDialog: true,
+          indexRowForDialog: index,
+          valueForDialog: value,
       });
   },
 
@@ -81,12 +94,23 @@ var MetadataMetaEditorTab = React.createClass({displayName: 'MetadataMetaEditorT
     return null;
   },
 
+  renderDisplayOptionsDialog: function() {
+    if(this.state.showDisplayOptionsDialog) {
+      return (DisplayOptionsDialog( {closeDialogHandler:this.closeDisplayOptionsDialogHandler, 
+                                  value:this.state.valueForDialog, 
+                                  itemIndex:this.state.indexRowForDialog,
+                                  updateHandler:this.props.metadataFieldsHandlers.updateHandler}
+                                   ));
+    }
+  },
+
   render: function() {
        return (
        		React.DOM.div(null, 
               React.DOM.div(null, 
                this.renderInternalFieldDialog(),
-               this.renderAvailibleValuesDialog()
+               this.renderAvailibleValuesDialog(),
+               this.renderDisplayOptionsDialog()
              ),
                React.DOM.div(null,  
                		React.DOM.table( {className:"table table metadata-table"}, 
