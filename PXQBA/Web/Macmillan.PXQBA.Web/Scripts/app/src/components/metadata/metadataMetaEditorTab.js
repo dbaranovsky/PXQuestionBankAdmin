@@ -8,8 +8,11 @@ var MetadataMetaEditorTab = React.createClass({
         return { 
           showInternalFieldDialog: false,
           showAvailibleValuesDialog: false,
+          showDisplayOptionsDialog: false,
+          showDisplayImageDialog: false,
           indexRowForDialog: -1,
           valueForDialog: "",
+          imgUrl:""
         };
     },
 
@@ -25,6 +28,7 @@ var MetadataMetaEditorTab = React.createClass({
 						 updateHandler={this.props.metadataFieldsHandlers.updateHandler}
              showInternalFieldDialogHandler={this.showInternalFieldDialogHandler}
              showAvailibleValuesDialog={this.showAvailibleValuesDialog}
+             showDisplayOptionsDialog={this.showDisplayOptionsDialog}
 						 />);
 		}
 		return fields;
@@ -38,6 +42,16 @@ var MetadataMetaEditorTab = React.createClass({
      this.setState({showAvailibleValuesDialog: false});
   },
 
+  closeDisplayOptionsDialogHandler: function() {
+    this.setState({showDisplayOptionsDialog: false});
+  },
+
+  closeDisplayImageDialogHandler: function() {
+     this.setState({
+        showDisplayImageDialog: false,
+        showDisplayOptionsDialog: true
+        });
+  },
 
 	showInternalFieldDialogHandler: function(index, value) {
 		this.setState({
@@ -49,10 +63,27 @@ var MetadataMetaEditorTab = React.createClass({
 
   showAvailibleValuesDialog: function(index, value, fieldNameCaption) {
         this.setState({
-        showAvailibleValuesDialog: true,
-        indexRowForDialog: index,
-        valueForDialog: value,
-        fieldNameCaption: fieldNameCaption
+          showAvailibleValuesDialog: true,
+          indexRowForDialog: index,
+          valueForDialog: value,
+          fieldNameCaption: fieldNameCaption
+      });
+  },
+
+  showDisplayOptionsDialog: function(index, value) {
+        this.setState({
+          showDisplayOptionsDialog: true,
+          indexRowForDialog: index,
+          valueForDialog: value,
+      });
+  },
+
+
+  showDisplayImageDialog: function(imgUrl) {
+    this.setState({
+        showDisplayOptionsDialog: false,
+        showDisplayImageDialog: true,
+        imgUrl: imgUrl,
       });
   },
 
@@ -81,12 +112,39 @@ var MetadataMetaEditorTab = React.createClass({
     return null;
   },
 
+  renderDisplayOptionsDialog: function() {
+    if(this.state.showDisplayOptionsDialog) {
+      return (<DisplayOptionsDialog closeDialogHandler={this.closeDisplayOptionsDialogHandler} 
+                                  value={this.state.valueForDialog} 
+                                  itemIndex={this.state.indexRowForDialog}
+                                  updateHandler={this.props.metadataFieldsHandlers.updateHandler}
+                                  showDisplayImageDialogHandler={this.showDisplayImageDialog}
+                                   />);
+    }
+
+    return null;
+  },
+
+  renderDisplayImageDialog: function() {
+    if(this.state.showDisplayImageDialog) {
+        return (<DisplayImageDialog closeDialogHandler={this.closeDisplayImageDialogHandler} 
+                                    title="The fields you select will be displayed here:"
+                                    imageUrl={this.state.imgUrl}
+          />);
+    }
+
+    return null;
+  },
+
+ 
   render: function() {
        return (
        		<div>
               <div>
                {this.renderInternalFieldDialog()}
                {this.renderAvailibleValuesDialog()}
+               {this.renderDisplayOptionsDialog()}
+               {this.renderDisplayImageDialog()}
              </div>
                <div> 
                		<table className="table table metadata-table">

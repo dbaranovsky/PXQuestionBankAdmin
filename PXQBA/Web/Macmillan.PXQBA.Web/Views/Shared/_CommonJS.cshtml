@@ -170,8 +170,21 @@
         consts.grid = {
             initialFieldSet: '@GridHelper.GetInitialFieldSet()',
         };
-
-
+        
+        window.content = {
+            img: {                
+                displayOptionsHelp: {
+                    questionsInCurrentQuizUrl:
+                        '@Url.Content("~/Content/img/displayOptionsHelp/Screenshot_LaunchPad_Question Picker (Questions in Current Quiz).png")',
+                    questionsInQuestionBanksUrl:
+                        '@Url.Content("~/Content/img/displayOptionsHelp/Screenshot_LaunchPad_Question Picker (Questions in Question Banks).png")',
+                    quizInstructorViewUrl:
+                        '@Url.Content("~/Content/img/displayOptionsHelp/Screenshot_LaunchPad_Quiz Instructor View.png")',
+                    resourcePanelUrl:
+                        '@Url.Content("~/Content/img/displayOptionsHelp/Screenshot_LaunchPad_Resource_Panel.png")',
+                },
+            },
+    };
     }
      )();
 </script>

@@ -34,6 +34,10 @@ var TitleSpecificMetadataField = React.createClass({
     this.props.showAvailibleValuesDialog(this.props.index, this.props.data.valuesOptions, this.props.data.fieldName);
   },
 
+  openDisplayOptionsDialog: function() {
+    this.props.showDisplayOptionsDialog(this.props.index, this.props.data.displayOptions);
+  },
+
   renderAvailibleValuesButton: function() {
     var fieldType = this.props.data.fieldType;
      if((fieldType==window.enums.metadataFieldType.text)|| 
@@ -42,6 +46,10 @@ var TitleSpecificMetadataField = React.createClass({
       return null;
      }
      return (<button type="button" className="btn btn-default"  onClick={this.openAvailibleValuesDialog} >Values...</button>);
+  },
+
+  renderDisplayOptionsButton: function() {
+     return (<button type="button" className="btn btn-default"  onClick={this.openDisplayOptionsDialog} >Edit...</button>);
   },
 
  	getInternalName: function(name) {
@@ -78,7 +86,7 @@ var TitleSpecificMetadataField = React.createClass({
                        currentValues = {this.getCurrentTypeValues()} />
                		</td>
                		<td>{this.renderAvailibleValuesButton()}</td>
-               		<td> ...</td>
+               		<td> {this.renderDisplayOptionsButton()}</td>
                		<td>   
                			 <button type="button" className="btn btn-default btn-sm" onClick={this.deleteHandler} 
                		 				 data-toggle="tooltip"

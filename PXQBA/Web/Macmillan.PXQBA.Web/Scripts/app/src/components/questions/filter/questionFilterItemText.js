@@ -35,7 +35,7 @@ var QuestionFilterItemText = React.createClass({
     },
 
     onCancelEventHandler: function() {
-      this.props.onChangeHandler([""]);  //<div className="filter-text-block">
+      this.props.onChangeHandler([""]);  
     },
 
     render: function() {
