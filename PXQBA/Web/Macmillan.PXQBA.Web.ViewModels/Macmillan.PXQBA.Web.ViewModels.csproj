@@ -78,6 +78,9 @@
     <Compile Include="TiteList\ChapterViewModel.cs" />
     <Compile Include="TiteList\TitleListDataResponse.cs" />
     <Compile Include="TiteList\TitleViewModel.cs" />
+    <Compile Include="User\CapabilityViewModel.cs" />
+    <Compile Include="User\CapabilityGroupViewModel.cs" />
+    <Compile Include="User\RoleViewModel.cs" />
     <Compile Include="User\UserNotificationViewModel.cs" />
     <Compile Include="Versions\DuplicateFromViewModel.cs" />
     <Compile Include="Versions\QuestionHistoryViewModel.cs" />

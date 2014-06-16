@@ -1106,3 +1106,62 @@ textarea.metadata-availible-values-editor {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
+
+
+/* Roles */
+
+
+.roles-table {
+    display: table;
+    font-size: 17px;
+    border-spacing:0 13px;
+}
+
+.role-cell {
+    display: table-cell;
+    border-bottom: 1px solid #c0c0c0;
+}
+
+.role-row {
+    display: table-row;
+    height: 50px;
+}
+
+.role-name {
+    font-weight: bold;
+    width: 200px;
+}
+
+.role-cell.capabilities {
+    
+    width: 200px;
+}
+
+.capabilities-link {
+     font-style: italic;
+     text-decoration: underline;
+     cursor: pointer;
+}
+
+.capabilities-link:hover {
+    text-decoration: none;
+}
+
+
+.role-row:last-child .role-cell{
+    border-bottom: none;  
+}
+
+.role-name-editor {
+    margin-bottom: 20px;
+}
+
+.capability-item {
+    margin-left: 10px;
+    margin-bottom: 3px; 
+}
+
+.capabilities-group {
+    margin-bottom: 3px;
+}

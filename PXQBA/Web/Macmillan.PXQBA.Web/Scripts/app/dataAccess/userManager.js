@@ -65,6 +65,97 @@ var userManager = (function() {
         });
     }
 
+    self.getRolesForCourse = function(courseId){
+
+        var request = {
+            courseId: courseId
+        };
+        
+        return $.ajax({
+            url: window.actions.userOperations.getRolesForCourseUrl,
+            data: JSON.stringify(request),
+            dataType: 'json',
+            type: 'POST',
+            contentType: 'application/json'
+        }).done(function (response) {
+            
+        }).error(function (httpRequest, textStatus, errorThrown) {
+            if (httpRequest.readyState == 0 || httpRequest.status == 0) {
+                return;  
+            }
+            self.showErrorPopup();
+        });
+    }
+
+     self.getNewRoleTemplate = function(){
+
+               
+        return $.ajax({
+            url: window.actions.userOperations.getNewRoleTemplateUrl,
+            dataType: 'json',
+            type: 'GET',
+            contentType: 'application/json'
+        }).done(function (response) {
+            
+        }).error(function (httpRequest, textStatus, errorThrown) {
+            if (httpRequest.readyState == 0 || httpRequest.status == 0) {
+                return;  
+            }
+            self.showErrorPopup();
+        });
+    }
+
+
+      self.saveRole = function(role, courseId){
+          var request = {
+            role: role,
+            courseId: courseId
+        };
+               
+        return $.ajax({
+            url: window.actions.userOperations.saveRoleUrl,
+             data: JSON.stringify(request),
+            dataType: 'json',
+            type: 'POST',
+            contentType: 'application/json'
+        }).done(function (response) {
+            self.showSuccessPopup("Role successfully created")
+        }).error(function (httpRequest, textStatus, errorThrown) {
+            if (httpRequest.readyState == 0 || httpRequest.status == 0) {
+                return;  
+            }
+            self.showErrorPopup();
+        });
+    }
+
+   self.showErrorPopup = function() {
+        var notifyOptions = {
+            message: { text: window.enums.messages.errorMessage },
+            type: 'danger',
+            fadeOut: { enabled: true, delay: 3000 }
+        };
+        $('.top-center').notify(notifyOptions).show();
+    };
+
+    self.showSuccessPopup = function(message){
+         var notifyOptions = {
+            message: { text: message },
+            type: 'success',
+            fadeOut: { enabled: true, delay: 3000 }
+        };
+        $('.top-center').notify(notifyOptions).show();
+    };
+
+    self.showWarningPopup = function (message) {
+        var notifyOptions = {
+            message: { text: message },
+            type: 'warning',
+            fadeOut: { enabled: true, delay: 3000 }
+        };
+        $('.top-center').notify(notifyOptions).show();
+    };
+
+
     self.resetNotifications();
 
     return self;

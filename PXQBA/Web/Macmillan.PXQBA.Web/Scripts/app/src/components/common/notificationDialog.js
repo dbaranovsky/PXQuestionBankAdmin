@@ -49,7 +49,7 @@ var NotificationDialog =React.createClass({
               };
         } else{
 
-            var renderFooterButtons = function(){
+             renderFooterButtons = function(){
                    return (<div className="modal-footer"> 
                              <button type="button" className="btn btn-primary" data-dismiss="modal"  onClick={self.proceedHandler}>Proceed</button>
                              <button type="button" className="btn btn-default" data-dismiss="modal" data-targer="notificationDialog">Cancel</button>
