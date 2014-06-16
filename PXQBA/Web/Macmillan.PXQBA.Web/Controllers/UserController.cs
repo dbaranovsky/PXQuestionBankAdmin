@@ -102,5 +102,144 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(new { isSuccess = true });
         }
        
+        public ActionResult GetUsers()
+        {
+
+            return JsonCamel(GetHardCodedUsers());
+        }
+
+        public ActionResult GetTitlesWithRolesForUser(string userId)
+        {
+            return JsonCamel(GetHardCodedTitlesAndRoles());
+        }
+
+
+        private IEnumerable<TitleAndRoleViewModel> GetHardCodedTitlesAndRoles()
+        {
+            return  new List<TitleAndRoleViewModel>
+                    {
+                        new TitleAndRoleViewModel
+                        {
+                            RoleName = "Author",
+                            Title = "Ancient Mythology"
+                        },
+
+                        new TitleAndRoleViewModel
+                        {
+                            RoleName = "Administrator",
+                            Title = "History of modern Culture"
+                        }
+                    };
+            
+        }
+
+        private IEnumerable<UserViewModel> GetHardCodedUsers()
+        {
+            return new List<UserViewModel>
+                   {
+                       new UserViewModel
+                       {
+                          Id = "1",
+                          AvailibleTitlesCount = 32,
+                          UserName = "John Smith"
+                       },
+                         new UserViewModel
+                       {
+                          Id = "2",
+                          AvailibleTitlesCount = 32,
+                          UserName = "John Doe"
+                       },
+
+                         new UserViewModel
+                       {
+                          Id = "3",
+                          AvailibleTitlesCount = 32,
+                          UserName = "Alex Murphy"
+                       },
+                   };
+        }
+
+        private IEnumerable<RoleViewModel> GetHardCodedRoles()
+        {
+            return new List<RoleViewModel>
+                   {
+                       new RoleViewModel
+                       {
+                           Id = 1,
+                           Name = "Admin",
+                           CapabilityGroups = GetHardCodedCapabilities()
+                       },
+                       new RoleViewModel
+                       {
+                           Id = 2,
+                           Name = "Super Author",
+                           CapabilityGroups = GetHardCodedCapabilities()
+                       }
+                   };
+        }
+
+        private IEnumerable<CapabilityGroupViewModel> GetHardCodedCapabilities()
+        {
+            return new List<CapabilityGroupViewModel>
+                   {
+                       new CapabilityGroupViewModel()
+                       {
+                           Id = 1,
+                           Name = "Roles",
+                           Capabilities = new List<CapabilityViewModel>()
+                                          {
+                                              new CapabilityViewModel()
+                                              {
+                                                  Id = 1,
+                                                  Name = "Read roles",
+                                                  IsActive = true
+                                              },
+
+                                              new CapabilityViewModel()
+                                              {
+                                                  Id = 2,
+                                                  Name = "Edit roles",
+                                                  IsActive = true
+                                              },
+
+                                              new CapabilityViewModel()
+                                              {
+                                                  Id = 3,
+                                                  Name = "Create roles",
+                                                  IsActive = true
+                                              },
+                                          }
+                       },
+
+                       new CapabilityGroupViewModel()
+                       {
+                           Id = 2,
+                           Name = "Questions",
+                           Capabilities = new List<CapabilityViewModel>()
+                                          {
+                                              new CapabilityViewModel()
+                                              {
+                                                  Id = 4,
+                                                  Name = "Set status in progress",
+                                                  IsActive = true
+                                              },
+
+                                              new CapabilityViewModel()
+                                              {
+                                                  Id = 5,
+                                                  Name = "Set status deleted",
+                                                  IsActive = false
+                                              },
+
+                                              new CapabilityViewModel()
+                                              {
+                                                  Id = 6,
+                                                  Name = "Set status availible to instructor",
+                                                  IsActive = false
+                                              },
+                                          }
+                       }
+                   };
+        }
     }
 }

@@ -150,6 +150,45 @@ var userManager = (function() {
         });
     }
 
+    self.getUsers = function(){
+
+        return $.ajax({
+            url: window.actions.userOperations.getUsersUrl,
+            dataType: 'json',
+            type: 'GET',
+            contentType: 'application/json'
+        }).done(function (response) {
+            
+        }).error(function (httpRequest, textStatus, errorThrown) {
+            if (httpRequest.readyState == 0 || httpRequest.status == 0) {
+                return;  
+            }
+            self.showErrorPopup();
+        });
+    }
+
+    self.getTitlesWithRolesForUser = function(userId){
+
+         var request = {
+            userId: userId
+        };
+
+        return $.ajax({
+            url: window.actions.userOperations.getTitlesWithRolesForUserUrl,
+            dataType: 'json',
+            data: JSON.stringify(request),
+            type: 'GET',
+            contentType: 'application/json'
+        }).done(function (response) {
+            
+        }).error(function (httpRequest, textStatus, errorThrown) {
+            if (httpRequest.readyState == 0 || httpRequest.status == 0) {
+                return;  
+            }
+            self.showErrorPopup();
+        });
+    }
+
    self.showErrorPopup = function() {
         var notifyOptions = {
             message: { text: window.enums.messages.errorMessage },

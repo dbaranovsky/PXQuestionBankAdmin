@@ -9,7 +9,9 @@ var UserRoot = React.createClass({
                  loading: false,
                  currentCourse: null,
                  roles: null,
-                 showAddRoleDialog: false
+                 showAddRoleDialog: false,
+                 usersLoading: true,
+                 users: []
                });
     },
 
@@ -21,6 +23,20 @@ var UserRoot = React.createClass({
    
    },
     
+
+
+    componentDidMount: function(){
+      var self = this;
+      userManager.getNewRoleTemplate().done(function(template){
+          self.setState({newRoleTemplate: template});
+      });
+
+     userManager.getUsers().done(function(users){
+          self.setState({users: users, usersLoading: false});
+     }).error(function(e){self.setState({usersLoading: false});});
+
+    },
+
 
     setRoles: function(data){
       this.setState({loading: false, roles: data});
@@ -81,6 +97,23 @@ var UserRoot = React.createClass({
    doneSaving: function(){
           userManager.getRolesForCourse(this.state.currentCourse).done(this.setRoles).error(function(e){self.setState({loading: false});});
    },
+
+   showAvailibleTitlesHandler: function(userId){
+      alert(userId);
+      this.setState({showAvailibleTitles: true, userId: userId});
+   },
+
+   renderUsers: function(){
+        if(this.state.usersLoading){
+          return (<div className="waiting"></div>);
+        }
+
+        if(this.state.users == null || this.state.users.length == 0){
+          return(<b>No users loaded</b>);
+        }
+        return (<UserBox  users={this.state.users} showAvailibleTitlesHandler={this.showAvailibleTitlesHandler} />);
+   },
+
    renderTabs: function() {
     
     return(   <div>
@@ -95,7 +128,7 @@ var UserRoot = React.createClass({
 
                <div className="tab-content">
                     <div className="tab-pane active" id="users-tab">
-                         TBD
+                         {this.renderUsers()}
                     </div>
                     <div className="tab-pane" id="roles-tab">
                          <MetadataCourseSelector selectCourseHandler={this.selectCourseHandler} 
@@ -123,6 +156,56 @@ var UserRoot = React.createClass({
     }
 });
 
+
+var UserBox = React.createClass({
+
+
+    renderUsers: function(){
+          var self = this;
+         var rows = [];
+         rows = this.props.users.map(function (user, i) {
+        
+            return (<UserRow user={user} showAvailibleTitlesHandler={self.props.showAvailibleTitlesHandler}/>);
+          });
+
+     return rows;
+    },
+    render: function() {
+       return (
+                <div className="roles-table"> 
+
+                  {this.renderUsers()}
+
+                </div>
+            );
+    }
+});
+
+var UserRow = React.createClass({
+
+    showAvailibleTitlesHandler: function(){
+        this.props.showAvailibleTitlesHandler(this.props.user.id);
+    },
+    render: function() {
+       return (
+                <div className="role-row"> 
+
+                 <div className="role-cell role-name">{this.props.user.userName}</div>
+                 <div className="role-cell capabilities "> <span className="capabilities-link" onClick={this.showAvailibleTitlesHandler}>{this.props.user.availibleTitlesCount} {this.props.user.availibleTitlesCount == 1? "title" : "titles"}</span></div>
+                 <div className="role-cell menu">
+
+                    <div className="menu-container-main version-history">
+                          <button type="button" className="btn btn-default btn-sm"  data-toggle="tooltip"  title="Edit Role" onClick={this.editRole}><span className="glyphicon glyphicon-pencil"></span> </button>
+                         
+                       </div>
+
+                 </div>
+                </div>
+            );
+     }
+
+});
+
 var RoleDialog = React.createClass({
 
   getInitialState: function(){
@@ -136,7 +219,6 @@ var RoleDialog = React.createClass({
          $(this.getDOMNode()).modal("hide");
          this.props.closeAddRoleDialog();
     },
-
   componentDidMount: function(){
     var self=this;
       userManager.getRolesCapabilities(this.props.role == undefined? "" : this.props.role.id, this.props.courseId).done(this.setRole).error(function(e){self.setState({loading: false})});

@@ -9,7 +9,9 @@ var UserRoot = React.createClass({displayName: 'UserRoot',
                  loading: false,
                  currentCourse: null,
                  roles: null,
-                 showAddRoleDialog: false
+                 showAddRoleDialog: false,
+                 usersLoading: true,
+                 users: []
                });
     },
 
@@ -21,6 +23,19 @@ var UserRoot = React.createClass({displayName: 'UserRoot',
    
    },
     
+
+    componentDidMount: function(){
+      var self = this;
+      userManager.getNewRoleTemplate().done(function(template){
+          self.setState({newRoleTemplate: template});
+      });
+
+     userManager.getUsers().done(function(users){
+          self.setState({users: users, usersLoading: false});
+     }).error(function(e){self.setState({usersLoading: false});});
+
+    },
+
 
     setRoles: function(data){
       this.setState({loading: false, roles: data});
@@ -81,6 +96,23 @@ var UserRoot = React.createClass({displayName: 'UserRoot',
    doneSaving: function(){
           userManager.getRolesForCourse(this.state.currentCourse).done(this.setRoles).error(function(e){self.setState({loading: false});});
    },
+
+   showAvailibleTitlesHandler: function(userId){
+      alert(userId);
+      this.setState({showAvailibleTitles: true, userId: userId});
+   },
+
+   renderUsers: function(){
+        if(this.state.usersLoading){
+          return (React.DOM.div( {className:"waiting"}));
+        }
+
+        if(this.state.users == null || this.state.users.length == 0){
+          return(React.DOM.b(null, "No users loaded"));
+        }
+        return (UserBox(  {users:this.state.users, showAvailibleTitlesHandler:this.showAvailibleTitlesHandler} ));
+   },
+
    renderTabs: function() {
     
     return(   React.DOM.div(null, 
@@ -95,7 +127,7 @@ var UserRoot = React.createClass({displayName: 'UserRoot',
 
                React.DOM.div( {className:"tab-content"}, 
                     React.DOM.div( {className:"tab-pane active", id:"users-tab"}, 
-                         "TBD"
+                         this.renderUsers()
                     ),
                     React.DOM.div( {className:"tab-pane", id:"roles-tab"}, 
                          MetadataCourseSelector( {selectCourseHandler:this.selectCourseHandler, 
@@ -121,6 +153,56 @@ var UserRoot = React.createClass({displayName: 'UserRoot',
                 )
             );
     }
+});
+
+
+var UserBox = React.createClass({displayName: 'UserBox',
+
+
+    renderUsers: function(){
+          var self = this;
+         var rows = [];
+         rows = this.props.users.map(function (user, i) {
+        
+            return (UserRow( {user:user, showAvailibleTitlesHandler:self.props.showAvailibleTitlesHandler}));
+          });
+
+     return rows;
+    },
+    render: function() {
+       return (
+                React.DOM.div( {className:"roles-table"},  
+
+                  this.renderUsers()
+
+                )
+            );
+    }
+});
+
+var UserRow = React.createClass({displayName: 'UserRow',
+
+    showAvailibleTitlesHandler: function(){
+        this.props.showAvailibleTitlesHandler(this.props.user.id);
+    },
+    render: function() {
+       return (
+                React.DOM.div( {className:"role-row"},  
+
+                 React.DOM.div( {className:"role-cell role-name"}, this.props.user.userName),
+                 React.DOM.div( {className:"role-cell capabilities " },  " ", React.DOM.span( {className:"capabilities-link", onClick:this.showAvailibleTitlesHandler}, this.props.user.availibleTitlesCount, " ", this.props.user.availibleTitlesCount == 1? "title" : "titles")),
+                 React.DOM.div( {className:"role-cell menu"}, 
+
+                    React.DOM.div( {className:"menu-container-main version-history"}, 
+                          React.DOM.button( {type:"button", className:"btn btn-default btn-sm",  'data-toggle':"tooltip",  title:"Edit Role", onClick:this.editRole}, React.DOM.span( {className:"glyphicon glyphicon-pencil"}), " " )
+                         
+                       )
+
+                 )
+                )
+            );
+     }
+
 });
 
 var RoleDialog = React.createClass({displayName: 'RoleDialog',
