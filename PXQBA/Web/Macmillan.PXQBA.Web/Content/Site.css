@@ -1111,6 +1111,13 @@ textarea.metadata-availible-values-editor {
     width: 1000px;
 }
 
+.tooltip-img {
+    cursor: pointer;
+}
+
+.metadata-dispplay-options-help {
+    padding: 0 0 0 5px;
+}
 
 
 /* Roles */

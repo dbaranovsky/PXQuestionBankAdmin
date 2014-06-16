@@ -5,7 +5,23 @@
 var DisplayOptionsDialog = React.createClass({
 
     getInitialState: function() {
-        return { displayOptions: this.props.value };
+        debugger;
+        var displayOptions =  this.props.value;
+        if(displayOptions==null) {
+             displayOptions = {
+                displayInBanks: false,
+                displayInCurrentQuiz: false,
+                displayInInstructorQuiz: false,
+                displayInResources: false,
+                filterable: false,
+                matchInBanks: false,
+                matchInResources: false,
+                showFilterInBanks: false,
+                showFilterInResources: false
+             };
+        }
+        return {displayOptions: displayOptions}
+        
     },
 
     editInternalFieldHandler: function() {
@@ -35,7 +51,11 @@ var DisplayOptionsDialog = React.createClass({
              return (<div>
                         <div>
                          <div> <b> Question Picker (Question in Question Banks)</b>
-                                  <ToltipElement tooltipText="Click for details" onClickHandler={self.onClickTooltipHandler.bind(null, "questionsInQuestionBanksUrl")}/>
+                                <span className="metadata-dispplay-options-help">
+                                  <ToltipElement classNameProp="tooltip-img" 
+                                                 tooltipText="Click for details" 
+                                                 onClickHandler={self.onClickTooltipHandler.bind(null, "questionsInQuestionBanksUrl")}/>
+                                </span>
                          </div>
                        
                          <CheckBoxEditor value={self.state.displayOptions.displayInBanks} 
@@ -52,7 +72,11 @@ var DisplayOptionsDialog = React.createClass({
                             onChangeHandler={self.onChangeHandler.bind(null, "matchInBanks")}/>
 
                          <div> <b> Question Picker (Question in Current Quiz)</b>
-                                  <ToltipElement tooltipText="Click for details" onClickHandler={self.onClickTooltipHandler.bind(null, "questionsInCurrentQuizUrl")}/>
+                                <span className="metadata-dispplay-options-help">
+                                  <ToltipElement classNameProp="tooltip-img" 
+                                                 tooltipText="Click for details" 
+                                                 onClickHandler={self.onClickTooltipHandler.bind(null, "questionsInCurrentQuizUrl")}/>
+                                </span>
                          </div>
 
                          <CheckBoxEditor value={self.state.displayOptions.displayInCurrentQuiz} 
@@ -60,7 +84,11 @@ var DisplayOptionsDialog = React.createClass({
                             onChangeHandler={self.onChangeHandler.bind(null, "displayInCurrentQuiz")}/>
 
                          <div> <b> Quiz Instractor View</b>
-                                  <ToltipElement tooltipText="Click for details" onClickHandler={self.onClickTooltipHandler.bind(null, "quizInstructorViewUrl")}/> 
+                                <span className="metadata-dispplay-options-help">
+                                  <ToltipElement classNameProp="tooltip-img" 
+                                                 tooltipText="Click for details" 
+                                                 onClickHandler={self.onClickTooltipHandler.bind(null, "quizInstructorViewUrl")}/> 
+                                </span>
                          </div>
                          
                          <CheckBoxEditor value={self.state.displayOptions.displayInInstructorQuiz} 
@@ -68,7 +96,11 @@ var DisplayOptionsDialog = React.createClass({
                             onChangeHandler={self.onChangeHandler.bind(null, "displayInInstructorQuiz")}/>
 
                          <div> <b> Recourse Panel</b>
-                                  <ToltipElement tooltipText="Click for details" onClickHandler={self.onClickTooltipHandler.bind(null, "resourcePanelUrl")}/> 
+                                <span className="metadata-dispplay-options-help">
+                                  <ToltipElement classNameProp="tooltip-img" 
+                                                 tooltipText="Click for details"
+                                                 onClickHandler={self.onClickTooltipHandler.bind(null, "resourcePanelUrl")}/> 
+                                </span>
                          </div>
 
                          <CheckBoxEditor value={self.state.displayOptions.displayInResources}

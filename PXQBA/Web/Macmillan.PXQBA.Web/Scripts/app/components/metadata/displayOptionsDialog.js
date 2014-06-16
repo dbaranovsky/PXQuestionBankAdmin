@@ -5,7 +5,23 @@
 var DisplayOptionsDialog = React.createClass({displayName: 'DisplayOptionsDialog',
 
     getInitialState: function() {
-        return { displayOptions: this.props.value };
+        debugger;
+        var displayOptions =  this.props.value;
+        if(displayOptions==null) {
+             displayOptions = {
+                displayInBanks: false,
+                displayInCurrentQuiz: false,
+                displayInInstructorQuiz: false,
+                displayInResources: false,
+                filterable: false,
+                matchInBanks: false,
+                matchInResources: false,
+                showFilterInBanks: false,
+                showFilterInResources: false
+             };
+        }
+        return {displayOptions: displayOptions}
+        
     },
 
     editInternalFieldHandler: function() {
@@ -35,7 +51,11 @@ var DisplayOptionsDialog = React.createClass({displayName: 'DisplayOptionsDialog
              return (React.DOM.div(null, 
                         React.DOM.div(null, 
                          React.DOM.div(null,  " ", React.DOM.b(null,  " Question Picker (Question in Question Banks)"),
-                                  ToltipElement( {tooltipText:"Click for details", onClickHandler:self.onClickTooltipHandler.bind(null, "questionsInQuestionBanksUrl")})
+                                React.DOM.span( {className:"metadata-dispplay-options-help"}, 
+                                  ToltipElement( {classNameProp:"tooltip-img", 
+                                                 tooltipText:"Click for details", 
+                                                 onClickHandler:self.onClickTooltipHandler.bind(null, "questionsInQuestionBanksUrl")})
+                                )
                          ),
                        
                          CheckBoxEditor( {value:self.state.displayOptions.displayInBanks, 
@@ -52,7 +72,11 @@ var DisplayOptionsDialog = React.createClass({displayName: 'DisplayOptionsDialog
                             onChangeHandler:self.onChangeHandler.bind(null, "matchInBanks")}),
 
                          React.DOM.div(null,  " ", React.DOM.b(null,  " Question Picker (Question in Current Quiz)"),
-                                  ToltipElement( {tooltipText:"Click for details", onClickHandler:self.onClickTooltipHandler.bind(null, "questionsInCurrentQuizUrl")})
+                                React.DOM.span( {className:"metadata-dispplay-options-help"}, 
+                                  ToltipElement( {classNameProp:"tooltip-img", 
+                                                 tooltipText:"Click for details", 
+                                                 onClickHandler:self.onClickTooltipHandler.bind(null, "questionsInCurrentQuizUrl")})
+                                )
                          ),
 
                          CheckBoxEditor( {value:self.state.displayOptions.displayInCurrentQuiz, 
@@ -60,7 +84,11 @@ var DisplayOptionsDialog = React.createClass({displayName: 'DisplayOptionsDialog
                             onChangeHandler:self.onChangeHandler.bind(null, "displayInCurrentQuiz")}),
 
                          React.DOM.div(null,  " ", React.DOM.b(null,  " Quiz Instractor View"),
-                                  ToltipElement( {tooltipText:"Click for details", onClickHandler:self.onClickTooltipHandler.bind(null, "quizInstructorViewUrl")}) 
+                                React.DOM.span( {className:"metadata-dispplay-options-help"}, 
+                                  ToltipElement( {classNameProp:"tooltip-img", 
+                                                 tooltipText:"Click for details", 
+                                                 onClickHandler:self.onClickTooltipHandler.bind(null, "quizInstructorViewUrl")}) 
+                                )
                          ),
                          
                          CheckBoxEditor( {value:self.state.displayOptions.displayInInstructorQuiz, 
@@ -68,7 +96,11 @@ var DisplayOptionsDialog = React.createClass({displayName: 'DisplayOptionsDialog
                             onChangeHandler:self.onChangeHandler.bind(null, "displayInInstructorQuiz")}),
 
                          React.DOM.div(null,  " ", React.DOM.b(null,  " Recourse Panel"),
-                                  ToltipElement( {tooltipText:"Click for details", onClickHandler:self.onClickTooltipHandler.bind(null, "resourcePanelUrl")}) 
+                                React.DOM.span( {className:"metadata-dispplay-options-help"}, 
+                                  ToltipElement( {classNameProp:"tooltip-img", 
+                                                 tooltipText:"Click for details",
+                                                 onClickHandler:self.onClickTooltipHandler.bind(null, "resourcePanelUrl")}) 
+                                )
                          ),
 
                          CheckBoxEditor( {value:self.state.displayOptions.displayInResources,
