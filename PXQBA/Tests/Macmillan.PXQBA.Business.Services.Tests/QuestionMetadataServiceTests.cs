@@ -16,6 +16,7 @@ namespace Macmillan.PXQBA.Business.Services.Tests
         private IQuestionMetadataService questionMetadataService;
 
         private IProductCourseOperation productCourseOperation;
+        private IKeywordOperation keywordOperation;
         private AutomapperConfigurator automapperConfigurator;
         private IModelProfileService modelProfileService;
 
@@ -25,11 +26,12 @@ namespace Macmillan.PXQBA.Business.Services.Tests
 
             modelProfileService = Substitute.For<IModelProfileService>();
             productCourseOperation = Substitute.For<IProductCourseOperation>();
+            keywordOperation = Substitute.For<IKeywordOperation>();
 
             automapperConfigurator = new AutomapperConfigurator(new ModelProfile(modelProfileService));
             automapperConfigurator.Configure();
 
-            questionMetadataService = new QuestionMetadataService(productCourseOperation);
+            questionMetadataService = new QuestionMetadataService(productCourseOperation, keywordOperation);
         }
 
 

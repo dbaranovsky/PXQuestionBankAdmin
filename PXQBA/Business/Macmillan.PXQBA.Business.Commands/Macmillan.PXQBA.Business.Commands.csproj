@@ -76,6 +76,7 @@
     <Compile Include="..\..\Web\Macmillan.PXQBA.Web\Properties\ProductInfo.cs">
       <Link>Properties\ProductInfo.cs</Link>
     </Compile>
+    <Compile Include="Contracts\IKeywordOperation.cs" />
     <Compile Include="Contracts\INoteCommands.cs" />
     <Compile Include="Contracts\IProductCourseOperation.cs" />
     <Compile Include="Contracts\IQuestionCommands.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Services\DLAP\QuestionCommands.cs" />
     <Compile Include="Services\DLAP\TemporaryQuestionOperation.cs" />
     <Compile Include="Services\DLAP\UserOperation.cs" />
+    <Compile Include="Services\EntityFramework\KeywordOperation.cs" />
     <Compile Include="Services\EntityFramework\NoteCommands.cs" />
     <Compile Include="Services\DLAP\ProductCourseOperation.cs" />
     <Compile Include="Services\EntityFramework\QuestionCommands.cs" />

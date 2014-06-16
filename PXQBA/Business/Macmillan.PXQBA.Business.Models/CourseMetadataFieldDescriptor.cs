@@ -31,7 +31,23 @@ namespace Macmillan.PXQBA.Business.Models
 
         public MetadataFieldType Type { get; set; }
 
-        public IEnumerable<CourseMetadataFieldValue> CourseMetadataFieldValues { get; set; }
+        private IEnumerable<CourseMetadataFieldValue> courseMetadataFieldValues { get; set; }
+
+        public IEnumerable<CourseMetadataFieldValue> CourseMetadataFieldValues
+        {
+            get
+            {
+                if (courseMetadataFieldValues == null)
+                {
+                    courseMetadataFieldValues = new List<CourseMetadataFieldValue>();
+                }
+                return courseMetadataFieldValues;
+            }
+            set
+            {
+                courseMetadataFieldValues = value;
+            }
+        }
 
     }
 }

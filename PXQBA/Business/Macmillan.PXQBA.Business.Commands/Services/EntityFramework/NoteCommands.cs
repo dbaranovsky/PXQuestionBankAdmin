@@ -52,16 +52,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
             var noteId = new SqlParameter("@noteId", SqlDbType.BigInt);
             noteId.Direction = ParameterDirection.ReturnValue;
             command.Parameters.Add(noteId);
-            try
-            {
-                databaseManager.StartSession();
-                databaseManager.ExecuteNonQuery(command);
-            }
-            finally 
-            {
-                
-                databaseManager.EndSession();
-            }
+            ExecureNonQueryCommand(command);
 
             if (noteId.Value != null)
             {
@@ -78,18 +69,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
 
             var noteId = new SqlParameter("@noteId", note.Id);
             command.Parameters.Add(noteId);
-            try
-            {
-                databaseManager.StartSession();
-                databaseManager.ExecuteNonQuery(command);
-            }
-            finally
-            {
-
-                databaseManager.EndSession();
-            }
-
-           
+            ExecureNonQueryCommand(command);
         }
 
         public Note UpdateNote(Note note)
@@ -105,16 +85,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
             var text = new SqlParameter("@noteText", note.Text);
             command.Parameters.Add(text);
 
-            try
-            {
-                databaseManager.StartSession();
-                databaseManager.ExecuteNonQuery(command);
-            }
-            finally
-            {
-
-                databaseManager.EndSession();
-            }
+            ExecureNonQueryCommand(command);
 
             return note;
         }
