@@ -96,38 +96,128 @@ namespace Macmillan.PXQBA.Web.Controllers
         }
 
 
+
         public ActionResult SaveRole(RoleViewModel role, string courseId)
         {
              
             return JsonCamel(new { isSuccess = true });
         }
        
+        /// <summary>
+        /// Return all users
+        /// </summary>
+        /// <returns></returns>
         public ActionResult GetUsers()
         {
 
             return JsonCamel(GetHardCodedUsers());
         }
 
-        public ActionResult GetTitlesWithRolesForUser(string userId)
+        /// <summary>
+        /// Return titles with already set roles for user
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public ActionResult GetAvailibleTitles(string userId)
         {
-            return JsonCamel(GetHardCodedTitlesAndRoles());
+            return JsonCamel(GetHardCodedAvailibleRoles());
         }
 
-
-        private IEnumerable<TitleAndRoleViewModel> GetHardCodedTitlesAndRoles()
+        /// <summary>
+        /// Return all titles with availible roles for user
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public ActionResult GetUserRoles(string userId)
         {
-            return  new List<TitleAndRoleViewModel>
+            return JsonCamel(GetHardCodedUserRoles());
+        }
+
+        /// <summary>
+        /// Saves user roles
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="titles">Title roles which  was changed</param>
+        /// <returns></returns>
+        public ActionResult SaveUserRoles(string userId, IEnumerable<TitleRolesViewModel> titles)
+        {
+             return JsonCamel(new { isSuccess = true });
+        
+        }
+
+        #region HardCode
+        private IEnumerable<TitleRolesViewModel> GetHardCodedUserRoles()
+        {
+            return new List<TitleRolesViewModel>
                     {
-                        new TitleAndRoleViewModel
+                        new TitleRolesViewModel
                         {
-                            RoleName = "Author",
-                            Title = "Ancient Mythology"
+                           TitleName = "Modern History",
+                           CurrentRole = new RoleViewModel()
+                                        {
+                                             Id =  "1",
+                                             Name = "Author"
+                                        },
+                           AvailibleRoles = new Dictionary<string, string>()
+                                            {
+                                                {"1","Author"},
+                                                {"2"," Super Author"}
+                                            }
                         },
 
-                        new TitleAndRoleViewModel
+
+                        new TitleRolesViewModel
                         {
-                            RoleName = "Administrator",
-                            Title = "History of modern Culture"
+                             TitleName = "Economics",
+                             CurrentRole = new RoleViewModel()
+                                        {
+                                               Name = "Administrator"
+                                        },
+                            AvailibleRoles = new Dictionary<string, string>()
+                                            {
+                                                {"1","Admin"},
+                                                {"2"," Super Admin"}
+                                            }
+      
+                        },
+
+                         new TitleRolesViewModel
+                        {
+                             TitleName = "MacroEconomics",
+                             CurrentRole = null,
+                             AvailibleRoles = new Dictionary<string, string>()
+                                            {
+                                                {"1","Admin"},
+                                                {"2"," Super Admin"}
+                                            }
+      
+                        }
+
+
+                    };
+        }
+
+        private IEnumerable<TitleRolesViewModel> GetHardCodedAvailibleRoles()
+        {
+            return new List<TitleRolesViewModel>
+                    {
+                        new TitleRolesViewModel
+                        {
+                           TitleName = "Modern History",
+                           CurrentRole = new RoleViewModel()
+                                        {
+                                             Name = "Super Author"
+                                        }
+                        },
+
+                        new TitleRolesViewModel
+                        {
+                             TitleName = "Economics",
+                             CurrentRole = new RoleViewModel()
+                                        {
+                                               Name = "Administrator"
+                                        }
+                         
                         }
                     };
             
@@ -165,13 +255,13 @@ namespace Macmillan.PXQBA.Web.Controllers
                    {
                        new RoleViewModel
                        {
-                           Id = 1,
+                           Id = "1",
                            Name = "Admin",
                            CapabilityGroups = GetHardCodedCapabilities()
                        },
                        new RoleViewModel
                        {
-                           Id = 2,
+                           Id = "2",
                            Name = "Super Author",
                            CapabilityGroups = GetHardCodedCapabilities()
                        }
@@ -241,5 +331,7 @@ namespace Macmillan.PXQBA.Web.Controllers
                        }
                    };
         }
+
+        #endregion
     }
 }

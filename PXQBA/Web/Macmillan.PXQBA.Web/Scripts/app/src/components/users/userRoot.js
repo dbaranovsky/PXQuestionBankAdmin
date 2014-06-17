@@ -102,15 +102,21 @@ var UserRoot = React.createClass({
       this.setState({showAvailibleTitles: true, user: user});
    },
 
+   showUserEditDialog: function(user){
+      this.setState({showUserEditDialog: true, user: user});
+   },
+
+
+
    renderUsers: function(){
         if(this.state.usersLoading){
-          return (<div className="waiting"></div>);
+          return (<div className="waiting middle"></div>);
         }
 
         if(this.state.users == null || this.state.users.length == 0){
           return(<b>No users loaded</b>);
         }
-        return (<UserBox  users={this.state.users} showAvailibleTitlesHandler={this.showAvailibleTitlesHandler} />);
+        return (<UserBox  users={this.state.users} showAvailibleTitlesHandler={this.showAvailibleTitlesHandler}  showUserEditDialog={this.showUserEditDialog}/>);
    },
 
    renderAvailibleTitlesDialog: function(){
@@ -121,8 +127,20 @@ var UserRoot = React.createClass({
       return null;
    },
 
+   renderUserEditDialog: function(){
+      if(this.state.showUserEditDialog){
+         return( <EditUserDialog user={this.state.user} closeEditUserDialog={this.closeEditUserDialog} />);
+      }
+
+      return null;
+   },
+
    closeAvailibleTitles: function(){
       this.setState({showAvailibleTitles: false, user: null});
+   },
+
+   closeEditUserDialog: function(){
+       this.setState({showUserEditDialog: false, user: null});
    },
 
 
@@ -153,6 +171,7 @@ var UserRoot = React.createClass({
                 </div>
                 {this.renderAddRoleDialog()}
                 {this.renderAvailibleTitlesDialog()}
+                {this.renderUserEditDialog()}
             </div>);
    },
 
@@ -169,6 +188,100 @@ var UserRoot = React.createClass({
     }
 });
 
+var EditUserDialog  = React.createClass({
+
+  
+
+    render: function() {
+       var self = this;
+        var renderHeaderText = function() {
+         
+             return "User Editing — "+ self.props.user.userName;
+           
+        };
+
+      
+        var renderBody = function(){
+            return (<div className="title-table"> 
+                      <UserTitlesBox user={self.props.user} />
+                    </div>
+            );
+        };
+
+     
+      var  renderFooterButtons = function(){
+
+                   return (<div className="modal-footer"> 
+                             <button type="button" className="btn btn-primary">Save</button>
+                             <button type="button" className="btn btn-default" data-dismiss="modal" data-target="editUserModal">Close</button>
+                          </div>);
+             
+                 };
+
+   
+
+        return (<ModalDialog  showOnCreate = {true} 
+                              renderHeaderText={renderHeaderText} 
+                              renderBody={renderBody}  
+                              closeDialogHandler = {this.closeDialog} 
+                              renderFooterButtons={renderFooterButtons} 
+                              dialogId="editUserModal"/>);
+    }
+});
+
+var UserTitlesBox = React.createClass({
+
+
+    getInitialState: function(){
+        return({roles: [], loading: true});
+    },
+    closeDialog: function(){
+        this.props.closeEditUserDialog();
+    },  
+
+    componentDidMount: function(){
+        var self = this;
+        userManager.getUserRoles(this.props.user.id).done(this.setRoles).error(function(e){
+            self.setState({loading: false});
+        });
+    },
+
+    setRoles: function(roles){
+        this.setState({roles: roles, loading: false});
+    },
+
+    renderRows: function(){
+     var self= this;
+
+     if (this.state.loading){
+        return (<div className="waiting middle"></div>);
+      }
+
+     var rows = [];
+     rows = this.state.roles.map(function (userRole, i) {
+        
+                return (<div className="role-row">
+                          <div className="role-cell">{userRole.titleName}</div>
+                         </div>);
+          });
+
+     if (rows.length == 0){
+       return (<b>No titles are availible</b>);
+     }
+
+     return rows;
+
+    },
+  render: function(){
+
+      return (<div className="user-titles-container">
+                  <div className="roles-table">
+                  {this.renderRows()}
+                  </div>
+              </div>);
+
+  }
+});
 
  var AvailibleTitlesDialog  = React.createClass({
 
@@ -181,7 +294,7 @@ var UserRoot = React.createClass({
 
     componentDidMount: function(){
         var self = this;
-        userManager.getTitlesWithRolesForUser(this.props.user.id).done(this.setTitles).error(function(e){
+        userManager.getAvailibleTitles(this.props.user.id).done(this.setTitles).error(function(e){
             self.setState({loading: false});
         });
     },
@@ -193,12 +306,16 @@ var UserRoot = React.createClass({
     renderRows: function(){
      var self= this;
 
+      if(this.state.loading){
+          return (<div className="waiting middle"/>);
+      }
+
      var rows = [];
      rows = this.state.titles.map(function (title, i) {
         
             return ( <div className="title-row">
-                        <div className="title-cell">{title.title}</div>
-                        <div className="title-cell"><i>{title.roleName}</i></div>
+                        <div className="title-cell">{title.titleName}</div>
+                        <div className="title-cell"><i>{title.currentRole.name}</i></div>
                       </div>);
           });
 
@@ -212,13 +329,12 @@ var UserRoot = React.createClass({
 
     render: function() {
        var self = this;
+
         var renderHeaderText = function() {
          
              return "Titles availible for "+ self.props.user.userName;
            
         };
-
-
 
       
         var renderBody = function(){
@@ -248,6 +364,9 @@ var UserRoot = React.createClass({
     }
 });
 
+
+
+
 var UserBox = React.createClass({
 
 
@@ -256,7 +375,7 @@ var UserBox = React.createClass({
          var rows = [];
          rows = this.props.users.map(function (user, i) {
         
-            return (<UserRow user={user} showAvailibleTitlesHandler={self.props.showAvailibleTitlesHandler}/>);
+            return (<UserRow user={user} showAvailibleTitlesHandler={self.props.showAvailibleTitlesHandler} showUserEditDialog={self.props.showUserEditDialog}/>);
           });
 
      return rows;
@@ -277,6 +396,11 @@ var UserRow = React.createClass({
     showAvailibleTitlesHandler: function(){
         this.props.showAvailibleTitlesHandler(this.props.user);
     },
+
+    editUser: function(){
+        this.props.showUserEditDialog(this.props.user);
+    },
+
     render: function() {
        return (
                 <div className="role-row"> 
@@ -284,12 +408,7 @@ var UserRow = React.createClass({
                  <div className="role-cell role-name">{this.props.user.userName}</div>
                  <div className="role-cell capabilities "> <span className="capabilities-link" onClick={this.showAvailibleTitlesHandler}>{this.props.user.availibleTitlesCount} {this.props.user.availibleTitlesCount == 1? "title" : "titles"}</span></div>
                  <div className="role-cell menu">
-
-                    <div className="menu-container-main version-history">
-                          <button type="button" className="btn btn-default btn-sm"  data-toggle="tooltip"  title="Edit Role" onClick={this.editRole}><span className="glyphicon glyphicon-pencil"></span> </button>
-                         
-                       </div>
-
+                    <button type="button" className="btn btn-default btn-sm"  data-toggle="tooltip"  title="Edit Role" onClick={this.editUser}><span className="glyphicon glyphicon-pencil"></span> </button>
                  </div>
                 </div>
             );
@@ -324,6 +443,10 @@ var RoleDialog = React.createClass({
    },
 
   saveRoleHandler: function(){
+    if(this.state.role.name == ""){
+      userManager.showWarningPopup("Please, enter role name");
+      return;
+    }
     this.props.saveRoleHandler(this.state.role);
   },
 
@@ -384,49 +507,49 @@ var RoleDialog = React.createClass({
 
 var EditRoleBox = React.createClass({
 
- getInitialState: function(){
-  return ({
-    editMode: this.props.role == undefined || this.props.viewMode? false : true,
-    viewMode: this.props.viewMode == undefined? false: this.props.viewMode,
-    newRole: this.props.newRole == undefined? false : this.props.newRole
-  });
- },
+   getInitialState: function(){
+    return ({
+      editMode: this.props.role == undefined || this.props.viewMode? false : true,
+      viewMode: this.props.viewMode == undefined? false: this.props.viewMode,
+      newRole: this.props.newRole == undefined? false : this.props.newRole
+    });
+   },
 
 
-dataChangeHandler:function(event){
-    var role = this.props.role;
-    role.name = event.target.value;
-    this.props.editRoleHandler(role);
-},
+  dataChangeHandler:function(event){
+      var role = this.props.role;
+      role.name = event.target.value;
+      this.props.editRoleHandler(role);
+  },
 
 
 
-renderRoleNameEditor: function(){
-  if (this.state.viewMode){
-    return null;
-  }
-   return(<div className="role-name-editor">
-            Role name
-            <input type="text" className="form-control" value={this.props.role.name} onChange={this.dataChangeHandler}  placeholder="Enter role name"/>
-           </div>);
-},
-
-renderCapabilities: function(){
-
-    if(this.props.role.capabilityGroups == undefined || this.props.role.capabilityGroups.length == 0){
-      return (<b>There are no capabilities</b>);
+  renderRoleNameEditor: function(){
+    if (this.state.viewMode){
+      return null;
     }
+     return(<div className="role-name-editor">
+              Role name
+              <input type="text" className="form-control" value={this.props.role.name} onChange={this.dataChangeHandler}  placeholder="Enter role name"/>
+             </div>);
+  },
 
-   return (<CapabilitiesBox role={this.props.role} editRoleHandler={this.props.editRoleHandler} viewMode={this.state.viewMode} />);  
-},
-render: function(){
-    return(
-      <div>
-          {this.renderRoleNameEditor()}
-          {this.renderCapabilities()}
-      </div>
-      );
-  }
+  renderCapabilities: function(){
+
+      if(this.props.role.capabilityGroups == undefined || this.props.role.capabilityGroups.length == 0){
+        return (<b>There are no capabilities</b>);
+      }
+
+     return (<CapabilitiesBox role={this.props.role} editRoleHandler={this.props.editRoleHandler} viewMode={this.state.viewMode} />);  
+  },
+  render: function(){
+      return(
+        <div>
+            {this.renderRoleNameEditor()}
+            {this.renderCapabilities()}
+        </div>
+        );
+    }
 });
 
 var CapabilitiesBox = React.createClass({

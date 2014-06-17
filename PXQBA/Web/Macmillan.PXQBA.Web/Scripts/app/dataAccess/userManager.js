@@ -167,14 +167,14 @@ var userManager = (function() {
         });
     }
 
-    self.getTitlesWithRolesForUser = function(userId){
+    self.getAvailibleTitles = function(userId){
 
          var request = {
             userId: userId
         };
 
         return $.ajax({
-            url: window.actions.userOperations.getTitlesWithRolesForUserUrl,
+            url: window.actions.userOperations.getAvailibleTitlesUrl,
             dataType: 'json',
             data: JSON.stringify(request),
             type: 'GET',
@@ -188,6 +188,54 @@ var userManager = (function() {
             self.showErrorPopup();
         });
     }
+
+
+    self.getUserRoles = function(userId){
+
+         var request = {
+            userId: userId
+        };
+
+        return $.ajax({
+            url: window.actions.userOperations.getUserRolesUrl,
+            dataType: 'json',
+            data: request,
+            type: 'GET'
+        
+        }).done(function (response) {
+            
+        }).error(function (httpRequest, textStatus, errorThrown) {
+            if (httpRequest.readyState == 0 || httpRequest.status == 0) {
+                return;  
+            }
+            self.showErrorPopup();
+        });
+    }
+
+ 
+    self.saveUserRoles = function(userId, titles){
+
+         var request = {
+            userId: userId,
+            titles: titles
+        };
+
+        return $.ajax({
+            url: window.actions.userOperations.saveUserRolesUrl,
+            dataType: 'json',
+            data: JSON.stringify(request),
+            type: 'POST',
+            contentType: 'application/json'
+        }).done(function (response) {
+            
+        }).error(function (httpRequest, textStatus, errorThrown) {
+            if (httpRequest.readyState == 0 || httpRequest.status == 0) {
+                return;  
+            }
+            self.showErrorPopup();
+        });
+    }
+
 
    self.showErrorPopup = function() {
         var notifyOptions = {
