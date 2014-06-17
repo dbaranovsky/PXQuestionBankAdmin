@@ -12,42 +12,47 @@ var MultiSelectEditor = React.createClass({
          var options = [];
 
         for(var i=0; i<availableChoices.length; i++) {
-           metadataValues.push(availableChoices[i].value);
+           metadataValues.push({value: availableChoices[i].value, text: availableChoices[i].text});
         }
-  
+        
         if(currentValues !== undefined && currentValues != null && currentValues.length>0){
-          $.merge(metadataValues, currentValues);
+          for(var i=0; i<currentValues.length; i++) {
+            metadataValues = this.appendIfNotExist(metadataValues, currentValues[i]);
+          }
         }
       
-        metadataValues = this.unique(metadataValues);
-        
-         $.each(metadataValues, function(i, option){
-               options.push(<option value={option}>{option}</option>);
-         });
-       
-         return ({options: options});
+         
+        for(var i=0; i<metadataValues.length; i++) {
+            options.push(<option value={metadataValues[i].value}>{metadataValues[i].text}</option>)
+        }
+                    
+        return ({options: options});
 
     },
 
-    unique: function(list) {
-        var result = [];
-        $.each(list, function(i, e) {
-            if ($.inArray(e, result) == -1) result.push(e);
-        });
-        return result;
+    appendIfNotExist: function(metadataValues, newValue) {
+      var isExist = false;
+      for(var i=0; i<metadataValues.length; i++) {
+         if(metadataValues[i].value==newValue) {
+            isExist=true;
+         }
+      }
+      if(!isExist) {
+         metadataValues.push({value: newValue, text: value})
+      }
+
+      return metadataValues;
     },
 
 
      editHandler: function(selectedOptions){
       
-       
        var items = [];
-       
+
        $.each(selectedOptions, function(i, option){
-          items.push(option.text);
+          items.push(option.value);
        });
       
-
       var question = this.props.question;
       if (question[this.props.field]== null || question[this.props.field].length !== items.length)
       {
@@ -66,8 +71,7 @@ var MultiSelectEditor = React.createClass({
 
    componentDidMount: function(){
         var selector = this.getDOMNode();
-        var chosenOptions = {width: "100%", hide_dropdown: false, allow_add_new_values: this.props.metadataField.canAddValues};
-  
+        var chosenOptions = {width: "100%", hide_dropdown: false, allow_add_new_values: this.props.canAddValues};
         var handler =  this.editHandler;
         $(selector).val(this.props.question[this.props.field])
                    .chosen(chosenOptions)

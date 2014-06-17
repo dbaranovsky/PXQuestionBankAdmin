@@ -18,7 +18,6 @@ namespace Macmillan.PXQBA.Web.Helpers
                              IsInlineEditingAllowed = false,
                              EditorDescriptor =
                                  new FieldEditorDescriptor(metaField.TypeDescriptor),
-                             CanAddValues = false,
                              IsMultiline = false,
                              FilterType = FilterType.MultiSelectWithAddition.ToString().ToLower(),
                              AllowDeselect = false,
@@ -56,12 +55,6 @@ namespace Macmillan.PXQBA.Web.Helpers
              {
                  model.IsInlineEditingAllowed = true;
                  model.EditorDescriptor.EditorType = EditorType.Number.ToString().ToLower();
-             }
-
-             if (metaField.Name == MetadataFieldNames.Keywords)
-             {
-                 model.CanAddValues = true;
-                 model.Width = "20%";
              }
 
              if (metaField.Name == MetadataFieldNames.Guidance)
