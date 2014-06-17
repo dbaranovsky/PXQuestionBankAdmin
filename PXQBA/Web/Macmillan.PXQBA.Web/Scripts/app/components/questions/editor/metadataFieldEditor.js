@@ -110,12 +110,11 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
              return (React.DOM.select( {ref:"editor", className:"single-selector", disabled:this.props.isDisabled, value:currentValue},  " ", this.renderMenuItems(availableChoice), " " ) );
 
           case window.enums.editorType.multiSelect:
-              if(field=="learningObjectives"){
-                return (LearningObjectEditor( {values:currentValue, isDisabled:this.props.isDisabled, metadataField:metadataField, question:this.props.question, field:this.props.field, editHandler:this.props.editHandler} ));
-              }
-             return (MultiSelectEditor( {values:currentValue, isDisabled:this.props.isDisabled, metadataField:metadataField, question:this.props.question, field:this.props.field, editHandler:this.props.editHandler} ));
+             return (MultiSelectEditor( {values:currentValue, isDisabled:this.props.isDisabled, canAddValues:false, metadataField:metadataField, question:this.props.question, field:this.props.field, editHandler:this.props.editHandler} ));
+          case window.enums.editorType.keywords:
+              return (MultiSelectEditor( {values:currentValue, isDisabled:this.props.isDisabled, canAddValues:true, metadataField:metadataField, question:this.props.question, field:this.props.field, editHandler:this.props.editHandler} ));
           case window.enums.editorType.multiText:  
-               return ( React.DOM.textarea( {onChange:this.editHandler, disabled:this.props.isDisabled,  ref:"editor", className:this.props.isDisabled? "disabled" : "",  rows:"10", type:"text", placeholder:"Enter text...", value:currentValue} ));  
+              return ( React.DOM.textarea( {onChange:this.editHandler, disabled:this.props.isDisabled,  ref:"editor", className:this.props.isDisabled? "disabled" : "",  rows:"10", type:"text", placeholder:"Enter text...", value:currentValue} ));  
               break;
           default: 
           currentValue = currentValue || "";
