@@ -98,9 +98,8 @@ var UserRoot = React.createClass({
           userManager.getRolesForCourse(this.state.currentCourse).done(this.setRoles).error(function(e){self.setState({loading: false});});
    },
 
-   showAvailibleTitlesHandler: function(userId){
-      alert(userId);
-      this.setState({showAvailibleTitles: true, userId: userId});
+   showAvailibleTitlesHandler: function(user){
+      this.setState({showAvailibleTitles: true, user: user});
    },
 
    renderUsers: function(){
@@ -113,6 +112,19 @@ var UserRoot = React.createClass({
         }
         return (<UserBox  users={this.state.users} showAvailibleTitlesHandler={this.showAvailibleTitlesHandler} />);
    },
+
+   renderAvailibleTitlesDialog: function(){
+      if(this.state.showAvailibleTitles){
+         return( <AvailibleTitlesDialog user={this.state.user} closeAvailibleTitles={this.closeAvailibleTitles} />);
+      }
+
+      return null;
+   },
+
+   closeAvailibleTitles: function(){
+      this.setState({showAvailibleTitles: false, user: null});
+   },
+
 
    renderTabs: function() {
     
@@ -140,6 +152,7 @@ var UserRoot = React.createClass({
                     </div>
                 </div>
                 {this.renderAddRoleDialog()}
+                {this.renderAvailibleTitlesDialog()}
             </div>);
    },
 
@@ -156,6 +169,84 @@ var UserRoot = React.createClass({
     }
 });
 
+
+ var AvailibleTitlesDialog  = React.createClass({
+
+    getInitialState: function(){
+        return({titles: [], loading: true});
+    },
+    closeDialog: function(){
+        this.props.closeAvailibleTitles();
+    },  
+
+    componentDidMount: function(){
+        var self = this;
+        userManager.getTitlesWithRolesForUser(this.props.user.id).done(this.setTitles).error(function(e){
+            self.setState({loading: false});
+        });
+    },
+
+    setTitles: function(titles){
+        this.setState({titles: titles, loading: false});
+    },
+
+    renderRows: function(){
+     var self= this;
+
+     var rows = [];
+     rows = this.state.titles.map(function (title, i) {
+        
+            return ( <div className="title-row">
+                        <div className="title-cell">{title.title}</div>
+                        <div className="title-cell"><i>{title.roleName}</i></div>
+                      </div>);
+          });
+
+     if (rows.length == 0){
+       return (<b>No titles are availible</b>);
+     }
+
+     return rows;
+
+    },
+
+    render: function() {
+       var self = this;
+        var renderHeaderText = function() {
+         
+             return "Titles availible for "+ self.props.user.userName;
+           
+        };
+
+
+
+      
+        var renderBody = function(){
+            return (<div className="title-table"> 
+                     {self.renderRows()}
+                    </div>
+            );
+        };
+
+     
+      var  renderFooterButtons = function(){
+
+                   return (<div className="modal-footer"> 
+                             <button type="button" className="btn btn-default" data-dismiss="modal" data-target="roleModal">Close</button>
+                          </div>);
+             
+                 };
+
+   
+
+        return (<ModalDialog  showOnCreate = {true} 
+                              renderHeaderText={renderHeaderText} 
+                              renderBody={renderBody}  
+                              closeDialogHandler = {this.closeDialog} 
+                              renderFooterButtons={renderFooterButtons} 
+                              dialogId="titlesModal"/>);
+    }
+});
 
 var UserBox = React.createClass({
 
@@ -184,7 +275,7 @@ var UserBox = React.createClass({
 var UserRow = React.createClass({
 
     showAvailibleTitlesHandler: function(){
-        this.props.showAvailibleTitlesHandler(this.props.user.id);
+        this.props.showAvailibleTitlesHandler(this.props.user);
     },
     render: function() {
        return (

@@ -1215,3 +1215,25 @@ textarea.metadata-availible-values-editor {
     -o-background-size: contain;
     background-size: contain;
 }
+.title-table {
+    margin-left: 30px;
+    display: table;
+    font-size: 17px;
+    border-spacing:0 13px;
+    width: 525px;
+}
+
+.title-cell {
+    display: table-cell;
+    border-bottom: 1px solid #c0c0c0;
+}
+
+.title-row {
+    display: table-row;
+    height: 50px;
+}
+
+
+.title-row:last-child .title-cell{
+    border-bottom: none;  
+}
