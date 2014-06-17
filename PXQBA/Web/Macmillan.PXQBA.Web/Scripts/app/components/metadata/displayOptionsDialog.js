@@ -82,7 +82,7 @@ var DisplayOptionsDialog = React.createClass({displayName: 'DisplayOptionsDialog
                             label:"Display this field when listing questions", 
                             onChangeHandler:self.onChangeHandler.bind(null, "displayInCurrentQuiz")}),
 
-                         React.DOM.div(null,  " ", React.DOM.b(null,  " Quiz Instractor View"),
+                         React.DOM.div(null,  " ", React.DOM.b(null,  " Quiz Instructor View"),
                                 React.DOM.span( {className:"metadata-dispplay-options-help"}, 
                                   ToltipElement( {classNameProp:"tooltip-img", 
                                                  tooltipText:"Click for details", 
