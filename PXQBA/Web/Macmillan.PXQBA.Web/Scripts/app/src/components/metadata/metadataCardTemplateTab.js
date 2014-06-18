@@ -18,7 +18,9 @@ var MetadataCardTemplateTab = React.createClass({
       var dummyObject = {};
       var curlyBracesPattern = /[^{}]+(?=\})/g;
       var results = this.props.data[this.cardTemplateName].match(curlyBracesPattern);
-
+      if(results==null) {
+        return dummyObject;
+      }
       var charactersPattern = /^\w+$/;
       var properties=[];
 
