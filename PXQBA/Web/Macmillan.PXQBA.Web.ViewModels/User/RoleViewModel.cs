@@ -10,13 +10,8 @@ namespace Macmillan.PXQBA.Web.ViewModels.User
 
          public IEnumerable<CapabilityGroupViewModel> CapabilityGroups { get; set; }
 
-         public int ActiveCapabiltiesCount
-         {
-             get
-             {
-                 return CapabilityGroups.Sum(capabilities => capabilities.Capabilities.Count(x => x.IsActive));
-             } 
-             
-         }
+         public int ActiveCapabiltiesCount { get; set; }
+        
+         public bool CanDelete { get; set; }
     }
 }

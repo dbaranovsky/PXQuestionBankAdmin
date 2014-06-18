@@ -12,6 +12,7 @@ using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Web.ViewModels;
 using Macmillan.PXQBA.Web.ViewModels.MetadataConfig;
 using Macmillan.PXQBA.Web.ViewModels.TiteList;
+using Macmillan.PXQBA.Web.ViewModels.User;
 using Macmillan.PXQBA.Web.ViewModels.Versions;
 using Course = Macmillan.PXQBA.Business.Models.Course;
 using Question = Macmillan.PXQBA.Business.Models.Question;
@@ -182,6 +183,17 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.FieldDescriptors, opt => opt.MapFrom(src => modelProfileService.GetCourseFieldDescriptors(src)));
 
             Mapper.CreateMap<CourseMetadataFieldValue, QuestionCardDataValue>();
+
+            Mapper.CreateMap<Role, RoleViewModel>()
+                .ForMember(dest => dest.ActiveCapabiltiesCount, opt => opt.MapFrom(src => src.CapabilitiesCount));
+
+            Mapper.CreateMap<KeyValuePair<string, IEnumerable<Capability>>, CapabilityGroupViewModel>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Key))
+                .ForMember(dest => dest.Capabilities, opt => opt.MapFrom(src => src.Value));
+
+            Mapper.CreateMap<Capability, CapabilityViewModel>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => EnumHelper.GetEnumDescription(src)));
         }
     }
 

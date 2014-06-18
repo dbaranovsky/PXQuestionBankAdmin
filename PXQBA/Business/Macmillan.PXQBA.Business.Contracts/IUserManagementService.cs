@@ -7,5 +7,6 @@ namespace Macmillan.PXQBA.Business.Contracts
     {
         IEnumerable<UserNotShownNotification> GetNotShownNotification();
         void CreateNotShownNotification(NotificationType notificationType);
+        IEnumerable<Role> GetRolesForCourse(string courseId);
     }
 }
