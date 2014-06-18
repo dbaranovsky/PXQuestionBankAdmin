@@ -34,8 +34,6 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<Bfw.Agilix.DataContracts.Course, Course>()
                 .ForMember(dest => dest.ProductCourseId, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
-                .ForMember(dest => dest.QuestionCardLayout,
-                    opt => opt.MapFrom(src => modelProfileService.GetQuestionCardLayout(src)))
                 .ForMember(dest => dest.FieldDescriptors,
                     opt => opt.MapFrom(src => src.QuestionCardData))
                 .ForMember(dest => dest.QuestionRepositoryCourseId, 

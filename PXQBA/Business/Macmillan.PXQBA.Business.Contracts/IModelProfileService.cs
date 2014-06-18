@@ -13,8 +13,6 @@ namespace Macmillan.PXQBA.Business.Contracts
 {
     public interface IModelProfileService
     {
-        string GetQuestionCardLayout(Bfw.Agilix.DataContracts.Course src);
-
         QuestionMetadataSection GetQuestionDefaultValues(Bfw.Agilix.DataContracts.Question question);
         List<QuestionMetadataSection> GetProductCourseSections(Bfw.Agilix.DataContracts.Question question);
         List<QuestionMetadataSection> GetProductCourseSections(QuestionViewModel viewModel);
