@@ -7,6 +7,7 @@ using System.Linq;
 using Bfw.Common.Database;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Common.Logging;
 
 namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
@@ -76,7 +77,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
                 try
                 {
                     databaseManager.StartSession();
-                    var roleId = role.Id <= 0 ? AddRole(role.Name, role.CanDelete) : role.Id;
+                    var roleId = InsertOrUpdateRole(courseId, role);
                     DbCommand command = new SqlCommand();
                     command.CommandType = CommandType.StoredProcedure;
                     command.CommandText = "dbo.UpdateQBARoleCapabilities";
@@ -85,7 +86,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
                     command.Parameters.Add(courseIdParam);
                     var roleIdParam = new SqlParameter("@roleId", roleId);
                     command.Parameters.Add(roleIdParam);
-                    var capIdParam = new SqlParameter("@capabilityIds", CreateDataTable(role.Capabilities.Select(src => (int)src)));
+                    var capIdParam = new SqlParameter("@capabilityIds", CreateDataTable(role.Capabilities));
                     capIdParam.SqlDbType = SqlDbType.Structured;
                     command.Parameters.Add(capIdParam);
                     databaseManager.ExecuteNonQuery(command);
@@ -98,34 +99,112 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
             }
         }
 
-        private static DataTable CreateDataTable(IEnumerable<int> ids)
+        public void DeleteRole(int roleId)
+        {
+            DbCommand command = new SqlCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "dbo.DeleteQBARole";
+
+            var roleIdParam = new SqlParameter("@roleId", roleId);
+            command.Parameters.Add(roleIdParam);
+
+            databaseManager.ExecuteNonQuery(command);
+        }
+
+        public Role GetRoleWithCapabilities(string courseId, int roleId)
+        {
+            DbCommand command = new SqlCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "dbo.GetQBARoleCapabilities";
+
+            var courseIdParam = new SqlParameter("@courseId", courseId);
+            command.Parameters.Add(courseIdParam);
+            var roleIdParam = new SqlParameter("@roleId", roleId);
+            command.Parameters.Add(roleIdParam);
+
+            var dbRecords = databaseManager.Query(command);
+
+            return GetRoleCapabilitiesFromRecords(dbRecords);
+        }
+
+        private Role GetRoleCapabilitiesFromRecords(IEnumerable<DatabaseRecord> dbRecords)
+        {
+            var role = new Role();
+            var firstRecord = dbRecords.FirstOrDefault();
+            if (firstRecord != null)
+            {
+                role.Id = (int) firstRecord["Id"];
+                role.Name = firstRecord["Name"].ToString();
+            }
+            foreach (var databaseRecord in dbRecords)
+            {
+                
+                if (databaseRecord["CapabilityId"] != null)
+                {
+                    role.Capabilities.Add(EnumHelper.Parse<Capability>(databaseRecord["CapabilityId"].ToString()));
+                }
+            }
+            return role;
+        }
+
+        private static DataTable CreateDataTable(IEnumerable<Capability> capabilities)
         {
             var table = new DataTable();
             table.Columns.Add("Id", typeof(int));
-            foreach (int id in ids)
+            foreach (int id in capabilities.Select(src => (int)src))
             {
                 table.Rows.Add(id);
             }
             return table;
         }
 
-        private int AddRole(string roleName, bool canDelete)
+        private int InsertOrUpdateRole(string courseId, Role role)
         {
-            var addRoleCommand = new SqlCommand();
-            addRoleCommand.CommandType = CommandType.StoredProcedure;
-            addRoleCommand.CommandText = "dbo.AddQBARole";
+            if (role.Id <= 0)
+            {
+                return AddRole(courseId, role.Name);
+            }
+            return UpdateRole(role.Id, role.Name);
+        }
+
+        private int AddRole(string courseId, string roleName)
+        {
+            var command = new SqlCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "dbo.AddQBARole";
             var roleNameParam = new SqlParameter("@roleName", roleName);
-            addRoleCommand.Parameters.Add(roleNameParam);
-            var canDeleteParam = new SqlParameter("@canDelete", canDelete);
-            addRoleCommand.Parameters.Add(canDeleteParam);
+            command.Parameters.Add(roleNameParam);
+            var courseIdParam = new SqlParameter("@courseId", courseId);
+            command.Parameters.Add(courseIdParam);
             try
             {
-                var result = databaseManager.ExecuteScalar(addRoleCommand);
+                var result = databaseManager.ExecuteScalar(command);
                 return int.Parse(result.ToString());
             }
             catch (Exception ex)
             {
-                StaticLogger.LogError(string.Format("AddRole: rolename: {0} wasn't created", roleName), ex);
+                StaticLogger.LogError(string.Format("AddRole: rolename: {0}, courseId:{1} wasn't created", roleName, courseId), ex);
+                throw;
+            }
+        }
+
+        private int UpdateRole(int roleId, string roleName)
+        {
+            var command = new SqlCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "dbo.UpdateQBARole";
+            var roleIdParam = new SqlParameter("@roleId", roleId);
+            command.Parameters.Add(roleIdParam);
+            var roleNameParam = new SqlParameter("@roleName", roleName);
+            command.Parameters.Add(roleNameParam);
+            try
+            {
+                var result = databaseManager.ExecuteScalar(command);
+                return int.Parse(result.ToString());
+            }
+            catch (Exception ex)
+            {
+                StaticLogger.LogError(string.Format("UpdateRole: roleId: {0} wasn't updated", roleId), ex);
                 throw;
             }
         }
@@ -159,7 +238,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
             var role = new Role();
             if (databaseRecord["Id"] != null)
             {
-                role.Id = (long) databaseRecord["Id"];
+                role.Id = (int) databaseRecord["Id"];
             }
             if (databaseRecord["Name"] != null)
             {

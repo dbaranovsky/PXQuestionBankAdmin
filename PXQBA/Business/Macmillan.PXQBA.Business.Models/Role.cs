@@ -5,15 +5,15 @@ namespace Macmillan.PXQBA.Business.Models
 {
     public class Role
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
 
         public bool CanDelete { get; set; }
 
-        private IEnumerable<Capability> capabilities;
+        private IList<Capability> capabilities;
 
-        public IEnumerable<Capability> Capabilities
+        public IList<Capability> Capabilities
         {
             get
             {

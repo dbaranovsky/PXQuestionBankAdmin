@@ -15,6 +15,7 @@ using Macmillan.PXQBA.DataAccess.Data;
 using Macmillan.PXQBA.Web.ViewModels;
 using Macmillan.PXQBA.Web.ViewModels.MetadataConfig;
 using Macmillan.PXQBA.Web.ViewModels.TiteList;
+using Macmillan.PXQBA.Web.ViewModels.User;
 using Macmillan.PXQBA.Web.ViewModels.Versions;
 using Course = Macmillan.PXQBA.Business.Models.Course;
 using Question = Macmillan.PXQBA.Business.Models.Question;
@@ -334,6 +335,23 @@ namespace Macmillan.PXQBA.Business.Services
                 return questionCommands.GetQuestion(entityId, id, version);
             }
             return null;
+        }
+
+        public IEnumerable<Capability> GetActiveRoleCapabilities(RoleViewModel src)
+        {
+            return src.CapabilityGroups.SelectMany(c => c.Capabilities).Select(c => (Capability)Enum.Parse(typeof(Capability), c.Id.ToString()));
+        }
+
+        public IEnumerable<CapabilityGroupViewModel> GetCapabilityGroups(IList<Capability> capabilities)
+        {
+            var groups = CapabilityHelper.GetCapabilityGroups().ToList();
+            return groups.Select(keyValuePair => new CapabilityGroupViewModel()
+            {
+                Name = keyValuePair.Key, Capabilities = keyValuePair.Value.Select(v => new CapabilityViewModel
+                {
+                    Id = (int) v, Name = EnumHelper.GetEnumDescription(v), IsActive = capabilities.Contains(v)
+                })
+            }).ToList();
         }
 
         private CourseMetadataFieldDescriptor GetFieldDescriptorWithSplitedValues(string concatedValues, string internalName)

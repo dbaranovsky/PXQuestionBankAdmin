@@ -29,14 +29,31 @@ namespace Macmillan.PXQBA.Business.Services
 
         public IEnumerable<Role> GetRolesForCourse(string courseId)
         {
-            var courseRoles  = userCapabilityOperation.GetRolesForCourse(courseId);
-            if (!courseRoles.Any())
+           return userCapabilityOperation.GetRolesForCourse(courseId);
+        }
+
+        public void DeleteRole(int roleId)
+        {
+            userCapabilityOperation.DeleteRole(roleId);
+        }
+
+        public Role GetRole(string courseId, int? roleId)
+        {
+            if (roleId.HasValue && roleId.Value > 0)
             {
-                var predefinedRoles = PredefinedRoleHelper.GetPredefinedRoles();
-                userCapabilityOperation.UpdateRolesCapabilities(courseId, predefinedRoles);
-                courseRoles = userCapabilityOperation.GetRolesForCourse(courseId);
+                return userCapabilityOperation.GetRoleWithCapabilities(courseId, roleId.Value);
             }
-            return courseRoles;
+            return GetNewRoleTemplate();
+        }
+
+        private Role GetNewRoleTemplate()
+        {
+            return new Role();
+        }
+
+        public void UpdateRole(string courseId, Role role)
+        {
+            userCapabilityOperation.UpdateRolesCapabilities(courseId, new List<Role>(){role});
         }
     }
 }
