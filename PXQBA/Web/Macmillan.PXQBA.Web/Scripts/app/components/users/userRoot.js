@@ -22,14 +22,6 @@ var UserRoot = React.createClass({displayName: 'UserRoot',
    },
     
 
-    componentDidMount: function(){
-      var self = this;
-     userManager.getNewRoleTemplate().done(function(template){
-          self.setState({newRoleTemplate: template});
-      });
-    },
-
-
     setRoles: function(data){
       this.setState({loading: false, roles: data});
     },
@@ -61,7 +53,7 @@ var UserRoot = React.createClass({displayName: 'UserRoot',
       }
 
 
-      return (RoleDialog(  {saveRoleHandler:this.saveRoleHandler, closeAddRoleDialog:this.closeAddRoleDialog, viewMode:this.state.viewMode,  role:this.state.roleDialogModel, newRole:this.state.newRole} ));
+      return (RoleDialog(  {saveRoleHandler:this.saveRoleHandler, closeAddRoleDialog:this.closeAddRoleDialog, viewMode:this.state.viewMode, courseId:this.state.currentCourse,  role:this.state.roleDialogModel, newRole:this.state.newRole} ));
 
    },
 
@@ -135,7 +127,8 @@ var RoleDialog = React.createClass({displayName: 'RoleDialog',
 
   getInitialState: function(){
       return({
-         role: this.convertRoleModel()
+         loading: true,
+         role: this.props.role
       });
   },
 
@@ -143,17 +136,14 @@ var RoleDialog = React.createClass({displayName: 'RoleDialog',
          $(this.getDOMNode()).modal("hide");
          this.props.closeAddRoleDialog();
     },
-   
-  convertRoleModel: function(){
-    var role = this.props.role == undefined? null : $.extend(true, {}, this.props.role);
-    if(this.props.newRole){
-      $.each(role.capabilityGroups, function(i, group){
-         $.each(group.capabilities, function(i,capability){
-            capability.isActive = false;
-         });
-      });
-    }
-    return role;
+
+  componentDidMount: function(){
+    var self=this;
+      userManager.getRolesCapabilities(this.props.role == undefined? "" : this.props.role.id, this.props.courseId).done(this.setRole).error(function(e){self.setState({loading: false})});
+  },
+
+  setRole: function(role){
+    this.setState({loading: false, role: role});
   },
 
   editRoleHandler: function(role){
@@ -182,6 +172,15 @@ var RoleDialog = React.createClass({displayName: 'RoleDialog',
       
         var renderBody = function(){
         
+            if (self.state.loading){
+              return (React.DOM.div( {className:"waiting"}));
+            }
+
+            if(self.state.role == null){
+              return (React.DOM.b(null, "No capabilities are loaded"));
+            }
+
+
             return (React.DOM.div(null, 
 
                        EditRoleBox( {role:self.state.role, newRole:self.props.newRole, viewMode:self.props.viewMode, editRoleHandler:self.editRoleHandler})

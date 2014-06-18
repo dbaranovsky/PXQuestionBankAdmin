@@ -105,6 +105,28 @@ var userManager = (function() {
         });
     }
 
+      self.getRolesCapabilities = function(roleId, courseId){
+
+           var request = {
+            roleId: roleId,
+            courseId: courseId
+        };
+               
+        return $.ajax({
+            url: window.actions.userOperations.getRoleCapabilitiesUrl,
+            data: request,
+            dataType: 'json',
+            type: 'GET'   
+        }).done(function (response) {
+            
+        }).error(function (httpRequest, textStatus, errorThrown) {
+            if (httpRequest.readyState == 0 || httpRequest.status == 0) {
+                return;  
+            }
+            self.showErrorPopup();
+        });
+    }
+
 
       self.saveRole = function(role, courseId){
           var request = {
