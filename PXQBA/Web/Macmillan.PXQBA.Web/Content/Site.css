@@ -1138,6 +1138,10 @@ textarea.metadata-availible-values-editor {
     width: 1000px;
 }
 
+#displayImageDialog .modal-content {
+    width: 800px;
+}
+
 .tooltip-img {
     cursor: pointer;
 }

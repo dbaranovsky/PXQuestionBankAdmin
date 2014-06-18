@@ -237,6 +237,7 @@
     <Content Include="Scripts\app\components\metadata\metadataMainButtonsContainer.js" />
     <Content Include="Scripts\app\components\metadata\metadataMetaEditorTab.js" />
     <Content Include="Scripts\app\components\metadata\metadataTabs.js" />
+    <Content Include="Scripts\app\components\metadata\previewCardTemplateDialog.js" />
     <Content Include="Scripts\app\components\metadata\titleSpecificMetadataField.js" />
     <Content Include="Scripts\app\components\questions\editor\metadataFieldEditor.js" />
     <Content Include="Scripts\app\components\questions\editor\multiSelectEditor.js" />
@@ -324,6 +325,7 @@
     <Content Include="Scripts\app\src\components\metadata\metadataMainButtonsContainer.js" />
     <Content Include="Scripts\app\src\components\metadata\metadataMetaEditorTab.js" />
     <Content Include="Scripts\app\src\components\metadata\metadataTabs.js" />
+    <Content Include="Scripts\app\src\components\metadata\previewCardTemplateDialog.js" />
     <Content Include="Scripts\app\src\components\metadata\titleSpecificMetadataField.js" />
     <Content Include="Scripts\app\src\components\questions\editor\metadataFieldEditor.js" />
     <Content Include="Scripts\app\src\components\questions\editor\multiSelectEditor.js" />
