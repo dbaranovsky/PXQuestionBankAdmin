@@ -6,7 +6,8 @@ var RoleDialog = React.createClass({
 
   getInitialState: function(){
       return({
-         role: this.convertRoleModel()
+         loading: true,
+         role: this.props.role
       });
   },
 
@@ -15,17 +16,15 @@ var RoleDialog = React.createClass({
          this.props.closeAddRoleDialog();
     },
    
-  convertRoleModel: function(){
-    var role = this.props.role == undefined? null : $.extend(true, {}, this.props.role);
-    if(this.props.newRole){
-      $.each(role.capabilityGroups, function(i, group){
-         $.each(group.capabilities, function(i,capability){
-            capability.isActive = false;
-         });
-      });
-    }
-    return role;
+  componentDidMount: function(){
+    var self=this;
+      userManager.getRolesCapabilities(this.props.role == undefined? "" : this.props.role.id, this.props.courseId).done(this.setRole).error(function(e){self.setState({loading: false})});
   },
+
+  setRole: function(role){
+    this.setState({loading: false, role: role});
+  },
+
 
   editRoleHandler: function(role){
     this.setState({role: role});
@@ -56,6 +55,13 @@ var RoleDialog = React.createClass({
 
       
         var renderBody = function(){
+            if (self.state.loading){
+              return (<div className="waiting"></div>);
+            }
+
+            if(self.state.role == null){
+              return (<b>No capabilities are loaded</b>);
+            }
         
             return (<div>
 
