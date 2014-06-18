@@ -81,6 +81,7 @@
     <Compile Include="Contracts\IProductCourseOperation.cs" />
     <Compile Include="Contracts\IQuestionCommands.cs" />
     <Compile Include="Contracts\ITemporaryQuestionOperation.cs" />
+    <Compile Include="Contracts\IUserCapabilityOperation.cs" />
     <Compile Include="Contracts\IUserNotificationOperation.cs" />
     <Compile Include="Contracts\IUserOperation.cs" />
     <Compile Include="DataContracts\QuestionSearchResult.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Services\EntityFramework\NoteCommands.cs" />
     <Compile Include="Services\DLAP\ProductCourseOperation.cs" />
     <Compile Include="Services\EntityFramework\QuestionCommands.cs" />
+    <Compile Include="Services\EntityFramework\UserCapabilityOperation.cs" />
     <Compile Include="Services\EntityFramework\UserNotificationOperation.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +111,10 @@
     <ProjectReference Include="..\..\Common\Macmillan.PXQBA.Common.Helpers\Macmillan.PXQBA.Common.Helpers.csproj">
       <Project>{DC4AEAAB-7123-4E1C-BD7D-FB0913C68B2C}</Project>
       <Name>Macmillan.PXQBA.Common.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Macmillan.PXQBA.Common.Logging\Macmillan.PXQBA.Common.Logging.csproj">
+      <Project>{45A498CC-0FDF-4B3B-833B-FD0B008AA8D9}</Project>
+      <Name>Macmillan.PXQBA.Common.Logging</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.Commands\Bfw.Agilix.Commands.csproj">
       <Project>{19E52C79-1FE3-4385-A035-B603213C099E}</Project>

@@ -44,7 +44,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
         {
             return dbRecords.Select(databaseRecord => new UserNotShownNotification()
             {
-                UserId = (string)databaseRecord["UserId"],
+                UserId = databaseRecord["UserId"].ToString(),
                 NotificationType = (NotificationType)Enum.Parse(typeof(NotificationType), (string)databaseRecord["NotificationType"])
             }).ToList();
 

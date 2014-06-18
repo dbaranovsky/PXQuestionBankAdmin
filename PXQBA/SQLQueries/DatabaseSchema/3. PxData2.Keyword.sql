@@ -1,12 +1,12 @@
 USE PXData2
 GO
 
-CREATE TABLE dbo.Keyword(
+CREATE TABLE dbo.QBAKeyword(
   Id BIGINT IDENTITY,
   CourseId NVARCHAR(MAX) NOT NULL,
   FieldName NVARCHAR(MAX) NOT NULL,
   Keyword NVARCHAR(MAX) NOT NULL,
-  CONSTRAINT PK_Keyword PRIMARY KEY (Id)
+  CONSTRAINT PK_QBAKeyword PRIMARY KEY (Id)
 ) 
 GO
 
@@ -22,7 +22,7 @@ AS
 BEGIN
   SELECT *
   FROM
-    Keyword
+    QBAKeyword
   WHERE
     CourseId = @courseId AND
     FieldName = @fieldName
@@ -43,9 +43,9 @@ CREATE PROCEDURE dbo.AddKeyword
 AS
 BEGIN
   
-IF NOT EXISTS (SELECT * FROM Keyword k WHERE k.CourseId=@courseId AND k.fieldName = @fieldName AND k.Keyword = @keyword)
+IF NOT EXISTS (SELECT * FROM QBAKeyword k WHERE k.CourseId=@courseId AND k.fieldName = @fieldName AND k.Keyword = @keyword)
 BEGIN
-  INSERT INTO Keyword(CourseId, FieldName, Keyword)
+  INSERT INTO QBAKeyword(CourseId, FieldName, Keyword)
   VALUES
     (@courseId, @fieldName, @keyword)
 END

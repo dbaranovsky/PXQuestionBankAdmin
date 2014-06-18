@@ -73,10 +73,12 @@
     <Compile Include="Course.cs" />
     <Compile Include="CourseMetadataFieldDescriptor.cs" />
     <Compile Include="CourseMetadataFieldValue.cs" />
+    <Compile Include="CourseUser.cs" />
     <Compile Include="FilterFieldDescriptor.cs" />
     <Compile Include="MetadataFieldType.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="NotificationType.cs" />
+    <Compile Include="PredefinedRoleHelper.cs" />
     <Compile Include="QuestionFlag.cs" />
     <Compile Include="QuestionList.cs" />
     <Compile Include="InteractionType.cs" />
@@ -85,11 +87,13 @@
     <Compile Include="QuestionMetaField.cs" />
     <Compile Include="QuestionStatus.cs" />
     <Compile Include="QuestionMetadataSection.cs" />
+    <Compile Include="Role.cs" />
     <Compile Include="SortCriterion.cs" />
     <Compile Include="QuestionMetadata.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionChoice.cs" />
+    <Compile Include="CapabilityHelper.cs" />
     <Compile Include="UserInfo.cs" />
     <Compile Include="UserNotShownNotification.cs" />
   </ItemGroup>
