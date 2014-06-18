@@ -13,6 +13,9 @@ var MetadataTabs = React.createClass({displayName: 'MetadataTabs',
                 ),
                 React.DOM.li(null, 
                     React.DOM.a( {href:"#metadataTab", 'data-toggle':"tab"}, "Add Title-Specific Metadata Fields")
+                ),
+                 React.DOM.li(null, 
+                    React.DOM.a( {href:"#templateTab", 'data-toggle':"tab"}, "Question card template")
                 )
               ),
 
@@ -24,8 +27,12 @@ var MetadataTabs = React.createClass({displayName: 'MetadataTabs',
                     React.DOM.div( {className:"tab-pane", id:"metadataTab"}, 
                         MetadataMetaEditorTab( {data:this.props.data, 
                             metadataFieldsHandlers:this.props.metadataFieldsHandlers,
-                            availableFieldTypes:this.props.availableFieldTypes}
-                            )
+                            availableFieldTypes:this.props.availableFieldTypes})
+                    ),
+                    React.DOM.div( {className:"tab-pane", id:"templateTab"}, 
+                        MetadataCardTemplateTab( 
+                            {dataChangeHandler:this.props.dataChangeHandler,
+                            data:this.props.data} )
                     )
                 )
             )

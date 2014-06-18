@@ -3,6 +3,7 @@
 */
 
 var MetadataMainButtonsContainer= React.createClass({displayName: 'MetadataMainButtonsContainer',
+
     render: function() {
        return (
                React.DOM.div(null,  
