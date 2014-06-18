@@ -225,6 +225,11 @@ namespace Bfw.Agilix.DataContracts
         /// Repository Course id
         /// </summary>
         public string QuestionBankRepositoryCourse { get; set; }
+
+        /// <summary>
+        /// Html template for question card
+        /// </summary>
+        public string QuestionCardLayout { get; set; }
 		
 		/// <summary>
 		/// Instructor can switch domain of product. This flag is at product course level
@@ -443,6 +448,24 @@ namespace Bfw.Agilix.DataContracts
 		            metaAvailableQuestionData.Add(questionCardData.ToEntity());
 		        }
 		    }
+
+            if (!string.IsNullOrEmpty(QuestionCardLayout))
+		    {
+		        var questioncardLayout = dataElement.Element("questioncardlayout");
+		        if (questioncardLayout == null)
+		        {
+                    questioncardLayout = new XElement("questioncardlayout");
+                    dataElement.Add(questioncardLayout);
+		        }
+		        var scriptElement = questioncardLayout.Element("script");
+		        if (scriptElement == null)
+		        {
+                    scriptElement = new XElement("script", new XAttribute("id", "questioncard-template"),
+                                                           new XAttribute("type", @"text/x-handlebars-template"));
+                    questioncardLayout.Add(scriptElement);
+		        }
+		        scriptElement.Add(XElement.Parse(QuestionCardLayout));
+		    } 
 
 			if (!string.IsNullOrEmpty(DerivedCourseId))
 			{
@@ -890,6 +913,20 @@ namespace Bfw.Agilix.DataContracts
 				}
 				QuestionCardData = questionCardResults;
 			}
+
+            //Parse QuestionCardLayout
+            var questioncardLayout = Data.Element("questioncardlayout");
+            if (questioncardLayout != null)
+            {
+                var scriptElement = questioncardLayout.Element("script");
+                if (scriptElement != null)
+                {
+                    if (scriptElement.Element("div") != null)
+                    {
+                        QuestionCardLayout = scriptElement.Element("div").ToString();
+                    }
+                }
+            }
 
 		    var questionBankRepository = Data.Element("QuestionBankRepositoryCourse");
             if (questionBankRepository != null)

@@ -36,23 +36,6 @@ namespace Macmillan.PXQBA.Business.Services
             this.userOperation = userOperation;
         }
 
-        public string GetQuestionCardLayout(Bfw.Agilix.DataContracts.Course src)
-        {
-            var questioncardLayout = src.Data.Element("questioncardlayout");
-            if (questioncardLayout != null)
-            {
-                var scriptElement = questioncardLayout.Element("script");
-                if (scriptElement != null)
-                {
-                    if (scriptElement.Element("div") != null)
-                    {
-                        return scriptElement.Element("div").ToString();
-                    }
-                }
-            }
-            return string.Empty;
-        }
-
         public QuestionMetadataSection GetQuestionDefaultValues(Bfw.Agilix.DataContracts.Question question)
         {
             return QuestionDataXmlParser.GetDefaultSectionValues(question.MetadataElements);
