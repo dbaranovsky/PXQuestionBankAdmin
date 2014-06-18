@@ -9,7 +9,14 @@ var UserRoot = React.createClass({
                  loading: false,
                  currentCourse: null,
                  roles: null,
-                 showAddRoleDialog: false
+                 showAddRoleDialog: false,
+                 usersLoading: true,
+                 users: [],
+                 currentPage: 1,
+                 totalPages: 1,
+                 pages: [],
+                 usersPerPage: 20,
+                 page: null
                });
     },
 
@@ -21,6 +28,29 @@ var UserRoot = React.createClass({
    
    },
     
+
+
+    componentDidMount: function(){
+      var self = this;
+     userManager.getUsers().done(self.processUsers).error(function(e){self.setState({usersLoading: false});});
+    },
+
+    processUsers: function(users){
+        var totalPages =  ~~(users.length/this.state.usersPerPage);
+        if(users.length%this.state.usersPerPage != 0){
+          totalPages++;
+        } 
+         var pages = [];
+        for (i=0; i< totalPages; i++){
+            pages.push(users.slice(i*this.state.usersPerPage, i*this.state.usersPerPage+this.state.usersPerPage));
+        }
+       this.setState({usersLoading: false,
+                      pages: pages,
+                      totalPages: totalPages,
+                      page: pages[0]
+                    });
+
+    },
 
     setRoles: function(data){
       this.setState({loading: false, roles: data});
@@ -81,8 +111,75 @@ var UserRoot = React.createClass({
    doneSaving: function(){
           userManager.getRolesForCourse(this.state.currentCourse).done(this.setRoles).error(function(e){self.setState({loading: false});});
    },
+
+   showAvailibleTitlesHandler: function(user){
+      this.setState({showAvailibleTitles: true, user: user});
+   },
+
+   showUserEditDialog: function(user){
+      this.setState({showUserEditDialog: true, user: user});
+   },
+
+
+
+   renderUsers: function(){
+        if(this.state.usersLoading){
+          return (<div className="waiting middle"></div>);
+        }
+
+        if(this.state.page == null || this.state.page.length == 0){
+          return(<b>No data availible</b>);
+        }
+        return (<UserBox  users={this.state.page} showAvailibleTitlesHandler={this.showAvailibleTitlesHandler}  showUserEditDialog={this.showUserEditDialog}/>);
+   },
+
+   renderAvailibleTitlesDialog: function(){
+      if(this.state.showAvailibleTitles){
+         return( <AvailibleTitlesDialog user={this.state.user} closeAvailibleTitles={this.closeAvailibleTitles} />);
+      }
+
+      return null;
+   },
+
+   renderUserEditDialog: function(){
+      if(this.state.showUserEditDialog){
+         return( <EditUserDialog user={this.state.user} closeEditUserDialog={this.closeEditUserDialog} updateAvailibleTitles={this.updateAvailibleTitles} />);
+      }
+
+      return null;
+   },
+
+   closeAvailibleTitles: function(){
+      this.setState({showAvailibleTitles: false, user: null});
+   },
+
+   closeEditUserDialog: function(){
+       this.setState({showUserEditDialog: false, user: null});
+   },
+
+  updateAvailibleTitles: function(userId, count){
+
+
+        var pages = this.state.pages;
+        var page = this.state.page;
+        for(var i in page){
+          if (page[i].id == userId){
+              page[i].availibleTitlesCount = count;
+              break;
+          }
+        }
+
+        pages[this.state.currentPage-1] = page;
+
+
+        this.setState({pages: pages, page: page});
+  },
+
+  changePage: function(page){
+    this.setState({page: this.state.pages[page-1], currentPage: parseInt(page)});
+  },
+
    renderTabs: function() {
-    
     return(   <div>
               <ul className="nav nav-tabs">
                 <li className="active"> 
@@ -95,7 +192,13 @@ var UserRoot = React.createClass({
 
                <div className="tab-content">
                     <div className="tab-pane active" id="users-tab">
-                         TBD
+                         {this.renderUsers()}
+                          <div className="question-grid-item"> 
+                             <Paginator metadata={{
+                                currentPage: this.state.currentPage,
+                                totalPages: this.state.totalPages}} 
+                                customPaginatorClickHandle={this.changePage}/>
+                         </div> 
                     </div>
                     <div className="tab-pane" id="roles-tab">
                          <MetadataCourseSelector selectCourseHandler={this.selectCourseHandler} 
@@ -107,6 +210,8 @@ var UserRoot = React.createClass({
                     </div>
                 </div>
                 {this.renderAddRoleDialog()}
+                {this.renderAvailibleTitlesDialog()}
+                {this.renderUserEditDialog()}
             </div>);
    },
 
@@ -122,332 +227,3 @@ var UserRoot = React.createClass({
             );
     }
 });
-
-var RoleDialog = React.createClass({
-
-  getInitialState: function(){
-      return({
-         loading: true,
-         role: this.props.role
-      });
-  },
-
-    closeDialog: function(){
-         $(this.getDOMNode()).modal("hide");
-         this.props.closeAddRoleDialog();
-    },
-
-  componentDidMount: function(){
-    var self=this;
-      userManager.getRolesCapabilities(this.props.role == undefined? "" : this.props.role.id, this.props.courseId).done(this.setRole).error(function(e){self.setState({loading: false})});
-  },
-
-  setRole: function(role){
-    this.setState({loading: false, role: role});
-  },
-
-  editRoleHandler: function(role){
-    this.setState({role: role});
-   },
-
-  saveRoleHandler: function(){
-    this.props.saveRoleHandler(this.state.role);
-  },
-
-    render: function() {
-       var self = this;
-        var renderHeaderText = function() {
-
-            if (self.props.viewMode){
-             return "Capabilities availible for "+ self.state.role.name;
-            }
-
-            if(self.props.newRole){
-              return "Add Role";
-            }
-
-            return "Edit Role";
-        };
-
-      
-        var renderBody = function(){
-        
-            if (self.state.loading){
-              return (<div className="waiting"></div>);
-            }
-
-            if(self.state.role == null){
-              return (<b>No capabilities are loaded</b>);
-            }
-
-
-            return (<div>
-
-                       <EditRoleBox role={self.state.role} newRole={self.props.newRole} viewMode={self.props.viewMode} editRoleHandler={self.editRoleHandler}/>
-                    </div>
-            );
-        };
-
-     
-      var  renderFooterButtons = function(){
-                  if(self.props.viewMode){
-                   return (<div className="modal-footer"> 
-                             <button type="button" className="btn btn-default" data-dismiss="modal" data-target="roleModal">Close</button>
-                          </div>);
-                  }
-
-                   return (<div className="modal-footer"> 
-                             <button type="button" className="btn btn-primary" data-dismiss="modal" data-target="roleModal" onClick={self.saveRoleHandler}>Save</button>
-                             <button type="button" className="btn btn-default" data-dismiss="modal" data-target="roleModal">Cancel</button>
-                          </div>);
-                 }
-
-   
-
-        return (<ModalDialog  showOnCreate = {true} renderHeaderText={renderHeaderText} renderBody={renderBody}  closeDialogHandler = {this.closeDialog}  renderFooterButtons={renderFooterButtons} dialogId="addRoleModal"/>);
-    }
-
-});
-
-var EditRoleBox = React.createClass({
-
- getInitialState: function(){
-  return ({
-    editMode: this.props.role == undefined || this.props.viewMode? false : true,
-    viewMode: this.props.viewMode == undefined? false: this.props.viewMode,
-    newRole: this.props.newRole == undefined? false : this.props.newRole
-  });
- },
-
-
-dataChangeHandler:function(event){
-    var role = this.props.role;
-    role.name = event.target.value;
-    this.props.editRoleHandler(role);
-},
-
-
-
-renderRoleNameEditor: function(){
-  if (this.state.viewMode){
-    return null;
-  }
-   return(<div className="role-name-editor">
-            Role name
-            <input type="text" className="form-control" value={this.props.role.name} onChange={this.dataChangeHandler}  placeholder="Enter role name"/>
-           </div>);
-},
-
-renderCapabilities: function(){
-
-    if(this.props.role.capabilityGroups == undefined || this.props.role.capabilityGroups.length == 0){
-      return (<b>There are no capabilities</b>);
-    }
-
-   return (<CapabilitiesBox role={this.props.role} editRoleHandler={this.props.editRoleHandler} viewMode={this.state.viewMode} />);  
-},
-render: function(){
-    return(
-      <div>
-          {this.renderRoleNameEditor()}
-          {this.renderCapabilities()}
-      </div>
-      );
-  }
-});
-
-var CapabilitiesBox = React.createClass({
-
-
-    editCapabilityGroup: function(capabilityGroup){
-      var role = this.props.role;
-      var capabilityGroups = this.props.role.capabilityGroups;
-      var newCapablilityGroups = [];
-      $.each(capabilityGroups, function(index, value){
-          if (value.name == capabilityGroup.name){
-            newCapablilityGroups.push(capabilityGroup);
-          }else{
-            newCapablilityGroups.push(value);
-          }
-      });
-
-       role.capabilityGroups = newCapablilityGroups;
-      this.props.editRoleHandler(role);
-    },
-
-    renderCapabilities: function(){
-        var capabilityGroups = [];
-        var self = this;
-        capabilityGroups = this.props.role.capabilityGroups.map(function (capabilityGroup, i) {
-            return (<CapabilityGroup capabilityGroup={capabilityGroup} editCapabilityGroup={self.editCapabilityGroup} viewMode={self.props.viewMode}/>);
-          });
-
-        return capabilityGroups;
-    },
-
-    render: function(){
-    return(
-      <div className="capabilities-box">
-          {this.renderCapabilities()}
-      </div>
-      );
-  }
-});
-
-var CapabilityGroup = React.createClass({
-
-
-    editCapability: function(capability){
-        var capabilityGroup = this.props.capabilityGroup;
-        var capabilities = capabilityGroup.capabilities;
-        var newCapablilies = [];
-
-          $.each(capabilities, function(index, value){
-          if (value.id == capability.id){
-            newCapablilies.push(capability);
-          }else{
-            newCapablilies.push(value);
-          }
-         });  
-
-
-        capabilityGroup.capabilities = newCapablilies;
-        this.props.editCapabilityGroup(capabilityGroup);
-
-    },
-
-    renderCapabilities: function(){
-        var capabilities = [];
-        var self = this;
-          capabilities = this.props.capabilityGroup.capabilities.map(function (capability, i) {
-            return (<CapabilityItem capability={capability} editCapability={self.editCapability} viewMode={self.props.viewMode}/>);
-          });
-
-        return capabilities;
-
-    },   
-
-
-    isGroupSelected: function(){
-      var isActiveInGroup = $.grep(this.props.capabilityGroup.capabilities, function(el){return el.isActive;}).length;
-      var capabilitiesCount = this.props.capabilityGroup.capabilities.length;
-
-      return isActiveInGroup == capabilitiesCount;
-    },
-
-    switchGroup: function(){
-        var capabilityGroup = this.props.capabilityGroup;
-        var capabilities = capabilityGroup.capabilities;
-        var isGroupSelected = !this.isGroupSelected();
-        var newCapablilies = [];
-
-          $.each(capabilities, function(index, value){
-            value.isActive = isGroupSelected;
-            newCapablilies.push(value);    
-         });  
-
-        capabilityGroup.capabilities = newCapablilies;
-        this.props.editCapabilityGroup(capabilityGroup);
-    },
-
-    render: function(){
-     
-      return(
-        <div className="capabilities-group">
-           <input type="checkbox"  disabled={this.props.viewMode} checked={this.isGroupSelected()} onChange={this.switchGroup} /> <b> {this.props.capabilityGroup.name}</b>
-           {this.renderCapabilities()}
-        </div>
-        );
-    }
-
- }); 
-
-
-var CapabilityItem = React.createClass({
-
-  switchCapability: function(){
-    var capability = this.props.capability;
-    capability.isActive = !capability.isActive;
-    this.props.editCapability(capability);
-  },
-
-   render: function(){
-      return(
-        <div className="capability-item">
-           <input type="checkbox" disabled={this.props.viewMode} checked={this.props.capability.isActive} onChange={this.switchCapability}/> <span> {this.props.capability.name}</span>
-        </div>
-        );
-    }
- }); 
-
-
-var RolesBox = React.createClass({
-
-  renderRoles: function(){
-     var self= this;
-
-     var rows = [];
-     rows = this.props.roles.map(function (role, i) {
-        
-            return (<RoleRow role={role} editRole = {self.props.editRole}  viewCapabilities = {self.props.viewCapabilities} />);
-          });
-
-     return rows;
-
-  },
-
-  addRoleClickHandler: function(){
-      this.props.addRoleClickHandler();
-  },
-
-  render: function() {
-       return (
-                <div className = "roles-box"> 
-                        <button className="btn btn-primary " data-toggle="modal"  title="Add role" onClick={this.addRoleClickHandler} >
-                             Add role
-                        </button>
-                        <br /><br />
-                        <div className="roles-table">
-                          {this.renderRoles()}
-                        </div> 
-                        
-                </div>
-            );
-    }
-
-  });
-
-
-var RoleRow = React.createClass({
-
-  viewCapabilities: function(){
-     this.props.viewCapabilities(this.props.role);
-  },
-
-  editRole: function(){
-     this.props.editRole(this.props.role);
-  },
-
-  render: function() {
-       return (
-                <div className="role-row">
-
-                      <div className="role-cell role-name"> {this.props.role.name} </div>
-                      <div className="role-cell capabilities">
-                          <span className="capabilities-link" onClick={this.viewCapabilities}>{this.props.role.activeCapabiltiesCount} capabilit{this.props.role.activeCapabiltiesCount == 1? "y": "ies"} </span>
-                      </div>
-                      <div className="role-cell menu">
-
-                          <div className="menu-container-main version-history">
-                          <button type="button" className="btn btn-default btn-sm"  data-toggle="tooltip"  title="Edit Role" onClick={this.editRole}><span className="glyphicon glyphicon-pencil"></span> </button>
-                          <button type="button" className="btn btn-default btn-sm" data-toggle="tooltip" title="Remove Role"><span className="glyphicon glyphicon-trash"></span></button>
-                         
-                       </div>
-
-                       </div>
-                        
-                </div>
-            );
-    }
-
- });

@@ -43,6 +43,15 @@ var SingleSelectSelector = React.createClass({
     var self = this;
     var selector = self.getDOMNode();
     var chosenOptions = {width: "100%", hide_dropdown: true, allow_add_new_values: true};
+    if (self.props.allowDeselect != undefined && self.props.allowNewValues != undefined){
+         chosenOptions = {width: "100%", 
+                            hide_dropdown: true, 
+                            allow_add_new_values: self.props.allowNewValues, 
+                            allow_single_deselect: self.props.allowDeselect,
+                            placeholder_text_single: "None"
+                          };
+    }
+
     $(selector).val(this.props.currentValues)
                          .chosen(chosenOptions)
                          .change(function(e, params){

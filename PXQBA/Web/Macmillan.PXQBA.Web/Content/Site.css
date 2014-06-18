@@ -639,6 +639,17 @@ input.disabled, textarea.disabled {
 }
 
 
+.waiting.middle {
+     
+    height: 100px !important;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+    
+}
+
+
 .tab-body iframe {
     width: 98%;
     height: 693px;
@@ -1165,6 +1176,7 @@ textarea.metadata-availible-values-editor {
     border-bottom: 1px solid #c0c0c0;
 }
 
+
 .role-row {
     display: table-row;
     height: 50px;
@@ -1214,4 +1226,52 @@ textarea.metadata-availible-values-editor {
     -moz-background-size: contain;
     -o-background-size: contain;
     background-size: contain;
+}
+.title-table {
+    margin-left: 30px;
+    display: table;
+    font-size: 17px;
+    border-spacing:0 13px;
+    width: 525px;
+}
+
+.title-cell {
+    display: table-cell;
+    border-bottom: 1px solid #c0c0c0;
+}
+
+.title-row {
+    display: table-row;
+    height: 50px;
+}
+
+
+.title-row:last-child .title-cell{
+    border-bottom: none;  
+}
+
+.roles-table.role-selector {
+    width: 500px;
+}
+
+.user-titles-container {
+    min-height: 500px;
+    max-height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+
+.user-titles-container .waiting {
+    height: 400px !important;
+}
+
+.role-cell.selector {
+    width: 200px;}
+.capabilities-box {
+     min-height: 500px;
+    max-height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
 }

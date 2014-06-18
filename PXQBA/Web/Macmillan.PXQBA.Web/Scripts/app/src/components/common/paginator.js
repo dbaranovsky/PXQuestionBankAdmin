@@ -2,7 +2,7 @@
 * @jsx React.DOM
 */ 
 
-var QuestionPaginator = React.createClass({displayName: 'QuestionPaginator',
+var Paginator = React.createClass({
 
     displayPages: 5,
     firstMarker: "_first",
@@ -79,7 +79,10 @@ var QuestionPaginator = React.createClass({displayName: 'QuestionPaginator',
           return;
        }
 
-       routsManager.setPage(page);
+       if(this.props.customPaginatorClickHandle != undefined){
+            this.props.customPaginatorClickHandle(page);
+       }
+
     },
 
     renderPageButton: function(pageNumper, isActive) {
@@ -88,7 +91,7 @@ var QuestionPaginator = React.createClass({displayName: 'QuestionPaginator',
                 'active': isActive,
             });
 
-        return (React.DOM.li( {className:pageClass}, React.DOM.a( {href:"javascript:void(0);", 'data-page':pageNumper}, pageNumper)))
+        return (<li className={pageClass}><a href="javascript:void(0);" data-page={pageNumper}>{pageNumper}</a></li>)
     },
 
     renderFirstPageButtons: function() {
@@ -96,12 +99,12 @@ var QuestionPaginator = React.createClass({displayName: 'QuestionPaginator',
         var enabled = this.props.metadata.currentPage > 1;
 
         if(!enabled) {
-            buttons.push(React.DOM.li( {className:"first disabled"}, React.DOM.a( {href:"javascript:void(0);"}, "First")));
-            buttons.push(React.DOM.li( {className:"prev disabled"}, React.DOM.a( {href:"javascript:void(0);"}, "Previous")));
+            buttons.push(<li className="first disabled"><a href="javascript:void(0);">First</a></li>);
+            buttons.push(<li className="prev disabled"><a href="javascript:void(0);">Previous</a></li>);
         }
         else {
-            buttons.push(React.DOM.li( {className:"first"}, React.DOM.a( {href:"javascript:void(0);", 'data-page':this.firstMarker}, "First")));
-            buttons.push(React.DOM.li( {className:"prev"}, React.DOM.a( {href:"javascript:void(0);", 'data-page':this.prevMarker}, "Previous")));
+            buttons.push(<li className="first"><a href="javascript:void(0);" data-page={this.firstMarker}>First</a></li>);
+            buttons.push(<li className="prev"><a href="javascript:void(0);" data-page={this.prevMarker}>Previous</a></li>);
         }
 
         return buttons;
@@ -112,12 +115,12 @@ var QuestionPaginator = React.createClass({displayName: 'QuestionPaginator',
         var enabled = this.props.metadata.currentPage < this.props.metadata.totalPages;
 
         if(!enabled) {
-            buttons.push(React.DOM.li( {className:"next disabled"}, React.DOM.a( {href:"javascript:void(0);"}, "Next")));
-            buttons.push(React.DOM.li( {className:"last disabled"}, React.DOM.a( {href:"javascript:void(0);"}, "Last")));
+            buttons.push(<li className="next disabled"><a href="javascript:void(0);">Next</a></li>);
+            buttons.push(<li className="last disabled"><a href="javascript:void(0);">Last</a></li>);
         }
         else {
-            buttons.push(React.DOM.li( {className:"next"}, React.DOM.a( {href:"javascript:void(0);", 'data-page':this.nextMarker}, "Next")));
-            buttons.push(React.DOM.li( {className:"last"}, React.DOM.a( {href:"javascript:void(0);", 'data-page':this.lastMarker}, "Last")));
+            buttons.push(<li className="next"><a href="javascript:void(0);" data-page={this.nextMarker}>Next</a></li>);
+            buttons.push(<li className="last"><a href="javascript:void(0);" data-page={this.lastMarker}>Last</a></li>);
         }
 
         return buttons;
@@ -136,11 +139,11 @@ var QuestionPaginator = React.createClass({displayName: 'QuestionPaginator',
 
     render: function() {
         return ( 
-                React.DOM.ul( {id:"pagination-demo", className:"pagination-sm pagination", onClick:this.onClickHandler}, 
-                     this.renderFirstPageButtons(),
-                     this.renderPageButtons(),
-                     this.renderEndPageButtons()
-               )
+                <ul id="pagination-demo" className="pagination-sm pagination" onClick={this.onClickHandler}>
+                     {this.renderFirstPageButtons()}
+                     {this.renderPageButtons()}
+                     {this.renderEndPageButtons()}
+               </ul>
               
             );
     }

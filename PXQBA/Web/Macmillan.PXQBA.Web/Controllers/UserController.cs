@@ -96,11 +96,174 @@ namespace Macmillan.PXQBA.Web.Controllers
         }
 
 
+
         public ActionResult SaveRole(RoleViewModel role, string courseId)
         {
              
             return JsonCamel(new { isSuccess = true });
         }
        
+        /// <summary>
+        /// Return all users
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult GetUsers()
+        {
+
+            return JsonCamel(GetHardCodedUsers());
+        }
+
+        /// <summary>
+        /// Return titles with already set roles for user
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public ActionResult GetAvailibleTitles(string userId)
+        {
+            return JsonCamel(GetHardCodedAvailibleRoles());
+        }
+
+        /// <summary>
+        /// Return all titles with availible roles for user
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public ActionResult GetUserRoles(string userId)
+        {
+            return JsonCamel(GetHardCodedUserRoles());
+        }
+
+        /// <summary>
+        /// Saves user roles
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="titles">Title roles which  was changed</param>
+        /// <returns></returns>
+        public ActionResult SaveUserRoles(string userId, IEnumerable<ProductCourseRolesViewModel> titles)
+        {
+             return JsonCamel(new { isSuccess = true });
+        
+        }
+
+        #region HardCode
+        private IEnumerable<ProductCourseRolesViewModel> GetHardCodedUserRoles()
+        {
+            return new List<ProductCourseRolesViewModel>
+                    {
+                        new  ProductCourseRolesViewModel
+                        {
+                           ProductCourseId = "14532",
+                           ProductCourseName = "Modern History",
+                           CurrentRole = new RoleViewModel()
+                                        {
+                                             Id =  1,
+                                             Name = "Author"
+                                        },
+                           AvailibleRoles = new Dictionary<string, string>()
+                                            {
+                                                {"1","Author"},
+                                                {"2"," Super Author"}
+                                            }
+                        },
+
+
+                        new ProductCourseRolesViewModel
+                        {
+                            ProductCourseId = "4564",
+                             ProductCourseName = "Economics",
+                             CurrentRole = new RoleViewModel()
+                                        {       
+                                               Id = 2,
+                                               Name = "Super Admin"
+                                        },
+                            AvailibleRoles = new Dictionary<string, string>()
+                                            {
+                                                {"1","Admin"},
+                                                {"2","Super Admin"}
+                                            }
+      
+                        },
+
+                         new ProductCourseRolesViewModel
+                        {
+                             ProductCourseId = "1101",
+                             ProductCourseName = "MacroEconomics",
+                             CurrentRole = null,
+                             AvailibleRoles = new Dictionary<string, string>()
+                                            {
+                                                {"1","Admin"},
+                                                {"2"," Super Admin"}
+                                            }
+      
+                        }
+
+
+                    };
+        }
+
+        private IEnumerable<ProductCourseRolesViewModel> GetHardCodedAvailibleRoles()
+        {
+            return new List<ProductCourseRolesViewModel>
+                    {
+                        new ProductCourseRolesViewModel
+                        {
+                           ProductCourseName = "Modern History",
+                           CurrentRole = new RoleViewModel()
+                                        {
+                                             Name = "Super Author"
+                                        }
+                        },
+
+                        new ProductCourseRolesViewModel
+                        {
+                             ProductCourseName = "Economics",
+                             CurrentRole = new RoleViewModel()
+                                        {
+                                               Name = "Administrator"
+                                        }
+                         
+                        }
+                    };
+            
+        }
+
+        private IEnumerable<UserViewModel> GetHardCodedUsers()
+        {
+            //return new List<UserViewModel>
+            //       {
+            //           new UserViewModel
+            //           {
+            //              Id = "1",
+            //              AvailibleTitlesCount = 32,
+            //              UserName = "John Smith"
+            //           },
+            //             new UserViewModel
+            //           {
+            //              Id = "2",
+            //              AvailibleTitlesCount = 32,
+            //              UserName = "John Doe"
+            //           },
+
+            //             new UserViewModel
+            //           {
+            //              Id = "3",
+            //              AvailibleTitlesCount = 32,
+            //              UserName = "Alex Murphy"
+            //           },
+            //       };
+
+            var list = new List<UserViewModel>();
+            for (var i = 0; i < 153; i++)
+            {
+                var item = new UserViewModel() {Id = i.ToString(), AvailibleTitlesCount = 1, UserName = "john" + i};
+                list.Add(item);
+            }
+
+            return list;
+
+        }
+
+
+        #endregion
     }
 }
