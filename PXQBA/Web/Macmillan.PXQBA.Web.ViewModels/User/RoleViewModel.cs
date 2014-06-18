@@ -13,12 +13,6 @@ namespace Macmillan.PXQBA.Web.ViewModels.User
          public int ActiveCapabiltiesCount { get; set; }
         
          public bool CanDelete { get; set; }
-         public int ActiveCapabiltiesCount
-         {
-             get
-             {
-                 return CapabilityGroups == null ? 0 : CapabilityGroups.Sum(capabilities => capabilities.Capabilities.Count(x => x.IsActive));
-             }
-         }
+      
     }
 }
