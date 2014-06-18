@@ -4,6 +4,11 @@
 
 var QuestionGrid = React.createClass({
   
+  customPaginatorClickHandle: function(page){
+      routsManager.setPage(page);
+  },
+
+     
     render: function() { 
         return (
               <div className="questionGrid">
@@ -22,9 +27,10 @@ var QuestionGrid = React.createClass({
                                         />
                 </div> 
                 <div className="question-grid-item"> 
-                    <QuestionPaginator metadata={{
+                    <Paginator metadata={{
                             currentPage: this.props.response.pageNumber,
-                            totalPages: this.props.response.totalPages}} />
+                            totalPages: this.props.response.totalPages}} 
+                            customPaginatorClickHandle={this.customPaginatorClickHandle}/>
                 </div> 
                  
             </div> 

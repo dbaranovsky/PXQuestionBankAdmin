@@ -11,7 +11,12 @@ var UserRoot = React.createClass({
                  roles: null,
                  showAddRoleDialog: false,
                  usersLoading: true,
-                 users: []
+                 users: [],
+                 currentPage: 1,
+                 totalPages: 1,
+                 pages: [],
+                 usersPerPage: 20,
+                 page: null
                });
     },
 
@@ -31,12 +36,26 @@ var UserRoot = React.createClass({
           self.setState({newRoleTemplate: template});
       });
 
-     userManager.getUsers().done(function(users){
-          self.setState({users: users, usersLoading: false});
-     }).error(function(e){self.setState({usersLoading: false});});
+     userManager.getUsers().done(self.processUsers).error(function(e){self.setState({usersLoading: false});});
 
     },
 
+    processUsers: function(users){
+        var totalPages =  ~~(users.length/this.state.usersPerPage);
+        if(users.length%this.state.usersPerPage != 0){
+          totalPages++;
+        } 
+         var pages = [];
+        for (i=0; i< totalPages; i++){
+            pages.push(users.slice(i*this.state.usersPerPage, i*this.state.usersPerPage+this.state.usersPerPage));
+        }
+       this.setState({usersLoading: false,
+                      pages: pages,
+                      totalPages: totalPages,
+                      page: pages[0]
+                    });
+
+    },
 
     setRoles: function(data){
       this.setState({loading: false, roles: data});
@@ -113,10 +132,10 @@ var UserRoot = React.createClass({
           return (<div className="waiting middle"></div>);
         }
 
-        if(this.state.users == null || this.state.users.length == 0){
-          return(<b>No users loaded</b>);
+        if(this.state.page == null || this.state.page.length == 0){
+          return(<b>No data availible</b>);
         }
-        return (<UserBox  users={this.state.users} showAvailibleTitlesHandler={this.showAvailibleTitlesHandler}  showUserEditDialog={this.showUserEditDialog}/>);
+        return (<UserBox  users={this.state.page} showAvailibleTitlesHandler={this.showAvailibleTitlesHandler}  showUserEditDialog={this.showUserEditDialog}/>);
    },
 
    renderAvailibleTitlesDialog: function(){
@@ -144,22 +163,28 @@ var UserRoot = React.createClass({
    },
 
   updateAvailibleTitles: function(userId, count){
-        var users = this.state.users;
-        var newUsers = [];
-        $.each(users, function(i, user){
-            if(user.id == userId){
-               user.availibleTitlesCount = count;
-               newUsers.push(user);
-            }else{
-              newUsers.push(user);
-            }
 
-        });
-        this.setState({users: newUsers});
+
+        var pages = this.state.pages;
+        var page = this.state.page;
+        for(var i in page){
+          if (page[i].id == userId){
+              page[i].availibleTitlesCount = count;
+              break;
+          }
+        }
+
+        pages[this.state.currentPage-1] = page;
+
+
+        this.setState({pages: pages, page: page});
+  },
+
+  changePage: function(page){
+    this.setState({page: this.state.pages[page-1], currentPage: parseInt(page)});
   },
 
    renderTabs: function() {
-    
     return(   <div>
               <ul className="nav nav-tabs">
                 <li className="active"> 
@@ -173,6 +198,12 @@ var UserRoot = React.createClass({
                <div className="tab-content">
                     <div className="tab-pane active" id="users-tab">
                          {this.renderUsers()}
+                          <div className="question-grid-item"> 
+                             <Paginator metadata={{
+                                currentPage: this.state.currentPage,
+                                totalPages: this.state.totalPages}} 
+                                customPaginatorClickHandle={this.changePage}/>
+                         </div> 
                     </div>
                     <div className="tab-pane" id="roles-tab">
                          <MetadataCourseSelector selectCourseHandler={this.selectCourseHandler} 
@@ -330,6 +361,7 @@ var UserTitlesBox = React.createClass({
                   <div className="roles-table role-selector">
                   {this.renderRows()}
                   </div>
+                     
               </div>);
 
   }
@@ -490,11 +522,13 @@ var UserBox = React.createClass({
      return rows;
     },
     render: function() {
-       return (
+       return (<div>
                 <div className="roles-table"> 
 
                   {this.renderUsers()}
 
+                </div>
+               
                 </div>
             );
     }

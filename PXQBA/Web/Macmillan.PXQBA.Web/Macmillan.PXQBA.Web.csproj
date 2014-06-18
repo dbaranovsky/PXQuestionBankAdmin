@@ -222,6 +222,7 @@
     <Content Include="Scripts\app\components\common\loader.js" />
     <Content Include="Scripts\app\components\common\modalDialog.js" />
     <Content Include="Scripts\app\components\common\notificationDialog.js" />
+    <Content Include="Scripts\app\components\common\paginator.js" />
     <Content Include="Scripts\app\components\common\singleSelectButton.js" />
     <Content Include="Scripts\app\components\common\singleSelectSelector.js" />
     <Content Include="Scripts\app\components\common\textAreaEditor.js" />
@@ -281,7 +282,6 @@
     <Content Include="Scripts\app\components\questions\questionListPage.js" />
     <Content Include="Scripts\app\components\questions\questionMetadataList.js" />
     <Content Include="Scripts\app\components\questions\questionNoDataStub.js" />
-    <Content Include="Scripts\app\components\questions\questionPaginator.js" />
     <Content Include="Scripts\app\components\questions\questionPreview.js" />
     <Content Include="Scripts\app\components\questions\questionShareDialog.js" />
     <Content Include="Scripts\app\components\questions\questionTabs.js" />
@@ -369,7 +369,7 @@
     <Content Include="Scripts\app\src\components\questions\questionListPage.js" />
     <Content Include="Scripts\app\src\components\questions\questionMetadataList.js" />
     <Content Include="Scripts\app\src\components\questions\questionNoDataStub.js" />
-    <Content Include="Scripts\app\src\components\questions\questionPaginator.js" />
+    <Content Include="Scripts\app\src\components\common\paginator.js" />
     <Content Include="Scripts\app\src\components\questions\questionPreview.js" />
     <Content Include="Scripts\app\src\components\questions\questionTabs.js" />
     <Content Include="Scripts\app\src\components\questions\questionTypeList.js" />
