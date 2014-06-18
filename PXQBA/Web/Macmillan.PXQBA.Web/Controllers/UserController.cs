@@ -69,20 +69,8 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult GetRolesForCourse(string courseId)
         {
-            //var roles = userManagementService.GetRolesForCourse(courseId);
-            //return JsonCamel(Mapper.Map<IEnumerable<RoleViewModel>>(roles));
-
-            var roles = new List<RoleViewModel>
-                        {
-                            new RoleViewModel()
-                            {   
-                                Id = "1",
-                                Name = "test",
-                                CanDelete = true,
-                                CapabilityGroups = Mapper.Map<IEnumerable<CapabilityGroupViewModel>>(CapabilityHelper.GetCapabilityGroups().ToList())
-                            }
-                        };
-            return JsonCamel(roles);
+            var roles = userManagementService.GetRolesForCourse(courseId);
+            return JsonCamel(Mapper.Map<IEnumerable<RoleViewModel>>(roles));
         }
 
 
