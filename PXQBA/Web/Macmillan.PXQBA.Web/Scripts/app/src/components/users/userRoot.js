@@ -129,7 +129,7 @@ var UserRoot = React.createClass({
 
    renderUserEditDialog: function(){
       if(this.state.showUserEditDialog){
-         return( <EditUserDialog user={this.state.user} closeEditUserDialog={this.closeEditUserDialog} />);
+         return( <EditUserDialog user={this.state.user} closeEditUserDialog={this.closeEditUserDialog} updateAvailibleTitles={this.updateAvailibleTitles} />);
       }
 
       return null;
@@ -143,6 +143,20 @@ var UserRoot = React.createClass({
        this.setState({showUserEditDialog: false, user: null});
    },
 
+  updateAvailibleTitles: function(userId, count){
+        var users = this.state.users;
+        var newUsers = [];
+        $.each(users, function(i, user){
+            if(user.id == userId){
+               user.availibleTitlesCount = count;
+               newUsers.push(user);
+            }else{
+              newUsers.push(user);
+            }
+
+        });
+        this.setState({users: newUsers});
+  },
 
    renderTabs: function() {
     
@@ -222,15 +236,13 @@ var EditUserDialog  = React.createClass({
         userManager.saveUserRoles(this.props.user.id, $.grep(this.state.roles, function(el){return el.isChanged}))
                     .done(function(e){
                       self.setState({loading: false});
-                      self.props.closeEditUserDialog();
+                      $(self.getDOMNode()).modal("hide");
                     })
                     .error(function(e){
                       self.setState({loading: false});
                     });
     
-        var availibleTitles = $.grep(this.state.roles, function(el){return el.currentRole != null}).length
-
-
+       this.props.updateAvailibleTitles(this.props.user.id, $.grep(this.state.roles, function(el){return el.currentRole != null}).length);
 
     },
 
