@@ -139,24 +139,24 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// <param name="userId"></param>
         /// <param name="titles">Title roles which  was changed</param>
         /// <returns></returns>
-        public ActionResult SaveUserRoles(string userId, IEnumerable<TitleRolesViewModel> titles)
+        public ActionResult SaveUserRoles(string userId, IEnumerable<ProductCourseRolesViewModel> titles)
         {
              return JsonCamel(new { isSuccess = true });
         
         }
 
         #region HardCode
-        private IEnumerable<TitleRolesViewModel> GetHardCodedUserRoles()
+        private IEnumerable<ProductCourseRolesViewModel> GetHardCodedUserRoles()
         {
-            return new List<TitleRolesViewModel>
+            return new List<ProductCourseRolesViewModel>
                     {
-                        new TitleRolesViewModel
+                        new  ProductCourseRolesViewModel
                         {
-                           TitleId = "14532",
-                           TitleName = "Modern History",
+                           ProductCourseId = "14532",
+                           ProductCourseName = "Modern History",
                            CurrentRole = new RoleViewModel()
                                         {
-                                             Id =  "1",
+                                             Id =  1,
                                              Name = "Author"
                                         },
                            AvailibleRoles = new Dictionary<string, string>()
@@ -167,13 +167,13 @@ namespace Macmillan.PXQBA.Web.Controllers
                         },
 
 
-                        new TitleRolesViewModel
+                        new ProductCourseRolesViewModel
                         {
-                            TitleId = "4564",
-                             TitleName = "Economics",
+                            ProductCourseId = "4564",
+                             ProductCourseName = "Economics",
                              CurrentRole = new RoleViewModel()
                                         {       
-                                               Id = "2",
+                                               Id = 2,
                                                Name = "Super Admin"
                                         },
                             AvailibleRoles = new Dictionary<string, string>()
@@ -184,10 +184,10 @@ namespace Macmillan.PXQBA.Web.Controllers
       
                         },
 
-                         new TitleRolesViewModel
+                         new ProductCourseRolesViewModel
                         {
-                             TitleId = "1101",
-                             TitleName = "MacroEconomics",
+                             ProductCourseId = "1101",
+                             ProductCourseName = "MacroEconomics",
                              CurrentRole = null,
                              AvailibleRoles = new Dictionary<string, string>()
                                             {
@@ -201,22 +201,22 @@ namespace Macmillan.PXQBA.Web.Controllers
                     };
         }
 
-        private IEnumerable<TitleRolesViewModel> GetHardCodedAvailibleRoles()
+        private IEnumerable<ProductCourseRolesViewModel> GetHardCodedAvailibleRoles()
         {
-            return new List<TitleRolesViewModel>
+            return new List<ProductCourseRolesViewModel>
                     {
-                        new TitleRolesViewModel
+                        new ProductCourseRolesViewModel
                         {
-                           TitleName = "Modern History",
+                           ProductCourseName = "Modern History",
                            CurrentRole = new RoleViewModel()
                                         {
                                              Name = "Super Author"
                                         }
                         },
 
-                        new TitleRolesViewModel
+                        new ProductCourseRolesViewModel
                         {
-                             TitleName = "Economics",
+                             ProductCourseName = "Economics",
                              CurrentRole = new RoleViewModel()
                                         {
                                                Name = "Administrator"

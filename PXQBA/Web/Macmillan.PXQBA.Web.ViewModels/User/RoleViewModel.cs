@@ -5,7 +5,7 @@ namespace Macmillan.PXQBA.Web.ViewModels.User
 {
      public class RoleViewModel
     {
-         public string Id { get; set; }
+         public int Id { get; set; }
          public string Name { get; set; }
 
          public IEnumerable<CapabilityGroupViewModel> CapabilityGroups { get; set; }

@@ -81,7 +81,7 @@
     <Compile Include="User\CapabilityViewModel.cs" />
     <Compile Include="User\CapabilityGroupViewModel.cs" />
     <Compile Include="User\RoleViewModel.cs" />
-    <Compile Include="User\TitleRolesViewModel.cs" />
+    <Compile Include="User\ProductCourseRolesViewModel.cs" />
     <Compile Include="User\UserNotificationViewModel.cs" />
     <Compile Include="User\UserViewModel.cs" />
     <Compile Include="Versions\DuplicateFromViewModel.cs" />

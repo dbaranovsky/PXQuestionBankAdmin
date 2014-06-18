@@ -48,7 +48,7 @@
           var self = this;
            var currentValue = userTitle.currentRole == null? "" : userTitle.currentRole.id;
             return (React.DOM.div( {className:"role-row"}, 
-                          React.DOM.div( {className:"role-cell"}, userTitle.titleName),
+                          React.DOM.div( {className:"role-cell"}, userTitle.productCourseName),
                             React.DOM.div( {className:"role-cell selector"}, 
                                     SingleSelectSelector(  {allowNewValues:false, currentValues:currentValue,  allowDeselect:true, allOptions:self.getAllOptions(userTitle.availibleRoles), onChangeHandler:self.selectorChangeHandler})
                             )

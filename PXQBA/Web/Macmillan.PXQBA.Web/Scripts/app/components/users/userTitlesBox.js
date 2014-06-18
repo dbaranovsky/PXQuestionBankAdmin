@@ -9,7 +9,7 @@ var UserTitlesBox = React.createClass({displayName: 'UserTitlesBox',
       var titles = this.props.titles;
       var newTitles = [];
       $.each(titles, function(i, item){
-          if(item.titleId == title.titleId){
+          if(item.productCourseId == title.productCourseId){
             newTitles.push(title);
           }else{
             newTitles.push(item);

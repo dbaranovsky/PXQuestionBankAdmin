@@ -33,7 +33,7 @@
      rows = this.state.titles.map(function (title, i) {
         
             return ( React.DOM.div( {className:"title-row"}, 
-                        React.DOM.div( {className:"title-cell"}, title.titleName),
+                        React.DOM.div( {className:"title-cell"}, title.productCourseName),
                         React.DOM.div( {className:"title-cell"}, React.DOM.i(null, title.currentRole.name))
                       ));
           });

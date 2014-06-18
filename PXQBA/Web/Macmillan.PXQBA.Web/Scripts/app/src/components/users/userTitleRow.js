@@ -48,7 +48,7 @@
           var self = this;
            var currentValue = userTitle.currentRole == null? "" : userTitle.currentRole.id;
             return (<div className="role-row">
-                          <div className="role-cell">{userTitle.titleName}</div>
+                          <div className="role-cell">{userTitle.productCourseName}</div>
                             <div className="role-cell selector">
                                     <SingleSelectSelector  allowNewValues={false} currentValues={currentValue}  allowDeselect={true} allOptions={self.getAllOptions(userTitle.availibleRoles)} onChangeHandler={self.selectorChangeHandler}/>
                             </div>
