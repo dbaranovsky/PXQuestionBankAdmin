@@ -223,7 +223,7 @@ var EditUserDialog  = React.createClass({
                     .done(function(e){
                       self.setState({loading: false});
                       self.props.closeEditUserDialog();
-                    });
+                    })
                     .error(function(e){
                       self.setState({loading: false});
                     });

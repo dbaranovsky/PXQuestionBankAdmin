@@ -219,7 +219,10 @@ var EditUserDialog  = React.createClass({displayName: 'EditUserDialog',
         this.setState({loading: true});
         var self= this;
         userManager.saveUserRoles(this.props.user.id, $.grep(this.state.roles, function(el){return el.isChanged}))
-                    .done(this.finishSaving)
+                    .done(function(e){
+                      self.setState({loading: false});
+                      self.props.closeEditUserDialog();
+                    })
                     .error(function(e){
                       self.setState({loading: false});
                     });
