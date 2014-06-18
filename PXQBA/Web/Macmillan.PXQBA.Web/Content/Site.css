@@ -1004,6 +1004,16 @@ a.shared-question-link:hover {
     height: 400px;
 }
 
+.metadata-template-editor {
+    -moz-resize: none;
+    -ms-resize: none;
+    -o-resize: none;
+    resize: none;
+    width: 100%;
+    max-width: 100%;
+    height: 400px;
+}
+
 textarea.metadata-availible-values-editor {
     -moz-resize: none;
     -ms-resize: none;
@@ -1017,6 +1027,23 @@ textarea.metadata-availible-values-editor {
 .metadata-values-label {
     margin: 0 0 15px 0;
 }
+
+.metadata-template-description {
+    float: left;
+    vertical-align: middle;
+    margin: 10px 0 0 0;
+}
+
+.metadata-template-button-container {
+    float: right;
+    vertical-align: middle;
+}
+
+.metadata-template-header {
+    margin: 5px 5px 10px 5px;
+    height: 30px;
+}
+
 
 /* Versions */
 

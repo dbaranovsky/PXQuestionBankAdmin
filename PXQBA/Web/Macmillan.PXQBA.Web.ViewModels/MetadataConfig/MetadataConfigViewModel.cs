@@ -24,6 +24,8 @@ namespace Macmillan.PXQBA.Web.ViewModels.MetadataConfig
 
         public string Banks { get; set; }
 
+        public string QuestionCardLayout { get; set; }
+
         public IList<ProductCourseSpecificMetadataFieldViewModel> Fields { get; set; }
 
         public IList<AvailableChoiceItem> AvailableFieldTypes { get; set; }

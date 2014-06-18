@@ -230,6 +230,7 @@
     <Content Include="Scripts\app\components\metadata\availibleValuesDialog.js" />
     <Content Include="Scripts\app\components\metadata\displayOptionsDialog.js" />
     <Content Include="Scripts\app\components\metadata\internalFieldDialog.js" />
+    <Content Include="Scripts\app\components\metadata\metadataCardTemplateTab.js" />
     <Content Include="Scripts\app\components\metadata\metadataCfgRoot.js" />
     <Content Include="Scripts\app\components\metadata\metadataChapterEditorTab.js" />
     <Content Include="Scripts\app\components\metadata\metadataCourseSelector.js" />
@@ -316,6 +317,7 @@
     <Content Include="Scripts\app\src\components\metadata\availibleValuesDialog.js" />
     <Content Include="Scripts\app\src\components\metadata\displayOptionsDialog.js" />
     <Content Include="Scripts\app\src\components\metadata\internalFieldDialog.js" />
+    <Content Include="Scripts\app\src\components\metadata\metadataCardTemplateTab.js" />
     <Content Include="Scripts\app\src\components\metadata\metadataCfgRoot.js" />
     <Content Include="Scripts\app\src\components\metadata\metadataChapterEditorTab.js" />
     <Content Include="Scripts\app\src\components\metadata\metadataCourseSelector.js" />
