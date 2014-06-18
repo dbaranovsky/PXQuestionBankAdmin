@@ -1203,3 +1203,11 @@ textarea.metadata-availible-values-editor {
 .capabilities-group {
     margin-bottom: 3px;
 }
+
+#addRoleModal .waiting {
+    height: 100px !important;
+     -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+}

@@ -84,7 +84,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(true);
         }
 
-        public ActionResult GetNewRoleTemplate()
+        public ActionResult GetRoleCapabilities(string roleId, string courseId)
         {
             var role = new RoleViewModel()
                        {
@@ -101,7 +101,6 @@ namespace Macmillan.PXQBA.Web.Controllers
              
             return JsonCamel(new { isSuccess = true });
         }
-
        
     }
 }
