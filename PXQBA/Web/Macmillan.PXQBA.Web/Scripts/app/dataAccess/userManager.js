@@ -141,7 +141,7 @@ var userManager = (function() {
             type: 'POST',
             contentType: 'application/json'
         }).done(function (response) {
-            self.showSuccessPopup("Role successfully created")
+            self.showSuccessPopup("Role successfully created");
         }).error(function (httpRequest, textStatus, errorThrown) {
             if (httpRequest.readyState == 0 || httpRequest.status == 0) {
                 return;  
@@ -227,7 +227,7 @@ var userManager = (function() {
             type: 'POST',
             contentType: 'application/json'
         }).done(function (response) {
-            
+              self.showSuccessPopup("User successfully updated");
         }).error(function (httpRequest, textStatus, errorThrown) {
             if (httpRequest.readyState == 0 || httpRequest.status == 0) {
                 return;  

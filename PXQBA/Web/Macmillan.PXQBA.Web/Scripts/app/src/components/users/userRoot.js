@@ -190,7 +190,50 @@ var UserRoot = React.createClass({
 
 var EditUserDialog  = React.createClass({
 
-  
+    getInitialState: function(){
+        return({roles: [], loading: true});
+    },
+
+
+    componentDidMount: function(){
+        var self = this;
+        userManager.getUserRoles(this.props.user.id).done(this.setRoles).error(function(e){
+            self.setState({loading: false});
+        });
+    },
+
+    setRoles: function(roles){
+   
+        this.setState({roles: roles, loading: false});
+    },
+
+
+     closeDialog: function(){
+        this.props.closeEditUserDialog();
+    },  
+
+    changeTitles: function(roles){
+        this.setState({roles: roles});
+    },
+
+    saveUserRoles: function(){
+        this.setState({loading: true});
+        var self= this;
+        userManager.saveUserRoles(this.props.user.id, $.grep(this.state.roles, function(el){return el.isChanged}))
+                    .done(function(e){
+                      self.setState({loading: false});
+                      self.props.closeEditUserDialog();
+                    });
+                    .error(function(e){
+                      self.setState({loading: false});
+                    });
+    
+        var availibleTitles = $.grep(this.state.roles, function(el){return el.currentRole != null}).length
+
+
+
+    },
+
 
     render: function() {
        var self = this;
@@ -202,8 +245,10 @@ var EditUserDialog  = React.createClass({
 
       
         var renderBody = function(){
-            return (<div className="title-table"> 
-                      <UserTitlesBox user={self.props.user} />
+            return (<div className="user-titles-container">
+              <div className="title-table"> 
+                      <UserTitlesBox user={self.props.user} titles={self.state.roles} loading={self.state.loading} changeTitles={self.changeTitles} />
+                    </div>
                     </div>
             );
         };
@@ -212,7 +257,7 @@ var EditUserDialog  = React.createClass({
       var  renderFooterButtons = function(){
 
                    return (<div className="modal-footer"> 
-                             <button type="button" className="btn btn-primary">Save</button>
+                             <button type="button" className="btn btn-primary" onClick={self.saveUserRoles}>Save</button>
                              <button type="button" className="btn btn-default" data-dismiss="modal" data-target="editUserModal">Close</button>
                           </div>);
              
@@ -232,37 +277,32 @@ var EditUserDialog  = React.createClass({
 var UserTitlesBox = React.createClass({
 
 
-    getInitialState: function(){
-        return({roles: [], loading: true});
-    },
-    closeDialog: function(){
-        this.props.closeEditUserDialog();
-    },  
+    changeTitleHandler: function(title){
+      var titles = this.props.titles;
+      var newTitles = [];
+      $.each(titles, function(i, item){
+          if(item.titleId == title.titleId){
+            newTitles.push(title);
+          }else{
+            newTitles.push(item);
+          }
+      });
 
-    componentDidMount: function(){
-        var self = this;
-        userManager.getUserRoles(this.props.user.id).done(this.setRoles).error(function(e){
-            self.setState({loading: false});
-        });
-    },
-
-    setRoles: function(roles){
-        this.setState({roles: roles, loading: false});
+      this.props.changeTitles(newTitles);
     },
 
     renderRows: function(){
      var self= this;
 
-     if (this.state.loading){
-        return (<div className="waiting middle"></div>);
+     if (this.props.loading){
+        return (<div className="waiting"></div>);
       }
 
      var rows = [];
-     rows = this.state.roles.map(function (userRole, i) {
-        
-                return (<div className="role-row">
-                          <div className="role-cell">{userRole.titleName}</div>
-                         </div>);
+     rows = this.props.titles.map(function (userTitle, i) {
+
+                return (<UserTitleRow title={userTitle} changeTitleHandler={self.changeTitleHandler} />);
+               
           });
 
      if (rows.length == 0){
@@ -274,14 +314,71 @@ var UserTitlesBox = React.createClass({
     },
   render: function(){
 
-      return (<div className="user-titles-container">
-                  <div className="roles-table">
+      return (<div >
+                  <div className="roles-table role-selector">
                   {this.renderRows()}
                   </div>
               </div>);
 
   }
 });
+
+
+ var UserTitleRow  = React.createClass({
+    selectorChangeHandler: function(items){
+        var title = this.props.title;
+
+        if(items[0] == ""){
+          if(title.currentRole != null){
+            title.currentRole = null;
+            title.isChanged = true;
+            this.props.changeTitleHandler(title);
+            return;
+          }
+        }
+
+        if(title.currentRole == null){
+          title.currentRole= { id: "0"};
+        }
+       
+       if(items[0] != title.currentRole.id){
+            title.currentRole.id = items[0];
+            title.isChanged = true;
+            this.props.changeTitleHandler(title);
+       }
+    },
+
+    getAllOptions: function(availableChoice) {
+        if(availableChoice==null) {
+             availableChoice =[];
+        }
+        var options = [];
+        options.push({value: "", text:""});
+
+        for(var propertyName in availableChoice) {
+           options.push({ value: propertyName,
+                          text: availableChoice[propertyName]
+           });
+        }
+
+        return options;
+   },
+
+      render: function(){
+
+          var userTitle = this.props.title;
+          var self = this;
+           var currentValue = userTitle.currentRole == null? "" : userTitle.currentRole.id;
+            return (<div className="role-row">
+                          <div className="role-cell">{userTitle.titleName}</div>
+                            <div className="role-cell selector">
+                                    <SingleSelectSelector  allowNewValues={false} currentValues={currentValue}  allowDeselect={true} allOptions={self.getAllOptions(userTitle.availibleRoles)} onChangeHandler={self.selectorChangeHandler}/>
+                            </div>
+                         </div>);
+      }
+
+
+  });
 
  var AvailibleTitlesDialog  = React.createClass({
 

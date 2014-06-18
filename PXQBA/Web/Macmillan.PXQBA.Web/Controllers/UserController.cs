@@ -152,6 +152,7 @@ namespace Macmillan.PXQBA.Web.Controllers
                     {
                         new TitleRolesViewModel
                         {
+                           TitleId = "14532",
                            TitleName = "Modern History",
                            CurrentRole = new RoleViewModel()
                                         {
@@ -168,21 +169,24 @@ namespace Macmillan.PXQBA.Web.Controllers
 
                         new TitleRolesViewModel
                         {
+                            TitleId = "4564",
                              TitleName = "Economics",
                              CurrentRole = new RoleViewModel()
-                                        {
-                                               Name = "Administrator"
+                                        {       
+                                               Id = "2",
+                                               Name = "Super Admin"
                                         },
                             AvailibleRoles = new Dictionary<string, string>()
                                             {
                                                 {"1","Admin"},
-                                                {"2"," Super Admin"}
+                                                {"2","Super Admin"}
                                             }
       
                         },
 
                          new TitleRolesViewModel
                         {
+                             TitleId = "1101",
                              TitleName = "MacroEconomics",
                              CurrentRole = null,
                              AvailibleRoles = new Dictionary<string, string>()

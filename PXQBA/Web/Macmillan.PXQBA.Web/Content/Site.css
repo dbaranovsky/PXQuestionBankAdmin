@@ -1249,3 +1249,23 @@ textarea.metadata-availible-values-editor {
 .title-row:last-child .title-cell{
     border-bottom: none;  
 }
+
+.roles-table.role-selector {
+    width: 500px;
+}
+
+.user-titles-container {
+    min-height: 500px;
+    max-height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+
+.user-titles-container .waiting {
+    height: 400px !important;
+}
+
+.role-cell.selector {
+    width: 200px;
+}
