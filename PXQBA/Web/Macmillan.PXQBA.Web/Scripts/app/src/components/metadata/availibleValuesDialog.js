@@ -47,7 +47,7 @@ var AvailibleValuesDialog = React.createClass({
              return (<div>
                         <div>
                             <div className="metadata-values-label"> 
-                                List all possible values for <b>{self.props.fieldNameCaption}</b>, one per line. values
+                                List all possible values for <b>{self.props.fieldNameCaption}</b>, one per line. Values
                                 will appear to editors and instructors in the order listed.
                             </div> 
                             <div> 

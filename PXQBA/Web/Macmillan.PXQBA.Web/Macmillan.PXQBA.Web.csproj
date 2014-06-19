@@ -425,6 +425,7 @@
     <Content Include="Scripts\jquery\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery\jquery-ui-1.10.4.min.js" />
+    <Content Include="Scripts\jquery\jquery.highlight-4.js" />
     <Content Include="Scripts\jquery\jquery.switchButton.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\customQuestions\CQ.js" />
