@@ -1275,3 +1275,7 @@ textarea.metadata-availible-values-editor {
     overflow-x: hidden;
 
 }
+
+.highlight {
+    background-color: yellow !important;
+}
