@@ -183,15 +183,12 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<CourseMetadataFieldValue, QuestionCardDataValue>();
 
             Mapper.CreateMap<Role, RoleViewModel>()
-                .ForMember(dest => dest.ActiveCapabiltiesCount, opt => opt.MapFrom(src => src.CapabilitiesCount));
+                .ForMember(dest => dest.ActiveCapabiltiesCount, opt => opt.MapFrom(src => src.CapabilitiesCount))
+                .ForMember(dest => dest.CapabilityGroups, opt => opt.MapFrom(src => modelProfileService.GetCapabilityGroups(src.Capabilities)));
 
-            Mapper.CreateMap<KeyValuePair<string, IEnumerable<Capability>>, CapabilityGroupViewModel>()
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Key))
-                .ForMember(dest => dest.Capabilities, opt => opt.MapFrom(src => src.Value));
-
-            Mapper.CreateMap<Capability, CapabilityViewModel>()
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => EnumHelper.GetEnumDescription(src)));
+            Mapper.CreateMap<RoleViewModel, Role>()
+                .ForMember(dest => dest.CanEdit, opt => opt.UseValue(true))
+                .ForMember(dest => dest.Capabilities, opt => opt.MapFrom(src => modelProfileService.GetActiveRoleCapabilities(src)));
         }
     }
 

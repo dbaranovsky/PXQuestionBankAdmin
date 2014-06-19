@@ -5,6 +5,7 @@ using Macmillan.PXQBA.DataAccess.Data;
 using Macmillan.PXQBA.Web.ViewModels;
 using Macmillan.PXQBA.Web.ViewModels.MetadataConfig;
 using Macmillan.PXQBA.Web.ViewModels.TiteList;
+using Macmillan.PXQBA.Web.ViewModels.User;
 using Macmillan.PXQBA.Web.ViewModels.Versions;
 using Course = Macmillan.PXQBA.Business.Models.Course;
 using Question = Macmillan.PXQBA.Business.Models.Question;
@@ -40,5 +41,7 @@ namespace Macmillan.PXQBA.Business.Contracts
         string MetadataFieldTypeToString(MetadataFieldType type);
         IEnumerable<CourseMetaFieldValue> GetFieldValues(IEnumerable<AvailableChoiceItem> valuesOptions);
         Question GetQuestionVersion(string entityId, string id, string version);
+        IEnumerable<Capability> GetActiveRoleCapabilities(RoleViewModel src);
+        IEnumerable<CapabilityGroupViewModel> GetCapabilityGroups(IList<Capability> capabilities);
     }
 }

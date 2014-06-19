@@ -11,5 +11,7 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         IEnumerable<CourseUser> GetUsersInCourse(string courseId);
 
         void UpdateRolesCapabilities(string courseId, IEnumerable<Role> role);
+        void DeleteRole(int roleId);
+        Role GetRoleWithCapabilities(int roleId);
     }
 }

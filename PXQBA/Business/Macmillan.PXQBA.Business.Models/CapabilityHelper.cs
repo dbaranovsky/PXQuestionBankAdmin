@@ -17,7 +17,7 @@ namespace Macmillan.PXQBA.Business.Models
                 {"Question Status", new List<Capability>{Capability.ChangeStatusFromAvailableToDeleted, Capability.ChangeStatusFromAvailableToInProgress, Capability.ChangeStatusFromDeletedToAvailable, Capability.ChangeStatusFromDeletedToInProgress, Capability.ChangeStatusFromInProgressToAvailable, Capability.ChangeStatusFromInProgressToDeleted}},
                 {"Question Content", new List<Capability>{Capability.EditAvailableQuestion, Capability.EditDeletedQuestion, Capability.EditInProgressQuestion}},
                 {"Question Flags / Notes", new List<Capability>{Capability.FlagQuestion, Capability.AddNoteToQuestion, Capability.UnflagQuestion, Capability.RemoveNoteFromQuestion}},
-                {"Question Sharing / Metadata Sharing", new List<Capability>{Capability.SubscribeToQuestionFromAnotherTitle, Capability.PublishQuestionToAnotherTitle, Capability.EditSharedQuestionContent, Capability.EditSharedQuestionMetadata, Capability.OverrideQuestionMetadata, Capability.RestoreLocalizedMetadataToSharedValue}},
+                {"Question Sharing / Metadata Sharing", new List<Capability>{Capability.PublishQuestionToAnotherTitle, Capability.EditSharedQuestionContent, Capability.EditSharedQuestionMetadata, Capability.OverrideQuestionMetadata, Capability.RestoreLocalizedMetadataToSharedValue}},
                 {"Metadata Config", new List<Capability>{Capability.EditTitleMetadataFull, Capability.EditTitleMetadataReduced}},
                 {"Import", new List<Capability>{Capability.ImportQuestionFromTitle, Capability.ImportQuestionfromQML, Capability.ImportQuestionfromQTI, Capability.ImportQuestionfromRespondus}},
                 {"Versioning", new List<Capability>{Capability.ViewVersionHistory, Capability.CreateDraftFromAvailableQuestion, Capability.TestSpecificVersion, Capability.PublishDraft, Capability.ChangeDraftStatus, Capability.RestoreOldVersion, Capability.CreateDraftFromOldVersion}},
@@ -75,49 +75,47 @@ namespace Macmillan.PXQBA.Business.Models
         UnflagQuestion = 21,
         [Description("remove notes")]
         RemoveNoteFromQuestion = 22,
-        [Description("subscribe to a question from another title")]
-        SubscribeToQuestionFromAnotherTitle = 23,
         [Description("publish a question to another title")]
-        PublishQuestionToAnotherTitle = 24,
+        PublishQuestionToAnotherTitle = 23,
         [Description("edit shared question content")]
-        EditSharedQuestionContent = 25,
+        EditSharedQuestionContent = 24,
         [Description("edit shared question metadata")]
-        EditSharedQuestionMetadata = 26,
+        EditSharedQuestionMetadata = 25,
         [Description("restore localized question metadata to shared value by turning off override")]
-        OverrideQuestionMetadata = 27,
+        OverrideQuestionMetadata = 26,
         [Description("restore localized question metadata to shared value by turning off override")]
-        RestoreLocalizedMetadataToSharedValue = 28,
+        RestoreLocalizedMetadataToSharedValue = 27,
         [Description("edit title metadata (with the exception of \"item link IDs\" and \"internal name\")")]
-        EditTitleMetadataReduced = 29,
+        EditTitleMetadataReduced = 28,
         [Description("edit title metadata (all)")]
-        EditTitleMetadataFull = 30,
+        EditTitleMetadataFull = 29,
         [Description("Import one or more questions, including question metadata, from another LaunchPad title to a specific LaunchPad title")]
-        ImportQuestionFromTitle = 31,
+        ImportQuestionFromTitle = 30,
         [Description("Import one or more questions, including question metadata, from QTI files to a specific LaunchPad title")]
-        ImportQuestionfromQTI = 32,
+        ImportQuestionfromQTI = 31,
         [Description("Import one or more questions, including question metadata, from Respondus files to a specific LaunchPad title")]
-        ImportQuestionfromRespondus = 33,
+        ImportQuestionfromRespondus = 32,
         [Description("Import one or more questions, including question metadata, from QML files to a specific LaunchPad title")]
-        ImportQuestionfromQML = 34,
+        ImportQuestionfromQML = 33,
         [Description("View version history of a question or draft")]
-        ViewVersionHistory = 35,
+        ViewVersionHistory = 34,
         [Description("Create a new draft in order to edit ‘available to instructors’ question")]
-        CreateDraftFromAvailableQuestion = 36,
+        CreateDraftFromAvailableQuestion = 35,
         [Description("Test a specific version of a question or draft")]
-        TestSpecificVersion = 37,
+        TestSpecificVersion = 36,
         [Description("Publish a draft")]
-        PublishDraft = 38,
+        PublishDraft = 37,
         [Description("Change draft status")]
-        ChangeDraftStatus = 39,
+        ChangeDraftStatus = 38,
         [Description("Restore an old version of a question")]
-        RestoreOldVersion = 40,
+        RestoreOldVersion = 39,
         [Description("Create a new draft from an old version of a question")]
-        CreateDraftFromOldVersion = 41,
+        CreateDraftFromOldVersion = 40,
         [Description("Can archive a question bank")]
-        ArchiveQuestionBank = 42,
+        ArchiveQuestionBank = 41,
         [Description("Can download an archive of a title's question bank repository")]
-        DownloadQuestionBankArchive = 43,
+        DownloadQuestionBankArchive = 42,
         [Description("Can delete an existing question bank, moving all questions inside it to another question bank")]
-        DeleteExistingQuestionBank =44
+        DeleteExistingQuestionBank =43
     }
 }

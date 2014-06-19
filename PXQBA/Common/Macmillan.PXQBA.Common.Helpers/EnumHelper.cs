@@ -53,5 +53,10 @@ namespace Macmillan.PXQBA.Common.Helpers
         {
             return entry.ToUpper() == GetEnumDescription(value).ToUpper();
         }
+
+        public static T Parse<T>(string value)
+        {
+            return (T) Enum.Parse(typeof (T), value);
+        }
     }
 }

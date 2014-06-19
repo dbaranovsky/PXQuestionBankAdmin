@@ -5,15 +5,27 @@ namespace Macmillan.PXQBA.Business.Models
 {
     public class Role
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public bool CanDelete { get; set; }
+        private bool canEdit = true;
 
-        private IEnumerable<Capability> capabilities;
+        public bool CanEdit
+        {
+            get
+            {
+                return canEdit;
+            }
+            set
+            {
+                canEdit = value;
+            }
+        }
 
-        public IEnumerable<Capability> Capabilities
+        private IList<Capability> capabilities;
+
+        public IList<Capability> Capabilities
         {
             get
             {

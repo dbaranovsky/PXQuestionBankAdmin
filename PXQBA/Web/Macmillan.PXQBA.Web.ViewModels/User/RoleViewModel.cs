@@ -12,7 +12,6 @@ namespace Macmillan.PXQBA.Web.ViewModels.User
 
          public int ActiveCapabiltiesCount { get; set; }
         
-         public bool CanDelete { get; set; }
-      
+         public bool CanEdit { get; set; }
     }
 }

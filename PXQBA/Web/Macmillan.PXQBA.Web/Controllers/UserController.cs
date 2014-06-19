@@ -73,25 +73,15 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(Mapper.Map<IEnumerable<RoleViewModel>>(roles));
         }
 
-
-        public ActionResult AddRoleToCourse(string courseId, RoleViewModel role)
+        public ActionResult DeleteRole(string courseId, int roleId)
         {
+            userManagementService.DeleteRole(roleId);
             return JsonCamel(true);
         }
 
-        public ActionResult RemoveRoleFromCourse(string courseId, int roleId)
+        public ActionResult GetRoleCapabilities(int? roleId, string courseId)
         {
-            return JsonCamel(true);
-        }
-
-        public ActionResult GetRoleCapabilities(string roleId, string courseId)
-        {
-            var role = new RoleViewModel()
-                       {
-                           CanDelete = true,
-                           CapabilityGroups = Mapper.Map<IEnumerable<CapabilityGroupViewModel>>(CapabilityHelper.GetCapabilityGroups().ToList())
-                       };
-
+            var role = Mapper.Map<RoleViewModel>(userManagementService.GetRole(courseId, roleId));
             return JsonCamel(role);
         }
 
@@ -99,7 +89,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult SaveRole(RoleViewModel role, string courseId)
         {
-             
+            userManagementService.UpdateRole(courseId, Mapper.Map<Role>(role));
             return JsonCamel(new { isSuccess = true });
         }
        
