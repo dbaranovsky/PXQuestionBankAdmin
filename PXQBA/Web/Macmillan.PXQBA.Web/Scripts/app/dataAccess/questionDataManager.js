@@ -412,7 +412,7 @@ var questionDataManager = (function() {
    self.restoreVersion = function (version) {
 
        var request = {
-            version: version
+            version: version.version
         };
 
         return $.ajax({
@@ -424,6 +424,7 @@ var questionDataManager = (function() {
             type: 'POST'
         }).done(function (response) {      
              console.log('restoreVersion complete');
+             self.showSuccessPopup('The version of '+ version.modifiedDate + ' by '+version.modifiedBy+' was restored by creating a duplicate version');
         }).error(function(e){
              console.log('restoreVersion error');
              self.showErrorPopup();
