@@ -117,7 +117,7 @@ var DisplayOptionsDialog = React.createClass({displayName: 'DisplayOptionsDialog
                          
                         ),
                          React.DOM.div( {className:"modal-footer clearfix"}, 
-                                 React.DOM.button( {ref:"cancelButton", type:"button", className:"btn btn-default", 'data-dismiss':"modal", onClick:self.props.closeDialogHandler}, "Cancel"),
+                                 React.DOM.button( {ref:"cancelButton", type:"button", className:"btn btn-default", 'data-dismiss':"modal", 'data-target':"displayOptionsDialog"}, "Cancel"),
                                  React.DOM.button( {type:"button", className:"btn btn-primary", 'data-dismiss':"modal", onClick:self.editInternalFieldHandler}, "Save")
                          )
                     )

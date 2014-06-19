@@ -12,7 +12,8 @@ var MetadataMetaEditorTab = React.createClass({
           showDisplayImageDialog: false,
           indexRowForDialog: -1,
           valueForDialog: "",
-          imgUrl:""
+          imgUrl:"",
+          fieldType: null
         };
     },
 
@@ -61,12 +62,13 @@ var MetadataMetaEditorTab = React.createClass({
 			});
 	},
 
-  showAvailibleValuesDialog: function(index, value, fieldNameCaption) {
+  showAvailibleValuesDialog: function(index, value, fieldNameCaption, fieldType) {
         this.setState({
           showAvailibleValuesDialog: true,
           indexRowForDialog: index,
           valueForDialog: value,
-          fieldNameCaption: fieldNameCaption
+          fieldNameCaption: fieldNameCaption,
+          fieldType: fieldType
       });
   },
 
@@ -106,6 +108,7 @@ var MetadataMetaEditorTab = React.createClass({
                                   itemIndex={this.state.indexRowForDialog}
                                   updateHandler={this.props.metadataFieldsHandlers.updateHandler}
                                   fieldNameCaption={this.state.fieldNameCaption}
+                                  fieldType={this.state.fieldType}
                                    />);
    }
 
@@ -140,12 +143,6 @@ var MetadataMetaEditorTab = React.createClass({
   render: function() {
        return (
        		<div>
-              <div>
-               {this.renderInternalFieldDialog()}
-               {this.renderAvailibleValuesDialog()}
-               {this.renderDisplayOptionsDialog()}
-               {this.renderDisplayImageDialog()}
-             </div>
                <div> 
                		<table className="table table metadata-table">
                			<thead>
@@ -168,6 +165,12 @@ var MetadataMetaEditorTab = React.createClass({
                <div>
                	   <button type="button" className="btn btn-primary metadata-button"  onClick={this.props.metadataFieldsHandlers.addHandler} >Add field</button>
                </div>
+               <div className="dialogs-container">
+                {this.renderInternalFieldDialog()}
+                {this.renderAvailibleValuesDialog()}
+                {this.renderDisplayOptionsDialog()}
+                {this.renderDisplayImageDialog()}
+             </div>
             </div>
             );
     }

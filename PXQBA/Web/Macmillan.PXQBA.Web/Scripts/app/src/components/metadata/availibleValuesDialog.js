@@ -36,6 +36,22 @@ var AvailibleValuesDialog = React.createClass({
         this.setState( {value: text} );
     },
 
+
+    renderTextDescription: function() {
+        if(this.props.fieldType==window.enums.metadataFieldType.keywords) {
+            return (<div>
+                List pre-defined values for <b>{this.props.fieldNameCaption}</b> below, one per line. Editors 
+                will be able to define additional values while editing questions. Values will
+                appear to editors and instructors in alphabetical order.
+               </div>);
+        }
+
+        return (<div>
+                List all possible values for <b>{this.props.fieldNameCaption}</b> below, one per line. Values
+                will appear to editors and instructors in the order listed.
+               </div>);
+    },
+
     render: function() {
  
         var self = this;
@@ -47,8 +63,7 @@ var AvailibleValuesDialog = React.createClass({
              return (<div>
                         <div>
                             <div className="metadata-values-label"> 
-                                List all possible values for <b>{self.props.fieldNameCaption}</b>, one per line. Values
-                                will appear to editors and instructors in the order listed.
+                                {self.renderTextDescription()}
                             </div> 
                             <div> 
                                <TextAreaEditor 
@@ -58,7 +73,7 @@ var AvailibleValuesDialog = React.createClass({
                              </div>
                         </div>
                          <div className="modal-footer clearfix">
-                                 <button type="button" className="btn btn-default" data-dismiss="modal" onClick={self.props.closeDialogHandler}>Cancel</button>
+                                 <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
                                  <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={self.editAvailibleValuesHandler}>Save</button>
                             </div>
                     </div>

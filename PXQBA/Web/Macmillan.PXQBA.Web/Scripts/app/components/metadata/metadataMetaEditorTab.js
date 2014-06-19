@@ -12,7 +12,8 @@ var MetadataMetaEditorTab = React.createClass({displayName: 'MetadataMetaEditorT
           showDisplayImageDialog: false,
           indexRowForDialog: -1,
           valueForDialog: "",
-          imgUrl:""
+          imgUrl:"",
+          fieldType: null
         };
     },
 
@@ -61,12 +62,13 @@ var MetadataMetaEditorTab = React.createClass({displayName: 'MetadataMetaEditorT
 			});
 	},
 
-  showAvailibleValuesDialog: function(index, value, fieldNameCaption) {
+  showAvailibleValuesDialog: function(index, value, fieldNameCaption, fieldType) {
         this.setState({
           showAvailibleValuesDialog: true,
           indexRowForDialog: index,
           valueForDialog: value,
-          fieldNameCaption: fieldNameCaption
+          fieldNameCaption: fieldNameCaption,
+          fieldType: fieldType
       });
   },
 
@@ -105,7 +107,8 @@ var MetadataMetaEditorTab = React.createClass({displayName: 'MetadataMetaEditorT
                                   value:this.state.valueForDialog, 
                                   itemIndex:this.state.indexRowForDialog,
                                   updateHandler:this.props.metadataFieldsHandlers.updateHandler,
-                                  fieldNameCaption:this.state.fieldNameCaption}
+                                  fieldNameCaption:this.state.fieldNameCaption,
+                                  fieldType:this.state.fieldType}
                                    ));
    }
 
@@ -140,12 +143,6 @@ var MetadataMetaEditorTab = React.createClass({displayName: 'MetadataMetaEditorT
   render: function() {
        return (
        		React.DOM.div(null, 
-              React.DOM.div(null, 
-               this.renderInternalFieldDialog(),
-               this.renderAvailibleValuesDialog(),
-               this.renderDisplayOptionsDialog(),
-               this.renderDisplayImageDialog()
-             ),
                React.DOM.div(null,  
                		React.DOM.table( {className:"table table metadata-table"}, 
                			React.DOM.thead(null, 
@@ -167,7 +164,13 @@ var MetadataMetaEditorTab = React.createClass({displayName: 'MetadataMetaEditorT
                ),
                React.DOM.div(null, 
                	   React.DOM.button( {type:"button", className:"btn btn-primary metadata-button",  onClick:this.props.metadataFieldsHandlers.addHandler} , "Add field")
-               )
+               ),
+               React.DOM.div( {className:"dialogs-container"}, 
+                this.renderInternalFieldDialog(),
+                this.renderAvailibleValuesDialog(),
+                this.renderDisplayOptionsDialog(),
+                this.renderDisplayImageDialog()
+             )
             )
             );
     }

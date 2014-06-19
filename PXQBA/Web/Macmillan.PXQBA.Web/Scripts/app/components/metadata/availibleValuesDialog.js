@@ -36,6 +36,22 @@ var AvailibleValuesDialog = React.createClass({displayName: 'AvailibleValuesDial
         this.setState( {value: text} );
     },
 
+
+    renderTextDescription: function() {
+        if(this.props.fieldType==window.enums.metadataFieldType.keywords) {
+            return (React.DOM.div(null, 
+                "List pre-defined values for ", React.DOM.b(null, this.props.fieldNameCaption), " below, one per line. Editors"+' '+ 
+                "will be able to define additional values while editing questions. Values will"+' '+
+                "appear to editors and instructors in alphabetical order."
+               ));
+        }
+
+        return (React.DOM.div(null, 
+                "List all possible values for ", React.DOM.b(null, this.props.fieldNameCaption), " below, one per line. Values"+' '+
+                "will appear to editors and instructors in the order listed."
+               ));
+    },
+
     render: function() {
  
         var self = this;
@@ -47,8 +63,7 @@ var AvailibleValuesDialog = React.createClass({displayName: 'AvailibleValuesDial
              return (React.DOM.div(null, 
                         React.DOM.div(null, 
                             React.DOM.div( {className:"metadata-values-label"},  
-                                "List all possible values for ", React.DOM.b(null, self.props.fieldNameCaption),", one per line. Values"+' '+
-                                "will appear to editors and instructors in the order listed."
+                                self.renderTextDescription()
                             ), 
                             React.DOM.div(null,  
                                TextAreaEditor( 
@@ -58,7 +73,7 @@ var AvailibleValuesDialog = React.createClass({displayName: 'AvailibleValuesDial
                              )
                         ),
                          React.DOM.div( {className:"modal-footer clearfix"}, 
-                                 React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal", onClick:self.props.closeDialogHandler}, "Cancel"),
+                                 React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal"}, "Cancel"),
                                  React.DOM.button( {type:"button", className:"btn btn-primary", 'data-dismiss':"modal", onClick:self.editAvailibleValuesHandler}, "Save")
                             )
                     )
