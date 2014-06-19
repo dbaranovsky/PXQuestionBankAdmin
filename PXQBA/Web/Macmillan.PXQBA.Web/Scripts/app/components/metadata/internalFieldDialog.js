@@ -29,7 +29,7 @@ var InternalFieldDialog = React.createClass({displayName: 'InternalFieldDialog',
                             React.DOM.div(null,  " Internal name: " ), " ", TextEditor( {value:self.state.value, dataChangeHandler:self.onChangeHandler})
                         ),
                          React.DOM.div( {className:"modal-footer clearfix"}, 
-                                 React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal", onClick:self.props.closeDialogHandler}, "Cancel"),
+                                 React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal"}, "Cancel"),
                                  React.DOM.button( {type:"button", className:"btn btn-primary", 'data-dismiss':"modal", onClick:self.editInternalFieldHandler}, "Edit")
                             )
                     )

@@ -143,12 +143,6 @@ var MetadataMetaEditorTab = React.createClass({
   render: function() {
        return (
        		<div>
-              <div>
-               {this.renderInternalFieldDialog()}
-               {this.renderAvailibleValuesDialog()}
-               {this.renderDisplayOptionsDialog()}
-               {this.renderDisplayImageDialog()}
-             </div>
                <div> 
                		<table className="table table metadata-table">
                			<thead>
@@ -171,6 +165,12 @@ var MetadataMetaEditorTab = React.createClass({
                <div>
                	   <button type="button" className="btn btn-primary metadata-button"  onClick={this.props.metadataFieldsHandlers.addHandler} >Add field</button>
                </div>
+               <div className="dialogs-container">
+                {this.renderInternalFieldDialog()}
+                {this.renderAvailibleValuesDialog()}
+                {this.renderDisplayOptionsDialog()}
+                {this.renderDisplayImageDialog()}
+             </div>
             </div>
             );
     }

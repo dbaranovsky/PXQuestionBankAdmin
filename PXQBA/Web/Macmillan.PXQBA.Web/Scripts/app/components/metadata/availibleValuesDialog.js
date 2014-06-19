@@ -38,7 +38,6 @@ var AvailibleValuesDialog = React.createClass({displayName: 'AvailibleValuesDial
 
 
     renderTextDescription: function() {
-        debugger;
         if(this.props.fieldType==window.enums.metadataFieldType.keywords) {
             return (React.DOM.div(null, 
                 "List pre-defined values for ", React.DOM.b(null, this.props.fieldNameCaption), " below, one per line. Editors"+' '+ 
@@ -74,7 +73,7 @@ var AvailibleValuesDialog = React.createClass({displayName: 'AvailibleValuesDial
                              )
                         ),
                          React.DOM.div( {className:"modal-footer clearfix"}, 
-                                 React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal", onClick:self.props.closeDialogHandler}, "Cancel"),
+                                 React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal"}, "Cancel"),
                                  React.DOM.button( {type:"button", className:"btn btn-primary", 'data-dismiss':"modal", onClick:self.editAvailibleValuesHandler}, "Save")
                             )
                     )

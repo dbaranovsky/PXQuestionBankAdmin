@@ -20,7 +20,7 @@ var PreviewCardTemplateDialog = React.createClass({displayName: 'PreviewCardTemp
                              )  
                         ),
                          React.DOM.div( {className:"modal-footer clearfix"}, 
-                                 React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal", onClick:self.props.closeDialogHandler}, "Close")
+                                 React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal"}, "Close")
                             )
                     )
             );
