@@ -221,7 +221,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult RestoreVersion(string version)
         {
             var questionVersion = questionManagementService.RestoreQuestionVersion(CourseHelper.CurrentCourse, QuestionHelper.QuestionIdToEdit, version);
-            return JsonCamel(new { isError = false });
+            return JsonCamel(Mapper.Map<QuestionVersionViewModel>(questionVersion));
         }
 
         public ActionResult GetUpdatedGraphEditor(string interactionData)
