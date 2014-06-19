@@ -47,7 +47,7 @@ var AvailibleValuesDialog = React.createClass({displayName: 'AvailibleValuesDial
              return (React.DOM.div(null, 
                         React.DOM.div(null, 
                             React.DOM.div( {className:"metadata-values-label"},  
-                                "List all possible values for ", React.DOM.b(null, self.props.fieldNameCaption),", one per line. values"+' '+
+                                "List all possible values for ", React.DOM.b(null, self.props.fieldNameCaption),", one per line. Values"+' '+
                                 "will appear to editors and instructors in the order listed."
                             ), 
                             React.DOM.div(null,  
