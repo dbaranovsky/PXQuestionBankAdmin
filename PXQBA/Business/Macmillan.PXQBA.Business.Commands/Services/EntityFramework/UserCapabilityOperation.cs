@@ -82,8 +82,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
                     command.CommandType = CommandType.StoredProcedure;
                     command.CommandText = "dbo.UpdateQBARoleCapabilities";
 
-                    var courseIdParam = new SqlParameter("@courseId", courseId);
-                    command.Parameters.Add(courseIdParam);
                     var roleIdParam = new SqlParameter("@roleId", roleId);
                     command.Parameters.Add(roleIdParam);
                     var capIdParam = new SqlParameter("@capabilityIds", CreateDataTable(role.Capabilities));
@@ -111,18 +109,16 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
             databaseManager.ExecuteNonQuery(command);
         }
 
-        public Role GetRoleWithCapabilities(string courseId, int roleId)
+        public Role GetRoleWithCapabilities(int roleId)
         {
             DbCommand command = new SqlCommand();
             command.CommandType = CommandType.StoredProcedure;
             command.CommandText = "dbo.GetQBARoleCapabilities";
 
-            var courseIdParam = new SqlParameter("@courseId", courseId);
-            command.Parameters.Add(courseIdParam);
             var roleIdParam = new SqlParameter("@roleId", roleId);
             command.Parameters.Add(roleIdParam);
 
-            var dbRecords = databaseManager.Query(command);
+            var dbRecords = databaseManager.Query(command).ToList();
 
             return GetRoleCapabilitiesFromRecords(dbRecords);
         }
@@ -138,8 +134,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
             }
             foreach (var databaseRecord in dbRecords)
             {
-                
-                if (databaseRecord["CapabilityId"] != null)
+                if (!string.IsNullOrEmpty(databaseRecord["CapabilityId"].ToString()))
                 {
                     role.Capabilities.Add(EnumHelper.Parse<Capability>(databaseRecord["CapabilityId"].ToString()));
                 }
@@ -162,20 +157,22 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
         {
             if (role.Id <= 0)
             {
-                return AddRole(courseId, role.Name);
+                return AddRole(courseId, role);
             }
             return UpdateRole(role.Id, role.Name);
         }
 
-        private int AddRole(string courseId, string roleName)
+        private int AddRole(string courseId, Role role)
         {
             var command = new SqlCommand();
             command.CommandType = CommandType.StoredProcedure;
             command.CommandText = "dbo.AddQBARole";
-            var roleNameParam = new SqlParameter("@roleName", roleName);
+            var roleNameParam = new SqlParameter("@roleName", role.Name);
             command.Parameters.Add(roleNameParam);
             var courseIdParam = new SqlParameter("@courseId", courseId);
             command.Parameters.Add(courseIdParam);
+            var canEditParam = new SqlParameter("@canEdit", role.CanEdit);
+            command.Parameters.Add(canEditParam);
             try
             {
                 var result = databaseManager.ExecuteScalar(command);
@@ -183,7 +180,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
             }
             catch (Exception ex)
             {
-                StaticLogger.LogError(string.Format("AddRole: rolename: {0}, courseId:{1} wasn't created", roleName, courseId), ex);
+                StaticLogger.LogError(string.Format("AddRole: rolename: {0}, courseId:{1} wasn't created", role.Name, courseId), ex);
                 throw;
             }
         }
@@ -243,6 +240,10 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
             if (databaseRecord["Name"] != null)
             {
                 role.Name = databaseRecord["Name"].ToString();
+            }
+            if (databaseRecord["CanEdit"] != null)
+            {
+                role.CanEdit = bool.Parse(databaseRecord["CanEdit"].ToString());
             }
             if (databaseRecord["Count"] != null)
             {

@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.ComponentModel;
+using Macmillan.PXQBA.Common.Helpers;
 
 namespace Macmillan.PXQBA.Business.Models
 {
@@ -10,7 +12,7 @@ namespace Macmillan.PXQBA.Business.Models
             {
                 new Role()
                 {
-                    Id = (int) PredefinedRole.SuperAdministrator,
+                    Name = EnumHelper.GetEnumDescription(PredefinedRole.SuperAdministrator),
                     Capabilities = new List<Capability>()
                     {
                         Capability.DefineRole,
@@ -57,11 +59,11 @@ namespace Macmillan.PXQBA.Business.Models
                         Capability.DownloadQuestionBankArchive,
                         Capability.DeleteExistingQuestionBank
                     },
-                    CanDelete = false
+                    CanEdit = false
                 },
                 new Role()
                 {
-                    Id = (int) PredefinedRole.Administrator,
+                    Name = EnumHelper.GetEnumDescription(PredefinedRole.Administrator),
                     Capabilities = new List<Capability>()
                     {
                         Capability.SetRoleToTitle,
@@ -104,11 +106,11 @@ namespace Macmillan.PXQBA.Business.Models
                         Capability.RestoreOldVersion,
                         Capability.CreateDraftFromOldVersion
                     },
-                    CanDelete = false
+                    CanEdit = false
                 },
                 new Role()
                 {
-                    Id = (int) PredefinedRole.MediaProducer,
+                    Name = EnumHelper.GetEnumDescription(PredefinedRole.MediaProducer),
                     Capabilities = new List<Capability>()
                     {
                         Capability.SetRoleToTitle,
@@ -151,11 +153,11 @@ namespace Macmillan.PXQBA.Business.Models
                         Capability.RestoreOldVersion,
                         Capability.CreateDraftFromOldVersion
                     },
-                    CanDelete = false
+                    CanEdit = false
                 },
                 new Role()
                 {
-                    Id = (int) PredefinedRole.MediaEditor,
+                    Name = EnumHelper.GetEnumDescription(PredefinedRole.MediaEditor),
                     Capabilities = new List<Capability>()
                     {
                         Capability.SetRoleToTitle,
@@ -198,11 +200,11 @@ namespace Macmillan.PXQBA.Business.Models
                         Capability.RestoreOldVersion,
                         Capability.CreateDraftFromOldVersion
                     },
-                    CanDelete = false
+                    CanEdit = false
                 },
                 new Role()
                 {
-                    Id = (int) PredefinedRole.ProductionDeveloper,
+                    Name = EnumHelper.GetEnumDescription(PredefinedRole.ProductionDeveloper),
                     Capabilities = new List<Capability>()
                     {
                         Capability.ViewQuestionList,
@@ -244,11 +246,11 @@ namespace Macmillan.PXQBA.Business.Models
                         Capability.RestoreOldVersion,
                         Capability.CreateDraftFromOldVersion
                     },
-                    CanDelete = false
+                    CanEdit = false
                 },
                 new Role()
                 {
-                    Id = (int) PredefinedRole.Author,
+                    Name = EnumHelper.GetEnumDescription(PredefinedRole.Author),
                     Capabilities = new List<Capability>()
                     {
                         Capability.ViewQuestionList,
@@ -282,11 +284,11 @@ namespace Macmillan.PXQBA.Business.Models
                         Capability.ChangeDraftStatus,
                         Capability.CreateDraftFromOldVersion
                     },
-                    CanDelete = false
+                    CanEdit = false
                 },
                 new Role()
                 {
-                    Id = (int) PredefinedRole.Reviewer,
+                    Name = EnumHelper.GetEnumDescription(PredefinedRole.Reviewer),
                     Capabilities = new List<Capability>()
                     {
                         Capability.ViewQuestionList,
@@ -297,23 +299,27 @@ namespace Macmillan.PXQBA.Business.Models
                         Capability.ViewVersionHistory,
                         Capability.CreateDraftFromOldVersion
                     },
-                    CanDelete = false
+                    CanEdit = false
                 }
             };
         }
     }
 
-    /// <summary>
-    /// IMPORTANT: Int values are stored in QBARole table and cannot be changed here
-    /// </summary>
     public enum PredefinedRole
     {
+        [Description("Super Administrator")]
         SuperAdministrator = 1,
+        [Description("Administrator")]
         Administrator = 2,
+        [Description("Media Producer")]
         MediaProducer = 3,
+        [Description("Media Editor")]
         MediaEditor = 4,
+        [Description("Production Developer")]
         ProductionDeveloper = 5,
+        [Description("Author")]
         Author = 6,
+        [Description("Reviewer")]
         Reviewer = 7
     }
 }

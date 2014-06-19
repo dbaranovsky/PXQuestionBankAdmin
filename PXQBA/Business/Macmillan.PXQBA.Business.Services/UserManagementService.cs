@@ -29,7 +29,13 @@ namespace Macmillan.PXQBA.Business.Services
 
         public IEnumerable<Role> GetRolesForCourse(string courseId)
         {
-           return userCapabilityOperation.GetRolesForCourse(courseId);
+            var courseRoles = userCapabilityOperation.GetRolesForCourse(courseId);
+            if (!courseRoles.Any())
+            {
+                userCapabilityOperation.UpdateRolesCapabilities(courseId, PredefinedRoleHelper.GetPredefinedRoles());
+                courseRoles = userCapabilityOperation.GetRolesForCourse(courseId);
+            }
+            return courseRoles;
         }
 
         public void DeleteRole(int roleId)
@@ -41,7 +47,7 @@ namespace Macmillan.PXQBA.Business.Services
         {
             if (roleId.HasValue && roleId.Value > 0)
             {
-                return userCapabilityOperation.GetRoleWithCapabilities(courseId, roleId.Value);
+                return userCapabilityOperation.GetRoleWithCapabilities(roleId.Value);
             }
             return GetNewRoleTemplate();
         }

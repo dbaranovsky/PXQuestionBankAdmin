@@ -187,7 +187,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.CapabilityGroups, opt => opt.MapFrom(src => modelProfileService.GetCapabilityGroups(src.Capabilities)));
 
             Mapper.CreateMap<RoleViewModel, Role>()
-                .ForMember(dest => dest.CanDelete, opt => opt.UseValue(true))
+                .ForMember(dest => dest.CanEdit, opt => opt.UseValue(true))
                 .ForMember(dest => dest.Capabilities, opt => opt.MapFrom(src => modelProfileService.GetActiveRoleCapabilities(src)));
         }
     }

@@ -9,7 +9,19 @@ namespace Macmillan.PXQBA.Business.Models
 
         public string Name { get; set; }
 
-        public bool CanDelete { get; set; }
+        private bool canEdit = true;
+
+        public bool CanEdit
+        {
+            get
+            {
+                return canEdit;
+            }
+            set
+            {
+                canEdit = value;
+            }
+        }
 
         private IList<Capability> capabilities;
 

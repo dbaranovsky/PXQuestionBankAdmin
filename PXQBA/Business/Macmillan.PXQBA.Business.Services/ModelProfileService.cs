@@ -339,7 +339,7 @@ namespace Macmillan.PXQBA.Business.Services
 
         public IEnumerable<Capability> GetActiveRoleCapabilities(RoleViewModel src)
         {
-            return src.CapabilityGroups.SelectMany(c => c.Capabilities).Select(c => (Capability)Enum.Parse(typeof(Capability), c.Id.ToString()));
+            return src.CapabilityGroups.SelectMany(c => c.Capabilities.Where(cap => cap.IsActive)).Select(c => (Capability)Enum.Parse(typeof(Capability), c.Id.ToString()));
         }
 
         public IEnumerable<CapabilityGroupViewModel> GetCapabilityGroups(IList<Capability> capabilities)
