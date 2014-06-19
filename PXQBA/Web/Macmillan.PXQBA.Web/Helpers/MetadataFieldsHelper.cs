@@ -20,7 +20,7 @@ namespace Macmillan.PXQBA.Web.Helpers
                                  new FieldEditorDescriptor(metaField.TypeDescriptor),
                              IsMultiline = false,
                              FilterType = FilterType.MultiSelectWithAddition.ToString().ToLower(),
-                             AllowDeselect = false,
+                             AllowDeselect = true,
                              ColumnAppendAllowed = true,
                              CanCloseOnFilter = true
                          };
