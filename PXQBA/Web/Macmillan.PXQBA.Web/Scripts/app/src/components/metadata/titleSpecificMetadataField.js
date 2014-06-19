@@ -31,7 +31,7 @@ var TitleSpecificMetadataField = React.createClass({
  	},
 
   openAvailibleValuesDialog: function() {
-    this.props.showAvailibleValuesDialog(this.props.index, this.props.data.valuesOptions, this.props.data.fieldName);
+    this.props.showAvailibleValuesDialog(this.props.index, this.props.data.valuesOptions, this.props.data.fieldName, this.props.data.fieldType);
   },
 
   openDisplayOptionsDialog: function() {
