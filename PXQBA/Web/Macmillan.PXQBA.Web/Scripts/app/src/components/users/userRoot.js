@@ -72,6 +72,7 @@ var UserRoot = React.createClass({
     }
 
     return ( <RolesBox addRoleClickHandler={this.addRoleClickHandler} 
+                       removeRoleHandler ={this.removeRoleHandler}
                        viewCapabilities={this.viewCapabilitiesHandler}  
                        editRole = {this.editRoleHandler}
                        roles = {this.state.roles} isDisabled = {this.state.loading}  courseId ={this.state.currentCourse}/>);
@@ -99,16 +100,24 @@ var UserRoot = React.createClass({
       this.setState({showRoleDialog: true, viewMode: false, roleDialogModel: role});
    },
 
+   removeRoleHandler: function(role){
+     this.setState({loading: true});
+     var self = this;
+     userManager.removeRole(role, this.state.currentCourse).done(this.reloadRoles).error(function(e){self.setState({loading: false});});
+   },
+
    viewCapabilitiesHandler: function(role){
      this.setState({showRoleDialog: true, viewMode: true, roleDialogModel: role});
    },
 
    saveRoleHandler: function(role){
+         var self = this;
          this.setState({loading: true});
-         userManager.saveRole(role, this.state.currentCourse).done(this.doneSaving).error(function(e){self.setState({loading: false});});
+         userManager.saveRole(role, this.state.currentCourse).done(this.reloadRoles).error(function(e){self.setState({loading: false});});
    },
 
-   doneSaving: function(){
+   reloadRoles: function(){
+          var self = this;
           userManager.getRolesForCourse(this.state.currentCourse).done(this.setRoles).error(function(e){self.setState({loading: false});});
    },
 

@@ -10,7 +10,7 @@ var RolesBox = React.createClass({
      var rows = [];
      rows = this.props.roles.map(function (role, i) {
         
-            return (<RoleRow role={role} editRole = {self.props.editRole}  viewCapabilities = {self.props.viewCapabilities} />);
+            return (<RoleRow role={role} editRole = {self.props.editRole} removeRole={self.props.removeRoleHandler}  viewCapabilities = {self.props.viewCapabilities} />);
           });
 
      return rows;

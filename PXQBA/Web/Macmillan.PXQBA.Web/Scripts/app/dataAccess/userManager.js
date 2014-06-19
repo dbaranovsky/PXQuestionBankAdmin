@@ -150,6 +150,29 @@ var userManager = (function() {
         });
     }
 
+
+      self.removeRole = function(role, courseId){
+          var request = {
+            courseId: courseId,
+            roleId: role.id
+        };
+               
+        return $.ajax({
+            url: window.actions.userOperations.removeRoleUrl,
+             data: JSON.stringify(request),
+            dataType: 'json',
+            type: 'POST',
+            contentType: 'application/json'
+        }).done(function (response) {
+            self.showSuccessPopup("Role successfully deleted");
+        }).error(function (httpRequest, textStatus, errorThrown) {
+            if (httpRequest.readyState == 0 || httpRequest.status == 0) {
+                return;  
+            }
+            self.showErrorPopup();
+        });
+    }
+
     self.getUsers = function(){
 
         return $.ajax({
