@@ -109,7 +109,7 @@ CREATE PROCEDURE dbo.GetQBAUserCoursesWithRoles
 AS
 BEGIN
   SELECT
-    c.CourseId,
+    c.Id AS CourseId,
     r.Id AS RoleId,
     r.Name AS RoleName,
     u.UserId
@@ -235,16 +235,24 @@ GO
 CREATE PROCEDURE dbo.GetQBAUsers
 AS
 BEGIN
- SELECT
-  r.UserId AS Id,
-  COUNT(ru.RoleId) AS [Count]
+ SELECT DISTINCT 
+  UserId
+INTO 
+  #tmp
 FROM
-  PxWebUserRights r
-  LEFT JOIN UserQBARole ru ON r.UserId = ru.UserId
+  PxWebUserRights
 WHERE
-  r.PxWebRightId = (SELECT TOP 1 PxWebRightId FROM PxWebRights WHERE PxWebRightType = 'QuestionBank')
+  PxWebRightId = (SELECT TOP 1 PxWebRightId FROM PxWebRights WHERE PxWebRightType = 'QuestionBank')
+ 
+SELECT
+  t.UserId AS Id,
+  SUM(CASE WHEN ru.RoleId IS NULL THEN 0 ELSE 1 END) AS Count
+FROM
+  #tmp t
+  LEFT JOIN UserQBARole ru ON t.UserId = ru.UserId
 GROUP BY
-  r.UserId
+  t.UserId
+DROP TABLE #tmp
 END
 GO
 
