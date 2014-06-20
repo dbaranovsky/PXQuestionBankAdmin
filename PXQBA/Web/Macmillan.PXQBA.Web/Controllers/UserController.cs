@@ -112,7 +112,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult GetUsers()
         {
             var users = userManagementService.GetUsers(0, 10);
-            return JsonCamel(Mapper.Map<IEnumerable<UserViewModel>>(users));
+            return JsonCamel(users);
         }
 
         /// <summary>
@@ -122,7 +122,8 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// <returns></returns>
         public ActionResult GetAvailibleTitles(string userId)
         {
-            return JsonCamel(GetHardCodedAvailibleRoles());
+            var user = userManagementService.GetUser(userId);
+            return JsonCamel(user.ProductCourses.Where(c => c.CurrentRole != null));
         }
 
         /// <summary>
@@ -132,103 +133,18 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// <returns></returns>
         public ActionResult GetUserRoles(string userId)
         {
-            return JsonCamel(GetHardCodedUserRoles());
+            var user = userManagementService.GetUser(userId);
+            return JsonCamel(user);
         }
 
         /// <summary>
         /// Saves user roles
         /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="titles">Title roles which  was changed</param>
         /// <returns></returns>
-        public ActionResult SaveUserRoles(string userId, IEnumerable<ProductCourseRolesViewModel> titles)
+        public ActionResult SaveUserRoles(QBAUser user)
         {
-             return JsonCamel(new { isSuccess = true });
-        
+            userManagementService.UpdateUserRoles(user);
+            return JsonCamel(new { isSuccess = true });
         }
-
-        #region HardCode
-        private IEnumerable<ProductCourseRolesViewModel> GetHardCodedUserRoles()
-        {
-            return new List<ProductCourseRolesViewModel>
-                    {
-                        new  ProductCourseRolesViewModel
-                        {
-                           ProductCourseId = "14532",
-                           ProductCourseName = "Modern History",
-                           CurrentRole = new RoleViewModel()
-                                        {
-                                             Id =  1,
-                                             Name = "Author"
-                                        },
-                           AvailibleRoles = new Dictionary<string, string>()
-                                            {
-                                                {"1","Author"},
-                                                {"2"," Super Author"}
-                                            }
-                        },
-
-
-                        new ProductCourseRolesViewModel
-                        {
-                            ProductCourseId = "4564",
-                             ProductCourseName = "Economics",
-                             CurrentRole = new RoleViewModel()
-                                        {       
-                                               Id = 2,
-                                               Name = "Super Admin"
-                                        },
-                            AvailibleRoles = new Dictionary<string, string>()
-                                            {
-                                                {"1","Admin"},
-                                                {"2","Super Admin"}
-                                            }
-      
-                        },
-
-                         new ProductCourseRolesViewModel
-                        {
-                             ProductCourseId = "1101",
-                             ProductCourseName = "MacroEconomics",
-                             CurrentRole = null,
-                             AvailibleRoles = new Dictionary<string, string>()
-                                            {
-                                                {"1","Admin"},
-                                                {"2"," Super Admin"}
-                                            }
-      
-                        }
-
-
-                    };
-        }
-
-        private IEnumerable<ProductCourseRolesViewModel> GetHardCodedAvailibleRoles()
-        {
-            return new List<ProductCourseRolesViewModel>
-                    {
-                        new ProductCourseRolesViewModel
-                        {
-                           ProductCourseName = "Modern History",
-                           CurrentRole = new RoleViewModel()
-                                        {
-                                             Name = "Super Author"
-                                        }
-                        },
-
-                        new ProductCourseRolesViewModel
-                        {
-                             ProductCourseName = "Economics",
-                             CurrentRole = new RoleViewModel()
-                                        {
-                                               Name = "Administrator"
-                                        }
-                         
-                        }
-                    };
-            
-        }
-
-        #endregion
     }
 }

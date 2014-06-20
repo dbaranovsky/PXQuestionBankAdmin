@@ -96,6 +96,7 @@
     <Compile Include="CapabilityHelper.cs" />
     <Compile Include="UserInfo.cs" />
     <Compile Include="UserNotShownNotification.cs" />
+    <Compile Include="UserProductCourse.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Macmillan.PXQBA.Common.Helpers\Macmillan.PXQBA.Common.Helpers.csproj">

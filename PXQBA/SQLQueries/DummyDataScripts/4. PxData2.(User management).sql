@@ -102,6 +102,29 @@ GO
 USE PXData2
 GO
 
+CREATE PROCEDURE dbo.GetQBAUserCoursesWithRoles
+(
+  @userId NVARCHAR(4000)
+)
+AS
+BEGIN
+  SELECT
+    r.CourseId,
+    r.Id AS RoleId,
+    r.Name AS RoleName,
+    u.UserId
+  FROM
+    QBARole r
+    LEFT JOIN UserQBARole u ON u.RoleId = r.Id
+  WHERE 
+    u.UserId = @userId 
+    OR u.UserId IS NULL
+END
+GO
+
+USE PXData2
+GO
+
 CREATE TABLE dbo.QBARoleCapability(
   RoleId  INT NOT NULL FOREIGN KEY REFERENCES QBARole(Id) ON DELETE CASCADE,
   CapabilityId  INT NOT NULL,
@@ -140,17 +163,20 @@ GO
 USE PXData2
 GO
 
-CREATE TYPE dbo.QBACapabilityList
+CREATE TYPE dbo.QBAIdList
 AS TABLE
 (
   Id INT
 );
 GO
 
+USE PXData2
+GO
+
 CREATE PROCEDURE dbo.UpdateQBARoleCapabilities
 (
   @roleId INT,
-  @capabilityIds AS dbo.QBACapabilityList READONLY
+  @capabilityIds AS dbo.QBAIdList READONLY
 )
 AS
 BEGIN
@@ -257,5 +283,30 @@ BEGIN
    LEFT JOIN QBARole r ON r.Id = u.RoleId
  WHERE
    u.UserId = @userId
+END
+GO
+
+USE PXData2
+GO
+
+CREATE PROCEDURE dbo.UpdateQBAUserRoles
+(
+  @userId INT,
+  @roleIds AS dbo.QBAIdList READONLY
+)
+AS
+BEGIN
+
+ DELETE FROM 
+   UserQBARole
+ WHERE
+   UserId = @userId
+ 
+ INSERT INTO UserQBARole(UserId, RoleId)
+ SELECT
+   @userId,
+   Id
+ FROM
+   @roleIds
 END
 GO
