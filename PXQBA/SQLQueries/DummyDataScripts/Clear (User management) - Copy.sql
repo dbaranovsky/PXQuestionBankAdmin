@@ -21,3 +21,4 @@ drop procedure dbo.GetQBACourses
 drop procedure dbo.GetQBAUserCourses
 drop procedure dbo.GetUsersForQBA
 drop procedure dbo.GetUserCourses
+drop procedure dbo.GetUserRoles

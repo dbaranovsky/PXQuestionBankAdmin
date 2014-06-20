@@ -229,43 +229,6 @@ namespace Macmillan.PXQBA.Web.Controllers
             
         }
 
-        private IEnumerable<UserViewModel> GetHardCodedUsers()
-        {
-            //return new List<UserViewModel>
-            //       {
-            //           new UserViewModel
-            //           {
-            //              Id = "1",
-            //              AvailibleTitlesCount = 32,
-            //              UserName = "John Smith"
-            //           },
-            //             new UserViewModel
-            //           {
-            //              Id = "2",
-            //              AvailibleTitlesCount = 32,
-            //              UserName = "John Doe"
-            //           },
-
-            //             new UserViewModel
-            //           {
-            //              Id = "3",
-            //              AvailibleTitlesCount = 32,
-            //              UserName = "Alex Murphy"
-            //           },
-            //       };
-
-            var list = new List<UserViewModel>();
-            for (var i = 0; i < 153; i++)
-            {
-                var item = new UserViewModel() {Id = i.ToString(), ProductCoursesCount = 1, FullName = "john" + i};
-                list.Add(item);
-            }
-
-            return list;
-
-        }
-
-
         #endregion
     }
 }
