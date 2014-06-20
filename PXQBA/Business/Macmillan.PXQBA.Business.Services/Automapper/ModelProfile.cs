@@ -74,7 +74,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dto => dto.DefaultSection, opt => opt.MapFrom(q => modelProfileService.GetQuestionDefaultValues(q)))
                 .ForMember(dto => dto.ProductCourseSections, opt => opt.MapFrom(q => modelProfileService.GetProductCourseSections(q)))
                 .ForMember(dto => dto.Version, opt => opt.MapFrom(q => modelProfileService.GetNumericVersion(q.QuestionVersion)))
-                .ForMember(dto => dto.Preview, opt => opt.MapFrom(q => CustomQuestionHelper.GetQuestionHtmlPreview(q)))
+                .ForMember(dto => dto.Preview, opt => opt.MapFrom(q => QuestionPreviewHelper.GetQuestionHtmlPreview(q)))
                 .ForMember(dto => dto.ModifiedBy, opt => opt.MapFrom(q => modelProfileService.GetModifiedBy(q)))
                 .ForMember(dto => dto.DuplicateFromShared, opt => opt.MapFrom(q => modelProfileService.GetDuplicateFromShared(q)))
                 .ForMember(dto => dto.DuplicateFrom, opt => opt.MapFrom(q => modelProfileService.GetDuplicateFrom(q)))

@@ -120,13 +120,13 @@ namespace Macmillan.PXQBA.Web.Controllers
             questionViewModel.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), questionViewModel.EntityId, questionViewModel.QuizId);
 
             questionViewModel.QuestionType = question.CustomUrl;
-            questionViewModel.EditorUrl = CustomQuestionHelper.GetEditorUrl(questionViewModel.QuestionType,
+            questionViewModel.EditorUrl = QuestionPreviewHelper.GetEditorUrl(questionViewModel.QuestionType,
                                                                             questionViewModel.Id,
                                                                             questionViewModel.EntityId,
                                                                             questionViewModel.QuizId);          
            
 
-            questionViewModel.GraphEditorHtml = CustomQuestionHelper.GetGraphEditor(question.InteractionData,
+            questionViewModel.GraphEditorHtml = QuestionPreviewHelper.GetGraphEditor(question.InteractionData,
                                                                                     questionViewModel.Id,
                                                                                     question.CustomUrl);
            
@@ -226,7 +226,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult GetUpdatedGraphEditor(string interactionData)
         {
-             return  JsonCamel(new { EditorHtml = CustomQuestionHelper.GetGraphEditor(interactionData, QuestionHelper.QuestionIdToEdit, QuestionTypeHelper.GraphType)});
+             return  JsonCamel(new { EditorHtml = QuestionPreviewHelper.GetGraphEditor(interactionData, QuestionHelper.QuestionIdToEdit, QuestionTypeHelper.GraphType)});
         }
 	}
   
