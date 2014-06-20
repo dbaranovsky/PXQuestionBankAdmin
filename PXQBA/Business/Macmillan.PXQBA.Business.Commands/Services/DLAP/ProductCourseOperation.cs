@@ -36,7 +36,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                         PxWebUserRights
                     WHERE
                         PxWebRightId = @webRight
-                        AND UserId = '{0}'", businessContext.CurrentUser.Id);
+                        AND UserId = '{0}'", businessContext.CurrentUser.Username);
             var dbRecords = databaseManager.Query(query);
 
             var courseIds = dbRecords.Select(record => record.String(DbColumnProductCourseId)).ToList();
