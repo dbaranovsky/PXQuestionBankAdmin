@@ -504,6 +504,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             };
 
             businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(deleteCmd);
+            ExecuteSolrUpdateTask();
         }
 
         public IEnumerable<Question> GetQuestionDrafts(string questionRepositoryCourseId, Question question)
