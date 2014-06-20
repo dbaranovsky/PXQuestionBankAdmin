@@ -51,7 +51,7 @@ var EditUserDialog  = React.createClass({displayName: 'EditUserDialog',
        var self = this;
         var renderHeaderText = function() {
          
-             return "User Editing — "+ self.props.user.userName;
+             return "User Editing — "+ self.props.user.fullName;
            
         };
 

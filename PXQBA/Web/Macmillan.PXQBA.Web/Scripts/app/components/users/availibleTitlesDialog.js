@@ -51,7 +51,7 @@
 
         var renderHeaderText = function() {
          
-             return "Titles availible for "+ self.props.user.userName;
+             return "Titles availible for "+ self.props.user.fullName;
            
         };
 

@@ -180,7 +180,7 @@ var UserRoot = React.createClass({displayName: 'UserRoot',
         var page = this.state.page;
         for(var i in page){
           if (page[i].id == userId){
-              page[i].availibleTitlesCount = count;
+              page[i].productCoursesCount = count;
               break;
           }
         }
