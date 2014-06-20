@@ -35,12 +35,20 @@ var RoleDialog = React.createClass({displayName: 'RoleDialog',
       userManager.showWarningPopup("Please, enter role name");
       return;
     }
-    this.props.saveRoleHandler(this.state.role);
+    this.props.saveRoleHandler(this.state.role, this.props.newRole);
+  },
+
+  removeRoleHandler: function(){
+      this.props.removeRoleHandler(this.state.role);
   },
 
     render: function() {
        var self = this;
         var renderHeaderText = function() {
+
+            if(self.props.deleting){
+               return "Are you sure you want to delete role "+ self.state.role.name + " with following capabilities?";
+            }
 
             if (self.props.viewMode){
              return "Capabilities availible for "+ self.state.role.name;
@@ -65,16 +73,30 @@ var RoleDialog = React.createClass({displayName: 'RoleDialog',
         
             return (React.DOM.div(null, 
 
-                       EditRoleBox( {role:self.state.role, newRole:self.props.newRole, viewMode:self.props.viewMode, editRoleHandler:self.editRoleHandler})
+                       EditRoleBox( {role:self.state.role, newRole:self.props.newRole, viewMode:self.props.viewMode, editRoleHandler:self.editRoleHandler, deleting:self.props.deleting})
                     )
             );
         };
 
      
       var  renderFooterButtons = function(){
+
+                  if(self.props.deleting){
+                   return (React.DOM.div( {className:"modal-footer"},  
+                              React.DOM.button( {type:"button", className:"btn btn-primary", 'data-dismiss':"modal", 'data-target':"roleModal", onClick:self.removeRoleHandler}, "Delete"),
+                             React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal", 'data-target':"roleModal"}, "Close")
+                          ));
+                  }
                   if(self.props.viewMode){
                    return (React.DOM.div( {className:"modal-footer"},  
                              React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal", 'data-target':"roleModal"}, "Close")
+                          ));
+                  }
+
+                  if(self.state.role != undefined && self.state.role.name==""){
+                       return (React.DOM.div( {className:"modal-footer"},  
+                             React.DOM.button( {type:"button", className:"btn btn-primary",  onClick:self.saveRoleHandler}, "Save"),
+                             React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal", 'data-target':"roleModal"}, "Cancel")
                           ));
                   }
 

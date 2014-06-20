@@ -22,7 +22,7 @@ var EditRoleBox = React.createClass({
 
 
   renderRoleNameEditor: function(){
-    if (this.state.viewMode){
+    if (this.state.viewMode || this.props.deleting){
       return null;
     }
      return(<div className="role-name-editor">
@@ -37,7 +37,7 @@ var EditRoleBox = React.createClass({
         return (<b>There are no capabilities</b>);
       }
 
-     return (<CapabilitiesBox role={this.props.role} editRoleHandler={this.props.editRoleHandler} viewMode={this.state.viewMode} />);  
+     return (<CapabilitiesBox role={this.props.role} editRoleHandler={this.props.editRoleHandler} viewMode={this.state.viewMode || this.props.deleting} />);  
   },
   render: function(){
       return(

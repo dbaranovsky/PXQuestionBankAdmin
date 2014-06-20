@@ -54,7 +54,7 @@ namespace Macmillan.PXQBA.Business.Services
 
         private Role GetNewRoleTemplate()
         {
-            return new Role();
+            return new Role {Name = "New Role"};
         }
 
         public void UpdateRole(string courseId, Role role)

@@ -16,7 +16,8 @@ var UserRoot = React.createClass({
                  totalPages: 1,
                  pages: [],
                  usersPerPage: 20,
-                 page: null
+                 page: null,
+                 deleteRole: false
                });
     },
 
@@ -72,7 +73,7 @@ var UserRoot = React.createClass({
     }
 
     return ( <RolesBox addRoleClickHandler={this.addRoleClickHandler} 
-                       removeRoleHandler ={this.removeRoleHandler}
+                       removeRoleHandler ={this.showRemoveRoleDialog}
                        viewCapabilities={this.viewCapabilitiesHandler}  
                        editRole = {this.editRoleHandler}
                        roles = {this.state.roles} isDisabled = {this.state.loading}  courseId ={this.state.currentCourse}/>);
@@ -84,7 +85,9 @@ var UserRoot = React.createClass({
       }
 
 
-      return (<RoleDialog  saveRoleHandler={this.saveRoleHandler} closeAddRoleDialog={this.closeAddRoleDialog} viewMode={this.state.viewMode} courseId={this.state.currentCourse}  role={this.state.roleDialogModel} newRole={this.state.newRole} />);
+      return (<RoleDialog  saveRoleHandler={this.saveRoleHandler} removeRoleHandler = {this.removeRoleHandler} closeAddRoleDialog={this.closeAddRoleDialog} 
+                            viewMode={this.state.viewMode} courseId={this.state.currentCourse}  role={this.state.roleDialogModel} newRole={this.state.newRole}
+                            deleting={this.state.deleteRole} />);
 
    },
 
@@ -93,11 +96,15 @@ var UserRoot = React.createClass({
    },
 
    closeAddRoleDialog: function(){
-      this.setState({showRoleDialog: false, newRole: false});
+      this.setState({showRoleDialog: false, newRole: false, deleteRole: false});
    },
 
    editRoleHandler: function(role){
       this.setState({showRoleDialog: true, viewMode: false, roleDialogModel: role});
+   },
+
+   showRemoveRoleDialog: function(role){
+      this.setState({showRoleDialog: true, viewMode: false,newRole: false, deleteRole: true, roleDialogModel: role});
    },
 
    removeRoleHandler: function(role){
@@ -110,10 +117,10 @@ var UserRoot = React.createClass({
      this.setState({showRoleDialog: true, viewMode: true, roleDialogModel: role});
    },
 
-   saveRoleHandler: function(role){
+   saveRoleHandler: function(role, isNew){
          var self = this;
          this.setState({loading: true});
-         userManager.saveRole(role, this.state.currentCourse).done(this.reloadRoles).error(function(e){self.setState({loading: false});});
+         userManager.saveRole(role, this.state.currentCourse, isNew).done(this.reloadRoles).error(function(e){self.setState({loading: false});});
    },
 
    reloadRoles: function(){

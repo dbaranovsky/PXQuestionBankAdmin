@@ -128,7 +128,7 @@ var userManager = (function() {
     }
 
 
-      self.saveRole = function(role, courseId){
+      self.saveRole = function(role, courseId, isNew){
           var request = {
             role: role,
             courseId: courseId
@@ -141,7 +141,7 @@ var userManager = (function() {
             type: 'POST',
             contentType: 'application/json'
         }).done(function (response) {
-            self.showSuccessPopup("Role successfully created");
+            self.showSuccessPopup(isNew? "Role successfully created" : "Role successfully updated");
         }).error(function (httpRequest, textStatus, errorThrown) {
             if (httpRequest.readyState == 0 || httpRequest.status == 0) {
                 return;  
