@@ -33,7 +33,7 @@ var EditUserDialog  = React.createClass({displayName: 'EditUserDialog',
     saveUserRoles: function(){
         this.setState({loading: true});
         var self= this;
-        userManager.saveUserRoles(this.props.user.id, $.grep(this.state.roles, function(el){return el.isChanged}))
+        userManager.saveUserRoles(this.state.roles)
                     .done(function(e){
                       self.setState({loading: false});
                       $(self.getDOMNode()).modal("hide");

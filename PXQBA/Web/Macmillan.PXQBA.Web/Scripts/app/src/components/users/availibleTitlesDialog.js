@@ -30,10 +30,10 @@
       }
 
      var rows = [];
-     rows = this.state.titles.map(function (title, i) {
+     rows = this.state.titles.productCourses.map(function (title, i) {
         
             return ( <div className="title-row">
-                        <div className="title-cell">{title.productCourseName}</div>
+                        <div className="title-cell">{title.name}</div>
                         <div className="title-cell"><i>{title.currentRole.name}</i></div>
                       </div>);
           });

@@ -240,11 +240,10 @@ var userManager = (function() {
     }
 
  
-    self.saveUserRoles = function(userId, titles){
+    self.saveUserRoles = function(titles){
 
          var request = {
-            userId: userId,
-            titles: titles
+            user: titles
         };
 
         return $.ajax({

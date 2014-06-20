@@ -7,16 +7,18 @@ var UserTitlesBox = React.createClass({
 
     changeTitleHandler: function(title){
       var titles = this.props.titles;
-      var newTitles = [];
-      $.each(titles, function(i, item){
+      var courses = titles.productCourses;
+      var newCourses = [];
+      $.each(courses, function(i, item){
           if(item.productCourseId == title.productCourseId){
-            newTitles.push(title);
+            newCourses.push(title);
           }else{
-            newTitles.push(item);
+            newCourses.push(item);
           }
       });
 
-      this.props.changeTitles(newTitles);
+      titles.productCourses = newCourses;
+      this.props.changeTitles(titles);
     },
 
     renderRows: function(){
@@ -27,7 +29,7 @@ var UserTitlesBox = React.createClass({
       }
 
      var rows = [];
-     rows = this.props.titles.map(function (userTitle, i) {
+     rows = this.props.titles.productCourses.map(function (userTitle, i) {
 
                 return (<UserTitleRow title={userTitle} changeTitleHandler={self.changeTitleHandler} />);
                

@@ -30,10 +30,10 @@
       }
 
      var rows = [];
-     rows = this.state.titles.map(function (title, i) {
+     rows = this.state.titles.productCourses.map(function (title, i) {
         
             return ( React.DOM.div( {className:"title-row"}, 
-                        React.DOM.div( {className:"title-cell"}, title.productCourseName),
+                        React.DOM.div( {className:"title-cell"}, title.name),
                         React.DOM.div( {className:"title-cell"}, React.DOM.i(null, title.currentRole.name))
                       ));
           });
