@@ -13,7 +13,7 @@ using Bfw.Agilix.DataContracts;
 
 namespace Macmillan.PXQBA.Common.Helpers
 {
-    public static class CustomQuestionHelper
+    public static class QuestionPreviewHelper
     {
         private const string CQScriptString = "if(typeof CQ ==='undefined')CQ = window.parent.CQ; CQ.questionInfoList['{0}'] = {{ divId: '{1}', version: '{2}', mode: '{3}', question: {{ body: '{4}', data: {5}}}, response: {{ pointspossible: '{6}', pointsassigned: '{7}'}} }}";
         private const string customXmlPattern = "<info id=\"0\" mode=\"{0}\"><question schema=\"2\" partial=\"false\"><answer /><body></body><customurl>HTS</customurl><interaction type=\"custom\"><data><![CDATA[{1}]]></data></interaction></question></info>";
@@ -119,7 +119,12 @@ namespace Macmillan.PXQBA.Common.Helpers
                     string chioceId = regexConverter.Replace(choice.Id, "").ToLower();
 
                     html.Append("<li>");
-                    html.AppendFormat(@"<input disabled=""disabled"" type=""radio"" {0} />", (answerValue == choiceValue || answerValue == chioceId) ? "checked='checked'" : "");
+
+                    // Condition 'answerValue == choiceValue' leads to incorrect work. It is not clear what purpose it was added to the code.
+
+                    //html.AppendFormat(@"<input disabled=""disabled"" type=""radio"" {0} />", (answerValue == choiceValue || answerValue == chioceId) ? "checked='checked'" : "");
+                  
+                    html.AppendFormat(@"<input disabled=""disabled"" type=""radio"" {0} />",  answerValue == chioceId ? "checked='checked'" : "");
                     html.AppendFormat(@"<span class=""option-text"">{0}</span >", choice.Text);
                     html.Append("</li>");
                 }
