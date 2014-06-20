@@ -23,5 +23,6 @@ drop procedure dbo.GetUserCourses
 drop procedure dbo.GetUserRoles
 drop procedure dbo.GetQBAUserCoursesWithRoles
 drop procedure dbo.UpdateQBAUserRoles
+drop procedure dbo.GetQBAUserCapabilities
 IF TYPE_ID(N'QBACapabilityList') IS NOT NULL drop type dbo.QBACapabilityList
 IF TYPE_ID(N'QBAIdList') IS NOT NULL drop type dbo.QBAIdList

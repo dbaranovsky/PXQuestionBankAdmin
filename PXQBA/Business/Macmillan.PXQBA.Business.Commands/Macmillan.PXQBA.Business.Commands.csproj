@@ -81,7 +81,7 @@
     <Compile Include="Contracts\IProductCourseOperation.cs" />
     <Compile Include="Contracts\IQuestionCommands.cs" />
     <Compile Include="Contracts\ITemporaryQuestionOperation.cs" />
-    <Compile Include="Contracts\IUserCapabilityOperation.cs" />
+    <Compile Include="Contracts\IRoleOperation.cs" />
     <Compile Include="Contracts\IUserNotificationOperation.cs" />
     <Compile Include="Contracts\IUserOperation.cs" />
     <Compile Include="DataContracts\QuestionSearchResult.cs" />
@@ -95,7 +95,7 @@
     <Compile Include="Services\SQLOperations\KeywordOperation.cs" />
     <Compile Include="Services\SQLOperations\NoteCommands.cs" />
     <Compile Include="Services\DLAP\ProductCourseOperation.cs" />
-    <Compile Include="Services\SQLOperations\UserCapabilityOperation.cs" />
+    <Compile Include="Services\SQLOperations\RoleOperation.cs" />
     <Compile Include="Services\SQLOperations\UserNotificationOperation.cs" />
   </ItemGroup>
   <ItemGroup>

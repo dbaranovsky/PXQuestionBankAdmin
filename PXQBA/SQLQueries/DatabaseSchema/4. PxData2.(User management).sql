@@ -70,7 +70,7 @@ GO
 CREATE PROCEDURE dbo.UpdateQBARole
 (
   @roleId INT,
-  @roleName   NVARCHAR(MAX)
+  @roleName   NVARCHAR(4000)
 )
 AS
 BEGIN
@@ -138,7 +138,7 @@ GO
 
 CREATE PROCEDURE dbo.GetQBARolesForCourse
 (
-  @courseId NVARCHAR(MAX)
+  @courseId NVARCHAR(4000)
 )
 AS
 BEGIN
@@ -300,7 +300,7 @@ GO
 
 CREATE PROCEDURE dbo.UpdateQBAUserRoles
 (
-  @userId INT,
+  @userId NVARCHAR(4000),
   @roleIds AS dbo.QBAIdList READONLY
 )
 AS
@@ -317,5 +317,28 @@ BEGIN
    Id
  FROM
    @roleIds
+END
+GO
+
+USE PXData2
+GO
+
+CREATE PROCEDURE dbo.GetQBAUserCapabilities
+(
+  @userId INT,
+  @courseId VARCHAR(4000)
+)
+AS
+BEGIN
+ 
+SELECT
+   c.CapabilityId
+ FROM
+   UserQBARole u
+   JOIN QBARole r ON r.Id = u.RoleId AND r.CourseId = @courseId
+   JOIN QBARoleCapability c ON c.RoleId = r.Id
+ WHERE
+   u.UserId = @userId
+   
 END
 GO
