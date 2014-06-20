@@ -8,7 +8,7 @@ using Bfw.Common.Database;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Models;
 
-namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
+namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
 {
     public class UserNotificationOperation : IUserNotificationOperation
     {

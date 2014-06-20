@@ -287,6 +287,20 @@ var userManager = (function() {
         $('.top-center').notify(notifyOptions).show();
     };
 
+    self.getAllCourses = function () {
+
+        return $.ajax({
+            url: window.actions.userOperations.getAllCoursesUrl,
+            traditional: true,
+            dataType: 'json',
+            type: 'POST',
+            contentType: 'application/json'
+        }).done(function (response) {
+           
+        }).error(function (e) {
+
+        });
+    };
 
     self.resetNotifications();
 

@@ -3,7 +3,7 @@ using System.Data.Common;
 using System.Linq;
 using Bfw.Common.Database;
 using Macmillan.PXQBA.Business.Commands.Contracts;
-using Macmillan.PXQBA.Business.Commands.Services.EntityFramework;
+using Macmillan.PXQBA.Business.Commands.Services.SQLOperations;
 using Macmillan.PXQBA.Business.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;

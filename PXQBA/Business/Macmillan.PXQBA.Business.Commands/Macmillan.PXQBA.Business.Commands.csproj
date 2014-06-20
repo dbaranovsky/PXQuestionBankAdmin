@@ -92,12 +92,11 @@
     <Compile Include="Services\DLAP\QuestionCommands.cs" />
     <Compile Include="Services\DLAP\TemporaryQuestionOperation.cs" />
     <Compile Include="Services\DLAP\UserOperation.cs" />
-    <Compile Include="Services\EntityFramework\KeywordOperation.cs" />
-    <Compile Include="Services\EntityFramework\NoteCommands.cs" />
+    <Compile Include="Services\SQLOperations\KeywordOperation.cs" />
+    <Compile Include="Services\SQLOperations\NoteCommands.cs" />
     <Compile Include="Services\DLAP\ProductCourseOperation.cs" />
-    <Compile Include="Services\EntityFramework\QuestionCommands.cs" />
-    <Compile Include="Services\EntityFramework\UserCapabilityOperation.cs" />
-    <Compile Include="Services\EntityFramework\UserNotificationOperation.cs" />
+    <Compile Include="Services\SQLOperations\UserCapabilityOperation.cs" />
+    <Compile Include="Services\SQLOperations\UserNotificationOperation.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Context\Macmillan.PXQBA.Business.csproj">

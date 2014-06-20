@@ -10,13 +10,14 @@ using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Common.Logging;
 
-namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
+namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
 {
     public class UserCapabilityOperation : IUserCapabilityOperation
     {
         private readonly IDatabaseManager databaseManager;
+        private readonly IUserOperation userOperation;
 
-        public UserCapabilityOperation(IDatabaseManager databaseManager)
+        public UserCapabilityOperation(IDatabaseManager databaseManager, IUserOperation userOperation)
         {
 
 #if DEBUG
@@ -24,6 +25,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
 #endif
 
             this.databaseManager = databaseManager;
+            this.userOperation = userOperation;
         }
 
         public IEnumerable<Role> GetRolesForCourse(string courseId)
@@ -56,18 +58,33 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
             return GetRolesFromRecords(dbRecords);
         }
 
-        public IEnumerable<CourseUser> GetUsersInCourse(string courseId)
+        public IEnumerable<QBAUser> GetQBAUsers(int startingRecordNumber, int recordsCount)
         {
             DbCommand command = new SqlCommand();
             command.CommandType = CommandType.StoredProcedure;
-            command.CommandText = "dbo.GetUsersInCourse";
-
-            var courseIdParam = new SqlParameter("@courseId", courseId);
-            command.Parameters.Add(courseIdParam);
+            command.CommandText = "dbo.GetQBAUsers";
 
             var dbRecords = databaseManager.Query(command);
 
-            return GetUsersFromRecords(dbRecords);
+            return FillUserNames(GetUsersFromRecords(dbRecords.Skip(startingRecordNumber).Take(recordsCount)));
+        }
+
+        private IEnumerable<QBAUser> FillUserNames(IEnumerable<QBAUser> qbaUsers)
+        {
+            var usersInfo = userOperation.GetUsers(qbaUsers.Select(u => u.Id));
+            foreach (var qbaUser in qbaUsers)
+            {
+                var userInfo = usersInfo.FirstOrDefault(u => u.Username == qbaUser.Id);
+                if (userInfo != null)
+                {
+                    qbaUser.FullName = string.Format("{0} {1}", userInfo.FirstName, userInfo.LastName);
+                }
+                else
+                {
+                    qbaUser.FullName = "(Unknown)";
+                }
+            }
+            return qbaUsers;
         }
 
         public void UpdateRolesCapabilities(string courseId, IEnumerable<Role> roles)
@@ -93,7 +110,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
                 {
                     databaseManager.EndSession();
                 }
-               
             }
         }
 
@@ -206,21 +222,21 @@ namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
             }
         }
 
-        private IEnumerable<CourseUser> GetUsersFromRecords(IEnumerable<DatabaseRecord> dbRecords)
+        private IEnumerable<QBAUser> GetUsersFromRecords(IEnumerable<DatabaseRecord> dbRecords)
         {
             return dbRecords.Select(GetUserFromRecord).ToList();
         }
 
-        private CourseUser GetUserFromRecord(DatabaseRecord databaseRecord)
+        private QBAUser GetUserFromRecord(DatabaseRecord databaseRecord)
         {
-            var user = new CourseUser();
+            var user = new QBAUser();
             if (databaseRecord["Id"] != null)
             {
                 user.Id = databaseRecord["Id"].ToString();
             }
             if (databaseRecord["Count"] != null)
             {
-                user.RolesCount = (int)databaseRecord["Count"];
+                user.ProductCoursesCount = (int)databaseRecord["Count"];
             }
             return user;
         }

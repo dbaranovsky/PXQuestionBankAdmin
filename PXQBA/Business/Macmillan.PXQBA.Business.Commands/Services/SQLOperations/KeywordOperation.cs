@@ -3,11 +3,10 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
-using Bfw.Agilix.DataContracts;
 using Bfw.Common.Database;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 
-namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
+namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
 {
     public class KeywordOperation : IKeywordOperation
     {

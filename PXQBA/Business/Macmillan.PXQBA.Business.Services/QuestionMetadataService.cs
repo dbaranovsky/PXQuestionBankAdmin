@@ -61,7 +61,7 @@ namespace Macmillan.PXQBA.Business.Services
                     TypeDescriptor = new MetaFieldTypeDescriptor
                     {
                         Type = MetadataFieldType.SingleSelect,
-                        AvailableChoice =  productCourseOperation.GetAvailableCourses().Select(pc=> new AvailableChoiceItem(pc.ProductCourseId, pc.Title)).ToList()
+                        AvailableChoice =  productCourseOperation.GetUserAvailableCourses().Select(pc=> new AvailableChoiceItem(pc.ProductCourseId, pc.Title)).ToList()
                     }
                 },
                 new QuestionMetaField()
@@ -71,7 +71,7 @@ namespace Macmillan.PXQBA.Business.Services
                     TypeDescriptor = new MetaFieldTypeDescriptor
                     {
                         Type = MetadataFieldType.SingleSelect,
-                        AvailableChoice =  productCourseOperation.GetAvailableCourses().Where(c => c.QuestionRepositoryCourseId == course.QuestionRepositoryCourseId).Select(pc=> new AvailableChoiceItem(pc.ProductCourseId, pc.Title)).ToList()
+                        AvailableChoice =  productCourseOperation.GetUserAvailableCourses().Where(c => c.QuestionRepositoryCourseId == course.QuestionRepositoryCourseId).Select(pc=> new AvailableChoiceItem(pc.ProductCourseId, pc.Title)).ToList()
                     }
                 },
                 new QuestionMetaField
