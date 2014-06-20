@@ -433,7 +433,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
     },
 
     render: function() {
-       var iframeClass = ""
+       var iframeClass = "";
        if ((this.props.question.isShared && !this.props.isNew) || (this.props.question.sharedQuestionDuplicateFrom != null && this.props.isDuplicate)){
         iframeClass = "shared";
        }

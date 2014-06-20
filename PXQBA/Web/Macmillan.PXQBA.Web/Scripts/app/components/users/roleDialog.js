@@ -35,7 +35,7 @@ var RoleDialog = React.createClass({displayName: 'RoleDialog',
       userManager.showWarningPopup("Please, enter role name");
       return;
     }
-    this.props.saveRoleHandler(this.state.role);
+    this.props.saveRoleHandler(this.state.role, this.props.newRole);
   },
 
     render: function() {
@@ -75,6 +75,13 @@ var RoleDialog = React.createClass({displayName: 'RoleDialog',
                   if(self.props.viewMode){
                    return (React.DOM.div( {className:"modal-footer"},  
                              React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal", 'data-target':"roleModal"}, "Close")
+                          ));
+                  }
+
+                  if(self.state.role != undefined && self.state.role.name==""){
+                       return (React.DOM.div( {className:"modal-footer"},  
+                             React.DOM.button( {type:"button", className:"btn btn-primary",  onClick:self.saveRoleHandler}, "Save"),
+                             React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal", 'data-target':"roleModal"}, "Cancel")
                           ));
                   }
 

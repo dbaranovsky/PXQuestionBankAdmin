@@ -110,10 +110,10 @@ var UserRoot = React.createClass({displayName: 'UserRoot',
      this.setState({showRoleDialog: true, viewMode: true, roleDialogModel: role});
    },
 
-   saveRoleHandler: function(role){
+   saveRoleHandler: function(role, isNew){
          var self = this;
          this.setState({loading: true});
-         userManager.saveRole(role, this.state.currentCourse).done(this.reloadRoles).error(function(e){self.setState({loading: false});});
+         userManager.saveRole(role, this.state.currentCourse, isNew).done(this.reloadRoles).error(function(e){self.setState({loading: false});});
    },
 
    reloadRoles: function(){
