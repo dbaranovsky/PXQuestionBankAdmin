@@ -6,6 +6,7 @@ using AutoMapper;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
+using Macmillan.PXQBA.Web.ViewModels.MetadataConfig;
 using Macmillan.PXQBA.Web.ViewModels.User;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -14,9 +15,12 @@ namespace Macmillan.PXQBA.Web.Controllers
     {
         private readonly IUserManagementService userManagementService;
 
-        public UserController(IUserManagementService userManagementService)
+        private readonly IProductCourseManagementService productCourseManagementService;
+
+        public UserController(IUserManagementService userManagementService, IProductCourseManagementService productCourseManagementService)
         {
             this.userManagementService = userManagementService;
+            this.productCourseManagementService = productCourseManagementService;
         }
 
         public ActionResult Index()
@@ -92,15 +96,23 @@ namespace Macmillan.PXQBA.Web.Controllers
             userManagementService.UpdateRole(courseId, Mapper.Map<Role>(role));
             return JsonCamel(new { isSuccess = true });
         }
-       
+
+        [HttpPost]
+        public ActionResult GetAllCourses()
+        {
+            var courses = Mapper.Map<IEnumerable<ProductCourseViewModel>>(
+                                            productCourseManagementService.GetAllCourses());
+            return JsonCamel(courses);
+        }
+
         /// <summary>
         /// Return all users
         /// </summary>
         /// <returns></returns>
         public ActionResult GetUsers()
         {
-
-            return JsonCamel(GetHardCodedUsers());
+            var users = userManagementService.GetUsers(0, 10);
+            return JsonCamel(Mapper.Map<IEnumerable<UserViewModel>>(users));
         }
 
         /// <summary>
@@ -245,7 +257,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             var list = new List<UserViewModel>();
             for (var i = 0; i < 153; i++)
             {
-                var item = new UserViewModel() {Id = i.ToString(), AvailibleTitlesCount = 1, UserName = "john" + i};
+                var item = new UserViewModel() {Id = i.ToString(), ProductCoursesCount = 1, FullName = "john" + i};
                 list.Add(item);
             }
 

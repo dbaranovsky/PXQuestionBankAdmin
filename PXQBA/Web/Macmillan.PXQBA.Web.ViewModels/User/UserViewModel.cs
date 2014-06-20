@@ -9,7 +9,7 @@ namespace Macmillan.PXQBA.Web.ViewModels.User
     public class UserViewModel
     {
         public string Id { get; set; }
-        public string UserName { get; set; }
-        public int AvailibleTitlesCount { get; set; }
+        public string FullName { get; set; }
+        public int ProductCoursesCount { get; set; }
     }
 }

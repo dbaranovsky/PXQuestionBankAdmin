@@ -10,7 +10,7 @@ using Bfw.Common.Patterns.Logging;
 using Macmillan.PXQBA.Business;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Commands.Services.DLAP;
-using Macmillan.PXQBA.Business.Commands.Services.EntityFramework;
+using Macmillan.PXQBA.Business.Commands.Services.SQLOperations;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Services;
 using Macmillan.PXQBA.Business.Services.Automapper;

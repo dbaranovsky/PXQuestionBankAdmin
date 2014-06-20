@@ -50,7 +50,7 @@
         notificationManager.htmlContainer = $('#notifications-container')[0];
 
         var options = {};
-        var courseList = metadataCfgDataManager.getAvailableCourses();
+        var courseList = userManager.getAllCourses();
 
         courseList.done(function (response) {
             asyncManager.page = React.renderComponent(

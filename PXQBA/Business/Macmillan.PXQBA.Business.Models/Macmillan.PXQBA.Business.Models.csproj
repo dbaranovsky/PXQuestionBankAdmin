@@ -73,7 +73,7 @@
     <Compile Include="Course.cs" />
     <Compile Include="CourseMetadataFieldDescriptor.cs" />
     <Compile Include="CourseMetadataFieldValue.cs" />
-    <Compile Include="CourseUser.cs" />
+    <Compile Include="QBAUser.cs" />
     <Compile Include="FilterFieldDescriptor.cs" />
     <Compile Include="MetadataFieldType.cs" />
     <Compile Include="Note.cs" />

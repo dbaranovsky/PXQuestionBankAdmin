@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using Bfw.Agilix.Commands;
 using Bfw.Agilix.DataContracts;
@@ -30,6 +31,18 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(search);
 
             return Mapper.Map<UserInfo>(search.Users.FirstOrDefault());
+        }
+
+        public IEnumerable<UserInfo> GetUsers(IEnumerable<string> userNames)
+        {
+            var cmd = new GetUsersBatch()
+            {
+                SearchParameters = userNames.Select(u => new UserSearch(){Username = u}).ToList()
+            };
+
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+
+            return Mapper.Map<IEnumerable<UserInfo>>(cmd.Users.Where(u => !u.IsNullOrEmpty()).Select(u => u.First()));
         }
     }
 }

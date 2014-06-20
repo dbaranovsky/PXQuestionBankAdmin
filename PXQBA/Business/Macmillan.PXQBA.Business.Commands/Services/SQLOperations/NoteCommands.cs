@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
-using AutoMapper;
 using Bfw.Common.Database;
 using Macmillan.PXQBA.Business.Commands.Contracts;
-using Macmillan.PXQBA.DataAccess.Data;
 using Note = Macmillan.PXQBA.Business.Models.Note;
 
-namespace Macmillan.PXQBA.Business.Commands.Services.EntityFramework
+namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
 {
     public class NoteCommands : INoteCommands
     {

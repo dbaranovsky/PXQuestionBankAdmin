@@ -1,4 +1,7 @@
-﻿using AutoMapper;
+﻿using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
+using AutoMapper;
 using Bfw.Agilix.Commands;
 using Bfw.Agilix.DataContracts;
 using Bfw.Common.Collections;
@@ -20,27 +23,35 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         public ProductCourseOperation(IDatabaseManager databaseManager, IContext businessContext)
         {
+#if DEBUG
+            databaseManager = new DatabaseManager(@"TestPXData");
+#endif
             this.databaseManager = databaseManager;
             this.businessContext = businessContext;
         }
 
-        public IEnumerable<Course> GetAvailableCourses(bool requiredQuestionBankRepository=false)
+        public IEnumerable<Course> GetUserAvailableCourses(bool requiredQuestionBankRepository=false)
         {
-            var query = String.Format(@"
-                    DECLARE @webRight int
-                    SET @webRight = (SELECT TOP 1 PxWebRightId FROM PxWebRights WHERE PxWebRightType = 'QuestionBank')
-                    DECLARE @userId int
-                    SELECT DISTINCT
-                        CourseId
-                    FROM
-                        PxWebUserRights
-                    WHERE
-                        PxWebRightId = @webRight
-                        AND UserId = '{0}'", businessContext.CurrentUser.Username);
-            var dbRecords = databaseManager.Query(query);
+            DbCommand command = new SqlCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "dbo.GetQBAUserCourses";
+            var userIdParam = new SqlParameter("@userId", businessContext.CurrentUser.Username);
+            command.Parameters.Add(userIdParam);
+            var dbRecords = databaseManager.Query(command);
 
             var courseIds = dbRecords.Select(record => record.String(DbColumnProductCourseId)).ToList();
             return GetCoursesByCourseIds(courseIds, requiredQuestionBankRepository);
+        }
+
+        public IEnumerable<Course> GetAllCourses()
+        {
+            DbCommand command = new SqlCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "dbo.GetQBACourses";
+            var dbRecords = databaseManager.Query(command);
+
+            var courseIds = dbRecords.Select(record => record.String(DbColumnProductCourseId)).ToList();
+            return GetCoursesByCourseIds(courseIds);
         }
 
         public IEnumerable<Course> GetCoursesByCourseIds(IEnumerable<string> courseIds, bool requiredQuestionBankRepository = false)

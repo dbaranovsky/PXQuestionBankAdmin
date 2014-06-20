@@ -61,5 +61,10 @@ namespace Macmillan.PXQBA.Business.Services
         {
             userCapabilityOperation.UpdateRolesCapabilities(courseId, new List<Role>(){role});
         }
+
+        public IEnumerable<QBAUser> GetUsers(int startingRecordNumber, int recordsCount)
+        {
+            return userCapabilityOperation.GetQBAUsers(startingRecordNumber, recordsCount);
+        }
     }
 }

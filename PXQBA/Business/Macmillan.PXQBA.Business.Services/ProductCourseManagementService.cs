@@ -27,17 +27,22 @@ namespace Macmillan.PXQBA.Business.Services
 
         public IEnumerable<Course> GetAvailableCourses()
         {
-            return productCourseOperation.GetAvailableCourses();
+            return productCourseOperation.GetUserAvailableCourses();
         }
 
         public IEnumerable<Course> GetCourseList()
         {
-            return productCourseOperation.GetAvailableCourses(true);
+            return productCourseOperation.GetUserAvailableCourses(true);
         }
 
         public Course UpdateMetadataConfig(Course course)
         {
             return productCourseOperation.UpdateCourse(course);
+        }
+
+        public IEnumerable<Course> GetAllCourses()
+        {
+            return productCourseOperation.GetAllCourses();
         }
     }
 }
