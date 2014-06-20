@@ -83,7 +83,6 @@
     <Compile Include="User\RoleViewModel.cs" />
     <Compile Include="User\ProductCourseRolesViewModel.cs" />
     <Compile Include="User\UserNotificationViewModel.cs" />
-    <Compile Include="User\UserViewModel.cs" />
     <Compile Include="Versions\DuplicateFromViewModel.cs" />
     <Compile Include="Versions\QuestionHistoryViewModel.cs" />
     <Compile Include="Versions\QuestionVersionViewModel.cs" />

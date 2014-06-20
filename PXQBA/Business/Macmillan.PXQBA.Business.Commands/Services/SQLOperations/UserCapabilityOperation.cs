@@ -17,6 +17,8 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
         private readonly IDatabaseManager databaseManager;
         private readonly IUserOperation userOperation;
 
+        private const string userFullNameFormat = "{0} {1}";
+
         public UserCapabilityOperation(IDatabaseManager databaseManager, IUserOperation userOperation)
         {
 
@@ -34,22 +36,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
             command.CommandType = CommandType.StoredProcedure;
             command.CommandText = "dbo.GetQBARolesForCourse";
 
-            var courseIdParam = new SqlParameter("@courseId", courseId);
-            command.Parameters.Add(courseIdParam);
-
-            var dbRecords = databaseManager.Query(command);
-
-            return GetRolesFromRecords(dbRecords);
-        }
-
-        public IEnumerable<Role> GetUserRoles(string userId, string courseId)
-        {
-            DbCommand command = new SqlCommand();
-            command.CommandType = CommandType.StoredProcedure;
-            command.CommandText = "dbo.GetQBARolesForUser";
-
-            var userIdParam = new SqlParameter("@userId", userId);
-            command.Parameters.Add(userIdParam);
             var courseIdParam = new SqlParameter("@courseId", courseId);
             command.Parameters.Add(courseIdParam);
 
@@ -77,7 +63,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
                 var userInfo = usersInfo.FirstOrDefault(u => u.Username == qbaUser.Id);
                 if (userInfo != null)
                 {
-                    qbaUser.FullName = string.Format("{0} {1}", userInfo.FirstName, userInfo.LastName);
+                    qbaUser.FullName = string.Format(userFullNameFormat, userInfo.FirstName, userInfo.LastName);
                 }
                 else
                 {
@@ -101,7 +87,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
 
                     var roleIdParam = new SqlParameter("@roleId", roleId);
                     command.Parameters.Add(roleIdParam);
-                    var capIdParam = new SqlParameter("@capabilityIds", CreateDataTable(role.Capabilities));
+                    var capIdParam = new SqlParameter("@capabilityIds", CreateDataTable(role.Capabilities.Select(src => (int)src)));
                     capIdParam.SqlDbType = SqlDbType.Structured;
                     command.Parameters.Add(capIdParam);
                     databaseManager.ExecuteNonQuery(command);
@@ -111,6 +97,91 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
                     databaseManager.EndSession();
                 }
             }
+        }
+
+        /// <summary>
+        /// RA user id should be passed here
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public QBAUser GetUserWithRoles(string userId)
+        {
+            DbCommand command = new SqlCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "dbo.GetQBAUserCoursesWithRoles";
+
+            var userIdParam = new SqlParameter("@userId", userId);
+            command.Parameters.Add(userIdParam);
+
+            var dbRecords = databaseManager.Query(command);
+            var userInfo = userOperation.GetUsers(new List<string> {userId}).FirstOrDefault();
+            
+            var user = FillUserFromRecords(dbRecords);
+            user.Id = userId;
+            if (userInfo != null)
+            {
+                user.FullName = string.Format(userFullNameFormat, userInfo.FirstName, userInfo.LastName);
+            }
+            return user;
+        }
+
+        public void UpdateUserRoles(QBAUser user)
+        {
+            try
+            {
+                databaseManager.StartSession();
+                DbCommand command = new SqlCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "dbo.UpdateQBAUserRoles";
+
+                var userIdParam = new SqlParameter("@userId", user.Id);
+                command.Parameters.Add(userIdParam);
+                var capIdParam = new SqlParameter("@roleIds", CreateDataTable(user.ProductCourses.Where(c => c.CurrentRole != null).Select(c => c.CurrentRole.Id)));
+                capIdParam.SqlDbType = SqlDbType.Structured;
+                command.Parameters.Add(capIdParam);
+                databaseManager.ExecuteNonQuery(command);
+            }
+            finally
+            {
+                databaseManager.EndSession();
+            }
+        }
+
+        private QBAUser FillUserFromRecords(IEnumerable<DatabaseRecord> dbRecords)
+        {
+            var user = new QBAUser();
+            foreach (var databaseRecord in dbRecords)
+            {
+                if (!string.IsNullOrEmpty(databaseRecord["CourseId"].ToString()))
+                {
+                    var courseId = databaseRecord["CourseId"].ToString();
+                    var userCourse = user.ProductCourses.FirstOrDefault(c => c.Id == courseId);
+                    if (userCourse == null)
+                    {
+                        userCourse = new UserProductCourse(){Id = courseId};
+                        user.ProductCourses.Add(userCourse);
+                    }
+                    if(!string.IsNullOrEmpty(databaseRecord["RoleId"].ToString()))
+                    {
+                        var roleId = (int)databaseRecord["RoleId"];
+                        var courseRole = userCourse.AvailableRoles.FirstOrDefault(r => r.Id == roleId);
+                        if (courseRole == null)
+                        {
+                            courseRole = new Role(){Id = roleId};
+                            userCourse.AvailableRoles.Add(courseRole);
+                        }
+                        if (!string.IsNullOrEmpty(databaseRecord["RoleName"].ToString()))
+                        {
+                            courseRole.Name = databaseRecord["RoleName"].ToString();
+                        }
+                        if (!string.IsNullOrEmpty(databaseRecord["UserId"].ToString()))
+                        {
+                            userCourse.CurrentRole = courseRole;
+                        }
+                    }
+                }
+            }
+            return user;
         }
 
         public void DeleteRole(int roleId)
@@ -158,11 +229,11 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
             return role;
         }
 
-        private static DataTable CreateDataTable(IEnumerable<Capability> capabilities)
+        private static DataTable CreateDataTable(IEnumerable<int> ids)
         {
             var table = new DataTable();
             table.Columns.Add("Id", typeof(int));
-            foreach (int id in capabilities.Select(src => (int)src))
+            foreach (int id in ids)
             {
                 table.Rows.Add(id);
             }

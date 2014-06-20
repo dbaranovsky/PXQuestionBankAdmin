@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Common.Logging;
 
 namespace Macmillan.PXQBA.Business.Services
 {
@@ -40,7 +42,15 @@ namespace Macmillan.PXQBA.Business.Services
 
         public void DeleteRole(int roleId)
         {
-            userCapabilityOperation.DeleteRole(roleId);
+            try
+            {
+                userCapabilityOperation.DeleteRole(roleId);
+            }
+            catch (Exception ex)
+            {
+                StaticLogger.LogError(string.Format("UpdateRole: roleid={0}", roleId), ex);
+                throw;
+            }
         }
 
         public Role GetRole(string courseId, int? roleId)
@@ -59,12 +69,46 @@ namespace Macmillan.PXQBA.Business.Services
 
         public void UpdateRole(string courseId, Role role)
         {
-            userCapabilityOperation.UpdateRolesCapabilities(courseId, new List<Role>(){role});
+            try
+            {
+                userCapabilityOperation.UpdateRolesCapabilities(courseId, new List<Role>() { role });
+            }
+            catch (Exception ex)
+            {
+                StaticLogger.LogError(string.Format("UpdateRole: courseId = {0}, roleid={1}", courseId, role.Id), ex);
+                throw;
+            }
         }
 
         public IEnumerable<QBAUser> GetUsers(int startingRecordNumber, int recordsCount)
         {
             return userCapabilityOperation.GetQBAUsers(startingRecordNumber, recordsCount);
+        }
+
+        public QBAUser GetUser(string userId)
+        {
+            try
+            {
+                return userCapabilityOperation.GetUserWithRoles(userId);
+            }
+            catch (Exception ex)
+            {
+                StaticLogger.LogError(string.Format("GetUser: userId = {0}", userId), ex);
+                throw;
+            }
+        }
+
+        public void UpdateUserRoles(QBAUser user)
+        {
+            try
+            {
+                userCapabilityOperation.UpdateUserRoles(user);
+            }
+            catch (Exception ex)
+            {
+                StaticLogger.LogError(string.Format("UpdateUserRoles: userId = {0}", user.Id), ex);
+                throw;
+            }
         }
     }
 }
