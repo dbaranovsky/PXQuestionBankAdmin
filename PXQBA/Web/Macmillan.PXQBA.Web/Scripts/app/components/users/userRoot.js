@@ -11,11 +11,8 @@ var UserRoot = React.createClass({displayName: 'UserRoot',
                  roles: null,
                  showAddRoleDialog: false,
                  usersLoading: true,
-                 users: [],
                  currentPage: 1,
                  totalPages: 1,
-                 pages: [],
-                 usersPerPage: 20,
                  page: null,
                  deleteRole: false
                });
@@ -32,23 +29,21 @@ var UserRoot = React.createClass({displayName: 'UserRoot',
 
 
     componentDidMount: function(){
-      var self = this;
-     userManager.getUsers().done(self.processUsers).error(function(e){self.setState({usersLoading: false});});
+      this.getPage(1);
     },
 
-    processUsers: function(users){
-        var totalPages =  ~~(users.length/this.state.usersPerPage);
-        if(users.length%this.state.usersPerPage != 0){
-          totalPages++;
-        } 
-         var pages = [];
-        for (i=0; i< totalPages; i++){
-            pages.push(users.slice(i*this.state.usersPerPage, i*this.state.usersPerPage+this.state.usersPerPage));
-        }
+    getPage: function(page){
+          this.setState({usersLoading: true});
+         var self = this;
+         userManager.getUsers(page).done(self.processUsers).error(function(e){self.setState({usersLoading: false});});
+    },
+
+    processUsers: function(response){
+       
        this.setState({usersLoading: false,
-                      pages: pages,
-                      totalPages: totalPages,
-                      page: pages[0]
+                      totalPages: response.totalPages,
+                      page: response.users,
+                      currentPage: response.currentPage
                     });
 
     },
@@ -139,9 +134,6 @@ var UserRoot = React.createClass({displayName: 'UserRoot',
 
 
    renderUsers: function(){
-        if(this.state.usersLoading){
-          return (React.DOM.div( {className:"waiting middle"}));
-        }
 
         if(this.state.page == null || this.state.page.length == 0){
           return(React.DOM.b(null, "No data availible"));
@@ -176,7 +168,6 @@ var UserRoot = React.createClass({displayName: 'UserRoot',
   updateAvailibleTitles: function(userId, count){
 
 
-        var pages = this.state.pages;
         var page = this.state.page;
         for(var i in page){
           if (page[i].id == userId){
@@ -185,14 +176,11 @@ var UserRoot = React.createClass({displayName: 'UserRoot',
           }
         }
 
-        pages[this.state.currentPage-1] = page;
-
-
-        this.setState({pages: pages, page: page});
+        this.setState({page: page});
   },
 
   changePage: function(page){
-    this.setState({page: this.state.pages[page-1], currentPage: parseInt(page)});
+   this.getPage(page);
   },
 
    renderTabs: function() {
@@ -237,6 +225,7 @@ var UserRoot = React.createClass({displayName: 'UserRoot',
     render: function() {
        return (
                 React.DOM.div(null,   
+                     this.state.usersLoading ? Loader(null ) :"",
                        this.renderLoader(),
                        this.renderTabs()    
                 )
