@@ -39,7 +39,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         public PagedCollection<Question> GetQuestionList(string questionRepositoryCourseId, string currentCourseId, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
         {
             var filterCopy = MakeFilterCopy(filter);
-            if (string.IsNullOrEmpty(sortCriterion.ColumnName))
+            if (sortCriterion.SortType==SortType.None)
             {
                 sortCriterion.ColumnName = MetadataFieldNames.Sequence;
                 sortCriterion.SortType = SortType.Asc;

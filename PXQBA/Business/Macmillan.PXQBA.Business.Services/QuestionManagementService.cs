@@ -209,6 +209,7 @@ namespace Macmillan.PXQBA.Business.Services
                         draftQuestion.DraftFrom);
                     draftQuestion.Id = originalQuestion.Id;
                     ClearServiceFields(draftQuestion);
+                    draftQuestion.DraftFrom = originalQuestion.DraftFrom;
                     draftQuestion.IsPublishedFromDraft = true;
                     questionCommands.UpdateQuestion(draftQuestion);
                     DeleteDraft(currentCourse.QuestionRepositoryCourseId, draftQuestionId);

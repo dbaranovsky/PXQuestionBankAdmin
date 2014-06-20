@@ -10,7 +10,10 @@
         self.query.setValue(filter);
         self.page.setValue(page);
         self.columns.setValue(columns);
-        self.order.setValue(orderType + '/' + orderField);
+        self.order.setValue(orderType);
+        if (orderField != null) {
+            self.order.setValue(self.order.getValue() + '/' + orderField);
+        }
     },
 
     self.setHashSilently = function(hash) {
@@ -34,7 +37,7 @@
 
     self.setOrder = function (orderType, fieldName) {
         self.order.setValue(orderType);
-        if (fieldName != undefined) {
+        if (fieldName != null) {
             self.order.setValue(self.order.getValue() + '/' + fieldName);
         }
         hasher.setHash(self.buildHash());
@@ -98,7 +101,7 @@
 
     self.copyOrder = function (orderType, fieldName) {
         self.order.setValue(orderType);
-        if (fieldName != undefined) {
+        if (fieldName != null) {
             self.order.setValue(self.order.getValue() + '/' + fieldName);
         }
     };
