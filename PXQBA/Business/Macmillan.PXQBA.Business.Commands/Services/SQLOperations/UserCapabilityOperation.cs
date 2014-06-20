@@ -16,10 +16,11 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
     {
         private readonly IDatabaseManager databaseManager;
         private readonly IUserOperation userOperation;
+        private readonly IProductCourseOperation productCourseOperation;
 
         private const string userFullNameFormat = "{0} {1}";
 
-        public UserCapabilityOperation(IDatabaseManager databaseManager, IUserOperation userOperation)
+        public UserCapabilityOperation(IDatabaseManager databaseManager, IUserOperation userOperation, IProductCourseOperation productCourseOperation)
         {
 
 #if DEBUG
@@ -28,6 +29,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
 
             this.databaseManager = databaseManager;
             this.userOperation = userOperation;
+            this.productCourseOperation = productCourseOperation;
         }
 
         public IEnumerable<Role> GetRolesForCourse(string courseId)
@@ -181,7 +183,22 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
                     }
                 }
             }
+            
+            UpdateCourseNames(user);
             return user;
+        }
+
+        private void UpdateCourseNames(QBAUser user)
+        {
+            var courses = productCourseOperation.GetCoursesByCourseIds(user.ProductCourses.Select(c => c.Id));
+            foreach (var course in user.ProductCourses)
+            {
+                var match = courses.FirstOrDefault(c => c.ProductCourseId == course.Id);
+                if (match != null)
+                {
+                    course.Name = match.Title;
+                }
+            }
         }
 
         public void DeleteRole(int roleId)
