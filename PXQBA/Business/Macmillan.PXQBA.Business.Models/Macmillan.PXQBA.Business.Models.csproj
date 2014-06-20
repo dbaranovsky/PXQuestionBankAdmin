@@ -56,9 +56,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
-    <Reference Include="Macmillan.PXQBA.Common.Utilities">
-      <HintPath>..\Macmillan.PXQBA.Business.Context\bin\Debug\Macmillan.PXQBA.Common.Utilities.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -101,6 +98,10 @@
     <Compile Include="UserNotShownNotification.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Macmillan.PXQBA.Common.Helpers\Macmillan.PXQBA.Common.Helpers.csproj">
+      <Project>{dc4aeaab-7123-4e1c-bd7d-fb0913c68b2c}</Project>
+      <Name>Macmillan.PXQBA.Common.Helpers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.DataContracts\Bfw.Agilix.DataContracts.csproj">
       <Project>{4D185F8E-C2A0-442A-A05E-78B566361562}</Project>
       <Name>Bfw.Agilix.DataContracts</Name>

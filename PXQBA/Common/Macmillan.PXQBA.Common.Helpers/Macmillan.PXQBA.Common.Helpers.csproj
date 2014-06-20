@@ -101,10 +101,6 @@
     <Compile Include="QuestionTypeHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Models\Macmillan.PXQBA.Business.Models.csproj">
-      <Project>{800708c5-6692-4c91-be89-729a017b5027}</Project>
-      <Name>Macmillan.PXQBA.Business.Models</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.DataContracts\Bfw.Agilix.DataContracts.csproj">
       <Project>{4d185f8e-c2a0-442a-a05e-78b566361562}</Project>
       <Name>Bfw.Agilix.DataContracts</Name>
