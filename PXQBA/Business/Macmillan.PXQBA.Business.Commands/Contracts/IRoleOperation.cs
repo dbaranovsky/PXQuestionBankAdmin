@@ -3,7 +3,7 @@ using Macmillan.PXQBA.Business.Models;
 
 namespace Macmillan.PXQBA.Business.Commands.Contracts
 {
-    public interface IUserCapabilityOperation
+    public interface IRoleOperation
     {
         IEnumerable<Role> GetRolesForCourse(string courseId);
 
@@ -15,5 +15,7 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
 
         QBAUser GetUserWithRoles(string userId);
         void UpdateUserRoles(QBAUser user);
+
+        IEnumerable<Capability> GetUserCapabilities(string courseId, string userId);
     }
 }

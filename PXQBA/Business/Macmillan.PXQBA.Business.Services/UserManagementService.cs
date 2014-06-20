@@ -11,12 +11,12 @@ namespace Macmillan.PXQBA.Business.Services
     public class UserManagementService : IUserManagementService
     {
         private readonly IUserNotificationOperation userNotificationOperation;
-        private readonly IUserCapabilityOperation userCapabilityOperation;
+        private readonly IRoleOperation roleOperation;
 
-        public UserManagementService(IUserNotificationOperation userNotificationOperation, IUserCapabilityOperation userCapabilityOperation)
+        public UserManagementService(IUserNotificationOperation userNotificationOperation, IRoleOperation roleOperation)
         {
             this.userNotificationOperation = userNotificationOperation;
-            this.userCapabilityOperation = userCapabilityOperation;
+            this.roleOperation = roleOperation;
         }
 
         public IEnumerable<UserNotShownNotification> GetNotShownNotification()
@@ -31,11 +31,11 @@ namespace Macmillan.PXQBA.Business.Services
 
         public IEnumerable<Role> GetRolesForCourse(string courseId)
         {
-            var courseRoles = userCapabilityOperation.GetRolesForCourse(courseId);
+            var courseRoles = roleOperation.GetRolesForCourse(courseId);
             if (!courseRoles.Any())
             {
-                userCapabilityOperation.UpdateRolesCapabilities(courseId, PredefinedRoleHelper.GetPredefinedRoles());
-                courseRoles = userCapabilityOperation.GetRolesForCourse(courseId);
+                roleOperation.UpdateRolesCapabilities(courseId, PredefinedRoleHelper.GetPredefinedRoles());
+                courseRoles = roleOperation.GetRolesForCourse(courseId);
             }
             return courseRoles;
         }
@@ -44,7 +44,7 @@ namespace Macmillan.PXQBA.Business.Services
         {
             try
             {
-                userCapabilityOperation.DeleteRole(roleId);
+                roleOperation.DeleteRole(roleId);
             }
             catch (Exception ex)
             {
@@ -57,7 +57,7 @@ namespace Macmillan.PXQBA.Business.Services
         {
             if (roleId.HasValue && roleId.Value > 0)
             {
-                return userCapabilityOperation.GetRoleWithCapabilities(roleId.Value);
+                return roleOperation.GetRoleWithCapabilities(roleId.Value);
             }
             return GetNewRoleTemplate();
         }
@@ -71,7 +71,7 @@ namespace Macmillan.PXQBA.Business.Services
         {
             try
             {
-                userCapabilityOperation.UpdateRolesCapabilities(courseId, new List<Role>() { role });
+                roleOperation.UpdateRolesCapabilities(courseId, new List<Role>() { role });
             }
             catch (Exception ex)
             {
@@ -82,14 +82,14 @@ namespace Macmillan.PXQBA.Business.Services
 
         public IEnumerable<QBAUser> GetUsers(int startingRecordNumber, int recordsCount)
         {
-            return userCapabilityOperation.GetQBAUsers(startingRecordNumber, recordsCount);
+            return roleOperation.GetQBAUsers(startingRecordNumber, recordsCount);
         }
 
         public QBAUser GetUser(string userId)
         {
             try
             {
-                return userCapabilityOperation.GetUserWithRoles(userId);
+                return roleOperation.GetUserWithRoles(userId);
             }
             catch (Exception ex)
             {
@@ -102,13 +102,18 @@ namespace Macmillan.PXQBA.Business.Services
         {
             try
             {
-                userCapabilityOperation.UpdateUserRoles(user);
+                roleOperation.UpdateUserRoles(user);
             }
             catch (Exception ex)
             {
                 StaticLogger.LogError(string.Format("UpdateUserRoles: userId = {0}", user.Id), ex);
                 throw;
             }
+        }
+
+        public IEnumerable<Capability> GetUserCapabilities(string courseId, string userId)
+        {
+            return roleOperation.GetUserCapabilities(courseId, userId);
         }
     }
 }

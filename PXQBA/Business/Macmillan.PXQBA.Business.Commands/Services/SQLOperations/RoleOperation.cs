@@ -12,7 +12,7 @@ using Macmillan.PXQBA.Common.Logging;
 
 namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
 {
-    public class UserCapabilityOperation : IUserCapabilityOperation
+    public class RoleOperation : IRoleOperation
     {
         private readonly IDatabaseManager databaseManager;
         private readonly IUserOperation userOperation;
@@ -20,7 +20,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
 
         private const string userFullNameFormat = "{0} {1}";
 
-        public UserCapabilityOperation(IDatabaseManager databaseManager, IUserOperation userOperation, IProductCourseOperation productCourseOperation)
+        public RoleOperation(IDatabaseManager databaseManager, IUserOperation userOperation, IProductCourseOperation productCourseOperation)
         {
 
 #if DEBUG
@@ -73,6 +73,27 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
                 }
             }
             return qbaUsers;
+        }
+
+
+        public IEnumerable<Capability> GetUserCapabilities(string courseId, string userId)
+        {
+            DbCommand command = new SqlCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "dbo.GetQBAUserCapabilities";
+
+            var userIdParam = new SqlParameter("@userId", userId);
+            command.Parameters.Add(userIdParam);
+            var courseIdParam = new SqlParameter("@courseId", courseId);
+            command.Parameters.Add(courseIdParam);
+
+            var dbRecords = databaseManager.Query(command);
+            return GetCapabilitiesFromRecords(dbRecords);
+        }
+
+        private IEnumerable<Capability> GetCapabilitiesFromRecords(IEnumerable<DatabaseRecord> dbRecords)
+        {
+            return dbRecords.Where(r => !string.IsNullOrEmpty(r["CapabilityId"].ToString())).Select(r => EnumHelper.Parse<Capability>(r["CapabilityId"].ToString()));
         }
 
         public void UpdateRolesCapabilities(string courseId, IEnumerable<Role> roles)
