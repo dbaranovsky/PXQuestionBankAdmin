@@ -204,7 +204,7 @@ var userManager = (function() {
             url: window.actions.userOperations.getAvailibleTitlesUrl,
             dataType: 'json',
             data: JSON.stringify(request),
-            type: 'GET',
+            type: 'POST',
             contentType: 'application/json'
         }).done(function (response) {
             

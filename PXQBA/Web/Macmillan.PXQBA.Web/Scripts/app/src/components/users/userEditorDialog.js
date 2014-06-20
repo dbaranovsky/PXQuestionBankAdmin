@@ -42,7 +42,7 @@ var EditUserDialog  = React.createClass({
                       self.setState({loading: false});
                     });
     
-       this.props.updateAvailibleTitles(this.props.user.id, $.grep(this.state.roles, function(el){return el.currentRole != null}).length);
+       this.props.updateAvailibleTitles(this.props.user.id, $.grep(this.state.roles.productCourses, function(el){return el.currentRole != null}).length);
 
     },
 
