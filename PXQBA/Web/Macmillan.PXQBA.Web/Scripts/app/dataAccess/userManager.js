@@ -173,12 +173,16 @@ var userManager = (function() {
         });
     }
 
-    self.getUsers = function(){
-
+    self.getUsers = function(page){
+        
+         var request = {
+            page: page
+        };
         return $.ajax({
             url: window.actions.userOperations.getUsersUrl,
+              data: JSON.stringify(request),
             dataType: 'json',
-            type: 'GET',
+            type: 'POST',
             contentType: 'application/json'
         }).done(function (response) {
             
@@ -200,7 +204,7 @@ var userManager = (function() {
             url: window.actions.userOperations.getAvailibleTitlesUrl,
             dataType: 'json',
             data: JSON.stringify(request),
-            type: 'GET',
+            type: 'POST',
             contentType: 'application/json'
         }).done(function (response) {
             
@@ -236,11 +240,10 @@ var userManager = (function() {
     }
 
  
-    self.saveUserRoles = function(userId, titles){
+    self.saveUserRoles = function(titles){
 
          var request = {
-            userId: userId,
-            titles: titles
+            user: titles
         };
 
         return $.ajax({

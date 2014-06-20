@@ -17,9 +17,12 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         private readonly IProductCourseManagementService productCourseManagementService;
 
+        private readonly int usersPerPage;
+
         public UserController(IUserManagementService userManagementService, IProductCourseManagementService productCourseManagementService)
         {
             this.userManagementService = userManagementService;
+            usersPerPage = ConfigurationHelper.GetUsersPerPage();
             this.productCourseManagementService = productCourseManagementService;
         }
 
@@ -106,13 +109,20 @@ namespace Macmillan.PXQBA.Web.Controllers
         }
 
         /// <summary>
-        /// Return all users
+        /// Return all users for page
         /// </summary>
         /// <returns></returns>
-        public ActionResult GetUsers()
+        public ActionResult GetUsers(int page)
         {
-            var users = userManagementService.GetUsers(0, 10);
-            return JsonCamel(users);
+            var users = userManagementService.GetUsers((page - 1) * usersPerPage, usersPerPage);
+
+            var totalPages = (users.Count() + usersPerPage - (users.Count() % usersPerPage)) / usersPerPage;
+            return JsonCamel(new
+                             {
+                               Users = users,
+                               TotalPages = totalPages,
+                               CurrentPage = page
+                             });
         }
 
         /// <summary>
@@ -142,9 +152,10 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// </summary>
         /// <returns></returns>
         public ActionResult SaveUserRoles(QBAUser user)
-        {
+        {        
             userManagementService.UpdateUserRoles(user);
             return JsonCamel(new { isSuccess = true });
         }
+
     }
 }

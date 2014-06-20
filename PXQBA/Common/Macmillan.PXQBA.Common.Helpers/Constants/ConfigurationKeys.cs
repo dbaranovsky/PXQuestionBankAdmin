@@ -103,5 +103,10 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
         /// Server access point URL where from comes html with Graph Editor
         /// </summary>
         public static string GraphEditorUrl = "GraphEditorUrl";
+
+        /// <summary>
+        /// Key for number of question on the page in question list
+        /// </summary>
+        public const string UsersPerPage = "UsersPerPage";
     }
 }

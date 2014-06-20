@@ -276,5 +276,16 @@ namespace Macmillan.PXQBA.Common.Helpers
             }
             return "http://dev.px.bfwpub.com/PxEG/authormode2.aspx";
         }
+
+        public static int GetUsersPerPage()
+        {
+            var usersPerPage = ConfigurationManager.AppSettings[ConfigurationKeys.UsersPerPage];
+            if (!string.IsNullOrEmpty(usersPerPage))
+            {
+                return Int32.Parse(usersPerPage);
+            }
+
+            return 20;
+        }
     }
 }

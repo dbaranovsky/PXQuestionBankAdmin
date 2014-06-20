@@ -33,7 +33,7 @@
      rows = this.state.titles.map(function (title, i) {
         
             return ( React.DOM.div( {className:"title-row"}, 
-                        React.DOM.div( {className:"title-cell"}, title.productCourseName),
+                        React.DOM.div( {className:"title-cell"}, title.name),
                         React.DOM.div( {className:"title-cell"}, React.DOM.i(null, title.currentRole.name))
                       ));
           });
@@ -51,7 +51,7 @@
 
         var renderHeaderText = function() {
          
-             return "Titles availible for "+ self.props.user.userName;
+             return "Titles availible for "+ self.props.user.fullName;
            
         };
 

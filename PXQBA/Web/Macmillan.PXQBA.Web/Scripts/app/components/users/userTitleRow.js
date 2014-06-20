@@ -33,11 +33,11 @@
         var options = [];
         options.push({value: "", text:""});
 
-        for(var propertyName in availableChoice) {
-           options.push({ value: propertyName,
-                          text: availableChoice[propertyName]
+        $.each(availableChoice, function(i, el){
+           options.push({ value: el.id,
+                          text: el.name
            });
-        }
+         });
 
         return options;
    },
@@ -48,9 +48,9 @@
           var self = this;
            var currentValue = userTitle.currentRole == null? "" : userTitle.currentRole.id;
             return (React.DOM.div( {className:"role-row"}, 
-                          React.DOM.div( {className:"role-cell"}, userTitle.productCourseName),
+                          React.DOM.div( {className:"role-cell"}, userTitle.name),
                             React.DOM.div( {className:"role-cell selector"}, 
-                                    SingleSelectSelector(  {allowNewValues:false, currentValues:currentValue,  allowDeselect:true, allOptions:self.getAllOptions(userTitle.availibleRoles), onChangeHandler:self.selectorChangeHandler})
+                                    SingleSelectSelector(  {allowNewValues:false, currentValues:currentValue,  allowDeselect:true, allOptions:self.getAllOptions(userTitle.availableRoles), onChangeHandler:self.selectorChangeHandler})
                             )
                          ));
       }
