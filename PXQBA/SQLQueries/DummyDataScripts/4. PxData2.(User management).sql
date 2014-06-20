@@ -109,12 +109,13 @@ CREATE PROCEDURE dbo.GetQBAUserCoursesWithRoles
 AS
 BEGIN
   SELECT
-    r.CourseId,
+    c.CourseId,
     r.Id AS RoleId,
     r.Name AS RoleName,
     u.UserId
   FROM
-    QBARole r
+    QBACourse c
+    LEFT JOIN QBARole r ON c.Id = r.CourseId
     LEFT JOIN UserQBARole u ON u.RoleId = r.Id
   WHERE 
     u.UserId = @userId 

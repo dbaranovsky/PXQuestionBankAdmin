@@ -1,9 +1,38 @@
 USE PXData2
 GO
 
+CREATE TABLE dbo.QBACourse(
+  Id INT PRIMARY KEY NOT NULL,
+)  ON [PRIMARY]
+GO
+
+USE PXData2
+GO
+
+INSERT INTO QBACourse(Id) VALUES(71836)
+INSERT INTO QBACourse(Id) VALUES(71674)
+INSERT INTO QBACourse(Id) VALUES(85256)
+
+
+USE PXData2
+GO
+
+CREATE PROCEDURE dbo.GetQBACourses
+AS
+BEGIN
+ SELECT
+   Id AS CourseId
+ FROM
+   QBACourse
+END
+GO
+
+USE PXData2
+GO
+
 CREATE TABLE dbo.QBARole(
   Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-  CourseId NVARCHAR(4000) NULL,
+  CourseId INT NOT NULL FOREIGN KEY REFERENCES QBACourse(Id) ON DELETE CASCADE,
   Name NVARCHAR(4000) NOT NULL,
   CanEdit  bit NOT NULL DEFAULT(1),
 )  ON [PRIMARY]
@@ -49,7 +78,6 @@ BEGIN
   SET Name = @roleName
   WHERE Id = @roleId AND CanEdit = 1
   
-  
   SELECT @roleId
 END
 GO
@@ -68,6 +96,30 @@ BEGIN
   WHERE
     Id = @roleId AND
     CanEdit = 1
+END
+GO
+
+USE PXData2
+GO
+
+CREATE PROCEDURE dbo.GetQBAUserCoursesWithRoles
+(
+  @userId NVARCHAR(4000)
+)
+AS
+BEGIN
+  SELECT
+    c.CourseId,
+    r.Id AS RoleId,
+    r.Name AS RoleName,
+    u.UserId
+  FROM
+    QBACourse c
+    LEFT JOIN QBARole r ON c.Id = r.CourseId
+    LEFT JOIN UserQBARole u ON u.RoleId = r.Id
+  WHERE 
+    u.UserId = @userId 
+    OR u.UserId IS NULL
 END
 GO
 
@@ -112,17 +164,20 @@ GO
 USE PXData2
 GO
 
-CREATE TYPE dbo.QBACapabilityList
+CREATE TYPE dbo.QBAIdList
 AS TABLE
 (
   Id INT
 );
 GO
 
+USE PXData2
+GO
+
 CREATE PROCEDURE dbo.UpdateQBARoleCapabilities
 (
   @roleId INT,
-  @capabilityIds AS dbo.QBACapabilityList READONLY
+  @capabilityIds AS dbo.QBAIdList READONLY
 )
 AS
 BEGIN
@@ -177,45 +232,19 @@ GO
 USE PXData2
 GO
 
-CREATE PROCEDURE dbo.GetUsersForQBA()
+CREATE PROCEDURE dbo.GetQBAUsers
 AS
 BEGIN
-  
  SELECT
-  r.UserId,
-  u.FirstName,
-  u.LastName,
-  COUNT(ru.RoleId)
+  r.UserId AS Id,
+  COUNT(ru.RoleId) AS [Count]
 FROM
   PxWebUserRights r
   LEFT JOIN UserQBARole ru ON r.UserId = ru.UserId
-  JOIN Users u ON r.UserId = u.UserId
 WHERE
-  r.RightId = 1
+  r.PxWebRightId = (SELECT TOP 1 PxWebRightId FROM PxWebRights WHERE PxWebRightType = 'QuestionBank')
 GROUP BY
-  r.UserId,
-  u.FirstName,
-  u.LastName
-END
-GO
-
-USE PXData2
-GO
-
-CREATE PROCEDURE dbo.GetUserCourses
-(
-  @userId NVARCHAR(4000)
-)
-AS
-BEGIN
-  
- SELECT
-   r.CourseId
- FROM
-   UserQBARole u
-   LEFT JOIN QBARole r ON r.Id = u.RoleId
- WHERE
-   u.UserId = @userId
+  r.UserId
 END
 GO
 
@@ -223,7 +252,7 @@ GO
 USE PXData2
 GO
 
-CREATE PROCEDURE dbo.GetUserRoles
+CREATE PROCEDURE dbo.GetQBAUserRoles
 (
   @userId NVARCHAR(4000)
 )
@@ -239,5 +268,46 @@ BEGIN
    LEFT JOIN QBARole r ON r.Id = u.RoleId
  WHERE
    u.UserId = @userId
+END
+GO
+
+CREATE PROCEDURE dbo.GetQBAUserCourses
+(
+  @userId NVARCHAR(4000)
+)
+AS
+BEGIN
+ SELECT
+   r.CourseId
+ FROM
+   UserQBARole u
+   LEFT JOIN QBARole r ON r.Id = u.RoleId
+ WHERE
+   u.UserId = @userId
+END
+GO
+
+USE PXData2
+GO
+
+CREATE PROCEDURE dbo.UpdateQBAUserRoles
+(
+  @userId INT,
+  @roleIds AS dbo.QBAIdList READONLY
+)
+AS
+BEGIN
+
+ DELETE FROM 
+   UserQBARole
+ WHERE
+   UserId = @userId
+ 
+ INSERT INTO UserQBARole(UserId, RoleId)
+ SELECT
+   @userId,
+   Id
+ FROM
+   @roleIds
 END
 GO
