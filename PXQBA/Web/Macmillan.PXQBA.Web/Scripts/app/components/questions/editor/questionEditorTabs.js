@@ -7,7 +7,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
     getInitialState: function(){
       return {isHTS: this.props.question.questionType!= null && this.props.question.questionType.toLowerCase()=="hts"? true: false,
               isCustom: this.props.question.questionType!= null,
-              isGraph: this.props.question.graphEditorHtml != null,
+              isGraph: this.props.question.questionType == "FMA_GRAPH"  ,
               viewHistoryMode: this.props.viewHistoryMode != undefined ? this.props.viewHistoryMode : false,
               currentTab: this.props.viewHistoryMode ? "history" : "body",
               currentGraphEditor: this.props.question.graphEditorHtml
@@ -32,7 +32,13 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
       //     $(tabs).find('.waiting').hide();
       //     $(tabs).find('iframe').show();
        // });
-    if (this.props.question.graphEditorHtml != null){
+    
+    if(this.props.question.isShared && !this.props.question.canEditSharedQuestionContent && !this.state.viewHistoryMode){
+        $(this.getDOMNode()).find("#quizeditorcomponent").html(this.props.question.preview);
+        return;
+    }
+    
+    if (this.state.isGraph != null){
       $(this.getDOMNode()).find("#quizeditorcomponent").html(this.props.question.graphEditorHtml);
       this.iframeLoaded();
 
@@ -212,7 +218,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
 
     renderPublishButton: function() {
         if(this.props.question.isDraft) {
-          return (React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal", title:"Save and Publish", disabled:this.props.saving, onClick:this.saveAndPublishHandler}, 
+          return (React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal",   title:"Save and Publish", disabled:this.props.saving || this.props.question.canPublishDraft, onClick:this.saveAndPublishHandler}, 
                               "Save and Publish"
                    ));
         }
@@ -277,8 +283,8 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
         }
 
 
-        if (this.props.question.status == window.enums.statusesId.deleted){
-          alert("You can't edit a deleted question");
+        if (this.props.question.canEditQuestion){
+          alert("You have no permission to edit question");
            return;
         }
 
@@ -312,10 +318,11 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
           return;
         }
 
-        if (this.props.question.status == window.enums.statusesId.deleted){
-          alert("You can't edit a deleted question");
-          return;
+       if (this.props.question.canEditQuestion){
+          alert("You have no permission to edit question");
+           return;
         }
+
 
         if (this.props.question.draftFrom != ""){
            $(this.getDOMNode()).find('#metadata').tab('show');
@@ -432,6 +439,14 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                         ));
     },
 
+    renderHistory: function(){
+        if(this.props.question.canViewHistory){
+          return ( VersionHistory( {question:this.props.question, handlers:this.props.handlers}));
+        }
+
+        return (React.DOM.b(null, "You have no permission to view question history"))
+    },
+
     render: function() {
        var iframeClass = "";
        if ((this.props.question.isShared && !this.props.isNew) || (this.props.question.sharedQuestionDuplicateFrom != null && this.props.isDuplicate)){
@@ -463,8 +478,8 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                       this.renderSharingNotification(),
 
                        React.DOM.div( {className:"tab-body .shared"}, 
-                   
-                           React.DOM.div(  {className:"iframe waiting"} ),
+                          !this.props.question.canEditSharedQuestionContent? React.DOM.b(null, "You have no permission to edit question body") : React.DOM.div(  {className:"iframe waiting"} ),
+                           
                           React.DOM.div( {id:"quizeditorcomponent", className:iframeClass}),
                           React.DOM.div( {className:"modal-footer"}, 
                            this.renderFooterButtons(true)
@@ -490,7 +505,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                      React.DOM.div( {className:"tab-pane", id:"history"}, 
 
                        React.DOM.div( {className:"tab-body"}, 
-                          VersionHistory( {question:this.props.question, handlers:this.props.handlers})
+                         this.renderHistory()
                        )
 
                 )

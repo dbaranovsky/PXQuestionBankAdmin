@@ -8,9 +8,22 @@ var QuestionGrid = React.createClass({
       routsManager.setPage(page);
   },
 
+  getCapabilities: function(){
+    return {
+            canDuplicateQuestion: this.props.response.canDuplicateQuestion,
+            canUnflagQuestion: this.props.response.canUnflagQuestion,
+            canFlagQuestion: this.props.response.canFlagQuestion,
+            canAddNotesQuestion: this.props.response.canAddNotesQuestion,
+            canViewHistory: this.props.response.canViewHistory,
+            canShareQuestion: this.props.response.canShareQuestion,
+            canPublishDraft: this.props.response.canPublishDraft,
+            canPreviewQuestion: this.props.response.canPreviewQuestion
+          };
+  },
      
     render: function() { 
-        return (
+        if (this.props.response.canViewQuestionList){
+             return (
               <div className="questionGrid">
                 <div className="question-grid-item"> 
                      <QuestionFilter filter={this.props.response.filter} allAvailableColumns={this.props.response.allAvailableColumns}/>
@@ -24,6 +37,7 @@ var QuestionGrid = React.createClass({
                                         allAvailableColumns={this.props.response.allAvailableColumns}
                                         handlers={this.props.handlers}
                                         currentPage={this.props.response.pageNumber}
+                                        capabilities = {this.getCapabilities()}
                                         />
                 </div> 
                 <div className="question-grid-item"> 
@@ -36,5 +50,9 @@ var QuestionGrid = React.createClass({
             </div> 
 
             );
+          
+        }
+        
+         return (<b>You have no access to view question list</b>);
     }
 });

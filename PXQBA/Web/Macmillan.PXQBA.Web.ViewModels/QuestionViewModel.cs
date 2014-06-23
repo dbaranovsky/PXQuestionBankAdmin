@@ -111,6 +111,8 @@ namespace Macmillan.PXQBA.Web.ViewModels
         public bool CanRestoreVersion { get; set; }
 
         public bool CanCreateDraftFromVersion { get; set; }
+
+        public bool CanViewHistory { get; set; }
         #endregion
 
 

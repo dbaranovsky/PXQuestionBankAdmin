@@ -30,11 +30,22 @@ var Title = React.createClass({
     },
 
     renderChapter: function(chapter) {
+       if (this.props.data.canViewQuestionList){
         return (<div>   
                   <span className="chapter-list-title">
                     <a href={this.getUrlToList(this.props.data.id, chapter.id)} className="chapter-link">
                        {chapter.title} 
                     </a>
+                  </span>
+                  <span className="chapter-list-count">
+                    {this.getQuestionCountText(chapter.questionsCount)}
+                  </span>
+                </div>);
+      }
+
+      return (<div>   
+                  <span className="chapter-list-title">
+                       {chapter.title} 
                   </span>
                   <span className="chapter-list-count">
                     {this.getQuestionCountText(chapter.questionsCount)}
@@ -54,7 +65,8 @@ var Title = React.createClass({
     },
 
     render: function() {
-       return (
+      if (this.props.data.canViewQuestionList){
+         return (
                 <div className="title-item">
                      <div>
                          <span>
@@ -74,6 +86,29 @@ var Title = React.createClass({
                       {this.renderExpanded()}
                 </div>
             );
+      }
+
+       return (
+                <div className="title-item">
+                     <div>
+                         <span>
+                             <ExpandButton expanded={this.state.expanded} onClickHandler={this.expandHandler} targetCaption="course"/>
+                          </span> 
+                          <span className="course-list-title">
+                                  <span>  
+                                       {this.props.data.title} 
+                                 </span>
+                           
+                           </span>
+                            <span className="course-list-count">
+                                   {this.getQuestionCountText(this.props.data.questionsCount)}
+                            </span>
+                      </div>
+                      {this.renderExpanded()}
+                </div>
+            );
+
+      
     }
 });
 

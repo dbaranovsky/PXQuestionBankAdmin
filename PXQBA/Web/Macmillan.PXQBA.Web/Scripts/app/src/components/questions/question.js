@@ -53,7 +53,11 @@ var Question = React.createClass({
                         isShared = {isShared}
                         titleCount = {titleCount}
                         draft = {this.props.draft}
-                         />
+                        capabilities = {this.props.capabilities}
+                        metadataCapabilities= {{canCreateDraftFromAvailableQuestion: this.props.metadata.canCreateDraftFromAvailableQuestion,
+                                                canChangeDraftStatus:  this.props.metadata.canChangeDraftStatus,
+                                                canEditQuestion:  this.props.metadata.canEditQuestion}} />
+                        
     },
 
     selectQuestionHandler: function(event) {
@@ -70,7 +74,9 @@ var Question = React.createClass({
                                allowedEdit = {allowedEdit}
                                expanded = {this.props.expanded}
                                draft={this.props.draft}
-                               expandPreviewQuestionHandler = {this.props.expandPreviewQuestionHandler} />);
+                               expandPreviewQuestionHandler = {this.props.expandPreviewQuestionHandler}
+                               canChangeDraftStatus = {this.props.metadata.data.canChangeDraftStatus}
+                                />);
     },
       
    renderGroupLine: function() {

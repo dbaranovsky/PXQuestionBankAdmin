@@ -235,6 +235,7 @@ var QuestionList = React.createClass({
                        expanded={isQuestionExpanded}
                        grouped={isGrouped}
                        draft={isDraft}
+                       capabilities = {this.props.capabilities}
                       />);
 
       var preview = null;
@@ -260,7 +261,8 @@ var QuestionList = React.createClass({
                                           deselectsAllHandler={this.deselectsAllQuestionHandler}
                                           columns={this.props.columns}
                                           bulkShareHandler = {this.props.handlers.shareHandler}
-                                          isShared = {isAllQuestionsShared} />);
+                                          isShared = {isAllQuestionsShared}
+                                          capabilities= {this.props.capabilities} />);
       }
       return null;
     },
@@ -276,7 +278,8 @@ var QuestionList = React.createClass({
                                         selectAllQuestionHandelr={this.selectAllQuestionHandelr}
                                         selectedAll={this.state.selectedAll}
                                         expandAllQuestionHandler={this.expandAllQuestionHandler}
-                                        expandedAll={this.state.expandedAll}  />
+                                        expandedAll={this.state.expandedAll}  
+                                        canViewPreview={this.props.capabilities.canPreviewQuestion}/>
                   </thead>
                   <tbody> 
                     {this.renderBulkOperationBar()}

@@ -207,7 +207,7 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
 
     renderNotesDialog: function(){
       if(this.state.showNoteEditDialog) {
-        return (EditQuestionNotesDialog( {closeDialogHandler:this.closeNoteDialogHandler, questionId:this.state.questionIdForNotes}));
+        return (EditQuestionNotesDialog( {closeDialogHandler:this.closeNoteDialogHandler, questionId:this.state.questionIdForNotes, canDelete:this.props.response.canRemoveNotesQuestion}));
       }
       return null;
     },
@@ -273,7 +273,7 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
                   React.DOM.a( {href:window.actions.questionTitle.titleListUrl},   "  << Back to the titles list " )
                 ),
                 React.DOM.div( {className:"add-question-action"}, 
-                    React.DOM.button( {className:"btn btn-primary ",  onClick:this.initialCreateNewQuestion}, 
+                    React.DOM.button( {className:"btn btn-primary ",  disabled:!this.props.response.canCreateQuestion, onClick:this.initialCreateNewQuestion}, 
                     "Add Question"
                     )
                 ),

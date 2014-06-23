@@ -72,7 +72,7 @@ var QuestionBulkOperationBar = React.createClass({displayName: 'QuestionBulkOper
                                )
                             ),
                             React.DOM.td( {className:"bulk-operation-sharing"}, 
-                              React.DOM.button( {type:"button", className:"btn btn-default", onClick:this.bulkShareToTitle}, "Share with another title"),
+                              React.DOM.button( {type:"button", className:"btn btn-default", disabled:!this.props.canShareQuestion, onClick:this.bulkShareToTitle}, "Share with another title"),
                               this.renderRemoveButton()
                             ),
                             React.DOM.td(null, 

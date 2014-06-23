@@ -24,7 +24,9 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
     },
 
     copyQuestionHandler: function() {
-      this.props.copyQuestionHandler();
+      if(this.props.capabilities.canDuplicateQuestion){
+       this.props.copyQuestionHandler();
+      }
     },
 
     editQuestionHandler: function() {
@@ -120,7 +122,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
               React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn shared-to", rel:"popover", onClick:this.showPopover,  'data-toggle':"popover",  'data-title':this.props.isShared? "Shared with:" : "",  'data-content':this.props.isShared? this.props.data[window.consts.questionSharedWithName] : "<b>Not Shared</b>"} , 
                  React.DOM.span( {className:"glyphicon icon-shared-to"} ),this.renderCourseCountBadge() 
                ),
-               React.DOM.button( {type:"button", className:"btn btn-default btn-sm tiny", onClick:this.shareHandler, 'data-toggle':"tooltip", title:"Share this question"}, React.DOM.span( {className:"glyphicon glyphicon-plus-sign"})), 
+               React.DOM.button( {type:"button", className:"btn btn-default btn-sm tiny", disabled:!this.props.capabilities.canShareQuestion, onClick:this.shareHandler, 'data-toggle':"tooltip", title:"Share this question"}, React.DOM.span( {className:"glyphicon glyphicon-plus-sign"})), 
                     this.props.isShared?
                       React.DOM.button( {type:"button", className:"btn btn-default btn-sm tiny", onClick:this.removeTitleHandler, 'data-toggle':"tooltip", title:"Remove from title"}, React.DOM.span( {className:"glyphicon glyphicon-minus-sign"})) :
                     ""
@@ -162,13 +164,13 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
                             React.DOM.ul( {className:"dropdown-menu show-menu", role:"menu", 'aria-labelledby':"dropdownMenuType", 'aria-labelledby':"edit-question"}, 
                                React.DOM.li( {role:"presentation", className:"dropdown-header"}, "Edit options"),
                                React.DOM.li( {role:"presentation", className:"divider"}),
-                               React.DOM.li( {role:"presentation"}, 
-                                  React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.props.editQuestionHandler.bind(this, false, true)}, 
+                               React.DOM.li( {role:"presentation", className:this.props.metadataCapabilities.canEditQuestion? "" :"disabled", onClick:this.props.metadataCapabilities.canEditQuestion? this.props.editQuestionHandler.bind(this, false, true) : null}, 
+                                  React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1"} , 
                                    "Edit in ", this.props.titleCount+1 == 1? "1 title" : "all "+(this.props.titleCount+1)+" titles"
                                   )
                                ),
-                               React.DOM.li( {role:"presentation"}, 
-                                  React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.props.copyQuestionHandler}, 
+                               React.DOM.li( {role:"presentation", className:this.props.capabilities.canDuplicateQuestion? "" : "disabled", onClick:this.copyQuestionHandler}, 
+                                  React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1"} , 
                                     "Create a copy"
                                   )
                                 ),
@@ -182,7 +184,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
                        React.DOM.li( {role:"presentation", className:"divider"}),
                        React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.createDraftHandler}, "Create a Draft")),
 
-                       React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.copyQuestionHandler}, "Create a copy"))
+                       React.DOM.li( {role:"presentation",  className:this.props.capabilities.canDuplicateQuestion? "" : "disabled", onClick:this.copyQuestionHandler}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1"} , "Create a copy"))
                        
                      ));
                  }
@@ -192,7 +194,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
                      React.DOM.ul( {className:"dropdown-menu show-menu", role:"menu", 'aria-labelledby':"dropdownMenuType",  'aria-labelledby':"edit-question"}, 
                        React.DOM.li( {role:"presentation", className:"dropdown-header"}, "Edit options"),
                        React.DOM.li( {role:"presentation", className:"divider"}),
-                       React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.props.editQuestionHandler.bind(this, false, true)}, "Edit in Place")),
+                       React.DOM.li( {role:"presentation", className:this.props.metadataCapabilities.canEditQuestion? "" :"disabled"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick: this.props.metadataCapabilities.canEditQuestion? this.props.editQuestionHandler.bind(this, false, true) : null}, "Edit in Place")),
                        React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.createDraftHandler}, "Create a Draft"))
                      ));
                 }
@@ -201,17 +203,26 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
     renderMenu: function(){
       if (this.props.showAll){
       var isDeleted = this.props.data[window.consts.questionStatusName] == window.enums.statuses.deleted;
+      var isDisabled =false;
+      if(!this.props.metadataCapabilities.canEditQuestion && !this.props.isShared){
+        isDisabled= true;
+      }else{
+        if(this.props.data[window.consts.questionStatusName] == window.enums.statuses.availibleToInstructor  && !this.props.isShared && !this.props.metadataCapabilities.canCreateDraftFromAvailableQuestion){
+          isDisabled = true;
+        }
+      }
+
       return(React.DOM.div( {className:"menu-container-main"}, 
                     this.renderDraftButton(),
                React.DOM.div( {className:"dropdown"}, 
-                  React.DOM.button( {id:"edit-question", type:"button", className:"btn btn-default btn-sm", onClick:this.editQuestionHandler, disabled:isDeleted,  'data-target':"#", 'data-toggle':"dropdown", title:"Edit Question"}, 
+                  React.DOM.button( {id:"edit-question", type:"button", className:"btn btn-default btn-sm", onClick:this.editQuestionHandler, disabled:isDisabled,  'data-target':"#", 'data-toggle':"dropdown", title:"Edit Question"}, 
                          React.DOM.span( {className:"glyphicon glyphicon-pencil", 'data-toggle':"tooltip", title:"Edit Question"})
                   ),
                     this.renderEditMenu()
                 ),
-                React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.copyQuestionHandler,  'data-toggle':"tooltip", title:"Duplicate Question"}, React.DOM.span( {className:"glyphicon glyphicon-copyright-mark"})),
-               React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.editNotesHandler, 'data-toggle':"tooltip", title:"Edit Notes"}, React.DOM.span( {className:"glyphicon glyphicon-list-alt"}), " " ), 
-               React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn", onClick:this.props.editQuestionHandler.bind(this, true, false), 'data-toggle':"tooltip", title:"View Question History"}, React.DOM.span( {className:"glyphicon icon-version-history"} )) 
+               React.DOM.button( {type:"button", className:"btn btn-default btn-sm", disabled:!this.props.capabilities.canDuplicateQuestion, onClick:this.copyQuestionHandler,  'data-toggle':"tooltip", title:"Duplicate Question"}, React.DOM.span( {className:"glyphicon glyphicon-copyright-mark"})),
+               React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.editNotesHandler, disabled:!this.props.capabilities.canAddNotesQuestion, 'data-toggle':"tooltip", title:"Edit Notes"}, React.DOM.span( {className:"glyphicon glyphicon-list-alt"}), " " ), 
+               React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn", disabled:!this.props.capabilities.canViewHistory, onClick:this.props.editQuestionHandler.bind(this, true, false), 'data-toggle':"tooltip", title:"View Question History"}, React.DOM.span( {className:"glyphicon icon-version-history"} )) 
                ));
      }
 
@@ -220,7 +231,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
 
     renderDraftButton: function() {
       if(this.props.draft) {
-        return ( React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.publishDraftHandler,  'data-toggle':"tooltip", title:"Publish"}, React.DOM.span( {className:"glyphicon glyphicon-open"})));
+        return ( React.DOM.button( {type:"button", className:"btn btn-default btn-sm",  disabled:!this.props.capabilities.canPublishDraft, onClick:this.publishDraftHandler,  'data-toggle':"tooltip", title:"Publish"}, React.DOM.span( {className:"glyphicon glyphicon-open"})));
       }
 
       return null;
@@ -229,7 +240,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
     renderFlagMenu: function(){
         if (this.props.showAll){
           return(React.DOM.div( {className:"menu-container-flag"}, 
-                     React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.toggleFlag, 'data-toggle':"tooltip", title:this.state.isFlagged? "Unflag question" : "Flag question"}, 
+                     React.DOM.button( {type:"button", className:"btn btn-default btn-sm", disabled:(!this.state.isFlagged && !this.props.capabilities.canFlagQuestion) || (this.state.isFlagged && !this.props.capabilities.canUnflagQuestion), onClick:this.toggleFlag, 'data-toggle':"tooltip", title:this.state.isFlagged? "Unflag question" : "Flag question"}, 
                      React.DOM.span( {className:this.state.isFlagged? "glyphicon glyphicon-flag flagged" : "glyphicon glyphicon-flag"})
                      ) 
                   ));
