@@ -386,7 +386,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return true;
         }
 
-        public bool UpdateQuestionField(string productCourseId, string repositoryCourseId, string questionId, string fieldName, string fieldValue)
+        public bool UpdateQuestionField(string productCourseId, string repositoryCourseId, string questionId, string fieldName, string fieldValue, IEnumerable<Capability> userCapabilities)
         {
             if (fieldName.Equals(MetadataFieldNames.Sequence))
             {
@@ -394,7 +394,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             }
             if (fieldName.Equals(MetadataFieldNames.QuestionStatus))
             {
-                return UpdateQuestionStatus(repositoryCourseId, questionId, fieldValue);
+                return UpdateQuestionStatus(repositoryCourseId, questionId, fieldValue, userCapabilities);
             }
             UpdateQuestionFieldForce(productCourseId, repositoryCourseId, questionId, fieldName, fieldValue);
             return true;
@@ -424,12 +424,12 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             {
                 section.Flag = fieldValue;
             }
-        }     
-        public bool BulklUpdateQuestionField(string productCourseId, string repositoryCourseId, string[] questionId, string fieldName, string fieldValue)
+        }
+        public bool BulklUpdateQuestionField(string productCourseId, string repositoryCourseId, string[] questionId, string fieldName, string fieldValue, IEnumerable<Capability> userCapabilities)
         {
             if (fieldName.Equals(MetadataFieldNames.QuestionStatus))
             {
-                return UpdateQuestionsStatuses(repositoryCourseId, questionId, fieldValue);
+                return UpdateQuestionsStatuses(repositoryCourseId, questionId, fieldValue, userCapabilities);
             }
 
             return true;
@@ -670,14 +670,14 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                     string.Format(fieldFormat, productCourseSection, filterFieldDescriptor.Field, v)));
         }
 
-       
-        private bool UpdateQuestionStatus(string repositoryCourseId, string questionId, string newValue)
+
+        private bool UpdateQuestionStatus(string repositoryCourseId, string questionId, string newValue, IEnumerable<Capability> userCapabilities)
         {
-            return UpdateQuestionsStatuses(repositoryCourseId, new List<string> { questionId }, newValue);
+            return UpdateQuestionsStatuses(repositoryCourseId, new List<string> { questionId }, newValue, userCapabilities);
         }
 
 
-        private bool UpdateQuestionsStatuses(string repositoryCourseId, IEnumerable<string> questionId, string newValue)
+        private bool UpdateQuestionsStatuses(string repositoryCourseId, IEnumerable<string> questionId, string newValue, IEnumerable<Capability> userCapabilities)
         {
 
             var questions = GetAgilixQuestions(repositoryCourseId, questionId);
@@ -688,22 +688,57 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
            // var newStatus = ((int)((QuestionStatus)EnumHelper.GetItemByDescription(typeof(QuestionStatus), newValue))).ToString();
 
-            string availableForInstructorsId = ((int) QuestionStatus.AvailableToInstructors).ToString();
+            
 
             foreach (var question in questions)
             {
-                if ((availableForInstructorsId == newValue)&&(question.IsDraft()))
+                if (IsAllowedToChangeStatus(question, newValue, userCapabilities))
                 {
-                    continue;
+                    question.QuestionStatus = newValue;
                 }
-
-                question.QuestionStatus = newValue;
             }
 
             ExecutePutQuestions(questions);
 
             ExecuteSolrUpdateTask();
 
+            return true;
+        }
+
+        private bool IsAllowedToChangeStatus(Bfw.Agilix.DataContracts.Question question, string newValue, IEnumerable<Capability> userCapabilities)
+        {
+            string availableForInstructorsId = ((int)QuestionStatus.AvailableToInstructors).ToString();
+            string inProgressId = ((int)QuestionStatus.InProgress).ToString();
+            string deletedId = ((int)QuestionStatus.Deleted).ToString();
+            var oldValue = question.QuestionStatus;
+            if (question.IsDraft() && (availableForInstructorsId == newValue || !userCapabilities.Contains(Capability.ChangeDraftStatus)))
+            {
+                return false;
+            }
+            if (oldValue == availableForInstructorsId)
+            {
+                if (newValue == inProgressId && !userCapabilities.Contains(Capability.ChangeStatusFromAvailableToInProgress) ||
+                    newValue == deletedId && !userCapabilities.Contains(Capability.ChangeStatusFromAvailableToDeleted))
+                {
+                    return false;
+                }
+            }
+            if (oldValue == inProgressId)
+            {
+                if (newValue == availableForInstructorsId && !userCapabilities.Contains(Capability.ChangeStatusFromInProgressToAvailable) ||
+                    newValue == deletedId && !userCapabilities.Contains(Capability.ChangeStatusFromInProgressToDeleted))
+                {
+                    return false;
+                }
+            }
+            if (oldValue == deletedId)
+            {
+                if (newValue == availableForInstructorsId && !userCapabilities.Contains(Capability.ChangeStatusFromDeletedToAvailable) ||
+                    newValue == inProgressId && !userCapabilities.Contains(Capability.ChangeStatusFromDeletedToInProgress))
+                {
+                    return false;
+                }
+            }
             return true;
         }
 

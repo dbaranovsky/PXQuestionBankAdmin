@@ -122,9 +122,9 @@ namespace Macmillan.PXQBA.Business.Services
             }
         }
 
-        public bool UpdateQuestionField(Course course, string questionId, string fieldName, string fieldValue)
+        public bool UpdateQuestionField(Course course, string questionId, string fieldName, string fieldValue, IEnumerable<Capability> userCapabilities)
         {
-            return questionCommands.UpdateQuestionField(course.ProductCourseId, course.QuestionRepositoryCourseId, questionId, fieldName, fieldValue);
+            return questionCommands.UpdateQuestionField(course.ProductCourseId, course.QuestionRepositoryCourseId, questionId, fieldName, fieldValue, userCapabilities);
         }
 
         public bool UpdateSharedQuestionField(Course course, string questionId, string fieldName, IEnumerable<string> fieldValues)
@@ -140,10 +140,9 @@ namespace Macmillan.PXQBA.Business.Services
             return questionCommands.UpdateSharedQuestionField(course.QuestionRepositoryCourseId, questionId, fieldName, fieldValues);
         }
 
-        public bool BulklUpdateQuestionField(Course course, string[] questionId, string fieldName, string fieldValue,
-            bool isSharedField = false)
+        public bool BulklUpdateQuestionField(Course course, string[] questionId, string fieldName, string fieldValue, IEnumerable<Capability> userCapabilities)
         {
-            return questionCommands.BulklUpdateQuestionField(course.ProductCourseId, course.QuestionRepositoryCourseId, questionId, fieldName, fieldValue);
+            return questionCommands.BulklUpdateQuestionField(course.ProductCourseId, course.QuestionRepositoryCourseId, questionId, fieldName, fieldValue, userCapabilities);
         }
 
         public Question CreateTemporaryQuestion(Course course, string questionId)
