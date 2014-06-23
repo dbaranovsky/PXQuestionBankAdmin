@@ -71,7 +71,9 @@ var Question = React.createClass({displayName: 'Question',
                                allowedEdit:  allowedEdit,
                                expanded:  this.props.expanded,
                                draft:this.props.draft,
-                               expandPreviewQuestionHandler:  this.props.expandPreviewQuestionHandler} ));
+                               expandPreviewQuestionHandler:  this.props.expandPreviewQuestionHandler,
+                               canChangeDraftStatus:  this.props.metadata.data.canChangeDraftStatus}
+                                ));
     },
       
    renderGroupLine: function() {

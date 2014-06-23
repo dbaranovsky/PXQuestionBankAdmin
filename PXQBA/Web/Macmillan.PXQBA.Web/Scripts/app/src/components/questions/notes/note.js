@@ -18,6 +18,13 @@ var Note = React.createClass({
     this.props.onNoteUpdate(note);
   },
 
+  renderDeleteButton: function(){
+    if(this.props.canDelete){
+      return(<div className="note-menu" onClick={this.noteDeleteHandler}><span className="delete-button"> X </span></div>);
+    }
+    return(<div className="note-menu"><span className="delete-button">   </span></div>);
+  },
+
   render: function() {
    
     return (
@@ -26,7 +33,7 @@ var Note = React.createClass({
 
         <div className="note-body">
         <div className="note-text">{this.props.note.text}</div>
-        <div className="note-menu" onClick={this.noteDeleteHandler}><span className="delete-button"> X </span></div>
+        {this.renderDeleteButton()}
         </div>
       </div>
 

@@ -17,9 +17,10 @@ var EditQuestionNotesDialog = React.createClass({displayName: 'EditQuestionNotes
             return "Notes";
         };
 
+        var self = this;
         var qId = this.props.questionId;
         var renderBody = function(){
-            return (NoteBox( {questionId:qId} ));
+            return (NoteBox( {questionId:qId, canDelete:self.props.canDelete}));
         };
 
         var renderFooterButtons = function() {

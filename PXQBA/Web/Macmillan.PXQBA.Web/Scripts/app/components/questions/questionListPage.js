@@ -207,7 +207,7 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
 
     renderNotesDialog: function(){
       if(this.state.showNoteEditDialog) {
-        return (EditQuestionNotesDialog( {closeDialogHandler:this.closeNoteDialogHandler, questionId:this.state.questionIdForNotes}));
+        return (EditQuestionNotesDialog( {closeDialogHandler:this.closeNoteDialogHandler, questionId:this.state.questionIdForNotes, canDelete:this.props.response.canRemoveNotesQuestion}));
       }
       return null;
     },

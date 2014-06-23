@@ -55,7 +55,7 @@ var NoteBox = React.createClass({
   render: function() {
     return (
       <div className="note-box">
-        <NoteList data={this.state.data}  onNoteDelete = {this.noteDeleteHandler} onNoteUpdate={this.noteUpdateHandler} />
+        <NoteList data={this.state.data}  onNoteDelete = {this.noteDeleteHandler} onNoteUpdate={this.noteUpdateHandler} canDelete={this.props.canDelete} />
         <NoteForm onNoteSubmit={this.handleNoteSubmit} questionId={this.props.questionId} />
       </div>
     );

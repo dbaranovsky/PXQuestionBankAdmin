@@ -261,7 +261,8 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
                                           deselectsAllHandler:this.deselectsAllQuestionHandler,
                                           columns:this.props.columns,
                                           bulkShareHandler:  this.props.handlers.shareHandler,
-                                          isShared:  isAllQuestionsShared} ));
+                                          isShared:  isAllQuestionsShared,
+                                          capabilities: this.props.capabilities} ));
       }
       return null;
     },
@@ -277,7 +278,8 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
                                         selectAllQuestionHandelr:this.selectAllQuestionHandelr,
                                         selectedAll:this.state.selectedAll,
                                         expandAllQuestionHandler:this.expandAllQuestionHandler,
-                                        expandedAll:this.state.expandedAll}  )
+                                        expandedAll:this.state.expandedAll,  
+                                        canViewPreview:this.props.capabilities.canPreviewQuestion})
                   ),
                   React.DOM.tbody(null,  
                     this.renderBulkOperationBar(),

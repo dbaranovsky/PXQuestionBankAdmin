@@ -34,7 +34,7 @@ var QuestionCell = React.createClass({displayName: 'QuestionCell',
               (!this.props.allowedEdit)) {
                 return null;
             }
-            return QuestionCellMenu( {onEditClickHandler:this.onEditClickHandler} )
+            return QuestionCellMenu( {onEditClickHandler:this.onEditClickHandler, isDisabled:this.props.field == window.consts.questionStatusName && !this.props.canChangeDraftStatus && this.props.draft})
         }
         return null;
     },

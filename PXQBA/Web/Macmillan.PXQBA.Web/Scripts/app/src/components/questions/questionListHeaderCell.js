@@ -50,7 +50,7 @@ var QuestinListHeaderCell = React.createClass({
  },
 
  renderExpandButton: function() {
-     if(this.props.metadataName==window.consts.questionTitleName) {
+     if(this.props.metadataName==window.consts.questionTitleName && this.props.canViewPreview) {
          return (<ExpandButton expanded={this.props.expandedAll} onClickHandler={this.props.expandAllQuestionHandler} targetCaption="all"/>);  
       }
       return null;

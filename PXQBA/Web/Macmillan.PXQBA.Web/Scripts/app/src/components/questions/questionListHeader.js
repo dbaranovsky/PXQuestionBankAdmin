@@ -37,6 +37,7 @@ var QuestionListHeader = React.createClass({
                   canNotDelete={descriptor.canNotDelete} 
                   expandAllQuestionHandler={this.props.expandAllQuestionHandler}
                   expandedAll={this.props.expandedAll}
+                  canViewPreview={this.props.canViewPreview}
                   />);
   },
 
