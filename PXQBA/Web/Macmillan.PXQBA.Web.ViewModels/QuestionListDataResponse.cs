@@ -41,5 +41,38 @@ namespace Macmillan.PXQBA.Web.ViewModels
         public string QuestionCardLayout { get; set; }
 
         public string ProductTitle { get; set; }
+
+        #region Capabilities
+      
+        public bool CanViewQuestionList { get; set; }
+        public bool CanPreviewQuestion { get; set; }
+        public bool CanCreateQuestion { get; set; }
+        public bool CanDuplicateQuestion { get; set; }
+
+        public bool CanEditAvailibleQuestion { get; set; }
+        public bool CanEditInProgesQuestion { get; set; }
+
+        public bool CanEditDeletedQuestion { get; set; }
+
+        public bool CanFlagQuestion { get; set; }
+        public bool CanUnflagQuestion { get; set; }
+
+        public bool CanAddNotesQuestion { get; set; }
+
+        public bool CanRemoveNotesQuestion { get; set; }
+
+        public bool CanShareQuestion { get; set; }
+
+        public bool CanEditSharedQuestionContent { get; set; }
+        public bool CanEditSharedQuestionMetadata { get; set; }
+        public bool CanViewHistory { get; set; }
+
+        public bool CanCreateNewDraft { get; set; }
+
+        public bool CanPublishDraft { get; set; }
+        public bool CanChangeDraftStatus { get; set; }
+        #endregion
+
+
     }
 }

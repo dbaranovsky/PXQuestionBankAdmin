@@ -93,5 +93,30 @@ namespace Macmillan.PXQBA.Web.ViewModels
         public bool IsDraft { get { return !String.IsNullOrEmpty(DraftFrom); } }
 
         public double Score { get; set; }
+
+
+        #region Capabilities
+        public bool CanTestQuestion { get; set; }
+        public bool CanOverrideMetadata { get; set; }
+
+        public bool CanRestoreMetadata { get; set; }
+
+        public bool CanTrySepcificVersion { get; set; }
+
+        public bool CanEditAvailibleQuestion { get; set; }
+        public bool CanEditInProgesQuestion { get; set; }
+        public bool CanEditDeletedQuestion { get; set; }
+
+        public bool CanEditSharedQuestionContent { get; set; }
+        public bool CanEditSharedQuestionMetadata{ get; set; }
+
+        public bool CanPublishDraft { get; set; }
+        public bool CanRestoreVersion { get; set; }
+
+        public bool CanCreateDraftFromVersion { get; set; }
+        #endregion
+
+
+
     }
 }
