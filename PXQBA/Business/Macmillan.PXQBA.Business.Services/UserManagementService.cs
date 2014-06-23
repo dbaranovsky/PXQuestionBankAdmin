@@ -111,9 +111,17 @@ namespace Macmillan.PXQBA.Business.Services
             }
         }
 
-        public IEnumerable<Capability> GetUserCapabilities(string courseId, string userId)
+        public IEnumerable<Capability> GetUserCapabilities(string courseId)
         {
-            return roleOperation.GetUserCapabilities(courseId, userId);
+            try
+            {
+                return roleOperation.GetUserCapabilities(courseId);
+            }
+            catch (Exception ex)
+            {
+                StaticLogger.LogError(string.Format("GetUserCapabilities: courseId = {0}", courseId), ex);
+                throw;
+            }
         }
     }
 }

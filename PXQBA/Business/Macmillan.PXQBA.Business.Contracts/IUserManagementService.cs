@@ -16,6 +16,6 @@ namespace Macmillan.PXQBA.Business.Contracts
         QBAUser GetUser(string userId);
         void UpdateUserRoles(QBAUser user);
 
-        IEnumerable<Capability> GetUserCapabilities(string courseId, string userId);
+        IEnumerable<Capability> GetUserCapabilities(string courseId);
     }
 }

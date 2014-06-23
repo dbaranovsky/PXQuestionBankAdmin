@@ -25,18 +25,20 @@ namespace Macmillan.PXQBA.Web.Controllers
         private readonly IQuestionMetadataService questionMetadataService;
         private readonly INotesManagementService notesManagementService;
         private readonly IProductCourseManagementService productCourseManagementService;
+        private readonly IUserManagementService userManagementService;
 
         private readonly int questionPerPage;
 
         public QuestionListController(IQuestionMetadataService questionMetadataService,
                                       IQuestionManagementService questionManagementService,
-                                      INotesManagementService notesManagementService, IProductCourseManagementService productCourseManagementService)
+                                      INotesManagementService notesManagementService, IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService)
         {
             this.questionManagementService = questionManagementService;
             this.questionPerPage = ConfigurationHelper.GetQuestionPerPage();
             this.questionMetadataService = questionMetadataService;
             this.notesManagementService = notesManagementService;
             this.productCourseManagementService = productCourseManagementService;
+            this.userManagementService = userManagementService;
         }
 
         public ActionResult Index(string titleId , string chapterId)
@@ -84,7 +86,31 @@ namespace Macmillan.PXQBA.Web.Controllers
                             QuestionCardLayout = questionMetadataService.GetQuestionCardLayout(CourseHelper.CurrentCourse),
                             ProductTitle = CourseHelper.CurrentCourse.Title
                         };
+            UpdateCapabilities(response);
             return JsonCamel(response);
+        }
+
+        private void UpdateCapabilities(QuestionListDataResponse response)
+        {
+            var userCapabilities = userManagementService.GetUserCapabilities(CourseHelper.CurrentCourse.ProductCourseId);
+           response.CanViewQuestionList = userCapabilities.Contains(Capability.ViewQuestionList);
+           response.CanPreviewQuestion = userCapabilities.Contains(Capability.PreviewQuestion);
+           response.CanCreateQuestion = userCapabilities.Contains(Capability.CreateQuestion);
+           response.CanDuplicateQuestion = userCapabilities.Contains(Capability.DuplicateQuestion);
+           response.CanEditAvailibleQuestion = userCapabilities.Contains(Capability.EditAvailableQuestion);
+           response.CanEditInProgressQuestion = userCapabilities.Contains(Capability.EditInProgressQuestion);
+           response.CanEditDeletedQuestion = userCapabilities.Contains(Capability.EditDeletedQuestion);
+           response.CanFlagQuestion = userCapabilities.Contains(Capability.FlagQuestion);
+           response.CanUnflagQuestion = userCapabilities.Contains(Capability.UnflagQuestion);
+           response.CanAddNotesQuestion = userCapabilities.Contains(Capability.AddNoteToQuestion);
+           response.CanRemoveNotesQuestion = userCapabilities.Contains(Capability.RemoveNoteFromQuestion);
+           response.CanShareQuestion = userCapabilities.Contains(Capability.PublishQuestionToAnotherTitle);
+           response.CanEditSharedQuestionContent = userCapabilities.Contains(Capability.EditSharedQuestionContent);
+           response.CanEditSharedQuestionMetadata = userCapabilities.Contains(Capability.EditSharedQuestionMetadata);
+           response.CanViewHistory = userCapabilities.Contains(Capability.ViewVersionHistory);
+           response.CanCreateNewDraft = userCapabilities.Contains(Capability.CreateDraftFromAvailableQuestion);
+           response.CanPublishDraft = userCapabilities.Contains(Capability.PublishDraft);
+           response.CanChangeDraftStatus = userCapabilities.Contains(Capability.ChangeDraftStatus);
         }
 
         /// <summary>

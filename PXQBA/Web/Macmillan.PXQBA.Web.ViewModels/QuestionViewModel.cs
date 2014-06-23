@@ -102,11 +102,7 @@ namespace Macmillan.PXQBA.Web.ViewModels
 
         public bool CanRestoreMetadata { get; set; }
 
-        public bool CanTrySepcificVersion { get; set; }
-
-        public bool CanEditAvailibleQuestion { get; set; }
-        public bool CanEditInProgesQuestion { get; set; }
-        public bool CanEditDeletedQuestion { get; set; }
+        public bool CanEditQuestion { get; set; }
 
         public bool CanEditSharedQuestionContent { get; set; }
         public bool CanEditSharedQuestionMetadata{ get; set; }

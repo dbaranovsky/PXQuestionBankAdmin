@@ -17,10 +17,11 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
         private readonly IDatabaseManager databaseManager;
         private readonly IUserOperation userOperation;
         private readonly IProductCourseOperation productCourseOperation;
+        private readonly IContext businessContext;
 
         private const string userFullNameFormat = "{0} {1}";
 
-        public RoleOperation(IDatabaseManager databaseManager, IUserOperation userOperation, IProductCourseOperation productCourseOperation)
+        public RoleOperation(IDatabaseManager databaseManager, IUserOperation userOperation, IProductCourseOperation productCourseOperation, IContext businessContext)
         {
 
 #if DEBUG
@@ -30,6 +31,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
             this.databaseManager = databaseManager;
             this.userOperation = userOperation;
             this.productCourseOperation = productCourseOperation;
+            this.businessContext = businessContext;
         }
 
         public IEnumerable<Role> GetRolesForCourse(string courseId)
@@ -76,13 +78,13 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
         }
 
 
-        public IEnumerable<Capability> GetUserCapabilities(string courseId, string userId)
+        public IEnumerable<Capability> GetUserCapabilities(string courseId)
         {
             DbCommand command = new SqlCommand();
             command.CommandType = CommandType.StoredProcedure;
             command.CommandText = "dbo.GetQBAUserCapabilities";
 
-            var userIdParam = new SqlParameter("@userId", userId);
+            var userIdParam = new SqlParameter("@userId", businessContext.CurrentUser.Username);
             command.Parameters.Add(userIdParam);
             var courseIdParam = new SqlParameter("@courseId", courseId);
             command.Parameters.Add(courseIdParam);
@@ -93,7 +95,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
 
         private IEnumerable<Capability> GetCapabilitiesFromRecords(IEnumerable<DatabaseRecord> dbRecords)
         {
-            return dbRecords.Where(r => !string.IsNullOrEmpty(r["CapabilityId"].ToString())).Select(r => EnumHelper.Parse<Capability>(r["CapabilityId"].ToString()));
+            return dbRecords.Where(r => !string.IsNullOrEmpty(r["CapabilityId"].ToString())).Select(r => EnumHelper.Parse<Capability>(r["CapabilityId"].ToString())).ToList();
         }
 
         public void UpdateRolesCapabilities(string courseId, IEnumerable<Role> roles)

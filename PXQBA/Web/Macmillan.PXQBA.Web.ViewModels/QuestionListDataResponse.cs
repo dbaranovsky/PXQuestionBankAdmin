@@ -50,7 +50,7 @@ namespace Macmillan.PXQBA.Web.ViewModels
         public bool CanDuplicateQuestion { get; set; }
 
         public bool CanEditAvailibleQuestion { get; set; }
-        public bool CanEditInProgesQuestion { get; set; }
+        public bool CanEditInProgressQuestion { get; set; }
 
         public bool CanEditDeletedQuestion { get; set; }
 
