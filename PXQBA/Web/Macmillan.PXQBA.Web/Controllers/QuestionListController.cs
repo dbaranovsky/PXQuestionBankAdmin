@@ -56,12 +56,14 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult GetQuestionData(QuestionListDataRequest request)
         {
-
             var currentCourseFilter = request.Filter.SingleOrDefault(x => x.Field == MetadataFieldNames.ProductCourse);
             ClearParameters(currentCourseFilter, request);
 
             UpdateCurrentCourse(currentCourseFilter.Values.First());
-
+            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.ViewQuestionList))
+            {
+                return new HttpUnauthorizedResult();
+            }
             var sortCriterion = new SortCriterion {ColumnName = request.OrderField, SortType = request.OrderType};
             var questionList = questionManagementService.GetQuestionList(CourseHelper.CurrentCourse, request.Filter, sortCriterion, 
                                                                           (request.PageNumber - 1) * questionPerPage,
@@ -93,7 +95,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         private void UpdateCapabilities(QuestionListDataResponse response)
         {
-            var userCapabilities = userManagementService.GetUserCapabilities(CourseHelper.CurrentCourse.ProductCourseId);
+            var userCapabilities = UserCapabilitiesHelper.Capabilities;
             response.CanViewQuestionList = userCapabilities.Contains(Capability.ViewQuestionList);
             response.CanPreviewQuestion = userCapabilities.Contains(Capability.PreviewQuestion);
             response.CanCreateQuestion = userCapabilities.Contains(Capability.CreateQuestion);
@@ -106,9 +108,12 @@ namespace Macmillan.PXQBA.Web.Controllers
             response.CanViewHistory = userCapabilities.Contains(Capability.ViewVersionHistory);
             response.CanCreateNewDraft = userCapabilities.Contains(Capability.CreateDraftFromAvailableQuestion);
             response.CanPublishDraft = userCapabilities.Contains(Capability.PublishDraft);
-            response.CanChangeDraftStatus = userCapabilities.Contains(Capability.ChangeDraftStatus);
             foreach (var questionMetadata in response.QuestionList)
             {
+                if (!response.CanPreviewQuestion && questionMetadata.Data.ContainsKey(MetadataFieldNames.InlinePreview))
+                {
+                    questionMetadata.Data[MetadataFieldNames.InlinePreview] = "You are not authorized to preview question.";
+                }
                 if (questionMetadata.Data.ContainsKey(MetadataFieldNames.QuestionStatus))
                 {
                     var status = questionMetadata.Data[MetadataFieldNames.QuestionStatus];
@@ -118,6 +123,13 @@ namespace Macmillan.PXQBA.Web.Controllers
                                                  status == EnumHelper.GetEnumDescription(QuestionStatus.InProgress)) ||
                                                 (userCapabilities.Contains(Capability.EditDeletedQuestion) &&
                                                  status == EnumHelper.GetEnumDescription(QuestionStatus.Deleted));
+                    questionMetadata.CanCreateDraftFromAvailableQuestion =
+                        userCapabilities.Contains(Capability.CreateDraftFromAvailableQuestion);
+                }
+                if (userCapabilities.Contains(Capability.ChangeDraftStatus) && questionMetadata.Data.ContainsKey(MetadataFieldNames.DraftFrom) &&
+                    !string.IsNullOrEmpty(questionMetadata.Data[MetadataFieldNames.DraftFrom]))
+                {
+                    questionMetadata.CanChangeDraftStatus = true;
                 }
 
             }
@@ -140,6 +152,10 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult CreateQuestionNote(Note note)
         {
+            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.AddNoteToQuestion))
+            {
+                return new HttpUnauthorizedResult();
+            }
               return JsonCamel(notesManagementService.CreateNote(note));
         }
 
@@ -150,6 +166,10 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult DeleteQuestionNote(Note note)
         {
+            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.RemoveNoteFromQuestion))
+            {
+                return new HttpUnauthorizedResult();
+            }
             notesManagementService.DeleteNote(note);
             return JsonCamel(new { isError = false });
         }
@@ -161,6 +181,10 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult SaveQuestionNote(Note note)
         {
+            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.AddNoteToQuestion))
+            {
+                return new HttpUnauthorizedResult();
+            }
           notesManagementService.SaveNote(note);
           return JsonCamel(new { isError = false });
         }
@@ -204,6 +228,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             if (CourseHelper.NeedGetCourse(courseId))
             {
                 CourseHelper.CurrentCourse = productCourseManagementService.GetProductCourse(courseId, true);
+                UserCapabilitiesHelper.Capabilities = userManagementService.GetUserCapabilities(courseId);
             }
         }
 

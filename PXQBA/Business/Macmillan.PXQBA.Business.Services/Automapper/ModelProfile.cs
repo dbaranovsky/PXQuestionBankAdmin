@@ -15,6 +15,7 @@ using Macmillan.PXQBA.Web.ViewModels.TiteList;
 using Macmillan.PXQBA.Web.ViewModels.User;
 using Macmillan.PXQBA.Web.ViewModels.Versions;
 using Course = Macmillan.PXQBA.Business.Models.Course;
+using ProductCourseViewModel = Macmillan.PXQBA.Web.ViewModels.TiteList.ProductCourseViewModel;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 using QuestionChoice = Macmillan.PXQBA.Business.Models.QuestionChoice;
 
@@ -114,7 +115,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(d => d.DomainName, opt => opt.MapFrom(s => s.Domain != null ? s.Domain.Name : ""))
                 .ForMember(d => d.LastLogin, opt => opt.MapFrom(s => s.LastLogin));
 
-            Mapper.CreateMap<Course, TitleViewModel>()
+            Mapper.CreateMap<Course, ProductCourseViewModel>()
                 .ForMember(vm => vm.Id, opt => opt.MapFrom(c => c.ProductCourseId))
                 .ForMember(vm => vm.Title, opt => opt.MapFrom(c => c.Title))
                 .ForMember(vm => vm.Chapters, opt => opt.MapFrom(c => modelProfileService.GetChaptersViewModel(c)));
@@ -138,7 +139,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                  .ForMember(dest => dest.ProductCourseSections, opt => opt.MapFrom(src => modelProfileService.GetProductCourseSections(src)))
                 .ForMember(dest => dest.CustomUrl, opt => opt.MapFrom(src => src.QuestionType));
 
-            Mapper.CreateMap<Course, ProductCourseViewModel>()
+            Mapper.CreateMap<Course, Web.ViewModels.MetadataConfig.ProductCourseViewModel>()
                 .ForMember(vm => vm.Id, opt => opt.MapFrom(c => c.ProductCourseId))
                 .ForMember(vm => vm.Title, opt => opt.MapFrom(c => c.Title));
 
