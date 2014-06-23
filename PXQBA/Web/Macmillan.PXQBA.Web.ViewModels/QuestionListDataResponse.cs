@@ -49,11 +49,6 @@ namespace Macmillan.PXQBA.Web.ViewModels
         public bool CanCreateQuestion { get; set; }
         public bool CanDuplicateQuestion { get; set; }
 
-        public bool CanEditAvailibleQuestion { get; set; }
-        public bool CanEditInProgressQuestion { get; set; }
-
-        public bool CanEditDeletedQuestion { get; set; }
-
         public bool CanFlagQuestion { get; set; }
         public bool CanUnflagQuestion { get; set; }
 
@@ -63,8 +58,6 @@ namespace Macmillan.PXQBA.Web.ViewModels
 
         public bool CanShareQuestion { get; set; }
 
-        public bool CanEditSharedQuestionContent { get; set; }
-        public bool CanEditSharedQuestionMetadata { get; set; }
         public bool CanViewHistory { get; set; }
 
         public bool CanCreateNewDraft { get; set; }
