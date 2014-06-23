@@ -164,7 +164,7 @@ var QuestionListMenu = React.createClass({
                             <ul className="dropdown-menu show-menu" role="menu" aria-labelledby="dropdownMenuType" aria-labelledby="edit-question">
                                <li role="presentation" className="dropdown-header">Edit options</li>
                                <li role="presentation" className="divider"></li>
-                               <li role="presentation" className={this.props.data.canEdit? "" :"disabled"} onClick={this.props.data.canEdit? this.props.editQuestionHandler.bind(this, false, true) : null}>
+                               <li role="presentation" className={this.props.metadataCapabilities.canEditQuestion? "" :"disabled"} onClick={this.props.metadataCapabilities.canEditQuestion? this.props.editQuestionHandler.bind(this, false, true) : null}>
                                   <a className="edit-field-item" role="menuitem" tabIndex="-1" >
                                    Edit in {this.props.titleCount+1 == 1? "1 title" : "all "+(this.props.titleCount+1)+" titles"}
                                   </a>
@@ -194,7 +194,7 @@ var QuestionListMenu = React.createClass({
                      <ul className="dropdown-menu show-menu" role="menu" aria-labelledby="dropdownMenuType"  aria-labelledby="edit-question">
                        <li role="presentation" className="dropdown-header">Edit options</li>
                        <li role="presentation" className="divider"></li>
-                       <li role="presentation" className={this.props.data.canEdit? "" :"disabled"}><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={ this.props.data.canEdit? this.props.editQuestionHandler.bind(this, false, true) : null}>Edit in Place</a></li>
+                       <li role="presentation" className={this.props.metadataCapabilities.canEditQuestion? "" :"disabled"}><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={ this.props.metadataCapabilities.canEditQuestion? this.props.editQuestionHandler.bind(this, false, true) : null}>Edit in Place</a></li>
                        <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.createDraftHandler}>Create a Draft</a></li>
                      </ul>);
                 }
@@ -204,10 +204,10 @@ var QuestionListMenu = React.createClass({
       if (this.props.showAll){
       var isDeleted = this.props.data[window.consts.questionStatusName] == window.enums.statuses.deleted;
       var isDisabled =false;
-      if(!this.props.data.canEdit && !this.props.isShared){
+      if(!this.props.metadataCapabilities.canEditQuestion && !this.props.isShared){
         isDisabled= true;
       }else{
-        if(this.props.data[window.consts.questionStatusName] == window.enums.statuses.availibleToInstructor  && !this.props.isShared && !this.props.data.canCreateNewDraft){
+        if(this.props.data[window.consts.questionStatusName] == window.enums.statuses.availibleToInstructor  && !this.props.isShared && !this.props.metadataCapabilities.canCreateDraftFromAvailableQuestion){
           isDisabled = true;
         }
       }
@@ -222,7 +222,7 @@ var QuestionListMenu = React.createClass({
                 </div>
                <button type="button" className="btn btn-default btn-sm" disabled={!this.props.capabilities.canDuplicateQuestion} onClick={this.copyQuestionHandler}  data-toggle="tooltip" title="Duplicate Question"><span className="glyphicon glyphicon-copyright-mark"></span></button>
                <button type="button" className="btn btn-default btn-sm" onClick={this.editNotesHandler} disabled={!this.props.capabilities.canAddNotesQuestion} data-toggle="tooltip" title="Edit Notes"><span className="glyphicon glyphicon-list-alt"></span> </button> 
-               <button type="button" className="btn btn-default btn-sm custom-btn" onClick={this.props.editQuestionHandler.bind(this, true, false)} data-toggle="tooltip" title="View Question History"><span className="glyphicon icon-version-history" ></span></button> 
+               <button type="button" className="btn btn-default btn-sm custom-btn" disabled={!this.props.capabilities.canViewHistory} onClick={this.props.editQuestionHandler.bind(this, true, false)} data-toggle="tooltip" title="View Question History"><span className="glyphicon icon-version-history" ></span></button> 
                </div>);
      }
 
@@ -231,7 +231,7 @@ var QuestionListMenu = React.createClass({
 
     renderDraftButton: function() {
       if(this.props.draft) {
-        return ( <button type="button" className="btn btn-default btn-sm"  disabled={this.props.capabilities.canPublishDraft} onClick={this.publishDraftHandler}  data-toggle="tooltip" title="Publish"><span className="glyphicon glyphicon-open"></span></button>);
+        return ( <button type="button" className="btn btn-default btn-sm"  disabled={!this.props.capabilities.canPublishDraft} onClick={this.publishDraftHandler}  data-toggle="tooltip" title="Publish"><span className="glyphicon glyphicon-open"></span></button>);
       }
 
       return null;

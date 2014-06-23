@@ -53,7 +53,10 @@ var Question = React.createClass({displayName: 'Question',
                         isShared:  isShared,
                         titleCount:  titleCount,
                         draft:  this.props.draft,
-                        capabilities:  this.props.capabilities} )
+                        capabilities:  this.props.capabilities,
+                        metadataCapabilities: {canCreateDraftFromAvailableQuestion: this.props.metadata.canCreateDraftFromAvailableQuestion,
+                                                canChangeDraftStatus:  this.props.metadata.canChangeDraftStatus,
+                                                canEditQuestion:  this.props.metadata.canEditQuestion}} )
                         
     },
 

@@ -23,10 +23,7 @@ var QuestionGrid = React.createClass({
      
     render: function() { 
         if (this.props.response.canViewQuestionList){
-            return (<b>You have no access to view question list</b>);
-        }
-        
-        return (
+             return (
               <div className="questionGrid">
                 <div className="question-grid-item"> 
                      <QuestionFilter filter={this.props.response.filter} allAvailableColumns={this.props.response.allAvailableColumns}/>
@@ -53,5 +50,9 @@ var QuestionGrid = React.createClass({
             </div> 
 
             );
+          
+        }
+        
+         return (<b>You have no access to view question list</b>);
     }
 });

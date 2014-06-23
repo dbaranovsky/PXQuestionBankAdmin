@@ -164,7 +164,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
                             React.DOM.ul( {className:"dropdown-menu show-menu", role:"menu", 'aria-labelledby':"dropdownMenuType", 'aria-labelledby':"edit-question"}, 
                                React.DOM.li( {role:"presentation", className:"dropdown-header"}, "Edit options"),
                                React.DOM.li( {role:"presentation", className:"divider"}),
-                               React.DOM.li( {role:"presentation", className:this.props.data.canEdit? "" :"disabled", onClick:this.props.data.canEdit? this.props.editQuestionHandler.bind(this, false, true) : null}, 
+                               React.DOM.li( {role:"presentation", className:this.props.metadataCapabilities.canEditQuestion? "" :"disabled", onClick:this.props.metadataCapabilities.canEditQuestion? this.props.editQuestionHandler.bind(this, false, true) : null}, 
                                   React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1"} , 
                                    "Edit in ", this.props.titleCount+1 == 1? "1 title" : "all "+(this.props.titleCount+1)+" titles"
                                   )
@@ -194,7 +194,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
                      React.DOM.ul( {className:"dropdown-menu show-menu", role:"menu", 'aria-labelledby':"dropdownMenuType",  'aria-labelledby':"edit-question"}, 
                        React.DOM.li( {role:"presentation", className:"dropdown-header"}, "Edit options"),
                        React.DOM.li( {role:"presentation", className:"divider"}),
-                       React.DOM.li( {role:"presentation", className:this.props.data.canEdit? "" :"disabled"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick: this.props.data.canEdit? this.props.editQuestionHandler.bind(this, false, true) : null}, "Edit in Place")),
+                       React.DOM.li( {role:"presentation", className:this.props.metadataCapabilities.canEditQuestion? "" :"disabled"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick: this.props.metadataCapabilities.canEditQuestion? this.props.editQuestionHandler.bind(this, false, true) : null}, "Edit in Place")),
                        React.DOM.li( {role:"presentation"}, React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.createDraftHandler}, "Create a Draft"))
                      ));
                 }
@@ -204,10 +204,10 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
       if (this.props.showAll){
       var isDeleted = this.props.data[window.consts.questionStatusName] == window.enums.statuses.deleted;
       var isDisabled =false;
-      if(!this.props.data.canEdit && !this.props.isShared){
+      if(!this.props.metadataCapabilities.canEditQuestion && !this.props.isShared){
         isDisabled= true;
       }else{
-        if(this.props.data[window.consts.questionStatusName] == window.enums.statuses.availibleToInstructor  && !this.props.isShared && !this.props.data.canCreateNewDraft){
+        if(this.props.data[window.consts.questionStatusName] == window.enums.statuses.availibleToInstructor  && !this.props.isShared && !this.props.metadataCapabilities.canCreateDraftFromAvailableQuestion){
           isDisabled = true;
         }
       }
@@ -222,7 +222,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
                 ),
                React.DOM.button( {type:"button", className:"btn btn-default btn-sm", disabled:!this.props.capabilities.canDuplicateQuestion, onClick:this.copyQuestionHandler,  'data-toggle':"tooltip", title:"Duplicate Question"}, React.DOM.span( {className:"glyphicon glyphicon-copyright-mark"})),
                React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.editNotesHandler, disabled:!this.props.capabilities.canAddNotesQuestion, 'data-toggle':"tooltip", title:"Edit Notes"}, React.DOM.span( {className:"glyphicon glyphicon-list-alt"}), " " ), 
-               React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn", onClick:this.props.editQuestionHandler.bind(this, true, false), 'data-toggle':"tooltip", title:"View Question History"}, React.DOM.span( {className:"glyphicon icon-version-history"} )) 
+               React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn", disabled:!this.props.capabilities.canViewHistory, onClick:this.props.editQuestionHandler.bind(this, true, false), 'data-toggle':"tooltip", title:"View Question History"}, React.DOM.span( {className:"glyphicon icon-version-history"} )) 
                ));
      }
 
@@ -231,7 +231,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
 
     renderDraftButton: function() {
       if(this.props.draft) {
-        return ( React.DOM.button( {type:"button", className:"btn btn-default btn-sm",  disabled:this.props.capabilities.canPublishDraft, onClick:this.publishDraftHandler,  'data-toggle':"tooltip", title:"Publish"}, React.DOM.span( {className:"glyphicon glyphicon-open"})));
+        return ( React.DOM.button( {type:"button", className:"btn btn-default btn-sm",  disabled:!this.props.capabilities.canPublishDraft, onClick:this.publishDraftHandler,  'data-toggle':"tooltip", title:"Publish"}, React.DOM.span( {className:"glyphicon glyphicon-open"})));
       }
 
       return null;

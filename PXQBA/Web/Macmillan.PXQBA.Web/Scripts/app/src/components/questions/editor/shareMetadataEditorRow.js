@@ -69,7 +69,8 @@ var ShareMetadataEditorRow = React.createClass({
                                           applyHandler= {this.applyHandler}
                                           field={this.props.field} 
                                           title={this.props.title} 
-                                          isUnique={this.state.isUnique}/>
+                                          isUnique={this.state.isUnique}
+                                          allowEdit = {this.props.question.canEditSharedQuestionMetadata}/>
                  </div>);
         }
     },
@@ -121,7 +122,7 @@ var ShareMetadataEditorRow = React.createClass({
     renderLocalValue: function(){
       return  (<div className="cell">
                  <MetadataFieldEditor question={this.props.isStatic?  this.props.question.localSection :  this.props.question.localSection.dynamicValues} 
-                                    isDisabled={this.state.isDisabled} 
+                                    isDisabled={this.state.isDisabled || !this.props.question.canEditSharedQuestionMetadata} 
                                     metadata={this.props.metadata} 
                                     editHandler={this.localEditHandler} 
                                     field={this.props.field} 
@@ -139,12 +140,23 @@ var ShareMetadataEditorRow = React.createClass({
     },
 
     override: function(){
-      this.toggleState();
+      if(this.props.question.canOverrideMetadata){
+        this.toggleState();
+      }else{
+          this.setState({isDisabled: this.state.isDisabled});
+      }
+      
     },
 
     restoreField: function(){
+
+    if(this.props.question.canRestoreMetadata){
         this.setState({isDisabled: true});
         this.restoreLocalQuestion();   
+      }else{
+          this.setState({isDisabled: this.state.isDisabled});
+      }
+        
     },
 
     restoreLocalQuestion: function(){

@@ -180,9 +180,13 @@ var MetadataFieldEditor = React.createClass({
     },
 
     switchEditMode: function(){
-
-      $(this.getDOMNode()).find('div:not([data-reactid])').remove();
+      if(this.props.allowEdit){
+         $(this.getDOMNode()).find('div:not([data-reactid])').remove();
       this.setState({editMode: !this.state.editMode, editMenu: !this.state.editMenu, currentValue: this.props.question[this.props.field]});
+    }else{
+      alert("You have no permission to edit question metadata");
+    }
+     
     },
 
     componentDidUpdate: function(){

@@ -77,7 +77,7 @@ namespace Macmillan.PXQBA.Web.Controllers
                         {
                             Filter = request.Filter,
                             TotalPages = totalPages,
-                            QuestionList = questionList.CollectionPage.Select(q => Mapper.Map<QuestionMetadata>(q, opt => opt.Items.Add(CourseHelper.CurrentCourse.ProductCourseId, CourseHelper.CurrentCourse))),
+                            QuestionList = questionList.CollectionPage.Select(q => Mapper.Map<QuestionMetadata>(q, opt => opt.Items.Add(CourseHelper.CurrentCourse.ProductCourseId, CourseHelper.CurrentCourse))).ToList(),
                             PageNumber = request.PageNumber,
                             Columns = questionMetadataService.GetDataForFields(CourseHelper.CurrentCourse, request.Columns).Select(MetadataFieldsHelper.Convert).ToList(),
                             AllAvailableColumns = questionMetadataService.GetAvailableFields(CourseHelper.CurrentCourse).Select(MetadataFieldsHelper.Convert).ToList(),
