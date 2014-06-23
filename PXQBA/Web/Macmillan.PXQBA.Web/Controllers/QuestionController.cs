@@ -18,6 +18,7 @@ using Macmillan.PXQBA.Web.Helpers;
 using Macmillan.PXQBA.Web.ViewModels;
 using Macmillan.PXQBA.Web.ViewModels.Versions;
 using Newtonsoft.Json;
+using EnumHelper = Macmillan.PXQBA.Common.Helpers.EnumHelper;
 
 namespace Macmillan.PXQBA.Web.Controllers
 {
@@ -26,19 +27,25 @@ namespace Macmillan.PXQBA.Web.Controllers
         private readonly IQuestionManagementService questionManagementService;
         private readonly IQuestionMetadataService questionMetadataService;
         private readonly IProductCourseManagementService productCourseManagementService;
-        private readonly IUserManagementService userManagementService;
     
         public QuestionController(IQuestionManagementService questionManagementService,   IQuestionMetadataService questionMetadataService, IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService)
         {
             this.questionManagementService = questionManagementService;
             this.questionMetadataService = questionMetadataService;
             this.productCourseManagementService = productCourseManagementService;
-            this.userManagementService = userManagementService;
         }
 
         [HttpPost]
         public ActionResult UpdateMetadataField(string questionId, string fieldName, string fieldValue)
         {
+            if (fieldName == MetadataFieldNames.Flag)
+            {
+                if ((fieldValue == ((int) QuestionFlag.Flagged).ToString() && !UserCapabilitiesHelper.Capabilities.Contains(Capability.FlagQuestion)) ||
+                    (fieldValue == ((int)QuestionFlag.NotFlagged).ToString() && !UserCapabilitiesHelper.Capabilities.Contains(Capability.UnflagQuestion)))
+                {
+                    return new HttpUnauthorizedResult();
+                }
+            }
             bool success = questionManagementService.UpdateQuestionField(CourseHelper.CurrentCourse, questionId, fieldName, fieldValue);
             return JsonCamel(new { isError = !success });
         
@@ -62,14 +69,21 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult CreateQuestion(string questionType, string bank, string chapter)
         {
+            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.CreateQuestion))
+            {
+                return new HttpUnauthorizedResult();
+            }
             var question = questionManagementService.CreateQuestion(CourseHelper.CurrentCourse, questionType, bank, chapter);
             return JsonCamel(CreateQuestionViewModelForEditing(question));
-            
         }
 
         [HttpPost]
         public ActionResult DuplicateQuestion(string questionId, string version = null)
         {
+            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.DuplicateQuestion))
+            {
+                return new HttpUnauthorizedResult();
+            }
             var question = questionManagementService.DuplicateQuestion(CourseHelper.CurrentCourse, questionId, version);
             return JsonCamel(CreateQuestionViewModelForEditing(question));
 
@@ -138,7 +152,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         private void UpdateCapabilities(QuestionViewModel questionViewModel)
         {
-            var userCapabilities = userManagementService.GetUserCapabilities(CourseHelper.CurrentCourse.ProductCourseId);
+            var userCapabilities = UserCapabilitiesHelper.Capabilities;
             questionViewModel.CanTestQuestion = userCapabilities.Contains(Capability.TestQuestion);
             questionViewModel.CanTestQuestionVersion = userCapabilities.Contains(Capability.TestSpecificVersion);
             questionViewModel.CanOverrideMetadata = userCapabilities.Contains(Capability.OverrideQuestionMetadata);
@@ -154,6 +168,15 @@ namespace Macmillan.PXQBA.Web.Controllers
             questionViewModel.CanPublishDraft = userCapabilities.Contains(Capability.PublishDraft);
             questionViewModel.CanRestoreVersion = userCapabilities.Contains(Capability.RestoreOldVersion);
             questionViewModel.CanCreateDraftFromVersion = userCapabilities.Contains(Capability.CreateDraftFromOldVersion);
+            if (!userCapabilities.Contains(Capability.EditSharedQuestionContent) && questionViewModel.IsShared)
+            {
+                questionViewModel.EditorUrl = string.Empty;
+                questionViewModel.GraphEditorHtml = string.Empty;
+            }
+            if (!userCapabilities.Contains(Capability.TestQuestion))
+            {
+                questionViewModel.ActionPlayerUrl = string.Empty;
+            }
         }
 
 
@@ -179,6 +202,10 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// <returns></returns>
         public ActionResult PublishToTitle(string[] questionsId, int courseId, string bank, string chapter)
         {
+            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.PublishQuestionToAnotherTitle))
+            {
+                return new HttpUnauthorizedResult();
+            }
             bool isSuccess = questionManagementService.PublishToTitle(questionsId, courseId, bank, chapter, CourseHelper.CurrentCourse);
             return JsonCamel(new { isError = !isSuccess });
         }
@@ -197,12 +224,20 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult GetVersionPreviewLink(string version)
         {
+            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.TestSpecificVersion))
+            {
+                return new HttpUnauthorizedResult();
+            }
             var tempVersion = questionManagementService.GetTemporaryQuestionVersion(CourseHelper.CurrentCourse, QuestionHelper.QuestionIdToEdit, version);
             return JsonCamel(new { Url = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), tempVersion.EntityId, tempVersion.QuizId) });
         }
 
         public ActionResult PublishDraftToOriginal(string draftQuestionId)
         {
+            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.PublishDraft))
+            {
+                return new HttpUnauthorizedResult();
+            }
             var success = questionManagementService.PublishDraftToOriginal(CourseHelper.CurrentCourse, draftQuestionId);
             return JsonCamel(new {isError = !success});
         }
@@ -227,8 +262,17 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(new { isError = !success });
         }
 
-        public ActionResult CreateDraft(string questionId, string version = null)
+        public ActionResult CreateDraft(string questionId, string version = null, string questionStatus = null)
         {
+            if (version == null && !UserCapabilitiesHelper.Capabilities.Contains(Capability.CreateDraftFromOldVersion))
+            {
+                return new HttpUnauthorizedResult();
+            }
+            if (questionStatus == EnumHelper.GetEnumDescription(QuestionStatus.AvailableToInstructors) &&
+                !UserCapabilitiesHelper.Capabilities.Contains(Capability.CreateDraftFromAvailableQuestion))
+            {
+                return new HttpUnauthorizedResult();
+            }
             var question = questionManagementService.CreateDraft(CourseHelper.CurrentCourse, string.IsNullOrEmpty(questionId) ? QuestionHelper.QuestionIdToEdit : questionId);
             return JsonCamel(CreateQuestionViewModelForEditing(question));
 
@@ -242,6 +286,10 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult RestoreVersion(string version)
         {
+            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.RestoreOldVersion))
+            {
+                return new HttpUnauthorizedResult();
+            }
             var questionVersion = questionManagementService.RestoreQuestionVersion(CourseHelper.CurrentCourse, QuestionHelper.QuestionIdToEdit, version);
             return JsonCamel(Mapper.Map<QuestionVersionViewModel>(questionVersion));
         }

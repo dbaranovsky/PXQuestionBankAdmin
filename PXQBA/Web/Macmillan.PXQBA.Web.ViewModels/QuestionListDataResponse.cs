@@ -63,7 +63,6 @@ namespace Macmillan.PXQBA.Web.ViewModels
         public bool CanCreateNewDraft { get; set; }
 
         public bool CanPublishDraft { get; set; }
-        public bool CanChangeDraftStatus { get; set; }
         #endregion
 
 

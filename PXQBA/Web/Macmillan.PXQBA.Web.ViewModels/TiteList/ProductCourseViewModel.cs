@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Macmillan.PXQBA.Web.ViewModels.TiteList
 {
-    public class TitleViewModel
+    public class ProductCourseViewModel
     {
         public string Id { get; set; }
         public string Title { get; set; }
@@ -23,5 +23,7 @@ namespace Macmillan.PXQBA.Web.ViewModels.TiteList
             }
             
         }
+
+        public bool CanViewQuestionList { get; set; }
     }
 }

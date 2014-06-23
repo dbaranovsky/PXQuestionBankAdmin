@@ -173,6 +173,7 @@
     <Compile Include="Helpers\GridHelper.cs" />
     <Compile Include="Helpers\MetadataFieldsHelper.cs" />
     <Compile Include="Helpers\QuestionHelper.cs" />
+    <Compile Include="Helpers\UserCapabilitiesHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\ProductInfo.cs" />
   </ItemGroup>
