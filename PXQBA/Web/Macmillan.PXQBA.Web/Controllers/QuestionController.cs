@@ -26,12 +26,14 @@ namespace Macmillan.PXQBA.Web.Controllers
         private readonly IQuestionManagementService questionManagementService;
         private readonly IQuestionMetadataService questionMetadataService;
         private readonly IProductCourseManagementService productCourseManagementService;
+        private readonly IUserManagementService userManagementService;
     
-        public QuestionController(IQuestionManagementService questionManagementService,   IQuestionMetadataService questionMetadataService, IProductCourseManagementService productCourseManagementService)
+        public QuestionController(IQuestionManagementService questionManagementService,   IQuestionMetadataService questionMetadataService, IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService)
         {
             this.questionManagementService = questionManagementService;
             this.questionMetadataService = questionMetadataService;
             this.productCourseManagementService = productCourseManagementService;
+            this.userManagementService = userManagementService;
         }
 
         [HttpPost]
@@ -129,9 +131,29 @@ namespace Macmillan.PXQBA.Web.Controllers
             questionViewModel.GraphEditorHtml = QuestionPreviewHelper.GetGraphEditor(question.InteractionData,
                                                                                     questionViewModel.Id,
                                                                                     question.CustomUrl);
-           
 
+            UpdateCapabilities(questionViewModel);
             return questionViewModel;
+        }
+
+        private void UpdateCapabilities(QuestionViewModel questionViewModel)
+        {
+            var userCapabilities = userManagementService.GetUserCapabilities(CourseHelper.CurrentCourse.ProductCourseId);
+            questionViewModel.CanTestQuestion = userCapabilities.Contains(Capability.TestQuestion);
+            questionViewModel.CanTestQuestionVersion = userCapabilities.Contains(Capability.TestSpecificVersion);
+            questionViewModel.CanOverrideMetadata = userCapabilities.Contains(Capability.OverrideQuestionMetadata);
+            questionViewModel.CanRestoreMetadata = userCapabilities.Contains(Capability.RestoreLocalizedMetadataToSharedValue);
+            questionViewModel.CanEditQuestion = (userCapabilities.Contains(Capability.EditAvailableQuestion) &&
+                                                 questionViewModel.Status == ((int) QuestionStatus.AvailableToInstructors).ToString()) ||
+                                                (userCapabilities.Contains(Capability.EditInProgressQuestion) &&
+                                                 questionViewModel.Status == ((int) QuestionStatus.InProgress).ToString()) ||
+                                                (userCapabilities.Contains(Capability.EditDeletedQuestion) &&
+                                                 questionViewModel.Status == ((int) QuestionStatus.Deleted).ToString());
+            questionViewModel.CanEditSharedQuestionContent = userCapabilities.Contains(Capability.EditSharedQuestionContent);
+            questionViewModel.CanEditSharedQuestionMetadata = userCapabilities.Contains(Capability.EditSharedQuestionMetadata);
+            questionViewModel.CanPublishDraft = userCapabilities.Contains(Capability.PublishDraft);
+            questionViewModel.CanRestoreVersion = userCapabilities.Contains(Capability.RestoreOldVersion);
+            questionViewModel.CanCreateDraftFromVersion = userCapabilities.Contains(Capability.CreateDraftFromOldVersion);
         }
 
 
