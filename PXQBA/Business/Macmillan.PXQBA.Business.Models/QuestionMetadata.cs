@@ -10,5 +10,7 @@ namespace Macmillan.PXQBA.Business.Models
         }
 
         public Dictionary<string, string> Data { get; set; } 
+
+        public bool CanEditQuestion { get; set; }
     }
 }

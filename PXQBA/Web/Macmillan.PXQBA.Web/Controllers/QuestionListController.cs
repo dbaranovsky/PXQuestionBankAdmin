@@ -15,6 +15,7 @@ using System.Web.Mvc;
 using Macmillan.PXQBA.Web.Helpers;
 using Macmillan.PXQBA.Web.ViewModels;
 using Macmillan.PXQBA.Web.ViewModels.Pages;
+using EnumHelper = Macmillan.PXQBA.Common.Helpers.EnumHelper;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -93,24 +94,33 @@ namespace Macmillan.PXQBA.Web.Controllers
         private void UpdateCapabilities(QuestionListDataResponse response)
         {
             var userCapabilities = userManagementService.GetUserCapabilities(CourseHelper.CurrentCourse.ProductCourseId);
-           response.CanViewQuestionList = userCapabilities.Contains(Capability.ViewQuestionList);
-           response.CanPreviewQuestion = userCapabilities.Contains(Capability.PreviewQuestion);
-           response.CanCreateQuestion = userCapabilities.Contains(Capability.CreateQuestion);
-           response.CanDuplicateQuestion = userCapabilities.Contains(Capability.DuplicateQuestion);
-           response.CanEditAvailibleQuestion = userCapabilities.Contains(Capability.EditAvailableQuestion);
-           response.CanEditInProgressQuestion = userCapabilities.Contains(Capability.EditInProgressQuestion);
-           response.CanEditDeletedQuestion = userCapabilities.Contains(Capability.EditDeletedQuestion);
-           response.CanFlagQuestion = userCapabilities.Contains(Capability.FlagQuestion);
-           response.CanUnflagQuestion = userCapabilities.Contains(Capability.UnflagQuestion);
-           response.CanAddNotesQuestion = userCapabilities.Contains(Capability.AddNoteToQuestion);
-           response.CanRemoveNotesQuestion = userCapabilities.Contains(Capability.RemoveNoteFromQuestion);
-           response.CanShareQuestion = userCapabilities.Contains(Capability.PublishQuestionToAnotherTitle);
-           response.CanEditSharedQuestionContent = userCapabilities.Contains(Capability.EditSharedQuestionContent);
-           response.CanEditSharedQuestionMetadata = userCapabilities.Contains(Capability.EditSharedQuestionMetadata);
-           response.CanViewHistory = userCapabilities.Contains(Capability.ViewVersionHistory);
-           response.CanCreateNewDraft = userCapabilities.Contains(Capability.CreateDraftFromAvailableQuestion);
-           response.CanPublishDraft = userCapabilities.Contains(Capability.PublishDraft);
-           response.CanChangeDraftStatus = userCapabilities.Contains(Capability.ChangeDraftStatus);
+            response.CanViewQuestionList = userCapabilities.Contains(Capability.ViewQuestionList);
+            response.CanPreviewQuestion = userCapabilities.Contains(Capability.PreviewQuestion);
+            response.CanCreateQuestion = userCapabilities.Contains(Capability.CreateQuestion);
+            response.CanDuplicateQuestion = userCapabilities.Contains(Capability.DuplicateQuestion);
+            response.CanFlagQuestion = userCapabilities.Contains(Capability.FlagQuestion);
+            response.CanUnflagQuestion = userCapabilities.Contains(Capability.UnflagQuestion);
+            response.CanAddNotesQuestion = userCapabilities.Contains(Capability.AddNoteToQuestion);
+            response.CanRemoveNotesQuestion = userCapabilities.Contains(Capability.RemoveNoteFromQuestion);
+            response.CanShareQuestion = userCapabilities.Contains(Capability.PublishQuestionToAnotherTitle);
+            response.CanViewHistory = userCapabilities.Contains(Capability.ViewVersionHistory);
+            response.CanCreateNewDraft = userCapabilities.Contains(Capability.CreateDraftFromAvailableQuestion);
+            response.CanPublishDraft = userCapabilities.Contains(Capability.PublishDraft);
+            response.CanChangeDraftStatus = userCapabilities.Contains(Capability.ChangeDraftStatus);
+            foreach (var questionMetadata in response.QuestionList)
+            {
+                if (questionMetadata.Data.ContainsKey(MetadataFieldNames.QuestionStatus))
+                {
+                    var status = questionMetadata.Data[MetadataFieldNames.QuestionStatus];
+                    questionMetadata.CanEditQuestion = (userCapabilities.Contains(Capability.EditAvailableQuestion) &&
+                                                 status == EnumHelper.GetEnumDescription(QuestionStatus.AvailableToInstructors)) ||
+                                                (userCapabilities.Contains(Capability.EditInProgressQuestion) &&
+                                                 status == EnumHelper.GetEnumDescription(QuestionStatus.InProgress)) ||
+                                                (userCapabilities.Contains(Capability.EditDeletedQuestion) &&
+                                                 status == EnumHelper.GetEnumDescription(QuestionStatus.Deleted));
+                }
+
+            }
         }
 
         /// <summary>
