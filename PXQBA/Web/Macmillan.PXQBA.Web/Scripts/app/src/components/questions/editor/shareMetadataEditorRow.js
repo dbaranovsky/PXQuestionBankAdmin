@@ -143,7 +143,7 @@ var ShareMetadataEditorRow = React.createClass({
       if(this.props.question.canOverrideMetadata){
         this.toggleState();
       }else{
-          this.setState({isDisabled: this.state.isDisabled});
+           $(this.getDOMNode()).find("[name='switcher']").switchButton({checked: !this.state.isDisabled});
       }
       
     },
@@ -154,7 +154,7 @@ var ShareMetadataEditorRow = React.createClass({
         this.setState({isDisabled: true});
         this.restoreLocalQuestion();   
       }else{
-          this.setState({isDisabled: this.state.isDisabled});
+         $(this.getDOMNode()).find("[name='switcher']").switchButton({checked: !this.state.isDisabled});
       }
         
     },
