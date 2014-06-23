@@ -46,7 +46,7 @@ namespace Macmillan.PXQBA.Web.Controllers
                     return new HttpUnauthorizedResult();
                 }
             }
-            bool success = questionManagementService.UpdateQuestionField(CourseHelper.CurrentCourse, questionId, fieldName, fieldValue);
+            bool success = questionManagementService.UpdateQuestionField(CourseHelper.CurrentCourse, questionId, fieldName, fieldValue, UserCapabilitiesHelper.Capabilities);
             return JsonCamel(new { isError = !success });
         
         }
@@ -54,15 +54,18 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult UpdateSharedMetadataField(string questionId, string fieldName, List<string> fieldValues)
         {
+            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.EditSharedQuestionMetadata))
+            {
+                return new HttpUnauthorizedResult();
+            }
             bool success = questionManagementService.UpdateSharedQuestionField(CourseHelper.CurrentCourse, questionId, fieldName, fieldValues);
             return JsonCamel(new { isError = !success });
-
         }
 
         [HttpPost]
-        public ActionResult BulkUpdateMetadataField(string[] questionIds, string fieldName, string fieldValue, bool isSharedField = false)
+        public ActionResult BulkUpdateMetadataField(string[] questionIds, string fieldName, string fieldValue)
         {
-            bool success = questionManagementService.BulklUpdateQuestionField(CourseHelper.CurrentCourse, questionIds, fieldName, fieldValue, isSharedField);
+            bool success = questionManagementService.BulklUpdateQuestionField(CourseHelper.CurrentCourse, questionIds, fieldName, fieldValue, UserCapabilitiesHelper.Capabilities);
             return JsonCamel(new { isError = !success });
 
         }
@@ -109,6 +112,26 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
             // manual JSON deserialize is nessessary becauese of invalid model mapping on controller
             var questionViewModel = JsonConvert.DeserializeObject<QuestionViewModel>(questionJsonString);
+            if ((!UserCapabilitiesHelper.Capabilities.Contains(Capability.EditAvailableQuestion) &&
+                 questionViewModel.Status == ((int) QuestionStatus.AvailableToInstructors).ToString()) ||
+                (!UserCapabilitiesHelper.Capabilities.Contains(Capability.EditInProgressQuestion) &&
+                 questionViewModel.Status == ((int) QuestionStatus.InProgress).ToString()) ||
+                (!UserCapabilitiesHelper.Capabilities.Contains(Capability.EditDeletedQuestion) &&
+                 questionViewModel.Status == ((int) QuestionStatus.Deleted).ToString()))
+            {
+                return new HttpUnauthorizedResult();
+            }
+
+            if (!AuthorizeToOverrideOnMetadata(questionViewModel))
+            {
+                return new HttpUnauthorizedResult();
+            }
+
+            if (!AuthorizeToOverrideOffMetadata(questionViewModel))
+            {
+                return new HttpUnauthorizedResult();
+            }
+
             var question = Mapper.Map<Question>(questionViewModel);
 
             try
@@ -120,6 +143,58 @@ namespace Macmillan.PXQBA.Web.Controllers
                 return JsonCamel(new { isError = true });
             }
             return JsonCamel(new { isError = false });
+        }
+
+        private bool AuthorizeToOverrideOffMetadata(QuestionViewModel questionViewModel)
+        {
+            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.RestoreLocalizedMetadataToSharedValue))
+            {
+                var initialViewModel = QuestionHelper.QuestionViewModelToEdit;
+                if ((initialViewModel.DefaultSection.Title != initialViewModel.LocalSection.Title && questionViewModel.DefaultSection.Title == questionViewModel.LocalSection.Title) ||
+                    (initialViewModel.DefaultSection.Bank != initialViewModel.LocalSection.Bank && questionViewModel.DefaultSection.Bank == questionViewModel.LocalSection.Bank) ||
+                    (initialViewModel.DefaultSection.Chapter != initialViewModel.LocalSection.Chapter && questionViewModel.DefaultSection.Chapter == questionViewModel.LocalSection.Chapter))
+                {
+                    return false;
+                }
+                foreach (var defaultFieldFromInitial in initialViewModel.DefaultSection.DynamicValues.Where(v => initialViewModel.LocalSection.DynamicValues.ContainsKey(v.Key)))
+                {
+                    var localValuesFromInitial = initialViewModel.LocalSection.DynamicValues[defaultFieldFromInitial.Key];
+                    var localValuesFromNew = initialViewModel.LocalSection.DynamicValues[defaultFieldFromInitial.Key];
+                    var defaultValuesFromNew = initialViewModel.LocalSection.DynamicValues[defaultFieldFromInitial.Key];
+                    if (defaultFieldFromInitial.Value.Intersect(localValuesFromInitial).Count() != Math.Max(defaultFieldFromInitial.Value.Count, localValuesFromInitial.Count) &&
+                       defaultValuesFromNew.Intersect(localValuesFromNew).Count() == Math.Max(defaultValuesFromNew.Count, localValuesFromNew.Count))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        private bool AuthorizeToOverrideOnMetadata(QuestionViewModel questionViewModel)
+        {
+            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.OverrideQuestionMetadata))
+            {
+                var initialViewModel = QuestionHelper.QuestionViewModelToEdit;
+                if ((initialViewModel.DefaultSection.Title == initialViewModel.LocalSection.Title && questionViewModel.DefaultSection.Title != questionViewModel.LocalSection.Title) ||
+                    (initialViewModel.DefaultSection.Bank == initialViewModel.LocalSection.Bank && questionViewModel.DefaultSection.Bank != questionViewModel.LocalSection.Bank) ||
+                    (initialViewModel.DefaultSection.Chapter == initialViewModel.LocalSection.Chapter && questionViewModel.DefaultSection.Chapter != questionViewModel.LocalSection.Chapter))
+                {
+                    return false;
+                }
+                foreach (var defaultFieldFromInitial in initialViewModel.DefaultSection.DynamicValues.Where(v => initialViewModel.LocalSection.DynamicValues.ContainsKey(v.Key)))
+                {
+                    var localValuesFromInitial = initialViewModel.LocalSection.DynamicValues[defaultFieldFromInitial.Key];
+                    var localValuesFromNew = initialViewModel.LocalSection.DynamicValues[defaultFieldFromInitial.Key];
+                    var defaultValuesFromNew = initialViewModel.LocalSection.DynamicValues[defaultFieldFromInitial.Key];
+                    if (defaultFieldFromInitial.Value.Intersect(localValuesFromInitial).Count() == Math.Max(defaultFieldFromInitial.Value.Count, localValuesFromInitial.Count) &&
+                       defaultValuesFromNew.Intersect(localValuesFromNew).Count() != Math.Max(defaultValuesFromNew.Count, localValuesFromNew.Count))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
 
         public ActionResult GetQuestion(string questionId)
@@ -145,7 +220,10 @@ namespace Macmillan.PXQBA.Web.Controllers
             questionViewModel.GraphEditorHtml = QuestionPreviewHelper.GetGraphEditor(question.InteractionData,
                                                                                     questionViewModel.Id,
                                                                                     question.CustomUrl);
-
+            if (questionViewModel.IsShared)
+            {
+                QuestionHelper.QuestionViewModelToEdit = questionViewModel;
+            }
             UpdateCapabilities(questionViewModel);
             return questionViewModel;
         }
@@ -217,6 +295,10 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// <returns></returns>
         public ActionResult GetQuestionVersions()
         {
+            if(!UserCapabilitiesHelper.Capabilities.Contains(Capability.ViewVersionHistory))
+            {
+                return new HttpUnauthorizedResult();
+            }
             var versionHistory = Mapper.Map<QuestionHistoryViewModel>(questionManagementService.GetVersionHistory(CourseHelper.CurrentCourse, QuestionHelper.QuestionIdToEdit), opt => opt.Items.Add(CourseHelper.CurrentCourse.ProductCourseId, CourseHelper.CurrentCourse.ProductCourseId));
             return JsonCamel(versionHistory);
         }
