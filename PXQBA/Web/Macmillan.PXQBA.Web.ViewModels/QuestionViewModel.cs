@@ -97,6 +97,7 @@ namespace Macmillan.PXQBA.Web.ViewModels
 
         #region Capabilities
         public bool CanTestQuestion { get; set; }
+        public bool CanTestQuestionVersion { get; set; }
         public bool CanOverrideMetadata { get; set; }
 
         public bool CanRestoreMetadata { get; set; }
