@@ -235,6 +235,7 @@ var QuestionList = React.createClass({
                        expanded={isQuestionExpanded}
                        grouped={isGrouped}
                        draft={isDraft}
+                       capabilities = {this.props.capabilities}
                       />);
 
       var preview = null;

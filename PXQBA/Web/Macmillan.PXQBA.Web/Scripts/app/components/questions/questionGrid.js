@@ -8,6 +8,11 @@ var QuestionGrid = React.createClass({displayName: 'QuestionGrid',
       routsManager.setPage(page);
   },
 
+  getCapabilities: function(){
+    return {
+            canDuplicateQuestion: this.props.response.canDuplicateQuestion
+          };
+  },
      
     render: function() { 
         return (
@@ -23,7 +28,8 @@ var QuestionGrid = React.createClass({displayName: 'QuestionGrid',
                                         questionCardTemplate:  this.props.response.questionCardLayout,
                                         allAvailableColumns:this.props.response.allAvailableColumns,
                                         handlers:this.props.handlers,
-                                        currentPage:this.props.response.pageNumber}
+                                        currentPage:this.props.response.pageNumber,
+                                        capabilities:  this.getCapabilities()}
                                         )
                 ), 
                 React.DOM.div( {className:"question-grid-item"},  

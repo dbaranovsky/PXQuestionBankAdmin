@@ -234,7 +234,8 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
                        expandPreviewQuestionHandler:  this.expandPreviewQuestionHandler,
                        expanded:isQuestionExpanded,
                        grouped:isGrouped,
-                       draft:isDraft}
+                       draft:isDraft,
+                       capabilities:  this.props.capabilities}
                       ));
 
       var preview = null;

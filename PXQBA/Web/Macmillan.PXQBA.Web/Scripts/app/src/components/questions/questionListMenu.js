@@ -24,7 +24,9 @@ var QuestionListMenu = React.createClass({
     },
 
     copyQuestionHandler: function() {
-      this.props.copyQuestionHandler();
+      if(this.props.capabilities.canDuplicateQuestion){
+       this.props.copyQuestionHandler();
+      }
     },
 
     editQuestionHandler: function() {
@@ -162,13 +164,13 @@ var QuestionListMenu = React.createClass({
                             <ul className="dropdown-menu show-menu" role="menu" aria-labelledby="dropdownMenuType" aria-labelledby="edit-question">
                                <li role="presentation" className="dropdown-header">Edit options</li>
                                <li role="presentation" className="divider"></li>
-                               <li role="presentation">
+                               <li role="presentation" className={!this.props.data.canEdit}>
                                   <a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.editQuestionHandler.bind(this, false, true)}>
                                    Edit in {this.props.titleCount+1 == 1? "1 title" : "all "+(this.props.titleCount+1)+" titles"}
                                   </a>
                                </li>
-                               <li role="presentation">
-                                  <a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.copyQuestionHandler}>
+                               <li role="presentation" className={this.props.capabilities.canDuplicateQuestion? "" : "disabled"} onClick={this.copyQuestionHandler}>
+                                  <a className="edit-field-item" role="menuitem" tabIndex="-1" >
                                     Create a copy
                                   </a>
                                 </li>
@@ -182,7 +184,7 @@ var QuestionListMenu = React.createClass({
                        <li role="presentation" className="divider"></li>
                        <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.createDraftHandler}>Create a Draft</a></li>
 
-                       <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.copyQuestionHandler}>Create a copy</a></li>
+                       <li role="presentation"  className={this.props.capabilities.canDuplicateQuestion? "" : "disabled"} onClick={this.copyQuestionHandler}><a className="edit-field-item" role="menuitem" tabIndex="-1" >Create a copy</a></li>
                        
                      </ul>);
                  }
@@ -192,7 +194,7 @@ var QuestionListMenu = React.createClass({
                      <ul className="dropdown-menu show-menu" role="menu" aria-labelledby="dropdownMenuType"  aria-labelledby="edit-question">
                        <li role="presentation" className="dropdown-header">Edit options</li>
                        <li role="presentation" className="divider"></li>
-                       <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.editQuestionHandler.bind(this, false, true)}>Edit in Place</a></li>
+                       <li role="presentation" className={!this.props.data.canEdit}><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.editQuestionHandler.bind(this, false, true)}>Edit in Place</a></li>
                        <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.createDraftHandler}>Create a Draft</a></li>
                      </ul>);
                 }
@@ -204,12 +206,12 @@ var QuestionListMenu = React.createClass({
       return(<div className="menu-container-main">
                     {this.renderDraftButton()}
                <div className="dropdown">
-                  <button id="edit-question" type="button" className="btn btn-default btn-sm" onClick={this.editQuestionHandler} disabled={isDeleted}  data-target="#" data-toggle="dropdown" title="Edit Question">
+                  <button id="edit-question" type="button" className="btn btn-default btn-sm" onClick={this.editQuestionHandler} disabled={!this.props.data.canEdit && !this.props.isShared}  data-target="#" data-toggle="dropdown" title="Edit Question">
                          <span className="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Edit Question"></span>
                   </button>
                     {this.renderEditMenu()}
                 </div>
-                <button type="button" className="btn btn-default btn-sm" onClick={this.copyQuestionHandler}  data-toggle="tooltip" title="Duplicate Question"><span className="glyphicon glyphicon-copyright-mark"></span></button>
+                <button type="button" className="btn btn-default btn-sm" disabled={!this.props.capabilities.canDuplicateQuestion} onClick={this.copyQuestionHandler}  data-toggle="tooltip" title="Duplicate Question"><span className="glyphicon glyphicon-copyright-mark"></span></button>
                <button type="button" className="btn btn-default btn-sm" onClick={this.editNotesHandler} data-toggle="tooltip" title="Edit Notes"><span className="glyphicon glyphicon-list-alt"></span> </button> 
                <button type="button" className="btn btn-default btn-sm custom-btn" onClick={this.props.editQuestionHandler.bind(this, true, false)} data-toggle="tooltip" title="View Question History"><span className="glyphicon icon-version-history" ></span></button> 
                </div>);
@@ -229,7 +231,7 @@ var QuestionListMenu = React.createClass({
     renderFlagMenu: function(){
         if (this.props.showAll){
           return(<div className="menu-container-flag">
-                     <button type="button" className="btn btn-default btn-sm" onClick={this.toggleFlag} data-toggle="tooltip" title={this.state.isFlagged? "Unflag question" : "Flag question"}>
+                     <button type="button" className="btn btn-default btn-sm" disabled={(!this.state.isFlagged && !this.props.capabilities.canFlagQuestion) || (this.state.isFlagged && !this.props.capabilities.canUnflagQuestion)} onClick={this.toggleFlag} data-toggle="tooltip" title={this.state.isFlagged? "Unflag question" : "Flag question"}>
                      <span className={this.state.isFlagged? "glyphicon glyphicon-flag flagged" : "glyphicon glyphicon-flag"}></span>
                      </button> 
                   </div>);

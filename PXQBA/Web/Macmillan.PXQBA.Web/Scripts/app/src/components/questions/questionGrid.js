@@ -8,6 +8,11 @@ var QuestionGrid = React.createClass({
       routsManager.setPage(page);
   },
 
+  getCapabilities: function(){
+    return {
+            canDuplicateQuestion: this.props.response.canDuplicateQuestion
+          };
+  },
      
     render: function() { 
         return (
@@ -24,6 +29,7 @@ var QuestionGrid = React.createClass({
                                         allAvailableColumns={this.props.response.allAvailableColumns}
                                         handlers={this.props.handlers}
                                         currentPage={this.props.response.pageNumber}
+                                        capabilities = {this.getCapabilities()}
                                         />
                 </div> 
                 <div className="question-grid-item"> 

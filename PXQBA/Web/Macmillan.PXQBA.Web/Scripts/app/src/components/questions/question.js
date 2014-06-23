@@ -53,7 +53,8 @@ var Question = React.createClass({
                         isShared = {isShared}
                         titleCount = {titleCount}
                         draft = {this.props.draft}
-                         />
+                        capabilities = {this.props.capabilities} />
+                        
     },
 
     selectQuestionHandler: function(event) {

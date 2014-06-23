@@ -52,8 +52,9 @@ var Question = React.createClass({displayName: 'Question',
                         showAll:  this.state.showMenu, 
                         isShared:  isShared,
                         titleCount:  titleCount,
-                        draft:  this.props.draft}
-                         )
+                        draft:  this.props.draft,
+                        capabilities:  this.props.capabilities} )
+                        
     },
 
     selectQuestionHandler: function(event) {
