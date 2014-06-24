@@ -50,7 +50,7 @@
             return (React.DOM.div( {className:"role-row"}, 
                           React.DOM.div( {className:"role-cell"}, userTitle.name),
                             React.DOM.div( {className:"role-cell selector"}, 
-                                    SingleSelectSelector(  {allowNewValues:false, currentValues:currentValue,  allowDeselect:true, allOptions:self.getAllOptions(userTitle.availableRoles), onChangeHandler:self.selectorChangeHandler})
+                                    SingleSelectSelector( {disabled:!userTitle.canSetRoles,  allowNewValues:false, currentValues:currentValue,  allowDeselect:true, allOptions:self.getAllOptions(userTitle.availableRoles), onChangeHandler:self.selectorChangeHandler})
                             )
                          ));
       }
