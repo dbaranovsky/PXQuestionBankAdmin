@@ -24,6 +24,8 @@ namespace Macmillan.PXQBA.Business.Models
             {
                 availableRoles = value;
             } 
-        } 
+        }
+
+        public bool CanSetRoles { get; set; }
     }
 }

@@ -1,13 +1,28 @@
 ﻿using System;
 using System.Web.Mvc;
+using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Common.Logging;
 using Macmillan.PXQBA.Web.ActionResults;
+using Macmillan.PXQBA.Web.Helpers;
 using NLog;
 
 namespace Macmillan.PXQBA.Web.Controllers
 {
     public abstract class MasterController: Controller
     {
+        private readonly IProductCourseManagementService productCourseManagementService;
+        private readonly IUserManagementService userManagementService;
+
+        protected MasterController()
+        {
+        }
+
+        protected MasterController(IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService)
+        {
+            this.productCourseManagementService = productCourseManagementService;
+            this.userManagementService = userManagementService;
+        }
+
         protected override void OnException(ExceptionContext filterContext)
         {
             if (filterContext.ExceptionHandled)
@@ -30,6 +45,19 @@ namespace Macmillan.PXQBA.Web.Controllers
                 Data = data,
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
+        }
+
+        /// <summary>
+        /// Update current course in session
+        /// </summary>
+        /// <param name="courseId"></param>
+        protected void UpdateCurrentCourse(string courseId)
+        {
+            if (CourseHelper.NeedGetCourse(courseId))
+            {
+                CourseHelper.CurrentCourse = productCourseManagementService.GetProductCourse(courseId, true);
+                UserCapabilitiesHelper.Capabilities = userManagementService.GetUserCapabilities(courseId);
+            }
         }
     }
 }

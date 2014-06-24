@@ -42,8 +42,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult GetMetadataConfig(string courseId)
         {
             var course = productCourseManagementService.GetProductCourse(courseId);
-            CourseHelper.CurrentCourse = course;
-            UserCapabilitiesHelper.Capabilities = userManagementService.GetUserCapabilities(courseId);
+            UpdateCurrentCourse(courseId);
             var viewModel = Mapper.Map<MetadataConfigViewModel>(course);
             UpdateCapabilities(viewModel);
             return JsonCamel(viewModel);
