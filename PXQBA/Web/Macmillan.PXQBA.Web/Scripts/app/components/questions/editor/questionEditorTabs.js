@@ -240,15 +240,11 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
         var interactionData = "";
         if (this.state.currentTab =="body"){
 
-        try{
-            if(flashElement.getXML){
+            if(typeof(flashElement.getXML) == "function"){
                  interactionData = flashElement.getXML();
             }
            
-        }
-        finally{
-
-        };
+    
 
         } else{
           interactionData = question.interactionData;
@@ -363,23 +359,32 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
         var question = this.props.question;
         var flashElement = $(this.getDOMNode()).find("#flash")[0];
         var interactionData = "";
-        try{
-            interactionData = flashElement.getXML();
+
+        if(typeof(flashElement.getXML)== "function"){
+          interactionData = flashElement.getXML();
         }
-        finally{
+        
+
+
             if (question.interactionData != interactionData && interactionData != ""){
-               question.interactionData == interactionData;
+               question.interactionData = interactionData;
                this.props.editHandler(question);
                var self = this;
              this.getUpdatedGraph(interactionData);
-            }
+
         };
     },
 
     getUpdatedGraph: function(interactionData){
       var self = this;
+       $(self.getDOMNode()).find("#quizeditorcomponent").empty();
+       this.setState({graphLoading: true});
         questionDataManager.getUpdatedGraphEditor(interactionData).done(function(response){
                    $(self.getDOMNode()).find("#quizeditorcomponent").html(response.editorHtml);
+                    self.setState({graphLoading: false});
+               }).error(function(er){
+                   $(self.getDOMNode()).find("#quizeditorcomponent").html(self.props.question.graphEditorHtml);
+                    self.setState({graphLoading: false});
                });
     },
 
@@ -479,7 +484,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
 
                        React.DOM.div( {className:"tab-body .shared"}, 
                           !this.props.question.canEditSharedQuestionContent? React.DOM.b(null, "You have no permission to edit question body") : React.DOM.div(  {className:"iframe waiting"} ),
-                           
+                           this.state.graphLoading? React.DOM.div(  {className:"iframe waiting"} ) : "",
                           React.DOM.div( {id:"quizeditorcomponent", className:iframeClass}),
                           React.DOM.div( {className:"modal-footer"}, 
                            this.renderFooterButtons(true)
