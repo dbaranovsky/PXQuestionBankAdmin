@@ -138,10 +138,10 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
             var userIdParam = new SqlParameter("@userId", userId);
             command.Parameters.Add(userIdParam);
 
-            var dbRecords = databaseManager.Query(command);
+            var dbRecords = databaseManager.Query(command).ToList();
             var userInfo = userOperation.GetUsers(new List<string> {userId}).FirstOrDefault();
             
-            var user = FillUserFromRecords(dbRecords);
+            var user = FillUserFromRecords(dbRecords, userId);
             user.Id = userId;
             if (userInfo != null)
             {
@@ -172,7 +172,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
             }
         }
 
-        private QBAUser FillUserFromRecords(IEnumerable<DatabaseRecord> dbRecords)
+        private QBAUser FillUserFromRecords(IEnumerable<DatabaseRecord> dbRecords, string userId)
         {
             var user = new QBAUser();
             foreach (var databaseRecord in dbRecords)
@@ -201,6 +201,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
                         }
                         if (!string.IsNullOrEmpty(databaseRecord["UserId"].ToString()))
                         {
+                            if(databaseRecord["UserId"].ToString() == userId)
                             userCourse.CurrentRole = courseRole;
                         }
                     }
