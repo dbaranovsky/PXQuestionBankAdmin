@@ -37,16 +37,60 @@ var QuestionInlineEditorBase = React.createClass({
     },
 
     getAvailibleValuesForStatus: function() {
-        if(!this.props.metadata.draft) {
-          return this.props.metadata.editorDescriptor.availableChoice;
-        }
+      //  if(!this.props.metadata.draft) {
+      //    return this.props.metadata.editorDescriptor.availableChoice;
+      //  }
 
         var newValues = [];
 
         for(var i=0; i<this.props.metadata.editorDescriptor.availableChoice.length; i++) {
-            if(this.props.metadata.editorDescriptor.availableChoice[i].value!=window.enums.statusesId.availibleToInstructor) {
-              newValues.push(this.props.metadata.editorDescriptor.availableChoice[i]);
+           // if(this.props.metadata.editorDescriptor.availableChoice[i].value!=window.enums.statusesId.availibleToInstructor) {
+           //   newValues.push(this.props.metadata.editorDescriptor.availableChoice[i]);
+           // }
+
+            if (this.props.metadata.editorDescriptor.availableChoice[i].text == this.props.metadata.status){
+                newValues.push(this.props.metadata.editorDescriptor.availableChoice[i]);
+                continue;
+            } 
+
+            var statusValue = this.props.metadata.editorDescriptor.availableChoice[i].value;
+
+            if (this.props.metadata.status == window.enums.statuses.availibleToInstructor){
+
+              if(statusValue==window.enums.statusesId.deleted && this.props.capabilities.canChangeFromAvailibleToDeleted){
+                 newValues.push(this.props.metadata.editorDescriptor.availableChoice[i]);
+              }
+
+              if(statusValue==window.enums.statusesId.inProgress && this.props.capabilities.canChangeFromAvailibleToInProgress){
+                   newValues.push(this.props.metadata.editorDescriptor.availableChoice[i]);
+              }
+              continue;
             }
+
+             if (this.props.metadata.status == window.enums.statuses.deleted ){
+
+               if(statusValue==window.enums.statusesId.availibleToInstructor && this.props.capabilities.canChangeFromDeletedToAvailible){
+                   newValues.push(this.props.metadata.editorDescriptor.availableChoice[i]);
+               }
+
+              if(statusValue==window.enums.statusesId.inProgress && this.props.capabilities.canChangeFromDeletedToInProgress){
+                 newValues.push(this.props.metadata.editorDescriptor.availableChoice[i]);
+              }
+               continue;
+            }
+
+             if (this.props.metadata.status == window.enums.statuses.inProgress){
+
+             if(statusValue==window.enums.statusesId.availibleToInstructor && this.props.capabilities.canChangeFromInProgressToAvailible){
+                 newValues.push(this.props.metadata.editorDescriptor.availableChoice[i]);
+              }
+               if(statusValue==window.enums.statusesId.deleted && this.props.capabilities.canChangeFromInProgressToDeleted){
+                 newValues.push(this.props.metadata.editorDescriptor.availableChoice[i]);
+              }
+               continue;
+            }
+
+             newValues.push(this.props.metadata.editorDescriptor.availableChoice[i]);
         }
 
         return newValues;

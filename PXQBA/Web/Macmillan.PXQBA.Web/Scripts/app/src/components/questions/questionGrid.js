@@ -17,7 +17,13 @@ var QuestionGrid = React.createClass({
             canViewHistory: this.props.response.canViewHistory,
             canShareQuestion: this.props.response.canShareQuestion,
             canPublishDraft: this.props.response.canPublishDraft,
-            canPreviewQuestion: this.props.response.canPreviewQuestion
+            canPreviewQuestion: this.props.response.canPreviewQuestion,
+            canChangeFromAvailibleToInProgress: this.props.response.canChangeFromAvailibleToInProgress,
+            canChangeFromAvailibleToDeleted: this.props.response.canChangeFromAvailibleToDeleted,
+            canChangeFromDeletedToInProgress: this.props.response.canChangeFromDeletedToInProgress,
+            canChangeFromDeletedToAvailible: this.props.response.canChangeFromDeletedToAvailible,
+            canChangeFromInProgressToAvailible: this.props.response.canChangeFromInProgressToAvailible,
+            canChangeFromInProgressToDeleted: this.props.response.canChangeFromInProgressToDeleted
           };
   },
      

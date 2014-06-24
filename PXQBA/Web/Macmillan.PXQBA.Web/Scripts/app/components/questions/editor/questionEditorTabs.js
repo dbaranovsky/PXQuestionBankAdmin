@@ -38,7 +38,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
         return;
     }
     
-    if (this.state.isGraph != null){
+    if (this.state.isGraph){
       $(this.getDOMNode()).find("#quizeditorcomponent").html(this.props.question.graphEditorHtml);
       this.iframeLoaded();
 

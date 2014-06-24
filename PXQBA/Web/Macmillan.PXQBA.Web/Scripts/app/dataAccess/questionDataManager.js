@@ -555,11 +555,12 @@ var questionDataManager = (function() {
 
     };
     
-    self.createDraft = function (questionId, version) {
+    self.createDraft = function (questionId, version, status) {
         asyncManager.startWait();
         var request = {
             questionId: questionId,
-            version: version
+            version: version == undefined? null : version,
+            status:  status == undefined? null : status
         };
         return $.ajax({
             url: window.actions.questionList.createDraftUrl,

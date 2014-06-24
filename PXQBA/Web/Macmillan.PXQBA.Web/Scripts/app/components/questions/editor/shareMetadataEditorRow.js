@@ -75,13 +75,28 @@ var ShareMetadataEditorRow = React.createClass({displayName: 'ShareMetadataEdito
         }
     },
 
+    renderSwitcherInput: function(){
+        if (!this.state.isDisabled && !this.props.question.canRestoreMetadata){
+          return (React.DOM.span(null, "ON"));
+        }
+
+         if (this.state.isDisabled && !this.props.question.canOverrideMetadata){
+          return (React.DOM.span(null, "OFF"));
+        }
+
+        return (React.DOM.div( {className:"switcher-container"},  " ", React.DOM.input( {name:"switcher",   checked:!this.state.isDisabled, 'data-size':"small", 'data-on-text':"3", 'data-off-text':"2.0.1", type:"checkbox"} )));
+    },
+
     renderSwitchControl: function(){
        if (this.props.question.isShared && this.state.isUnique != true){
          return  (React.DOM.div( {className:"cell control"}, 
                      React.DOM.div( {className:"override-control"}, 
                           React.DOM.p(null,  " " ),
                          React.DOM.div(null,  " Override"), 
-                         React.DOM.div( {className:"switch-wrapper"}, React.DOM.input( {name:"switcher", checked:!this.state.isDisabled, 'data-size':"small", 'data-on-text':"3", 'data-off-text':"2.0.1", type:"checkbox"} ))
+                         React.DOM.div( {className:"switch-wrapper"}, 
+
+                          this.renderSwitcherInput()
+                         )
                      )
                  ));
        }
@@ -122,7 +137,7 @@ var ShareMetadataEditorRow = React.createClass({displayName: 'ShareMetadataEdito
     renderLocalValue: function(){
       return  (React.DOM.div( {className:"cell"}, 
                  MetadataFieldEditor( {question:this.props.isStatic?  this.props.question.localSection :  this.props.question.localSection.dynamicValues, 
-                                    isDisabled:this.state.isDisabled || !this.props.question.canEditSharedQuestionMetadata, 
+                                    isDisabled:this.state.isDisabled || (!this.props.question.canEditSharedQuestionMetadata && !this.props.question.isShared), 
                                     metadata:this.props.metadata, 
                                     editHandler:this.localEditHandler, 
                                     field:this.props.field, 
@@ -142,19 +157,20 @@ var ShareMetadataEditorRow = React.createClass({displayName: 'ShareMetadataEdito
     override: function(){
       if(this.props.question.canOverrideMetadata){
         this.toggleState();
-      }else{
-           $(this.getDOMNode()).find("[name='switcher']").switchButton({checked: !this.state.isDisabled});
+         if (!this.props.canRestoreMetadata) {
+          $(this.getDOMNode()).find('option:not([data-reactid])').remove();
+        }
       }
-      
     },
 
     restoreField: function(){
 
     if(this.props.question.canRestoreMetadata){
         this.setState({isDisabled: true});
-        this.restoreLocalQuestion();   
-      }else{
-         $(this.getDOMNode()).find("[name='switcher']").switchButton({checked: !this.state.isDisabled});
+        this.restoreLocalQuestion();  
+        if (!this.props.canOverrideMetadata) {
+          $(this.getDOMNode()).find('option:not([data-reactid])').remove();
+        }
       }
         
     },

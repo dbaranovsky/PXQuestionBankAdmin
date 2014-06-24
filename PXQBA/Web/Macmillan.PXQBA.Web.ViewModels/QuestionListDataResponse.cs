@@ -63,6 +63,14 @@ namespace Macmillan.PXQBA.Web.ViewModels
         public bool CanCreateNewDraft { get; set; }
 
         public bool CanPublishDraft { get; set; }
+
+        public bool CanChangeFromAvailibleToInProgress { get; set; }
+        public bool CanChangeFromAvailibleToDeleted { get; set; }
+        public bool CanChangeFromDeletedToInProgress { get; set; }
+        public bool CanChangeFromDeletedToAvailible { get; set; }
+        public bool CanChangeFromInProgressToAvailible { get; set; }
+        public bool CanChangeFromInProgressToDeleted { get; set; }
+
         #endregion
 
 

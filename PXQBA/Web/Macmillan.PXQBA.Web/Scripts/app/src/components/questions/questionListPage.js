@@ -108,7 +108,7 @@ var QuestionListPage = React.createClass({
     },
 
     //from version
-    createDraftHandler: function(questionId, version) {
+    createDraftHandler: function(questionId, version, status) {
       this.showEditor(this.editorsSteps.none);
       this.setState({
            loading: true,
@@ -116,11 +116,8 @@ var QuestionListPage = React.createClass({
            viewHistoryMode: false
         });
 
-      if (version == undefined || version == null){
-       questionDataManager.createDraft(questionId).done(this.loadTemplateComplete.bind(this, false));
-      }else{
-        questionDataManager.createDraft(questionId, version).done(this.loadTemplateComplete.bind(this, false));
-      }
+        questionDataManager.createDraft(questionId, version, status).done(this.loadTemplateComplete.bind(this, false));
+     
     },
 
     reloadQuestion: function(){
