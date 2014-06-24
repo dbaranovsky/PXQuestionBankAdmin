@@ -122,12 +122,12 @@ namespace Macmillan.PXQBA.Web.Controllers
                 return new HttpUnauthorizedResult();
             }
 
-            if (!AuthorizeToOverrideOnMetadata(questionViewModel))
+            if (!IsAuthorizedToOverrideOnMetadata(questionViewModel))
             {
                 return new HttpUnauthorizedResult();
             }
 
-            if (!AuthorizeToOverrideOffMetadata(questionViewModel))
+            if (!IsAuthorizedToOverrideOffMetadata(questionViewModel))
             {
                 return new HttpUnauthorizedResult();
             }
@@ -145,7 +145,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(new { isError = false });
         }
 
-        private bool AuthorizeToOverrideOffMetadata(QuestionViewModel questionViewModel)
+        private bool IsAuthorizedToOverrideOffMetadata(QuestionViewModel questionViewModel)
         {
             if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.RestoreLocalizedMetadataToSharedValue))
             {
@@ -171,7 +171,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             return true;
         }
 
-        private bool AuthorizeToOverrideOnMetadata(QuestionViewModel questionViewModel)
+        private bool IsAuthorizedToOverrideOnMetadata(QuestionViewModel questionViewModel)
         {
             if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.OverrideQuestionMetadata))
             {

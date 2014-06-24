@@ -29,5 +29,13 @@ namespace Macmillan.PXQBA.Web.ViewModels.MetadataConfig
         public IList<ProductCourseSpecificMetadataFieldViewModel> Fields { get; set; }
 
         public IList<AvailableChoiceItem> AvailableFieldTypes { get; set; }
+
+        public bool CanEditMetadataValues { get; set; }
+
+        public bool CanEditQuestionCardTemplate { get; set; }
+
+        public bool CanEditTitleMetadataReduced { get; set; }
+
+        public bool CanEditTitleMetadataFull { get; set; }
     }
 }

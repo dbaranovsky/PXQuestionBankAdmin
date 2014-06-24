@@ -81,7 +81,7 @@ namespace Macmillan.PXQBA.Business.Models
         EditSharedQuestionContent = 24,
         [Description("edit shared question metadata")]
         EditSharedQuestionMetadata = 25,
-        [Description("restore localized question metadata to shared value by turning off override")]
+        [Description("override and edit question metadata in the local title")]
         OverrideQuestionMetadata = 26,
         [Description("restore localized question metadata to shared value by turning off override")]
         RestoreLocalizedMetadataToSharedValue = 27,
