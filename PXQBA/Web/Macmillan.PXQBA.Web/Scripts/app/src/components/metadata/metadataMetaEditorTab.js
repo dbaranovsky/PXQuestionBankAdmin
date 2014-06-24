@@ -23,6 +23,9 @@ var MetadataMetaEditorTab = React.createClass({
 		for(var i=0; i<this.props.data.fields.length; i++) {
 			fields.push(<TitleSpecificMetadataField 
 						 data={this.props.data.fields[i]} 
+             canEditMetadataValues={this.props.data.canEditMetadataValues}
+             canEditTitleMetadataReduced={this.props.data.canEditTitleMetadataReduced}
+             canEditTitleMetadataFull={this.props.data.canEditTitleMetadataFull}
 						 index={i}
 						 availableFieldTypes={this.props.availableFieldTypes}
 						 deleteHandler={this.props.metadataFieldsHandlers.deleteHandler}
@@ -68,7 +71,8 @@ var MetadataMetaEditorTab = React.createClass({
           indexRowForDialog: index,
           valueForDialog: value,
           fieldNameCaption: fieldNameCaption,
-          fieldType: fieldType
+          fieldType: fieldType,
+          canEdit: this.props.data.canEditMetadataValues
       });
   },
 
@@ -92,6 +96,7 @@ var MetadataMetaEditorTab = React.createClass({
 	renderInternalFieldDialog: function() {
 		if(this.state.showInternalFieldDialog) {
 			return (<InternalFieldDialog closeDialogHandler={this.closeInternalFieldDialogHandler} 
+                                  canEdit={this.pop}
                                   value={this.state.valueForDialog} 
                                   itemIndex={this.state.indexRowForDialog}
                                   updateHandler={this.props.metadataFieldsHandlers.updateHandler}
@@ -139,6 +144,16 @@ var MetadataMetaEditorTab = React.createClass({
     return null;
   },
 
+
+  renderAddButton: function() {
+    var classNameText="btn btn-primary metadata-button";
+
+      if(!this.props.data.canEditTitleMetadataReduced) {
+        classNameText+=" disabled";
+     }
+
+    return (<button type="button" className={classNameText}  onClick={this.props.metadataFieldsHandlers.addHandler} >Add field</button>);
+  },
  
   render: function() {
        return (
@@ -163,7 +178,7 @@ var MetadataMetaEditorTab = React.createClass({
                		</table>
                </div>
                <div>
-               	   <button type="button" className="btn btn-primary metadata-button"  onClick={this.props.metadataFieldsHandlers.addHandler} >Add field</button>
+               	   {this.renderAddButton()}
                </div>
                <div className="dialogs-container">
                 {this.renderInternalFieldDialog()}

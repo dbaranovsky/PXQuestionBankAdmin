@@ -18,10 +18,12 @@ var TextEditor = React.createClass({
    
    return (
            <div className="">
-              <input type="text" className={classNameProps} value={this.props.value} 
-                                                              onChange={this.handleChange} 
-                                                              onBlur={this.props.onBlurHandler} 
-                                                              onKeyPress={this.props.onKeyPressHandler}/>
+              <input type="text" className={classNameProps}
+                                 disabled={ this.props.disabled ? 'disabled' : undefined}
+                                 value={this.props.value} 
+                                 onChange={this.handleChange} 
+                                 onBlur={this.props.onBlurHandler} 
+                                 onKeyPress={this.props.onKeyPressHandler}/>
             </div>
      );
   },

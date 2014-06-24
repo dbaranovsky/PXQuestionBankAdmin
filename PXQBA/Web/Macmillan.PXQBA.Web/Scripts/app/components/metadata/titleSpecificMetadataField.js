@@ -38,6 +38,21 @@ var TitleSpecificMetadataField = React.createClass({displayName: 'TitleSpecificM
     this.props.showDisplayOptionsDialog(this.props.index, this.props.data.displayOptions);
   },
 
+  buildDisabledClass: function(classText, isDisabled) {
+    if(isDisabled) {
+      classText+=" disabled"
+    }
+    return classText;
+  },
+
+  renderInternalNameButton: function() {
+    return (React.DOM.button( {type:"button",
+                    className:this.buildDisabledClass("btn btn-default btn-xs", !this.props.canEditTitleMetadataFull), 
+                    onClick:this.openInternalNameDialogHandler}, 
+            React.DOM.span( {className:"glyphicon glyphicon-pencil"})
+            ));
+  },
+
   renderAvailibleValuesButton: function() {
     var fieldType = this.props.data.fieldType;
      if((fieldType==window.enums.metadataFieldType.text)|| 
@@ -45,11 +60,24 @@ var TitleSpecificMetadataField = React.createClass({displayName: 'TitleSpecificM
         (fieldType==window.enums.metadataFieldType.multilineText)) {
       return null;
      }
-     return (React.DOM.button( {type:"button", className:"btn btn-default",  onClick:this.openAvailibleValuesDialog} , "Values..."));
+
+     return (React.DOM.button( {type:"button", className:"btn btn-default",  
+                                   onClick:this.openAvailibleValuesDialog} , "Values..."));
   },
 
   renderDisplayOptionsButton: function() {
-     return (React.DOM.button( {type:"button", className:"btn btn-default",  onClick:this.openDisplayOptionsDialog} , "Edit..."));
+     return (React.DOM.button( {type:"button", className:this.buildDisabledClass("btn btn-default", !this.props.canEditTitleMetadataReduced), 
+                                   onClick:this.openDisplayOptionsDialog} , "Edit..."));
+  },
+
+  renderDeleteButton: function() {
+     return (React.DOM.button( {type:"button", className:this.buildDisabledClass("btn btn-default btn-sm", !this.props.canEditTitleMetadataReduced),
+                     onClick:this.deleteHandler, 
+                     'data-toggle':"tooltip",
+                     title:"Delete field"}, 
+                   React.DOM.span( {className:"glyphicon glyphicon-trash"}
+                   )
+             ));
   },
 
  	getInternalName: function(name) {
@@ -70,30 +98,27 @@ var TitleSpecificMetadataField = React.createClass({displayName: 'TitleSpecificM
                React.DOM.tr(null,   
                		React.DOM.td(null, 
                			 TextEditor( {value:this.props.data.fieldName,
+                           disabled:!this.props.canEditTitleMetadataReduced,
                			 			 dataChangeHandler:this.changeFieldNameHandler,
                			 			 onBlurHandler:this.onBlurFieldNameHandler}
                				) 
                		),
                		React.DOM.td(null,  
                		     React.DOM.span(null,  " ", this.props.data.internalName, " " ),
-               		     React.DOM.span(null,  " ", React.DOM.button( {type:"button", className:"btn btn-default btn-xs", onClick:this.openInternalNameDialogHandler}, React.DOM.span( {className:"glyphicon glyphicon-pencil"})), " " )
+               		     React.DOM.span(null,  " ", this.renderInternalNameButton())
                		),
                		React.DOM.td(null,  
                		   SingleSelectSelector( 
-                        {allOptions:this.props.availableFieldTypes,
-                        dataPlaceholder:"No Type",
+                       {disabled:!this.props.canEditTitleMetadataReduced,
+                       allOptions:this.props.availableFieldTypes,
+                       dataPlaceholder:"No Type",
                        onChangeHandler:this.changeTypeHandler,
                        currentValues:  this.getCurrentTypeValues()} )
                		),
                		React.DOM.td(null, this.renderAvailibleValuesButton()),
                		React.DOM.td(null,  " ", this.renderDisplayOptionsButton()),
                		React.DOM.td(null,    
-               			 React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.deleteHandler, 
-               		 				 'data-toggle':"tooltip",
-               		 				  title:"Delete field"}, 
-               		 				  React.DOM.span( {className:"glyphicon glyphicon-trash"}
-               		 				  )
-               		 				)
+                       this.renderDeleteButton()
                		)
                 )
             );

@@ -63,7 +63,7 @@ var SingleSelectSelector = React.createClass({displayName: 'SingleSelectSelector
 
     render: function() {
         return (
-               React.DOM.select( {'data-placeholder':this.props.dataPlaceholder, disabled:this.props.disabled== undefined? false: this.props.disabled}, 
+               React.DOM.select( {'data-placeholder':this.props.dataPlaceholder, disabled:this.props.disabled}, 
                   this.state.options  
               ) 
             );

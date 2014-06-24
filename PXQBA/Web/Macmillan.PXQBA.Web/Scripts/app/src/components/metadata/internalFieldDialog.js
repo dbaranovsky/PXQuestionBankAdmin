@@ -30,7 +30,7 @@ var InternalFieldDialog = React.createClass({
                         </div>
                          <div className="modal-footer clearfix">
                                  <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
-                                 <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={self.editInternalFieldHandler}>Edit</button>
+                                 <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={self.editInternalFieldHandler}>Save</button>
                             </div>
                     </div>
             );

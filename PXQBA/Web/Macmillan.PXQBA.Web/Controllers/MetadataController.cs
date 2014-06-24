@@ -19,6 +19,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         private readonly IUserManagementService userManagementService;
 
         public MetadataController(IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService)
+            :base(productCourseManagementService, userManagementService)
         {
             this.productCourseManagementService = productCourseManagementService;
             this.userManagementService = userManagementService;
@@ -54,6 +55,15 @@ namespace Macmillan.PXQBA.Web.Controllers
             viewModel.CanEditQuestionCardTemplate = UserCapabilitiesHelper.Capabilities.Contains(Capability.EditQuestionCardTemplate);
             viewModel.CanEditTitleMetadataFull = UserCapabilitiesHelper.Capabilities.Contains(Capability.EditTitleMetadataFull);
             viewModel.CanEditTitleMetadataReduced = UserCapabilitiesHelper.Capabilities.Contains(Capability.EditTitleMetadataReduced);
+            if (viewModel.CanEditTitleMetadataFull)
+            {
+                viewModel.CanEditTitleMetadataReduced = true;
+            }
+
+            viewModel.CanEditQuestionCardTemplate = false; //дизейблит контрол карт темлейта
+            viewModel.CanEditMetadataValues = false; //дизейблит chapters, banks, dispaleyValues
+            viewModel.CanEditTitleMetadataReduced = false; // add, update, delete: fields
+            viewModel.CanEditTitleMetadataFull = false; // Дизейблит internal name
         }
 
         [HttpPost]
