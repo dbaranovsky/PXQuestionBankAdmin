@@ -108,18 +108,15 @@ CREATE PROCEDURE dbo.GetQBAUserCoursesWithRoles
 )
 AS
 BEGIN
-  SELECT
+  SELECT DISTINCT
     c.Id AS CourseId,
     r.Id AS RoleId,
     r.Name AS RoleName,
-    u.UserId
+    CASE WHEN u.UserId = @userId THEN u.UserId ELSE NULL END AS UserId
   FROM
     QBACourse c
     LEFT JOIN QBARole r ON c.Id = r.CourseId
     LEFT JOIN UserQBARole u ON u.RoleId = r.Id
-  WHERE 
-    u.UserId = @userId 
-    OR u.UserId IS NULL
 END
 GO
 
