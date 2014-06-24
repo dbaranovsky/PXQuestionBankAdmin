@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Web.Helpers;
 using Macmillan.PXQBA.Web.ViewModels.MetadataConfig;
 
@@ -19,6 +20,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         private readonly IUserManagementService userManagementService;
 
         public MetadataController(IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService)
+            :base(productCourseManagementService, userManagementService)
         {
             this.productCourseManagementService = productCourseManagementService;
             this.userManagementService = userManagementService;
@@ -54,12 +56,17 @@ namespace Macmillan.PXQBA.Web.Controllers
             viewModel.CanEditQuestionCardTemplate = UserCapabilitiesHelper.Capabilities.Contains(Capability.EditQuestionCardTemplate);
             viewModel.CanEditTitleMetadataFull = UserCapabilitiesHelper.Capabilities.Contains(Capability.EditTitleMetadataFull);
             viewModel.CanEditTitleMetadataReduced = UserCapabilitiesHelper.Capabilities.Contains(Capability.EditTitleMetadataReduced);
+            if (viewModel.CanEditTitleMetadataFull)
+            {
+                viewModel.CanEditTitleMetadataReduced = true;
+            }
         }
 
         [HttpPost]
         public ActionResult SaveMetadataConfig(MetadataConfigViewModel metadataConfig)
         {
             var course = Mapper.Map<Course>(metadataConfig);
+            UpdateCurrentCourse(course.ProductCourseId);
             if (!IsAuthorizedToSave(course))
             {
                 return new HttpUnauthorizedResult();
@@ -71,7 +78,8 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         private bool IsAuthorizedToSave(Course course)
         {
-             if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.EditTitleMetadataFull))
+             if ((!UserCapabilitiesHelper.Capabilities.Contains(Capability.EditTitleMetadataFull))&&
+                ((!UserCapabilitiesHelper.Capabilities.Contains(Capability.EditTitleMetadataReduced))))
              {
                  return false;
              }
@@ -93,7 +101,8 @@ namespace Macmillan.PXQBA.Web.Controllers
                 {
                     var oldValues = CourseHelper.CurrentCourse.FieldDescriptors.Where(f => f.Name == existingField.Name).SelectMany(f => f.CourseMetadataFieldValues.Select(v => v.Text));
                     var newValues = existingField.CourseMetadataFieldValues.Select(v => v.Text);
-                    if (oldValues.Intersect(newValues).Count() != Math.Max(oldValues.Count(), newValues.Count()))
+
+                    if (!(oldValues.IsCollectionEqual(newValues)))
                     {
                         return false;
                     }

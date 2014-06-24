@@ -32,9 +32,10 @@ var MetadataChapterEditorTab = React.createClass({displayName: 'MetadataChapterE
  
                          React.DOM.div(null,   
                             TextAreaEditor( 
-                             {classNameProps:"metadata-multi-line-editor",
-                              dataChangeHandler:this.changeHandler.bind(this, this.chaptersName), 
-                              value:this.props.data[this.chaptersName]} )
+                             {disabled:!this.props.data.canEditMetadataValues,
+                             classNameProps:"metadata-multi-line-editor",
+                             dataChangeHandler:this.changeHandler.bind(this, this.chaptersName), 
+                             value:this.props.data[this.chaptersName]} )
                          )
                       )
                     ),
@@ -46,7 +47,8 @@ var MetadataChapterEditorTab = React.createClass({displayName: 'MetadataChapterE
 
                         React.DOM.div(null,   
                            TextAreaEditor( 
-                            {classNameProps:"metadata-multi-line-editor",
+                             {disabled:!this.props.data.canEditMetadataValues,
+                            classNameProps:"metadata-multi-line-editor",
                             dataChangeHandler:this.changeHandler.bind(this, this.banksName), 
                             value:this.props.data[this.banksName]} )
                         )

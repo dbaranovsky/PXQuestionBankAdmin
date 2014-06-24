@@ -38,6 +38,21 @@ var TitleSpecificMetadataField = React.createClass({
     this.props.showDisplayOptionsDialog(this.props.index, this.props.data.displayOptions);
   },
 
+  buildDisabledClass: function(classText, isDisabled) {
+    if(isDisabled) {
+      classText+=" disabled"
+    }
+    return classText;
+  },
+
+  renderInternalNameButton: function() {
+    return (<button type="button"
+                    className={this.buildDisabledClass("btn btn-default btn-xs", !this.props.canEditTitleMetadataFull)} 
+                    onClick={this.openInternalNameDialogHandler}>
+            <span className="glyphicon glyphicon-pencil"></span>
+            </button>);
+  },
+
   renderAvailibleValuesButton: function() {
     var fieldType = this.props.data.fieldType;
      if((fieldType==window.enums.metadataFieldType.text)|| 
@@ -45,11 +60,24 @@ var TitleSpecificMetadataField = React.createClass({
         (fieldType==window.enums.metadataFieldType.multilineText)) {
       return null;
      }
-     return (<button type="button" className="btn btn-default"  onClick={this.openAvailibleValuesDialog} >Values...</button>);
+
+     return (<button type="button" className="btn btn-default"  
+                                   onClick={this.openAvailibleValuesDialog} >Values...</button>);
   },
 
   renderDisplayOptionsButton: function() {
-     return (<button type="button" className="btn btn-default"  onClick={this.openDisplayOptionsDialog} >Edit...</button>);
+     return (<button type="button" className={this.buildDisabledClass("btn btn-default", !this.props.canEditTitleMetadataReduced)} 
+                                   onClick={this.openDisplayOptionsDialog} >Edit...</button>);
+  },
+
+  renderDeleteButton: function() {
+     return (<button type="button" className={this.buildDisabledClass("btn btn-default btn-sm", !this.props.canEditTitleMetadataReduced)}
+                     onClick={this.deleteHandler} 
+                     data-toggle="tooltip"
+                     title="Delete field">
+                   <span className="glyphicon glyphicon-trash">
+                   </span>
+             </button>);
   },
 
  	getInternalName: function(name) {
@@ -70,30 +98,27 @@ var TitleSpecificMetadataField = React.createClass({
                <tr>  
                		<td>
                			 <TextEditor value={this.props.data.fieldName}
+                           disabled={!this.props.canEditTitleMetadataReduced}
                			 			 dataChangeHandler={this.changeFieldNameHandler}
                			 			 onBlurHandler={this.onBlurFieldNameHandler}
                				/> 
                		</td>
                		<td> 
                		     <span> {this.props.data.internalName} </span>
-               		     <span> <button type="button" className="btn btn-default btn-xs" onClick={this.openInternalNameDialogHandler}><span className="glyphicon glyphicon-pencil"></span></button> </span>
+               		     <span> {this.renderInternalNameButton()}</span>
                		</td>
                		<td> 
                		   <SingleSelectSelector 
-                        allOptions={this.props.availableFieldTypes}
-                        dataPlaceholder="No Type"
+                       disabled={!this.props.canEditTitleMetadataReduced}
+                       allOptions={this.props.availableFieldTypes}
+                       dataPlaceholder="No Type"
                        onChangeHandler={this.changeTypeHandler}
                        currentValues = {this.getCurrentTypeValues()} />
                		</td>
                		<td>{this.renderAvailibleValuesButton()}</td>
                		<td> {this.renderDisplayOptionsButton()}</td>
                		<td>   
-               			 <button type="button" className="btn btn-default btn-sm" onClick={this.deleteHandler} 
-               		 				 data-toggle="tooltip"
-               		 				  title="Delete field">
-               		 				  <span className="glyphicon glyphicon-trash">
-               		 				  </span>
-               		 				</button>
+                       {this.renderDeleteButton()}
                		</td>
                 </tr>
             );

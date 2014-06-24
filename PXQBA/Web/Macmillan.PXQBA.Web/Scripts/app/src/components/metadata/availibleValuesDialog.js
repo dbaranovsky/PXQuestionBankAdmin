@@ -67,6 +67,7 @@ var AvailibleValuesDialog = React.createClass({
                             </div> 
                             <div> 
                                <TextAreaEditor 
+                              disabled={!self.props.canEdit}
                               classNameProps="metadata-availible-values-editor"
                               dataChangeHandler={self.onChangeHandler} 
                               value={self.state.value} />

@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="ConfigurationHelper.cs" />
     <Compile Include="Constants\ConfigurationKeys.cs" />
+    <Compile Include="EnumerableHelper.cs" />
     <Compile Include="EnumHelper.cs" />
     <Compile Include="HtmlXmlHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

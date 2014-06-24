@@ -97,6 +97,7 @@ var MetadataCardTemplateTab = React.createClass({displayName: 'MetadataCardTempl
        	    	React.DOM.div(null, 
                    TextAreaEditor( 
                         {classNameProps:"metadata-template-editor",
+                        disabled:!this.props.data.canEditQuestionCardTemplate,
                         dataChangeHandler:this.changeHandler.bind(this, this.cardTemplateName), 
                         value:this.props.data[this.cardTemplateName]} )
  			        )
