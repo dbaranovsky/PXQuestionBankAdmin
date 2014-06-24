@@ -109,6 +109,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult SaveRole(RoleViewModel role, string courseId)
         {
             userManagementService.UpdateRole(courseId, Mapper.Map<Role>(role));
+            CourseHelper.CurrentCourse = null;
             return JsonCamel(new { isSuccess = true });
         }
 
@@ -176,6 +177,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult SaveUserRoles(QBAUser user)
         {        
             userManagementService.UpdateUserRoles(user);
+            CourseHelper.CurrentCourse = null;
             return JsonCamel(new { isSuccess = true });
         }
 

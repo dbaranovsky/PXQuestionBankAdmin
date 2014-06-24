@@ -161,8 +161,8 @@ namespace Macmillan.PXQBA.Web.Controllers
                     var localValuesFromInitial = initialViewModel.LocalSection.DynamicValues[defaultFieldFromInitial.Key];
                     var localValuesFromNew = initialViewModel.LocalSection.DynamicValues[defaultFieldFromInitial.Key];
                     var defaultValuesFromNew = initialViewModel.LocalSection.DynamicValues[defaultFieldFromInitial.Key];
-                    if (defaultFieldFromInitial.Value.Intersect(localValuesFromInitial).Count() != Math.Max(defaultFieldFromInitial.Value.Count, localValuesFromInitial.Count) &&
-                       defaultValuesFromNew.Intersect(localValuesFromNew).Count() == Math.Max(defaultValuesFromNew.Count, localValuesFromNew.Count))
+                    if ((!defaultFieldFromInitial.Value.IsCollectionEqual(localValuesFromInitial)) &&
+                       (defaultValuesFromNew.IsCollectionEqual(localValuesFromNew)))
                     {
                         return false;
                     }
@@ -187,8 +187,8 @@ namespace Macmillan.PXQBA.Web.Controllers
                     var localValuesFromInitial = initialViewModel.LocalSection.DynamicValues[defaultFieldFromInitial.Key];
                     var localValuesFromNew = initialViewModel.LocalSection.DynamicValues[defaultFieldFromInitial.Key];
                     var defaultValuesFromNew = initialViewModel.LocalSection.DynamicValues[defaultFieldFromInitial.Key];
-                    if (defaultFieldFromInitial.Value.Intersect(localValuesFromInitial).Count() == Math.Max(defaultFieldFromInitial.Value.Count, localValuesFromInitial.Count) &&
-                       defaultValuesFromNew.Intersect(localValuesFromNew).Count() != Math.Max(defaultValuesFromNew.Count, localValuesFromNew.Count))
+                    if (defaultFieldFromInitial.Value.IsCollectionEqual(localValuesFromInitial) &&
+                        (!defaultValuesFromNew.IsCollectionEqual(localValuesFromNew)))
                     {
                         return false;
                     }
