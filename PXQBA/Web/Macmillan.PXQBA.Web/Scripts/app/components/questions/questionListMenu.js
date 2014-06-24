@@ -64,7 +64,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
     },
 
     createDraftHandler: function() {
-      this.props.createDraftHandler();
+      this.props.createDraftHandler(null, this.props.data.status);
     },
 
     shareHandler: function(){

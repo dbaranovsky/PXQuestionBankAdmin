@@ -108,6 +108,13 @@ namespace Macmillan.PXQBA.Web.Controllers
             response.CanViewHistory = userCapabilities.Contains(Capability.ViewVersionHistory);
             response.CanCreateNewDraft = userCapabilities.Contains(Capability.CreateDraftFromAvailableQuestion);
             response.CanPublishDraft = userCapabilities.Contains(Capability.PublishDraft);
+            response.CanChangeFromAvailibleToDeleted = userCapabilities.Contains(Capability.ChangeStatusFromAvailableToDeleted);
+            response.CanChangeFromAvailibleToInProgress = userCapabilities.Contains(Capability.ChangeStatusFromAvailableToInProgress);
+            response.CanChangeFromDeletedToAvailible = userCapabilities.Contains(Capability.ChangeStatusFromDeletedToAvailable);
+            response.CanChangeFromDeletedToInProgress = userCapabilities.Contains(Capability.ChangeStatusFromDeletedToInProgress);
+            response.CanChangeFromInProgressToAvailible = userCapabilities.Contains(Capability.ChangeStatusFromInProgressToAvailable);
+            response.CanChangeFromInProgressToDeleted = userCapabilities.Contains(Capability.ChangeStatusFromInProgressToDeleted);
+
             foreach (var questionMetadata in response.QuestionList)
             {
                 if (!response.CanPreviewQuestion && questionMetadata.Data.ContainsKey(MetadataFieldNames.InlinePreview))

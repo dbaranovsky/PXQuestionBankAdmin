@@ -70,12 +70,14 @@ var Question = React.createClass({displayName: 'Question',
         return ( QuestionCell( {value:this.props.metadata.data[metadataName],
                                field:metadataName, 
                                questionId:this.props.metadata.data.id,
+                               status: this.props.metadata.data[window.consts.questionStatusName],
                                editorDescriptor:editorDescriptor,
                                allowedEdit:  allowedEdit,
                                expanded:  this.props.expanded,
                                draft:this.props.draft,
                                expandPreviewQuestionHandler:  this.props.expandPreviewQuestionHandler,
-                               canChangeDraftStatus:  this.props.metadata.data.canChangeDraftStatus}
+                               canChangeDraftStatus:  this.props.metadata.canChangeDraftStatus,
+                               capabilities:  this.props.capabilities}
                                 ));
     },
       

@@ -52,7 +52,10 @@ var QuestionCell = React.createClass({
     },
 
     renderExpandButton: function() {
-         return (<ExpandButton expanded={this.props.expanded} onClickHandler={this.expandPreviewQuestionHandler} targetCaption="question"/>);  
+          if(this.props.capabilities.canPreviewQuestion){
+             return (<ExpandButton expanded={this.props.expanded} onClickHandler={this.expandPreviewQuestionHandler} targetCaption="question"/>); 
+          }
+
     },
 
     renderDraftLabel: function() {
@@ -65,11 +68,13 @@ var QuestionCell = React.createClass({
     renderValue: function() {
         if(this.state.editMode) {
             return (<QuestionInlineEditorBase afterEditingHandler={this.afterEditingHandler}
+                    capabilities = {this.props.capabilities}
                     metadata={ {field: this.props.field,
                                currentValue: this.props.value,
                                questionId: this.props.questionId,
                                editorDescriptor: this.props.editorDescriptor,
-                               draft: this.props.draft
+                               draft: this.props.draft,
+                               status: this.props.status
                              }}
              />);
         }
