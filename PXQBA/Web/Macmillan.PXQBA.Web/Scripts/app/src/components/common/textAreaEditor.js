@@ -13,7 +13,7 @@ var TextAreaEditor = React.createClass({
        return (
              <div>  
                 <textarea 
-                  disabled={ this.props.disabled ? 'disabled' : undefined}
+                  disabled={this.props.disabled ? 'disabled' : undefined}
                   className={this.props.classNameProps}
                   onChange={this.changeHandler} 
                   type="text" 

@@ -71,8 +71,7 @@ var MetadataMetaEditorTab = React.createClass({displayName: 'MetadataMetaEditorT
           indexRowForDialog: index,
           valueForDialog: value,
           fieldNameCaption: fieldNameCaption,
-          fieldType: fieldType,
-          canEdit: this.props.data.canEditMetadataValues
+          fieldType: fieldType
       });
   },
 
@@ -113,7 +112,8 @@ var MetadataMetaEditorTab = React.createClass({displayName: 'MetadataMetaEditorT
                                   itemIndex:this.state.indexRowForDialog,
                                   updateHandler:this.props.metadataFieldsHandlers.updateHandler,
                                   fieldNameCaption:this.state.fieldNameCaption,
-                                  fieldType:this.state.fieldType}
+                                  fieldType:this.state.fieldType,
+                                  canEdit:this.props.data.canEditMetadataValues}
                                    ));
    }
 
