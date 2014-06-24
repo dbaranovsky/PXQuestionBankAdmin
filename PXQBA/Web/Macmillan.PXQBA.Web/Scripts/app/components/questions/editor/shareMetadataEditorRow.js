@@ -137,7 +137,7 @@ var ShareMetadataEditorRow = React.createClass({displayName: 'ShareMetadataEdito
     renderLocalValue: function(){
       return  (React.DOM.div( {className:"cell"}, 
                  MetadataFieldEditor( {question:this.props.isStatic?  this.props.question.localSection :  this.props.question.localSection.dynamicValues, 
-                                    isDisabled:this.state.isDisabled || (!this.props.question.canEditSharedQuestionMetadata && !this.props.question.isShared), 
+                                    isDisabled:this.state.isDisabled || (!this.props.question.canEditSharedQuestionMetadata && this.props.question.isShared), 
                                     metadata:this.props.metadata, 
                                     editHandler:this.localEditHandler, 
                                     field:this.props.field, 
