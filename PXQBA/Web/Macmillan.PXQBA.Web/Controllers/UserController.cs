@@ -96,8 +96,9 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult GetRoleCapabilities(int? roleId, string courseId)
         {
-            if (roleId.HasValue && roleId.Value > 0)
+            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.DefineRole) && (!roleId.HasValue || roleId.Value <= 0))
             {
+                return new HttpUnauthorizedResult();
             }
             var role = Mapper.Map<RoleViewModel>(userManagementService.GetRole(courseId, roleId));
             return JsonCamel(role);
