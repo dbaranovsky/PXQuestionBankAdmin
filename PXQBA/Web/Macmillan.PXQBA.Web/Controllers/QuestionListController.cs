@@ -32,7 +32,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public QuestionListController(IQuestionMetadataService questionMetadataService,
                                       IQuestionManagementService questionManagementService,
-                                      INotesManagementService notesManagementService, IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService)
+                                      INotesManagementService notesManagementService, IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService):base(productCourseManagementService, userManagementService)
         {
             this.questionManagementService = questionManagementService;
             this.questionPerPage = ConfigurationHelper.GetQuestionPerPage();
@@ -219,18 +219,6 @@ namespace Macmillan.PXQBA.Web.Controllers
             request.OrderType = SortType.None;
         }
 
-        /// <summary>
-        /// Update current course in session
-        /// </summary>
-        /// <param name="courseId"></param>
-        private void UpdateCurrentCourse(string courseId)
-        {
-            if (CourseHelper.NeedGetCourse(courseId))
-            {
-                CourseHelper.CurrentCourse = productCourseManagementService.GetProductCourse(courseId, true);
-                UserCapabilitiesHelper.Capabilities = userManagementService.GetUserCapabilities(courseId);
-            }
-        }
 
         /// <summary>
         /// Gets metadata for course by its Id

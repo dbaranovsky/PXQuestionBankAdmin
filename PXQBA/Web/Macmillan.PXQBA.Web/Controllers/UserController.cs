@@ -6,6 +6,7 @@ using AutoMapper;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
+using Macmillan.PXQBA.Web.Helpers;
 using Macmillan.PXQBA.Web.ViewModels.MetadataConfig;
 using Macmillan.PXQBA.Web.ViewModels.User;
 
@@ -19,7 +20,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         private readonly int usersPerPage;
 
-        public UserController(IUserManagementService userManagementService, IProductCourseManagementService productCourseManagementService)
+        public UserController(IUserManagementService userManagementService, IProductCourseManagementService productCourseManagementService):base(productCourseManagementService, userManagementService)
         {
             this.userManagementService = userManagementService;
             usersPerPage = ConfigurationHelper.GetUsersPerPage();
@@ -76,8 +77,15 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult GetRolesForCourse(string courseId)
         {
-            var roles = userManagementService.GetRolesForCourse(courseId);
-            return JsonCamel(Mapper.Map<IEnumerable<RoleViewModel>>(roles));
+            UpdateCurrentCourse(courseId);
+            var roles = Mapper.Map<RoleListViewModel>(userManagementService.GetRolesForCourse(courseId));
+            UpdateCapabilities(roles, courseId);
+            return JsonCamel(roles);
+        }
+
+        private void UpdateCapabilities(RoleListViewModel roles, string courseId)
+        {
+            roles.CanDefineNewRole = UserCapabilitiesHelper.Capabilities.Contains(Capability.DefineRole);
         }
 
         public ActionResult DeleteRole(string courseId, int roleId)
@@ -88,6 +96,9 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult GetRoleCapabilities(int? roleId, string courseId)
         {
+            if (roleId.HasValue && roleId.Value > 0)
+            {
+            }
             var role = Mapper.Map<RoleViewModel>(userManagementService.GetRole(courseId, roleId));
             return JsonCamel(role);
         }
@@ -121,7 +132,7 @@ namespace Macmillan.PXQBA.Web.Controllers
                              {
                                Users = users,
                                TotalPages = totalPages,
-                               CurrentPage = page
+                               CurrentPage = page,
                              });
         }
 
@@ -144,7 +155,17 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult GetUserRoles(string userId)
         {
             var user = userManagementService.GetUser(userId);
+            UpdateCapabilities(user);
             return JsonCamel(user);
+        }
+
+        private void UpdateCapabilities(QBAUser user)
+        {
+            foreach (var userProductCourse in user.ProductCourses)
+            {
+                var capabilities = userManagementService.GetUserCapabilities(userProductCourse.Id);
+                userProductCourse.CanSetRoles = capabilities.Contains(Capability.SetRoleToTitle);
+            }
         }
 
         /// <summary>
