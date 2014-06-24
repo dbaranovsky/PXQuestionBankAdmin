@@ -14,6 +14,7 @@ using Macmillan.PXQBA.Business.Commands.DataContracts;
 using Macmillan.PXQBA.Business.Commands.Helpers;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
+using Macmillan.PXQBA.Common.Logging;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
@@ -269,6 +270,8 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                                        {
                                            TaskId = taskId.Value.ToString()
                                        };
+
+                StaticLogger.LogDebug("ExecuteSolrUpdateTask: " + DateTime.Now);
                 businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
             }
         }
