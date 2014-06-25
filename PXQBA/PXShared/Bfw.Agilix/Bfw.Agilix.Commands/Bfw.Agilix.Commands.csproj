@@ -222,6 +222,7 @@
     <Compile Include="GetEntityWork2.cs" />
     <Compile Include="GetItemAnalysis.cs" />
     <Compile Include="GetRawResponse.cs" />
+    <Compile Include="GetTaskList.cs" />
     <Compile Include="ListCourses.cs" />
     <Compile Include="ListUsers.cs" />
     <Compile Include="UpdateDomains.cs" />

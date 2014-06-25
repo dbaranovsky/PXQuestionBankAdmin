@@ -39,7 +39,9 @@ namespace Macmillan.PXQBA.Business.Services
             try
             {
                 Question question = GetNewQuestionTemplate(course, questionType, bank, chapter);
-                return questionCommands.CreateQuestion(course.ProductCourseId, question);
+                var created = questionCommands.CreateQuestion(course.ProductCourseId, question);
+                questionCommands.ExecuteSolrUpdateTask();
+                return created;
             }
             catch (Exception ex)
             {
@@ -75,7 +77,9 @@ namespace Macmillan.PXQBA.Business.Services
                 question.DuplicateFromShared = questionId;
             }
             question.DuplicateFrom = questionId;
-            return questionCommands.CreateQuestion(course.ProductCourseId, question);
+            var created = questionCommands.CreateQuestion(course.ProductCourseId, question);
+            questionCommands.ExecuteSolrUpdateTask();
+            return created;
         }
 
    
@@ -84,7 +88,7 @@ namespace Macmillan.PXQBA.Business.Services
         {
             try
             {
-                questionCommands.UpdateQuestionInTempQuiz(temporaryQuestion);
+                questionCommands.UpdateQuestion(temporaryQuestion);
                 var question = temporaryQuestionOperation.CopyQuestionToSourceCourse(course.QuestionRepositoryCourseId, sourceQuestionId);
                 UpdateManuallyAddedKeywords(course, question.ProductCourseSections.FirstOrDefault(s => s.ProductCourseId == course.ProductCourseId));
                 questionCommands.ExecuteSolrUpdateTask();
@@ -124,7 +128,9 @@ namespace Macmillan.PXQBA.Business.Services
 
         public bool UpdateQuestionField(Course course, string questionId, string fieldName, string fieldValue, IEnumerable<Capability> userCapabilities)
         {
-            return questionCommands.UpdateQuestionField(course.ProductCourseId, course.QuestionRepositoryCourseId, questionId, fieldName, fieldValue, userCapabilities);
+            var result = questionCommands.UpdateQuestionField(course.ProductCourseId, course.QuestionRepositoryCourseId, questionId, fieldName, fieldValue, userCapabilities);
+            questionCommands.ExecuteSolrUpdateTask();
+            return result;
         }
 
         public bool UpdateSharedQuestionField(Course course, string questionId, string fieldName, IEnumerable<string> fieldValues)
@@ -138,12 +144,16 @@ namespace Macmillan.PXQBA.Business.Services
                 questionParentCourse = productCourseManagementService.GetProductCourse(parentCourseSection.ProductCourseId);
             }
             UpdateManuallyAddedKeywords(questionParentCourse, question.DefaultSection);
-            return questionCommands.UpdateSharedQuestionField(temporaryRepositoryCourseId, questionId, fieldName, fieldValues);
+            var result = questionCommands.UpdateSharedQuestionField(temporaryRepositoryCourseId, questionId, fieldName, fieldValues);
+            questionCommands.ExecuteSolrUpdateTask();
+            return result;
         }
 
         public bool BulklUpdateQuestionField(Course course, string[] questionId, string fieldName, string fieldValue, IEnumerable<Capability> userCapabilities)
         {
-            return questionCommands.BulklUpdateQuestionField(course.ProductCourseId, course.QuestionRepositoryCourseId, questionId, fieldName, fieldValue, userCapabilities);
+            var result = questionCommands.BulklUpdateQuestionField(course.ProductCourseId, course.QuestionRepositoryCourseId, questionId, fieldName, fieldValue, userCapabilities);
+            questionCommands.ExecuteSolrUpdateTask();
+            return result;
         }
 
         public Question CreateTemporaryQuestion(Course course, string questionId)
@@ -154,6 +164,7 @@ namespace Macmillan.PXQBA.Business.Services
         public bool RemoveFromTitle(string[] questionsId, Course currentCourse)
         {
             bool isSuccess = questionCommands.RemoveFromTitle(questionsId, currentCourse.QuestionRepositoryCourseId, currentCourse.ProductCourseId);
+            questionCommands.ExecuteSolrUpdateTask();
             return isSuccess;
         }
 
@@ -169,6 +180,7 @@ namespace Macmillan.PXQBA.Business.Services
             }
             
             bool isSuccess = questionCommands.UpdateQuestions(questions, currentCourse.QuestionRepositoryCourseId);
+            questionCommands.ExecuteSolrUpdateTask();
             return isSuccess;
         }
 
@@ -213,6 +225,7 @@ namespace Macmillan.PXQBA.Business.Services
                     draftQuestion.IsPublishedFromDraft = true;
                     questionCommands.UpdateQuestion(draftQuestion);
                     DeleteDraft(currentCourse.QuestionRepositoryCourseId, draftQuestionId);
+                    questionCommands.ExecuteSolrUpdateTask();
                     return true;
                 }
                 return false;
@@ -258,7 +271,9 @@ namespace Macmillan.PXQBA.Business.Services
             }
             ClearServiceFields(question);
             question.DraftFrom = questionId;
-            return questionCommands.CreateQuestion(course.ProductCourseId, question);
+            var draft = questionCommands.CreateQuestion(course.ProductCourseId, question);
+            questionCommands.ExecuteSolrUpdateTask();
+            return draft;
         }
 
         public bool RemoveQuestion(Course course, string questionId)
@@ -271,6 +286,7 @@ namespace Macmillan.PXQBA.Business.Services
                    )
                 {
                     questionCommands.DeleteQuestion(course.QuestionRepositoryCourseId, questionId);
+                    questionCommands.ExecuteSolrUpdateTask();
                     return true;
                 }
                 return false;
@@ -291,6 +307,7 @@ namespace Macmillan.PXQBA.Business.Services
                 ClearServiceFields(questionVersion);
                 questionVersion.DraftFrom = draftFrom;
                 questionCommands.UpdateQuestion(questionVersion);
+                questionCommands.ExecuteSolrUpdateTask();
             }
             return questionVersion;
         }
