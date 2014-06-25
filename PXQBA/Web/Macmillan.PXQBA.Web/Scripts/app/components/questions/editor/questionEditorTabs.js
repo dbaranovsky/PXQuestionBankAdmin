@@ -449,7 +449,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
           return ( VersionHistory( {question:this.props.question, handlers:this.props.handlers}));
         }
 
-        return (React.DOM.b(null, "You have no permission to view question history"))
+        return (React.DOM.span( {className:"label label-danger"}, "You have no permission to view question history"))
     },
 
     render: function() {
@@ -483,7 +483,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                       this.renderSharingNotification(),
 
                        React.DOM.div( {className:"tab-body .shared"}, 
-                          !this.props.question.canEditSharedQuestionContent? React.DOM.b(null, "You have no permission to edit question body") : React.DOM.div(  {className:"iframe waiting"} ),
+                          !this.props.question.canEditSharedQuestionContent?  React.DOM.span( {className:"label label-danger"}, "You have no permission to edit question body") : React.DOM.div(  {className:"iframe waiting"} ),
                            this.state.graphLoading? React.DOM.div(  {className:"iframe waiting"} ) : "",
                           React.DOM.div( {id:"quizeditorcomponent", className:iframeClass}),
                           React.DOM.div( {className:"modal-footer"}, 
