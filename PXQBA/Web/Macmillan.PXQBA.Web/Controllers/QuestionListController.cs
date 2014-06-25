@@ -167,7 +167,13 @@ namespace Macmillan.PXQBA.Web.Controllers
             {
                 return new HttpUnauthorizedResult();
             }
-              return JsonCamel(notesManagementService.CreateNote(note));
+
+            if (string.IsNullOrEmpty(note.QuestionId))
+            {
+                note.QuestionId = QuestionHelper.QuestionIdToEdit;
+            }
+            
+            return JsonCamel(notesManagementService.CreateNote(note));
         }
 
         /// <summary>
