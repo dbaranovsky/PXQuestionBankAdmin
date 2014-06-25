@@ -46,7 +46,7 @@ namespace Macmillan.PXQBA.Business.Contracts
         bool UpdateQuestionField(Course course, string questionId, string fieldName, string fieldValue, IEnumerable<Capability> userCapabilities);
         bool UpdateSharedQuestionField(Course course, string questionId, string fieldName, IEnumerable<string> fieldValues);
 
-        bool BulklUpdateQuestionField(Course course, string[] questionId, string fieldName, string fieldValue, IEnumerable<Capability> userCapabilities);
+        BulkOperationResult BulklUpdateQuestionField(Course course, string[] questionId, string fieldName, string fieldValue, IEnumerable<Capability> userCapabilities);
 
         Question CreateTemporaryQuestion(Course course, string questionId);
 

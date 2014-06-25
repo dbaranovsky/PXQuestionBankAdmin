@@ -212,8 +212,8 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                     }
                 }
                 results.AddRange(docElements);
-            } //while (docElements.Count() == SearchCommandMaxRows);
-              while (i <= 1);
+            } while (docElements.Count() == SearchCommandMaxRows);
+            // while (i <= 1);
             
 
             var searchResults = results.Select(doc => QuestionDataXmlParser.ToSearchResultEntity(doc, sortingField));
@@ -431,14 +431,14 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 section.Flag = fieldValue;
             }
         }
-        public bool BulklUpdateQuestionField(string productCourseId, string repositoryCourseId, string[] questionId, string fieldName, string fieldValue, IEnumerable<Capability> userCapabilities)
+        public BulkOperationResult BulklUpdateQuestionField(string productCourseId, string repositoryCourseId, string[] questionId, string fieldName, string fieldValue, IEnumerable<Capability> userCapabilities)
         {
             if (fieldName.Equals(MetadataFieldNames.QuestionStatus))
             {
                 return UpdateQuestionsStatuses(repositoryCourseId, questionId, fieldValue, userCapabilities);
             }
 
-            return true;
+            return new BulkOperationResult();
         }
        
         public bool UpdateSharedQuestionField(string repositoryCourseId, string questionId, string fieldName, IEnumerable<string> fieldValues)
@@ -676,34 +676,44 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         private bool UpdateQuestionStatus(string repositoryCourseId, string questionId, string newValue, IEnumerable<Capability> userCapabilities)
         {
-            return UpdateQuestionsStatuses(repositoryCourseId, new List<string> { questionId }, newValue, userCapabilities);
+            return UpdateQuestionsStatuses(repositoryCourseId, new List<string> { questionId }, newValue, userCapabilities).IsSuccess;
         }
 
 
-        private bool UpdateQuestionsStatuses(string repositoryCourseId, IEnumerable<string> questionId, string newValue, IEnumerable<Capability> userCapabilities)
+        private BulkOperationResult UpdateQuestionsStatuses(string repositoryCourseId, IEnumerable<string> questionId, string newValue, IEnumerable<Capability> userCapabilities)
         {
-
+            var result = new BulkOperationResult();
+ 
             var questions = GetAgilixQuestions(repositoryCourseId, questionId);
             if (questions == null)
             {
-                return false;
+                return result;
             }
-
-           // var newStatus = ((int)((QuestionStatus)EnumHelper.GetItemByDescription(typeof(QuestionStatus), newValue))).ToString();
-
-            
 
             foreach (var question in questions)
             {
-                if (IsAllowedToChangeStatus(question, newValue, userCapabilities))
+                if (!IsAllowedToChangeStatus(question, newValue, userCapabilities))
                 {
-                    question.QuestionStatus = newValue;
+                    result.PermissionSkipped++;
+                    continue;
                 }
+                if (question.IsDraft())
+                {
+                    QuestionStatus status = ((QuestionStatus)(Int32.Parse(newValue)));
+                    if (status == QuestionStatus.AvailableToInstructors)
+                    {
+                        result.DraftSkipped++;
+                        continue;
+                    }
+                }
+                question.QuestionStatus = newValue;
+
             }
 
             ExecutePutQuestions(questions);
+            result.IsSuccess = true;
 
-            return true;
+            return result;
         }
 
         private bool IsAllowedToChangeStatus(Bfw.Agilix.DataContracts.Question question, string newValue, IEnumerable<Capability> userCapabilities)
@@ -712,7 +722,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             string inProgressId = ((int)QuestionStatus.InProgress).ToString();
             string deletedId = ((int)QuestionStatus.Deleted).ToString();
             var oldValue = question.QuestionStatus;
-            if (question.IsDraft() && (availableForInstructorsId == newValue || !userCapabilities.Contains(Capability.ChangeDraftStatus)))
+            if (!userCapabilities.Contains(Capability.ChangeDraftStatus))
             {
                 return false;
             }

@@ -149,7 +149,7 @@ namespace Macmillan.PXQBA.Business.Services
             return result;
         }
 
-        public bool BulklUpdateQuestionField(Course course, string[] questionId, string fieldName, string fieldValue, IEnumerable<Capability> userCapabilities)
+        public BulkOperationResult BulklUpdateQuestionField(Course course, string[] questionId, string fieldName, string fieldValue, IEnumerable<Capability> userCapabilities)
         {
             var result = questionCommands.BulklUpdateQuestionField(course.ProductCourseId, course.QuestionRepositoryCourseId, questionId, fieldName, fieldValue, userCapabilities);
             questionCommands.ExecuteSolrUpdateTask();
