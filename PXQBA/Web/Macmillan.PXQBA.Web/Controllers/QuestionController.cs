@@ -246,6 +246,9 @@ namespace Macmillan.PXQBA.Web.Controllers
             questionViewModel.CanRestoreVersion = userCapabilities.Contains(Capability.RestoreOldVersion);
             questionViewModel.CanCreateDraftFromVersion = userCapabilities.Contains(Capability.CreateDraftFromOldVersion);
             questionViewModel.CanViewHistory = userCapabilities.Contains(Capability.ViewVersionHistory);
+            questionViewModel.CanAddNotesQuestion = userCapabilities.Contains(Capability.AddNoteToQuestion);
+            questionViewModel.CanRemoveNotesQuestion = userCapabilities.Contains(Capability.RemoveNoteFromQuestion);
+
             if (!userCapabilities.Contains(Capability.EditSharedQuestionContent) && questionViewModel.IsShared)
             {
                 questionViewModel.EditorUrl = string.Empty;

@@ -221,7 +221,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
                     this.renderEditMenu()
                 ),
                React.DOM.button( {type:"button", className:"btn btn-default btn-sm", disabled:!this.props.capabilities.canDuplicateQuestion, onClick:this.copyQuestionHandler,  'data-toggle':"tooltip", title:"Duplicate Question"}, React.DOM.span( {className:"glyphicon glyphicon-copyright-mark"})),
-               React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.editNotesHandler, disabled:!this.props.capabilities.canAddNotesQuestion, 'data-toggle':"tooltip", title:"Edit Notes"}, React.DOM.span( {className:"glyphicon glyphicon-list-alt"}), " " ), 
+               React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.editNotesHandler, 'data-toggle':"tooltip", title:"Edit Notes"}, React.DOM.span( {className:"glyphicon glyphicon-list-alt"}), " " ), 
                React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn", disabled:!this.props.capabilities.canViewHistory, onClick:this.props.editQuestionHandler.bind(this, true, false), 'data-toggle':"tooltip", title:"View Question History"}, React.DOM.span( {className:"glyphicon icon-version-history"} )) 
                ));
      }

@@ -49,14 +49,14 @@ var NoteBox = React.createClass({displayName: 'NoteBox',
     return {data: []};
   },
   componentWillMount: function() {
-    var response = questionDataManager.getQuestionNotes(this.props.questionId);
+    var response = questionDataManager.getQuestionNotes(this.props.questionId == undefined? null : this.props.questionId);
     response.done(this.loadNotes);
   },
   render: function() {
     return (
       React.DOM.div( {className:"note-box"}, 
         NoteList( {data:this.state.data,  onNoteDelete:  this.noteDeleteHandler, onNoteUpdate:this.noteUpdateHandler, canDelete:this.props.canDelete} ),
-        NoteForm( {onNoteSubmit:this.handleNoteSubmit, questionId:this.props.questionId} )
+        NoteForm( {onNoteSubmit:this.handleNoteSubmit, questionId:this.props.questionId, canAddNote:this.props.canAddNote})
       )
     );
   }

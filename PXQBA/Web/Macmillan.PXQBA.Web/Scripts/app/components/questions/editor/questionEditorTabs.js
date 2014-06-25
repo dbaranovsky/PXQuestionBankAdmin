@@ -440,6 +440,9 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                              ),
                               React.DOM.li(null, 
                                  React.DOM.a( {href:"#history", id:"history-tab", 'data-toggle':"tab"}, "History")
+                             ),
+                              React.DOM.li(null, 
+                                 React.DOM.a( {href:"#notes", id:"notes-tab", 'data-toggle':"tab"}, "Notes")
                              )
                         ));
     },
@@ -450,6 +453,14 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
         }
 
         return (React.DOM.span( {className:"label label-danger"}, "You have no permission to view question history"))
+    },
+
+    renderNotes: function(){
+      if(this.state.notesLoading){
+          return(React.DOM.div( {className:"waiting"}));
+      }
+
+      return(NoteBox( {canDelete:this.props.question.canRemoveNotesQuestion, canAddNote:this.props.question.canAddNotesQuestion}));
     },
 
     render: function() {
@@ -507,13 +518,21 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                            )
                        )
                     ),
-                     React.DOM.div( {className:"tab-pane", id:"history"}, 
+                    React.DOM.div( {className:"tab-pane", id:"history"}, 
 
                        React.DOM.div( {className:"tab-body"}, 
                          this.renderHistory()
                        )
 
-                )
+                   ),
+
+                   React.DOM.div( {className:"tab-pane", id:"notes"}, 
+
+                       React.DOM.div( {className:"tab-notes"}, 
+                          this.renderNotes()
+                       )
+
+                   )
                 )
                
 

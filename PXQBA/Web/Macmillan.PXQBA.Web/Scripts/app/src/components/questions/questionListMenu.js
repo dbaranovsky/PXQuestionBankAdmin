@@ -221,7 +221,7 @@ var QuestionListMenu = React.createClass({
                     {this.renderEditMenu()}
                 </div>
                <button type="button" className="btn btn-default btn-sm" disabled={!this.props.capabilities.canDuplicateQuestion} onClick={this.copyQuestionHandler}  data-toggle="tooltip" title="Duplicate Question"><span className="glyphicon glyphicon-copyright-mark"></span></button>
-               <button type="button" className="btn btn-default btn-sm" onClick={this.editNotesHandler} disabled={!this.props.capabilities.canAddNotesQuestion} data-toggle="tooltip" title="Edit Notes"><span className="glyphicon glyphicon-list-alt"></span> </button> 
+               <button type="button" className="btn btn-default btn-sm" onClick={this.editNotesHandler} data-toggle="tooltip" title="Edit Notes"><span className="glyphicon glyphicon-list-alt"></span> </button> 
                <button type="button" className="btn btn-default btn-sm custom-btn" disabled={!this.props.capabilities.canViewHistory} onClick={this.props.editQuestionHandler.bind(this, true, false)} data-toggle="tooltip" title="View Question History"><span className="glyphicon icon-version-history" ></span></button> 
                </div>);
      }

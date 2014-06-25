@@ -441,6 +441,9 @@ var QuestionEditorTabs = React.createClass({
                               <li>
                                  <a href="#history" id="history-tab" data-toggle="tab">History</a>
                              </li>
+                              <li>
+                                 <a href="#notes" id="notes-tab" data-toggle="tab">Notes</a>
+                             </li>
                         </ul>);
     },
 
@@ -450,6 +453,14 @@ var QuestionEditorTabs = React.createClass({
         }
 
         return (<span className="label label-danger">You have no permission to view question history</span>)
+    },
+
+    renderNotes: function(){
+      if(this.state.notesLoading){
+          return(<div className="waiting"></div>);
+      }
+
+      return(<NoteBox canDelete={this.props.question.canRemoveNotesQuestion} canAddNote={this.props.question.canAddNotesQuestion}/>);
     },
 
     render: function() {
@@ -507,13 +518,21 @@ var QuestionEditorTabs = React.createClass({
                            </div>
                        </div>
                     </div>
-                     <div className="tab-pane" id="history">
+                    <div className="tab-pane" id="history">
 
                        <div className="tab-body">
                          {this.renderHistory()}
                        </div>
 
-                </div>
+                   </div>
+
+                   <div className="tab-pane" id="notes">
+
+                       <div className="tab-notes">
+                          {this.renderNotes()}
+                       </div>
+
+                   </div>
                 </div>
                
 
