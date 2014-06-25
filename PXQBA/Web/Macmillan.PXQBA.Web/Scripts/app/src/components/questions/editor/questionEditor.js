@@ -80,7 +80,7 @@ var QuestionEditor = React.createClass({
 
     saveBHEditor: function(frameApi){
       var self = this;
-        if (frameApi !== undefined && frameApi.saveComponent !== undefined ){
+        if (frameApi !== undefined && frameApi.saveComponent !== undefined && (!this.props.question.isShared || this.props.question.canEditSharedQuestionContent)){
              frameApi.saveComponent('questioneditor', 'quizeditorcomponent', function(result){
                       self.setState({saving: false});
                       if(!result) {
