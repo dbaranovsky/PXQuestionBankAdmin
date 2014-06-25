@@ -15,7 +15,6 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
 
         Dictionary<string, int> GetQuestionCountByChapters(string questionRepositoryCourseId, string currentCourseId, IEnumerable<string> chapterNames);
         Question UpdateQuestion(Question question);
-        Question UpdateQuestionInTempQuiz(Question question);
         bool UpdateQuestionField(string productCourseId, string repositoryCourseId, string questionId, string fieldName, string value, IEnumerable<Capability> userCapabilities);
 
         bool BulklUpdateQuestionField(string productCourseId, string repositoryCourseId, string[] questionId, string fieldName, string value, IEnumerable<Capability> userCapabilities);

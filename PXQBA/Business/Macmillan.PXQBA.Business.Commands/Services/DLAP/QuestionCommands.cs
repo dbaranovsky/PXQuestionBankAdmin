@@ -40,7 +40,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         public PagedCollection<Question> GetQuestionList(string questionRepositoryCourseId, string currentCourseId, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
         {
             var filterCopy = MakeFilterCopy(filter);
-            if (sortCriterion.SortType==SortType.None)
+            if (sortCriterion.SortType == SortType.None)
             {
                 sortCriterion.ColumnName = MetadataFieldNames.Sequence;
                 sortCriterion.SortType = SortType.Asc;
@@ -183,6 +183,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         private IEnumerable<QuestionSearchResult> PerformSearch(string questionRepositoryCourseId, string query, string sortingField)
         {
+            StaticLogger.LogDebug("PerformSearch start: " +DateTime.Now);
             var results = new List<XElement>();
             IEnumerable<XElement> docElements = new List<XElement>();
             var i = 0;
@@ -211,11 +212,12 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                     }
                 }
                 results.AddRange(docElements);
-            } while (docElements.Count() == SearchCommandMaxRows);
-              //while (i <= 1);
+            } //while (docElements.Count() == SearchCommandMaxRows);
+              while (i <= 1);
             
 
             var searchResults = results.Select(doc => QuestionDataXmlParser.ToSearchResultEntity(doc, sortingField));
+            StaticLogger.LogDebug("PerformSearch end: " + DateTime.Now);
             return searchResults;
         }
 
@@ -256,7 +258,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             question.ModifiedBy = businessContext.CurrentUser.Id;
             SetSequence(productCourseId, question);
             ExecutePutQuestion(Mapper.Map<Bfw.Agilix.DataContracts.Question>(question));
-            ExecuteSolrUpdateTask();
             return question;
         }
 
@@ -273,6 +274,19 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
                 StaticLogger.LogDebug("ExecuteSolrUpdateTask: " + DateTime.Now);
                 businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+                
+                var finished = true;
+                do
+                {
+                    var getTaskList = new GetTaskList();
+                    getTaskList.SearchParameters = new TaskSearch()
+                    {
+                        TaskId = taskId.Value.ToString()
+                    };
+                    businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(getTaskList);
+                    var task = getTaskList.Tasks.FirstOrDefault();
+                    finished = task == null || task.Finished;
+                } while (!finished);
             }
         }
 
@@ -367,16 +381,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             var agilixQuestion = GetAgilixQuestion(question.EntityId, question.Id);
             Mapper.Map(question, agilixQuestion);
             ExecutePutQuestion(agilixQuestion);
-            ExecuteSolrUpdateTask();
-            return question;
-        }
-
-        public Question UpdateQuestionInTempQuiz(Question question)
-        {
-            question.ModifiedBy = businessContext.CurrentUser.Id;
-            var agilixQuestion = GetAgilixQuestion(question.EntityId, question.Id);
-            Mapper.Map(question, agilixQuestion);
-            ExecutePutQuestion(agilixQuestion);
             return question;
         }
 
@@ -385,7 +389,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             var agilixQuestions = GetAgilixQuestions(repositoryCourseId, questions.Select(q => q.Id));
             Mapper.Map(questions, agilixQuestions);
             ExecutePutQuestions(agilixQuestions);
-            ExecuteSolrUpdateTask();
             return true;
         }
 
@@ -479,7 +482,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             }
 
             ExecutePutQuestions(agilixQuestions);
-            ExecuteSolrUpdateTask();
             return true;
         }
 
@@ -506,7 +508,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             };
 
             businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(deleteCmd);
-            ExecuteSolrUpdateTask();
         }
 
         public IEnumerable<Question> GetQuestionDrafts(string questionRepositoryCourseId, Question question)
@@ -701,8 +702,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             }
 
             ExecutePutQuestions(questions);
-
-            ExecuteSolrUpdateTask();
 
             return true;
         }

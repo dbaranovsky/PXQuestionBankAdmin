@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic;
 using System.Web.Mvc;
+using Macmillan.PXQBA.Common.Logging;
 using Macmillan.PXQBA.Web.Helpers;
 using Macmillan.PXQBA.Web.ViewModels;
 using Macmillan.PXQBA.Web.ViewModels.Pages;
@@ -56,6 +57,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult GetQuestionData(QuestionListDataRequest request)
         {
+            StaticLogger.LogDebug("GetQuestionData start: " + DateTime.Now);
             var currentCourseFilter = request.Filter.SingleOrDefault(x => x.Field == MetadataFieldNames.ProductCourse);
             ClearParameters(currentCourseFilter, request);
 
@@ -90,6 +92,7 @@ namespace Macmillan.PXQBA.Web.Controllers
                             ProductTitle = CourseHelper.CurrentCourse.Title
                         };
             UpdateCapabilities(response);
+            StaticLogger.LogDebug("GetQuestionData end: " + DateTime.Now);
             return JsonCamel(response);
         }
 
