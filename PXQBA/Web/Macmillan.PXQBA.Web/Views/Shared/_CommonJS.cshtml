@@ -193,6 +193,13 @@
                         '@Url.Content("~/Content/img/displayOptionsHelp/Screenshot_LaunchPad_Resource_Panel.png")',
                 },
             },
+        };
+
+
+        window.alerts = {
+            draftAvailableForInstructorsInfo: function() {
+                alert('Changing status to \"Available for instructors\" is not allowed for drafts. To make a draft available in LaunchPad, publish it and then set the source question status to \"Available for instructors\".');
+            }
     };
     }
      )();

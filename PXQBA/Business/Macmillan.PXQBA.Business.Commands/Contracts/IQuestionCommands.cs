@@ -17,7 +17,7 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         Question UpdateQuestion(Question question);
         bool UpdateQuestionField(string productCourseId, string repositoryCourseId, string questionId, string fieldName, string value, IEnumerable<Capability> userCapabilities);
 
-        bool BulklUpdateQuestionField(string productCourseId, string repositoryCourseId, string[] questionId, string fieldName, string value, IEnumerable<Capability> userCapabilities);
+        BulkOperationResult BulklUpdateQuestionField(string productCourseId, string repositoryCourseId, string[] questionId, string fieldName, string value, IEnumerable<Capability> userCapabilities);
         bool UpdateSharedQuestionField(string repositoryCourseId, string questionId, string fieldName, IEnumerable<string> fieldValues);
 
         string GetQuizIdForQuestion(string questionId, string entityId);

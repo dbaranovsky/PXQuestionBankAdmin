@@ -1279,3 +1279,7 @@ textarea.metadata-availible-values-editor {
 .highlight {
     background-color: yellow !important;
 }
+
+.notification-link {
+    cursor: pointer;
+}

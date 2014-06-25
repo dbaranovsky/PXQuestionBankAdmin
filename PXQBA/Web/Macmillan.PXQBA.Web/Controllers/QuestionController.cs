@@ -65,9 +65,8 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult BulkUpdateMetadataField(string[] questionIds, string fieldName, string fieldValue)
         {
-            bool success = questionManagementService.BulklUpdateQuestionField(CourseHelper.CurrentCourse, questionIds, fieldName, fieldValue, UserCapabilitiesHelper.Capabilities);
-            return JsonCamel(new { isError = !success });
-
+            var result = questionManagementService.BulklUpdateQuestionField(CourseHelper.CurrentCourse, questionIds, fieldName, fieldValue, UserCapabilitiesHelper.Capabilities);
+            return JsonCamel(result);
         }
 
         public ActionResult CreateQuestion(string questionType, string bank, string chapter)

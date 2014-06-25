@@ -438,7 +438,7 @@ var questionDataManager = (function() {
 
     self.bulk.updateMetadataField = function (questionIds, fieldName, fieldValue, isSharedField) {
         asyncManager.startWait();
-
+        //Update status
         var request = {
             questionIds: questionIds,
             fieldName: fieldName,
@@ -453,12 +453,24 @@ var questionDataManager = (function() {
             dataType: 'json',
             type: 'POST'
         }).done(function (response) {
-            if (response.isError) {
+            if (!response.isSuccess) {
                 console.error('Bulk Editing is unsuccessful');
             }
             console.log('Bulk Edit complete');
-            self.showSuccessPopup("Questions updated successfully");
             self.resetState();
+            self.showSuccessPopup("Questions updated successfully");
+            
+            if (response.draftSkipped > 0) {
+                self.showWarningPopupHtml(response.draftSkipped + " drafts were skipped while setting status to 'Available to instructors'." +
+                                                                   "<a class='notification-link'" +
+                                                                    "ref='javascript:void(0);'" +
+                                                                    " onclick='window.alerts.draftAvailableForInstructorsInfo()'>" +
+                                                                    "See More Info.</a>");
+            }
+            
+            if (response.permissionSkipped > 0) {
+                self.showWarningPopup("You have no permission for status changing - " + response.permissionSkipped + " questions/drafts were skipped");
+            }
             console.log('Refresh complite');
         }).error(function(e){
              self.showErrorPopup();
@@ -584,6 +596,8 @@ var questionDataManager = (function() {
          crossroads.parse(window.routsManager.buildHash());
     };
 
+    //Move to notification manager!
+    
     self.showErrorPopup = function() {
         var notifyOptions = {
             message: { text: window.enums.messages.errorMessage },
@@ -605,6 +619,15 @@ var questionDataManager = (function() {
     self.showWarningPopup = function (message) {
         var notifyOptions = {
             message: { text: message },
+            type: 'warning',
+            fadeOut: { enabled: true, delay: 3000 }
+        };
+        $('.top-center').notify(notifyOptions).show();
+    };
+    
+    self.showWarningPopupHtml = function (html) {
+        var notifyOptions = {
+            message: { html: html },
             type: 'warning',
             fadeOut: { enabled: true, delay: 3000 }
         };
