@@ -129,7 +129,8 @@ namespace Macmillan.PXQBA.Business.Services
 
         public bool UpdateSharedQuestionField(Course course, string questionId, string fieldName, IEnumerable<string> fieldValues)
         {
-            var question = questionCommands.GetQuestion(course.QuestionRepositoryCourseId, questionId);
+            var temporaryRepositoryCourseId = ConfigurationHelper.GetTemporaryCourseId();
+            var question = questionCommands.GetQuestion(temporaryRepositoryCourseId, questionId);
             var questionParentCourse = course;
             var parentCourseSection = question.ProductCourseSections.FirstOrDefault(s => string.IsNullOrEmpty(s.ParentProductCourseId));
             if (parentCourseSection != null)
@@ -137,7 +138,7 @@ namespace Macmillan.PXQBA.Business.Services
                 questionParentCourse = productCourseManagementService.GetProductCourse(parentCourseSection.ProductCourseId);
             }
             UpdateManuallyAddedKeywords(questionParentCourse, question.DefaultSection);
-            return questionCommands.UpdateSharedQuestionField(course.QuestionRepositoryCourseId, questionId, fieldName, fieldValues);
+            return questionCommands.UpdateSharedQuestionField(temporaryRepositoryCourseId, questionId, fieldName, fieldValues);
         }
 
         public bool BulklUpdateQuestionField(Course course, string[] questionId, string fieldName, string fieldValue, IEnumerable<Capability> userCapabilities)

@@ -122,12 +122,12 @@ namespace Macmillan.PXQBA.Web.Controllers
                 return new HttpUnauthorizedResult();
             }
 
-            if (!IsAuthorizedToOverrideOnMetadata(questionViewModel))
+            if (questionViewModel.IsShared && !IsAuthorizedToOverrideOnMetadata(questionViewModel))
             {
                 return new HttpUnauthorizedResult();
             }
 
-            if (!IsAuthorizedToOverrideOffMetadata(questionViewModel))
+            if (questionViewModel.IsShared && !IsAuthorizedToOverrideOffMetadata(questionViewModel))
             {
                 return new HttpUnauthorizedResult();
             }

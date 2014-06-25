@@ -439,9 +439,8 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         }
        
         public bool UpdateSharedQuestionField(string repositoryCourseId, string questionId, string fieldName, IEnumerable<string> fieldValues)
-        {
-            var temporaryRepositoryCourseId = ConfigurationHelper.GetTemporaryCourseId();
-            var question = GetQuestion(temporaryRepositoryCourseId, questionId);
+        {   
+            var question = GetQuestion(repositoryCourseId, questionId);
             if (question != null)
             {
                 if (MetadataFieldNames.GetStaticFieldNames().Contains(fieldName))
