@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using AutoMapper;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
+using Macmillan.PXQBA.Web.Constants;
 using Macmillan.PXQBA.Web.Helpers;
 using Macmillan.PXQBA.Web.ViewModels.MetadataConfig;
 using Macmillan.PXQBA.Web.ViewModels.User;
@@ -40,6 +43,20 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult KeepSessionAlive(string data)
         {
             return new JsonResult { Data = "Success" };
+        }
+
+        public ActionResult Logout()
+        {
+            var cookies = HttpContext.Request.Cookies.AllKeys;
+            foreach (var cookie in cookies)
+            {
+                System.Web.HttpContext.Current.Request.Cookies[cookie].Expires = System.DateTime.Now.AddYears(-1);
+                System.Web.HttpContext.Current.Request.Cookies[cookie].Value = string.Empty;
+                System.Web.HttpContext.Current.Response.Cookies[cookie].Expires = System.DateTime.Now.AddYears(-1);
+                System.Web.HttpContext.Current.Response.Cookies[cookie].Value = string.Empty;
+            }
+            var appUrl = string.Format("{0}://{1}", Request.Url.Scheme, Request.Url.Authority);
+            return Redirect(string.Format(ConfigurationHelper.GetMarsLogoutUrl(), appUrl));
         }
 
         /// <summary>
