@@ -34,5 +34,7 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         IEnumerable<Question> GetQuestionDrafts(string questionRepositoryCourseId, Question question);
 
         void ExecutePutQuestion(Bfw.Agilix.DataContracts.Question question);
+
+        IEnumerable<QuestionFacetedSearchResult> GetFacetedResults(string questionRepositoryCourseId, string currentCourseId, string facetedField);
     }
 }
