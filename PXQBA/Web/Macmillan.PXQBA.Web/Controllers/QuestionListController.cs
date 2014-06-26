@@ -151,9 +151,9 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// </summary>
         /// <param name="questionId"></param>
         /// <returns></returns>
-        public ActionResult GetQuestionNotes(string questionId)
+        public ActionResult GetQuestionNotes(string questionId = null)
         {
-            return JsonCamel(notesManagementService.GetQuestionNotes(questionId));
+            return JsonCamel(notesManagementService.GetQuestionNotes(string.IsNullOrEmpty(questionId)? QuestionHelper.QuestionIdToEdit : questionId));
         }
 
         /// <summary>
@@ -167,7 +167,13 @@ namespace Macmillan.PXQBA.Web.Controllers
             {
                 return new HttpUnauthorizedResult();
             }
-              return JsonCamel(notesManagementService.CreateNote(note));
+
+            if (string.IsNullOrEmpty(note.QuestionId))
+            {
+                note.QuestionId = QuestionHelper.QuestionIdToEdit;
+            }
+            
+            return JsonCamel(notesManagementService.CreateNote(note));
         }
 
         /// <summary>

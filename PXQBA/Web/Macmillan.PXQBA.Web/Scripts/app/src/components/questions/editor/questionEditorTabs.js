@@ -351,6 +351,15 @@ var QuestionEditorTabs = React.createClass({
         this.setState({currentTab: "history"});
     },
 
+    switchTabNotes: function(event){
+        event.preventDefault();
+        event.stopPropagation();
+
+        this.loadNewGraphEditor();
+        this.switchTab("#notes");
+        this.setState({currentTab: "notes"});
+    },
+
     loadNewGraphEditor: function(){
      if(!this.state.isGraph || this.state.currentTab != "body"){
           return;
@@ -413,6 +422,9 @@ var QuestionEditorTabs = React.createClass({
                               <li>
                                  <a href="#history" id="history-tab" data-toggle="tab">History</a>
                              </li>
+                             <li>
+                                 <a href="#notes" id="notes-tab" onClick={this.switchTabNotes}>Notes</a>
+                             </li>
                         </ul>);
       }
 
@@ -426,6 +438,9 @@ var QuestionEditorTabs = React.createClass({
                              </li>
                               <li>
                                  <a href="#history" id="history-tab" onClick={this.switchTabHistory}>History</a>
+                             </li>
+                             <li>
+                                 <a href="#notes" id="notes-tab" onClick={this.switchTabNotes}>Notes</a>
                              </li>
                         </ul>);
 
@@ -441,6 +456,9 @@ var QuestionEditorTabs = React.createClass({
                               <li>
                                  <a href="#history" id="history-tab" data-toggle="tab">History</a>
                              </li>
+                              <li>
+                                 <a href="#notes" id="notes-tab" data-toggle="tab">Notes</a>
+                             </li>
                         </ul>);
     },
 
@@ -450,6 +468,14 @@ var QuestionEditorTabs = React.createClass({
         }
 
         return (<span className="label label-danger">You have no permission to view question history</span>)
+    },
+
+    renderNotes: function(){
+      if(this.state.notesLoading){
+          return(<div className="waiting"></div>);
+      }
+
+      return(<NoteBox canDelete={this.props.question.canRemoveNotesQuestion} canAddNote={this.props.question.canAddNotesQuestion}/>);
     },
 
     render: function() {
@@ -483,7 +509,7 @@ var QuestionEditorTabs = React.createClass({
                       {this.renderSharingNotification()}
 
                        <div className="tab-body .shared">
-                          {!this.props.question.canEditSharedQuestionContent?  <span className="label label-danger">You have no permission to edit question body</span> : <div  className="iframe waiting" />}
+                          {!this.props.question.canEditSharedQuestionContent && this.props.question.isShared?  <span className="label label-danger">You have no permission to edit question body</span> : <div  className="iframe waiting" />}
                            {this.state.graphLoading? <div  className="iframe waiting" /> : ""}
                           <div id="quizeditorcomponent" className={iframeClass}></div>
                           <div className="modal-footer">
@@ -507,13 +533,21 @@ var QuestionEditorTabs = React.createClass({
                            </div>
                        </div>
                     </div>
-                     <div className="tab-pane" id="history">
+                    <div className="tab-pane" id="history">
 
                        <div className="tab-body">
                          {this.renderHistory()}
                        </div>
 
-                </div>
+                   </div>
+
+                   <div className="tab-pane" id="notes">
+
+                       <div className="tab-notes">
+                          {this.renderNotes()}
+                       </div>
+
+                   </div>
                 </div>
                
 

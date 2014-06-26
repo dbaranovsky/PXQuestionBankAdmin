@@ -113,6 +113,10 @@ namespace Macmillan.PXQBA.Web.ViewModels
         public bool CanCreateDraftFromVersion { get; set; }
 
         public bool CanViewHistory { get; set; }
+
+        public bool CanAddNotesQuestion { get; set; }
+
+        public bool CanRemoveNotesQuestion { get; set; }
         #endregion
 
 

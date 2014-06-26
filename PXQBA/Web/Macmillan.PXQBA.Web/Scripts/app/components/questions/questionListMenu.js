@@ -91,7 +91,15 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
    
     initializePopovers: function(){
       
-       $(this.getDOMNode()).find('[rel="popover"]').popover('destroy'); 
+     $(this.getDOMNode()).find('[rel="popover"]').popover('destroy'); 
+     $(this.getDOMNode()).find('span.notes').popover({
+
+                                        trigger: 'hover', 
+                                        placement:'bottom',           
+                                        html: true,
+                                        container: 'body'
+                                        });  
+
        $(this.getDOMNode()).popover({
                                         selector: '[rel="popover"]',
                                         trigger: 'click', 
@@ -99,6 +107,8 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
                                         html: true,
                                         container: 'body'
                                         });  
+
+       
        if(!this.props.showAll){
          $('.popover').remove();
        }
@@ -119,7 +129,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
 
 
     return ( React.DOM.div( {className:"shared-placeholder"} ,  
-              React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn shared-to", rel:"popover", onClick:this.showPopover,  'data-toggle':"popover",  'data-title':this.props.isShared? "Shared with:" : "",  'data-content':this.props.isShared? this.props.data[window.consts.questionSharedWithName] : "<b>Not Shared</b>"} , 
+              React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn shared-to", rel:"popover",  'data-toggle':"popover",  'data-title':this.props.isShared? "Shared with:" : "",  'data-content':this.props.isShared? this.props.data[window.consts.questionSharedWithName] : "<b>Not Shared</b>"} , 
                  React.DOM.span( {className:"glyphicon icon-shared-to"} ),this.renderCourseCountBadge() 
                ),
                React.DOM.button( {type:"button", className:"btn btn-default btn-sm tiny", disabled:!this.props.capabilities.canShareQuestion, onClick:this.shareHandler, 'data-toggle':"tooltip", title:"Share this question"}, React.DOM.span( {className:"glyphicon glyphicon-plus-sign"})), 
@@ -221,7 +231,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
                     this.renderEditMenu()
                 ),
                React.DOM.button( {type:"button", className:"btn btn-default btn-sm", disabled:!this.props.capabilities.canDuplicateQuestion, onClick:this.copyQuestionHandler,  'data-toggle':"tooltip", title:"Duplicate Question"}, React.DOM.span( {className:"glyphicon glyphicon-copyright-mark"})),
-               React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.editNotesHandler, disabled:!this.props.capabilities.canAddNotesQuestion, 'data-toggle':"tooltip", title:"Edit Notes"}, React.DOM.span( {className:"glyphicon glyphicon-list-alt"}), " " ), 
+               React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.editNotesHandler, 'data-toggle':"tooltip", title:"Edit Notes"}, React.DOM.span( {className:"glyphicon glyphicon-list-alt"}), " " ), 
                React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn", disabled:!this.props.capabilities.canViewHistory, onClick:this.props.editQuestionHandler.bind(this, true, false), 'data-toggle':"tooltip", title:"View Question History"}, React.DOM.span( {className:"glyphicon icon-version-history"} )) 
                ));
      }
@@ -238,17 +248,21 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
     },
 
     renderFlagMenu: function(){
+
         if (this.props.showAll){
           return(React.DOM.div( {className:"menu-container-flag"}, 
                      React.DOM.button( {type:"button", className:"btn btn-default btn-sm", disabled:(!this.state.isFlagged && !this.props.capabilities.canFlagQuestion) || (this.state.isFlagged && !this.props.capabilities.canUnflagQuestion), onClick:this.toggleFlag, 'data-toggle':"tooltip", title:this.state.isFlagged? "Unflag question" : "Flag question"}, 
                      React.DOM.span( {className:this.state.isFlagged? "glyphicon glyphicon-flag flagged" : "glyphicon glyphicon-flag"})
-                     ) 
+                     ), 
+
+                     this.props.data.notes != "" ? React.DOM.span( {className:"glyphicon glyphicon-list-alt notes", rel:"notes",  'data-toggle':"popover", 'data-title':"Notes",  'data-content':this.props.data.notes} ) : React.DOM.div( {className:"glyphicon-placeholder"})
                   ));
       }
 
       return (React.DOM.div( {className:"menu-container-flag"}, 
                 React.DOM.div( {className:"notification-icons-container"}, 
-                    this.state.isFlagged ? React.DOM.span( {className:"glyphicon glyphicon-flag flagged"}) : ""
+                    this.state.isFlagged ? React.DOM.span( {className:"glyphicon glyphicon-flag flagged"}) : React.DOM.div( {className:"glyphicon-placeholder"}),
+                    this.props.data.notes != "" ? React.DOM.span( {className:"glyphicon glyphicon-list-alt notes"}) : React.DOM.div( {className:"glyphicon-placeholder"})
                 )
               ));
     },

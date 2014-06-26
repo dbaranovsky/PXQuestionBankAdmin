@@ -351,6 +351,15 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
         this.setState({currentTab: "history"});
     },
 
+    switchTabNotes: function(event){
+        event.preventDefault();
+        event.stopPropagation();
+
+        this.loadNewGraphEditor();
+        this.switchTab("#notes");
+        this.setState({currentTab: "notes"});
+    },
+
     loadNewGraphEditor: function(){
      if(!this.state.isGraph || this.state.currentTab != "body"){
           return;
@@ -412,6 +421,9 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                              ),
                               React.DOM.li(null, 
                                  React.DOM.a( {href:"#history", id:"history-tab", 'data-toggle':"tab"}, "History")
+                             ),
+                             React.DOM.li(null, 
+                                 React.DOM.a( {href:"#notes", id:"notes-tab", onClick:this.switchTabNotes}, "Notes")
                              )
                         ));
       }
@@ -426,6 +438,9 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                              ),
                               React.DOM.li(null, 
                                  React.DOM.a( {href:"#history", id:"history-tab", onClick:this.switchTabHistory}, "History")
+                             ),
+                             React.DOM.li(null, 
+                                 React.DOM.a( {href:"#notes", id:"notes-tab", onClick:this.switchTabNotes}, "Notes")
                              )
                         ));
 
@@ -440,6 +455,9 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                              ),
                               React.DOM.li(null, 
                                  React.DOM.a( {href:"#history", id:"history-tab", 'data-toggle':"tab"}, "History")
+                             ),
+                              React.DOM.li(null, 
+                                 React.DOM.a( {href:"#notes", id:"notes-tab", 'data-toggle':"tab"}, "Notes")
                              )
                         ));
     },
@@ -450,6 +468,14 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
         }
 
         return (React.DOM.span( {className:"label label-danger"}, "You have no permission to view question history"))
+    },
+
+    renderNotes: function(){
+      if(this.state.notesLoading){
+          return(React.DOM.div( {className:"waiting"}));
+      }
+
+      return(NoteBox( {canDelete:this.props.question.canRemoveNotesQuestion, canAddNote:this.props.question.canAddNotesQuestion}));
     },
 
     render: function() {
@@ -483,7 +509,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                       this.renderSharingNotification(),
 
                        React.DOM.div( {className:"tab-body .shared"}, 
-                          !this.props.question.canEditSharedQuestionContent?  React.DOM.span( {className:"label label-danger"}, "You have no permission to edit question body") : React.DOM.div(  {className:"iframe waiting"} ),
+                          !this.props.question.canEditSharedQuestionContent && this.props.question.isShared?  React.DOM.span( {className:"label label-danger"}, "You have no permission to edit question body") : React.DOM.div(  {className:"iframe waiting"} ),
                            this.state.graphLoading? React.DOM.div(  {className:"iframe waiting"} ) : "",
                           React.DOM.div( {id:"quizeditorcomponent", className:iframeClass}),
                           React.DOM.div( {className:"modal-footer"}, 
@@ -507,13 +533,21 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                            )
                        )
                     ),
-                     React.DOM.div( {className:"tab-pane", id:"history"}, 
+                    React.DOM.div( {className:"tab-pane", id:"history"}, 
 
                        React.DOM.div( {className:"tab-body"}, 
                          this.renderHistory()
                        )
 
-                )
+                   ),
+
+                   React.DOM.div( {className:"tab-pane", id:"notes"}, 
+
+                       React.DOM.div( {className:"tab-notes"}, 
+                          this.renderNotes()
+                       )
+
+                   )
                 )
                
 

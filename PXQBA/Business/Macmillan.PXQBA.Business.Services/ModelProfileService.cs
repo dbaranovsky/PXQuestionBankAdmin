@@ -30,11 +30,14 @@ namespace Macmillan.PXQBA.Business.Services
 
         private readonly IUserOperation userOperation;
 
-        public ModelProfileService(IProductCourseOperation productCourseOperation, IQuestionCommands questionCommands, IUserOperation userOperation)
+        private readonly INoteCommands noteCommands;
+
+        public ModelProfileService(IProductCourseOperation productCourseOperation, IQuestionCommands questionCommands, IUserOperation userOperation, INoteCommands noteCommands)
         {
             this.productCourseOperation = productCourseOperation;
             this.questionCommands = questionCommands;
             this.userOperation = userOperation;
+            this.noteCommands = noteCommands;
         }
 
         public QuestionMetadataSection GetQuestionDefaultValues(Bfw.Agilix.DataContracts.Question question)
@@ -95,6 +98,8 @@ namespace Macmillan.PXQBA.Business.Services
                 metadata.Data.Add(MetadataFieldNames.Bank, productCourseSection.Bank);
                 metadata.Data.Add(MetadataFieldNames.Sequence, productCourseSection.Sequence);
                 metadata.Data.Add(MetadataFieldNames.Flag, productCourseSection.Flag);
+                metadata.Data.Add(MetadataFieldNames.Notes, string.Join("<br>", noteCommands.GetQuestionNotes(question.Id).Select(x=> "- "+x.Text)));
+
                 foreach (var metadataValue in productCourseSection.DynamicValues)
                 {
                     if (!metadata.Data.ContainsKey(metadataValue.Key))

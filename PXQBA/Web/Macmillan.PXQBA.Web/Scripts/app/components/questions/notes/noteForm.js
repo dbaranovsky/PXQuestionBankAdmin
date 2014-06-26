@@ -26,10 +26,11 @@ var NoteForm = React.createClass({displayName: 'NoteForm',
   },
   render: function() {
     return (
-      React.DOM.div( {className:"modal-footer clearfix"}, 
+      React.DOM.div( {className:"note-form-footer"}, 
           React.DOM.form( {className:"note-form", onSubmit:this.handleSubmit},     
-            React.DOM.textarea( {className:"area-editor",  rows:"5", type:"text", placeholder:"Enter text...", ref:"text"} ),
-            React.DOM.button( {type:"submit", className:"btn btn-default"}, "Add note")
+            React.DOM.textarea( {className:"area-editor",  disabled:!this.props.canAddNote, rows:"5", type:"text", placeholder:this.props.canAddNote? "Enter text..." : "", ref:"text"} ),
+            React.DOM.br(null ),
+              React.DOM.button( {type:"submit",  disabled:!this.props.canAddNote, className:"btn btn-default"}, "Add note")
           )
       )
     );
