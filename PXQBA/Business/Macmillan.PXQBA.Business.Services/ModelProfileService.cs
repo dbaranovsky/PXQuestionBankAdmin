@@ -115,16 +115,26 @@ namespace Macmillan.PXQBA.Business.Services
         {
             IEnumerable<ChapterViewModel> chapters = course.GetChaptersList().Select(Mapper.Map<ChapterViewModel>).ToList();
 
-            var questionCounts = questionCommands.GetQuestionCountByChapters(course.QuestionRepositoryCourseId, course.ProductCourseId, chapters.Select(c => c.Title));
-
-            foreach (var questionCount in questionCounts)
+            var facetCounts = questionCommands.GetFacetedResults(course.QuestionRepositoryCourseId, course.ProductCourseId, MetadataFieldNames.Chapter);
+            foreach (var chapterViewModel in chapters)
             {
-                var chapter = chapters.SingleOrDefault(ch => ch.Title == questionCount.Key);
-                if (chapter != null)
+                var facetCount = facetCounts.FirstOrDefault(f => f.FacetedFieldValue == chapterViewModel.Title);
+                if (facetCount != null)
                 {
-                    chapter.QuestionsCount = questionCount.Value;
+                    chapterViewModel.QuestionsCount = facetCount.FacetedCount;
                 }
             }
+
+            //var questionCounts = questionCommands.GetQuestionCountByChapters(course.QuestionRepositoryCourseId, course.ProductCourseId, chapters.Select(c => c.Title));
+
+            //foreach (var questionCount in questionCounts)
+            //{
+            //    var chapter = chapters.SingleOrDefault(ch => ch.Title == questionCount.Key);
+            //    if (chapter != null)
+            //    {
+            //        chapter.QuestionsCount = questionCount.Value;
+            //    }
+            //}
 
             return chapters;
         }

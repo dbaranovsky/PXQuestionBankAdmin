@@ -106,6 +106,26 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
             return questionSearchResult;
         }
 
+        public static IEnumerable<QuestionFacetedSearchResult> ToFacetedSearchResult(XElement resultDoc)
+        {
+            var questionSearchResult = new List<QuestionFacetedSearchResult>();
+            foreach (var xElement in resultDoc.Elements("int"))
+            {
+                var result = new QuestionFacetedSearchResult();
+                if (xElement.Attribute("name") != null && !string.IsNullOrEmpty(xElement.Attribute("name").Value))
+                {
+                    result.FacetedFieldValue = xElement.Attribute("name").Value;
+                }
+                var count = 0;
+                if (!string.IsNullOrEmpty(xElement.Value) && int.TryParse(xElement.Value, out count))
+                {
+                    result.FacetedCount = count;
+                }
+                questionSearchResult.Add(result);
+            }
+            return questionSearchResult;
+        }
+
         public static QuestionMetadataSection GetDefaultSectionValues(Dictionary<string, XElement> metadataElements)
         {
 
@@ -183,38 +203,25 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
             {
                 foreach (var value in defaultValue.Value)
                 {
-                    elements.Add(new XElement(defaultValue.Key, value));
+                    AddMetadataElement(elements, defaultValue.Key, value);
                 }
             }
-            if (!string.IsNullOrEmpty(section.Title))
-            {
-                elements.Add(new XElement(MetadataFieldNames.DlapTitle, section.Title));
-            }
-            if (!string.IsNullOrEmpty(section.ProductCourseId))
-            {
-                elements.Add(new XElement(MetadataFieldNames.ProductCourse, section.ProductCourseId));
-            }
-            if (!string.IsNullOrEmpty(section.Bank))
-            {
-                elements.Add(new XElement(MetadataFieldNames.Bank, section.Bank));
-            }
-            if (!string.IsNullOrEmpty(section.Chapter))
-            {
-                elements.Add(new XElement(MetadataFieldNames.Chapter, section.Chapter));
-            }
-            if (!string.IsNullOrEmpty(section.Sequence))
-            {
-                elements.Add(new XElement(MetadataFieldNames.Sequence, section.Sequence));
-            }
-            if (!string.IsNullOrEmpty(section.ParentProductCourseId))
-            {
-                elements.Add(new XElement(MetadataFieldNames.ParentProductCourseId, section.ParentProductCourseId));
-            }
-            if (!string.IsNullOrEmpty(section.Flag))
-            {
-                elements.Add(new XElement(MetadataFieldNames.Flag, section.Flag));
-            }
+            AddMetadataElement(elements, MetadataFieldNames.DlapTitle, section.Title);
+            AddMetadataElement(elements, MetadataFieldNames.ProductCourse, section.ProductCourseId);
+            AddMetadataElement(elements, MetadataFieldNames.Bank, section.Bank);
+            AddMetadataElement(elements, MetadataFieldNames.Chapter, section.Chapter);
+            AddMetadataElement(elements, MetadataFieldNames.Sequence, section.Sequence);
+            AddMetadataElement(elements, MetadataFieldNames.ParentProductCourseId, section.ParentProductCourseId);
+            AddMetadataElement(elements, MetadataFieldNames.Flag, section.Flag);
             return elements;
+        }
+
+        private static void AddMetadataElement(IList<XElement> elements, string name, string value)
+        {
+            if (!string.IsNullOrEmpty(value))
+            {
+                elements.Add(new XElement(name, value, new XAttribute("dlaptype", "exact")));
+            }
         }
 
         public static string GetMetadataField(Dictionary<string, XElement> questionElements, string metadataFieldName)
