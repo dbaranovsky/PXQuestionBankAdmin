@@ -93,6 +93,7 @@ namespace Macmillan.PXQBA.Web.Controllers
                         };
             UpdateCapabilities(response);
             StaticLogger.LogDebug("GetQuestionData end: " + DateTime.Now);
+
             return JsonCamel(response);
         }
 

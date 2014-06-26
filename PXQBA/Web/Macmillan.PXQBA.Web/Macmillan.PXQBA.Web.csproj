@@ -265,6 +265,8 @@
     <Content Include="Scripts\app\components\questions\notes\noteList.js" />
     <Content Include="Scripts\app\components\questions\question.js" />
     <Content Include="Scripts\app\components\questions\questionBulkOperationBar.js" />
+    <Content Include="Scripts\app\components\questions\questionBulkOperationSetBank.js" />
+    <Content Include="Scripts\app\components\questions\questionBulkOperationSetChapter.js" />
     <Content Include="Scripts\app\components\questions\questionBulkOperationSetStatus.js" />
     <Content Include="Scripts\app\components\questions\questionCell.js" />
     <Content Include="Scripts\app\components\questions\questionCellMenu.js" />
@@ -358,6 +360,8 @@
     <Content Include="Scripts\app\src\components\questions\notes\noteForm.js" />
     <Content Include="Scripts\app\src\components\questions\notes\noteList.js" />
     <Content Include="Scripts\app\src\components\questions\questionBulkOperationBar.js" />
+    <Content Include="Scripts\app\src\components\questions\questionBulkOperationSetChapter.js" />
+    <Content Include="Scripts\app\src\components\questions\questionBulkOperationSetBank.js" />
     <Content Include="Scripts\app\src\components\questions\questionBulkOperationSetStatus.js" />
     <Content Include="Scripts\app\src\components\questions\filter\questionFilterItemsAppender.js" />
     <Content Include="Scripts\app\src\components\questions\filter\questionFilterItemsContainer.js" />

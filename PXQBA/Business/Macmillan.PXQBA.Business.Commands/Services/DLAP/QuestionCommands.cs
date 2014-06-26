@@ -252,7 +252,8 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 }
                 results.AddRange(docElements);
             } while (docElements.Count() == SearchCommandMaxRows);
-            //while (i <= 1);
+             //while (i <= 1);
+
             return results;
         }
 
@@ -472,6 +473,10 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             {
                 return UpdateQuestionsStatuses(repositoryCourseId, questionId, fieldValue, userCapabilities);
             }
+            if (fieldName.Equals(MetadataFieldNames.Chapter) || fieldName.Equals(MetadataFieldNames.Bank))
+            {
+                return UpdateQuestionsField(productCourseId, repositoryCourseId, questionId, fieldName, fieldValue, userCapabilities);
+            }
 
             return new BulkOperationResult();
         }
@@ -589,11 +594,11 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             }
             else if (MetadataFieldNames.Chapter == fieldName)
             {
-                sections = question.ProductCourseSections.Where(s => s.Title == question.DefaultSection.Chapter).ToList();
+                sections = question.ProductCourseSections.Where(s => s.Chapter == question.DefaultSection.Chapter).ToList();
             }
             else if (MetadataFieldNames.Bank == fieldName)
             {
-                sections = question.ProductCourseSections.Where(s => s.Title == question.DefaultSection.Bank).ToList();
+                sections = question.ProductCourseSections.Where(s => s.Bank == question.DefaultSection.Bank).ToList();
             }
             foreach (var section in sections)
             {
@@ -729,7 +734,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             {
                 if (!IsAllowedToChangeStatus(question, newValue, userCapabilities))
                 {
-                    result.PermissionSkipped++;
+                    result.PermissionStatusSkipped++;
                     continue;
                 }
                 if (question.IsDraft())
@@ -749,6 +754,51 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             result.IsSuccess = true;
 
             return result;
+        }
+
+        private BulkOperationResult UpdateQuestionsField(string productCourseId,
+                                                            string repositoryCourseId, 
+                                                            IEnumerable<string> questionId, 
+                                                            string fieldName,
+                                                            string newValue, 
+                                                            IEnumerable<Capability> userCapabilities)
+        {
+            var result = new BulkOperationResult();
+
+            var questions = GetAgilixQuestions(repositoryCourseId, questionId);
+            if (questions == null)
+            {
+                return result;
+            }
+
+            foreach (var question in questions)
+            {
+                if (!IsAllowedToChangeField(userCapabilities, ((QuestionStatus)(Int32.Parse(question.QuestionStatus)))))
+                {
+                    result.PermissionSkipped++;
+                    continue;
+                }
+                UpdateQuestionFieldForce(productCourseId, repositoryCourseId, question.Id, fieldName, newValue);
+            }
+
+            result.IsSuccess = true;
+
+            return result;
+        }
+
+        private bool IsAllowedToChangeField(IEnumerable<Capability> userCapabilities, QuestionStatus questionStatus)
+        {
+            if ((!userCapabilities.Contains(Capability.EditAvailableQuestion) &&
+               questionStatus == QuestionStatus.AvailableToInstructors) ||
+              (!userCapabilities.Contains(Capability.EditInProgressQuestion) &&
+               questionStatus == QuestionStatus.InProgress) ||
+              (!userCapabilities.Contains(Capability.EditDeletedQuestion) &&
+               questionStatus == QuestionStatus.Deleted))
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private bool IsAllowedToChangeStatus(Bfw.Agilix.DataContracts.Question question, string newValue, IEnumerable<Capability> userCapabilities)

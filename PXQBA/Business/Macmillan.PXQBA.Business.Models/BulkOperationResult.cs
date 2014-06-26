@@ -6,6 +6,8 @@
 
         public int DraftSkipped { get; set; }
 
+        public int PermissionStatusSkipped { get; set; }
+
         public int PermissionSkipped { get; set; }
     }
 }

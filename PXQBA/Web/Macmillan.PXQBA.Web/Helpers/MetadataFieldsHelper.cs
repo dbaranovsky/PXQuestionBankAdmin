@@ -86,6 +86,12 @@ namespace Macmillan.PXQBA.Web.Helpers
                 model.FilterType = FilterType.Text.ToString().ToLower();
             }
 
+            if (metaField.Name == MetadataFieldNames.Chapter||
+                metaField.Name == MetadataFieldNames.Bank)
+            {
+                model.IsInlineEditingAllowed = true;
+            }
+
             return model;
          }
     }
