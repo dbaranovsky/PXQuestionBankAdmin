@@ -12,18 +12,28 @@ var QuestionBulkOperationBar = React.createClass({displayName: 'QuestionBulkOper
         return this.props.selectedQuestions.length;
     },
 
-
     getAvailableStatuses: function() {
-      var availableStatuses = [];
+        return this.getAvailableValues(window.consts.questionStatusName);
+    },
+
+    getAvailableChapters: function() {
+        return this.getAvailableValues(window.consts.questionChapterName);
+    },
+
+    getAvailableBanks: function() {
+        return this.getAvailableValues(window.consts.questionBankName);
+    },
+
+    getAvailableValues: function(metadataName) {
+      var availableValues = [];
         for(var i=0; i<this.props.columns.length; i++) {
-            if(this.props.columns[i].metadataName==window.consts.questionStatusName) {
-                availableStatuses=this.props.columns[i].editorDescriptor.availableChoice;
+            if(this.props.columns[i].metadataName==metadataName) {
+                availableValues=this.props.columns[i].editorDescriptor.availableChoice;
                 break;
             }
         }
-        return availableStatuses;
+        return availableValues;
     },
-
 
     bulkRemoveFromTitle: function(){
       var self = this;
@@ -68,6 +78,18 @@ var QuestionBulkOperationBar = React.createClass({displayName: 'QuestionBulkOper
                             React.DOM.td( {className:"bulk-operation-cell"}, 
                                React.DOM.div( {className:"bulk-operation-item", 'data-toggle':"tooltip", title:"Change all selected questions"}, 
                                 QuestionBulkOperationSetStatus( {availableStatuses:this.getAvailableStatuses(), 
+                                                              selectedQuestions:this.props.selectedQuestions}) 
+                               )
+                            ),
+                            React.DOM.td( {className:"bulk-operation-cell"}, 
+                               React.DOM.div( {className:"bulk-operation-item", 'data-toggle':"tooltip", title:"Change all selected questions"}, 
+                                QuestionBulkOperationSetBank( {availableStatuses:this.getAvailableBanks(), 
+                                                              selectedQuestions:this.props.selectedQuestions}) 
+                               )
+                            ),
+                            React.DOM.td( {className:"bulk-operation-cell"}, 
+                               React.DOM.div( {className:"bulk-operation-item", 'data-toggle':"tooltip", title:"Change all selected questions"}, 
+                                QuestionBulkOperationSetChapter( {availableStatuses:this.getAvailableChapters(), 
                                                               selectedQuestions:this.props.selectedQuestions}) 
                                )
                             ),

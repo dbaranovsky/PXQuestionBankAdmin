@@ -259,7 +259,7 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
         return (QuestionBulkOperationBar( {colSpan:this.getAllColumnCount(), 
                                           selectedQuestions: $.map(this.state.selectedQuestions,function(e){return e.id;}), 
                                           deselectsAllHandler:this.deselectsAllQuestionHandler,
-                                          columns:this.props.columns,
+                                          columns:this.props.allAvailableColumns,
                                           bulkShareHandler:  this.props.handlers.shareHandler,
                                           isShared:  isAllQuestionsShared,
                                           capabilities: this.props.capabilities} ));
