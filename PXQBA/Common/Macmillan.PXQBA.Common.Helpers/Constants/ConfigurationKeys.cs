@@ -17,6 +17,11 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
         public const string MarsPathLoginUrl = "MarsPathLogin";
 
         /// <summary>
+        /// Represents the key for Mars logout page
+        /// </summary>
+        public const string MarsPathLogoutUrl = "MarsPathLogout";
+
+        /// <summary>
         /// Key for brain honey default password
         /// </summary>
         public const string BrainhoneyDefaultPassword = "BrainhoneyDefaultPassword";

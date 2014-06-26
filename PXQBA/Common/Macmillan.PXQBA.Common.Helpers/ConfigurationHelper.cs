@@ -26,6 +26,20 @@ namespace Macmillan.PXQBA.Common.Helpers
         }
 
         /// <summary>
+        /// Gets Mars logout url from config
+        /// </summary>
+        /// <returns>Mars logout url</returns>
+        public static string GetMarsLogoutUrl()
+        {
+            var url = ConfigurationManager.AppSettings[ConfigurationKeys.MarsPathLogoutUrl];
+            if (!string.IsNullOrEmpty(url))
+            {
+                return url;
+            }
+            return "http://dev.activation.macmillanhighered.com/account/logout?target={0}";
+        }
+
+        /// <summary>
         /// Gets BH default password from config
         /// </summary>
         /// <returns>Default password</returns>
