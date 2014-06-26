@@ -182,16 +182,14 @@ input[type="checkbox"].input-validation-error {
 
 
 .note {
-    padding-left: 22px;
     margin-bottom: 7px
-  
 }
 
 .note-body {
      border: 1px solid #000000;
      padding: 4px;
      float: right;
-     width: 500px;
+     width: 100%;
 }
 .note-menu {
     float: right;
@@ -204,7 +202,19 @@ input[type="checkbox"].input-validation-error {
 
 .note-form {
    padding-right: 0;
-    width: 535px;
+    width: 100%;
+}
+
+.note-form-footer {
+    border-top: 1px solid #e5e5e5;
+    margin-top: 5px;
+    padding-top: 5px;
+    width: 100%;
+}
+
+.note-form-footer textarea {
+    width: 100%;
+    max-width: 100% !important;
 }
 
 .flag {

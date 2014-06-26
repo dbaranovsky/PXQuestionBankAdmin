@@ -494,7 +494,7 @@ var QuestionEditorTabs = React.createClass({
                       {this.renderSharingNotification()}
 
                        <div className="tab-body .shared">
-                          {!this.props.question.canEditSharedQuestionContent?  <span className="label label-danger">You have no permission to edit question body</span> : <div  className="iframe waiting" />}
+                          {!this.props.question.canEditSharedQuestionContent && this.props.question.isShared?  <span className="label label-danger">You have no permission to edit question body</span> : <div  className="iframe waiting" />}
                            {this.state.graphLoading? <div  className="iframe waiting" /> : ""}
                           <div id="quizeditorcomponent" className={iframeClass}></div>
                           <div className="modal-footer">

@@ -26,7 +26,7 @@ var NoteForm = React.createClass({
   },
   render: function() {
     return (
-      <div className="modal-footer clearfix">
+      <div className="note-form-footer">
           <form className="note-form" onSubmit={this.handleSubmit}>    
             <textarea className="area-editor"  disabled={!this.props.canAddNote} rows="5" type="text" placeholder={this.props.canAddNote? "Enter text..." : ""} ref="text" />
             <button type="submit"  disabled={!this.props.canAddNote} className="btn btn-default">Add note</button>
