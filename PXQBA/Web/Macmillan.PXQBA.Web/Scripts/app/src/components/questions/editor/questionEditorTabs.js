@@ -351,6 +351,15 @@ var QuestionEditorTabs = React.createClass({
         this.setState({currentTab: "history"});
     },
 
+    switchTabNotes: function(event){
+        event.preventDefault();
+        event.stopPropagation();
+
+        this.loadNewGraphEditor();
+        this.switchTab("#notes");
+        this.setState({currentTab: "notes"});
+    },
+
     loadNewGraphEditor: function(){
      if(!this.state.isGraph || this.state.currentTab != "body"){
           return;
@@ -413,6 +422,9 @@ var QuestionEditorTabs = React.createClass({
                               <li>
                                  <a href="#history" id="history-tab" data-toggle="tab">History</a>
                              </li>
+                             <li>
+                                 <a href="#notes" id="notes-tab" onClick={this.switchTabNotes}>Notes</a>
+                             </li>
                         </ul>);
       }
 
@@ -426,6 +438,9 @@ var QuestionEditorTabs = React.createClass({
                              </li>
                               <li>
                                  <a href="#history" id="history-tab" onClick={this.switchTabHistory}>History</a>
+                             </li>
+                             <li>
+                                 <a href="#notes" id="notes-tab" onClick={this.switchTabNotes}>Notes</a>
                              </li>
                         </ul>);
 

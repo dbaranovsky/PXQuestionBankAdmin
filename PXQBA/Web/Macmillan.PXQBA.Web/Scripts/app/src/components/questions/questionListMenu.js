@@ -91,7 +91,15 @@ var QuestionListMenu = React.createClass({
    
     initializePopovers: function(){
       
-       $(this.getDOMNode()).find('[rel="popover"]').popover('destroy'); 
+     $(this.getDOMNode()).find('[rel="popover"]').popover('destroy'); 
+     $(this.getDOMNode()).find('span.notes').popover({
+
+                                        trigger: 'hover', 
+                                        placement:'bottom',           
+                                        html: true,
+                                        container: 'body'
+                                        });  
+
        $(this.getDOMNode()).popover({
                                         selector: '[rel="popover"]',
                                         trigger: 'click', 
@@ -99,6 +107,8 @@ var QuestionListMenu = React.createClass({
                                         html: true,
                                         container: 'body'
                                         });  
+
+       
        if(!this.props.showAll){
          $('.popover').remove();
        }
@@ -119,7 +129,7 @@ var QuestionListMenu = React.createClass({
 
 
     return ( <div className="shared-placeholder" > 
-              <button type="button" className="btn btn-default btn-sm custom-btn shared-to" rel="popover" onClick={this.showPopover}  data-toggle="popover"  data-title={this.props.isShared? "Shared with:" : ""}  data-content={this.props.isShared? this.props.data[window.consts.questionSharedWithName] : "<b>Not Shared</b>"} >
+              <button type="button" className="btn btn-default btn-sm custom-btn shared-to" rel="popover"  data-toggle="popover"  data-title={this.props.isShared? "Shared with:" : ""}  data-content={this.props.isShared? this.props.data[window.consts.questionSharedWithName] : "<b>Not Shared</b>"} >
                  <span className="glyphicon icon-shared-to" ></span>{this.renderCourseCountBadge()} 
                </button>
                <button type="button" className="btn btn-default btn-sm tiny" disabled={!this.props.capabilities.canShareQuestion} onClick={this.shareHandler} data-toggle="tooltip" title="Share this question"><span className="glyphicon glyphicon-plus-sign"></span></button> 
@@ -238,17 +248,21 @@ var QuestionListMenu = React.createClass({
     },
 
     renderFlagMenu: function(){
+
         if (this.props.showAll){
           return(<div className="menu-container-flag">
                      <button type="button" className="btn btn-default btn-sm" disabled={(!this.state.isFlagged && !this.props.capabilities.canFlagQuestion) || (this.state.isFlagged && !this.props.capabilities.canUnflagQuestion)} onClick={this.toggleFlag} data-toggle="tooltip" title={this.state.isFlagged? "Unflag question" : "Flag question"}>
                      <span className={this.state.isFlagged? "glyphicon glyphicon-flag flagged" : "glyphicon glyphicon-flag"}></span>
                      </button> 
+
+                     {this.props.data.notes != "" ? <span className="glyphicon glyphicon-list-alt notes" rel="notes"  data-toggle="popover" data-title="Notes"  data-content={this.props.data.notes} ></span> : <div className="glyphicon-placeholder"></div>}
                   </div>);
       }
 
       return (<div className="menu-container-flag">
                 <div className="notification-icons-container">
-                    {this.state.isFlagged ? <span className="glyphicon glyphicon-flag flagged"></span> : ""}
+                    {this.state.isFlagged ? <span className="glyphicon glyphicon-flag flagged"></span> : <div className="glyphicon-placeholder"></div>}
+                    {this.props.data.notes != "" ? <span className="glyphicon glyphicon-list-alt notes"></span> : <div className="glyphicon-placeholder"></div>}
                 </div>
               </div>);
     },

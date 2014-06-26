@@ -351,6 +351,15 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
         this.setState({currentTab: "history"});
     },
 
+    switchTabNotes: function(event){
+        event.preventDefault();
+        event.stopPropagation();
+
+        this.loadNewGraphEditor();
+        this.switchTab("#notes");
+        this.setState({currentTab: "notes"});
+    },
+
     loadNewGraphEditor: function(){
      if(!this.state.isGraph || this.state.currentTab != "body"){
           return;
@@ -412,6 +421,9 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                              ),
                               React.DOM.li(null, 
                                  React.DOM.a( {href:"#history", id:"history-tab", 'data-toggle':"tab"}, "History")
+                             ),
+                             React.DOM.li(null, 
+                                 React.DOM.a( {href:"#notes", id:"notes-tab", onClick:this.switchTabNotes}, "Notes")
                              )
                         ));
       }
@@ -426,6 +438,9 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                              ),
                               React.DOM.li(null, 
                                  React.DOM.a( {href:"#history", id:"history-tab", onClick:this.switchTabHistory}, "History")
+                             ),
+                             React.DOM.li(null, 
+                                 React.DOM.a( {href:"#notes", id:"notes-tab", onClick:this.switchTabNotes}, "Notes")
                              )
                         ));
 
