@@ -15,7 +15,9 @@
                 @MenuItem("Metadata config", "Index", "Metadata")
                 @MenuItem("User management", "Index", "User")
             </ul>
-            <!-- Place for login user-->
+           <ul class="nav navbar-nav navbar-right">
+                <li>@Html.ActionLink("log out", "Logout", "User")</li>
+           </ul>
         </div>
     </div>
 </div>
