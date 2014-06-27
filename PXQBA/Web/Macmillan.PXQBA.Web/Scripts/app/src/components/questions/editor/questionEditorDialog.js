@@ -26,10 +26,7 @@ var QuestionEditorDialog = React.createClass({
                       window.enums.messages.succesUpdate :
                       window.enums.messages.succesCreate;
 
-        var notifyOptions = {message: { text: text }, 
-                             type: 'success',
-                             fadeOut: { enabled: true, delay: 3000 } };
-        $('.top-center').notify(notifyOptions).show();
+        notificationManager.showSuccess(text);
     },
 
     closeDialog: function(){

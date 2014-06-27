@@ -65,7 +65,6 @@ var QuestionBulkOperationBar = React.createClass({
 
 
     render: function() {
-      debugger;
         return ( 
                   <tr>
                     <td colSpan={this.props.colSpan} className="bulk-operation-bar">

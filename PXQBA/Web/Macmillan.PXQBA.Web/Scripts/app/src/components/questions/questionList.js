@@ -287,7 +287,7 @@ var QuestionList = React.createClass({
                   </tbody> 
                 </table>
               <div className="dialogs-container">
-                  <div className='notifications top-center center notifications-displair' />
+                 
               </div>
           </div>
         );

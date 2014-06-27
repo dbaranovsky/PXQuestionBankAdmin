@@ -42,14 +42,10 @@ var QuestionShareDialog = React.createClass({
                           this.props.questionIds.length+" question were shared successfully. These questions may require metadata editing. ";
             var url = this.getUrlToList(this.state.shareViewModel[window.consts.questionCourseName][0]);
             var link = '<a href='+url+'>Go to the target title </a>'
-           var notifyOptions = {
-            message: { html: message+link},
-            type: 'success',
-            fadeOut: { enabled: false}
-        };
-        $('.top-center').notify(notifyOptions).show();
-          this.props.closeDialogHandler();
-         questionDataManager.resetState(); 
+ 
+        notificationManager.showSuccessHtml(message+link);
+        this.props.closeDialogHandler();
+        questionDataManager.resetState(); 
     },
 
      getUrlToList: function(titleId, chapterId) {

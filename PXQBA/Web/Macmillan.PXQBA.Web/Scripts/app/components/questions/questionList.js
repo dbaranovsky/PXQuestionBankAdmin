@@ -286,8 +286,8 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
                     this.renderQuestions()
                   ) 
                 ),
-              React.DOM.div( {className:"dialogs-container"}, 
-                  React.DOM.div( {className:"notifications top-center center notifications-displair"} )
+              React.DOM.div( {className:"dialogs-container"}
+                 
               )
           )
         );

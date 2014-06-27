@@ -264,30 +264,15 @@ var userManager = (function() {
 
 
    self.showErrorPopup = function() {
-        var notifyOptions = {
-            message: { text: window.enums.messages.errorMessage },
-            type: 'danger',
-            fadeOut: { enabled: true, delay: 3000 }
-        };
-        $('.top-center').notify(notifyOptions).show();
+     notificationManager.showDanger(window.enums.messages.errorMessage);
     };
 
     self.showSuccessPopup = function(message){
-         var notifyOptions = {
-            message: { text: message },
-            type: 'success',
-            fadeOut: { enabled: true, delay: 3000 }
-        };
-        $('.top-center').notify(notifyOptions).show();
+       notificationManager.showSuccess(message);
     };
 
     self.showWarningPopup = function (message) {
-        var notifyOptions = {
-            message: { text: message },
-            type: 'warning',
-            fadeOut: { enabled: true, delay: 3000 }
-        };
-        $('.top-center').notify(notifyOptions).show();
+       notificationManager.showWarning(message);
     };
 
     self.getAllCourses = function () {
