@@ -289,14 +289,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return searchResults;
         }
 
-        public Question CreateQuestion(string productCourseId, Question question)
-        {
-            question.ModifiedBy = businessContext.CurrentUser.Id;
-            SetSequence(productCourseId, question);
-            ExecutePutQuestion(Mapper.Map<Bfw.Agilix.DataContracts.Question>(question));
-            return question;
-        }
-
         public void ExecuteSolrUpdateTask()
         {
             var taskId = ConfigurationHelper.GetSolrUpdateTaskId();
@@ -326,7 +318,15 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             }
         }
 
-        private void SetSequence(string productCourseId, Question question)
+        public Question CreateQuestion(string productCourseId, Question question)
+        {
+            question.ModifiedBy = businessContext.CurrentUser.Id;
+            SetSequence(productCourseId, question);
+            ExecutePutQuestion(Mapper.Map<Bfw.Agilix.DataContracts.Question>(question));
+            return question;
+        }
+
+        public void SetSequence(string productCourseId, Question question)
         {
             var section = question.ProductCourseSections.First(s => s.ProductCourseId == productCourseId);
             section.Sequence = GetNewSequenceValue(question.EntityId, productCourseId);

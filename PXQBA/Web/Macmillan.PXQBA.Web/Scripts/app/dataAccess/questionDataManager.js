@@ -253,7 +253,7 @@ var questionDataManager = (function() {
             dataType: 'json',
             type: 'POST'
         }).done(function (response) {
-
+            self.resetState();
         }).error(function(e){
              self.resetState();
              self.showErrorPopup();

@@ -363,11 +363,12 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         }
 
-        public ActionResult DeleteQuestion()
-        {
-            var isDeleted = questionManagementService.RemoveQuestion(CourseHelper.CurrentCourse,QuestionHelper.QuestionIdToEdit);
-            return JsonCamel(new { ResetState = isDeleted });
-        }
+        //Unnecessary as we now create question in temp course
+        //public ActionResult DeleteQuestion()
+        //{
+        //    var isDeleted = questionManagementService.RemoveQuestion(CourseHelper.CurrentCourse,QuestionHelper.QuestionIdToEdit);
+        //    return JsonCamel(new { ResetState = isDeleted });
+        //}
 
         public ActionResult RestoreVersion(string version)
         {
