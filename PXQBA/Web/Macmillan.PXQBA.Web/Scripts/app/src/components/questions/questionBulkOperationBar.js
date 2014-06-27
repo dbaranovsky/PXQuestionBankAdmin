@@ -94,8 +94,14 @@ var QuestionBulkOperationBar = React.createClass({
                                </div>
                             </td>
                             <td className="bulk-operation-cell">
-                              <button type="button" className="btn btn-default" disabled={!this.props.canShareQuestion} onClick={this.bulkShareToTitle}>Share with another title</button>
-                              {this.renderRemoveButton()}
+                              <div className="bulk-operation-item">
+                                <button type="button" className="btn btn-default" disabled={!this.props.capabilities.canShareQuestion} onClick={this.bulkShareToTitle}>Share with another title</button>
+                              </div>
+                            </td>
+                            <td className="bulk-operation-cell">
+                               <div className="bulk-operation-item">
+                                  {this.renderRemoveButton()}
+                              </div>
                             </td>
                             <td className="bulk-operation-cell">
                                <div className="deselect-button" onClick={this.deselectsAllHandler} data-toggle="tooltip" title="Deselect all">

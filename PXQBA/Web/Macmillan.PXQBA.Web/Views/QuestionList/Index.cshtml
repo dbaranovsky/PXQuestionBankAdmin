@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br/>
+<div id="notifications-container" class='notifications top-center center notifications-displair'> </div>
 <div id="question-container"> </div>
 
 
@@ -16,8 +17,8 @@
     
     <script>
         window.questionPageParameters = {
-           currentCourseId: '@Model.CourseId',
-           currentChapterId:'@Model.ChapterId',
+            currentCourseId: '@Model.CourseId',
+            currentChapterId:'@Model.ChapterId',
         };
     </script>
 
@@ -30,6 +31,7 @@
     <script src="../../Scripts/app/components/common/paginator.js"></script> 
 
     <script src="../../Scripts/app/async/asyncManager.js"></script>
+    <script src="../../Scripts/app/async/notificationManager.js"></script>
 
     <script src="../../Scripts/app/components/questions/questionCellMenu.js"></script>
     <script src="../../Scripts/app/components/questions/questionInlineEditorSingleSelect.js"></script>
@@ -102,5 +104,7 @@
 
     
 
-   
+    <script>
+        notificationManager.htmlContainer = $('#notifications-container')[0];
+    </script>
 }

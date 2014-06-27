@@ -94,8 +94,14 @@ var QuestionBulkOperationBar = React.createClass({displayName: 'QuestionBulkOper
                                )
                             ),
                             React.DOM.td( {className:"bulk-operation-cell"}, 
-                              React.DOM.button( {type:"button", className:"btn btn-default", disabled:!this.props.canShareQuestion, onClick:this.bulkShareToTitle}, "Share with another title"),
-                              this.renderRemoveButton()
+                              React.DOM.div( {className:"bulk-operation-item"}, 
+                                React.DOM.button( {type:"button", className:"btn btn-default", disabled:!this.props.capabilities.canShareQuestion, onClick:this.bulkShareToTitle}, "Share with another title")
+                              )
+                            ),
+                            React.DOM.td( {className:"bulk-operation-cell"}, 
+                               React.DOM.div( {className:"bulk-operation-item"}, 
+                                  this.renderRemoveButton()
+                              )
                             ),
                             React.DOM.td( {className:"bulk-operation-cell"}, 
                                React.DOM.div( {className:"deselect-button", onClick:this.deselectsAllHandler, 'data-toggle':"tooltip", title:"Deselect all"}, 
