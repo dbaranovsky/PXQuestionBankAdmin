@@ -13,5 +13,12 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         /// <param name="questionIdToCopy"></param>
         Question CopyQuestionToTemporaryCourse(string sourceProductCourseId, string questionIdToCopy, string version = null);
         Question CopyQuestionToSourceCourse(string sourceProductCourseId, string sourceQuestionId);
+
+        /// <summary>
+        /// Create question in temp course (not created in real course), set sequence according to the questions in real course, generate new id (it will be used when copying back to real course)
+        /// </summary>
+        /// <param name="question"></param>
+        /// <returns></returns>
+        Question CreateQuestion(string productCourseId, Question question);
     }
 }

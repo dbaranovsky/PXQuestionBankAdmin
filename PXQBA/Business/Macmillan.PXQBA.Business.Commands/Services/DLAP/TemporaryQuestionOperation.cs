@@ -44,6 +44,17 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             GetTemporaryQuizId = GetTemporaryQuizIdForQuestion;
         }
 
+        public Models.Question CreateQuestion(string productCourseId, Models.Question question)
+        {
+            question.ModifiedBy = businessContext.CurrentUser.Id;
+            questionCommands.SetSequence(productCourseId, question);
+            var agilixQuestion = Mapper.Map<Question>(question);
+            var questionCreated = CopyQuestionToCourse(temporaryCourseId, GetTemporaryQuestionId(), agilixQuestion);
+            var result = UpdateQuestionQuiz(questionCreated);
+            result.Id = Guid.NewGuid().ToString();
+            return result;
+        }
+
         public Models.Question CopyQuestionToTemporaryCourse(string sourceProductCourseId, string questionIdToCopy, string version = null)
         {
             if (!string.IsNullOrEmpty(version))
@@ -51,7 +62,12 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 GetTemporaryQuestionId = GetTemporaryQuestionIdForVersion;
                 GetTemporaryQuizId = GetTemporaryQuizIdForVersion;
             }
-            var questionToCopy = CopyQuestionToCourse(sourceProductCourseId, questionIdToCopy, temporaryCourseId, GetTemporaryQuestionId(), version, true);
+            var questionToCopy = CopyQuestionToCourse(sourceProductCourseId, questionIdToCopy, temporaryCourseId, GetTemporaryQuestionId(), version);
+            return UpdateQuestionQuiz(questionToCopy);
+        }
+
+        private Models.Question UpdateQuestionQuiz(Question questionToCopy)
+        {
             AddQuestionToTemporaryQuiz(questionToCopy);
             var question = Mapper.Map<Models.Question>(questionToCopy);
             question.QuizId = GetTemporaryQuizId();
@@ -65,19 +81,20 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return Mapper.Map<Models.Question>(question);
         }
 
-        private Question CopyQuestionToCourse(string sourceProductCourseId, string sourceQuestionId, string destinationProductCourseId, string destinationQuestionId,string version = null, bool resetVersion = false)
+        private Question CopyQuestionToCourse(string sourceProductCourseId, string sourceQuestionId, string destinationProductCourseId, string destinationQuestionId,string version = null)
         {
             var questionToCopy = questionCommands.GetAgilixQuestion(sourceProductCourseId, sourceQuestionId, version);
             if (questionToCopy == null)
             {
-                throw new NullReferenceException("There is no such question in the course");
+                return questionCommands.GetAgilixQuestion(destinationProductCourseId, destinationQuestionId);
             }
+            return CopyQuestionToCourse(destinationProductCourseId, destinationQuestionId, questionToCopy);
+        }
+
+        private Question CopyQuestionToCourse(string destinationProductCourseId, string destinationQuestionId, Question questionToCopy)
+        {
             questionToCopy.EntityId = destinationProductCourseId;
             questionToCopy.Id = destinationQuestionId;
-            if (resetVersion)
-            {
-                questionToCopy.QuestionVersion = "0";
-            }
             questionCommands.ExecutePutQuestion(questionToCopy);
             return questionToCopy;
         }

@@ -8,6 +8,7 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
     {
         PagedCollection<Question> GetQuestionList(string questionRepositoryCourseid, string currentCourseId, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount);
         Question CreateQuestion(string productCourseId, Question question);
+        void SetSequence(string productCourseId, Question question);
         Question GetQuestion(string repositoryCourseId, string questionId, string version = null);
 
         Bfw.Agilix.DataContracts.Question GetAgilixQuestion(string repositoryCourseId, string questionIdm,

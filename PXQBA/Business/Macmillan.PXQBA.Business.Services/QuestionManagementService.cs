@@ -39,8 +39,7 @@ namespace Macmillan.PXQBA.Business.Services
             try
             {
                 Question question = GetNewQuestionTemplate(course, questionType, bank, chapter);
-                var created = questionCommands.CreateQuestion(course.ProductCourseId, question);
-                questionCommands.ExecuteSolrUpdateTask();
+                var created = temporaryQuestionOperation.CreateQuestion(course.ProductCourseId, question);
                 return created;
             }
             catch (Exception ex)
@@ -271,31 +270,32 @@ namespace Macmillan.PXQBA.Business.Services
             }
             ClearServiceFields(question);
             question.DraftFrom = questionId;
-            var draft = questionCommands.CreateQuestion(course.ProductCourseId, question);
-            questionCommands.ExecuteSolrUpdateTask();
+            var draft = temporaryQuestionOperation.CreateQuestion(course.ProductCourseId, question);
             return draft;
         }
 
-        public bool RemoveQuestion(Course course, string questionId)
-        {
-            try
-            {
-                Question question = GetQuestion(course, questionId);
-                if (question != null &&
-                    (question.Version == 1 && string.IsNullOrEmpty(question.DuplicateFrom) && string.IsNullOrEmpty(question.DuplicateFromShared))
-                   )
-                {
-                    questionCommands.DeleteQuestion(course.QuestionRepositoryCourseId, questionId);
-                    questionCommands.ExecuteSolrUpdateTask();
-                    return true;
-                }
-                return false;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(string.Format("RemoveQuestion: courseId: {0}, questionId:{1}", course.ProductCourseId, questionId), ex);
-            }
-        }
+        //Unnecessary as we now create question in Temp course
+
+        //public bool RemoveQuestion(Course course, string questionId)
+        //{
+        //    try
+        //    {
+        //        Question question = GetQuestion(course, questionId);
+        //        if (question != null &&
+        //            (question.Version == 1 && string.IsNullOrEmpty(question.DuplicateFrom) && string.IsNullOrEmpty(question.DuplicateFromShared))
+        //           )
+        //        {
+        //            questionCommands.DeleteQuestion(course.QuestionRepositoryCourseId, questionId);
+        //            questionCommands.ExecuteSolrUpdateTask();
+        //            return true;
+        //        }
+        //        return false;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception(string.Format("RemoveQuestion: courseId: {0}, questionId:{1}", course.ProductCourseId, questionId), ex);
+        //    }
+        //}
 
         public Question RestoreQuestionVersion(Course course, string questionId, string version)
         {
