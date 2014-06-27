@@ -471,6 +471,10 @@ var questionDataManager = (function() {
             if (response.permissionStatusSkipped > 0) {
                 self.showWarningPopup("You have no permission for status changing - " + response.permissionSkipped + " questions/drafts were skipped");
             }
+            
+            if (response.permissionSkipped > 0) {
+                self.showWarningPopup("You have no permission for fields changing - " + response.permissionSkipped + " questions/drafts were skipped");
+            }
             console.log('Refresh complite');
         }).error(function(e){
              self.showErrorPopup();

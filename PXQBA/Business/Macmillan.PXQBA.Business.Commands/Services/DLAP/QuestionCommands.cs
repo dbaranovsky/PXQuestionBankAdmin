@@ -252,7 +252,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 }
                 results.AddRange(docElements);
             } while (docElements.Count() == SearchCommandMaxRows);
-             //while (i <= 1);
+            // while (i <= 1);
 
             return results;
         }
@@ -438,6 +438,10 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             {
                 return UpdateQuestionStatus(repositoryCourseId, questionId, fieldValue, userCapabilities);
             }
+            if (fieldName.Equals(MetadataFieldNames.Chapter) || fieldName.Equals(MetadataFieldNames.Bank))
+            {
+                return UpdateQuestionsField(productCourseId, repositoryCourseId, questionId, fieldName, fieldValue, userCapabilities);
+            }
             UpdateQuestionFieldForce(productCourseId, repositoryCourseId, questionId, fieldName, fieldValue);
             return true;
         }
@@ -475,7 +479,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             }
             if (fieldName.Equals(MetadataFieldNames.Chapter) || fieldName.Equals(MetadataFieldNames.Bank))
             {
-                return UpdateQuestionsField(productCourseId, repositoryCourseId, questionId, fieldName, fieldValue, userCapabilities);
+                return UpdateQuestionsFields(productCourseId, repositoryCourseId, questionId, fieldName, fieldValue, userCapabilities);
             }
 
             return new BulkOperationResult();
@@ -719,6 +723,16 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return UpdateQuestionsStatuses(repositoryCourseId, new List<string> { questionId }, newValue, userCapabilities).IsSuccess;
         }
 
+        private bool UpdateQuestionsField(string productCourseId, 
+                                         string repositoryCourseId, 
+                                         string questionId,
+                                         string fieldName,
+                                         string newValue,
+                                         IEnumerable<Capability> userCapabilities)
+        {
+            return UpdateQuestionsFields(productCourseId, repositoryCourseId, new List<string> { questionId }, fieldName, newValue, userCapabilities).IsSuccess;
+        }
+
 
         private BulkOperationResult UpdateQuestionsStatuses(string repositoryCourseId, IEnumerable<string> questionId, string newValue, IEnumerable<Capability> userCapabilities)
         {
@@ -756,7 +770,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return result;
         }
 
-        private BulkOperationResult UpdateQuestionsField(string productCourseId,
+        private BulkOperationResult UpdateQuestionsFields(string productCourseId,
                                                             string repositoryCourseId, 
                                                             IEnumerable<string> questionId, 
                                                             string fieldName,

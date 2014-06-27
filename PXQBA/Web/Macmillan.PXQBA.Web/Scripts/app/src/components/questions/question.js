@@ -99,7 +99,14 @@ var Question = React.createClass({
             });
         
         var cells = this.props.columns.map(function(descriptor) {
-                return self.renderCell(descriptor.metadataName, descriptor.editorDescriptor, descriptor.isInlineEditingAllowed)
+                var isAllowedInlineEditing = false;
+                if(descriptor.metadataName==window.consts.questionStatusName) {
+                    isAllowedInlineEditing = descriptor.isInlineEditingAllowed;
+                }
+                else {
+                    isAllowedInlineEditing = self.props.metadata.canEditQuestion && descriptor.isInlineEditingAllowed;
+                }
+                return self.renderCell(descriptor.metadataName, descriptor.editorDescriptor, isAllowedInlineEditing)
             });
 
         return ( 
