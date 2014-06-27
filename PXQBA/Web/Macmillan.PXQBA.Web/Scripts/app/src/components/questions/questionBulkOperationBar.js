@@ -93,11 +93,11 @@ var QuestionBulkOperationBar = React.createClass({
                                                               selectedQuestions={this.props.selectedQuestions}/> 
                                </div>
                             </td>
-                            <td className="bulk-operation-sharing">
+                            <td className="bulk-operation-cell">
                               <button type="button" className="btn btn-default" disabled={!this.props.canShareQuestion} onClick={this.bulkShareToTitle}>Share with another title</button>
                               {this.renderRemoveButton()}
                             </td>
-                            <td>
+                            <td className="bulk-operation-cell">
                                <div className="deselect-button" onClick={this.deselectsAllHandler} data-toggle="tooltip" title="Deselect all">
                                  <span > X </span>
                                </div>
