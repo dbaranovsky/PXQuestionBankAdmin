@@ -158,6 +158,7 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Constants\WebKeys.cs" />
     <Compile Include="ActionResults\JsonCamelCaseResult.cs" />
+    <Compile Include="Controllers\CompareController.cs" />
     <Compile Include="Controllers\ImportController.cs" />
     <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\MetadataController.cs" />
@@ -229,6 +230,7 @@
     <Content Include="Scripts\app\components\common\textAreaEditor.js" />
     <Content Include="Scripts\app\components\common\textEditor.js" />
     <Content Include="Scripts\app\components\common\tooltipElement.js" />
+    <Content Include="Scripts\app\components\compare\titlesComparerRoot.js" />
     <Content Include="Scripts\app\components\metadata\availibleValuesDialog.js" />
     <Content Include="Scripts\app\components\metadata\displayOptionsDialog.js" />
     <Content Include="Scripts\app\components\metadata\internalFieldDialog.js" />
@@ -330,6 +332,7 @@
     <Content Include="Scripts\app\src\components\common\textAreaEditor.js" />
     <Content Include="Scripts\app\src\components\common\textEditor.js" />
     <Content Include="Scripts\app\src\components\common\tooltipElement.js" />
+    <Content Include="Scripts\app\src\components\compare\titlesComparerRoot.js" />
     <Content Include="Scripts\app\src\components\metadata\availibleValuesDialog.js" />
     <Content Include="Scripts\app\src\components\metadata\displayOptionsDialog.js" />
     <Content Include="Scripts\app\src\components\metadata\internalFieldDialog.js" />
@@ -468,6 +471,7 @@
     <Content Include="Views\Metadata\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Shared\MainMenu.cshtml" />
+    <Content Include="Views\Compare\Index.cshtml" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
