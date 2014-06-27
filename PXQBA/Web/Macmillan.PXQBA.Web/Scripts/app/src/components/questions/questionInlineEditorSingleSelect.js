@@ -33,8 +33,8 @@ var QuestionInlineEditorSingleSelect = React.createClass({
     render: function() {
         return ( 
             <div>
-                <div className="dropdown">
-                    <ul className="dropdown-menu menu-show" role="menu" aria-labelledby="dropdownMenuType" onClick={this.changeEventHandler}>
+                <div className="dropdown" >
+                    <ul className="dropdown-menu menu-show" role="menu" aria-labelledby="dropdownMenuType" onClick={this.changeEventHandler} rel="tooltip" data-toggle="popover">
                        {this.renderMenuItems()}
                     <li role="presentation" className="divider"></li>
                     <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" data-value={this.cancelValue}>Cancel</a></li>

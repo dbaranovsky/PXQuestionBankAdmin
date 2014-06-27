@@ -110,7 +110,7 @@ var QuestionListMenu = React.createClass({
 
        
        if(!this.props.showAll){
-         $('.popover').remove();
+         $('body').children('.popover').remove();
        }
 
 

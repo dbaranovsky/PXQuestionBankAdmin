@@ -22,7 +22,8 @@ namespace Macmillan.PXQBA.Web.Helpers
                              FilterType = FilterType.MultiSelectWithAddition.ToString().ToLower(),
                              AllowDeselect = true,
                              ColumnAppendAllowed = true,
-                             CanCloseOnFilter = true
+                             CanCloseOnFilter = true,
+                             CanUpdateSharedValue = false
                          };
 
 

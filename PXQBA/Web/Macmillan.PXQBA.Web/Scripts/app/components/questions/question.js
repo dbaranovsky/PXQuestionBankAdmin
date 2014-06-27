@@ -33,13 +33,17 @@ var Question = React.createClass({displayName: 'Question',
         return titleCount;
     },
 
+    isShared: function(){
+            var titleCount = this.getTitleCount();
+            return titleCount > 0;
+    },
+
     renderMenu: function() {
             var questionId = this.props.metadata.data["id"];
             var questionIds = [];
             questionIds.push(questionId);
 
-           var titleCount = this.getTitleCount();
-            var isShared = titleCount > 0;
+       
             return QuestionListMenu(
                         {data:this.props.metadata.data, 
                         copyQuestionHandler:this.props.menuHandlers.copyQuestionHandler.bind(null, questionId),
@@ -50,8 +54,8 @@ var Question = React.createClass({displayName: 'Question',
                         createDraftHandler: this.props.menuHandlers.createDraftHandler.bind(null, questionId),
                         showNotification:  this.props.menuHandlers.showNotification,
                         showAll:  this.state.showMenu, 
-                        isShared:  isShared,
-                        titleCount:  titleCount,
+                        isShared:  this.isShared(),
+                        titleCount:  this.getTitleCount(),
                         draft:  this.props.draft,
                         capabilities:  this.props.capabilities,
                         metadataCapabilities: {canCreateDraftFromAvailableQuestion: this.props.metadata.canCreateDraftFromAvailableQuestion,
@@ -66,7 +70,9 @@ var Question = React.createClass({displayName: 'Question',
         this.props.selectQuestionHandler(quesionId, isSelected, this.props.metadata.data.sharedWith!=="");
     },
 
-    renderCell: function(metadataName, editorDescriptor, allowedEdit) {
+ 
+
+    renderCell: function(metadataName, editorDescriptor, allowedEdit, canUpdateSharedValue) {
         return ( QuestionCell( {value:this.props.metadata.data[metadataName],
                                field:metadataName, 
                                questionId:this.props.metadata.data.id,
@@ -77,7 +83,9 @@ var Question = React.createClass({displayName: 'Question',
                                draft:this.props.draft,
                                expandPreviewQuestionHandler:  this.props.expandPreviewQuestionHandler,
                                canChangeDraftStatus:  this.props.metadata.canChangeDraftStatus,
-                               capabilities:  this.props.capabilities}
+                               capabilities:  this.props.capabilities,
+                               canUpdateSharedValue:  canUpdateSharedValue,
+                               isShared:  this.isShared()}
                                 ));
     },
       
@@ -106,7 +114,7 @@ var Question = React.createClass({displayName: 'Question',
                 else {
                     isAllowedInlineEditing = self.props.metadata.canEditQuestion && descriptor.isInlineEditingAllowed;
                 }
-                return self.renderCell(descriptor.metadataName, descriptor.editorDescriptor, isAllowedInlineEditing)
+                return self.renderCell(descriptor.metadataName, descriptor.editorDescriptor, isAllowedInlineEditing, descriptor.canUpdateSharedValue)
             });
 
         return ( 

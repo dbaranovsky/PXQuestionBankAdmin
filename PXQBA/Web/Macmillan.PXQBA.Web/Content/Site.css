@@ -1330,3 +1330,13 @@ textarea.metadata-availible-values-editor {
 .notification-link {
     cursor: pointer;
 }
+
+/* popovers */
+.inline-editor-container > .popover {
+    border-color: #cb3333;
+    background-color: #fef3ef;
+}
+
+.inline-editor-container > .popover.top > .arrow:after{
+    border-top-color: #fef3ef;
+}

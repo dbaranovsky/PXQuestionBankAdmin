@@ -34,6 +34,11 @@ var QuestionCell = React.createClass({displayName: 'QuestionCell',
               (!this.props.allowedEdit)) {
                 return null;
             }
+
+            if(this.props.field != window.consts.questionStatusName && this.props.status == window.enums.statuses.availibleToInstructor){
+              return null;
+            }
+
             return QuestionCellMenu( {onEditClickHandler:this.onEditClickHandler, isDisabled:this.props.field == window.consts.questionStatusName && !this.props.canChangeDraftStatus && this.props.draft})
         }
         return null;
@@ -74,7 +79,9 @@ var QuestionCell = React.createClass({displayName: 'QuestionCell',
                                questionId: this.props.questionId,
                                editorDescriptor: this.props.editorDescriptor,
                                draft: this.props.draft,
-                               status: this.props.status
+                               status: this.props.status,
+                               isShared: this.props.isShared,
+                               canUpdateSharedValue: this.props.canUpdateSharedValue
                              }}
              ));
         }
