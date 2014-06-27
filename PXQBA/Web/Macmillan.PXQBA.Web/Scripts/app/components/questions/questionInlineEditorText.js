@@ -25,7 +25,7 @@ var QuestionInlineEditorText = React.createClass({displayName: 'QuestionInlineEd
         var value = this.state.value;
         return ( 
                 React.DOM.div( {className:"text-editor-container"},  
-                          React.DOM.div( {className:"input-group"}, 
+                          React.DOM.div( {className:"input-group", rel:"tooltip", 'data-toggle':"popover"}, 
                               React.DOM.input( {type:"text", value:value, onChange:this.handleChange, className:"form-control"} ),
                               React.DOM.span( {className:"input-group-btn"}, 
                                 React.DOM.button( {className:"btn btn-default", type:"button", onClick:this.onAcceptEventHandler}, "Accept"),

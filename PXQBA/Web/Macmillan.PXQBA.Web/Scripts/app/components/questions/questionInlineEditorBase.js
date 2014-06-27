@@ -6,6 +6,7 @@ var QuestionInlineEditorBase = React.createClass({displayName: 'QuestionInlineEd
     
     componentDidMount: function() {
         $(document).click(this.clickOutSideControlHandler);
+        this.showToolTip();
     },
 
     componentWillUnmount: function() {
@@ -110,7 +111,22 @@ var QuestionInlineEditorBase = React.createClass({displayName: 'QuestionInlineEd
         }
     },
 
+    showToolTip: function(){
+      if(!this.props.metadata.isShared){
+        return;
+      }
+
+      var localOverride = "The new value you enter will override the local metadata value of this shared question";
+       $(this.getDOMNode()).find('[rel="tooltip"]').popover({
+                                        trigger: 'manual', 
+                                        placement:'top',           
+                                        container: '.inline-editor-container',
+                                        content: this.props.canUpdateSharedValue? localOverride: localOverride,
+                                        }).popover("show");  
+    },
+
      render: function() {
+      
         return ( 
             React.DOM.div( {className:"inline-editor-container"}, 
                this.renderSpecificEditor()

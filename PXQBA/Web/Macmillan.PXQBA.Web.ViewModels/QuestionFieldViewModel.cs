@@ -28,5 +28,7 @@ namespace Macmillan.PXQBA.Web.ViewModels
         public bool ColumnAppendAllowed { get; set;}
 
         public bool CanCloseOnFilter { get; set; }
+
+        public bool CanUpdateSharedValue { get; set; }
     }
 }
