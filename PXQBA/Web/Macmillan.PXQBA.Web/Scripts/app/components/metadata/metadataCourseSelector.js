@@ -23,13 +23,18 @@ var MetadataCourseSelector= React.createClass({displayName: 'MetadataCourseSelec
         return [];
     },
 
+    renderLabel: function() {
+      if(this.props.hideLabel) {
+        return null;
+      }
+       return (React.DOM.div(null,  " Title " ));
+    },
+
     render: function() {
        return (
 
                React.DOM.div( {className:"course-selector-container"},  
-                    React.DOM.div(null, 
-                      "Title"
-                    ),
+                    this.renderLabel(),
                    React.DOM.div(null,  
                       SingleSelectSelector( 
                         {allOptions:this.buildAllOptions(),
