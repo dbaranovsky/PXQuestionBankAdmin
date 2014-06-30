@@ -4,6 +4,6 @@
     {
         OnlyFirstCourse=0,
         OnlySecondCourse=1,
-        BothCourses=3
+        BothCourses=2
     }
 }
