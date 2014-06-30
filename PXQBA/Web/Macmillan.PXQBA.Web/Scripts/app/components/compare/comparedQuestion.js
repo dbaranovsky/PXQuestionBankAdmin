@@ -2,12 +2,12 @@
 * @jsx React.DOM
 */
 
-var TitlesComparerRoot = React.createClass({displayName: 'TitlesComparerRoot',
+var ComparedQuesion = React.createClass({displayName: 'ComparedQuesion',
 
     render: function() {
        return (
             React.DOM.div(null, 
-                "Root"
+                   "Question"
             )
             );
     }

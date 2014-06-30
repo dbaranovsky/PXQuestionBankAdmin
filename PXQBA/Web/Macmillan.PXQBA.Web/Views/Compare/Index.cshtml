@@ -15,19 +15,47 @@
 {
   
     <script src="../../Scripts/app/components/common/loader.js"></script>
+    <script src="../../Scripts/app/components/common/singleSelectSelector.js"></script>
+    <script src="../../Scripts/app/components/common/paginator.js"></script>
+
     <script src="../../Scripts/app/async/asyncManager.js"></script>
     <script src="../../Scripts/app/async/notificationManager.js"></script>
     
-    <script src="../../Scripts/app/components/compare/titlesComparerRoot.js"></script>
+    <script src="../../Scripts/app/dataAccess/compareTitlesDataManager.js"></script>
+    
+    <script src="../../Scripts/app/components/metadata/metadataCourseSelector.js"></script>
+    
+    <script src="../../Scripts/app/components/compare/comparedQuestion.js"></script>
+    <script src="../../Scripts/app/components/compare/questionComparerList.js"></script>
+    <script src="../../Scripts/app/components/compare/courseComparerRoot.js"></script>
+    <script src="../../Scripts/app/components/compare/courseCompareSelector.js"></script>
 
 
     <script>
         var compareContainer = $('#compare-container')[0];
+        notificationManager.htmlContainer = $('#notifications-container')[0];
         asyncManager.startWait(compareContainer);
 
-        notificationManager.htmlContainer = $('#notifications-container')[0];
+        var courseList = compareTitlesDataManager.getAvailableCourses();
 
         var options = {};
+
+        courseList.done(function (response) {
+            asyncManager.page = React.renderComponent(
+                CourseComparerRoot({
+                    availableCourses: response,
+                    options: options
+                }, " "),
+                compareContainer);
+            })
+        .fail(function (error) {
+                  console.error("compareTitlesDataManager.getAvailableCourses:", error);
+        })
+        .always(function () {
+                  asyncManager.stopWait();
+        });
+
+       
         
  
     </script>
