@@ -36,7 +36,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.ProductCourseId, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
                 .ForMember(dest => dest.FieldDescriptors,
-                    opt => opt.MapFrom(src => src.QuestionCardData))
+                   opt => opt.MapFrom(src => modelProfileService.MapFieldsWithItemLinks(src.QuestionCardData, src.Data)))
                 .ForMember(dest => dest.QuestionRepositoryCourseId, 
                     opt => opt.MapFrom(src => src.QuestionBankRepositoryCourse));
 
@@ -67,7 +67,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<CourseMetadataFieldDescriptor, MetaFieldTypeDescriptor>()
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type))
                 .ForMember(dest => dest.AvailableChoice,
-                    opt => opt.MapFrom(src => src.CourseMetadataFieldValues.Select(i => new AvailableChoiceItem(i.Text)).ToList()));
+                opt => opt.MapFrom(src => src.CourseMetadataFieldValues.Select(i => new AvailableChoiceItem(string.IsNullOrEmpty(i.Id)? i.Text : i.Id,i.Text)).ToList()));
 
             Mapper.CreateMap<Bfw.Agilix.DataContracts.Question, Question>()
                 .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
