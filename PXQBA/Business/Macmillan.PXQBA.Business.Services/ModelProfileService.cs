@@ -254,7 +254,7 @@ namespace Macmillan.PXQBA.Business.Services
 
         public IEnumerable<AvailableChoiceItem> GetMetadataFieldValues(CourseMetadataFieldDescriptor field)
         {
-            return field.CourseMetadataFieldValues.OrderBy(v => v.Sequence).Select(v => new AvailableChoiceItem(v.Text, v.Text));
+            return field.CourseMetadataFieldValues.OrderBy(v => v.Sequence).Select(v => new AvailableChoiceItem(string.IsNullOrEmpty(v.Id)? v.Text: v.Id, v.Text));
         }
 
         public IEnumerable<CourseMetadataFieldDescriptor> GetCourseFieldDescriptors(MetadataConfigViewModel metadataConfigViewModel)
@@ -367,6 +367,13 @@ namespace Macmillan.PXQBA.Business.Services
                     Id = (int) v, Name = EnumHelper.GetEnumDescription(v), IsActive = capabilities.Contains(v)
                 })
             }).ToList();
+        }
+
+        public IEnumerable<CourseMetadataFieldDescriptor> MapFieldsWithItemLinks(List<QuestionCardData> questionCardData, XElement courseData)
+        {
+            var fields = Mapper.Map<IEnumerable<CourseMetadataFieldDescriptor>>(questionCardData).ToList();
+            fields.AddRange(CourseDataXmlHelper.GetItemLinksDescriptors(courseData));
+            return fields;
         }
 
         private CourseMetadataFieldDescriptor GetFieldDescriptorWithSplitedValues(string concatedValues, string internalName)

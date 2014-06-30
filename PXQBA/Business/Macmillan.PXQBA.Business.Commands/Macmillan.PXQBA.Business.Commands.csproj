@@ -86,6 +86,7 @@
     <Compile Include="Contracts\IUserOperation.cs" />
     <Compile Include="DataContracts\QuestionFacetedSearchResult.cs" />
     <Compile Include="DataContracts\QuestionSearchResult.cs" />
+    <Compile Include="Helpers\CourseDataXmlHelper.cs" />
     <Compile Include="Helpers\QuestionDataXmlParser.cs" />
     <Compile Include="Helpers\QuestionHelper.cs" />
     <Compile Include="Helpers\QuestionSequenceHelper.cs" />

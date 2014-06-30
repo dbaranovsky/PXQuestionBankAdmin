@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Linq;
+using Bfw.Agilix.DataContracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.DataAccess.Data;
 using Macmillan.PXQBA.Web.ViewModels;
@@ -43,5 +44,7 @@ namespace Macmillan.PXQBA.Business.Contracts
         Question GetQuestionVersion(string entityId, string id, string version);
         IEnumerable<Capability> GetActiveRoleCapabilities(RoleViewModel src);
         IEnumerable<CapabilityGroupViewModel> GetCapabilityGroups(IList<Capability> capabilities);
+
+        IEnumerable<CourseMetadataFieldDescriptor> MapFieldsWithItemLinks(List<QuestionCardData> questionCardData, XElement courseData);
     }
 }
