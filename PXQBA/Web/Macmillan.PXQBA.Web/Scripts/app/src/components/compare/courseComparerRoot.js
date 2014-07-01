@@ -9,6 +9,7 @@ var CourseComparerRoot = React.createClass({
             firstCourse: null,
             secondCourse: null,
             currentPage: null,
+            compareEnabled: false
         };
     },
 
@@ -53,9 +54,41 @@ var CourseComparerRoot = React.createClass({
     },
 
     getComparedDataDone: function(response) {
-        this.setState({page: response.page})
-        this.setState({questions: response.questions})
-        this.setState({totalPages: response.totalPages})
+
+        if(!response.oneQuestionRepositrory) {
+            this.setState({compareEnabled: false});
+            notificationManager.showWarning("You need choose titles for comparison with the same Question Bank Repository");
+            return;
+        }
+
+        this.setState({compareEnabled: true});
+        this.setState({page: response.page});
+        this.setState({questions: response.questions});
+        this.setState({totalPages: response.totalPages});
+    },
+
+    getCourseCaption: function(courseId) {
+        if(courseId==null) {
+            return "";
+        }
+
+        for(var i=0; i<this.props.availableCourses.length; i++) {
+            if(this.props.availableCourses[i].id==courseId) {
+                return this.props.availableCourses[i].title;
+            }
+        }
+
+        return "";
+    },
+
+    renderPaginator: function() {
+        if(!this.state.compareEnabled) {
+            return null;
+        }
+        return ( <Paginator metadata={{
+                            currentPage: this.state.page,
+                            totalPages: this.state.totalPages}} 
+                            customPaginatorClickHandle={this.paginatorClickHandle}/>);
     },
 
     render: function() {
@@ -68,11 +101,12 @@ var CourseComparerRoot = React.createClass({
                                        changeSecondCourseHandler={this.changeSecondCourseHandler}
                 />
 
-                <QuestionComparerList questions={this.state.questions} />
-                 <Paginator metadata={{
-                            currentPage: this.state.page,
-                            totalPages: this.state.totalPages}} 
-                            customPaginatorClickHandle={this.paginatorClickHandle}/>
+                <QuestionComparerList questions={this.state.questions} 
+                                      compareEnabled={this.state.compareEnabled}
+                                      firstTitleCaption={this.getCourseCaption(this.state.firstCourse)}
+                                      secondTitleCaption={this.getCourseCaption(this.state.secondCourse)}
+                                      />
+                 {this.renderPaginator()}
             </div>
             );
     }

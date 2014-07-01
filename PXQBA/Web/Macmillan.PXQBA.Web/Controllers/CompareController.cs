@@ -17,7 +17,14 @@ namespace Macmillan.PXQBA.Web.Controllers
             var response = new CompareTitlesResponse();
 
             response.Page = request.Page;
+
+            if (request.FirstCourse == request.SecondCourse)
+            {
+                response.OneQuestionRepositrory = false;
+                return JsonCamel(response);
+            }
             response.TotalPages = 5;
+            response.OneQuestionRepositrory = true;
 
             response.Questions = new List<ComparedQuestionViewModel>();
 
