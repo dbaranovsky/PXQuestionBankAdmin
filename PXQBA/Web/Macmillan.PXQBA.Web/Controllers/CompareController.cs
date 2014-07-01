@@ -1,11 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using Macmillan.PXQBA.Business.Commands.Contracts;
+using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Web.ViewModels.CompareTitles;
 
 namespace Macmillan.PXQBA.Web.Controllers
 {
     public class CompareController : MasterController
     {
+        //ToDo Use service instead commands
+        private readonly IQuestionCommands commands;
+
+        public CompareController(IQuestionCommands commands)
+        {
+            this.commands = commands;
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -25,6 +35,18 @@ namespace Macmillan.PXQBA.Web.Controllers
             }
             response.TotalPages = 5;
             response.OneQuestionRepositrory = true;
+
+            commands.GetComparedQuestionList("39768", new List<FilterFieldDescriptor>()
+                                                 {
+                                                     new FilterFieldDescriptor()
+                                                     {
+                                                         Field = MetadataFieldNames.ProductCourse,
+                                                         Values = new List<string>()
+                                                                  {
+                                                                      "70295", "85256"
+                                                                  } 
+                                                     }
+                                                 }, "70295", "85256", 0, 50);
 
             response.Questions = new List<ComparedQuestionViewModel>();
 
