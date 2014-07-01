@@ -50,6 +50,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
             var questions = PreparedQuestionPage(questionRepositoryCourseId, searchResults, startingRecordNumber, recordCount);
             SetCorrectSequenceDisplayValue(currentCourseId, questions, questionsSortedBySequence);
+            UpdateQuestionPreviewUrls(questions, questionRepositoryCourseId);
             var result = new PagedCollection<Question>
             {
                 TotalItems = searchResults.Count(r => string.IsNullOrEmpty(r.DraftFrom)),
@@ -533,6 +534,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         public IEnumerable<Question> GetVersionHistory(string questionRepositoryCourseId, string questionId)
         {
             var versions = Mapper.Map<IEnumerable<Question>>(GetAgilixQuestionsAsAdmin(questionRepositoryCourseId, new List<string>() { questionId }, true));
+            UpdateQuestionPreviewUrls(versions, questionRepositoryCourseId);
             return versions.ToList().OrderByDescending(v => v.Version);
         }
 
@@ -561,6 +563,13 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return GetQuestions(questionRepositoryCourseId, results.Select(r => r.QuestionId).ToArray());
         }
 
+        private void UpdateQuestionPreviewUrls(IEnumerable<Question> questions, string questionRepositoryCourseId)
+        {
+            foreach (var question in questions)
+            {
+                question.Preview = QuestionPreviewHelper.UpdateImagesUrls(question.Preview, questionRepositoryCourseId, question.InteractionType);
+            }
+        }
 
         private Bfw.Agilix.DataContracts.Question GetSpecificVersion(string repositoryCourseId, string questionId, string version)
         {
