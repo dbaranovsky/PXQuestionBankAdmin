@@ -52,18 +52,12 @@ namespace Macmillan.PXQBA.Common.Helpers
 
             html.Append("</div>");
 
-
-
-
-            return question.InteractionType == "custom"? html.ToString() : UpdateImagesUrls(html.ToString(), ConfigurationHelper.GetTemporaryCourseId());
-            
-            
-         
+            return  html.ToString();    
         }
 
-        private static string UpdateImagesUrls(string html,string resourceCourseId)
+        public static string UpdateImagesUrls(string html,string resourceCourseId, string interactionType)
         {
-            return html.Replace(@"src=""[~]/", string.Format(@"src=""{0}/{1}/[~]/", "/brainhoney/Resource", resourceCourseId));
+            return interactionType == "custom" ? html : html.Replace(@"src=""[~]/", string.Format(@"src=""{0}/{1}/[~]/", "/brainhoney/Resource", resourceCourseId));
         }
 
 

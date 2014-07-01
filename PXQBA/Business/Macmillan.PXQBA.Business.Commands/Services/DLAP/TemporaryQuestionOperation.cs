@@ -62,6 +62,9 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 GetTemporaryQuestionId = GetTemporaryQuestionIdForVersion;
                 GetTemporaryQuizId = GetTemporaryQuizIdForVersion;
             }
+            RemoveResources(temporaryCourseId);
+            CopyResources(sourceProductCourseId, temporaryCourseId);
+        
             var questionToCopy = CopyQuestionToCourse(sourceProductCourseId, questionIdToCopy, temporaryCourseId, GetTemporaryQuestionId(), version);
             return UpdateQuestionQuiz(questionToCopy);
         }
@@ -77,8 +80,36 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         public Models.Question CopyQuestionToSourceCourse(string sourceProductCourseId, string sourceQuestionId)
         {
             var question = CopyQuestionToCourse(temporaryCourseId, GetTemporaryQuestionId(), sourceProductCourseId, sourceQuestionId);
+            CopyResources(temporaryCourseId, sourceProductCourseId);
             //questionCommands.DeleteQuestion(temporaryCourseId, GetTemporaryQuestionId());
             return Mapper.Map<Models.Question>(question);
+        }
+
+        private void CopyResources(string from, string to)
+        {
+            var copyResoursecCmd = new CopyResources
+                                   {
+                                       DestEntityId = to,
+                                       SourceEntityId = from,
+                                       SourcePath = "Assets/*"
+                                   };
+           businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(copyResoursecCmd);
+        }
+
+        private void RemoveResources(string itemId)
+        {
+            var copyResoursecCmd = new DeleteResources()
+                                   {
+                                       ResourcesToDelete = new List<Resource>()
+                                                           {
+                                                               new Resource()
+                                                               {
+                                                                   EntityId = itemId,
+                                                                   Url = "Assets"
+                                                               }
+                                                           }
+                                   };
+             this.businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(copyResoursecCmd);
         }
 
         private Question CopyQuestionToCourse(string sourceProductCourseId, string sourceQuestionId, string destinationProductCourseId, string destinationQuestionId,string version = null)
