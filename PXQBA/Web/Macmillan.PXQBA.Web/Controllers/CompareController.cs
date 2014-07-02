@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
+using AutoMapper;
 using Macmillan.PXQBA.Business.Commands.Contracts;
+using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Web.ViewModels.CompareTitles;
 
@@ -10,10 +13,16 @@ namespace Macmillan.PXQBA.Web.Controllers
     {
         //ToDo Use service instead commands
         private readonly IQuestionCommands commands;
+        private readonly IProductCourseManagementService productCourseManagementService;
+        private readonly IQuestionMetadataService questionMetadataService;
 
-        public CompareController(IQuestionCommands commands)
+        public CompareController(IQuestionCommands commands,
+                                 IProductCourseManagementService productCourseManagementService,
+                                 IQuestionMetadataService questionMetadataService)
         {
             this.commands = commands;
+            this.productCourseManagementService = productCourseManagementService;
+            this.questionMetadataService = questionMetadataService;
         }
 
         public ActionResult Index()
@@ -36,37 +45,13 @@ namespace Macmillan.PXQBA.Web.Controllers
             response.TotalPages = 5;
             response.OneQuestionRepositrory = true;
 
-            commands.GetComparedQuestionList("39768", new List<FilterFieldDescriptor>()
-                                                 {
-                                                     new FilterFieldDescriptor()
-                                                     {
-                                                         Field = MetadataFieldNames.ProductCourse,
-                                                         Values = new List<string>()
-                                                                  {
-                                                                      "70295", "85256"
-                                                                  } 
-                                                     }
-                                                 }, "70295", "85256", 0, 50);
+            var qeustions = commands.GetComparedQuestionList("39768", "70295", "85256", 0, 50);
+            var firstCourse = productCourseManagementService.GetProductCourse("70295", true);
+            var secondCourse = productCourseManagementService.GetProductCourse("85256", true);
 
-            response.Questions = new List<ComparedQuestionViewModel>();
-
-            response.Questions.Add(new ComparedQuestionViewModel()
-                                   {
-                                       Title = "Title1",
-                                       CompareLocation = CompareLocationType.OnlyFirstCourse
-                                   });
-
-            response.Questions.Add(new ComparedQuestionViewModel()
-                                    {
-                                        Title = "Title2",
-                                        CompareLocation = CompareLocationType.OnlySecondCourse
-                                    });
-
-            response.Questions.Add(new ComparedQuestionViewModel()
-                                    {
-                                        Title = "Title3",
-                                        CompareLocation = CompareLocationType.BothCourses
-                                    });
+            response.Questions = qeustions.CollectionPage.Select(Mapper.Map<ComparedQuestionViewModel>).ToList();
+            response.FirstCourseQuestionCardLayout = questionMetadataService.GetQuestionCardLayout(firstCourse);
+            response.SecondCourseQuestionCardLayout = questionMetadataService.GetQuestionCardLayout(secondCourse);
 
             return JsonCamel(response);
         }

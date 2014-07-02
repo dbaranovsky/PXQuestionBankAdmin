@@ -10,6 +10,7 @@ using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Web.ViewModels;
+using Macmillan.PXQBA.Web.ViewModels.CompareTitles;
 using Macmillan.PXQBA.Web.ViewModels.MetadataConfig;
 using Macmillan.PXQBA.Web.ViewModels.TiteList;
 using Macmillan.PXQBA.Web.ViewModels.User;
@@ -103,6 +104,10 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
 
             Mapper.CreateMap<Question, QuestionMetadata>().ConvertUsing(new QuestionToQuestionMetadataConverter(modelProfileService));
 
+            Mapper.CreateMap<ComparedQuestion, ComparedQuestionViewModel>()
+                .ForMember(dto => dto.QuestionMetadata, opt => opt.MapFrom(q => q.Question))
+                .ForMember(dto => dto.CompareLocation, opt => opt.MapFrom(q => q.CompareLocationResult));
+                   
             Mapper.CreateMap<AgilixUser, UserInfo>()
                 .ForMember(d => d.Id, opt => opt.MapFrom(s => s.Id))
                 .ForMember(d => d.FirstName, opt => opt.MapFrom(s => s.FirstName))

@@ -5,11 +5,34 @@
 var ComparedQuesion = React.createClass({displayName: 'ComparedQuesion',
 
 
+	/*
+   if(this.props.field==window.consts.questionTitleName) {
+           return (<div className="cell-value"> 
+                     <table className="cell-value-table">
+                        <tr>
+                          <td>
+                             {this.renderExpandButton()}
+                          </td>
+                          <td>
+                             {this.props.value}
+                          </td>
+                          <td>
+                             {this.renderDraftLabel()}
+                         </td>
+                        </tr>
+                     </table>
+                    </div>);
+
+
+	*/
+
+
 	renderStub: function() {
 		return (React.DOM.div(null,  " Not Shared here"));
 	},
 
 	renderQuestionContend: function() {
+		debugger;
 		return (React.DOM.div(null,  " ", this.props.data.title));
 	},
 
