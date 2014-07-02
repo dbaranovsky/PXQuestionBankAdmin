@@ -25,5 +25,7 @@ namespace Macmillan.PXQBA.Web.ViewModels.TiteList
         }
 
         public bool CanViewQuestionList { get; set; }
+
+        public bool IsDraft { get; set; }
     }
 }

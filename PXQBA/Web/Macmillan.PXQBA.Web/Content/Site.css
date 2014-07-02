@@ -794,6 +794,8 @@ input.filter-text-input {
 .question-preview ul {
     list-style-type: none;
 }
+
+/*Titles page*/
 #title-container {
     margin: 20px 0px 0px 0px;
 }
@@ -834,6 +836,8 @@ input.filter-text-input {
     display: inline-block;
 }
 
+
+/*Custom buttons*/
 
 .icon-shared-to {
     background-image: url("../Content/img/shared-to.png");
@@ -1339,4 +1343,13 @@ textarea.metadata-availible-values-editor {
 
 .inline-editor-container > .popover.top > .arrow:after{
     border-top-color: #fef3ef;
+}
+
+.add-repository {
+    float: right;
+}
+
+#addRepoDialogId input {
+    width: 100%;
+    max-width: 100% !important;
 }
