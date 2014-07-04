@@ -6,6 +6,7 @@ var CourseComparerRoot = React.createClass({
 
    getInitialState: function() {
         return { 
+            loading: false,
             firstCourse: null,
             secondCourse: null,
             currentPage: null,
@@ -101,8 +102,15 @@ var CourseComparerRoot = React.createClass({
                             customPaginatorClickHandle={this.paginatorClickHandle}/>);
     },
 
+   renderLoader: function() {
+      if(this.state.loading) {
+        return (<Loader />)
+      }
+      
+      return null;
+   },
+
     render: function() {
-                debugger;
        return (
             <div>
                 <CourseCompareSelector availableCourses={this.props.availableCourses} 
@@ -119,6 +127,7 @@ var CourseComparerRoot = React.createClass({
                                       secondTitleCaption={this.getCourseCaption(this.state.secondCourse)}
                                       />
                  {this.renderPaginator()}
+                 {this.renderLoader()}
             </div>
             );
     }

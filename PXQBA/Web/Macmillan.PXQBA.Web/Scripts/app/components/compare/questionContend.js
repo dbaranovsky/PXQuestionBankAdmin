@@ -76,14 +76,15 @@ var QuestionContent = React.createClass({displayName: 'QuestionContent',
  
 	renderTitle: function() {
 		return(
-		     React.DOM.tr(null, 
-                          React.DOM.td(null, 
+		     React.DOM.tr(  {style:{width:'100%'}}, 
+                          React.DOM.td( {style:{width:'30px'}}, 
                              this.renderExpandButton()
                           ),
                           React.DOM.td(null, 
+                          	 " ",
                              this.props.question.data[window.consts.questionTitleName]
                           ),
-                          React.DOM.td(null, 
+                          React.DOM.td( {style:{width:'90px'}}, 
                              this.renderSharedLabel()
                          )
               ));
@@ -96,11 +97,13 @@ var QuestionContent = React.createClass({displayName: 'QuestionContent',
 		}
 		return(
 			React.DOM.tr(null,  
-				React.DOM.td( {colspan:3},  
+				React.DOM.td( {colspan:3, style:{width:'100%'}},  
+					React.DOM.div( {className:"compared-preview"}, 
 					QuestionPreviewContent( 
 					   {metadata:this.props.question.data, 
                        preview:this.props.question.data.questionHtmlInlinePreview, 
                        questionCardTemplate:this.props.questionCardTemplate}
+					)
 					)
 				)
 			)
@@ -110,7 +113,7 @@ var QuestionContent = React.createClass({displayName: 'QuestionContent',
 
     render: function() {
        return (React.DOM.div(null,  
-       			 React.DOM.table( {className:"cell-value-table"}, 
+       			 React.DOM.table( {style:{width:'100%'}}, 
                        this.renderTitle(),
                        this.renderPreview()
                  )

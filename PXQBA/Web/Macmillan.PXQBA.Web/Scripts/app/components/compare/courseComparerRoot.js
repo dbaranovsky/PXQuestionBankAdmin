@@ -6,6 +6,7 @@ var CourseComparerRoot = React.createClass({displayName: 'CourseComparerRoot',
 
    getInitialState: function() {
         return { 
+            loading: false,
             firstCourse: null,
             secondCourse: null,
             currentPage: null,
@@ -101,8 +102,15 @@ var CourseComparerRoot = React.createClass({displayName: 'CourseComparerRoot',
                             customPaginatorClickHandle:this.paginatorClickHandle}));
     },
 
+   renderLoader: function() {
+      if(this.state.loading) {
+        return (Loader(null ))
+      }
+      
+      return null;
+   },
+
     render: function() {
-                debugger;
        return (
             React.DOM.div(null, 
                 CourseCompareSelector( {availableCourses:this.props.availableCourses, 
@@ -118,7 +126,8 @@ var CourseComparerRoot = React.createClass({displayName: 'CourseComparerRoot',
                                       firstTitleCaption:this.getCourseCaption(this.state.firstCourse),
                                       secondTitleCaption:this.getCourseCaption(this.state.secondCourse)}
                                       ),
-                 this.renderPaginator()
+                 this.renderPaginator(),
+                 this.renderLoader()
             )
             );
     }

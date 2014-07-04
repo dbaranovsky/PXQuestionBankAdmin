@@ -23,11 +23,11 @@ var ComparedQuesion = React.createClass({displayName: 'ComparedQuesion',
 		}
 
 		if(this.props.data.compareLocation==window.enums.сompareLocationType.onlyFirstCourse) {
-			return [(React.DOM.td(null,  " ", this.renderQuestionContend(this.props.templates.first), " " )), (React.DOM.td(null, this.renderStub()))];
+			return [(React.DOM.td( {className:"compared-table-first-column"},  " ", this.renderQuestionContend(this.props.templates.first), " " )), (React.DOM.td(null, this.renderStub()))];
 		}
 
 		if(this.props.data.compareLocation==window.enums.сompareLocationType.onlySecondCourse) {
-			return [(React.DOM.td(null, this.renderStub(this.props.templates.second))), (React.DOM.td(null,  " ", this.renderQuestionContend(), " " ))];
+			return [(React.DOM.td( {className:"compared-table-first-column"}, this.renderStub(this.props.templates.second))), (React.DOM.td(null,  " ", this.renderQuestionContend(), " " ))];
 		}
 
 		return null;
@@ -35,7 +35,7 @@ var ComparedQuesion = React.createClass({displayName: 'ComparedQuesion',
 	},
 
     render: function() {
-       return (React.DOM.tr(null,  " ", this.renderQuestion(), " " ));
+       return (React.DOM.tr( {className:"compared-table-seporator"},  " ", this.renderQuestion(), " " ));
     },
 });
 

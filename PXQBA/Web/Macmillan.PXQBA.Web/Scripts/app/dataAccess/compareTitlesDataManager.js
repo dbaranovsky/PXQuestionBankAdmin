@@ -16,13 +16,13 @@
     };
 
 
-    self.getComparedData = function(firstCourse, secondCourse, page) {
+    self.getComparedData = function (firstCourse, secondCourse, page) {
         var request = {
             firstCourse: firstCourse,
             secondCourse: secondCourse,
             page: page
         };
-
+        asyncManager.startWait();
         return $.ajax({
             url: window.actions.compareCourse.getComparedDataUrl,
             traditional: true,
@@ -32,8 +32,9 @@
             contentType: 'application/json'
         }).done(function (response) {
             self.processDataResponse(response);
+            asyncManager.stopWait();
         }).error(function (e) {
-
+           asyncManager.stopWait();
         });
     };
 

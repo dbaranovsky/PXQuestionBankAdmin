@@ -3,9 +3,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Compare</h2>
-
-<h2>Metadata config</h2>
+ 
 
 <div id="notifications-container" class='notifications top-center center notifications-displair'> </div>
 
@@ -40,6 +38,7 @@
     <script>
         var compareContainer = $('#compare-container')[0];
         notificationManager.htmlContainer = $('#notifications-container')[0];
+        
         asyncManager.startWait(compareContainer);
 
         var courseList = compareTitlesDataManager.getAvailableCourses();

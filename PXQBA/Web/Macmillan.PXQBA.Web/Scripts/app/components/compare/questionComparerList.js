@@ -46,20 +46,20 @@ var QuestionComparerList = React.createClass({displayName: 'QuestionComparerList
     	var compareLocation = null;
     	if(isFirst) {
     		compareLocation=window.enums.сompareLocationType.onlyFirstCourse;
+    		this.setState({expandedAllFirst:isExpanded})
     	}
     	else {
     		compareLocation=window.enums.сompareLocationType.onlySecondCourse;
+    		this.setState({expandedAllSecond:isExpanded})
     	}
     	
         for(var i=0; i<this.props.questions.length; i++) {
-        	debugger;
         	if((this.props.questions[i].compareLocation==compareLocation)||
         	 (this.props.questions[i].compareLocation==window.enums.сompareLocationType.bothCourses))
         	 {
         		this.expandPreviewQuestionHandler(this.props.questions[i].questionMetadata.data.id, isExpanded)
         	}
         }
-        this.setState({expandedAll:isExpanded})
     },
 
     isQuestionExpanded: function(questionId) {
@@ -81,17 +81,17 @@ var QuestionComparerList = React.createClass({displayName: 'QuestionComparerList
 	renderHeader: function() {
 		if(!this.props.compareEnabled) {
 			return (	React.DOM.tr(null, 
-               			 	React.DOM.th(null,  " ", React.DOM.span(null, "Please select a title for comparision"), " " ),
-               			 	React.DOM.th(null,  " ", React.DOM.span(null, "Please select a title for comparision"), " " )
+               			 	React.DOM.th( {className:"compare-course-column compared-table-first-column"},  " ", React.DOM.span(null, "Please select a title for comparision"), " " ),
+               			 	React.DOM.th( {className:"compare-course-column"},  " ", React.DOM.span(null, "Please select a title for comparision"), " " )
                	        ));
 		}
 
 		return  (React.DOM.tr(null, 
-               	 	React.DOM.th(null,  
+               	 	React.DOM.th( {className:"compare-course-column compared-table-first-column"},  
                	 		 React.DOM.span(null, ExpandButton( {expanded:this.state.expandedAllFirst, onClickHandler:this.expandAllQuestionHandler.bind(null, true), targetCaption:"all"}), " " ), 
                	 		 React.DOM.span(null, this.props.firstTitleCaption) 
                	   ),
-               		React.DOM.th(null,  
+               		React.DOM.th( {className:"compare-course-column"},  
                			React.DOM.span(null,  " ", ExpandButton( {expanded:this.state.expandedAllSecond, onClickHandler:this.expandAllQuestionHandler.bind(null, false), targetCaption:"all"})),
                			React.DOM.span(null, this.props.secondTitleCaption) 
                		)
@@ -107,7 +107,6 @@ var QuestionComparerList = React.createClass({displayName: 'QuestionComparerList
 		}
 
 		for(var i=0; i<questions.length; i++) {
-			debugger;
 			questionsHtml.push(ComparedQuesion( {data:questions[i],
 								 templates:this.props.templates,
 								 expandPreviewQuestionHandler:this.expandPreviewQuestionHandler,

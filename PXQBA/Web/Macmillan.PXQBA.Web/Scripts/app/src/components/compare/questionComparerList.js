@@ -46,20 +46,20 @@ var QuestionComparerList = React.createClass({
     	var compareLocation = null;
     	if(isFirst) {
     		compareLocation=window.enums.сompareLocationType.onlyFirstCourse;
+    		this.setState({expandedAllFirst:isExpanded})
     	}
     	else {
     		compareLocation=window.enums.сompareLocationType.onlySecondCourse;
+    		this.setState({expandedAllSecond:isExpanded})
     	}
     	
         for(var i=0; i<this.props.questions.length; i++) {
-        	debugger;
         	if((this.props.questions[i].compareLocation==compareLocation)||
         	 (this.props.questions[i].compareLocation==window.enums.сompareLocationType.bothCourses))
         	 {
         		this.expandPreviewQuestionHandler(this.props.questions[i].questionMetadata.data.id, isExpanded)
         	}
         }
-        this.setState({expandedAll:isExpanded})
     },
 
     isQuestionExpanded: function(questionId) {
@@ -81,17 +81,17 @@ var QuestionComparerList = React.createClass({
 	renderHeader: function() {
 		if(!this.props.compareEnabled) {
 			return (	<tr>
-               			 	<th> <span>Please select a title for comparision</span> </th>
-               			 	<th> <span>Please select a title for comparision</span> </th>
+               			 	<th className='compare-course-column compared-table-first-column'> <span>Please select a title for comparision</span> </th>
+               			 	<th className='compare-course-column'> <span>Please select a title for comparision</span> </th>
                	        </tr>);
 		}
 
 		return  (<tr>
-               	 	<th> 
+               	 	<th className='compare-course-column compared-table-first-column'> 
                	 		 <span><ExpandButton expanded={this.state.expandedAllFirst} onClickHandler={this.expandAllQuestionHandler.bind(null, true)} targetCaption="all"/> </span> 
                	 		 <span>{this.props.firstTitleCaption}</span> 
                	   </th>
-               		<th> 
+               		<th className='compare-course-column'> 
                			<span> <ExpandButton expanded={this.state.expandedAllSecond} onClickHandler={this.expandAllQuestionHandler.bind(null, false)} targetCaption="all"/></span>
                			<span>{this.props.secondTitleCaption}</span> 
                		</th>
@@ -107,7 +107,6 @@ var QuestionComparerList = React.createClass({
 		}
 
 		for(var i=0; i<questions.length; i++) {
-			debugger;
 			questionsHtml.push(<ComparedQuesion data={questions[i]}
 								 templates={this.props.templates}
 								 expandPreviewQuestionHandler={this.expandPreviewQuestionHandler}

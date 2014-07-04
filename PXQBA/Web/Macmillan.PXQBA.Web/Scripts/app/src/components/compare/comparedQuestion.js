@@ -23,11 +23,11 @@ var ComparedQuesion = React.createClass({
 		}
 
 		if(this.props.data.compareLocation==window.enums.сompareLocationType.onlyFirstCourse) {
-			return [(<td> {this.renderQuestionContend(this.props.templates.first)} </td>), (<td>{this.renderStub()}</td>)];
+			return [(<td className="compared-table-first-column"> {this.renderQuestionContend(this.props.templates.first)} </td>), (<td>{this.renderStub()}</td>)];
 		}
 
 		if(this.props.data.compareLocation==window.enums.сompareLocationType.onlySecondCourse) {
-			return [(<td>{this.renderStub(this.props.templates.second)}</td>), (<td> {this.renderQuestionContend()} </td>)];
+			return [(<td className="compared-table-first-column">{this.renderStub(this.props.templates.second)}</td>), (<td> {this.renderQuestionContend()} </td>)];
 		}
 
 		return null;
@@ -35,7 +35,7 @@ var ComparedQuesion = React.createClass({
 	},
 
     render: function() {
-       return (<tr> {this.renderQuestion()} </tr>);
+       return (<tr className="compared-table-seporator"> {this.renderQuestion()} </tr>);
     },
 });
 
