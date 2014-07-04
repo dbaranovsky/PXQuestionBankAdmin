@@ -72,8 +72,19 @@ var AddRepositoryDialog  = React.createClass({
   },
 
   addRepository: function(){
-    if(this.state.newRepoName==""){
+    var newRepoName = this.state.newRepoName;
+    if(newRepoName==""){
       notificationManager.showWarning("Please, enter repository name");
+      return;
+    }
+   
+    var existingNames = [];
+    existingNames = $.grep(this.props.titles, function(el){
+      return el.title == newRepoName;
+    });
+
+    if(existingNames.length > 0){
+      notificationManager.showWarning("This name already exist");
       return;
     }
     this.props.addNewRepository(this.state.newRepoName);
