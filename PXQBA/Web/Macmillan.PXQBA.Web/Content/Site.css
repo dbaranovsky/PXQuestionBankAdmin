@@ -717,6 +717,12 @@ input.disabled, textarea.disabled {
     overflow-x: hidden;
 }
 
+#quizeditorcomponent.graph.forbid-edit {
+    height: 660px !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 #quizeditorcomponent.shared.graph {
     height: 660px !important;
     overflow-y: auto;
@@ -964,7 +970,6 @@ a.shared-question-link:hover {
 }
 
 .menu-container-main.version-history {
-     width: 160px !important;
     margin-bottom: -6px;
 }
 

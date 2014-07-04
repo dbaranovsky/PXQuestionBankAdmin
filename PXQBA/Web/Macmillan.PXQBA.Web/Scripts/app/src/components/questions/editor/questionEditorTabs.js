@@ -33,7 +33,7 @@ var QuestionEditorTabs = React.createClass({
       //     $(tabs).find('iframe').show();
        // });
     
-    if(this.props.question.isShared && !this.props.question.canEditSharedQuestionContent && !this.state.viewHistoryMode){
+    if((this.props.question.isShared && !this.props.question.canEditSharedQuestionContent) || !this.props.question.canEditQuestion){
         $(this.getDOMNode()).find("#quizeditorcomponent").html(this.props.question.preview);
         return;
     }
@@ -361,7 +361,7 @@ var QuestionEditorTabs = React.createClass({
     },
 
     loadNewGraphEditor: function(){
-     if(!this.state.isGraph || this.state.currentTab != "body"){
+     if(!this.state.isGraph || this.state.currentTab != "body" || !this.props.question.canEditQuestion){
           return;
      }
 
@@ -492,6 +492,10 @@ var QuestionEditorTabs = React.createClass({
         iframeClass = iframeClass + " graph";
        }
 
+        if (!this.props.question.canEditQuestion){
+        iframeClass = iframeClass + " forbid-edit";
+       }
+
        var isPreventDefault = this.state.viewHistoryMode;
         return ( 
                 <div>
@@ -509,7 +513,7 @@ var QuestionEditorTabs = React.createClass({
                       {this.renderSharingNotification()}
 
                        <div className="tab-body .shared">
-                          {!this.props.question.canEditSharedQuestionContent && this.props.question.isShared?  <span className="label label-danger">You have no permission to edit question body</span> : <div  className="iframe waiting" />}
+                          {(!this.props.question.canEditSharedQuestionContent && this.props.question.isShared) || !this.props.question.canEditQuestion?  <span className="label label-danger">You have no permission to edit question body</span> : <div  className="iframe waiting" />}
                            {this.state.graphLoading? <div  className="iframe waiting" /> : ""}
                           <div id="quizeditorcomponent" className={iframeClass}></div>
                           <div className="modal-footer">

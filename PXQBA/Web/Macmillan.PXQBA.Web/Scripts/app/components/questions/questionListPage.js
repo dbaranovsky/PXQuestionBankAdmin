@@ -75,7 +75,8 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
     copyQuestionHandler: function(questionId) {
         this.setState({
            loading: true,
-           editorCaption: window.enums.dialogCaptions.duplicateQuestion
+           editorCaption: window.enums.dialogCaptions.duplicateQuestion,
+           viewHistoryMode: false
         });
         questionDataManager.getDuplicateQuestionTemplate(questionId).done(this.loadTemplateComplete.bind(this, false));
     },
@@ -140,7 +141,7 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
                     metadata: this.state.editor.metadata,
                     caption: isNew? window.enums.dialogCaptions.newQuestion : this.state.editorCaption},
                     sourceQuestionId: this.state.sourceQuestionId,
-                    viewHistoryMode: this.state.viewHistoryMode,
+                    viewHistoryMode: false,
                     isEditedInPlace: this.state.isEditedInPlace
                     });
     },
