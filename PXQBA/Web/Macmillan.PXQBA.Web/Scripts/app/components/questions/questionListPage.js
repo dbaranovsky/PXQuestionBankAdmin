@@ -226,7 +226,8 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
       }
     },
 
-   closeNoteDialogHandler: function(){
+   closeNoteDialogHandler: function(notes){
+    var questionId = this.state.questionIdForNotes;
       this.setState({
             showNoteEditDialog: false,
             questionIdForNotes: 0 

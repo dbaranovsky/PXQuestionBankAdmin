@@ -6,11 +6,22 @@ var EditQuestionNotesDialog = React.createClass({displayName: 'EditQuestionNotes
 	componentDidMount: function(){
 		$(this.getDOMNode()).modal("show");
         
-        var closeDialogHandler = this.props.closeDialogHandler;
+        var self = this;
         $(this.getDOMNode()).on('hidden.bs.modal', function () {
-            closeDialogHandler();
+            self.props.closeDialogHandler();
+            if(self.state.noteChanged){
+                questionDataManager.resetState();
+            }
         })
 	},
+
+    getInitialState: function(){
+        return ({noteChanged: false});
+    },
+
+    notesChangedHandler: function(){
+        this.setState({noteChanged: true});
+    },
 
     render: function() {
         var renderHeaderText = function() {
@@ -20,7 +31,7 @@ var EditQuestionNotesDialog = React.createClass({displayName: 'EditQuestionNotes
         var self = this;
         var qId = this.props.questionId;
         var renderBody = function(){
-            return (NoteBox( {questionId:qId, canDelete:self.props.canDelete, canAddNote:self.props.canAddNote}));
+            return (NoteBox( {questionId:qId, canDelete:self.props.canDelete, canAddNote:self.props.canAddNote, notesChangedHandler:self.notesChangedHandler}));
         };
 
         var renderFooterButtons = function() {

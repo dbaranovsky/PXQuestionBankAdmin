@@ -115,12 +115,12 @@ var QuestionEditor = React.createClass({
   
 
      closeDialog: function(){
+   
       if(hasUnsavedData()){
        if (confirm("You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?")){
           this.props.closeDialog();
        }
      } else{
-
        this.props.closeDialog(); 
      }
      },
@@ -210,7 +210,10 @@ var QuestionEditor = React.createClass({
       $('.modal-backdrop').first().remove(); 
       this.setState({showEditInPlaceDialog: false});
      },
-    render: function() {
+
+    
+
+     render: function() {
         return (
             <div>
                       <div className="header-buttons">
@@ -233,7 +236,8 @@ var QuestionEditor = React.createClass({
                                       isDuplicate={this.props.isDuplicate}
                                       handlers={this.props.handlers}
                                       viewHistoryMode= {this.props.viewHistoryMode}
-                                      saving = {this.state.saving} />
+                                      saving = {this.state.saving} 
+                                      notesChangedHandler={this.props.notesChangedHandler}/>
                 </div>
                 {this.renderNotification()}
                 {this.renderEditInPlaceDialog()}
