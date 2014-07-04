@@ -218,7 +218,7 @@ var QuestionEditorTabs = React.createClass({
 
     renderPublishButton: function() {
         if(this.props.question.isDraft) {
-          return (<button className="btn btn-default" data-toggle="modal"   title="Save and Publish" disabled={this.props.saving || this.props.question.canPublishDraft} onClick={this.saveAndPublishHandler}>
+          return (<button className="btn btn-default" data-toggle="modal"   title="Save and Publish" disabled={this.props.saving || !this.props.question.canPublishDraft} onClick={this.saveAndPublishHandler}>
                               Save and Publish
                    </button>);
         }
@@ -279,7 +279,7 @@ var QuestionEditorTabs = React.createClass({
         }
 
 
-        if (this.props.question.canEditQuestion){
+        if (!this.props.question.canEditQuestion){
           alert("You have no permission to edit question");
            return;
         }
@@ -314,7 +314,7 @@ var QuestionEditorTabs = React.createClass({
           return;
         }
 
-       if (this.props.question.canEditQuestion){
+       if (!this.props.question.canEditQuestion){
           alert("You have no permission to edit question");
            return;
         }
