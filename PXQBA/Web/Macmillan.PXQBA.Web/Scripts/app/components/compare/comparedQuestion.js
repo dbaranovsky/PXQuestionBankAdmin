@@ -4,49 +4,30 @@
 
 var ComparedQuesion = React.createClass({displayName: 'ComparedQuesion',
 
-
-	/*
-   if(this.props.field==window.consts.questionTitleName) {
-           return (<div className="cell-value"> 
-                     <table className="cell-value-table">
-                        <tr>
-                          <td>
-                             {this.renderExpandButton()}
-                          </td>
-                          <td>
-                             {this.props.value}
-                          </td>
-                          <td>
-                             {this.renderDraftLabel()}
-                         </td>
-                        </tr>
-                     </table>
-                    </div>);
-
-
-	*/
-
-
 	renderStub: function() {
 		return (React.DOM.div(null,  " Not Shared here"));
 	},
 
-	renderQuestionContend: function() {
-		debugger;
-		return (React.DOM.div(null,  " ", this.props.data.title));
+	renderQuestionContend: function(template) {
+		return (QuestionContent( 
+				 {isExpanded:this.props.isExpanded,
+				 question:this.props.data.questionMetadata,
+				 questionCardTemplate:template,
+				 expandPreviewQuestionHandler:this.props.expandPreviewQuestionHandler}
+				 ));
 	},
 
 	renderQuestion: function() {
 		if(this.props.data.compareLocation==window.enums.сompareLocationType.bothCourses) {
-			return (React.DOM.td( {colSpan:2},  " ", this.renderQuestionContend(), " " ));
+			return (React.DOM.td( {colSpan:2},  " ", this.renderQuestionContend(this.props.templates.first), " " ));
 		}
 
 		if(this.props.data.compareLocation==window.enums.сompareLocationType.onlyFirstCourse) {
-			return [(React.DOM.td(null,  " ", this.renderQuestionContend(), " " )), (React.DOM.td(null, this.renderStub()))];
+			return [(React.DOM.td(null,  " ", this.renderQuestionContend(this.props.templates.first), " " )), (React.DOM.td(null, this.renderStub()))];
 		}
 
 		if(this.props.data.compareLocation==window.enums.сompareLocationType.onlySecondCourse) {
-			return [(React.DOM.td(null, this.renderStub())), (React.DOM.td(null,  " ", this.renderQuestionContend(), " " ))];
+			return [(React.DOM.td(null, this.renderStub(this.props.templates.second))), (React.DOM.td(null,  " ", this.renderQuestionContend(), " " ))];
 		}
 
 		return null;

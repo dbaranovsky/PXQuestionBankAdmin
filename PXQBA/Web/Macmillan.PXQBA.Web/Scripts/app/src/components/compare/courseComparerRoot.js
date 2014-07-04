@@ -9,7 +9,11 @@ var CourseComparerRoot = React.createClass({
             firstCourse: null,
             secondCourse: null,
             currentPage: null,
-            compareEnabled: false
+            compareEnabled: false,
+            templates: {
+                first: null,
+                second: null
+            },
         };
     },
 
@@ -61,10 +65,16 @@ var CourseComparerRoot = React.createClass({
             return;
         }
 
-        this.setState({compareEnabled: true});
-        this.setState({page: response.page});
-        this.setState({questions: response.questions});
-        this.setState({totalPages: response.totalPages});
+
+        this.setState({
+            page: response.page,
+            totalPages: response.totalPages,
+            templates: {
+                first: response.firstCourseQuestionCardLayout,
+                second: response.secondCourseQuestionCardLayout
+            },
+            questions: response.questions,
+            compareEnabled: true });
     },
 
     getCourseCaption: function(courseId) {
@@ -92,6 +102,7 @@ var CourseComparerRoot = React.createClass({
     },
 
     render: function() {
+                debugger;
        return (
             <div>
                 <CourseCompareSelector availableCourses={this.props.availableCourses} 
@@ -103,6 +114,7 @@ var CourseComparerRoot = React.createClass({
 
                 <QuestionComparerList questions={this.state.questions} 
                                       compareEnabled={this.state.compareEnabled}
+                                      templates={this.state.templates}
                                       firstTitleCaption={this.getCourseCaption(this.state.firstCourse)}
                                       secondTitleCaption={this.getCourseCaption(this.state.secondCourse)}
                                       />

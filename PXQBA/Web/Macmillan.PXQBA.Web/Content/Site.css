@@ -1020,6 +1020,14 @@ span.notes {
         background-color:  #0e6cde !important;
 }
 
+.shared-to-incompare {
+    left: -5px !important;
+    top: -5px !important;
+    padding: 3px 5px !important;
+    font-size: 12px !important;
+    background-color: #0e6cde !important;
+}
+
 #shareQuestionModal input:not([type="radio"]), select {
     max-width: 100%;
     width: 958px;
