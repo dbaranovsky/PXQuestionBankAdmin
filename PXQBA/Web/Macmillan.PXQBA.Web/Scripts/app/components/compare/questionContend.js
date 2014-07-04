@@ -31,7 +31,6 @@ var QuestionContent = React.createClass({displayName: 'QuestionContent',
 		 return (ExpandButton( {expanded:this.props.isExpanded, onClickHandler:this.expandPreviewQuestionHandler, targetCaption:"question"})); 
 	},
 
-
  
      getTitleCount: function() {
         var isShared = true;
@@ -54,8 +53,6 @@ var QuestionContent = React.createClass({displayName: 'QuestionContent',
             var titleCount = this.getTitleCount();
             return titleCount > 0;
     },
-
-
 
 	 renderCourseCountBadge: function(){
       if (!this.isShared()){

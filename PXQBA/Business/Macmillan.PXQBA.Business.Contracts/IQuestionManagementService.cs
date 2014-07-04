@@ -15,6 +15,13 @@ namespace Macmillan.PXQBA.Business.Contracts
         PagedCollection<Question> GetQuestionList(Course course, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount);
 
         /// <summary>
+        /// Retrieves questions for comparing courses
+        /// </summary>
+        /// <returns></returns>
+        PagedCollection<ComparedQuestion> GetComparedQuestionList(string questionRepositoryCourseId,
+            string firstCourseId, string secondCourseId, int startingRecordNumber, int recordCount);
+
+        /// <summary>
         /// Create a new question
         /// </summary>
         /// <param name="question"></param>

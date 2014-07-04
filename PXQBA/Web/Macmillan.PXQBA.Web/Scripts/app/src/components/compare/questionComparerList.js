@@ -19,6 +19,11 @@ var QuestionComparerList = React.createClass({
         this.setState({ expandedQuestions: [], expandedAll: false });
     },
 
+
+    /*
+		common scripts
+		todo: move in helpers
+    */
     changeCollection: function(item, collection, isInsert) {
         var index = $.inArray(item, collection);
         if(isInsert) {
@@ -34,7 +39,18 @@ var QuestionComparerList = React.createClass({
         return collection;
     },
 
+    isItemInCollection: function(item, collection) {
+       var index = $.inArray(item, collection);
+         if(index==-1) {
+            return false;
+         }
+         return true;
+    },
 
+
+    /*
+		Handlers
+    */
     expandPreviewQuestionHandler: function(questionId, expanded) {
     	this.setState({expandedQuestions: this.changeCollection(
                                  questionId,
@@ -65,17 +81,6 @@ var QuestionComparerList = React.createClass({
     isQuestionExpanded: function(questionId) {
          return this.isItemInCollection(questionId, this.state.expandedQuestions);
     },
-
-    
-    isItemInCollection: function(item, collection) {
-       var index = $.inArray(item, collection);
-         if(index==-1) {
-            return false;
-         }
-         return true;
-    },
-
-
 
 
 	renderHeader: function() {

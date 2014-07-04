@@ -70,10 +70,8 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             string secondCourseCriteria = BuildFiledSection(secondCourseId, MetadataFieldNames.ProductCourse);
             string[] fields =  {firstCourseCriteria, secondCourseCriteria, MetadataFieldNames.DraftFrom};
             StaticLogger.LogDebug("GetComparedQuestionList start: " + DateTime.Now);
-            //Change this
-            var query =
-               "(dlap_class:question) AND (product-course-id-70295/productcourseid:70295 OR product-course-id-85256/productcourseid:85256)";
-              //  "(dlap_class:question) AND (product-course-id-70295/productcourseid_dlap_e:70295 OR product-course-id-85256/productcourseid_dlap_e:85256)";
+
+            var query = BuildQueryForComparedQuestionList(firstCourseId, secondCourseId);
             var results = GetSearchResults(questionRepositoryCourseId, query, fields);
   
             var parsedResults = results.Select(doc => QuestionDataXmlParser
@@ -88,37 +86,8 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             var questionsAgilix = GetAgilixQuestions(questionRepositoryCourseId, pageResult.Select(q => q.QuestionId));
             var questions = questionsAgilix.Select(Mapper.Map<Question>).ToList();
 
-            var comparedQuestions = new List<ComparedQuestion>();
-
-            foreach (var resultItem in pageResult)
-            {
-                var question = questions.SingleOrDefault(q => q.Id == resultItem.QuestionId);
-                
-                //Move from here
-                CompareLocationType compareLocation = CompareLocationType.OnlySecondCourse;
-
-                if (resultItem.Values.Count == 2)
-                {
-                    compareLocation = CompareLocationType.BothCourses;
-                }
-                else
-                {
-                    if (resultItem.Values.ContainsKey(firstCourseCriteria))
-                    {
-                        compareLocation = CompareLocationType.OnlyFirstCourse;
-                    }
-                }
-
-
-                if (question != null)
-                {
-                    comparedQuestions.Add(new ComparedQuestion()
-                                          {
-                                              Question = question,
-                                              CompareLocationResult = compareLocation
-                                          });
-                }
-            }
+            var comparedQuestions = questions.Select(q => Mapper.Map<ComparedQuestion>(q,
+                opt => opt.Items.Add(firstCourseCriteria, pageResult.SingleOrDefault(s => s.QuestionId == q.Id)))).ToList();
 
             var result = new PagedCollection<ComparedQuestion>()
                          {
@@ -129,6 +98,21 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             StaticLogger.LogDebug("GetComparedQuestionList end: " + DateTime.Now);
 
             return result;
+        }
+
+        private string BuildQueryForComparedQuestionList(string firstCourseId, string secondCourseId)
+        {
+            string query =
+                string.Format(
+                //*** For debug
+                "(dlap_class:question) AND (product-course-id-{0}/productcourseid:{0} OR product-course-id-{1}/productcourseid:{1})",
+                //*** real query ?
+                // "(dlap_class:question) AND (product-course-id-{0}/productcourseid_dlap_e:{0} OR product-course-id-{1}/productcourseid_dlap_e:{1})",
+                firstCourseId,
+                secondCourseId
+                );
+
+            return query;
         }
 
         private string BuildFiledSection(string courseId, string field)

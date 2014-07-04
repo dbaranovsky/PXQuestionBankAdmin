@@ -46,12 +46,9 @@ var CourseComparerRoot = React.createClass({displayName: 'CourseComparerRoot',
             return;
         }
 
-
         compareTitlesDataManager.getComparedData(this.state.firstCourse, 
                                                  this.state.secondCourse,
                                                  page).done(this.getComparedDataDone);
-       
-
     },
 
     paginatorClickHandle:function(page) {
@@ -65,7 +62,6 @@ var CourseComparerRoot = React.createClass({displayName: 'CourseComparerRoot',
             notificationManager.showWarning("You need choose titles for comparison with the same Question Bank Repository");
             return;
         }
-
 
         this.setState({
             page: response.page,

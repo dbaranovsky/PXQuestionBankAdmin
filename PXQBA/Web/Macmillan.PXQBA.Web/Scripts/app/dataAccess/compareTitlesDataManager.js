@@ -17,6 +17,7 @@
 
 
     self.getComparedData = function (firstCourse, secondCourse, page) {
+        debugger;
         var request = {
             firstCourse: firstCourse,
             secondCourse: secondCourse,

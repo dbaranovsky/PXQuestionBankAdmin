@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using AutoMapper;
 using Bfw.Agilix.DataContracts;
+using Macmillan.PXQBA.Business.Commands.DataContracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
@@ -103,6 +105,8 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<QuestionChoice, Bfw.Agilix.DataContracts.QuestionChoice>();
 
             Mapper.CreateMap<Question, QuestionMetadata>().ConvertUsing(new QuestionToQuestionMetadataConverter(modelProfileService));
+
+            Mapper.CreateMap<Question, ComparedQuestion>().ConvertUsing(new QuestionToComparedQuestionConverter());
 
             Mapper.CreateMap<ComparedQuestion, ComparedQuestionViewModel>()
                 .ForMember(dto => dto.QuestionMetadata, opt => opt.MapFrom(q => q.Question))
@@ -219,6 +223,42 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             return modelProfileService.GetQuestionMetadataForCourse((Question)context.SourceValue);
         }
     }
+
+    public class QuestionToComparedQuestionConverter : ITypeConverter<Question, ComparedQuestion>
+    {
+        public ComparedQuestion Convert(ResolutionContext context)
+        {
+            var question = (Question) context.SourceValue;
+            var compared = (QuestionDynamicSearchResult)context.Options.Items.FirstOrDefault().Value;
+            string firstCourse = context.Options.Items.FirstOrDefault().Key;
+            var result = new ComparedQuestion()
+                                      {
+                                          Question = question,
+                                          CompareLocationResult = GetCompareLocationType(compared, firstCourse)
+                                      };
+            return result;
+        }
+
+        private CompareLocationType GetCompareLocationType(QuestionDynamicSearchResult item, string firstCourseCriteria)
+        {
+            var compareLocation = CompareLocationType.OnlySecondCourse;
+
+            if (item.Values.Count == 2)
+            {
+                compareLocation = CompareLocationType.BothCourses;
+            }
+            else
+            {
+                if (item.Values.ContainsKey(firstCourseCriteria))
+                {
+                    compareLocation = CompareLocationType.OnlyFirstCourse;
+                }
+            }
+
+            return compareLocation;
+        }
+    }
+
 
     public class QuestionToDuplicateFromConverter : ITypeConverter<Question, DuplicateFromViewModel>
     {
