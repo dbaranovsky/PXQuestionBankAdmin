@@ -113,5 +113,10 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
         /// Key for number of question on the page in question list
         /// </summary>
         public const string UsersPerPage = "UsersPerPage";
+
+        /// <summary>
+        /// Key for course resources folder, where images saved
+        /// </summary>
+        public const string BrainhoneyCourseImageFolder = "BrainhoneyCourseImageFolderName";
     }
 }

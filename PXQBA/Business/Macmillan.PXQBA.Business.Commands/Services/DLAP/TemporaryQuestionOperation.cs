@@ -91,7 +91,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                                    {
                                        DestEntityId = to,
                                        SourceEntityId = from,
-                                       SourcePath = "Assets/*"
+                                       SourcePath = ConfigurationHelper.GetBrainhoneyCourseImageFolder() + "/*"
                                    };
            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(copyResoursecCmd);
         }
@@ -105,7 +105,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                                                                new Resource()
                                                                {
                                                                    EntityId = itemId,
-                                                                   Url = "Assets"
+                                                                   Url = ConfigurationHelper.GetBrainhoneyCourseImageFolder()
                                                                }
                                                            }
                                    };

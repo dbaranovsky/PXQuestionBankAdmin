@@ -301,5 +301,16 @@ namespace Macmillan.PXQBA.Common.Helpers
 
             return 20;
         }
+
+        public static string GetBrainhoneyCourseImageFolder()
+        {
+            var courseImageFolder = ConfigurationManager.AppSettings[ConfigurationKeys.BrainhoneyCourseImageFolder];
+            if (!string.IsNullOrEmpty(courseImageFolder))
+            {
+                return courseImageFolder;
+            }
+
+            return "Assets";
+        }
     }
 }
