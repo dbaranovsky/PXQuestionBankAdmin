@@ -20,6 +20,7 @@ var QuestionContent = React.createClass({displayName: 'QuestionContent',
                              placement:'bottom',           
                              html: true,
                              container: 'body'});  
+
     },
 
 
@@ -107,15 +108,18 @@ var QuestionContent = React.createClass({displayName: 'QuestionContent',
 			)
 	},
 
-
-    render: function() {
+     render: function() {
        return (React.DOM.div(null,  
        			 React.DOM.table( {style:{width:'100%'}}, 
+       			 	React.DOM.tbody(null, 
                        this.renderTitle(),
                        this.renderPreview()
+                    )
                  )
        		   ));
     },
+ 
+ 
 });
 
 

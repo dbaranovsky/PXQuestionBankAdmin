@@ -26,7 +26,7 @@ var CourseComparerRoot = React.createClass({displayName: 'CourseComparerRoot',
 
     changeSecondCourseHandler: function(courseId) {
         this.setState({secondCourse: courseId});
-        this.getQuestions(0);
+        this.getQuestions(1);
     },
 
     isGetQuestionPossible: function() {
@@ -62,7 +62,6 @@ var CourseComparerRoot = React.createClass({displayName: 'CourseComparerRoot',
             notificationManager.showWarning("You need choose titles for comparison with the same Question Bank Repository");
             return;
         }
-
         this.setState({
             page: response.page,
             totalPages: response.totalPages,

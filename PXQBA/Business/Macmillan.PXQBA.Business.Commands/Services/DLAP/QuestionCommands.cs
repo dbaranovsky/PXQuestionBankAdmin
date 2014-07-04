@@ -105,9 +105,9 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             string query =
                 string.Format(
                 //*** For debug
-                "(dlap_class:question) AND (product-course-id-{0}/productcourseid:{0} OR product-course-id-{1}/productcourseid:{1})",
+                //"(dlap_class:question) AND (product-course-id-{0}/productcourseid:{0} OR product-course-id-{1}/productcourseid:{1})",
                 //*** real query ?
-                // "(dlap_class:question) AND (product-course-id-{0}/productcourseid_dlap_e:{0} OR product-course-id-{1}/productcourseid_dlap_e:{1})",
+                 "(dlap_class:question) AND (product-course-id-{0}/productcourseid_dlap_e:{0} OR product-course-id-{1}/productcourseid_dlap_e:{1})",
                 firstCourseId,
                 secondCourseId
                 );
@@ -314,7 +314,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 }
                 results.AddRange(docElements);
             } while (docElements.Count() == SearchCommandMaxRows);
-            // while (i <= 1);
+             //while (i <= 10);
 
             return results;
         }

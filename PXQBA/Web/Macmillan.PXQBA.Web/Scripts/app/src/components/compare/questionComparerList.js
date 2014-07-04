@@ -124,8 +124,12 @@ var QuestionComparerList = React.createClass({
 
     render: function() {  
       return (<table className="table table">
+      		    <thead>
       				{this.renderHeader()}
+      			</thead>
+      			<tbody>
       				{this.renderQuestions()}
+      			</tbody>
       		  </table>);
     }
 });

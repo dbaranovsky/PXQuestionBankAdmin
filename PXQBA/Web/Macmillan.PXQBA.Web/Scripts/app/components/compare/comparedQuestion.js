@@ -18,16 +18,18 @@ var ComparedQuesion = React.createClass({displayName: 'ComparedQuesion',
 	},
 
 	renderQuestion: function() {
+
+
 		if(this.props.data.compareLocation==window.enums.сompareLocationType.bothCourses) {
-			return (React.DOM.td( {colSpan:2},  " ", this.renderQuestionContend(this.props.templates.first), " " ));
+			return [React.DOM.td( {colSpan:2},  " ", this.renderQuestionContend(this.props.templates.first)), React.DOM.td(null)];
 		}
 
 		if(this.props.data.compareLocation==window.enums.сompareLocationType.onlyFirstCourse) {
-			return [(React.DOM.td( {className:"compared-table-first-column"},  " ", this.renderQuestionContend(this.props.templates.first), " " )), (React.DOM.td(null, this.renderStub()))];
+			return [React.DOM.td( {className:"compared-table-first-column"},  " ", this.renderQuestionContend(this.props.templates.first), " " ), React.DOM.td(null, this.renderStub())];
 		}
 
 		if(this.props.data.compareLocation==window.enums.сompareLocationType.onlySecondCourse) {
-			return [(React.DOM.td( {className:"compared-table-first-column"}, this.renderStub(this.props.templates.second))), (React.DOM.td(null,  " ", this.renderQuestionContend(), " " ))];
+			return [React.DOM.td( {className:"compared-table-first-column"}, this.renderStub(this.props.templates.second)), React.DOM.td(null,  " ", this.renderQuestionContend(), " " )];
 		}
 
 		return null;

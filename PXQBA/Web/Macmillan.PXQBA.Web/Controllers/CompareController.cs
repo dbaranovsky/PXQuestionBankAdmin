@@ -40,8 +40,8 @@ namespace Macmillan.PXQBA.Web.Controllers
             var response = new CompareTitlesResponse();
 
             //for debug:
-            request.FirstCourse = "70295";
-            request.SecondCourse = "85256";
+            //request.FirstCourse = "70295";
+            //request.SecondCourse = "85256";
 
             response.Page = request.Page;
 
