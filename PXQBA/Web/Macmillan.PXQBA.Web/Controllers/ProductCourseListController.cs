@@ -38,6 +38,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult AddNewRepository(string name)
         {
+            productCourseManagementService.CreateNewDraftCourse(name);
             return JsonCamel(new {isError = false});
         }
 

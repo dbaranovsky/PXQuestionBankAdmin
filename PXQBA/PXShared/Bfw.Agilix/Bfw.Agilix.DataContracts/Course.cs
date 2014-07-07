@@ -429,8 +429,11 @@ namespace Bfw.Agilix.DataContracts
                     dataElement.Add(Data.Element("bfw_lmsid_prompt"));
 
 			    if (Data.Element("passingscore") != null)
-				    dataElement.Add(Data.Element("passingscore"));            
+				    dataElement.Add(Data.Element("passingscore"));
 
+                if (!string.IsNullOrEmpty(QuestionBankRepositoryCourse))
+                    dataElement.Add(new XElement("QuestionBankRepositoryCourse", QuestionBankRepositoryCourse));   
+   
 			    element.Add(dataElement);
 			}
 

@@ -6,10 +6,12 @@ using Bfw.Agilix.Commands;
 using Bfw.Agilix.DataContracts;
 using Bfw.Common.Collections;
 using Bfw.Common.Database;
+using Bfw.Common.JqGridHelper;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Macmillan.PXQBA.Business.Models;
 using Course = Macmillan.PXQBA.Business.Models.Course;
 
 namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
@@ -20,6 +22,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         private readonly IContext businessContext;
 
         private const string DbColumnProductCourseId = "CourseId";
+        private const string DraftCourseDomain = "6650";
 
         public ProductCourseOperation(IDatabaseManager databaseManager, IContext businessContext)
         {
@@ -52,6 +55,33 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
             var courseIds = dbRecords.Select(record => record.String(DbColumnProductCourseId)).ToList();
             return GetCoursesByCourseIds(courseIds);
+        }
+
+        public Course CreateDraftCourse(string title)
+        {
+            var cmd = new CreateCourses();
+            cmd.Courses.Add(new Bfw.Agilix.DataContracts.Course { Title = title, Domain =  new Domain(){Id = DraftCourseDomain}});
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+
+            var createdCourse = GetAgilixCourse(cmd.Entity.FirstOrDefault().Id);
+            createdCourse.QuestionBankRepositoryCourse = createdCourse.Id;
+            ExecuteUpdateCourse(createdCourse);
+            AddToAvailableCourses(createdCourse.Id);
+
+            return Mapper.Map<Course>(createdCourse);
+        }
+
+        
+
+        private void AddToAvailableCourses(string id)
+        {
+            DbCommand command = new SqlCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "dbo.AddQBACourse";
+            var courseIdParam = new SqlParameter("@courseId", id);
+            command.Parameters.Add(courseIdParam);
+            databaseManager.ExecuteNonQuery(command);
+
         }
 
         public IEnumerable<Course> GetCoursesByCourseIds(IEnumerable<string> courseIds, bool requiredQuestionBankRepository = false)

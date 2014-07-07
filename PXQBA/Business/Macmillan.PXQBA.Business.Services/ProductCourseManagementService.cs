@@ -14,10 +14,12 @@ namespace Macmillan.PXQBA.Business.Services
     public class ProductCourseManagementService : IProductCourseManagementService
     {
         private readonly IProductCourseOperation productCourseOperation;
+        private readonly IRoleOperation roleOperation;
 
-        public ProductCourseManagementService(IProductCourseOperation productCourseOperation)
+        public ProductCourseManagementService(IProductCourseOperation productCourseOperation, IRoleOperation roleOperation)
         {
             this.productCourseOperation = productCourseOperation;
+            this.roleOperation = roleOperation;
         }
 
         public Course GetProductCourse(string productCourseId, bool requiredQuestionBankRepository = false)
@@ -43,6 +45,13 @@ namespace Macmillan.PXQBA.Business.Services
         public IEnumerable<Course> GetAllCourses()
         {
             return productCourseOperation.GetAllCourses();
+        }
+
+        public void CreateNewDraftCourse(string title)
+        {
+           var newCourse =  productCourseOperation.CreateDraftCourse(title);
+           roleOperation.UpdateRolesCapabilities(newCourse.ProductCourseId, PredefinedRoleHelper.GetPredefinedRoles());
+           roleOperation.GrantPredefinedRoleToCurrentUser(PredefinedRole.Author, newCourse.ProductCourseId);
         }
     }
 }

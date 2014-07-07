@@ -19,5 +19,6 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         Course UpdateCourse(Course course);
 
         IEnumerable<Course> GetAllCourses();
+        Course CreateDraftCourse(string title);
     }
 }

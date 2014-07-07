@@ -93,6 +93,14 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
             return GetCapabilitiesFromRecords(dbRecords);
         }
 
+        public void GrantPredefinedRoleToCurrentUser(PredefinedRole author, string productCourseId)
+        {
+            var currentUser = GetUserWithRoles(businessContext.CurrentUser.Username);
+            var productCourseRoles = currentUser.ProductCourses.FirstOrDefault(x => x.Id == productCourseId);
+            productCourseRoles.CurrentRole = productCourseRoles.AvailableRoles.FirstOrDefault(x => x.Name ==  EnumHelper.GetEnumDescription(author));
+            UpdateUserRoles(currentUser);
+        }
+
         private IEnumerable<Capability> GetCapabilitiesFromRecords(IEnumerable<DatabaseRecord> dbRecords)
         {
             return dbRecords.Where(r => !string.IsNullOrEmpty(r["CapabilityId"].ToString())).Select(r => EnumHelper.Parse<Capability>(r["CapabilityId"].ToString())).ToList();

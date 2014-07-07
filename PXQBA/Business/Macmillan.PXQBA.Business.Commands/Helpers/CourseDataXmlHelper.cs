@@ -20,7 +20,12 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
 
        public static IEnumerable<CourseMetadataFieldDescriptor> GetItemLinksDescriptors(XElement courseData)
        {
-           var allFields = new List<CourseMetadataFieldDescriptor>();
+            var allFields = new List<CourseMetadataFieldDescriptor>();
+           if (courseData == null)
+           {
+               return allFields;
+           }
+          
            var itemLinkFields = courseData.Element(itemLinksSectionName);
 
            if (itemLinkFields == null || !itemLinkFields.Elements().Any())
