@@ -1,11 +1,34 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
+using AutoMapper;
+using Macmillan.PXQBA.Business.Commands.Contracts;
+using Macmillan.PXQBA.Business.Contracts;
+using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Web.ViewModels.CompareTitles;
 
 namespace Macmillan.PXQBA.Web.Controllers
 {
     public class CompareController : MasterController
     {
+        private readonly IQuestionManagementService questionManagementService;
+        private readonly IProductCourseManagementService productCourseManagementService;
+        private readonly IQuestionMetadataService questionMetadataService;
+
+        private readonly int questionPerPage;
+
+        public CompareController(IQuestionManagementService questionManagementService,
+                                 IProductCourseManagementService productCourseManagementService,
+                                 IQuestionMetadataService questionMetadataService)
+        {
+            this.questionManagementService = questionManagementService;
+            this.productCourseManagementService = productCourseManagementService;
+            this.questionMetadataService = questionMetadataService;
+
+            this.questionPerPage = ConfigurationHelper.GetQuestionPerPage();
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -16,28 +39,39 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
             var response = new CompareTitlesResponse();
 
+            //for debug:
+            //request.FirstCourse = "70295";
+            //request.SecondCourse = "85256";
+
             response.Page = request.Page;
-            response.TotalPages = 5;
 
-            response.Questions = new List<ComparedQuestionViewModel>();
+            if (request.FirstCourse == request.SecondCourse)
+            {
+                response.OneQuestionRepositrory = false;
+                return JsonCamel(response);
+            }
 
-            response.Questions.Add(new ComparedQuestionViewModel()
-                                   {
-                                       Title = "Title1",
-                                       CompareLocation = CompareLocationType.OnlyFirstCourse
-                                   });
+            var firstCourse = productCourseManagementService.GetProductCourse(request.FirstCourse, true);
+            var secondCourse = productCourseManagementService.GetProductCourse(request.SecondCourse, true);
 
-            response.Questions.Add(new ComparedQuestionViewModel()
-                                    {
-                                        Title = "Title2",
-                                        CompareLocation = CompareLocationType.OnlySecondCourse
-                                    });
+            if (firstCourse.QuestionRepositoryCourseId != secondCourse.QuestionRepositoryCourseId)
+            {
+                response.OneQuestionRepositrory = false;
+                return JsonCamel(response);
+            }
 
-            response.Questions.Add(new ComparedQuestionViewModel()
-                                    {
-                                        Title = "Title3",
-                                        CompareLocation = CompareLocationType.BothCourses
-                                    });
+            response.OneQuestionRepositrory = true;
+
+            var qeustions = questionManagementService.GetComparedQuestionList(firstCourse.QuestionRepositoryCourseId, 
+                                                                              request.FirstCourse,
+                                                                              request.SecondCourse,
+                                                                              (request.Page - 1) * questionPerPage,
+                                                                              questionPerPage);
+
+            response.TotalPages = (qeustions.TotalItems + questionPerPage - (qeustions.TotalItems % questionPerPage)) / questionPerPage; 
+            response.Questions = qeustions.CollectionPage.Select(Mapper.Map<ComparedQuestionViewModel>).ToList();
+            response.FirstCourseQuestionCardLayout = questionMetadataService.GetQuestionCardLayout(firstCourse);
+            response.SecondCourseQuestionCardLayout = questionMetadataService.GetQuestionCardLayout(secondCourse);
 
             return JsonCamel(response);
         }

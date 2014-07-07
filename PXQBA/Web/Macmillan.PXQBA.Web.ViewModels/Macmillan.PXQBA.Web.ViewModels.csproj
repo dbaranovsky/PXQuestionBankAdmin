@@ -61,7 +61,6 @@
       <Link>Properties\ProductInfo.cs</Link>
     </Compile>
     <Compile Include="CompareTitles\ComparedQuestionViewModel.cs" />
-    <Compile Include="CompareTitles\CompareLocationType.cs" />
     <Compile Include="CompareTitles\CompareTitlesRequest.cs" />
     <Compile Include="CompareTitles\CompareTitlesResponse.cs" />
     <Compile Include="Editor\EditorType.cs" />

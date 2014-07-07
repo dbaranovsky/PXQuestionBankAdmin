@@ -1,6 +1,7 @@
 ﻿@using Macmillan.PXQBA.Business.Models
 @using Macmillan.PXQBA.Common.Helpers
 @using Macmillan.PXQBA.Web.Helpers
+@using Macmillan.PXQBA.Web.ViewModels.CompareTitles
 @using Macmillan.PXQBA.Web.ViewModels.Editor
 @using Macmillan.PXQBA.Web.ViewModels.Filter
 @using EnumHelper = Macmillan.PXQBA.Common.Helpers.EnumHelper
@@ -166,6 +167,12 @@
             multilineText: '@((int)MetadataFieldType.MultilineText)',
             itemLink: '@((int)MetadataFieldType.ItemLink)',
             keywords: '@((int)MetadataFieldType.Keywords)'
+        };
+
+        enums.сompareLocationType = {            
+            onlyFirstCourse: '@((int)CompareLocationType.OnlyFirstCourse)',
+            onlySecondCourse: '@((int)CompareLocationType.OnlySecondCourse)',
+            bothCourses: '@((int)CompareLocationType.BothCourses)',
         };
 
         var consts = {};

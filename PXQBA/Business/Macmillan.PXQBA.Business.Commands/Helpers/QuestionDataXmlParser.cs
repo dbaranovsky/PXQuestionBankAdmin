@@ -106,6 +106,38 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
             return questionSearchResult;
         }
 
+        public static QuestionDynamicSearchResult ToDynamicSearchResultEntity(XElement resultDoc, string[] fields)
+        {
+            var questionDynamicSearchResult = new QuestionDynamicSearchResult();
+            questionDynamicSearchResult.QuestionId = resultDoc.Attribute("questionid").Value;
+
+            if (fields != null)
+            {
+                foreach (var field in fields)
+                {
+                    var element = resultDoc.Elements()
+                                           .FirstOrDefault(elem => elem.Attribute("name")
+                                           .Value == field);
+
+                    if (element != null)
+                    {
+                        if (element.HasElements)
+                        {
+                            string value = string.Join(", ", element.Elements().Select(v => v.Value));
+                            questionDynamicSearchResult.Values.Add(field, value);
+                        }
+                        else
+                        {
+                            string value =  string.Join(", ", element.Value);
+                            questionDynamicSearchResult.Values.Add(field, value);
+                        }
+                    }
+                }
+            }
+
+            return questionDynamicSearchResult;
+        }
+
         public static IEnumerable<QuestionFacetedSearchResult> ToFacetedSearchResult(XElement resultDoc)
         {
             var questionSearchResult = new List<QuestionFacetedSearchResult>();

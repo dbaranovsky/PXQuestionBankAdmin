@@ -10,5 +10,11 @@ namespace Macmillan.PXQBA.Web.ViewModels.CompareTitles
         public int Page { get; set; }
 
         public int TotalPages { get; set; }
+
+        public string FirstCourseQuestionCardLayout { get; set; }
+
+        public string SecondCourseQuestionCardLayout { get; set; }
+
+        public bool OneQuestionRepositrory { get; set; }
     }
 }

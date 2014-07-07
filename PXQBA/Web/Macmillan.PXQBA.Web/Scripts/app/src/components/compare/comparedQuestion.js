@@ -4,13 +4,41 @@
 
 var ComparedQuesion = React.createClass({
 
+	renderStub: function() {
+		return (<div> Not Shared here</div>);
+	},
+
+	renderQuestionContend: function(template) {
+		return (<QuestionContent 
+				 isExpanded={this.props.isExpanded}
+				 question={this.props.data.questionMetadata}
+				 questionCardTemplate={template}
+				 expandPreviewQuestionHandler={this.props.expandPreviewQuestionHandler}
+				 />);
+	},
+
+	renderQuestion: function() {
+
+
+		if(this.props.data.compareLocation==window.enums.сompareLocationType.bothCourses) {
+			return [<td colSpan={2}> {this.renderQuestionContend(this.props.templates.first)}</td>, <td></td>];
+		}
+
+		if(this.props.data.compareLocation==window.enums.сompareLocationType.onlyFirstCourse) {
+			return [<td className="compared-table-first-column"> {this.renderQuestionContend(this.props.templates.first)} </td>, <td>{this.renderStub()}</td>];
+		}
+
+		if(this.props.data.compareLocation==window.enums.сompareLocationType.onlySecondCourse) {
+			return [<td className="compared-table-first-column">{this.renderStub(this.props.templates.second)}</td>, <td> {this.renderQuestionContend()} </td>];
+		}
+
+		return null;
+
+	},
+
     render: function() {
-       return (
-            <div>
-                   Question
-            </div>
-            );
-    }
+       return (<tr className="compared-table-seporator"> {this.renderQuestion()} </tr>);
+    },
 });
 
 

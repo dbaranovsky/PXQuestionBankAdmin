@@ -6,9 +6,15 @@ var CourseComparerRoot = React.createClass({
 
    getInitialState: function() {
         return { 
+            loading: false,
             firstCourse: null,
             secondCourse: null,
             currentPage: null,
+            compareEnabled: false,
+            templates: {
+                first: null,
+                second: null
+            },
         };
     },
 
@@ -20,7 +26,7 @@ var CourseComparerRoot = React.createClass({
 
     changeSecondCourseHandler: function(courseId) {
         this.setState({secondCourse: courseId});
-        this.getQuestions(0);
+        this.getQuestions(1);
     },
 
     isGetQuestionPossible: function() {
@@ -40,12 +46,9 @@ var CourseComparerRoot = React.createClass({
             return;
         }
 
-
         compareTitlesDataManager.getComparedData(this.state.firstCourse, 
                                                  this.state.secondCourse,
                                                  page).done(this.getComparedDataDone);
-       
-
     },
 
     paginatorClickHandle:function(page) {
@@ -53,10 +56,54 @@ var CourseComparerRoot = React.createClass({
     },
 
     getComparedDataDone: function(response) {
-        this.setState({page: response.page})
-        this.setState({questions: response.questions})
-        this.setState({totalPages: response.totalPages})
+
+        if(!response.oneQuestionRepositrory) {
+            this.setState({compareEnabled: false});
+            notificationManager.showWarning("You need choose titles for comparison with the same Question Bank Repository");
+            return;
+        }
+        this.setState({
+            page: response.page,
+            totalPages: response.totalPages,
+            templates: {
+                first: response.firstCourseQuestionCardLayout,
+                second: response.secondCourseQuestionCardLayout
+            },
+            questions: response.questions,
+            compareEnabled: true });
     },
+
+    getCourseCaption: function(courseId) {
+        if(courseId==null) {
+            return "";
+        }
+
+        for(var i=0; i<this.props.availableCourses.length; i++) {
+            if(this.props.availableCourses[i].id==courseId) {
+                return this.props.availableCourses[i].title;
+            }
+        }
+
+        return "";
+    },
+
+    renderPaginator: function() {
+        if(!this.state.compareEnabled) {
+            return null;
+        }
+        return ( <Paginator metadata={{
+                            currentPage: this.state.page,
+                            totalPages: this.state.totalPages}} 
+                            customPaginatorClickHandle={this.paginatorClickHandle}/>);
+    },
+
+   renderLoader: function() {
+      if(this.state.loading) {
+        return (<Loader />)
+      }
+      
+      return null;
+   },
 
     render: function() {
        return (
@@ -68,11 +115,14 @@ var CourseComparerRoot = React.createClass({
                                        changeSecondCourseHandler={this.changeSecondCourseHandler}
                 />
 
-                <QuestionComparerList questions={this.state.questions} />
-                 <Paginator metadata={{
-                            currentPage: this.state.page,
-                            totalPages: this.state.totalPages}} 
-                            customPaginatorClickHandle={this.paginatorClickHandle}/>
+                <QuestionComparerList questions={this.state.questions} 
+                                      compareEnabled={this.state.compareEnabled}
+                                      templates={this.state.templates}
+                                      firstTitleCaption={this.getCourseCaption(this.state.firstCourse)}
+                                      secondTitleCaption={this.getCourseCaption(this.state.secondCourse)}
+                                      />
+                 {this.renderPaginator()}
+                 {this.renderLoader()}
             </div>
             );
     }

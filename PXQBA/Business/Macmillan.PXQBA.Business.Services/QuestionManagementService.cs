@@ -34,6 +34,13 @@ namespace Macmillan.PXQBA.Business.Services
             return questionCommands.GetQuestionList(course.QuestionRepositoryCourseId, course.ProductCourseId, filter, sortCriterion, startingRecordNumber, recordCount);
         }
 
+        public PagedCollection<ComparedQuestion> GetComparedQuestionList(string questionRepositoryCourseId,
+            string firstCourseId, string secondCourseId, int startingRecordNumber, int recordCount)
+        {
+            return questionCommands.GetComparedQuestionList(questionRepositoryCourseId, firstCourseId, secondCourseId,
+                startingRecordNumber, recordCount);
+        }
+
         public Question CreateQuestion(Course course, string questionType, string bank, string chapter)
         {
             try

@@ -71,6 +71,8 @@
     <Compile Include="AvailableChoiceItem.cs" />
     <Compile Include="BulkOperationResult.cs" />
     <Compile Include="Chapter.cs" />
+    <Compile Include="ComparedQuestion.cs" />
+    <Compile Include="CompareLocationType.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="CourseMetadataFieldDescriptor.cs" />
     <Compile Include="CourseMetadataFieldValue.cs" />

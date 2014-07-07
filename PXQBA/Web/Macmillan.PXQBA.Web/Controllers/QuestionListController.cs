@@ -41,6 +41,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             this.notesManagementService = notesManagementService;
             this.productCourseManagementService = productCourseManagementService;
             this.userManagementService = userManagementService;
+            
         }
 
         public ActionResult Index(string titleId , string chapterId)

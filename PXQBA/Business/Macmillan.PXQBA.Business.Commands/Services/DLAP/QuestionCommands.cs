@@ -59,6 +59,67 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return result;
         }
 
+        /// <summary>
+        /// Get questions for compare
+        /// </summary>
+        /// <returns>questions</returns>
+        public PagedCollection<ComparedQuestion> GetComparedQuestionList(string questionRepositoryCourseId, string firstCourseId, string secondCourseId, int startingRecordNumber, int recordCount)
+        {
+
+            string firstCourseCriteria = BuildFiledSection(firstCourseId, MetadataFieldNames.ProductCourse);
+            string secondCourseCriteria = BuildFiledSection(secondCourseId, MetadataFieldNames.ProductCourse);
+            string[] fields =  {firstCourseCriteria, secondCourseCriteria, MetadataFieldNames.DraftFrom};
+            StaticLogger.LogDebug("GetComparedQuestionList start: " + DateTime.Now);
+
+            var query = BuildQueryForComparedQuestionList(firstCourseId, secondCourseId);
+            var results = GetSearchResults(questionRepositoryCourseId, query, fields);
+  
+            var parsedResults = results.Select(doc => QuestionDataXmlParser
+                                             .ToDynamicSearchResultEntity(doc, fields))
+                                             .ToList();
+
+            var orderedResults =
+                parsedResults.Where(o => !o.Values.ContainsKey(MetadataFieldNames.DraftFrom)).OrderByDescending(e => e.Values.Count)
+                    .ThenByDescending(e => e.Values.ContainsKey(firstCourseCriteria) ? 1 : 0).ToList();
+
+            var pageResult = orderedResults.Skip(startingRecordNumber).Take(recordCount).ToList();
+            var questionsAgilix = GetAgilixQuestions(questionRepositoryCourseId, pageResult.Select(q => q.QuestionId));
+            var questions = questionsAgilix.Select(Mapper.Map<Question>).ToList();
+
+            var comparedQuestions = questions.Select(q => Mapper.Map<ComparedQuestion>(q,
+                opt => opt.Items.Add(firstCourseCriteria, pageResult.SingleOrDefault(s => s.QuestionId == q.Id)))).ToList();
+
+            var result = new PagedCollection<ComparedQuestion>()
+                         {
+                             CollectionPage = comparedQuestions,
+                             TotalItems = orderedResults.Count()
+                         };
+
+            StaticLogger.LogDebug("GetComparedQuestionList end: " + DateTime.Now);
+
+            return result;
+        }
+
+        private string BuildQueryForComparedQuestionList(string firstCourseId, string secondCourseId)
+        {
+            string query =
+                string.Format(
+                //*** For debug
+                //"(dlap_class:question) AND (product-course-id-{0}/productcourseid:{0} OR product-course-id-{1}/productcourseid:{1})",
+                //*** real query ?
+                 "(dlap_class:question) AND (product-course-id-{0}/productcourseid_dlap_e:{0} OR product-course-id-{1}/productcourseid_dlap_e:{1})",
+                firstCourseId,
+                secondCourseId
+                );
+
+            return query;
+        }
+
+        private string BuildFiledSection(string courseId, string field)
+        {
+            return string.Format("{0}{1}/{2}", ElStrings.ProductCourseSection, courseId, field);
+        }
+
         private IEnumerable<Question> PreparedQuestionPage(string questionRepositoryCourseId, IEnumerable<QuestionSearchResult> searchResults, int startingRecordNumber, int recordCount)
         {
             var nonDraftResults = searchResults.Where(r => string.IsNullOrEmpty(r.DraftFrom)).Skip(startingRecordNumber).Take(recordCount);
@@ -188,7 +249,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                              }
                          };
             var facetedFieldName = string.Format("{0}{1}/{2}_dlap_e", ElStrings.ProductCourseSection, currentCourseId, facetedField);
-            var results = GetSearchResults(questionRepositoryCourseId, BuildQueryString(filter), string.Empty, true, facetedFieldName);
+            var results = GetSearchResults(questionRepositoryCourseId, BuildQueryString(filter), new[] { MetadataFieldNames.DraftFrom }, true, facetedFieldName);
             return QuestionDataXmlParser.ToFacetedSearchResult(results.First(lst => lst.Attribute("name").Value == facetedFieldName));
         }
 
@@ -204,13 +265,13 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         private IEnumerable<QuestionSearchResult> PerformSearch(string questionRepositoryCourseId, string query, string sortingField)
         {
             StaticLogger.LogDebug("PerformSearch start: " +DateTime.Now);
-            var results = GetSearchResults(questionRepositoryCourseId, query, sortingField);
+            var results = GetSearchResults(questionRepositoryCourseId, query, new []{ MetadataFieldNames.DraftFrom, sortingField });
             var searchResults = results.Select(doc => QuestionDataXmlParser.ToSearchResultEntity(doc, sortingField));
             StaticLogger.LogDebug("PerformSearch end: " + DateTime.Now);
             return searchResults;
         }
 
-        private List<XElement> GetSearchResults(string questionRepositoryCourseId, string query, string sortingField, bool isFacet = false, string facetFields = "")
+        private List<XElement> GetSearchResults(string questionRepositoryCourseId, string query, IEnumerable<string> fields, bool isFacet = false, string facetFields = "")
         {
             var results = new List<XElement>();
             IEnumerable<XElement> docElements = new List<XElement>();
@@ -222,7 +283,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 {
                     SearchParameters = new SolrSearchParameters()
                     {
-                        Fields = string.Format("{0}|{1}", MetadataFieldNames.DraftFrom, sortingField),
+                        Fields= string.Join("|", fields),
                         EntityId = questionRepositoryCourseId,
                         Query = query,
                         Rows = SearchCommandMaxRows,
@@ -253,7 +314,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 }
                 results.AddRange(docElements);
             } while (docElements.Count() == SearchCommandMaxRows);
-            // while (i <= 1);
+             //while (i <= 10);
 
             return results;
         }

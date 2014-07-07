@@ -3,9 +3,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Compare</h2>
-
-<h2>Metadata config</h2>
+ 
 
 <div id="notifications-container" class='notifications top-center center notifications-displair'> </div>
 
@@ -17,6 +15,9 @@
     <script src="../../Scripts/app/components/common/loader.js"></script>
     <script src="../../Scripts/app/components/common/singleSelectSelector.js"></script>
     <script src="../../Scripts/app/components/common/paginator.js"></script>
+    <script src="../../Scripts/app/components/common/expandButton.js"></script>
+    
+    <script src="../../Scripts/app/components/questions/QuestionPreviewContent.js"></script>
 
     <script src="../../Scripts/app/async/asyncManager.js"></script>
     <script src="../../Scripts/app/async/notificationManager.js"></script>
@@ -25,15 +26,19 @@
     
     <script src="../../Scripts/app/components/metadata/metadataCourseSelector.js"></script>
     
+    <script src="../../Scripts/app/components/compare/questionContend.js"></script>
     <script src="../../Scripts/app/components/compare/comparedQuestion.js"></script>
     <script src="../../Scripts/app/components/compare/questionComparerList.js"></script>
     <script src="../../Scripts/app/components/compare/courseComparerRoot.js"></script>
     <script src="../../Scripts/app/components/compare/courseCompareSelector.js"></script>
+    
+
 
 
     <script>
         var compareContainer = $('#compare-container')[0];
         notificationManager.htmlContainer = $('#notifications-container')[0];
+        
         asyncManager.startWait(compareContainer);
 
         var courseList = compareTitlesDataManager.getAvailableCourses();
