@@ -51,7 +51,7 @@ namespace Macmillan.PXQBA.Business.Services
         {
            var newCourse =  productCourseOperation.CreateDraftCourse(title);
            roleOperation.UpdateRolesCapabilities(newCourse.ProductCourseId, PredefinedRoleHelper.GetPredefinedRoles());
-           roleOperation.GrantPredefinedRoleToCurrentUser(PredefinedRole.Author, newCourse.ProductCourseId);
+           roleOperation.GrantPredefinedRoleToCurrentUser(PredefinedRole.SuperAdministrator, newCourse.ProductCourseId);
         }
     }
 }
