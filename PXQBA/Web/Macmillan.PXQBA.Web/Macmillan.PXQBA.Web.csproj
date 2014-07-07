@@ -483,9 +483,12 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Shared\MainMenu.cshtml" />
     <Content Include="Views\Compare\Index.cshtml" />
-    <None Include="Web.QA.config">
+    <Content Include="Web.DEV.config">
       <DependentUpon>Web.config</DependentUpon>
-    </None>
+    </Content>
+    <Content Include="Web.QA.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Commands\Macmillan.PXQBA.Business.Commands.csproj">
