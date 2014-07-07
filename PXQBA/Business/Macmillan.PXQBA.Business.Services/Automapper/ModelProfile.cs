@@ -229,7 +229,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
         public ComparedQuestion Convert(ResolutionContext context)
         {
             var question = (Question) context.SourceValue;
-            var compared = (QuestionDynamicSearchResult)context.Options.Items.FirstOrDefault().Value;
+            var compared = (QuestionSearchResult)context.Options.Items.FirstOrDefault().Value;
             string firstCourse = context.Options.Items.FirstOrDefault().Key;
             var result = new ComparedQuestion()
                                       {
@@ -239,17 +239,17 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             return result;
         }
 
-        private CompareLocationType GetCompareLocationType(QuestionDynamicSearchResult item, string firstCourseCriteria)
+        private CompareLocationType GetCompareLocationType(QuestionSearchResult item, string firstCourseCriteria)
         {
             var compareLocation = CompareLocationType.OnlySecondCourse;
 
-            if (item.Values.Count == 2)
+            if (item.DynamicFields.Count == 2)
             {
                 compareLocation = CompareLocationType.BothCourses;
             }
             else
             {
-                if (item.Values.ContainsKey(firstCourseCriteria))
+                if (item.DynamicFields.ContainsKey(firstCourseCriteria))
                 {
                     compareLocation = CompareLocationType.OnlyFirstCourse;
                 }

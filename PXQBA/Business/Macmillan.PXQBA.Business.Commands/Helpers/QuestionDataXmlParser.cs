@@ -77,7 +77,7 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
             return question;
         }
 
-        public static QuestionSearchResult ToSearchResultEntity(XElement resultDoc, string sortingField)
+        public static QuestionSearchResult ToSearchResultEntity(XElement resultDoc, string sortingField, string[] fields)
         {
             var questionSearchResult = new QuestionSearchResult();
             questionSearchResult.QuestionId = resultDoc.Attribute("questionid").Value;
@@ -103,13 +103,6 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
             {
                 questionSearchResult.DraftFrom = string.Join(", ", draftFrom.Elements().Select(v => v.Value));
             }
-            return questionSearchResult;
-        }
-
-        public static QuestionDynamicSearchResult ToDynamicSearchResultEntity(XElement resultDoc, string[] fields)
-        {
-            var questionDynamicSearchResult = new QuestionDynamicSearchResult();
-            questionDynamicSearchResult.QuestionId = resultDoc.Attribute("questionid").Value;
 
             if (fields != null)
             {
@@ -124,19 +117,21 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
                         if (element.HasElements)
                         {
                             string value = string.Join(", ", element.Elements().Select(v => v.Value));
-                            questionDynamicSearchResult.Values.Add(field, value);
+                            questionSearchResult.DynamicFields.Add(field, value);
                         }
                         else
                         {
-                            string value =  string.Join(", ", element.Value);
-                            questionDynamicSearchResult.Values.Add(field, value);
+                            string value = string.Join(", ", element.Value);
+                            questionSearchResult.DynamicFields.Add(field, value);
                         }
                     }
                 }
             }
 
-            return questionDynamicSearchResult;
+
+            return questionSearchResult;
         }
+
 
         public static IEnumerable<QuestionFacetedSearchResult> ToFacetedSearchResult(XElement resultDoc)
         {
