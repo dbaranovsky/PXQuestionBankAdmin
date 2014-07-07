@@ -91,7 +91,6 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
    
     initializePopovers: function(){
       
-     $(this.getDOMNode()).find('[rel="popover"]').popover('destroy'); 
      $(this.getDOMNode()).find('span.notes').popover({
 
                                         trigger: 'hover', 
@@ -100,20 +99,10 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
                                         container: 'body'
                                         });  
 
-       $(this.getDOMNode()).popover({
-                                        selector: '[rel="popover"]',
-                                        trigger: 'click', 
-                                        placement:'bottom',           
-                                        html: true,
-                                        container: 'body'
-                                        });  
-
-       
+     
        if(!this.props.showAll){
          $('body').children('.popover').remove();
        }
-
-
                
     },
 
@@ -129,9 +118,8 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
 
 
     return ( React.DOM.div( {className:"shared-placeholder"} ,  
-              React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn shared-to", rel:"popover",  'data-toggle':"popover",  'data-title':this.props.isShared? "Shared with:" : "",  'data-content':this.props.isShared? this.props.data[window.consts.questionSharedWithName] : "<b>Not Shared</b>"} , 
-                 React.DOM.span( {className:"glyphicon icon-shared-to"} ),this.renderCourseCountBadge() 
-               ),
+             
+               SharedButton( {sharedWith:this.props.data[window.consts.questionSharedWithName], trigger:"click"}),
                React.DOM.button( {type:"button", className:"btn btn-default btn-sm tiny", disabled:!this.props.capabilities.canShareQuestion, onClick:this.shareHandler, 'data-toggle':"tooltip", title:"Share this question"}, React.DOM.span( {className:"glyphicon glyphicon-plus-sign"})), 
                     this.props.isShared?
                       React.DOM.button( {type:"button", className:"btn btn-default btn-sm tiny", onClick:this.removeTitleHandler, 'data-toggle':"tooltip", title:"Remove from title"}, React.DOM.span( {className:"glyphicon glyphicon-minus-sign"})) :
@@ -142,13 +130,9 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
       if(this.props.isShared){
       return(
          React.DOM.div( {className:"shared-placeholder"}, 
-                    
-                         
-           React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn shared-to",  rel:"popover"} , 
-                    React.DOM.span( {className:"glyphicon icon-shared-to"} ),this.renderCourseCountBadge()
-           ) 
-         
-                             
+                  
+        
+          SharedButton( {sharedWith:this.props.data[window.consts.questionSharedWithName], trigger:"click"})               
           ));
     } 
 

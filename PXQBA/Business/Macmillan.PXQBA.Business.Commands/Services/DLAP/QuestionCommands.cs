@@ -306,7 +306,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 }
                 results.AddRange(docElements);
             } while (docElements.Count() == SearchCommandMaxRows);
-            // while (i <= 10);
+             //while (i <= 10);
 
             return results;
         }

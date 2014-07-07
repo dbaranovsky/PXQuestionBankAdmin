@@ -85,7 +85,7 @@ namespace Macmillan.PXQBA.Business.Services
             metadata.Data.Add(MetadataFieldNames.DraftFrom, question.DraftFrom);
 
             metadata.Data.Add(MetadataFieldNames.SharedWith, string.Join("<br>", productCourses));
-
+            
             var courseName = course != null ? course.Title : string.Empty;
             metadata.Data.Add(MetadataFieldNames.ProductCourse, courseName);
             var productCourseSection = course != null
