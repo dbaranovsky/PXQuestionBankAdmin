@@ -13,6 +13,8 @@ namespace Macmillan.PXQBA.Business.Models
 
         public string QuestionCardLayout { get; set; }
 
+        public bool IsDraft { get; set; }
+
         public IEnumerable<CourseMetadataFieldDescriptor> FieldDescriptors { get; set; } 
 
     }

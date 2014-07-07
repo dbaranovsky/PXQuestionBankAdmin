@@ -64,6 +64,16 @@ var Title = React.createClass({displayName: 'Title',
       return window.actions.questionList.buildQuestionListIndexUrl(titleId, chapterId)
     },
 
+    renderTitle: function(){
+
+      if(this.props.data.isDraft)
+      {
+        return (React.DOM.i(null, this.props.data.title));
+      }
+
+       return (React.DOM.span(null, this.props.data.title));
+    },
+
     render: function() {
       if (this.props.data.canViewQuestionList){
          return (
@@ -75,7 +85,7 @@ var Title = React.createClass({displayName: 'Title',
                           React.DOM.span( {className:"course-list-title"}, 
                             React.DOM.a( {href:this.getUrlToList(this.props.data.id), className:"title-link"},   
                                  React.DOM.span(null,   
-                                       this.props.data.title 
+                                       this.renderTitle()
                                  )
                             )
                            ),
@@ -95,9 +105,7 @@ var Title = React.createClass({displayName: 'Title',
                              ExpandButton( {expanded:this.state.expanded, onClickHandler:this.expandHandler, targetCaption:"course"})
                           ), 
                           React.DOM.span( {className:"course-list-title"}, 
-                                  React.DOM.span(null,   
-                                       this.props.data.title 
-                                 )
+                                  this.renderTitle()
                            
                            ),
                             React.DOM.span( {className:"course-list-count"}, 

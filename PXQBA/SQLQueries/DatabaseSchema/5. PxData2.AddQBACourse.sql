@@ -1,0 +1,17 @@
+USE [PXData2]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[AddQBACourse]
+(
+  @courseId INT
+)
+AS
+BEGIN
+ INSERT INTO QBACourse(Id)
+  VALUES
+    (@courseId)
+END
