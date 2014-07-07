@@ -29,20 +29,6 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
         return this.specialColumnsCount + this.props.columns.length;
     },
 
-    changeCollection: function(item, collection, isInsert) {
-        var index = $.inArray(item, collection);
-        if(isInsert) {
-          if (index == -1) {
-              collection.push(item)
-          }
-        } 
-        else {
-           if (index != -1) {
-              collection.splice(index, 1);
-           }
-        }
-        return collection;
-    },
 
      changeSelectedCollection: function(itemId, collection, isInsert, isShared) {
         var index = $.inArray(itemId, $.map(collection, function(e){ return e.id}));
@@ -60,13 +46,6 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
         return collection;
     },
 
-    isItemInCollection: function(item, collection) {
-       var index = $.inArray(item, collection);
-         if(index==-1) {
-            return false;
-         }
-         return true;
-    },
 
     /*  Handlers */
 
@@ -86,7 +65,7 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
     },
 
     expandPreviewQuestionHandler: function(questionId, isExpanded) {
-      this.setState({expandedQuestions: this.changeCollection(
+      this.setState({expandedQuestions: collectionHelper.changeCollection(
                                   questionId,
                                   this.state.expandedQuestions, 
                                   isExpanded)});
@@ -107,7 +86,7 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
     /* Helpers */
 
     isQuestionExpanded: function(questionId) {
-         return this.isItemInCollection(questionId, this.state.expandedQuestions);
+         return collectionHelper.isItemInCollection(questionId, this.state.expandedQuestions);
     },
 
     isQuestionSelected: function(questionId) {
