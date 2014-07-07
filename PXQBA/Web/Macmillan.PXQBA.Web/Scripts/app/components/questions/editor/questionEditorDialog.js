@@ -4,16 +4,25 @@
 
 var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog',
 
-    
+     getInitialState: function() {
+
+      return { notesChanged: false};
+    },
+
     componentDidMount: function(){
         if(this.props.showOnCreate)
         {
            $(this.getDOMNode()).modal("show");
         }
          monitorChanges(".local", false);
-        var closeDialogHandler = this.props.closeDialogHandler;
+         var self = this;
+       
         $(this.getDOMNode()).on('hidden.bs.modal', function () {
-            closeDialogHandler();
+            self.props.closeDialogHandler();
+               if(self.state.notesChanged){
+                      questionDataManager.resetState();
+                 }
+
         })
 
     },
@@ -36,6 +45,10 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
          //questionDataManager.deleteQuestion();
     },
 
+    notesChangedHandler: function(){
+       this.setState({notesChanged: true});
+     },
+
 
     render: function() {
          var self = this;
@@ -53,7 +66,9 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
                                      handlers:self.props.handlers,
                                      viewHistoryMode:  self.props.viewHistoryMode,
                                      isEditedInPlace:  self.props.isEditedInPlace,
-                                     caption:self.props.caption} ));
+                                     caption:self.props.caption,
+                                     notesChangedHandler:  self.notesChangedHandler}
+                                     ));
         };
         var renderFooterButtons = function(){
             return ("");

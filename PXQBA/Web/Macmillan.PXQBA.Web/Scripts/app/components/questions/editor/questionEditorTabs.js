@@ -33,7 +33,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
       //     $(tabs).find('iframe').show();
        // });
     
-    if(this.props.question.isShared && !this.props.question.canEditSharedQuestionContent && !this.state.viewHistoryMode){
+    if((this.props.question.isShared && !this.props.question.canEditSharedQuestionContent) || !this.props.question.canEditQuestion){
         $(this.getDOMNode()).find("#quizeditorcomponent").html(this.props.question.preview);
         return;
     }
@@ -218,7 +218,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
 
     renderPublishButton: function() {
         if(this.props.question.isDraft) {
-          return (React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal",   title:"Save and Publish", disabled:this.props.saving || this.props.question.canPublishDraft, onClick:this.saveAndPublishHandler}, 
+          return (React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal",   title:"Save and Publish", disabled:this.props.saving || !this.props.question.canPublishDraft, onClick:this.saveAndPublishHandler}, 
                               "Save and Publish"
                    ));
         }
@@ -279,7 +279,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
         }
 
 
-        if (this.props.question.canEditQuestion){
+        if (!this.props.question.canEditQuestion){
           alert("You have no permission to edit question");
            return;
         }
@@ -314,7 +314,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
           return;
         }
 
-       if (this.props.question.canEditQuestion){
+       if (!this.props.question.canEditQuestion){
           alert("You have no permission to edit question");
            return;
         }
@@ -361,7 +361,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
     },
 
     loadNewGraphEditor: function(){
-     if(!this.state.isGraph || this.state.currentTab != "body"){
+     if(!this.state.isGraph || this.state.currentTab != "body" || !this.props.question.canEditQuestion){
           return;
      }
 
@@ -475,7 +475,11 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
           return(React.DOM.div( {className:"waiting"}));
       }
 
-      return(NoteBox( {canDelete:this.props.question.canRemoveNotesQuestion, canAddNote:this.props.question.canAddNotesQuestion}));
+      return(NoteBox( {canDelete:this.props.question.canRemoveNotesQuestion, canAddNote:this.props.question.canAddNotesQuestion, notesChangedHandler:this.notesChangedHandler}));
+    },
+
+    notesChangedHandler: function(){
+      this.props.notesChangedHandler();
     },
 
     render: function() {
@@ -490,6 +494,10 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
 
        if (this.state.isGraph){
         iframeClass = iframeClass + " graph";
+       }
+
+        if (!this.props.question.canEditQuestion){
+        iframeClass = iframeClass + " forbid-edit";
        }
 
        var isPreventDefault = this.state.viewHistoryMode;
@@ -509,7 +517,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                       this.renderSharingNotification(),
 
                        React.DOM.div( {className:"tab-body .shared"}, 
-                          !this.props.question.canEditSharedQuestionContent && this.props.question.isShared?  React.DOM.span( {className:"label label-danger"}, "You have no permission to edit question body") : React.DOM.div(  {className:"iframe waiting"} ),
+                          (!this.props.question.canEditSharedQuestionContent && this.props.question.isShared) || !this.props.question.canEditQuestion?  React.DOM.span( {className:"label label-danger"}, "You have no permission to edit question body") : React.DOM.div(  {className:"iframe waiting"} ),
                            this.state.graphLoading? React.DOM.div(  {className:"iframe waiting"} ) : "",
                           React.DOM.div( {id:"quizeditorcomponent", className:iframeClass}),
                           React.DOM.div( {className:"modal-footer"}, 

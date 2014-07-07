@@ -6,6 +6,7 @@ var NoteBox = React.createClass({
    this.setState({data: data});
 
   },
+  
   handleNoteSubmit: function(note) {
     var notes = this.state.data;
     var self = this;
@@ -13,6 +14,7 @@ var NoteBox = React.createClass({
     notes.push(data);
     self.setState({data: notes});
     })
+    this.notesChangedHandler();
    
   },
 
@@ -41,22 +43,31 @@ var NoteBox = React.createClass({
         }
     }
     questionDataManager.deleteQuestionNote(note);
+    this.notesChangedHandler();
     this.setState({data: notes});
 
   },
 
   getInitialState: function() {
-    return {data: []};
+    return {data: [], notesChanged: false};
   },
   componentWillMount: function() {
     var response = questionDataManager.getQuestionNotes(this.props.questionId == undefined? null : this.props.questionId);
     response.done(this.loadNotes);
   },
+
+  notesChangedHandler: function(){
+    if(!this.state.notesChanged){
+      this.setState({notesChanged: true});
+      this.props.notesChangedHandler();
+    }
+  },
+
   render: function() {
     return (
       <div className="note-box">
         <NoteList data={this.state.data}  onNoteDelete = {this.noteDeleteHandler} onNoteUpdate={this.noteUpdateHandler} canDelete={this.props.canDelete} />
-        <NoteForm onNoteSubmit={this.handleNoteSubmit} questionId={this.props.questionId} canAddNote={this.props.canAddNote}/>
+        <NoteForm onNoteSubmit={this.handleNoteSubmit} questionId={this.props.questionId} canAddNote={this.props.canAddNote} />
       </div>
     );
   }

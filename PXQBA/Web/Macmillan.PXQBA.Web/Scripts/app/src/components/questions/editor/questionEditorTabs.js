@@ -33,7 +33,7 @@ var QuestionEditorTabs = React.createClass({
       //     $(tabs).find('iframe').show();
        // });
     
-    if(this.props.question.isShared && !this.props.question.canEditSharedQuestionContent && !this.state.viewHistoryMode){
+    if((this.props.question.isShared && !this.props.question.canEditSharedQuestionContent) || !this.props.question.canEditQuestion){
         $(this.getDOMNode()).find("#quizeditorcomponent").html(this.props.question.preview);
         return;
     }
@@ -218,7 +218,7 @@ var QuestionEditorTabs = React.createClass({
 
     renderPublishButton: function() {
         if(this.props.question.isDraft) {
-          return (<button className="btn btn-default" data-toggle="modal"   title="Save and Publish" disabled={this.props.saving || this.props.question.canPublishDraft} onClick={this.saveAndPublishHandler}>
+          return (<button className="btn btn-default" data-toggle="modal"   title="Save and Publish" disabled={this.props.saving || !this.props.question.canPublishDraft} onClick={this.saveAndPublishHandler}>
                               Save and Publish
                    </button>);
         }
@@ -279,7 +279,7 @@ var QuestionEditorTabs = React.createClass({
         }
 
 
-        if (this.props.question.canEditQuestion){
+        if (!this.props.question.canEditQuestion){
           alert("You have no permission to edit question");
            return;
         }
@@ -314,7 +314,7 @@ var QuestionEditorTabs = React.createClass({
           return;
         }
 
-       if (this.props.question.canEditQuestion){
+       if (!this.props.question.canEditQuestion){
           alert("You have no permission to edit question");
            return;
         }
@@ -361,7 +361,7 @@ var QuestionEditorTabs = React.createClass({
     },
 
     loadNewGraphEditor: function(){
-     if(!this.state.isGraph || this.state.currentTab != "body"){
+     if(!this.state.isGraph || this.state.currentTab != "body" || !this.props.question.canEditQuestion){
           return;
      }
 
@@ -475,7 +475,11 @@ var QuestionEditorTabs = React.createClass({
           return(<div className="waiting"></div>);
       }
 
-      return(<NoteBox canDelete={this.props.question.canRemoveNotesQuestion} canAddNote={this.props.question.canAddNotesQuestion}/>);
+      return(<NoteBox canDelete={this.props.question.canRemoveNotesQuestion} canAddNote={this.props.question.canAddNotesQuestion} notesChangedHandler={this.notesChangedHandler}/>);
+    },
+
+    notesChangedHandler: function(){
+      this.props.notesChangedHandler();
     },
 
     render: function() {
@@ -490,6 +494,10 @@ var QuestionEditorTabs = React.createClass({
 
        if (this.state.isGraph){
         iframeClass = iframeClass + " graph";
+       }
+
+        if (!this.props.question.canEditQuestion){
+        iframeClass = iframeClass + " forbid-edit";
        }
 
        var isPreventDefault = this.state.viewHistoryMode;
@@ -509,7 +517,7 @@ var QuestionEditorTabs = React.createClass({
                       {this.renderSharingNotification()}
 
                        <div className="tab-body .shared">
-                          {!this.props.question.canEditSharedQuestionContent && this.props.question.isShared?  <span className="label label-danger">You have no permission to edit question body</span> : <div  className="iframe waiting" />}
+                          {(!this.props.question.canEditSharedQuestionContent && this.props.question.isShared) || !this.props.question.canEditQuestion?  <span className="label label-danger">You have no permission to edit question body</span> : <div  className="iframe waiting" />}
                            {this.state.graphLoading? <div  className="iframe waiting" /> : ""}
                           <div id="quizeditorcomponent" className={iframeClass}></div>
                           <div className="modal-footer">

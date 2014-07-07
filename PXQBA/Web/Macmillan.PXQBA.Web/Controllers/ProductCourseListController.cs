@@ -36,6 +36,11 @@ namespace Macmillan.PXQBA.Web.Controllers
                              });
         }
 
+        public ActionResult AddNewRepository(string name)
+        {
+            return JsonCamel(new {isError = false});
+        }
+
         private void UpdateCapabilities(IEnumerable<ProductCourseViewModel> titles)
         {
             foreach (var productCourseViewModel in titles)

@@ -371,7 +371,12 @@ namespace Macmillan.PXQBA.Business.Services
 
         public IEnumerable<CourseMetadataFieldDescriptor> MapFieldsWithItemLinks(List<QuestionCardData> questionCardData, XElement courseData)
         {
-            var fields = Mapper.Map<IEnumerable<CourseMetadataFieldDescriptor>>(questionCardData).ToList();
+            var fields = new List<CourseMetadataFieldDescriptor>();
+            if (questionCardData != null)
+            {
+                fields = Mapper.Map<IEnumerable<CourseMetadataFieldDescriptor>>(questionCardData).ToList();
+            }
+           
             fields.AddRange(CourseDataXmlHelper.GetItemLinksDescriptors(courseData));
             return fields;
         }

@@ -28,6 +28,12 @@ namespace Macmillan.PXQBA.Web.Helpers
 
 
             // \todo Move custom field-level settings to configuration
+
+
+             if (metaField.Name == MetadataFieldNames.DlapType)
+             {
+                 model.AllowDeselect = false;
+             }
             
             if (metaField.Name == MetadataFieldNames.DlapTitle)
             {

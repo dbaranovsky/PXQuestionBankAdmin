@@ -87,7 +87,7 @@ var AddQuestionBox = React.createClass({displayName: 'AddQuestionBox',
     render: function() {
             return (React.DOM.div(null, 
                            
-                           MetadataFieldEditor( {question:this.state.question, metadata:this.props.metadata, setDefault:true, editHandler:this.editHandler, field:"type"}),
+                           MetadataFieldEditor( {question:this.state.question, metadata:this.props.metadata, setDefault:true,  editHandler:this.editHandler, field:"type"}),
                            MetadataFieldEditor( {question:this.state.question, metadata:this.props.metadata, setDefault:true,  editHandler:this.editHandler, field:"chapter"}),
                            MetadataFieldEditor( {question:this.state.question, metadata:this.props.metadata, setDefault:true,  editHandler:this.editHandler, field:"bank"}),
 
