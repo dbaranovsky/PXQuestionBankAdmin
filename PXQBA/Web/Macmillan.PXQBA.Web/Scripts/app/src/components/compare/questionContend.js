@@ -74,7 +74,11 @@ var QuestionContent = React.createClass({
  
 	renderTitle: function() {
 		return(
-		     <tr  style={{width:'100%'}}>
+		     <tr style={{width:'100%'}}>
+		     	<td>
+		     		<table style={{width:'100%'}}>
+		     		 	<tbody>
+		     			<tr>
                           <td style={{width:'30px'}}>
                              {this.renderExpandButton()}
                           </td>
@@ -85,6 +89,10 @@ var QuestionContent = React.createClass({
                           <td style={{width:'90px'}}>
                              {this.renderSharedLabel()}
                          </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
               </tr>);
 	},
 
@@ -95,7 +103,7 @@ var QuestionContent = React.createClass({
 		}
 		return(
 			<tr> 
-				<td colspan={3} style={{width:'100%'}}> 
+				<td style={{width:'100%'}}> 
 					<div className="compared-preview">
 					<QuestionPreviewContent 
 					   metadata={this.props.question.data} 

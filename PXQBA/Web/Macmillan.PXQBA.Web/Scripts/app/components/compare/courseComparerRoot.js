@@ -59,7 +59,7 @@ var CourseComparerRoot = React.createClass({displayName: 'CourseComparerRoot',
 
         if(!response.oneQuestionRepositrory) {
             this.setState({compareEnabled: false});
-            notificationManager.showWarning("You need choose titles for comparison with the same Question Bank Repository");
+            notificationManager.showWarning("You need choose different titles for comparison with the same Question Bank Repository");
             return;
         }
         this.setState({
