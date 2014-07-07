@@ -43,12 +43,16 @@ var QuestionInlineEditorBase = React.createClass({
 
         for(var i=0; i<this.props.metadata.editorDescriptor.availableChoice.length; i++) {
 
+            var statusValue = this.props.metadata.editorDescriptor.availableChoice[i].value;
+
+            if((this.props.metadata.draft)&&(statusValue==window.enums.statusesId.availibleToInstructor)) {
+                continue;
+            }
+
             if (this.props.metadata.editorDescriptor.availableChoice[i].text == this.props.metadata.status){
                 newValues.push(this.props.metadata.editorDescriptor.availableChoice[i]);
                 continue;
             } 
-
-            var statusValue = this.props.metadata.editorDescriptor.availableChoice[i].value;
 
             if (this.props.metadata.status == window.enums.statuses.availibleToInstructor){
 
