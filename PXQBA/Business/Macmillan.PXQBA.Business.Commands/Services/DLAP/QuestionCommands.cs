@@ -702,7 +702,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                     var productCourseId = productCourseFilterField.Values.First();
                     if (productCourseId != null)
                     {
-                       // var productCourseSection = string.Format("{0}{1}", ElStrings.ProductCourseSection, productCourseId);
                         foreach (var filterFieldDescriptor in filter)
                         {
                             var fieldQuery = GetFilterFieldQuery(productCourseId, filterFieldDescriptor);
