@@ -190,7 +190,6 @@ var QuestionListMenu = React.createClass({
 
 
                if (status == window.enums.statuses.availibleToInstructor){
-                debugger;
                    return(
                      <ul className="dropdown-menu show-menu" role="menu" aria-labelledby="dropdownMenuType"  aria-labelledby="edit-question">
                        <li role="presentation" className="dropdown-header">Edit options</li>
