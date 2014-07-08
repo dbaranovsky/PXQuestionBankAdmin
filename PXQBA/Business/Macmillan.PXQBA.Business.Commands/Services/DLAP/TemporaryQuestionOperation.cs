@@ -65,7 +65,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             }
 
             var questionToCopy = CopyQuestionToCourse(sourceProductCourseId, questionIdToCopy, temporaryCourseId, GetTemporaryQuestionId(), version);
-            CopyResources(sourceProductCourseId, temporaryCourseId, QuestionHelper.GetQuestionRelatedResources(questionToCopy));
+            CopyResources(sourceProductCourseId, temporaryCourseId, QuestionHelper.GetQuestionRelatedResources(questionToCopy.QuestionXml));
 
             return UpdateQuestionQuiz(questionToCopy);
         }
@@ -81,39 +81,46 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         public Models.Question CopyQuestionToSourceCourse(string sourceProductCourseId, string sourceQuestionId)
         {
             var question = CopyQuestionToCourse(temporaryCourseId, GetTemporaryQuestionId(), sourceProductCourseId, sourceQuestionId);
-
-            var questionRelatedResources = QuestionHelper.GetQuestionRelatedResources(question);
-            CopyResources(temporaryCourseId, sourceProductCourseId, questionRelatedResources);
-            // RemoveResources(temporaryCourseId, questionRelatedResources);
+            CopyResources(temporaryCourseId, sourceProductCourseId,  QuestionHelper.GetQuestionRelatedResources(question.QuestionXml));
             //questionCommands.DeleteQuestion(temporaryCourseId, GetTemporaryQuestionId());
             return Mapper.Map<Models.Question>(question);
         }
 
-        private void CopyResources(string from, string to, List<string> resourcesPath)
+        private void CopyResources(string from, string to, IEnumerable<string> resourcesPath)
         {
-            var copyResoursecCmd = new CopyResources
-                                   {
-                                       DestEntityId = to,
-                                       SourceEntityId = from,
-                                       SourcePath = ConfigurationHelper.GetBrainhoneyCourseImageFolder() + "/*"
-                                   };
-           businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(copyResoursecCmd);
+            if (!resourcesPath.Any())
+            {
+                return;
+            }
+            foreach (var copyResoursecCmd in resourcesPath.Select(resourcePath => new CopyResources
+                                                                                  {
+                                                                                      DestEntityId = to,
+                                                                                      SourceEntityId = @from,
+                                                                                      SourcePath = ConfigurationHelper.GetBrainhoneyCourseImageFolder() + resourcePath
+                                                                                  }))
+            {
+                businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(copyResoursecCmd);
+            }
         }
 
-        private void RemoveResources(string itemId, List<string> questionRelatedResources)
+        public void RemoveResources(string itemId, List<string> questionRelatedResources)
         {
-            var copyResoursecCmd = new DeleteResources()
-                                   {
-                                       ResourcesToDelete = new List<Resource>()
-                                                           {
-                                                               new Resource()
-                                                               {
-                                                                   EntityId = itemId,
-                                                                   Url = ConfigurationHelper.GetBrainhoneyCourseImageFolder()
-                                                               }
-                                                           }
-                                   };
-             this.businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(copyResoursecCmd);
+            if (!questionRelatedResources.Any())
+            {
+                return;
+            }
+
+            var cmd = new DeleteResources
+                      {
+                          ResourcesToDelete =
+                              questionRelatedResources.Select(relatedResource => new Resource
+                                                                                 {
+                                                                                     EntityId = itemId,
+                                                                                     Url = ConfigurationHelper.GetBrainhoneyCourseImageFolder() + 
+                                                                                            relatedResource
+                                                                                 }).ToList()
+                      };
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
         }
 
         private Question CopyQuestionToCourse(string sourceProductCourseId, string sourceQuestionId, string destinationProductCourseId, string destinationQuestionId,string version = null)
