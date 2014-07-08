@@ -258,10 +258,15 @@ var QuestionListMenu = React.createClass({
                   </div>);
       }
 
+      var notesClassName = "glyphicon glyphicon-list-alt notes";
+      if (this.state.isFlagged){
+        notesClassName += " flagged";
+      }
+
       return (<div className="menu-container-flag">
                 <div className="notification-icons-container">
                     {this.state.isFlagged ? <span className="glyphicon glyphicon-flag flagged"></span> : <div className="glyphicon-placeholder"></div>}
-                    {this.props.data.notes != "" ? <span className="glyphicon glyphicon-list-alt notes"></span> : <div className="glyphicon-placeholder"></div>}
+                    {this.props.data.notes != "" ? <span className={notesClassName}></span> : <div className="glyphicon-placeholder"></div>}
                 </div>
               </div>);
     },
