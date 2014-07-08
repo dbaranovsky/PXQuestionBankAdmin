@@ -7,6 +7,7 @@ using Bfw.Agilix.Commands;
 using Bfw.Agilix.DataContracts;
 using Bfw.Agilix.Dlap;
 using Macmillan.PXQBA.Business.Commands.Contracts;
+using Macmillan.PXQBA.Business.Commands.Helpers;
 using Macmillan.PXQBA.Common.Helpers;
 
 
@@ -62,10 +63,10 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 GetTemporaryQuestionId = GetTemporaryQuestionIdForVersion;
                 GetTemporaryQuizId = GetTemporaryQuizIdForVersion;
             }
-            RemoveResources(temporaryCourseId);
-            CopyResources(sourceProductCourseId, temporaryCourseId);
-        
+
             var questionToCopy = CopyQuestionToCourse(sourceProductCourseId, questionIdToCopy, temporaryCourseId, GetTemporaryQuestionId(), version);
+            CopyResources(sourceProductCourseId, temporaryCourseId, QuestionHelper.GetQuestionRelatedResources(questionToCopy));
+
             return UpdateQuestionQuiz(questionToCopy);
         }
 
@@ -80,12 +81,15 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         public Models.Question CopyQuestionToSourceCourse(string sourceProductCourseId, string sourceQuestionId)
         {
             var question = CopyQuestionToCourse(temporaryCourseId, GetTemporaryQuestionId(), sourceProductCourseId, sourceQuestionId);
-            CopyResources(temporaryCourseId, sourceProductCourseId);
+
+            var questionRelatedResources = QuestionHelper.GetQuestionRelatedResources(question);
+            CopyResources(temporaryCourseId, sourceProductCourseId, questionRelatedResources);
+            // RemoveResources(temporaryCourseId, questionRelatedResources);
             //questionCommands.DeleteQuestion(temporaryCourseId, GetTemporaryQuestionId());
             return Mapper.Map<Models.Question>(question);
         }
 
-        private void CopyResources(string from, string to)
+        private void CopyResources(string from, string to, List<string> resourcesPath)
         {
             var copyResoursecCmd = new CopyResources
                                    {
@@ -96,7 +100,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(copyResoursecCmd);
         }
 
-        private void RemoveResources(string itemId)
+        private void RemoveResources(string itemId, List<string> questionRelatedResources)
         {
             var copyResoursecCmd = new DeleteResources()
                                    {
