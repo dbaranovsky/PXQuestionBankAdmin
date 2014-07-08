@@ -30,12 +30,7 @@ var QuestionListMenu = React.createClass({
     },
 
     editQuestionHandler: function() {
-        if(this.props.data[window.consts.questionStatusName] == window.enums.statuses.availibleToInstructor  && !this.props.isShared){
-           this.createDraftHandler();
-          return;
-        }
-
-        if(!this.props.isShared && this.props.data[window.consts.questionStatusName] != window.enums.statuses.inProgress){
+        if(!this.props.isShared && this.props.data[window.consts.questionStatusName] == window.enums.statuses.deleted){
           this.props.editQuestionHandler();
           return;
         }
@@ -151,7 +146,7 @@ var QuestionListMenu = React.createClass({
                     return null;
                   }
 
-                  if (this.props.isShared){
+                  if (this.props.isShared) {
 
                       if(status==window.enums.statuses.inProgress) {
                           return(
@@ -192,16 +187,37 @@ var QuestionListMenu = React.createClass({
                        <li role="presentation"><a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.createDraftHandler}>Create a Draft</a></li>
                      </ul>);
                 }
+
+
+               if (status == window.enums.statuses.availibleToInstructor){
+                debugger;
+                   return(
+                     <ul className="dropdown-menu show-menu" role="menu" aria-labelledby="dropdownMenuType"  aria-labelledby="edit-question">
+                       <li role="presentation" className="dropdown-header">Edit options</li>
+                       <li role="presentation" className="divider"></li>
+                       <li role="presentation" className={this.props.metadataCapabilities.canEditQuestion ? "" :"disabled"}>
+                          <a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={ this.props.metadataCapabilities.canEditQuestion? this.props.editQuestionHandler.bind(this, false, true) : null}>Edit in Place</a>
+                       </li>
+                       <li role="presentation" className={this.props.metadataCapabilities.canCreateDraftFromAvailableQuestion ? "" :"disabled"}>
+                         <a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.metadataCapabilities.canCreateDraftFromAvailableQuestion ? this.createDraftHandler : null }>Create a Draft</a>
+                        </li>
+                     </ul>);
+                }
     },
 
     renderMenu: function(){
       if (this.props.showAll){
       var isDeleted = this.props.data[window.consts.questionStatusName] == window.enums.statuses.deleted;
       var isDisabled =false;
-      if(!this.props.metadataCapabilities.canEditQuestion && !this.props.isShared){
+      if(!this.props.metadataCapabilities.canEditQuestion && 
+         !this.props.isShared &&
+         !this.props.data[window.consts.questionStatusName] == window.enums.statuses.availibleToInstructor){
         isDisabled= true;
       }else{
-        if(this.props.data[window.consts.questionStatusName] == window.enums.statuses.availibleToInstructor  && !this.props.isShared && !this.props.metadataCapabilities.canCreateDraftFromAvailableQuestion){
+        if(this.props.data[window.consts.questionStatusName] == window.enums.statuses.availibleToInstructor  && 
+          !this.props.isShared && 
+          !this.props.metadataCapabilities.canCreateDraftFromAvailableQuestion &&
+          !this.props.metadataCapabilities.canEditQuestion) {
           isDisabled = true;
         }
       }
