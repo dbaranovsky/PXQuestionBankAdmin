@@ -31,6 +31,7 @@ namespace Macmillan.PXQBA.Business.Models
         public const string ModifiedBy = "modifiedby";
         public const string ContainsText = "containstext";
         public const string Notes = "notes";
+        public const string QuestionIdDuplicateFromShared = "questionIdDuplicateFromShared";
 
         public static IEnumerable<string> GetStaticFieldNames()
         {
