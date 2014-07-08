@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Macmillan.PXQBA.Business.Commands.Contracts;
+using Macmillan.PXQBA.Business.Commands.Helpers;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
@@ -317,6 +318,12 @@ namespace Macmillan.PXQBA.Business.Services
                 questionCommands.ExecuteSolrUpdateTask();
             }
             return questionVersion;
+        }
+
+        public void RemoveRelatedQuestionTempResources(string questionIdToEdit, Course course)
+        {
+            var question = questionCommands.GetAgilixQuestion(course.QuestionRepositoryCourseId, questionIdToEdit);
+            temporaryQuestionOperation.RemoveResources(ConfigurationHelper.GetTemporaryCourseId(), QuestionHelper.GetQuestionRelatedResources(question.QuestionXml));
         }
 
         private QuestionMetadataSection GetNewProductCourseSection(int courseIdToPublish, string bank, string chapter, Course currentCourse, Question question)

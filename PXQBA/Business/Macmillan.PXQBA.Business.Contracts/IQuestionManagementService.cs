@@ -67,5 +67,6 @@ namespace Macmillan.PXQBA.Business.Contracts
         bool PublishDraftToOriginal(Course currentCourse, string draftQuestionId);
         Question CreateDraft(Course course, string questionId, string version = null);
         Question RestoreQuestionVersion(Course course, string questionId, string version);
+        void RemoveRelatedQuestionTempResources(string questionIdToEdit, Course questionRepositoryCourseId);
     }
 }

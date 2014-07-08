@@ -594,6 +594,18 @@ var questionDataManager = (function() {
 
     };
 
+    self.clearResources  = function(){
+        return $.ajax({
+            url: window.actions.questionList.clearQuestionResourcesUrl,
+            traditional: true,
+            contentType: 'application/json',
+            dataType: 'json',
+            type: 'GET'
+        }).error(function(e){
+             self.showErrorPopup();
+        });
+    };
+
     /*  Common operations  */
     self.resetState = function(){
          crossroads.resetState();

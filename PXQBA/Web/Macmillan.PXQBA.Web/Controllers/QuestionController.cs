@@ -384,6 +384,12 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
              return  JsonCamel(new { EditorHtml = QuestionPreviewHelper.GetGraphEditor(interactionData, QuestionHelper.QuestionIdToEdit, QuestionTypeHelper.GraphType)});
         }
+
+        public ActionResult ClearQuestionResources()
+        {
+             questionManagementService.RemoveRelatedQuestionTempResources(QuestionHelper.QuestionIdToEdit, CourseHelper.CurrentCourse);
+             return JsonCamel(new { isError = false });
+        }
 	}
   
 }

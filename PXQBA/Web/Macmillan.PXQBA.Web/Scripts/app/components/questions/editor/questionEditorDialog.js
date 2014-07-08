@@ -42,7 +42,11 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
          monitorChanges(".local", true);
          $(this.getDOMNode()).modal("hide");
          $('.modal-backdrop').remove(); 
-         //questionDataManager.deleteQuestion();
+         var questionType = this.props.question.questionType == null? "" :this.props.question.questionType.toLowerCase();
+         if ( questionType != "hts" && questionType !="fma_graph"){
+            questionDataManager.clearResources();
+         }
+         
     },
 
     notesChangedHandler: function(){

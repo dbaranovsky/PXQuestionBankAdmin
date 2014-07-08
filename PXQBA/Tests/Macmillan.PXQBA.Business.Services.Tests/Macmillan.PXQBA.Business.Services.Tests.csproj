@@ -94,6 +94,7 @@
     <Compile Include="ProductCourseOperationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionDataXmlParserTests.cs" />
+    <Compile Include="QuestionHelperTests.cs" />
     <Compile Include="QuestionManagementServiceTests.cs" />
     <Compile Include="QuestionMetadataServiceTests.cs" />
     <Compile Include="QuestionCommandsTests.cs" />

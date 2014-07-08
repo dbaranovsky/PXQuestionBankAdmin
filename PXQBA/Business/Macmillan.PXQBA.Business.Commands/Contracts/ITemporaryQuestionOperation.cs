@@ -1,4 +1,5 @@
-﻿using Macmillan.PXQBA.Business.Models;
+﻿using System.Collections.Generic;
+using Macmillan.PXQBA.Business.Models;
 
 namespace Macmillan.PXQBA.Business.Commands.Contracts
 {
@@ -20,5 +21,7 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         /// <param name="question"></param>
         /// <returns></returns>
         Question CreateQuestion(string productCourseId, Question question);
+
+        void RemoveResources(string itemId, List<string> questionRelatedResources);
     }
 }
