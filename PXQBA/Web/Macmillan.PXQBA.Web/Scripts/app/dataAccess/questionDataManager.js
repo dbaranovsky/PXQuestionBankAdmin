@@ -514,7 +514,7 @@ var questionDataManager = (function() {
 
         var request = {
             questionsId: questionsId,
-            courseId: courseViewModel[window.consts.questionCourseName][0],
+            courseId: courseViewModel[window.consts.targetProductCourse][0],
             bank: courseViewModel[window.consts.questionBankName][0],
             chapter: courseViewModel[window.consts.questionChapterName][0]
         };
