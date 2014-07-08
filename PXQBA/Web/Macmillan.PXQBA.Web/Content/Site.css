@@ -1008,6 +1008,13 @@ span.notes {
     padding-left: 6px;
 }
 
+.notification-icons-container span.notes.flagged {
+    position: relative;
+    top: -2px;
+}
+
+
+
 .notification-icons-container  {
     width: 60px;
 }

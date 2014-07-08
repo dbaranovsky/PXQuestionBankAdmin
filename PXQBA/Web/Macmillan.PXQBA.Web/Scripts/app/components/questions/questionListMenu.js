@@ -259,10 +259,15 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
                   ));
       }
 
+      var notesClassName = "glyphicon glyphicon-list-alt notes";
+      if (this.state.isFlagged){
+        notesClassName += " flagged";
+      }
+
       return (React.DOM.div( {className:"menu-container-flag"}, 
                 React.DOM.div( {className:"notification-icons-container"}, 
                     this.state.isFlagged ? React.DOM.span( {className:"glyphicon glyphicon-flag flagged"}) : React.DOM.div( {className:"glyphicon-placeholder"}),
-                    this.props.data.notes != "" ? React.DOM.span( {className:"glyphicon glyphicon-list-alt notes"}) : React.DOM.div( {className:"glyphicon-placeholder"})
+                    this.props.data.notes != "" ? React.DOM.span( {className:notesClassName}) : React.DOM.div( {className:"glyphicon-placeholder"})
                 )
               ));
     },
