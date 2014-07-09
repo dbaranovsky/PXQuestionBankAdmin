@@ -124,7 +124,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
 
       if(this.props.isShared){
       return(
-         React.DOM.div( {className:"shared-placeholder"}, 
+         React.DOM.div( {className:"shared-placeholder"+ (this.state.isFlagged? " flagged" : "")}, 
                   
         
           SharedButton( {sharedWith:this.props.data[window.consts.questionSharedWithName], trigger:"click"})               

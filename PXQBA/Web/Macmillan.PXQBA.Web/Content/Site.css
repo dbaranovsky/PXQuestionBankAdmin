@@ -963,6 +963,16 @@ a.shared-question-link:hover {
     display: inline-block;
 }
 
+.shared-placeholder.flagged {
+    position: relative;
+    top: -3px;
+}
+
+.shared-placeholder.flagged .badge{
+    top: -6px !important;
+}
+
+
 .menu-container-main {
    width: 180px;
    margin-bottom: 1px;
