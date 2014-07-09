@@ -87,7 +87,8 @@ var Title = React.createClass({displayName: 'Title',
                                  React.DOM.span(null,   
                                        this.renderTitle()
                                  )
-                            )
+                            ),
+                             "  ", this.props.data.isDraft? React.DOM.span( {className:"label label-default draft-label"}, "draft") : ""
                            ),
                             React.DOM.span( {className:"course-list-count"}, 
                                    this.getQuestionCountText(this.props.data.questionsCount)
@@ -105,8 +106,8 @@ var Title = React.createClass({displayName: 'Title',
                              ExpandButton( {expanded:this.state.expanded, onClickHandler:this.expandHandler, targetCaption:"course"})
                           ), 
                           React.DOM.span( {className:"course-list-title"}, 
-                                  this.renderTitle()
-                           
+                                  this.renderTitle(),
+                                 this.props.data.isDraft? React.DOM.span( {className:"label label-default draft-label"}, "draft") : ""
                            ),
                             React.DOM.span( {className:"course-list-count"}, 
                                    this.getQuestionCountText(this.props.data.questionsCount)

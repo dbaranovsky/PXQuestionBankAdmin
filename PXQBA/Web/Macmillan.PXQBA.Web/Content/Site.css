@@ -1406,6 +1406,6 @@ textarea.metadata-availible-values-editor {
 }
 
 span.draft-course {
-    font-weight: bolder;
-    font-style: normal;
+    font-weight: normal;
+    font-style: italic;
 }
