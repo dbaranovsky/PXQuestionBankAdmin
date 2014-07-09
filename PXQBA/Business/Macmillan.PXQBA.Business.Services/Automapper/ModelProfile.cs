@@ -10,6 +10,7 @@ using Bfw.Agilix.DataContracts;
 using Macmillan.PXQBA.Business.Commands.DataContracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Web.ViewModels;
 using Macmillan.PXQBA.Web.ViewModels.CompareTitles;
@@ -99,6 +100,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                .ForMember(dto => dto.InteractionData, opt => opt.Condition(q => q.CustomUrl == QuestionTypeHelper.GraphType))
                .ForMember(dto => dto.InteractionType, opt => opt.Condition(cont => cont.SourceValue != null))
                .ForMember(dto => dto.CustomUrl, opt => opt.Condition(cont => cont.SourceValue != null))
+               .ForMember(dto => dto.GeneralFeedback, opt => opt.Condition(cont => cont.SourceValue != null))
                .ForMember(dto => dto.QuestionVersion, opt => opt.MapFrom(q => q.Version))
                .ForMember(dto => dto.ModifiedDate, opt =>opt.Ignore());
 
@@ -202,6 +204,17 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<RoleViewModel, Role>()
                 .ForMember(dest => dest.CanEdit, opt => opt.UseValue(true))
                 .ForMember(dest => dest.Capabilities, opt => opt.MapFrom(src => modelProfileService.GetActiveRoleCapabilities(src)));
+
+            Mapper.CreateMap<ParsedQuestion, Question>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Body, opt => opt.MapFrom(src => src.Text))
+                .ForMember(dest => dest.GeneralFeedback, opt => opt.MapFrom(src => src.Feedback))
+                .ForMember(dest => dest.Score, opt => opt.MapFrom(src => src.Points.HasValue ? src.Points.Value : 0))
+                .ForMember(dest => dest.AnswerList, opt => opt.MapFrom(src => src.Choices.Where(c => c.IsCorrect).Select(c => c.Id)))
+                .ForMember(dest => dest.Choices, opt => opt.MapFrom(src => src.Choices))
+                .ForMember(dest => dest.InteractionType, opt => opt.MapFrom(src => modelProfileService.GetTypeFromParsedType(src.Type)));
+
+            Mapper.CreateMap<ParsedQuestionChoice, QuestionChoice>();
         }
     }
 

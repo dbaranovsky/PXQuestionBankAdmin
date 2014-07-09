@@ -9,6 +9,7 @@ using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Commands.Helpers;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Common.Helpers.Constants;
 using Macmillan.PXQBA.DataAccess.Data;
@@ -388,6 +389,19 @@ namespace Macmillan.PXQBA.Business.Services
            
             fields.AddRange(CourseDataXmlHelper.GetItemLinksDescriptors(courseData));
             return fields;
+        }
+
+        public string GetTypeFromParsedType(ParsedQuestionType type)
+        {
+            switch (type)
+            {
+                 case ParsedQuestionType.MultipleChoice:
+                    return "choice";
+                 case ParsedQuestionType.Answer:
+                    return "answer";
+                default:
+                    return "choice";
+            }
         }
 
         private CourseMetadataFieldDescriptor GetFieldDescriptorWithSplitedValues(string concatedValues, string internalName)

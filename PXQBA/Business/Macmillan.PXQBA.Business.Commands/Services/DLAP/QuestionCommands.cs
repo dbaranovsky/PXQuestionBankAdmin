@@ -360,6 +360,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         public Question CreateQuestion(string productCourseId, Question question)
         {
+            question.Id = Guid.NewGuid().ToString();
             question.ModifiedBy = businessContext.CurrentUser.Id;
             SetSequence(productCourseId, question);
             ExecutePutQuestion(Mapper.Map<Bfw.Agilix.DataContracts.Question>(question), productCourseId);
