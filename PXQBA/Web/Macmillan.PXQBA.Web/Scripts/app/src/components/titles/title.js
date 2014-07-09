@@ -88,6 +88,7 @@ var Title = React.createClass({
                                        {this.renderTitle()}
                                  </span>
                             </a>
+                             &nbsp; {this.props.data.isDraft? <span className="label label-default draft-label">draft</span> : ""}
                            </span>
                             <span className="course-list-count">
                                    {this.getQuestionCountText(this.props.data.questionsCount)}
@@ -106,7 +107,7 @@ var Title = React.createClass({
                           </span> 
                           <span className="course-list-title">
                                   {this.renderTitle()}
-                           
+                                 {this.props.data.isDraft? <span className="label label-default draft-label">draft</span> : ""}
                            </span>
                             <span className="course-list-count">
                                    {this.getQuestionCountText(this.props.data.questionsCount)}

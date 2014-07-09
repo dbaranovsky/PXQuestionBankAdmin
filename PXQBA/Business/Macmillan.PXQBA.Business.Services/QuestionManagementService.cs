@@ -195,7 +195,22 @@ namespace Macmillan.PXQBA.Business.Services
         {
             try
             {
-                return questionCommands.GetVersionHistory(currentCourse.QuestionRepositoryCourseId, questionId);
+                var questionVersions = questionCommands.GetVersionHistory(currentCourse.QuestionRepositoryCourseId, questionId).ToList();
+
+                if (!questionVersions.Any())
+                {
+                    return questionVersions;
+                }
+
+                var sourceQuestionId = questionVersions.First().DraftFrom;
+                if (string.IsNullOrEmpty(sourceQuestionId))
+                {
+                    return questionVersions;
+                }
+                questionVersions.Last().IsDraftInitialVersion = true;
+                questionVersions.AddRange(GetVersionHistory(currentCourse, sourceQuestionId).ToList().Where(x => x.ModifiedDate < questionVersions.Min( d => d.ModifiedDate)));
+                
+                return questionVersions;
             }
             catch (Exception ex)
             {
