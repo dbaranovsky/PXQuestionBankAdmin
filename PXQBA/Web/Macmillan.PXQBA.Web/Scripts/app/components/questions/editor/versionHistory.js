@@ -203,7 +203,7 @@ var VersionHistoryRow = React.createClass({displayName: 'VersionHistoryRow',
         return ( React.DOM.div( {className:"version-row"}, 
                         React.DOM.div( {className:"version-cell"}, 
 
-                          React.DOM.span( {className: version.isCurrent? "version-text current" : "version-text"},  " Version of ", version.modifiedDate, " by ", version.modifiedBy, " ", version.isInitial? "(initial)": "", " " ),
+                          React.DOM.span( {className: version.isCurrent? "version-text current" : "version-text"},  " Version of ", version.modifiedDate, " by ", version.modifiedBy, " ", version.isInitial? "(initial) ": "", " ", version.isDraftInitialVersion? "(draft was created)": ""),
                           React.DOM.br(null),
                            this.renderDraftInfo(),
                            this.renderRestoreInfo(),

@@ -203,7 +203,7 @@ var VersionHistoryRow = React.createClass({
         return ( <div className="version-row">
                         <div className="version-cell">
 
-                          <span className= {version.isCurrent? "version-text current" : "version-text"}> Version of {version.modifiedDate} by {version.modifiedBy} {version.isInitial? "(initial)": ""} </span>
+                          <span className= {version.isCurrent? "version-text current" : "version-text"}> Version of {version.modifiedDate} by {version.modifiedBy} {version.isInitial? "(initial) ": ""} {version.isDraftInitialVersion? "(draft was created)": ""}</span>
                           <br/>
                            {this.renderDraftInfo()}
                            {this.renderRestoreInfo()}

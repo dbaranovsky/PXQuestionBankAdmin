@@ -101,5 +101,7 @@ namespace Macmillan.PXQBA.Business.Models
         public bool IsPublishedFromDraft { get; set; }
 
         public double Score { get; set; }
+
+        public bool IsDraftInitialVersion { get; set; }
     }
 }
