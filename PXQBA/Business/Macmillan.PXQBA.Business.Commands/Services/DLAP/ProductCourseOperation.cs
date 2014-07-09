@@ -65,6 +65,8 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
             var createdCourse = GetAgilixCourse(cmd.Entity.FirstOrDefault().Id);
             createdCourse.QuestionBankRepositoryCourse = createdCourse.Id;
+            createdCourse.IsDraft = true;
+
             ExecuteUpdateCourse(createdCourse);
             AddToAvailableCourses(createdCourse.Id);
 
@@ -107,6 +109,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 {
                     continue;
                 }
+                var re = batch.CommandAs<GetCourse>(index).Courses.First();
                 courses.Add(Mapper.Map<Course>(batch.CommandAs<GetCourse>(index).Courses.First()));
             }
 

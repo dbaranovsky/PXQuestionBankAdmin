@@ -238,6 +238,8 @@ namespace Bfw.Agilix.DataContracts
 
 		public bool UseWeightedCategories { get; set; }
 
+        public bool IsDraft { get; set; }
+
 		#endregion
 
 		#region IDlapEntityParser Members
@@ -305,6 +307,7 @@ namespace Bfw.Agilix.DataContracts
 
                 //TODO: remove later - bfw activateddate element is replaced with startdate attribute
                 dataElement.Add(new XElement("ActivatedDate"));
+                dataElement.Add(new XElement("isdraft", IsDraft));
 
 				var gbb_categories = Data.Element("categories");
 				if (gbb_categories != null)
@@ -593,6 +596,7 @@ namespace Bfw.Agilix.DataContracts
 			var questioncardlayout = "";
 			var enableHomeworkQuiz = true;
 			var enableLoadingScreen = false;
+		    var isDraft = false;
 
 			var lockedLO = "";
 
@@ -676,6 +680,8 @@ namespace Bfw.Agilix.DataContracts
 			        if(!bool.TryParse(responseData.Element("bfw_disable_comments").Value, out disableComments))
                         disableComments = false;
 			    }
+
+                if (responseData.Element("isdraft") != null) { bool.TryParse(responseData.Element("isdraft").Value, out isDraft); }
 			}
 
 			//if (String.IsNullOrEmpty(activatedDate))
@@ -1071,6 +1077,8 @@ namespace Bfw.Agilix.DataContracts
 			{
 				UseWeightedCategories = Boolean.Parse(Data.Element("categories").Attribute("weighted").Value);
 			}
+
+		    IsDraft = isDraft;
 		}
 
 		#endregion
