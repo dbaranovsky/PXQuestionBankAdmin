@@ -14,6 +14,9 @@ var QuestionContent = React.createClass({displayName: 'QuestionContent',
 	},
 
     renderSharedLabel: function() {
+      if (this.props.question.data[window.consts.questionSharedWithName].split("<br>").length < 2){
+        return null;
+      }
 		return (SharedButton( {sharedWith:this.props.question.data[window.consts.questionSharedWithName], trigger:"hover"}));
 	},
 
