@@ -323,6 +323,10 @@ namespace Macmillan.PXQBA.Business.Services
         public void RemoveRelatedQuestionTempResources(string questionIdToEdit, Course course)
         {
             var question = questionCommands.GetAgilixQuestion(course.QuestionRepositoryCourseId, questionIdToEdit);
+            if (question == null)
+            {
+                return;
+            }
             temporaryQuestionOperation.RemoveResources(ConfigurationHelper.GetTemporaryCourseId(), QuestionHelper.GetQuestionRelatedResources(question.QuestionXml));
         }
 
