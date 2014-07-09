@@ -68,7 +68,7 @@ var Title = React.createClass({
 
       if(this.props.data.isDraft)
       {
-        return (<i>{this.props.data.title}</i>);
+        return (<span className="draft-course">{this.props.data.title}</span>);
       }
 
        return (<span>{this.props.data.title}</span>);

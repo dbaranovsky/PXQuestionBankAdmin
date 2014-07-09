@@ -1394,3 +1394,8 @@ textarea.metadata-availible-values-editor {
 .compared-table-first-column {
      border-right: 1px solid #c0c0c0;
 }
+
+span.draft-course {
+    font-weight: bolder;
+    font-style: normal;
+}

@@ -68,7 +68,7 @@ var Title = React.createClass({displayName: 'Title',
 
       if(this.props.data.isDraft)
       {
-        return (React.DOM.i(null, this.props.data.title));
+        return (React.DOM.span( {className:"draft-course"}, this.props.data.title));
       }
 
        return (React.DOM.span(null, this.props.data.title));
