@@ -425,6 +425,7 @@
     <Content Include="Scripts\app\src\components\users\userRow.js" />
     <Content Include="Scripts\app\src\components\users\userTitleRow.js" />
     <Content Include="Scripts\app\src\components\users\userTitlesBox.js" />
+    <Content Include="Scripts\app\ui\highlighter.js" />
     <Content Include="Scripts\bootstrap\bootstrap-notify.js" />
     <Content Include="Scripts\bootstrap\bootstrap-paginator.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap-switch.min.js" />
