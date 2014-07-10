@@ -302,6 +302,9 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
            return;
         }
 
+        this.switchTab("#body");
+        this.setState({currentTab: "body"});
+
     },
 
     switchTabMetadata: function(event){
@@ -338,7 +341,8 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
            return;
         }
 
-     
+        this.switchTab("#metadata");
+        this.setState({currentTab: "metadata"});
         
     },
 
