@@ -397,7 +397,7 @@ namespace Macmillan.PXQBA.Business.Services
                 DisplayInResources = true,
                 ShowFilterInResources = true,
                 MatchInResources = true,
-                CourseMetadataFieldValues =
+                CourseMetadataFieldValues = string.IsNullOrEmpty(concatedValues) ? null :
                     concatedValues.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries)
                         .Select((v, i) => new CourseMetadataFieldValue() { Sequence = i, Text = v })
             };
