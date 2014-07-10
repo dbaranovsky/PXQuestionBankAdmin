@@ -23,6 +23,36 @@ var QuestionList = React.createClass({
        }
     }, 
 
+
+    componentDidMount: function() {
+       highlighter.target=$(this.getDOMNode());
+       highlighter.filter='tr.question, tr.grid-question-preview';
+       this.updateHighligh();
+    },
+
+    componentDidUpdate: function(prevProps, prevState) {
+        this.updateHighligh();
+    },
+
+
+    /* Logic */
+
+    updateHighligh: function() {
+        var containsTextFilter = this.props.filter.filter(function(item) { return item.field==window.consts.containsTextName })[0];
+        if(containsTextFilter==null) {
+            return;
+        }
+
+        var text = containsTextFilter.values[0];
+        if(text != null) {
+          highlighter.highlight(text);
+        } 
+        else {
+          highlighter.unhighlight();
+        }
+    },
+
+
     /* Common Helpers */
 
     getAllColumnCount: function() {

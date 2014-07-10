@@ -14,7 +14,7 @@ var QuestionPreview = React.createClass({
 
        render: function() {
             return ( 
-                  <tr>
+                  <tr className='grid-question-preview'>
                     {this.renderGroupLine()}
                     <td colSpan={this.props.colSpan}>
                       <QuestionPreviewContent 
