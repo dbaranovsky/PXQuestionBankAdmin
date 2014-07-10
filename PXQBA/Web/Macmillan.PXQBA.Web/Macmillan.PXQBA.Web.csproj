@@ -237,6 +237,8 @@
     <Content Include="Scripts\app\components\compare\courseComparerRoot.js" />
     <Content Include="Scripts\app\components\compare\questionComparerList.js" />
     <Content Include="Scripts\app\components\compare\questionContend.js" />
+    <Content Include="Scripts\app\components\metadata\availibleValuesBodyItemLinks.js" />
+    <Content Include="Scripts\app\components\metadata\availibleValuesBodyTextArea.js" />
     <Content Include="Scripts\app\components\metadata\availibleValuesDialog.js" />
     <Content Include="Scripts\app\components\metadata\displayOptionsDialog.js" />
     <Content Include="Scripts\app\components\metadata\internalFieldDialog.js" />
@@ -346,6 +348,8 @@
     <Content Include="Scripts\app\src\components\compare\courseComparerRoot.js" />
     <Content Include="Scripts\app\src\components\compare\questionComparerList.js" />
     <Content Include="Scripts\app\src\components\compare\questionContend.js" />
+    <Content Include="Scripts\app\src\components\metadata\availibleValuesBodyItemLinks.js" />
+    <Content Include="Scripts\app\src\components\metadata\availibleValuesBodyTextArea.js" />
     <Content Include="Scripts\app\src\components\metadata\availibleValuesDialog.js" />
     <Content Include="Scripts\app\src\components\metadata\displayOptionsDialog.js" />
     <Content Include="Scripts\app\src\components\metadata\internalFieldDialog.js" />
