@@ -62,6 +62,7 @@ namespace Macmillan.PXQBA.Web.Helpers
              {
                  model.IsInlineEditingAllowed = true;
                  model.EditorDescriptor.EditorType = EditorType.Number.ToString().ToLower();
+                 model.FilterType = FilterType.None.ToString().ToLower();
              }
 
              if (metaField.Name == MetadataFieldNames.Guidance)
