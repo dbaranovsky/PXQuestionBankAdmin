@@ -46,6 +46,9 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
         var text = containsTextFilter.values[0];
         if(text != null) {
           highlighter.highlight(text);
+        } 
+        else {
+          highlighter.unhighlight();
         }
     },
 

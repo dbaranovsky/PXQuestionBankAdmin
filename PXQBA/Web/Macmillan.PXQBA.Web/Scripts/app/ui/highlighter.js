@@ -5,7 +5,6 @@
     self.text = null;
 
     self.getItems = function () {
-        debugger;
         if (self.filter == null) {
             return self.target;
         }
@@ -30,7 +29,7 @@
     self.highlightWords = function(items, text) {
         var words = text.split(' ');
         for (var i = 0 ; i<words.length; i++) {
-            if (words[i] != "") {
+            if ((words[i] != "")&&(words[i] != " ")) {
                 items.highlight(words[i]);
             }
         }
