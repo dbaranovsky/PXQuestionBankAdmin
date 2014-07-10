@@ -22,6 +22,12 @@ namespace Bfw.Agilix.DataContracts
         [DataMember]
         public int Sequence { get; set; }
 
+        /// <summary>
+        /// Id of item link
+        /// </summary>
+        [DataMember]
+        public string Id { get; set; }
+
         public XElement ToEntity(int i)
         {
             var element = new XElement("value");
@@ -29,7 +35,14 @@ namespace Bfw.Agilix.DataContracts
             {
                 element.Add(new XAttribute("text", Text));
             }
+
             element.Add(new XAttribute("sequence", Sequence));
+
+            if (!string.IsNullOrEmpty(Id))
+            {
+                element.Add(new XAttribute("id", Id));
+            }
+
             return element;
         }
 
@@ -44,6 +57,11 @@ namespace Bfw.Agilix.DataContracts
             {
                 int.TryParse(element.Attribute("sequence").Value, out outvalue);
                 Sequence = outvalue;
+            }
+
+            if (element.Attribute("id") != null)
+            {
+                Id = element.Attribute("id").Value;
             }
         }
     }
