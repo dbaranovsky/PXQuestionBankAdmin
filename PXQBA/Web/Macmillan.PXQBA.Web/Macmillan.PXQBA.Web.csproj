@@ -246,6 +246,7 @@
     <Content Include="Scripts\app\components\metadata\metadataCfgRoot.js" />
     <Content Include="Scripts\app\components\metadata\metadataChapterEditorTab.js" />
     <Content Include="Scripts\app\components\metadata\metadataCourseSelector.js" />
+    <Content Include="Scripts\app\components\metadata\metadataItemLinkRow.js" />
     <Content Include="Scripts\app\components\metadata\metadataMainButtonsContainer.js" />
     <Content Include="Scripts\app\components\metadata\metadataMetaEditorTab.js" />
     <Content Include="Scripts\app\components\metadata\metadataTabs.js" />
@@ -357,6 +358,7 @@
     <Content Include="Scripts\app\src\components\metadata\metadataCfgRoot.js" />
     <Content Include="Scripts\app\src\components\metadata\metadataChapterEditorTab.js" />
     <Content Include="Scripts\app\src\components\metadata\metadataCourseSelector.js" />
+    <Content Include="Scripts\app\src\components\metadata\metadataItemLinkRow.js" />
     <Content Include="Scripts\app\src\components\metadata\metadataMainButtonsContainer.js" />
     <Content Include="Scripts\app\src\components\metadata\metadataMetaEditorTab.js" />
     <Content Include="Scripts\app\src\components\metadata\metadataTabs.js" />

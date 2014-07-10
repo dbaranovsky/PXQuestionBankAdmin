@@ -14,7 +14,14 @@ var AvailibleValuesDialog = React.createClass({
  
         var renderBody = function(){
           if(self.props.fieldType==window.enums.metadataFieldType.itemLink) {
-              return (<AvailibleValuesBodyItemLinks />);
+              return (<AvailibleValuesBodyItemLinks 
+                           closeDialogHandler={self.props.closeDialogHandler} 
+                           value={self.props.value} 
+                           itemIndex={self.props.itemIndex}
+                           updateHandler={self.props.updateHandler}
+                           fieldNameCaption={self.props.fieldNameCaption}
+                           canEdit={self.props.canEdit}
+                        />);
           }
           
           return (<AvailibleValuesBodyTextArea 
