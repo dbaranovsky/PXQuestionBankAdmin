@@ -881,7 +881,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             string inProgressId = ((int)QuestionStatus.InProgress).ToString();
             string deletedId = ((int)QuestionStatus.Deleted).ToString();
             var oldValue = question.QuestionStatus;
-            if (!userCapabilities.Contains(Capability.ChangeDraftStatus))
+            if (!userCapabilities.Contains(Capability.ChangeDraftStatus) && question.IsDraft())
             {
                 return false;
             }

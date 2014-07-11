@@ -469,7 +469,7 @@ var questionDataManager = (function() {
             }
             
             if (response.permissionStatusSkipped > 0) {
-                self.showWarningPopup("You have no permission for status changing - " + response.permissionSkipped + " questions/drafts were skipped");
+                self.showWarningPopup("You have no permission for status changing - " + response.permissionStatusSkipped + " questions/drafts were skipped");
             }
             
             if (response.permissionSkipped > 0) {
