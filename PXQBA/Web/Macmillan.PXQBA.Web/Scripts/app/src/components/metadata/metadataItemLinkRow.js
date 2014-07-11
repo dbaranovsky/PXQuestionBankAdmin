@@ -13,6 +13,11 @@ var MetadataItemLinkRow = React.createClass({
         };
     },
 
+    componentWillReceiveProps: function(nextProps) {
+        this.setState({
+            item: nextProps.item,
+            editMode: false});
+    },
 
     editEventHandler: function() {
         this.setState({
@@ -22,7 +27,7 @@ var MetadataItemLinkRow = React.createClass({
     },
 
     removeEventHandler: function() {
-        alert('removed!');
+        this.props.deleteItemHandler(this.props.index);
     },
 
     editAcceptEventHandler: function() {
@@ -30,6 +35,7 @@ var MetadataItemLinkRow = React.createClass({
             editMode: false,
             item: this.state.draftItem
         });
+        this.props.editItemHandler(this.props.index, this.state.draftItem);
     },
 
     editCancelEventHandler: function() {
@@ -75,9 +81,9 @@ var MetadataItemLinkRow = React.createClass({
     render: function() {
         return(
                 <tr>
-                    <td>{this.renderValueContent()}</td>
-                    <td>{this.renderTextContent()}</td>
-                    <td> 
+                    <td className="item-liks-table-cell">{this.renderValueContent()}</td>
+                    <td className="item-liks-table-cell">{this.renderTextContent()}</td>
+                    <td className="item-liks-table-cell-menu"> 
                          {this.renderMenu()}
                      </td>
                 </tr>
