@@ -39,7 +39,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.ProductCourseId, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
                 .ForMember(dest => dest.FieldDescriptors,
-                   opt => opt.MapFrom(src => modelProfileService.MapFieldsWithItemLinks(src.QuestionCardData, src.Data)))
+                   opt => opt.MapFrom(src => src.QuestionCardData))
                 .ForMember(dest => dest.QuestionRepositoryCourseId, 
                     opt => opt.MapFrom(src => src.QuestionBankRepositoryCourse));
 
