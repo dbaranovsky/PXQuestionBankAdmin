@@ -239,6 +239,9 @@
     <Content Include="Scripts\app\components\compare\questionContend.js" />
     <Content Include="Scripts\app\components\metadata\availibleValuesBodyItemLinks.js" />
     <Content Include="Scripts\app\components\metadata\availibleValuesBodyTextArea.js" />
+    <Content Include="Scripts\app\components\import\importPage.js" />
+    <Content Include="Scripts\app\components\import\titleListSelector.js" />
+    <Content Include="Scripts\app\components\import\titleSelector.js" />
     <Content Include="Scripts\app\components\metadata\availibleValuesDialog.js" />
     <Content Include="Scripts\app\components\metadata\displayOptionsDialog.js" />
     <Content Include="Scripts\app\components\metadata\internalFieldDialog.js" />
@@ -351,6 +354,9 @@
     <Content Include="Scripts\app\src\components\compare\questionContend.js" />
     <Content Include="Scripts\app\src\components\metadata\availibleValuesBodyItemLinks.js" />
     <Content Include="Scripts\app\src\components\metadata\availibleValuesBodyTextArea.js" />
+    <Content Include="Scripts\app\src\components\import\importPage.js" />
+    <Content Include="Scripts\app\src\components\import\titleListSelector.js" />
+    <Content Include="Scripts\app\src\components\import\titleSelector.js" />
     <Content Include="Scripts\app\src\components\metadata\availibleValuesDialog.js" />
     <Content Include="Scripts\app\src\components\metadata\displayOptionsDialog.js" />
     <Content Include="Scripts\app\src\components\metadata\internalFieldDialog.js" />
@@ -499,12 +505,13 @@
     <Content Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content  Include="Web.PRISTINE.config">
+    <Content Include="Web.PRISTINE.config">
       <DependentUpon>Web.config</DependentUpon>
-    </Content >
-    <Content  Include="Web.PROD.config">
+    </Content>
+    <Content Include="Web.PROD.config">
       <DependentUpon>Web.config</DependentUpon>
-    </Content >
+    </Content>
+    <Content Include="Views\Import\ImportFromFile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Commands\Macmillan.PXQBA.Business.Commands.csproj">
