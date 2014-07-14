@@ -9,6 +9,8 @@ using Bfw.Agilix.Commands;
 using Bfw.Agilix.DataContracts;
 using Bfw.Common.Collections;
 using Bfw.Common.Database;
+using Bfw.PX.Biz.Direct.Services;
+using Bfw.PX.Biz.Services.Mappers;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Commands.DataContracts;
 using Macmillan.PXQBA.Business.Commands.Helpers;
@@ -360,7 +362,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         {
             question.ModifiedBy = businessContext.CurrentUser.Id;
             SetSequence(productCourseId, question);
-            ExecutePutQuestion(Mapper.Map<Bfw.Agilix.DataContracts.Question>(question));
+            ExecutePutQuestion(Mapper.Map<Bfw.Agilix.DataContracts.Question>(question), productCourseId);
             return question;
         }
 
@@ -458,20 +460,20 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return true;
         }
 
-        public Question UpdateQuestion(Question question)
+        public Question UpdateQuestion(Question question, string courseId = null)
         {
             question.ModifiedBy = businessContext.CurrentUser.Id;
             var agilixQuestion = GetAgilixQuestion(question.EntityId, question.Id);
             Mapper.Map(question, agilixQuestion);
-            ExecutePutQuestion(agilixQuestion);
+            ExecutePutQuestion(agilixQuestion, courseId);
             return question;
         }
 
-        public bool UpdateQuestions(IEnumerable<Question> questions, string repositoryCourseId)
+        public bool UpdateQuestions(IEnumerable<Question> questions, string repositoryCourseId, string courseId = null)
         {
             var agilixQuestions = GetAgilixQuestions(repositoryCourseId, questions.Select(q => q.Id));
             Mapper.Map(questions, agilixQuestions);
-            ExecutePutQuestions(agilixQuestions);
+            ExecutePutQuestions(agilixQuestions, courseId);
             return true;
         }
 
@@ -572,7 +574,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 question.MetadataElements.Remove(ElStrings.ProductCourseSection + currentCourseId);
             }
 
-            ExecutePutQuestions(agilixQuestions);
+            ExecutePutQuestions(agilixQuestions, currentCourseId);
             return true;
         }
 
@@ -598,8 +600,38 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                         new XElement(questionToDelete)
                     }
             };
-
             businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(deleteCmd);
+            InvalidateQuestionCache(new List<Bfw.Agilix.DataContracts.Question>(){GetAgilixQuestion(repositoryCourseId, questionId)});
+        }
+
+        private void InvalidateQuestionCache(IEnumerable<Bfw.Agilix.DataContracts.Question> questions, string courseId = null)
+        {
+            try
+            {
+                foreach (var question in questions)
+                {
+                    if (!string.IsNullOrEmpty(courseId))
+                    {
+                        businessContext.CacheProvider.InvalidateQuestionFromQBA(question.ToQuestion(), new List<string> { courseId });
+                    }
+                    else
+                    {
+                        var courseIds =
+                            question.MetadataElements.Where(e => e.Key.Contains(ElStrings.ProductCourseSection.ToString()))
+                                .Select(
+                                    e =>
+                                        e.Key.Split(new[] { ElStrings.ProductCourseSection.ToString() },
+                                            StringSplitOptions.RemoveEmptyEntries)[0]);
+                        businessContext.CacheProvider.InvalidateQuestionFromQBA(question.ToQuestion(), courseIds.ToList());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                StaticLogger.LogError("QuestionCommands.InvalidateQuestionCache", ex);
+                throw;
+            }
+           
         }
 
         public IEnumerable<Question> GetQuestionDrafts(string questionRepositoryCourseId, Question question)
@@ -912,12 +944,12 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return true;
         }
 
-        public void ExecutePutQuestion(Bfw.Agilix.DataContracts.Question  question)
+        public void ExecutePutQuestion(Bfw.Agilix.DataContracts.Question  question, string courseId = null)
         {
-            ExecutePutQuestions(new List<Bfw.Agilix.DataContracts.Question> {question});
+            ExecutePutQuestions(new List<Bfw.Agilix.DataContracts.Question> {question}, courseId);
         }
 
-        private void ExecutePutQuestions(IEnumerable<Bfw.Agilix.DataContracts.Question> questions)
+        private void ExecutePutQuestions(IEnumerable<Bfw.Agilix.DataContracts.Question> questions, string courseId = null)
         {
             if (questions.Any())
             {
@@ -936,6 +968,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 var cmd = new PutQuestions();
                 cmd.Add(questions);
                 businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+                InvalidateQuestionCache(questions, courseId);
             }
         }
 
@@ -985,7 +1018,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                             productCourseSection.DynamicValues.Add(fieldName, new List<string>() { fieldValue });
                         }
                     }
-                    UpdateQuestion(question);
+                    UpdateQuestion(question, productCourseId);
                 }
             }
         }

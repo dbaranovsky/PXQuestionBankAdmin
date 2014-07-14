@@ -6,6 +6,7 @@ using Bfw.Agilix.Commands;
 using Bfw.Agilix.DataContracts;
 using Bfw.Agilix.Dlap;
 using Bfw.Agilix.Dlap.Session;
+using Bfw.Common.Caching;
 using Bfw.Common.Collections;
 using Bfw.Common.Logging;
 using Macmillan.PXQBA.Business.Models;
@@ -21,11 +22,20 @@ namespace Macmillan.PXQBA.Business
         private readonly ISessionManager sessionManager;
         private readonly ITraceManager tracer;
         private readonly ILogger logger;
-        public Context(ISessionManager sessionManager, ILogger logger, ITraceManager tracer)
+        /// <summary>
+        /// Gets or sets the cache provider.
+        /// </summary>
+        /// <value>
+        /// The cache provider.
+        /// </value>
+        public ICacheProvider CacheProvider { get; protected set; }
+
+        public Context(ISessionManager sessionManager, ILogger logger, ITraceManager tracer, ICacheProvider cacheProvider)
         {
             this.sessionManager = sessionManager;
             this.tracer = tracer;
             this.logger = logger;
+            CacheProvider = cacheProvider;
         }
 
         public ISessionManager SessionManager
@@ -36,30 +46,7 @@ namespace Macmillan.PXQBA.Business
             }
         }
 
-        private string domainId;
-
-        private string DomainId
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(domainId))
-                {
-                    domainId = ConfigurationHelper.GetDomainId();
-                }
-                return domainId;
-            }
-        }
-
         public UserInfo CurrentUser { get; set; }
-
-        public string EnrollmentId
-        {
-            get
-            {
-                //TODO: need to be initialized after titles selection is added
-                return "187794";
-            }
-        }
 
         /// <summary>
         /// Initializes session in current context
@@ -73,7 +60,7 @@ namespace Macmillan.PXQBA.Business
 
         protected void InitializeUser(string userId)
         {
-            using (tracer.StartTrace(String.Format("BusinessContext ExistingUser, parameters {0}, {1}", domainId, userId)))
+            using (tracer.StartTrace(String.Format("BusinessContext ExistingUser, parameters {0}", userId)))
             {
                 var search = new GetUsers
                 {

@@ -1049,7 +1049,7 @@ namespace Bfw.PX.Biz.Services.Mappers
 
                 if (agx.QuestionValues != null)
                 {
-                    questionCardData.QuestionValues = agx.QuestionValues;
+                    questionCardData.QuestionValues = agx.QuestionValues.Select(v => v.Text).ToList();
 
                 }
 

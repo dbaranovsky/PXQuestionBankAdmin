@@ -1526,6 +1526,37 @@ namespace Bfw.PX.Biz.Direct.Services
         }
 
         /// <summary>
+        /// Remove question from cache.
+        /// </summary>
+        /// <param name="cacheProvider">The cache provider instance.</param>
+        /// <param name="courseIds">ID of the course for the bookmarks.</param>
+        /// <param name="bookmarks">Questions collection to store.</param>
+        public static void InvalidateQuestionFromQBA(this ICacheProvider cacheProvider, Bdc.Question question, List<string> courseIds)
+        {
+            if (question != null)
+            {
+                string cacheKey = string.Format("PX_COURSE_{0}_QUESTION_{1}", question.EntityId, question.Id);
+                cacheProvider.RemoveByProductCourseRegion(cacheKey, courseIds);
+            }
+        }
+
+        public static void RemoveByProductCourseRegion(this ICacheProvider cacheProvider, string key, List<string> courseIds)
+        {
+
+            if (courseIds != null && courseIds.Any())
+            {
+                foreach (var courseId in courseIds)
+                {
+                    cacheProvider.Remove(key, "ProductCourse_" + courseId);
+                }
+            }
+            else
+            {
+                cacheProvider.Remove(key);
+            }
+        }
+
+        /// <summary>
         /// Invalidate LaunchPadData
         /// </summary>
         /// <param name="cacheProvider"></param>

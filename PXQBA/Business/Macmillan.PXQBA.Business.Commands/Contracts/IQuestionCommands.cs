@@ -19,7 +19,7 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
             string version = null);
 
         Dictionary<string, int> GetQuestionCountByChapters(string questionRepositoryCourseId, string currentCourseId, IEnumerable<string> chapterNames);
-        Question UpdateQuestion(Question question);
+        Question UpdateQuestion(Question question, string courseId = null);
         bool UpdateQuestionField(string productCourseId, string repositoryCourseId, string questionId, string fieldName, string value, IEnumerable<Capability> userCapabilities);
 
         BulkOperationResult BulklUpdateQuestionField(string productCourseId, string repositoryCourseId, string[] questionId, string fieldName, string value, IEnumerable<Capability> userCapabilities);
@@ -31,14 +31,14 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
 
         IEnumerable<Question> GetQuestions(string repositoryCourseId, string[] questionsId);
 
-        bool UpdateQuestions(IEnumerable<Question> questions, string repositoryCourseId);
+        bool UpdateQuestions(IEnumerable<Question> questions, string repositoryCourseId, string courseId = null);
 
         void ExecuteSolrUpdateTask();
         IEnumerable<Question> GetVersionHistory(string questionRepositoryCourseId, string questionId);
         void DeleteQuestion(string repositoryCourseId, string questionId);
         IEnumerable<Question> GetQuestionDrafts(string questionRepositoryCourseId, Question question);
 
-        void ExecutePutQuestion(Bfw.Agilix.DataContracts.Question question);
+        void ExecutePutQuestion(Bfw.Agilix.DataContracts.Question question, string courseId = null);
 
         IEnumerable<QuestionFacetedSearchResult> GetFacetedResults(string questionRepositoryCourseId, string currentCourseId, string facetedField);
     }
