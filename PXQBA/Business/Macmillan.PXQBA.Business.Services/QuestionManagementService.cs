@@ -95,7 +95,7 @@ namespace Macmillan.PXQBA.Business.Services
         {
             try
             {
-                questionCommands.UpdateQuestion(temporaryQuestion);
+                questionCommands.UpdateQuestion(temporaryQuestion, course.ProductCourseId);
                 var question = temporaryQuestionOperation.CopyQuestionToSourceCourse(course.QuestionRepositoryCourseId, sourceQuestionId);
                 UpdateManuallyAddedKeywords(course, question.ProductCourseSections.FirstOrDefault(s => s.ProductCourseId == course.ProductCourseId));
                 questionCommands.ExecuteSolrUpdateTask();
@@ -186,7 +186,7 @@ namespace Macmillan.PXQBA.Business.Services
                 question.ProductCourseSections.Add(GetNewProductCourseSection(courseIdToPublish, bank, chapter, currentCourse, question));
             }
             
-            bool isSuccess = questionCommands.UpdateQuestions(questions, currentCourse.QuestionRepositoryCourseId);
+            bool isSuccess = questionCommands.UpdateQuestions(questions, currentCourse.QuestionRepositoryCourseId, courseIdToPublish.ToString());
             questionCommands.ExecuteSolrUpdateTask();
             return isSuccess;
         }
@@ -245,8 +245,8 @@ namespace Macmillan.PXQBA.Business.Services
                     ClearServiceFields(draftQuestion);
                     draftQuestion.DraftFrom = originalQuestion.DraftFrom;
                     draftQuestion.IsPublishedFromDraft = true;
-                    questionCommands.UpdateQuestion(draftQuestion);
-                    DeleteDraft(currentCourse.QuestionRepositoryCourseId, draftQuestionId);
+                    questionCommands.UpdateQuestion(draftQuestion, currentCourse.ProductCourseId);
+                    DeleteDraft(currentCourse.QuestionRepositoryCourseId, draftQuestionId, currentCourse.ProductCourseId);
                     questionCommands.ExecuteSolrUpdateTask();
                     return true;
                 }
@@ -260,13 +260,13 @@ namespace Macmillan.PXQBA.Business.Services
             }
         }
 
-        private void DeleteDraft(string questionRepositoryCourseId, string draftQuestionId)
+        private void DeleteDraft(string questionRepositoryCourseId, string draftQuestionId, string currentProductCourseId)
         {
-            UpdateSubDrafts(questionRepositoryCourseId, draftQuestionId);
+            UpdateSubDrafts(questionRepositoryCourseId, draftQuestionId, currentProductCourseId);
             questionCommands.DeleteQuestion(questionRepositoryCourseId, draftQuestionId);
         }
 
-        private void UpdateSubDrafts(string questionRepositoryCourseId, string draftQuestionId)
+        private void UpdateSubDrafts(string questionRepositoryCourseId, string draftQuestionId, string currentProductCourseId)
         {
             var question = questionCommands.GetQuestion(questionRepositoryCourseId, draftQuestionId);
             if (question != null)
@@ -276,7 +276,7 @@ namespace Macmillan.PXQBA.Business.Services
                 {
                     draft.DraftFrom = question.DraftFrom;
                 }
-                questionCommands.UpdateQuestions(subDrafts, questionRepositoryCourseId);
+                questionCommands.UpdateQuestions(subDrafts, questionRepositoryCourseId, currentProductCourseId);
             }
         }
 
@@ -329,7 +329,7 @@ namespace Macmillan.PXQBA.Business.Services
                 var draftFrom = questionVersion.DraftFrom;
                 ClearServiceFields(questionVersion);
                 questionVersion.DraftFrom = draftFrom;
-                questionCommands.UpdateQuestion(questionVersion);
+                questionCommands.UpdateQuestion(questionVersion, course.ProductCourseId);
                 questionCommands.ExecuteSolrUpdateTask();
             }
             return questionVersion;

@@ -11,6 +11,10 @@ namespace Macmillan.PXQBA.Business
 
         UserInfo CurrentUser { get; set; }
 
-        string EnrollmentId { get; }
+        /// <summary>
+        /// Gets the cache provider.
+        /// </summary>
+        Bfw.Common.Caching.ICacheProvider CacheProvider { get; }
+
     }
 }
