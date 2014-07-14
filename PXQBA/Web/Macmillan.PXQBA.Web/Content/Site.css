@@ -1412,7 +1412,7 @@ span.draft-course {
 .availible-values-paste-area {
     max-width:  552px;
     width: 552px;
-
+    height: 2em;
     -moz-resize: none;
     -ms-resize: none;
     -o-resize: none;
@@ -1421,6 +1421,12 @@ span.draft-course {
 
 .metadata-item-links-descripton-container {
     margin: 0 0 10px 0;
+}
+
+.item-liks-table-container {
+    height: 400px;
+    overflow-y: scroll;
+    margin: 10px 0 0 0;
 }
 
 .item-liks-table {

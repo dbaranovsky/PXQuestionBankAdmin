@@ -6,11 +6,50 @@
 var AvailibleValuesBodyItemLinks = React.createClass({
 
     getInitialState: function() {
-        return { items: this.props.value };
+        var items = [];
+
+        if(this.props.value!=null) {
+            items = this.props.value;
+        }
+
+        return {
+             items: items,
+             needScrollDown: false
+        };
+    },
+
+    componentDidUpdate: function() {
+        if(this.state.needScrollDown) {
+            this.setState({needScrollDown: false})
+            this.moveScrollToEndTable();
+        }
     },
 
     editAvailibleValuesHandler: function() {
-       this.props.updateHandler(this.props.itemIndex, "valuesOptions",  this.state.items);
+      var inEditMode = this.isEditModeEnabled();
+   
+      if(inEditMode) {
+        if (!confirm("You have unsaved changes for this items links. Do you want discard your changes?")) {
+          return;
+        }
+      }
+
+      this.props.updateHandler(this.props.itemIndex, "valuesOptions",  this.state.items);
+      this.refs.cancelButton.getDOMNode().click();
+    },
+
+    isEditModeEnabled: function() {
+        var inEditMode = false;
+        for (var name in this.refs) {
+            if(name=="cancelButton") {
+                continue;
+            }
+            if(this.refs[name].state.editMode) {
+                inEditMode = true;
+            }
+        }
+
+        return inEditMode;
     },
 
 
@@ -18,20 +57,30 @@ var AvailibleValuesBodyItemLinks = React.createClass({
         var itemsHtml = [];
 
         for(var i=0; i<this.state.items.length; i++) {
-            debugger;
             itemsHtml.push(<MetadataItemLinkRow 
+                                    ref={"item-"+i}
                                     index={i}
                                     item={this.state.items[i]}
+                                    disabled={!this.props.canEdit}
                                     deleteItemHandler={this.deleteItemHandler}
                                     editItemHandler={this.updateItemHandler}
+                                    editModeOff={this.editModeOff}
                                     />);
         }
 
         return itemsHtml;
     },
 
+    editModeOff: function() {
+         for (var name in this.refs) {
+            if(name=="cancelButton") {
+                continue;
+            }
+            this.refs[name].setState({editMode:false});
+        }
+    },
+
     deleteItemHandler: function(index) {
-        debugger;
         var items = this.state.items;
         items.splice(index, 1);
         this.setState({items: items});
@@ -39,15 +88,27 @@ var AvailibleValuesBodyItemLinks = React.createClass({
 
     updateItemHandler: function(index, updatedItem) {
         var items = this.state.items;
-        items[i]=updatedItem;
+        items[index]=updatedItem;
         this.setState({items: items});
     },
 
     addItemHandler: function() {
-        var newItem = {};
+        var newItem = {
+            value: "",
+            text: ""
+        };
         var items = this.state.items;
         items.push(newItem);
-        this.setState({items: items});
+        this.setState({
+            items: items,
+            needScrollDown: true
+        });
+ 
+    },
+
+    moveScrollToEndTable: function() {
+        var tableContainer = this.getDOMNode().getElementsByClassName('item-liks-table-container')[0];
+        tableContainer.scrollTop = tableContainer.scrollHeight;
     },
 
     pasteHandler: function(event) {
@@ -114,24 +175,24 @@ var AvailibleValuesBodyItemLinks = React.createClass({
                 <div>
                     {this.renderPasteHolder()}
                 </div>
-                <table className="table table item-liks-table">
-                     <thead>
-                        <tr>
-                            <td style={{width:'40%'}} className="item-liks-table-cell"><b>ItemID</b></td>
-                            <td style={{width:'40%'}} className="item-liks-table-cell"><b>ItemTitle</b></td>
-                            <td style={{width:'20%'}}></td>
-                        </tr>
-                     </thead>
-                    <tbody>
-                       {this.renderItems()}
-                    </tbody>
-                </table>
+                <div className="item-liks-table-container">
+                    <table className="table table item-liks-table">
+                        <thead>
+                              <tr>
+                                  <td style={{width:'40%'}} className="item-liks-table-cell"><b>ItemID</b></td>
+                                  <td style={{width:'40%'}} className="item-liks-table-cell"><b>ItemTitle</b></td>
+                                  <td style={{width:'20%'}}></td>
+                             </tr>
+                         </thead>
+                         <tbody>{this.renderItems()}</tbody>
+                    </table>
+                </div>
                 <div>
                  {this.renderAddButton()}
                 </div>
                 <div className="modal-footer clearfix">
-                    <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={this.editAvailibleValuesHandler}>Save</button>
+                    <button ref="cancelButton" type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" className="btn btn-primary" onClick={this.editAvailibleValuesHandler}>Save</button>
                 </div>
             </div>
             );

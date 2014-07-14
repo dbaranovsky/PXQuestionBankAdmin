@@ -20,6 +20,7 @@ var MetadataItemLinkRow = React.createClass({
     },
 
     editEventHandler: function() {
+        this.props.editModeOff();
         this.setState({
             editMode: true,
             draftItem: $.extend(true, {}, this.state.item)
@@ -65,6 +66,10 @@ var MetadataItemLinkRow = React.createClass({
     },
 
     renderMenu: function() {
+        if(this.props.disabled) {
+            return null;
+        }
+
         if(this.state.editMode) {
             return (<span className="input-group-btn">
                         <button type="button" className="btn btn-default btn-xs" onClick={this.editAcceptEventHandler} data-toggle="tooltip" title="Apply"><span className="glyphicon glyphicon-ok"></span></button> 
