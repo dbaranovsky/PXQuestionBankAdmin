@@ -1445,3 +1445,28 @@ span.draft-course {
 .table > thead:first-child > tr:first-child > td.item-liks-table-cell {
     border: 1px solid #000000;
 }
+
+
+
+/* Import */
+
+.title-list-selector {
+   width: 655px;
+}
+.title-list-selector .selector-menu {
+   float: right;
+    margin-right: 5px;
+}
+
+.title-list-selector a {
+    color: black;
+    text-decoration: underline;
+}
+
+.title-list-selector a:hover {
+     color: black;
+.imported-note {
+    margin-top: 60px;
+    font-size: 15px;
+    margin-bottom: 900px;
+}

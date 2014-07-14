@@ -307,7 +307,7 @@ namespace Bfw.Agilix.DataContracts
 
                 //TODO: remove later - bfw activateddate element is replaced with startdate attribute
                 dataElement.Add(new XElement("ActivatedDate"));
-                dataElement.Add(new XElement("isdraft", IsDraft));
+                dataElement.Add(new XElement("qba_draft_course", IsDraft));
 
 				var gbb_categories = Data.Element("categories");
 				if (gbb_categories != null)
@@ -681,7 +681,7 @@ namespace Bfw.Agilix.DataContracts
                         disableComments = false;
 			    }
 
-                if (responseData.Element("isdraft") != null) { bool.TryParse(responseData.Element("isdraft").Value, out isDraft); }
+                if (responseData.Element("qba_draft_course") != null) { bool.TryParse(responseData.Element("qba_draft_course").Value, out isDraft); }
 			}
 
 			//if (String.IsNullOrEmpty(activatedDate))

@@ -11,17 +11,25 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 @MenuMainItem("Titles", "Index", "ProductCourseList")
-                @MenuItem("Import", "Index", "Import")
+                @MenuImportItem("Import", "Index", "Import")
                 @MenuItem("Metadata config", "Index", "Metadata")
                 @MenuItem("User management", "Index", "User")
                 @MenuItem("Compare titles", "Index", "Compare")
             </ul>
-           <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right">
                 <li>@Html.ActionLink("Log out", "Logout", "User")</li>
-           </ul>
+            </ul>
         </div>
     </div>
 </div>
+
+<ul class="dropdown-menu" role="menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+</ul>
 
 @helper MenuItem(string label, string actionName, string controllerName)
 {
@@ -32,6 +40,21 @@
 {
     <li class="main-item @(IsActive(controllerName) ? "active" : null)">@Html.ActionLink(label, actionName, controllerName)</li>
 }
+
+@helper MenuImportItem(string label, string actionName, string controllerName)
+{
+    <li class="main-item @(IsActive(controllerName) ? "active" : null)"><a href="javascript:void(0);" data-toggle="dropdown">Import</a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="javascript:void(0);">Import from file</a></li>
+            <li><a href="javascript:void(0);">Import from title</a></li>
+        </ul>
+    
+    </li>
+}
+
+
+
+
 
 @functions
 {
