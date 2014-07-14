@@ -144,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Views\BulkOperation\" />
     <Folder Include="Views\QuestionFilter\" />
     <Folder Include="Views\Question\" />
@@ -214,7 +215,6 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="packages.config" />
-    <None Include="Properties\PublishProfiles\Test.pubxml" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\app\async\asyncManager.js" />
     <Content Include="Scripts\app\async\notificationManager.js" />
@@ -493,12 +493,12 @@
     <Content Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Web.PRISTINE.config">
+    <Content  Include="Web.PRISTINE.config">
       <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.PROD.config">
+    </Content >
+    <Content  Include="Web.PROD.config">
       <DependentUpon>Web.config</DependentUpon>
-    </Content>
+    </Content >
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Commands\Macmillan.PXQBA.Business.Commands.csproj">
