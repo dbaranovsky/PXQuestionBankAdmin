@@ -283,8 +283,9 @@ namespace Macmillan.PXQBA.Business.Services
                         CourseMetadataFieldValues =
                             field.ValuesOptions == null
                                 ? null
-                                : field.ValuesOptions.Select((v, i) => new CourseMetadataFieldValue()
+                                : field.ValuesOptions.Where(vo=>(!String.IsNullOrEmpty(vo.Value))&&(!String.IsNullOrEmpty(vo.Text))).Select((v, i) => new CourseMetadataFieldValue()
                                 {
+                                    Id = field.FieldType == MetadataFieldType.ItemLink ? v.Value : null,
                                     Text = v.Text,
                                     Sequence = i
                                 })
@@ -313,6 +314,10 @@ namespace Macmillan.PXQBA.Business.Services
             {
                 return MetadataFieldType.Keywords;
             }
+            if (type == "item-link")
+            {
+                return MetadataFieldType.ItemLink;
+            }
 
             return MetadataFieldType.Text;
         }
@@ -334,6 +339,10 @@ namespace Macmillan.PXQBA.Business.Services
             if (type == MetadataFieldType.Keywords)
             {
                 return "keywords";
+            }
+            if (type == MetadataFieldType.ItemLink)
+            {
+                return "item-link";
             }
             return "text";
         }

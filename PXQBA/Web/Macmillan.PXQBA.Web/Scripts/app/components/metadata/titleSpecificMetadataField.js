@@ -56,7 +56,6 @@ var TitleSpecificMetadataField = React.createClass({displayName: 'TitleSpecificM
   renderAvailibleValuesButton: function() {
     var fieldType = this.props.data.fieldType;
      if((fieldType==window.enums.metadataFieldType.text)|| 
-        (fieldType==window.enums.metadataFieldType.itemLink)|| 
         (fieldType==window.enums.metadataFieldType.multilineText)) {
       return null;
      }

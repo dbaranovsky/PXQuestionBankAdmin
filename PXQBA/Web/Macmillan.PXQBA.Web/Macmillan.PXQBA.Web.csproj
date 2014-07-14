@@ -237,6 +237,8 @@
     <Content Include="Scripts\app\components\compare\courseComparerRoot.js" />
     <Content Include="Scripts\app\components\compare\questionComparerList.js" />
     <Content Include="Scripts\app\components\compare\questionContend.js" />
+    <Content Include="Scripts\app\components\metadata\availibleValuesBodyItemLinks.js" />
+    <Content Include="Scripts\app\components\metadata\availibleValuesBodyTextArea.js" />
     <Content Include="Scripts\app\components\metadata\availibleValuesDialog.js" />
     <Content Include="Scripts\app\components\metadata\displayOptionsDialog.js" />
     <Content Include="Scripts\app\components\metadata\internalFieldDialog.js" />
@@ -244,6 +246,7 @@
     <Content Include="Scripts\app\components\metadata\metadataCfgRoot.js" />
     <Content Include="Scripts\app\components\metadata\metadataChapterEditorTab.js" />
     <Content Include="Scripts\app\components\metadata\metadataCourseSelector.js" />
+    <Content Include="Scripts\app\components\metadata\metadataItemLinkRow.js" />
     <Content Include="Scripts\app\components\metadata\metadataMainButtonsContainer.js" />
     <Content Include="Scripts\app\components\metadata\metadataMetaEditorTab.js" />
     <Content Include="Scripts\app\components\metadata\metadataTabs.js" />
@@ -346,6 +349,8 @@
     <Content Include="Scripts\app\src\components\compare\courseComparerRoot.js" />
     <Content Include="Scripts\app\src\components\compare\questionComparerList.js" />
     <Content Include="Scripts\app\src\components\compare\questionContend.js" />
+    <Content Include="Scripts\app\src\components\metadata\availibleValuesBodyItemLinks.js" />
+    <Content Include="Scripts\app\src\components\metadata\availibleValuesBodyTextArea.js" />
     <Content Include="Scripts\app\src\components\metadata\availibleValuesDialog.js" />
     <Content Include="Scripts\app\src\components\metadata\displayOptionsDialog.js" />
     <Content Include="Scripts\app\src\components\metadata\internalFieldDialog.js" />
@@ -353,6 +358,7 @@
     <Content Include="Scripts\app\src\components\metadata\metadataCfgRoot.js" />
     <Content Include="Scripts\app\src\components\metadata\metadataChapterEditorTab.js" />
     <Content Include="Scripts\app\src\components\metadata\metadataCourseSelector.js" />
+    <Content Include="Scripts\app\src\components\metadata\metadataItemLinkRow.js" />
     <Content Include="Scripts\app\src\components\metadata\metadataMainButtonsContainer.js" />
     <Content Include="Scripts\app\src\components\metadata\metadataMetaEditorTab.js" />
     <Content Include="Scripts\app\src\components\metadata\metadataTabs.js" />

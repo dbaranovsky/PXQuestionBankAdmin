@@ -1408,3 +1408,40 @@ textarea.metadata-availible-values-editor {
 span.draft-course {
     font-style: italic;
 }
+
+.availible-values-paste-area {
+    max-width:  552px;
+    width: 552px;
+    height: 2em;
+    -moz-resize: none;
+    -ms-resize: none;
+    -o-resize: none;
+    resize: none;
+}
+
+.metadata-item-links-descripton-container {
+    margin: 0 0 10px 0;
+}
+
+.item-liks-table-container {
+    height: 400px;
+    overflow-y: scroll;
+    margin: 10px 0 0 0;
+}
+
+.item-liks-table {
+    margin: 10px 0 0 0;
+}
+
+.item-liks-table-cell {
+    border: 1px solid #000000;
+    
+}
+
+.table > tbody > tr > td.item-liks-table-cell-menu {
+    border: none;
+}
+
+.table > thead:first-child > tr:first-child > td.item-liks-table-cell {
+    border: 1px solid #000000;
+}
