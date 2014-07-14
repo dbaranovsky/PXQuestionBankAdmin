@@ -25,7 +25,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult ImportFromFile(int fileId, string courseId)
         {
           
-            return JsonCamel(new {IsSuccess = true});
+            return JsonCamel(new { TitleId = courseId, QuestionCount = 5 });
         }
 
 

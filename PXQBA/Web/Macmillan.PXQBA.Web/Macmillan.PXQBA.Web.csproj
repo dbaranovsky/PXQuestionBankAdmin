@@ -324,6 +324,7 @@
     <Content Include="Scripts\app\components\users\userTitlesBox.js" />
     <Content Include="Scripts\app\dataAccess\dataCache\dataCacheStorage.js" />
     <Content Include="Scripts\app\dataAccess\compareTitlesDataManager.js" />
+    <Content Include="Scripts\app\dataAccess\importDataManager.js" />
     <Content Include="Scripts\app\dataAccess\metadataCfgDataManager.js" />
     <Content Include="Scripts\app\dataAccess\questionDataManager.js" />
     <Content Include="Scripts\app\dataAccess\questionFilterDataManager.js" />

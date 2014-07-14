@@ -1465,4 +1465,8 @@ span.draft-course {
 
 .title-list-selector a:hover {
      color: black;
-    text-decoration: none;}
+.imported-note {
+    margin-top: 60px;
+    font-size: 15px;
+    margin-bottom: 900px;
+}
