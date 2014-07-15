@@ -348,6 +348,11 @@ namespace Macmillan.PXQBA.Business.Services
             temporaryQuestionOperation.RemoveResources(ConfigurationHelper.GetTemporaryCourseId(), QuestionHelper.GetQuestionRelatedResources(question.QuestionXml));
         }
 
+        public ValidateFileResult ValidateFile()
+        {
+            throw new NotImplementedException();
+        }
+
         private QuestionMetadataSection GetNewProductCourseSection(int courseIdToPublish, string bank, string chapter, Course currentCourse, Question question)
         {
             var courseToPublish = productCourseManagementService.GetProductCourse(courseIdToPublish.ToString());

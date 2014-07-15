@@ -45,16 +45,16 @@
 {
     <li class="main-item @(IsActive(controllerName) ? "active" : null)"><a href="javascript:void(0);" data-toggle="dropdown">Import</a>
         <ul class="dropdown-menu" role="menu">
-            <li><a href="javascript:void(0);">Import from file</a></li>
+            <li class="fileinput-button">
+                <a href=" javascript:void(0);">
+                Import from file</a>
+                <input id="uploader" name="file" type="file" />
+            </li>
             <li><a href="javascript:void(0);">Import from title</a></li>
         </ul>
     
     </li>
 }
-
-
-
-
 
 @functions
 {

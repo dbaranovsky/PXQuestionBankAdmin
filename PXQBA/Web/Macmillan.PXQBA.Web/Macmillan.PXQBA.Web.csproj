@@ -197,6 +197,7 @@
     <Content Include="Content\img\spinning.gif" />
     <Content Include="Content\img\unshare.png" />
     <Content Include="Content\img\versionHistory.png" />
+    <Content Include="Content\jquery.fileupload-ui.css" />
     <Content Include="Content\jquery.switchButton.css" />
     <Content Include="Content\Paging.css" />
     <Content Include="favicon.ico" />
@@ -461,7 +462,9 @@
     <Content Include="Scripts\jquery\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery\jquery-ui-1.10.4.min.js" />
+    <Content Include="Scripts\jquery\jquery.fileupload.js" />
     <Content Include="Scripts\jquery\jquery.highlight-4.js" />
+    <Content Include="Scripts\jquery\jquery.iframe-transport.js" />
     <Content Include="Scripts\jquery\jquery.switchButton.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\customQuestions\CQ.js" />
