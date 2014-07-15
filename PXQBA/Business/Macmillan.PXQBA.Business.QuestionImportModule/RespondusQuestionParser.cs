@@ -12,6 +12,11 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule
         private QuestionParserHelper.ElementType LastElement { set; get; }
         private int LastLine { set; get; }
 
+        public override bool Recognize()
+        {
+            throw new NotImplementedException();
+        }
+
         public override IEnumerable<ParsedQuestion> Parse(string data)
         {
             var lines = data.Split(new string[] { QuestionParserHelper.ParserExpressions.lineStartFull, QuestionParserHelper.ParserExpressions.lineStartPartial }, StringSplitOptions.None);

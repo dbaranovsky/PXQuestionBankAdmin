@@ -47,6 +47,6 @@ namespace Macmillan.PXQBA.Business.Contracts
         IEnumerable<CapabilityGroupViewModel> GetCapabilityGroups(IList<Capability> capabilities);
 
         IEnumerable<CourseMetadataFieldDescriptor> MapFieldsWithItemLinks(List<QuestionCardData> questionCardData, XElement courseData);
-        string GetTypeFromParsedType(ParsedQuestionType type);
+        Question GetQuestionFromParsedQuestion(ParsedQuestion parsedQuestion, string courseId);
     }
 }

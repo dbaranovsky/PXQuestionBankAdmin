@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Reflection;
 using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
 
 namespace Macmillan.PXQBA.Business.QuestionParserModule
@@ -14,6 +15,9 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule
             Type = ParsedQuestionType.MultipleChoice;
             QuestionList = new List<ParsedQuestion>();
         }
+
+        public abstract bool Recognize();
+
         public abstract IEnumerable<ParsedQuestion> Parse(string data);
     }
 }

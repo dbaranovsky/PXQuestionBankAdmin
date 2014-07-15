@@ -205,16 +205,8 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.CanEdit, opt => opt.UseValue(true))
                 .ForMember(dest => dest.Capabilities, opt => opt.MapFrom(src => modelProfileService.GetActiveRoleCapabilities(src)));
 
-            Mapper.CreateMap<ParsedQuestion, Question>()
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.Body, opt => opt.MapFrom(src => src.Text))
-                .ForMember(dest => dest.GeneralFeedback, opt => opt.MapFrom(src => src.Feedback))
-                .ForMember(dest => dest.Score, opt => opt.MapFrom(src => src.Points.HasValue ? src.Points.Value : 0))
-                .ForMember(dest => dest.AnswerList, opt => opt.MapFrom(src => src.Choices.Where(c => c.IsCorrect).Select(c => c.Id)))
-                .ForMember(dest => dest.Choices, opt => opt.MapFrom(src => src.Choices))
-                .ForMember(dest => dest.InteractionType, opt => opt.MapFrom(src => modelProfileService.GetTypeFromParsedType(src.Type)));
+            Mapper.CreateMap<ParsedQuestion, Question>().ConvertUsing(new ParsedQuestionToQuestionConverter(modelProfileService));
 
-            Mapper.CreateMap<ParsedQuestionChoice, QuestionChoice>();
         }
     }
 
@@ -234,6 +226,25 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                     (Course)context.Options.Items.First().Value);
             }
             return modelProfileService.GetQuestionMetadataForCourse((Question)context.SourceValue);
+        }
+    }
+
+    public class ParsedQuestionToQuestionConverter : ITypeConverter<ParsedQuestion, Question>
+    {
+        private readonly IModelProfileService modelProfileService;
+
+        public ParsedQuestionToQuestionConverter(IModelProfileService modelProfileService)
+        {
+            this.modelProfileService = modelProfileService;
+        }
+        public Question Convert(ResolutionContext context)
+        {
+            if (context.Options.Items.Any())
+            {
+                return modelProfileService.GetQuestionFromParsedQuestion((ParsedQuestion)context.SourceValue,
+                    (string)context.Options.Items.First().Value);
+            }
+            return null;
         }
     }
 

@@ -5,6 +5,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule
 {
     public interface IQuestionParser
     {
+        bool Recognize();
         IEnumerable<ParsedQuestion> Parse(string data);
     }
 }

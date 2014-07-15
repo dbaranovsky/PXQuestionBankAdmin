@@ -465,10 +465,10 @@ Answers:
             try
             {
                 var productCourse = productCourseManagementService.GetProductCourse(productCourseId, true);
-                var parsedQuestions = QuestionParserProvider.GetParser(QuestionFileType.Respondus).Parse(x);
-                var questions = Mapper.Map<IEnumerable<Question>>(parsedQuestions).ToList();
-                questions.ForEach(q => AddProductCourseSection(q, productCourse));
+                var parsedQuestions = QuestionParserProvider.Parse(x);
+                var questions = Mapper.Map<IEnumerable<Question>>(parsedQuestions, opt => opt.Items.Add(productCourseId, productCourseId)).ToList();
                 questionCommands.CreateQuestions(productCourse.ProductCourseId, questions);
+                questionCommands.ExecuteSolrUpdateTask();
             }
             catch (Exception ex)
             {
@@ -478,11 +478,6 @@ Answers:
                 return false;
             }
             return true;
-        }
-
-        private void AddProductCourseSection(Question question, Course productCourse)
-        {
-            //question.
         }
     }
 }

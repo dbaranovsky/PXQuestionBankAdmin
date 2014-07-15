@@ -31,7 +31,7 @@ namespace Macmillan.PXQBA.Web
         {
             QuestionParserProvider.Clear();
 
-            QuestionParserProvider.AddParser(QuestionFileType.Respondus, new RespondusQuestionParser());
+            QuestionParserProvider.AddParser(new RespondusQuestionParser());
         }
 
         protected void Application_PostAuthenticateRequest(object sender, EventArgs e)
