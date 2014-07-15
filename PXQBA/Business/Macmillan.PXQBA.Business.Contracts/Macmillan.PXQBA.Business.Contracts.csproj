@@ -91,7 +91,7 @@
       <Project>{800708c5-6692-4c91-be89-729a017b5027}</Project>
       <Name>Macmillan.PXQBA.Business.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Macmillan.PXQBA.Business.QuestionImportModule\Macmillan.PXQBA.Business.QuestionParserModule.csproj">
+    <ProjectReference Include="..\Macmillan.PXQBA.Business.QuestionParserModule\Macmillan.PXQBA.Business.QuestionParserModule.csproj">
       <Project>{0F4B287E-C927-4AC5-BDD2-9FBAC3F36624}</Project>
       <Name>Macmillan.PXQBA.Business.QuestionParserModule</Name>
     </ProjectReference>

@@ -12,13 +12,19 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule
         private QuestionParserHelper.ElementType LastElement { set; get; }
         private int LastLine { set; get; }
 
-        public override bool Recognize()
+        public override bool Recognize(string fileName)
         {
-            throw new NotImplementedException();
+            if (fileName.ToUpper().EndsWith(".txt"))
+            {
+                return true;
+            }
+            return false;
         }
 
-        public override IEnumerable<ParsedQuestion> Parse(string data)
+        public override IEnumerable<ParsedQuestion> Parse(byte[] file)
         {
+            var data = System.Text.Encoding.UTF8.GetString(file);
+
             var lines = data.Split(new string[] { QuestionParserHelper.ParserExpressions.lineStartFull, QuestionParserHelper.ParserExpressions.lineStartPartial }, StringSplitOptions.None);
 
             // parse the string
