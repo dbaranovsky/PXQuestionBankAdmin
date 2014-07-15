@@ -1463,8 +1463,10 @@ span.draft-course {
     text-decoration: underline;
 }
 
-.title-list-selector a:hover {
-     color: black;
+ .title-list-selector a:hover {
+        color: black;
+}
+
 .imported-note {
     margin-top: 60px;
     font-size: 15px;
