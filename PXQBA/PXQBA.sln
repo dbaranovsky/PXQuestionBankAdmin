@@ -68,7 +68,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PxWebUser", "PXShared\PX\PxWebUserAdmin\PxWebUser\PxWebUser.csproj", "{63B45011-8967-41AC-B6BB-0A2C42D01CB8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bfw.PX.PXPub.Models", "PXShared\PX\Bfw.PX.PXPub.Models\Bfw.PX.PXPub.Models.csproj", "{5D71B360-BDD7-4E5B-B551-5BE74E4339EF}"
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Macmillan.PXQBA.Business.QuestionParserModule", "Business\Macmillan.PXQBA.Business.QuestionImportModule\Macmillan.PXQBA.Business.QuestionParserModule.csproj", "{0F4B287E-C927-4AC5-BDD2-9FBAC3F36624}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Macmillan.PXQBA.Business.QuestionParserModule", "Business\Macmillan.PXQBA.Business.QuestionParserModule\Macmillan.PXQBA.Business.QuestionParserModule.csproj", "{0F4B287E-C927-4AC5-BDD2-9FBAC3F36624}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

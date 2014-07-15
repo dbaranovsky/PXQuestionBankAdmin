@@ -16,8 +16,8 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule
             QuestionList = new List<ParsedQuestion>();
         }
 
-        public abstract bool Recognize();
+        public abstract bool Recognize(string fileName);
 
-        public abstract IEnumerable<ParsedQuestion> Parse(string data);
+        public abstract IEnumerable<ParsedQuestion> Parse(byte[] file);
     }
 }

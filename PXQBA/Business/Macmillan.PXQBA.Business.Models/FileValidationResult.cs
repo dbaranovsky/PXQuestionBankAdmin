@@ -11,7 +11,7 @@ namespace Macmillan.PXQBA.Business.Models
        public int Id { get; set; }
        public string FileName { get; set; }
 
-       public string Message { get; set; }
+       public string ValidationError { get; set; }
 
        public bool IsValidated { get; set; }
     }

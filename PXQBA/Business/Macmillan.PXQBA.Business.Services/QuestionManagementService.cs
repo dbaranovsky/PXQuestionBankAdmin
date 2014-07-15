@@ -430,53 +430,30 @@ namespace Macmillan.PXQBA.Business.Services
             question.Version = 0;
         }
 
-        public ValidationResult ValidateFile(string extension, byte[] file)
+        public ValidationResult ValidateFile(string fileName, byte[] file)
         {
-            var x = @"Title: The colors of everyday things
-Points: 3
-1. Which of these statements is true?
-@ General feedback appears here
-A. Grass is orange
-B. Sand is green
-*C. The sky is blue
-D. Firetrucks are purple
-";
-
-            x += @"Type F:
-Title: Types of color mixing
-1. Mixing yellow and cyan pigments to produce green is an example of _______ color.
-@ General feedback appears here
-A. subtractive
-
-2. What are the primary colors?
-@ General feedback appears here
-A. Red
-B. Green
-C. Blue
-D. yellow
-
-Answers:
-1. A
-2. A
-2. C
-2. D";
-            var productCourseId = "85256";
             try
             {
-                var productCourse = productCourseManagementService.GetProductCourse(productCourseId, true);
-                var parsedQuestions = QuestionParserProvider.Parse(x);
-                var questions = Mapper.Map<IEnumerable<Question>>(parsedQuestions, opt => opt.Items.Add(productCourseId, productCourseId)).ToList();
-                questionCommands.CreateQuestions(productCourse.ProductCourseId, questions);
-                questionCommands.ExecuteSolrUpdateTask();
+                var parsedQuestions = QuestionParserProvider.Parse(fileName, file);
+               //TODO: need to save parsed question to database
             }
             catch (Exception ex)
             {
                 StaticLogger.LogError(
-                    string.Format("QuestionManagementService.ImportQuestions: import failed to product course {0}",
-                        productCourseId), ex);
+                    string.Format("QuestionManagementService.ValidateFile: {0}", fileName), ex);
                 return new ValidationResult();
             }
             return new ValidationResult();
+        }
+
+        public void ImportFile(int id, string courseId)
+        {
+            courseId = "85256";
+            IEnumerable<ParsedQuestion> parsedQuestions = null;
+            var productCourse = productCourseManagementService.GetProductCourse(courseId, true);
+            var questions = Mapper.Map<IEnumerable<Question>>(parsedQuestions, opt => opt.Items.Add(courseId, courseId)).ToList();
+            questionCommands.CreateQuestions(productCourse.ProductCourseId, questions);
+            questionCommands.ExecuteSolrUpdateTask();
         }
     }
 }
