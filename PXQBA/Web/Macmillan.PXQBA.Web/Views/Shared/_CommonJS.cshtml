@@ -4,6 +4,7 @@
 @using Macmillan.PXQBA.Web.ViewModels.CompareTitles
 @using Macmillan.PXQBA.Web.ViewModels.Editor
 @using Macmillan.PXQBA.Web.ViewModels.Filter
+@using Macmillan.PXQBA.Web.ViewModels.Pages
 @using EnumHelper = Macmillan.PXQBA.Common.Helpers.EnumHelper
 <script type="text/javascript">
     (function () {
@@ -178,6 +179,16 @@
             onlyFirstCourse: '@((int)CompareLocationType.OnlyFirstCourse)',
             onlySecondCourse: '@((int)CompareLocationType.OnlySecondCourse)',
             bothCourses: '@((int)CompareLocationType.BothCourses)',
+        };
+
+        enums.questionGridModesType = {            
+            normal: '@((int)QuestionGridModesType.Normal)',
+            importQuestions: '@((int)QuestionGridModesType.Import)',
+        };
+        
+        enums.bulkOperationBarType = {
+            standart: '@((int)BulkOperationBarType.Standart)',
+            importQuestions: '@((int)BulkOperationBarType.Import)',
         };
 
         var consts = {};

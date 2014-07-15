@@ -280,6 +280,9 @@
     <Content Include="Scripts\app\components\questions\notes\noteList.js" />
     <Content Include="Scripts\app\components\questions\question.js" />
     <Content Include="Scripts\app\components\questions\questionBulkOperationBar.js" />
+    <Content Include="Scripts\app\components\questions\questionBulkOperationBarBase.js" />
+    <Content Include="Scripts\app\components\questions\questionBulkOperationBarImport.js" />
+    <Content Include="Scripts\app\components\questions\questionBulkOperationBarStandart.js" />
     <Content Include="Scripts\app\components\questions\questionBulkOperationSetBank.js" />
     <Content Include="Scripts\app\components\questions\questionBulkOperationSetChapter.js" />
     <Content Include="Scripts\app\components\questions\questionBulkOperationSetStatus.js" />
@@ -390,6 +393,9 @@
     <Content Include="Scripts\app\src\components\questions\notes\noteForm.js" />
     <Content Include="Scripts\app\src\components\questions\notes\noteList.js" />
     <Content Include="Scripts\app\src\components\questions\questionBulkOperationBar.js" />
+    <Content Include="Scripts\app\src\components\questions\questionBulkOperationBarBase.js" />
+    <Content Include="Scripts\app\src\components\questions\questionBulkOperationBarImport.js" />
+    <Content Include="Scripts\app\src\components\questions\questionBulkOperationBarStandart.js" />
     <Content Include="Scripts\app\src\components\questions\questionBulkOperationSetChapter.js" />
     <Content Include="Scripts\app\src\components\questions\questionBulkOperationSetBank.js" />
     <Content Include="Scripts\app\src\components\questions\questionBulkOperationSetStatus.js" />

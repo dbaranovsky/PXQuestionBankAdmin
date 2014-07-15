@@ -8,7 +8,7 @@ var QuestionTabs = React.createClass({
         return ( 
             			<div> 
             			<div className="product-title"> {this.props.response.productTitle}</div>
-                         <QuestionGrid response={this.props.response} handlers={this.props.handlers}/>
+                         <QuestionGrid mode={this.props.mode} response={this.props.response} handlers={this.props.handlers}/>
               			</div>
             );
         }

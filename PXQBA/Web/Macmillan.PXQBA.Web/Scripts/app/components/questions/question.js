@@ -39,6 +39,9 @@ var Question = React.createClass({displayName: 'Question',
     },
 
     renderMenu: function() {
+            if(!this.props.inlineMenuEnabled) {
+                return;
+            }
             var questionId = this.props.metadata.data["id"];
             var questionIds = [];
             questionIds.push(questionId);
@@ -114,13 +117,18 @@ var Question = React.createClass({displayName: 'Question',
                 else {
                     isAllowedInlineEditing = self.props.metadata.canEditQuestion && descriptor.isInlineEditingAllowed;
                 }
-                return self.renderCell(descriptor.metadataName, descriptor.editorDescriptor, isAllowedInlineEditing, descriptor.canUpdateSharedValue)
+                return self.renderCell(descriptor.metadataName,
+                                       descriptor.editorDescriptor, 
+                                       isAllowedInlineEditing && self.props.inlineMenuEnabled, 
+                                       descriptor.canUpdateSharedValue)
             });
 
         return ( 
             React.DOM.tr( {className:componentClass, 
                     onMouseOver:this.mouseOverHandler,
-                    onMouseLeave:this.mouseLeaveHandler}, 
+                    onMouseLeave:this.mouseLeaveHandler,
+                    onClick:this.props.onClickQuestionEventHandler}
+                    , 
 
                 this.renderGroupLine(),
                 React.DOM.td(null,  
