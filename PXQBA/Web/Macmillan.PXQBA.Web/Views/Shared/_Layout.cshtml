@@ -37,6 +37,37 @@
     
     <script>
         sessionKeeper.startSessionKeeper('@Url.Action("KeepSessionAlive", "User")', 60000);
+        // jqXHRData needed for grabbing by data object of fileupload scope
+        var jqXHRData;
+
+        $(document).ready(function () {
+
+            //Initialization of fileupload
+            initSimpleFileUpload();
+        });
+
+        function initSimpleFileUpload() {
+            'use strict';
+
+            $('#uploader').fileupload({
+                url: '/Import/UploadFile',
+                dataType: 'json',
+                done: function (event, data) {
+                    if (data.result.isUploaded) {
+
+                    }
+                    else {
+
+                    }
+                    alert(data.result.isSuccess);
+                },
+                fail: function (event, data) {
+                    if (data.files[0].error) {
+                        alert(data.files[0].error);
+                    }
+                }
+            });
+        }
     </script>
 </body>
 </html>

@@ -15,7 +15,9 @@ namespace Macmillan.PXQBA.Web
                         "~/Scripts/jquery/jquery-{version}.js",
                         "~/Scripts/jquery/jquery-ui-1.10.4.min.js",
                         "~/Scripts/jquery/jquery.switchButton.js",
-                        "~/Scripts/jquery/jquery.highlight-4.js"));
+                        "~/Scripts/jquery/jquery.highlight-4.js",
+                        "~/Scripts/jquery/jquery.fileupload.js",
+                        "~/Scripts/jquery/jquery.iframe-transport.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -48,7 +50,8 @@ namespace Macmillan.PXQBA.Web
                       "~/Content/site.css",
                       "~/Content/paging.css",
                       "~/Content/chosen.css",
-                      "~/Content/jquery.switchButton.css"));
+                      "~/Content/jquery.switchButton.css",
+                      "~/Content/jquery.fileupload-ui.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/customQuestions").Include(
                 "~/Scripts/customQuestions/CQ.js",
