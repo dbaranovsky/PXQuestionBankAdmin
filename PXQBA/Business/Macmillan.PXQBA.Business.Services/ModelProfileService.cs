@@ -9,6 +9,7 @@ using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Commands.Helpers;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Common.Helpers.Constants;
 using Macmillan.PXQBA.DataAccess.Data;
@@ -19,6 +20,7 @@ using Macmillan.PXQBA.Web.ViewModels.User;
 using Macmillan.PXQBA.Web.ViewModels.Versions;
 using Course = Macmillan.PXQBA.Business.Models.Course;
 using Question = Macmillan.PXQBA.Business.Models.Question;
+using QuestionChoice = Macmillan.PXQBA.Business.Models.QuestionChoice;
 
 namespace Macmillan.PXQBA.Business.Services
 {
@@ -388,6 +390,50 @@ namespace Macmillan.PXQBA.Business.Services
            
             fields.AddRange(CourseDataXmlHelper.GetItemLinksDescriptors(courseData));
             return fields;
+        }
+
+        public string GetTypeFromParsedType(ParsedQuestionType type)
+        {
+            switch (type)
+            {
+                 case ParsedQuestionType.MultipleChoice:
+                    return "choice";
+                 case ParsedQuestionType.Answer:
+                    return "answer";
+                default:
+                    return "choice";
+            }
+        }
+
+        public Question GetQuestionFromParsedQuestion(ParsedQuestion parsedQuestion, string courseId)
+        {
+            var question = new Question
+            {
+                Id = parsedQuestion.Id,
+                Body = parsedQuestion.Text,
+                GeneralFeedback = parsedQuestion.Feedback,
+                Score = parsedQuestion.Points.HasValue ? parsedQuestion.Points.Value : 0,
+                AnswerList = parsedQuestion.Choices.Where(c => c.IsCorrect).Select(c => c.Id).ToList(),
+                InteractionType = GetTypeFromParsedType(parsedQuestion.Type),
+                Choices = parsedQuestion.Choices.Select(GetQuestionChoice).ToList()
+            };
+            question.ProductCourseSections.Add(new QuestionMetadataSection
+            {
+                ProductCourseId = courseId,
+                Title = parsedQuestion.Title
+            });
+            return question;
+        }
+
+        private QuestionChoice GetQuestionChoice(ParsedQuestionChoice parsedChoice)
+        {
+            return new QuestionChoice()
+            {
+                Id = parsedChoice.Id,
+                Text = parsedChoice.Text,
+                Answer = parsedChoice.Answer,
+                Feedback = parsedChoice.Feedback
+            };
         }
 
         private CourseMetadataFieldDescriptor GetFieldDescriptorWithSplitedValues(string concatedValues, string internalName)

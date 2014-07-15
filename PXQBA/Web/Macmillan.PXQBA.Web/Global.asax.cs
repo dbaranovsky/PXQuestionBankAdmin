@@ -4,6 +4,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Macmillan.PXQBA.Business;
+using Macmillan.PXQBA.Business.QuestionParserModule;
+using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
 using Macmillan.PXQBA.Business.Services.Automapper;
 
 namespace Macmillan.PXQBA.Web
@@ -21,6 +23,15 @@ namespace Macmillan.PXQBA.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            SetupQuestionParsers();
+        }
+
+        private void SetupQuestionParsers()
+        {
+            QuestionParserProvider.Clear();
+
+            QuestionParserProvider.AddParser(new RespondusQuestionParser());
         }
 
         protected void Application_PostAuthenticateRequest(object sender, EventArgs e)

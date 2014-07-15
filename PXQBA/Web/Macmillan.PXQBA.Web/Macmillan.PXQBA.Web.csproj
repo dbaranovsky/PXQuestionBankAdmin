@@ -531,6 +531,10 @@
       <Project>{800708c5-6692-4c91-be89-729a017b5027}</Project>
       <Name>Macmillan.PXQBA.Business.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.QuestionImportModule\Macmillan.PXQBA.Business.QuestionParserModule.csproj">
+      <Project>{0F4B287E-C927-4AC5-BDD2-9FBAC3F36624}</Project>
+      <Name>Macmillan.PXQBA.Business.QuestionParserModule</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Services\Macmillan.PXQBA.Business.Services.csproj">
       <Project>{CF2B92A9-6E1D-4472-AD9C-AED6DC86A62C}</Project>
       <Name>Macmillan.PXQBA.Business.Services</Name>

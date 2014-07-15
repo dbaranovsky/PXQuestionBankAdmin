@@ -2,6 +2,7 @@
 using System.Xml.Linq;
 using Bfw.Agilix.DataContracts;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
 using Macmillan.PXQBA.DataAccess.Data;
 using Macmillan.PXQBA.Web.ViewModels;
 using Macmillan.PXQBA.Web.ViewModels.MetadataConfig;
@@ -46,5 +47,6 @@ namespace Macmillan.PXQBA.Business.Contracts
         IEnumerable<CapabilityGroupViewModel> GetCapabilityGroups(IList<Capability> capabilities);
 
         IEnumerable<CourseMetadataFieldDescriptor> MapFieldsWithItemLinks(List<QuestionCardData> questionCardData, XElement courseData);
+        Question GetQuestionFromParsedQuestion(ParsedQuestion parsedQuestion, string courseId);
     }
 }

@@ -226,6 +226,14 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return QuestionDataXmlParser.ToFacetedSearchResult(results.First(lst => lst.Attribute("name").Value == facetedFieldName));
         }
 
+        public void CreateQuestions(string productCourseId, IEnumerable<Question> questions)
+        {
+            foreach (var question in questions)
+            {
+                CreateQuestion(productCourseId, question);
+            }
+        }
+
         private IEnumerable<QuestionSearchResult> GetSearchResults(string questionRepositoryCourseId, string currentCourseId, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, List<string> fieldsToInclude = null)
         {
             var query = BuildQueryString(filter);
@@ -360,6 +368,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         public Question CreateQuestion(string productCourseId, Question question)
         {
+            question.Id = Guid.NewGuid().ToString();
             question.ModifiedBy = businessContext.CurrentUser.Id;
             SetSequence(productCourseId, question);
             ExecutePutQuestion(Mapper.Map<Bfw.Agilix.DataContracts.Question>(question), productCourseId);

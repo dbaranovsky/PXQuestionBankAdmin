@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using AutoMapper;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Commands.Helpers;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Business.QuestionParserModule;
+using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Common.Logging;
 using Question = Macmillan.PXQBA.Business.Models.Question;
@@ -32,6 +35,7 @@ namespace Macmillan.PXQBA.Business.Services
 
         public PagedCollection<Question> GetQuestionList(Course course, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
         {
+            ImportQuestions();
             return questionCommands.GetQuestionList(course.QuestionRepositoryCourseId, course.ProductCourseId, filter, sortCriterion, startingRecordNumber, recordCount);
         }
 
@@ -75,7 +79,6 @@ namespace Macmillan.PXQBA.Business.Services
         public Question DuplicateQuestion(Course course, string questionId, string version = null)
         {
             Question question = GetQuestion(course, questionId, version);
-            question.Id = Guid.NewGuid().ToString();
             question.Status = ((int)QuestionStatus.InProgress).ToString();
             ClearServiceFields(question);
             if (question.ProductCourseSections.Count > 1)
@@ -89,7 +92,7 @@ namespace Macmillan.PXQBA.Business.Services
             return created;
         }
 
-   
+        
 
         public Question UpdateQuestion(Course course, string sourceQuestionId, Question temporaryQuestion)
         {
@@ -426,6 +429,55 @@ namespace Macmillan.PXQBA.Business.Services
             question.DuplicateFrom = string.Empty;
             question.DraftFrom = string.Empty;
             question.Version = 0;
+        }
+
+        public bool ImportQuestions()
+        {
+            var x = @"Title: The colors of everyday things
+Points: 3
+1. Which of these statements is true?
+@ General feedback appears here
+A. Grass is orange
+B. Sand is green
+*C. The sky is blue
+D. Firetrucks are purple
+";
+
+            x += @"Type F:
+Title: Types of color mixing
+1. Mixing yellow and cyan pigments to produce green is an example of _______ color.
+@ General feedback appears here
+A. subtractive
+
+2. What are the primary colors?
+@ General feedback appears here
+A. Red
+B. Green
+C. Blue
+D. yellow
+
+Answers:
+1. A
+2. A
+2. C
+2. D";
+            var productCourseId = "85256";
+            try
+            {
+                var productCourse = productCourseManagementService.GetProductCourse(productCourseId, true);
+                var parsedQuestions = QuestionParserProvider.Parse(x);
+                var questions = Mapper.Map<IEnumerable<Question>>(parsedQuestions, opt => opt.Items.Add(productCourseId, productCourseId)).ToList();
+                questionCommands.CreateQuestions(productCourse.ProductCourseId, questions);
+                questionCommands.ExecuteSolrUpdateTask();
+            }
+            catch (Exception ex)
+            {
+                StaticLogger.LogError(
+                    string.Format("QuestionManagementService.ImportQuestions: import failed to product course {0}",
+                        productCourseId), ex);
+                return false;
+            }
+            return true;
         }
     }
 }

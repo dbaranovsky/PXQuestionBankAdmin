@@ -10,6 +10,7 @@ using Bfw.Agilix.DataContracts;
 using Macmillan.PXQBA.Business.Commands.DataContracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Web.ViewModels;
 using Macmillan.PXQBA.Web.ViewModels.CompareTitles;
@@ -99,6 +100,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                .ForMember(dto => dto.InteractionData, opt => opt.Condition(q => q.CustomUrl == QuestionTypeHelper.GraphType))
                .ForMember(dto => dto.InteractionType, opt => opt.Condition(cont => cont.SourceValue != null))
                .ForMember(dto => dto.CustomUrl, opt => opt.Condition(cont => cont.SourceValue != null))
+               .ForMember(dto => dto.GeneralFeedback, opt => opt.Condition(cont => cont.SourceValue != null))
                .ForMember(dto => dto.QuestionVersion, opt => opt.MapFrom(q => q.Version))
                .ForMember(dto => dto.ModifiedDate, opt =>opt.Ignore());
 
@@ -202,6 +204,9 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<RoleViewModel, Role>()
                 .ForMember(dest => dest.CanEdit, opt => opt.UseValue(true))
                 .ForMember(dest => dest.Capabilities, opt => opt.MapFrom(src => modelProfileService.GetActiveRoleCapabilities(src)));
+
+            Mapper.CreateMap<ParsedQuestion, Question>().ConvertUsing(new ParsedQuestionToQuestionConverter(modelProfileService));
+
         }
     }
 
@@ -221,6 +226,25 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                     (Course)context.Options.Items.First().Value);
             }
             return modelProfileService.GetQuestionMetadataForCourse((Question)context.SourceValue);
+        }
+    }
+
+    public class ParsedQuestionToQuestionConverter : ITypeConverter<ParsedQuestion, Question>
+    {
+        private readonly IModelProfileService modelProfileService;
+
+        public ParsedQuestionToQuestionConverter(IModelProfileService modelProfileService)
+        {
+            this.modelProfileService = modelProfileService;
+        }
+        public Question Convert(ResolutionContext context)
+        {
+            if (context.Options.Items.Any())
+            {
+                return modelProfileService.GetQuestionFromParsedQuestion((ParsedQuestion)context.SourceValue,
+                    (string)context.Options.Items.First().Value);
+            }
+            return null;
         }
     }
 
