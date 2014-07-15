@@ -35,7 +35,6 @@ namespace Macmillan.PXQBA.Business.Services
 
         public PagedCollection<Question> GetQuestionList(Course course, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
         {
-            ImportQuestions();
             return questionCommands.GetQuestionList(course.QuestionRepositoryCourseId, course.ProductCourseId, filter, sortCriterion, startingRecordNumber, recordCount);
         }
 
@@ -348,11 +347,6 @@ namespace Macmillan.PXQBA.Business.Services
             temporaryQuestionOperation.RemoveResources(ConfigurationHelper.GetTemporaryCourseId(), QuestionHelper.GetQuestionRelatedResources(question.QuestionXml));
         }
 
-        public ValidateFileResult ValidateFile()
-        {
-            throw new NotImplementedException();
-        }
-
         private QuestionMetadataSection GetNewProductCourseSection(int courseIdToPublish, string bank, string chapter, Course currentCourse, Question question)
         {
             var courseToPublish = productCourseManagementService.GetProductCourse(courseIdToPublish.ToString());
@@ -436,7 +430,7 @@ namespace Macmillan.PXQBA.Business.Services
             question.Version = 0;
         }
 
-        public bool ImportQuestions()
+        public ValidationResult ValidateFile(string extension, byte[] file)
         {
             var x = @"Title: The colors of everyday things
 Points: 3
@@ -480,9 +474,9 @@ Answers:
                 StaticLogger.LogError(
                     string.Format("QuestionManagementService.ImportQuestions: import failed to product course {0}",
                         productCourseId), ex);
-                return false;
+                return new ValidationResult();
             }
-            return true;
+            return new ValidationResult();
         }
     }
 }

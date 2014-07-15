@@ -70,7 +70,7 @@ namespace Macmillan.PXQBA.Business.Contracts
         
         void RemoveRelatedQuestionTempResources(string questionIdToEdit, Course questionRepositoryCourseId);
 
-         ValidateFileResult ValidateFile();
+        ValidationResult ValidateFile(string extension, byte[] file);
     }
 
 }
