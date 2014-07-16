@@ -1448,7 +1448,8 @@ span.draft-course {
 
 
 
-/* Import */
+/* Import 
+ -------------------------------------------------------- */
 
 .title-list-selector {
    width: 655px;
@@ -1472,3 +1473,15 @@ span.draft-course {
     font-size: 15px;
     margin-bottom: 900px;
 }
+
+
+#bar{
+    background: none repeat scroll 0 0 #5cb85c;
+    bottom: 0;
+    height: 8%;
+    left: 0;
+    margin-left: 1px;
+    position: absolute;
+    width: 0%;
+}
+

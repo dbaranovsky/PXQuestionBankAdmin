@@ -28,8 +28,6 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QML
         {
             var data = XDocument.Parse(Encoding.UTF8.GetString(file));
             var itemsXml = data.Descendants("item").ToList();
-            var result =
-                (itemsXml.Where(IsTypeExist).Select(ConvertXmlItemToQuestion)).ToList();
             return (itemsXml.Where(IsTypeExist).Select(ConvertXmlItemToQuestion)).ToList();
         }
 
