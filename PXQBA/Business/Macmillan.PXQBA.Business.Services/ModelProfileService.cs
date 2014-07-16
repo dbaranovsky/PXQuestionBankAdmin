@@ -405,7 +405,7 @@ namespace Macmillan.PXQBA.Business.Services
             }
         }
 
-        public Question GetQuestionFromParsedQuestion(ParsedQuestion parsedQuestion, string courseId)
+        public Question GetQuestionFromParsedQuestion(ParsedQuestion parsedQuestion, Course course)
         {
             var question = new Question
             {
@@ -415,11 +415,12 @@ namespace Macmillan.PXQBA.Business.Services
                 Score = parsedQuestion.Points.HasValue ? parsedQuestion.Points.Value : 0,
                 AnswerList = parsedQuestion.Choices.Where(c => c.IsCorrect).Select(c => c.Id).ToList(),
                 InteractionType = GetTypeFromParsedType(parsedQuestion.Type),
-                Choices = parsedQuestion.Choices.Select(GetQuestionChoice).ToList()
+                Choices = parsedQuestion.Choices.Select(GetQuestionChoice).ToList(),
+                EntityId = course.QuestionRepositoryCourseId
             };
             question.ProductCourseSections.Add(new QuestionMetadataSection
             {
-                ProductCourseId = courseId,
+                ProductCourseId = course.ProductCourseId,
                 Title = parsedQuestion.Title
             });
             return question;

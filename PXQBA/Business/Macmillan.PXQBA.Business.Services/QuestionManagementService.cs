@@ -448,10 +448,11 @@ namespace Macmillan.PXQBA.Business.Services
 
         public void ImportFile(int id, string courseId)
         {
-            courseId = "85256";
+            //courseId = "85256";
+            // TODO: need to get parsed questions from database
             IEnumerable<ParsedQuestion> parsedQuestions = null;
             var productCourse = productCourseManagementService.GetProductCourse(courseId, true);
-            var questions = Mapper.Map<IEnumerable<Question>>(parsedQuestions, opt => opt.Items.Add(courseId, courseId)).ToList();
+            var questions = Mapper.Map<IEnumerable<Question>>(parsedQuestions, opt => opt.Items.Add(courseId, productCourse)).ToList();
             questionCommands.CreateQuestions(productCourse.ProductCourseId, questions);
             questionCommands.ExecuteSolrUpdateTask();
         }

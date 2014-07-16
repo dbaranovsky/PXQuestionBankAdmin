@@ -6,14 +6,11 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule
 {
     public abstract class QuestionParserBase : IQuestionParser
     {
-        protected List<ParsedQuestion> QuestionList { get; set; }
-       
         protected ParsedQuestionType Type { get; set; }
 
         protected QuestionParserBase()
         {
             Type = ParsedQuestionType.MultipleChoice;
-            QuestionList = new List<ParsedQuestion>();
         }
 
         public abstract bool Recognize(string fileName);
