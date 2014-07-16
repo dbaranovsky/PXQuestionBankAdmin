@@ -384,8 +384,13 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         private string GetNewSequenceValue(string repositoryCourseId, string courseId, string bank)
         {
             decimal seq;
-            var questionsWithDecimalSequence = GetSolrResultsSortedBySequence(repositoryCourseId, courseId, new List<string>{bank})[bank].Where(q => decimal.TryParse(q.SortingField, out seq));
-            return QuestionSequenceHelper.GetNewLastValue(questionsWithDecimalSequence);
+            var sequencePerBank = GetSolrResultsSortedBySequence(repositoryCourseId, courseId, new List<string> {bank});
+            if (!string.IsNullOrEmpty(bank) && sequencePerBank.ContainsKey(bank))
+            {
+                var questionsWithDecimalSequence = sequencePerBank[bank].Where(q => decimal.TryParse(q.SortingField, out seq));
+                return QuestionSequenceHelper.GetNewLastValue(questionsWithDecimalSequence);
+            }
+            return string.Empty;
         }
 
         public Question GetQuestion(string repositoryCourseId, string questionId, string version = null)

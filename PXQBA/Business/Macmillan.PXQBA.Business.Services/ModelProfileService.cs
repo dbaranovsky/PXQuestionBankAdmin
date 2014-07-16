@@ -422,7 +422,8 @@ namespace Macmillan.PXQBA.Business.Services
                 AnswerList = parsedQuestion.Choices.Where(c => c.IsCorrect).Select(c => c.Id).ToList(),
                 InteractionType = GetTypeFromParsedType(parsedQuestion.Type),
                 Choices = parsedQuestion.Choices.Select(GetQuestionChoice).ToList(),
-                EntityId = course.QuestionRepositoryCourseId
+                EntityId = course.QuestionRepositoryCourseId,
+                Status = ((int)QuestionStatus.InProgress).ToString()
             };
             question.ProductCourseSections.Add(new QuestionMetadataSection
             {
