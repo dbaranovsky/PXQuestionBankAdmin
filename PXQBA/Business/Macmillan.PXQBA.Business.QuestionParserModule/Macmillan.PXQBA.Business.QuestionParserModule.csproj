@@ -47,8 +47,9 @@
     <Compile Include="DataContracts\ParsedQuestionType.cs" />
     <Compile Include="DataContracts\QuestionFileType.cs" />
     <Compile Include="QuestionParserBase.cs" />
-    <Compile Include="QuestionParserHelper.cs" />
-    <Compile Include="RespondusQuestionParser.cs" />
+    <Compile Include="Respondus\ElementPattern.cs" />
+    <Compile Include="Respondus\ElementType.cs" />
+    <Compile Include="Respondus\RespondusQuestionParser.cs" />
     <Compile Include="IQuestionParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionParserProvider.cs" />

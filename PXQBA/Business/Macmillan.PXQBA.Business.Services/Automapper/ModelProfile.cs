@@ -242,7 +242,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             if (context.Options.Items.Any())
             {
                 return modelProfileService.GetQuestionFromParsedQuestion((ParsedQuestion)context.SourceValue,
-                    (string)context.Options.Items.First().Value);
+                    (Course)context.Options.Items.First().Value);
             }
             return null;
         }
