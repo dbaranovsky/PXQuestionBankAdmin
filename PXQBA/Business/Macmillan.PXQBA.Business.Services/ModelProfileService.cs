@@ -398,8 +398,14 @@ namespace Macmillan.PXQBA.Business.Services
             {
                  case ParsedQuestionType.MultipleChoice:
                     return "choice";
-                 case ParsedQuestionType.Answer:
+                 case ParsedQuestionType.MultipleAnswer:
                     return "answer";
+                 case ParsedQuestionType.Essay:
+                    return "essay";
+                 case ParsedQuestionType.ShortAnswer:
+                    return "text";
+                 case ParsedQuestionType.Matching:
+                    return "match";
                 default:
                     return "choice";
             }

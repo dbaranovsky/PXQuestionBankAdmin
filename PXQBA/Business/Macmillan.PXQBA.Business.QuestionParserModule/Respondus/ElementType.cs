@@ -13,7 +13,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
         GeneralFeedback,
         CorrectAnswer,
         CorrectAnswers,
-        Choice,
-        None
+        None,
+        MatchingChoice
     }
 }
