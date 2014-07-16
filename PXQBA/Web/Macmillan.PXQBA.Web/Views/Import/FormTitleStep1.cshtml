@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Import";
+}
+
+
+
+<div id="notifications-container" class='notifications top-center center notifications-displair'> </div>
+<div id="title-container"> </div>
+
+@section scripts
+{
+
+    <script src="../../Scripts/app/components/import/importFormTitleStep1Root.js"></script>
+    <script src="../../Scripts/app/components/import/titleSelector.js"></script>
+    <script src="../../Scripts/app/components/import/titleListSelector.js"></script>
+    <script src="../../Scripts/app/dataAccess/titleDataManager.js"></script>  
+    <script src="../../Scripts/app/dataAccess/importDataManager.js"></script>  
+    <script src="../../Scripts/app/async/notificationManager.js"></script>
+    <script src="../../Scripts/app/async/asyncManager.js"></script>
+    <script src="../../Scripts/app/components/common/loader.js"></script>
+
+
+
+
+    <script>
+    notificationManager.htmlContainer = $('#notifications-container')[0];
+    var titleContainer = $('#title-container')[0];
+
+    asyncManager.startWait(titleContainer);
+
+    var titleData = titleDataManager.getTitles();
+
+    titleData.done(function (response) {
+        asyncManager.page = React.renderComponent(
+            ImportFromTitleStep1Root({
+                response: response
+            }, " "),
+            titleContainer);
+    })
+        .fail(function (error) {
+            console.error("titleDataManager.getTitles:", error);
+        })
+        .always(function () {
+            asyncManager.stopWait();
+        });
+</script>
+
+
+
+}

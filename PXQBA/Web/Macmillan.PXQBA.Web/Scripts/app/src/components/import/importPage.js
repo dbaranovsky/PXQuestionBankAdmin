@@ -66,7 +66,10 @@ var ImportPage = React.createClass({
                 <div>
                  <h2> Titles available:</h2>        
 
-                     <TitleListSelector data={this.state.response.titles} selectTitleHandler={this.selectTitleHandler} />
+                     <TitleListSelector data={this.state.response.titles} 
+                                        selectTitleHandler={this.selectTitleHandler} 
+                                        caption="Select title to import to:"
+                                        />
                      {this.state.loading? <Loader /> : ""}
         
                 </div>

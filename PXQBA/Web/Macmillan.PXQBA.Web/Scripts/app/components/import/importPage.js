@@ -62,7 +62,10 @@ var ImportPage = React.createClass({displayName: 'ImportPage',
                 React.DOM.div(null, 
                  React.DOM.h2(null,  " Titles available:"),        
 
-                     TitleListSelector( {data:this.state.response.titles, selectTitleHandler:this.selectTitleHandler} ),
+                     TitleListSelector( {data:this.state.response.titles, 
+                                        selectTitleHandler:this.selectTitleHandler, 
+                                        caption:"Select title to import to:"}
+                                        ),
                      this.state.loading? Loader(null ) : ""
         
                 )

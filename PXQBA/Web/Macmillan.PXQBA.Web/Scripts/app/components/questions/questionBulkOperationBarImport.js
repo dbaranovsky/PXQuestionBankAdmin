@@ -4,8 +4,12 @@
 
 var QuestionBulkOperationBarImport = React.createClass({displayName: 'QuestionBulkOperationBarImport',
 
-    deselectsAllHandler: function() {
-        this.props.deselectsAllHandler();
+    backHandler: function() {
+      alert('back');
+    },
+
+    importHandler: function() {
+      alert('import');
     },
 
 
@@ -19,14 +23,18 @@ var QuestionBulkOperationBarImport = React.createClass({displayName: 'QuestionBu
                                )
                             ),
                             React.DOM.td( {className:"bulk-operation-cell"}, 
-                               React.DOM.div( {className:"bulk-operation-item", 'data-toggle':"tooltip", title:  "  !!!!!!!!!!!!"}, 
-                                 "!"
-                               )
+                              React.DOM.div( {className:"bulk-operation-item"}, 
+                                React.DOM.button( {type:"button", className:"btn btn-primary",  onClick:this.importHandler}, 
+                                    "Import questions to..."
+                                )
+                              )
                             ),
                             React.DOM.td( {className:"bulk-operation-cell"}, 
-                               React.DOM.div( {className:"deselect-button", onClick:this.deselectsAllHandler, 'data-toggle':"tooltip", title:"Deselect all"}, 
-                                 React.DOM.span(null ,  " X " )
-                               )
+                              React.DOM.div( {className:"bulk-operation-item"}, 
+                                 React.DOM.button( {type:"button", className:"btn btn-default", onClick:this.backHandler}, 
+                                     "Back"
+                                  )
+                              )
                             )
                           )
                         )

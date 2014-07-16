@@ -23,11 +23,10 @@ var TitleListSelector = React.createClass({
        return (
                 <div>
                    <div className="title-list-selector shared-note">
-                        Select title to import to:
-                 
+                        <span>{this.props.caption}</span>
                         <div className="selector-menu">
                         {this.props.renderSelectorMenu == undefined? "" : this.props.renderSelectorMenu()}
-                      </div>
+                        </div>
 
                    </div>
 
