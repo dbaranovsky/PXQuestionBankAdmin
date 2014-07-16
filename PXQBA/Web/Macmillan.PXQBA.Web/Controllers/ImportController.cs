@@ -92,7 +92,7 @@ namespace Macmillan.PXQBA.Web.Controllers
                 return true;
             }
 
-            if (fileExt == "respondus" && UserCapabilitiesHelper.Capabilities.Contains(Capability.ImportQuestionfromRespondus))
+            if (fileExt == "txt" && UserCapabilitiesHelper.Capabilities.Contains(Capability.ImportQuestionfromRespondus))
             {
                 return true;
             }
