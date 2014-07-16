@@ -280,16 +280,19 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
                     )
                 ),
                 React.DOM.div(null, 
-                  QuestionTabs( {response:this.props.response, handlers:{
-                                                                copyQuestionHandler: this.copyQuestionHandler,
-                                                                editQuestionHandler: this.editQuestionHandler,
-                                                                closeNoteDialogHandler: this.closeNoteDialogHandler,
-                                                                editNotesHandler: this.editNotesHandler,
-                                                                shareHandler: this.shareHandler,
-                                                                publishDraftHandler: this.publishDraftHandler,
-                                                                createDraftHandler: this.createDraftHandler,
-                                                                showNotification: this.showNotification
-                                                                }})
+                  QuestionTabs( 
+                       {mode:this.props.mode,
+                       response:this.props.response, 
+                       handlers:{
+                               copyQuestionHandler: this.copyQuestionHandler,
+                               editQuestionHandler: this.editQuestionHandler,
+                               closeNoteDialogHandler: this.closeNoteDialogHandler,
+                               editNotesHandler: this.editNotesHandler,
+                               shareHandler: this.shareHandler,
+                               publishDraftHandler: this.publishDraftHandler,
+                               createDraftHandler: this.createDraftHandler,
+                               showNotification: this.showNotification
+                        }})
                 ),
                 this.renderQuestionEditorDialog(),
                 this.renderNotesDialog(),

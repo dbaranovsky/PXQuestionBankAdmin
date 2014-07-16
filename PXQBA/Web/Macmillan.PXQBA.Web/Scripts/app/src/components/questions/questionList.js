@@ -231,11 +231,26 @@ var QuestionList = React.createClass({
       return false;
     },
 
+    onClickQuestionEventHandler: function(questionId, isShared, isSelected, event) {
+        if(this.props.options.selectQuestionByRow) {
+            this.selectQuestionByRowHandler(questionId, isShared, isSelected, event);
+        }
+    },
+
+    selectQuestionByRowHandler: function(questionId, isShared, isSelected, event) {
+        if(event.target.className.indexOf("expand-button")==-1) {
+            this.selectQuestionHandler(questionId, isSelected, isShared);
+        }
+    },
+
     renderQuestion: function(question, isDraft, isGrouped) {
        
       var isQuestionExpanded = this.isQuestionExpanded(question.data.id);
 
       var questionHtml = (<Question metadata={question}
+                       onClickQuestionEventHandler={this.onClickQuestionEventHandler
+                                                .bind(null, question.data.id, question.data.sharedWith!=="", !this.isQuestionSelected(question.data.id))}
+                       inlineMenuEnabled={this.props.options.inlineMenuEnabled}
                        columns={this.props.columns} 
                        menuHandlers={this.props.handlers}
                        selectQuestionHandler={this.selectQuestionHandler}
@@ -250,6 +265,8 @@ var QuestionList = React.createClass({
       var preview = null;
       if(isQuestionExpanded) {
           preview = (<QuestionPreview 
+                      onClickQuestionEventHandler={this.onClickQuestionEventHandler
+                                                  .bind(null, question.data.id, question.data.sharedWith!=="", !this.isQuestionSelected(question.data.id))}
                       colSpan={this.getAllColumnCount()-1} 
                       metadata={question.data} 
                       preview={question.data.questionHtmlInlinePreview} 
@@ -265,13 +282,24 @@ var QuestionList = React.createClass({
     renderBulkOperationBar: function() {
       if(this.state.selectedQuestions.length>0) {
         var isAllQuestionsShared = $.inArray(false, $.map(this.state.selectedQuestions, function(e){ return e.isShared;})) == -1;
-        return (<QuestionBulkOperationBar colSpan={this.getAllColumnCount()} 
-                                          selectedQuestions={ $.map(this.state.selectedQuestions,function(e){return e.id;}) }
-                                          deselectsAllHandler={this.deselectsAllQuestionHandler}
-                                          columns={this.props.allAvailableColumns}
-                                          bulkShareHandler = {this.props.handlers.shareHandler}
-                                          isShared = {isAllQuestionsShared}
-                                          capabilities= {this.props.capabilities} />);
+        return (<QuestionBulkOperationBarBase
+                                          bulkOperationBarType={this.props.options.bulkOperationBarType}
+                                          colSpan={this.getAllColumnCount()} 
+                                          parameters={{
+                                            selectedQuestions: $.map(this.state.selectedQuestions,function(e){return e.id;}),
+                                            deselectsAllHandler: this.deselectsAllQuestionHandler,
+                                            columns: this.props.allAvailableColumns,
+                                            bulkShareHandler: this.props.handlers.shareHandler,
+                                            isShared: isAllQuestionsShared,
+                                            capabilities: this.props.capabilities
+                                          }}
+                                       //   selectedQuestions={ $.map(this.state.selectedQuestions,function(e){return e.id;}) }
+                                       //   deselectsAllHandler={this.deselectsAllQuestionHandler}
+                                        //  columns={this.props.allAvailableColumns}
+                                       //   bulkShareHandler = {this.props.handlers.shareHandler}
+                                       //   isShared = {isAllQuestionsShared}
+                                        //  capabilities= {this.props.capabilities}
+                                         />);
       }
       return null;
     },

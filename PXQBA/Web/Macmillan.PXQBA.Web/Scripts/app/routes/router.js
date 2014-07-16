@@ -19,7 +19,8 @@ crossroads.addRoute('/page/{page}/columns/{columns}/filter/{query}/order/{orderT
             
             asyncManager.page = React.renderComponent(
                 QuestionListPage({
-                    response: response
+                    response: response,
+                    mode: window.enums.questionGridModesType.normal
                 }, " "),
                 questionContainer);
              })

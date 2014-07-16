@@ -2,14 +2,10 @@
 * @jsx React.DOM
 */ 
 
-var QuestionBulkOperationBar = React.createClass({displayName: 'QuestionBulkOperationBar',
+var QuestionBulkOperationBarStandart = React.createClass({displayName: 'QuestionBulkOperationBarStandart',
 
     deselectsAllHandler: function() {
         this.props.deselectsAllHandler();
-    },
-
-    getSelectedQuestionCount: function() {
-        return this.props.selectedQuestions.length;
     },
 
     getAvailableStatuses: function() {
@@ -44,16 +40,6 @@ var QuestionBulkOperationBar = React.createClass({displayName: 'QuestionBulkOper
       this.props.bulkShareHandler(this.props.selectedQuestions);
     },
 
-    getTextMessage: function() {
-        var count = this.getSelectedQuestionCount();
-        if(count==1) {
-          return "1 question selected:";
-        }
-        else {
-          return "Bulk action ( " + count + " questions selected ):";
-        }
-    },
-
     renderRemoveButton: function(){
 
       if (this.props.isShared){
@@ -66,13 +52,11 @@ var QuestionBulkOperationBar = React.createClass({displayName: 'QuestionBulkOper
 
     render: function() {
         return ( 
-                  React.DOM.tr(null, 
-                    React.DOM.td( {colSpan:this.props.colSpan, className:"bulk-operation-bar"}, 
-                        React.DOM.table( {className:"bulk-operation-bar-table"}, 
+                 React.DOM.table( {className:"bulk-operation-bar-table"}, 
                           React.DOM.tr(null, 
                             React.DOM.td( {className:"bulk-operation-cell"}, 
                               React.DOM.div( {className:"bulk-operation-item"}, 
-                                 React.DOM.span(null,  " ", this.getTextMessage(),  "  "  )
+                                 React.DOM.span(null,  " ", this.props.message,  "  "  )
                                )
                             ),
                             React.DOM.td( {className:"bulk-operation-cell"}, 
@@ -110,8 +94,6 @@ var QuestionBulkOperationBar = React.createClass({displayName: 'QuestionBulkOper
                             )
                           )
                         )
-                    )
-                  )
             );
         }
 });

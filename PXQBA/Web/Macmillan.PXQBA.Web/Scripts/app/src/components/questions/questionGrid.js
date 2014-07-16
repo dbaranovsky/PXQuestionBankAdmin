@@ -26,8 +26,24 @@ var QuestionGrid = React.createClass({
             canChangeFromInProgressToDeleted: this.props.response.canChangeFromInProgressToDeleted
           };
   },
+
+  getOptions: function() {
+    if(this.props.mode==window.enums.questionGridModesType.importQuestions) {
+        return {
+            bulkOperationBarType: window.enums.bulkOperationBarType.importQuestions,
+            inlineMenuEnabled: false,
+            selectQuestionByRow: true,
+        };
+    }
+
+    return {
+        bulkOperationBarType: window.enums.bulkOperationBarType.standart,
+        inlineMenuEnabled: true,
+        selectQuestionByRow: false,
+    };
+  },
      
-    render: function() { 
+  render: function() { 
         if (this.props.response.canViewQuestionList){
              return (
               <div className="questionGrid">
@@ -44,6 +60,7 @@ var QuestionGrid = React.createClass({
                                         handlers={this.props.handlers}
                                         currentPage={this.props.response.pageNumber}
                                         capabilities = {this.getCapabilities()}
+                                        options = {this.getOptions()}
                                         />
                 </div> 
                 <div className="question-grid-item"> 

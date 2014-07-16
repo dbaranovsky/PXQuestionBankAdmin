@@ -2,14 +2,10 @@
 * @jsx React.DOM
 */ 
 
-var QuestionBulkOperationBar = React.createClass({
+var QuestionBulkOperationBarStandart = React.createClass({
 
     deselectsAllHandler: function() {
         this.props.deselectsAllHandler();
-    },
-
-    getSelectedQuestionCount: function() {
-        return this.props.selectedQuestions.length;
     },
 
     getAvailableStatuses: function() {
@@ -44,16 +40,6 @@ var QuestionBulkOperationBar = React.createClass({
       this.props.bulkShareHandler(this.props.selectedQuestions);
     },
 
-    getTextMessage: function() {
-        var count = this.getSelectedQuestionCount();
-        if(count==1) {
-          return "1 question selected:";
-        }
-        else {
-          return "Bulk action ( " + count + " questions selected ):";
-        }
-    },
-
     renderRemoveButton: function(){
 
       if (this.props.isShared){
@@ -66,13 +52,11 @@ var QuestionBulkOperationBar = React.createClass({
 
     render: function() {
         return ( 
-                  <tr>
-                    <td colSpan={this.props.colSpan} className="bulk-operation-bar">
-                        <table className="bulk-operation-bar-table">
+                 <table className="bulk-operation-bar-table">
                           <tr>
                             <td className="bulk-operation-cell">
                               <div className="bulk-operation-item">
-                                 <span> {this.getTextMessage()}  </span>
+                                 <span> {this.props.message}  </span>
                                </div>
                             </td>
                             <td className="bulk-operation-cell">
@@ -110,8 +94,6 @@ var QuestionBulkOperationBar = React.createClass({
                             </td>
                           </tr>
                         </table>
-                    </td>
-                  </tr>
             );
         }
 });

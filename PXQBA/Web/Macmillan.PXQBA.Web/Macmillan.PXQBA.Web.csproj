@@ -238,6 +238,9 @@
     <Content Include="Scripts\app\components\compare\courseComparerRoot.js" />
     <Content Include="Scripts\app\components\compare\questionComparerList.js" />
     <Content Include="Scripts\app\components\compare\questionContend.js" />
+    <Content Include="Scripts\app\components\import\importFormTitleStep1Root.js" />
+    <Content Include="Scripts\app\components\import\importFromTitleStep2Root.js" />
+    <Content Include="Scripts\app\components\import\importFromTitleStep3Root.js" />
     <Content Include="Scripts\app\components\metadata\availibleValuesBodyItemLinks.js" />
     <Content Include="Scripts\app\components\metadata\availibleValuesBodyTextArea.js" />
     <Content Include="Scripts\app\components\import\importPage.js" />
@@ -279,7 +282,9 @@
     <Content Include="Scripts\app\components\questions\notes\noteForm.js" />
     <Content Include="Scripts\app\components\questions\notes\noteList.js" />
     <Content Include="Scripts\app\components\questions\question.js" />
-    <Content Include="Scripts\app\components\questions\questionBulkOperationBar.js" />
+    <Content Include="Scripts\app\components\questions\questionBulkOperationBarBase.js" />
+    <Content Include="Scripts\app\components\questions\questionBulkOperationBarImport.js" />
+    <Content Include="Scripts\app\components\questions\questionBulkOperationBarStandart.js" />
     <Content Include="Scripts\app\components\questions\questionBulkOperationSetBank.js" />
     <Content Include="Scripts\app\components\questions\questionBulkOperationSetChapter.js" />
     <Content Include="Scripts\app\components\questions\questionBulkOperationSetStatus.js" />
@@ -354,6 +359,9 @@
     <Content Include="Scripts\app\src\components\compare\courseComparerRoot.js" />
     <Content Include="Scripts\app\src\components\compare\questionComparerList.js" />
     <Content Include="Scripts\app\src\components\compare\questionContend.js" />
+    <Content Include="Scripts\app\src\components\import\importFormTitleStep1Root.js" />
+    <Content Include="Scripts\app\src\components\import\importFromTitleStep2Root.js" />
+    <Content Include="Scripts\app\src\components\import\importFromTitleStep3Root.js" />
     <Content Include="Scripts\app\src\components\metadata\availibleValuesBodyItemLinks.js" />
     <Content Include="Scripts\app\src\components\metadata\availibleValuesBodyTextArea.js" />
     <Content Include="Scripts\app\src\components\import\importPage.js" />
@@ -389,7 +397,9 @@
     <Content Include="Scripts\app\src\components\questions\notes\noteBox.js" />
     <Content Include="Scripts\app\src\components\questions\notes\noteForm.js" />
     <Content Include="Scripts\app\src\components\questions\notes\noteList.js" />
-    <Content Include="Scripts\app\src\components\questions\questionBulkOperationBar.js" />
+    <Content Include="Scripts\app\src\components\questions\questionBulkOperationBarBase.js" />
+    <Content Include="Scripts\app\src\components\questions\questionBulkOperationBarImport.js" />
+    <Content Include="Scripts\app\src\components\questions\questionBulkOperationBarStandart.js" />
     <Content Include="Scripts\app\src\components\questions\questionBulkOperationSetChapter.js" />
     <Content Include="Scripts\app\src\components\questions\questionBulkOperationSetBank.js" />
     <Content Include="Scripts\app\src\components\questions\questionBulkOperationSetStatus.js" />
@@ -498,7 +508,6 @@
     <Content Include="Views\ProductCourseList\Index.cshtml" />
     <Content Include="Views\Shared\_CommonJS.cshtml" />
     <Content Include="Views\QuestionList\Index.cshtml" />
-    <Content Include="Views\Import\Index.cshtml" />
     <Content Include="Views\Metadata\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Shared\MainMenu.cshtml" />
@@ -516,6 +525,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Import\ImportFromFile.cshtml" />
+    <Content Include="Views\Import\FormTitleStep1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Commands\Macmillan.PXQBA.Business.Commands.csproj">

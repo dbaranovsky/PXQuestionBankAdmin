@@ -71,6 +71,8 @@
     <Compile Include="MetadataConfig\MetadataFieldDisplayOptionsViewModel.cs" />
     <Compile Include="MetadataConfig\ProductCourseViewModel.cs" />
     <Compile Include="MetadataConfig\ProductCourseSpecificMetadataFieldViewModel.cs" />
+    <Compile Include="Pages\BulkOperationBarType.cs" />
+    <Compile Include="Pages\QuestionGridModesType.cs" />
     <Compile Include="Pages\QuestionListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionFieldViewModel.cs" />
