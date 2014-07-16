@@ -6,6 +6,8 @@ using System.Web.Routing;
 using Macmillan.PXQBA.Business;
 using Macmillan.PXQBA.Business.QuestionParserModule;
 using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
+using Macmillan.PXQBA.Business.QuestionParserModule.QML;
+using Macmillan.PXQBA.Business.QuestionParserModule.QTI;
 using Macmillan.PXQBA.Business.QuestionParserModule.Respondus;
 using Macmillan.PXQBA.Business.Services.Automapper;
 
@@ -33,6 +35,8 @@ namespace Macmillan.PXQBA.Web
             QuestionParserProvider.Clear();
 
             QuestionParserProvider.AddParser(new RespondusQuestionParser());
+            QuestionParserProvider.AddParser(new QMLQuestionPaser());
+            QuestionParserProvider.AddParser(new QTIQuestionParser());
         }
 
         protected void Application_PostAuthenticateRequest(object sender, EventArgs e)
