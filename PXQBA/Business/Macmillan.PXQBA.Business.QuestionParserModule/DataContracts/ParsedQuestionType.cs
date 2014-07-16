@@ -3,6 +3,9 @@
     public enum ParsedQuestionType
     {
         MultipleChoice,
-        Answer
+        Essay,
+        ShortAnswer,
+        Matching,
+        MultipleAnswer
     }
 }

@@ -114,7 +114,6 @@ Feedback:
                 var question = new ParsedQuestion();
                 var lines = questionBlock.Split(new[] {'\n', '\r'}, StringSplitOptions.RemoveEmptyEntries);
                 var LastElement = ElementType.None;
-                var correctAnswer = string.Empty;
                 foreach (var line in lines.Select(l => l.Trim()).Where(l => !string.IsNullOrEmpty(l)))
                 {
                     if (Regex.IsMatch(line, ElementPattern.Title))
@@ -147,7 +146,6 @@ Feedback:
                     }
                     if (LastElement == ElementType.QuestionTitle && Regex.IsMatch(line, ElementPattern.Choice))
                     {
-                        LastElement = ElementType.Choice;
                         var answerMatch = Regex.Match(line, ElementPattern.Choice);
                         var choice = new ParsedQuestionChoice
                         {
@@ -170,23 +168,27 @@ Feedback:
                     }
                     if (LastElement == ElementType.CorrectAnswer)
                     {
-                        if (!string.IsNullOrEmpty(correctAnswer))
+                        if (!string.IsNullOrEmpty(question.Feedback))
                         {
-                            correctAnswer += Environment.NewLine;
+                            question.Feedback += Environment.NewLine;
                         }
-                        correctAnswer += line;
+                        question.Feedback += line;
+                        question.Type = ParsedQuestionType.Essay;
                         continue;
                     }
                     if (LastElement == ElementType.CorrectAnswers)
                     {
                         var correctAnswers = Regex.Match(line, ElementPattern.Choice);
-                        var choice = new ParsedQuestionChoice
+                        var answer = question.Choices.FirstOrDefault();
+                        if (answer == null)
                         {
-                            Id = correctAnswers.Groups[2].Captures[0].Value,
-                            Text = correctAnswers.Groups[3].Captures[0].Value,
-                            IsCorrect = correctAnswers.Groups[1].Length > 0
-                        };
-                        question.Choices.Add(choice);
+                            answer = new ParsedQuestionChoice();
+                            question.Choices.Add(answer);
+                        }
+                        answer.Id += correctAnswers.Groups[3].Captures[0].Value;
+                        answer.Text += correctAnswers.Groups[3].Captures[0].Value;
+                        answer.IsCorrect = true;
+                        question.Type = ParsedQuestionType.ShortAnswer;
                     }
                     if (LastElement == ElementType.Feedback && Regex.IsMatch(line, ElementPattern.Choice))
                     {
@@ -197,24 +199,30 @@ Feedback:
                         {
                             choice.Feedback = feedbackChoiceMatch.Groups[3].Captures[0].Value;
                         }
-                        else
-                        {
-                            question.Choices.Add(new ParsedQuestionChoice
-                            {
-                                Id = id,
-                                Feedback = feedbackChoiceMatch.Groups[3].Captures[0].Value
-                            });
-                        }
                         continue;
                     }
                     if (Regex.IsMatch(line, ElementPattern.MatchingChoice))
                     {
-                        var feedbackChoiceMatch = Regex.Match(line, ElementPattern.MatchingChoice);
-                        var id = feedbackChoiceMatch.Groups[2].Captures[0].Value;
-                        //Regex.Match(answerMatch.Value, choiceId).Value.Replace(")", string.Empty).Replace(".", string.Empty).Trim();
-                        var text = feedbackChoiceMatch.Groups[3].Captures[0].Value;
-                        //answerMatch.Value.Replace(Regex.Match(answerMatch.Value, choiceId).Value, string.Empty).Trim();
-                        var match = feedbackChoiceMatch.Groups[1].Captures[0].Value;
+                        LastElement = ElementType.MatchingChoice;
+                        var choiceMatch = Regex.Match(line, ElementPattern.MatchingChoice);
+                         var choice = new ParsedQuestionChoice
+                        {
+                            Id = choiceMatch.Groups[2].Captures[0].Value,
+                            Text = choiceMatch.Groups[3].Captures[0].Value,
+                            Answer = choiceMatch.Groups[1].Captures[0].Value
+                        };
+                        question.Type = ParsedQuestionType.Matching;
+                        continue;
+                    }
+                    if (LastElement == ElementType.MatchingChoice && Regex.IsMatch(line, ElementPattern.Choice))
+                    {
+                        var answerMatch = Regex.Match(line, ElementPattern.Choice);
+                        var id = answerMatch.Groups[2].Captures[0].Value;
+                        var matching = question.Choices.FirstOrDefault(c => c.Answer.ToUpper() == id.ToUpper());
+                        if (matching != null)
+                        {
+                            matching.Answer = answerMatch.Groups[3].Captures[0].Value;
+                        }
                         continue;
                     }
                     if (LastElement == ElementType.QuestionTitle)
