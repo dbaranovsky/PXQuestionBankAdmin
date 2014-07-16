@@ -16,10 +16,7 @@ namespace Macmillan.PXQBA.Business.Models
             {
                 if (validationResults != null && validationResults.Any())
                 {
-                    if (validationResults.Any(x => !x.IsValidated))
-                    {
-                        return false;
-                    }
+                    return validationResults.All(x => x.IsValidated);
                 }
                 return false;
             }

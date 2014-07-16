@@ -53,13 +53,13 @@
                 url: '/Import/UploadFile',
                 dataType: 'json',
                 done: function (event, data) {
-                    if (data.result.isUploaded) {
-
+                    if (!data.result.isValidated) {
+                        notificationManager.showDanger("Error during validation occured. Invalid file or format.");
+                        return;
                     }
-                    else {
 
-                    }
-                    alert(data.result.isSuccess);
+                    window.location = '@Url.Action("ImportFromFile", "Import")' +'/'+data.result.fileId;
+
                 },
                 fail: function (event, data) {
                     if (data.files[0].error) {
@@ -69,5 +69,6 @@
             });
         }
     </script>
+
 </body>
 </html>

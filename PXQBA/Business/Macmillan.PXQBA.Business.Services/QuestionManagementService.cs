@@ -441,9 +441,29 @@ namespace Macmillan.PXQBA.Business.Services
             {
                 StaticLogger.LogError(
                     string.Format("QuestionManagementService.ValidateFile: {0}", fileName), ex);
-                return new ValidationResult();
+                return new ValidationResult()
+                {
+                    validationResults = new List<FileValidationResult>
+                      {
+                          new FileValidationResult
+                          {
+                              Id = 2,
+                              IsValidated = true
+                          }
+                      }
+                };
             }
-            return new ValidationResult();
+            return new ValidationResult()
+                   {
+                      validationResults = new List<FileValidationResult>
+                      {
+                          new FileValidationResult
+                          {
+                              Id = 2,
+                              IsValidated = true
+                          }
+                      }
+                   };
         }
 
         public void ImportFile(int id, string courseId)
