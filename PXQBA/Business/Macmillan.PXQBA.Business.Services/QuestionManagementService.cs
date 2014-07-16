@@ -435,6 +435,10 @@ namespace Macmillan.PXQBA.Business.Services
             try
             {
                 var parsedQuestions = QuestionParserProvider.Parse(fileName, file);
+                var courseId = "85256";
+                // TODO: need to get parsed questions from database
+                var productCourse = productCourseManagementService.GetProductCourse(courseId, true);
+                var questions = Mapper.Map<IEnumerable<Question>>(parsedQuestions, opt => opt.Items.Add(courseId, productCourse)).ToList();
                //TODO: need to save parsed question to database
             }
             catch (Exception ex)
