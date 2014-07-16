@@ -51,6 +51,7 @@ var QuestionBulkOperationBarBase = React.createClass({
             return (<QuestionBulkOperationBarImport 
                       message={this.getTextMessage()}
                       deselectsAllHandler={this.props.parameters.deselectsAllHandler}
+                      selectedQuestions={this.props.parameters.selectedQuestions}
                    />);
           default:
             return "";

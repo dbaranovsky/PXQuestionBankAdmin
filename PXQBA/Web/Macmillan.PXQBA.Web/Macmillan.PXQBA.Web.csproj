@@ -172,6 +172,7 @@
     </Compile>
     <Compile Include="Helpers\CourseHelper.cs" />
     <Compile Include="Helpers\GridHelper.cs" />
+    <Compile Include="Helpers\ImportQuestionsHelper.cs" />
     <Compile Include="Helpers\MetadataFieldsHelper.cs" />
     <Compile Include="Helpers\QuestionHelper.cs" />
     <Compile Include="Helpers\UserCapabilitiesHelper.cs" />
@@ -526,6 +527,8 @@
     </Content>
     <Content Include="Views\Import\ImportFromFile.cshtml" />
     <Content Include="Views\Import\FormTitleStep1.cshtml" />
+    <Content Include="Views\Import\FromTitleStep2.cshtml" />
+    <Content Include="Views\Import\FromTitleStep3.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Commands\Macmillan.PXQBA.Business.Commands.csproj">

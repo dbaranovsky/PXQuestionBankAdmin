@@ -23,7 +23,11 @@ var TitleListSelector = React.createClass({
        return (
                 <div>
                    <div className="title-list-selector shared-note">
-                        <span>{this.props.caption}</span>
+                        <div className="selector-text">
+                          <span>
+                            {this.props.caption}
+                          </span>
+                         </div>
                         <div className="selector-menu">
                         {this.props.renderSelectorMenu == undefined? "" : this.props.renderSelectorMenu()}
                         </div>

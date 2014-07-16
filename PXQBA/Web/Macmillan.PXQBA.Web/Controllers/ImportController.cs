@@ -10,6 +10,7 @@ using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Web.Helpers;
 using Macmillan.PXQBA.Web.ViewModels.Import;
+using Macmillan.PXQBA.Web.ViewModels.Pages;
 
 namespace Macmillan.PXQBA.Web.Controllers
 {
@@ -23,10 +24,6 @@ namespace Macmillan.PXQBA.Web.Controllers
             this.questionManagementService = questionManagementService;
         }
 
-        public ActionResult Index()
-        {
-            return View();
-        }
 
         [HttpGet]
         public ActionResult ImportFromFile(int id)
@@ -110,6 +107,44 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult FormTitleStep1()
         {
             return View();
+        }
+
+        public ActionResult FromTitleStep2(string courseId)
+        {
+            QuestionListViewModel viewModel = new QuestionListViewModel()
+            {
+                CourseId = courseId
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult SaveQuestionsForImport(string[] questionsId)
+        {
+            ImportQuestionsHelper.QuestionsForImport = new QuestionForImportContainer()
+                                                       {
+                                                           CourseId = CourseHelper.CurrentCourse.ProductCourseId,
+                                                           QuestionsId = questionsId
+                                                       };
+            return JsonCamel(new { IsError = false });
+        }
+
+        public ActionResult FromTitleStep3()
+        {
+            var viewModel = new ImportFromTitleStep3ViewModel()
+                            {
+                                CourseId = ImportQuestionsHelper.QuestionsForImport.CourseId
+                            };
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult ImportQuestionsTo(string toCourseId)
+        {
+            var questionsForImport = ImportQuestionsHelper.QuestionsForImport;
+
+            return JsonCamel(new { questionImportedCount = questionsForImport.QuestionsId.Count()});
         }
 	}
 }

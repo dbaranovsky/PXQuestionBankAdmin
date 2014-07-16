@@ -11,7 +11,7 @@ var ImportPage = React.createClass({displayName: 'ImportPage',
   
 
     handlerErros: function(e){
-         notificationManager.showSuccess("Error occured, please, try again later");
+         notificationManager.showDanger("Error occured, please, try again later");
           this.setState({loading: false});
     },
   
@@ -20,6 +20,10 @@ var ImportPage = React.createClass({displayName: 'ImportPage',
       var self = this;
       this.setState({loading: true});
      importDataManager.importFile(window.importParameters.currentFileId, titleId).done(function(importResult){
+        if(importResult.notAllowed){
+          notificationManager.showDanger("You have no permission to import file of such type to this title");
+          this.setState({loading: false});
+        }
         self.setState({importResult: importResult, isImported: true});
        }).error(this.handlerErros);
     },

@@ -280,7 +280,8 @@ var QuestionList = React.createClass({
 
 
     renderBulkOperationBar: function() {
-      if(this.state.selectedQuestions.length>0) {
+      if((this.state.selectedQuestions.length>0)||
+        (this.props.options.bulkOperationBarType==window.enums.bulkOperationBarType.importQuestions)) {
         var isAllQuestionsShared = $.inArray(false, $.map(this.state.selectedQuestions, function(e){ return e.isShared;})) == -1;
         return (<QuestionBulkOperationBarBase
                                           bulkOperationBarType={this.props.options.bulkOperationBarType}
@@ -292,14 +293,7 @@ var QuestionList = React.createClass({
                                             bulkShareHandler: this.props.handlers.shareHandler,
                                             isShared: isAllQuestionsShared,
                                             capabilities: this.props.capabilities
-                                          }}
-                                       //   selectedQuestions={ $.map(this.state.selectedQuestions,function(e){return e.id;}) }
-                                       //   deselectsAllHandler={this.deselectsAllQuestionHandler}
-                                        //  columns={this.props.allAvailableColumns}
-                                       //   bulkShareHandler = {this.props.handlers.shareHandler}
-                                       //   isShared = {isAllQuestionsShared}
-                                        //  capabilities= {this.props.capabilities}
-                                         />);
+                                          }} />);
       }
       return null;
     },

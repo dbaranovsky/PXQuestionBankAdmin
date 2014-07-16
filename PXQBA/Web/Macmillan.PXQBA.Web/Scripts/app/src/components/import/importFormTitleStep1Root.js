@@ -10,18 +10,17 @@ var ImportFromTitleStep1Root = React.createClass({
 
 
 	selectTitleHandler: function(titleId) {
-		alert('selected '+titleId);
+		var url = window.actions.importActions.buildImportFromTitleStep2(titleId);
+		window.location = url;
 	},
 
     render: function() {
        return (
                 <div>
                       <div>
-                 		  <h2> Titles available:</h2>        
-
                      		<TitleListSelector data={this.props.response.titles} 
                      						   selectTitleHandler={this.selectTitleHandler} 
-                     						   caption="Select title to import to:"/>
+                     						   caption="Select title to import from:"/>
                      		 {this.state.loading? <Loader /> : ""}
            	         </div>
                 </div>

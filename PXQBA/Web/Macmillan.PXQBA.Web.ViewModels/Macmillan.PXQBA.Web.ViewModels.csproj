@@ -67,6 +67,8 @@
     <Compile Include="Editor\FieldEditorDescriptor.cs" />
     <Compile Include="Filter\FilterType.cs" />
     <Compile Include="Import\ImportFromFileViewModel.cs" />
+    <Compile Include="Import\ImportFromTitleStep3ViewModel.cs" />
+    <Compile Include="Import\QuestionForImportContainer.cs" />
     <Compile Include="MetadataConfig\MetadataConfigViewModel.cs" />
     <Compile Include="MetadataConfig\MetadataFieldDisplayOptionsViewModel.cs" />
     <Compile Include="MetadataConfig\ProductCourseViewModel.cs" />

@@ -50,7 +50,8 @@ var QuestionBulkOperationBarBase = React.createClass({displayName: 'QuestionBulk
           case window.enums.bulkOperationBarType.importQuestions:
             return (QuestionBulkOperationBarImport( 
                       {message:this.getTextMessage(),
-                      deselectsAllHandler:this.props.parameters.deselectsAllHandler}
+                      deselectsAllHandler:this.props.parameters.deselectsAllHandler,
+                      selectedQuestions:this.props.parameters.selectedQuestions}
                    ));
           default:
             return "";

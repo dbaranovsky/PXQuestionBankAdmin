@@ -23,7 +23,11 @@ var TitleListSelector = React.createClass({displayName: 'TitleListSelector',
        return (
                 React.DOM.div(null, 
                    React.DOM.div( {className:"title-list-selector shared-note"}, 
-                        React.DOM.span(null, this.props.caption),
+                        React.DOM.div( {className:"selector-text"}, 
+                          React.DOM.span(null, 
+                            this.props.caption
+                          )
+                         ),
                         React.DOM.div( {className:"selector-menu"}, 
                         this.props.renderSelectorMenu == undefined? "" : this.props.renderSelectorMenu()
                         )
