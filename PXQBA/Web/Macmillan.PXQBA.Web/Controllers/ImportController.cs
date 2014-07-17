@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Bfw.Common.Collections;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
+using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Web.Helpers;
 using Macmillan.PXQBA.Web.ViewModels.Import;
 
@@ -86,17 +88,17 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         private bool IsAllowed(string fileExt, string courseId)
         {
-            if (string.Equals(fileExt, ".qti", StringComparison.OrdinalIgnoreCase) && UserCapabilitiesHelper.Capabilities.Contains(Capability.ImportQuestionfromQTI))
+            if (string.Equals(fileExt, EnumHelper.GetEnumDescription(QuestionFileType.QTI), StringComparison.CurrentCultureIgnoreCase) && UserCapabilitiesHelper.Capabilities.Contains(Capability.ImportQuestionfromQTI))
             {
                 return true;
             }
 
-            if (string.Equals(fileExt, ".qml", StringComparison.OrdinalIgnoreCase) && UserCapabilitiesHelper.Capabilities.Contains(Capability.ImportQuestionfromQML))
+            if (string.Equals(fileExt, EnumHelper.GetEnumDescription(QuestionFileType.QML), StringComparison.CurrentCultureIgnoreCase) && UserCapabilitiesHelper.Capabilities.Contains(Capability.ImportQuestionfromQML))
             {
                 return true;
             }
 
-            if (string.Equals(fileExt, ".txt", StringComparison.OrdinalIgnoreCase) && UserCapabilitiesHelper.Capabilities.Contains(Capability.ImportQuestionfromRespondus))
+            if (string.Equals(fileExt, EnumHelper.GetEnumDescription(QuestionFileType.Respondus), StringComparison.CurrentCultureIgnoreCase) && UserCapabilitiesHelper.Capabilities.Contains(Capability.ImportQuestionfromRespondus))
             {
                 return true;
             }
