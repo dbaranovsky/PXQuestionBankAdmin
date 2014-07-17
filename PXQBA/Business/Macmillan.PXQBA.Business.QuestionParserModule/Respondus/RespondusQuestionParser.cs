@@ -30,7 +30,10 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
             var questionList = new List<ParsedQuestion>();
             foreach (var questionBlock in questionBlocks)
             {
-                Question = new ParsedQuestion();
+                Question = new ParsedQuestion
+                {
+                    Type = ParsedQuestionType.MultipleChoice
+                };
                 var lines = questionBlock.Split(new[] {'\n', '\r'}, StringSplitOptions.RemoveEmptyEntries);
                 LastElement = ElementType.None;
                 foreach (var line in lines.Select(l => l.Trim()).Where(l => !string.IsNullOrEmpty(l)))
@@ -101,6 +104,10 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
                         ParseBody(line);
                         continue;
                     }
+                }
+                if (Question.Choices.Any() && Question.Choices.Count(c => c.IsCorrect) > 1)
+                {
+                    Question.Type=ParsedQuestionType.MultipleAnswer;
                 }
                 questionList.Add(Question);
             }
