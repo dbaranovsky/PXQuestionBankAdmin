@@ -46,7 +46,6 @@
     <Compile Include="DataContracts\ParsedQuestion.cs" />
     <Compile Include="DataContracts\ParsedQuestionChoice.cs" />
     <Compile Include="DataContracts\ParsedQuestionType.cs" />
-    <Compile Include="DataContracts\QuestionFileType.cs" />
     <Compile Include="DataContracts\ValidationResult.cs" />
     <Compile Include="QML\QMLQuestionPaser.cs" />
     <Compile Include="QML\QMLTypes.cs" />
