@@ -2745,7 +2745,7 @@ namespace Bfw.PX.Biz.Services.Mappers
                 biz.InteractionData = agx.InteractionData;
                 biz.Interaction = TypeConversion.ConvertType<AgxDC.QuestionInteraction, QuestionInteraction>(agx.Interaction, null);
                 biz.Points = agx.Score;
-                biz.Choices = agx.Choices.Map(c => c.ToQuestionChoice()).ToList();
+                biz.Choices = agx.Choices== null? null : agx.Choices.Map(c => c.ToQuestionChoice()).ToList();
                 biz.AnswerList = agx.AnswerList;
                 biz.QuestionXml = agx.QuestionXml;
                 biz.QuestionMetaData = agx.QuestionMetaData;
