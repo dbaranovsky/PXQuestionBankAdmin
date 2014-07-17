@@ -564,6 +564,10 @@
       <Project>{AC937F92-418D-4F2B-820E-DD1762E24114}</Project>
       <Name>Macmillan.PXQBA.DataAccess.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Macmillan.PXQBA.Common.Models\Macmillan.PXQBA.Common.Models.csproj">
+      <Project>{79D1137E-0FFD-4CBD-8B2A-29546A856306}</Project>
+      <Name>Macmillan.PXQBA.Common.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Bfw.Agilix.Dlap.Components.csproj">
       <Project>{bffd6b7a-4ea1-431a-916a-8214bd16e049}</Project>
       <Name>Bfw.Agilix.Dlap.Components</Name>
