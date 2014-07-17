@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -82,17 +83,17 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         private bool IsAllowed(string fileExt, string courseId)
         {
-            if (fileExt == "qti" && UserCapabilitiesHelper.Capabilities.Contains(Capability.ImportQuestionfromQTI))
+            if (string.Equals(fileExt, ".qti", StringComparison.OrdinalIgnoreCase) && UserCapabilitiesHelper.Capabilities.Contains(Capability.ImportQuestionfromQTI))
             {
                 return true;
             }
 
-            if (fileExt == "qml" && UserCapabilitiesHelper.Capabilities.Contains(Capability.ImportQuestionfromQML))
+            if (string.Equals(fileExt, ".qml", StringComparison.OrdinalIgnoreCase) && UserCapabilitiesHelper.Capabilities.Contains(Capability.ImportQuestionfromQML))
             {
                 return true;
             }
 
-            if (fileExt == "txt" && UserCapabilitiesHelper.Capabilities.Contains(Capability.ImportQuestionfromRespondus))
+            if (string.Equals(fileExt, ".txt", StringComparison.OrdinalIgnoreCase) && UserCapabilitiesHelper.Capabilities.Contains(Capability.ImportQuestionfromRespondus))
             {
                 return true;
             }

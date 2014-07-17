@@ -17,11 +17,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QML
         private readonly string QuestionTypeXpath = "itemmetadata/qmd_itemtype";
         public override bool Recognize(string fileName)
         {
-            if (Path.GetExtension(fileName).ToUpper() == "." + QuestionFileType.QML)
-            {
-                return true;
-            }
-            return false;
+            return String.Equals(Path.GetExtension(fileName), EnumHelper.GetEnumDescription(QuestionFileType.QML), StringComparison.CurrentCultureIgnoreCase);
         }
 
         public override ValidationResult Parse(string fileName, byte[] file)
