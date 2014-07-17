@@ -267,6 +267,16 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
       });
     },
 
+    renderAddQuestionButton: function() {
+      if(this.props.mode==window.enums.questionGridModesType.importQuestions) {
+        return null;
+      }
+
+      return (React.DOM.button( {className:"btn btn-primary ",  disabled:!this.props.response.canCreateQuestion, onClick:this.initialCreateNewQuestion}, 
+                    "Add Question"
+              ));
+    },
+
     render: function() {
        return (
             React.DOM.div( {className:"QuestionListPage"}, 
@@ -275,9 +285,7 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
                   React.DOM.a( {href:window.actions.questionTitle.titleListUrl},   "  << Back to the titles list " )
                 ),
                 React.DOM.div( {className:"add-question-action"}, 
-                    React.DOM.button( {className:"btn btn-primary ",  disabled:!this.props.response.canCreateQuestion, onClick:this.initialCreateNewQuestion}, 
-                    "Add Question"
-                    )
+                     this.renderAddQuestionButton()
                 ),
                 React.DOM.div(null, 
                   QuestionTabs( 

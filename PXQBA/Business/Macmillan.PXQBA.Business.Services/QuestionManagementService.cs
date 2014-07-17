@@ -486,5 +486,24 @@ namespace Macmillan.PXQBA.Business.Services
                 questionCommands.ExecuteSolrUpdateTask();
             }
         }
+
+        public bool ImportQuestions(Course sourceCourse, string[] questionsIds, Course targetCourse)
+        {
+            try
+            {
+                bool isSuccess = questionCommands.ImportQuestions(sourceCourse, questionsIds, targetCourse);
+                questionCommands.ExecuteSolrUpdateTask();
+                return isSuccess;
+            }
+            catch (Exception ex)
+            {
+                StaticLogger.LogError(
+                  string.Format("QuestionManagementService.ImportQuestions:  sourceCourse: {0}, questionsIds:{1}, targetCourse{2}",
+                                            sourceCourse,
+                                            String.Join("|",questionsIds),
+                                            targetCourse), ex);
+            }
+            return false;
+        }
     }
 }
