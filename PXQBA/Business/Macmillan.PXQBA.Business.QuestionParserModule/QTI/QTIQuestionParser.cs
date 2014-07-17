@@ -19,7 +19,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
             return false;
         }
 
-        public override IEnumerable<ParsedQuestion> Parse(byte[] file)
+        public override ValidationResult Parse(string fileName, byte[] file)
         {
             throw new NotImplementedException();
         }

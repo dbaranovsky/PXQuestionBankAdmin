@@ -6,6 +6,6 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule
     public interface IQuestionParser
     {
         bool Recognize(string fileName);
-        IEnumerable<ParsedQuestion> Parse(byte[] file);
+       ValidationResult Parse(string fileName, byte[] file);
     }
 }

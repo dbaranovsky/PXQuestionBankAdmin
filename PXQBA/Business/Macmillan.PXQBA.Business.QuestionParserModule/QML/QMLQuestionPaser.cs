@@ -24,11 +24,21 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QML
             return false;
         }
 
-        public override IEnumerable<ParsedQuestion> Parse(byte[] file)
+        public override ValidationResult Parse(string fileName, byte[] file)
         {
             var data = XDocument.Parse(Encoding.UTF8.GetString(file));
             var itemsXml = data.Descendants("item").ToList();
-            return (itemsXml.Where(IsTypeExist).Select(ConvertXmlItemToQuestion)).ToList();
+            return new ValidationResult()
+            {
+                FileValidationResults =
+                    new List<FileValidationResult>()
+                    {
+                        new FileValidationResult()
+                        {
+                            Questions = (itemsXml.Where(IsTypeExist).Select(ConvertXmlItemToQuestion)).ToList()
+                        }
+                    }
+            };
         }
 
         private bool IsTypeExist(XElement item)

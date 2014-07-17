@@ -8,15 +8,15 @@ namespace Macmillan.PXQBA.Business.Models
 {
     public class ValidationResult
     {
-        public IEnumerable<FileValidationResult> validationResults { get; set; }
+        public IEnumerable<FileValidationResult> FileValidationResults { get; set; }
 
         public bool IsValidated
         {
             get
             {
-                if (validationResults != null && validationResults.Any())
+                if (FileValidationResults != null && FileValidationResults.Any())
                 {
-                    return validationResults.All(x => x.IsValidated);
+                    return FileValidationResults.All(x => x.IsValidated);
                 }
                 return false;
             }
