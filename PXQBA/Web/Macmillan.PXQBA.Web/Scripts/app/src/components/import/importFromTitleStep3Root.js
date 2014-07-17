@@ -5,7 +5,12 @@
 var ImportFromTitleStep3Root = React.createClass({
   
     getInitialState: function() {
-      return { loading: false };
+      return { 
+      		loading: false,
+      		imported: false,
+      		questionImported:0,
+      		titleIdImportedTo: null
+       };
     },
 
     backHandler: function() {
@@ -15,11 +20,24 @@ var ImportFromTitleStep3Root = React.createClass({
     },
 
     selectTitleHandler: function(titleId) {
+    	this.setState({
+    			loading: true,
+    			titleIdImportedTo: titleId
+    		});
 		importDataManager.importQuestionsTo(titleId).done(this.importQuestionsToDoneHandler);
 	},
 
 	importQuestionsToDoneHandler: function(response) {
-		notificationManager.showSuccess("Imported "+ response.questionImportedCount + " question(s).");
+		this.setState({ loading: false});
+		if(response.isError) {
+			notificationManager.showDanger(response.errorMessage);
+			return;
+		}
+
+		this.setState({
+			   questionImported: response.questionImportedCount,
+			   imported: true
+			});
 	},
 
     renderSelectorMenu: function() {
@@ -28,15 +46,38 @@ var ImportFromTitleStep3Root = React.createClass({
                </button>);
     },
 
+    renderEndPage: function() {
+    	          return ( <ImportCompleteBox questionImported={this.state.questionImported} titleId={this.state.titleIdImportedTo} />);
+    },
+
+    getTetles: function() {
+    	var self = this;
+    	return this.props.response.titles.filter(function(title){ return title.id!=self.props.currentCourseId});;
+    },
+
+    renderTitleList: function() {
+    	return (<TitleListSelector data={this.getTetles()} 
+                     			   selectTitleHandler={this.selectTitleHandler} 
+                     			   caption="Select title to import to:"
+                     			   renderSelectorMenu={this.renderSelectorMenu}
+                />);
+    },
+
     render: function() {
+
+       var content = null;
+   
+       if(!this.state.imported) {
+       	  content=this.renderTitleList();
+       }
+       else {
+       	  content=this.renderEndPage();
+       }
+
        return (
                 <div>
                       <div>
-                     		<TitleListSelector data={this.props.response.titles} 
-                     						   selectTitleHandler={this.selectTitleHandler} 
-                     						   caption="Select title to import to:"
-                     						   renderSelectorMenu={this.renderSelectorMenu}
-                     						   />
+                     		 {content}
                      		 {this.state.loading? <Loader /> : ""}
            	         </div>
                 </div>

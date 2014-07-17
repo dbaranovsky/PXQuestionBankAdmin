@@ -33,6 +33,7 @@ var QuestionGrid = React.createClass({
             bulkOperationBarType: window.enums.bulkOperationBarType.importQuestions,
             inlineMenuEnabled: false,
             selectQuestionByRow: true,
+            resetSeletionAfterChangePage: false
         };
     }
 
@@ -40,6 +41,7 @@ var QuestionGrid = React.createClass({
         bulkOperationBarType: window.enums.bulkOperationBarType.standart,
         inlineMenuEnabled: true,
         selectQuestionByRow: false,
+        resetSeletionAfterChangePage: true
     };
   },
      

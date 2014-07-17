@@ -239,8 +239,8 @@
     <Content Include="Scripts\app\components\compare\courseComparerRoot.js" />
     <Content Include="Scripts\app\components\compare\questionComparerList.js" />
     <Content Include="Scripts\app\components\compare\questionContend.js" />
+    <Content Include="Scripts\app\components\import\importCompleteBox.js" />
     <Content Include="Scripts\app\components\import\importFormTitleStep1Root.js" />
-    <Content Include="Scripts\app\components\import\importFromTitleStep2Root.js" />
     <Content Include="Scripts\app\components\import\importFromTitleStep3Root.js" />
     <Content Include="Scripts\app\components\metadata\availibleValuesBodyItemLinks.js" />
     <Content Include="Scripts\app\components\metadata\availibleValuesBodyTextArea.js" />
@@ -360,8 +360,8 @@
     <Content Include="Scripts\app\src\components\compare\courseComparerRoot.js" />
     <Content Include="Scripts\app\src\components\compare\questionComparerList.js" />
     <Content Include="Scripts\app\src\components\compare\questionContend.js" />
+    <Content Include="Scripts\app\src\components\import\importCompleteBox.js" />
     <Content Include="Scripts\app\src\components\import\importFormTitleStep1Root.js" />
-    <Content Include="Scripts\app\src\components\import\importFromTitleStep2Root.js" />
     <Content Include="Scripts\app\src\components\import\importFromTitleStep3Root.js" />
     <Content Include="Scripts\app\src\components\metadata\availibleValuesBodyItemLinks.js" />
     <Content Include="Scripts\app\src\components\metadata\availibleValuesBodyTextArea.js" />

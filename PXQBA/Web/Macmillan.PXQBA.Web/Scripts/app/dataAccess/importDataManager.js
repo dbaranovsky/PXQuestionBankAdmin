@@ -36,7 +36,7 @@
         }).done(function (response) {
 
         }).error(function (e) {
-
+            self.showErrorPopup();
         });
     };
 
@@ -55,8 +55,12 @@
         }).done(function (response) {
 
         }).error(function (e) {
-
+           self.showErrorPopup();
         });
+    };
+    
+    self.showErrorPopup = function () {
+        notificationManager.showDanger(window.enums.messages.errorMessage);
     };
 
     return self;

@@ -17,11 +17,13 @@ namespace Macmillan.PXQBA.Web.Controllers
     public class ImportController : MasterController
     {
         private readonly IQuestionManagementService questionManagementService;
+        private readonly IUserManagementService userManagementService;
 
         public ImportController(IQuestionManagementService questionManagementService, IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService)
             : base(productCourseManagementService, userManagementService)
         {
             this.questionManagementService = questionManagementService;
+            this.userManagementService = userManagementService;
         }
 
 
@@ -143,8 +145,22 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult ImportQuestionsTo(string toCourseId)
         {
             var questionsForImport = ImportQuestionsHelper.QuestionsForImport;
+            var capabilities = userManagementService.GetUserCapabilities(toCourseId);
 
-            return JsonCamel(new { questionImportedCount = questionsForImport.QuestionsId.Count()});
+            if (!capabilities.Contains(Capability.ImportQuestionFromTitle))
+            {
+                return JsonCamel(new ImportQuestionsToTitleResult
+                {
+                    IsError = true,
+                    ErrorMessage = "You have no capabilities for import to this title."
+                });
+            }
+
+            return JsonCamel(new ImportQuestionsToTitleResult
+                             {
+                                 IsError = false,
+                                 QuestionImportedCount = questionsForImport.QuestionsId.Count()
+                             });
         }
 	}
 }

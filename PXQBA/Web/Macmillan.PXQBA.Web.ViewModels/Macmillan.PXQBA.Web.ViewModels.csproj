@@ -68,6 +68,7 @@
     <Compile Include="Filter\FilterType.cs" />
     <Compile Include="Import\ImportFromFileViewModel.cs" />
     <Compile Include="Import\ImportFromTitleStep3ViewModel.cs" />
+    <Compile Include="Import\ImportQuestionsToTitleResult.cs" />
     <Compile Include="Import\QuestionForImportContainer.cs" />
     <Compile Include="MetadataConfig\MetadataConfigViewModel.cs" />
     <Compile Include="MetadataConfig\MetadataFieldDisplayOptionsViewModel.cs" />

@@ -130,7 +130,9 @@ var QuestionList = React.createClass({
     isShouldResetState: function(nextProps) {
        var shouldResetState = false;
  
-       if(this.props.currentPage!=nextProps.currentPage) {
+       if((this.props.currentPage!=nextProps.currentPage)&&
+          (this.props.options.resetSeletionAfterChangePage)) {
+ 
            shouldResetState = true;
        }
  
