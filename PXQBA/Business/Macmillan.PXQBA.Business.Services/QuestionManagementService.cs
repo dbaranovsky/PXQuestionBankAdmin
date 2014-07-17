@@ -12,6 +12,7 @@ using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Common.Logging;
 using Question = Macmillan.PXQBA.Business.Models.Question;
+using ValidationResult = Macmillan.PXQBA.Business.Models.ValidationResult;
 
 namespace Macmillan.PXQBA.Business.Services
 {
@@ -434,39 +435,21 @@ namespace Macmillan.PXQBA.Business.Services
         {
             try
             {
-                var parsedQuestions = QuestionParserProvider.Parse(fileName, file);
+                var result = QuestionParserProvider.Parse(fileName, file);
+                var newResult = Mapper.Map<ValidationResult>(result);
                 var courseId = "85256";
                 // TODO: need to get parsed questions from database
                 var productCourse = productCourseManagementService.GetProductCourse(courseId, true);
-                var questions = Mapper.Map<IEnumerable<Question>>(parsedQuestions, opt => opt.Items.Add(courseId, productCourse)).ToList();
+                var questions = Mapper.Map<IEnumerable<Question>>(result.FileValidationResults.SelectMany(r => r.Questions), opt => opt.Items.Add(courseId, productCourse)).ToList();
+                //questionCommands.CreateQuestions(courseId, questions);
             }
             catch (Exception ex)
             {
                 StaticLogger.LogError(
                     string.Format("QuestionManagementService.ValidateFile: {0}", fileName), ex);
-                return new ValidationResult()
-                {
-                    validationResults = new List<FileValidationResult>
-                      {
-                          new FileValidationResult
-                          {
-                              Id = 2,
-                              IsValidated = true
-                          }
-                      }
-                };
+               
             }
-            return new ValidationResult()
-                   {
-                      validationResults = new List<FileValidationResult>
-                      {
-                          new FileValidationResult
-                          {
-                              Id = 2,
-                              IsValidated = true
-                          }
-                      }
-                   };
+            return new ValidationResult();
         }
 
         public void ImportFile(int id, string courseId)

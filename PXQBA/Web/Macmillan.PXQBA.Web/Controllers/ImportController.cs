@@ -76,7 +76,7 @@ namespace Macmillan.PXQBA.Web.Controllers
                 return JsonCamel(new { isValidated = false});
             }
 
-            return JsonCamel(new {isValidated = true, fileId = result.validationResults.First().Id});
+            return JsonCamel(new {isValidated = true, fileId = result.FileValidationResults.First().Id});
         }
 
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
+using Macmillan.PXQBA.Common.Logging;
 
 namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
 {
@@ -11,6 +12,10 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
         private ParsedQuestion Question { get; set; }
 
         private ElementType LastElement { get; set; }
+
+        private string LastLine { get; set; }
+
+        private ValidationResult result = new ValidationResult();
         public override bool Recognize(string fileName)
         {
             if (fileName.ToUpper().EndsWith(".TXT"))
@@ -20,21 +25,42 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
             return false;
         }
 
-        public override IEnumerable<ParsedQuestion> Parse(byte[] file)
+        public override ValidationResult Parse(string fileName, byte[] file)
         {
+            result.FileValidationResults.Add(new FileValidationResult
+            {
+                FileName = fileName
+            });
             var data = System.Text.Encoding.UTF8.GetString(file);
+            ParseFileData(data);
+            return result;
+        }
 
+        private void ParseFileData(string data)
+        {
             var questionBlocks =
-                Regex.Split(data, ElementPattern.QuestionBlock, RegexOptions.Multiline)
-                    .Where(s => !string.IsNullOrEmpty(s));
-            var questionList = new List<ParsedQuestion>();
+               Regex.Split(data, ElementPattern.QuestionBlock, RegexOptions.Multiline).Select(s => s.Trim('\n', '\r', '\t'))
+                   .Where(s => !string.IsNullOrEmpty(s));
             foreach (var questionBlock in questionBlocks)
             {
-                Question = new ParsedQuestion();
-                var lines = questionBlock.Split(new[] {'\n', '\r'}, StringSplitOptions.RemoveEmptyEntries);
-                LastElement = ElementType.None;
-                foreach (var line in lines.Select(l => l.Trim()).Where(l => !string.IsNullOrEmpty(l)))
+                Question = new ParsedQuestion
                 {
+                    Type = ParsedQuestionType.MultipleChoice
+                };
+                var lines = questionBlock.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+                ParseQuestionBlock(lines.Select(l => l.Trim()).Where(l => !string.IsNullOrEmpty(l)));
+            }
+        }
+
+        private void ParseQuestionBlock(IEnumerable<string> lines)
+        {
+            var isParsed = true;
+            LastElement = ElementType.None;
+            foreach (var line in lines)
+            {
+                try
+                {
+                    LastLine = line;
                     if (Regex.IsMatch(line, ElementPattern.Title))
                     {
                         ParseTitle(line);
@@ -66,7 +92,8 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
                         ParseChoices(line);
                         continue;
                     }
-                    if (LastElement == ElementType.QuestionTitle && Regex.IsMatch(line, ElementPattern.MatchingChoice))
+                    if ((LastElement == ElementType.QuestionTitle || LastElement == ElementType.MatchingChoice) &&
+                        Regex.IsMatch(line, ElementPattern.MatchingChoice))
                     {
                         ParseMatchingChoice(line);
                         continue;
@@ -102,9 +129,26 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
                         continue;
                     }
                 }
-                questionList.Add(Question);
+                catch (Exception ex)
+                {
+                    isParsed = false;
+                    var fileResult = result.FileValidationResults.LastOrDefault();
+                    if (fileResult != null)
+                    {
+                        fileResult.ValidationErrors.Add(string.Format("File {0}, line {1} wasn't parse.",
+                            fileResult.FileName, LastLine));
+                    }
+                    StaticLogger.LogError("RespondusQuestionParser.Parse ", ex);
+                }
             }
-            return questionList;
+            if (isParsed)
+            {
+                if (Question.Choices.Any() && Question.Choices.Count(c => c.IsCorrect) > 1)
+                {
+                    Question.Type = ParsedQuestionType.MultipleAnswer;
+                }
+                result.FileValidationResults.Last().Questions.Add(Question);
+            }
         }
 
         private void ParseBody(string line)

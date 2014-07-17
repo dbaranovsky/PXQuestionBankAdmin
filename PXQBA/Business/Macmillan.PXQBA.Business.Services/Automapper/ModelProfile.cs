@@ -19,9 +19,11 @@ using Macmillan.PXQBA.Web.ViewModels.TiteList;
 using Macmillan.PXQBA.Web.ViewModels.User;
 using Macmillan.PXQBA.Web.ViewModels.Versions;
 using Course = Macmillan.PXQBA.Business.Models.Course;
+using FileValidationResult = Macmillan.PXQBA.Business.Models.FileValidationResult;
 using ProductCourseViewModel = Macmillan.PXQBA.Web.ViewModels.TiteList.ProductCourseViewModel;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 using QuestionChoice = Macmillan.PXQBA.Business.Models.QuestionChoice;
+using ValidationResult = Macmillan.PXQBA.Business.Models.ValidationResult;
 
 namespace Macmillan.PXQBA.Business.Services.Automapper
 {
@@ -205,8 +207,13 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.CanEdit, opt => opt.UseValue(true))
                 .ForMember(dest => dest.Capabilities, opt => opt.MapFrom(src => modelProfileService.GetActiveRoleCapabilities(src)));
 
-            Mapper.CreateMap<ParsedQuestion, Question>().ConvertUsing(new ParsedQuestionToQuestionConverter(modelProfileService));
+            Mapper.CreateMap<QuestionParserModule.DataContracts.ValidationResult, ValidationResult>();
 
+            Mapper.CreateMap<QuestionParserModule.DataContracts.FileValidationResult, FileValidationResult>();
+
+            Mapper.CreateMap<IEnumerable<ParsedQuestion>, IEnumerable<Question>>();
+
+            Mapper.CreateMap<ParsedQuestion, Question>().ConvertUsing(new ParsedQuestionToQuestionConverter(modelProfileService));
         }
     }
 

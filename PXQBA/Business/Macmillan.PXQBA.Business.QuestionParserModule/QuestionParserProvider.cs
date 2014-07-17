@@ -15,14 +15,14 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule
             Parsers.Add(parser);
         }
 
-        public static IEnumerable<ParsedQuestion> Parse(string fileName, byte[] file)
+        public static ValidationResult Parse(string fileName, byte[] file)
         {
             try
             {
                 var parser = Parsers.FirstOrDefault(p => p.Recognize(fileName));
                 if (parser != null)
                 {
-                    return parser.Parse(file);
+                    return parser.Parse(fileName, file);
                 }
                 throw new FormatException("QuestionParserProvider.Parse: file parameter");
             }
