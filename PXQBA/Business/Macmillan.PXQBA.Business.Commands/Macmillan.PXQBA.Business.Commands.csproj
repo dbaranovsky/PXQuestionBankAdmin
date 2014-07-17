@@ -78,6 +78,7 @@
     </Compile>
     <Compile Include="Contracts\IKeywordOperation.cs" />
     <Compile Include="Contracts\INoteCommands.cs" />
+    <Compile Include="Contracts\IParsedFileOperation.cs" />
     <Compile Include="Contracts\IProductCourseOperation.cs" />
     <Compile Include="Contracts\IQuestionCommands.cs" />
     <Compile Include="Contracts\ITemporaryQuestionOperation.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="Services\SQLOperations\KeywordOperation.cs" />
     <Compile Include="Services\SQLOperations\NoteCommands.cs" />
     <Compile Include="Services\DLAP\ProductCourseOperation.cs" />
+    <Compile Include="Services\SQLOperations\ParsedFileOperation.cs" />
     <Compile Include="Services\SQLOperations\RoleOperation.cs" />
     <Compile Include="Services\SQLOperations\UserNotificationOperation.cs" />
   </ItemGroup>

@@ -230,8 +230,9 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         {
             foreach (var question in questions)
             {
-                CreateQuestion(productCourseId, question);
+                SetQuestionInitialValues(productCourseId, question);
             }
+            ExecutePutQuestions(Mapper.Map<IEnumerable<Bfw.Agilix.DataContracts.Question>>(questions), productCourseId);
         }
 
         private IEnumerable<QuestionSearchResult> GetSearchResults(string questionRepositoryCourseId, string currentCourseId, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, List<string> fieldsToInclude = null)
@@ -368,11 +369,16 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         public Question CreateQuestion(string productCourseId, Question question)
         {
+            SetQuestionInitialValues(productCourseId, question);
+            ExecutePutQuestion(Mapper.Map<Bfw.Agilix.DataContracts.Question>(question), productCourseId);
+            return question;
+        }
+
+        private void SetQuestionInitialValues(string productCourseId, Question question)
+        {
             question.Id = Guid.NewGuid().ToString();
             question.ModifiedBy = businessContext.CurrentUser.Id;
             SetSequence(productCourseId, question);
-            ExecutePutQuestion(Mapper.Map<Bfw.Agilix.DataContracts.Question>(question), productCourseId);
-            return question;
         }
 
         public void SetSequence(string productCourseId, Question question)

@@ -15,7 +15,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
 
         private ElementType LastElement { get; set; }
 
-        private string LastLine { get; set; }
+        private int lastLine;
 
         private ValidationResult result = new ValidationResult();
         public override bool Recognize(string fileName)
@@ -58,7 +58,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
             {
                 try
                 {
-                    LastLine = line;
+                    lastLine++;
                     if (Regex.IsMatch(line, ElementPattern.Title))
                     {
                         ParseTitle(line);
@@ -134,7 +134,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
                     if (fileResult != null)
                     {
                         fileResult.ValidationErrors.Add(string.Format("File {0}, line {1} wasn't parse.",
-                            fileResult.FileName, LastLine));
+                            fileResult.FileName, lastLine));
                     }
                     StaticLogger.LogError("RespondusQuestionParser.Parse ", ex);
                 }

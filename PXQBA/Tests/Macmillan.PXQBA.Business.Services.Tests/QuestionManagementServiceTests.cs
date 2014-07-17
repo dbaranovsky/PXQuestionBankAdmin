@@ -17,6 +17,7 @@ namespace Macmillan.PXQBA.Business.Services.Tests
         private ITemporaryQuestionOperation temporaryQuestionOperation;
         private IProductCourseManagementService productCourseManagementService;
         private IKeywordOperation keywordOperation;
+        private IParsedFileOperation parsedFileOperation;
 
         [TestInitialize]
         public void TestInitialize()
@@ -25,8 +26,9 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             temporaryQuestionOperation = Substitute.For<ITemporaryQuestionOperation>();
             productCourseManagementService = Substitute.For<IProductCourseManagementService>();
             keywordOperation = Substitute.For<IKeywordOperation>();
+            parsedFileOperation = Substitute.For<IParsedFileOperation>();
 
-            questionManagementService = new QuestionManagementService(questionCommands, temporaryQuestionOperation, productCourseManagementService, keywordOperation);
+            questionManagementService = new QuestionManagementService(questionCommands, temporaryQuestionOperation, productCourseManagementService, keywordOperation, parsedFileOperation);
         }
 
  

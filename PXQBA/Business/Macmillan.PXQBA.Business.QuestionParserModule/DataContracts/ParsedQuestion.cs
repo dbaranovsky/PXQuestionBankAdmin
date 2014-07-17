@@ -34,12 +34,12 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.DataContracts
         /// </summary>
         public double? Points { get; set; }
 
-        private IList<ParsedQuestionChoice> choices;
+        private List<ParsedQuestionChoice> choices;
 
         /// <summary>
         /// List of parsed answers for the question
         /// </summary>
-        public IList<ParsedQuestionChoice> Choices
+        public List<ParsedQuestionChoice> Choices
         {
             get
             {
