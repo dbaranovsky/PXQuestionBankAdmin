@@ -67,9 +67,12 @@ namespace Macmillan.PXQBA.Web.Controllers
                 return JsonCamel(new { isValidated = false });
             }
 
-       
-            var b = new BinaryReader(file.InputStream);
-            var binData = b.ReadBytes((int)file.InputStream.Length);
+            byte[] binData;
+            using (var reader = new BinaryReader(file.InputStream))
+            {
+                binData = reader.ReadBytes((int) file.InputStream.Length);
+            }
+            
             var result = questionManagementService.ValidateFile(file.FileName, binData);
 
             if (!result.IsValidated)
