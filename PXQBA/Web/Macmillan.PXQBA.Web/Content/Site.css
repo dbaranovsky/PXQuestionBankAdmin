@@ -1456,7 +1456,19 @@ span.draft-course {
 }
 .title-list-selector .selector-menu {
    float: right;
-    margin-right: 5px;
+   margin-right: 5px;
+   height: 30px;
+}
+
+.title-list-selector .selector-text {
+    vertical-align: middle;
+    float: left;
+}
+
+.title-list-selector .selector-text span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
 }
 
 .title-list-selector a {

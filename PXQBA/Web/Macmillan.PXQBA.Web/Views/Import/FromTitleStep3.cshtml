@@ -1,6 +1,6 @@
-﻿@model Macmillan.PXQBA.Web.ViewModels.Import.ImportFromFileViewModel
+﻿@model Macmillan.PXQBA.Web.ViewModels.Import.ImportFromTitleStep3ViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Import";
 }
 
 <div id="notifications-container" class='notifications top-center center notifications-displair'> </div>
@@ -8,19 +8,8 @@
 
 @section scripts
 {
-    @*
-        extract this in view
-    *@
-
-    <script>
-        window.importParameters = {
-            currentFileId: '@Model.FileId',
-            isImported: Boolean('@Model.IsImported')
-        };
-    </script>
-    
     <script src="../../Scripts/app/components/import/importCompleteBox.js"></script>
-    <script src="../../Scripts/app/components/import/importPage.js"></script>
+    <script src="../../Scripts/app/components/import/importFromTitleStep3Root.js"></script>
     <script src="../../Scripts/app/components/import/titleSelector.js"></script>
     <script src="../../Scripts/app/components/import/titleListSelector.js"></script>
     <script src="../../Scripts/app/dataAccess/titleDataManager.js"></script>  
@@ -28,9 +17,6 @@
     <script src="../../Scripts/app/async/notificationManager.js"></script>
     <script src="../../Scripts/app/async/asyncManager.js"></script>
     <script src="../../Scripts/app/components/common/loader.js"></script>
-
-
-
 
     <script>
     notificationManager.htmlContainer = $('#notifications-container')[0];
@@ -42,8 +28,9 @@
 
     titleData.done(function (response) {
         asyncManager.page = React.renderComponent(
-            ImportPage({
-                response: response
+            ImportFromTitleStep3Root({
+                response: response,
+                currentCourseId: '@Model.CourseId'
             }, " "),
             titleContainer);
     })

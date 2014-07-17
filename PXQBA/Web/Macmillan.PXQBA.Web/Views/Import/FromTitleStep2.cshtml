@@ -1,9 +1,8 @@
-﻿@model Macmillan.PXQBA.Web.ViewModels.Pages.QuestionListViewModel
-
+﻿@model Macmillan.PXQBA.Web.ViewModels.Pages.QuestionListViewModel 
 @{
-    ViewBag.Title = "Question List";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Import";
 }
+
 <br/>
 <div id="notifications-container" class='notifications top-center center notifications-displair'> </div>
 <div id="question-container"> </div>
@@ -19,7 +18,7 @@
         window.questionPageParameters = {
             currentCourseId: '@Model.CourseId',
             currentChapterId: '@Model.ChapterId',
-            mode: window.enums.questionGridModesType.normal
+            mode: window.enums.questionGridModesType.importQuestions
         };
     </script>
     
@@ -59,6 +58,7 @@
     <script src="../../Scripts/app/components/questions/questionCell.js"></script>
 
     <script src="../../Scripts/app/dataAccess/questionDataManager.js"></script>
+    <script src="../../Scripts/app/dataAccess/importDataManager.js"></script>
     <script src="../../Scripts/app/dataAccess/userManager.js"></script>
 
     <script src="../../Scripts/app/components/questions/questionListColumnAppender.js"></script>
@@ -91,26 +91,6 @@
     <script src="../../Scripts/app/routes/routeManager.js"></script>
     <script src="../../Scripts/app/routes/router.js"></script>
 
-    <script src="../../Scripts/app/components/questions/notes/editQuestionNotesDialog.js"></script>
-    <script src="../../Scripts/app/components/questions/notes/flag.js"></script>
-    <script src="../../Scripts/app/components/questions/notes/note.js"></script>
-    <script src="../../Scripts/app/components/questions/notes/noteBox.js"></script>
-    <script src="../../Scripts/app/components/questions/notes/noteForm.js"></script>
-    <script src="../../Scripts/app/components/questions/notes/noteList.js"></script>    
-
-
-    <script src="../../Scripts/app/components/questions/editor/questionEditor.js"></script>
-    <script src="../../Scripts/app/components/questions/editor/shareMetadataEditorRow.js"></script>
-    <script src="../../Scripts/app/components/questions/editor/metadataFieldEditor.js"></script>  
-    <script src="../../Scripts/app/components/questions/editor/multiSelectEditor.js"></script>
-    <script src="../../Scripts/app/components/questions/editor/questionEditorDialog.js"></script>
-    <script src="../../Scripts/app/components/questions/editor/questionEditorTabs.js"></script>
-    <script src="../../Scripts/app/components/questions/editor/questionMetadataEditor.js"></script>
-    <script src="../../Scripts/app/components/questions/editor/overideControls.js"></script>
-    <script src="../../Scripts/app/components/questions/editor/versionHistory.js"></script>
-    
-
-    
 
     <script>
         notificationManager.htmlContainer = $('#notifications-container')[0];

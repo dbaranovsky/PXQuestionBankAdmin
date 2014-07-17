@@ -10,23 +10,22 @@ using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Web.Helpers;
 using Macmillan.PXQBA.Web.ViewModels.Import;
+using Macmillan.PXQBA.Web.ViewModels.Pages;
 
 namespace Macmillan.PXQBA.Web.Controllers
 {
     public class ImportController : MasterController
     {
         private readonly IQuestionManagementService questionManagementService;
+        private readonly IUserManagementService userManagementService;
 
         public ImportController(IQuestionManagementService questionManagementService, IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService)
             : base(productCourseManagementService, userManagementService)
         {
             this.questionManagementService = questionManagementService;
+            this.userManagementService = userManagementService;
         }
 
-        public ActionResult Index()
-        {
-            return View();
-        }
 
         [HttpGet]
         public ActionResult ImportFromFile(int id)
@@ -110,6 +109,58 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult FormTitleStep1()
         {
             return View();
+        }
+
+        public ActionResult FromTitleStep2(string courseId)
+        {
+            QuestionListViewModel viewModel = new QuestionListViewModel()
+            {
+                CourseId = courseId
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult SaveQuestionsForImport(string[] questionsId)
+        {
+            ImportQuestionsHelper.QuestionsForImport = new QuestionForImportContainer()
+                                                       {
+                                                           CourseId = CourseHelper.CurrentCourse.ProductCourseId,
+                                                           QuestionsId = questionsId
+                                                       };
+            return JsonCamel(new { IsError = false });
+        }
+
+        public ActionResult FromTitleStep3()
+        {
+            var viewModel = new ImportFromTitleStep3ViewModel()
+                            {
+                                CourseId = ImportQuestionsHelper.QuestionsForImport.CourseId
+                            };
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult ImportQuestionsTo(string toCourseId)
+        {
+            var questionsForImport = ImportQuestionsHelper.QuestionsForImport;
+            var capabilities = userManagementService.GetUserCapabilities(toCourseId);
+
+            if (!capabilities.Contains(Capability.ImportQuestionFromTitle))
+            {
+                return JsonCamel(new ImportQuestionsToTitleResult
+                {
+                    IsError = true,
+                    ErrorMessage = "You have no capabilities for import to this title."
+                });
+            }
+
+            return JsonCamel(new ImportQuestionsToTitleResult
+                             {
+                                 IsError = false,
+                                 QuestionImportedCount = questionsForImport.QuestionsId.Count()
+                             });
         }
 	}
 }

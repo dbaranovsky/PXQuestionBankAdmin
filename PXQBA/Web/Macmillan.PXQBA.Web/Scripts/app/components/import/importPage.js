@@ -11,7 +11,7 @@ var ImportPage = React.createClass({displayName: 'ImportPage',
   
 
     handlerErros: function(e){
-         notificationManager.showSuccess("Error occured, please, try again later");
+         notificationManager.showDanger("Error occured, please, try again later");
           this.setState({loading: false});
     },
   
@@ -20,6 +20,10 @@ var ImportPage = React.createClass({displayName: 'ImportPage',
       var self = this;
       this.setState({loading: true});
      importDataManager.importFile(window.importParameters.currentFileId, titleId).done(function(importResult){
+        if(importResult.notAllowed){
+          notificationManager.showDanger("You have no permission to import file of such type to this title");
+          this.setState({loading: false});
+        }
         self.setState({importResult: importResult, isImported: true});
        }).error(this.handlerErros);
     },
@@ -28,9 +32,6 @@ var ImportPage = React.createClass({displayName: 'ImportPage',
       
     },
 
-     getUrlToList: function() {
-      return window.actions.questionList.buildQuestionListIndexUrl(this.state.importResult.titleId, null);
-    },
 
     render: function() {
 
@@ -50,12 +51,7 @@ var ImportPage = React.createClass({displayName: 'ImportPage',
       }
 
       if(this.state.isImported){
-          return (React.DOM.div( {className:"imported-note"}, 
-                   this.state.importResult.questionCount==1? "1 question was" : this.state.importResult.questionCount+" questions were", " imported successfully.",
-                    this.state.importResult.questionCount==1? "This question" :  "These questions ", " may require metadata editing.",
-                   React.DOM.a( {href:this.getUrlToList()}, "Go to target title >")
-
-                ));
+        return ( ImportCompleteBox( {questionImported:this.state.importResult.questionCount, titleId:this.state.importResult.titleId} ));
       }
 
        return (

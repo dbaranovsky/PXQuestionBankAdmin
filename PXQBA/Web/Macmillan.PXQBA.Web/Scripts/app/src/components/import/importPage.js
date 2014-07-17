@@ -32,9 +32,6 @@ var ImportPage = React.createClass({
       
     },
 
-     getUrlToList: function() {
-      return window.actions.questionList.buildQuestionListIndexUrl(this.state.importResult.titleId, null);
-    },
 
     render: function() {
 
@@ -54,12 +51,7 @@ var ImportPage = React.createClass({
       }
 
       if(this.state.isImported){
-          return (<div className="imported-note">
-                   {this.state.importResult.questionCount==1? "1 question was" : this.state.importResult.questionCount+" questions were"} imported successfully.
-                    {this.state.importResult.questionCount==1? "This question" :  "These questions "} may require metadata editing.
-                   <a href={this.getUrlToList()}>Go to target title ></a>
-
-                </div>);
+        return ( <ImportCompleteBox questionImported={this.state.importResult.questionCount} titleId={this.state.importResult.titleId} />);
       }
 
        return (

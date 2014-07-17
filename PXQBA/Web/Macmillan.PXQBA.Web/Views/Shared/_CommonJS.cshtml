@@ -38,7 +38,7 @@
             restoreVersionUrl: '@Url.Action("RestoreVersion", "Question")',
             clearQuestionResourcesUrl: '@Url.Action("ClearQuestionResources", "Question")',
 
-            questionListIndexTamplate: '@Html.Raw(@Url.Action("Index", "QuestionList", new { titleId = "__titleId__", chapterId = "__chapterId__" }))'
+            questionListIndexTamplate: '@Html.Raw(@Url.Action("Index", "QuestionList", new { titleId = "__titleId__", chapterId = "__chapterId__" }))',
         };
 
         actions.questionList.buildQuestionListIndexUrl = function (titleId, chapterId) {
@@ -96,7 +96,21 @@
         };
 
         actions.importActions = {            
-            importFileUrl: '@Url.Action("ImportFromFile", "Import")'
+            importFileUrl: '@Url.Action("ImportFromFile", "Import")',
+            formTitleStep1Url: '@Url.Action("FormTitleStep1", "Import")',
+            fromTitleStep3Url: '@Url.Action("FromTitleStep3", "Import")',
+            importQuestionsToUrl: '@Url.Action("ImportQuestionsTo", "Import")',
+            saveQuestionsForImportUrl: '@Url.Action("SaveQuestionsForImport", "Import")',
+
+            importFromTitleStep2Tamplate: '@Html.Raw(@Url.Action("FromTitleStep2", "Import", new { courseId = "__titleId__" }))'
+        };
+        
+        actions.importActions.buildImportFromTitleStep2 = function (titleId) {
+            if (titleId == null) {
+                titleId = '';
+            }
+
+            return actions.importActions.importFromTitleStep2Tamplate.replace('__titleId__', titleId);
         };
 
         var enums = {};

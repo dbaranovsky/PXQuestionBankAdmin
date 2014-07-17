@@ -5,13 +5,22 @@
 var QuestionBulkOperationBarImport = React.createClass({displayName: 'QuestionBulkOperationBarImport',
 
     backHandler: function() {
-      alert('back');
+       window.location = window.actions.importActions.formTitleStep1Url;
     },
 
     importHandler: function() {
-      alert('import');
+       var selectedQuestions = this.props.selectedQuestions;
+       if(selectedQuestions.length>0) {
+           importDataManager.saveQuestionsForImport(selectedQuestions).done(this.saveQuestionsForImportDoneHandler);
+       }
+       else {
+           notificationManager.showWarning("You should select questions to continue.");
+       }
     },
 
+    saveQuestionsForImportDoneHandler: function (response) {
+       window.location = window.actions.importActions.fromTitleStep3Url;
+    },
 
     render: function() {
         return ( 

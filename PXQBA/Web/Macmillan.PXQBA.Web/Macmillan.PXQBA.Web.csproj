@@ -172,6 +172,7 @@
     </Compile>
     <Compile Include="Helpers\CourseHelper.cs" />
     <Compile Include="Helpers\GridHelper.cs" />
+    <Compile Include="Helpers\ImportQuestionsHelper.cs" />
     <Compile Include="Helpers\MetadataFieldsHelper.cs" />
     <Compile Include="Helpers\QuestionHelper.cs" />
     <Compile Include="Helpers\UserCapabilitiesHelper.cs" />
@@ -238,8 +239,8 @@
     <Content Include="Scripts\app\components\compare\courseComparerRoot.js" />
     <Content Include="Scripts\app\components\compare\questionComparerList.js" />
     <Content Include="Scripts\app\components\compare\questionContend.js" />
+    <Content Include="Scripts\app\components\import\importCompleteBox.js" />
     <Content Include="Scripts\app\components\import\importFormTitleStep1Root.js" />
-    <Content Include="Scripts\app\components\import\importFromTitleStep2Root.js" />
     <Content Include="Scripts\app\components\import\importFromTitleStep3Root.js" />
     <Content Include="Scripts\app\components\metadata\availibleValuesBodyItemLinks.js" />
     <Content Include="Scripts\app\components\metadata\availibleValuesBodyTextArea.js" />
@@ -359,8 +360,8 @@
     <Content Include="Scripts\app\src\components\compare\courseComparerRoot.js" />
     <Content Include="Scripts\app\src\components\compare\questionComparerList.js" />
     <Content Include="Scripts\app\src\components\compare\questionContend.js" />
+    <Content Include="Scripts\app\src\components\import\importCompleteBox.js" />
     <Content Include="Scripts\app\src\components\import\importFormTitleStep1Root.js" />
-    <Content Include="Scripts\app\src\components\import\importFromTitleStep2Root.js" />
     <Content Include="Scripts\app\src\components\import\importFromTitleStep3Root.js" />
     <Content Include="Scripts\app\src\components\metadata\availibleValuesBodyItemLinks.js" />
     <Content Include="Scripts\app\src\components\metadata\availibleValuesBodyTextArea.js" />
@@ -526,6 +527,8 @@
     </Content>
     <Content Include="Views\Import\ImportFromFile.cshtml" />
     <Content Include="Views\Import\FormTitleStep1.cshtml" />
+    <Content Include="Views\Import\FromTitleStep2.cshtml" />
+    <Content Include="Views\Import\FromTitleStep3.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Commands\Macmillan.PXQBA.Business.Commands.csproj">
