@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
+using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Common.Logging;
 
 namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
@@ -18,11 +20,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
         private ValidationResult result = new ValidationResult();
         public override bool Recognize(string fileName)
         {
-            if (fileName.ToUpper().EndsWith(".TXT"))
-            {
-                return true;
-            }
-            return false;
+            return String.Equals(Path.GetExtension(fileName), EnumHelper.GetEnumDescription(QuestionFileType.Respondus), StringComparison.CurrentCultureIgnoreCase);
         }
 
         public override ValidationResult Parse(string fileName, byte[] file)

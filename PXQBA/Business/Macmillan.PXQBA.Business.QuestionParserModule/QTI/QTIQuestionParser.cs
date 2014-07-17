@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
+using Macmillan.PXQBA.Common.Helpers;
 
 namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
 {
@@ -12,11 +10,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
     {
         public override bool Recognize(string fileName)
         {
-            if (Path.GetExtension(fileName).ToUpper() == "." + QuestionFileType.QTI)
-            {
-                return true;
-            }
-            return false;
+            return String.Equals(Path.GetExtension(fileName), EnumHelper.GetEnumDescription(QuestionFileType.QTI), StringComparison.CurrentCultureIgnoreCase);
         }
 
         public override ValidationResult Parse(string fileName, byte[] file)
