@@ -140,7 +140,7 @@ namespace Macmillan.PXQBA.Common.Helpers
                 html.Append("<ul>");
                 foreach (var choice in choices)
                 {
-                    string cid = regexConverter.Replace(choice.Id, "").ToLower();
+                    string cid = regexConverter.Replace(choice.Id, "");
                     string answerChecked = answerList != null && answerList.Contains(cid) ? "checked=checked" : "";
 
                     html.Append("<li>");
