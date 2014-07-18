@@ -42,7 +42,5 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
 
         IEnumerable<QuestionFacetedSearchResult> GetFacetedResults(string questionRepositoryCourseId, string currentCourseId, string facetedField);
         void CreateQuestions(string productCourseId, IEnumerable<Question> questions);
-
-        bool ImportQuestions(Course sourceCourse, string[] questionsIds, Course targetCourse);
     }
 }

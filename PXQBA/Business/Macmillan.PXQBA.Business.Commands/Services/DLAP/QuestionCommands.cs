@@ -236,31 +236,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             ExecutePutQuestions(Mapper.Map<IEnumerable<Bfw.Agilix.DataContracts.Question>>(questions), productCourseId);
         }
 
-        public bool ImportQuestions(Course sourceCourse, string[] questionsIds, Course targetCourse)
-        {
-            var questions = GetQuestions(sourceCourse.QuestionRepositoryCourseId, questionsIds);
-
-            foreach (var question in questions)
-            {
-
-                question.DefaultSection = null;
-     
-                var section = question.ProductCourseSections.SingleOrDefault(s => s.ProductCourseId == sourceCourse.ProductCourseId);
-                question.EntityId = targetCourse.QuestionRepositoryCourseId;
-                section.ProductCourseId = targetCourse.ProductCourseId;
-
-                // clean section
-
-                question.ProductCourseSections=new List<QuestionMetadataSection>();
-                question.ProductCourseSections.Add(section);
-
-
-                 CreateQuestion(targetCourse.ProductCourseId, question);
-            }
-
-            return true;
-        }
-
         private IEnumerable<QuestionSearchResult> GetSearchResults(string questionRepositoryCourseId, string currentCourseId, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, List<string> fieldsToInclude = null)
         {
             var query = BuildQueryString(filter);

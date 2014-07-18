@@ -11,8 +11,9 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
 {
    public class CourseDataXmlHelper
    {
+       public const string ItemLinkPatterm = "#/launchpad/item/{0}?mode=preview";
+       
        private const string itemLinksSectionName = "itemlinksfields";
-       private const string itemLinkPatterm = "#/launchpad/item/{0}?mode=preview";
        private  static readonly XName friendleNameAttribute = "friendlyname";
        private static readonly XName itemElementName = "item";
        private static readonly XName idNodeName = "id";
@@ -60,7 +61,7 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
            {
                itemLinksValues.Add(new CourseMetadataFieldValue()
                                    {
-                                       Id = value.Element(idNodeName) == null ? string.Empty : String.Format(itemLinkPatterm, value.Element(idNodeName).Value),
+                                       Id = value.Element(idNodeName) == null ? string.Empty : String.Format(ItemLinkPatterm, value.Element(idNodeName).Value),
                                        Text = value.Element(valueNodeName) == null ? string.Empty : value.Element(valueNodeName).Value,
                                    });
            }
