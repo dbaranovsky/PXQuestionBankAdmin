@@ -90,7 +90,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QML
                         fileValidationResult.Questions.Add(question);
                         return;
                     default:
-                        throw new Exception("QMLQuestionPaser: no such question type");
+                        throw new Exception("QMLQuestionParser: no such question type");
                 }
             }
             catch (Exception e)
