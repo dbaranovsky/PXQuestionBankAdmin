@@ -8,7 +8,7 @@ namespace Macmillan.PXQBA.Business.Models
 {
    public class FileValidationResult
     {
-       public int Id { get; set; }
+       public long Id { get; set; }
 
        public string FileName { get; set; }
 

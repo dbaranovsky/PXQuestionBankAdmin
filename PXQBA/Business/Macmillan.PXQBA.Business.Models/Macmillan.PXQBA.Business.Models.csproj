@@ -77,6 +77,8 @@
     <Compile Include="CourseMetadataFieldDescriptor.cs" />
     <Compile Include="CourseMetadataFieldValue.cs" />
     <Compile Include="FileValidationResult.cs" />
+    <Compile Include="ParsedFile.cs" />
+    <Compile Include="ParsedFileStatus.cs" />
     <Compile Include="QBAUser.cs" />
     <Compile Include="FilterFieldDescriptor.cs" />
     <Compile Include="MetadataFieldType.cs" />

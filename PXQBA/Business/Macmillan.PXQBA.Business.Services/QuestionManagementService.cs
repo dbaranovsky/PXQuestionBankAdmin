@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
+using System.Xml.Serialization;
 using AutoMapper;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Commands.Helpers;
@@ -25,13 +28,15 @@ namespace Macmillan.PXQBA.Business.Services
         private readonly ITemporaryQuestionOperation temporaryQuestionOperation;
         private readonly IProductCourseManagementService productCourseManagementService;
         private readonly IKeywordOperation keywordOperation;
+        private readonly IParsedFileOperation parsedFileOperation;
 
-        public QuestionManagementService(IQuestionCommands questionCommands, ITemporaryQuestionOperation temporaryQuestionOperation, IProductCourseManagementService productCourseManagementService, IKeywordOperation keywordOperation)
+        public QuestionManagementService(IQuestionCommands questionCommands, ITemporaryQuestionOperation temporaryQuestionOperation, IProductCourseManagementService productCourseManagementService, IKeywordOperation keywordOperation, IParsedFileOperation parsedFileOperation)
         {
             this.questionCommands = questionCommands;
             this.temporaryQuestionOperation = temporaryQuestionOperation;
             this.productCourseManagementService = productCourseManagementService;
             this.keywordOperation = keywordOperation;
+            this.parsedFileOperation = parsedFileOperation;
         }
 
         public PagedCollection<Question> GetQuestionList(Course course, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
@@ -437,30 +442,49 @@ namespace Macmillan.PXQBA.Business.Services
             {
                 var result = QuestionParserProvider.Parse(fileName, file);
                 var newResult = Mapper.Map<ValidationResult>(result);
-                var courseId = "85256";
-                // TODO: need to get parsed questions from database
-                var productCourse = productCourseManagementService.GetProductCourse(courseId, true);
-                var questions = Mapper.Map<IEnumerable<Question>>(result.FileValidationResults.SelectMany(r => r.Questions), opt => opt.Items.Add(courseId, productCourse)).ToList();
-                //questionCommands.CreateQuestions(courseId, questions);
+                string questionsData;
+                
+                using(var writer = new StringWriter(CultureInfo.InvariantCulture))
+                {
+                    var serializer = new XmlSerializer(typeof(List<ParsedQuestion>));
+                    serializer.Serialize(writer, result.FileValidationResults.First().Questions);
+                    questionsData = writer.ToString();
+                }
+                var fileResult = newResult.FileValidationResults.FirstOrDefault(f => f.FileName == fileName);
+                if (fileResult != null && !string.IsNullOrEmpty(questionsData))
+                {
+                    fileResult.Id = parsedFileOperation.AddParsedFile(fileName, questionsData);
+                }
+                return newResult;
+
             }
             catch (Exception ex)
             {
                 StaticLogger.LogError(
                     string.Format("QuestionManagementService.ValidateFile: {0}", fileName), ex);
-               
+                throw;
             }
-            return new ValidationResult();
         }
 
         public void ImportFile(int id, string courseId)
         {
-            //courseId = "85256";
-            // TODO: need to get parsed questions from database
-            IEnumerable<ParsedQuestion> parsedQuestions = null;
             var productCourse = productCourseManagementService.GetProductCourse(courseId, true);
-            var questions = Mapper.Map<IEnumerable<Question>>(parsedQuestions, opt => opt.Items.Add(courseId, productCourse)).ToList();
-            questionCommands.CreateQuestions(productCourse.ProductCourseId, questions);
-            questionCommands.ExecuteSolrUpdateTask();
+            var parsedFile = parsedFileOperation.GetParsedFile(id);
+            var parsedQuestions = new List<ParsedQuestion>();
+            using (var reader = new StringReader(parsedFile.QuestionsData))
+            {
+                var serializer = new XmlSerializer(typeof(List<ParsedQuestion>));
+                parsedQuestions = (List<ParsedQuestion>)serializer.Deserialize(reader);
+            }
+            if (parsedQuestions != null && parsedQuestions.Any())
+            {
+                var questions =
+                    Mapper.Map<IEnumerable<Question>>(parsedQuestions, opt => opt.Items.Add(courseId, productCourse))
+                        .ToList();
+                questionCommands.CreateQuestions(productCourse.ProductCourseId, questions);
+                parsedFileOperation.SetParsedFileStatus(id, ParsedFileStatus.Imported);
+                questionCommands.ExecuteSolrUpdateTask();
+            }
         }
     }
 }
