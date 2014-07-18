@@ -16,7 +16,6 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
     public class QTIQuestionParser : QuestionParserBase
     {
         private readonly string QuestionTypeXpath = "itemmetadata/qmd_itemtype";
-        private ValidationResult result;
         private FileValidationResult fileValidationResult;
         public override bool Recognize(string fileName)
         {
@@ -33,7 +32,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
                                        Questions = new List<ParsedQuestion>(),
                                        ValidationErrors = new List<string>()
                                    };
-            result = new ValidationResult
+            Result = new ValidationResult
                      {
                          FileValidationResults = new List<FileValidationResult>()
                      };
@@ -49,7 +48,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
             }
             catch (Exception e)
             {
-                result.FileValidationResults.Add(new FileValidationResult
+                Result.FileValidationResults.Add(new FileValidationResult
                                                  {
                                                      FileName = fileName,
                                                      Questions = new List<ParsedQuestion>(),
@@ -74,8 +73,8 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
                 }
                
             }
-            result.FileValidationResults.Add(fileValidationResult);
-            return result;
+            Result.FileValidationResults.Add(fileValidationResult);
+            return Result;
 
         }
 

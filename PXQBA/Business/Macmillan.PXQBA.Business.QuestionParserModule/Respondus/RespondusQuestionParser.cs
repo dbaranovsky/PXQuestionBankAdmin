@@ -11,11 +11,9 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
 {
     public class RespondusQuestionParser : QuestionParserBase
     {
-        private ParsedQuestion CurrentQuestion { get; set; }
-
         private ElementType LastElement { get; set; }
 
-        private ValidationResult result = new ValidationResult();
+   
         public override bool Recognize(string fileName)
         {
             return String.Equals(Path.GetExtension(fileName), EnumHelper.GetEnumDescription(QuestionFileType.Respondus), StringComparison.CurrentCultureIgnoreCase);
@@ -23,13 +21,14 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
 
         public override ValidationResult Parse(string fileName, byte[] file)
         {
-            result.FileValidationResults.Add(new FileValidationResult
+            Result = new ValidationResult();
+            Result.FileValidationResults.Add(new FileValidationResult
             {
                 FileName = fileName
             });
             var data = System.Text.Encoding.UTF8.GetString(file);
             ParseFileData(data);
-            return result;
+            return Result;
         }
 
         private void ParseFileData(string data)
@@ -129,7 +128,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
                 catch (Exception ex)
                 {
                     isParsed = false;
-                    var fileResult = result.FileValidationResults.LastOrDefault();
+                    var fileResult = Result.FileValidationResults.LastOrDefault();
                     if (fileResult != null)
                     {
                         fileResult.ValidationErrors.Add(string.Format("File {0}, line {1} wasn't parse.",
@@ -144,7 +143,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
                 {
                     CurrentQuestion.Type = ParsedQuestionType.MultipleAnswer;
                 }
-                result.FileValidationResults.Last().Questions.Add(CurrentQuestion);
+                Result.FileValidationResults.Last().Questions.Add(CurrentQuestion);
             }
         }
 

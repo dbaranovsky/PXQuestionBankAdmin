@@ -6,6 +6,10 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule
 {
     public abstract class QuestionParserBase : IQuestionParser
     {
+        protected ValidationResult Result { get; set; }
+
+        protected ParsedQuestion CurrentQuestion { get; set; }
+ 
         protected ParsedQuestionType Type { get; set; }
 
         protected QuestionParserBase()
