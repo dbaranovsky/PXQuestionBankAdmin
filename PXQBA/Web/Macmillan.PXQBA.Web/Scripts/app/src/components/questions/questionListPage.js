@@ -267,6 +267,16 @@ var QuestionListPage = React.createClass({
       });
     },
 
+    renderAddQuestionButton: function() {
+      if(this.props.mode==window.enums.questionGridModesType.importQuestions) {
+        return null;
+      }
+
+      return (<button className="btn btn-primary " disabled={!this.props.response.canCreateQuestion} onClick={this.initialCreateNewQuestion}>
+                    Add Question
+              </button>);
+    },
+
     render: function() {
        return (
             <div className="QuestionListPage">
@@ -275,9 +285,7 @@ var QuestionListPage = React.createClass({
                   <a href={window.actions.questionTitle.titleListUrl}>  &lt;&lt; Back to the titles list </a>
                 </div>
                 <div className="add-question-action">
-                    <button className="btn btn-primary " disabled={!this.props.response.canCreateQuestion} onClick={this.initialCreateNewQuestion}>
-                    Add Question
-                    </button>
+                     {this.renderAddQuestionButton()}
                 </div>
                 <div>
                   <QuestionTabs 

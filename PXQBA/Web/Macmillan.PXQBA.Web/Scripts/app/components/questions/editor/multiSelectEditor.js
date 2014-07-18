@@ -38,7 +38,7 @@ var MultiSelectEditor = React.createClass({displayName: 'MultiSelectEditor',
          }
       }
       if(!isExist) {
-         metadataValues.push({value: newValue, text: value})
+         metadataValues.push({value: newValue, text: newValue})
       }
 
       return metadataValues;

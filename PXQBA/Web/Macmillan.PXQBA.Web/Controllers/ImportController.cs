@@ -18,12 +18,14 @@ namespace Macmillan.PXQBA.Web.Controllers
     {
         private readonly IQuestionManagementService questionManagementService;
         private readonly IUserManagementService userManagementService;
+        private readonly IProductCourseManagementService productCourseManagementService;
 
         public ImportController(IQuestionManagementService questionManagementService, IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService)
             : base(productCourseManagementService, userManagementService)
         {
             this.questionManagementService = questionManagementService;
             this.userManagementService = userManagementService;
+            this.productCourseManagementService = productCourseManagementService;
         }
 
 
@@ -157,9 +159,13 @@ namespace Macmillan.PXQBA.Web.Controllers
                 });
             }
 
+            Course sourceCourse = productCourseManagementService.GetProductCourse(questionsForImport.CourseId, true);
+            Course targetCourse = productCourseManagementService.GetProductCourse(toCourseId, true);
+            var success = questionManagementService.ImportQuestions(sourceCourse, questionsForImport.QuestionsId, targetCourse);
+
             return JsonCamel(new ImportQuestionsToTitleResult
                              {
-                                 IsError = false,
+                                 IsError = !success,
                                  QuestionImportedCount = questionsForImport.QuestionsId.Count()
                              });
         }

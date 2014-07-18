@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -30,6 +31,42 @@ namespace Macmillan.PXQBA.Business.Models
             }
 
             return chapter.CourseMetadataFieldValues;
+        }
+
+        public static bool IsFieldExist(this Course course, string fieldName)
+        {
+            if (course.FieldDescriptors == null)
+            {
+                return false;
+            }
+
+            return course.FieldDescriptors.Any(f => f.Name.ToUpper() == fieldName.ToUpper());
+        }
+
+        public static bool IsValueExist(this Course course, string fieldName, string value, string itemLinkPatterm="{0}")
+        {
+            if (course.FieldDescriptors == null)
+            {
+                return false;
+            }
+
+            var field = course.FieldDescriptors.FirstOrDefault(f => f.Name == fieldName);
+            if (field == null)
+            {
+                return false;
+            }
+
+            if((field.Type== MetadataFieldType.Text)||(field.Type== MetadataFieldType.MultilineText))
+            {
+                return true;
+            }
+
+            if (field.Type == MetadataFieldType.ItemLink)
+            {
+                return field.CourseMetadataFieldValues.Select(v => String.Format(itemLinkPatterm, v.Id)).Any(l => l.ToUpper() == value.ToUpper());
+            }
+
+            return field.CourseMetadataFieldValues.Any(v => v.Text.ToUpper() == value.ToUpper());
         }
     }
 }

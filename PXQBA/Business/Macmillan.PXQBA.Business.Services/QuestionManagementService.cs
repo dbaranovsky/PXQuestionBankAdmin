@@ -486,5 +486,98 @@ namespace Macmillan.PXQBA.Business.Services
                 questionCommands.ExecuteSolrUpdateTask();
             }
         }
+
+        public bool ImportQuestions(Course sourceCourse, string[] questionsIds, Course targetCourse)
+        {
+            try
+            {
+                var questions = questionCommands.GetQuestions(sourceCourse.QuestionRepositoryCourseId, questionsIds);
+
+                foreach (var question in questions)
+                {
+                    question.DefaultSection = null;
+                    var section = question.ProductCourseSections.SingleOrDefault(s => s.ProductCourseId == sourceCourse.ProductCourseId);
+                    question.EntityId = targetCourse.QuestionRepositoryCourseId;
+                    section.ProductCourseId = targetCourse.ProductCourseId;
+
+                    question.ProductCourseSections = new List<QuestionMetadataSection>();
+                    question.ProductCourseSections.Add(section);
+                }
+
+                UpdateProductCurseSections(questions, targetCourse);
+                questionCommands.CreateQuestions(targetCourse.ProductCourseId, questions);
+                questionCommands.ExecuteSolrUpdateTask();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                StaticLogger.LogError(
+                  string.Format("QuestionManagementService.ImportQuestions:  sourceCourse: {0}, questionsIds:{1}, targetCourse{2}",
+                                            sourceCourse,
+                                            String.Join("|",questionsIds),
+                                            targetCourse), ex);
+            }
+            return false;
+        }
+
+        private void UpdateProductCurseSections(IEnumerable<Question> questions, Course course)
+        {
+            LoadKeyWords(course);
+
+            foreach (var question in questions)
+            {
+                UpdateProductCourseSection(question.ProductCourseSections.FirstOrDefault(), course);
+            }
+        }
+
+        private void LoadKeyWords(Course course)
+        {
+            foreach (var field in course.FieldDescriptors)
+            {
+                if (field.Type == MetadataFieldType.Keywords)
+                {
+                   var values = field.CourseMetadataFieldValues.ToList();
+                   values.AddRange(keywordOperation.GetKeywordList(course.ProductCourseId, field.Name)
+                         .Select(s=>new CourseMetadataFieldValue{Text = s}));
+                   field.CourseMetadataFieldValues = values;
+                }
+            }
+        }
+
+        private QuestionMetadataSection UpdateProductCourseSection(QuestionMetadataSection section, Course course)
+        {
+            section.ProductCourseId = course.ProductCourseId;
+            if (!course.IsValueExist(MetadataFieldNames.Chapter, section.Chapter))
+            {
+                section.Chapter = String.Empty;
+            }
+            if (!course.IsValueExist(MetadataFieldNames.Bank, section.Bank))
+            {
+                section.Bank = String.Empty;
+            }
+
+            var newDynamicValues = new Dictionary<string, List<string>>();
+
+            foreach (var dynamicValue in section.DynamicValues)
+            {
+                if (!course.IsFieldExist(dynamicValue.Key))
+                {
+                    continue;
+                }
+
+                var dynamicValueLocal = dynamicValue;
+                var newValues = dynamicValue.Value.Where(value => course
+                                      .IsValueExist(dynamicValueLocal.Key, value, CourseDataXmlHelper.ItemLinkPatterm)).ToList();
+
+                newDynamicValues.Add(dynamicValue.Key, newValues);
+            }
+
+            section.DynamicValues = newDynamicValues;
+
+            return section;
+        }
+
+     
     }
 }
