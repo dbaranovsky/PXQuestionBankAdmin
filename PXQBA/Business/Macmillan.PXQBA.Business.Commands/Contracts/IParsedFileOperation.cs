@@ -4,10 +4,10 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
 {
     public interface IParsedFileOperation
     {
-        int AddParsedFile(string fileName, string questionsData);
+        long AddParsedFile(string fileName, string questionsData);
 
-        int SetParsedFileStatus(int id, ParsedFileStatus status);
+        long SetParsedFileStatus(long id, ParsedFileStatus status);
 
-        string GetParsedFile(int id);
+        ParsedFile GetParsedFile(long id);
     }
 }

@@ -11,11 +11,9 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
 {
     public class RespondusQuestionParser : QuestionParserBase
     {
-        private ParsedQuestion Question { get; set; }
+        private ParsedQuestion CurrentQuestion { get; set; }
 
         private ElementType LastElement { get; set; }
-
-        private int lastLine;
 
         private ValidationResult result = new ValidationResult();
         public override bool Recognize(string fileName)
@@ -41,7 +39,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
                    .Where(s => !string.IsNullOrEmpty(s));
             foreach (var questionBlock in questionBlocks)
             {
-                Question = new ParsedQuestion
+                CurrentQuestion = new ParsedQuestion
                 {
                     Type = ParsedQuestionType.MultipleChoice
                 };
@@ -54,6 +52,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
         {
             var isParsed = true;
             LastElement = ElementType.None;
+            var lastLine = 0;
             foreach (var line in lines)
             {
                 try
@@ -141,21 +140,21 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
             }
             if (isParsed)
             {
-                if (Question.Choices.Any() && Question.Choices.Count(c => c.IsCorrect) > 1)
+                if (CurrentQuestion.Choices.Any() && CurrentQuestion.Choices.Count(c => c.IsCorrect) > 1)
                 {
-                    Question.Type = ParsedQuestionType.MultipleAnswer;
+                    CurrentQuestion.Type = ParsedQuestionType.MultipleAnswer;
                 }
-                result.FileValidationResults.Last().Questions.Add(Question);
+                result.FileValidationResults.Last().Questions.Add(CurrentQuestion);
             }
         }
 
         private void ParseBody(string line)
         {
-            if (!string.IsNullOrEmpty(Question.Text))
+            if (!string.IsNullOrEmpty(CurrentQuestion.Text))
             {
-                Question.Text += Environment.NewLine;
+                CurrentQuestion.Text += Environment.NewLine;
             }
-            Question.Text += line;
+            CurrentQuestion.Text += line;
         }
 
         private void ParseMatchingAnswer(string line)
@@ -164,7 +163,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
             {
                 var answerMatch = Regex.Match(line, ElementPattern.Choice);
                 var id = answerMatch.Groups[2].Captures[0].Value;
-                var matching = Question.Choices.FirstOrDefault(c => c.Answer.ToUpper() == id.ToUpper());
+                var matching = CurrentQuestion.Choices.FirstOrDefault(c => c.Answer.ToUpper() == id.ToUpper());
                 if (matching != null)
                 {
                     matching.Answer = answerMatch.Groups[3].Captures[0].Value;
@@ -177,13 +176,13 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
             if (Regex.IsMatch(line, ElementPattern.MatchingChoice))
             {
                 var choiceMatch = Regex.Match(line, ElementPattern.MatchingChoice);
-                Question.Choices.Add(new ParsedQuestionChoice
+                CurrentQuestion.Choices.Add(new ParsedQuestionChoice
                 {
                     Id = choiceMatch.Groups[2].Captures[0].Value,
                     Text = choiceMatch.Groups[3].Captures[0].Value,
                     Answer = choiceMatch.Groups[1].Captures[0].Value
                 });
-                Question.Type = ParsedQuestionType.Matching;
+                CurrentQuestion.Type = ParsedQuestionType.Matching;
                 LastElement = ElementType.MatchingChoice;
 
             }
@@ -195,7 +194,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
             {
                 var feedbackChoiceMatch = Regex.Match(line, ElementPattern.Choice);
                 var id = feedbackChoiceMatch.Groups[2].Captures[0].Value;
-                var choice = Question.Choices.FirstOrDefault(c => c.Id.ToUpper() == id.ToUpper());
+                var choice = CurrentQuestion.Choices.FirstOrDefault(c => c.Id.ToUpper() == id.ToUpper());
                 if (choice != null)
                 {
                     choice.Feedback = feedbackChoiceMatch.Groups[3].Captures[0].Value;
@@ -206,36 +205,36 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
         private void ParseShortAnswerAnswer(string line)
         {
             var correctAnswers = Regex.Match(line, ElementPattern.Choice);
-            var answer = Question.Choices.FirstOrDefault();
+            var answer = CurrentQuestion.Choices.FirstOrDefault();
             if (answer == null)
             {
-                Question.Choices.Add(new ParsedQuestionChoice
+                CurrentQuestion.Choices.Add(new ParsedQuestionChoice
                 {
                     Id = correctAnswers.Groups[3].Captures[0].Value,
                     Text = correctAnswers.Groups[3].Captures[0].Value,
                     IsCorrect = true
                 });
             }
-            Question.Type = ParsedQuestionType.ShortAnswer;
+            CurrentQuestion.Type = ParsedQuestionType.ShortAnswer;
         }
 
         private void ParseEssayFeedback(string line)
         {
-            if (!string.IsNullOrEmpty(Question.Feedback))
+            if (!string.IsNullOrEmpty(CurrentQuestion.Feedback))
             {
-                Question.Feedback += Environment.NewLine;
+                CurrentQuestion.Feedback += Environment.NewLine;
             }
-            Question.Feedback += line;
-            Question.Type = ParsedQuestionType.Essay;
+            CurrentQuestion.Feedback += line;
+            CurrentQuestion.Type = ParsedQuestionType.Essay;
         }
 
         private void ParseGeneralFeedback(string line)
         {
-            if (!string.IsNullOrEmpty(Question.Feedback))
+            if (!string.IsNullOrEmpty(CurrentQuestion.Feedback))
             {
-                Question.Feedback += Environment.NewLine;
+                CurrentQuestion.Feedback += Environment.NewLine;
             }
-            Question.Feedback += line;
+            CurrentQuestion.Feedback += line;
         }
 
         private void ParseChoices(string line)
@@ -249,15 +248,15 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
                     Text = answerMatch.Groups[3].Captures[0].Value,
                     IsCorrect = answerMatch.Groups[1].Length > 0
                 };
-                Question.Choices.Add(choice);
+                CurrentQuestion.Choices.Add(choice);
             }
         }
 
         private void ParseTitle(string line)
         {
             var groups = Regex.Split(line, ElementPattern.Points);
-            Question.Title = groups[0];
-            Question.Points = double.Parse(groups[1]);
+            CurrentQuestion.Title = groups[0];
+            CurrentQuestion.Points = double.Parse(groups[1]);
         }
     }
 }

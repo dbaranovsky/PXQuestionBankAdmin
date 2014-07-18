@@ -446,37 +446,45 @@ namespace Macmillan.PXQBA.Business.Services
                 
                 using(var writer = new StringWriter(CultureInfo.InvariantCulture))
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(List<ParsedQuestion>));
+                    var serializer = new XmlSerializer(typeof(List<ParsedQuestion>));
                     serializer.Serialize(writer, result.FileValidationResults.First().Questions);
                     questionsData = writer.ToString();
                 }
-                parsedFileOperation.AddParsedFile(fileName, questionsData);
+                var fileResult = newResult.FileValidationResults.FirstOrDefault(f => f.FileName == fileName);
+                if (fileResult != null && !string.IsNullOrEmpty(questionsData))
+                {
+                    fileResult.Id = parsedFileOperation.AddParsedFile(fileName, questionsData);
+                }
+                return newResult;
 
             }
             catch (Exception ex)
             {
                 StaticLogger.LogError(
                     string.Format("QuestionManagementService.ValidateFile: {0}", fileName), ex);
-               
+                throw;
             }
-            return new ValidationResult();
         }
 
         public void ImportFile(int id, string courseId)
         {
-            //courseId = "85256";
-            courseId = "85256";
             var productCourse = productCourseManagementService.GetProductCourse(courseId, true);
-            var questionsData = parsedFileOperation.GetParsedFile(id);
+            var parsedFile = parsedFileOperation.GetParsedFile(id);
             var parsedQuestions = new List<ParsedQuestion>();
-            using (var reader = new StringReader(questionsData))
+            using (var reader = new StringReader(parsedFile.QuestionsData))
             {
                 var serializer = new XmlSerializer(typeof(List<ParsedQuestion>));
                 parsedQuestions = (List<ParsedQuestion>)serializer.Deserialize(reader);
             }
-            var questions = Mapper.Map<IEnumerable<Question>>(parsedQuestions, opt => opt.Items.Add(courseId, productCourse)).ToList();
-            questionCommands.CreateQuestions(productCourse.ProductCourseId, questions);
-            questionCommands.ExecuteSolrUpdateTask();
+            if (parsedQuestions != null && parsedQuestions.Any())
+            {
+                var questions =
+                    Mapper.Map<IEnumerable<Question>>(parsedQuestions, opt => opt.Items.Add(courseId, productCourse))
+                        .ToList();
+                questionCommands.CreateQuestions(productCourse.ProductCourseId, questions);
+                parsedFileOperation.SetParsedFileStatus(id, ParsedFileStatus.Imported);
+                questionCommands.ExecuteSolrUpdateTask();
+            }
         }
     }
 }

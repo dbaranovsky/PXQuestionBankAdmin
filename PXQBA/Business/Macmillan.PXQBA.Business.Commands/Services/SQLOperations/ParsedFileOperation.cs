@@ -25,7 +25,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
             this.databaseManager = databaseManager;
         }
 
-        public int AddParsedFile(string fileName, string questionsData)
+        public long AddParsedFile(string fileName, string questionsData)
         {
             DbCommand command = new SqlCommand();
             command.CommandType = CommandType.StoredProcedure;
@@ -36,11 +36,13 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
             command.Parameters.Add(fileNameParam);
             var questionsDataParam = new SqlParameter("@questionsData", questionsData);
             command.Parameters.Add(questionsDataParam);
+            var statusParam = new SqlParameter("@status", ParsedFileStatus.Validated);
+            command.Parameters.Add(statusParam);
 
             try
             {
                 var result = databaseManager.ExecuteScalar(command);
-                return int.Parse(result.ToString());
+                return long.Parse(result.ToString());
             }
             catch (Exception ex)
             {
@@ -49,7 +51,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
             }
         }
 
-        public int SetParsedFileStatus(int id, ParsedFileStatus status)
+        public long SetParsedFileStatus(long id, ParsedFileStatus status)
         {
             DbCommand command = new SqlCommand();
             command.CommandType = CommandType.StoredProcedure;
@@ -64,7 +66,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
             try
             {
                 var result = databaseManager.ExecuteScalar(command);
-                return int.Parse(result.ToString());
+                return long.Parse(result.ToString());
             }
             catch (Exception ex)
             {
@@ -73,7 +75,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
             }
         }
 
-        public string GetParsedFile(int id)
+        public ParsedFile GetParsedFile(long id)
         {
             DbCommand command = new SqlCommand();
             command.CommandType = CommandType.StoredProcedure;
@@ -84,26 +86,20 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
 
             var dbRecords = databaseManager.Query(command).ToList();
 
-            return "";// GetRoleCapabilitiesFromRecords(dbRecords);
+            return GetParsedFileFromRecords(dbRecords);
         }
 
-        //private Role GetRoleCapabilitiesFromRecords(IEnumerable<DatabaseRecord> dbRecords)
-        //{
-        //    var role = new Role();
-        //    var firstRecord = dbRecords.FirstOrDefault();
-        //    if (firstRecord != null)
-        //    {
-        //        role.Id = (int)firstRecord["Id"];
-        //        role.Name = firstRecord["Name"].ToString();
-        //    }
-        //    foreach (var databaseRecord in dbRecords)
-        //    {
-        //        if (!string.IsNullOrEmpty(databaseRecord["CapabilityId"].ToString()))
-        //        {
-        //            role.Capabilities.Add(EnumHelper.Parse<Capability>(databaseRecord["CapabilityId"].ToString()));
-        //        }
-        //    }
-        //    return role;
-        //}
+        private ParsedFile GetParsedFileFromRecords(IEnumerable<DatabaseRecord> dbRecords)
+        {
+            var parsedFile = new ParsedFile();
+            var firstRecord = dbRecords.FirstOrDefault();
+            if (firstRecord != null)
+            {
+                parsedFile.Id = (long)firstRecord["Id"];
+                parsedFile.FileName = firstRecord["FileName"].ToString();
+                parsedFile.QuestionsData = firstRecord["QuestionsData"].ToString();
+            }
+            return parsedFile;
+        }
     }
 }
