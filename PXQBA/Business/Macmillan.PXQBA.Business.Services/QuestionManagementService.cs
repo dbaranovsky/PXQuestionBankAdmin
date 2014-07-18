@@ -537,9 +537,10 @@ namespace Macmillan.PXQBA.Business.Services
             {
                 if (field.Type == MetadataFieldType.Keywords)
                 {
-                    field.CourseMetadataFieldValues.ToList()
-                                         .AddRange(keywordOperation.GetKeywordList(course.ProductCourseId, field.Name)
-                                         .Select(s=>new CourseMetadataFieldValue{Text = s}));
+                   var values = field.CourseMetadataFieldValues.ToList();
+                   values.AddRange(keywordOperation.GetKeywordList(course.ProductCourseId, field.Name)
+                         .Select(s=>new CourseMetadataFieldValue{Text = s}));
+                   field.CourseMetadataFieldValues = values;
                 }
             }
         }

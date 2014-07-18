@@ -17,7 +17,6 @@ using Macmillan.PXQBA.Business.Commands.Helpers;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Common.Logging;
-using Course = Macmillan.PXQBA.Business.Models.Course;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Business.Commands.Services.DLAP

@@ -56,6 +56,11 @@ namespace Macmillan.PXQBA.Business.Models
                 return false;
             }
 
+            if((field.Type== MetadataFieldType.Text)||(field.Type== MetadataFieldType.MultilineText))
+            {
+                return true;
+            }
+
             if (field.Type == MetadataFieldType.ItemLink)
             {
                 return field.CourseMetadataFieldValues.Select(v => String.Format(itemLinkPatterm, v.Id)).Any(l => l.ToUpper() == value.ToUpper());
