@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -43,16 +44,15 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult ImportFromFile(int fileId, string courseId)
         {
-            //TODO: check capabilities before importing
-            questionManagementService.ImportFile(fileId, courseId);
-            return JsonCamel(new { TitleId = courseId, QuestionCount = 5 });
+            ParsedFile file =  questionManagementService.GetValidatedFile(fileId);
+            if(IsAllowed(Path.GetExtension(file.FileName), userManagementService.GetUserCapabilities(courseId)))
+            {
+                 return JsonCamel(new { NotAllowed = true });
+            }
+            int questionCount = questionManagementService.ImportFile(fileId, courseId);
+            return JsonCamel(new { TitleId = courseId, QuestionCount = questionCount});
 
 
-            //var isAllowed = IsAllowed(fileExt.ToLower());
-            //if (!isAllowed)
-            //{
-            //    return JsonCamel(new { NotAllowed = true });
-            //}
         }
 
         [HttpPost]
@@ -88,19 +88,22 @@ namespace Macmillan.PXQBA.Web.Controllers
         }
 
 
-        private bool IsAllowed(string fileExt, string courseId)
+        private bool IsAllowed(string fileExt, IEnumerable<Capability> capabilities)
         {
-            if (string.Equals(fileExt, EnumHelper.GetEnumDescription(QuestionFileType.QTI), StringComparison.CurrentCultureIgnoreCase) && UserCapabilitiesHelper.Capabilities.Contains(Capability.ImportQuestionfromQTI))
+            if (string.Equals(fileExt, EnumHelper.GetEnumDescription(QuestionFileType.QTI), StringComparison.CurrentCultureIgnoreCase) && 
+                capabilities.Contains(Capability.ImportQuestionfromQTI))
             {
                 return true;
             }
 
-            if (string.Equals(fileExt, EnumHelper.GetEnumDescription(QuestionFileType.QML), StringComparison.CurrentCultureIgnoreCase) && UserCapabilitiesHelper.Capabilities.Contains(Capability.ImportQuestionfromQML))
+            if (string.Equals(fileExt, EnumHelper.GetEnumDescription(QuestionFileType.QML), StringComparison.CurrentCultureIgnoreCase) && 
+                capabilities.Contains(Capability.ImportQuestionfromQML))
             {
                 return true;
             }
 
-            if (string.Equals(fileExt, EnumHelper.GetEnumDescription(QuestionFileType.Respondus), StringComparison.CurrentCultureIgnoreCase) && UserCapabilitiesHelper.Capabilities.Contains(Capability.ImportQuestionfromRespondus))
+            if (string.Equals(fileExt, EnumHelper.GetEnumDescription(QuestionFileType.Respondus), StringComparison.CurrentCultureIgnoreCase) && 
+                capabilities.Contains(Capability.ImportQuestionfromRespondus))
             {
                 return true;
             }

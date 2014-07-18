@@ -428,7 +428,8 @@ namespace Macmillan.PXQBA.Business.Services
             question.ProductCourseSections.Add(new QuestionMetadataSection
             {
                 ProductCourseId = course.ProductCourseId,
-                Title = parsedQuestion.Title
+                Title = parsedQuestion.Title,
+                DynamicValues = parsedQuestion.MetadataSection
             });
             return question;
         }
