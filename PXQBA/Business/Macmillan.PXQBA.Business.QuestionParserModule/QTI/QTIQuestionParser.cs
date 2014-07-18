@@ -131,9 +131,9 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
             fileValidationResult.Questions.Add(parsedQuestion);
         }
 
-        private Dictionary<string, List<string>> GetMetadata(XElement item)
+        private SerializableDictionary<string, List<string>> GetMetadata(XElement item)
         {
-            var result = new Dictionary<string, List<string>>();
+            var result = new SerializableDictionary<string, List<string>>();
             var metadataFields = item.Descendants(XmlConsts.MetadataElementName);
             if (!metadataFields.Any())
             {
@@ -161,17 +161,19 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
         {
             var choices = new List<ParsedQuestionChoice>();
             string text;
+            string answerVarId;
             try
             {
-                var answerVarId = item.Descendants(XmlConsts.AnswerElementName).First().Attribute(XmlConsts.IdAttrName).Value;
+                 answerVarId = item.Descendants(XmlConsts.AnswerElementName).First().Attribute(XmlConsts.IdAttrName).Value;
                 text = GetResponseVarByRespId(item.Descendants(XmlConsts.RepsonseVariableName), answerVarId).Descendants(XmlConsts.VarequalElementName).First().Value;
+               
             }
             catch (Exception e)
             {
                 return choices;
             }
 
-            choices.Add(new ParsedQuestionChoice {IsCorrect = true, Text = text});
+            choices.Add(new ParsedQuestionChoice { IsCorrect = true, Text = text, Id = answerVarId });
            return choices;
         }
 
@@ -195,6 +197,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
                 choice.Text = responce.Descendants(XmlConsts.MattextName).First().Value;
                 choice.IsCorrect = IsCorrect(choiceIdXml, respConditions);
                 choice.Feedback = GetFeedback(choiceIdXml, respConditions, itemFeedBacks);
+                choice.Id = choiceIdXml == null ? choice.Text : choiceIdXml.Value;
                 choices.Add(choice);
             }
 

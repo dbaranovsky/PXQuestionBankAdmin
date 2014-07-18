@@ -45,7 +45,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult ImportFromFile(int fileId, string courseId)
         {
             ParsedFile file =  questionManagementService.GetValidatedFile(fileId);
-            if(IsAllowed(Path.GetExtension(file.FileName), userManagementService.GetUserCapabilities(courseId)))
+            if(!IsAllowed(Path.GetExtension(file.FileName), userManagementService.GetUserCapabilities(courseId)))
             {
                  return JsonCamel(new { NotAllowed = true });
             }

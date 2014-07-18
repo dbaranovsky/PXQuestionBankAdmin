@@ -68,6 +68,6 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.DataContracts
         /// <summary>
         /// Custom metadata of QTI questions
         /// </summary>
-        public Dictionary<string, List<string>> MetadataSection { get; set; }
+        public SerializableDictionary<string, List<string>> MetadataSection { get; set; }
     }
 }
