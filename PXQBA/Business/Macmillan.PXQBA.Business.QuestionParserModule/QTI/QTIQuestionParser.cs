@@ -8,15 +8,20 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
-using Macmillan.PXQBA.Business.QuestionParserModule.QML;
 using Macmillan.PXQBA.Common.Helpers;
 
 namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
 {
     public class QTIQuestionParser : QuestionParserBase
     {
-        private readonly string QuestionTypeXpath = "itemmetadata/qmd_itemtype";
+      
         private FileValidationResult fileValidationResult;
+        private const string MultiAnswerTypeName = "Multiple";
+        private const string XmlNameSpacePattern = @"(xmlns:?[^=]*=[""][^""]*[""])";
+        private const string AddAction = "Add";
+        private const string SetAction = "Set";
+        private const string ActivatedActionValue = "1";
+
         public override bool Recognize(string fileName)
         {
             return String.Equals(Path.GetExtension(fileName), EnumHelper.GetEnumDescription(QuestionFileType.QTI), StringComparison.CurrentCultureIgnoreCase);
@@ -24,41 +29,55 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
 
         public override ValidationResult Parse(string fileName, byte[] file)
         {
-            XDocument data;
+            PrepareNewResult(fileName);
+            ProccessFile(file, fileName);
+            Result.FileValidationResults.Add(fileValidationResult);
+            return Result;
+        }
 
+        private void PrepareNewResult(string fileName)
+        {
             fileValidationResult = new FileValidationResult
-                                   {
-                                       FileName = fileName,
-                                       Questions = new List<ParsedQuestion>(),
-                                       ValidationErrors = new List<string>()
-                                   };
+            {
+                FileName = fileName,
+                Questions = new List<ParsedQuestion>(),
+                ValidationErrors = new List<string>()
+            };
             Result = new ValidationResult
-                     {
-                         FileValidationResults = new List<FileValidationResult>()
-                     };
+            {
+                FileValidationResults = new List<FileValidationResult>()
+            };
+        }
 
+        private string RemoveXmlNamespace(string xml)
+        {
+            return Regex.Replace(xml, XmlNameSpacePattern, string.Empty, RegexOptions.IgnoreCase | RegexOptions.Multiline);
+        }
+
+
+        private void ProccessFile(byte[] file, string fileName)
+        {
+            XDocument data;
             var itemsXml = new List<XElement>();
             try
             {
-                data = XDocument.Parse(Regex.Replace(Encoding.UTF8.GetString(file),
-                    @"(xmlns:?[^=]*=[""][^""]*[""])", "",
-                    RegexOptions.IgnoreCase | RegexOptions.Multiline));
+                data = XDocument.Parse(RemoveXmlNamespace(Encoding.UTF8.GetString(file)));
 
-                itemsXml = data.Descendants("item").ToList();
+                itemsXml = data.Descendants(XmlConsts.ItemName).ToList();
             }
             catch (Exception e)
             {
                 Result.FileValidationResults.Add(new FileValidationResult
-                                                 {
-                                                     FileName = fileName,
-                                                     Questions = new List<ParsedQuestion>(),
-                                                     ValidationErrors = new List<string>
-                                                                        {
-                                                                            String.Format(
-                                                                                "Error during parsing QTI Format: {0}",
-                                                                                e.Message)
-                                                                        }
-                                                 });
+                {
+                    FileName = fileName,
+                    Questions = new List<ParsedQuestion>(),
+                    ValidationErrors = new List<string>
+                                       {
+                                           String.Format(
+                                               "Error during parsing QTI Format: {0}",
+                                               e.Message)
+                                       }
+                });
             }
 
             foreach (var item in itemsXml)
@@ -71,30 +90,26 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
                 {
                     fileValidationResult.ValidationErrors.Add(String.Format("Line {0}: Question parse error: {1}", GetLineNumber(item), e.Message));
                 }
-               
-            }
-            Result.FileValidationResults.Add(fileValidationResult);
-            return Result;
 
+            }
         }
 
-    
 
         private void ProcessXmlItem(XElement item)
         {
             var parsedQuestion = new ParsedQuestion();
-            parsedQuestion.Title = item.Attribute("title").Value;
-            parsedQuestion.Text = item.Element("presentation").Descendants("mattext").First().Value;
-            var itemFeedBacks = item.Descendants("itemfeedback");
-            parsedQuestion.Feedback = itemFeedBacks.All(x => x.Attribute("ident").Value == "general")
+            parsedQuestion.Title = item.Attribute(XmlConsts.TitleAttribute).Value;
+            parsedQuestion.Text = item.Element(XmlConsts.PresentationName).Descendants().First().Value;
+            var itemFeedBacks = item.Descendants(XmlConsts.FeedBackElementName);
+            parsedQuestion.Feedback = itemFeedBacks.All(x => x.Attribute(XmlConsts.IdAttrName).Value == XmlConsts.GeneralId)
                 ? string.Empty
-                : itemFeedBacks.Single(x => x.Attribute("ident").Value == "general").Value;
+                : itemFeedBacks.Single(x => x.Attribute(XmlConsts.IdAttrName).Value == XmlConsts.GeneralId).Value;
 
             parsedQuestion.MetadataSection = GetMetadata(item);
 
-            if (item.Descendants("response_lid").Any())
+            if (item.Descendants(XmlConsts.ChoiceElementName).Any())
             {
-                parsedQuestion.Type = item.Descendants("response_lid").First().Attribute("rcardinality").Value == "Multiple"
+                parsedQuestion.Type = item.Descendants(XmlConsts.ChoiceElementName).First().Attribute(XmlConsts.ChoiceTypeAttribute).Value == MultiAnswerTypeName
                     ? ParsedQuestionType.MultipleChoice
                     : ParsedQuestionType.MultipleAnswer;
 
@@ -103,7 +118,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
                 return;
             }
 
-            if (item.Element("presentation").Elements("flow").Any() && item.Descendants("response_str").Any())
+            if (item.Element(XmlConsts.PresentationName).Elements(XmlConsts.FlowName).Any() && item.Descendants(XmlConsts.AnswerElementName).Any())
             {
               
                 parsedQuestion.Choices = ProccessShortAnswer(item);
@@ -119,7 +134,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
         private Dictionary<string, List<string>> GetMetadata(XElement item)
         {
             var result = new Dictionary<string, List<string>>();
-            var metadataFields = item.Descendants("qtimetadatafield");
+            var metadataFields = item.Descendants(XmlConsts.MetadataElementName);
             if (!metadataFields.Any())
             {
                 return result;
@@ -127,8 +142,8 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
 
             foreach (var metadataField in metadataFields)
             {
-                var name = metadataField.Element("fieldlabel").Value;
-                var value = metadataField.Element("fieldentry").Value;
+                var name = metadataField.Element(XmlConsts.MetaFieldIdName).Value;
+                var value = metadataField.Element(XmlConsts.MetaFieldValueName).Value;
                 if (!result.ContainsKey(name))
                 {
                     result.Add(name, new List<string>{value});
@@ -148,41 +163,39 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
             string text;
             try
             {
-                var answerVarId = item.Descendants("response_str").First().Attribute("ident").Value;
-                text = GetResponseVar(item.Descendants("respcondition"), answerVarId).Descendants("mattext").First().Value;
-  
+                var answerVarId = item.Descendants(XmlConsts.AnswerElementName).First().Attribute(XmlConsts.IdAttrName).Value;
+                text = GetResponseVarByRespId(item.Descendants(XmlConsts.RepsonseVariableName), answerVarId).Descendants(XmlConsts.VarequalElementName).First().Value;
             }
             catch (Exception e)
             {
                 return choices;
             }
 
- 
-           var shortAnswer = new ParsedQuestionChoice();
-            shortAnswer.IsCorrect = true;
-            shortAnswer.Text = text;
-
+            choices.Add(new ParsedQuestionChoice {IsCorrect = true, Text = text});
            return choices;
         }
+
+    
 
         private List<ParsedQuestionChoice> ProccessChoiceAnswers(XElement item, IEnumerable<XElement> itemFeedBacks)
         {
             var choices = new List<ParsedQuestionChoice>();
-            var responces = item.Descendants("response_label");
+            var responces = item.Descendants(XmlConsts.ResponseLabelName);
             if (!responces.Any())
             {
                 return choices;
             }
 
-            var respConditions = item.Descendants("respcondition");
+            var respConditions = item.Descendants(XmlConsts.RepsonseVariableName);
 
             foreach (var responce in responces)
             {
                 var choice = new ParsedQuestionChoice();
-                var choiceIdXml = responce.Attribute("ident");
-                choice.Text = responce.Descendants("mattext").First().Value;
+                var choiceIdXml = responce.Attribute(XmlConsts.IdAttrName);
+                choice.Text = responce.Descendants(XmlConsts.MattextName).First().Value;
                 choice.IsCorrect = IsCorrect(choiceIdXml, respConditions);
                 choice.Feedback = GetFeedback(choiceIdXml, respConditions, itemFeedBacks);
+                choices.Add(choice);
             }
 
             
@@ -196,25 +209,25 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
                 return string.Empty;
             }
 
-            var responseVar = GetResponseVar(respConditions, choiceIdXml.Value);
+            var responseVar = GetResponseVarByChoiceId(respConditions, choiceIdXml.Value);
             if (responseVar == null)
             {
                 return string.Empty;
             }
 
-            var feedBackId = responseVar.Element("displayfeedback") == null
+            var feedBackId = responseVar.Element(XmlConsts.DisplayFeedbackElementName) == null
                 ? string.Empty
-                : responseVar.Element("displayfeedback").Attribute("linkrefid").Value;
+                : responseVar.Element(XmlConsts.DisplayFeedbackElementName).Attribute(XmlConsts.LinkRefIdAttribute).Value;
 
-            if (string.IsNullOrEmpty(feedBackId) || feedBackId == "general")
+            if (string.IsNullOrEmpty(feedBackId) || feedBackId == XmlConsts.GeneralId)
             {
                 return string.Empty;
             }
 
-            if (itemFeedBacks.Any(x => x.Attribute("ident").Value == feedBackId))
+            if (itemFeedBacks.Any(x => x.Attribute(XmlConsts.IdAttrName).Value == feedBackId))
             {
-               return itemFeedBacks.First(x => x.Attribute("ident").Value == feedBackId)
-                                   .XPathSelectElement("material/mattext")
+               return itemFeedBacks.First(x => x.Attribute(XmlConsts.IdAttrName).Value == feedBackId)
+                                   .XPathSelectElement(XmlConsts.MattextXPath)
                                    .Value;
             }
             return string.Empty;
@@ -227,21 +240,42 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
                 return false;
             }
 
-            var responseVar = GetResponseVar(respConditions, choiceIdXml.Value);
+            XElement responseVar = GetResponseVarByChoiceId(respConditions, choiceIdXml.Value);
             if (responseVar == null)
             {
                 return false;
             }
 
-            return responseVar.Elements("setvar").Any( x => x.Attribute("action") != null &&
-                                                           (x.Attribute("action").Value == "Add" || x.Attribute("action").Value == "Set") &&
-                                                            x.Value == "1");
+            return
+                responseVar.Elements(XmlConsts.SetVarElementName)
+                    .Any(x => x.Attribute(XmlConsts.ActionAttribute) != null &&
+                              (x.Attribute(XmlConsts.ActionAttribute).Value == AddAction ||
+                               x.Attribute(XmlConsts.ActionAttribute).Value == SetAction) &&
+                              x.Value == ActivatedActionValue);
         }
 
-        private XElement GetResponseVar(IEnumerable<XElement> respConditions, string id)
+        
+        
+
+        private XElement GetResponseVarByChoiceId(IEnumerable<XElement> respConditions, string id)
         {
-            return respConditions.FirstOrDefault(x => x.Element("conditionvar")!= null && x.Element("conditionvar").Elements("varequal").Any(y => y.Value == id));
+            return
+                respConditions.FirstOrDefault(
+                    x =>
+                        x.Element(XmlConsts.ConditionVarName) != null &&
+                        x.XPathSelectElements(XmlConsts.VarequalXPath).Any(y => y.Value == id));
         }
+
+        private XElement GetResponseVarByRespId(IEnumerable<XElement> respConditions, string id)
+        {
+            return
+                respConditions.FirstOrDefault(
+                    x =>
+                        x.Element(XmlConsts.ConditionVarName) != null &&
+                        x.XPathSelectElements(XmlConsts.VarequalXPath)
+                            .Any(y => y.Attribute(XmlConsts.RespIdAttribute).Value == id));
+        }
+
 
         private int GetLineNumber(XElement item)
         {

@@ -9,6 +9,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
+using Macmillan.PXQBA.Business.QuestionParserModule.QTI;
 using Macmillan.PXQBA.Common.Helpers;
 
 namespace Macmillan.PXQBA.Business.QuestionParserModule.QML
@@ -106,11 +107,11 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QML
         private ParsedQuestion ParseMultiChoiceQuestion(XElement item)
         {
             var parsedQuestion = new ParsedQuestion();
-            parsedQuestion.Title = parsedQuestion.Text = item.Attribute("title").Value;
+            parsedQuestion.Title = parsedQuestion.Text = item.Attribute(XmlConsts.TitleAttribute).Value;
 
-            var answers = item.Descendants("response_label");
-            var answersFeedBack = item.Descendants("itemfeedback");
-            var correctAnswers = item.Descendants("respcondition").Where(x => x.Elements("setvar").Any() && x.Element("setvar").Value == "1");
+            var answers = item.Descendants(XmlConsts.ResponseLabelName);
+            var answersFeedBack = item.Descendants(XmlConsts.FeedBackElementName);
+            var correctAnswers = item.Descendants(XmlConsts.RepsonseVariableName).Where(x => x.Elements(XmlConsts.SetVarElementName).Any() && x.Element(XmlConsts.SetVarElementName).Value == "1");
             parsedQuestion.Choices = answers.Select(x => ProccessAnswer(x, answersFeedBack, correctAnswers)).ToList();
 
             return parsedQuestion;
@@ -120,7 +121,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QML
         {
             var choice = new ParsedQuestionChoice();
 
-            var mattext = answer.Descendants("mattext").FirstOrDefault();
+            var mattext = answer.Descendants(XmlConsts.MattextName).FirstOrDefault();
             choice.Text = mattext == null ? string.Empty : mattext.Value;
 
             if (!answersFeedBack.Any())
@@ -128,14 +129,14 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QML
                 return choice;
             }
 
-            var feedBackItem = answersFeedBack.FirstOrDefault(x => x.Attribute("ident").Value.Contains(choice.Text));
+            var feedBackItem = answersFeedBack.FirstOrDefault(x => x.Attribute(XmlConsts.IdAttrName).Value.Contains(choice.Text));
             choice.Feedback = feedBackItem == null ? string.Empty : feedBackItem.Value;
             
             if (!correctAnswers.Any())
             {
                 return choice;
             }
-            choice.IsCorrect = correctAnswers.Select(x => x.Attribute("title").Value).Any(x=> x.Contains(choice.Text));
+            choice.IsCorrect = correctAnswers.Select(x => x.Attribute(XmlConsts.TitleAttribute).Value).Any(x=> x.Contains(choice.Text));
            
             return choice;
         }
