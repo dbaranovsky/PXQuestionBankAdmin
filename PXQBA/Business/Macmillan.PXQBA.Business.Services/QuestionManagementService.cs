@@ -466,7 +466,7 @@ namespace Macmillan.PXQBA.Business.Services
             }
         }
 
-        public void ImportFile(int id, string courseId)
+        public int ImportFile(int id, string courseId)
         {
             var productCourse = productCourseManagementService.GetProductCourse(courseId, true);
             var parsedFile = parsedFileOperation.GetParsedFile(id);
@@ -476,15 +476,21 @@ namespace Macmillan.PXQBA.Business.Services
                 var serializer = new XmlSerializer(typeof(List<ParsedQuestion>));
                 parsedQuestions = (List<ParsedQuestion>)serializer.Deserialize(reader);
             }
+
+            var questionCount = 0;
             if (parsedQuestions != null && parsedQuestions.Any())
             {
                 var questions =
                     Mapper.Map<IEnumerable<Question>>(parsedQuestions, opt => opt.Items.Add(courseId, productCourse))
                         .ToList();
+                UpdateProductCourseSections(questions, productCourseManagementService.GetProductCourse(courseId));
                 questionCommands.CreateQuestions(productCourse.ProductCourseId, questions);
                 parsedFileOperation.SetParsedFileStatus(id, ParsedFileStatus.Imported);
                 questionCommands.ExecuteSolrUpdateTask();
+                questionCount = questions.Count();
             }
+
+            return questionCount;
         }
 
         public bool ImportQuestions(Course sourceCourse, string[] questionsIds, Course targetCourse)
@@ -504,7 +510,7 @@ namespace Macmillan.PXQBA.Business.Services
                     question.ProductCourseSections.Add(section);
                 }
 
-                UpdateProductCurseSections(questions, targetCourse);
+                UpdateProductCourseSections(questions, targetCourse);
                 questionCommands.CreateQuestions(targetCourse.ProductCourseId, questions);
                 questionCommands.ExecuteSolrUpdateTask();
 
@@ -521,7 +527,12 @@ namespace Macmillan.PXQBA.Business.Services
             return false;
         }
 
-        private void UpdateProductCurseSections(IEnumerable<Question> questions, Course course)
+        public ParsedFile GetValidatedFile(int fileId)
+        {
+            return parsedFileOperation.GetParsedFile(fileId);
+        }
+
+        private void UpdateProductCourseSections(IEnumerable<Question> questions, Course course)
         {
             LoadKeyWords(course);
 

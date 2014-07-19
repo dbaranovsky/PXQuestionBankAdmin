@@ -58,7 +58,7 @@
                         return;
                     }
 
-                    window.location = '@Url.Action("ImportFromFile", "Import")' +'/'+data.result.fileId;
+                    window.location = '/Import/ImportFromFile/' + data.result.fileId;
 
                 },
                 fail: function (event, data) {

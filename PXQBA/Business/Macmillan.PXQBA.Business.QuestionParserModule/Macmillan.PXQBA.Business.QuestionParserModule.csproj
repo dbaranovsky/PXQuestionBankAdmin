@@ -46,10 +46,12 @@
     <Compile Include="DataContracts\ParsedQuestion.cs" />
     <Compile Include="DataContracts\ParsedQuestionChoice.cs" />
     <Compile Include="DataContracts\ParsedQuestionType.cs" />
+    <Compile Include="DataContracts\SerializableDictionary.cs" />
     <Compile Include="DataContracts\ValidationResult.cs" />
     <Compile Include="QML\QMLQuestionPaser.cs" />
     <Compile Include="QML\QMLTypes.cs" />
     <Compile Include="QTI\QTIQuestionParser.cs" />
+    <Compile Include="XmlConsts.cs" />
     <Compile Include="QuestionParserBase.cs" />
     <Compile Include="Respondus\ElementPattern.cs" />
     <Compile Include="Respondus\ElementType.cs" />
