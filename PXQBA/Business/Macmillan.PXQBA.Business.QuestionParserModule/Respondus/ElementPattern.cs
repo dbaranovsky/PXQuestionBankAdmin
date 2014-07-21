@@ -17,7 +17,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
         public const string CorrectAnswers = @"Correct Answer\(s\):.*";
         public const string Choice = @"^([*]?)([a-z|A-Z]*)[.|)][ ](.*)";
         public const string ChoiceId = @"^[*]?[a-z|A-Z]*[.|)][ ]";
-        public const string MatchingChoice = @"^\[([a-z|A-Z]*)\]{1}[ ](\d*)[.][ ](.*)";
+        public const string MatchingChoice = @"^\[([a-z|A-Z]*)\]{1}[ ](\d*)[.|)][ ](.*)";
         public const string MatchingChoiceId = @"^[*]?[a-z|A-Z]*[.|)][ ]";
         public const string CorrectChoice = "*";
     }

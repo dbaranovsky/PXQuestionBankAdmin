@@ -40,7 +40,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
             {
                 CurrentQuestion = new ParsedQuestion
                 {
-                    Type = ParsedQuestionType.MultipleChoice
+                    Type = ParsedQuestionType.Essay
                 };
                 var lines = questionBlock.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
                 ParseQuestionBlock(lines.Select(l => l.Trim()).Where(l => !string.IsNullOrEmpty(l)));
@@ -139,9 +139,9 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
             }
             if (isParsed)
             {
-                if (CurrentQuestion.Choices.Any() && CurrentQuestion.Choices.Count(c => c.IsCorrect) > 1)
+                if (CurrentQuestion.Choices.Any())
                 {
-                    CurrentQuestion.Type = ParsedQuestionType.MultipleAnswer;
+                    CurrentQuestion.Type = CurrentQuestion.Choices.Count(c => c.IsCorrect) > 1 ? ParsedQuestionType.MultipleAnswer : ParsedQuestionType.MultipleChoice;
                 }
                 Result.FileValidationResults.Last().Questions.Add(CurrentQuestion);
             }
