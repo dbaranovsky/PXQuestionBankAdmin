@@ -534,7 +534,7 @@ namespace Macmillan.PXQBA.Business.Services
 
         private void UpdateProductCourseSections(IEnumerable<Question> questions, Course course)
         {
-            LoadKeyWords(course);
+            UpdateCourseKeywordList(course);
 
             foreach (var question in questions)
             {
@@ -542,7 +542,7 @@ namespace Macmillan.PXQBA.Business.Services
             }
         }
 
-        private void LoadKeyWords(Course course)
+        private void UpdateCourseKeywordList(Course course)
         {
             foreach (var field in course.FieldDescriptors)
             {
