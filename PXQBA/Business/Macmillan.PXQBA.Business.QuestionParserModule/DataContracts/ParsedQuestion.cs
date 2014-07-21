@@ -60,10 +60,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.DataContracts
         /// </summary>
         public bool IsParsed { get; set; }
 
-        /// <summary>
-        /// Placeholder for parsing errors
-        /// </summary>
-        public string ValidationError { get; set; }
+      
 
         /// <summary>
         /// Custom metadata of QTI questions

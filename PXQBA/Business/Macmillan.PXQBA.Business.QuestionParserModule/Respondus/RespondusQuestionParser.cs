@@ -137,14 +137,13 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
                     StaticLogger.LogError("RespondusQuestionParser.Parse ", ex);
                 }
             }
-            if (isParsed)
+            if (CurrentQuestion.Choices.Any())
             {
-                if (CurrentQuestion.Choices.Any())
-                {
-                    CurrentQuestion.Type = CurrentQuestion.Choices.Count(c => c.IsCorrect) > 1 ? ParsedQuestionType.MultipleAnswer : ParsedQuestionType.MultipleChoice;
-                }
-                Result.FileValidationResults.Last().Questions.Add(CurrentQuestion);
+                CurrentQuestion.Type = CurrentQuestion.Choices.Count(c => c.IsCorrect) > 1 ? ParsedQuestionType.MultipleAnswer : ParsedQuestionType.MultipleChoice;
             }
+            CurrentQuestion.IsParsed = isParsed;
+
+            Result.FileValidationResults.Last().Questions.Add(CurrentQuestion);
         }
 
         private void ParseBody(string line)

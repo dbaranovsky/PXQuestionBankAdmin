@@ -57,8 +57,13 @@
                         notificationManager.showDanger("Error during validation occured. Invalid file or format.");
                         return;
                     }
+                    
+                    if (data.result.questionCount == 0) {
+                        notificationManager.showWarning("There are no questions to import");
+                        return;
+                    }
 
-                    window.location = '/Import/ImportFromFile/' + data.result.fileId;
+                    window.location = '/Import/ImportToTitle/';
 
                 },
                 fail: function (event, data) {

@@ -21,17 +21,19 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule
         public static XName MetaFieldValueName = "fieldentry";
         public static XName RepsonseVariableName = "respcondition";
         public static XName ResponseLabelName = "response_label";
-
+        public static XName SolutionName = "solution";
+        public static XName VarequalElementName = "varequal";
 
         public static XName ChoiceTypeAttribute = "rcardinality";
         public static XName ActionAttribute = "action";
         public static XName TitleAttribute = "title";
         public static XName LinkRefIdAttribute = "linkrefid";
-   
+        public static XName RespIdAttribute = "respident";
                
         public static string VarequalXPath = "conditionvar/varequal";
         public static string MattextXPath = "material/mattext";
-        public static XName VarequalElementName = "varequal";
-        public static XName RespIdAttribute = "respident";
+       
+        
+       
     }
 }

@@ -447,7 +447,7 @@ namespace Macmillan.PXQBA.Business.Services
                 using(var writer = new StringWriter(CultureInfo.InvariantCulture))
                 {
                     var serializer = new XmlSerializer(typeof(List<ParsedQuestion>));
-                    serializer.Serialize(writer, result.FileValidationResults.First().Questions);
+                    serializer.Serialize(writer, result.FileValidationResults.First().Questions.Where(x => x.IsParsed).ToList());
                     questionsData = writer.ToString();
                 }
                 var fileResult = newResult.FileValidationResults.FirstOrDefault(f => f.FileName == fileName);
@@ -455,6 +455,7 @@ namespace Macmillan.PXQBA.Business.Services
                 {
                     fileResult.Id = parsedFileOperation.AddParsedFile(fileName, questionsData);
                 }
+     
                 return newResult;
 
             }

@@ -61,7 +61,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
             var itemsXml = new List<XElement>();
             try
             {
-                data = XDocument.Parse(RemoveXmlNamespace(Encoding.UTF8.GetString(file)));
+                data = XDocument.Parse(RemoveXmlNamespace(Encoding.UTF8.GetString(file)), LoadOptions.SetLineInfo);
 
                 itemsXml = data.Descendants(XmlConsts.ItemName).ToList();
             }
@@ -89,6 +89,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
                 catch (Exception e)
                 {
                     fileValidationResult.ValidationErrors.Add(String.Format("Line {0}: Question parse error: {1}", GetLineNumber(item), e.Message));
+                    fileValidationResult.Questions.Add(new ParsedQuestion(){IsParsed = false});
                 }
 
             }
@@ -101,24 +102,25 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
             parsedQuestion.Title = item.Attribute(XmlConsts.TitleAttribute).Value;
             parsedQuestion.Text = item.Element(XmlConsts.PresentationName).Descendants().First().Value;
             var itemFeedBacks = item.Descendants(XmlConsts.FeedBackElementName);
-            parsedQuestion.Feedback = itemFeedBacks.All(x => x.Attribute(XmlConsts.IdAttrName).Value == XmlConsts.GeneralId)
+            parsedQuestion.Feedback = !itemFeedBacks.Any(x => x.Attribute(XmlConsts.IdAttrName).Value == XmlConsts.GeneralId)
                 ? string.Empty
                 : itemFeedBacks.Single(x => x.Attribute(XmlConsts.IdAttrName).Value == XmlConsts.GeneralId).Value;
 
             parsedQuestion.MetadataSection = GetMetadata(item);
-
+            parsedQuestion.IsParsed = true;
             if (item.Descendants(XmlConsts.ChoiceElementName).Any())
             {
                 parsedQuestion.Type = item.Descendants(XmlConsts.ChoiceElementName).First().Attribute(XmlConsts.ChoiceTypeAttribute).Value == MultiAnswerTypeName
-                    ? ParsedQuestionType.MultipleChoice
-                    : ParsedQuestionType.MultipleAnswer;
+                    ? ParsedQuestionType.MultipleAnswer
+                    : ParsedQuestionType.MultipleChoice;
 
                 parsedQuestion.Choices = ProccessChoiceAnswers(item, itemFeedBacks);
                 fileValidationResult.Questions.Add(parsedQuestion);
                 return;
             }
 
-            if (item.Element(XmlConsts.PresentationName).Elements(XmlConsts.FlowName).Any() && item.Descendants(XmlConsts.AnswerElementName).Any())
+            if ((item.Element(XmlConsts.PresentationName).Elements(XmlConsts.FlowName).Any() && item.Descendants(XmlConsts.AnswerElementName).Any())||
+                item.Descendants(XmlConsts.SolutionName).Any())
             {
               
                 parsedQuestion.Choices = ProccessShortAnswer(item);
@@ -128,6 +130,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
             }
 
             parsedQuestion.Type = ParsedQuestionType.Essay;
+            
             fileValidationResult.Questions.Add(parsedQuestion);
         }
 
@@ -160,21 +163,34 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
         private List<ParsedQuestionChoice> ProccessShortAnswer(XElement item)
         {
             var choices = new List<ParsedQuestionChoice>();
-            string text;
-            string answerVarId;
+            string text = null;
             try
             {
-                 answerVarId = item.Descendants(XmlConsts.AnswerElementName).First().Attribute(XmlConsts.IdAttrName).Value;
+                var answerVarId = item.Descendants(XmlConsts.AnswerElementName).First().Attribute(XmlConsts.IdAttrName).Value;
                 text = GetResponseVarByRespId(item.Descendants(XmlConsts.RepsonseVariableName), answerVarId).Descendants(XmlConsts.VarequalElementName).First().Value;
-               
             }
-            catch (Exception e)
+            catch (Exception)
+            {
+              
+            }
+
+            if (!string.IsNullOrEmpty(text))
+            {
+                choices.Add(new ParsedQuestionChoice { IsCorrect = true, Text = text, Id = text });
+                return choices;
+            }
+
+            try
+            {
+                text = item.Descendants(XmlConsts.SolutionName).First().Descendants(XmlConsts.MattextName).First().Value;
+            }
+            catch (Exception)
             {
                 return choices;
             }
 
-            choices.Add(new ParsedQuestionChoice { IsCorrect = true, Text = text, Id = answerVarId });
-           return choices;
+            choices.Add(new ParsedQuestionChoice { IsCorrect = true, Text = text, Id = text });
+            return choices;
         }
 
     

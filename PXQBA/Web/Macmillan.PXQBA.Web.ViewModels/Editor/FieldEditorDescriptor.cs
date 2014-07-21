@@ -20,7 +20,7 @@ namespace Macmillan.PXQBA.Web.ViewModels.Editor
             switch (type)
             {
                 case MetadataFieldType.ItemLink:
-                    return Editor.EditorType.MultiSelect;
+                    return Editor.EditorType.ItemLink;
                 case MetadataFieldType.Keywords:
                     return Editor.EditorType.Keywords;
                 case MetadataFieldType.MultiSelect:

@@ -25,7 +25,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QML
           
         public override ValidationResult Parse(string fileName, byte[] file)
         {
-            var data = XDocument.Parse(Encoding.UTF8.GetString(file));
+            var data = XDocument.Parse(Encoding.UTF8.GetString(file), LoadOptions.SetLineInfo);
             _fileValidationResult = new FileValidationResult()
                                    {
                                        FileName = fileName,
@@ -74,19 +74,22 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QML
 
         private void ProcessXmlItem(XElement item)
         {
-            if (IsTypeExist(item))
+            if (!IsTypeExist(item))
             {
                 _fileValidationResult.ValidationErrors.Add(String.Format("Line:{0}: Unknown question type:{1} ", GetLineNumber(item), item.XPathSelectElement(QuestionTypeXpath).Value));
+                return;
             }
             
             var questionType = (QMLType)EnumHelper.GetItemByDescription(typeof(QMLType), item.XPathSelectElement(QuestionTypeXpath).Value);
+           var question = ParseMultiChoiceQuestion(item);
             try
             {
                 switch (questionType)
                 {
                     case QMLType.MultipleChoice:
-                        var question = ParseMultiChoiceQuestion(item);
+                         question = ParseMultiChoiceQuestion(item);
                         question.Type = ParsedQuestionType.MultipleChoice;
+                        question.IsParsed = true;
                         _fileValidationResult.Questions.Add(question);
                         return;
                     default:
@@ -96,7 +99,11 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QML
             catch (Exception e)
             {
                 _fileValidationResult.ValidationErrors.Add(String.Format("Line:{0}: Error during question processing: {1}", GetLineNumber(item), e.Message));
+                question.IsParsed = false;
+         
             }
+
+          _fileValidationResult.Questions.Add(question);
         }
 
         private int GetLineNumber(XElement item)
@@ -113,7 +120,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QML
             var answersFeedBack = item.Descendants(XmlConsts.FeedBackElementName);
             var correctAnswers = item.Descendants(XmlConsts.RepsonseVariableName).Where(x => x.Elements(XmlConsts.SetVarElementName).Any() && x.Element(XmlConsts.SetVarElementName).Value == "1");
             parsedQuestion.Choices = answers.Select(x => ProccessAnswer(x, answersFeedBack, correctAnswers)).ToList();
-
+           
             return parsedQuestion;
         }
 
@@ -123,6 +130,10 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QML
 
             var mattext = answer.Descendants(XmlConsts.MattextName).FirstOrDefault();
             choice.Text = mattext == null ? string.Empty : mattext.Value;
+            choice.Id = answer.Attribute(XmlConsts.IdAttrName) == null ||
+                        string.IsNullOrEmpty(answer.Attribute(XmlConsts.IdAttrName).Value)
+                ? choice.Text
+                : answer.Attribute(XmlConsts.IdAttrName).Value;
 
             if (!answersFeedBack.Any())
             {

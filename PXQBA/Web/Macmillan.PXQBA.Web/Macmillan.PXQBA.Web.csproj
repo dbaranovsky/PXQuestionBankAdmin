@@ -525,7 +525,7 @@
     <Content Include="Web.PROD.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Import\ImportFromFile.cshtml" />
+    <Content Include="Views\Import\ImportToTitle.cshtml" />
     <Content Include="Views\Import\FormTitleStep1.cshtml" />
     <Content Include="Views\Import\FromTitleStep2.cshtml" />
     <Content Include="Views\Import\FromTitleStep3.cshtml" />

@@ -21,5 +21,8 @@ namespace Macmillan.PXQBA.Business.Models
                return ValidationErrors == null || !ValidationErrors.Any();
            }
        }
+
+       public int QuestionParsed { get; set; }
+       public int QuestionSkipped { get; set; }
     }
 }

@@ -209,7 +209,9 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
 
             Mapper.CreateMap<QuestionParserModule.DataContracts.ValidationResult, ValidationResult>();
 
-            Mapper.CreateMap<QuestionParserModule.DataContracts.FileValidationResult, FileValidationResult>();
+            Mapper.CreateMap<QuestionParserModule.DataContracts.FileValidationResult, FileValidationResult>()
+                .ForMember(dest => dest.QuestionParsed, opt => opt.MapFrom(src => src.Questions.Count(q => q.IsParsed)))
+                .ForMember(dest => dest.QuestionSkipped, opt => opt.MapFrom(src => src.Questions.Count(q => !q.IsParsed)));
 
             Mapper.CreateMap<ParsedQuestion, Question>().ConvertUsing(new ParsedQuestionToQuestionConverter(modelProfileService));
         }
