@@ -35,6 +35,11 @@ namespace Macmillan.PXQBA.Business.Models
 
         public static bool IsFieldExist(this Course course, string fieldName)
         {
+            if (String.IsNullOrEmpty(fieldName))
+            {
+                return false;
+            }
+
             if (course.FieldDescriptors == null)
             {
                 return false;
@@ -45,6 +50,11 @@ namespace Macmillan.PXQBA.Business.Models
 
         public static bool IsValueExist(this Course course, string fieldName, string value, string itemLinkPatterm="{0}")
         {
+            if (String.IsNullOrEmpty(value))
+            {
+                return false;
+            }
+
             if (course.FieldDescriptors == null)
             {
                 return false;
