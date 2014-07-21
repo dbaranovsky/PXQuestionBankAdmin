@@ -65,7 +65,8 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult SaveMetadataConfig(MetadataConfigViewModel metadataConfig)
         {
-            var course = Mapper.Map<Course>(metadataConfig);
+            var course = Mapper.Map(metadataConfig, 
+                                   productCourseManagementService.GetProductCourse(metadataConfig.CourseId, true));
             UpdateCurrentCourse(course.ProductCourseId);
             if (!IsAuthorizedToSave(course))
             {
