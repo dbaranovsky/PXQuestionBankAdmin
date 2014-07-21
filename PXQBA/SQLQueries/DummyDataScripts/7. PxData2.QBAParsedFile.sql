@@ -43,7 +43,8 @@ BEGIN
     *
   FROM
     QBAParsedFile
-  
+    WHERE
+    Id = @id
 END
 GO
 
