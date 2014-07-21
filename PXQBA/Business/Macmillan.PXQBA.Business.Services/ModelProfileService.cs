@@ -264,6 +264,12 @@ namespace Macmillan.PXQBA.Business.Services
             var fieldDescriptors = new List<CourseMetadataFieldDescriptor>();
             fieldDescriptors.Add(GetFieldDescriptorWithSplitedValues(metadataConfigViewModel.Banks, MetadataFieldNames.Bank));
             fieldDescriptors.Add(GetFieldDescriptorWithSplitedValues(metadataConfigViewModel.Chapters, MetadataFieldNames.Chapter));
+
+            if (metadataConfigViewModel.Fields == null)
+            {
+                return fieldDescriptors;
+            }
+
             foreach (var field in metadataConfigViewModel.Fields)
             {
                 if (fieldDescriptors.All(d => d.Name != field.InternalName))
