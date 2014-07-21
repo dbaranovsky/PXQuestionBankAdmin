@@ -8,6 +8,7 @@
         Number = 3,
         MultilineText = 4,
         None = 5,
-        Keywords = 6
+        Keywords = 6,
+        ItemLink = 7
     }
 }

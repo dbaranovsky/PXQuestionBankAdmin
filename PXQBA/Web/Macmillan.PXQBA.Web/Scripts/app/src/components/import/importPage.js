@@ -32,6 +32,12 @@ var ImportPage = React.createClass({
       
     },
 
+    captionRender: function(){
+      var message = window.importParameters.questionToImport == "1"? "1 question is" : window.importParameters.questionToImport+ " questions are";
+      message+= " parsed and ready to import. Select title to import to:";
+      return message;
+    },
+
 
     render: function() {
 
@@ -60,7 +66,7 @@ var ImportPage = React.createClass({
 
                      <TitleListSelector data={this.state.response.titles} 
                                         selectTitleHandler={this.selectTitleHandler} 
-                                        caption="Select title to import to:"
+                                        caption={this.captionRender()}
                                         />
                      {this.state.loading? <Loader /> : ""}
         

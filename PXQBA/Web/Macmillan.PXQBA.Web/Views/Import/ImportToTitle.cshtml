@@ -1,0 +1,75 @@
+﻿@model Macmillan.PXQBA.Web.ViewModels.Import.ImportFromFileViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<div id="notifications-container" class='notifications top-center center notifications-displair'>
+  
+</div>
+<div id="title-container">@if (Model.IsNothingToImport)
+{
+    <div>There is nothing to import</div>
+} 
+ </div>
+
+@section scripts
+{
+    @*
+        extract this in view
+    *@
+
+    <script>
+        window.importParameters = {
+            currentFileId: '@Model.FileId',
+            questionToImport: '@Model.QuestionToImport',
+            questionSkipped: '@Model.QuestionSkipped'
+        };
+    </script>
+    
+    <script src="../../Scripts/app/components/import/importCompleteBox.js"></script>
+    <script src="../../Scripts/app/components/import/importPage.js"></script>
+    <script src="../../Scripts/app/components/import/titleSelector.js"></script>
+    <script src="../../Scripts/app/components/import/titleListSelector.js"></script>
+    <script src="../../Scripts/app/dataAccess/titleDataManager.js"></script>  
+    <script src="../../Scripts/app/dataAccess/importDataManager.js"></script>  
+    <script src="../../Scripts/app/async/notificationManager.js"></script>
+    <script src="../../Scripts/app/async/asyncManager.js"></script>
+    <script src="../../Scripts/app/components/common/loader.js"></script>
+
+
+
+
+    <script>
+    notificationManager.htmlContainer = $('#notifications-container')[0];
+    var titleContainer = $('#title-container')[0];
+    var isNothtingToImport = '@Model.IsNothingToImport'.toLowerCase() === 'true';
+    var questionSkippedMessage = window.importParameters.questionSkipped == "1" ? "1 question" : window.importParameters.questionSkipped + " questions";
+    questionSkippedMessage += " skipped. Errors: <br/>";
+    if ('@Model.ParsingErrorMessage' != '') {
+        notificationManager.showWarningHtml(questionSkippedMessage+'@Html.Raw(Model.ParsingErrorMessage)', false);
+    }
+        if (!isNothtingToImport) {
+
+            asyncManager.startWait(titleContainer);
+            var titleData = titleDataManager.getTitles();
+
+            titleData.done(function (response) {
+                asyncManager.page = React.renderComponent(
+                    ImportPage({
+                        response: response
+                    }, " "),
+                    titleContainer);
+            })
+                .fail(function (error) {
+                    console.error("titleDataManager.getTitles:", error);
+                })
+                .always(function () {
+                    asyncManager.stopWait();
+                });
+        }
+   
+</script>
+
+
+
+}

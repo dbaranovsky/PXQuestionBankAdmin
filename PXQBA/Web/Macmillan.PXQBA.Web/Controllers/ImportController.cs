@@ -12,6 +12,7 @@ using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Web.Helpers;
 using Macmillan.PXQBA.Web.ViewModels.Import;
 using Macmillan.PXQBA.Web.ViewModels.Pages;
+using ValidationResult = Macmillan.PXQBA.Business.Models.ValidationResult;
 
 namespace Macmillan.PXQBA.Web.Controllers
 {
@@ -30,18 +31,29 @@ namespace Macmillan.PXQBA.Web.Controllers
         }
 
 
-        [HttpGet]
-        public ActionResult ImportFromFile(int id)
+
+        public ActionResult ImportToTitle()
         {
+            var validationResult = (ValidationResult) TempData["ValidationResult"];
+            if (validationResult == null)
+            {
+                return View(new ImportFromFileViewModel
+                            {
+                               IsNothingToImport = true
+                            });
+            }
             var model = new ImportFromFileViewModel
                         {
-                              FileId = id,
-                              IsImported = false
+                              FileId = validationResult.FileValidationResults.First().Id,
+                              IsImported = false,
+                              QuestionToImport = validationResult.FileValidationResults.First().QuestionParsed,
+                              QuestionSkipped = validationResult.FileValidationResults.First().QuestionSkipped,
+                              ParsingErrorMessage = string.Join("<br/>",validationResult.FileValidationResults.First().ValidationErrors)
                         };
             return View(model);
         }
 
-        [HttpPost]
+
         public ActionResult ImportFromFile(int fileId, string courseId)
         {
             ParsedFile file =  questionManagementService.GetValidatedFile(fileId);
@@ -78,13 +90,9 @@ namespace Macmillan.PXQBA.Web.Controllers
             }
             
             var result = questionManagementService.ValidateFile(file.FileName, binData);
-
-            if (!result.IsValidated)
-            {
-                return JsonCamel(new { isValidated = false});
-            }
-
-            return JsonCamel(new {isValidated = true, fileId = result.FileValidationResults.First().Id});
+            TempData["ValidationResult"] = result;
+            return JsonCamel(new {isValidated = true, fileId = result.FileValidationResults.First().Id, questionCount = result.FileValidationResults.First().QuestionParsed});
+            
         }
 
 

@@ -61,7 +61,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
             var itemsXml = new List<XElement>();
             try
             {
-                data = XDocument.Parse(RemoveXmlNamespace(Encoding.UTF8.GetString(file)));
+                data = XDocument.Parse(RemoveXmlNamespace(Encoding.UTF8.GetString(file)), LoadOptions.SetLineInfo);
 
                 itemsXml = data.Descendants(XmlConsts.ItemName).ToList();
             }
@@ -89,6 +89,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
                 catch (Exception e)
                 {
                     fileValidationResult.ValidationErrors.Add(String.Format("Line {0}: Question parse error: {1}", GetLineNumber(item), e.Message));
+                    fileValidationResult.Questions.Add(new ParsedQuestion(){IsParsed = false});
                 }
 
             }
@@ -106,12 +107,12 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
                 : itemFeedBacks.Single(x => x.Attribute(XmlConsts.IdAttrName).Value == XmlConsts.GeneralId).Value;
 
             parsedQuestion.MetadataSection = GetMetadata(item);
-
+            parsedQuestion.IsParsed = true;
             if (item.Descendants(XmlConsts.ChoiceElementName).Any())
             {
                 parsedQuestion.Type = item.Descendants(XmlConsts.ChoiceElementName).First().Attribute(XmlConsts.ChoiceTypeAttribute).Value == MultiAnswerTypeName
-                    ? ParsedQuestionType.MultipleChoice
-                    : ParsedQuestionType.MultipleAnswer;
+                    ? ParsedQuestionType.MultipleAnswer
+                    : ParsedQuestionType.MultipleChoice;
 
                 parsedQuestion.Choices = ProccessChoiceAnswers(item, itemFeedBacks);
                 fileValidationResult.Questions.Add(parsedQuestion);
@@ -128,6 +129,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
             }
 
             parsedQuestion.Type = ParsedQuestionType.Essay;
+            
             fileValidationResult.Questions.Add(parsedQuestion);
         }
 
@@ -164,7 +166,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
             string answerVarId;
             try
             {
-                 answerVarId = item.Descendants(XmlConsts.AnswerElementName).First().Attribute(XmlConsts.IdAttrName).Value;
+                answerVarId = item.Descendants(XmlConsts.AnswerElementName).First().Attribute(XmlConsts.IdAttrName).Value;
                 text = GetResponseVarByRespId(item.Descendants(XmlConsts.RepsonseVariableName), answerVarId).Descendants(XmlConsts.VarequalElementName).First().Value;
                
             }
@@ -173,7 +175,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
                 return choices;
             }
 
-            choices.Add(new ParsedQuestionChoice { IsCorrect = true, Text = text, Id = answerVarId });
+            choices.Add(new ParsedQuestionChoice { IsCorrect = true, Text = text, Id = text});
            return choices;
         }
 

@@ -86,6 +86,19 @@ var MetadataFieldEditor = React.createClass({
         return (<option value={value}>{label}</option>);
     },
 
+    updateItemLinks: function(metadataField){
+
+        var newChoices = [];
+
+        $.each(metadataField.editorDescriptor.availableChoice, function(i, value){
+                var newValue = value;
+                value.value = window.consts.itemLinkPattern.replace("{0}", value.value);
+                newChoices.push(newValue);
+        });
+          metadataField.editorDescriptor.availableChoice = newChoices;
+        return metadataField;
+    },
+
      renderBody: function(){
 
        var field = this.props.field;
@@ -116,6 +129,11 @@ var MetadataFieldEditor = React.createClass({
           case window.enums.editorType.multiText:  
               return ( <textarea onChange={this.editHandler} disabled={this.props.isDisabled}  ref="editor" className={this.props.isDisabled? "disabled" : ""}  rows="10" type="text" placeholder="Enter text..." value={currentValue} />);  
               break;
+          case window.enums.editorType.itemLink:
+                var newMetaField = this.updateItemLinks(metadataField);
+
+               return (<MultiSelectEditor values={currentValue} isDisabled={this.props.isDisabled} canAddValues={false} metadataField={newMetaField} question={this.props.question} field={this.props.field} editHandler={this.props.editHandler} />);
+
           default: 
           currentValue = currentValue || "";
             if(metadataField!= null && metadataField.isMultiline){
