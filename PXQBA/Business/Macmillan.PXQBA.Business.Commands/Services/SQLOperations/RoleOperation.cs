@@ -48,15 +48,20 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
             return GetRolesFromRecords(dbRecords);
         }
 
-        public IEnumerable<QBAUser> GetQBAUsers(int startingRecordNumber, int recordsCount)
+        public PagedCollection<QBAUser> GetQBAUsers(int startingRecordNumber, int recordsCount)
         {
             DbCommand command = new SqlCommand();
             command.CommandType = CommandType.StoredProcedure;
             command.CommandText = "dbo.GetQBAUsers";
 
             var dbRecords = databaseManager.Query(command);
-
-            return FillUserNames(GetUsersFromRecords(dbRecords.Skip(startingRecordNumber).Take(recordsCount)));
+            var itemList = dbRecords.ToList();
+            var collection = FillUserNames(GetUsersFromRecords(itemList.Skip(startingRecordNumber).Take(recordsCount)));
+            return new PagedCollection<QBAUser>()
+                   {
+                       CollectionPage = collection,
+                       TotalItems = itemList.Count
+                   };
         }
 
         private IEnumerable<QBAUser> FillUserNames(IEnumerable<QBAUser> qbaUsers)

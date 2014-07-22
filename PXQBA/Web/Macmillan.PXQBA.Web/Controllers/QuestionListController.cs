@@ -72,9 +72,8 @@ namespace Macmillan.PXQBA.Web.Controllers
                                                                           (request.PageNumber - 1) * questionPerPage,
                                                                           questionPerPage);
 
-            
-            var totalPages = (questionList.TotalItems + questionPerPage - (questionList.TotalItems % questionPerPage)) /
-                             questionPerPage;
+
+            var totalPages = GridHelper.GetTotalPages(questionList.TotalItems, questionPerPage);
 
             var response = new QuestionListDataResponse
                         {

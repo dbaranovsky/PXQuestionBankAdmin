@@ -16,5 +16,10 @@ namespace Macmillan.PXQBA.Web.Helpers
                          .Append(MetadataFieldNames.QuestionStatus);
             return stringBuilder.ToString();
         }
+
+        public static int GetTotalPages(int totalItems, int itemPerPage)
+        {
+            return (totalItems + itemPerPage - 1) / itemPerPage;
+        }
     }
 }

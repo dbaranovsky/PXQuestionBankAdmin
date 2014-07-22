@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using AutoMapper;
+using Macmillan.PXQBA.Business.Contracts;
+using Macmillan.PXQBA.Common.Helpers;
+using Macmillan.PXQBA.Web.Helpers;
+using Macmillan.PXQBA.Web.ViewModels.CompareTitles;
 using System.Linq;
 using System.Web.Mvc;
-using AutoMapper;
-using Macmillan.PXQBA.Business.Commands.Contracts;
-using Macmillan.PXQBA.Business.Contracts;
-using Macmillan.PXQBA.Business.Models;
-using Macmillan.PXQBA.Common.Helpers;
-using Macmillan.PXQBA.Web.ViewModels.CompareTitles;
 
 namespace Macmillan.PXQBA.Web.Controllers
 {
@@ -39,10 +37,6 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
             var response = new CompareTitlesResponse();
 
-            //for debug:
-            //request.FirstCourse = "70295";
-            //request.SecondCourse = "85256";
-
             response.Page = request.Page;
 
             if (request.FirstCourse == request.SecondCourse)
@@ -67,8 +61,7 @@ namespace Macmillan.PXQBA.Web.Controllers
                                                                               request.SecondCourse,
                                                                               (request.Page - 1) * questionPerPage,
                                                                               questionPerPage);
-
-            response.TotalPages = (qeustions.TotalItems + questionPerPage - (qeustions.TotalItems % questionPerPage)) / questionPerPage; 
+            response.TotalPages = GridHelper.GetTotalPages(qeustions.TotalItems, questionPerPage);
             response.Questions = qeustions.CollectionPage.Select(Mapper.Map<ComparedQuestionViewModel>).ToList();
             response.FirstCourseQuestionCardLayout = questionMetadataService.GetQuestionCardLayout(firstCourse);
             response.SecondCourseQuestionCardLayout = questionMetadataService.GetQuestionCardLayout(secondCourse);
