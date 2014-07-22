@@ -18,6 +18,7 @@
         <footer>
             @{string version = typeof(BundleConfig).Assembly.GetName().Version.ToString();}
             <p>&copy; @DateTime.Now.Year - Macmillan. Version @version</p>
+            <span class="icon-eye"> </span><span> .</span>
         </footer>
     </div>
     @Html.Partial("_CommonJS")

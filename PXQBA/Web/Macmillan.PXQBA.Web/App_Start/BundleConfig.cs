@@ -50,6 +50,8 @@ namespace Macmillan.PXQBA.Web
                       "~/Content/site.css",
                       "~/Content/paging.css",
                       "~/Content/chosen.css",
+                      "~/Content/mars-icons.css",
+                      "~/Content/application-fonts.css",
                       "~/Content/jquery.switchButton.css",
                       "~/Content/jquery.fileupload-ui.css"));
 
