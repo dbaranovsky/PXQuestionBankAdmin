@@ -176,10 +176,7 @@ input[type="checkbox"].input-validation-error {
 .note-form > .modal-footer {
     padding-right: 0;
  
-
 }
-
-
 
 .note {
     margin-bottom: 7px;
@@ -737,6 +734,10 @@ input.disabled, textarea.disabled {
      margin-top: -40px;
 
 }
+
+#qHeader_quizeditorcomponent{ 
+    display: none; 
+} 
 
 
 .questionFilterItemBase {
