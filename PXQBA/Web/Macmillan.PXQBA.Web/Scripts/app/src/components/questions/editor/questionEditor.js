@@ -32,7 +32,7 @@ var QuestionEditor = React.createClass({
     },
 
    showSaveAndPublish: function(){
-        this.setState({showNotification: true, typeId: window.enums.notificationTypes.saveAndPublishDraft});
+   //     this.setState({showNotification: true, typeId: window.enums.notificationTypes.saveAndPublishDraft});
     },
 
     saveQuestion: function(){
@@ -40,6 +40,9 @@ var QuestionEditor = React.createClass({
         this.setState({saving: false});
         return;
       }
+
+     this.resetChangesMonitor();
+
 
       if(this.state.saveAndPublishMode) {
           this.showSaveAndPublish();
@@ -62,6 +65,11 @@ var QuestionEditor = React.createClass({
       }
 
       return isValid;
+    },
+
+    resetChangesMonitor: function(){
+       monitorChanges(".local", true);
+       monitorChanges(".local", false);
     },
 
     saveAndPublish: function(){
@@ -103,7 +111,7 @@ var QuestionEditor = React.createClass({
 
 
      showSaveWarning: function(frameApi, saveAndPublish){
-        this.setState({saveAndPublishMode: saveAndPublish, saving: true});
+        this.setState({saveAndPublishMode: saveAndPublish, saving: true, showNotification: saveAndPublish, typeId: window.enums.notificationTypes.saveAndPublishDraft});
         this.saveBHEditor(frameApi);
     
      },
@@ -139,7 +147,7 @@ var QuestionEditor = React.createClass({
 
          if(this.state.saveAndPublishMode) {
              $('.modal-backdrop').first().remove(); 
-             this.setState({showNotification: false});
+             this.setState({showNotification: false, saving: false});
          } else{
              this.closeDialog();
          }
