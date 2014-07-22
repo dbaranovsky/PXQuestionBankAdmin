@@ -86,7 +86,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
       }
     },
 
-    saveBHEditor: function(frameApi){
+    saveBHEditor: function(frameApi, saveAndPublish){
       var self = this;
         if (frameApi !== undefined && frameApi.saveComponent !== undefined && (!this.props.question.isShared || this.props.question.canEditSharedQuestionContent)){
              frameApi.saveComponent('questioneditor', 'quizeditorcomponent', function(result){
@@ -96,7 +96,10 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
                       }
               });
        } else{
-         this.saveQuestion();
+          if(!saveAndPublish || saveAndPublish === undefined){
+            this.saveQuestion();
+          } 
+            return;
        }
        
     },
@@ -112,7 +115,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
 
      showSaveWarning: function(frameApi, saveAndPublish){
         this.setState({saveAndPublishMode: saveAndPublish, saving: true, showNotification: saveAndPublish, typeId: window.enums.notificationTypes.saveAndPublishDraft});
-        this.saveBHEditor(frameApi);
+        this.saveBHEditor(frameApi, saveAndPublish);
     
      },
 

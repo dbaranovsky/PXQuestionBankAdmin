@@ -222,6 +222,7 @@ var questionDataManager = (function() {
    
     self.saveAndPublishDraftQuestion = function (question) {
         
+        asyncManager.startWait();
         var request = {
             questionJsonString: JSON.stringify(question),
         };
@@ -231,10 +232,14 @@ var questionDataManager = (function() {
             type: 'POST'
         }).done(function (response) {
             console.log('Save and publish question complete');
+            asyncManager.stopWait();
+            self.showSuccessPopup("Question was successfully saved and published");
             self.resetState();
+
             console.log('Refresh complite');
         }).error(function (e) {
             self.showErrorPopup();
+            asyncManager.stopWait();
         });
     };
 
