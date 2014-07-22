@@ -276,7 +276,10 @@ var MetadataFieldEditor = React.createClass({
            availableChoices = $.grep(availableChoices, function(e){ return e.text != self.props.excludeValue});
         }
      
-      question[this.props.field] = availableChoices[0].value;
+     if(availableChoices[0] != undefined){
+       question[this.props.field] = availableChoices[0].value;
+     }
+     
       
       this.props.editHandler(question);
     },
