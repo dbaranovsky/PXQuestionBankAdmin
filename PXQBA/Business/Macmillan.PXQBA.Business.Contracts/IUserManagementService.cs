@@ -12,7 +12,7 @@ namespace Macmillan.PXQBA.Business.Contracts
 
         Role GetRole(string courseId, int? roleId);
         void UpdateRole(string courseId, Role role);
-        IEnumerable<QBAUser> GetUsers(int startingRecordNumber, int recordsCount);
+        PagedCollection<QBAUser> GetUsers(int startingRecordNumber, int recordsCount);
         QBAUser GetUser(string userId);
         void UpdateUserRoles(QBAUser user);
 

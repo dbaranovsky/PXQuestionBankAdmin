@@ -7,7 +7,7 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
     {
         IEnumerable<Role> GetRolesForCourse(string courseId);
 
-        IEnumerable<QBAUser> GetQBAUsers(int startingRecordNumber, int recordsCount);
+        PagedCollection<QBAUser> GetQBAUsers(int startingRecordNumber, int recordsCount);
 
         void UpdateRolesCapabilities(string courseId, IEnumerable<Role> role);
         void DeleteRole(int roleId);

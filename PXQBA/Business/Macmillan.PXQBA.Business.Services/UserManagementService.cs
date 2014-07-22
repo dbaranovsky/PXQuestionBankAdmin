@@ -80,7 +80,7 @@ namespace Macmillan.PXQBA.Business.Services
             }
         }
 
-        public IEnumerable<QBAUser> GetUsers(int startingRecordNumber, int recordsCount)
+        public PagedCollection<QBAUser> GetUsers(int startingRecordNumber, int recordsCount)
         {
             return roleOperation.GetQBAUsers(startingRecordNumber, recordsCount);
         }

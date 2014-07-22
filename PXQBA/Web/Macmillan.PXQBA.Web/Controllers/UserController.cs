@@ -145,11 +145,10 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult GetUsers(int page)
         {
             var users = userManagementService.GetUsers((page - 1) * usersPerPage, usersPerPage);
-
-            var totalPages = (users.Count() + usersPerPage - (users.Count() % usersPerPage)) / usersPerPage;
+            var totalPages = GridHelper.GetTotalPages(users.TotalItems, usersPerPage);
             return JsonCamel(new
                              {
-                               Users = users,
+                               Users = users.CollectionPage,
                                TotalPages = totalPages,
                                CurrentPage = page,
                              });
