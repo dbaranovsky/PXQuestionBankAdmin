@@ -19,6 +19,10 @@
 }
 */
  
+.mars-font {
+  font-family: "mars";
+}
+
  [class^="icon-"]:before, [class*=" icon-"]:before {
   font-family: "mars";
   font-style: normal;

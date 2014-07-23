@@ -211,7 +211,7 @@ var QuestionList = React.createClass({
           questionsForRender.push(this.renderQuestion(currentQuestion, isDraftCurrentQuestion, isGrouped))
           
           if(isSeparatorNeed) {
-            questionsForRender.push(<QuestionListGroupSeparator colSpan={this.getAllColumnCount()} />);
+            // questionsForRender.push(<QuestionListGroupSeparator colSpan={this.getAllColumnCount()} />);
           }
        }
 

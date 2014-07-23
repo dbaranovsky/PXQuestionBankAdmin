@@ -47,7 +47,7 @@ var QuestionFilterItemsAppender = React.createClass({displayName: 'QuestionFilte
             React.DOM.div(null, 
               React.DOM.div( {className:"dropdown"}, 
                     React.DOM.div( {className:"add-column-container", 'data-toggle':"tooltip", title:"Add filter"}, 
-                        React.DOM.span( {'data-toggle':"dropdown", className:"dropdown-toggle add-column-button"},   "  ",  React.DOM.span( {className:"glyphicon glyphicon-plus"}), " " ),
+                        React.DOM.span( {'data-toggle':"dropdown", className:"dropdown-toggle add-column-button"},   "  ",  React.DOM.span( {className:"icon-plus"}), " " ),
                         QuestionMetadataList( {onClickEventHandler:this.questionMetadataListOnClickEventHandler, 
                         					  fields:this.getSelectableFields(), 
                         					  noValueLabel:"All filters already added."})

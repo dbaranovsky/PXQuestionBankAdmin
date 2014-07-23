@@ -225,11 +225,11 @@ var QuestionListMenu = React.createClass({
                     {this.renderDraftButton()}
                <div className="dropdown">
                   <button id="edit-question" type="button" className="btn btn-default btn-sm" onClick={this.editQuestionHandler} disabled={isDisabled}  data-target="#" data-toggle="dropdown" title="Edit Question">
-                         <span className="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Edit Question"></span>
+                         <span className="icon-pencil-1" data-toggle="tooltip" title="Edit Question"></span>
                   </button>
                     {this.renderEditMenu()}
                 </div>
-               <button type="button" className="btn btn-default btn-sm" disabled={!this.props.capabilities.canDuplicateQuestion} onClick={this.copyQuestionHandler}  data-toggle="tooltip" title="Duplicate Question"><span className="glyphicon glyphicon-copyright-mark"></span></button>
+               <button type="button" className="btn btn-default btn-sm" disabled={!this.props.capabilities.canDuplicateQuestion} onClick={this.copyQuestionHandler}  data-toggle="tooltip" title="Duplicate Question"><span className="icon-docs"></span></button>
                <button type="button" className="btn btn-default btn-sm" onClick={this.editNotesHandler} data-toggle="tooltip" title="Edit Notes"><span className="glyphicon glyphicon-list-alt"></span> </button> 
                <button type="button" className="btn btn-default btn-sm custom-btn" disabled={!this.props.capabilities.canViewHistory} onClick={this.props.editQuestionHandler.bind(this, true, false)} data-toggle="tooltip" title="View Question History"><span className="glyphicon icon-version-history" ></span></button> 
                </div>);
@@ -251,23 +251,28 @@ var QuestionListMenu = React.createClass({
         if (this.props.showAll){
           return(<div className="menu-container-flag">
                      <button type="button" className="btn btn-default btn-sm" disabled={(!this.state.isFlagged && !this.props.capabilities.canFlagQuestion) || (this.state.isFlagged && !this.props.capabilities.canUnflagQuestion)} onClick={this.toggleFlag} data-toggle="tooltip" title={this.state.isFlagged? "Unflag question" : "Flag question"}>
-                     <span className={this.state.isFlagged? "glyphicon glyphicon-flag flagged" : "glyphicon glyphicon-flag"}></span>
+                     <span className={this.state.isFlagged? "icon-embassy flagged" : "icon-embassy not-flagged"}></span>
                      </button> 
-
-                     {this.props.data.notes != "" ? <span className="glyphicon glyphicon-list-alt notes" rel="notes"  data-toggle="popover" data-title="Notes"  data-content={this.props.data.notes} ></span> : <div className="glyphicon-placeholder"></div>}
+                     <span className="list-menu-icon-container">
+                       {this.props.data.notes != "" ? <span className="glyphicon glyphicon-list-alt notes" rel="notes"  data-toggle="popover" data-title="Notes"  data-content={this.props.data.notes} ></span> : <span></span>}
+                     </span>
                   </div>);
       }
 
       var notesClassName = "glyphicon glyphicon-list-alt notes";
-      if (this.state.isFlagged){
-        notesClassName += " flagged";
-      }
+    //  if (this.state.isFlagged){
+    //    notesClassName += " flagged";
+    //  }
 
       return (<div className="menu-container-flag">
-                <div className="notification-icons-container">
-                    {this.state.isFlagged ? <span className="glyphicon glyphicon-flag flagged"></span> : <div className="glyphicon-placeholder"></div>}
-                    {this.props.data.notes != "" ? <span className={notesClassName}></span> : <div className="glyphicon-placeholder"></div>}
-                </div>
+                
+                  <span className="list-menu-icon-container">
+                    {this.state.isFlagged ? <span className="icon-embassy flagged flagged-container"></span> : <span></span>}
+                  </span>
+                  <span className="list-menu-icon-container">
+                    {this.props.data.notes != "" ? <span className="glyphicon glyphicon-list-alt notes"></span> : <span></span>}
+                  </span>
+            
               </div>);
     },
 

@@ -282,7 +282,10 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
             React.DOM.div( {className:"QuestionListPage"}, 
              this.renderLoader(),
                 React.DOM.div(null, 
-                  React.DOM.a( {href:window.actions.questionTitle.titleListUrl},   "  << Back to the titles list " )
+                  React.DOM.a( {href:window.actions.questionTitle.titleListUrl}, 
+                     React.DOM.span( {className:"mars-font"}, " " ),
+                     React.DOM.span(null,  " Back to the titles list")
+                  )
                 ),
                 React.DOM.div( {className:"add-question-action"}, 
                      this.renderAddQuestionButton()
