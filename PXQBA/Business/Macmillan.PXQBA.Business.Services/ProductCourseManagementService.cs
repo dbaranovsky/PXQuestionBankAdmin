@@ -49,9 +49,37 @@ namespace Macmillan.PXQBA.Business.Services
 
         public void CreateNewDraftCourse(string title)
         {
-           var newCourse =  productCourseOperation.CreateDraftCourse(title);
-           roleOperation.UpdateRolesCapabilities(newCourse.ProductCourseId, PredefinedRoleHelper.GetPredefinedRoles());
-           roleOperation.GrantPredefinedRoleToCurrentUser(PredefinedRole.SuperAdministrator, newCourse.ProductCourseId);
+            var newCourse = productCourseOperation.CreateDraftCourse(title);
+            roleOperation.UpdateRolesCapabilities(newCourse.ProductCourseId, PredefinedRoleHelper.GetPredefinedRoles());
+            roleOperation.GrantPredefinedRoleToCurrentUser(PredefinedRole.SuperAdministrator, newCourse.ProductCourseId);
+            newCourse.FieldDescriptors = new List<CourseMetadataFieldDescriptor>()
+                                         {
+                                             GetFieldDescriptor(MetadataFieldNames.Bank),
+                                             GetFieldDescriptor(MetadataFieldNames.Chapter)
+                                         };
+            productCourseOperation.UpdateCourse(newCourse);
+        }
+
+        private CourseMetadataFieldDescriptor GetFieldDescriptor(string internalName)
+        {
+            return new CourseMetadataFieldDescriptor
+            {
+                Type = MetadataFieldType.SingleSelect,
+                FriendlyName = internalName[0].ToString().ToUpper() + internalName.Substring(1),
+                Name = internalName,
+                Filterable = true,
+                DisplayInBanks = true,
+                ShowFilterInBanks = true,
+                MatchInBanks = true,
+                DisplayInCurrentQuiz = true,
+                DisplayInInstructorQuiz = true,
+                DisplayInResources = true,
+                ShowFilterInResources = true,
+                MatchInResources = true,
+                CourseMetadataFieldValues = null
+            };
         }
     }
-}
+
+       
+    }
