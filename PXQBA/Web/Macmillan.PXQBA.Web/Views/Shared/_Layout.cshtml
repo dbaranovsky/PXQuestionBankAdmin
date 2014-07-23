@@ -69,6 +69,8 @@
                 fail: function (event, data) {
                     notificationManager.showDanger("Error during uploading, please, try again");
                 },
+                dropZone: null,
+                pasteZone: null,
                 progress: function (e, data) {
                     var progress = parseInt(data.loaded / data.total * 100, 10);
                     $('#bar').css(
