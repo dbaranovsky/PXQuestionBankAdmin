@@ -223,7 +223,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                          };
             var facetedFieldName = string.Format("{0}{1}/{2}_dlap_e", ElStrings.ProductCourseSection, currentCourseId, facetedField);
             var results = GetSearchResults(questionRepositoryCourseId, BuildQueryString(filter), new[] { MetadataFieldNames.DraftFrom }, true, facetedFieldName);
-            return QuestionDataXmlParser.ToFacetedSearchResult(results.First(lst => lst.Attribute("name").Value == facetedFieldName));
+            return QuestionDataXmlParser.ToFacetedSearchResult(results.FirstOrDefault(lst => lst.Attribute("name").Value == facetedFieldName));
         }
 
         public void CreateQuestions(string productCourseId, IEnumerable<Question> questions)

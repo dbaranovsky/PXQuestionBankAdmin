@@ -136,19 +136,22 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
         public static IEnumerable<QuestionFacetedSearchResult> ToFacetedSearchResult(XElement resultDoc)
         {
             var questionSearchResult = new List<QuestionFacetedSearchResult>();
-            foreach (var xElement in resultDoc.Elements("int"))
+            if (resultDoc != null)
             {
-                var result = new QuestionFacetedSearchResult();
-                if (xElement.Attribute("name") != null && !string.IsNullOrEmpty(xElement.Attribute("name").Value))
+                foreach (var xElement in resultDoc.Elements("int"))
                 {
-                    result.FacetedFieldValue = xElement.Attribute("name").Value;
+                    var result = new QuestionFacetedSearchResult();
+                    if (xElement.Attribute("name") != null && !string.IsNullOrEmpty(xElement.Attribute("name").Value))
+                    {
+                        result.FacetedFieldValue = xElement.Attribute("name").Value;
+                    }
+                    var count = 0;
+                    if (!string.IsNullOrEmpty(xElement.Value) && int.TryParse(xElement.Value, out count))
+                    {
+                        result.FacetedCount = count;
+                    }
+                    questionSearchResult.Add(result);
                 }
-                var count = 0;
-                if (!string.IsNullOrEmpty(xElement.Value) && int.TryParse(xElement.Value, out count))
-                {
-                    result.FacetedCount = count;
-                }
-                questionSearchResult.Add(result);
             }
             return questionSearchResult;
         }
