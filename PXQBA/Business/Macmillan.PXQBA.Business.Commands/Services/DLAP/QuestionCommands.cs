@@ -155,6 +155,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 if (section != null)
                 {
                     var sequenceDisplayValue = string.Empty;
+                    section.Sequence = sequenceDisplayValue;
                     if (sorted.ContainsKey(section.Bank))
                     {
                         var first = sorted[section.Bank].FirstOrDefault(q => q.QuestionId == question.Id);
@@ -204,7 +205,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                                };
             var bankXmlFieldName = BuildFieldNameFromProductCourseSection(currentCourseId, MetadataFieldNames.Bank);
             var questions = GetSearchResults(questionRepositoryCourseId, currentCourseId, filter, sortCriterion, new List<string>{bankXmlFieldName});
-            return questions.GroupBy(q => q.DynamicFields[bankXmlFieldName]).ToDictionary(g => g.Key, g => SortSearchResults(g, sortCriterion));
+            return questions.Where(q => q.DynamicFields.ContainsKey(bankXmlFieldName)).GroupBy(q => q.DynamicFields[bankXmlFieldName]).ToDictionary(g => g.Key, g => SortSearchResults(g, sortCriterion));
         }
 
         public IEnumerable<QuestionFacetedSearchResult> GetFacetedResults(string questionRepositoryCourseId, string currentCourseId, string facetedField)
