@@ -137,9 +137,9 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
                     StaticLogger.LogError("RespondusQuestionParser.Parse ", ex);
                 }
             }
-            if (CurrentQuestion.Choices.Any() && CurrentQuestion.Type != ParsedQuestionType.Matching && CurrentQuestion.Type != ParsedQuestionType.ShortAnswer)
+            if (CurrentQuestion.Choices.Any() && CurrentQuestion.Choices.Count(c => c.IsCorrect) > 1)
             {
-                CurrentQuestion.Type = CurrentQuestion.Choices.Count(c => c.IsCorrect) > 1 ? ParsedQuestionType.MultipleAnswer : ParsedQuestionType.MultipleChoice;
+                CurrentQuestion.Type =  ParsedQuestionType.MultipleAnswer;
             }
             CurrentQuestion.IsParsed = isParsed;
 
@@ -247,6 +247,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
                     IsCorrect = answerMatch.Groups[1].Length > 0
                 };
                 CurrentQuestion.Choices.Add(choice);
+                CurrentQuestion.Type = ParsedQuestionType.MultipleChoice;
             }
         }
 
