@@ -201,6 +201,7 @@
     <Content Include="Content\jquery.fileupload-ui.css" />
     <Content Include="Content\jquery.switchButton.css" />
     <Content Include="Content\Paging.css" />
+    <Content Include="Content\qba_dummy_course_overrides.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
