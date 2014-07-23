@@ -77,6 +77,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QML
             if (!IsTypeExist(item))
             {
                 _fileValidationResult.ValidationErrors.Add(String.Format("Line:{0}: Unknown question type:{1} ", GetLineNumber(item), item.XPathSelectElement(QuestionTypeXpath).Value));
+                _fileValidationResult.Questions.Add(new ParsedQuestion(){IsParsed = false});
                 return;
             }
             
