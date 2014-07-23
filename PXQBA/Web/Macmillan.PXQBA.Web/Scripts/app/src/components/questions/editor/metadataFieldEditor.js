@@ -268,6 +268,11 @@ var MetadataFieldEditor = React.createClass({
     resetDefaults: function(){
       var field = this.props.field;
       var metadataField = this.state.metadataField;
+      
+      if (metadataField=== undefined || metadataField == null){
+        return;
+      }
+
       var question = this.props.question;
       var availableChoices = metadataField.editorDescriptor.availableChoice;
 

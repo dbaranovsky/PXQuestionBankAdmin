@@ -85,7 +85,7 @@ namespace Macmillan.PXQBA.Web.Filters
                 // not much we can do here, so just reauth the user...
             }
 
-            return ticket == null || ticket.Expired;
+            return ticket == null || ticket.Expired || ticket.IssueDate.AddMinutes(15) < DateTime.Now;
         }
 
         private void StartBrainHoneySession(SessionManagerSection config, TimeZoneInfo timeZoneInfo)
