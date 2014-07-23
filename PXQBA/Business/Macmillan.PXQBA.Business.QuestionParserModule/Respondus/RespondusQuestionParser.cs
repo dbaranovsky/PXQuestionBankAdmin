@@ -131,7 +131,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
                     var fileResult = Result.FileValidationResults.LastOrDefault();
                     if (fileResult != null)
                     {
-                        fileResult.ValidationErrors.Add(string.Format("File {0}, line {1} wasn't parse.",
+                        fileResult.ValidationErrors.Add(string.Format("File: {0}, Line: {1} - Line wasn't parsed.",
                             fileResult.FileName, lastLine));
                     }
                     StaticLogger.LogError("RespondusQuestionParser.Parse ", ex);

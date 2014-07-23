@@ -73,9 +73,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
                     Questions = new List<ParsedQuestion>(),
                     ValidationErrors = new List<string>
                                        {
-                                           String.Format(
-                                               "Error during parsing QTI Format: {0}",
-                                               e.Message)
+                                          String.Format("File: {0}, Line: 1 - Error during opening QTI Format", fileName)
                                        }
                 });
             }
@@ -88,7 +86,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
                 }
                 catch (Exception e)
                 {
-                    fileValidationResult.ValidationErrors.Add(String.Format("Line {0}: Question parse error: {1}", GetLineNumber(item), e.Message));
+                    fileValidationResult.ValidationErrors.Add(String.Format("File: {0}, Line: {1} - Error during question processing",fileName ,GetLineNumber(item)));
                     fileValidationResult.Questions.Add(new ParsedQuestion(){IsParsed = false});
                 }
 
