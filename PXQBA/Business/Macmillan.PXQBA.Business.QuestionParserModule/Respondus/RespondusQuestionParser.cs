@@ -137,7 +137,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
                     StaticLogger.LogError("RespondusQuestionParser.Parse ", ex);
                 }
             }
-            if (CurrentQuestion.Choices.Any())
+            if (CurrentQuestion.Choices.Any() && CurrentQuestion.Type != ParsedQuestionType.Matching && CurrentQuestion.Type != ParsedQuestionType.ShortAnswer)
             {
                 CurrentQuestion.Type = CurrentQuestion.Choices.Count(c => c.IsCorrect) > 1 ? ParsedQuestionType.MultipleAnswer : ParsedQuestionType.MultipleChoice;
             }
