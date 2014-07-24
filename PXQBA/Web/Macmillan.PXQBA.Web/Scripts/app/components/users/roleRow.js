@@ -19,7 +19,7 @@ var RoleRow = React.createClass({displayName: 'RoleRow',
   renderMenu: function(){
     if(this.props.role.canEdit){
       return(   React.DOM.div( {className:"menu-container-main version-history"}, 
-                          React.DOM.button( {type:"button", className:"btn btn-default btn-sm",  'data-toggle':"tooltip",  title:"Edit Role", onClick:this.editRole}, React.DOM.span( {className:"glyphicon glyphicon-pencil"}), " " ),
+                          React.DOM.button( {type:"button", className:"btn btn-default btn-sm",  'data-toggle':"tooltip",  title:"Edit Role", onClick:this.editRole}, React.DOM.span( {className:"icon-pencil-1"}), " " ),
                           React.DOM.button( {type:"button", className:"btn btn-default btn-sm", 'data-toggle':"tooltip", title:"Remove Role", onClick:this.removeRole}, React.DOM.span( {className:"glyphicon glyphicon-trash"}))
                          
                        )

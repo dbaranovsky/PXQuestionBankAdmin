@@ -78,7 +78,7 @@ var MetadataItemLinkRow = React.createClass({
         }
 
         return (<span className="input-group-btn">
-                    <button type="button" className="btn btn-default btn-xs" onClick={this.editEventHandler} data-toggle="tooltip" title="Apply"><span className="glyphicon glyphicon glyphicon-pencil"></span></button> 
+                    <button type="button" className="btn btn-default btn-xs" onClick={this.editEventHandler} data-toggle="tooltip" title="Apply"><span className="icon-pencil-1"></span></button> 
                     <button type="button" className="btn btn-default btn-xs" onClick={this.removeEventHandler} data-toggle="tooltip" title="Cancel"><span className="glyphicon glyphicon-remove"></span></button> 
                 </span>);
     },

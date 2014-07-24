@@ -11,9 +11,8 @@ var ExpandButton = React.createClass({displayName: 'ExpandButton',
   render: function() {   
     var buttonIcon = React.addons.classSet({
                 'expand-button': true,
-                'glyphicon': true,
-                'glyphicon-chevron-right': !this.props.expanded,
-                'glyphicon-chevron-down': this.props.expanded,
+                'icon-right-open': !this.props.expanded,
+                'icon-down-open': this.props.expanded,
     });
 
     var tooltipTitle = this.props.expanded ? "Collapse "+ this.props.targetCaption : "Expand "+ this.props.targetCaption;

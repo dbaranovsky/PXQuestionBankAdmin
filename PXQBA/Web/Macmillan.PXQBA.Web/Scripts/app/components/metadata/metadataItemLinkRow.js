@@ -78,7 +78,7 @@ var MetadataItemLinkRow = React.createClass({displayName: 'MetadataItemLinkRow',
         }
 
         return (React.DOM.span( {className:"input-group-btn"}, 
-                    React.DOM.button( {type:"button", className:"btn btn-default btn-xs", onClick:this.editEventHandler, 'data-toggle':"tooltip", title:"Apply"}, React.DOM.span( {className:"glyphicon glyphicon glyphicon-pencil"})), 
+                    React.DOM.button( {type:"button", className:"btn btn-default btn-xs", onClick:this.editEventHandler, 'data-toggle':"tooltip", title:"Apply"}, React.DOM.span( {className:"icon-pencil-1"})), 
                     React.DOM.button( {type:"button", className:"btn btn-default btn-xs", onClick:this.removeEventHandler, 'data-toggle':"tooltip", title:"Cancel"}, React.DOM.span( {className:"glyphicon glyphicon-remove"})) 
                 ));
     },

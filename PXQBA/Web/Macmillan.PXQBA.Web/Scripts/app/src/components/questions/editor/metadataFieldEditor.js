@@ -155,7 +155,9 @@ var MetadataFieldEditor = React.createClass({
               var singleSelectValue = metadataField.editorDescriptor.availableChoice[currentValue];
               if(currentValue!= ''){  
               values.push(<div className="current-values-view"> {singleSelectValue === undefined? currentValue : singleSelectValue} 
-                                <span className="glyphicon glyphicon-pencil btn custom-btn"  data-toggle="tooltip" title="Edit" onClick={this.switchEditMode}></span>
+                            <button type="button" className="btn btn-default btn-sm btn-editor-edit-metadata-field" onClick={this.switchEditMode} data-toggle="tooltip"  title="Edit"> 
+                              <span className="icon-pencil-1"></span>
+                            </button>
                            </div>);
             }
               break;
@@ -172,24 +174,34 @@ var MetadataFieldEditor = React.createClass({
 
                    if (values.length == 0){
                       values.push(<div className="current-values-view"> No value 
-                                    <span className="glyphicon glyphicon-pencil btn custom-btn"  data-toggle="tooltip" title="Edit" onClick={this.switchEditMode}></span>
+                                    <button type="button" className="btn btn-default btn-sm btn-editor-edit-metadata-field" onClick={this.switchEditMode} data-toggle="tooltip"  title="Edit"> 
+                                       <span className="icon-pencil-1"></span>
+                                    </button>
                                   </div>);
                    } else{
-                         values.push(<div className="current-values-view"> <span className="glyphicon glyphicon-pencil btn custom-btn"  data-toggle="tooltip" title="Edit" onClick={this.switchEditMode}></span> </div>);
+                         values.push(<div className="current-values-view">
+                                        <button type="button" className="btn btn-default btn-sm btn-editor-edit-metadata-field" onClick={this.switchEditMode} data-toggle="tooltip"  title="Edit"> 
+                                           <span className="icon-pencil-1"></span>
+                                        </button>
+                          </div>);
                    }
 
                  break;             
           default: 
             if (currentValue != null && currentValue !=''){           
               values.push(<div className="current-values-view"> {currentValue} 
-                               <span className="glyphicon glyphicon-pencil btn custom-btn"  data-toggle="tooltip" title="Edit" onClick={this.switchEditMode}></span>
+                                   <button type="button" className="btn btn-default btn-sm btn-editor-edit-metadata-field" onClick={this.switchEditMode} data-toggle="tooltip"  title="Edit"> 
+                                      <span className="icon-pencil-1"></span>
+                                   </button>
                           </div>);
             }
         }
 
       if (values.length == 0){
          values.push(<div className="current-values-view"> No value  
-                          <span className="glyphicon glyphicon-pencil btn custom-btn"  data-toggle="tooltip" title="Edit" onClick={this.switchEditMode}></span>
+                           <button type="button" className="btn btn-default btn-sm btn-editor-edit-metadata-field" onClick={this.switchEditMode} data-toggle="tooltip"  title="Edit"> 
+                              <span className="icon-pencil-1"></span>
+                            </button>
                      </div>);
       }   
 

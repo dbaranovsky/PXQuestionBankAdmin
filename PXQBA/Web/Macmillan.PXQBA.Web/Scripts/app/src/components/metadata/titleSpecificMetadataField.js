@@ -49,7 +49,7 @@ var TitleSpecificMetadataField = React.createClass({
     return (<button type="button"
                     className={this.buildDisabledClass("btn btn-default btn-xs", !this.props.canEditTitleMetadataFull)} 
                     onClick={this.openInternalNameDialogHandler}>
-            <span className="glyphicon glyphicon-pencil"></span>
+            <span className="icon-pencil-1"></span>
             </button>);
   },
 

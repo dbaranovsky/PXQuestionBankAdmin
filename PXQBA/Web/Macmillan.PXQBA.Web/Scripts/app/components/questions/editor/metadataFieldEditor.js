@@ -155,7 +155,9 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
               var singleSelectValue = metadataField.editorDescriptor.availableChoice[currentValue];
               if(currentValue!= ''){  
               values.push(React.DOM.div( {className:"current-values-view"},  " ", singleSelectValue === undefined? currentValue : singleSelectValue, 
-                                React.DOM.span( {className:"glyphicon glyphicon-pencil btn custom-btn",  'data-toggle':"tooltip", title:"Edit", onClick:this.switchEditMode})
+                            React.DOM.button( {type:"button", className:"btn btn-default btn-sm btn-editor-edit-metadata-field", onClick:this.switchEditMode, 'data-toggle':"tooltip",  title:"Edit"},  
+                              React.DOM.span( {className:"icon-pencil-1"})
+                            )
                            ));
             }
               break;
@@ -172,24 +174,34 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
 
                    if (values.length == 0){
                       values.push(React.DOM.div( {className:"current-values-view"},  " No value", 
-                                    React.DOM.span( {className:"glyphicon glyphicon-pencil btn custom-btn",  'data-toggle':"tooltip", title:"Edit", onClick:this.switchEditMode})
+                                    React.DOM.button( {type:"button", className:"btn btn-default btn-sm btn-editor-edit-metadata-field", onClick:this.switchEditMode, 'data-toggle':"tooltip",  title:"Edit"},  
+                                       React.DOM.span( {className:"icon-pencil-1"})
+                                    )
                                   ));
                    } else{
-                         values.push(React.DOM.div( {className:"current-values-view"},  " ", React.DOM.span( {className:"glyphicon glyphicon-pencil btn custom-btn",  'data-toggle':"tooltip", title:"Edit", onClick:this.switchEditMode}), " " ));
+                         values.push(React.DOM.div( {className:"current-values-view"}, 
+                                        React.DOM.button( {type:"button", className:"btn btn-default btn-sm btn-editor-edit-metadata-field", onClick:this.switchEditMode, 'data-toggle':"tooltip",  title:"Edit"},  
+                                           React.DOM.span( {className:"icon-pencil-1"})
+                                        )
+                          ));
                    }
 
                  break;             
           default: 
             if (currentValue != null && currentValue !=''){           
               values.push(React.DOM.div( {className:"current-values-view"},  " ", currentValue, 
-                               React.DOM.span( {className:"glyphicon glyphicon-pencil btn custom-btn",  'data-toggle':"tooltip", title:"Edit", onClick:this.switchEditMode})
+                                   React.DOM.button( {type:"button", className:"btn btn-default btn-sm btn-editor-edit-metadata-field", onClick:this.switchEditMode, 'data-toggle':"tooltip",  title:"Edit"},  
+                                      React.DOM.span( {className:"icon-pencil-1"})
+                                   )
                           ));
             }
         }
 
       if (values.length == 0){
          values.push(React.DOM.div( {className:"current-values-view"},  " No value",  
-                          React.DOM.span( {className:"glyphicon glyphicon-pencil btn custom-btn",  'data-toggle':"tooltip", title:"Edit", onClick:this.switchEditMode})
+                           React.DOM.button( {type:"button", className:"btn btn-default btn-sm btn-editor-edit-metadata-field", onClick:this.switchEditMode, 'data-toggle':"tooltip",  title:"Edit"},  
+                              React.DOM.span( {className:"icon-pencil-1"})
+                            )
                      ));
       }   
 

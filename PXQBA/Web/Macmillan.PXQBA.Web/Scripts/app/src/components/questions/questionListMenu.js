@@ -113,12 +113,16 @@ var QuestionListMenu = React.createClass({
 
 
     return ( <div className="shared-placeholder" > 
-             
+               <div className="btn-group">
                <SharedButton sharedWith={this.props.data[window.consts.questionSharedWithName]} trigger='click'/>
-               <button type="button" className="btn btn-default btn-sm tiny" disabled={!this.props.capabilities.canShareQuestion} onClick={this.shareHandler} data-toggle="tooltip" title="Share this question"><span className="glyphicon glyphicon-plus-sign"></span></button> 
+               <button type="button" className="btn btn-default btn-sm custom-small-btn" disabled={!this.props.capabilities.canShareQuestion} onClick={this.shareHandler} data-toggle="tooltip" title="Share this question">
+                  <span className="icon-plus-squared"></span>
+                </button> 
                     {this.props.isShared?
-                      <button type="button" className="btn btn-default btn-sm tiny" onClick={this.removeTitleHandler} data-toggle="tooltip" title="Remove from title"><span className="glyphicon glyphicon-minus-sign"></span></button> :
-                    ""}
+                <button type="button" className="btn btn-default btn-sm custom-small-btn" onClick={this.removeTitleHandler} data-toggle="tooltip" title="Remove from title">
+                  <span className="icon-minus-squared"></span>
+                </button> : ""}
+               </div>
                </div>);
      }
 
@@ -253,9 +257,9 @@ var QuestionListMenu = React.createClass({
                      <button type="button" className="btn btn-default btn-sm" disabled={(!this.state.isFlagged && !this.props.capabilities.canFlagQuestion) || (this.state.isFlagged && !this.props.capabilities.canUnflagQuestion)} onClick={this.toggleFlag} data-toggle="tooltip" title={this.state.isFlagged? "Unflag question" : "Flag question"}>
                      <span className={this.state.isFlagged? "icon-embassy flagged" : "icon-embassy not-flagged"}></span>
                      </button> 
-                     <span className="list-menu-icon-container">
-                       {this.props.data.notes != "" ? <span className="glyphicon glyphicon-list-alt notes" rel="notes"  data-toggle="popover" data-title="Notes"  data-content={this.props.data.notes} ></span> : <span></span>}
-                     </span>
+                     <div className="list-menu-icon-container">
+                       {this.props.data.notes != "" ? <span className="glyphicon glyphicon-list-alt notes" rel="notes"  data-toggle="popover" data-title="Notes"  data-content={this.props.data.notes} ></span> : <span>&nbsp;</span>}
+                     </div>
                   </div>);
       }
 
@@ -266,12 +270,12 @@ var QuestionListMenu = React.createClass({
 
       return (<div className="menu-container-flag">
                 
-                  <span className="list-menu-icon-container">
-                    {this.state.isFlagged ? <span className="icon-embassy flagged flagged-container"></span> : <span></span>}
-                  </span>
-                  <span className="list-menu-icon-container">
-                    {this.props.data.notes != "" ? <span className="glyphicon glyphicon-list-alt notes"></span> : <span></span>}
-                  </span>
+                  <div className="list-menu-icon-container">
+                    {this.state.isFlagged ? <span className="icon-embassy flagged flagged-container"></span> : <span>&nbsp;</span>}
+                  </div>
+                  <div className="list-menu-icon-container">
+                    {this.props.data.notes != "" ? <span className="glyphicon glyphicon-list-alt notes"></span> : <span>&nbsp;</span>}
+                  </div>
             
               </div>);
     },
