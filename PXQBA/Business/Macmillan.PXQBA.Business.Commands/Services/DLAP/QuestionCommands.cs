@@ -41,16 +41,13 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         /// <returns>questions</returns>
         public PagedCollection<Question> GetQuestionList(string questionRepositoryCourseId, string currentCourseId, IEnumerable<FilterFieldDescriptor> filter, SortCriterion sortCriterion, int startingRecordNumber, int recordCount)
         {
-            //var filterCopy = MakeFilterCopy(filter);
-            if (sortCriterion.SortType == SortType.None)
-            {
-                sortCriterion.ColumnName = MetadataFieldNames.Bank;
-                sortCriterion.SortType = SortType.Asc;
-            }
+            var sortCriterionCopy = MakeSortCriterionCopy(sortCriterion);
+            SetInitialSortCriterion(sortCriterion);
             var searchResults = GetSortedAndFilteredSolrResults(questionRepositoryCourseId, currentCourseId, filter, sortCriterion);
 
             var questions = PreparedQuestionPage(questionRepositoryCourseId, searchResults, startingRecordNumber, recordCount);
             SetCorrectSequenceDisplayValue(questionRepositoryCourseId, currentCourseId, questions);
+            questions = SortBySequenceInsideBank(questions, currentCourseId, sortCriterionCopy);
             UpdateQuestionPreviewUrls(questions, questionRepositoryCourseId);
             var result = new PagedCollection<Question>
             {
@@ -58,6 +55,75 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 CollectionPage = questions
             };
             return result;
+        }
+
+        private SortCriterion MakeSortCriterionCopy(SortCriterion sortCriterion)
+        {
+            return new SortCriterion
+                   {
+                       ColumnName = sortCriterion.ColumnName,
+                       SortType = sortCriterion.SortType
+                   };
+        }
+
+        private static void SetInitialSortCriterion(SortCriterion sortCriterion)
+        {
+            if (sortCriterion.SortType == SortType.None)
+            {
+                sortCriterion.ColumnName = MetadataFieldNames.Bank;
+                sortCriterion.SortType = SortType.Asc;
+            }
+            if (sortCriterion.ColumnName == MetadataFieldNames.Sequence)
+            {
+                sortCriterion.ColumnName = MetadataFieldNames.Bank;
+            }
+        }
+
+        private IEnumerable<Question> SortBySequenceInsideBank(IEnumerable<Question> questions, string currentCourseId, SortCriterion sortCriterion)
+        {
+            var nonDraftQuestions = questions.Where(q => string.IsNullOrEmpty(q.DraftFrom));
+            if (sortCriterion.ColumnName == MetadataFieldNames.Bank || sortCriterion.SortType == SortType.None ||
+                (sortCriterion.ColumnName == MetadataFieldNames.Sequence && sortCriterion.SortType == SortType.Asc))
+            {
+                nonDraftQuestions = nonDraftQuestions.GroupBy(q => q.ProductCourseSections.First(c => c.ProductCourseId == currentCourseId).Bank)
+                    .SelectMany(
+                        g =>
+                            g.OrderBy(
+                                q => ParseSequenceDisplayValue(q.ProductCourseSections.First(p => p.ProductCourseId == currentCourseId).Sequence)));
+            }
+            else if (sortCriterion.ColumnName == MetadataFieldNames.Sequence && sortCriterion.SortType == SortType.Desc)
+            {
+                nonDraftQuestions = nonDraftQuestions.GroupBy(
+                    q => q.ProductCourseSections.First(c => c.ProductCourseId == currentCourseId).Bank)
+                    .SelectMany(
+                        g =>
+                            g.OrderByDescending(
+                                q =>
+                                    ParseSequenceDisplayValue(
+                                        q.ProductCourseSections.First(p => p.ProductCourseId == currentCourseId)
+                                            .Sequence)));
+            }
+            else
+            {
+                return questions;                
+            }
+            var newOrderedQuestions = new List<Question>();
+            foreach (var nonDraftQuestion in nonDraftQuestions)
+            {
+                newOrderedQuestions.Add(nonDraftQuestion);
+                newOrderedQuestions.AddRange(questions.Where(q => q.DraftFrom == nonDraftQuestion.Id));
+            }
+            return newOrderedQuestions;
+        }
+
+        private int ParseSequenceDisplayValue(string sequence)
+        {
+            var seq = 0;
+            if (int.TryParse(sequence, out seq))
+            {
+                return seq;
+            }
+            return seq;
         }
 
         /// <summary>
@@ -317,14 +383,9 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                     var questionsWithNonDecimalSequence = searchResults.Where(r => !decimal.TryParse(r.SortingField, out seq)).ToList();
                     if (sortCriterion.IsAsc)
                     {
-                        var sorted = searchResults.Where(r => decimal.TryParse(r.SortingField, out seq))
-                            .OrderBy(r => decimal.Parse(r.SortingField))
-                            .ToList();
-                        sorted.AddRange(questionsWithNonDecimalSequence);
-                        return sorted;
+                        return searchResults.OrderBy(r => ParseSequenceDlapValue(r.SortingField)).ToList();
                     }
-                    questionsWithNonDecimalSequence.AddRange(searchResults.Where(r => decimal.TryParse(r.SortingField, out seq)).OrderByDescending(r => decimal.Parse(r.SortingField)));
-                    return questionsWithNonDecimalSequence;
+                    return searchResults.OrderByDescending(r => ParseSequenceDlapValue(r.SortingField)).ToList();
                 }
                 if (sortCriterion.ColumnName == MetadataFieldNames.DlapType)
                 {
@@ -337,6 +398,16 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                     : searchResults.OrderByDescending(r => r.SortingField);
             }
             return searchResults;
+        }
+
+        private decimal ParseSequenceDlapValue(string sequence)
+        {
+            decimal seq = 0;
+            if (decimal.TryParse(sequence, out seq))
+            {
+                return seq;
+            }
+            return seq;
         }
 
         public void ExecuteSolrUpdateTask()
