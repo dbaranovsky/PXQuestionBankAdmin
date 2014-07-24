@@ -282,7 +282,10 @@ var QuestionListPage = React.createClass({
             <div className="QuestionListPage">
              {this.renderLoader()}
                 <div>
-                  <a href={window.actions.questionTitle.titleListUrl}>  &lt;&lt; Back to the titles list </a>
+                  <a href={window.actions.questionTitle.titleListUrl}>
+                     <span className="mars-font">&#59442;&#59442; </span>
+                     <span> Back to the titles list</span>
+                  </a>
                 </div>
                 <div className="add-question-action">
                      {this.renderAddQuestionButton()}

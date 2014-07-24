@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: "OpenSans";
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -251,8 +252,28 @@ input[type="checkbox"].input-validation-error {
     opacity: 0.25;
 }
 
-.flagged.glyphicon-flag {
+.not-flagged {
+    opacity: 0.25;
+}
+
+.flagged.icon-embassy {
     opacity: 1;
+}
+
+.flagged-container {
+    display: inline-block;
+}
+
+.list-menu-icon-container {
+    display: inline-block;
+    height: 30px;
+    font-size: 12px;
+    height: 30px;
+    width: 38.8125px;
+    padding-bottom: 5px;
+    padding-left: 11px;
+    padding-right: 10px;
+    padding-top: 6px;
 }
 
 .text-editor-container {
@@ -323,7 +344,9 @@ input[type="checkbox"].input-validation-error {
       width: 977px;
 } 
 
-
+.btn-default.btn-editor-edit-metadata-field {
+    margin: 0 0 0 10px;
+}
 
 
 .tab-body {
@@ -367,11 +390,14 @@ input[type="checkbox"].input-validation-error {
 
 .metadata-info-label {
    width: 428px;
- /*   color: #000000 !important;
-  text-align: left !important; */
-    margin-bottom: 10px !important;
-    display: inline-block !important;
-    line-height: 1.3 !important;
+   margin-bottom: 10px !important;
+   display: inline-block !important;
+   line-height: 1.3 !important;
+}
+
+.label-default.metadata-info-label {
+    background: #EAEAE8;
+    color: black;
 }
 
 .current-values-view {
@@ -575,7 +601,11 @@ input.disabled, textarea.disabled {
 } 
 
 .question-draft {
-   background: lightcyan
+   background: #D9E2E2;
+}
+
+.question-draft-parent {
+    background:#e7eeec 
 }
 
 .question-table.table > tbody > tr > td.grouped-cell, 
@@ -588,8 +618,9 @@ input.disabled, textarea.disabled {
     background: grey;
 }
 
-.draft-label {
+span.draft-label {
     margin: 0 0 0 4px;
+    font-weight: normal;
 }
 
 .grouped-header {
@@ -892,8 +923,6 @@ input.filter-text-input {
     padding: 0 !important;
     width: auto;
     font-size: 21px !important;
-
-   
 }
 
 .custom-btn span {
@@ -902,6 +931,26 @@ input.filter-text-input {
 
 
 
+.btn-sm.custom-small-btn {
+    height: 30px;
+    width: 28px;
+    padding-left: 4px;
+    text-align: center;
+    padding-right: 4px;
+}
+
+.list-menu-icon-container.custom-small-btn {
+    height: 30px;
+    width: 28px;
+    padding-left: 4px;
+}
+
+.btn-sm.shared-btn {
+    padding-left: 4px;
+    padding-right: 4px;
+    width: 40px;
+    text-align: left;
+}
 
 .shared-note {
     margin-bottom: 7px;
@@ -955,29 +1004,21 @@ a.shared-question-link:hover {
     overflow: visible;
 }
 .actions-container {
-   width: 335px;
-    overflow: visible;
+   width: 358px; 
+   overflow: visible;
 }
 
 /* Menu items*/
 .shared-placeholder {
     display: inline-block;
+    width: 100px;
 }
-
-.shared-placeholder.flagged {
-    position: relative;
-    top: -3px;
-}
-
-.shared-placeholder.flagged .badge{
-    top: -6px !important;
-}
-
 
 .menu-container-main {
    width: 180px;
    margin-bottom: 1px;
    display: inline-block;
+   vertical-align: top;
 }
 
 .menu-container-main.version-history {
@@ -996,38 +1037,15 @@ a.shared-question-link:hover {
 }
 
 .menu-container-flag {
-    width: 60px;
+    width: 78px; 
     display: inline-block;
+    vertical-align: top;
 }
 
 
-.menu-container-flag button{
-    padding: 2px 5px;
-
-}
 
 span.notes {
     cursor: pointer;
-}
-
-.menu-container-flag span.notes {
-    margin-left: 5px;
-}
-
-.notification-icons-container span {
-    padding-top: 3px;
-    padding-left: 6px;
-}
-
-.notification-icons-container span.notes.flagged {
-    position: relative;
-    top: -2px;
-}
-
-
-
-.notification-icons-container  {
-    width: 60px;
 }
 
 .shared-placeholder .badge {
@@ -1036,14 +1054,7 @@ span.notes {
         padding: 3px 5px !important;
         font-size: 12px !important;
         background-color:  #0e6cde !important;
-}
-
-.shared-to-incompare {
-    left: -5px !important;
-    top: -5px !important;
-    padding: 3px 5px !important;
-    font-size: 12px !important;
-    background-color: #0e6cde !important;
+        vertical-align: top;
 }
 
 #shareQuestionModal input:not([type="radio"]), select {
@@ -1052,6 +1063,10 @@ span.notes {
 }
 #shareQuestionModal {
     font-size: 20px;
+}
+
+.shared-counter {
+    font-weight: bold;
 }
 
 .notifications-displair {

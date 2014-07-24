@@ -180,12 +180,14 @@
     <Compile Include="Properties\ProductInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\application-fonts.css" />
     <Content Include="Content\bootstrap\bootstrap-notify.css" />
     <Content Include="Content\bootstrap\bootstrap-switch.min.css" />
     <Content Include="Content\bootstrap\bootstrap-theme.css" />
     <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap\bootstrap.css" />
     <Content Include="Content\bootstrap\bootstrap.min.css" />
+    <Content Include="fonts\mars.svg" />
     <Content Include="Content\img\chosen-sprite%402x.png" />
     <Content Include="Content\img\chosen-sprite.png" />
     <Content Include="Content\chosen.css" />
@@ -200,6 +202,7 @@
     <Content Include="Content\img\versionHistory.png" />
     <Content Include="Content\jquery.fileupload-ui.css" />
     <Content Include="Content\jquery.switchButton.css" />
+    <Content Include="Content\mars-icons.css" />
     <Content Include="Content\Paging.css" />
     <Content Include="Content\qba_dummy_course_overrides.css" />
     <Content Include="favicon.ico" />
@@ -214,6 +217,19 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="fonts\mars.eot" />
+    <Content Include="fonts\mars.ttf" />
+    <Content Include="fonts\mars.woff" />
+    <Content Include="fonts\main\OpenSans-Bold.ttf" />
+    <Content Include="fonts\main\OpenSans-BoldItalic.ttf" />
+    <Content Include="fonts\main\OpenSans-ExtraBold.ttf" />
+    <Content Include="fonts\main\OpenSans-ExtraBoldItalic.ttf" />
+    <Content Include="fonts\main\OpenSans-Italic.ttf" />
+    <Content Include="fonts\main\OpenSans-Light.ttf" />
+    <Content Include="fonts\main\OpenSans-LightItalic.ttf" />
+    <Content Include="fonts\main\OpenSans-Regular.ttf" />
+    <Content Include="fonts\main\OpenSans-Semibold.ttf" />
+    <Content Include="fonts\main\OpenSans-SemiboldItalic.ttf" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>

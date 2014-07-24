@@ -50,7 +50,7 @@ var SharedButton = React.createClass({displayName: 'SharedButton',
       if (!this.isShared()){
         return "";
       }
-      return(React.DOM.span( {className:"badge shared-to-incompare"}, this.getTitleCount()));
+      return(React.DOM.span( {className:"shared-counter"}, this.getTitleCount()));
     },
 
 
@@ -61,12 +61,12 @@ var SharedButton = React.createClass({displayName: 'SharedButton',
 
     render: function() {
        return (
-                 React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn shared-to",
+                 React.DOM.button( {type:"button", className:"btn btn-default btn-sm shared-btn shared-to",
 			     rel:"popover",  
 			     'data-toggle':"popover", 
 			      'data-title':this.isShared()? "Shared with:" : "",  
 			      'data-content':this.isShared()? this.props.sharedWith : "<b>Not Shared</b>"} , 
-                 React.DOM.span( {className:"glyphicon icon-shared-to"} ),this.renderCourseCountBadge() 
+                 React.DOM.span( {className:"icon-share"} ),this.renderCourseCountBadge() 
                )
             );
     }

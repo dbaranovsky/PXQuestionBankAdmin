@@ -52,7 +52,7 @@ var QuestionFilterItemText = React.createClass({
                         </td>
                         <td>
                          <button type="button" className="btn btn-default btn-sm" onClick={this.onCancelEventHandler} data-toggle="tooltip" title="Cancel">
-                                  <span className="glyphicon glyphicon-remove"></span>
+                                  <span className="icon-cancel"></span>
                           </button>
                         </td>
                       </tr>

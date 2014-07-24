@@ -113,12 +113,16 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
 
 
     return ( React.DOM.div( {className:"shared-placeholder"} ,  
-             
+               React.DOM.div( {className:"btn-group"}, 
                SharedButton( {sharedWith:this.props.data[window.consts.questionSharedWithName], trigger:"click"}),
-               React.DOM.button( {type:"button", className:"btn btn-default btn-sm tiny", disabled:!this.props.capabilities.canShareQuestion, onClick:this.shareHandler, 'data-toggle':"tooltip", title:"Share this question"}, React.DOM.span( {className:"glyphicon glyphicon-plus-sign"})), 
+               React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-small-btn", disabled:!this.props.capabilities.canShareQuestion, onClick:this.shareHandler, 'data-toggle':"tooltip", title:"Share this question"}, 
+                  React.DOM.span( {className:"icon-plus-squared"})
+                ), 
                     this.props.isShared?
-                      React.DOM.button( {type:"button", className:"btn btn-default btn-sm tiny", onClick:this.removeTitleHandler, 'data-toggle':"tooltip", title:"Remove from title"}, React.DOM.span( {className:"glyphicon glyphicon-minus-sign"})) :
-                    ""
+                React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-small-btn", onClick:this.removeTitleHandler, 'data-toggle':"tooltip", title:"Remove from title"}, 
+                  React.DOM.span( {className:"icon-minus-squared"})
+                ) : ""
+               )
                ));
      }
 
@@ -225,11 +229,11 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
                     this.renderDraftButton(),
                React.DOM.div( {className:"dropdown"}, 
                   React.DOM.button( {id:"edit-question", type:"button", className:"btn btn-default btn-sm", onClick:this.editQuestionHandler, disabled:isDisabled,  'data-target':"#", 'data-toggle':"dropdown", title:"Edit Question"}, 
-                         React.DOM.span( {className:"glyphicon glyphicon-pencil", 'data-toggle':"tooltip", title:"Edit Question"})
+                         React.DOM.span( {className:"icon-pencil-1", 'data-toggle':"tooltip", title:"Edit Question"})
                   ),
                     this.renderEditMenu()
                 ),
-               React.DOM.button( {type:"button", className:"btn btn-default btn-sm", disabled:!this.props.capabilities.canDuplicateQuestion, onClick:this.copyQuestionHandler,  'data-toggle':"tooltip", title:"Duplicate Question"}, React.DOM.span( {className:"glyphicon glyphicon-copyright-mark"})),
+               React.DOM.button( {type:"button", className:"btn btn-default btn-sm", disabled:!this.props.capabilities.canDuplicateQuestion, onClick:this.copyQuestionHandler,  'data-toggle':"tooltip", title:"Duplicate Question"}, React.DOM.span( {className:"icon-docs"})),
                React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.editNotesHandler, 'data-toggle':"tooltip", title:"Edit Notes"}, React.DOM.span( {className:"glyphicon glyphicon-list-alt"}), " " ), 
                React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-btn", disabled:!this.props.capabilities.canViewHistory, onClick:this.props.editQuestionHandler.bind(this, true, false), 'data-toggle':"tooltip", title:"View Question History"}, React.DOM.span( {className:"glyphicon icon-version-history"} )) 
                ));
@@ -251,23 +255,28 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
         if (this.props.showAll){
           return(React.DOM.div( {className:"menu-container-flag"}, 
                      React.DOM.button( {type:"button", className:"btn btn-default btn-sm", disabled:(!this.state.isFlagged && !this.props.capabilities.canFlagQuestion) || (this.state.isFlagged && !this.props.capabilities.canUnflagQuestion), onClick:this.toggleFlag, 'data-toggle':"tooltip", title:this.state.isFlagged? "Unflag question" : "Flag question"}, 
-                     React.DOM.span( {className:this.state.isFlagged? "glyphicon glyphicon-flag flagged" : "glyphicon glyphicon-flag"})
+                     React.DOM.span( {className:this.state.isFlagged? "icon-embassy flagged" : "icon-embassy not-flagged"})
                      ), 
-
-                     this.props.data.notes != "" ? React.DOM.span( {className:"glyphicon glyphicon-list-alt notes", rel:"notes",  'data-toggle':"popover", 'data-title':"Notes",  'data-content':this.props.data.notes} ) : React.DOM.div( {className:"glyphicon-placeholder"})
+                     React.DOM.div( {className:"list-menu-icon-container"}, 
+                       this.props.data.notes != "" ? React.DOM.span( {className:"glyphicon glyphicon-list-alt notes", rel:"notes",  'data-toggle':"popover", 'data-title':"Notes",  'data-content':this.props.data.notes} ) : React.DOM.span(null, " ")
+                     )
                   ));
       }
 
       var notesClassName = "glyphicon glyphicon-list-alt notes";
-      if (this.state.isFlagged){
-        notesClassName += " flagged";
-      }
+    //  if (this.state.isFlagged){
+    //    notesClassName += " flagged";
+    //  }
 
       return (React.DOM.div( {className:"menu-container-flag"}, 
-                React.DOM.div( {className:"notification-icons-container"}, 
-                    this.state.isFlagged ? React.DOM.span( {className:"glyphicon glyphicon-flag flagged"}) : React.DOM.div( {className:"glyphicon-placeholder"}),
-                    this.props.data.notes != "" ? React.DOM.span( {className:notesClassName}) : React.DOM.div( {className:"glyphicon-placeholder"})
-                )
+                
+                  React.DOM.div( {className:"list-menu-icon-container"}, 
+                    this.state.isFlagged ? React.DOM.span( {className:"icon-embassy flagged flagged-container"}) : React.DOM.span(null, " ")
+                  ),
+                  React.DOM.div( {className:"list-menu-icon-container"}, 
+                    this.props.data.notes != "" ? React.DOM.span( {className:"glyphicon glyphicon-list-alt notes"}) : React.DOM.span(null, " ")
+                  )
+            
               ));
     },
 

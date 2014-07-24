@@ -102,9 +102,16 @@ var Question = React.createClass({
 
     render: function() {
         var self = this;
+        /*
+    grouped={isGrouped}
+                       draft={isDraft}
+        */
+        var parentDraft = ((this.props.grouped) && (!this.props.draft));
+
         var componentClass = React.addons.classSet({
                 'question': true,
                 'question-draft': this.props.draft && !this.state.showMenu,
+                'question-draft-parent': parentDraft && !this.state.showMenu,
                 'hover': this.state.showMenu,
                 'question-selected': this.props.selected,
             });
