@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Caching;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Common.Helpers.Constants;
+using Macmillan.PXQBA.Common.Logging;
 
 namespace Macmillan.PXQBA.Business.Services
 {
@@ -67,12 +69,20 @@ namespace Macmillan.PXQBA.Business.Services
 
         public string AddSiteBuilderCourse(string url)
         {
-            var courseId = productCourseOperation.AddSiteBuilderCourseToQBA(url);
-            if (string.IsNullOrEmpty(courseId))
+            try
             {
-                GrantUserSuperAdmin(courseId);
+                var courseId = productCourseOperation.AddSiteBuilderCourseToQBA(url);
+                if (!string.IsNullOrEmpty(courseId))
+                {
+                    GrantUserSuperAdmin(courseId);
+                }
+                return courseId;
             }
-            return courseId;
+            catch (Exception ex)
+            {
+                StaticLogger.LogError(string.Format("ProductCourseManagementService.AddSiteBuilderCourse: Site Builder course wasn't found\added."), ex);
+                return null;
+            }
         }
 
         private CourseMetadataFieldDescriptor GetFieldDescriptor(string internalName)
