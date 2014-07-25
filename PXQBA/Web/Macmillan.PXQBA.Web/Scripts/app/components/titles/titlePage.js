@@ -43,6 +43,11 @@ var TitlePage = React.createClass({displayName: 'TitlePage',
       }).error(self.handlerErrors);
     },
 
+    updateTitleHanlder: function() {
+        this.setState({loading:true});
+        titleDataManager.getTitles().done(this.setTitles).error(this.handlerErrors);
+    },
+
     handlerErros: function(e){
          notificationManager.showSuccess("Error occured, please, try again later");
          this.setState({loading: false});
@@ -59,7 +64,7 @@ var TitlePage = React.createClass({displayName: 'TitlePage',
       }
 
       if(this.state.showAddSiteBuilderDialog) {
-         return (AddSiteBuilderDialog( {loadingHandler:this.loadingHandler, siteBuilderLink:this.props.siteBuilderLink, closeDialogHandler:this.closeAddSiteBuilderRepoDialog, addNewRepository:this.addNewRepository}));
+         return (AddSiteBuilderDialog( {updateTitleHanlder:this.updateTitleHanlder, loadingHandler:this.loadingHandler, siteBuilderLink:this.props.siteBuilderLink, closeDialogHandler:this.closeAddSiteBuilderRepoDialog, addNewRepository:this.addNewRepository}));
       }
 
       return null;
