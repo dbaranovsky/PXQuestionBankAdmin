@@ -14,6 +14,12 @@ var MetadataCfgRoot = React.createClass({displayName: 'MetadataCfgRoot',
     },
 
 
+   componentDidMount: function() {
+       if((this.props.options.courseId!=null)&&(this.props.options.courseId!='')) {
+          this.selectCourseHandler([this.props.options.courseId]);
+       }
+   },
+
    confirmDiscardChanges: function () {
     if(!this.state.dirty) {
       return true;

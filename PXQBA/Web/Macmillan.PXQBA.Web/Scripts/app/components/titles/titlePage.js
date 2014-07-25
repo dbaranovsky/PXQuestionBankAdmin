@@ -5,26 +5,34 @@
 var TitlePage = React.createClass({displayName: 'TitlePage',
 
     getInitialState: function() {
-      return { loading: false, response: this.props.response, showAddRepoDialog: false};
-    },
-
-    renderAddRepoDialog: function(){
-      if(this.state.showAddRepoDialog){
-        return (AddRepositoryDialog(  {titles: this.props.response.titles, closeDialogHandler:this.closeDialogHandler, addNewRepository:this.addNewRepository}))
-      }
-
-      return null;
-
+      return { 
+        loading: false,
+        response: this.props.response, 
+        showAddRepoDialog: false,
+        showAddSiteBuilderDialog: false,
+      };
     },
 
     showAddRepoDialog: function(){
       this.setState({showAddRepoDialog: true});
     },
 
+    showAddSiteBuilderRepoDialog: function() {
+       this.setState({showAddSiteBuilderDialog: true});
+    },
+
+    closeAddSiteBuilderRepoDialog: function() {
+       this.setState({showAddSiteBuilderDialog: false});
+    },
+
     closeDialogHandler: function(){
       this.setState({showAddRepoDialog: false});
     },
 
+
+    loadingHandler: function(isLoading) {
+      this.setState({loading:isLoading});
+    },
 
     addNewRepository: function(name){
       this.setState({loading:true, showAddRepoDialog: false});
@@ -37,24 +45,54 @@ var TitlePage = React.createClass({displayName: 'TitlePage',
 
     handlerErros: function(e){
          notificationManager.showSuccess("Error occured, please, try again later");
-          this.setState({loading: false});
+         this.setState({loading: false});
     },
   
-  setTitles: function(response){
-    this.setState({response: response, loading: false, showAddRepoDialog: false})
-  } ,
+    setTitles: function(response){
+       this.setState({response: response, loading: false, showAddRepoDialog: false})
+    },
+
+
+    renderAddDialogs: function(){
+      if(this.state.showAddRepoDialog){
+        return (AddRepositoryDialog(  {titles: this.props.response.titles, closeDialogHandler:this.closeDialogHandler, addNewRepository:this.addNewRepository}))
+      }
+
+      if(this.state.showAddSiteBuilderDialog) {
+         return (AddSiteBuilderDialog( {loadingHandler:this.loadingHandler, siteBuilderLink:this.props.siteBuilderLink, closeDialogHandler:this.closeAddSiteBuilderRepoDialog, addNewRepository:this.addNewRepository}));
+      }
+
+      return null;
+
+    },
+
 
     render: function() {
        return (
                 React.DOM.div(null, 
-                 React.DOM.button( {className:"btn btn-primary add-repository", onClick:this.showAddRepoDialog}, 
-                           "Add repository"
-                        ),
+                    React.DOM.div(null, 
+                      React.DOM.table( {className:"title-list-btn-container"}, 
+                        React.DOM.tr(null, 
+                          React.DOM.td(null, 
+                            React.DOM.button( {className:"btn btn-primary add-repository", onClick:this.showAddRepoDialog}, 
+                             "Add repository"
+                            )
+                          )
+                          ),
+                          React.DOM.tr(null, 
+                            React.DOM.td(null, 
+                             React.DOM.button( {className:"btn btn-primary add-repository", onClick:this.showAddSiteBuilderRepoDialog}, 
+                             "Add SiteBuilder repository"
+                            )
+                          )
+                        )
+                      )
+                    ),
                React.DOM.h2(null,  " Titles available:"),        
 
                      TitleList( {data:this.state.response.titles} ),
-                     this.state.loading? Loader(null ) : "",
-                     this.renderAddRepoDialog()
+                     React.DOM.div( {className:"title-list-loader-container"}, this.state.loading? Loader(null ) : ""),
+                     this.renderAddDialogs()
                 )
             );
     }

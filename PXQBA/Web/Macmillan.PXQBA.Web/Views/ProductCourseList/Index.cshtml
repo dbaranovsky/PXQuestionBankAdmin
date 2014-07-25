@@ -1,4 +1,4 @@
-﻿
+﻿@model Macmillan.PXQBA.Web.ViewModels.TiteList.ProductCourseListPageViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -15,6 +15,7 @@
     <script src="../../Scripts/app/async/asyncManager.js"></script>
     <script src="../../Scripts/app/dataAccess/titleDataManager.js"></script>
     
+    <script src="../../Scripts/app/components/titles/addSiteBuilderDialog.js"></script>
     <script src="../../Scripts/app/components/titles/title.js"></script>
     <script src="../../Scripts/app/components/titles/titleList.js"></script>
     <script src="../../Scripts/app/components/titles/titlePage.js"></script>
@@ -34,7 +35,8 @@
         titleData.done(function (response) {
             asyncManager.page = React.renderComponent(
                 TitlePage({
-                    response: response
+                    response: response,
+                    siteBuilderLink: "@(Model.SiteBuilderLink)"
                 }, " "),
                 titleContainer);
         })
