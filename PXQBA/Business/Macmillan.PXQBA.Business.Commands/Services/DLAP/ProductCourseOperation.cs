@@ -73,7 +73,17 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             return Mapper.Map<Course>(createdCourse);
         }
 
-        
+        public string AddSiteBuilderCourseToQBA(string url)
+        {
+            var siteInfo = businessContext.GetSiteInfo(url);
+            if (siteInfo != null && !string.IsNullOrEmpty(siteInfo.AgilixSiteID))
+            {
+                AddToAvailableCourses(siteInfo.AgilixSiteID);
+                return siteInfo.AgilixSiteID;
+            }
+            return null;
+        }
+
 
         private void AddToAvailableCourses(string id)
         {

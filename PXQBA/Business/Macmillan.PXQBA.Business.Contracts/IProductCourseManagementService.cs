@@ -13,5 +13,7 @@ namespace Macmillan.PXQBA.Business.Contracts
         Course UpdateMetadataConfig(Course course);
         IEnumerable<Course> GetAllCourses();
         void CreateNewDraftCourse(string title);
+
+        string AddSiteBuilderCourse(string url);
     }
 }

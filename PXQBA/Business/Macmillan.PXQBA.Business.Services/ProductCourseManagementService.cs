@@ -34,6 +34,7 @@ namespace Macmillan.PXQBA.Business.Services
 
         public IEnumerable<Course> GetCourseList()
         {
+            AddSiteBuilderCourse("");
             return productCourseOperation.GetUserAvailableCourses(true);
         }
 
@@ -50,14 +51,29 @@ namespace Macmillan.PXQBA.Business.Services
         public void CreateNewDraftCourse(string title)
         {
             var newCourse = productCourseOperation.CreateDraftCourse(title);
-            roleOperation.UpdateRolesCapabilities(newCourse.ProductCourseId, PredefinedRoleHelper.GetPredefinedRoles());
-            roleOperation.GrantPredefinedRoleToCurrentUser(PredefinedRole.SuperAdministrator, newCourse.ProductCourseId);
+            GrantUserSuperAdmin(newCourse.ProductCourseId);
             newCourse.FieldDescriptors = new List<CourseMetadataFieldDescriptor>()
                                          {
                                              GetFieldDescriptor(MetadataFieldNames.Bank),
                                              GetFieldDescriptor(MetadataFieldNames.Chapter)
                                          };
             productCourseOperation.UpdateCourse(newCourse);
+        }
+
+        private void GrantUserSuperAdmin(string productCourseId)
+        {
+            roleOperation.UpdateRolesCapabilities(productCourseId, PredefinedRoleHelper.GetPredefinedRoles());
+            roleOperation.GrantPredefinedRoleToCurrentUser(PredefinedRole.SuperAdministrator, productCourseId);
+        }
+
+        public string AddSiteBuilderCourse(string url)
+        {
+            var courseId = productCourseOperation.AddSiteBuilderCourseToQBA(url);
+            if (string.IsNullOrEmpty(courseId))
+            {
+                GrantUserSuperAdmin(courseId);
+            }
+            return courseId;
         }
 
         private CourseMetadataFieldDescriptor GetFieldDescriptor(string internalName)

@@ -16,5 +16,7 @@ namespace Macmillan.PXQBA.Business
         /// </summary>
         Bfw.Common.Caching.ICacheProvider CacheProvider { get; }
 
+        RAg.Net.RAWS.GetCourseSiteID.SiteInfo GetSiteInfo(string url);
+
     }
 }

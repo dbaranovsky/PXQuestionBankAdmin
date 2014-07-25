@@ -312,5 +312,49 @@ namespace Macmillan.PXQBA.Common.Helpers
 
             return "Assets";
         }
+
+        public static string GetAllowedSubdomains()
+        {
+            var value = ConfigurationManager.AppSettings[ConfigurationKeys.AllowedSubdomains];
+            if (!string.IsNullOrEmpty(value))
+            {
+                return value;
+            }
+
+            return "www,lcl,dev,qa,pr";
+        }
+
+        public static string GetLocalSubdomain()
+        {
+            var value = ConfigurationManager.AppSettings[ConfigurationKeys.LocalSubdomain];
+            if (!string.IsNullOrEmpty(value))
+            {
+                return value;
+            }
+
+            return "lcl";
+        }
+
+        public static string GetDevSubdomain()
+        {
+            var value = ConfigurationManager.AppSettings[ConfigurationKeys.DevSubdomain];
+            if (!string.IsNullOrEmpty(value))
+            {
+                return value;
+            }
+
+            return "dev";
+        }
+
+        public static string GetBaseLaunchpadUrl()
+        {
+            var value = ConfigurationManager.AppSettings[ConfigurationKeys.BaseLaunchpadUrl];
+            if (!string.IsNullOrEmpty(value))
+            {
+                return value;
+            }
+
+            return "http://dev.macmillanhighered.com/launchpad/";
+        }
     }
 }

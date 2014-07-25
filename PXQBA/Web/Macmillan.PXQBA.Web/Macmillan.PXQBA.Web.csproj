@@ -597,6 +597,14 @@
       <Project>{4f1bf9db-1226-4867-9e41-129b214f24f2}</Project>
       <Name>Bfw.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\PXShared\Bfw.PX.Biz\Bfw.PX.Biz.Direct.Services\Bfw.PX.Biz.Direct.Services.csproj">
+      <Project>{756A544B-3923-4A7E-847A-9AAB50FEB106}</Project>
+      <Name>Bfw.PX.Biz.Direct.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PXShared\Bfw.PX.Biz\Bfw.PX.Biz.ServiceContracts\Bfw.PX.Biz.ServiceContracts.csproj">
+      <Project>{392A9467-B225-4300-BC1A-F34983AFBC3D}</Project>
+      <Name>Bfw.PX.Biz.ServiceContracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Macmillan.PXQBA.Web.ViewModels\Macmillan.PXQBA.Web.ViewModels.csproj">
       <Project>{718F7559-6447-4674-AFA4-61A46A1732CB}</Project>
       <Name>Macmillan.PXQBA.Web.ViewModels</Name>

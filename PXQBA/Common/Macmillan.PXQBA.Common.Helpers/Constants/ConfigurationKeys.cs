@@ -118,5 +118,10 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
         /// Key for course resources folder, where images saved
         /// </summary>
         public const string BrainhoneyCourseImageFolder = "BrainhoneyCourseImageFolderName";
+
+        public const string AllowedSubdomains = "AllowedSubdomains";
+        public const string LocalSubdomain = "LocalSubdomain";
+        public const string DevSubdomain = "DevSubdomain";
+        public const string BaseLaunchpadUrl = "BaseLaunchpadUrl";
     }
 }
