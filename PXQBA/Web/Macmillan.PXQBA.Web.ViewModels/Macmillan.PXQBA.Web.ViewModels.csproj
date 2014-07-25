@@ -86,6 +86,7 @@
     <Compile Include="SharedQuestionDuplicateFromViewModel.cs" />
     <Compile Include="TiteList\ChapterViewModel.cs" />
     <Compile Include="TiteList\ProductCourseListDataResponse.cs" />
+    <Compile Include="TiteList\ProductCourseListPageViewModel.cs" />
     <Compile Include="TiteList\ProductCourseViewModel.cs" />
     <Compile Include="User\CapabilityViewModel.cs" />
     <Compile Include="User\CapabilityGroupViewModel.cs" />

@@ -5,12 +5,21 @@
 var TitlePage = React.createClass({displayName: 'TitlePage',
 
     getInitialState: function() {
-      return { loading: false, response: this.props.response, showAddRepoDialog: false};
+      return { 
+        loading: false,
+        response: this.props.response, 
+        showAddRepoDialog: false,
+        showAddSiteBuilderDialog: false,
+      };
     },
 
-    renderAddRepoDialog: function(){
+    renderAddDialogs: function(){
       if(this.state.showAddRepoDialog){
         return (AddRepositoryDialog(  {titles: this.props.response.titles, closeDialogHandler:this.closeDialogHandler, addNewRepository:this.addNewRepository}))
+      }
+
+      if(this.state.showAddSiteBuilderDialog) {
+         return (AddSiteBuilderDialog(  {siteBuilderLink:this.props.siteBuilderLink, closeDialogHandler:this.closeAddSiteBuilderRepoDialog, addNewRepository:this.addNewRepository}));
       }
 
       return null;
@@ -19,6 +28,14 @@ var TitlePage = React.createClass({displayName: 'TitlePage',
 
     showAddRepoDialog: function(){
       this.setState({showAddRepoDialog: true});
+    },
+
+    showAddSiteBuilderRepoDialog: function() {
+       this.setState({showAddSiteBuilderDialog: true});
+    },
+
+    closeAddSiteBuilderRepoDialog: function() {
+       this.setState({showAddSiteBuilderDialog: false});
     },
 
     closeDialogHandler: function(){
@@ -47,14 +64,17 @@ var TitlePage = React.createClass({displayName: 'TitlePage',
     render: function() {
        return (
                 React.DOM.div(null, 
-                 React.DOM.button( {className:"btn btn-primary add-repository", onClick:this.showAddRepoDialog}, 
+                        React.DOM.button( {className:"btn btn-primary add-repository", onClick:this.showAddRepoDialog}, 
                            "Add repository"
+                        ),
+                        React.DOM.button( {className:"btn btn-primary add-repository", onClick:this.showAddSiteBuilderRepoDialog}, 
+                           "Add SiteBuilder repository"
                         ),
                React.DOM.h2(null,  " Titles available:"),        
 
                      TitleList( {data:this.state.response.titles} ),
                      this.state.loading? Loader(null ) : "",
-                     this.renderAddRepoDialog()
+                     this.renderAddDialogs()
                 )
             );
     }

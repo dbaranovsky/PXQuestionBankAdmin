@@ -5,12 +5,21 @@
 var TitlePage = React.createClass({
 
     getInitialState: function() {
-      return { loading: false, response: this.props.response, showAddRepoDialog: false};
+      return { 
+        loading: false,
+        response: this.props.response, 
+        showAddRepoDialog: false,
+        showAddSiteBuilderDialog: false,
+      };
     },
 
-    renderAddRepoDialog: function(){
+    renderAddDialogs: function(){
       if(this.state.showAddRepoDialog){
         return (<AddRepositoryDialog  titles ={this.props.response.titles} closeDialogHandler={this.closeDialogHandler} addNewRepository={this.addNewRepository}/>)
+      }
+
+      if(this.state.showAddSiteBuilderDialog) {
+         return (<AddSiteBuilderDialog  siteBuilderLink={this.props.siteBuilderLink} closeDialogHandler={this.closeAddSiteBuilderRepoDialog} addNewRepository={this.addNewRepository}/>);
       }
 
       return null;
@@ -19,6 +28,14 @@ var TitlePage = React.createClass({
 
     showAddRepoDialog: function(){
       this.setState({showAddRepoDialog: true});
+    },
+
+    showAddSiteBuilderRepoDialog: function() {
+       this.setState({showAddSiteBuilderDialog: true});
+    },
+
+    closeAddSiteBuilderRepoDialog: function() {
+       this.setState({showAddSiteBuilderDialog: false});
     },
 
     closeDialogHandler: function(){
@@ -47,14 +64,17 @@ var TitlePage = React.createClass({
     render: function() {
        return (
                 <div>
-                 <button className="btn btn-primary add-repository" onClick={this.showAddRepoDialog}>
+                        <button className="btn btn-primary add-repository" onClick={this.showAddRepoDialog}>
                            Add repository
+                        </button>
+                        <button className="btn btn-primary add-repository" onClick={this.showAddSiteBuilderRepoDialog}>
+                           Add SiteBuilder repository
                         </button>
                <h2> Titles available:</h2>        
 
                      <TitleList data={this.state.response.titles} />
                      {this.state.loading? <Loader /> : ""}
-                     {this.renderAddRepoDialog()}
+                     {this.renderAddDialogs()}
                 </div>
             );
     }

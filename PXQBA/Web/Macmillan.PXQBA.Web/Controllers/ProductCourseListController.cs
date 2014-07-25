@@ -12,6 +12,7 @@ namespace Macmillan.PXQBA.Web.Controllers
     {
         private readonly IProductCourseManagementService productCourseManagementService;
         private readonly IUserManagementService userManagementService;
+        private const string SiteBuilderLink = "lcl.someurl/launchpad/";
 
         public ProductCourseListController(IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService)
         {
@@ -21,7 +22,10 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View(new ProductCourseListPageViewModel
+                        {
+                            SiteBuilderLink = SiteBuilderLink
+                        });
         }
 
 
