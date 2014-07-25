@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Web.ViewModels.TiteList;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -12,19 +13,20 @@ namespace Macmillan.PXQBA.Web.Controllers
     {
         private readonly IProductCourseManagementService productCourseManagementService;
         private readonly IUserManagementService userManagementService;
-        private const string SiteBuilderLink = "lcl.someurl/launchpad/";
+        private readonly string baseLaunchpadUrl;
 
         public ProductCourseListController(IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService)
         {
             this.productCourseManagementService = productCourseManagementService;
             this.userManagementService = userManagementService;
+            this.baseLaunchpadUrl = ConfigurationHelper.GetBaseLaunchpadUrl();
         }
 
         public ActionResult Index()
         {
             return View(new ProductCourseListPageViewModel
                         {
-                            SiteBuilderLink = SiteBuilderLink
+                            SiteBuilderLink = baseLaunchpadUrl
                         });
         }
 
@@ -49,11 +51,12 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult AddSiteBuilderRepository(string url)
         {
+            string courseId = productCourseManagementService.AddSiteBuilderCourse(url);
 
             return JsonCamel(new AddSiteBuilderRepositoryResponse
                              {
-                                 IsError = false,
-                                 CourseId = "309016"
+                                 IsError = string.IsNullOrEmpty(courseId),
+                                 CourseId = courseId
                              });
         }
 
