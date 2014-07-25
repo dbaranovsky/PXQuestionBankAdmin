@@ -56,9 +56,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
+    <Reference Include="RAg.Net">
+      <HintPath>..\..\PXShared\ThirdParty\RAg\RAg.Net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -93,6 +97,14 @@
     <ProjectReference Include="..\..\PXShared\Bfw.Common\Bfw.Common\Bfw.Common.csproj">
       <Project>{4F1BF9DB-1226-4867-9E41-129B214F24F2}</Project>
       <Name>Bfw.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PXShared\Bfw.PX.Biz\Bfw.PX.Biz.DataContracts\Bfw.PX.Biz.DataContracts.csproj">
+      <Project>{71124912-42B5-49BF-ACBD-E38F09FACA70}</Project>
+      <Name>Bfw.PX.Biz.DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PXShared\Bfw.PX.Biz\Bfw.PX.Biz.ServiceContracts\Bfw.PX.Biz.ServiceContracts.csproj">
+      <Project>{392a9467-b225-4300-bc1a-f34983afbc3d}</Project>
+      <Name>Bfw.PX.Biz.ServiceContracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\Macmillan.PXQBA.Business.Contracts\Macmillan.PXQBA.Business.Contracts.csproj">
       <Project>{C7070F01-3D37-425D-ABD5-E02D7CFAEA43}</Project>

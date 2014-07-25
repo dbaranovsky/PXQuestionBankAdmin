@@ -20,5 +20,6 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
 
         IEnumerable<Course> GetAllCourses();
         Course CreateDraftCourse(string title);
+        string AddSiteBuilderCourseToQBA(string url);
     }
 }

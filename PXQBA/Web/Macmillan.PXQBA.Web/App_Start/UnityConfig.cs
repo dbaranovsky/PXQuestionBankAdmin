@@ -9,6 +9,8 @@ using Bfw.Common.Database;
 using Bfw.Common.Logging;
 using Bfw.Common.Patterns.Caching;
 using Bfw.Common.Patterns.Logging;
+using Bfw.PX.Biz.Direct.Services;
+using Bfw.PX.Biz.ServiceContracts;
 using Macmillan.PXQBA.Business;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Commands.Services.DLAP;
@@ -67,6 +69,7 @@ namespace Macmillan.PXQBA.Web.App_Start
             container.RegisterType<ICacheProvider, AppFabricCacheProvider>(new PerRequestLifetimeManager());
             container.RegisterType<IDataCacheFactoryProvider, HttpApplicationDataCacheFactoryProvider>(new PerRequestLifetimeManager());
             container.RegisterType<ILogger, CommonLogger>(new PerRequestLifetimeManager());
+            container.RegisterType<IRAServices, RAServices>(new PerRequestLifetimeManager());
             container.RegisterTypes(AllClasses.FromAssemblies(typeof(Context).Assembly), WithMappings.FromAllInterfaces, WithName.Default, WithLifetime.Custom<PerRequestLifetimeManager>);
             container.RegisterTypes(AllClasses.FromAssemblies(typeof(QuestionCommands).Assembly), WithMappings.FromAllInterfaces, WithName.Default);
 
