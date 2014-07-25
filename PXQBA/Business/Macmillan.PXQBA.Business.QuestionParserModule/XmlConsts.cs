@@ -32,6 +32,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule
                
         public static string VarequalXPath = "conditionvar/varequal";
         public static string MattextXPath = "material/mattext";
+        public static string MaterialsXPath = "presentation/material";
        
         
        

@@ -48,5 +48,6 @@ namespace Macmillan.PXQBA.Business.Contracts
 
         IEnumerable<CourseMetadataFieldDescriptor> MapFieldsWithItemLinks(List<QuestionCardData> questionCardData, XElement courseData);
         Question GetQuestionFromParsedQuestion(ParsedQuestion parsedQuestion, Course course);
+        Resource GetResourceFromRestoredResource(ParsedResource parsedResource, string courseId);
     }
 }

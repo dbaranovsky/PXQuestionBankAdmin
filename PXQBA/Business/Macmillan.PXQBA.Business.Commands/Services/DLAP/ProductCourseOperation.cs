@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Common.Helpers;
 using Course = Macmillan.PXQBA.Business.Models.Course;
 
 namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
@@ -66,6 +67,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             var createdCourse = GetAgilixCourse(cmd.Entity.FirstOrDefault().Id);
             createdCourse.QuestionBankRepositoryCourse = createdCourse.Id;
             createdCourse.IsDraft = true;
+          
 
             ExecuteUpdateCourse(createdCourse);
             AddToAvailableCourses(createdCourse.Id);
@@ -235,6 +237,47 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
             businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
             return cmd.Courses.FirstOrDefault();
+        }
+
+        public void RemoveResources(string itemId, List<string> questionRelatedResources)
+        {
+            if (!questionRelatedResources.Any())
+            {
+                return;
+            }
+
+            var cmd = new DeleteResources
+            {
+                ResourcesToDelete =
+                    questionRelatedResources.Select(relatedResource => new Resource
+                    {
+                        EntityId = itemId,
+                        Url = ConfigurationHelper.GetBrainhoneyCourseImageFolder() +
+                               relatedResource
+                    }).ToList()
+            };
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+        }
+
+        public void PutResources(List<Resource> resources)
+        {
+            if (!resources.Any())
+            {
+                return;
+            }
+
+   
+            var batch = new Batch { RunAsync = true };
+
+            foreach (var resource in resources)
+            {
+                batch.Add(new PutResource()
+                {
+                   Resource = resource
+                });
+            }
+
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(batch);
         }
     }
 }

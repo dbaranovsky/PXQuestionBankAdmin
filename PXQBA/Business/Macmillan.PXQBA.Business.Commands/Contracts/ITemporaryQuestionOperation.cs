@@ -22,6 +22,6 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         /// <returns></returns>
         Question CreateQuestion(string productCourseId, Question question);
 
-        void RemoveResources(string itemId, List<string> questionRelatedResources);
+      
     }
 }

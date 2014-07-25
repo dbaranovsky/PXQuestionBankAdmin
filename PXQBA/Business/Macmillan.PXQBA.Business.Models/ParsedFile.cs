@@ -6,5 +6,7 @@
         public string FileName { get; set; }
 
         public string QuestionsData { get; set; }
+
+        public byte[] ResourcesData { get; set; }
     }
 }

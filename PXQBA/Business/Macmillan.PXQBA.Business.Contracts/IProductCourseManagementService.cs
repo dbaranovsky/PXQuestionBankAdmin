@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Macmillan.PXQBA.Business.Models;
+﻿using System.Collections.Generic;
+using Bfw.Agilix.DataContracts;
+using Course = Macmillan.PXQBA.Business.Models.Course;
 
 namespace Macmillan.PXQBA.Business.Contracts
 {
@@ -13,7 +13,8 @@ namespace Macmillan.PXQBA.Business.Contracts
         Course UpdateMetadataConfig(Course course);
         IEnumerable<Course> GetAllCourses();
         void CreateNewDraftCourse(string title);
-
         string AddSiteBuilderCourse(string url);
+        void RemoveResources(string getTemporaryCourseId, List<string> getQuestionRelatedResources);
+        void PutResources(List<Resource> resources);
     }
 }

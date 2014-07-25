@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using AutoMapper;
@@ -438,6 +439,20 @@ namespace Macmillan.PXQBA.Business.Services
                 DynamicValues = parsedQuestion.MetadataSection
             });
             return question;
+        }
+
+        public Resource GetResourceFromRestoredResource(ParsedResource parsedResource, string courseId)
+        {
+            var resource = new Resource()
+                           {
+                               EntityId = courseId,
+                               Url = ConfigurationHelper.GetBrainhoneyCourseImageFolder()+parsedResource.FullPath,
+                               ResourceStream = new MemoryStream(parsedResource.BinData),
+                               CreationDate = DateTime.Now,
+                               ModifiedDate = DateTime.Now
+                           };
+
+            return resource;
         }
 
         private QuestionChoice GetQuestionChoice(ParsedQuestionChoice parsedChoice)

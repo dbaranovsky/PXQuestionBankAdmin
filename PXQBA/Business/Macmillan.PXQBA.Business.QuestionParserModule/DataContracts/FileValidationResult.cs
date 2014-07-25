@@ -41,5 +41,24 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.DataContracts
                questions = value;
            }
        }
+
+
+       private IList<ParsedResource> resources;
+
+       public IList<ParsedResource> Resources
+       {
+           get
+           {
+               if (resources == null)
+               {
+                   resources = new List<ParsedResource>();
+               }
+               return resources;
+           }
+           set
+           {
+               resources = value;
+           }
+       }
     }
 }

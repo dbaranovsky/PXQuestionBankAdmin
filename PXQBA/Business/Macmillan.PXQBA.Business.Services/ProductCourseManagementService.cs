@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Caching;
+using Bfw.Agilix.DataContracts;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Common.Helpers.Constants;
 using Macmillan.PXQBA.Common.Logging;
+using Course = Macmillan.PXQBA.Business.Models.Course;
 
 namespace Macmillan.PXQBA.Business.Services
 {
@@ -60,7 +62,6 @@ namespace Macmillan.PXQBA.Business.Services
                                          };
             productCourseOperation.UpdateCourse(newCourse);
         }
-
         private void GrantUserSuperAdmin(string productCourseId)
         {
             roleOperation.UpdateRolesCapabilities(productCourseId, PredefinedRoleHelper.GetPredefinedRoles());
@@ -85,7 +86,15 @@ namespace Macmillan.PXQBA.Business.Services
             }
         }
 
-        private CourseMetadataFieldDescriptor GetFieldDescriptor(string internalName)
+        public void RemoveResources(string getTemporaryCourseId, List<string> getQuestionRelatedResources)
+        {
+            productCourseOperation.RemoveResources(getTemporaryCourseId, getQuestionRelatedResources);
+        }
+
+        public void PutResources(List<Resource> resources)
+        {
+            productCourseOperation.PutResources(resources);
+        }        private CourseMetadataFieldDescriptor GetFieldDescriptor(string internalName)
         {
             return new CourseMetadataFieldDescriptor
             {

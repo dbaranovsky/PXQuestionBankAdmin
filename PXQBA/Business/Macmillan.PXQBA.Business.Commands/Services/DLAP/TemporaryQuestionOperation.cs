@@ -103,25 +103,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             }
         }
 
-        public void RemoveResources(string itemId, List<string> questionRelatedResources)
-        {
-            if (!questionRelatedResources.Any())
-            {
-                return;
-            }
-
-            var cmd = new DeleteResources
-                      {
-                          ResourcesToDelete =
-                              questionRelatedResources.Select(relatedResource => new Resource
-                                                                                 {
-                                                                                     EntityId = itemId,
-                                                                                     Url = ConfigurationHelper.GetBrainhoneyCourseImageFolder() + 
-                                                                                            relatedResource
-                                                                                 }).ToList()
-                      };
-            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
-        }
+      
 
         private Question CopyQuestionToCourse(string sourceProductCourseId, string sourceQuestionId, string destinationProductCourseId, string destinationQuestionId,string version = null)
         {

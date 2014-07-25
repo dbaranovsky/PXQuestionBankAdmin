@@ -214,6 +214,25 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.QuestionSkipped, opt => opt.MapFrom(src => src.Questions.Count(q => !q.IsParsed)));
 
             Mapper.CreateMap<ParsedQuestion, Question>().ConvertUsing(new ParsedQuestionToQuestionConverter(modelProfileService));
+
+            Mapper.CreateMap<ParsedResource, Resource>().ConvertUsing(new ParsedResourceToResourceConverter(modelProfileService));
+              
+        }
+    }
+
+    public class ParsedResourceToResourceConverter : ITypeConverter<ParsedResource, Resource>
+    {
+        private readonly IModelProfileService modelProfileService;
+        public ParsedResourceToResourceConverter(IModelProfileService modelProfileService)
+        {
+            this.modelProfileService = modelProfileService;
+        }
+
+        public Resource Convert(ResolutionContext context)
+        {
+            return context.Options.Items.Any()
+                ? modelProfileService.GetResourceFromRestoredResource((ParsedResource) context.SourceValue, (string) context.Options.Items.First().Value)
+                : null;
         }
     }
 
