@@ -34,7 +34,6 @@ namespace Macmillan.PXQBA.Business.Services
 
         public IEnumerable<Course> GetCourseList()
         {
-            AddSiteBuilderCourse("");
             return productCourseOperation.GetUserAvailableCourses(true);
         }
 
