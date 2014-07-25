@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Macmillan.PXQBA.Business.Models;
+﻿using System.Collections.Generic;
+using Bfw.Agilix.DataContracts;
+using Course = Macmillan.PXQBA.Business.Models.Course;
 
 namespace Macmillan.PXQBA.Business.Commands.Contracts
 {
@@ -21,5 +18,8 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         IEnumerable<Course> GetAllCourses();
         Course CreateDraftCourse(string title);
         string AddSiteBuilderCourseToQBA(string url);
+        void RemoveResources(string itemId, List<string> questionRelatedResources);
+
+        void PutResources(List<Resource> resources);
     }
 }

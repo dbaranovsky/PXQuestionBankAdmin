@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
-using Macmillan.PXQBA.Business.QuestionParserModule.QTI;
 using Macmillan.PXQBA.Common.Helpers;
 
 namespace Macmillan.PXQBA.Business.QuestionParserModule.QML
@@ -17,7 +14,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QML
     public class QMLQuestionPaser : QuestionParserBase
     {
         private const string QuestionTypeXpath = "itemmetadata/qmd_itemtype";
-        private FileValidationResult _fileValidationResult;
+        private FileValidationResult fileValidationResult;
         public override bool Recognize(string fileName)
         {
             return String.Equals(Path.GetExtension(fileName), EnumHelper.GetEnumDescription(QuestionFileType.QML), StringComparison.CurrentCultureIgnoreCase);
@@ -26,7 +23,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QML
         public override ValidationResult Parse(string fileName, byte[] file)
         {
             var data = XDocument.Parse(Encoding.UTF8.GetString(file), LoadOptions.SetLineInfo);
-            _fileValidationResult = new FileValidationResult()
+            fileValidationResult = new FileValidationResult()
                                    {
                                        FileName = fileName,
                                        Questions = new List<ParsedQuestion>(),
@@ -50,16 +47,16 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QML
                                                      Questions = new List<ParsedQuestion>(),
                                                      ValidationErrors = new List<string>()
                                                                         {
-                                                                            String.Format("Error during parsing QML Format: {0}", e.Message)
+                                                                            String.Format("File: {0}, Line: 1 - Error during opening QML Format", fileName)
                                                                         }
                                                  });
             }
 
             foreach (var element in itemsXml)
             {
-              ProcessXmlItem(element);
+              ProcessXmlItem(element, fileName);
             }
-            Result.FileValidationResults.Add(_fileValidationResult);
+            Result.FileValidationResults.Add(fileValidationResult);
             return Result;
           
         }
@@ -72,12 +69,12 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QML
                     .Contains(item.XPathSelectElement(QuestionTypeXpath).Value);
         }
 
-        private void ProcessXmlItem(XElement item)
+        private void ProcessXmlItem(XElement item, string fileName)
         {
             if (!IsTypeExist(item))
             {
-                _fileValidationResult.ValidationErrors.Add(String.Format("Line:{0}: Unknown question type:{1} ", GetLineNumber(item), item.XPathSelectElement(QuestionTypeXpath).Value));
-                _fileValidationResult.Questions.Add(new ParsedQuestion(){IsParsed = false});
+                fileValidationResult.ValidationErrors.Add(String.Format("File: {0}, Line: {1} - Unknown question type: {2} ", fileName, GetLineNumber(item), item.XPathSelectElement(QuestionTypeXpath).Value));
+                fileValidationResult.Questions.Add(new ParsedQuestion(){IsParsed = false});
                 return;
             }
             
@@ -91,7 +88,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QML
                          question = ParseMultiChoiceQuestion(item);
                         question.Type = ParsedQuestionType.MultipleChoice;
                         question.IsParsed = true;
-                        _fileValidationResult.Questions.Add(question);
+                        fileValidationResult.Questions.Add(question);
                         return;
                     default:
                         throw new Exception("QMLQuestionParser: no such question type");
@@ -99,12 +96,12 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QML
             }
             catch (Exception e)
             {
-                _fileValidationResult.ValidationErrors.Add(String.Format("Line:{0}: Error during question processing: {1}", GetLineNumber(item), e.Message));
+                fileValidationResult.ValidationErrors.Add(String.Format("File: {0}, Line: {1} - Error during question processing", fileName, GetLineNumber(item)));
                 question.IsParsed = false;
          
             }
 
-          _fileValidationResult.Questions.Add(question);
+          fileValidationResult.Questions.Add(question);
         }
 
         private int GetLineNumber(XElement item)

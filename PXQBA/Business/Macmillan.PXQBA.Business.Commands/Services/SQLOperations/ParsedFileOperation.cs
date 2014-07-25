@@ -25,7 +25,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
             this.databaseManager = databaseManager;
         }
 
-        public long AddParsedFile(string fileName, string questionsData)
+        public long AddParsedFile(string fileName, string questionsData, byte[] resourcesData)
         {
             DbCommand command = new SqlCommand();
             command.CommandType = CommandType.StoredProcedure;
@@ -38,6 +38,9 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
             command.Parameters.Add(questionsDataParam);
             var statusParam = new SqlParameter("@status", ParsedFileStatus.Validated);
             command.Parameters.Add(statusParam);
+
+            var resourcesDataParam = new SqlParameter("@resourcesData", resourcesData);
+            command.Parameters.Add(resourcesDataParam);
 
             try
             {
@@ -98,6 +101,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
                 parsedFile.Id = (long)firstRecord["Id"];
                 parsedFile.FileName = firstRecord["FileName"].ToString();
                 parsedFile.QuestionsData = firstRecord["QuestionsData"].ToString();
+                parsedFile.ResourcesData = firstRecord["ResourcesData"] == null? null : (byte[])firstRecord["ResourcesData"];
             }
             return parsedFile;
         }

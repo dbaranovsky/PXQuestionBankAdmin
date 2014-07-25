@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Xml.Serialization;
 using AutoMapper;
+using Bfw.Agilix.DataContracts;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Commands.Helpers;
 using Macmillan.PXQBA.Business.Contracts;
@@ -14,6 +15,7 @@ using Macmillan.PXQBA.Business.QuestionParserModule;
 using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Common.Logging;
+using Course = Macmillan.PXQBA.Business.Models.Course;
 using Question = Macmillan.PXQBA.Business.Models.Question;
 using ValidationResult = Macmillan.PXQBA.Business.Models.ValidationResult;
 
@@ -350,7 +352,7 @@ namespace Macmillan.PXQBA.Business.Services
             {
                 return;
             }
-            temporaryQuestionOperation.RemoveResources(ConfigurationHelper.GetTemporaryCourseId(), QuestionHelper.GetQuestionRelatedResources(question.QuestionXml));
+            productCourseManagementService.RemoveResources(ConfigurationHelper.GetTemporaryCourseId(), QuestionHelper.GetQuestionRelatedResources(question.QuestionXml));
         }
 
         private QuestionMetadataSection GetNewProductCourseSection(int courseIdToPublish, string bank, string chapter, Course currentCourse, Question question)
@@ -442,18 +444,14 @@ namespace Macmillan.PXQBA.Business.Services
             {
                 var result = QuestionParserProvider.Parse(fileName, file);
                 var newResult = Mapper.Map<ValidationResult>(result);
-                string questionsData;
+                string questionsData = GetSerializesQuestionData(result);
+                byte[] resourcesData = StreamHelper.SerializeToByte(typeof(List<ParsedResource>), result.FileValidationResults.First().Resources);
                 
-                using(var writer = new StringWriter(CultureInfo.InvariantCulture))
-                {
-                    var serializer = new XmlSerializer(typeof(List<ParsedQuestion>));
-                    serializer.Serialize(writer, result.FileValidationResults.First().Questions.Where(x => x.IsParsed).ToList());
-                    questionsData = writer.ToString();
-                }
+               
                 var fileResult = newResult.FileValidationResults.FirstOrDefault(f => f.FileName == fileName);
                 if (fileResult != null && !string.IsNullOrEmpty(questionsData))
                 {
-                    fileResult.Id = parsedFileOperation.AddParsedFile(fileName, questionsData);
+                    fileResult.Id = parsedFileOperation.AddParsedFile(fileName, questionsData, resourcesData);
                 }
      
                 return newResult;
@@ -467,11 +465,27 @@ namespace Macmillan.PXQBA.Business.Services
             }
         }
 
+        private string GetSerializesQuestionData(QuestionParserModule.DataContracts.ValidationResult result)
+        {
+            string questionsData;
+            using (var writer = new StringWriter(CultureInfo.InvariantCulture))
+            {
+                var serializer = new XmlSerializer(typeof(List<ParsedQuestion>));
+                serializer.Serialize(writer, result.FileValidationResults.First().Questions.Where(x => x.IsParsed).ToList());
+                questionsData = writer.ToString();
+            }
+
+            return questionsData;
+        }
+
+
         public int ImportFile(int id, string courseId)
         {
             var productCourse = productCourseManagementService.GetProductCourse(courseId, true);
             var parsedFile = parsedFileOperation.GetParsedFile(id);
             var parsedQuestions = new List<ParsedQuestion>();
+            var parsedResources = StreamHelper.ByteArrayToObject(parsedFile.ResourcesData);
+
             using (var reader = new StringReader(parsedFile.QuestionsData))
             {
                 var serializer = new XmlSerializer(typeof(List<ParsedQuestion>));
@@ -491,7 +505,31 @@ namespace Macmillan.PXQBA.Business.Services
                 questionCount = questions.Count();
             }
 
+            if (questionCount != 0 && parsedResources != null)
+            {
+                CopyResourscesToCourse(parsedResources, productCourse.QuestionRepositoryCourseId);
+            }
+
             return questionCount;
+        }
+
+        private void CopyResourscesToCourse(object parsedResources, string courseId)
+        {
+            List<ParsedResource> resources;
+            try
+            {
+                resources = (List <ParsedResource>) parsedResources;
+            }
+            catch (Exception e)
+            {
+                return;
+            }
+            if (!resources.Any())
+            {
+                return;
+            }
+
+            productCourseManagementService.PutResources(Mapper.Map<List<Resource>>(resources.Where(x=> x.BinData.Length != 0), opt => opt.Items.Add(courseId, courseId)));
         }
 
         public bool ImportQuestions(Course sourceCourse, string[] questionsIds, Course targetCourse)

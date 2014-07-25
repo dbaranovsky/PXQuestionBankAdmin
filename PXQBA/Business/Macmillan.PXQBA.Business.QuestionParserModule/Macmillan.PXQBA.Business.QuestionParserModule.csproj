@@ -32,6 +32,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,6 +50,7 @@
     <Compile Include="DataContracts\ParsedQuestionType.cs" />
     <Compile Include="DataContracts\SerializableDictionary.cs" />
     <Compile Include="DataContracts\ValidationResult.cs" />
+    <Compile Include="DataContracts\ParsedResource.cs" />
     <Compile Include="QML\QMLQuestionPaser.cs" />
     <Compile Include="QML\QMLTypes.cs" />
     <Compile Include="QTI\QTIQuestionParser.cs" />

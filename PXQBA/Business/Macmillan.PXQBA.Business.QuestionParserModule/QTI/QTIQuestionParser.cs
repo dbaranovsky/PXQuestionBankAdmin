@@ -9,6 +9,7 @@ using System.Xml.Linq;
 using System.Xml.XPath;
 using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
 using Macmillan.PXQBA.Common.Helpers;
+using System.IO.Compression;
 
 namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
 {
@@ -21,6 +22,8 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
         private const string AddAction = "Add";
         private const string SetAction = "Set";
         private const string ActivatedActionValue = "1";
+        private const string ResFile = "imsmanifest.xml";
+        private const string ResourcesFolder = "resources";
 
         public override bool Recognize(string fileName)
         {
@@ -41,8 +44,11 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
             {
                 FileName = fileName,
                 Questions = new List<ParsedQuestion>(),
-                ValidationErrors = new List<string>()
+                ValidationErrors = new List<string>(),
+                Resources = new List<ParsedResource>()
             };
+
+
             Result = new ValidationResult
             {
                 FileValidationResults = new List<FileValidationResult>()
@@ -59,11 +65,13 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
         {
             XDocument data;
             var itemsXml = new List<XElement>();
+            ZipArchive archive = null;
             try
             {
-                data = XDocument.Parse(RemoveXmlNamespace(Encoding.UTF8.GetString(file)), LoadOptions.SetLineInfo);
-
-                itemsXml = data.Descendants(XmlConsts.ItemName).ToList();
+                archive = new ZipArchive(new MemoryStream(file));
+                var dataEntry = archive.Entries.First(x => x.Name != ResFile && Path.GetExtension(x.Name) == ".xml");
+                data = XDocument.Parse(RemoveXmlNamespace(XDocument.Load(dataEntry.Open()).ToString()));
+                itemsXml = data.Descendants(XmlConsts.ItemName.LocalName).ToList();
             }
             catch (Exception e)
             {
@@ -73,26 +81,65 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
                     Questions = new List<ParsedQuestion>(),
                     ValidationErrors = new List<string>
                                        {
-                                           String.Format(
-                                               "Error during parsing QTI Format: {0}",
-                                               e.Message)
+                                          String.Format("File: {0}, Line: 1 - Error during opening QTI Format", fileName)
                                        }
                 });
             }
+
+            try
+            {
+                LoadResources(archive);
+            }
+            catch (Exception e)
+            {
+                fileValidationResult.ValidationErrors.Add(String.Format("File: {0}, Line: 1 - Error during resource file processing", ResFile));
+            }
+           
 
             foreach (var item in itemsXml)
             {
                 try
                 {
-                    ProcessXmlItem(item);
+                    ProcessXmlItem(ReplaceImagePath(item));
                 }
                 catch (Exception e)
                 {
-                    fileValidationResult.ValidationErrors.Add(String.Format("Line {0}: Question parse error: {1}", GetLineNumber(item), e.Message));
+                    fileValidationResult.ValidationErrors.Add(String.Format("File: {0}, Line: {1} - Error during question processing",fileName ,GetLineNumber(item)));
                     fileValidationResult.Questions.Add(new ParsedQuestion(){IsParsed = false});
                 }
 
             }
+        }
+
+        private XElement ReplaceImagePath(XElement item)
+        {
+            return  XElement.Parse(item.ToString().Replace(@"src=""", @"src=""[~]/"));
+        }
+
+        private void LoadResources(ZipArchive archive)
+        {
+            var resourcesFiles = archive.Entries.Where(x => x.FullName.Contains(ResourcesFolder));
+            if (!resourcesFiles.Any())
+            {
+                return;
+            }
+
+            foreach (var resourceFile in resourcesFiles)
+            {
+                using (var stream = resourceFile.Open())
+                {
+                    var bindata = StreamHelper.ReadFully(stream);
+                    fileValidationResult.Resources.Add(new ParsedResource()
+                                           {
+                                               BinData = bindata,
+                                               Name = resourceFile.Name,
+                                               FullPath = "/"+ resourceFile.FullName
+                                           });
+
+                }
+            }
+
+
         }
 
 
@@ -100,7 +147,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
         {
             var parsedQuestion = new ParsedQuestion();
             parsedQuestion.Title = item.Attribute(XmlConsts.TitleAttribute).Value;
-            parsedQuestion.Text = item.Element(XmlConsts.PresentationName).Descendants().First().Value;
+            parsedQuestion.Text = string.Join("<br />",item.XPathSelectElements(XmlConsts.MaterialsXPath).Select(x=> x.Value));
             var itemFeedBacks = item.Descendants(XmlConsts.FeedBackElementName);
             parsedQuestion.Feedback = !itemFeedBacks.Any(x => x.Attribute(XmlConsts.IdAttrName).Value == XmlConsts.GeneralId)
                 ? string.Empty
@@ -133,6 +180,8 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
             
             fileValidationResult.Questions.Add(parsedQuestion);
         }
+
+     
 
         private SerializableDictionary<string, List<string>> GetMetadata(XElement item)
         {
