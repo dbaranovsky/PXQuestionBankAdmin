@@ -26,9 +26,17 @@ namespace Macmillan.PXQBA.Web.Controllers
             this.userManagementService = userManagementService;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string courseId)
         {
-            return View();
+            if (String.IsNullOrEmpty(courseId))
+            {
+                courseId = null;
+            }
+
+            return View(new MetadataConfigPageViewModel()
+                        {
+                            SelectedCourseId = courseId
+                        });
         }
 
 

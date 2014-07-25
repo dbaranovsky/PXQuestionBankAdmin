@@ -73,6 +73,14 @@ input[type="checkbox"].input-validation-error {
     cursor: pointer;
 }
 
+.title-list-btn-container {
+    float: right;
+}
+
+.title-list-btn-container tr > td > button {
+    margin: 3px;
+}
+
 .actions-container {
     min-height: 34px;
 }
@@ -120,6 +128,13 @@ input[type="checkbox"].input-validation-error {
 
 .info-message {
     font-weight: bold;
+}
+
+.title-list-loader-container div > .loader-curtain {
+     z-index: 1499;
+}
+.title-list-loader-container div > .loader-spinner {
+     z-index: 1498;
 }
 
 .loader-curtain {

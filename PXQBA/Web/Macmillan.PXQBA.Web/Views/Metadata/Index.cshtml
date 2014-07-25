@@ -1,4 +1,4 @@
-﻿
+﻿@model Macmillan.PXQBA.Web.ViewModels.MetadataConfig.MetadataConfigPageViewModel
 @{
     ViewBag.Title = "Index";
 }
@@ -47,7 +47,9 @@
 
         notificationManager.htmlContainer = $('#notifications-container')[0];
 
-        var options = {};
+        var options = {
+            courseId: '@(Model.SelectedCourseId)'
+        };
         var courseList = metadataCfgDataManager.getAvailableCourses();
 
         courseList.done(function(response) {

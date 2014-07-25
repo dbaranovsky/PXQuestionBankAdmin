@@ -57,13 +57,24 @@
         actions.questionTitle = {
             titleListUrl: '@Url.Action("Index", "ProductCourseList")',
             getTitleDataUrl: '@Url.Action("GetTitleData", "ProductCourseList")',
-            addNewRepositoryUrl: '@Url.Action("AddNewRepository", "ProductCourseList")'
+            addNewRepositoryUrl: '@Url.Action("AddNewRepository", "ProductCourseList")',
+            addSiteBuilderRepositoryUrl: '@Url.Action("AddSiteBuilderRepository", "ProductCourseList")'
+            
         };
 
         actions.metadataCfg = {
             getAvailableCoursesUrl: '@Url.Action("GetAvailableCourses", "Metadata")',
             getMetadataConfigUrl: '@Url.Action("GetMetadataConfig", "Metadata")',
-            saveMetadataConfigUrl: '@Url.Action("SaveMetadataConfig", "Metadata")'
+            saveMetadataConfigUrl: '@Url.Action("SaveMetadataConfig", "Metadata")',
+            
+            metadataCfgIndexTemplate: '@Html.Raw(@Url.Action("Index", "Metadata", new { courseId = "__courseId__" }))',
+        };
+
+        actions.metadataCfg.buildMetadataCfgIndexUrl = function(courseId) {
+            if (courseId == null) {
+                courseId = '';
+            }
+            return actions.metadataCfg.metadataCfgIndexTemplate.replace('__courseId__', courseId);
         };
 
         actions.bulkOperations = {

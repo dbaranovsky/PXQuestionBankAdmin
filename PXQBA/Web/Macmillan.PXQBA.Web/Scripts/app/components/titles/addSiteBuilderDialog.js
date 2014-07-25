@@ -14,8 +14,32 @@ var AddSiteBuilderDialog  = React.createClass({displayName: 'AddSiteBuilderDialo
       this.setState({repositoryName: name})
   },
 
-  addRepository: function(){
-    
+  addSiteBuilderRepository: function(){
+      var url = this.props.siteBuilderLink + this.state.repositoryName;
+      this.props.loadingHandler(true);
+      titleDataManager.addSiteBuilderRepository(url)
+                      .done(this.addSiteBuilderRepositoryDoneHanlder)
+                      .error(this.addSiteBuilderRepositoryErrorHanlder);
+  },
+
+  addSiteBuilderRepositoryDoneHanlder: function(response) {
+     this.props.loadingHandler(false);
+     if(response.isError) {
+         notificationManager.showWarning("Url is invalid. Please enter a valid url.");
+         return;
+     }
+
+     var message = "Title created successfully. ";
+     var url = actions.metadataCfg.buildMetadataCfgIndexUrl(response.courseId);
+     var link = '<a href='+url+'> Go to the Metadata config page of the new title</a>';
+ 
+     notificationManager.showSuccessHtml(message+link);
+     this.refs.modelDialog.refs.cancelButton.getDOMNode().click();
+  },
+
+  addSiteBuilderRepositoryErrorHanlder: function(response) {
+    this.props.loadingHandler(false);
+    notificationManager.showDanger(window.enums.messages.errorMessage);
   },
 
    closeDialog: function(){
@@ -47,12 +71,13 @@ var AddSiteBuilderDialog  = React.createClass({displayName: 'AddSiteBuilderDialo
 
     var  renderFooterButtons = function(){
          return (React.DOM.div( {className:"modal-footer"},  
-                    React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal"}, "Cancel"),
-                    React.DOM.button( {type:"button", className:"btn btn-primary", onClick:self.addRepository}, "Add")
+                    React.DOM.button( {type:"button", ref:"cancelButton", className:"btn btn-default", 'data-dismiss':"modal"}, "Cancel"),
+                    React.DOM.button( {type:"button", className:"btn btn-primary", onClick:self.addSiteBuilderRepository}, "Add")
                  ));
     };
  
-    return (ModalDialog(  {showOnCreate:  true, 
+    return (ModalDialog(  {ref:"modelDialog",
+                          showOnCreate:  true, 
                           renderHeaderText:renderHeaderText, 
                           renderBody:renderBody,  
                           closeDialogHandler:  this.closeDialog, 

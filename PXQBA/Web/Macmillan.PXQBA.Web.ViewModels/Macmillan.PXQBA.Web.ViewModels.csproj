@@ -70,6 +70,7 @@
     <Compile Include="Import\ImportFromTitleStep3ViewModel.cs" />
     <Compile Include="Import\ImportQuestionsToTitleResult.cs" />
     <Compile Include="Import\QuestionForImportContainer.cs" />
+    <Compile Include="MetadataConfig\MetadataConfigPageViewModel.cs" />
     <Compile Include="MetadataConfig\MetadataConfigViewModel.cs" />
     <Compile Include="MetadataConfig\MetadataFieldDisplayOptionsViewModel.cs" />
     <Compile Include="MetadataConfig\ProductCourseViewModel.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="QuestionOrder.cs" />
     <Compile Include="QuestionViewModel.cs" />
     <Compile Include="SharedQuestionDuplicateFromViewModel.cs" />
+    <Compile Include="TiteList\AddSiteBuilderRepositoryResponse.cs" />
     <Compile Include="TiteList\ChapterViewModel.cs" />
     <Compile Include="TiteList\ProductCourseListDataResponse.cs" />
     <Compile Include="TiteList\ProductCourseListPageViewModel.cs" />

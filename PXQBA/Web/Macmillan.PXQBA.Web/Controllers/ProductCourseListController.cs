@@ -46,6 +46,17 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(new {isError = false});
         }
 
+        [HttpPost]
+        public ActionResult AddSiteBuilderRepository(string url)
+        {
+
+            return JsonCamel(new AddSiteBuilderRepositoryResponse
+                             {
+                                 IsError = false,
+                                 CourseId = "309016"
+                             });
+        }
+
         private void UpdateCapabilities(IEnumerable<ProductCourseViewModel> titles)
         {
             foreach (var productCourseViewModel in titles)
