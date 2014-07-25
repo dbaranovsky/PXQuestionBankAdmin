@@ -35,6 +35,7 @@ var AddSiteBuilderDialog  = React.createClass({displayName: 'AddSiteBuilderDialo
  
      notificationManager.showSuccessHtml(message+link);
      this.refs.modelDialog.refs.cancelButton.getDOMNode().click();
+     this.props.updateTitleHanlder();
   },
 
   addSiteBuilderRepositoryErrorHanlder: function(response) {
