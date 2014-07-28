@@ -65,7 +65,7 @@ var AddQuestionBox = React.createClass({displayName: 'AddQuestionBox',
    getInitialState: function() {
       return { 
                question: {type: 0, chapter:"", bank:""}
-             };
+      };
     },
 
 
@@ -74,17 +74,11 @@ var AddQuestionBox = React.createClass({displayName: 'AddQuestionBox',
    },
 
    editHandler: function(question){
-
-    this.setState({question: question});
+      this.setState({question: question});
    },
 
-   componentDidMount: function()
-   {
-    //  $('.test-shit').chosen({width:"100%"});
-   },
-  
 
-    render: function() {
+   render: function() {
             return (React.DOM.div(null, 
                            
                            MetadataFieldEditor( {question:this.state.question, metadata:this.props.metadata, setDefault:true,  editHandler:this.editHandler, field:"type"}),

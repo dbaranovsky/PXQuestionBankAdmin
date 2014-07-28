@@ -228,14 +228,15 @@ var MetadataFieldEditor = React.createClass({
     }
 
   
-
+     /*
+     // is this code  not needed?
       $(self.getDOMNode()).find('.single-selector')
                            .chosen(chosenOptions)
                            .change(function(e, params){
                               self.editHandler(e.currentTarget.selectedOptions);
                            });
        $(self.getDOMNode()).find('.single-selector').trigger("chosen:updated");
-
+      */
        //todo: refactor
         if (this.state.editMenu){
              var metadataField = this.state.metadataField;
