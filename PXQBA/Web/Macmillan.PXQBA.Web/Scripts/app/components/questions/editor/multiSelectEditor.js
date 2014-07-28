@@ -46,25 +46,16 @@ var MultiSelectEditor = React.createClass({displayName: 'MultiSelectEditor',
 
 
      editHandler: function(selectedOptions){
-      
-       var items = [];
+       var items = selectedOptions;
 
-       $.each(selectedOptions, function(i, option){
-          items.push(option.value);
-       });
-      
-      var question = this.props.question;
-      if (question[this.props.field]== null || question[this.props.field].length !== items.length)
-      {
-        question[this.props.field] = items;
-        this.props.editHandler(question);
-      }
-     
-
+       var question = this.props.question;
+       if (question[this.props.field]== null || question[this.props.field].length !== items.length) {
+           question[this.props.field] = items;
+           this.props.editHandler(question);
+       }
      },
 
     renderMenuItems: function() {
-
         return (this.state.options);
     },
 
@@ -76,7 +67,8 @@ var MultiSelectEditor = React.createClass({displayName: 'MultiSelectEditor',
         $(selector).val(this.props.question[this.props.field])
                    .chosen(chosenOptions)
                    .change(function(e, params){
-                             handler(e.currentTarget.selectedOptions);
+                             var values = $(selector).chosen().val();
+                             handler(values);
                     });
 
                          
