@@ -9,6 +9,7 @@ var userManager = (function() {
 
         return $.ajax({
             url: window.actions.userOperations.getCurrentUserNotificationForUrl,
+             cache: false,
             traditional: true,
             dataType: 'json',
             type: 'GET',
@@ -92,6 +93,7 @@ var userManager = (function() {
                
         return $.ajax({
             url: window.actions.userOperations.getNewRoleTemplateUrl,
+             cache: false,
             dataType: 'json',
             type: 'GET',
             contentType: 'application/json'
@@ -114,6 +116,7 @@ var userManager = (function() {
                
         return $.ajax({
             url: window.actions.userOperations.getRoleCapabilitiesUrl,
+             cache: false,
             data: request,
             dataType: 'json',
             type: 'GET'   
@@ -225,6 +228,7 @@ var userManager = (function() {
 
         return $.ajax({
             url: window.actions.userOperations.getUserRolesUrl,
+             cache: false,
             dataType: 'json',
             data: request,
             type: 'GET'
@@ -248,6 +252,7 @@ var userManager = (function() {
 
         return $.ajax({
             url: window.actions.userOperations.saveUserRolesUrl,
+             cache: false,
             dataType: 'json',
             data: JSON.stringify(request),
             type: 'POST',

@@ -23,12 +23,16 @@ var MetadataFieldEditor = React.createClass({
 
      editHandler: function(selectedOptions){
         var value = "";
-         if (selectedOptions[0] !== undefined){
+        if(typeof(selectedOptions) == "string" ){
+            value = selectedOptions;
+        } else if (selectedOptions[0] !== undefined){
              value=selectedOptions[0].value;
          } 
          else {
              value = this.refs.editor.getDOMNode().value;
          }
+
+
          this.updateQuestion(value);
      },
 
@@ -228,15 +232,17 @@ var MetadataFieldEditor = React.createClass({
     }
 
   
-     /*
+     var selector = $(this.getDOMNode()).find('.single-selector');
+      var handler =  this.editHandler;
+     
      // is this code  not needed?
-      $(self.getDOMNode()).find('.single-selector')
-                           .chosen(chosenOptions)
+      $(selector).chosen(chosenOptions)
                            .change(function(e, params){
-                              self.editHandler(e.currentTarget.selectedOptions);
+                                var values = $(selector).chosen().val();
+                                handler(values);
                            });
-       $(self.getDOMNode()).find('.single-selector').trigger("chosen:updated");
-      */
+       $(selector).trigger("chosen:updated");
+     
        //todo: refactor
         if (this.state.editMenu){
              var metadataField = this.state.metadataField;

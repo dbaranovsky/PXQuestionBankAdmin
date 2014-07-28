@@ -82,6 +82,7 @@ var questionDataManager = (function() {
         };
         return $.ajax({
             url: window.actions.questionList.getQuestionNotesUrl,
+            cache: false,
             traditional: true,
             data: request,
             dataType: 'json',
@@ -156,6 +157,7 @@ var questionDataManager = (function() {
         };
           return $.ajax({
             url: window.actions.questionList.getNewQuestionTemplateUrl,
+            cache: false,
             traditional: true,
             data: request,
             dataType: 'json',
@@ -176,6 +178,7 @@ var questionDataManager = (function() {
         };
         return $.ajax({
             url: window.actions.questionList.getQuestionUrl,
+            cache: false,
             traditional: true,
             data: request,
             dataType: 'json',
@@ -183,6 +186,7 @@ var questionDataManager = (function() {
         }).done(function (response) {
         }).error(function(e){
              self.showErrorPopup();
+              asyncManager.stopWait();
         });
     };
 
@@ -190,6 +194,7 @@ var questionDataManager = (function() {
     self.getMetadataFields = function() {
          return $.ajax({
             url: window.actions.questionList.getMetadataFieldsUrl,
+            cache: false,
             traditional: true,
             dataType: 'json',
             contentType: 'application/json',
@@ -252,6 +257,7 @@ var questionDataManager = (function() {
         
         return $.ajax({
             url: window.actions.questionList.getDuplicateQuestionTemplateUrl,
+             cache: false,
             traditional: true,
             data: JSON.stringify(request),
             contentType: 'application/json',
@@ -343,6 +349,7 @@ var questionDataManager = (function() {
         return $.ajax({
             url: window.actions.questionList.getQuestionVersionsUrl,
             traditional: true,
+            cache: false,
             contentType: 'application/json',
             dataType: 'json',
             type: 'GET'
@@ -378,6 +385,7 @@ var questionDataManager = (function() {
 
         return $.ajax({
             url: window.actions.questionList.deleteQuestionUrl,
+             cache: false,
             traditional: true,
             dataType: 'json',
             type: 'GET'
@@ -545,6 +553,7 @@ var questionDataManager = (function() {
         };
          return $.ajax({
             url: window.actions.questionList.getVersionPreviewLinkUrl,
+             cache: false,
             traditional: true,
             data: request,
             dataType: 'json',
@@ -561,6 +570,7 @@ var questionDataManager = (function() {
         };
         return $.ajax({
             url: window.actions.questionList.publishDraftToOriginalUrl,
+             cache: false,
             traditional: true,
             data: request,
             dataType: 'json',
@@ -602,6 +612,7 @@ var questionDataManager = (function() {
     self.clearResources  = function(){
         return $.ajax({
             url: window.actions.questionList.clearQuestionResourcesUrl,
+             cache: false,
             traditional: true,
             contentType: 'application/json',
             dataType: 'json',

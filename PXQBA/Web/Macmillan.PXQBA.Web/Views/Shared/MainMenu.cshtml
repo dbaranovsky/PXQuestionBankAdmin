@@ -39,7 +39,7 @@
 
 @helper MenuImportItem(string label, string actionName, string controllerName)
 {
-    <li class="main-item @(IsActive(controllerName) ? "active" : null)">
+    <li class="@(IsActive(controllerName) ? "active" : null)">
             <a href="javascript:void(0);" data-toggle="dropdown">
                 Import
                 <div id="bar"></div>

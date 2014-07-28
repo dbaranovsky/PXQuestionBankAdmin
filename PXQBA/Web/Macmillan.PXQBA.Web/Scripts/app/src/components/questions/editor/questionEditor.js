@@ -80,6 +80,7 @@ var QuestionEditor = React.createClass({
       this.setState({saving: false});
       if(!response.isError) {
          // this.props.finishSaving();
+         this.reloadHistory();
       } 
       else {
         window.questionDataManager.showWarningPopup(window.enums.messages.warningQuestionEditorMessage);
@@ -102,6 +103,10 @@ var QuestionEditor = React.createClass({
             return;
        }
        
+    },
+
+    reloadHistory: function(){
+
     },
 
      runQuestion: function(){
