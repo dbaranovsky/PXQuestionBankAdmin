@@ -1,21 +1,25 @@
 ﻿@font-face {
     font-family: "OpenSans";
-    src: url("../fonts/main/OpenSans-Regular.ttf");
+    src: url("../fonts/main/OpenSans-Regular.ttf"),
+         url("../fonts/main/OpenSans-Regular.eot");
 }
 @font-face {
     font-family: "OpenSans";
-    src: url("../fonts/main/OpenSans-Bold.ttf");
+    src: url("../fonts/main/OpenSans-Bold.ttf"),
+         url("../fonts/main/OpenSans-Bold.eot");
     font-weight: bold;
 }
 @font-face {
     font-family: "OpenSans";
-    src: url("../fonts/main/OpenSans-Italic.ttf");
+    src: url("../fonts/main/OpenSans-Italic.ttf"),
+         url("../fonts/main/OpenSans-Italic.eot");
     font-style: italic;
 }
 /* */
 @font-face {
     font-family: "OpenSans";
-    src: url("../fonts/main/OpenSans-BoldItalic.ttf");
+    src: url("../fonts/main/OpenSans-BoldItalic.ttf"),
+         url("../fonts/main/OpenSans-BoldItalic.eot");
     font-style: italic;
     font-weight: bold;
 }
@@ -32,12 +36,14 @@
 }*/
 @font-face {
     font-family: "OpenSans";
-    src: url("../fonts/main/OpenSans-Semibold.ttf");
+    src: url("../fonts/main/OpenSans-Semibold.ttf"),
+         url("../fonts/main/OpenSans-Semibold.eot");
     font-weight: 600;
 }
 @font-face {
     font-family: "OpenSans";
-    src: url("../fonts/main/OpenSans-SemiboldItalic.ttf");
+    src: url("../fonts/main/OpenSans-SemiboldItalic.ttf"),
+         url("../fonts/main/OpenSans-SemiboldItalic.eot");
     font-style: italic;
     font-weight: 600;
 }

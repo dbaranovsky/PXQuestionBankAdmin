@@ -1528,3 +1528,12 @@ span.draft-course {
     width: 0%;
 }
 
+/* Main menu and jquery upload fix  */
+li.fileinput-button {
+    float: none !important;
+    margin-right:0 !important;
+}
+
+
+
+
