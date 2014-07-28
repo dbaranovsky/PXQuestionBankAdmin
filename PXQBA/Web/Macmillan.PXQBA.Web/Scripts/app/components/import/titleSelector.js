@@ -41,7 +41,7 @@ var TitleSelector = React.createClass({displayName: 'TitleSelector',
                                        this.renderTitle()
                                  )
                             ),
-                             "  ", this.props.data.isDraft? React.DOM.span( {className:"label label-default draft-label"}, "draft") : ""
+                             "  ", this.props.data.isDraft? React.DOM.span( {className:"label label-default draft-label"}, "DRAFT") : ""
                            ),
                             React.DOM.span( {className:"course-list-count"}, 
                                    this.getQuestionCountText(this.props.data.questionsCount)
