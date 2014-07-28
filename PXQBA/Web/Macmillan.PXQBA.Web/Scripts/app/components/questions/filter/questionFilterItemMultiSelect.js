@@ -23,6 +23,9 @@ var QuestionFilterItemMultiSelect = React.createClass({displayName: 'QuestionFil
 
 
 	changeHandler: function(selectedOptions) {
+     if(selectedOptions==null) {
+        selectedOptions =[];
+     }
      this.props.onChangeHandler(selectedOptions);
   },
 

@@ -46,6 +46,10 @@ var MultiSelectEditor = React.createClass({displayName: 'MultiSelectEditor',
 
 
      editHandler: function(selectedOptions){
+      if(selectedOptions == null) {
+        selectedOptions=[];
+      }
+
        var items = selectedOptions;
 
        var question = this.props.question;
