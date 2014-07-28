@@ -23,11 +23,7 @@ var SingleSelectSelector = React.createClass({
 
 
   changeHandler: function(selectedOptions) {
-    var items = [];
-    $.each(selectedOptions, function(i, option){
-        items.push(option.value);
-    }); 
-    this.props.onChangeHandler(items);
+      this.props.onChangeHandler(selectedOptions);
   },
 
   componentDidUpdate: function() {
@@ -51,11 +47,10 @@ var SingleSelectSelector = React.createClass({
                             placeholder_text_single: "None"
                           };
     }
-
     $(selector).val(this.props.currentValues)
                          .chosen(chosenOptions)
                          .change(function(e, params){
-                           self.changeHandler(e.currentTarget.selectedOptions);
+                            self.changeHandler([params.selected]);
                          });
     $(selector).trigger('chosen:updated');
   },
