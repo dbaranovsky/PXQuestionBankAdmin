@@ -23,11 +23,10 @@ var QuestionFilterItemMultiSelect = React.createClass({
 
 
 	changeHandler: function(selectedOptions) {
-    var items = [];
-    $.each(selectedOptions, function(i, option){
-        items.push(option.value);
-    });	
-    this.props.onChangeHandler(items);
+     if(selectedOptions==null) {
+        selectedOptions =[];
+     }
+     this.props.onChangeHandler(selectedOptions);
   },
 
 	componentDidUpdate: function() {
@@ -45,7 +44,8 @@ var QuestionFilterItemMultiSelect = React.createClass({
     $(selector).val(this.props.currentValues)
                          .chosen(chosenOptions)
                          .change(function(e, params){
-                           self.changeHandler(e.currentTarget.selectedOptions);
+                             var values = $(selector).chosen().val();
+                             self.changeHandler(values);
                          });
   },
 
