@@ -147,6 +147,11 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
            if (notification != null && notification.isShown){
              return ( NotificationDialog(  {closeDialog:this.closeNotificationDialog, proceedHandler:  this.proceedHandler, notification:notification, isCustomCloseHandle:true}));
            }
+           else {
+            if(this.state.typeId==window.enums.notificationTypes.saveAndPublishDraft) {
+              this.proceedHandler();
+            }
+           }
         }
         return null;
      },     
@@ -164,6 +169,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
 
      proceedHandler: function(){
       if (this.state.saveAndPublishMode){
+          this.resetChangesMonitor();
           this.saveAndPublish();
       }else{
         $('.modal-backdrop').first().remove(); 
