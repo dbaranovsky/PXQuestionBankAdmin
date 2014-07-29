@@ -3,7 +3,6 @@ using System.Xml.Linq;
 using Bfw.Agilix.DataContracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
-using Macmillan.PXQBA.DataAccess.Data;
 using Macmillan.PXQBA.Web.ViewModels;
 using Macmillan.PXQBA.Web.ViewModels.MetadataConfig;
 using Macmillan.PXQBA.Web.ViewModels.TiteList;
@@ -189,13 +188,6 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// <param name="type">Type</param>
         /// <returns>String type</returns>
         string MetadataFieldTypeToString(MetadataFieldType type);
-
-        /// <summary>
-        /// Gets metadata field values
-        /// </summary>
-        /// <param name="valuesOptions">Configured values</param>
-        /// <returns>List of field values</returns>
-        IEnumerable<CourseMetaFieldValue> GetFieldValues(IEnumerable<AvailableChoiceItem> valuesOptions);
 
         /// <summary>
         /// Loads a particular version of the question

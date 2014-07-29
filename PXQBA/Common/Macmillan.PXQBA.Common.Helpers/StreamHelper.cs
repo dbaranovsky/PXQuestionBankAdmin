@@ -10,6 +10,12 @@ namespace Macmillan.PXQBA.Common.Helpers
 {
     public static class StreamHelper
     {
+
+        /// <summary>
+        /// Reads byte array from stream
+        /// </summary>
+        /// <param name="input">Input stream</param>
+        /// <returns></returns>
         public static byte[] ReadFully(Stream input)
         {
             byte[] buffer = new byte[16 * 1024];
@@ -24,8 +30,12 @@ namespace Macmillan.PXQBA.Common.Helpers
             }
         }
 
-
-        public static byte[] SerializeToByte(Type type, object objectToSerialize)
+        /// <summary>
+        /// Serializes object to byte array
+        /// </summary>
+        /// <param name="objectToSerialize">Object to serialize</param>
+        /// <returns>Serialized byte array</returns>
+        public static byte[] SerializeToByte(object objectToSerialize)
         {
             if (objectToSerialize == null)
                 return null;
@@ -35,14 +45,18 @@ namespace Macmillan.PXQBA.Common.Helpers
             return ms.ToArray();
         }
 
+        /// <summary>
+        /// Deserialize byte array to object
+        /// </summary>
+        /// <param name="arrBytes">Array to deserialize</param>
+        /// <returns></returns>
         public static Object ByteArrayToObject(byte[] arrBytes)
         {
-            MemoryStream memStream = new MemoryStream();
-            BinaryFormatter binForm = new BinaryFormatter();
+            var memStream = new MemoryStream();
+            var binForm = new BinaryFormatter();
             memStream.Write(arrBytes, 0, arrBytes.Length);
             memStream.Seek(0, SeekOrigin.Begin);
-            Object obj = (Object)binForm.Deserialize(memStream);
-            return obj;
+            return binForm.Deserialize(memStream);
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Xml.Linq;
 using System.Xml.XPath;
 using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
 using Macmillan.PXQBA.Common.Helpers;
+using Macmillan.PXQBA.Common.Models;
 
 namespace Macmillan.PXQBA.Business.QuestionParserModule.QML
 {

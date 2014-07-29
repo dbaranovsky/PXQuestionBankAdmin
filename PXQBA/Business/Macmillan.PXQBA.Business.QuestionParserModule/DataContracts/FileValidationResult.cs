@@ -2,12 +2,21 @@
 
 namespace Macmillan.PXQBA.Business.QuestionParserModule.DataContracts
 {
+    /// <summary>
+    /// File validation and parsing result
+    /// </summary>
    public class FileValidationResult
     {
+       /// <summary>
+       /// Name of the file that was parsed
+       /// </summary>
        public string FileName { get; set; }
 
        private IList<string> validationErrors;
 
+       /// <summary>
+       /// Validation and parsing errors
+       /// </summary>
        public IList<string> ValidationErrors
        {
            get
@@ -26,6 +35,9 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.DataContracts
 
        private IList<ParsedQuestion> questions;
 
+       /// <summary>
+       /// List of parsed questions
+       /// </summary>
        public IList<ParsedQuestion> Questions
        {
            get
@@ -45,6 +57,9 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.DataContracts
 
        private IList<ParsedResource> resources;
 
+       /// <summary>
+       /// List of resources that questions have reference to
+       /// </summary>
        public IList<ParsedResource> Resources
        {
            get

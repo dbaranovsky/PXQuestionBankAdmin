@@ -1,7 +1,10 @@
 ﻿using System.ComponentModel;
 
-namespace Macmillan.PXQBA.Business.QuestionParserModule.DataContracts
+namespace Macmillan.PXQBA.Common.Models
 {
+    /// <summary>
+    /// File type to import questions
+    /// </summary>
     public enum QuestionFileType
     {
         [Description(".txt")]

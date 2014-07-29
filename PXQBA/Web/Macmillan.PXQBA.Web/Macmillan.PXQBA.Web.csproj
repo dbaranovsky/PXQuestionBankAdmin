@@ -579,10 +579,6 @@
       <Project>{45A498CC-0FDF-4B3B-833B-FD0B008AA8D9}</Project>
       <Name>Macmillan.PXQBA.Common.Logging</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\DataAccess\Macmillan.PXQBA.DataAccess.Data\Macmillan.PXQBA.DataAccess.Data.csproj">
-      <Project>{AC937F92-418D-4F2B-820E-DD1762E24114}</Project>
-      <Name>Macmillan.PXQBA.DataAccess.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Macmillan.PXQBA.Common.Models\Macmillan.PXQBA.Common.Models.csproj">
       <Project>{79D1137E-0FFD-4CBD-8B2A-29546A856306}</Project>
       <Name>Macmillan.PXQBA.Common.Models</Name>

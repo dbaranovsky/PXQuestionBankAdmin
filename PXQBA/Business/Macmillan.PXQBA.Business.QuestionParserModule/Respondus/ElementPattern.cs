@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
 {
+    /// <summary>
+    /// Patterns for elements inside Respondus file
+    /// </summary>
     internal static class ElementPattern
     {
         public const string QuestionBlock = @"((^)\d\.[ ][\s\S]*?(?=^\d\.[ ]))";//(^\d[.][ ][\s\S]*)";//(^\d+[.][ ].*[(].* point.*[)][\s\S])";

@@ -46,6 +46,9 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
         /// </summary>
         public const string QuestionTypes = "QuestionTypes";
 
+        /// <summary>
+        /// Temporary course id
+        /// </summary>
         public const string TemporaryCourseId = "TemporaryCourseId";
 
 
@@ -119,9 +122,24 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
         /// </summary>
         public const string BrainhoneyCourseImageFolder = "BrainhoneyCourseImageFolderName";
 
+        /// <summary>
+        /// Allowed subdomains
+        /// </summary>
         public const string AllowedSubdomains = "AllowedSubdomains";
+
+        /// <summary>
+        /// Local subdomain key
+        /// </summary>
         public const string LocalSubdomain = "LocalSubdomain";
+
+        /// <summary>
+        /// Dev subdomain key
+        /// </summary>
         public const string DevSubdomain = "DevSubdomain";
+
+        /// <summary>
+        /// Base LP url
+        /// </summary>
         public const string BaseLaunchpadUrl = "BaseLaunchpadUrl";
     }
 }
