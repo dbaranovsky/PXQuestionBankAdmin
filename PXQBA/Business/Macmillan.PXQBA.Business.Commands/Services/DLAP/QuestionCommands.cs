@@ -708,12 +708,25 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                     }
                     else
                     {
-                        var courseIds =
-                            question.MetadataElements.Where(e => e.Key.Contains(ElStrings.ProductCourseSection.ToString()))
-                                .Select(
-                                    e =>
-                                        e.Key.Split(new[] { ElStrings.ProductCourseSection.ToString() },
-                                            StringSplitOptions.RemoveEmptyEntries)[0]);
+                       
+                        var courseIds = new List<string>();
+                        foreach (var  metadataElement in  question.MetadataElements.Where(e => e.Key.Contains(ElStrings.ProductCourseSection.ToString())))
+                        {
+                            var splittedValues =
+                                metadataElement.Key.Split(new[] { ElStrings.ProductCourseSection.ToString() },
+                                    StringSplitOptions.RemoveEmptyEntries);
+                            if (splittedValues.Any())
+                            {
+                                courseIds.Add(splittedValues[0]);
+                            }
+                            
+                        }
+                            
+                   //question.MetadataElements.Where(e => e.Key.Contains(ElStrings.ProductCourseSection.ToString()))
+                   //             .Select(
+                   //                 e => e.Key.Split(new[] {ElStrings.ProductCourseSection.ToString()},
+                   //                     StringSplitOptions.RemoveEmptyEntries)[0]);
+
                         businessContext.CacheProvider.InvalidateQuestionFromQBA(question.ToQuestion(), courseIds.ToList());
                     }
                 }

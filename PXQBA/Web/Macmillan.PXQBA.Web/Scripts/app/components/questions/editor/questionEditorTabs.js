@@ -156,7 +156,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                         frameborder: 0,
                         height: '1000px',
                         width: '100%',
-                        scrolling: 'no',
+                        scrolling: 'no'
                    }
 
                 },
@@ -452,7 +452,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
 
       return (React.DOM.ul( {className:"nav nav-tabs"}, 
                              React.DOM.li( {className:"active"},  
-                                 React.DOM.a( {href:"#body", id:"body-tab", 'data-toggle':"tab"} , "Body")
+                                 React.DOM.a( {href:"#body", id:"body-tab", 'data-toggle':"tab"}, "Body")
                              ),
                              React.DOM.li(null, 
                                  React.DOM.a( {href:"#metadata", id:"metadata-tab", 'data-toggle':"tab"} , "Metadata")
@@ -466,7 +466,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                         ));
     },
 
-    renderHistory: function(){
+     renderHistory: function(){
         if(this.props.question.canViewHistory){
           return ( VersionHistory( {question:this.props.question, handlers:this.props.handlers}));
         }

@@ -228,6 +228,12 @@
     <Content Include="fonts\main\OpenSans-Regular.ttf" />
     <Content Include="fonts\main\OpenSans-Semibold.ttf" />
     <Content Include="fonts\main\OpenSans-SemiboldItalic.ttf" />
+    <Content Include="fonts\main\OpenSans-Bold.eot" />
+    <Content Include="fonts\main\OpenSans-BoldItalic.eot" />
+    <Content Include="fonts\main\OpenSans-Italic.eot" />
+    <Content Include="fonts\main\OpenSans-Regular.eot" />
+    <Content Include="fonts\main\OpenSans-Semibold.eot" />
+    <Content Include="fonts\main\OpenSans-SemiboldItalic.eot" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
