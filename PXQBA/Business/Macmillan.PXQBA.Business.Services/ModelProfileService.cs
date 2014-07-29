@@ -104,9 +104,16 @@ namespace Macmillan.PXQBA.Business.Services
 
                 foreach (var metadataValue in productCourseSection.DynamicValues)
                 {
+                    var values = metadataValue.Value;
+                    var courseDescriptors = course.FieldDescriptors.Where(x => x.Name == metadataValue.Key);
+                    if (courseDescriptors.Any() && courseDescriptors.First().Type == MetadataFieldType.ItemLink && values.Any())
+                    {
+                        values = values.Select(value => courseDescriptors.First().CourseMetadataFieldValues.First(x => String.Format(CourseDataXmlHelper.ItemLinkPatterm, x.Id) == value).Text).ToList();
+                    }
+
                     if (!metadata.Data.ContainsKey(metadataValue.Key))
                     {
-                        metadata.Data.Add(metadataValue.Key, string.Join(", ", metadataValue.Value));
+                        metadata.Data.Add(metadataValue.Key, string.Join(", ", values));
                     }
                 }
             }
