@@ -156,7 +156,7 @@ var QuestionEditorTabs = React.createClass({
                         frameborder: 0,
                         height: '1000px',
                         width: '100%',
-                        scrolling: 'no',
+                        scrolling: 'no'
                    }
 
                 },
@@ -452,7 +452,7 @@ var QuestionEditorTabs = React.createClass({
 
       return (<ul className="nav nav-tabs">
                              <li className="active"> 
-                                 <a href="#body" id="body-tab" data-toggle="tab" >Body</a>
+                                 <a href="#body" id="body-tab" data-toggle="tab">Body</a>
                              </li>
                              <li>
                                  <a href="#metadata" id="metadata-tab" data-toggle="tab" >Metadata</a>
@@ -466,7 +466,7 @@ var QuestionEditorTabs = React.createClass({
                         </ul>);
     },
 
-    renderHistory: function(){
+     renderHistory: function(){
         if(this.props.question.canViewHistory){
           return ( <VersionHistory question={this.props.question} handlers={this.props.handlers}/>);
         }
