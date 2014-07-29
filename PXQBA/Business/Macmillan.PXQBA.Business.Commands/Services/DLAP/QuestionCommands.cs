@@ -612,7 +612,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 section.Flag = fieldValue;
             }
         }
-        public BulkOperationResult BulklUpdateQuestionField(string productCourseId, string repositoryCourseId, string[] questionId, string fieldName, string fieldValue, IEnumerable<Capability> userCapabilities)
+        public BulkOperationResult BulkUpdateQuestionField(string productCourseId, string repositoryCourseId, string[] questionId, string fieldName, string fieldValue, IEnumerable<Capability> userCapabilities)
         {
             if (fieldName.Equals(MetadataFieldNames.QuestionStatus))
             {

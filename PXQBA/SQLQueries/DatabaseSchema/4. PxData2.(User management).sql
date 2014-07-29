@@ -1,13 +1,9 @@
-USE PXData2
-GO
 
 CREATE TABLE dbo.QBACourse(
   Id VARCHAR(4000) PRIMARY KEY NOT NULL,
 )  ON [PRIMARY]
 GO
 
-USE PXData2
-GO
 
 CREATE PROCEDURE dbo.GetQBACourses
 AS
@@ -19,9 +15,6 @@ BEGIN
 END
 GO
 
-USE PXData2
-GO
-
 CREATE TABLE dbo.QBARole(
   Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
   CourseId VARCHAR(4000) NOT NULL FOREIGN KEY REFERENCES QBACourse(Id) ON DELETE CASCADE,
@@ -30,8 +23,6 @@ CREATE TABLE dbo.QBARole(
 )  ON [PRIMARY]
 GO
 
-USE PXData2
-GO
 
 CREATE PROCEDURE dbo.AddQBARole
 (
@@ -56,9 +47,6 @@ BEGIN
 END
 GO
 
-USE PXData2
-GO
-
 CREATE PROCEDURE dbo.UpdateQBARole
 (
   @roleId INT,
@@ -74,8 +62,6 @@ BEGIN
 END
 GO
 
-USE PXData2
-GO
 
 CREATE PROCEDURE dbo.DeleteQBARole
 (
@@ -91,8 +77,6 @@ BEGIN
 END
 GO
 
-USE PXData2
-GO
 
 CREATE PROCEDURE dbo.GetQBAUserCoursesWithRoles
 (
@@ -112,8 +96,6 @@ BEGIN
 END
 GO
 
-USE PXData2
-GO
 
 CREATE TABLE dbo.QBARoleCapability(
   RoleId  INT NOT NULL FOREIGN KEY REFERENCES QBARole(Id) ON DELETE CASCADE,
@@ -122,8 +104,6 @@ CREATE TABLE dbo.QBARoleCapability(
 ) 
 GO
 
-USE PXData2
-GO
 
 CREATE PROCEDURE dbo.GetQBARolesForCourse
 (
@@ -150,8 +130,6 @@ BEGIN
 END
 GO
 
-USE PXData2
-GO
 
 CREATE TYPE dbo.QBAIdList
 AS TABLE
@@ -160,8 +138,6 @@ AS TABLE
 );
 GO
 
-USE PXData2
-GO
 
 CREATE PROCEDURE dbo.UpdateQBARoleCapabilities
 (
@@ -185,8 +161,6 @@ BEGIN
 END
 GO
 
-USE PXData2
-GO
 
 CREATE PROCEDURE dbo.GetQBARoleCapabilities
 (
@@ -208,8 +182,6 @@ BEGIN
 END
 GO
 
-USE PXData2
-GO
 
 CREATE TABLE dbo.UserQBARole(
   UserId  NVARCHAR(4000) NOT NULL,
@@ -218,8 +190,6 @@ CREATE TABLE dbo.UserQBARole(
 ) 
 GO
 
-USE PXData2
-GO
 
 CREATE PROCEDURE dbo.GetQBAUsers
 AS
@@ -246,8 +216,6 @@ END
 GO
 
 
-USE PXData2
-GO
 
 CREATE PROCEDURE dbo.GetQBAUserRoles
 (
@@ -284,8 +252,6 @@ BEGIN
 END
 GO
 
-USE PXData2
-GO
 
 CREATE PROCEDURE dbo.UpdateQBAUserRoles
 (
@@ -309,8 +275,6 @@ BEGIN
 END
 GO
 
-USE PXData2
-GO
 
 CREATE PROCEDURE dbo.GetQBAUserCapabilities
 (

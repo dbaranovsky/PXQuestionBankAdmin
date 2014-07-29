@@ -1,5 +1,4 @@
-USE PXData2
-GO
+
 
 CREATE TABLE dbo.QBANotes(
   Id BIGINT IDENTITY,
@@ -10,8 +9,7 @@ CREATE TABLE dbo.QBANotes(
 ) 
 GO
 
-USE PXData2
-GO
+
 
 CREATE PROCEDURE dbo.GetQBANotes
 (
@@ -25,11 +23,6 @@ BEGIN
   WHERE
     QuestionId = @questionId
 END
-GO
-
-
-
-USE PXData2
 GO
 
 CREATE PROCEDURE dbo.CreateQBANote
@@ -50,9 +43,6 @@ BEGIN
 END
 GO
 
-
-USE PXData2
-GO
 
 
 CREATE PROCEDURE dbo.DeleteQBANote

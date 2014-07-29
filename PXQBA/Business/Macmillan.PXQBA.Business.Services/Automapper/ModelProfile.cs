@@ -231,7 +231,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
         public Resource Convert(ResolutionContext context)
         {
             return context.Options.Items.Any()
-                ? modelProfileService.GetResourceFromRestoredResource((ParsedResource) context.SourceValue, (string) context.Options.Items.First().Value)
+                ? modelProfileService.GetResourceFromParsedResource((ParsedResource) context.SourceValue, (string) context.Options.Items.First().Value)
                 : null;
         }
     }
