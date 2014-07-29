@@ -9,74 +9,18 @@ using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Business.Commands.Helpers
 {
+    /// <summary>
+    /// Helper that is used to convert Question object and its metadata fields to xml and vice versa
+    /// </summary>
     public static class QuestionDataXmlParser
     {
-        private const string DlapNamePart = "_dlap_";
-
-        public static Question ToQuestionEntity(XElement resultDoc)
-        {
-            var question = new Question();
-            question.Id = resultDoc.Attribute("questionid").Value;
-            resultDoc.Elements()
-                        .Where(elem => elem.Name.LocalName.Equals("arr")).ToList()
-                        .ForEach(elem =>
-                        {
-                            var name = elem.Attribute("name").Value;
-                            if (name.Contains(ElStrings.ProductCourseDefaults.ToString()) && !name.Contains(DlapNamePart))
-                            {
-                                List<string> values = elem.Elements().Select(v => v.Value).ToList();
-                                var metafieldName = name.Substring(name.IndexOf('/') + 1);
-                                if (metafieldName == MetadataFieldNames.DlapTitle)
-                                {
-                                    question.DefaultSection.Title = values.FirstOrDefault();
-                                }
-                                else if (metafieldName == MetadataFieldNames.Bank)
-                                {
-                                    question.DefaultSection.Bank = values.FirstOrDefault();
-                                }
-                                else if (metafieldName == MetadataFieldNames.Chapter)
-                                {
-                                    question.DefaultSection.Chapter = values.FirstOrDefault();
-                                }
-                                else
-                                {
-                                    question.DefaultSection.DynamicValues.Add(metafieldName, values);
-                                }
-                            }
-                            if (name.Contains(ElStrings.ProductCourseSection.ToString()) && !name.Contains(DlapNamePart))
-                            {
-                                var productCourseId = name.Split(new[] { ElStrings.ProductCourseSection.ToString(), "/" }, StringSplitOptions.RemoveEmptyEntries)[0];
-                                List<string> values = elem.Elements().Select(v => v.Value).ToList();
-                                var productCourse = question.ProductCourseSections.FirstOrDefault(c => c.ProductCourseId == productCourseId);
-                                if (productCourse == null)
-                                {
-                                    productCourse = new QuestionMetadataSection();
-                                    productCourse.ProductCourseId = productCourseId;
-                                    question.ProductCourseSections.Add(productCourse);
-                                }
-                                var metafieldName = name.Substring(name.IndexOf('/') + 1);
-                                if (metafieldName == MetadataFieldNames.DlapTitle)
-                                {
-                                    productCourse.Title = values.FirstOrDefault();
-                                }
-                                else if (metafieldName == MetadataFieldNames.Bank)
-                                {
-                                    productCourse.Bank = values.FirstOrDefault();
-                                }
-                                else if (metafieldName == MetadataFieldNames.Chapter)
-                                {
-                                    productCourse.Chapter = values.FirstOrDefault();
-                                }
-                                else
-                                {
-                                    productCourse.DynamicValues.Add(metafieldName, values);
-                                }
-                            }
-
-                        });
-            return question;
-        }
-
+        /// <summary>
+        /// Parses xml returned from SOLR Search command into search result
+        /// </summary>
+        /// <param name="resultDoc">Xml returned from SOLR</param>
+        /// <param name="sortingField">Field name that is used to sort by</param>
+        /// <param name="fields">Field names that were requested</param>
+        /// <returns>Search result</returns>
         public static QuestionSearchResult ToSearchResultEntity(XElement resultDoc, string sortingField, string[] fields)
         {
             var questionSearchResult = new QuestionSearchResult();
@@ -132,7 +76,11 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
             return questionSearchResult;
         }
 
-
+        /// <summary>
+        /// Parses xml returned from SOLR faceted search into faceted search result object
+        /// </summary>
+        /// <param name="resultDoc">Xml returned by SOLR</param>
+        /// <returns>List of faceted search results</returns>
         public static IEnumerable<QuestionFacetedSearchResult> ToFacetedSearchResult(XElement resultDoc)
         {
             var questionSearchResult = new List<QuestionFacetedSearchResult>();
@@ -156,6 +104,11 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
             return questionSearchResult;
         }
 
+        /// <summary>
+        /// Builds default metadata section object from the dictionary of xml elements
+        /// </summary>
+        /// <param name="metadataElements">Xml elements</param>
+        /// <returns>Metadata section object</returns>
         public static QuestionMetadataSection GetDefaultSectionValues(Dictionary<string, XElement> metadataElements)
         {
 
@@ -167,6 +120,11 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
             return GetSectionValues(defaultsSection);
         }
 
+        /// <summary>
+        /// Builds list of metadata section objects for product courses the question belongs to
+        /// </summary>
+        /// <param name="metadataElements">Dictionary of xml elements</param>
+        /// <returns>List of product course metadata section objects</returns>
         public static List<QuestionMetadataSection> GetProductCourseSectionValues(Dictionary<string, XElement> metadataElements)
         {
             if (metadataElements == null)
@@ -200,6 +158,11 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
             return element != null ? element.Value : string.Empty;
         }
 
+        /// <summary>
+        /// Converts question into xml
+        /// </summary>
+        /// <param name="question">Question to convert</param>
+        /// <returns>Dictionary of xml elements with question fields</returns>
         public static Dictionary<string, XElement> ToXmlElements(Question question)
         {
             var elements = new Dictionary<string, XElement>();
@@ -254,6 +217,12 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
             }
         }
 
+        /// <summary>
+        /// Gets value of metadata field by its name
+        /// </summary>
+        /// <param name="questionElements">List of question elements</param>
+        /// <param name="metadataFieldName">Field name</param>
+        /// <returns>Field value</returns>
         public static string GetMetadataField(Dictionary<string, XElement> questionElements, string metadataFieldName)
         {
             if (questionElements!= null && questionElements.ContainsKey(metadataFieldName))

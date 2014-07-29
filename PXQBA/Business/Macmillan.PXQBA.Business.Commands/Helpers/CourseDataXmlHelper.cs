@@ -9,8 +9,14 @@ using Macmillan.PXQBA.Business.Models;
 
 namespace Macmillan.PXQBA.Business.Commands.Helpers
 {
+    /// <summary>
+    /// Helper that is used to convert Course object to xml and vice versa
+    /// </summary>
    public class CourseDataXmlHelper
    {
+       /// <summary>
+       /// Pattern for item link which is relative url to the item
+       /// </summary>
        public const string ItemLinkPatterm = "#/launchpad/item/{0}?mode=preview";
        
        private const string itemLinksSectionName = "itemlinksfields";
@@ -19,6 +25,11 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
        private static readonly XName idNodeName = "id";
        private static readonly XName valueNodeName = "value";
 
+       /// <summary>
+       /// Loads the list of metadata field descriptors for item links field
+       /// </summary>
+       /// <param name="courseData"></param>
+       /// <returns></returns>
        public static IEnumerable<CourseMetadataFieldDescriptor> GetItemLinksDescriptors(XElement courseData)
        {
             var allFields = new List<CourseMetadataFieldDescriptor>();
