@@ -14,6 +14,9 @@ using Question = Macmillan.PXQBA.Business.Models.Question;
 
 namespace Macmillan.PXQBA.Business.Contracts
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IModelProfileService
     {
         QuestionMetadataSection GetQuestionDefaultValues(Bfw.Agilix.DataContracts.Question question);

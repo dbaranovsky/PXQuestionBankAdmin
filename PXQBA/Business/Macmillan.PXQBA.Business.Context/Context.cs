@@ -63,7 +63,7 @@ namespace Macmillan.PXQBA.Business
             InitializeSession(loggedUserId);
         }
 
-        protected void InitializeUser(string userId)
+        private void InitializeUser(string userId)
         {
             using (tracer.StartTrace(String.Format("BusinessContext ExistingUser, parameters {0}", userId)))
             {

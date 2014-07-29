@@ -7,10 +7,26 @@ using Macmillan.PXQBA.Business.Commands.DataContracts;
 
 namespace Macmillan.PXQBA.Business.Commands.Helpers
 {
+    /// <summary>
+    /// Helper that is used to update the sequence of the question
+    /// </summary>
     public class QuestionSequenceHelper
     {
         private static readonly string DecimalSeparator = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
         private static IList<QuestionSearchResult> updated = new List<QuestionSearchResult>();
+
+        /// <summary>
+        /// Implements the algorythm for question sequence updating:
+        ///     1. New sequence is entered for the question. Let it be X
+        ///     2. Look through all the questions and find questions #X and #(X+1). For instance their sequence values are Y and Y1. (if count of questions is less than X then new value is generated)
+        ///     3. If Y = Y1 then look through the questions #(X+2), #(X+3) etc until Yn != Y(n+1).
+        ///     4. For all the questions from point 3 update sequence value in order they become all different using formula Yn_new = (Yn + Y(n+1))/2
+        ///     5. Insert updated question with sequence X between Y and Y1_new using formula (Y+Y1_new)/2
+        /// </summary>
+        /// <param name="questions">Questions to look through</param>
+        /// <param name="questionId">Question id to change sequence for</param>
+        /// <param name="newSequenceValue">New value of the sequence</param>
+        /// <returns>Question list that should be updated</returns>
         public static IList<QuestionSearchResult> UpdateSequence(IList<QuestionSearchResult> questions, string questionId, int newSequenceValue)
         {
             questions.Insert(0, new QuestionSearchResult
@@ -76,6 +92,11 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
             return next;
         }
 
+        /// <summary>
+        /// Gets next available sequence number
+        /// </summary>
+        /// <param name="questionsWithDecimalSequence">Questions which sequence value is floating number</param>
+        /// <returns>New sequence number</returns>
         public static string GetNewLastValue(IEnumerable<QuestionSearchResult> questionsWithDecimalSequence)
         {
             var last = questionsWithDecimalSequence.LastOrDefault();
