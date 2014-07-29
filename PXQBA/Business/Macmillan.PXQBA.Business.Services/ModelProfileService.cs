@@ -13,7 +13,6 @@ using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
 using Macmillan.PXQBA.Common.Helpers;
 using Macmillan.PXQBA.Common.Helpers.Constants;
-using Macmillan.PXQBA.DataAccess.Data;
 using Macmillan.PXQBA.Web.ViewModels;
 using Macmillan.PXQBA.Web.ViewModels.MetadataConfig;
 using Macmillan.PXQBA.Web.ViewModels.TiteList;
@@ -354,11 +353,6 @@ namespace Macmillan.PXQBA.Business.Services
                 return "item-link";
             }
             return "text";
-        }
-
-        public IEnumerable<CourseMetaFieldValue> GetFieldValues(IEnumerable<AvailableChoiceItem> valuesOptions)
-        {
-            return valuesOptions.Select((v, i) => new CourseMetaFieldValue() {Text = v.Text, Sequence = i.ToString()});
         }
 
         public Question GetQuestionVersion(string entityId, string id, string version)

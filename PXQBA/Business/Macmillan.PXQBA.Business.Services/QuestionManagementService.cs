@@ -445,7 +445,7 @@ namespace Macmillan.PXQBA.Business.Services
                 var result = QuestionParserProvider.Parse(fileName, file);
                 var newResult = Mapper.Map<ValidationResult>(result);
                 string questionsData = GetSerializesQuestionData(result);
-                byte[] resourcesData = StreamHelper.SerializeToByte(typeof(List<ParsedResource>), result.FileValidationResults.First().Resources);
+                byte[] resourcesData = StreamHelper.SerializeToByte(result.FileValidationResults.First().Resources);
                 
                
                 var fileResult = newResult.FileValidationResults.FirstOrDefault(f => f.FileName == fileName);

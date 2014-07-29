@@ -9,6 +9,9 @@ using Macmillan.PXQBA.Common.Helpers.Constants;
 
 namespace Macmillan.PXQBA.Common.Helpers
 {
+    /// <summary>
+    /// Helper wrapper to work with web.config
+    /// </summary>
     public static class ConfigurationHelper
     {
         /// <summary>
@@ -248,6 +251,10 @@ namespace Macmillan.PXQBA.Common.Helpers
             return "http://root.dev.brainhoney.bfwpub.com/BrainHoney/Component/QuestionEditor?enrollmentid={0}&itemid={1}&questionid={2}&showcancel=true";
         }
 
+        /// <summary>
+        /// Gets temporary course id
+        /// </summary>
+        /// <returns></returns>
         public static string GetTemporaryCourseId()
         {
             var courseId = ConfigurationManager.AppSettings[ConfigurationKeys.TemporaryCourseId];
@@ -258,6 +265,10 @@ namespace Macmillan.PXQBA.Common.Helpers
             return "200117";
         }
 
+        /// <summary>
+        /// Gets solr update task id
+        /// </summary>
+        /// <returns></returns>
         public static int? GetSolrUpdateTaskId()
         {
             if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings[ConfigurationKeys.SolrUpdateTaskId]))
@@ -271,6 +282,10 @@ namespace Macmillan.PXQBA.Common.Helpers
             return null;
         }
 
+        /// <summary>
+        /// Gets hts editor url template
+        /// </summary>
+        /// <returns></returns>
         public static string GetHTSEditorUrlTemplate()
         {
             var url = ConfigurationManager.AppSettings[ConfigurationKeys.HTSEditorUrlTemplate];
@@ -281,6 +296,10 @@ namespace Macmillan.PXQBA.Common.Helpers
             return "http://dev.whfreeman.com/hts?questionId={0}&amp;quizId={1}&amp;entityId={2}&amp;enrollmentId={3}&amp;playerUrl=http%3a%2f%2fdev.px.bfwpub.com%2fPxHTS%2fPxPlayer.ashx&amp;convert=True";
         }
 
+        /// <summary>
+        /// Gets fma graph editor url
+        /// </summary>
+        /// <returns></returns>
         public static string GetFmaGraphEditorUrl()
         {
             var url = ConfigurationManager.AppSettings[ConfigurationKeys.GraphEditorUrl];
@@ -290,7 +309,11 @@ namespace Macmillan.PXQBA.Common.Helpers
             }
             return "http://dev.px.bfwpub.com/PxEG/authormode2.aspx";
         }
-
+        
+        /// <summary>
+        /// Gets user count per page
+        /// </summary>
+        /// <returns></returns>
         public static int GetUsersPerPage()
         {
             var usersPerPage = ConfigurationManager.AppSettings[ConfigurationKeys.UsersPerPage];
@@ -302,6 +325,10 @@ namespace Macmillan.PXQBA.Common.Helpers
             return 20;
         }
 
+        /// <summary>
+        /// Get BH course image folder
+        /// </summary>
+        /// <returns></returns>
         public static string GetBrainhoneyCourseImageFolder()
         {
             var courseImageFolder = ConfigurationManager.AppSettings[ConfigurationKeys.BrainhoneyCourseImageFolder];
@@ -313,6 +340,10 @@ namespace Macmillan.PXQBA.Common.Helpers
             return "Assets";
         }
 
+        /// <summary>
+        /// Gets allowed subdomains
+        /// </summary>
+        /// <returns></returns>
         public static string GetAllowedSubdomains()
         {
             var value = ConfigurationManager.AppSettings[ConfigurationKeys.AllowedSubdomains];
@@ -324,6 +355,10 @@ namespace Macmillan.PXQBA.Common.Helpers
             return "www,lcl,dev,qa,pr";
         }
 
+        /// <summary>
+        /// Gets local subdomain
+        /// </summary>
+        /// <returns></returns>
         public static string GetLocalSubdomain()
         {
             var value = ConfigurationManager.AppSettings[ConfigurationKeys.LocalSubdomain];
@@ -335,6 +370,10 @@ namespace Macmillan.PXQBA.Common.Helpers
             return "lcl";
         }
 
+        /// <summary>
+        /// Gets dev subdomain
+        /// </summary>
+        /// <returns></returns>
         public static string GetDevSubdomain()
         {
             var value = ConfigurationManager.AppSettings[ConfigurationKeys.DevSubdomain];
@@ -346,6 +385,10 @@ namespace Macmillan.PXQBA.Common.Helpers
             return "dev";
         }
 
+        /// <summary>
+        /// Gets base LP url
+        /// </summary>
+        /// <returns></returns>
         public static string GetBaseLaunchpadUrl()
         {
             var value = ConfigurationManager.AppSettings[ConfigurationKeys.BaseLaunchpadUrl];

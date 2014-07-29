@@ -1,5 +1,8 @@
 ﻿namespace Macmillan.PXQBA.Business.QuestionParserModule.DataContracts
 {
+    /// <summary>
+    /// Parsed question choice
+    /// </summary>
     public class ParsedQuestionChoice
     {
         /// <summary>

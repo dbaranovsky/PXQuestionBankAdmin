@@ -19,7 +19,6 @@ using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Services;
 using Macmillan.PXQBA.Business.Services.Automapper;
 using Macmillan.PXQBA.Common.Logging;
-using Macmillan.PXQBA.DataAccess.Data;
 using Microsoft.Practices.Unity;
 using System;
 using System.Configuration;
@@ -74,7 +73,6 @@ namespace Macmillan.PXQBA.Web.App_Start
             container.RegisterTypes(AllClasses.FromAssemblies(typeof(QuestionCommands).Assembly), WithMappings.FromAllInterfaces, WithName.Default);
 
             var cs = ConfigurationManager.ConnectionStrings["QBADummyModelContainer"];
-            container.RegisterType<QBADummyModelContainer, QBADummyModelContainer>(new InjectionConstructor(cs.ConnectionString));
 
             container.RegisterType<IDatabaseManager, DatabaseManager>(new InjectionConstructor("PXData"));
 

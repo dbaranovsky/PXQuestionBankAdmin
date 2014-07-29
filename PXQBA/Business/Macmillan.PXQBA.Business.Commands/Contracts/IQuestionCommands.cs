@@ -40,7 +40,7 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
             int startingRecordNumber, int recordCount);
 
         /// <summary>
-        /// Create new question in dlap
+        /// Create new question in dlap and set sequence
         /// </summary>
         /// <param name="productCourseId">Course id</param>
         /// <param name="question">Question to create</param>
@@ -179,16 +179,34 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         void DeleteQuestion(string repositoryCourseId, string questionId);
 
         /// <summary>
-        /// Loads
+        /// Loads drafts for question
         /// </summary>
-        /// <param name="questionRepositoryCourseId"></param>
-        /// <param name="question"></param>
-        /// <returns></returns>
+        /// <param name="questionRepositoryCourseId">Repository course id</param>
+        /// <param name="question">Question</param>
+        /// <returns>Drafts list</returns>
         IEnumerable<Question> GetQuestionDrafts(string questionRepositoryCourseId, Question question);
 
+        /// <summary>
+        /// Runs PutQuestions command in dlap
+        /// </summary>
+        /// <param name="question">Question to save</param>
+        /// <param name="courseId">Course id</param>
         void ExecutePutQuestion(Bfw.Agilix.DataContracts.Question question, string courseId = null);
 
+        /// <summary>
+        /// Gets faceted search results
+        /// </summary>
+        /// <param name="questionRepositoryCourseId">Repository course id</param>
+        /// <param name="currentCourseId">Current course id</param>
+        /// <param name="facetedField">Faceted field</param>
+        /// <returns>List of results after faceted search</returns>
         IEnumerable<QuestionFacetedSearchResult> GetFacetedResults(string questionRepositoryCourseId, string currentCourseId, string facetedField);
+
+        /// <summary>
+        /// Creates questions and set sequence for each question
+        /// </summary>
+        /// <param name="productCourseId"></param>
+        /// <param name="questions"></param>
         void CreateQuestions(string productCourseId, IEnumerable<Question> questions);
     }
 }

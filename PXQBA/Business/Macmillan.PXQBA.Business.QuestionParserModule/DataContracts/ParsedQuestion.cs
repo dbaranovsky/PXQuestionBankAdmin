@@ -2,6 +2,9 @@
 
 namespace Macmillan.PXQBA.Business.QuestionParserModule.DataContracts
 {
+    /// <summary>
+    /// Parsed question
+    /// </summary>
     public class ParsedQuestion
     {
         /// <summary>

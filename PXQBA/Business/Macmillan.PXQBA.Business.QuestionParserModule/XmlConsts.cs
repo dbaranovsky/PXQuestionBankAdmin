@@ -2,6 +2,9 @@
 
 namespace Macmillan.PXQBA.Business.QuestionParserModule
 {
+    /// <summary>
+    /// Constants that are used to parse xml files in particularity to parse separate elements from xml files
+    /// </summary>
     public class XmlConsts
     {
         public static XName ItemName = "item";

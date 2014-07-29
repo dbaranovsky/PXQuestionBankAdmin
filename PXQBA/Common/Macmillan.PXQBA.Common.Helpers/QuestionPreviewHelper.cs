@@ -19,6 +19,11 @@ namespace Macmillan.PXQBA.Common.Helpers
         private const string customXmlPattern = "<info id=\"0\" mode=\"{0}\"><question schema=\"2\" partial=\"false\"><answer /><body></body><customurl>HTS</customurl><interaction type=\"custom\"><data><![CDATA[{1}]]></data></interaction></question></info>";
         private static readonly Regex regexConverter = new Regex(@"\s+");
 
+        /// <summary>
+        /// Gets question html preview
+        /// </summary>
+        /// <param name="question">Question to render preview for</param>
+        /// <returns>Preview string</returns>
         public static string GetQuestionHtmlPreview(Question question)
         {
 
@@ -55,6 +60,13 @@ namespace Macmillan.PXQBA.Common.Helpers
             return  html.ToString();    
         }
 
+        /// <summary>
+        /// Updates image urls if any in question preview
+        /// </summary>
+        /// <param name="html">Question preview</param>
+        /// <param name="resourceCourseId">Resource course id</param>
+        /// <param name="interactionType">Question interaction type</param>
+        /// <returns></returns>
         public static string UpdateImagesUrls(string html,string resourceCourseId, string interactionType)
         {
             return interactionType == "custom" ? html : html.Replace(@"src=""[~]/", string.Format(@"src=""{0}/{1}/[~]/", "/brainhoney/Resource", resourceCourseId));
@@ -181,9 +193,9 @@ namespace Macmillan.PXQBA.Common.Helpers
         /// </summary>
         /// <param name="sUrl">BrainHoney Player URL</param>
         /// <param name="sXml">Interaction Data</param>
-        /// <param name="questionId"></param>
+        /// <param name="questionId">Question id</param>
         /// <returns></returns>
-        public static string GetHTSQuestionPreview(string sUrl, string sXml, string questionId)
+        private static string GetHTSQuestionPreview(string sUrl, string sXml, string questionId)
         {
             bool isBlankQuestion = string.IsNullOrEmpty(sXml);
             string sResponse = "";
@@ -290,7 +302,7 @@ namespace Macmillan.PXQBA.Common.Helpers
         /// <param name="sXml">Interaction Data</param>
         /// <param name="questionId"></param>
         /// <returns></returns>
-        public static string GetFmaGraphQuestionPreview(string sUrl, string sXml, string questionId)
+        private static string GetFmaGraphQuestionPreview(string sUrl, string sXml, string questionId)
         {
             string sResponse = "";
             string sQuestionData = sXml;
@@ -381,9 +393,15 @@ namespace Macmillan.PXQBA.Common.Helpers
         }
 
 
+        /// <summary>
+        /// Gets graph question editor
+        /// </summary>
+        /// <param name="customXML"></param>
+        /// <param name="questionId"></param>
+        /// <param name="questionType"></param>
+        /// <returns></returns>
         public static string GetGraphEditor(string customXML, string questionId, string questionType)
         {
-
 
             if (string.IsNullOrEmpty(questionType) || questionType != QuestionTypeHelper.GraphType)
             {
@@ -489,6 +507,14 @@ namespace Macmillan.PXQBA.Common.Helpers
 
 
 
+        /// <summary>
+        /// Gets question editor url
+        /// </summary>
+        /// <param name="questionType">Question type</param>
+        /// <param name="questionId">Question id</param>
+        /// <param name="entityId">Repository course id</param>
+        /// <param name="quizId">Quiz id</param>
+        /// <returns>Editor url</returns>
         public static string GetEditorUrl(string questionType, string questionId, string entityId, string quizId)
         {
             return questionType == QuestionTypeHelper.HTSType ? 
@@ -512,7 +538,5 @@ namespace Macmillan.PXQBA.Common.Helpers
 
             return outputXML;
         }
-
-
     }
 }

@@ -10,6 +10,7 @@ using System.Xml.XPath;
 using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
 using Macmillan.PXQBA.Common.Helpers;
 using System.IO.Compression;
+using Macmillan.PXQBA.Common.Models;
 
 namespace Macmillan.PXQBA.Business.QuestionParserModule.QTI
 {

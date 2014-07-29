@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Macmillan.PXQBA.Business.QuestionParserModule.QML
 {
+    /// <summary>
+    /// QML question types
+    /// </summary>
     public enum QMLType
     {
         [Description("Multiple Choice")]

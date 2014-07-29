@@ -71,10 +71,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DataAccess\Macmillan.PXQBA.DataAccess.Data\Macmillan.PXQBA.DataAccess.Data.csproj">
-      <Project>{ac937f92-418d-4f2b-820e-dd1762e24114}</Project>
-      <Name>Macmillan.PXQBA.DataAccess.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.DataContracts\Bfw.Agilix.DataContracts.csproj">
       <Project>{4D185F8E-C2A0-442A-A05E-78B566361562}</Project>
       <Name>Bfw.Agilix.DataContracts</Name>

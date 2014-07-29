@@ -5,6 +5,11 @@ using System.Xml.Serialization;
 
 namespace Macmillan.PXQBA.Business.QuestionParserModule.DataContracts
 {
+    /// <summary>
+    /// Is used to serialize\deserialize dictionary to\from xml
+    /// </summary>
+    /// <typeparam name="TKey"></typeparam>
+    /// <typeparam name="TValue"></typeparam>
     [XmlRoot("dictionary")]
     public class SerializableDictionary<TKey, TValue>
         : Dictionary<TKey, TValue>, IXmlSerializable
@@ -16,6 +21,10 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.DataContracts
             return null;
         }
 
+        /// <summary>
+        /// Deserializes from xml
+        /// </summary>
+        /// <param name="reader"></param>
         public void ReadXml(XmlReader reader)
         {
             XmlSerializer keySerializer = new XmlSerializer(typeof(TKey));
@@ -47,6 +56,10 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.DataContracts
             reader.ReadEndElement();
         }
 
+        /// <summary>
+        /// Serializes to xml
+        /// </summary>
+        /// <param name="writer"></param>
         public void WriteXml(XmlWriter writer)
         {
             XmlSerializer keySerializer = new XmlSerializer(typeof(TKey));

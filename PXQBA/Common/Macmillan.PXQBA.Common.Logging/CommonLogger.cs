@@ -3,6 +3,7 @@ using NLog;
 
 namespace Macmillan.PXQBA.Common.Logging
 {
+
     public class CommonLogger : LoggerBase
     {
         private readonly Logger logger;
@@ -38,6 +39,11 @@ namespace Macmillan.PXQBA.Common.Logging
             }
         }
 
+        /// <summary>
+        /// Determines whether, in the current configuration, a log entry with the given categories should be logged.
+        /// </summary>
+        /// <param name="categories">The list of categories to check for.</param>
+        /// <returns><code>true</code> if a log entry with the given categories should be logged, <code>false</code> otherwise.</returns>
         public override bool ShouldLog(params string[] categories)
         {
             return true;

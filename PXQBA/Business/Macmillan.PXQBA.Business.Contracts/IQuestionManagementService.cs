@@ -24,30 +24,39 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// <summary>
         /// Create a new question
         /// </summary>
-        /// <param name="question"></param>
+        /// <param name="course">Course to create question in</param>
+        /// <param name="questionType">Question type to create</param>
+        /// <param name="bank">Bank to create in</param>
+        /// <param name="chapter">Chapter to create in</param>
         /// <returns>The updated object that was persisted</returns>
         Question CreateQuestion(Course course, string questionType, string bank, string chapter);
 
         /// <summary>
         /// Returns question by its ID
         /// </summary>
-        /// <param name="questionId"></param>
-        /// <returns></returns>
+        /// <param name="course">Course</param>
+        /// <param name="questionId">Question id to load</param>
+        /// <param name="version">Question version to load</param>
+        /// <returns>Question version</returns>
         Question GetQuestion(Course course, string questionId, string version = null);
 
         /// <summary>
         /// Creates template for new question based on existing one. 
         /// The question is not persisted at this point. Use CreateQuestion to persist the question after modification
         /// </summary>
-        /// <param name="questionId"></param>
-        /// <returns></returns>
+        /// <param name="course">Course</param>
+        /// <param name="questionId">Question id to duplicate</param>
+        /// <param name="version">Version duplicate from</param>
+        /// <returns>Duplicated question</returns>
         Question DuplicateQuestion(Course course, string questionId, string version = null);
 
         /// <summary>
         /// Update existing question metafields
         /// </summary>
-        /// <param name="temporaryQuestion"></param>
-        /// <returns></returns>
+        /// <param name="sourceQuestionId">Source question id</param>
+        /// <param name="temporaryQuestion">Temporary question</param>
+        /// <param name="course">Course</param>
+        /// <returns>Updated question</returns>
         Question UpdateQuestion(Course course, string sourceQuestionId, Question temporaryQuestion);
 
         /// <summary>
