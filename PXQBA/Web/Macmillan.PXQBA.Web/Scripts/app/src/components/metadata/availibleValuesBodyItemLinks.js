@@ -9,7 +9,7 @@ var AvailibleValuesBodyItemLinks = React.createClass({
         var items = [];
 
         if(this.props.value!=null) {
-            items = this.props.value;
+            items = this.props.value.splice(0);
         }
 
         return {
@@ -117,7 +117,10 @@ var AvailibleValuesBodyItemLinks = React.createClass({
         var rows = text.split('\n');
         for(var i=0; i<rows.length; i++) {
             var pair = rows[i].split('\t');
-
+            if((!this.validatePair(pair))&&((i+1)!=rows.length)) {
+                notificationManager.showWarning('Please copy&paste only a table with two (ID and Title) rows');
+                return;
+            }
             var item = this.buildItemFormPair(pair);
             if(item!=null) {
                items.push(item);
@@ -125,6 +128,18 @@ var AvailibleValuesBodyItemLinks = React.createClass({
         }
     
         this.setState({items: items});
+    },
+
+    validatePair: function (pair) {
+        if(pair==null) {
+            return false;
+        }
+
+        if(pair.length!=2) {
+            return false;
+        }
+
+        return true;
     },
 
     buildItemFormPair: function(pair) {

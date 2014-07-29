@@ -6,7 +6,6 @@
 var AvailibleValuesBodyTextArea = React.createClass({
 
     getInitialState: function() {
-
         var text = "";
 
         if(this.props.value!=null) {
