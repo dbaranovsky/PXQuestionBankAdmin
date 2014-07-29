@@ -1,5 +1,3 @@
-USE PXData2
-GO
 
 CREATE TABLE dbo.UserNotShownNotification(
   Id BIGINT IDENTITY,
@@ -10,8 +8,6 @@ CREATE TABLE dbo.UserNotShownNotification(
 ) 
 GO
 
-USE PXData2
-GO
 
 CREATE PROCEDURE dbo.GetUserNotShownNotifications
 (
@@ -27,10 +23,6 @@ BEGIN
 END
 GO
 
-
-
-USE PXData2
-GO
 
 CREATE PROCEDURE dbo.CreateUserNotShownNotification
 (

@@ -1,5 +1,3 @@
-USE PXData2
-GO
 
 CREATE TABLE dbo.QBAKeyword(
   Id BIGINT IDENTITY,
@@ -8,9 +6,6 @@ CREATE TABLE dbo.QBAKeyword(
   Keyword NVARCHAR(MAX) NOT NULL,
   CONSTRAINT PK_QBAKeyword PRIMARY KEY (Id)
 ) 
-GO
-
-USE PXData2
 GO
 
 CREATE PROCEDURE dbo.GetKeywordList
@@ -29,10 +24,6 @@ BEGIN
 END
 GO
 
-
-
-USE PXData2
-GO
 
 CREATE PROCEDURE dbo.AddKeyword
 (

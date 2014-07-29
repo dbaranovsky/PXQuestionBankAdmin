@@ -1,11 +1,7 @@
-USE PXData2
-GO
 
 ALTER TABLE dbo.QBAParsedFile 
 ADD ResourcesData VARBINARY(MAX)
 
-USE PXData2
-GO
 
 ALTER PROCEDURE dbo.AddQBAParsedFile
 (
@@ -28,5 +24,3 @@ BEGIN
 END
 GO
 
-USE PXData2
-GO

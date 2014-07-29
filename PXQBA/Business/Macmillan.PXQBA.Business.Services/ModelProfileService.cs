@@ -441,7 +441,7 @@ namespace Macmillan.PXQBA.Business.Services
             return question;
         }
 
-        public Resource GetResourceFromRestoredResource(ParsedResource parsedResource, string courseId)
+        public Resource GetResourceFromParsedResource(ParsedResource parsedResource, string courseId)
         {
             var resource = new Resource()
                            {

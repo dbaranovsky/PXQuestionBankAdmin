@@ -1,6 +1,3 @@
-USE PXData2
-GO
-
 CREATE TABLE dbo.QBAParsedFile(
   Id BIGINT IDENTITY,
   FileName NVARCHAR(4000),
@@ -10,8 +7,6 @@ CREATE TABLE dbo.QBAParsedFile(
 ) 
 GO
 
-USE PXData2
-GO
 
 CREATE PROCEDURE dbo.AddQBAParsedFile
 (
@@ -30,8 +25,6 @@ BEGIN
 END
 GO
 
-USE PXData2
-GO
 
 CREATE PROCEDURE dbo.GetQBAParsedFile
 (
@@ -48,8 +41,6 @@ BEGIN
 END
 GO
 
-USE PXData2
-GO
 
 CREATE PROCEDURE dbo.SetQBAParsedFile
 (
