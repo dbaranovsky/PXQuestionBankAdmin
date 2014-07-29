@@ -111,9 +111,25 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             foreach (var nonDraftQuestion in nonDraftQuestions)
             {
                 newOrderedQuestions.Add(nonDraftQuestion);
-                newOrderedQuestions.AddRange(questions.Where(q => q.DraftFrom == nonDraftQuestion.Id));
+                newOrderedQuestions.AddRange(GetDrafts(questions, nonDraftQuestion));
             }
             return newOrderedQuestions;
+        }
+
+        private IEnumerable<Question> GetDrafts(IEnumerable<Question> questions, Question draftForQuestion)
+        {
+            var drafts = new List<Question>();
+            var result = new List<Question>();
+            
+            drafts.AddRange(questions.Where(q => q.DraftFrom == draftForQuestion.Id));
+            
+            foreach (var draft in drafts)
+            {
+                result.Add(draft);
+                result.AddRange(GetDrafts(questions, draft));
+            }
+
+            return result;
         }
 
         private int ParseSequenceDisplayValue(string sequence)
