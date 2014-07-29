@@ -91,7 +91,8 @@ var QuestionListMenu = React.createClass({
                                         trigger: 'hover', 
                                         placement:'bottom',           
                                         html: true,
-                                        container: 'body'
+                                        container: 'body',
+                                        title: 'Notes'
                                         });  
 
      
