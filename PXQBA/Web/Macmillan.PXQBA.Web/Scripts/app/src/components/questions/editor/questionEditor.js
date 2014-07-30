@@ -106,7 +106,7 @@ var QuestionEditor = React.createClass({
     },
 
     reloadHistory: function(){
-
+      this.refs.questionEditorTabs.refs.versionHistory.updateQuestionVersion();
     },
 
      runQuestion: function(){
@@ -245,7 +245,8 @@ var QuestionEditor = React.createClass({
                       </div>
                 
                 <div className="editor-tabs">
-                  <QuestionEditorTabs question={this.state.question} 
+                  <QuestionEditorTabs ref="questionEditorTabs"
+                                      question={this.state.question} 
                                       closeDialog={this.closeDialog}  
                                       editSourceQuestionHandler={this.props.editSourceQuestionHandler} 
                                       showSaveWarning={this.showSaveWarning}  
