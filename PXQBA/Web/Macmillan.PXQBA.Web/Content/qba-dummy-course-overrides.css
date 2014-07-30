@@ -131,3 +131,13 @@ div[id^=assessmentframefooterrow] > table td:nth-child(4)
 {
      display: none;
 }
+
+div#answer_quizeditorcomponent_0 div.x-form-field-wrap.x-form-field-trigger-wrap.x-column 
+{
+    width: 500px !important;
+}
+
+div#answer_quizeditorcomponent_0 div.x-form-field-wrap.x-form-field-trigger-wrap.x-column > ul > li:first-child > input
+{
+    width: 500px !important;
+}
