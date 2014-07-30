@@ -3,6 +3,9 @@ using Macmillan.PXQBA.Business.Models;
 
 namespace Macmillan.PXQBA.Web.ViewModels.Editor
 {
+    /// <summary>
+    /// Contains info regarding the type and available values for editor control
+    /// </summary>
     public class FieldEditorDescriptor
     {
         public FieldEditorDescriptor(MetaFieldTypeDescriptor fieldTypeDescriptor)
@@ -11,8 +14,14 @@ namespace Macmillan.PXQBA.Web.ViewModels.Editor
             AvailableChoice = fieldTypeDescriptor.AvailableChoice;
         }
 
+        /// <summary>
+        /// Type of the editor control
+        /// </summary>
         public string EditorType { get; set; }
 
+        /// <summary>
+        /// Available options for editor control
+        /// </summary>
         public List<AvailableChoiceItem> AvailableChoice { get; set; }
 
         private static EditorType GetEditorType(MetadataFieldType type)

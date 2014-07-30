@@ -92,6 +92,7 @@
     <Compile Include="TiteList\ProductCourseViewModel.cs" />
     <Compile Include="User\CapabilityViewModel.cs" />
     <Compile Include="User\CapabilityGroupViewModel.cs" />
+    <Compile Include="User\RoleListViewModel.cs" />
     <Compile Include="User\RoleViewModel.cs" />
     <Compile Include="User\ProductCourseRolesViewModel.cs" />
     <Compile Include="User\UserNotificationViewModel.cs" />
