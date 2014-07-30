@@ -14,6 +14,7 @@ var VersionHistory = React.createClass({
     },
 
     updateQuestionVersion: function() {
+        this.setState({loading: true});
         questionDataManager.getQuestionVersions().done(this.setVersions);
     },
 
