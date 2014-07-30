@@ -292,9 +292,21 @@ namespace Bfw.Agilix.DataContracts
                         if (el.Name == "questioncardlayout")
                         {
                             if (item.Value != string.Empty)
-                                el = XElement.Parse(item.Value);
+                            {
+                                try
+                                {
+                                    el = XElement.Parse(item.Value);
+                                }
+                                catch
+                                {
+                                    el.SetValue(" ");
+                                }
+                            }
                             else
+                            {
                                 el.SetValue(" ");
+                            }
+                                
                         }
                         else
                         {
