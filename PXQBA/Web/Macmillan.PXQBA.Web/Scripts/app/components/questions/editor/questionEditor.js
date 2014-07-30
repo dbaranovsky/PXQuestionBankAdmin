@@ -5,7 +5,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
 
    getInitialState: function() {
 
-      return { question: this.props.question, viewHistoryMode: this.props.viewHistoryMode, saving: false};
+      return { question: this.props.question, viewHistoryMode: this.props.viewHistoryMode, saving: false, savingCount: 0};
     },
 
     componentDidMount: function(){
@@ -48,7 +48,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
           this.showSaveAndPublish();
       }
       else {
-          var message = this.props.caption == window.enums.dialogCaptions.editQuestion?  
+          var message = this.props.caption == window.enums.dialogCaptions.editQuestion || this.state.savingCount > 0?  
                       window.enums.messages.succesUpdate :
                       window.enums.messages.succesCreate;
            this.setState({saving: true});
@@ -77,7 +77,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
        this.closeDialog();
     },
     updateQuestionHandler: function(response) {
-      this.setState({saving: false});
+      this.setState({saving: false, savingCount: this.state.savingCount+1});
       if(!response.isError) {
          // this.props.finishSaving();
          this.reloadHistory();
