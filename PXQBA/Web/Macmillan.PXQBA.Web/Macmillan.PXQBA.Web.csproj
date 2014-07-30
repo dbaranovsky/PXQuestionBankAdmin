@@ -202,7 +202,7 @@
     <Content Include="Content\jquery.switchButton.css" />
     <Content Include="Content\mars-icons.css" />
     <Content Include="Content\Paging.css" />
-    <Content Include="Content\qba_dummy_course_overrides.css" />
+    <Content Include="Content\qba-dummy-course-overrides.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

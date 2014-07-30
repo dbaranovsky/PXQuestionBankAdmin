@@ -108,7 +108,11 @@ namespace Macmillan.PXQBA.Business.Services
                     var courseDescriptors = course.FieldDescriptors.Where(x => x.Name == metadataValue.Key);
                     if (courseDescriptors.Any() && courseDescriptors.First().Type == MetadataFieldType.ItemLink && values.Any())
                     {
-                        values = values.Select(value => courseDescriptors.First().CourseMetadataFieldValues.First(x => String.Format(CourseDataXmlHelper.ItemLinkPatterm, x.Id) == value).Text).ToList();
+                        var itemLinkValues = values.Select(value => courseDescriptors.First().CourseMetadataFieldValues.Where(x => String.Format(CourseDataXmlHelper.ItemLinkPatterm, x.Id) == value));
+                        if (itemLinkValues.Any())
+                        {
+                            values = itemLinkValues.Where(x => x.Any()).Select(x => x.First().Text).ToList();
+                        }
                     }
 
                     if (!metadata.Data.ContainsKey(metadataValue.Key))
