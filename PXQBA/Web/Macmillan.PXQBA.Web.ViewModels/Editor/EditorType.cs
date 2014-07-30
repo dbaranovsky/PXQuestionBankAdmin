@@ -1,5 +1,8 @@
 ﻿namespace Macmillan.PXQBA.Web.ViewModels.Editor
 {
+    /// <summary>
+    /// Type of the editor control
+    /// </summary>
     public enum EditorType
     {
         Text = 0,

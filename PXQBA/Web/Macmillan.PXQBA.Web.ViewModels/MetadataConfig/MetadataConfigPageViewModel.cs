@@ -2,6 +2,9 @@
 {
     public class MetadataConfigPageViewModel
     {
+        /// <summary>
+        /// Course id selected for metadata config
+        /// </summary>
         public string SelectedCourseId { get; set; }
     }
 }
