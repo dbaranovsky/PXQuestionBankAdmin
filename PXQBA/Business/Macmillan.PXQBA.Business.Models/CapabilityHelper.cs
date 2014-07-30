@@ -3,9 +3,15 @@ using System.ComponentModel;
 
 namespace Macmillan.PXQBA.Business.Models
 {
-
+    /// <summary>
+    /// Helper for predefined list of capabilities
+    /// </summary>
     public static class CapabilityHelper
     {
+        /// <summary>
+        /// Builds groups of predefined capabilities
+        /// </summary>
+        /// <returns></returns>
         public static Dictionary<string, IEnumerable<Capability>> GetCapabilityGroups()
         {
             return new Dictionary<string, IEnumerable<Capability>>()

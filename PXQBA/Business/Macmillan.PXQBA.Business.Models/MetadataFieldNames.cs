@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Macmillan.PXQBA.Business.Models
 {
+    /// <summary>
+    /// Names of all non-dynamic fields that can be used in question metadata
+    /// </summary>
     public static class MetadataFieldNames
     {
         public const string QuestionStatus = "questionstatus";
@@ -33,6 +36,10 @@ namespace Macmillan.PXQBA.Business.Models
         public const string Notes = "notes";
         public const string QuestionIdDuplicateFromShared = "questionIdDuplicateFromShared";
 
+        /// <summary>
+        /// Gets the list of names of static(tied to name) fields
+        /// </summary>
+        /// <returns></returns>
         public static IEnumerable<string> GetStaticFieldNames()
         {
             return new List<string>()
