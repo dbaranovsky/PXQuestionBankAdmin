@@ -468,7 +468,7 @@ var QuestionEditorTabs = React.createClass({
 
      renderHistory: function(){
         if(this.props.question.canViewHistory){
-          return ( <VersionHistory question={this.props.question} handlers={this.props.handlers}/>);
+          return ( <VersionHistory ref="versionHistory" question={this.props.question} handlers={this.props.handlers}/>);
         }
 
         return (<span className="label label-danger">You have no permission to view question history</span>)

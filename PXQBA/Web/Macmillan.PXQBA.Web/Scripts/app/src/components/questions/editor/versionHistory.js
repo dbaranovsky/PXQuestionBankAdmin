@@ -10,8 +10,11 @@ var VersionHistory = React.createClass({
     },
 
     componentDidMount: function(){
-        var self= this;
-        questionDataManager.getQuestionVersions().done(self.setVersions);
+        this.updateQuestionVersion();
+    },
+
+    updateQuestionVersion: function() {
+        questionDataManager.getQuestionVersions().done(this.setVersions);
     },
 
     setVersions: function(data){
