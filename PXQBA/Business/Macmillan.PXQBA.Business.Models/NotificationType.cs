@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Macmillan.PXQBA.Business.Models
 {
+    /// <summary>
+    /// Type of the warning notification that can be marked as 'Do not show again'
+    /// </summary>
     public enum NotificationType
     {
         [Description(@"Editing a question without first creating a draft means that your edits will be immediately available in the question. 

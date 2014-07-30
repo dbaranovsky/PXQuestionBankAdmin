@@ -4,8 +4,15 @@ using Macmillan.PXQBA.Common.Helpers;
 
 namespace Macmillan.PXQBA.Business.Models
 {
+    /// <summary>
+    /// Helper to manage predefined roles with capabilities
+    /// </summary>
     public static class PredefinedRoleHelper
     {
+        /// <summary>
+        /// Gets predefined roles with the list of capabilities for each role
+        /// </summary>
+        /// <returns>List of roles</returns>
         public static IEnumerable<Role> GetPredefinedRoles()
         {
             return new List<Role>()

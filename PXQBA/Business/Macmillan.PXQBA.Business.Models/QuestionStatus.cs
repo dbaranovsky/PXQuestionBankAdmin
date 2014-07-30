@@ -2,6 +2,9 @@
 
 namespace Macmillan.PXQBA.Business.Models
 {
+    /// <summary>
+    /// Question status
+    /// </summary>
     public enum QuestionStatus
     {
         [Description("Available to instructors")]
