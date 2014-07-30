@@ -2,6 +2,9 @@
 
 namespace Macmillan.PXQBA.Business.Models
 {
+    /// <summary>
+    /// Metadata field type
+    /// </summary>
     public enum MetadataFieldType
     {
         [Description("Single Line")]
