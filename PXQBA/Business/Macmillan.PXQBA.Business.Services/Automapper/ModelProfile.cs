@@ -173,13 +173,11 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.VersionAuthor, opt => opt.MapFrom(src => modelProfileService.GetModifierName(src.ModifiedBy)))
                 .ForMember(dest => dest.VersionDate, opt => opt.MapFrom(src => src.ModifiedDate));
 
-
-
             Mapper.CreateMap<Course, MetadataConfigViewModel>()
                 .ForMember(dest => dest.CourseId, opt => opt.MapFrom(src => src.ProductCourseId))
                 .ForMember(dest => dest.Banks, opt => opt.MapFrom(src => modelProfileService.GetCourseBanks(src)))
                 .ForMember(dest => dest.Chapters, opt => opt.MapFrom(src => modelProfileService.GetCourseChapters(src)))
-                .ForMember(dest => dest.Fields, opt => opt.MapFrom(src => src.FieldDescriptors.Where(f => f.Name != MetadataFieldNames.Bank && f.Name != MetadataFieldNames.Chapter)));
+                .ForMember(dest => dest.Fields, opt => opt.MapFrom(src => modelProfileService.ChooseFieldsForMetadataConfig(src.FieldDescriptors)));
 
             Mapper.CreateMap<CourseMetadataFieldDescriptor, ProductCourseSpecificMetadataFieldViewModel>()
                 .ForMember(dest => dest.InternalName, opt => opt.MapFrom(src => src.Name))

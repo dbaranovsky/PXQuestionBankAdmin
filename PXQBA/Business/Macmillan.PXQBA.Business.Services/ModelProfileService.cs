@@ -460,6 +460,11 @@ namespace Macmillan.PXQBA.Business.Services
             return resource;
         }
 
+        public IEnumerable<CourseMetadataFieldDescriptor> ChooseFieldsForMetadataConfig(IList<CourseMetadataFieldDescriptor> fieldDescriptors)
+        {
+            return fieldDescriptors.Where(f => !CourseExtensions.GetPredefinedCourseFields().Select(d => d.Name).Contains(f.Name));
+        }
+
         private QuestionChoice GetQuestionChoice(ParsedQuestionChoice parsedChoice)
         {
             return new QuestionChoice()
