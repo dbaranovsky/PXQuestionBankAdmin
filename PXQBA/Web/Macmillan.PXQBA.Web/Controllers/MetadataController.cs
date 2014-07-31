@@ -84,7 +84,11 @@ namespace Macmillan.PXQBA.Web.Controllers
 
             if (CourseHelper.CurrentCourse != null)
             {
-                CourseHelper.CurrentCourse = productCourseManagementService.GetProductCourse(CourseHelper.CurrentCourse.ProductCourseId, true);
+                if (course.ProductCourseId == CourseHelper.CurrentCourse.ProductCourseId)
+                {
+                    CourseHelper.CurrentCourse =
+                        productCourseManagementService.GetProductCourse(CourseHelper.CurrentCourse.ProductCourseId, true);
+                }
             }
             
             return JsonCamel(new {IsError = false});
