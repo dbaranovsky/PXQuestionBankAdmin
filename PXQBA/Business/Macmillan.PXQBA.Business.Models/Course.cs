@@ -35,10 +35,26 @@ namespace Macmillan.PXQBA.Business.Models
         /// </summary>
         public bool IsDraft { get; set; }
 
+        private IList<CourseMetadataFieldDescriptor> fieldDescriptors;
+
         /// <summary>
         /// List of question field descriptors
         /// </summary>
-        public IEnumerable<CourseMetadataFieldDescriptor> FieldDescriptors { get; set; } 
+        public IList<CourseMetadataFieldDescriptor> FieldDescriptors
+        {
+            get
+            {
+                if (fieldDescriptors == null)
+                {
+                    fieldDescriptors = new List<CourseMetadataFieldDescriptor>();
+                }
+                return fieldDescriptors;
+            }
+            set
+            {
+                fieldDescriptors = value;
+            }
+        } 
 
     }
 
@@ -121,6 +137,56 @@ namespace Macmillan.PXQBA.Business.Models
             }
 
             return field.CourseMetadataFieldValues.Any(v => v.Text.ToUpper() == value.ToUpper());
+        }
+
+        /// <summary>
+        /// Adds static predefined fields into course
+        /// </summary>
+        /// <param name="course"></param>
+        public static void AddStaticFieldsToCourse(this Course course)
+        {
+            foreach (var courseMetadataFieldDescriptor in GetPredefinedCourseFields())
+            {
+                if (course.FieldDescriptors.All(f => f.Name != courseMetadataFieldDescriptor.Name))
+                {
+                    course.FieldDescriptors.Add(courseMetadataFieldDescriptor);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets the list of predefined course field descriptors that should be in every title
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<CourseMetadataFieldDescriptor> GetPredefinedCourseFields()
+        {
+            return new List<CourseMetadataFieldDescriptor>()
+                                         {
+                                             GetFieldDescriptor(MetadataFieldNames.Bank, MetadataFieldType.SingleSelect),
+                                             GetFieldDescriptor(MetadataFieldNames.Chapter, MetadataFieldType.SingleSelect),
+                                             GetFieldDescriptor(MetadataFieldNames.DlapTitle, MetadataFieldType.Text, "Question Title"),
+                                             GetFieldDescriptor(MetadataFieldNames.Sequence, MetadataFieldType.Text)
+                                         };
+        }
+
+        private static CourseMetadataFieldDescriptor GetFieldDescriptor(string internalName, MetadataFieldType type, string friendlyName = null)
+        {
+            return new CourseMetadataFieldDescriptor
+            {
+                Type = type,
+                FriendlyName = string.IsNullOrEmpty(friendlyName) ? internalName[0].ToString().ToUpper() + internalName.Substring(1) : friendlyName,
+                Name = internalName,
+                Filterable = true,
+                DisplayInBanks = true,
+                ShowFilterInBanks = true,
+                MatchInBanks = true,
+                DisplayInCurrentQuiz = true,
+                DisplayInInstructorQuiz = true,
+                DisplayInResources = true,
+                ShowFilterInResources = true,
+                MatchInResources = true,
+                CourseMetadataFieldValues = null
+            };
         }
     }
 }

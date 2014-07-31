@@ -55,11 +55,7 @@ namespace Macmillan.PXQBA.Business.Services
         {
             var newCourse = productCourseOperation.CreateDraftCourse(title);
             GrantUserSuperAdmin(newCourse.ProductCourseId);
-            newCourse.FieldDescriptors = new List<CourseMetadataFieldDescriptor>()
-                                         {
-                                             GetFieldDescriptor(MetadataFieldNames.Bank),
-                                             GetFieldDescriptor(MetadataFieldNames.Chapter)
-                                         };
+            newCourse.AddStaticFieldsToCourse();
             productCourseOperation.UpdateCourse(newCourse);
         }
         private void GrantUserSuperAdmin(string productCourseId)
@@ -75,6 +71,9 @@ namespace Macmillan.PXQBA.Business.Services
                 var courseId = productCourseOperation.AddSiteBuilderCourseToQBA(url);
                 if (!string.IsNullOrEmpty(courseId))
                 {
+                    var course = productCourseOperation.GetProductCourse(courseId);
+                    course.AddStaticFieldsToCourse();
+                    productCourseOperation.UpdateCourse(course);
                     GrantUserSuperAdmin(courseId);
                 }
                 return courseId;
@@ -94,24 +93,6 @@ namespace Macmillan.PXQBA.Business.Services
         public void PutResources(List<Resource> resources)
         {
             productCourseOperation.PutResources(resources);
-        }        private CourseMetadataFieldDescriptor GetFieldDescriptor(string internalName)
-        {
-            return new CourseMetadataFieldDescriptor
-            {
-                Type = MetadataFieldType.SingleSelect,
-                FriendlyName = internalName[0].ToString().ToUpper() + internalName.Substring(1),
-                Name = internalName,
-                Filterable = true,
-                DisplayInBanks = true,
-                ShowFilterInBanks = true,
-                MatchInBanks = true,
-                DisplayInCurrentQuiz = true,
-                DisplayInInstructorQuiz = true,
-                DisplayInResources = true,
-                ShowFilterInResources = true,
-                MatchInResources = true,
-                CourseMetadataFieldValues = null
-            };
         }
     }
 

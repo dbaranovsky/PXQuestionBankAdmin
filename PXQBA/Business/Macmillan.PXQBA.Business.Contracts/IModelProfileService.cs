@@ -235,5 +235,12 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// <param name="courseId">Course id</param>
         /// <returns>Resource</returns>
         Resource GetResourceFromParsedResource(ParsedResource parsedResource, string courseId);
+
+        /// <summary>
+        /// Gets the list of fields to show on metadata config page
+        /// </summary>
+        /// <param name="fieldDescriptors">All course field descriptors to choose from</param>
+        /// <returns>Chosen fields</returns>
+        IEnumerable<CourseMetadataFieldDescriptor> ChooseFieldsForMetadataConfig(IList<CourseMetadataFieldDescriptor> fieldDescriptors);
     }
 }
