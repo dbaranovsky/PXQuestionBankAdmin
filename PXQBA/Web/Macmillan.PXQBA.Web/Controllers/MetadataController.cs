@@ -81,7 +81,16 @@ namespace Macmillan.PXQBA.Web.Controllers
                 return new HttpUnauthorizedResult();
             }
             productCourseManagementService.UpdateMetadataConfig(course);
-            CourseHelper.CurrentCourse = null;
+
+            if (CourseHelper.CurrentCourse != null)
+            {
+                if (course.ProductCourseId == CourseHelper.CurrentCourse.ProductCourseId)
+                {
+                    CourseHelper.CurrentCourse =
+                        productCourseManagementService.GetProductCourse(CourseHelper.CurrentCourse.ProductCourseId, true);
+                }
+            }
+            
             return JsonCamel(new {IsError = false});
         }
 
