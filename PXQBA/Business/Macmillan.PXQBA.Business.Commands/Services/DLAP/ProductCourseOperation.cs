@@ -6,13 +6,12 @@ using Bfw.Agilix.Commands;
 using Bfw.Agilix.DataContracts;
 using Bfw.Common.Collections;
 using Bfw.Common.Database;
-using Bfw.Common.JqGridHelper;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
+using Macmillan.PXQBA.Common.Logging;
 using Course = Macmillan.PXQBA.Business.Models.Course;
 
 namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
@@ -68,7 +67,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             createdCourse.QuestionBankRepositoryCourse = createdCourse.Id;
             createdCourse.IsDraft = true;
           
-
             ExecuteUpdateCourse(createdCourse);
             AddToAvailableCourses(createdCourse.Id);
 
@@ -146,6 +144,19 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             var cmd = new UpdateCourses();
             cmd.Add(agilixCourse);
             businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+            SaveCourseToXmlSharedFolder(agilixCourse);
+        }
+
+        private void SaveCourseToXmlSharedFolder(Bfw.Agilix.DataContracts.Course agilixCourse)
+        {
+            try
+            {
+                FileHelper.SaveCourseXmlToPaths(agilixCourse, ConfigurationHelper.GetCourseXmlSharedFolders());
+            }
+            catch (Exception e)
+            {
+                StaticLogger.LogError("FileHelper.SaveQuestionXmlsToPath failed", e);
+            }
         }
 
         private IList<Course> GetQuestionBankRepository(IList<Course> courses)

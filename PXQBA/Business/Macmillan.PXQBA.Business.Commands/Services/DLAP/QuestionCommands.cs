@@ -1074,25 +1074,46 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         private void ExecutePutQuestions(IEnumerable<Bfw.Agilix.DataContracts.Question> questions, string courseId = null)
         {
-            if (questions.Any())
+            if (!questions.Any())
             {
-                foreach (var question in questions)
+                return;
+            }
+
+            foreach (var question in questions)
+            {
+                int version;
+                if (int.TryParse(question.QuestionVersion, out version) && version >= 1)
                 {
-                    int version;
-                    if (int.TryParse(question.QuestionVersion, out version) && version >= 1)
+                    if (question.MetadataElements.ContainsKey(MetadataFieldNames.DuplicateFromShared))
                     {
-                        if (question.MetadataElements.ContainsKey(MetadataFieldNames.DuplicateFromShared))
-                        {
-                            question.MetadataElements[MetadataFieldNames.DuplicateFromShared] =
-                                new XElement(MetadataFieldNames.DuplicateFromShared);
-                        }
+                        question.MetadataElements[MetadataFieldNames.DuplicateFromShared] =
+                            new XElement(MetadataFieldNames.DuplicateFromShared);
                     }
                 }
-                var cmd = new PutQuestions();
-                cmd.Add(questions);
-                businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
-                InvalidateQuestionCache(questions, courseId);
             }
+            var cmd = new PutQuestions();
+            cmd.Add(questions);
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
+            InvalidateQuestionCache(questions, courseId);
+            SaveQuestionXmlToSharedFolder(questions, courseId);
+        }
+
+        private void SaveQuestionXmlToSharedFolder(IEnumerable<Bfw.Agilix.DataContracts.Question> questions, string courseId)
+        {
+            var tempCourseId = ConfigurationHelper.GetTemporaryCourseId();
+            if (courseId == tempCourseId)
+            {
+                return;
+            }
+
+            try
+            {
+                FileHelper.SaveQuestionsXmlsToPath(questions.Where(x => x.EntityId != tempCourseId), ConfigurationHelper.GetQuestionXmlSharedFolders());
+            }
+            catch (Exception e)
+            {
+                StaticLogger.LogError("FileHelper.SaveQuestionXmlsToPath failed", e);
+            }   
         }
 
 
