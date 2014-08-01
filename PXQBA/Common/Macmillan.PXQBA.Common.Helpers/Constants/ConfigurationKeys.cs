@@ -141,5 +141,7 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
         /// Base LP url
         /// </summary>
         public const string BaseLaunchpadUrl = "BaseLaunchpadUrl";
+
+        public static string XmlSharedFoldersPath = "XmlSharedFolderPath";
     }
 }
