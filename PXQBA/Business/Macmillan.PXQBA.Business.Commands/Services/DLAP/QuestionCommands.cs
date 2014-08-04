@@ -134,11 +134,12 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         private int ParseSequenceDisplayValue(string sequence)
         {
-            var seq = 0;
+            int seq;
             if (int.TryParse(sequence, out seq))
             {
                 return seq;
             }
+            seq = int.MaxValue;
             return seq;
         }
 
@@ -396,7 +397,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 if (sortCriterion.ColumnName == MetadataFieldNames.Sequence)
                 {
                     decimal seq;
-                    var questionsWithNonDecimalSequence = searchResults.Where(r => !decimal.TryParse(r.SortingField, out seq)).ToList();
                     if (sortCriterion.IsAsc)
                     {
                         return searchResults.OrderBy(r => ParseSequenceDlapValue(r.SortingField)).ToList();
@@ -418,11 +418,12 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         private decimal ParseSequenceDlapValue(string sequence)
         {
-            decimal seq = 0;
+            decimal seq;
             if (decimal.TryParse(sequence, out seq))
             {
                 return seq;
             }
+            seq = decimal.MaxValue;
             return seq;
         }
 
