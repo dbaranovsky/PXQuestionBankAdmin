@@ -116,7 +116,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
     return ( React.DOM.div( {className:"shared-placeholder"} ,  
                React.DOM.div( {className:"btn-group"}, 
                SharedButton( {sharedWith:this.props.data[window.consts.questionSharedWithName], trigger:"click"}),
-               React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-small-btn", disabled:!this.props.capabilities.canShareQuestion, onClick:this.shareHandler, 'data-toggle':"tooltip", title:"Share this question"}, 
+               React.DOM.button( {type:"button", className:"btn btn-default btn-sm custom-small-btn", disabled:!this.props.capabilities.canShareQuestion || this.props.draft, onClick:this.shareHandler, 'data-toggle':"tooltip", title:"Share this question"}, 
                   React.DOM.span( {className:"icon-plus-squared"})
                 ), 
                     this.props.isShared?
@@ -275,7 +275,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
                     this.state.isFlagged ? React.DOM.span( {className:"icon-embassy flagged flagged-container"}) : React.DOM.span(null, " ")
                   ),
                   React.DOM.div( {className:"list-menu-icon-container"}, 
-                    this.props.data.notes != "" ? React.DOM.span( {className:"glyphicon glyphicon-list-alt notes"}) : React.DOM.span(null, " ")
+                    this.props.data.notes != "" ? React.DOM.span( {className:"glyphicon glyphicon-list-alt notes", 'data-content':this.props.data.notes}) : React.DOM.span(null, " ")
                   )
             
               ));
