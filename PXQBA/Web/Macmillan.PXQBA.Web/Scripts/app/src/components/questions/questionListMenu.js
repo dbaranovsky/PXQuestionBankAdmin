@@ -116,7 +116,7 @@ var QuestionListMenu = React.createClass({
     return ( <div className="shared-placeholder" > 
                <div className="btn-group">
                <SharedButton sharedWith={this.props.data[window.consts.questionSharedWithName]} trigger='click'/>
-               <button type="button" className="btn btn-default btn-sm custom-small-btn" disabled={!this.props.capabilities.canShareQuestion} onClick={this.shareHandler} data-toggle="tooltip" title="Share this question">
+               <button type="button" className="btn btn-default btn-sm custom-small-btn" disabled={!this.props.capabilities.canShareQuestion || this.props.draft} onClick={this.shareHandler} data-toggle="tooltip" title="Share this question">
                   <span className="icon-plus-squared"></span>
                 </button> 
                     {this.props.isShared?
@@ -275,7 +275,7 @@ var QuestionListMenu = React.createClass({
                     {this.state.isFlagged ? <span className="icon-embassy flagged flagged-container"></span> : <span>&nbsp;</span>}
                   </div>
                   <div className="list-menu-icon-container">
-                    {this.props.data.notes != "" ? <span className="glyphicon glyphicon-list-alt notes"></span> : <span>&nbsp;</span>}
+                    {this.props.data.notes != "" ? <span className="glyphicon glyphicon-list-alt notes" data-content={this.props.data.notes}></span> : <span>&nbsp;</span>}
                   </div>
             
               </div>);
