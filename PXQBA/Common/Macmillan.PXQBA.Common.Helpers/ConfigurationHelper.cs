@@ -399,5 +399,38 @@ namespace Macmillan.PXQBA.Common.Helpers
 
             return "http://dev.macmillanhighered.com/launchpad/";
         }
+
+
+
+        /// <summary>
+        /// Gets folders path where Course and Question Xmls stores
+        /// </summary>
+        /// <returns></returns>
+        public static List<string> GetCourseXmlSharedFolders()
+        {
+            var value = ConfigurationManager.AppSettings[ConfigurationKeys.CourseXmlSharedFolder];
+            if (!string.IsNullOrEmpty(value))
+            {
+                return value.Split('|').ToList();
+            }
+
+            return new List<string>();
+        }
+
+
+        /// <summary>
+        /// Gets folders path where  Question Xmls stores
+        /// </summary>
+        /// <returns></returns>
+        public static List<string> GetQuestionXmlSharedFolders()
+        {
+            var value = ConfigurationManager.AppSettings[ConfigurationKeys.QuestionXmlSharedFolder];
+            if (!string.IsNullOrEmpty(value))
+            {
+                return value.Split('|').ToList();
+            }
+
+            return new List<string>();
+        }
     }
 }

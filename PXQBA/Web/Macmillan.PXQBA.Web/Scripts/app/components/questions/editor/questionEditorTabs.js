@@ -524,6 +524,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                           (!this.props.question.canEditSharedQuestionContent && this.props.question.isShared) || !this.props.question.canEditQuestion?  React.DOM.span( {className:"label label-danger"}, "You have no permission to edit question body") : React.DOM.div(  {className:"iframe waiting"} ),
                            this.state.graphLoading? React.DOM.div(  {className:"iframe waiting"} ) : "",
                           React.DOM.div( {id:"quizeditorcomponent", className:iframeClass}),
+                          this.state.isHTS? "" :
                           React.DOM.div( {className:"modal-footer"}, 
                            this.renderFooterButtons(true)
                           )

@@ -141,5 +141,16 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
         /// Base LP url
         /// </summary>
         public const string BaseLaunchpadUrl = "BaseLaunchpadUrl";
+
+        /// <summary>
+        /// Folders, where course xmls are stored
+        /// </summary>
+        public const string CourseXmlSharedFolder = "CourseXmlSharedFolder";
+
+        /// <summary>
+        /// Folders, where question xmls are stored
+        /// </summary>
+        public const string QuestionXmlSharedFolder = "QuestionXmlSharedFolder";
+
     }
 }
