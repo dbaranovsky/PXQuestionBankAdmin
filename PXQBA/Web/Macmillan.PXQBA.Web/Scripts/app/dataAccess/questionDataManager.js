@@ -360,9 +360,10 @@ var questionDataManager = (function() {
         });
     };
 
-    self.updateSharedMetadataField = function (questionId, fieldName, fieldValues) {
+    self.updateSharedMetadataField = function (courseId, questionId, fieldName, fieldValues) {
 
         var request = {
+            courseId: courseId,
             questionId: questionId,
             fieldName: fieldName,
             fieldValues: fieldValues

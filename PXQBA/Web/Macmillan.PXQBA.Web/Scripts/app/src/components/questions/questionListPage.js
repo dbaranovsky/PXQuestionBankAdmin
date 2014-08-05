@@ -48,7 +48,9 @@ var QuestionListPage = React.createClass({
                               closeDialogHandler = {this.closeDialogHandler}/>);
           case this.editorsSteps.step2:
 
-            return (<QuestionEditorDialog closeDialogHandler={this.closeDialogHandler}
+            return (<QuestionEditorDialog 
+                                          currentCourseId={this.props.response.productCourseId}
+                                          closeDialogHandler={this.closeDialogHandler}
                                           editSourceQuestionHandler={this.editSourceQuestionHandler}
                                           isNew={this.state.editor.isNew}
                                           showOnCreate={true}

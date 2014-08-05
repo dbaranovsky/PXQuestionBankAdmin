@@ -246,6 +246,7 @@ var QuestionEditor = React.createClass({
                 
                 <div className="editor-tabs">
                   <QuestionEditorTabs ref="questionEditorTabs"
+                                      currentCourseId={this.props.currentCourseId}
                                       question={this.state.question} 
                                       closeDialog={this.closeDialog}  
                                       editSourceQuestionHandler={this.props.editSourceQuestionHandler} 

@@ -540,7 +540,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
 
                        React.DOM.div( {className:!this.props.question.isShared  ? "tab-body" : "tab-body wide"},          
 
-                            QuestionMetadataEditor( {metadata:this.props.metadata, question:this.props.question, editHandler:this.props.editHandler, isDuplicate:this.props.isDuplicate} ),
+                            QuestionMetadataEditor( {currentCourseId:this.props.currentCourseId, metadata:this.props.metadata, question:this.props.question, editHandler:this.props.editHandler, isDuplicate:this.props.isDuplicate} ),
                             React.DOM.div( {className:"modal-footer"}, 
                                this.renderFooterButtons()
                            )

@@ -60,7 +60,8 @@ var QuestionEditorDialog = React.createClass({
             return self.props.caption;
         };
         var renderBody = function(){
-            return (<QuestionEditor question={self.props.question}
+            return (<QuestionEditor  currentCourseId = {self.props.currentCourseId}
+                                     question={self.props.question}
                                      metadata={self.props.metadata}  
                                      editSourceQuestionHandler={self.props.editSourceQuestionHandler} 
                                      finishSaving = {self.finishSaving} 

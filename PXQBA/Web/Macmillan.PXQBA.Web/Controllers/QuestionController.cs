@@ -53,13 +53,13 @@ namespace Macmillan.PXQBA.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateSharedMetadataField(string questionId, string fieldName, List<string> fieldValues)
+        public ActionResult UpdateSharedMetadataField(string courseId, string questionId, string fieldName, List<string> fieldValues)
         {
             if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.EditSharedQuestionMetadata))
             {
                 return new HttpUnauthorizedResult();
             }
-            bool success = questionManagementService.UpdateSharedQuestionField(CourseHelper.CurrentCourse, questionId, fieldName, fieldValues);
+            bool success = questionManagementService.UpdateSharedQuestionField(CourseHelper.GetCourse(courseId), questionId, fieldName, fieldValues);
             return JsonCamel(new { isError = !success });
         }
 
