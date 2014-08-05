@@ -70,31 +70,31 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(result);
         }
 
-        public ActionResult CreateQuestion(string questionType, string bank, string chapter)
+        public ActionResult CreateQuestion(string courseId, string questionType, string bank, string chapter)
         {
             if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.CreateQuestion))
             {
                 return new HttpUnauthorizedResult();
             }
-            var question = questionManagementService.CreateQuestion(CourseHelper.CurrentCourse, questionType, bank, chapter);
+            var question = questionManagementService.CreateQuestion(CourseHelper.GetCourse(courseId), questionType, bank, chapter);
             return JsonCamel(CreateQuestionViewModelForEditing(question));
         }
 
         [HttpPost]
-        public ActionResult DuplicateQuestion(string questionId, string version = null)
+        public ActionResult DuplicateQuestion(string courseId, string questionId, string version = null)
         {
             if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.DuplicateQuestion))
             {
                 return new HttpUnauthorizedResult();
             }
-            var question = questionManagementService.DuplicateQuestion(CourseHelper.CurrentCourse, questionId, version);
+            var question = questionManagementService.DuplicateQuestion(CourseHelper.GetCourse(courseId), questionId, version);
             return JsonCamel(CreateQuestionViewModelForEditing(question));
 
         }
 
-        public ActionResult GetAvailibleMetadata()
+        public ActionResult GetAvailibleMetadata(string courseId)
         {
-            return JsonCamel(questionMetadataService.GetAvailableFields(CourseHelper.CurrentCourse).Select(MetadataFieldsHelper.Convert).ToList());
+            return JsonCamel(questionMetadataService.GetAvailableFields(CourseHelper.GetCourse(courseId)).Select(MetadataFieldsHelper.Convert).ToList());
         }
 
         public ActionResult GetAvailibleMetadataByCourseId(string courseId)

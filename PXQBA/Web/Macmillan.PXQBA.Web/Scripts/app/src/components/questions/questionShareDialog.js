@@ -12,7 +12,7 @@ var QuestionShareDialog = React.createClass({
     },
 
   componentDidMount: function(){
-          questionDataManager.getMetadataFields().done(this.loadMetadata);
+          questionDataManager.getMetadataFields(this.props.currentCourseId).done(this.loadMetadata);
         if(this.props.showOnCreate)
         {
            $(this.getDOMNode()).modal("show");

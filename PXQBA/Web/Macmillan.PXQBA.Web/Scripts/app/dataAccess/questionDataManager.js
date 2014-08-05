@@ -150,8 +150,9 @@ var questionDataManager = (function() {
             });
         };
 
-    self.getNewQuestionTemplate = function(question) {
+    self.getNewQuestionTemplate = function(courseId, question) {
         var request = {
+            courseId: courseId,
             questionType: question.type,
             bank: question.bank,
             chapter: question.chapter
@@ -192,11 +193,16 @@ var questionDataManager = (function() {
     };
 
 
-    self.getMetadataFields = function() {
+    self.getMetadataFields = function (courseId) {
+        var request = {
+            courseId: courseId
+        };
+        
          return $.ajax({
             url: window.actions.questionList.getMetadataFieldsUrl,
             cache: false,
             traditional: true,
+            data: request,
             dataType: 'json',
             contentType: 'application/json',
             type: 'GET'
@@ -250,8 +256,9 @@ var questionDataManager = (function() {
     };
 
 
-    self.getDuplicateQuestionTemplate = function (questionId, version) {
-        var request = {            
+    self.getDuplicateQuestionTemplate = function (courseId, questionId, version) {
+        var request = {
+            courseId: courseId,
             questionId: questionId,
             version: version
         };
