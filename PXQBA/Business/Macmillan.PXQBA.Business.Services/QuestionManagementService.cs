@@ -207,7 +207,7 @@ namespace Macmillan.PXQBA.Business.Services
             var parentSection = question.ProductCourseSections.FirstOrDefault(s => string.IsNullOrEmpty(s.ParentProductCourseId));
             if (parentSection != null)
             {
-                if (!string.IsNullOrEmpty(parentSection.ProductCourseId))
+                if (!string.IsNullOrEmpty(parentSection.ProductCourseId) || parentSection.ProductCourseId != currentCourse.ProductCourseId)
                 {
                     var parentCourse = productCourseManagementService.GetProductCourse(parentSection.ProductCourseId);
                     if (parentCourse != null)
