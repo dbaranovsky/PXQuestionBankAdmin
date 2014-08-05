@@ -36,14 +36,26 @@ var QuestionShareDialog = React.createClass({displayName: 'QuestionShareDialog',
       return window.actions.questionList.buildQuestionListIndexUrl(titleId, chapterId);
     },
 
-    finishShare: function(){
-            var message = this.props.questionIds.length ==1 ?
+    finishShare: function(response){
+
+           if (response.draftSkipped > 0) {
+                notificationManager.showWarning(response.draftSkipped + " drafts were skipped");
+            }
+
+            var questionsShared = this.props.questionIds.length - response.draftSkipped;
+
+         if(questionsShared != 0)  {
+
+            var message = questionsShared ==1 ?
                          "Question was shared successfully. This question may require metadata editing." : 
-                          this.props.questionIds.length+" question were shared successfully. These questions may require metadata editing. ";
+                          questionsShared + " question were shared successfully. These questions may require metadata editing. ";
             var url = this.getUrlToList(this.state.shareViewModel[window.consts.targetProductCourse][0]);
             var link = '<a href='+url+'>Go to the target title </a>'
  
-        notificationManager.showSuccessHtml(message+link);
+          notificationManager.showSuccessHtml(message+link);
+         } 
+
+
         this.props.closeDialogHandler();
         questionDataManager.resetState(); 
     },

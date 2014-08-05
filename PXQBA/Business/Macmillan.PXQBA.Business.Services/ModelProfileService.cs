@@ -105,13 +105,16 @@ namespace Macmillan.PXQBA.Business.Services
                 foreach (var metadataValue in productCourseSection.DynamicValues)
                 {
                     var values = metadataValue.Value;
-                    var courseDescriptors = course.FieldDescriptors.Where(x => x.Name == metadataValue.Key);
-                    if (courseDescriptors.Any() && courseDescriptors.First().Type == MetadataFieldType.ItemLink && values.Any())
+                    if (course != null)
                     {
-                        var itemLinkValues = values.Select(value => courseDescriptors.First().CourseMetadataFieldValues.Where(x => String.Format(CourseDataXmlHelper.ItemLinkPatterm, x.Id) == value));
-                        if (itemLinkValues.Any())
+                        var courseDescriptors = course.FieldDescriptors.Where(x => x.Name == metadataValue.Key);
+                        if (courseDescriptors.Any() && courseDescriptors.First().Type == MetadataFieldType.ItemLink && values.Any())
                         {
-                            values = itemLinkValues.Where(x => x.Any()).Select(x => x.First().Text).ToList();
+                            var itemLinkValues = values.Select(value => courseDescriptors.First().CourseMetadataFieldValues.Where(x => String.Format(CourseDataXmlHelper.ItemLinkPatterm, x.Id) == value));
+                            if (itemLinkValues.Any())
+                            {
+                                values = itemLinkValues.Where(x => x.Any()).Select(x => x.First().Text).ToList();
+                            }
                         }
                     }
 
@@ -123,6 +126,8 @@ namespace Macmillan.PXQBA.Business.Services
             }
             return metadata;
         }
+
+        
 
         public Dictionary<string, XElement> GetXmlMetadataElements(Question question)
         {

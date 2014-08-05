@@ -41,7 +41,7 @@ namespace Macmillan.PXQBA.Business.Services.Tests
           string[] questionIds = new[] {"1", "2"};
           var result = questionManagementService.PublishToTitle(questionIds, 1, "bank 1", "chapter 1", course);
 
-          Assert.IsFalse(result);
+          Assert.IsFalse(result.IsSuccess);
         }
 
         [TestMethod]
@@ -53,7 +53,7 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             string[] questionIds = new[] { "1", "2" };
             var result = questionManagementService.PublishToTitle(questionIds, 1, "bank 1", "chapter 1", course);
 
-            Assert.IsTrue(result);
+            Assert.IsTrue(result.IsSuccess);
         }
 
         [TestMethod]
@@ -96,7 +96,7 @@ namespace Macmillan.PXQBA.Business.Services.Tests
 
             var result = questionManagementService.PublishToTitle(questionIds, newProductCourseId, "bank 1", "chapter 1", course);
 
-            Assert.IsTrue(result);
+            Assert.IsTrue(result.IsSuccess);
             Assert.IsTrue(questions[0].ProductCourseSections.Count(q => q.ProductCourseId == newProductCourseId.ToString()) == 1);
             Assert.IsTrue(questions[1].ProductCourseSections.Count(q => q.ProductCourseId == newProductCourseId.ToString()) == 1);
         }
