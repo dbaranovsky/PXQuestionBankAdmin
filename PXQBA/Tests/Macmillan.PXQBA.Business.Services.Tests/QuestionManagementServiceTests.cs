@@ -47,7 +47,7 @@ namespace Macmillan.PXQBA.Business.Services.Tests
         [TestMethod]
         public void PublishToTitle_AnyParameters_TransferSuccessfulSuccessfulFromQuestionCommands()
         {
-            questionCommands.UpdateQuestions(Arg.Any<IEnumerable<Question>>(), Arg.Any<string>()).Returns(true);
+            questionCommands.UpdateQuestions(Arg.Any<IEnumerable<Question>>(), Arg.Any<string>(), Arg.Any<string>()).Returns(true);
 
             Course course = new Course();
             string[] questionIds = new[] { "1", "2" };
@@ -91,7 +91,7 @@ namespace Macmillan.PXQBA.Business.Services.Tests
                                            }
                                        };
 
-            questionCommands.UpdateQuestions(Arg.Any<IEnumerable<Question>>(), Arg.Any<string>()).Returns(true);
+            questionCommands.UpdateQuestions(Arg.Any<IEnumerable<Question>>(), Arg.Any<string>(), Arg.Any<string>()).Returns(true);
             questionCommands.GetQuestions(Arg.Any<string>(), Arg.Any<string[]>()).Returns(questions);
 
             var result = questionManagementService.PublishToTitle(questionIds, newProductCourseId, "bank 1", "chapter 1", course);

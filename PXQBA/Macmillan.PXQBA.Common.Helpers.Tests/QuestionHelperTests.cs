@@ -1,10 +1,8 @@
 ﻿using System.Linq;
-using System.Xml.Linq;
 using Macmillan.PXQBA.Business.Commands.Helpers;
-using Macmillan.PXQBA.Business.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Macmillan.PXQBA.Business.Services.Tests
+namespace Macmillan.PXQBA.Common.Helpers.Tests
 {
     [TestClass]
     public class QuestionHelperTests
