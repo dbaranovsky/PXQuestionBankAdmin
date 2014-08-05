@@ -52,7 +52,7 @@ var QuestionEditor = React.createClass({
                       window.enums.messages.succesUpdate :
                       window.enums.messages.succesCreate;
            this.setState({saving: true});
-           questionDataManager.updateQuestion(this.state.question,message).done(this.updateQuestionHandler);
+           questionDataManager.updateQuestion(this.props.currentCourseId, this.state.question, message).done(this.updateQuestionHandler);
       }
     },
 

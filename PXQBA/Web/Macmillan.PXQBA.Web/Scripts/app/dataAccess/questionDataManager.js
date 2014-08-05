@@ -174,8 +174,9 @@ var questionDataManager = (function() {
     };
 
 
-    self.getQuestion = function(questionId) {
-          var request = {
+    self.getQuestion = function(courseId, questionId) {
+        var request = {
+            courseId: courseId,
             questionId: questionId
         };
         return $.ajax({
@@ -214,8 +215,9 @@ var questionDataManager = (function() {
     };
 
 
-    self.updateQuestion = function (question, message) {
-         var request = {
+    self.updateQuestion = function (courseId, question, message) {
+        var request = {
+            courseId: courseId,
             questionJsonString:  JSON.stringify(question),
         };
          return $.ajax({
@@ -279,11 +281,12 @@ var questionDataManager = (function() {
         });
     };
 
-     self.removeTitle= function (questionId) {
+    self.removeTitle = function (courseId, questionId) {
         var questions = [];
         questions.push(questionId);
         
-        var request = {            
+        var request = {
+            courseId: courseId,
             questionsId: questions
         };
         
@@ -353,12 +356,16 @@ var questionDataManager = (function() {
        
     };
 
-    self.getQuestionVersions = function(){
+      self.getQuestionVersions = function (courseId) {
+        var request = {
+            courseId: courseId,
+        };
 
         return $.ajax({
             url: window.actions.questionList.getQuestionVersionsUrl,
             traditional: true,
             cache: false,
+            data: request,
             contentType: 'application/json',
             dataType: 'json',
             type: 'GET'
@@ -509,10 +516,11 @@ var questionDataManager = (function() {
     
 
 
-    self.bulk.removeTitle = function (questionsId) {
+    self.bulk.removeTitle = function (courseId, questionsId) {
         asyncManager.startWait();
 
         var request = {
+            courseId: courseId,
             questionsId: questionsId,
         };
 
@@ -533,10 +541,11 @@ var questionDataManager = (function() {
         });
     };
 
-    self.bulk.shareTitle = function (questionsId, courseViewModel) {
+    self.bulk.shareTitle = function (currentCourseId, questionsId, courseViewModel) {
         asyncManager.startWait();
 
         var request = {
+            currentCourseId: currentCourseId,
             questionsId: questionsId,
             courseId: courseViewModel[window.consts.targetProductCourse][0],
             bank: courseViewModel[window.consts.questionBankName][0],
@@ -558,8 +567,9 @@ var questionDataManager = (function() {
     };
 
     /* Versions and draft */
-    self.getVersionPreviewLink = function(version){
-       var request = {
+    self.getVersionPreviewLink = function(courseId,version){
+        var request = {
+            courseId: courseId,
             version: version,
         };
          return $.ajax({
@@ -597,9 +607,10 @@ var questionDataManager = (function() {
 
     };
     
-    self.createDraft = function (questionId, version, status) {
+    self.createDraft = function (courseId, questionId, version, status) {
         asyncManager.startWait();
         var request = {
+            courseId: courseId,
             questionId: questionId,
             version: version == undefined? null : version,
             status:  status == undefined? null : status

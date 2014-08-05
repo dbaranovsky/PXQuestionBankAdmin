@@ -280,8 +280,13 @@ namespace Macmillan.PXQBA.Web.Controllers
             {
                 return new HttpUnauthorizedResult();
             }
-            var  result = questionManagementService.PublishToTitle(questionsId, courseId, bank, chapter, CourseHelper.GetCourse(currentCourseId));
+<<<<<<< HEAD
+            var  result = questionManagementService.PublishToTitle(questionsId, courseId, bank, chapter, CourseHelper.CurrentCourse);
             return JsonCamel(result);
+=======
+            bool isSuccess = questionManagementService.PublishToTitle(questionsId, courseId, bank, chapter, CourseHelper.GetCourse(currentCourseId));
+            return JsonCamel(new { isError = !isSuccess });
+>>>>>>> + qba-350: question editor
         }
 
 

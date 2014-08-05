@@ -29,7 +29,7 @@ var QuestionShareDialog = React.createClass({displayName: 'QuestionShareDialog',
 
     shareQuestion: function(shareViewModel){
         this.setState({waiting: true, shareViewModel: shareViewModel})
-        questionDataManager.bulk.shareTitle(this.props.questionIds, shareViewModel).done(this.finishShare); 
+        questionDataManager.bulk.shareTitle(this.props.currentCourseId, this.props.questionIds, shareViewModel).done(this.finishShare); 
     },
 
      getUrlToList: function(titleId, chapterId) {

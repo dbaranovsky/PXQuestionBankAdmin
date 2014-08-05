@@ -33,7 +33,7 @@ var QuestionBulkOperationBarStandart = React.createClass({displayName: 'Question
 
     bulkRemoveFromTitle: function(){
       var self = this;
-       questionDataManager.bulk.removeTitle(this.props.selectedQuestions).done(function(){self.deselectsAllHandler();});
+       questionDataManager.bulk.removeTitle(this.props.currentCourseId, this.props.selectedQuestions).done(function(){self.deselectsAllHandler();});
     },
 
     bulkShareToTitle: function(){

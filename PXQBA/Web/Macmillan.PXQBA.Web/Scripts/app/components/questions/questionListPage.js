@@ -92,7 +92,7 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
            viewHistoryMode: viewHistoryMode === undefined? false : viewHistoryMode,
            isEditedInPlace: isEditedInPlace === undefined? false : isEditedInPlace
         });
-       questionDataManager.getQuestion(questionId).done(this.loadTemplateComplete.bind(this, false));
+       questionDataManager.getQuestion(this.props.response.productCourseId, questionId).done(this.loadTemplateComplete.bind(this, false));
     },
 
     publishDraftHandler: function(questionId) {
@@ -119,7 +119,7 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
            viewHistoryMode: false
         });
 
-        questionDataManager.createDraft(questionId, version, status).done(this.loadTemplateComplete.bind(this, false));
+        questionDataManager.createDraft(this.props.response.productCourseId, questionId, version, status).done(this.loadTemplateComplete.bind(this, false));
      
     },
 

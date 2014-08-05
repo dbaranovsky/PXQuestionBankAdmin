@@ -42,7 +42,7 @@ var QuestionListMenu = React.createClass({
 
     removeTitleHandler: function(){
       if(confirm("Are you sure you want to remove this question from the current title?")){
-         questionDataManager.removeTitle(this.props.data.id);
+         questionDataManager.removeTitle(this.props.currentCourseId, this.props.data.id);
       }
     },
 
