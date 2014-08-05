@@ -21,7 +21,7 @@ namespace Macmillan.PXQBA.Common.Helpers
        /// </summary>
        /// <param name="paths">Paths with file enames, where XML file should be saved</param>
        /// <param name="xmlFile">Xml file content</param>
-       public static void SaveXmlFileToPaths(IEnumerable<string> paths, XElement xmlFile)
+       private static void SaveXmlFileToPaths(IEnumerable<string> paths, XElement xmlFile)
        {
            if (!paths.Any() || xmlFile == null)
            {
@@ -72,7 +72,7 @@ namespace Macmillan.PXQBA.Common.Helpers
        /// </summary>
        /// <param name="question">Question to save</param>
        /// <param name="repositories">List of repositories paths where Questions XML should be stored</param>
-        public static void SaveQuestionXmlsToPath(Question question, IEnumerable<string> repositories)
+        private static void SaveQuestionXmlsToPath(Question question, IEnumerable<string> repositories)
         {
             var questionPaths = repositories.Select(repository => Path.Combine(repository, question.EntityId, question.Id + xmlFileFormat));
             SaveXmlFileToPaths(questionPaths, question.ToEntity());

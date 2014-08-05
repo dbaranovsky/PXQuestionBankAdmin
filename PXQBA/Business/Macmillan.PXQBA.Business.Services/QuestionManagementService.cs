@@ -190,15 +190,33 @@ namespace Macmillan.PXQBA.Business.Services
             var questions = questionCommands.GetQuestions(currentCourse.QuestionRepositoryCourseId, questionsId);
             foreach (var question in questions)
             {
-                question.DefaultSection = GetDefaultSection(question, currentCourse);
+                var parentProductCourse = GetParentProductCourse(question, currentCourse);
+                question.DefaultSection = GetDefaultSection(question, parentProductCourse);
                 
                 question.ProductCourseSections.RemoveAll(s => s.ProductCourseId == courseIdToPublish.ToString());
-                question.ProductCourseSections.Add(GetNewProductCourseSection(courseIdToPublish, bank, chapter, currentCourse, question));
+                question.ProductCourseSections.Add(GetNewProductCourseSection(courseIdToPublish, bank, chapter, parentProductCourse, question));
             }
             
             bool isSuccess = questionCommands.UpdateQuestions(questions, currentCourse.QuestionRepositoryCourseId, courseIdToPublish.ToString());
             questionCommands.ExecuteSolrUpdateTask();
             return isSuccess;
+        }
+
+        private Course GetParentProductCourse(Question question, Course currentCourse)
+        {
+            var parentSection = question.ProductCourseSections.FirstOrDefault(s => string.IsNullOrEmpty(s.ParentProductCourseId));
+            if (parentSection != null)
+            {
+                if (!string.IsNullOrEmpty(parentSection.ProductCourseId))
+                {
+                    var parentCourse = productCourseManagementService.GetProductCourse(parentSection.ProductCourseId);
+                    if (parentCourse != null)
+                    {
+                        return parentCourse;
+                    }
+                }
+            }
+            return currentCourse;
         }
 
         public IEnumerable<Question> GetVersionHistory(Course currentCourse, string questionId)
