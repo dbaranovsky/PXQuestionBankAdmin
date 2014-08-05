@@ -185,9 +185,10 @@ namespace Macmillan.PXQBA.Business.Services
             return isSuccess;
         }
 
-        public bool PublishToTitle(string[] questionsId, int courseIdToPublish, string bank, string chapter, Course currentCourse)
+        public BulkOperationResult PublishToTitle(string[] questionsId, int courseIdToPublish, string bank, string chapter, Course currentCourse)
         {
-            var questions = questionCommands.GetQuestions(currentCourse.QuestionRepositoryCourseId, questionsId);
+            var questions = questionCommands.GetQuestions(currentCourse.QuestionRepositoryCourseId, questionsId).Where(x=> string.IsNullOrEmpty(x.DraftFrom));
+            var result = new BulkOperationResult();
             foreach (var question in questions)
             {
                 var parentProductCourse = GetParentProductCourse(question, currentCourse);
@@ -197,9 +198,10 @@ namespace Macmillan.PXQBA.Business.Services
                 question.ProductCourseSections.Add(GetNewProductCourseSection(courseIdToPublish, bank, chapter, parentProductCourse, question));
             }
             
-            bool isSuccess = questionCommands.UpdateQuestions(questions, currentCourse.QuestionRepositoryCourseId, courseIdToPublish.ToString());
+            result.IsSuccess = questionCommands.UpdateQuestions(questions, currentCourse.QuestionRepositoryCourseId, courseIdToPublish.ToString());
+            result.DraftSkipped = questionsId.Length - questions.Count();
             questionCommands.ExecuteSolrUpdateTask();
-            return isSuccess;
+            return result;
         }
 
         private Course GetParentProductCourse(Question question, Course currentCourse)

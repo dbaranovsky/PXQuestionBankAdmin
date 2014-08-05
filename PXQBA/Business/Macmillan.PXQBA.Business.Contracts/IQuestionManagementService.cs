@@ -115,8 +115,8 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// <param name="bank">Destination bank</param>
         /// <param name="chapter">Destination chapter</param>
         /// <param name="currentCourse">Source course</param>
-        /// <returns>If success</returns>
-        bool PublishToTitle(string[] questionsId, int courseIdToPublish, string bank, string chapter, Course currentCourse);
+        /// <returns>Operation result</returns>
+        BulkOperationResult PublishToTitle(string[] questionsId, int courseIdToPublish, string bank, string chapter, Course currentCourse);
 
         /// <summary>
         /// Loads version history for question. Basically each version is a question. So it loads the list of questions where each question is a separate version of original question
