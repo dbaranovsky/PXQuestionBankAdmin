@@ -8,7 +8,7 @@ using Macmillan.PXQBA.Business.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 
-namespace Macmillan.PXQBA.Business.Services.Tests
+namespace Macmillan.PXQBA.Business.Commands.Tests
 {
     [TestClass]
     public class NoteCommandsTests
