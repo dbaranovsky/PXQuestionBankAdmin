@@ -54,7 +54,7 @@
     <Compile Include="QuestionHelperTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Business\Macmillan.PXQBA.Business.Commands\Macmillan.PXQBA.Business.Commands.csproj">
+    <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Commands\Macmillan.PXQBA.Business.Commands.csproj">
       <Project>{DCC579E2-F0D2-48C9-B660-DFAF8858C40C}</Project>
       <Name>Macmillan.PXQBA.Business.Commands</Name>
     </ProjectReference>
