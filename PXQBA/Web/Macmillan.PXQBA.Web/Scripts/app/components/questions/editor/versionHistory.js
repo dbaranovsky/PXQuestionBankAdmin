@@ -141,7 +141,7 @@ var VersionHistoryRow = React.createClass({displayName: 'VersionHistoryRow',
 
     restoreVersion: function(){
         this.setState({loading: true, restoring: true});
-        questionDataManager.restoreVersion(this.props.version).done(this.reloadEditor).always(this.stopLoading);
+        questionDataManager.restoreVersion(this.props.currentCourseId, this.props.version).done(this.reloadEditor).always(this.stopLoading);
     },
 
     reloadEditor: function(){

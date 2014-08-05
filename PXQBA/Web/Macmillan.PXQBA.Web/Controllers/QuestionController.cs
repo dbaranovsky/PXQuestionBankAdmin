@@ -310,18 +310,18 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(new { Url = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), tempVersion.EntityId, tempVersion.QuizId) });
         }
 
-        public ActionResult PublishDraftToOriginal(string draftQuestionId)
+        public ActionResult PublishDraftToOriginal(string courseId, string draftQuestionId)
         {
             if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.PublishDraft))
             {
                 return new HttpUnauthorizedResult();
             }
-            var success = questionManagementService.PublishDraftToOriginal(CourseHelper.CurrentCourse, draftQuestionId);
+            var success = questionManagementService.PublishDraftToOriginal(CourseHelper.GetCourse(courseId), draftQuestionId);
             return JsonCamel(new {isError = !success});
         }
 
         [HttpPost, ValidateInput(false)]
-        public ActionResult SaveAndPublishDraft(string questionJsonString)
+        public ActionResult SaveAndPublishDraft(string courseId, string questionJsonString)
         {
             var success = false;
             // manual JSON deserialize is nessessary becauese of invalid model mapping on controller
@@ -330,8 +330,8 @@ namespace Macmillan.PXQBA.Web.Controllers
 
             try
             {
-                question = questionManagementService.UpdateQuestion(CourseHelper.CurrentCourse, QuestionHelper.QuestionIdToEdit, question);
-                success = questionManagementService.PublishDraftToOriginal(CourseHelper.CurrentCourse, question.Id);
+                question = questionManagementService.UpdateQuestion(CourseHelper.GetCourse(courseId), QuestionHelper.QuestionIdToEdit, question);
+                success = questionManagementService.PublishDraftToOriginal(CourseHelper.GetCourse(courseId), question.Id);
             }
             catch (Exception ex)
             {
@@ -356,20 +356,13 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         }
 
-        //Unnecessary as we now create question in temp course
-        //public ActionResult DeleteQuestion()
-        //{
-        //    var isDeleted = questionManagementService.RemoveQuestion(CourseHelper.CurrentCourse,QuestionHelper.QuestionIdToEdit);
-        //    return JsonCamel(new { ResetState = isDeleted });
-        //}
-
-        public ActionResult RestoreVersion(string version)
+        public ActionResult RestoreVersion(string courseId, string version)
         {
             if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.RestoreOldVersion))
             {
                 return new HttpUnauthorizedResult();
             }
-            var questionVersion = questionManagementService.RestoreQuestionVersion(CourseHelper.CurrentCourse, QuestionHelper.QuestionIdToEdit, version);
+            var questionVersion = questionManagementService.RestoreQuestionVersion(CourseHelper.GetCourse(courseId), QuestionHelper.QuestionIdToEdit, version);
             return JsonCamel(Mapper.Map<QuestionVersionViewModel>(questionVersion));
         }
 
@@ -378,9 +371,9 @@ namespace Macmillan.PXQBA.Web.Controllers
              return  JsonCamel(new { EditorHtml = QuestionPreviewHelper.GetGraphEditor(interactionData, QuestionHelper.QuestionIdToEdit, QuestionTypeHelper.GraphType)});
         }
 
-        public ActionResult ClearQuestionResources()
+        public ActionResult ClearQuestionResources(string courseId)
         {
-             questionManagementService.RemoveRelatedQuestionTempResources(QuestionHelper.QuestionIdToEdit, CourseHelper.CurrentCourse);
+            questionManagementService.RemoveRelatedQuestionTempResources(QuestionHelper.QuestionIdToEdit, CourseHelper.GetCourse(courseId));
              return JsonCamel(new { isError = false });
         }
 	}

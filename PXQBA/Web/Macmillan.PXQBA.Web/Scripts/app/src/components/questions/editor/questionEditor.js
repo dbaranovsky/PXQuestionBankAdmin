@@ -73,7 +73,7 @@ var QuestionEditor = React.createClass({
     },
 
     saveAndPublish: function(){
-       questionDataManager.saveAndPublishDraftQuestion(this.state.question).done(this.updateQuestionHandler);
+       questionDataManager.saveAndPublishDraftQuestion(this.props.currentCourseId, this.state.question).done(this.updateQuestionHandler);
        this.closeDialog();
     },
     updateQuestionHandler: function(response) {

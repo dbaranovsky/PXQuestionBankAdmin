@@ -234,10 +234,11 @@ var questionDataManager = (function() {
         });
     };
    
-    self.saveAndPublishDraftQuestion = function (question) {
+    self.saveAndPublishDraftQuestion = function (courseId, question) {
         
         asyncManager.startWait();
         var request = {
+            courseId: courseId,
             questionJsonString: JSON.stringify(question),
         };
         return $.ajax({
@@ -439,10 +440,11 @@ var questionDataManager = (function() {
 
 
 
-   self.restoreVersion = function (version) {
+   self.restoreVersion = function (courseId, version) {
 
        var request = {
-            version: version.version
+           courseId: courseId,
+           version: version.version
         };
 
         return $.ajax({
@@ -584,9 +586,10 @@ var questionDataManager = (function() {
         });
     };
 
-    self.publishDraftToOriginal = function (questionId) {
+    self.publishDraftToOriginal = function (courseId, questionId) {
         asyncManager.startWait();
         var request = {
+            courseId: courseId,
             draftQuestionId: questionId,
         };
         return $.ajax({
@@ -631,11 +634,15 @@ var questionDataManager = (function() {
 
     };
 
-    self.clearResources  = function(){
+    self.clearResources = function (courseId) {
+        var request = {
+            courseId: courseId,
+        };
         return $.ajax({
             url: window.actions.questionList.clearQuestionResourcesUrl,
-             cache: false,
+            cache: false,
             traditional: true,
+            data: request,
             contentType: 'application/json',
             dataType: 'json',
             type: 'GET'

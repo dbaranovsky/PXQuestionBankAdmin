@@ -44,7 +44,7 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
          $('.modal-backdrop').remove(); 
          var questionType = this.props.question.questionType == null? "" :this.props.question.questionType.toLowerCase();
          if ( questionType != "hts" && questionType !="fma_graph"){
-            questionDataManager.clearResources();
+            questionDataManager.clearResources(this.props.currentCourseId);
          }
          
     },
