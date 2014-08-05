@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using Bfw.Agilix.Commands;
-using Bfw.Agilix.DataContracts;
-using Bfw.Agilix.Dlap.Session;
-using Bfw.Common.Database;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Commands.Services.DLAP;
 using Macmillan.PXQBA.Business.Contracts;
@@ -15,7 +11,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Question = Bfw.Agilix.DataContracts.Question;
 
-namespace Macmillan.PXQBA.Business.Services.Tests
+namespace Macmillan.PXQBA.Business.Commands.Tests
 {
     [TestClass]
     public class QuestionCommandsTests

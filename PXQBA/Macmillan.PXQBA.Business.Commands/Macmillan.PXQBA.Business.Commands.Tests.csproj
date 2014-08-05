@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{38EAB49D-9618-4143-BFD2-5D4CD20BCFF6}</ProjectGuid>
+    <ProjectGuid>{9DF37EA3-EB8D-4C8E-A189-3F4D8DEB3405}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Macmillan.PXQBA.Business.Services.Tests</RootNamespace>
-    <AssemblyName>Macmillan.PXQBA.Business.Services.Tests</AssemblyName>
+    <RootNamespace>Macmillan.PXQBA.Business.Commands.Tests</RootNamespace>
+    <AssemblyName>Macmillan.PXQBA.Business.Commands.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -34,43 +34,18 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DEV|AnyCPU'">
-    <OutputPath>bin\DEV\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
-    <OutputPath>bin\QA\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=3.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="AutoMapper.Net4, Version=3.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Web\Macmillan.PXQBA.Web\bin\Microsoft.Practices.Unity.dll</HintPath>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
     <Reference Include="NSubstitute">
-      <HintPath>..\..\packages\NSubstitute.1.7.2.0\lib\NET45\NSubstitute.dll</HintPath>
+      <HintPath>..\packages\NSubstitute.1.7.2.0\lib\NET45\NSubstitute.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
@@ -87,63 +62,45 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="..\..\Web\Macmillan.PXQBA.Web\Properties\ProductInfo.cs">
-      <Link>Properties\ProductInfo.cs</Link>
-    </Compile>
+    <Compile Include="NoteCommandsTests.cs" />
+    <Compile Include="ProductCourseOperationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuestionManagementServiceTests.cs" />
-    <Compile Include="QuestionMetadataServiceTests.cs" />
+    <Compile Include="QuestionCommandsTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Commands\Macmillan.PXQBA.Business.Commands.csproj">
+    <ProjectReference Include="..\Business\Macmillan.PXQBA.Business.Commands\Macmillan.PXQBA.Business.Commands.csproj">
       <Project>{DCC579E2-F0D2-48C9-B660-DFAF8858C40C}</Project>
       <Name>Macmillan.PXQBA.Business.Commands</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Context\Macmillan.PXQBA.Business.csproj">
+    <ProjectReference Include="..\Business\Macmillan.PXQBA.Business.Context\Macmillan.PXQBA.Business.csproj">
       <Project>{B1D7B9EC-976A-4C09-A46F-81C1D7933B12}</Project>
       <Name>Macmillan.PXQBA.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Contracts\Macmillan.PXQBA.Business.Contracts.csproj">
-      <Project>{c7070f01-3d37-425d-abd5-e02d7cfaea43}</Project>
+    <ProjectReference Include="..\Business\Macmillan.PXQBA.Business.Contracts\Macmillan.PXQBA.Business.Contracts.csproj">
+      <Project>{C7070F01-3D37-425D-ABD5-E02D7CFAEA43}</Project>
       <Name>Macmillan.PXQBA.Business.Contracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Models\Macmillan.PXQBA.Business.Models.csproj">
-      <Project>{800708c5-6692-4c91-be89-729a017b5027}</Project>
+    <ProjectReference Include="..\Business\Macmillan.PXQBA.Business.Models\Macmillan.PXQBA.Business.Models.csproj">
+      <Project>{800708C5-6692-4C91-BE89-729A017B5027}</Project>
       <Name>Macmillan.PXQBA.Business.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Services\Macmillan.PXQBA.Business.Services.csproj">
-      <Project>{cf2b92a9-6e1d-4472-ad9c-aed6dc86a62c}</Project>
+    <ProjectReference Include="..\Business\Macmillan.PXQBA.Business.Services\Macmillan.PXQBA.Business.Services.csproj">
+      <Project>{CF2B92A9-6E1D-4472-AD9C-AED6DC86A62C}</Project>
       <Name>Macmillan.PXQBA.Business.Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Common\Macmillan.PXQBA.Common.Helpers\Macmillan.PXQBA.Common.Helpers.csproj">
-      <Project>{dc4aeaab-7123-4e1c-bd7d-fb0913c68b2c}</Project>
-      <Name>Macmillan.PXQBA.Common.Helpers</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Macmillan.PXQBA.Common.Logging\Macmillan.PXQBA.Common.Logging.csproj">
-      <Project>{45A498CC-0FDF-4B3B-833B-FD0B008AA8D9}</Project>
-      <Name>Macmillan.PXQBA.Common.Logging</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.Commands\Bfw.Agilix.Commands.csproj">
-      <Project>{19e52c79-1fe3-4385-a035-b603213c099e}</Project>
+    <ProjectReference Include="..\PXShared\Bfw.Agilix\Bfw.Agilix.Commands\Bfw.Agilix.Commands.csproj">
+      <Project>{19E52C79-1FE3-4385-A035-B603213C099E}</Project>
       <Name>Bfw.Agilix.Commands</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.DataContracts\Bfw.Agilix.DataContracts.csproj">
-      <Project>{4d185f8e-c2a0-442a-a05e-78b566361562}</Project>
+    <ProjectReference Include="..\PXShared\Bfw.Agilix\Bfw.Agilix.DataContracts\Bfw.Agilix.DataContracts.csproj">
+      <Project>{4D185F8E-C2A0-442A-A05E-78B566361562}</Project>
       <Name>Bfw.Agilix.DataContracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap.Components\Bfw.Agilix.Dlap.Components.csproj">
-      <Project>{BFFD6B7A-4EA1-431A-916A-8214BD16E049}</Project>
-      <Name>Bfw.Agilix.Dlap.Components</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap\Bfw.Agilix.Dlap.csproj">
+    <ProjectReference Include="..\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap\Bfw.Agilix.Dlap.csproj">
       <Project>{F5A60C36-AA1F-4849-A9E7-465F7963DF9F}</Project>
       <Name>Bfw.Agilix.Dlap</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\PXShared\Bfw.Common\Bfw.Common.Patterns\Bfw.Common.Patterns.csproj">
-      <Project>{AD00B777-4D80-4D59-AFA0-BD3088938BFF}</Project>
-      <Name>Bfw.Common.Patterns</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\PXShared\Bfw.Common\Bfw.Common\Bfw.Common.csproj">
+    <ProjectReference Include="..\PXShared\Bfw.Common\Bfw.Common\Bfw.Common.csproj">
       <Project>{4F1BF9DB-1226-4867-9E41-129B214F24F2}</Project>
       <Name>Bfw.Common</Name>
     </ProjectReference>
@@ -172,7 +129,7 @@
   </Choose>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets" Condition="Exists('..\..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets')" />
+  <Import Project="..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

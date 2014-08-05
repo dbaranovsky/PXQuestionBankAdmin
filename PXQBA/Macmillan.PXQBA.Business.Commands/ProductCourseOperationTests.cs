@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Bfw.Agilix.Commands;
 using Bfw.Agilix.DataContracts;
 using Bfw.Common.Database;
@@ -8,9 +9,8 @@ using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Services.Automapper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
-using System.Collections.Generic;
 
-namespace Macmillan.PXQBA.Business.Services.Tests
+namespace Macmillan.PXQBA.Business.Commands.Tests
 {
     [TestClass]
     public class ProductCourseOperationTests
