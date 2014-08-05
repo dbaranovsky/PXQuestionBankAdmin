@@ -3,9 +3,11 @@ using System.Linq;
 using System.Xml.Linq;
 using Bfw.Agilix.Commands;
 using Macmillan.PXQBA.Business.Commands.Contracts;
+using Macmillan.PXQBA.Business.Commands.Helpers;
 using Macmillan.PXQBA.Business.Commands.Services.DLAP;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Business.Services;
 using Macmillan.PXQBA.Business.Services.Automapper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
@@ -18,6 +20,8 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
     {
         private IContext context;
         private IProductCourseOperation productCourseOperation;
+        private IUserOperation userOperation;
+        private INoteCommands noteCommands;
         private AutomapperConfigurator automapperConfigurator;
         private IModelProfileService modelProfileService;
         private IQuestionCommands questionCommands;
@@ -27,6 +31,9 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
                                                                 <doc entityid=""39768"" class=""question"" questionid=""f13f2cd1-2ddf-430c-85c9-2577a5f009f4"">
                                                                   <str name=""dlap_id"">39768|Q|f13f2cd1-2ddf-430c-85c9-2577a5f009f4</str>
                                                                   <str name=""dlap_class"">question</str>
+                                                                    <arr name=""product-course-id-12/bank"">
+                                                                    <str>Test Bank</str>
+                                                                    </arr>
                                                                   <arr name=""score"">
                                                                     <float name=""score"">16.067871</float>
                                                                   </arr>
@@ -34,23 +41,34 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
                                                                 <doc entityid=""39768"" class=""question"" questionid=""4684f693-7997-4dc2-8496-56eb645e47ac"">
                                                                   <str name=""dlap_id"">39768|Q|4684f693-7997-4dc2-8496-56eb645e47ac</str>
                                                                   <str name=""dlap_class"">question</str>
+                                                                    <arr name=""product-course-id-12/bank"">
+                                                                    <str>Test Bank</str>
+                                                                    </arr>
+
                                                                   <arr name=""score"">
                                                                     <float name=""score"">16.067871</float>
                                                                   </arr>
                                                                 </doc>
                                                               </result>
                                                             </results>";
+
+        private const string productCourseSection = @"<product-course-id-12>
+<bank>Test Bank</bank>
+<productcourseid>12</productcourseid>
+</product-course-id-12>";
         [TestInitialize]
         public void TestInitialize()
         {
             context = Substitute.For<IContext>();
-            modelProfileService = Substitute.For<IModelProfileService>();
             productCourseOperation = Substitute.For<IProductCourseOperation>();
+            questionCommands = new QuestionCommands(context, productCourseOperation);
+
+            userOperation = Substitute.For<IUserOperation>();
+            noteCommands = Substitute.For<INoteCommands>();
+            modelProfileService = new ModelProfileService(productCourseOperation, questionCommands, userOperation, noteCommands);
 
             automapperConfigurator = new AutomapperConfigurator(new ModelProfile(modelProfileService));
             automapperConfigurator.Configure();
-
-            questionCommands = new QuestionCommands(context, productCourseOperation);
         }
 
 
@@ -111,7 +129,7 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
         [TestMethod]
         public void GetQuestionList_NoSortingParameters_SeqSortingByDefault()
         {
-            const string expectedFieldsParameters = "draftfrom|product-course-id-12/sequence";
+            const string expectedFieldsParameters = "draftfrom|product-course-id-12/bank";
             bool searchCommandCorrectlyBuildSortingCriteria = false;
 
             context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(ExecuteAsAdminFillTwoQuestions));
@@ -211,7 +229,8 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
             {
                 questions.Add(new Question()
                               {
-                                  Id = quesionId
+                                  Id = quesionId,
+                                  MetadataElements = new Dictionary<string, XElement> { { "<product-course-id-12>", XElement.Parse(productCourseSection) } }, 
                               });
             }
 
@@ -235,10 +254,12 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
                                            new Question()
                                            {
                                                Id = "f13f2cd1-2ddf-430c-85c9-2577a5f009f4",
+                                               MetadataElements = new Dictionary<string, XElement>{{"<product-course-id-12>", XElement.Parse(productCourseSection)}},
 
                                            },
                                            new Question(){
-                                               Id = "4684f693-7997-4dc2-8496-56eb645e47ac"
+                                               Id = "4684f693-7997-4dc2-8496-56eb645e47ac",
+                                               MetadataElements = new Dictionary<string, XElement>{{"<product-course-id-12>", XElement.Parse(productCourseSection)}},
                                            }
                                        };
         }
