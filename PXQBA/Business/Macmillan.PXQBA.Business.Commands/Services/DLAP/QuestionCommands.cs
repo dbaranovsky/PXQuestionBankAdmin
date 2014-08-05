@@ -557,12 +557,17 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 var section = question.ProductCourseSections.First(s => s.ProductCourseId == productCourseId);
                 if (section != null)
                 {
-                    var questions = GetSolrResultsSortedBySequence(repositoryCourseId, productCourseId, new List<string> { section.Bank })[section.Bank].ToList();
-                    var updated = QuestionSequenceHelper.UpdateSequence(questions.ToList(), questionId, newSequenceValue);
-                    foreach (var questionSearchResult in updated)
+                    var questions = GetSolrResultsSortedBySequence(repositoryCourseId, productCourseId, new List<string> { section.Bank });
+                    if (questions.Any() && questions.ContainsKey(section.Bank))
                     {
-                        UpdateQuestionFieldForce(productCourseId, repositoryCourseId, questionSearchResult.QuestionId,
-                            MetadataFieldNames.Sequence, questionSearchResult.SortingField);
+                        var updated = QuestionSequenceHelper.UpdateSequence(questions[section.Bank].ToList(), questionId,
+                            newSequenceValue);
+                        foreach (var questionSearchResult in updated)
+                        {
+                            UpdateQuestionFieldForce(productCourseId, repositoryCourseId,
+                                questionSearchResult.QuestionId,
+                                MetadataFieldNames.Sequence, questionSearchResult.SortingField);
+                        }
                     }
                 }
             }
