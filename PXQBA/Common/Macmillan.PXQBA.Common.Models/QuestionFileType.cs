@@ -9,9 +9,9 @@ namespace Macmillan.PXQBA.Common.Models
     {
         [Description(".txt")]
         Respondus,
-        [Description(".qti")]
+        [Description(".zip")]
         QTI,
-        [Description(".qml")]
+        [Description(".xml")]
         QML
     }
 }

@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9DF37EA3-EB8D-4C8E-A189-3F4D8DEB3405}</ProjectGuid>
+    <ProjectGuid>{74354750-D2B9-4B4A-8553-97CA6EC6C5D6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Macmillan.PXQBA.Business.Commands.Tests</RootNamespace>
-    <AssemblyName>Macmillan.PXQBA.Business.Commands.Tests</AssemblyName>
+    <RootNamespace>Macmillan.PXQBA.Common.Helpers.Tests</RootNamespace>
+    <AssemblyName>Macmillan.PXQBA.Common.Helpers.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,19 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper">
-      <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="AutoMapper.Net4">
-      <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
-    </Reference>
-    <Reference Include="NSubstitute">
-      <HintPath>..\packages\NSubstitute.1.7.2.0\lib\NET45\NSubstitute.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -62,52 +50,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="NoteCommandsTests.cs" />
-    <Compile Include="ProductCourseOperationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuestionCommandsTests.cs" />
+    <Compile Include="QuestionHelperTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Business\Macmillan.PXQBA.Business.Commands\Macmillan.PXQBA.Business.Commands.csproj">
+    <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Commands\Macmillan.PXQBA.Business.Commands.csproj">
       <Project>{DCC579E2-F0D2-48C9-B660-DFAF8858C40C}</Project>
       <Name>Macmillan.PXQBA.Business.Commands</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Business\Macmillan.PXQBA.Business.Context\Macmillan.PXQBA.Business.csproj">
-      <Project>{B1D7B9EC-976A-4C09-A46F-81C1D7933B12}</Project>
-      <Name>Macmillan.PXQBA.Business</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Business\Macmillan.PXQBA.Business.Contracts\Macmillan.PXQBA.Business.Contracts.csproj">
-      <Project>{C7070F01-3D37-425D-ABD5-E02D7CFAEA43}</Project>
-      <Name>Macmillan.PXQBA.Business.Contracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Business\Macmillan.PXQBA.Business.Models\Macmillan.PXQBA.Business.Models.csproj">
-      <Project>{800708C5-6692-4C91-BE89-729A017B5027}</Project>
-      <Name>Macmillan.PXQBA.Business.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Business\Macmillan.PXQBA.Business.Services\Macmillan.PXQBA.Business.Services.csproj">
-      <Project>{CF2B92A9-6E1D-4472-AD9C-AED6DC86A62C}</Project>
-      <Name>Macmillan.PXQBA.Business.Services</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PXShared\Bfw.Agilix\Bfw.Agilix.Commands\Bfw.Agilix.Commands.csproj">
-      <Project>{19E52C79-1FE3-4385-A035-B603213C099E}</Project>
-      <Name>Bfw.Agilix.Commands</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PXShared\Bfw.Agilix\Bfw.Agilix.DataContracts\Bfw.Agilix.DataContracts.csproj">
-      <Project>{4D185F8E-C2A0-442A-A05E-78B566361562}</Project>
-      <Name>Bfw.Agilix.DataContracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PXShared\Bfw.Agilix\Bfw.Agilix.Dlap\Bfw.Agilix.Dlap.csproj">
-      <Project>{F5A60C36-AA1F-4849-A9E7-465F7963DF9F}</Project>
-      <Name>Bfw.Agilix.Dlap</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PXShared\Bfw.Common\Bfw.Common\Bfw.Common.csproj">
-      <Project>{4F1BF9DB-1226-4867-9E41-129B214F24F2}</Project>
-      <Name>Bfw.Common</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
@@ -129,7 +79,6 @@
   </Choose>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

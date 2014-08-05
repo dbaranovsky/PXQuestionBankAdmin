@@ -72,8 +72,8 @@
       <Project>{45A498CC-0FDF-4B3B-833B-FD0B008AA8D9}</Project>
       <Name>Macmillan.PXQBA.Common.Logging</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Macmillan.PXQBA.Common.Models\Macmillan.PXQBA.Common.Models.csproj">
-      <Project>{79d1137e-0ffd-4cbd-8b2a-29546a856306}</Project>
+    <ProjectReference Include="..\..\Common\Macmillan.PXQBA.Common.Models\Macmillan.PXQBA.Common.Models.csproj">
+      <Project>{79D1137E-0FFD-4CBD-8B2A-29546A856306}</Project>
       <Name>Macmillan.PXQBA.Common.Models</Name>
     </ProjectReference>
   </ItemGroup>
