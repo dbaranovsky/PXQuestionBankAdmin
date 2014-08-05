@@ -13,5 +13,10 @@ namespace Macmillan.PXQBA.Web.Helpers
             get { return HttpContext.Current.Session[CapabilitiesParamName] as IEnumerable<Capability>; }
             set { HttpContext.Current.Session[CapabilitiesParamName] = value; }
         }
+
+        public static IEnumerable<Capability> GetCapabilities(string courseId)
+        {
+            return HttpContext.Current.Session[CapabilitiesParamName] as IEnumerable<Capability>;
+        }
     }
 }

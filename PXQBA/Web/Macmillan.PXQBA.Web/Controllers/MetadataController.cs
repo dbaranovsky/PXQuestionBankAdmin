@@ -75,49 +75,43 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
             var course = Mapper.Map(metadataConfig, 
                                    productCourseManagementService.GetProductCourse(metadataConfig.CourseId, true));
-            UpdateCurrentCourse(course.ProductCourseId);
-            if (!IsAuthorizedToSave(course))
+            var oldCourse = productCourseManagementService.GetProductCourse(course.ProductCourseId, true);
+
+            if (!IsAuthorizedToSave(course, oldCourse))
             {
                 return new HttpUnauthorizedResult();
             }
             productCourseManagementService.UpdateMetadataConfig(course);
 
-            if (CourseHelper.CurrentCourse != null)
-            {
-                if (course.ProductCourseId == CourseHelper.CurrentCourse.ProductCourseId)
-                {
-                    CourseHelper.CurrentCourse =
-                        productCourseManagementService.GetProductCourse(CourseHelper.CurrentCourse.ProductCourseId, true);
-                }
-            }
-            
+            CourseHelper.ClearCache();
             return JsonCamel(new {IsError = false});
         }
 
-        private bool IsAuthorizedToSave(Course course)
+        private bool IsAuthorizedToSave(Course newCourse, Course oldCourse)
         {
-             if ((!UserCapabilitiesHelper.Capabilities.Contains(Capability.EditTitleMetadataFull))&&
-                ((!UserCapabilitiesHelper.Capabilities.Contains(Capability.EditTitleMetadataReduced))))
+            var capabilities = UserCapabilitiesHelper.GetCapabilities(oldCourse.ProductCourseId).ToList();
+            if ((!capabilities.Contains(Capability.EditTitleMetadataFull)) &&
+                ((!capabilities.Contains(Capability.EditTitleMetadataReduced))))
              {
                  return false;
              }
-          
-            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.EditQuestionCardTemplate) &&
-                course.QuestionCardLayout != CourseHelper.CurrentCourse.QuestionCardLayout)
+
+            if (!capabilities.Contains(Capability.EditQuestionCardTemplate) &&
+                newCourse.QuestionCardLayout != oldCourse.QuestionCardLayout)
             {
                 return false;
             }
-            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.EditMetadataConfigValues))
+            if (!capabilities.Contains(Capability.EditMetadataConfigValues))
             {
-                var existingFields = course.FieldDescriptors.Where(f => CourseHelper.CurrentCourse.FieldDescriptors.Select(d => d.Name).Contains(f.Name));
-                var newFields = course.FieldDescriptors.Where(f => !CourseHelper.CurrentCourse.FieldDescriptors.Select(d => d.Name).Contains(f.Name));
+                var existingFields = newCourse.FieldDescriptors.Where(f => oldCourse.FieldDescriptors.Select(d => d.Name).Contains(f.Name));
+                var newFields = newCourse.FieldDescriptors.Where(f => !oldCourse.FieldDescriptors.Select(d => d.Name).Contains(f.Name));
                 if (newFields.Any(f => f.CourseMetadataFieldValues.Any()))
                 {
                     return false;
                 }
                 foreach (var existingField in existingFields)
                 {
-                    var oldValues = CourseHelper.CurrentCourse.FieldDescriptors.Where(f => f.Name == existingField.Name).SelectMany(f => f.CourseMetadataFieldValues.Select(v => v.Text));
+                    var oldValues = oldCourse.FieldDescriptors.Where(f => f.Name == existingField.Name).SelectMany(f => f.CourseMetadataFieldValues.Select(v => v.Text));
                     var newValues = existingField.CourseMetadataFieldValues.Select(v => v.Text);
 
                     if (!(oldValues.IsCollectionEqual(newValues)))
