@@ -62,19 +62,25 @@ var QuestionBulkOperationBarStandart = React.createClass({
                             <td className="bulk-operation-cell">
                                <div className="bulk-operation-item" data-toggle="tooltip" title="Change all selected questions">
                                 <QuestionBulkOperationSetStatus availableStatuses={this.getAvailableStatuses()} 
-                                                              selectedQuestions={this.props.selectedQuestions}/> 
+                                                              selectedQuestions={this.props.selectedQuestions}
+                                                              currentCourseId={this.props.currentCourseId}
+                                                              /> 
                                </div>
                             </td>
                             <td className="bulk-operation-cell">
                                <div className="bulk-operation-item" data-toggle="tooltip" title="Change all selected questions">
                                 <QuestionBulkOperationSetBank availableStatuses={this.getAvailableBanks()} 
-                                                              selectedQuestions={this.props.selectedQuestions}/> 
+                                                              selectedQuestions={this.props.selectedQuestions}
+                                                              currentCourseId={this.props.currentCourseId}
+                                                              /> 
                                </div>
                             </td>
                             <td className="bulk-operation-cell">
                                <div className="bulk-operation-item" data-toggle="tooltip" title="Change all selected questions">
                                 <QuestionBulkOperationSetChapter availableStatuses={this.getAvailableChapters()} 
-                                                              selectedQuestions={this.props.selectedQuestions}/> 
+                                                              selectedQuestions={this.props.selectedQuestions}
+                                                              currentCourseId={this.props.currentCourseId}
+                                                              /> 
                                </div>
                             </td>
                             <td className="bulk-operation-cell">

@@ -250,6 +250,7 @@ var QuestionList = React.createClass({
       var isQuestionExpanded = this.isQuestionExpanded(question.data.id);
 
       var questionHtml = (<Question metadata={question}
+                       currentCourseId = {this.props.currentCourseId}
                        onClickQuestionEventHandler={this.onClickQuestionEventHandler
                                                 .bind(null, question.data.id, question.data.sharedWith!=="", !this.isQuestionSelected(question.data.id))}
                        inlineMenuEnabled={this.props.options.inlineMenuEnabled}
@@ -289,6 +290,7 @@ var QuestionList = React.createClass({
                                           bulkOperationBarType={this.props.options.bulkOperationBarType}
                                           colSpan={this.getAllColumnCount()} 
                                           parameters={{
+                                            currentCourseId: this.props.currentCourseId,
                                             selectedQuestions: $.map(this.state.selectedQuestions,function(e){return e.id;}),
                                             deselectsAllHandler: this.deselectsAllQuestionHandler,
                                             columns: this.props.allAvailableColumns,

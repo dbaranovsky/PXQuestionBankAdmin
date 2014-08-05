@@ -48,10 +48,11 @@ var questionDataManager = (function() {
     };
 
 
-    self.saveQuestionData = function (questionId, fieldName, fieldValue, isSharedField) {
+    self.saveQuestionData = function (courseId, questionId, fieldName, fieldValue, isSharedField) {
         asyncManager.startWait();
 
         var request = {
+            courseId: courseId,
             questionId: questionId,
             fieldName: fieldName,
             fieldValue: fieldValue,
@@ -316,9 +317,10 @@ var questionDataManager = (function() {
     };
 
 
-      self.flagQuestion= function (questionId, isFlagged) {
+      self.flagQuestion= function (courseId, questionId, isFlagged) {
 
-         var request = {
+          var request = {
+            courseId: courseId,
             questionId: questionId,
             fieldName: "flag",
             fieldValue: isFlagged? window.enums.flag.flagged : window.enums.flag.notFlagged,
@@ -449,10 +451,11 @@ var questionDataManager = (function() {
     /* Bulk operations */
     self.bulk = {};
 
-    self.bulk.updateMetadataField = function (questionIds, fieldName, fieldValue, isSharedField) {
+    self.bulk.updateMetadataField = function (courseId, questionIds, fieldName, fieldValue, isSharedField) {
         asyncManager.startWait();
         //Update status
         var request = {
+            courseId: courseId,
             questionIds: questionIds,
             fieldName: fieldName,
             fieldValue: fieldValue,

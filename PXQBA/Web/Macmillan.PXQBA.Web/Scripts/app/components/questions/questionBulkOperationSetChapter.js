@@ -8,7 +8,8 @@ var QuestionBulkOperationSetChapter = React.createClass({displayName: 'QuestionB
     },
 
     selectHandler: function(value) {
-       questionDataManager.bulk.updateMetadataField(this.props.selectedQuestions, window.consts.questionChapterName, value); 
+        debugger;
+       questionDataManager.bulk.updateMetadataField(this.props.currentCourseId, this.props.selectedQuestions, window.consts.questionChapterName, value); 
     },
 
     render: function() {

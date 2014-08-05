@@ -46,7 +46,9 @@ var QuestionBulkOperationBarBase = React.createClass({displayName: 'QuestionBulk
                             columns:this.props.parameters.columns,
                             bulkShareHandler:  this.props.parameters.bulkShareHandler,
                             isShared:  this.props.parameters.isShared,
-                            capabilities: this.props.parameters.capabilities} ));
+                            capabilities: this.props.parameters.capabilities, 
+                            currentCourseId:  this.props.parameters.currentCourseId}
+                            ));
           case window.enums.bulkOperationBarType.importQuestions:
             return (QuestionBulkOperationBarImport( 
                       {message:this.getTextMessage(),

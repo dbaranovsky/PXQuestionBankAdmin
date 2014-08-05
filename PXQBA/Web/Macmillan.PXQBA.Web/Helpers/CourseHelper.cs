@@ -15,6 +15,11 @@ namespace Macmillan.PXQBA.Web.Helpers
             set { HttpContext.Current.Session[CourseParamName] = value; }
         }
 
+        public static Course GetCourse(string courseId)
+        {
+            return HttpContext.Current.Session[CourseParamName] as Course;
+        }
+
         public static bool NeedGetCourse(string currentCourseId)
         {
             var currentCourse = CurrentCourse;

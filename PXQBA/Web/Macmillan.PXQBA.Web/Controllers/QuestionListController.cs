@@ -89,7 +89,8 @@ namespace Macmillan.PXQBA.Web.Controllers
                                         OrderType = request.OrderType.ToString().ToLower()
                                     },
                             QuestionCardLayout = questionMetadataService.GetQuestionCardLayout(CourseHelper.CurrentCourse),
-                            ProductTitle = CourseHelper.CurrentCourse.Title
+                            ProductTitle = CourseHelper.CurrentCourse.Title,
+                            ProductCourseId = CourseHelper.CurrentCourse.ProductCourseId
                         };
             UpdateCapabilities(response);
             StaticLogger.LogDebug("GetQuestionData end: " + DateTime.Now);

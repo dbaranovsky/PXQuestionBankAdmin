@@ -81,7 +81,8 @@ var QuestionCell = React.createClass({
                                draft: this.props.draft,
                                status: this.props.status,
                                isShared: this.props.isShared,
-                               canUpdateSharedValue: this.props.canUpdateSharedValue
+                               canUpdateSharedValue: this.props.canUpdateSharedValue,
+                               currentCourseId: this.props.currentCourseId
                              }}
              />);
         }

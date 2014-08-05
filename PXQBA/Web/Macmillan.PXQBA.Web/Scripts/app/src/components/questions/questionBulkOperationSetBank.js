@@ -8,7 +8,7 @@ var QuestionBulkOperationSetBank = React.createClass({
     },
 
     selectHandler: function(value) {
-       questionDataManager.bulk.updateMetadataField(this.props.selectedQuestions, window.consts.questionBankName, value); 
+       questionDataManager.bulk.updateMetadataField(this.props.currentCourseId,this.props.selectedQuestions, window.consts.questionBankName, value); 
     },
 
     render: function() {

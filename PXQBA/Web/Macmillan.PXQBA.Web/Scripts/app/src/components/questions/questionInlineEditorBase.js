@@ -21,7 +21,8 @@ var QuestionInlineEditorBase = React.createClass({
 
     saveVelueHandler: function(value) {
         if(value != null) {
-          questionDataManager.saveQuestionData(this.props.metadata.questionId,
+          questionDataManager.saveQuestionData(this.props.metadata.currentCourseId,
+                                               this.props.metadata.questionId,
                                                this.props.metadata.field,
                                                value);
  

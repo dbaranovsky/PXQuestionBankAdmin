@@ -48,6 +48,7 @@ var Question = React.createClass({
 
        
             return <QuestionListMenu
+                        currentCourseId = {this.props.currentCourseId}
                         data={this.props.metadata.data} 
                         copyQuestionHandler={this.props.menuHandlers.copyQuestionHandler.bind(null, questionId)}
                         editQuestionHandler={this.props.menuHandlers.editQuestionHandler.bind(null, questionId)}
@@ -77,6 +78,7 @@ var Question = React.createClass({
 
     renderCell: function(metadataName, editorDescriptor, allowedEdit, canUpdateSharedValue) {
         return ( <QuestionCell value={this.props.metadata.data[metadataName]}
+                               currentCourseId={this.props.currentCourseId}
                                field={metadataName} 
                                questionId={this.props.metadata.data.id}
                                status ={this.props.metadata.data[window.consts.questionStatusName]}

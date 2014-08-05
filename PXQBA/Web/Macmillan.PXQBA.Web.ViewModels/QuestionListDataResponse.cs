@@ -54,6 +54,11 @@ namespace Macmillan.PXQBA.Web.ViewModels
         /// </summary>
         public string ProductTitle { get; set; }
 
+        /// <summary>
+        /// Product course Id
+        /// </summary>
+        public string ProductCourseId { get; set; }
+
         #region Capabilities
       
         /// <summary>

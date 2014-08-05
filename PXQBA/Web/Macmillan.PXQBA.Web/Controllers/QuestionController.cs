@@ -36,7 +36,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateMetadataField(string questionId, string fieldName, string fieldValue)
+        public ActionResult UpdateMetadataField(string courseId, string questionId, string fieldName, string fieldValue)
         {
             if (fieldName == MetadataFieldNames.Flag)
             {
@@ -46,7 +46,8 @@ namespace Macmillan.PXQBA.Web.Controllers
                     return new HttpUnauthorizedResult();
                 }
             }
-            bool success = questionManagementService.UpdateQuestionField(CourseHelper.CurrentCourse, questionId, fieldName, fieldValue, UserCapabilitiesHelper.Capabilities);
+
+            bool success = questionManagementService.UpdateQuestionField(CourseHelper.GetCourse(courseId), questionId, fieldName, fieldValue, UserCapabilitiesHelper.Capabilities);
             return JsonCamel(new { isError = !success });
         
         }
@@ -63,9 +64,9 @@ namespace Macmillan.PXQBA.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult BulkUpdateMetadataField(string[] questionIds, string fieldName, string fieldValue)
+        public ActionResult BulkUpdateMetadataField(string courseId, string[] questionIds, string fieldName, string fieldValue)
         {
-            var result = questionManagementService.BulklUpdateQuestionField(CourseHelper.CurrentCourse, questionIds, fieldName, fieldValue, UserCapabilitiesHelper.Capabilities);
+            var result = questionManagementService.BulklUpdateQuestionField(CourseHelper.GetCourse(courseId), questionIds, fieldName, fieldValue, UserCapabilitiesHelper.Capabilities);
             return JsonCamel(result);
         }
 
