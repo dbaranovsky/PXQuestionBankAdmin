@@ -1,0 +1,1113 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE questestinterop SYSTEM "ims_qtiasiv1p2.dtd">
+
+<questestinterop>
+
+
+<item title="What was the period of human development where the smelting of copper was combined with zinc, tin and arsenic to create spear points and axes?" ident="9783174045148761">
+<itemmetadata>
+<qmd_itemtype>Multiple Choice</qmd_itemtype>
+<qmd_status>Normal</qmd_status>
+<qmd_toolvendor>Questionmark Perception</qmd_toolvendor>
+<qmd_topic>McKay, History of Western Society 11e Launch Pad\Chapter 1</qmd_topic>
+</itemmetadata>
+<presentation>
+<material>
+<mattext texttype="text/html"><![CDATA[]]></mattext>
+</material>
+<response_lid ident="1">
+<render_choice shuffle="No">
+<response_label ident="A">
+<material>
+<mattext texttype="text/html"><![CDATA[A. Iron Age]]></mattext>
+</material>
+</response_label>
+<response_label ident="B">
+<material>
+<mattext texttype="text/html"><![CDATA[B. Paleolithic Age]]></mattext>
+</material>
+</response_label>
+<response_label ident="C">
+<material>
+<mattext texttype="text/html"><![CDATA[C. Neolithic Age]]></mattext>
+</material>
+</response_label>
+<response_label ident="D">
+<material>
+<mattext texttype="text/html"><![CDATA[D. Bronze Age]]></mattext>
+</material>
+</response_label>
+</render_choice>
+</response_lid>
+</presentation>
+<resprocessing>
+<outcomes>
+<decvar/>
+</outcomes>
+<respcondition title="0 A. Iron Age" >
+<conditionvar>
+<varequal respident="1">A</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="0 A. Iron Age"/>
+</respcondition>
+<respcondition title="1 B. Paleolithic Age" >
+<conditionvar>
+<varequal respident="1">B</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="1 B. Paleolithic Age"/>
+</respcondition>
+<respcondition title="2 C. Neolithic Age" >
+<conditionvar>
+<varequal respident="1">C</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="2 C. Neolithic Age"/>
+</respcondition>
+<respcondition title="3 D. Bronze Age" >
+<conditionvar>
+<varequal respident="1">D</varequal>
+</conditionvar>
+<setvar action="Set">1</setvar>
+<displayfeedback linkrefid="3 D. Bronze Age"/>
+</respcondition>
+</resprocessing>
+<itemfeedback ident="0 A. Iron Age" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is D. Section: <i>The Earliest Human Societies</i>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="1 B. Paleolithic Age" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is D. Section: <i>The Earliest Human Societies</i>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="2 C. Neolithic Age" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is D. Section: <i>The Earliest Human Societies</i>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="3 D. Bronze Age" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[Correct. Section: <I>The Earliest Human Societies</I>]]></mattext>
+</material>
+</itemfeedback>
+</item>
+
+
+<item title="The Egyptians of the &amp;ldquo;New Kingdom&amp;rdquo; developed a complex set of ideas about the afterlife, writing a series of manuscripts to help in guiding the dead through the difficulties of the unde" ident="0519262158890228">
+<itemmetadata>
+<qmd_itemtype>Multiple Choice</qmd_itemtype>
+<qmd_status>Normal</qmd_status>
+<qmd_toolvendor>Questionmark Perception</qmd_toolvendor>
+<qmd_topic>McKay, History of Western Society 11e Launch Pad\Chapter 1</qmd_topic>
+</itemmetadata>
+<presentation>
+<material>
+<mattext texttype="text/html"><![CDATA[]]></mattext>
+</material>
+<response_lid ident="1">
+<render_choice shuffle="No">
+<response_label ident="A">
+<material>
+<mattext texttype="text/html"><![CDATA[A. Hammurabi&rsquo;s Code]]></mattext>
+</material>
+</response_label>
+<response_label ident="B">
+<material>
+<mattext texttype="text/html"><![CDATA[B. <EM>Book of the Dead</EM>]]></mattext>
+</material>
+</response_label>
+<response_label ident="C">
+<material>
+<mattext texttype="text/html"><![CDATA[C. Cuneiform manuscripts]]></mattext>
+</material>
+</response_label>
+<response_label ident="D">
+<material>
+<mattext texttype="text/html"><![CDATA[D. <EM>Hymn of Aton</EM>]]></mattext>
+</material>
+</response_label>
+</render_choice>
+</response_lid>
+</presentation>
+<resprocessing>
+<outcomes>
+<decvar/>
+</outcomes>
+<respcondition title="0 A. Hammurabi&amp;rsquo;s Code" >
+<conditionvar>
+<varequal respident="1">A</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="0 A. Hammurabi&amp;rsquo;s Code"/>
+</respcondition>
+<respcondition title="1 B. Book of the Dead" >
+<conditionvar>
+<varequal respident="1">B</varequal>
+</conditionvar>
+<setvar action="Set">1</setvar>
+<displayfeedback linkrefid="1 B. Book of the Dead"/>
+</respcondition>
+<respcondition title="2 C. Cuneiform manuscripts" >
+<conditionvar>
+<varequal respident="1">C</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="2 C. Cuneiform manuscripts"/>
+</respcondition>
+<respcondition title="3 D. Hymn of Aton" >
+<conditionvar>
+<varequal respident="1">D</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="3 D. Hymn of Aton"/>
+</respcondition>
+</resprocessing>
+<itemfeedback ident="0 A. Hammurabi&amp;rsquo;s Code" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is B. Section: <i>The Egyptians</i>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="1 B. Book of the Dead" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[Correct. Section: <I>The Egyptians</I>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="2 C. Cuneiform manuscripts" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is B. Section: <i>The Egyptians</i>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="3 D. Hymn of Aton" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is B. Section: <i>The Egyptians</i>]]></mattext>
+</material>
+</itemfeedback>
+</item>
+
+
+<item title="What societal system gives men more access to power and resources of the society?" ident="5235037341860443">
+<itemmetadata>
+<qmd_itemtype>Multiple Choice</qmd_itemtype>
+<qmd_status>Normal</qmd_status>
+<qmd_toolvendor>Questionmark Perception</qmd_toolvendor>
+<qmd_topic>McKay, History of Western Society 11e Launch Pad\Chapter 1</qmd_topic>
+</itemmetadata>
+<presentation>
+<material>
+<mattext texttype="text/html"><![CDATA[]]></mattext>
+</material>
+<response_lid ident="1">
+<render_choice shuffle="No">
+<response_label ident="A">
+<material>
+<mattext texttype="text/html"><![CDATA[A. Matriarchy]]></mattext>
+</material>
+</response_label>
+<response_label ident="B">
+<material>
+<mattext texttype="text/html"><![CDATA[B. Anarchy]]></mattext>
+</material>
+</response_label>
+<response_label ident="C">
+<material>
+<mattext texttype="text/html"><![CDATA[C. Patriarchy]]></mattext>
+</material>
+</response_label>
+<response_label ident="D">
+<material>
+<mattext texttype="text/html"><![CDATA[D. Oligarchy]]></mattext>
+</material>
+</response_label>
+</render_choice>
+</response_lid>
+</presentation>
+<resprocessing>
+<outcomes>
+<decvar/>
+</outcomes>
+<respcondition title="0 A. Matriarchy" >
+<conditionvar>
+<varequal respident="1">A</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="0 A. Matriarchy"/>
+</respcondition>
+<respcondition title="1 B. Anarchy" >
+<conditionvar>
+<varequal respident="1">B</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="1 B. Anarchy"/>
+</respcondition>
+<respcondition title="2 C. Patriarchy" >
+<conditionvar>
+<varequal respident="1">C</varequal>
+</conditionvar>
+<setvar action="Set">1</setvar>
+<displayfeedback linkrefid="2 C. Patriarchy"/>
+</respcondition>
+<respcondition title="3 D. Oligarchy" >
+<conditionvar>
+<varequal respident="1">D</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="3 D. Oligarchy"/>
+</respcondition>
+</resprocessing>
+<itemfeedback ident="0 A. Matriarchy" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is C. Section: <i>The Earliest Human Societies</i>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="1 B. Anarchy" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is C. Section: <i>The Earliest Human Societies</i>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="2 C. Patriarchy" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[Correct. Section: <I>The Earliest Human Societies</I>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="3 D. Oligarchy" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is C. Section: <i>The Earliest Human Societies</i>]]></mattext>
+</material>
+</itemfeedback>
+</item>
+
+
+<item title="What does the term Neolithic mean?" ident="7316938994946010">
+<itemmetadata>
+<qmd_itemtype>Multiple Choice</qmd_itemtype>
+<qmd_status>Normal</qmd_status>
+<qmd_toolvendor>Questionmark Perception</qmd_toolvendor>
+<qmd_topic>McKay, History of Western Society 11e Launch Pad\Chapter 1</qmd_topic>
+</itemmetadata>
+<presentation>
+<material>
+<mattext texttype="text/html"><![CDATA[]]></mattext>
+</material>
+<response_lid ident="1">
+<render_choice shuffle="No">
+<response_label ident="A">
+<material>
+<mattext texttype="text/html"><![CDATA[A. A period of history highlighted by the application of forges to create iron tools]]></mattext>
+</material>
+</response_label>
+<response_label ident="B">
+<material>
+<mattext texttype="text/html"><![CDATA[B. A period of history identified as the &ldquo;Old&rdquo; Stone Age, where humans used stone tools and acquired their food by foraging]]></mattext>
+</material>
+</response_label>
+<response_label ident="C">
+<material>
+<mattext texttype="text/html"><![CDATA[C. A period of history identified as the &ldquo;New&rdquo; Stone Age, where humans used stone tools and initiated agriculture and domestication of animals]]></mattext>
+</material>
+</response_label>
+<response_label ident="D">
+<material>
+<mattext texttype="text/html"><![CDATA[D. A dynastic period or kingdom of ancient Egypt]]></mattext>
+</material>
+</response_label>
+</render_choice>
+</response_lid>
+</presentation>
+<resprocessing>
+<outcomes>
+<decvar/>
+</outcomes>
+<respcondition title="0 A. A period of history highlighted by the applic" >
+<conditionvar>
+<varequal respident="1">A</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="0 A. A period of history highlighted by the applic"/>
+</respcondition>
+<respcondition title="1 B. A period of history identified as the &amp;ld" >
+<conditionvar>
+<varequal respident="1">B</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="1 B. A period of history identified as the &amp;ld"/>
+</respcondition>
+<respcondition title="2 C. A period of history identified as the &amp;ld" >
+<conditionvar>
+<varequal respident="1">C</varequal>
+</conditionvar>
+<setvar action="Set">1</setvar>
+<displayfeedback linkrefid="2 C. A period of history identified as the &amp;ld"/>
+</respcondition>
+<respcondition title="3 D. A dynastic period or kingdom of ancient Egypt" >
+<conditionvar>
+<varequal respident="1">D</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="3 D. A dynastic period or kingdom of ancient Egypt"/>
+</respcondition>
+</resprocessing>
+<itemfeedback ident="0 A. A period of history highlighted by the applic" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is C. Section: <i>The Earliest Human Societies</i>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="1 B. A period of history identified as the &amp;ld" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is C. Section: <i>The Earliest Human Societies</i>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="2 C. A period of history identified as the &amp;ld" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[Correct. Section: <I>The Earliest Human Societies</I>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="3 D. A dynastic period or kingdom of ancient Egypt" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is C. Section: <i>The Earliest Human Societies</i>]]></mattext>
+</material>
+</itemfeedback>
+</item>
+
+
+<item title="When the Hittite kingdom fell, what political structure emerged in Anatolia?" ident="4412551972074126">
+<itemmetadata>
+<qmd_itemtype>Multiple Choice</qmd_itemtype>
+<qmd_status>Normal</qmd_status>
+<qmd_toolvendor>Questionmark Perception</qmd_toolvendor>
+<qmd_topic>McKay, History of Western Society 11e Launch Pad\Chapter 1</qmd_topic>
+</itemmetadata>
+<presentation>
+<material>
+<mattext texttype="text/html"><![CDATA[]]></mattext>
+</material>
+<response_lid ident="1">
+<render_choice shuffle="No">
+<response_label ident="A">
+<material>
+<mattext texttype="text/html"><![CDATA[A. Theocratic states emerged based around religious shrines.]]></mattext>
+</material>
+</response_label>
+<response_label ident="B">
+<material>
+<mattext texttype="text/html"><![CDATA[B. City assemblies of free men worked together under a king.]]></mattext>
+</material>
+</response_label>
+<response_label ident="C">
+<material>
+<mattext texttype="text/html"><![CDATA[C. Nobles established individual domains under their absolute authority.]]></mattext>
+</material>
+</response_label>
+<response_label ident="D">
+<material>
+<mattext texttype="text/html"><![CDATA[D. Military chieftains established nomadic bands of warriors and their families to raid the countryside.]]></mattext>
+</material>
+</response_label>
+</render_choice>
+</response_lid>
+</presentation>
+<resprocessing>
+<outcomes>
+<decvar/>
+</outcomes>
+<respcondition title="0 A. Theocratic states emerged based around religi" >
+<conditionvar>
+<varequal respident="1">A</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="0 A. Theocratic states emerged based around religi"/>
+</respcondition>
+<respcondition title="1 B. City assemblies of free men worked together u" >
+<conditionvar>
+<varequal respident="1">B</varequal>
+</conditionvar>
+<setvar action="Set">1</setvar>
+<displayfeedback linkrefid="1 B. City assemblies of free men worked together u"/>
+</respcondition>
+<respcondition title="2 C. Nobles established individual domains under t" >
+<conditionvar>
+<varequal respident="1">C</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="2 C. Nobles established individual domains under t"/>
+</respcondition>
+<respcondition title="3 D. Military chieftains established nomadic bands" >
+<conditionvar>
+<varequal respident="1">D</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="3 D. Military chieftains established nomadic bands"/>
+</respcondition>
+</resprocessing>
+<itemfeedback ident="0 A. Theocratic states emerged based around religi" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is B. Section: <i>Empires in Mesopotamia</i>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="1 B. City assemblies of free men worked together u" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[Correct. Section: <I>Empires in Mesopotamia</I>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="2 C. Nobles established individual domains under t" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is B. Section: <i>Empires in Mesopotamia</i>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="3 D. Military chieftains established nomadic bands" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is B. Section: <i>Empires in Mesopotamia</i>]]></mattext>
+</material>
+</itemfeedback>
+</item>
+
+
+<item title="Hammurabi&amp;rsquo;s code was designed to" ident="7501332276080204">
+<itemmetadata>
+<qmd_itemtype>Multiple Choice</qmd_itemtype>
+<qmd_status>Normal</qmd_status>
+<qmd_toolvendor>Questionmark Perception</qmd_toolvendor>
+<qmd_topic>McKay, History of Western Society 11e Launch Pad\Chapter 1</qmd_topic>
+</itemmetadata>
+<presentation>
+<material>
+<mattext texttype="text/html"><![CDATA[]]></mattext>
+</material>
+<response_lid ident="1">
+<render_choice shuffle="No">
+<response_label ident="A">
+<material>
+<mattext texttype="text/html"><![CDATA[A. regulate the relationships among his people.]]></mattext>
+</material>
+</response_label>
+<response_label ident="B">
+<material>
+<mattext texttype="text/html"><![CDATA[B. intimidate the common people in order to prevent social upheaval.]]></mattext>
+</material>
+</response_label>
+<response_label ident="C">
+<material>
+<mattext texttype="text/html"><![CDATA[C. protect the position of nobles and priests.]]></mattext>
+</material>
+</response_label>
+<response_label ident="D">
+<material>
+<mattext texttype="text/html"><![CDATA[D. increase the power of the nobility over the priesthood.]]></mattext>
+</material>
+</response_label>
+</render_choice>
+</response_lid>
+</presentation>
+<resprocessing>
+<outcomes>
+<decvar/>
+</outcomes>
+<respcondition title="0 A. regulate the relationships among his people." >
+<conditionvar>
+<varequal respident="1">A</varequal>
+</conditionvar>
+<setvar action="Set">1</setvar>
+<displayfeedback linkrefid="0 A. regulate the relationships among his people."/>
+</respcondition>
+<respcondition title="1 B. intimidate the common people in order to prev" >
+<conditionvar>
+<varequal respident="1">B</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="1 B. intimidate the common people in order to prev"/>
+</respcondition>
+<respcondition title="2 C. protect the position of nobles and priests." >
+<conditionvar>
+<varequal respident="1">C</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="2 C. protect the position of nobles and priests."/>
+</respcondition>
+<respcondition title="3 D. increase the power of the nobility over the p" >
+<conditionvar>
+<varequal respident="1">D</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="3 D. increase the power of the nobility over the p"/>
+</respcondition>
+</resprocessing>
+<itemfeedback ident="0 A. regulate the relationships among his people." view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[Correct. Section: <I>Empires in Mesopotamia</I>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="1 B. intimidate the common people in order to prev" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is A. Section: <i>Empires in Mesopotamia</i>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="2 C. protect the position of nobles and priests." view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is A. Section: <i>Empires in Mesopotamia</i>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="3 D. increase the power of the nobility over the p" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is A. Section: <i>Empires in Mesopotamia</i>]]></mattext>
+</material>
+</itemfeedback>
+</item>
+
+
+<item title="How did the nobles in Sumerian society maintain their dominant position?" ident="0257113443761803">
+<itemmetadata>
+<qmd_itemtype>Multiple Choice</qmd_itemtype>
+<qmd_status>Normal</qmd_status>
+<qmd_toolvendor>Questionmark Perception</qmd_toolvendor>
+<qmd_topic>McKay, History of Western Society 11e Launch Pad\Chapter 1</qmd_topic>
+</itemmetadata>
+<presentation>
+<material>
+<mattext texttype="text/html"><![CDATA[]]></mattext>
+</material>
+<response_lid ident="1">
+<render_choice shuffle="No">
+<response_label ident="A">
+<material>
+<mattext texttype="text/html"><![CDATA[A. They controlled access to the religious shrines and temples and denied religious rights to anyone who challenged their authority.]]></mattext>
+</material>
+</response_label>
+<response_label ident="B">
+<material>
+<mattext texttype="text/html"><![CDATA[B. They possessed the land and permitted their clients to work parts of it, making the clients dependent on them.]]></mattext>
+</material>
+</response_label>
+<response_label ident="C">
+<material>
+<mattext texttype="text/html"><![CDATA[C. They had exclusive political rights over public affairs, while the commoners were denied even the right to voice their opinions.]]></mattext>
+</material>
+</response_label>
+<response_label ident="D">
+<material>
+<mattext texttype="text/html"><![CDATA[D. They held the right to tax all commercial transactions, gaining wealth and power over their opponents.]]></mattext>
+</material>
+</response_label>
+</render_choice>
+</response_lid>
+</presentation>
+<resprocessing>
+<outcomes>
+<decvar/>
+</outcomes>
+<respcondition title="0 A. They controlled access to the religious shrin" >
+<conditionvar>
+<varequal respident="1">A</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="0 A. They controlled access to the religious shrin"/>
+</respcondition>
+<respcondition title="1 B. They possessed the land and permitted their c" >
+<conditionvar>
+<varequal respident="1">B</varequal>
+</conditionvar>
+<setvar action="Set">1</setvar>
+<displayfeedback linkrefid="1 B. They possessed the land and permitted their c"/>
+</respcondition>
+<respcondition title="2 C. They had exclusive political rights over publ" >
+<conditionvar>
+<varequal respident="1">C</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="2 C. They had exclusive political rights over publ"/>
+</respcondition>
+<respcondition title="3 D. They held the right to tax all commercial tra" >
+<conditionvar>
+<varequal respident="1">D</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="3 D. They held the right to tax all commercial tra"/>
+</respcondition>
+</resprocessing>
+<itemfeedback ident="0 A. They controlled access to the religious shrin" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is B. Section: <i>Civilization in Mesopotamia</i>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="1 B. They possessed the land and permitted their c" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[Correct. Section: <i>Civilization in Mesopotamia</i>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="2 C. They had exclusive political rights over publ" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is B. Section: <i>Civilization in Mesopotamia</i>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="3 D. They held the right to tax all commercial tra" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is B. Section: <i>Civilization in Mesopotamia</i>]]></mattext>
+</material>
+</itemfeedback>
+</item>
+
+
+<item title="Which of the following characterized the Neolithic stage of human development?" ident="8830288188892219">
+<itemmetadata>
+<qmd_itemtype>Multiple Choice</qmd_itemtype>
+<qmd_status>Normal</qmd_status>
+<qmd_toolvendor>Questionmark Perception</qmd_toolvendor>
+<qmd_topic>McKay, History of Western Society 11e Launch Pad\Chapter 1</qmd_topic>
+</itemmetadata>
+<presentation>
+<material>
+<mattext texttype="text/html"><![CDATA[]]></mattext>
+</material>
+<response_lid ident="1">
+<render_choice shuffle="No">
+<response_label ident="A">
+<material>
+<mattext texttype="text/html"><![CDATA[A. Humans lived in small, migratory groups of relatives.]]></mattext>
+</material>
+</response_label>
+<response_label ident="B">
+<material>
+<mattext texttype="text/html"><![CDATA[B. Agriculture and animal husbandry were primary ways of life.]]></mattext>
+</material>
+</response_label>
+<response_label ident="C">
+<material>
+<mattext texttype="text/html"><![CDATA[C. Bronze weapons were used.]]></mattext>
+</material>
+</response_label>
+<response_label ident="D">
+<material>
+<mattext texttype="text/html"><![CDATA[D. Food was acquired primarily by foraging.]]></mattext>
+</material>
+</response_label>
+</render_choice>
+</response_lid>
+</presentation>
+<resprocessing>
+<outcomes>
+<decvar/>
+</outcomes>
+<respcondition title="0 A. Humans lived in small, migratory groups of re" >
+<conditionvar>
+<varequal respident="1">A</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="0 A. Humans lived in small, migratory groups of re"/>
+</respcondition>
+<respcondition title="1 B. Agriculture and animal husbandry were primary" >
+<conditionvar>
+<varequal respident="1">B</varequal>
+</conditionvar>
+<setvar action="Set">1</setvar>
+<displayfeedback linkrefid="1 B. Agriculture and animal husbandry were primary"/>
+</respcondition>
+<respcondition title="2 C. Bronze weapons were used." >
+<conditionvar>
+<varequal respident="1">C</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="2 C. Bronze weapons were used."/>
+</respcondition>
+<respcondition title="3 D. Food was acquired primarily by foraging." >
+<conditionvar>
+<varequal respident="1">D</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="3 D. Food was acquired primarily by foraging."/>
+</respcondition>
+</resprocessing>
+<itemfeedback ident="0 A. Humans lived in small, migratory groups of re" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is B. Section: <I>The Earliest Human Societies</I>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="1 B. Agriculture and animal husbandry were primary" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[Correct. Section: <I>The Earliest Human Societies</I>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="2 C. Bronze weapons were used." view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is B. Section: <I>The Earliest Human Societies</I>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="3 D. Food was acquired primarily by foraging." view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is B. Section: <I>The Earliest Human Societies</I>]]></mattext>
+</material>
+</itemfeedback>
+</item>
+
+
+<item title="Near Eastern peoples originally developed writing to" ident="8317243686309593">
+<itemmetadata>
+<qmd_itemtype>Multiple Choice</qmd_itemtype>
+<qmd_status>Normal</qmd_status>
+<qmd_toolvendor>Questionmark Perception</qmd_toolvendor>
+<qmd_topic>McKay, History of Western Society 11e Launch Pad\Chapter 1</qmd_topic>
+</itemmetadata>
+<presentation>
+<material>
+<mattext texttype="text/html"><![CDATA[]]></mattext>
+</material>
+<response_lid ident="1">
+<render_choice shuffle="No">
+<response_label ident="A">
+<material>
+<mattext texttype="text/html"><![CDATA[A. express their feelings through poetry.]]></mattext>
+</material>
+</response_label>
+<response_label ident="B">
+<material>
+<mattext texttype="text/html"><![CDATA[B. compose theological studies.]]></mattext>
+</material>
+</response_label>
+<response_label ident="C">
+<material>
+<mattext texttype="text/html"><![CDATA[C. keep accurate records.]]></mattext>
+</material>
+</response_label>
+<response_label ident="D">
+<material>
+<mattext texttype="text/html"><![CDATA[D. understand their history.]]></mattext>
+</material>
+</response_label>
+</render_choice>
+</response_lid>
+</presentation>
+<resprocessing>
+<outcomes>
+<decvar/>
+</outcomes>
+<respcondition title="0 A. express their feelings through poetry." >
+<conditionvar>
+<varequal respident="1">A</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="0 A. express their feelings through poetry."/>
+</respcondition>
+<respcondition title="1 B. compose theological studies." >
+<conditionvar>
+<varequal respident="1">B</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="1 B. compose theological studies."/>
+</respcondition>
+<respcondition title="2 C. keep accurate records." >
+<conditionvar>
+<varequal respident="1">C</varequal>
+</conditionvar>
+<setvar action="Set">1</setvar>
+<displayfeedback linkrefid="2 C. keep accurate records."/>
+</respcondition>
+<respcondition title="3 D. understand their history." >
+<conditionvar>
+<varequal respident="1">D</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="3 D. understand their history."/>
+</respcondition>
+</resprocessing>
+<itemfeedback ident="0 A. express their feelings through poetry." view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is C. Section: <i>Civilization in Mesopotamia</i>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="1 B. compose theological studies." view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is C. Section: <i>Civilization in Mesopotamia</i>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="2 C. keep accurate records." view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[Correct. Section: <I>Civilization in Mesopotamia</I>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="3 D. understand their history." view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is C. Section: <i>Civilization in Mesopotamia</i>]]></mattext>
+</material>
+</itemfeedback>
+</item>
+
+
+<item title="How did a new form of regional politics emerge after the Hittite defeat of the Egyptians at the Battle of Kadesh?" ident="5584208086551641">
+<itemmetadata>
+<qmd_itemtype>Multiple Choice</qmd_itemtype>
+<qmd_status>Normal</qmd_status>
+<qmd_toolvendor>Questionmark Perception</qmd_toolvendor>
+<qmd_topic>McKay, History of Western Society 11e Launch Pad\Chapter 1</qmd_topic>
+</itemmetadata>
+<presentation>
+<material>
+<mattext texttype="text/html"><![CDATA[]]></mattext>
+</material>
+<response_lid ident="1">
+<render_choice shuffle="No">
+<response_label ident="A">
+<material>
+<mattext texttype="text/html"><![CDATA[A. The Hittites formed an imperial system through which they could control lands far removed from their home.]]></mattext>
+</material>
+</response_label>
+<response_label ident="B">
+<material>
+<mattext texttype="text/html"><![CDATA[B. The Hittites allied with the Babylonians to divide Egypt between them and rule it as a common protectorate.]]></mattext>
+</material>
+</response_label>
+<response_label ident="C">
+<material>
+<mattext texttype="text/html"><![CDATA[C. The Hittites slaughtered the Egyptian ruling class and imposed domination through a puppet pharaoh.]]></mattext>
+</material>
+</response_label>
+<response_label ident="D">
+<material>
+<mattext texttype="text/html"><![CDATA[D. The Hittites, Egyptians, and Babylonians formed an alliance to uphold one another’s authority and mutual protection.]]></mattext>
+</material>
+</response_label>
+</render_choice>
+</response_lid>
+</presentation>
+<resprocessing>
+<outcomes>
+<decvar/>
+</outcomes>
+<respcondition title="0 A. The Hittites formed an imperial system throug" >
+<conditionvar>
+<varequal respident="1">A</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="0 A. The Hittites formed an imperial system throug"/>
+</respcondition>
+<respcondition title="1 B. The Hittites allied with the Babylonians to d" >
+<conditionvar>
+<varequal respident="1">B</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="1 B. The Hittites allied with the Babylonians to d"/>
+</respcondition>
+<respcondition title="2 C. The Hittites slaughtered the Egyptian ruling" >
+<conditionvar>
+<varequal respident="1">C</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="2 C. The Hittites slaughtered the Egyptian ruling"/>
+</respcondition>
+<respcondition title="3 D. The Hittites, Egyptians, and Babylonians form" >
+<conditionvar>
+<varequal respident="1">D</varequal>
+</conditionvar>
+<setvar action="Set">1</setvar>
+<displayfeedback linkrefid="3 D. The Hittites, Egyptians, and Babylonians form"/>
+</respcondition>
+</resprocessing>
+<itemfeedback ident="0 A. The Hittites formed an imperial system throug" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is D. Section: <I>The Egyptians</I>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="1 B. The Hittites allied with the Babylonians to d" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is D. Section: <I>The Egyptians</I>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="2 C. The Hittites slaughtered the Egyptian ruling" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is D. Section: <I>The Egyptians</I>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="3 D. The Hittites, Egyptians, and Babylonians form" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[Correct. Section: <I>The Egyptians</I>]]></mattext>
+</material>
+</itemfeedback>
+</item>
+
+
+<item title="Which of the following is identified as an economic system of domestication and herding of goats, sheep, cattle, or other animals in order to benefit humans?" ident="0249269754670468">
+<itemmetadata>
+<qmd_itemtype>Multiple Choice</qmd_itemtype>
+<qmd_status>Normal</qmd_status>
+<qmd_toolvendor>Questionmark Perception</qmd_toolvendor>
+<qmd_topic>McKay, History of Western Society 11e Launch Pad\Chapter 1</qmd_topic>
+</itemmetadata>
+<presentation>
+<material>
+<mattext texttype="text/html"><![CDATA[]]></mattext>
+</material>
+<response_lid ident="1">
+<render_choice shuffle="No">
+<response_label ident="A">
+<material>
+<mattext texttype="text/html"><![CDATA[A. Pastoralism]]></mattext>
+</material>
+</response_label>
+<response_label ident="B">
+<material>
+<mattext texttype="text/html"><![CDATA[B. Capitalism]]></mattext>
+</material>
+</response_label>
+<response_label ident="C">
+<material>
+<mattext texttype="text/html"><![CDATA[C. Agrarianism]]></mattext>
+</material>
+</response_label>
+<response_label ident="D">
+<material>
+<mattext texttype="text/html"><![CDATA[D. Socialism]]></mattext>
+</material>
+</response_label>
+</render_choice>
+</response_lid>
+</presentation>
+<resprocessing>
+<outcomes>
+<decvar/>
+</outcomes>
+<respcondition title="0 A. Pastoralism" >
+<conditionvar>
+<varequal respident="1">A</varequal>
+</conditionvar>
+<setvar action="Set">1</setvar>
+<displayfeedback linkrefid="0 A. Pastoralism"/>
+</respcondition>
+<respcondition title="1 B. Capitalism" >
+<conditionvar>
+<varequal respident="1">B</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="1 B. Capitalism"/>
+</respcondition>
+<respcondition title="2 C. Agrarianism" >
+<conditionvar>
+<varequal respident="1">C</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="2 C. Agrarianism"/>
+</respcondition>
+<respcondition title="3 D. Socialism" >
+<conditionvar>
+<varequal respident="1">D</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="3 D. Socialism"/>
+</respcondition>
+</resprocessing>
+<itemfeedback ident="0 A. Pastoralism" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[Correct. Section: <I>The Earliest Human Societies</I>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="1 B. Capitalism" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is A. Section: <i>The Earliest Human Societies</i>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="2 C. Agrarianism" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is A. Section: <i>The Earliest Human Societies</i>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="3 D. Socialism" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is A. Section: <i>The Earliest Human Societies</i>]]></mattext>
+</material>
+</itemfeedback>
+</item>
+
+
+<item title="Why did Akhenaten&amp;rsquo;s experiment with monotheism fail?" ident="9143874768414531">
+<itemmetadata>
+<qmd_itemtype>Multiple Choice</qmd_itemtype>
+<qmd_status>Normal</qmd_status>
+<qmd_toolvendor>Questionmark Perception</qmd_toolvendor>
+<qmd_topic>McKay, History of Western Society 11e Launch Pad\Chapter 1</qmd_topic>
+</itemmetadata>
+<presentation>
+<material>
+<mattext texttype="text/html"><![CDATA[]]></mattext>
+</material>
+<response_lid ident="1">
+<render_choice shuffle="No">
+<response_label ident="A">
+<material>
+<mattext texttype="text/html"><![CDATA[A. Because its elaborate ritual was too confusing.]]></mattext>
+</material>
+</response_label>
+<response_label ident="B">
+<material>
+<mattext texttype="text/html"><![CDATA[B. Because the hated and corrupt priesthood endorsed it.]]></mattext>
+</material>
+</response_label>
+<response_label ident="C">
+<material>
+<mattext texttype="text/html"><![CDATA[C. Because it had no connection with the Egyptian past.]]></mattext>
+</material>
+</response_label>
+<response_label ident="D">
+<material>
+<mattext texttype="text/html"><![CDATA[D. Because it did not gain the support of the pharaoh.]]></mattext>
+</material>
+</response_label>
+</render_choice>
+</response_lid>
+</presentation>
+<resprocessing>
+<outcomes>
+<decvar/>
+</outcomes>
+<respcondition title="0 A. Because its elaborate ritual was too confusin" >
+<conditionvar>
+<varequal respident="1">A</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="0 A. Because its elaborate ritual was too confusin"/>
+</respcondition>
+<respcondition title="1 B. Because the hated and corrupt priesthood endo" >
+<conditionvar>
+<varequal respident="1">B</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="1 B. Because the hated and corrupt priesthood endo"/>
+</respcondition>
+<respcondition title="2 C. Because it had no connection with the Egyptia" >
+<conditionvar>
+<varequal respident="1">C</varequal>
+</conditionvar>
+<setvar action="Set">1</setvar>
+<displayfeedback linkrefid="2 C. Because it had no connection with the Egyptia"/>
+</respcondition>
+<respcondition title="3 D. Because it did not gain the support of the ph" >
+<conditionvar>
+<varequal respident="1">D</varequal>
+</conditionvar>
+<setvar action="Set">0</setvar>
+<displayfeedback linkrefid="3 D. Because it did not gain the support of the ph"/>
+</respcondition>
+</resprocessing>
+<itemfeedback ident="0 A. Because its elaborate ritual was too confusin" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is c. Section: <I>The Egyptians</I>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="1 B. Because the hated and corrupt priesthood endo" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is c. Section: <I>The Egyptians</I>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="2 C. Because it had no connection with the Egyptia" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[Correct. Section: <I>The Egyptians</I>]]></mattext>
+</material>
+</itemfeedback>
+<itemfeedback ident="3 D. Because it did not gain the support of the ph" view="Candidate">
+<material>
+<mattext texttype="text/html"><![CDATA[The correct answer is c. Section: <i>The Egyptians</i>]]></mattext>
+</material>
+</itemfeedback>
+</item>
+
+
+</questestinterop>
+
+
