@@ -143,7 +143,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
             if (!userCapabilitiesHelper.GetCapabilities(courseId).Contains(Capability.RestoreLocalizedMetadataToSharedValue))
             {
-                var initialViewModel = QuestionHelper.QuestionViewModelToEdit;
+                var initialViewModel = QuestionHelper.GetQuestionViewModelToEdit(questionViewModel.RealQuestionId);
                 if ((initialViewModel.DefaultSection.Title != initialViewModel.LocalSection.Title && questionViewModel.DefaultSection.Title == questionViewModel.LocalSection.Title) ||
                     (initialViewModel.DefaultSection.Bank != initialViewModel.LocalSection.Bank && questionViewModel.DefaultSection.Bank == questionViewModel.LocalSection.Bank) ||
                     (initialViewModel.DefaultSection.Chapter != initialViewModel.LocalSection.Chapter && questionViewModel.DefaultSection.Chapter == questionViewModel.LocalSection.Chapter))
@@ -169,7 +169,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
             if (!userCapabilitiesHelper.GetCapabilities(courseId).Contains(Capability.OverrideQuestionMetadata))
             {
-                var initialViewModel = QuestionHelper.QuestionViewModelToEdit;
+                var initialViewModel = QuestionHelper.GetQuestionViewModelToEdit(questionViewModel.RealQuestionId);
                 if ((initialViewModel.DefaultSection.Title == initialViewModel.LocalSection.Title && questionViewModel.DefaultSection.Title != questionViewModel.LocalSection.Title) ||
                     (initialViewModel.DefaultSection.Bank == initialViewModel.LocalSection.Bank && questionViewModel.DefaultSection.Bank != questionViewModel.LocalSection.Bank) ||
                     (initialViewModel.DefaultSection.Chapter == initialViewModel.LocalSection.Chapter && questionViewModel.DefaultSection.Chapter != questionViewModel.LocalSection.Chapter))
@@ -216,7 +216,7 @@ namespace Macmillan.PXQBA.Web.Controllers
                                                                                     question.CustomUrl);
             if (questionViewModel.IsShared)
             {
-                QuestionHelper.QuestionViewModelToEdit = questionViewModel;
+                QuestionHelper.SetQuestionViewModelToEdit(questionViewModel);
             }
             UpdateCapabilities(courseId, questionViewModel);
             return questionViewModel;
