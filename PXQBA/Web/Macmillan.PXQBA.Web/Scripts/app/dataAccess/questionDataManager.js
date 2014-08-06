@@ -641,10 +641,11 @@ var questionDataManager = (function() {
 
     };
 
-    self.clearResources = function (courseId, questionId) {
+    self.clearResources = function (courseId, questionId, needRemoveResources) {
         var request = {
             courseId: courseId,
-            questionId: questionId
+            questionId: questionId,
+            needRemoveResources: needRemoveResources
         };
         return $.ajax({
             url: window.actions.questionList.clearQuestionResourcesUrl,

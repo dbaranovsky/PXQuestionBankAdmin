@@ -43,9 +43,12 @@ var QuestionEditorDialog = React.createClass({
          $(this.getDOMNode()).modal("hide");
          $('.modal-backdrop').remove(); 
          var questionType = this.props.question.questionType == null? "" :this.props.question.questionType.toLowerCase();
+         var needRemoveResources = false;
          if ( questionType != "hts" && questionType !="fma_graph"){
-            questionDataManager.clearResources(this.props.currentCourseId, this.props.question.realQuestionId);
+            needRemoveResources = true;
          }
+
+         questionDataManager.clearResources(this.props.currentCourseId, this.props.question.realQuestionId, needRemoveResources);
          
     },
 

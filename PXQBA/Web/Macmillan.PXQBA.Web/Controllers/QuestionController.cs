@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using AutoMapper;
 using Bfw.Common;
+using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Business.Services;
@@ -29,14 +30,16 @@ namespace Macmillan.PXQBA.Web.Controllers
         private readonly IProductCourseManagementService productCourseManagementService;
         private readonly UserCapabilitiesHelper userCapabilitiesHelper;
         private readonly CourseHelper courseHelper;
+        private readonly ITemporaryQuestionOperation temporaryQuestionOperation;
 
-        public QuestionController(IQuestionManagementService questionManagementService, IQuestionMetadataService questionMetadataService, IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService, UserCapabilitiesHelper userCapabilitiesHelper, CourseHelper courseHelper)
+        public QuestionController(IQuestionManagementService questionManagementService, IQuestionMetadataService questionMetadataService, IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService, UserCapabilitiesHelper userCapabilitiesHelper, CourseHelper courseHelper, ITemporaryQuestionOperation temporaryQuestionOperation)
         {
             this.questionManagementService = questionManagementService;
             this.questionMetadataService = questionMetadataService;
             this.productCourseManagementService = productCourseManagementService;
             this.userCapabilitiesHelper = userCapabilitiesHelper;
             this.courseHelper = courseHelper;
+            this.temporaryQuestionOperation = temporaryQuestionOperation;
         }
 
         [HttpPost]
@@ -376,10 +379,15 @@ namespace Macmillan.PXQBA.Web.Controllers
             return JsonCamel(new { EditorHtml = QuestionPreviewHelper.GetGraphEditor(interactionData, questionId, QuestionTypeHelper.GraphType) });
         }
 
-        public ActionResult ClearQuestionResources(string courseId, string questionId)
+        public ActionResult ClearQuestionResources(string courseId, string questionId, bool needRemoveResources)
         {
-            questionManagementService.RemoveRelatedQuestionTempResources(questionId, courseHelper.GetCourse(courseId));
-             return JsonCamel(new { isError = false });
+            if (needRemoveResources)
+            {
+                questionManagementService.RemoveRelatedQuestionTempResources(questionId, courseHelper.GetCourse(courseId));
+            }
+
+            temporaryQuestionOperation.DeleteTemporaryQuestionWithQuiz(questionId);
+            return JsonCamel(new { isError = false });
         }
 	}
   
