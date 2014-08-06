@@ -42,7 +42,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
 
     removeTitleHandler: function(){
       if(confirm("Are you sure you want to remove this question from the current title?")){
-         questionDataManager.removeTitle(this.props.data.id);
+         questionDataManager.removeTitle(this.props.currentCourseId, this.props.data.id);
       }
     },
 
@@ -67,8 +67,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
     },
 
     toggleFlag: function(){
-
-      questionDataManager.flagQuestion(this.props.data.id, !this.state.isFlagged);
+      questionDataManager.flagQuestion(this.props.currentCourseId, this.props.data.id, !this.state.isFlagged);
       this.setState( {isFlagged: !this.state.isFlagged, questionId: this.props.data.id});
 
     },

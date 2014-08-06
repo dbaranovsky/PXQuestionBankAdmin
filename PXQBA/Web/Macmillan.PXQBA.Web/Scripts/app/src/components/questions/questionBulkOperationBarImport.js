@@ -11,7 +11,7 @@ var QuestionBulkOperationBarImport = React.createClass({
     importHandler: function() {
        var selectedQuestions = this.props.selectedQuestions;
        if(selectedQuestions.length>0) {
-           importDataManager.saveQuestionsForImport(selectedQuestions).done(this.saveQuestionsForImportDoneHandler);
+           importDataManager.saveQuestionsForImport(this.props.currentCourseId, selectedQuestions).done(this.saveQuestionsForImportDoneHandler);
        }
        else {
            notificationManager.showWarning("You should select questions to continue.");

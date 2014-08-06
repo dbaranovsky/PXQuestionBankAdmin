@@ -43,9 +43,12 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
          $(this.getDOMNode()).modal("hide");
          $('.modal-backdrop').remove(); 
          var questionType = this.props.question.questionType == null? "" :this.props.question.questionType.toLowerCase();
+         var needRemoveResources = false;
          if ( questionType != "hts" && questionType !="fma_graph"){
-            questionDataManager.clearResources();
+            needRemoveResources = true;
          }
+
+         questionDataManager.clearResources(this.props.currentCourseId, this.props.question.realQuestionId, needRemoveResources);
          
     },
 
@@ -60,7 +63,8 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
             return self.props.caption;
         };
         var renderBody = function(){
-            return (QuestionEditor( {question:self.props.question,
+            return (QuestionEditor(  {currentCourseId:  self.props.currentCourseId,
+                                     question:self.props.question,
                                      metadata:self.props.metadata,  
                                      editSourceQuestionHandler:self.props.editSourceQuestionHandler, 
                                      finishSaving:  self.finishSaving, 

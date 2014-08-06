@@ -54,6 +54,7 @@ var QuestionGrid = React.createClass({
                 </div>
                 <div className="question-grid-item"> 
                     <QuestionList data={this.props.response.questionList} 
+                                        currentCourseId={this.props.response.productCourseId}
                                         filter={this.props.response.filter}
                                         order={this.props.response.order} 
                                         columns={this.props.response.columns}

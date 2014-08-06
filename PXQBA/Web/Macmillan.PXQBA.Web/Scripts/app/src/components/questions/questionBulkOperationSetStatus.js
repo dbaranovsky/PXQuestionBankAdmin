@@ -8,7 +8,7 @@ var QuestionBulkOperationSetStatus = React.createClass({
     },
 
     selectHandler: function(value) {
-       questionDataManager.bulk.updateMetadataField(this.props.selectedQuestions, window.consts.questionStatusName, value); 
+       questionDataManager.bulk.updateMetadataField(this.props.currentCourseId, this.props.selectedQuestions, window.consts.questionStatusName, value); 
     },
 
     render: function() {

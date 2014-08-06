@@ -24,7 +24,6 @@ namespace Macmillan.PXQBA.Web.Controllers
         private readonly IProductCourseManagementService productCourseManagementService;
 
         public ImportController(IQuestionManagementService questionManagementService, IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService)
-            : base(productCourseManagementService, userManagementService)
         {
             this.questionManagementService = questionManagementService;
             this.userManagementService = userManagementService;
@@ -133,11 +132,11 @@ namespace Macmillan.PXQBA.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult SaveQuestionsForImport(string[] questionsId)
+        public ActionResult SaveQuestionsForImport(string courseId, string[] questionsId)
         {
             ImportQuestionsHelper.QuestionsForImport = new QuestionForImportContainer()
                                                        {
-                                                           CourseId = CourseHelper.CurrentCourse.ProductCourseId,
+                                                           CourseId = courseId,
                                                            QuestionsId = questionsId
                                                        };
             return JsonCamel(new { IsError = false });

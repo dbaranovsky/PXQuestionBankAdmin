@@ -48,10 +48,11 @@ var questionDataManager = (function() {
     };
 
 
-    self.saveQuestionData = function (questionId, fieldName, fieldValue, isSharedField) {
+    self.saveQuestionData = function (courseId, questionId, fieldName, fieldValue, isSharedField) {
         asyncManager.startWait();
 
         var request = {
+            courseId: courseId,
             questionId: questionId,
             fieldName: fieldName,
             fieldValue: fieldValue,
@@ -94,8 +95,9 @@ var questionDataManager = (function() {
 
     };
 
-    self.createQuestionNote = function(note) {
-          var request = {
+    self.createQuestionNote = function(courseId, note) {
+        var request = {
+            courseId: courseId,
             note: note
         };
         return $.ajax({
@@ -113,8 +115,9 @@ var questionDataManager = (function() {
         });
     };
 
-    self.deleteQuestionNote = function(note) {
-         var request = {
+    self.deleteQuestionNote = function (courseId, note) {
+        var request = {
+            courseId: courseId,
             note: note
         };
          return $.ajax({
@@ -131,8 +134,9 @@ var questionDataManager = (function() {
         });
     };
 
-     self.saveQuestionNote = function(note) {
-              var request = {
+    self.saveQuestionNote = function (courseId, note) {
+        var request = {
+                courseId:courseId,
                 note: note
             };
             return $.ajax({
@@ -149,8 +153,9 @@ var questionDataManager = (function() {
             });
         };
 
-    self.getNewQuestionTemplate = function(question) {
+    self.getNewQuestionTemplate = function(courseId, question) {
         var request = {
+            courseId: courseId,
             questionType: question.type,
             bank: question.bank,
             chapter: question.chapter
@@ -172,8 +177,9 @@ var questionDataManager = (function() {
     };
 
 
-    self.getQuestion = function(questionId) {
-          var request = {
+    self.getQuestion = function(courseId, questionId) {
+        var request = {
+            courseId: courseId,
             questionId: questionId
         };
         return $.ajax({
@@ -191,11 +197,16 @@ var questionDataManager = (function() {
     };
 
 
-    self.getMetadataFields = function() {
+    self.getMetadataFields = function (courseId) {
+        var request = {
+            courseId: courseId
+        };
+        
          return $.ajax({
             url: window.actions.questionList.getMetadataFieldsUrl,
             cache: false,
             traditional: true,
+            data: request,
             dataType: 'json',
             contentType: 'application/json',
             type: 'GET'
@@ -207,8 +218,9 @@ var questionDataManager = (function() {
     };
 
 
-    self.updateQuestion = function (question, message) {
-         var request = {
+    self.updateQuestion = function (courseId, question, message) {
+        var request = {
+            courseId: courseId,
             questionJsonString:  JSON.stringify(question),
         };
          return $.ajax({
@@ -225,10 +237,11 @@ var questionDataManager = (function() {
         });
     };
    
-    self.saveAndPublishDraftQuestion = function (question) {
+    self.saveAndPublishDraftQuestion = function (courseId, question) {
         
         asyncManager.startWait();
         var request = {
+            courseId: courseId,
             questionJsonString: JSON.stringify(question),
         };
         return $.ajax({
@@ -249,8 +262,9 @@ var questionDataManager = (function() {
     };
 
 
-    self.getDuplicateQuestionTemplate = function (questionId, version) {
-        var request = {            
+    self.getDuplicateQuestionTemplate = function (courseId, questionId, version) {
+        var request = {
+            courseId: courseId,
             questionId: questionId,
             version: version
         };
@@ -271,11 +285,12 @@ var questionDataManager = (function() {
         });
     };
 
-     self.removeTitle= function (questionId) {
+    self.removeTitle = function (courseId, questionId) {
         var questions = [];
         questions.push(questionId);
         
-        var request = {            
+        var request = {
+            courseId: courseId,
             questionsId: questions
         };
         
@@ -316,9 +331,10 @@ var questionDataManager = (function() {
     };
 
 
-      self.flagQuestion= function (questionId, isFlagged) {
+      self.flagQuestion= function (courseId, questionId, isFlagged) {
 
-         var request = {
+          var request = {
+            courseId: courseId,
             questionId: questionId,
             fieldName: "flag",
             fieldValue: isFlagged? window.enums.flag.flagged : window.enums.flag.notFlagged,
@@ -344,12 +360,17 @@ var questionDataManager = (function() {
        
     };
 
-    self.getQuestionVersions = function(){
+      self.getQuestionVersions = function (courseId, questionId) {
+        var request = {
+            courseId: courseId,
+            questionId: questionId
+        };
 
         return $.ajax({
             url: window.actions.questionList.getQuestionVersionsUrl,
             traditional: true,
             cache: false,
+            data: request,
             contentType: 'application/json',
             dataType: 'json',
             type: 'GET'
@@ -358,9 +379,10 @@ var questionDataManager = (function() {
         });
     };
 
-    self.updateSharedMetadataField = function (questionId, fieldName, fieldValues) {
+    self.updateSharedMetadataField = function (courseId, questionId, fieldName, fieldValues) {
 
         var request = {
+            courseId: courseId,
             questionId: questionId,
             fieldName: fieldName,
             fieldValues: fieldValues
@@ -400,9 +422,10 @@ var questionDataManager = (function() {
         });
     };
 
-   self.getUpdatedGraphEditor = function (interactionData) {
+   self.getUpdatedGraphEditor = function (questionId, interactionData) {
 
        var request = {
+           questionId: questionId,
             interactionData: interactionData
         };
 
@@ -422,10 +445,12 @@ var questionDataManager = (function() {
 
 
 
-   self.restoreVersion = function (version) {
+   self.restoreVersion = function (courseId, questionId, version) {
 
        var request = {
-            version: version.version
+           courseId: courseId,
+           questionId: questionId,
+           version: version.version
         };
 
         return $.ajax({
@@ -449,10 +474,11 @@ var questionDataManager = (function() {
     /* Bulk operations */
     self.bulk = {};
 
-    self.bulk.updateMetadataField = function (questionIds, fieldName, fieldValue, isSharedField) {
+    self.bulk.updateMetadataField = function (courseId, questionIds, fieldName, fieldValue, isSharedField) {
         asyncManager.startWait();
         //Update status
         var request = {
+            courseId: courseId,
             questionIds: questionIds,
             fieldName: fieldName,
             fieldValue: fieldValue,
@@ -498,10 +524,11 @@ var questionDataManager = (function() {
     
 
 
-    self.bulk.removeTitle = function (questionsId) {
+    self.bulk.removeTitle = function (courseId, questionsId) {
         asyncManager.startWait();
 
         var request = {
+            courseId: courseId,
             questionsId: questionsId,
         };
 
@@ -522,10 +549,11 @@ var questionDataManager = (function() {
         });
     };
 
-    self.bulk.shareTitle = function (questionsId, courseViewModel) {
+    self.bulk.shareTitle = function (currentCourseId, questionsId, courseViewModel) {
         asyncManager.startWait();
 
         var request = {
+            currentCourseId: currentCourseId,
             questionsId: questionsId,
             courseId: courseViewModel[window.consts.targetProductCourse][0],
             bank: courseViewModel[window.consts.questionBankName][0],
@@ -547,8 +575,10 @@ var questionDataManager = (function() {
     };
 
     /* Versions and draft */
-    self.getVersionPreviewLink = function(version){
-       var request = {
+    self.getVersionPreviewLink = function(courseId, questionId ,version){
+        var request = {
+            courseId: courseId,
+            questionId: questionId,
             version: version,
         };
          return $.ajax({
@@ -563,9 +593,10 @@ var questionDataManager = (function() {
         });
     };
 
-    self.publishDraftToOriginal = function (questionId) {
+    self.publishDraftToOriginal = function (courseId, questionId) {
         asyncManager.startWait();
         var request = {
+            courseId: courseId,
             draftQuestionId: questionId,
         };
         return $.ajax({
@@ -586,9 +617,10 @@ var questionDataManager = (function() {
 
     };
     
-    self.createDraft = function (questionId, version, status) {
+    self.createDraft = function (courseId, questionId, version, status) {
         asyncManager.startWait();
         var request = {
+            courseId: courseId,
             questionId: questionId,
             version: version == undefined? null : version,
             status:  status == undefined? null : status
@@ -609,11 +641,17 @@ var questionDataManager = (function() {
 
     };
 
-    self.clearResources  = function(){
+    self.clearResources = function (courseId, questionId, needRemoveResources) {
+        var request = {
+            courseId: courseId,
+            questionId: questionId,
+            needRemoveResources: needRemoveResources
+        };
         return $.ajax({
             url: window.actions.questionList.clearQuestionResourcesUrl,
-             cache: false,
+            cache: false,
             traditional: true,
+            data: request,
             contentType: 'application/json',
             dataType: 'json',
             type: 'GET'

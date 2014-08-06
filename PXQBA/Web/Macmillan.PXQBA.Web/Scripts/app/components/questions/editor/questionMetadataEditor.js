@@ -44,7 +44,13 @@ var QuestionMetadataEditor = React.createClass({displayName: 'QuestionMetadataEd
 
       if (this.props.question.defaultSection.dynamicValues == null || this.props.question.defaultSection.dynamicValues == 0 ){
              $.each(localFieldsName, function( index, value ) {
-                 rows.push( ShareMetadataEditorRow( {question:self.props.question, metadata:self.props.metadata, courseMetadata:self.state.courseMetadata, editHandler:self.props.editHandler, field:value} ));
+                 rows.push( ShareMetadataEditorRow( 
+                            {currentCourseId:self.props.currentCourseId,
+                            question:self.props.question,
+                            metadata:self.props.metadata, 
+                            courseMetadata:self.state.courseMetadata,
+                            editHandler:self.props.editHandler, 
+                            field:value} ));
             });
 
              return rows;
@@ -61,12 +67,25 @@ var QuestionMetadataEditor = React.createClass({displayName: 'QuestionMetadataEd
 
       var self = this;    
       $.each(fieldsWithAnalouges, function( index, value ) {
-             rows.push( ShareMetadataEditorRow( {question:self.props.question, courseMetadata:self.state.courseMetadata,  metadata:self.props.metadata, editHandler:self.props.editHandler, field:value} ));
+             rows.push( ShareMetadataEditorRow( 
+                        {currentCourseId:self.props.currentCourseId,
+                        question:self.props.question, 
+                        courseMetadata:self.state.courseMetadata, 
+                        metadata:self.props.metadata, 
+                        editHandler:self.props.editHandler, 
+                        field:value} ));
       });
 
 
        $.each(fieldsWithoutAnalouges, function( index, value ) {
-             rows.push( ShareMetadataEditorRow( {question:self.props.question, courseMetadata:self.state.courseMetadata,  isUnique:true, metadata:self.props.metadata, editHandler:self.props.editHandler, field:value} ));
+             rows.push( ShareMetadataEditorRow( 
+                        {currentCourseId:self.props.currentCourseId,
+                        question:self.props.question, 
+                        courseMetadata:self.state.courseMetadata, 
+                        isUnique:true, 
+                        metadata:self.props.metadata, 
+                        editHandler:self.props.editHandler,
+                        field:value} ));
       });
 
 
@@ -78,9 +97,9 @@ var QuestionMetadataEditor = React.createClass({displayName: 'QuestionMetadataEd
     addStaticRows: function(){
       var rows=[];
       var self = this;
-      rows.push(ShareMetadataEditorRow( {question:self.props.question, courseMetadata:self.state.courseMetadata,  isStatic:true,  isUnique:false, metadata:self.props.metadata, editHandler:self.props.editHandler, field:window.consts.questionTitleName} ));
-      rows.push(ShareMetadataEditorRow( {question:self.props.question, courseMetadata:self.state.courseMetadata,  isStatic:true,  isUnique:false, metadata:self.props.metadata, editHandler:self.props.editHandler, field:window.consts.questionChapterName} ));
-      rows.push(ShareMetadataEditorRow( {question:self.props.question, courseMetadata:self.state.courseMetadata,  isStatic:true,  isUnique:false, metadata:self.props.metadata, editHandler:self.props.editHandler, field:window.consts.questionBankName} ));
+      rows.push(ShareMetadataEditorRow( {currentCourseId:self.props.currentCourseId, question:self.props.question, courseMetadata:self.state.courseMetadata,  isStatic:true,  isUnique:false, metadata:self.props.metadata, editHandler:self.props.editHandler, field:window.consts.questionTitleName} ));
+      rows.push(ShareMetadataEditorRow( {currentCourseId:self.props.currentCourseId, question:self.props.question, courseMetadata:self.state.courseMetadata,  isStatic:true,  isUnique:false, metadata:self.props.metadata, editHandler:self.props.editHandler, field:window.consts.questionChapterName} ));
+      rows.push(ShareMetadataEditorRow( {currentCourseId:self.props.currentCourseId, question:self.props.question, courseMetadata:self.state.courseMetadata,  isStatic:true,  isUnique:false, metadata:self.props.metadata, editHandler:self.props.editHandler, field:window.consts.questionBankName} ));
 
       return rows;
     },

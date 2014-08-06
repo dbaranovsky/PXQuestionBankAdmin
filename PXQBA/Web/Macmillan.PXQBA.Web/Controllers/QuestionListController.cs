@@ -28,12 +28,17 @@ namespace Macmillan.PXQBA.Web.Controllers
         private readonly INotesManagementService notesManagementService;
         private readonly IProductCourseManagementService productCourseManagementService;
         private readonly IUserManagementService userManagementService;
+        private readonly UserCapabilitiesHelper userCapabilitiesHelper;
+        private readonly CourseHelper courseHelper;
 
         private readonly int questionPerPage;
 
         public QuestionListController(IQuestionMetadataService questionMetadataService,
                                       IQuestionManagementService questionManagementService,
-                                      INotesManagementService notesManagementService, IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService):base(productCourseManagementService, userManagementService)
+                                      INotesManagementService notesManagementService, IProductCourseManagementService productCourseManagementService, 
+                                      IUserManagementService userManagementService,
+                                      UserCapabilitiesHelper userCapabilitiesHelper,
+                                      CourseHelper courseHelper)
         {
             this.questionManagementService = questionManagementService;
             this.questionPerPage = ConfigurationHelper.GetQuestionPerPage();
@@ -41,7 +46,9 @@ namespace Macmillan.PXQBA.Web.Controllers
             this.notesManagementService = notesManagementService;
             this.productCourseManagementService = productCourseManagementService;
             this.userManagementService = userManagementService;
-            
+            this.userCapabilitiesHelper = userCapabilitiesHelper;
+            this.courseHelper = courseHelper;
+
         }
 
         public ActionResult Index(string titleId , string chapterId)
@@ -51,7 +58,6 @@ namespace Macmillan.PXQBA.Web.Controllers
                                                   CourseId = titleId,
                                                   ChapterId = chapterId
                                               };
-            UpdateCurrentCourse(titleId);
             return View(viewModel);
         }
 
@@ -60,15 +66,14 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
             StaticLogger.LogDebug("GetQuestionData start: " + DateTime.Now);
             var currentCourseFilter = request.Filter.SingleOrDefault(x => x.Field == MetadataFieldNames.ProductCourse);
-            ClearParameters(currentCourseFilter, request);
 
-            UpdateCurrentCourse(currentCourseFilter.Values.First());
-            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.ViewQuestionList))
+            Course currentCourse = courseHelper.GetCourse(currentCourseFilter.Values.First());
+            if (!userCapabilitiesHelper.GetCapabilities(currentCourse.ProductCourseId).Contains(Capability.ViewQuestionList))
             {
                 return new HttpUnauthorizedResult();
             }
             var sortCriterion = new SortCriterion {ColumnName = request.OrderField, SortType = request.OrderType};
-            var questionList = questionManagementService.GetQuestionList(CourseHelper.CurrentCourse, request.Filter, sortCriterion, 
+            var questionList = questionManagementService.GetQuestionList(currentCourse, request.Filter, sortCriterion, 
                                                                           (request.PageNumber - 1) * questionPerPage,
                                                                           questionPerPage);
 
@@ -79,17 +84,18 @@ namespace Macmillan.PXQBA.Web.Controllers
                         {
                             Filter = request.Filter,
                             TotalPages = totalPages,
-                            QuestionList = questionList.CollectionPage.Select(q => Mapper.Map<QuestionMetadata>(q, opt => opt.Items.Add(CourseHelper.CurrentCourse.ProductCourseId, CourseHelper.CurrentCourse))).ToList(),
+                            QuestionList = questionList.CollectionPage.Select(q => Mapper.Map<QuestionMetadata>(q, opt => opt.Items.Add(currentCourse.ProductCourseId, currentCourse))).ToList(),
                             PageNumber = request.PageNumber,
-                            Columns = questionMetadataService.GetDataForFields(CourseHelper.CurrentCourse, request.Columns).Select(MetadataFieldsHelper.Convert).ToList(),
-                            AllAvailableColumns = questionMetadataService.GetAvailableFields(CourseHelper.CurrentCourse).Select(MetadataFieldsHelper.Convert).ToList(),
+                            Columns = questionMetadataService.GetDataForFields(currentCourse, request.Columns).Select(MetadataFieldsHelper.Convert).ToList(),
+                            AllAvailableColumns = questionMetadataService.GetAvailableFields(currentCourse).Select(MetadataFieldsHelper.Convert).ToList(),
                             Order = new QuestionOrder()
                                     {
                                         OrderField = request.OrderField,
                                         OrderType = request.OrderType.ToString().ToLower()
                                     },
-                            QuestionCardLayout = questionMetadataService.GetQuestionCardLayout(CourseHelper.CurrentCourse),
-                            ProductTitle = CourseHelper.CurrentCourse.Title
+                            QuestionCardLayout = questionMetadataService.GetQuestionCardLayout(currentCourse),
+                            ProductTitle = currentCourse.Title,
+                            ProductCourseId = currentCourse.ProductCourseId
                         };
             UpdateCapabilities(response);
             StaticLogger.LogDebug("GetQuestionData end: " + DateTime.Now);
@@ -99,7 +105,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         private void UpdateCapabilities(QuestionListDataResponse response)
         {
-            var userCapabilities = UserCapabilitiesHelper.Capabilities;
+            var userCapabilities = userCapabilitiesHelper.GetCapabilities(response.ProductCourseId).ToList();
             response.CanViewQuestionList = userCapabilities.Contains(Capability.ViewQuestionList);
             response.CanPreviewQuestion = userCapabilities.Contains(Capability.PreviewQuestion);
             response.CanCreateQuestion = userCapabilities.Contains(Capability.CreateQuestion);
@@ -151,26 +157,22 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// </summary>
         /// <param name="questionId"></param>
         /// <returns></returns>
-        public ActionResult GetQuestionNotes(string questionId = null)
+        public ActionResult GetQuestionNotes(string questionId)
         {
-            return JsonCamel(notesManagementService.GetQuestionNotes(string.IsNullOrEmpty(questionId)? QuestionHelper.QuestionIdToEdit : questionId));
+            return JsonCamel(notesManagementService.GetQuestionNotes(questionId));
         }
 
         /// <summary>
         /// Save new question note
         /// </summary>
+        /// <param name="courseId"></param>
         /// <param name="note"></param>
         [HttpPost]
-        public ActionResult CreateQuestionNote(Note note)
+        public ActionResult CreateQuestionNote(string courseId, Note note)
         {
-            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.AddNoteToQuestion))
+            if (!userCapabilitiesHelper.GetCapabilities(courseId).Contains(Capability.AddNoteToQuestion))
             {
                 return new HttpUnauthorizedResult();
-            }
-
-            if (string.IsNullOrEmpty(note.QuestionId))
-            {
-                note.QuestionId = QuestionHelper.QuestionIdToEdit;
             }
             
             return JsonCamel(notesManagementService.CreateNote(note));
@@ -179,11 +181,12 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// <summary>
         /// Delete question note
         /// </summary>
+        /// <param name="courseId"></param>
         /// <param name="note"></param>
         [HttpPost]
-        public ActionResult DeleteQuestionNote(Note note)
+        public ActionResult DeleteQuestionNote(string courseId, Note note)
         {
-            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.RemoveNoteFromQuestion))
+            if (!userCapabilitiesHelper.GetCapabilities(courseId).Contains(Capability.RemoveNoteFromQuestion))
             {
                 return new HttpUnauthorizedResult();
             }
@@ -194,46 +197,17 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// <summary>
         /// Save new question note
         /// </summary>
+        /// <param name="courseId"></param>
         /// <param name="note"></param>
         [HttpPost]
-        public ActionResult SaveQuestionNote(Note note)
+        public ActionResult SaveQuestionNote(string courseId, Note note)
         {
-            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.AddNoteToQuestion))
+            if (!userCapabilitiesHelper.GetCapabilities(courseId).Contains(Capability.AddNoteToQuestion))
             {
                 return new HttpUnauthorizedResult();
             }
           notesManagementService.SaveNote(note);
           return JsonCamel(new { isError = false });
-        }
-
-
-        /// <summary>
-        /// Check filtration and reset if title was changed
-        /// </summary>
-        /// <param name="courseFilterDescriptor"></param>
-        /// <param name="request"></param>
-        private void ClearParameters(FilterFieldDescriptor courseFilterDescriptor, QuestionListDataRequest request)
-        {
-            if (!CourseHelper.IsResetParameterNeeded(courseFilterDescriptor))
-            {
-                return;
-            }
-
-            var courseFilter = request.Filter.SingleOrDefault(f => f.Field == courseFilterDescriptor.Field);
-            
-            request.Filter = new List<FilterFieldDescriptor>()
-                             {
-                                 courseFilter,
-                                 new FilterFieldDescriptor()
-                                 {
-                                     Field = MetadataFieldNames.ContainsText,
-                                     Values = new List<string>()
-                                 }
-                             };
-
-            request.PageNumber = 1;
-            request.OrderField = null;
-            request.OrderType = SortType.None;
         }
 
 
@@ -245,19 +219,15 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult GetMetadataForCourse(string courseId)
         {
             Course course = null;
-            if (CourseHelper.CurrentCourse.ProductCourseId == courseId)
+            if (courseHelper.GetChachedCourseId() == courseId)
             {
-                course = CourseHelper.CurrentCourse;
+                course = courseHelper.GetCourse(courseId);
             }
-            if (course == null)
+            else
             {
                 course = productCourseManagementService.GetProductCourse(courseId);
             }
-
-            if (course == null)
-            {
-                return JsonCamel(questionMetadataService.GetAvailableFields(CourseHelper.CurrentCourse).Select(MetadataFieldsHelper.Convert).ToList());
-            }
+             
             return JsonCamel(questionMetadataService.GetAvailableFields(course).Select(MetadataFieldsHelper.Convert));
         }
 

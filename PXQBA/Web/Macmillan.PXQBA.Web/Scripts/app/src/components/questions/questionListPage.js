@@ -32,7 +32,7 @@ var QuestionListPage = React.createClass({
     },
 
     nextStepHandler: function(question){
-        questionDataManager.getNewQuestionTemplate(question)
+        questionDataManager.getNewQuestionTemplate(this.props.response.productCourseId, question)
                             .done(this.loadTemplateComplete.bind(this, true))
                             .fail(this.resetState);
     },
@@ -48,7 +48,9 @@ var QuestionListPage = React.createClass({
                               closeDialogHandler = {this.closeDialogHandler}/>);
           case this.editorsSteps.step2:
 
-            return (<QuestionEditorDialog closeDialogHandler={this.closeDialogHandler}
+            return (<QuestionEditorDialog 
+                                          currentCourseId={this.props.response.productCourseId}
+                                          closeDialogHandler={this.closeDialogHandler}
                                           editSourceQuestionHandler={this.editSourceQuestionHandler}
                                           isNew={this.state.editor.isNew}
                                           showOnCreate={true}
@@ -78,7 +80,7 @@ var QuestionListPage = React.createClass({
            editorCaption: window.enums.dialogCaptions.duplicateQuestion,
            viewHistoryMode: false
         });
-        questionDataManager.getDuplicateQuestionTemplate(questionId).done(this.loadTemplateComplete.bind(this, false));
+        questionDataManager.getDuplicateQuestionTemplate(this.props.response.productCourseId, questionId).done(this.loadTemplateComplete.bind(this, false));
     },
 
     editQuestionHandler: function(questionId, viewHistoryMode, isEditedInPlace) {
@@ -90,11 +92,12 @@ var QuestionListPage = React.createClass({
            viewHistoryMode: viewHistoryMode === undefined? false : viewHistoryMode,
            isEditedInPlace: isEditedInPlace === undefined? false : isEditedInPlace
         });
-       questionDataManager.getQuestion(questionId).done(this.loadTemplateComplete.bind(this, false));
+       questionDataManager.getQuestion(this.props.response.productCourseId, questionId).done(this.loadTemplateComplete.bind(this, false));
     },
 
     publishDraftHandler: function(questionId) {
-         questionDataManager.publishDraftToOriginal(questionId);
+
+         questionDataManager.publishDraftToOriginal(this.props.response.productCourseId, questionId);
     },
        
     //from version 
@@ -105,7 +108,7 @@ var QuestionListPage = React.createClass({
            editorCaption: window.enums.dialogCaptions.duplicateQuestion
         });
 
-       questionDataManager.getDuplicateQuestionTemplate(questionId, version).done(this.loadTemplateComplete.bind(this, false));
+       questionDataManager.getDuplicateQuestionTemplate(this.props.response.productCourseId, questionId, version).done(this.loadTemplateComplete.bind(this, false));
     },
 
     //from version
@@ -117,7 +120,7 @@ var QuestionListPage = React.createClass({
            viewHistoryMode: false
         });
 
-        questionDataManager.createDraft(questionId, version, status).done(this.loadTemplateComplete.bind(this, false));
+        questionDataManager.createDraft(this.props.response.productCourseId, questionId, version, status).done(this.loadTemplateComplete.bind(this, false));
      
     },
 
@@ -128,7 +131,7 @@ var QuestionListPage = React.createClass({
 
     loadTemplateComplete: function(isNew, template) { 
         if(!isNew){
-          questionDataManager.getMetadataFields().done(this.loadMetadataForEditingComplete.bind(this, template));
+          questionDataManager.getMetadataFields(this.props.response.productCourseId).done(this.loadMetadataForEditingComplete.bind(this, template));
           return;
         }
 
@@ -168,7 +171,7 @@ var QuestionListPage = React.createClass({
 
     initialCreateNewQuestion: function() {
       this.setState({ loading:true} );
-      questionDataManager.getMetadataFields().done(this.loadMetadataComplete.bind(this))
+      questionDataManager.getMetadataFields(this.props.response.productCourseId).done(this.loadMetadataComplete.bind(this))
 
     },
 
@@ -215,7 +218,7 @@ var QuestionListPage = React.createClass({
 
     renderShareDialog: function() {
       if(this.state.showShareDialog) {
-        return (<QuestionShareDialog showOnCreate={true} closeDialogHandler={this.closeShareDialogHandler} questionIds={this.state.questionIds} currentTitle={this.props.response.productTitle}/>);
+        return (<QuestionShareDialog currentCourseId={this.props.response.productCourseId} showOnCreate={true} closeDialogHandler={this.closeShareDialogHandler} questionIds={this.state.questionIds} currentTitle={this.props.response.productTitle}/>);
       }
       return null;
     },

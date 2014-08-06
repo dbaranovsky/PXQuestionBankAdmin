@@ -33,7 +33,7 @@ var QuestionBulkOperationBarStandart = React.createClass({displayName: 'Question
 
     bulkRemoveFromTitle: function(){
       var self = this;
-       questionDataManager.bulk.removeTitle(this.props.selectedQuestions).done(function(){self.deselectsAllHandler();});
+       questionDataManager.bulk.removeTitle(this.props.currentCourseId, this.props.selectedQuestions).done(function(){self.deselectsAllHandler();});
     },
 
     bulkShareToTitle: function(){
@@ -62,19 +62,25 @@ var QuestionBulkOperationBarStandart = React.createClass({displayName: 'Question
                             React.DOM.td( {className:"bulk-operation-cell"}, 
                                React.DOM.div( {className:"bulk-operation-item", 'data-toggle':"tooltip", title:"Change all selected questions"}, 
                                 QuestionBulkOperationSetStatus( {availableStatuses:this.getAvailableStatuses(), 
-                                                              selectedQuestions:this.props.selectedQuestions}) 
+                                                              selectedQuestions:this.props.selectedQuestions,
+                                                              currentCourseId:this.props.currentCourseId}
+                                                              ) 
                                )
                             ),
                             React.DOM.td( {className:"bulk-operation-cell"}, 
                                React.DOM.div( {className:"bulk-operation-item", 'data-toggle':"tooltip", title:"Change all selected questions"}, 
                                 QuestionBulkOperationSetBank( {availableStatuses:this.getAvailableBanks(), 
-                                                              selectedQuestions:this.props.selectedQuestions}) 
+                                                              selectedQuestions:this.props.selectedQuestions,
+                                                              currentCourseId:this.props.currentCourseId}
+                                                              ) 
                                )
                             ),
                             React.DOM.td( {className:"bulk-operation-cell"}, 
                                React.DOM.div( {className:"bulk-operation-item", 'data-toggle':"tooltip", title:"Change all selected questions"}, 
                                 QuestionBulkOperationSetChapter( {availableStatuses:this.getAvailableChapters(), 
-                                                              selectedQuestions:this.props.selectedQuestions}) 
+                                                              selectedQuestions:this.props.selectedQuestions,
+                                                              currentCourseId:this.props.currentCourseId}
+                                                              ) 
                                )
                             ),
                             React.DOM.td( {className:"bulk-operation-cell"}, 

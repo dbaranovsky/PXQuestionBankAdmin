@@ -57,13 +57,35 @@
 
     self.addFiltration = function (field, valuesArray) {
         var isFiltrationChenged = filterHashParameterHelper.isFiltrationChenged(field, valuesArray, self.query.getValue(), false);
-        self.query.setValue(filterHashParameterHelper.addFiltration(field, valuesArray, self.query.getValue()));
+       
+        if ((self.needResetFiltration(field))&&(isFiltrationChenged)) {
+            self.resetParameters();
+            self.query.setValue(filterHashParameterHelper.addFiltration(field, valuesArray, self.query.getValue()));
+            self.query.setValue(filterHashParameterHelper.addFiltration(window.consts.containsTextName, [], self.query.getValue()));
+        } else {
+            self.query.setValue(filterHashParameterHelper.addFiltration(field, valuesArray, self.query.getValue()));
+        }
+        
         
         if (isFiltrationChenged) {
             self.page.setValue(1);
         }
 
         hasher.setHash(self.buildHash());
+    };
+
+    self.resetParameters = function() {
+        self.query = new RouteItem('filter', filterHashParameterHelper.emptyValue);
+        self.page = new RouteItem('page', '1');
+        self.columns = new RouteItem('columns', window.consts.grid.initialFieldSet);
+        self.order = new RouteItem('order', 'none');
+    };
+
+    self.needResetFiltration = function (field) {
+        if (field == window.consts.questionCourseName) {
+            return true;
+        }
+        return false;
     };
 
     self.deleteFiltration = function (field) {

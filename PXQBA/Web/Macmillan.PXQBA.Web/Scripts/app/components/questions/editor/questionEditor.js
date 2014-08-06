@@ -52,7 +52,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
                       window.enums.messages.succesUpdate :
                       window.enums.messages.succesCreate;
            this.setState({saving: true});
-           questionDataManager.updateQuestion(this.state.question,message).done(this.updateQuestionHandler);
+           questionDataManager.updateQuestion(this.props.currentCourseId, this.state.question, message).done(this.updateQuestionHandler);
       }
     },
 
@@ -73,7 +73,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
     },
 
     saveAndPublish: function(){
-       questionDataManager.saveAndPublishDraftQuestion(this.state.question).done(this.updateQuestionHandler);
+       questionDataManager.saveAndPublishDraftQuestion(this.props.currentCourseId, this.state.question).done(this.updateQuestionHandler);
        this.closeDialog();
     },
     updateQuestionHandler: function(response) {
@@ -246,6 +246,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
                 
                 React.DOM.div( {className:"editor-tabs"}, 
                   QuestionEditorTabs( {ref:"questionEditorTabs",
+                                      currentCourseId:this.props.currentCourseId,
                                       question:this.state.question, 
                                       closeDialog:this.closeDialog,  
                                       editSourceQuestionHandler:this.props.editSourceQuestionHandler, 

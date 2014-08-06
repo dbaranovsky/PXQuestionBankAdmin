@@ -328,7 +328,8 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
         values = [];
         values.push(this.props.question[this.props.field]);
       }
-      questionDataManager.updateSharedMetadataField(this.props.questionId,
+      questionDataManager.updateSharedMetadataField(this.props.currentCourseId,
+                                           this.props.questionId,
                                            this.state.metadataField== null? this.props.field : this.state.metadataField.metadataName, 
                                            values);
     },

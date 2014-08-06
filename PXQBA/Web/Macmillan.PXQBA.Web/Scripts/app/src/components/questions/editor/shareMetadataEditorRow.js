@@ -61,8 +61,9 @@ var ShareMetadataEditorRow = React.createClass({
    renderSharedValue: function(){
         if (this.props.question.isShared ){
              return  (<div className={this.props.isUnique? "cell shared unique" : "cell shared"}>
-                     <MetadataFieldEditor question={this.props.isStatic?  this.props.question.defaultSection :  this.props.question.defaultSection.dynamicValues} 
-                                           questionId = {this.props.question.id}
+                     <MetadataFieldEditor currentCourseId={this.props.currentCourseId}
+                                          question={this.props.isStatic?  this.props.question.defaultSection :  this.props.question.defaultSection.dynamicValues} 
+                                          questionId = {this.props.question.id}
                                           editMode={false} 
                                           metadata={this.props.courseMetadata}
                                           editHandler={this.sharedEditHandler} 
@@ -136,7 +137,8 @@ var ShareMetadataEditorRow = React.createClass({
 
     renderLocalValue: function(){
       return  (<div className="cell">
-                 <MetadataFieldEditor question={this.props.isStatic?  this.props.question.localSection :  this.props.question.localSection.dynamicValues} 
+                 <MetadataFieldEditor currentCourseId={this.props.currentCourseId}
+                                    question={this.props.isStatic?  this.props.question.localSection :  this.props.question.localSection.dynamicValues} 
                                     isDisabled={this.state.isDisabled || (!this.props.question.canEditSharedQuestionMetadata && this.props.question.isShared) || !this.props.question.canEditQuestion} 
                                     metadata={this.props.metadata} 
                                     editHandler={this.localEditHandler} 

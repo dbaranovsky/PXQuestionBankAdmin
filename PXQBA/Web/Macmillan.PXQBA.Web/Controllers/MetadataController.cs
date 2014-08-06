@@ -18,12 +18,15 @@ namespace Macmillan.PXQBA.Web.Controllers
         private readonly IProductCourseManagementService productCourseManagementService;
 
         private readonly IUserManagementService userManagementService;
+        private readonly UserCapabilitiesHelper userCapabilitiesHelper;
+        private readonly CourseHelper courseHelper;
 
-        public MetadataController(IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService)
-            :base(productCourseManagementService, userManagementService)
+        public MetadataController(IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService, UserCapabilitiesHelper userCapabilitiesHelper, CourseHelper courseHelper)
         {
             this.productCourseManagementService = productCourseManagementService;
             this.userManagementService = userManagementService;
+            this.userCapabilitiesHelper = userCapabilitiesHelper;
+            this.courseHelper = courseHelper;
         }
 
         public ActionResult Index(string courseId)
@@ -52,18 +55,18 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult GetMetadataConfig(string courseId)
         {
             var course = productCourseManagementService.GetProductCourse(courseId);
-            UpdateCurrentCourse(courseId);
             var viewModel = Mapper.Map<MetadataConfigViewModel>(course);
-            UpdateCapabilities(viewModel);
+            UpdateCapabilities(courseId, viewModel);
             return JsonCamel(viewModel);
         }
 
-        private void UpdateCapabilities(MetadataConfigViewModel viewModel)
+        private void UpdateCapabilities(string courseId, MetadataConfigViewModel viewModel)
         {
-            viewModel.CanEditMetadataValues = UserCapabilitiesHelper.Capabilities.Contains(Capability.EditMetadataConfigValues);
-            viewModel.CanEditQuestionCardTemplate = UserCapabilitiesHelper.Capabilities.Contains(Capability.EditQuestionCardTemplate);
-            viewModel.CanEditTitleMetadataFull = UserCapabilitiesHelper.Capabilities.Contains(Capability.EditTitleMetadataFull);
-            viewModel.CanEditTitleMetadataReduced = UserCapabilitiesHelper.Capabilities.Contains(Capability.EditTitleMetadataReduced);
+            var capabilities = userCapabilitiesHelper.GetCapabilities(courseId).ToList();
+            viewModel.CanEditMetadataValues = capabilities.Contains(Capability.EditMetadataConfigValues);
+            viewModel.CanEditQuestionCardTemplate = capabilities.Contains(Capability.EditQuestionCardTemplate);
+            viewModel.CanEditTitleMetadataFull = capabilities.Contains(Capability.EditTitleMetadataFull);
+            viewModel.CanEditTitleMetadataReduced = capabilities.Contains(Capability.EditTitleMetadataReduced);
             if (viewModel.CanEditTitleMetadataFull)
             {
                 viewModel.CanEditTitleMetadataReduced = true;
@@ -75,49 +78,43 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
             var course = Mapper.Map(metadataConfig, 
                                    productCourseManagementService.GetProductCourse(metadataConfig.CourseId, true));
-            UpdateCurrentCourse(course.ProductCourseId);
-            if (!IsAuthorizedToSave(course))
+            var oldCourse = productCourseManagementService.GetProductCourse(course.ProductCourseId, true);
+
+            if (!IsAuthorizedToSave(course, oldCourse))
             {
                 return new HttpUnauthorizedResult();
             }
             productCourseManagementService.UpdateMetadataConfig(course);
 
-            if (CourseHelper.CurrentCourse != null)
-            {
-                if (course.ProductCourseId == CourseHelper.CurrentCourse.ProductCourseId)
-                {
-                    CourseHelper.CurrentCourse =
-                        productCourseManagementService.GetProductCourse(CourseHelper.CurrentCourse.ProductCourseId, true);
-                }
-            }
-            
+            courseHelper.ClearCache();
             return JsonCamel(new {IsError = false});
         }
 
-        private bool IsAuthorizedToSave(Course course)
+        private bool IsAuthorizedToSave(Course newCourse, Course oldCourse)
         {
-             if ((!UserCapabilitiesHelper.Capabilities.Contains(Capability.EditTitleMetadataFull))&&
-                ((!UserCapabilitiesHelper.Capabilities.Contains(Capability.EditTitleMetadataReduced))))
+            var capabilities = userCapabilitiesHelper.GetCapabilities(oldCourse.ProductCourseId).ToList();
+            if ((!capabilities.Contains(Capability.EditTitleMetadataFull)) &&
+                ((!capabilities.Contains(Capability.EditTitleMetadataReduced))))
              {
                  return false;
              }
-          
-            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.EditQuestionCardTemplate) &&
-                course.QuestionCardLayout != CourseHelper.CurrentCourse.QuestionCardLayout)
+
+            if (!capabilities.Contains(Capability.EditQuestionCardTemplate) &&
+                newCourse.QuestionCardLayout != oldCourse.QuestionCardLayout)
             {
                 return false;
             }
-            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.EditMetadataConfigValues))
+            if (!capabilities.Contains(Capability.EditMetadataConfigValues))
             {
-                var existingFields = course.FieldDescriptors.Where(f => CourseHelper.CurrentCourse.FieldDescriptors.Select(d => d.Name).Contains(f.Name));
-                var newFields = course.FieldDescriptors.Where(f => !CourseHelper.CurrentCourse.FieldDescriptors.Select(d => d.Name).Contains(f.Name));
+                var existingFields = newCourse.FieldDescriptors.Where(f => oldCourse.FieldDescriptors.Select(d => d.Name).Contains(f.Name));
+                var newFields = newCourse.FieldDescriptors.Where(f => !oldCourse.FieldDescriptors.Select(d => d.Name).Contains(f.Name));
                 if (newFields.Any(f => f.CourseMetadataFieldValues.Any()))
                 {
                     return false;
                 }
                 foreach (var existingField in existingFields)
                 {
-                    var oldValues = CourseHelper.CurrentCourse.FieldDescriptors.Where(f => f.Name == existingField.Name).SelectMany(f => f.CourseMetadataFieldValues.Select(v => v.Text));
+                    var oldValues = oldCourse.FieldDescriptors.Where(f => f.Name == existingField.Name).SelectMany(f => f.CourseMetadataFieldValues.Select(v => v.Text));
                     var newValues = existingField.CourseMetadataFieldValues.Select(v => v.Text);
 
                     if (!(oldValues.IsCollectionEqual(newValues)))

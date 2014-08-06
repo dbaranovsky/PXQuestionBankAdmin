@@ -5,19 +5,20 @@ namespace Macmillan.PXQBA.Web.Helpers
 {
     public class QuestionHelper
     {
-        private const string QuestionIdParamName = "question_id_to_edit";
-        private const string QuestionViewModelParamName = "question_viewmodel_to_edit";
+        private const string QuestionViewModelParamName = "question_viewmodel_to_edit_";
 
-        public static string QuestionIdToEdit
+
+        public static void SetQuestionViewModelToEdit(QuestionViewModel questionViewModel)
         {
-            get { return HttpContext.Current.Session[QuestionIdParamName].ToString(); }
-            set { HttpContext.Current.Session[QuestionIdParamName] = value; }
+            HttpContext.Current.Session[QuestionViewModelParamName + questionViewModel.RealQuestionId.ToUpper()] =
+                questionViewModel;
         }
 
-        public static QuestionViewModel QuestionViewModelToEdit
+        public static QuestionViewModel GetQuestionViewModelToEdit(string questionId)
         {
-            get { return HttpContext.Current.Session[QuestionViewModelParamName] as  QuestionViewModel; }
-            set { HttpContext.Current.Session[QuestionViewModelParamName] = value; }
+            var questionViewModel =
+                HttpContext.Current.Session[QuestionViewModelParamName + questionId.ToUpper()] as QuestionViewModel;
+            return questionViewModel;
         }
     }
 }

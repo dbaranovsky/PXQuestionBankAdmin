@@ -15,7 +15,7 @@ var VersionHistory = React.createClass({displayName: 'VersionHistory',
 
     updateQuestionVersion: function() {
         this.setState({loading: true});
-        questionDataManager.getQuestionVersions().done(this.setVersions);
+        questionDataManager.getQuestionVersions(this.props.currentCourseId, this.props.question.realQuestionId).done(this.setVersions);
     },
 
     setVersions: function(data){
@@ -44,7 +44,10 @@ var VersionHistory = React.createClass({displayName: 'VersionHistory',
                 version.isInitial = true;
             }
 
-            return (VersionHistoryRow( {version:version, renderPreview:self.renderPreview.bind(this, version.questionPreview), handlers:self.props.handlers,
+            return (VersionHistoryRow( 
+                     {currentCourseId:self.props.currentCourseId,
+                     version:version, renderPreview:self.renderPreview.bind(this, version.questionPreview),
+                     handlers:self.props.handlers,
                      canTryVersion:self.props.question.canTestQuestionVersion,
                      canRestoreVersion:  self.props.question.canRestoreVersion, 
                      canCreateDraftFromVersion:  self.props.question.canCreateDraftFromVersion} ));
@@ -138,7 +141,8 @@ var VersionHistoryRow = React.createClass({displayName: 'VersionHistoryRow',
 
     restoreVersion: function(){
         this.setState({loading: true, restoring: true});
-        questionDataManager.restoreVersion(this.props.version).done(this.reloadEditor).always(this.stopLoading);
+        debugger;
+        questionDataManager.restoreVersion(this.props.currentCourseId, this.props.version.id, this.props.version).done(this.reloadEditor).always(this.stopLoading);
     },
 
     reloadEditor: function(){
@@ -156,7 +160,7 @@ var VersionHistoryRow = React.createClass({displayName: 'VersionHistoryRow',
 
     tryQuestion: function(){
         this.setState({loading: true});
-        questionDataManager.getVersionPreviewLink(this.props.version.version).done(this.startQuiz).always(this.stopLoading);
+        questionDataManager.getVersionPreviewLink(this.props.currentCourseId, this.props.version.id, this.props.version.version).done(this.startQuiz).always(this.stopLoading);
     },
 
     startQuiz: function(data){
