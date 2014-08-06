@@ -35,6 +35,8 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         private const int SearchCommandMaxRows = 25;
 
+        private const string QuestionSequenceInitialValue = "1";
+
         /// <summary>
         /// Get question for specify query
         /// </summary>
@@ -485,7 +487,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                 var questionsWithDecimalSequence = sequencePerBank[bank].Where(q => decimal.TryParse(q.SortingField, out seq));
                 return QuestionSequenceHelper.GetNewLastValue(questionsWithDecimalSequence);
             }
-            return string.Empty;
+            return QuestionSequenceInitialValue;
         }
 
         public Question GetQuestion(string repositoryCourseId, string questionId, string version = null)
