@@ -90,7 +90,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             QuestionId = sourceQuestionId;
             var question = CopyQuestionToCourse(temporaryCourseId, GetTemporaryQuestionId(), sourceProductCourseId, sourceQuestionId);
             CopyResources(temporaryCourseId, sourceProductCourseId,  QuestionHelper.GetQuestionRelatedResources(question.QuestionXml));
-            DeleteTemporaryQuestionWithQuiz(QuestionId);
             return Mapper.Map<Models.Question>(question);
         }
 
