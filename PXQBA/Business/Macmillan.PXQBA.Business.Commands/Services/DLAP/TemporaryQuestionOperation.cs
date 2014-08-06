@@ -19,13 +19,13 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         private IQuestionCommands questionCommands;
 
-        private const string ItemIdTemplate = "QBA_temp_quiz_{0}";
+        private const string ItemIdTemplate = "QBA_temp_quiz_{0}_{1}";
 
-        private const string QuestionIdTemplate = "QBA_temp_question_{0}";
+        private const string QuestionIdTemplate = "QBA_temp_question_{0}_{1}";
 
-        private const string ItemIdVersionTemplate = "QBA_temp_ver_quiz_{0}";
+        private const string ItemIdVersionTemplate = "QBA_temp_ver_quiz_{0}_{1}";
 
-        private const string QuestionIdVersionTemplate = "QBA_temp_ver_question_{0}";
+        private const string QuestionIdVersionTemplate = "QBA_temp_ver_question_{0}_{1}";
 
         private delegate string GetTemporaryQuizIdDelegate();
 
@@ -37,6 +37,11 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         private readonly string temporaryCourseId = ConfigurationHelper.GetTemporaryCourseId();
 
+        private string QuestionId
+        {
+            get; set;
+        }
+
         public TemporaryQuestionOperation(IContext businessContext, IQuestionCommands questionCommands)
         {
             this.businessContext = businessContext;
@@ -47,17 +52,19 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         public Models.Question CreateQuestion(string productCourseId, Models.Question question)
         {
+            QuestionId = Guid.NewGuid().ToString();
             question.ModifiedBy = businessContext.CurrentUser.Id;
             questionCommands.SetSequence(productCourseId, question);
             var agilixQuestion = Mapper.Map<Question>(question);
             var questionCreated = CopyQuestionToCourse(temporaryCourseId, GetTemporaryQuestionId(), agilixQuestion);
             var result = UpdateQuestionQuiz(questionCreated);
-            result.Id = Guid.NewGuid().ToString();
+            result.Id = QuestionId;
             return result;
         }
 
         public Models.Question CopyQuestionToTemporaryCourse(string sourceProductCourseId, string questionIdToCopy, string version = null)
         {
+            QuestionId = questionIdToCopy;
             if (!string.IsNullOrEmpty(version))
             {
                 GetTemporaryQuestionId = GetTemporaryQuestionIdForVersion;
@@ -80,10 +87,20 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         public Models.Question CopyQuestionToSourceCourse(string sourceProductCourseId, string sourceQuestionId)
         {
+            QuestionId = sourceQuestionId;
             var question = CopyQuestionToCourse(temporaryCourseId, GetTemporaryQuestionId(), sourceProductCourseId, sourceQuestionId);
             CopyResources(temporaryCourseId, sourceProductCourseId,  QuestionHelper.GetQuestionRelatedResources(question.QuestionXml));
-            //questionCommands.DeleteQuestion(temporaryCourseId, GetTemporaryQuestionId());
+            DeleteTemporaryQuestionWithQuiz(QuestionId);
             return Mapper.Map<Models.Question>(question);
+        }
+
+        public void DeleteTemporaryQuestionWithQuiz(string questionId)
+        {
+            QuestionId = questionId;
+            questionCommands.DeleteQuestion(temporaryCourseId, GetTemporaryQuestionIdForQuestion());
+            questionCommands.DeleteQuestion(temporaryCourseId, GetTemporaryQuestionIdForVersion());
+            questionCommands.DeleteItem(temporaryCourseId, GetTemporaryQuizIdForQuestion());
+            questionCommands.DeleteItem(temporaryCourseId, GetTemporaryQuizIdForVersion());
         }
 
         private void CopyResources(string from, string to, IEnumerable<string> resourcesPath)
@@ -217,22 +234,22 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         private string GetTemporaryQuizIdForQuestion()
         {
-            return String.Format(ItemIdTemplate, businessContext.CurrentUser.Id);
+            return String.Format(ItemIdTemplate, businessContext.CurrentUser.Id, QuestionId);
         }
 
         private string GetTemporaryQuestionIdForQuestion()
         {
-            return String.Format(QuestionIdTemplate, businessContext.CurrentUser.Id);
+            return String.Format(QuestionIdTemplate, businessContext.CurrentUser.Id, QuestionId);
         }
 
         private string GetTemporaryQuestionIdForVersion()
         {
-            return String.Format(QuestionIdVersionTemplate, businessContext.CurrentUser.Id);
+            return String.Format(QuestionIdVersionTemplate, businessContext.CurrentUser.Id, QuestionId);
         }
 
         private string GetTemporaryQuizIdForVersion()
         {
-            return String.Format(ItemIdVersionTemplate, businessContext.CurrentUser.Id);
+            return String.Format(ItemIdVersionTemplate, businessContext.CurrentUser.Id, QuestionId);
         }
     }
 }

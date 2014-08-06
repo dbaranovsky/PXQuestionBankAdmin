@@ -29,6 +29,12 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         /// <returns>Created question</returns>
         Question CreateQuestion(string productCourseId, Question question);
 
-      
+        /// <summary>
+        /// Deletes temporary question with quiz it is located in
+        /// </summary>
+        /// <param name="questionId">Original question id to delete temp question for</param>
+        void DeleteTemporaryQuestionWithQuiz(string questionId);
+
+
     }
 }
