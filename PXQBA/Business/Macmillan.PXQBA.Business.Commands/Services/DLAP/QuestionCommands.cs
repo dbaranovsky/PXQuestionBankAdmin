@@ -720,6 +720,22 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             InvalidateQuestionCache(new List<Bfw.Agilix.DataContracts.Question>(){GetAgilixQuestion(repositoryCourseId, questionId)});
         }
 
+        public void DeleteItem(string entityId, string itemId)
+        {
+            var deleteCmd = new DeleteItems()
+            {
+                Items = new List<Item>()
+                    {
+                        new Item()
+                        {
+                            Id = itemId,
+                            EntityId = entityId
+                        }
+                    }
+            };
+            businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(deleteCmd);
+        }
+
         private void InvalidateQuestionCache(IEnumerable<Bfw.Agilix.DataContracts.Question> questions, string courseId = null)
         {
             try

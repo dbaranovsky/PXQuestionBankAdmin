@@ -208,5 +208,12 @@ namespace Macmillan.PXQBA.Business.Commands.Contracts
         /// <param name="productCourseId"></param>
         /// <param name="questions"></param>
         void CreateQuestions(string productCourseId, IEnumerable<Question> questions);
+
+        /// <summary>
+        /// Deletes question quiz\item
+        /// </summary>
+        /// <param name="entityId">item entity id</param>
+        /// <param name="itemId">Item id</param>
+        void DeleteItem(string entityId, string itemId);
     }
 }
