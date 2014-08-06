@@ -20,6 +20,17 @@ namespace Macmillan.PXQBA.Web.Helpers
             return HttpContext.Current.Session[CourseParamName] as Course;
         }
 
+        public static string GetChachedCourseId()
+        {
+            var course = HttpContext.Current.Session[CourseParamName] as Course;
+            if (course == null)
+            {
+                return String.Empty;
+            }
+
+            return course.ProductCourseId;
+        }
+
         public static void ClearCache()
         {
             HttpContext.Current.Session[CourseParamName] = null;

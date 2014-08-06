@@ -54,6 +54,7 @@ var QuestionBulkOperationBarBase = React.createClass({
                       message={this.getTextMessage()}
                       deselectsAllHandler={this.props.parameters.deselectsAllHandler}
                       selectedQuestions={this.props.parameters.selectedQuestions}
+                      currentCourseId = {this.props.parameters.currentCourseId}
                    />);
           default:
             return "";

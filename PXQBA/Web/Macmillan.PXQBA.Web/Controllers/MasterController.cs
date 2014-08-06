@@ -47,17 +47,17 @@ namespace Macmillan.PXQBA.Web.Controllers
             };
         }
 
-        /// <summary>
-        /// Update current course in session
-        /// </summary>
-        /// <param name="courseId"></param>
-        protected void UpdateCurrentCourse(string courseId)
-        {
-            if (CourseHelper.NeedGetCourse(courseId))
-            {
-                CourseHelper.CurrentCourse = productCourseManagementService.GetProductCourse(courseId, true);
-                UserCapabilitiesHelper.Capabilities = userManagementService.GetUserCapabilities(courseId);
-            }
-        }
+        ///// <summary>
+        ///// Update current course in session
+        ///// </summary>
+        ///// <param name="courseId"></param>
+        //protected void UpdateCurrentCourse(string courseId)
+        //{
+        //    if (CourseHelper.NeedGetCourse(courseId))
+        //    {
+        //        CourseHelper.CurrentCourse = productCourseManagementService.GetProductCourse(courseId, true);
+        //        UserCapabilitiesHelper.Capabilities = userManagementService.GetUserCapabilities(courseId);
+        //    }
+        //}
     }
 }

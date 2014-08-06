@@ -52,18 +52,18 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult GetMetadataConfig(string courseId)
         {
             var course = productCourseManagementService.GetProductCourse(courseId);
-            UpdateCurrentCourse(courseId);
             var viewModel = Mapper.Map<MetadataConfigViewModel>(course);
-            UpdateCapabilities(viewModel);
+            UpdateCapabilities(courseId, viewModel);
             return JsonCamel(viewModel);
         }
 
-        private void UpdateCapabilities(MetadataConfigViewModel viewModel)
+        private void UpdateCapabilities(string courseId, MetadataConfigViewModel viewModel)
         {
-            viewModel.CanEditMetadataValues = UserCapabilitiesHelper.Capabilities.Contains(Capability.EditMetadataConfigValues);
-            viewModel.CanEditQuestionCardTemplate = UserCapabilitiesHelper.Capabilities.Contains(Capability.EditQuestionCardTemplate);
-            viewModel.CanEditTitleMetadataFull = UserCapabilitiesHelper.Capabilities.Contains(Capability.EditTitleMetadataFull);
-            viewModel.CanEditTitleMetadataReduced = UserCapabilitiesHelper.Capabilities.Contains(Capability.EditTitleMetadataReduced);
+            var capabilities = UserCapabilitiesHelper.GetCapabilities(courseId).ToList();
+            viewModel.CanEditMetadataValues = capabilities.Contains(Capability.EditMetadataConfigValues);
+            viewModel.CanEditQuestionCardTemplate = capabilities.Contains(Capability.EditQuestionCardTemplate);
+            viewModel.CanEditTitleMetadataFull = capabilities.Contains(Capability.EditTitleMetadataFull);
+            viewModel.CanEditTitleMetadataReduced = capabilities.Contains(Capability.EditTitleMetadataReduced);
             if (viewModel.CanEditTitleMetadataFull)
             {
                 viewModel.CanEditTitleMetadataReduced = true;

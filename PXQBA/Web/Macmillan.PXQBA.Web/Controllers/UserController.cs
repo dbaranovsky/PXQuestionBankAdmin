@@ -94,7 +94,6 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult GetRolesForCourse(string courseId)
         {
-            UpdateCurrentCourse(courseId);
             var roles = Mapper.Map<RoleListViewModel>(userManagementService.GetRolesForCourse(courseId));
             UpdateCapabilities(roles, courseId);
             return JsonCamel(roles);
@@ -102,7 +101,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         private void UpdateCapabilities(RoleListViewModel roles, string courseId)
         {
-            roles.CanDefineNewRole = UserCapabilitiesHelper.Capabilities.Contains(Capability.DefineRole);
+            roles.CanDefineNewRole = UserCapabilitiesHelper.GetCapabilities(courseId).Contains(Capability.DefineRole);
         }
 
         public ActionResult DeleteRole(string courseId, int roleId)
@@ -126,7 +125,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult SaveRole(RoleViewModel role, string courseId)
         {
             userManagementService.UpdateRole(courseId, Mapper.Map<Role>(role));
-            CourseHelper.CurrentCourse = null;
+            CourseHelper.ClearCache();
             return JsonCamel(new { isSuccess = true });
         }
 
@@ -193,7 +192,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult SaveUserRoles(QBAUser user)
         {        
             userManagementService.UpdateUserRoles(user);
-            CourseHelper.CurrentCourse = null;
+            CourseHelper.ClearCache();
             return JsonCamel(new { isSuccess = true });
         }
 

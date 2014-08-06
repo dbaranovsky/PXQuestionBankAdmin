@@ -21,8 +21,9 @@
         });
     };
 
-    self.saveQuestionsForImport = function(questionsId) {
+    self.saveQuestionsForImport = function(courseId, questionsId) {
         var request = {
+            courseId: courseId,
             questionsId: questionsId
         };
         
