@@ -99,7 +99,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                .ForMember(dto => dto.Answer, opt => opt.Condition(cont => cont.SourceValue != null))
                .ForMember(dto => dto.AnswerList, opt => opt.Condition(cont => cont.SourceValue != null))
                .ForMember(dto => dto.Choices, opt => opt.Condition(cont => cont.SourceValue != null))
-               .ForMember(dto => dto.InteractionData, opt => opt.Condition(q => q.CustomUrl == QuestionTypeHelper.GraphType))
+               .ForMember(dto => dto.InteractionData, opt => opt.Condition(q => q.CustomUrl == QuestionTypeHelper.GraphType || q.CustomUrl == QuestionTypeHelper.HTSType))
                .ForMember(dto => dto.InteractionType, opt => opt.Condition(cont => cont.SourceValue != null))
                .ForMember(dto => dto.CustomUrl, opt => opt.Condition(cont => cont.SourceValue != null))
                .ForMember(dto => dto.GeneralFeedback, opt => opt.Condition(cont => cont.SourceValue != null))

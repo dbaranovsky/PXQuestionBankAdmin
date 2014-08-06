@@ -1,0 +1,12 @@
+1. Question title 1 (3.0 points)
+Question wording 1 
+
+a) One 
+*b) Two 
+
+
+2. Algorithmic title (g0,g point)
+question wording 2 
+
+*a) True 
+*b) False 

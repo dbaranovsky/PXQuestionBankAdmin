@@ -1,0 +1,26 @@
+1. Test import from file db essay (1.0 point)
+wording 
+
+Correct Answer:
+ok 
+
+
+2. Test import from file multi responce #1 (1.0 point)
+wording 
+
+a) a 
+*b) b 
+*c) c 
+
+
+3. Test import from file multi responce #2 with feedback (1.0 point)
+wording 
+
+a) a 
+*b) b 
+*c) c 
+d) d 
+ 
+Feedback:
+	a)  feed a 
+	*b)  feed b 
