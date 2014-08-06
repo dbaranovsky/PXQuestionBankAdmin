@@ -66,7 +66,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
             StaticLogger.LogDebug("GetQuestionData start: " + DateTime.Now);
             var currentCourseFilter = request.Filter.SingleOrDefault(x => x.Field == MetadataFieldNames.ProductCourse);
-            ClearParameters(currentCourseFilter, request);
+
             Course currentCourse = courseHelper.GetCourse(currentCourseFilter.Values.First());
             if (!userCapabilitiesHelper.GetCapabilities(currentCourse.ProductCourseId).Contains(Capability.ViewQuestionList))
             {
@@ -213,36 +213,6 @@ namespace Macmillan.PXQBA.Web.Controllers
             }
           notesManagementService.SaveNote(note);
           return JsonCamel(new { isError = false });
-        }
-
-
-        /// <summary>
-        /// Check filtration and reset if title was changed
-        /// </summary>
-        /// <param name="courseFilterDescriptor"></param>
-        /// <param name="request"></param>
-        private void ClearParameters(FilterFieldDescriptor courseFilterDescriptor, QuestionListDataRequest request)
-        {
-            if (!courseHelper.IsResetParameterNeeded(courseFilterDescriptor))
-            {
-                return;
-            }
-
-            var courseFilter = request.Filter.SingleOrDefault(f => f.Field == courseFilterDescriptor.Field);
-            
-            request.Filter = new List<FilterFieldDescriptor>()
-                             {
-                                 courseFilter,
-                                 new FilterFieldDescriptor()
-                                 {
-                                     Field = MetadataFieldNames.ContainsText,
-                                     Values = new List<string>()
-                                 }
-                             };
-
-            request.PageNumber = 1;
-            request.OrderField = null;
-            request.OrderType = SortType.None;
         }
 
 
