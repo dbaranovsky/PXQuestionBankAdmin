@@ -717,7 +717,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
                     }
             };
             businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(deleteCmd);
-            InvalidateQuestionCache(new List<Bfw.Agilix.DataContracts.Question>(){GetAgilixQuestion(repositoryCourseId, questionId)});
+            InvalidateQuestionCache(new List<Bfw.Agilix.DataContracts.Question>() { GetAgilixQuestion(repositoryCourseId, questionId) });
         }
 
         public void DeleteItem(string entityId, string itemId)
@@ -740,7 +740,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         {
             try
             {
-                foreach (var question in questions)
+                foreach (var question in questions.Where(q => q != null))
                 {
                     if (!string.IsNullOrEmpty(courseId))
                     {
