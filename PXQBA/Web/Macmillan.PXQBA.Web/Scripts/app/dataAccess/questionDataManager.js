@@ -95,8 +95,9 @@ var questionDataManager = (function() {
 
     };
 
-    self.createQuestionNote = function(note) {
-          var request = {
+    self.createQuestionNote = function(courseId, note) {
+        var request = {
+            courseId: courseId,
             note: note
         };
         return $.ajax({
@@ -114,8 +115,9 @@ var questionDataManager = (function() {
         });
     };
 
-    self.deleteQuestionNote = function(note) {
-         var request = {
+    self.deleteQuestionNote = function (courseId, note) {
+        var request = {
+            courseId: courseId,
             note: note
         };
          return $.ajax({
@@ -132,8 +134,9 @@ var questionDataManager = (function() {
         });
     };
 
-     self.saveQuestionNote = function(note) {
-              var request = {
+    self.saveQuestionNote = function (courseId, note) {
+        var request = {
+                courseId:courseId,
                 note: note
             };
             return $.ajax({

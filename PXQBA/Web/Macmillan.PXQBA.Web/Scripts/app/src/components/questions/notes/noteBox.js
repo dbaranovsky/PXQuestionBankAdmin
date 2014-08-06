@@ -10,7 +10,7 @@ var NoteBox = React.createClass({
   handleNoteSubmit: function(note) {
     var notes = this.state.data;
     var self = this;
-    questionDataManager.createQuestionNote(note).done(function(data){
+    questionDataManager.createQuestionNote(this.props.currentCourseId, note).done(function(data){
     notes.push(data);
     self.setState({data: notes});
     })
@@ -28,7 +28,7 @@ var NoteBox = React.createClass({
             break;
         }
     }
-    questionDataManager.saveQuestionNote(note);
+    questionDataManager.saveQuestionNote(this.props.currentCourseId, note);
     this.setState({data: notes});
 
   },
@@ -42,7 +42,7 @@ var NoteBox = React.createClass({
             break;
         }
     }
-    questionDataManager.deleteQuestionNote(note);
+    questionDataManager.deleteQuestionNote(this.props.currentCourseId, note);
     this.notesChangedHandler();
     this.setState({data: notes});
 

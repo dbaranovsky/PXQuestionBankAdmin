@@ -28,12 +28,17 @@ namespace Macmillan.PXQBA.Web.Controllers
         private readonly INotesManagementService notesManagementService;
         private readonly IProductCourseManagementService productCourseManagementService;
         private readonly IUserManagementService userManagementService;
+        private readonly UserCapabilitiesHelper userCapabilitiesHelper;
+        private readonly CourseHelper courseHelper;
 
         private readonly int questionPerPage;
 
         public QuestionListController(IQuestionMetadataService questionMetadataService,
                                       IQuestionManagementService questionManagementService,
-                                      INotesManagementService notesManagementService, IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService):base(productCourseManagementService, userManagementService)
+                                      INotesManagementService notesManagementService, IProductCourseManagementService productCourseManagementService, 
+                                      IUserManagementService userManagementService,
+                                      UserCapabilitiesHelper userCapabilitiesHelper,
+                                      CourseHelper courseHelper)
         {
             this.questionManagementService = questionManagementService;
             this.questionPerPage = ConfigurationHelper.GetQuestionPerPage();
@@ -41,7 +46,9 @@ namespace Macmillan.PXQBA.Web.Controllers
             this.notesManagementService = notesManagementService;
             this.productCourseManagementService = productCourseManagementService;
             this.userManagementService = userManagementService;
-            
+            this.userCapabilitiesHelper = userCapabilitiesHelper;
+            this.courseHelper = courseHelper;
+
         }
 
         public ActionResult Index(string titleId , string chapterId)
@@ -60,8 +67,8 @@ namespace Macmillan.PXQBA.Web.Controllers
             StaticLogger.LogDebug("GetQuestionData start: " + DateTime.Now);
             var currentCourseFilter = request.Filter.SingleOrDefault(x => x.Field == MetadataFieldNames.ProductCourse);
             ClearParameters(currentCourseFilter, request);
-            Course currentCourse = CourseHelper.GetCourse(currentCourseFilter.Values.First());
-            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.ViewQuestionList))
+            Course currentCourse = courseHelper.GetCourse(currentCourseFilter.Values.First());
+            if (!userCapabilitiesHelper.GetCapabilities(currentCourse.ProductCourseId).Contains(Capability.ViewQuestionList))
             {
                 return new HttpUnauthorizedResult();
             }
@@ -98,7 +105,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         private void UpdateCapabilities(QuestionListDataResponse response)
         {
-            var userCapabilities = UserCapabilitiesHelper.Capabilities;
+            var userCapabilities = userCapabilitiesHelper.GetCapabilities(response.ProductCourseId).ToList();
             response.CanViewQuestionList = userCapabilities.Contains(Capability.ViewQuestionList);
             response.CanPreviewQuestion = userCapabilities.Contains(Capability.PreviewQuestion);
             response.CanCreateQuestion = userCapabilities.Contains(Capability.CreateQuestion);
@@ -158,11 +165,12 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// <summary>
         /// Save new question note
         /// </summary>
+        /// <param name="courseId"></param>
         /// <param name="note"></param>
         [HttpPost]
-        public ActionResult CreateQuestionNote(Note note)
+        public ActionResult CreateQuestionNote(string courseId, Note note)
         {
-            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.AddNoteToQuestion))
+            if (!userCapabilitiesHelper.GetCapabilities(courseId).Contains(Capability.AddNoteToQuestion))
             {
                 return new HttpUnauthorizedResult();
             }
@@ -178,11 +186,12 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// <summary>
         /// Delete question note
         /// </summary>
+        /// <param name="courseId"></param>
         /// <param name="note"></param>
         [HttpPost]
-        public ActionResult DeleteQuestionNote(Note note)
+        public ActionResult DeleteQuestionNote(string courseId, Note note)
         {
-            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.RemoveNoteFromQuestion))
+            if (!userCapabilitiesHelper.GetCapabilities(courseId).Contains(Capability.RemoveNoteFromQuestion))
             {
                 return new HttpUnauthorizedResult();
             }
@@ -193,11 +202,12 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// <summary>
         /// Save new question note
         /// </summary>
+        /// <param name="courseId"></param>
         /// <param name="note"></param>
         [HttpPost]
-        public ActionResult SaveQuestionNote(Note note)
+        public ActionResult SaveQuestionNote(string courseId, Note note)
         {
-            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.AddNoteToQuestion))
+            if (!userCapabilitiesHelper.GetCapabilities(courseId).Contains(Capability.AddNoteToQuestion))
             {
                 return new HttpUnauthorizedResult();
             }
@@ -213,7 +223,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// <param name="request"></param>
         private void ClearParameters(FilterFieldDescriptor courseFilterDescriptor, QuestionListDataRequest request)
         {
-            if (!CourseHelper.IsResetParameterNeeded(courseFilterDescriptor))
+            if (!courseHelper.IsResetParameterNeeded(courseFilterDescriptor))
             {
                 return;
             }
@@ -244,9 +254,9 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult GetMetadataForCourse(string courseId)
         {
             Course course = null;
-            if (CourseHelper.GetChachedCourseId() == courseId)
+            if (courseHelper.GetChachedCourseId() == courseId)
             {
-                course = CourseHelper.GetCourse(courseId);
+                course = courseHelper.GetCourse(courseId);
             }
             else
             {

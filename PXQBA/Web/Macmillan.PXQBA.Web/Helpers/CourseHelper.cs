@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Web;
+using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 
 namespace Macmillan.PXQBA.Web.Helpers
@@ -8,19 +9,31 @@ namespace Macmillan.PXQBA.Web.Helpers
     public class CourseHelper
     {
         private const string CourseParamName = "current_course";
+        private readonly IProductCourseManagementService productCourseManagementService;
 
-        public static Course CurrentCourse
+        public CourseHelper(IProductCourseManagementService productCourseManagementService)
         {
-            get { return HttpContext.Current.Session[CourseParamName] as Course; }
-            set { HttpContext.Current.Session[CourseParamName] = value; }
+            this.productCourseManagementService = productCourseManagementService;
         }
 
-        public static Course GetCourse(string courseId)
+        public Course GetCourse(string courseId)
         {
-            return HttpContext.Current.Session[CourseParamName] as Course;
+            var course = HttpContext.Current.Session[CourseParamName] as Course;
+            if (course != null)
+            {
+                if (course.ProductCourseId == courseId)
+                {
+                    return course;
+                }
+            }
+
+            course = productCourseManagementService.GetProductCourse(courseId, true);
+            HttpContext.Current.Session[CourseParamName] = course;
+
+            return course;
         }
 
-        public static string GetChachedCourseId()
+        public string GetChachedCourseId()
         {
             var course = HttpContext.Current.Session[CourseParamName] as Course;
             if (course == null)
@@ -31,35 +44,20 @@ namespace Macmillan.PXQBA.Web.Helpers
             return course.ProductCourseId;
         }
 
-        public static void ClearCache()
+        public void ClearCache()
         {
             HttpContext.Current.Session[CourseParamName] = null;
         }
-
-        public static bool NeedGetCourse(string currentCourseId)
+        
+        public bool IsResetParameterNeeded(FilterFieldDescriptor courseFilterDescriptor)
         {
-            var currentCourse = CurrentCourse;
-            if (currentCourse == null)
-            {
-                return true;
-            }
-            if (currentCourse.ProductCourseId != currentCourseId)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        public static bool IsResetParameterNeeded(FilterFieldDescriptor courseFilterDescriptor)
-        {
-            var currentCourse = CurrentCourse;
-            if (currentCourse == null)
+            var courseId = GetChachedCourseId();
+            if (String.IsNullOrEmpty(courseId))
             {
                 return false;
             }
 
-            return courseFilterDescriptor.Values.First() != currentCourse.ProductCourseId;
+            return courseFilterDescriptor.Values.First() != courseId;
         }
     }
 }

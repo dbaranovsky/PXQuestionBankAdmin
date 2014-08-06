@@ -24,7 +24,6 @@ namespace Macmillan.PXQBA.Web.Controllers
         private readonly IProductCourseManagementService productCourseManagementService;
 
         public ImportController(IQuestionManagementService questionManagementService, IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService)
-            : base(productCourseManagementService, userManagementService)
         {
             this.questionManagementService = questionManagementService;
             this.userManagementService = userManagementService;

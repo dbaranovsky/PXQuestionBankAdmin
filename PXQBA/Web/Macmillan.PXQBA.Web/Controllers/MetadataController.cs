@@ -18,12 +18,15 @@ namespace Macmillan.PXQBA.Web.Controllers
         private readonly IProductCourseManagementService productCourseManagementService;
 
         private readonly IUserManagementService userManagementService;
+        private readonly UserCapabilitiesHelper userCapabilitiesHelper;
+        private readonly CourseHelper courseHelper;
 
-        public MetadataController(IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService)
-            :base(productCourseManagementService, userManagementService)
+        public MetadataController(IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService, UserCapabilitiesHelper userCapabilitiesHelper, CourseHelper courseHelper)
         {
             this.productCourseManagementService = productCourseManagementService;
             this.userManagementService = userManagementService;
+            this.userCapabilitiesHelper = userCapabilitiesHelper;
+            this.courseHelper = courseHelper;
         }
 
         public ActionResult Index(string courseId)
@@ -59,7 +62,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         private void UpdateCapabilities(string courseId, MetadataConfigViewModel viewModel)
         {
-            var capabilities = UserCapabilitiesHelper.GetCapabilities(courseId).ToList();
+            var capabilities = userCapabilitiesHelper.GetCapabilities(courseId).ToList();
             viewModel.CanEditMetadataValues = capabilities.Contains(Capability.EditMetadataConfigValues);
             viewModel.CanEditQuestionCardTemplate = capabilities.Contains(Capability.EditQuestionCardTemplate);
             viewModel.CanEditTitleMetadataFull = capabilities.Contains(Capability.EditTitleMetadataFull);
@@ -83,13 +86,13 @@ namespace Macmillan.PXQBA.Web.Controllers
             }
             productCourseManagementService.UpdateMetadataConfig(course);
 
-            CourseHelper.ClearCache();
+            courseHelper.ClearCache();
             return JsonCamel(new {IsError = false});
         }
 
         private bool IsAuthorizedToSave(Course newCourse, Course oldCourse)
         {
-            var capabilities = UserCapabilitiesHelper.GetCapabilities(oldCourse.ProductCourseId).ToList();
+            var capabilities = userCapabilitiesHelper.GetCapabilities(oldCourse.ProductCourseId).ToList();
             if ((!capabilities.Contains(Capability.EditTitleMetadataFull)) &&
                 ((!capabilities.Contains(Capability.EditTitleMetadataReduced))))
              {

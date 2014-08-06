@@ -18,16 +18,22 @@ namespace Macmillan.PXQBA.Web.Controllers
     public class UserController : MasterController
     {
         private readonly IUserManagementService userManagementService;
-
         private readonly IProductCourseManagementService productCourseManagementService;
-
+        private readonly UserCapabilitiesHelper userCapabilitiesHelper;
+        private readonly CourseHelper courseHelper;
+        
         private readonly int usersPerPage;
 
-        public UserController(IUserManagementService userManagementService, IProductCourseManagementService productCourseManagementService):base(productCourseManagementService, userManagementService)
+        public UserController(IUserManagementService userManagementService, 
+                              IProductCourseManagementService productCourseManagementService,
+                              UserCapabilitiesHelper userCapabilitiesHelper,
+                              CourseHelper courseHelper)
         {
             this.userManagementService = userManagementService;
             usersPerPage = ConfigurationHelper.GetUsersPerPage();
             this.productCourseManagementService = productCourseManagementService;
+            this.userCapabilitiesHelper = userCapabilitiesHelper;
+            this.courseHelper = courseHelper;
         }
 
         public ActionResult Index()
@@ -101,7 +107,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         private void UpdateCapabilities(RoleListViewModel roles, string courseId)
         {
-            roles.CanDefineNewRole = UserCapabilitiesHelper.GetCapabilities(courseId).Contains(Capability.DefineRole);
+            roles.CanDefineNewRole = userCapabilitiesHelper.GetCapabilities(courseId).Contains(Capability.DefineRole);
         }
 
         public ActionResult DeleteRole(string courseId, int roleId)
@@ -112,7 +118,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         public ActionResult GetRoleCapabilities(int? roleId, string courseId)
         {
-            if (!UserCapabilitiesHelper.Capabilities.Contains(Capability.DefineRole) && (!roleId.HasValue || roleId.Value <= 0))
+            if (!userCapabilitiesHelper.GetCapabilities(courseId).Contains(Capability.DefineRole) && (!roleId.HasValue || roleId.Value <= 0))
             {
                 return new HttpUnauthorizedResult();
             }
@@ -125,7 +131,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult SaveRole(RoleViewModel role, string courseId)
         {
             userManagementService.UpdateRole(courseId, Mapper.Map<Role>(role));
-            CourseHelper.ClearCache();
+            courseHelper.ClearCache();
             return JsonCamel(new { isSuccess = true });
         }
 
@@ -192,7 +198,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult SaveUserRoles(QBAUser user)
         {        
             userManagementService.UpdateUserRoles(user);
-            CourseHelper.ClearCache();
+            courseHelper.ClearCache();
             return JsonCamel(new { isSuccess = true });
         }
 

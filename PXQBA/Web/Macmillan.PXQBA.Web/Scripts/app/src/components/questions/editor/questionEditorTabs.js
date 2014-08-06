@@ -479,7 +479,7 @@ var QuestionEditorTabs = React.createClass({
           return(<div className="waiting"></div>);
       }
 
-      return(<NoteBox canDelete={this.props.question.canRemoveNotesQuestion} canAddNote={this.props.question.canAddNotesQuestion} notesChangedHandler={this.notesChangedHandler}/>);
+      return(<NoteBox currentCourseId={this.props.currentCourseId} canDelete={this.props.question.canRemoveNotesQuestion} canAddNote={this.props.question.canAddNotesQuestion} notesChangedHandler={this.notesChangedHandler}/>);
     },
 
     notesChangedHandler: function(){
