@@ -360,9 +360,10 @@ var questionDataManager = (function() {
        
     };
 
-      self.getQuestionVersions = function (courseId) {
+      self.getQuestionVersions = function (courseId, questionId) {
         var request = {
             courseId: courseId,
+            questionId: questionId
         };
 
         return $.ajax({
@@ -421,9 +422,10 @@ var questionDataManager = (function() {
         });
     };
 
-   self.getUpdatedGraphEditor = function (interactionData) {
+   self.getUpdatedGraphEditor = function (questionId, interactionData) {
 
        var request = {
+           questionId: questionId,
             interactionData: interactionData
         };
 
@@ -443,10 +445,11 @@ var questionDataManager = (function() {
 
 
 
-   self.restoreVersion = function (courseId, version) {
+   self.restoreVersion = function (courseId, questionId, version) {
 
        var request = {
            courseId: courseId,
+           questionId: questionId,
            version: version.version
         };
 
@@ -572,9 +575,10 @@ var questionDataManager = (function() {
     };
 
     /* Versions and draft */
-    self.getVersionPreviewLink = function(courseId,version){
+    self.getVersionPreviewLink = function(courseId, questionId ,version){
         var request = {
             courseId: courseId,
+            questionId: questionId,
             version: version,
         };
          return $.ajax({
@@ -637,9 +641,10 @@ var questionDataManager = (function() {
 
     };
 
-    self.clearResources = function (courseId) {
+    self.clearResources = function (courseId, questionId) {
         var request = {
             courseId: courseId,
+            questionId: questionId
         };
         return $.ajax({
             url: window.actions.questionList.clearQuestionResourcesUrl,

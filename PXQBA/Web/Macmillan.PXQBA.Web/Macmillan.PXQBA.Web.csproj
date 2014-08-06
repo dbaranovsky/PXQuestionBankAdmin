@@ -290,7 +290,6 @@
     <Content Include="Scripts\app\components\questions\editor\questionMetadataEditor.js" />
     <Content Include="Scripts\app\components\questions\editor\shareMetadataEditorRow.js" />
     <Content Include="Scripts\app\components\questions\editor\versionHistory.js" />
-    <Content Include="Scripts\app\components\questions\editQuestionNotesDialog.js" />
     <Content Include="Scripts\app\components\questions\filter\questionFilter.js" />
     <Content Include="Scripts\app\components\questions\filter\questionFilterItemBase.js" />
     <Content Include="Scripts\app\components\questions\filter\questionFilterItemMultiSelect.js" />

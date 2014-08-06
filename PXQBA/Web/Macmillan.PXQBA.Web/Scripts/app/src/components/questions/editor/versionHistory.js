@@ -15,7 +15,7 @@ var VersionHistory = React.createClass({
 
     updateQuestionVersion: function() {
         this.setState({loading: true});
-        questionDataManager.getQuestionVersions(this.props.currentCourseId).done(this.setVersions);
+        questionDataManager.getQuestionVersions(this.props.currentCourseId, this.props.question.realQuestionId).done(this.setVersions);
     },
 
     setVersions: function(data){
@@ -141,7 +141,8 @@ var VersionHistoryRow = React.createClass({
 
     restoreVersion: function(){
         this.setState({loading: true, restoring: true});
-        questionDataManager.restoreVersion(this.props.currentCourseId, this.props.version).done(this.reloadEditor).always(this.stopLoading);
+        debugger;
+        questionDataManager.restoreVersion(this.props.currentCourseId, this.props.version.id, this.props.version).done(this.reloadEditor).always(this.stopLoading);
     },
 
     reloadEditor: function(){
@@ -159,7 +160,7 @@ var VersionHistoryRow = React.createClass({
 
     tryQuestion: function(){
         this.setState({loading: true});
-        questionDataManager.getVersionPreviewLink(this.props.currentCourseId, this.props.version.version).done(this.startQuiz).always(this.stopLoading);
+        questionDataManager.getVersionPreviewLink(this.props.currentCourseId, this.props.version.id, this.props.version.version).done(this.startQuiz).always(this.stopLoading);
     },
 
     startQuiz: function(data){

@@ -96,7 +96,7 @@ var QuestionListPage = React.createClass({
     },
 
     publishDraftHandler: function(questionId) {
-      
+
          questionDataManager.publishDraftToOriginal(this.props.response.productCourseId, questionId);
     },
        

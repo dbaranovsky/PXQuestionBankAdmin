@@ -16,6 +16,11 @@ namespace Macmillan.PXQBA.Web.ViewModels
         /// </summary>
         public string Id { get; set; }
 
+        /// <summary>
+        /// Question id from dlap
+        /// </summary>
+        public string RealQuestionId { get; set; }
+
         private QuestionMetadataSection defaultSection;
 
         /// <summary>

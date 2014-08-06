@@ -10,6 +10,7 @@ var NoteBox = React.createClass({
   handleNoteSubmit: function(note) {
     var notes = this.state.data;
     var self = this;
+    note.questionId = this.props.questionId;
     questionDataManager.createQuestionNote(this.props.currentCourseId, note).done(function(data){
     notes.push(data);
     self.setState({data: notes});
@@ -52,7 +53,7 @@ var NoteBox = React.createClass({
     return {data: [], notesChanged: false};
   },
   componentWillMount: function() {
-    var response = questionDataManager.getQuestionNotes(this.props.questionId == undefined? null : this.props.questionId);
+    var response = questionDataManager.getQuestionNotes(this.props.questionId);
     response.done(this.loadNotes);
   },
 

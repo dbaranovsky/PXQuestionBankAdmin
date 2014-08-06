@@ -331,7 +331,7 @@ var QuestionEditorTabs = React.createClass({
 
          if (this.props.question.status == window.enums.statusesId.availibleToInstructor){
            if (confirm("Do you want to create a draft question?")){
-             this.props.handlers.createDraftHandler(null, null);
+             this.props.handlers.createDraftHandler(this.props.question.realQuestionId, null);
            }
            return;
         }
@@ -392,7 +392,7 @@ var QuestionEditorTabs = React.createClass({
       var self = this;
        $(self.getDOMNode()).find("#quizeditorcomponent").empty();
        this.setState({graphLoading: true});
-        questionDataManager.getUpdatedGraphEditor(interactionData).done(function(response){
+        questionDataManager.getUpdatedGraphEditor(this.props.question.realQuestionId, interactionData).done(function(response){
                    $(self.getDOMNode()).find("#quizeditorcomponent").html(response.editorHtml);
                     self.setState({graphLoading: false});
                }).error(function(er){
@@ -479,7 +479,7 @@ var QuestionEditorTabs = React.createClass({
           return(<div className="waiting"></div>);
       }
 
-      return(<NoteBox currentCourseId={this.props.currentCourseId} canDelete={this.props.question.canRemoveNotesQuestion} canAddNote={this.props.question.canAddNotesQuestion} notesChangedHandler={this.notesChangedHandler}/>);
+      return(<NoteBox questionId={this.props.question.realQuestionId} currentCourseId={this.props.currentCourseId}  canDelete={this.props.question.canRemoveNotesQuestion} canAddNote={this.props.question.canAddNotesQuestion} notesChangedHandler={this.notesChangedHandler}/>);
     },
 
     notesChangedHandler: function(){

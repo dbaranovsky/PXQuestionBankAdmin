@@ -130,7 +130,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
             try
             {
-                questionManagementService.UpdateQuestion(courseHelper.GetCourse(courseId), QuestionHelper.QuestionIdToEdit, question);
+                questionManagementService.UpdateQuestion(courseHelper.GetCourse(courseId), questionViewModel.RealQuestionId, question);
             }
             catch (Exception ex)
             {
@@ -199,9 +199,9 @@ namespace Macmillan.PXQBA.Web.Controllers
 
         private QuestionViewModel CreateQuestionViewModelForEditing(string courseId, Question question)
         {
-            QuestionHelper.QuestionIdToEdit = question.Id;
             var tempQuestion = questionManagementService.CreateTemporaryQuestion(courseHelper.GetCourse(courseId), question.Id);
             var questionViewModel = Mapper.Map<Question, QuestionViewModel>(tempQuestion, opt => opt.Items.Add(courseId, courseHelper.GetCourse(courseId)));
+            questionViewModel.RealQuestionId = question.Id;
             questionViewModel.ActionPlayerUrl = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), questionViewModel.EntityId, questionViewModel.QuizId);
 
             questionViewModel.QuestionType = question.CustomUrl;
@@ -293,24 +293,24 @@ namespace Macmillan.PXQBA.Web.Controllers
         /// Returns current question's vesrion history 
         /// </summary>
         /// <returns></returns>
-        public ActionResult GetQuestionVersions(string courseId)
+        public ActionResult GetQuestionVersions(string courseId, string questionId)
         {
             if (!userCapabilitiesHelper.GetCapabilities(courseId).Contains(Capability.ViewVersionHistory))
             {
                 return new HttpUnauthorizedResult();
             }
-            var versionHistory = Mapper.Map<QuestionHistoryViewModel>(questionManagementService.GetVersionHistory(courseHelper.GetCourse(courseId), QuestionHelper.QuestionIdToEdit), opt => opt.Items.Add(courseId, courseId));
+            var versionHistory = Mapper.Map<QuestionHistoryViewModel>(questionManagementService.GetVersionHistory(courseHelper.GetCourse(courseId), questionId), opt => opt.Items.Add(courseId, courseId));
             return JsonCamel(versionHistory);
         }
 
 
-        public ActionResult GetVersionPreviewLink(string courseId, string version)
+        public ActionResult GetVersionPreviewLink(string courseId, string questionId, string version)
         {
             if (!userCapabilitiesHelper.GetCapabilities(courseId).Contains(Capability.TestSpecificVersion))
             {
                 return new HttpUnauthorizedResult();
             }
-            var tempVersion = questionManagementService.GetTemporaryQuestionVersion(courseHelper.GetCourse(courseId), QuestionHelper.QuestionIdToEdit, version);
+            var tempVersion = questionManagementService.GetTemporaryQuestionVersion(courseHelper.GetCourse(courseId), questionId, version);
             return JsonCamel(new { Url = String.Format(ConfigurationHelper.GetActionPlayerUrlTemplate(), tempVersion.EntityId, tempVersion.QuizId) });
         }
 
@@ -334,7 +334,7 @@ namespace Macmillan.PXQBA.Web.Controllers
 
             try
             {
-                question = questionManagementService.UpdateQuestion(courseHelper.GetCourse(courseId), QuestionHelper.QuestionIdToEdit, question);
+                question = questionManagementService.UpdateQuestion(courseHelper.GetCourse(courseId), questionViewModel.RealQuestionId, question);
                 success = questionManagementService.PublishDraftToOriginal(courseHelper.GetCourse(courseId), question.Id);
             }
             catch (Exception ex)
@@ -355,29 +355,30 @@ namespace Macmillan.PXQBA.Web.Controllers
             {
                 return new HttpUnauthorizedResult();
             }
-            var question = questionManagementService.CreateDraft(courseHelper.GetCourse(courseId), string.IsNullOrEmpty(questionId) ? QuestionHelper.QuestionIdToEdit : questionId);
+            var question = questionManagementService.CreateDraft(courseHelper.GetCourse(courseId), questionId);
             return JsonCamel(CreateQuestionViewModelForEditing(courseId, question));
 
         }
 
-        public ActionResult RestoreVersion(string courseId, string version)
+        public ActionResult RestoreVersion(string courseId, string questionId, string version)
         {
             if (!userCapabilitiesHelper.GetCapabilities(courseId).Contains(Capability.RestoreOldVersion))
             {
                 return new HttpUnauthorizedResult();
             }
-            var questionVersion = questionManagementService.RestoreQuestionVersion(courseHelper.GetCourse(courseId), QuestionHelper.QuestionIdToEdit, version);
+            var questionVersion = questionManagementService
+                .RestoreQuestionVersion(courseHelper.GetCourse(courseId), questionId, version);
             return JsonCamel(Mapper.Map<QuestionVersionViewModel>(questionVersion));
         }
 
-        public ActionResult GetUpdatedGraphEditor(string interactionData)
+        public ActionResult GetUpdatedGraphEditor(string questionId, string interactionData)
         {
-             return  JsonCamel(new { EditorHtml = QuestionPreviewHelper.GetGraphEditor(interactionData, QuestionHelper.QuestionIdToEdit, QuestionTypeHelper.GraphType)});
+            return JsonCamel(new { EditorHtml = QuestionPreviewHelper.GetGraphEditor(interactionData, questionId, QuestionTypeHelper.GraphType) });
         }
 
-        public ActionResult ClearQuestionResources(string courseId)
+        public ActionResult ClearQuestionResources(string courseId, string questionId)
         {
-            questionManagementService.RemoveRelatedQuestionTempResources(QuestionHelper.QuestionIdToEdit, courseHelper.GetCourse(courseId));
+            questionManagementService.RemoveRelatedQuestionTempResources(questionId, courseHelper.GetCourse(courseId));
              return JsonCamel(new { isError = false });
         }
 	}
