@@ -112,6 +112,10 @@
       <Project>{800708c5-6692-4c91-be89-729a017b5027}</Project>
       <Name>Macmillan.PXQBA.Business.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.QuestionParserModule\Macmillan.PXQBA.Business.QuestionParserModule.csproj">
+      <Project>{0F4B287E-C927-4AC5-BDD2-9FBAC3F36624}</Project>
+      <Name>Macmillan.PXQBA.Business.QuestionParserModule</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Services\Macmillan.PXQBA.Business.Services.csproj">
       <Project>{cf2b92a9-6e1d-4472-ad9c-aed6dc86a62c}</Project>
       <Name>Macmillan.PXQBA.Business.Services</Name>
@@ -151,8 +155,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <Content Include="FilesForValidation\qti_with_images_5_question.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FilesForValidation\qti_one_question_with_image.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
