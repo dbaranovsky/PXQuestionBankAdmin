@@ -134,27 +134,30 @@ namespace Macmillan.PXQBA.Web.Controllers
         [HttpPost]
         public ActionResult SaveQuestionsForImport(string courseId, string[] questionsId)
         {
-            ImportQuestionsHelper.QuestionsForImport = new QuestionForImportContainer()
+            var container = new QuestionForImportContainer()
                                                        {
                                                            CourseId = courseId,
                                                            QuestionsId = questionsId
                                                        };
-            return JsonCamel(new { IsError = false });
+            string key = ImportQuestionsHelper.SaveImportContainer(container);
+
+            return JsonCamel(new { key=key, IsError = false });
         }
 
-        public ActionResult FromTitleStep3()
+        public ActionResult FromTitleStep3(string key)
         {
             var viewModel = new ImportFromTitleStep3ViewModel()
                             {
-                                CourseId = ImportQuestionsHelper.QuestionsForImport.CourseId
+                                CourseId = ImportQuestionsHelper.GetImportContainer(key).CourseId,
+                                Key = key
                             };
             return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult ImportQuestionsTo(string toCourseId)
+        public ActionResult ImportQuestionsTo(string toCourseId, string key)
         {
-            var questionsForImport = ImportQuestionsHelper.QuestionsForImport;
+            var questionsForImport = ImportQuestionsHelper.GetImportContainer(key);
             var capabilities = userManagementService.GetUserCapabilities(toCourseId);
 
             if (!capabilities.Contains(Capability.ImportQuestionFromTitle))

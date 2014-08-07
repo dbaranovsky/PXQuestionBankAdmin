@@ -1,24 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Mvc.Html;
-using AutoMapper;
-using Bfw.Common;
-using Macmillan.PXQBA.Business.Commands.Contracts;
+﻿using AutoMapper;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
-using Macmillan.PXQBA.Business.Services;
 using Macmillan.PXQBA.Common.Helpers;
-using Macmillan.PXQBA.Common.Logging;
 using Macmillan.PXQBA.Web.Helpers;
 using Macmillan.PXQBA.Web.ViewModels;
 using Macmillan.PXQBA.Web.ViewModels.Versions;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
 using EnumHelper = Macmillan.PXQBA.Common.Helpers.EnumHelper;
 
 namespace Macmillan.PXQBA.Web.Controllers
@@ -27,19 +18,15 @@ namespace Macmillan.PXQBA.Web.Controllers
     {
         private readonly IQuestionManagementService questionManagementService;
         private readonly IQuestionMetadataService questionMetadataService;
-        private readonly IProductCourseManagementService productCourseManagementService;
         private readonly UserCapabilitiesHelper userCapabilitiesHelper;
         private readonly CourseHelper courseHelper;
-        private readonly ITemporaryQuestionOperation temporaryQuestionOperation;
 
-        public QuestionController(IQuestionManagementService questionManagementService, IQuestionMetadataService questionMetadataService, IProductCourseManagementService productCourseManagementService, IUserManagementService userManagementService, UserCapabilitiesHelper userCapabilitiesHelper, CourseHelper courseHelper, ITemporaryQuestionOperation temporaryQuestionOperation)
+        public QuestionController(IQuestionManagementService questionManagementService, IQuestionMetadataService questionMetadataService,  UserCapabilitiesHelper userCapabilitiesHelper, CourseHelper courseHelper)
         {
             this.questionManagementService = questionManagementService;
             this.questionMetadataService = questionMetadataService;
-            this.productCourseManagementService = productCourseManagementService;
             this.userCapabilitiesHelper = userCapabilitiesHelper;
             this.courseHelper = courseHelper;
-            this.temporaryQuestionOperation = temporaryQuestionOperation;
         }
 
         [HttpPost]
@@ -386,7 +373,8 @@ namespace Macmillan.PXQBA.Web.Controllers
                 questionManagementService.RemoveRelatedQuestionTempResources(questionId, courseHelper.GetCourse(courseId));
             }
 
-            temporaryQuestionOperation.DeleteTemporaryQuestionWithQuiz(questionId);
+            questionManagementService.DeleteTemporaryQuestionWithQuiz(questionId);
+
             return JsonCamel(new { isError = false });
         }
 	}

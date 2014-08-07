@@ -30,7 +30,8 @@
         asyncManager.page = React.renderComponent(
             ImportFromTitleStep3Root({
                 response: response,
-                currentCourseId: '@Model.CourseId'
+                currentCourseId: '@Model.CourseId',
+                key: '@Model.Key'
             }, " "),
             titleContainer);
     })

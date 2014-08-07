@@ -41,9 +41,10 @@
         });
     };
 
-    self.importQuestionsTo = function (courseId) {
+    self.importQuestionsTo = function (courseId, key) {
         var request = {
-            toCourseId: courseId
+            toCourseId: courseId,
+            key: key
         };
 
         return $.ajax({

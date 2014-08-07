@@ -110,11 +110,11 @@
         actions.importActions = {            
             importFileUrl: '/Import/ImportFromFile/',
             formTitleStep1Url: '@Url.Action("FormTitleStep1", "Import")',
-            fromTitleStep3Url: '@Url.Action("FromTitleStep3", "Import")',
             importQuestionsToUrl: '@Url.Action("ImportQuestionsTo", "Import")',
             saveQuestionsForImportUrl: '@Url.Action("SaveQuestionsForImport", "Import")',
 
-            importFromTitleStep2Tamplate: '@Html.Raw(@Url.Action("FromTitleStep2", "Import", new { courseId = "__titleId__" }))'
+            importFromTitleStep2Tamplate: '@Html.Raw(@Url.Action("FromTitleStep2", "Import", new { courseId = "__titleId__" }))',
+            fromTitleStep3Tamplate: '@Html.Raw(@Url.Action("FromTitleStep3", "Import", new { key = "__key__" }))'
         };
         
         actions.importActions.buildImportFromTitleStep2 = function (titleId) {
@@ -123,6 +123,14 @@
             }
 
             return actions.importActions.importFromTitleStep2Tamplate.replace('__titleId__', titleId);
+        };
+
+        actions.importActions.buildfromTitleStep3 = function (key) {
+            if (key == null) {
+                key = '';
+            }
+
+            return actions.importActions.fromTitleStep3Tamplate.replace('__key__', key);
         };
 
         var enums = {};

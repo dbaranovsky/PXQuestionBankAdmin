@@ -200,6 +200,13 @@ namespace Macmillan.PXQBA.Business.Contracts
         /// <param name="fileId">File id</param>
         /// <returns>Parsed file</returns>
         ParsedFile GetValidatedFile(int fileId);
+
+        /// <summary>
+        /// Deletes temporary question with quiz it is located in
+        /// </summary>
+        /// <param name="questionId">Original question id to delete temp question for</param>
+        void DeleteTemporaryQuestionWithQuiz(string questionId);
+
     }
 
 }

@@ -1,16 +1,23 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using Macmillan.PXQBA.Web.ViewModels.Import;
 
 namespace Macmillan.PXQBA.Web.Helpers
 {
     public static class ImportQuestionsHelper
     {
-        private const string QuestionsForImportParamName = "questions_for_import";
+        private const string QuestionsForImportParamName = "questions_for_import_";
 
-        public static QuestionForImportContainer QuestionsForImport
+        public static string SaveImportContainer(QuestionForImportContainer contaner)
         {
-            get { return HttpContext.Current.Session[QuestionsForImportParamName] as QuestionForImportContainer; }
-            set { HttpContext.Current.Session[QuestionsForImportParamName] = value; }
+            string key = Guid.NewGuid().ToString().ToUpper();
+            HttpContext.Current.Session[QuestionsForImportParamName + key] = contaner;
+            return key;
+        }
+
+        public static QuestionForImportContainer GetImportContainer(string key)
+        {
+            return HttpContext.Current.Session[QuestionsForImportParamName+key] as QuestionForImportContainer;
         }
     }
 }

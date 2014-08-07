@@ -591,6 +591,11 @@ namespace Macmillan.PXQBA.Business.Services
             return parsedFileOperation.GetParsedFile(fileId);
         }
 
+        public void DeleteTemporaryQuestionWithQuiz(string questionId)
+        {
+            temporaryQuestionOperation.DeleteTemporaryQuestionWithQuiz(questionId);
+        }
+
         private void UpdateProductCourseSections(IEnumerable<Question> questions, Course course)
         {
             UpdateCourseKeywordList(course);

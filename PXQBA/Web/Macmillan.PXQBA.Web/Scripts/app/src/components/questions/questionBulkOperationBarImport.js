@@ -19,7 +19,9 @@ var QuestionBulkOperationBarImport = React.createClass({
     },
 
     saveQuestionsForImportDoneHandler: function (response) {
-       window.location = window.actions.importActions.fromTitleStep3Url;
+      debugger;
+      var key = response.key;
+       window.location = window.actions.importActions.buildfromTitleStep3(key);
     },
 
     render: function() {

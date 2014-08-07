@@ -9,5 +9,11 @@
         /// Course id to import to
         /// </summary>
         public string CourseId { get; set; }
+
+
+        /// <summary>
+        /// Key for getting questions to import from the session
+        /// </summary>
+        public string Key { get; set; }
     }
 }
