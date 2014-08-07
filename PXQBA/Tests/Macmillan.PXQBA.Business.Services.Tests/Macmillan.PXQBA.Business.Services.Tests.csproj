@@ -93,6 +93,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionManagementServiceTests.cs" />
     <Compile Include="QuestionMetadataServiceTests.cs" />
+    <Compile Include="UserManagementServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Commands\Macmillan.PXQBA.Business.Commands.csproj">
