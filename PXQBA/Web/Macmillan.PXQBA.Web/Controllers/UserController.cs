@@ -113,6 +113,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         public ActionResult DeleteRole(string courseId, int roleId)
         {
             userManagementService.DeleteRole(roleId);
+            userCapabilitiesHelper.ClearCache();
             return JsonCamel(true);
         }
 
@@ -132,6 +133,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         {
             userManagementService.UpdateRole(courseId, Mapper.Map<Role>(role));
             courseHelper.ClearCache();
+            userCapabilitiesHelper.ClearCache();
             return JsonCamel(new { isSuccess = true });
         }
 
@@ -199,6 +201,7 @@ namespace Macmillan.PXQBA.Web.Controllers
         {        
             userManagementService.UpdateUserRoles(user);
             courseHelper.ClearCache();
+            userCapabilitiesHelper.ClearCache();
             return JsonCamel(new { isSuccess = true });
         }
 

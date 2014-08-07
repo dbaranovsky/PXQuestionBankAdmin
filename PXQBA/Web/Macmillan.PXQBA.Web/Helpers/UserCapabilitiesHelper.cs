@@ -36,7 +36,13 @@ namespace Macmillan.PXQBA.Web.Helpers
 
             return container.Capabilities;
         }
+
+        public void ClearCache()
+        {
+            HttpContext.Current.Session[CapabilitiesParamName] = null;
+        }
     }
+
   
     class UserCapabilitiesHelperSessionContainer
     {
