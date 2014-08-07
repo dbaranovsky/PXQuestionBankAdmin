@@ -24,7 +24,7 @@ var ImportFromTitleStep3Root = React.createClass({
     			loading: true,
     			titleIdImportedTo: titleId
     		});
-		importDataManager.importQuestionsTo(titleId).done(this.importQuestionsToDoneHandler);
+		importDataManager.importQuestionsTo(titleId, this.props.key).done(this.importQuestionsToDoneHandler);
 	},
 
 	importQuestionsToDoneHandler: function(response) {
