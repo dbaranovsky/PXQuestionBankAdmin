@@ -23,11 +23,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
 
         public RoleOperation(IDatabaseManager databaseManager, IUserOperation userOperation, IProductCourseOperation productCourseOperation, IContext businessContext)
         {
-
-#if DEBUG
-            databaseManager = new DatabaseManager(@"TestPXData");
-#endif
-
             this.databaseManager = databaseManager;
             this.userOperation = userOperation;
             this.productCourseOperation = productCourseOperation;
