@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Bfw.Common.Database;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Commands.Services.SQLOperations;
+using Macmillan.PXQBA.Business.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 
@@ -129,6 +130,139 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
             Assert.IsTrue(user.ProductCourses[0].AvailableRoles[0].Name == "Role" + index);
             Assert.IsTrue(user.ProductCourses[0].CurrentRole.Name == "Role" + index);
         }
+
+
+        [TestMethod]
+        public void GetRoleWithCapabilities_RoleId_SqlInvokedWithRoleId()
+        {
+            const int roleId = 42;
+            bool invokedWithRoleId = false;
+            
+            databaseManager.When(
+                dm =>
+                    dm.Query(Arg.Is<DbCommand>(c => c.CommandText == "dbo.GetQBARoleCapabilities" &&
+                                                        c.Parameters[0].ParameterName == "@roleId" &&
+                                                        (int)c.Parameters[0].Value == roleId)))
+                        .Do(d=> { invokedWithRoleId = true; });
+
+            roleOperation.GetRoleWithCapabilities(roleId);
+
+            Assert.IsTrue(invokedWithRoleId);
+        }
+
+
+        [TestMethod]
+        public void GetRoleWithCapabilities_RoleId_ReturnCorrectRole()
+        {
+            const int roleId = 42;
+
+            databaseManager.Query(Arg.Is<DbCommand>(c => c.CommandText == "dbo.GetQBARoleCapabilities" &&
+                                                         c.Parameters[0].ParameterName == "@roleId" &&
+                                                         (int) c.Parameters[0].Value == roleId))
+                           .Returns(GetQBARoleCapabilitiesRecords());
+                        
+
+            var role = roleOperation.GetRoleWithCapabilities(roleId);
+
+            Assert.IsTrue(role.Id==1);
+            Assert.IsTrue(role.Name == "RoleName1");
+            Assert.IsTrue(role.Capabilities.Count == 2);
+            Assert.IsTrue(role.Capabilities.ToArray()[0] == Capability.CreateDraftFromOldVersion);
+            Assert.IsTrue(role.Capabilities.ToArray()[1] == Capability.ChangeDraftStatus);
+        }
+
+        [TestMethod]
+        public void UpdateUserRoles_QBAUser_SqlInvokedWithUserId()
+        {
+            const string userId = "42";
+            bool invokedWithUserId = false;
+
+            databaseManager.When(
+                dm =>
+                    dm.ExecuteNonQuery(Arg.Is<DbCommand>(c => c.CommandText == "dbo.UpdateQBAUserRoles" &&
+                                                        c.Parameters[0].ParameterName == "@userId" &&
+                                                        c.Parameters[0].Value.ToString() == userId)))
+                        .Do(d => { invokedWithUserId = true; });
+            var user = new QBAUser()
+                       {
+                           Id = userId,
+                       };
+
+            roleOperation.UpdateUserRoles(user);
+
+            Assert.IsTrue(invokedWithUserId);
+        }
+
+    
+        [TestMethod]
+        public void UpdateRolesCapabilities_QBAUser_SqlInvokedWithRoleId()
+        {
+            const int roleId = 123;
+            const string courseId = "courseId";
+
+            bool invokedWithRoleId = false;
+
+            databaseManager.ExecuteScalar(Arg.Is<DbCommand>(c => c.CommandText == "dbo.UpdateQBARole")).Returns(roleId);
+
+            databaseManager.When(
+                dm =>
+                    dm.ExecuteNonQuery(Arg.Is<DbCommand>(c => c.CommandText == "dbo.UpdateQBARoleCapabilities" &&
+                                                        c.Parameters[0].ParameterName == "@roleId" &&
+                                                        (int)c.Parameters[0].Value == roleId)))
+                        .Do(d => { invokedWithRoleId = true; });
+
+            Role role = new Role()
+                        {
+                            Id = 1
+                        };
+
+            roleOperation.UpdateRolesCapabilities(courseId, new List<Role>() { role });
+
+            Assert.IsTrue(invokedWithRoleId);
+        }
+
+        //
+        [TestMethod]
+        public void GetUserCapabilities_CourseId_ReturnCapabilities()
+        {
+            const string courseId = "courseId";
+            const string userName = "123";
+
+            businessContext.CurrentUser.Returns(new UserInfo() { Username = userName });
+
+            databaseManager.Query(Arg.Is<DbCommand>(c => c.CommandText == "dbo.GetQBAUserCapabilities" &&
+                                                                 c.Parameters[0].ParameterName == "@userId" && 
+                                                                 c.Parameters[0].Value.ToString() == userName &&
+                                                                 c.Parameters[1].ParameterName == "@courseId" &&
+                                                                 c.Parameters[1].Value.ToString() == courseId
+                                                                 )).Returns(GetQBARoleCapabilitiesRecords());
+
+           var capabilities = roleOperation.GetUserCapabilities(courseId);
+           
+           Assert.IsTrue(capabilities.Count()==2);
+           Assert.IsTrue(capabilities.ToArray()[0] == Capability.CreateDraftFromOldVersion);
+           Assert.IsTrue(capabilities.ToArray()[1] == Capability.ChangeDraftStatus);
+        }
+
+
+        private IEnumerable<DatabaseRecord> GetQBARoleCapabilitiesRecords()
+        {
+            List<DatabaseRecord> records = new List<DatabaseRecord>();
+
+            DatabaseRecord firstRecord = new DatabaseRecord();
+            firstRecord["Id"] = 1;
+            firstRecord["Name"] = "RoleName1";
+            firstRecord["CapabilityId"] = Capability.CreateDraftFromOldVersion;
+            records.Add(firstRecord);
+
+            DatabaseRecord secondRecord = new DatabaseRecord();
+            secondRecord["Id"] = null;
+            secondRecord["Name"] = null;
+            secondRecord["CapabilityId"] = Capability.ChangeDraftStatus;
+            records.Add(secondRecord);
+            return records;
+        }
+
 
         private DatabaseRecord GetQBAUserCoursesWithRolesecord(int index)
         {
