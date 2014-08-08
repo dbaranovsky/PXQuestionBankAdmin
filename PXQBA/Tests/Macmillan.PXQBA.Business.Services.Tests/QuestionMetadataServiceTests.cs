@@ -59,6 +59,54 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             Assert.IsNotNull(fields);
             Assert.IsTrue(fields.Count>0);
         }
+
+        [TestMethod]
+        public void GetDataForFields_AnyCourse_AvailibleFieldsNotNull()
+        {
+            var course = new Course()
+            {
+                FieldDescriptors = new List<CourseMetadataFieldDescriptor>()
+                                                {
+                                                    new CourseMetadataFieldDescriptor()
+                                                    {
+                                                        Name = "test",
+                                                        CourseMetadataFieldValues = new List<CourseMetadataFieldValue>(),
+                                                        Filterable = true,
+                                                        FriendlyName = "Test",
+                                                        Searchterm = "",
+                                                        Type = MetadataFieldType.Text
+                                                    },
+
+                                                     new CourseMetadataFieldDescriptor()
+                                                    {
+                                                        Name = "test1",
+                                                        CourseMetadataFieldValues = new List<CourseMetadataFieldValue>(),
+                                                        Filterable = true,
+                                                        FriendlyName = "Test",
+                                                        Searchterm = "",
+                                                        Type = MetadataFieldType.Text
+                                                    }
+                                                },
+            };
+
+            var fields = questionMetadataService.GetDataForFields(course, new List<string>{"test1"});
+
+            Assert.IsNotNull(fields);
+            Assert.IsTrue(fields.Count == 1);
+        }
+
+        [TestMethod]
+        public void GetQuestionCardLayout_CourseWithQuestionCardLayout_QuestionCardLayout()
+        {
+            var course = new Course()
+            {
+                QuestionCardLayout = "QuestionCardLayout"
+            };
+
+            Assert.IsTrue(questionMetadataService.GetQuestionCardLayout(course) == course.QuestionCardLayout);
+        }
+
+       
     }
 
 
