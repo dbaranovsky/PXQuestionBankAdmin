@@ -7,8 +7,7 @@ namespace Macmillan.PXQBA.Common.Helpers.Tests
     [TestClass]
     public class QuestionHelperTests
     {
-        public string questionBodyWithImages =
-            @"<question questionid=""88b12b6e-01b7-4ada-b97e-148a49e6d0cb"" version=""2"" resourceentityid=""39768,62"" creationdate=""2014-07-08T09:49:02.167Z"" creationby=""7"" modifieddate=""2014-07-08T09:49:08.9233687Z"" modifiedby=""7"" flags=""4"" actualentityid=""39768"" schema=""2"" partial=""false"">
+        private const string questionBodyWithImages = @"<question questionid=""88b12b6e-01b7-4ada-b97e-148a49e6d0cb"" version=""2"" resourceentityid=""39768,62"" creationdate=""2014-07-08T09:49:02.167Z"" creationby=""7"" modifieddate=""2014-07-08T09:49:08.9233687Z"" modifiedby=""7"" flags=""4"" actualentityid=""39768"" schema=""2"" partial=""false"">
                   <meta>
                     
                   </meta>
@@ -30,13 +29,43 @@ namespace Macmillan.PXQBA.Common.Helpers.Tests
                   </interaction>
                 </question>";
 
+
+        private const string questionBodyWithoutImages = @"<question questionid=""88b12b6e-01b7-4ada-b97e-148a49e6d0cb"" version=""2"" resourceentityid=""39768,62"" creationdate=""2014-07-08T09:49:02.167Z"" creationby=""7"" modifieddate=""2014-07-08T09:49:08.9233687Z"" modifiedby=""7"" flags=""4"" actualentityid=""39768"" schema=""2"" partial=""false"">
+                  <meta>
+                    
+                  </meta>
+                  <answer>
+                    <value>1</value>
+                  </answer>
+                
+                    </choice>
+                    <choice id=""2"">
+                      <body>2</body>
+                 
+                    </choice>
+                    <choice id=""3"">
+                      <body>3</body>
+                    </choice>
+                  </interaction>
+                </question>";
+
         [TestMethod]
         public void GetQuestionRelatedResources_QuestionXmlWithThreeImages_ListOfThreePathes()
         {
             var list = QuestionHelper.GetQuestionRelatedResources(questionBodyWithImages);
 
             Assert.AreEqual(list.Count, 3);
-            Assert.IsFalse( list.First().Contains("[~]"));
+            Assert.IsFalse(list.First().Contains("[~]"));
+        }
+
+        
+        [TestMethod]
+        public void GetQuestionRelatedResources_QuestionXmlWithoutImages_NoResourses()
+        {
+            var list = QuestionHelper.GetQuestionRelatedResources(questionBodyWithoutImages);
+
+            Assert.AreEqual(list.Count, 0);
+           
         }
     }
 }

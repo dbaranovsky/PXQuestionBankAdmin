@@ -596,6 +596,7 @@ namespace Macmillan.PXQBA.Business.Services
             temporaryQuestionOperation.DeleteTemporaryQuestionWithQuiz(questionId);
         }
 
+        //Should be moved to helper and properly tested
         private void UpdateProductCourseSections(IEnumerable<Question> questions, Course course)
         {
             UpdateCourseKeywordList(course);
