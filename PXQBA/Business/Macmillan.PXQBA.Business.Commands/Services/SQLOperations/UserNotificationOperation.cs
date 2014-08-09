@@ -17,11 +17,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
 
         public UserNotificationOperation(IDatabaseManager databaseManager, IContext businessContext)
         {
-
-        #if DEBUG
-            databaseManager = new DatabaseManager(@"TestPXData");
-        #endif
-
             this.databaseManager = databaseManager;
             this.businessContext = businessContext;
         }
