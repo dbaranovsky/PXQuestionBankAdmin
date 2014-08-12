@@ -221,7 +221,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
 
      createDraft: function(){
        $('.modal-backdrop').first().remove(); 
-        this.props.handlers.createDraftHandler(null, null);
+        this.props.handlers.createDraftHandler(this.props.question.realQuestionId, null);
      },
 
      showEditInPlaceDialog: function(handler){
