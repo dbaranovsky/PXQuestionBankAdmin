@@ -292,7 +292,7 @@ var QuestionEditorTabs = React.createClass({
 
         if (this.props.question.status == window.enums.statusesId.availibleToInstructor){
            if (confirm("Do you want to create a draft question?")){
-             this.props.handlers.createDraftHandler(null, null);
+             this.props.handlers.createDraftHandler(this.props.question.realQuestionId, null);
            }
            return;
         }

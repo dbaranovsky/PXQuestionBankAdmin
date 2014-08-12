@@ -42,14 +42,15 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.ProductCourseId, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
                 .ForMember(dest => dest.FieldDescriptors,
-                   opt => opt.MapFrom(src => src.QuestionCardData))
-                .ForMember(dest => dest.QuestionRepositoryCourseId, 
+                    opt => opt.MapFrom(src => src.QuestionCardData))
+                .ForMember(dest => dest.QuestionRepositoryCourseId,
                     opt => opt.MapFrom(src => src.QuestionBankRepositoryCourse));
 
             Mapper.CreateMap<QuestionCardData, CourseMetadataFieldDescriptor>()
-                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.QuestionCardDataName))
-                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => modelProfileService.GetMetadataFieldType(src.Type)))
-                 .ForMember(dest => dest.CourseMetadataFieldValues, opt => opt.MapFrom(src => src.QuestionValues));
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.QuestionCardDataName))
+                .ForMember(dest => dest.Type,
+                    opt => opt.MapFrom(src => modelProfileService.GetMetadataFieldType(src.Type)))
+                .ForMember(dest => dest.CourseMetadataFieldValues, opt => opt.MapFrom(src => src.QuestionValues));
 
             Mapper.CreateMap<QuestionCardDataValue, CourseMetadataFieldValue>();
 
@@ -60,9 +61,10 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(dest => dest.QuestionCardData, opt => opt.MapFrom(src => src.FieldDescriptors));
 
             Mapper.CreateMap<CourseMetadataFieldDescriptor, QuestionCardData>()
-                 .ForMember(dest => dest.QuestionCardDataName, opt => opt.MapFrom(src => src.Name))
-                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => modelProfileService.MetadataFieldTypeToString(src.Type)))
-                 .ForMember(dest => dest.QuestionValues, opt => opt.MapFrom(src => src.CourseMetadataFieldValues));
+                .ForMember(dest => dest.QuestionCardDataName, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.Type,
+                    opt => opt.MapFrom(src => modelProfileService.MetadataFieldTypeToString(src.Type)))
+                .ForMember(dest => dest.QuestionValues, opt => opt.MapFrom(src => src.CourseMetadataFieldValues));
 
             Mapper.CreateMap<CourseMetadataFieldDescriptor, QuestionMetaField>()
                 .ForMember(dest => dest.FriendlyName, opt => opt.MapFrom(src => src.FriendlyName))
@@ -73,38 +75,65 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
             Mapper.CreateMap<CourseMetadataFieldDescriptor, MetaFieldTypeDescriptor>()
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type))
                 .ForMember(dest => dest.AvailableChoice,
-                opt => opt.MapFrom(src => src.CourseMetadataFieldValues.Select(i => new AvailableChoiceItem(string.IsNullOrEmpty(i.Id)? i.Text : i.Id,i.Text)).ToList()));
+                    opt =>
+                        opt.MapFrom(
+                            src =>
+                                src.CourseMetadataFieldValues.Select(
+                                    i => new AvailableChoiceItem(string.IsNullOrEmpty(i.Id) ? i.Text : i.Id, i.Text))
+                                    .ToList()));
 
             Mapper.CreateMap<Bfw.Agilix.DataContracts.Question, Question>()
                 .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
                 .ForMember(dto => dto.Status, opt => opt.MapFrom(q => q.QuestionStatus))
-                .ForMember(dto => dto.DefaultSection, opt => opt.MapFrom(q => modelProfileService.GetQuestionDefaultValues(q)))
-                .ForMember(dto => dto.ProductCourseSections, opt => opt.MapFrom(q => modelProfileService.GetProductCourseSections(q)))
-                .ForMember(dto => dto.Version, opt => opt.MapFrom(q => modelProfileService.GetNumericVersion(q.QuestionVersion)))
+                .ForMember(dto => dto.DefaultSection,
+                    opt => opt.MapFrom(q => modelProfileService.GetQuestionDefaultValues(q)))
+                .ForMember(dto => dto.ProductCourseSections,
+                    opt => opt.MapFrom(q => modelProfileService.GetProductCourseSections(q)))
+                .ForMember(dto => dto.Version,
+                    opt => opt.MapFrom(q => modelProfileService.GetNumericVersion(q.QuestionVersion)))
                 .ForMember(dto => dto.Preview, opt => opt.MapFrom(q => QuestionPreviewHelper.GetQuestionHtmlPreview(q)))
                 .ForMember(dto => dto.ModifiedBy, opt => opt.MapFrom(q => modelProfileService.GetModifiedBy(q)))
-                .ForMember(dto => dto.DuplicateFromShared, opt => opt.MapFrom(q => modelProfileService.GetDuplicateFromShared(q)))
+                .ForMember(dto => dto.DuplicateFromShared,
+                    opt => opt.MapFrom(q => modelProfileService.GetDuplicateFromShared(q)))
                 .ForMember(dto => dto.DuplicateFrom, opt => opt.MapFrom(q => modelProfileService.GetDuplicateFrom(q)))
                 .ForMember(dto => dto.DraftFrom, opt => opt.MapFrom(q => modelProfileService.GetDraftFrom(q)))
-                .ForMember(dto => dto.RestoredFromVersion, opt => opt.MapFrom(q => modelProfileService.GetRestoredFromVersion(q)))
-                .ForMember(dto => dto.IsPublishedFromDraft, opt => opt.MapFrom(q => modelProfileService.GetPublishedFromDraft(q)));
+                .ForMember(dto => dto.RestoredFromVersion,
+                    opt => opt.MapFrom(q => modelProfileService.GetRestoredFromVersion(q)))
+                .ForMember(dto => dto.IsPublishedFromDraft,
+                    opt => opt.MapFrom(q => modelProfileService.GetPublishedFromDraft(q)));
 
             Mapper.CreateMap<Bfw.Agilix.DataContracts.QuestionChoice, QuestionChoice>();
 
             Mapper.CreateMap<Question, Bfw.Agilix.DataContracts.Question>()
-               .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
-               .ForMember(dto => dto.QuestionStatus, opt => opt.MapFrom(q => q.Status))
-               .ForMember(dto => dto.MetadataElements, opt => opt.MapFrom(q => modelProfileService.GetXmlMetadataElements(q)))
-               .ForMember(dto => dto.Body, opt => opt.Condition(cont => cont.SourceValue != null))
-               .ForMember(dto => dto.Answer, opt => opt.Condition(cont => cont.SourceValue != null))
-               .ForMember(dto => dto.AnswerList, opt => opt.Condition(cont => cont.SourceValue != null))
-               .ForMember(dto => dto.Choices, opt => opt.Condition(cont => cont.SourceValue != null))
-               .ForMember(dto => dto.InteractionData, opt => opt.Condition(q => q.CustomUrl == QuestionTypeHelper.GraphType || q.CustomUrl == QuestionTypeHelper.HTSType))
-               .ForMember(dto => dto.InteractionType, opt => opt.Condition(cont => cont.SourceValue != null))
-               .ForMember(dto => dto.CustomUrl, opt => opt.Condition(cont => cont.SourceValue != null))
-               .ForMember(dto => dto.GeneralFeedback, opt => opt.Condition(cont => cont.SourceValue != null))
-               .ForMember(dto => dto.QuestionVersion, opt => opt.MapFrom(q => q.Version))
-               .ForMember(dto => dto.ModifiedDate, opt =>opt.Ignore());
+                .ForMember(dto => dto.Id, opt => opt.MapFrom(q => q.Id))
+                .ForMember(dto => dto.QuestionStatus, opt => opt.MapFrom(q => q.Status))
+                .ForMember(dto => dto.MetadataElements,
+                    opt => opt.MapFrom(q => modelProfileService.GetXmlMetadataElements(q)))
+                .ForMember(dto => dto.Body, opt => opt.Condition(cont => cont.SourceValue != null))
+                .ForMember(dto => dto.Answer, opt => opt.Condition(cont => cont.SourceValue != null))
+                .ForMember(dto => dto.AnswerList, opt => opt.Condition(cont => cont.SourceValue != null))
+                .ForMember(dto => dto.Choices, opt => opt.Condition(cont => cont.SourceValue != null))
+                .ForMember(dto => dto.InteractionData,
+                    opt =>
+                        opt.Condition(
+                            q =>
+                                q.CustomUrl == QuestionTypeHelper.GraphType ))
+                .ForMember(dto => dto.InteractionType, opt => opt.Condition(cont => cont.SourceValue != null))
+                .ForMember(dto => dto.CustomUrl, opt => opt.Condition(cont => cont.SourceValue != null))
+                .ForMember(dto => dto.GeneralFeedback, opt => opt.Condition(cont => cont.SourceValue != null))
+                .ForMember(dto => dto.QuestionVersion, opt => opt.MapFrom(q => q.Version))
+                .ForMember(dto => dto.ModifiedDate, opt => opt.Ignore())
+                .AfterMap((source, destination) =>
+                          {
+                              if (destination.CustomUrl == QuestionTypeHelper.HTSType &&
+                                  string.IsNullOrEmpty(destination.InteractionData) &&
+                                  !string.IsNullOrEmpty(source.InteractionData))
+                              {
+                                  destination.InteractionData = source.InteractionData;
+                              }
+                          });
+
+                
 
             Mapper.CreateMap<QuestionChoice, Bfw.Agilix.DataContracts.QuestionChoice>();
 

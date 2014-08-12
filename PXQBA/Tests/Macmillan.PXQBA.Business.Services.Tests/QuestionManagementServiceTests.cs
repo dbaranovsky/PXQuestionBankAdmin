@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Xml.Serialization;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
@@ -88,6 +89,16 @@ namespace Macmillan.PXQBA.Business.Services.Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof (Exception))]
+        public void CreateQuestion_AnyIncorrectParams_Exception()
+        {
+            temporaryQuestionOperation.CreateQuestion(Arg.Any<string>(), Arg.Any<Question>())
+                .Returns(x => { throw new Exception(); }
+                );
+           questionManagementService.CreateQuestion(GetTestCourse(), "HTS", "bank", "chapter");     
+        }
+
+        [TestMethod]
         public void DuplicateQuestion_QuestionWithoutServiceFieldsOneProductCourse_CorrectlySettedDuplicateCopy()
         {
             var course = GetTestCourse();
@@ -155,6 +166,15 @@ namespace Macmillan.PXQBA.Business.Services.Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void UpdateQuestion_IncorrectParametrs_Exception()
+        {
+            questionCommands.UpdateQuestion(null, Arg.Any<string>()).ReturnsForAnyArgs(x => { throw new Exception(); });
+            questionManagementService.UpdateQuestion(new Course(), "14", new Question());
+
+        }
+
+        [TestMethod]
         public void UpdateQuestionField_AnyCorrectParametrs_True()
         {
             questionCommands.UpdateQuestionField(null, null, null, null, null, null).ReturnsForAnyArgs(true);
@@ -188,6 +208,16 @@ namespace Macmillan.PXQBA.Business.Services.Tests
 
         }
 
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void GetVersionHistory_IncorrectParametrs_Exception()
+        {
+            questionCommands.GetVersionHistory(Arg.Any<string>(), Arg.Any<string>()).ReturnsForAnyArgs(x => { throw new Exception(); });
+            var course = GetTestCourse();
+            questionManagementService.GetVersionHistory(course, string.Empty).Returns(new List<Question>());
+
+        }
 
         [TestMethod]
         public void GetVersrions_DraftQuestionId_VersionsOfDraftAndOriginal()
@@ -355,6 +385,25 @@ namespace Macmillan.PXQBA.Business.Services.Tests
         }
 
         [TestMethod]
+        public void GetTemporaryQuestion_AnyParametrs_ProperlyReturnedQuestion()
+        {
+            temporaryQuestionOperation.CopyQuestionToTemporaryCourse(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<string>())
+                .Returns(new Question() { Id = "14" });
+            var restult = questionManagementService.GetTemporaryQuestionVersion(new Course(), "14", "");
+            Assert.IsTrue(restult.Id == "14");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void GetTemporaryQuestion_IncorrectParametrs_Exception()
+        {
+            temporaryQuestionOperation.CopyQuestionToTemporaryCourse(Arg.Any<string>(), Arg.Any<string>(),
+                Arg.Any<string>()).Returns(x => { throw new Exception(); });
+           questionManagementService.GetTemporaryQuestionVersion(new Course(), "14", "");
+           
+        }
+
+        [TestMethod]
         public void RemoveFromTitle_AnyCorrectParametrs_True()
         {
             questionCommands.RemoveFromTitle(null, null, null).ReturnsForAnyArgs(true);
@@ -378,6 +427,15 @@ namespace Macmillan.PXQBA.Business.Services.Tests
                                                                                        });
             var question = questionManagementService.GetQuestion(new Course(), string.Empty);
             Assert.AreEqual("15", question.Id);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void GetQuestion_AnyIncorrectParams_Exception()
+        {
+
+            questionCommands.GetQuestion(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<string>()).Returns(x => { throw new Exception(); });
+            questionManagementService.GetQuestion(GetTestCourse(), string.Empty, string.Empty);
         }
 
          [TestMethod]
