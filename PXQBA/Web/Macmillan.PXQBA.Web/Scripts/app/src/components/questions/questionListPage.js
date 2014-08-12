@@ -212,7 +212,7 @@ var QuestionListPage = React.createClass({
                                          questionId={this.state.questionIdForNotes} 
                                          canDelete={this.props.response.canRemoveNotesQuestion}
                                          canAddNote={this.props.response.canAddNotesQuestion}
-                                         currentCourseId= {this.props.response.productCourseId} />);
+                                         currentCourseId={this.props.response.productCourseId} />);
       }
       return null;
     },
