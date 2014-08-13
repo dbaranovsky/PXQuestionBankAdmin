@@ -99,7 +99,8 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
         /// <returns>New sequence number</returns>
         public static string GetNewLastValue(IEnumerable<QuestionSearchResult> questionsWithDecimalSequence)
         {
-            var last = questionsWithDecimalSequence.LastOrDefault();
+            decimal seq;
+            var last = questionsWithDecimalSequence.LastOrDefault(q => decimal.TryParse(q.SortingField, out seq));
             if (last != null)
             {
                 var lastValue = decimal.Parse(last.SortingField);
