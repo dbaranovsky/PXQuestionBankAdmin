@@ -13,7 +13,6 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
     public class QuestionSequenceHelper
     {
         private static readonly string DecimalSeparator = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
-        private static IList<QuestionSearchResult> updated = new List<QuestionSearchResult>();
 
         /// <summary>
         /// Implements the algorythm for question sequence updating:
@@ -29,6 +28,8 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
         /// <returns>Question list that should be updated</returns>
         public static IList<QuestionSearchResult> UpdateSequence(IList<QuestionSearchResult> questions, string questionId, int newSequenceValue)
         {
+            var updated = new List<QuestionSearchResult>();
+
             questions.Insert(0, new QuestionSearchResult
             {
                 QuestionId = "Dummy",
@@ -56,7 +57,7 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
                     var nextValue = decimal.Parse(nextPosition.SortingField);
                     if (nextValue == previousValue)
                     {
-                        nextPosition = UpdateEqualValues(previousPosition, nextPosition, questionsWithDecimalSequence, newSequenceValue, 0);
+                        nextPosition = UpdateEqualValues(previousPosition, nextPosition, questionsWithDecimalSequence, newSequenceValue, updated, 0);
                         nextValue = decimal.Parse(nextPosition.SortingField);
                     }
 
@@ -67,7 +68,7 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
             return updated;
         }
 
-        private static QuestionSearchResult UpdateEqualValues(QuestionSearchResult previousPosition, QuestionSearchResult nextPosition, List<QuestionSearchResult> questionsWithDecimalSequence, int newSequenceValue, int counter)
+        private static QuestionSearchResult UpdateEqualValues(QuestionSearchResult previousPosition, QuestionSearchResult nextPosition, List<QuestionSearchResult> questionsWithDecimalSequence, int newSequenceValue, IList<QuestionSearchResult> updated, int counter)
         {
             var recursionDepth = counter;
             var next = nextPosition;
@@ -80,7 +81,7 @@ namespace Macmillan.PXQBA.Business.Commands.Helpers
                 }
                 else
                 {
-                    next = UpdateEqualValues(nextPosition, questionsWithDecimalSequence[newSequenceValue], questionsWithDecimalSequence, newSequenceValue, recursionDepth + 1);
+                    next = UpdateEqualValues(nextPosition, questionsWithDecimalSequence[newSequenceValue], questionsWithDecimalSequence, newSequenceValue, updated, recursionDepth + 1);
                 }
             }
             if (recursionDepth != 0)
