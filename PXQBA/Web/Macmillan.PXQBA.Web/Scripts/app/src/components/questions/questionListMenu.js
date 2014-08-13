@@ -212,7 +212,15 @@ var QuestionListMenu = React.createClass({
       if (this.props.showAll){
       var isDeleted = this.props.data[window.consts.questionStatusName] == window.enums.statuses.deleted;
       var isDisabled =false;
-      if(!this.props.metadataCapabilities.canEditQuestion && 
+      var editTooltip = "Edit Question";
+
+      if(this.props.data[window.consts.questionStatusName] == window.enums.statuses.deleted){
+           isDisabled= true;
+           editTooltip = this.props.data.isDraft? "You can't edit a deleted draft." : 
+                                                  "You can't edit a deleted question.";
+           editTooltip += " Change the status to in-progress or duplicate the question.";
+
+      }else if(!this.props.metadataCapabilities.canEditQuestion && 
          !this.props.isShared &&
          !this.props.data[window.consts.questionStatusName] == window.enums.statuses.availibleToInstructor){
         isDisabled= true;
@@ -229,7 +237,7 @@ var QuestionListMenu = React.createClass({
                     {this.renderDraftButton()}
                <div className="dropdown">
                   <button id="edit-question" type="button" className="btn btn-default btn-sm" onClick={this.editQuestionHandler} disabled={isDisabled}  data-target="#" data-toggle="dropdown" title="Edit Question">
-                         <span className="icon-pencil-1" data-toggle="tooltip" title="Edit Question"></span>
+                         <span className="icon-pencil-1" data-toggle="tooltip" title={editTooltip}></span>
                   </button>
                     {this.renderEditMenu()}
                 </div>
