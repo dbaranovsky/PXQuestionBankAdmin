@@ -39,6 +39,10 @@ var QuestionListPage = React.createClass({
 
     renderQuestionEditorDialog: function() {
       
+
+
+
+
         switch (this.state.editor.step) {
           case this.editorsSteps.step1:
            return ( <QuestionTypeDialog 
@@ -47,6 +51,12 @@ var QuestionListPage = React.createClass({
                               metadata={this.state.editor.metadata} 
                               closeDialogHandler = {this.closeDialogHandler}/>);
           case this.editorsSteps.step2:
+
+             var containsTextFilter = this.props.response.filter.filter(function(item) { return item.field==window.consts.containsTextName })[0];
+             var containsText = "";
+             if(containsTextFilter!=null && containsTextFilter.values[0]!= undefined) {
+                 containsText = containsTextFilter.values[0];
+              }
 
             return (<QuestionEditorDialog 
                                           currentCourseId={this.props.response.productCourseId}
@@ -63,7 +73,8 @@ var QuestionListPage = React.createClass({
                                             createDraftHandler: this.createDraftHandler,
                                             createQuestionFromVersionHandler: this.createQuestionFromVersionHandler,
                                             reloadEditor: this.reloadQuestion
-                                          }} />);
+                                          }} 
+                                          hasContainsTextFilter={containsText !== ""}/>);
                                           
           default:
             return null;
