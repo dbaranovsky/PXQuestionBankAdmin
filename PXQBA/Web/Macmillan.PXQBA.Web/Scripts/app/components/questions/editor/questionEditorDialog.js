@@ -49,12 +49,18 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
          }
 
          questionDataManager.clearResources(this.props.currentCourseId, this.props.question.realQuestionId, needRemoveResources);
-         
+
+         //quick workaround for IE11 issue with highlighting in qba-371
+          if(!!navigator.userAgent.match(/Trident.*rv[ :]*11\./) && this.props.caption == window.enums.dialogCaptions.duplicateQuestion) {
+               location.reload();
+         }
+
     },
 
     notesChangedHandler: function(){
        this.setState({notesChanged: true});
      },
+
 
 
     render: function() {
