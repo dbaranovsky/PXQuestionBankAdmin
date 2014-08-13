@@ -212,11 +212,11 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
       if (this.props.showAll){
       var isDeleted = this.props.data[window.consts.questionStatusName] == window.enums.statuses.deleted;
       var isDisabled =false;
-      var editTooltip = "Edit Question";
+      var editTooltip = "";
 
       if(this.props.data[window.consts.questionStatusName] == window.enums.statuses.deleted){
            isDisabled= true;
-           editTooltip = this.props.data.isDraft? "You can't edit a deleted draft." : 
+           editTooltip = this.props.data.draftfrom != ""? "You can't edit a deleted draft." : 
                                                   "You can't edit a deleted question.";
            editTooltip += " Change the status to in-progress or duplicate the question.";
 
@@ -236,10 +236,13 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
       return(React.DOM.div( {className:"menu-container-main"}, 
                     this.renderDraftButton(),
                React.DOM.div( {className:"dropdown"}, 
+                  React.DOM.div(  {className:"button-wrapper", 'data-toggle':"tooltip", title:editTooltip}, 
                   React.DOM.button( {id:"edit-question", type:"button", className:"btn btn-default btn-sm", onClick:this.editQuestionHandler, disabled:isDisabled,  'data-target':"#", 'data-toggle':"dropdown", title:"Edit Question"}, 
-                         React.DOM.span( {className:"icon-pencil-1", 'data-toggle':"tooltip", title:editTooltip})
+                         React.DOM.span( {className:"icon-pencil-1"})
                   ),
+                 
                     this.renderEditMenu()
+                     )
                 ),
                React.DOM.button( {type:"button", className:"btn btn-default btn-sm", disabled:!this.props.capabilities.canDuplicateQuestion, onClick:this.copyQuestionHandler,  'data-toggle':"tooltip", title:"Duplicate Question"}, React.DOM.span( {className:"icon-docs"})),
                React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.editNotesHandler, 'data-toggle':"tooltip", title:"Edit Notes"}, React.DOM.span( {className:"glyphicon glyphicon-list-alt"}), " " ), 

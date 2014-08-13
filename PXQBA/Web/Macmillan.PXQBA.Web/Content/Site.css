@@ -1542,3 +1542,6 @@ li.fileinput-button {
 
 
 
+.button-wrapper {
+    display: inline-block;
+}
