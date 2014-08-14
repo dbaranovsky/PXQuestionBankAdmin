@@ -38,14 +38,8 @@ var QuestinListHeaderCell = React.createClass({displayName: 'QuestinListHeaderCe
 
  renderDeleteButton: function() {
     if((this.state.showDeleteButton)&&(!this.props.canNotDelete)) {
-
-      if (this.props.metadataName== "sequence"){
         return React.DOM.div( {className:"delete-button seq", onClick:this.dleteButtonEventHandler, 'data-toggle':"tooltip", title:"Remove column"},  " X " )
-      }
-      return React.DOM.span( {className:"delete-button", onClick:this.dleteButtonEventHandler, 'data-toggle':"tooltip", title:"Remove column"},  " X " )
     }
-
-
     return null;
  },
 
@@ -63,7 +57,6 @@ var QuestinListHeaderCell = React.createClass({displayName: 'QuestinListHeaderCe
  },
 
  renderHeader: function(){
-    if (this.props.metadataName == "sequence"){
       return(  React.DOM.table(null, 
           React.DOM.tr(null, 
             React.DOM.td( {className:"header-caption seq"}, this.renderCaption()),
@@ -71,15 +64,6 @@ var QuestinListHeaderCell = React.createClass({displayName: 'QuestinListHeaderCe
             React.DOM.td( {className:"delete-button seq"}, this.renderDeleteButton())
           )
         ));
-
-    }
-
-
-    return (React.DOM.div(null, this.renderExpandButton(),
-                  this.renderCaption(),
-                QuestinListHeaderCellOrdering( {order:this.props.order} ), 
-                this.renderDeleteButton()
-          ));
 
  },
  
