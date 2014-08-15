@@ -10,7 +10,8 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
               isGraph: this.props.question.questionType == "FMA_GRAPH"  ,
               viewHistoryMode: this.props.viewHistoryMode != undefined ? this.props.viewHistoryMode : false,
               currentTab: this.props.viewHistoryMode ? "history" : "body",
-              currentGraphEditor: this.props.question.graphEditorHtml
+              currentGraphEditor: this.props.question.graphEditorHtml,
+              saveAndPublishMode: false
              }
     },
 
@@ -164,7 +165,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                     local: {
                         questionSaved: function (questionId, success, error) {
                          // alert("saved");
-                           self.showSaveWarning();
+                           self.showSaveWarning(self.state.saveAndPublishMode);
                         }
                     },
                     remote: {
@@ -178,8 +179,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
     },
 
     showSaveWarning: function(saveAndPublish){
-     
-      this.props.showSaveWarning(this.state.frameApi, saveAndPublish);
+         this.props.showSaveWarning(this.state.frameApi, saveAndPublish);
     },
 
     renderFooterButtons: function(checkForCustomQuestion){
@@ -226,10 +226,16 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
     },
    
    saveClickHandler: function() {
+      if(this.state.isHTS){
+        this.setState({saveAndPublishMode: false})
+      }
       this.saveHandler(false);
    },
 
    saveAndPublishHandler: function() {
+     if(this.state.isHTS){
+        this.setState({saveAndPublishMode: true})
+      }
       this.saveHandler(true);
    },
 
@@ -243,8 +249,6 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
             if(typeof(flashElement.getXML) == "function"){
                  interactionData = flashElement.getXML();
             }
-           
-    
 
         } else{
           interactionData = question.interactionData;
@@ -253,7 +257,10 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
         if(interactionData != ""){
             question.interactionData = interactionData;
             this.props.editHandler(question);
-            this.getUpdatedGraph(interactionData);
+            if(!saveAndPublish){
+              this.getUpdatedGraph(interactionData);
+            }
+            
         } else {
            window.questionDataManager.showWarningPopup(window.enums.messages.warningQuestionEditorMessage);
            return;

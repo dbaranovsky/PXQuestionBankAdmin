@@ -5,7 +5,11 @@ var QuestionEditor = React.createClass({
 
    getInitialState: function() {
 
-      return { question: this.props.question, viewHistoryMode: this.props.viewHistoryMode, saving: false, savingCount: 0};
+      return { question: this.props.question, viewHistoryMode: this.props.viewHistoryMode, saving: false, 
+               savingCount: 0,
+               isHTS: this.props.question.questionType!= null && this.props.question.questionType.toLowerCase()=="hts"? true: false,
+               isCustom: this.props.question.questionType!= null,
+               isGraph: this.props.question.questionType == "FMA_GRAPH"};
     },
 
     componentDidMount: function(){
@@ -144,7 +148,7 @@ var QuestionEditor = React.createClass({
      renderNotification: function(){
         if (this.state.showNotification){
            var notification =  userManager.getNotificationById(this.state.typeId);
-           if (notification != null && notification.isShown){
+           if (notification != null && (notification.isShown || ((this.state.isHTS || this.state.isGraph) && this.state.typeId==window.enums.notificationTypes.saveAndPublishDraft))){
              return ( <NotificationDialog  closeDialog={this.closeNotificationDialog} proceedHandler = {this.proceedHandler} notification={notification} isCustomCloseHandle={true}/>);
            }
            else {
