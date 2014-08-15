@@ -50,7 +50,12 @@ var SingleSelectSelector = React.createClass({
     $(selector).val(this.props.currentValues)
                          .chosen(chosenOptions)
                          .change(function(e, params){
-                            self.changeHandler([params.selected]);
+                            if(params != undefined){
+                              self.changeHandler([params.selected]);
+                            }else{
+                                 self.changeHandler([params]);
+                            }
+
                          });
     $(selector).trigger('chosen:updated');
   },

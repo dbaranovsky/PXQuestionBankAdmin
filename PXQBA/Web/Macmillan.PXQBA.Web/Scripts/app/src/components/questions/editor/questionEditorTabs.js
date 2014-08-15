@@ -202,7 +202,7 @@ var QuestionEditorTabs = React.createClass({
 
         return(
                     <div>
-                                           <button className="btn btn-default" data-toggle="modal" title="Cancel" onClick={this.props.closeDialog}>
+                        <button className="btn btn-default" data-toggle="modal" title="Cancel" onClick={this.props.closeDialog}>
                              Cancel
                         </button>
                          {this.renderPublishButton()}
