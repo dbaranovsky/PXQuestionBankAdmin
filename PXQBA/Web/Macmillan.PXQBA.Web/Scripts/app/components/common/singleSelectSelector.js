@@ -53,7 +53,7 @@ var SingleSelectSelector = React.createClass({displayName: 'SingleSelectSelector
                             if(params != undefined){
                               self.changeHandler([params.selected]);
                             }else{
-                                 self.changeHandler([params]);
+                                 self.changeHandler([""]);
                             }
 
                          });
