@@ -68,7 +68,7 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
     renderMenuItems: function(availableChoices) {
         var items = [];
         if (this.state.allowDeselect){
-            items.push(React.DOM.option( {value:""}));
+            items.push(React.DOM.option({value: ""}));
         }
 
         var filteredAvailibleChoices = availableChoices;
@@ -87,7 +87,7 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
     },
 
     renderMenuItem: function(label, value) {
-        return (React.DOM.option( {value:value}, label));
+        return (React.DOM.option({value: value}, label));
     },
 
     updateItemLinks: function(metadataField){
@@ -124,27 +124,27 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
              if($.isArray(currentValue)){
               currentValue = currentValue[0];
              }
-             return (React.DOM.select( {ref:"editor", className:"single-selector", disabled:this.props.isDisabled, value:currentValue},  " ", this.renderMenuItems(availableChoice), " " ) );
+             return (React.DOM.select({ref: "editor", className: "single-selector", disabled: this.props.isDisabled, value: currentValue}, " ", this.renderMenuItems(availableChoice), " ") );
 
           case window.enums.editorType.multiSelect:
-             return (MultiSelectEditor( {values:currentValue, isDisabled:this.props.isDisabled, canAddValues:false, metadataField:metadataField, question:this.props.question, field:this.props.field, editHandler:this.props.editHandler} ));
+             return (MultiSelectEditor({values: currentValue, isDisabled: this.props.isDisabled, canAddValues: false, metadataField: metadataField, question: this.props.question, field: this.props.field, editHandler: this.props.editHandler}));
           case window.enums.editorType.keywords:
-              return (MultiSelectEditor( {values:currentValue, isDisabled:this.props.isDisabled, canAddValues:true, metadataField:metadataField, question:this.props.question, field:this.props.field, editHandler:this.props.editHandler} ));
+              return (MultiSelectEditor({values: currentValue, isDisabled: this.props.isDisabled, canAddValues: true, metadataField: metadataField, question: this.props.question, field: this.props.field, editHandler: this.props.editHandler}));
           case window.enums.editorType.multiText:  
-              return ( React.DOM.textarea( {onChange:this.editHandler, disabled:this.props.isDisabled,  ref:"editor", className:this.props.isDisabled? "disabled" : "",  rows:"10", type:"text", placeholder:"Enter text...", value:currentValue} ));  
+              return ( React.DOM.textarea({onChange: this.editHandler, disabled: this.props.isDisabled, ref: "editor", className: this.props.isDisabled? "disabled" : "", rows: "10", type: "text", placeholder: "Enter text...", value: currentValue}));  
               break;
           case window.enums.editorType.itemLink:
                 var newMetaField = this.updateItemLinks(metadataField);
 
-               return (MultiSelectEditor( {values:currentValue, isDisabled:this.props.isDisabled, canAddValues:false, metadataField:newMetaField, question:this.props.question, field:this.props.field, editHandler:this.props.editHandler} ));
+               return (MultiSelectEditor({values: currentValue, isDisabled: this.props.isDisabled, canAddValues: false, metadataField: newMetaField, question: this.props.question, field: this.props.field, editHandler: this.props.editHandler}));
 
           default: 
           currentValue = currentValue || "";
             if(metadataField!= null && metadataField.isMultiline){
-                 return ( React.DOM.textarea( {onChange:this.editHandler, disabled:this.props.isDisabled,  ref:"editor", className:this.props.isDisabled? "disabled" : "",  rows:"10", type:"text", placeholder:"Enter text...", value:currentValue} ));  
+                 return ( React.DOM.textarea({onChange: this.editHandler, disabled: this.props.isDisabled, ref: "editor", className: this.props.isDisabled? "disabled" : "", rows: "10", type: "text", placeholder: "Enter text...", value: currentValue}));  
              }
            
-             return (React.DOM.input( {type:"text", onChange:this.editHandler, disabled:this.props.isDisabled, className:this.props.isDisabled? "disabled" : "", ref:"editor", value:currentValue}));
+             return (React.DOM.input({type: "text", onChange: this.editHandler, disabled: this.props.isDisabled, className: this.props.isDisabled? "disabled" : "", ref: "editor", value: currentValue}));
         }
       }
 
@@ -158,9 +158,9 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
           case window.enums.editorType.singleSelect:
               var singleSelectValue = metadataField.editorDescriptor.availableChoice[currentValue];
               if(currentValue!= ''){  
-              values.push(React.DOM.div( {className:"current-values-view"},  " ", singleSelectValue === undefined? currentValue : singleSelectValue, 
-                            React.DOM.button( {type:"button", className:"btn btn-default btn-sm btn-editor-edit-metadata-field", onClick:this.switchEditMode, 'data-toggle':"tooltip",  title:"Edit"},  
-                              React.DOM.span( {className:"icon-pencil-1"})
+              values.push(React.DOM.div({className: "current-values-view"}, " ", singleSelectValue === undefined? currentValue : singleSelectValue, 
+                            React.DOM.button({type: "button", className: "btn btn-default btn-sm btn-editor-edit-metadata-field", onClick: this.switchEditMode, 'data-toggle': "tooltip", title: "Edit"}, 
+                              React.DOM.span({className: "icon-pencil-1"})
                             )
                            ));
             }
@@ -168,24 +168,24 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
           case window.enums.editorType.multiSelect:
                   if(field=="learningObjectives"){
                      $.each(currentValue, function(i, value){
-                       values.push(React.DOM.div( {className:"current-values-view learning-objectives label label-warning"},  " ", value.description, " " ));
+                       values.push(React.DOM.div({className: "current-values-view learning-objectives label label-warning"}, " ", value.description, " "));
                      });
                   }else{
                      $.each(currentValue, function(i, value){
-                        values.push(React.DOM.div( {className:"current-values-view label label-warning"}, value));
+                        values.push(React.DOM.div({className: "current-values-view label label-warning"}, value));
                      });
                   }
 
                    if (values.length == 0){
-                      values.push(React.DOM.div( {className:"current-values-view"},  " No value", 
-                                    React.DOM.button( {type:"button", className:"btn btn-default btn-sm btn-editor-edit-metadata-field", onClick:this.switchEditMode, 'data-toggle':"tooltip",  title:"Edit"},  
-                                       React.DOM.span( {className:"icon-pencil-1"})
+                      values.push(React.DOM.div({className: "current-values-view"}, " No value",  
+                                    React.DOM.button({type: "button", className: "btn btn-default btn-sm btn-editor-edit-metadata-field", onClick: this.switchEditMode, 'data-toggle': "tooltip", title: "Edit"}, 
+                                       React.DOM.span({className: "icon-pencil-1"})
                                     )
                                   ));
                    } else{
-                         values.push(React.DOM.div( {className:"current-values-view"}, 
-                                        React.DOM.button( {type:"button", className:"btn btn-default btn-sm btn-editor-edit-metadata-field", onClick:this.switchEditMode, 'data-toggle':"tooltip",  title:"Edit"},  
-                                           React.DOM.span( {className:"icon-pencil-1"})
+                         values.push(React.DOM.div({className: "current-values-view"}, 
+                                        React.DOM.button({type: "button", className: "btn btn-default btn-sm btn-editor-edit-metadata-field", onClick: this.switchEditMode, 'data-toggle': "tooltip", title: "Edit"}, 
+                                           React.DOM.span({className: "icon-pencil-1"})
                                         )
                           ));
                    }
@@ -193,18 +193,18 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
                  break;             
           default: 
             if (currentValue != null && currentValue !=''){           
-              values.push(React.DOM.div( {className:"current-values-view"},  " ", currentValue, 
-                                   React.DOM.button( {type:"button", className:"btn btn-default btn-sm btn-editor-edit-metadata-field", onClick:this.switchEditMode, 'data-toggle':"tooltip",  title:"Edit"},  
-                                      React.DOM.span( {className:"icon-pencil-1"})
+              values.push(React.DOM.div({className: "current-values-view"}, " ", currentValue, 
+                                   React.DOM.button({type: "button", className: "btn btn-default btn-sm btn-editor-edit-metadata-field", onClick: this.switchEditMode, 'data-toggle': "tooltip", title: "Edit"}, 
+                                      React.DOM.span({className: "icon-pencil-1"})
                                    )
                           ));
             }
         }
 
       if (values.length == 0){
-         values.push(React.DOM.div( {className:"current-values-view"},  " No value",  
-                           React.DOM.button( {type:"button", className:"btn btn-default btn-sm btn-editor-edit-metadata-field", onClick:this.switchEditMode, 'data-toggle':"tooltip",  title:"Edit"},  
-                              React.DOM.span( {className:"icon-pencil-1"})
+         values.push(React.DOM.div({className: "current-values-view"}, " No value",   
+                           React.DOM.button({type: "button", className: "btn btn-default btn-sm btn-editor-edit-metadata-field", onClick: this.switchEditMode, 'data-toggle': "tooltip", title: "Edit"}, 
+                              React.DOM.span({className: "icon-pencil-1"})
                             )
                      ));
       }   
@@ -337,12 +337,12 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
     renderMenu: function(){
         if (this.state.editMenu){
 
-          return( React.DOM.div( {className:"shared-menu-container"}, 
+          return( React.DOM.div({className: "shared-menu-container"}, 
                     
-                     React.DOM.div( {className:"shared-field-menu"}, 
-                     React.DOM.span( {className:"input-group-btn"}, 
-                                  React.DOM.button( {type:"button", className:"btn btn-default btn-xs", onClick:this.applyChanges, 'data-toggle':"tooltip", title:"Apply"}, React.DOM.span( {className:"glyphicon glyphicon-ok"})), 
-                                  React.DOM.button( {type:"button", className:"btn btn-default btn-xs", onClick:this.declineChanges, 'data-toggle':"tooltip", title:"Cancel"}, React.DOM.span( {className:"glyphicon glyphicon-remove"})) 
+                     React.DOM.div({className: "shared-field-menu"}, 
+                     React.DOM.span({className: "input-group-btn"}, 
+                                  React.DOM.button({type: "button", className: "btn btn-default btn-xs", onClick: this.applyChanges, 'data-toggle': "tooltip", title: "Apply"}, React.DOM.span({className: "glyphicon glyphicon-ok"})), 
+                                  React.DOM.button({type: "button", className: "btn btn-default btn-xs", onClick: this.declineChanges, 'data-toggle': "tooltip", title: "Cancel"}, React.DOM.span({className: "glyphicon glyphicon-remove"}))
                      )
                      ), 
                        this.renderValidator()
@@ -356,7 +356,7 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
          var metadataField = this.state.metadataField;
          var editorType = metadataField != null ? metadataField.editorDescriptor.editorType : 0;
          if(editorType != window.enums.editorType.singleSelect && editorType != window.enums.editorType.multiSelect){
-           return (React.DOM.div( {className:"shared-validator"}, 
+           return (React.DOM.div({className: "shared-validator"}, 
                         "20 characters"
                       ));
          }
@@ -373,11 +373,11 @@ var MetadataFieldEditor = React.createClass({displayName: 'MetadataFieldEditor',
 
         return (
 
-            React.DOM.div( {className:"metadata-field-editor"}, 
-                   React.DOM.label(null, label),
-                   React.DOM.br(null ),
-                    this.renderBody(),
-                   React.DOM.br(null ),
+            React.DOM.div({className: "metadata-field-editor"}, 
+                   React.DOM.label(null, label), 
+                   React.DOM.br(null), 
+                    this.renderBody(), 
+                   React.DOM.br(null), 
                    this.renderMenu()
                     
             ) 

@@ -10,14 +10,14 @@ var UserBox = React.createClass({displayName: 'UserBox',
          var rows = [];
          rows = this.props.users.map(function (user, i) {
         
-            return (UserRow( {user:user, showAvailibleTitlesHandler:self.props.showAvailibleTitlesHandler, showUserEditDialog:self.props.showUserEditDialog}));
+            return (UserRow({user: user, showAvailibleTitlesHandler: self.props.showAvailibleTitlesHandler, showUserEditDialog: self.props.showUserEditDialog}));
           });
 
      return rows;
     },
     render: function() {
        return (React.DOM.div(null, 
-                React.DOM.div( {className:"roles-table"},  
+                React.DOM.div({className: "roles-table"}, 
 
                   this.renderUsers()
 

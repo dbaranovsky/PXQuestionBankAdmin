@@ -29,15 +29,15 @@ var QuestionListHeader = React.createClass({displayName: 'QuestionListHeader',
   },
 
   renderCell: function(descriptor) {
-      return (QuestinListHeaderCell( 
-                  {width:descriptor.width, 
-                  caption:descriptor.friendlyName,
-                  metadataName:descriptor.metadataName,
-                  order:descriptor.order,
-                  canNotDelete:descriptor.canNotDelete, 
-                  expandAllQuestionHandler:this.props.expandAllQuestionHandler,
-                  expandedAll:this.props.expandedAll,
-                  canViewPreview:this.props.canViewPreview}
+      return (QuestinListHeaderCell({
+                  width: descriptor.width, 
+                  caption: descriptor.friendlyName, 
+                  metadataName: descriptor.metadataName, 
+                  order: descriptor.order, 
+                  canNotDelete: descriptor.canNotDelete, 
+                  expandAllQuestionHandler: this.props.expandAllQuestionHandler, 
+                  expandedAll: this.props.expandedAll, 
+                  canViewPreview: this.props.canViewPreview}
                   ));
   },
 
@@ -47,11 +47,11 @@ var QuestionListHeader = React.createClass({displayName: 'QuestionListHeader',
     
     return ( 
         React.DOM.tr(null, 
-            React.DOM.th( {className:"grouped-header"},  " " ),
-            React.DOM.th( {style: {width:'5%'}},  " ", React.DOM.input( {type:"checkbox", checked:this.props.selectedAll, onChange:this.selectAllQuestionHandler} )),
-             renderedCell,
-            React.DOM.th(null,  " ", QuestionListColumnAppender( {displayedFields:this.props.columns, 
-                                             allFields:this.props.allAvailableColumns}  ))
+            React.DOM.th({className: "grouped-header"}, " "), 
+            React.DOM.th({style:  {width:'5%'}}, " ", React.DOM.input({type: "checkbox", checked: this.props.selectedAll, onChange: this.selectAllQuestionHandler})), 
+             renderedCell, 
+            React.DOM.th(null, " ", QuestionListColumnAppender({displayedFields: this.props.columns, 
+                                             allFields: this.props.allAvailableColumns}))
         )
       );
     }

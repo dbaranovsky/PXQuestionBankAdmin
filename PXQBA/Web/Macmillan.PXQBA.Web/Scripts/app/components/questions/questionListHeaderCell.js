@@ -38,20 +38,20 @@ var QuestinListHeaderCell = React.createClass({displayName: 'QuestinListHeaderCe
 
  renderDeleteButton: function() {
     if((this.state.showDeleteButton)&&(!this.props.canNotDelete)) {
-        return React.DOM.div( {className:"delete-button seq", onClick:this.dleteButtonEventHandler, 'data-toggle':"tooltip", title:"Remove column"},  " X " )
+        return React.DOM.div({className: "delete-button seq", onClick: this.dleteButtonEventHandler, 'data-toggle': "tooltip", title: "Remove column"}, " X ")
     }
     return null;
  },
 
  renderExpandButton: function() {
      if(this.props.metadataName==window.consts.questionTitleName && this.props.canViewPreview) {
-         return (ExpandButton( {expanded:this.props.expandedAll, onClickHandler:this.props.expandAllQuestionHandler, targetCaption:"all"}));  
+         return (ExpandButton({expanded: this.props.expandedAll, onClickHandler: this.props.expandAllQuestionHandler, targetCaption: "all"}));  
       }
       return null;
  },
 
  renderCaption: function(){
-  return ( React.DOM.span( {className:"header-caption", onClick:this.changeOrdering, 'data-title':this.props.metadataName, 'data-toggle':"tooltip", title:"Sort by "+this.props.caption}, 
+  return ( React.DOM.span({className: "header-caption", onClick: this.changeOrdering, 'data-title': this.props.metadataName, 'data-toggle': "tooltip", title: "Sort by "+this.props.caption}, 
                      this.props.caption
                  ));
  },
@@ -59,9 +59,9 @@ var QuestinListHeaderCell = React.createClass({displayName: 'QuestinListHeaderCe
  renderHeader: function(){
       return(  React.DOM.table(null, 
           React.DOM.tr(null, 
-            React.DOM.td( {className:"header-caption seq"}, this.renderCaption()),
-            React.DOM.td(null,  " ", QuestinListHeaderCellOrdering( {order:this.props.order} )),
-            React.DOM.td( {className:"delete-button seq"}, this.renderDeleteButton())
+            React.DOM.td({className: "header-caption seq"}, this.renderCaption()), 
+            React.DOM.td(null, " ", QuestinListHeaderCellOrdering({order: this.props.order})), 
+            React.DOM.td({className: "delete-button seq"}, this.renderDeleteButton())
           )
         ));
 
@@ -69,9 +69,9 @@ var QuestinListHeaderCell = React.createClass({displayName: 'QuestinListHeaderCe
  
   render: function() {
       return (   
-            React.DOM.th( {style: {width: this.props.width},
-              onMouseOver:this.mouseOverHandler,
-              onMouseLeave:this.mouseLeaveHandler}, 
+            React.DOM.th({style:  {width: this.props.width}, 
+              onMouseOver: this.mouseOverHandler, 
+              onMouseLeave: this.mouseLeaveHandler}, 
                   this.renderHeader()
             )
       );

@@ -54,7 +54,7 @@ var UserRoot = React.createClass({displayName: 'UserRoot',
   
    renderLoader: function() {
       if(this.state.loading) {
-        return (React.DOM.div( {className:"waiting small"}))
+        return (React.DOM.div({className: "waiting small"}))
       }
       
       return null;
@@ -67,11 +67,11 @@ var UserRoot = React.createClass({displayName: 'UserRoot',
       return "";
     }
 
-    return ( RolesBox( {addRoleClickHandler:this.addRoleClickHandler, 
-                       removeRoleHandler: this.showRemoveRoleDialog,
-                       viewCapabilities:this.viewCapabilitiesHandler,  
-                       editRole:  this.editRoleHandler,
-                       roles:  this.state.roles, isDisabled:  this.state.loading,  courseId: this.state.currentCourse}));
+    return ( RolesBox({addRoleClickHandler: this.addRoleClickHandler, 
+                       removeRoleHandler: this.showRemoveRoleDialog, 
+                       viewCapabilities: this.viewCapabilitiesHandler, 
+                       editRole: this.editRoleHandler, 
+                       roles: this.state.roles, isDisabled: this.state.loading, courseId: this.state.currentCourse}));
    },
 
    renderAddRoleDialog: function(){
@@ -80,9 +80,9 @@ var UserRoot = React.createClass({displayName: 'UserRoot',
       }
 
 
-      return (RoleDialog(  {saveRoleHandler:this.saveRoleHandler, removeRoleHandler:  this.removeRoleHandler, closeAddRoleDialog:this.closeAddRoleDialog, 
-                            viewMode:this.state.viewMode, courseId:this.state.currentCourse,  role:this.state.roleDialogModel, newRole:this.state.newRole,
-                            deleting:this.state.deleteRole} ));
+      return (RoleDialog({saveRoleHandler: this.saveRoleHandler, removeRoleHandler: this.removeRoleHandler, closeAddRoleDialog: this.closeAddRoleDialog, 
+                            viewMode: this.state.viewMode, courseId: this.state.currentCourse, role: this.state.roleDialogModel, newRole: this.state.newRole, 
+                            deleting: this.state.deleteRole}));
 
    },
 
@@ -138,12 +138,12 @@ var UserRoot = React.createClass({displayName: 'UserRoot',
         if(this.state.page == null || this.state.page.length == 0){
           return(React.DOM.b(null, "No data availible"));
         }
-        return (UserBox(  {users:this.state.page, showAvailibleTitlesHandler:this.showAvailibleTitlesHandler,  showUserEditDialog:this.showUserEditDialog}));
+        return (UserBox({users: this.state.page, showAvailibleTitlesHandler: this.showAvailibleTitlesHandler, showUserEditDialog: this.showUserEditDialog}));
    },
 
    renderAvailibleTitlesDialog: function(){
       if(this.state.showAvailibleTitles){
-         return( AvailibleTitlesDialog( {user:this.state.user, closeAvailibleTitles:this.closeAvailibleTitles} ));
+         return( AvailibleTitlesDialog({user: this.state.user, closeAvailibleTitles: this.closeAvailibleTitles}));
       }
 
       return null;
@@ -151,7 +151,7 @@ var UserRoot = React.createClass({displayName: 'UserRoot',
 
    renderUserEditDialog: function(){
       if(this.state.showUserEditDialog){
-         return( EditUserDialog( {user:this.state.user, closeEditUserDialog:this.closeEditUserDialog, updateAvailibleTitles:this.updateAvailibleTitles} ));
+         return( EditUserDialog({user: this.state.user, closeEditUserDialog: this.closeEditUserDialog, updateAvailibleTitles: this.updateAvailibleTitles}));
       }
 
       return null;
@@ -185,36 +185,36 @@ var UserRoot = React.createClass({displayName: 'UserRoot',
 
    renderTabs: function() {
     return(   React.DOM.div(null, 
-              React.DOM.ul( {className:"nav nav-tabs"}, 
-                React.DOM.li( {className:"active"},  
-                    React.DOM.a( {href:"#users-tab", 'data-toggle':"tab"}, "Users")
-                ),
+              React.DOM.ul({className: "nav nav-tabs"}, 
+                React.DOM.li({className: "active"}, 
+                    React.DOM.a({href: "#users-tab", 'data-toggle': "tab"}, "Users")
+                ), 
                 React.DOM.li(null, 
-                    React.DOM.a( {href:"#roles-tab", 'data-toggle':"tab"}, "Roles")
+                    React.DOM.a({href: "#roles-tab", 'data-toggle': "tab"}, "Roles")
                 )
-              ),
+              ), 
 
-               React.DOM.div( {className:"tab-content"}, 
-                    React.DOM.div( {className:"tab-pane active", id:"users-tab"}, 
-                         this.renderUsers(),
-                          React.DOM.div( {className:"question-grid-item"},  
-                             Paginator( {metadata:{
+               React.DOM.div({className: "tab-content"}, 
+                    React.DOM.div({className: "tab-pane active", id: "users-tab"}, 
+                         this.renderUsers(), 
+                          React.DOM.div({className: "question-grid-item"}, 
+                             Paginator({metadata: {
                                 currentPage: this.state.currentPage,
                                 totalPages: this.state.totalPages}, 
-                                customPaginatorClickHandle:this.changePage})
-                         ) 
-                    ),
-                    React.DOM.div( {className:"tab-pane", id:"roles-tab"}, 
-                         MetadataCourseSelector( {selectCourseHandler:this.selectCourseHandler, 
-                                              availableCourses:this.props.availableCourses,
-                                              currentCourse:this.state.currentCourse}      ),
+                                customPaginatorClickHandle: this.changePage})
+                         )
+                    ), 
+                    React.DOM.div({className: "tab-pane", id: "roles-tab"}, 
+                         MetadataCourseSelector({selectCourseHandler: this.selectCourseHandler, 
+                                              availableCourses: this.props.availableCourses, 
+                                              currentCourse: this.state.currentCourse}), 
                         this.renderRoles()
 
 
                     )
-                ),
-                this.renderAddRoleDialog(),
-                this.renderAvailibleTitlesDialog(),
+                ), 
+                this.renderAddRoleDialog(), 
+                this.renderAvailibleTitlesDialog(), 
                 this.renderUserEditDialog()
             ));
    },
@@ -224,10 +224,10 @@ var UserRoot = React.createClass({displayName: 'UserRoot',
 
     render: function() {
        return (
-                React.DOM.div(null,   
-                     this.state.usersLoading ? Loader(null ) :"",
-                       this.renderLoader(),
-                       this.renderTabs()    
+                React.DOM.div(null, 
+                     this.state.usersLoading ? Loader(null) :"", 
+                       this.renderLoader(), 
+                       this.renderTabs()
                 )
             );
     }

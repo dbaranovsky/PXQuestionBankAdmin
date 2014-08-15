@@ -46,31 +46,31 @@ var ImportPage = React.createClass({displayName: 'ImportPage',
       var self = this;
      
       if(this.state.importResult != null && this.state.importResult.fileNotFound){
-         return (React.DOM.div( {className:"imported-note"}, 
+         return (React.DOM.div({className: "imported-note"}, 
                     "There is no file to import from."
                 ))
       }
 
 
       if(this.state.importResult != null && this.state.importResult.alreadyImported){
-         return (React.DOM.div( {className:"imported-note"}, 
+         return (React.DOM.div({className: "imported-note"}, 
                     "This file has been already imported."
                 ))
       }
 
       if(this.state.isImported){
-        return ( ImportCompleteBox( {questionImported:this.state.importResult.questionCount, titleId:this.state.importResult.titleId} ));
+        return ( ImportCompleteBox({questionImported: this.state.importResult.questionCount, titleId: this.state.importResult.titleId}));
       }
 
        return (
                 React.DOM.div(null, 
-                 React.DOM.h2(null,  " Titles available:"),        
+                 React.DOM.h2(null, " Titles available:"), 
 
-                     TitleListSelector( {data:this.state.response.titles, 
-                                        selectTitleHandler:this.selectTitleHandler, 
-                                        caption:this.captionRender()}
-                                        ),
-                     this.state.loading? Loader(null ) : ""
+                     TitleListSelector({data: this.state.response.titles, 
+                                        selectTitleHandler: this.selectTitleHandler, 
+                                        caption: this.captionRender()}
+                                        ), 
+                     this.state.loading? Loader(null) : ""
         
                 )
             );

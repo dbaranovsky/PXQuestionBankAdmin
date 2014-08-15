@@ -25,7 +25,7 @@ var CapabilitiesBox = React.createClass({displayName: 'CapabilitiesBox',
         var capabilityGroups = [];
         var self = this;
         capabilityGroups = this.props.role.capabilityGroups.map(function (capabilityGroup, i) {
-            return (CapabilityGroup( {capabilityGroup:capabilityGroup, editCapabilityGroup:self.editCapabilityGroup, viewMode:self.props.viewMode}));
+            return (CapabilityGroup({capabilityGroup: capabilityGroup, editCapabilityGroup: self.editCapabilityGroup, viewMode: self.props.viewMode}));
           });
 
         return capabilityGroups;
@@ -33,7 +33,7 @@ var CapabilitiesBox = React.createClass({displayName: 'CapabilitiesBox',
 
     render: function(){
     return(
-      React.DOM.div( {className:"capabilities-box"}, 
+      React.DOM.div({className: "capabilities-box"}, 
           this.renderCapabilities()
       )
       );

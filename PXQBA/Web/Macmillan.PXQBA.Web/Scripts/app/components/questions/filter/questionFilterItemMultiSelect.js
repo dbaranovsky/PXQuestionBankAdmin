@@ -15,7 +15,7 @@ var QuestionFilterItemMultiSelect = React.createClass({displayName: 'QuestionFil
 	renderMenuItems: function(options) {
 		var optionsHtml = [];
 		for(var i=0; i<options.length; i++) {
-              optionsHtml.push(React.DOM.option( {value:options[i].value}, options[i].text));
+              optionsHtml.push(React.DOM.option({value: options[i].value}, options[i].text));
 		}
 
     return optionsHtml;
@@ -52,8 +52,8 @@ var QuestionFilterItemMultiSelect = React.createClass({displayName: 'QuestionFil
 
     render: function() {
         return (
-               React.DOM.select( {'data-placeholder':"No Filtration", multiple:true}, 
-                  this.state.options  
+               React.DOM.select({'data-placeholder': "No Filtration", multiple: true}, 
+                  this.state.options
           	  ) 
             );
         }

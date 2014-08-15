@@ -18,7 +18,7 @@ var ExpandButton = React.createClass({displayName: 'ExpandButton',
     var tooltipTitle = this.props.expanded ? "Collapse "+ this.props.targetCaption : "Expand "+ this.props.targetCaption;
 
       return (   
-             React.DOM.span( {className:buttonIcon, onClick:this.onClickHandler, 'data-toggle':"tooltip", title:tooltipTitle},  " " )
+             React.DOM.span({className: buttonIcon, onClick: this.onClickHandler, 'data-toggle': "tooltip", title: tooltipTitle}, " ")
       );
     }
 });

@@ -91,15 +91,15 @@ var CourseComparerRoot = React.createClass({displayName: 'CourseComparerRoot',
         if(!this.state.compareEnabled) {
             return null;
         }
-        return ( Paginator( {metadata:{
+        return ( Paginator({metadata: {
                             currentPage: this.state.page,
                             totalPages: this.state.totalPages}, 
-                            customPaginatorClickHandle:this.paginatorClickHandle}));
+                            customPaginatorClickHandle: this.paginatorClickHandle}));
     },
 
    renderLoader: function() {
       if(this.state.loading) {
-        return (Loader(null ))
+        return (Loader(null))
       }
       
       return null;
@@ -108,20 +108,20 @@ var CourseComparerRoot = React.createClass({displayName: 'CourseComparerRoot',
     render: function() {
        return (
             React.DOM.div(null, 
-                CourseCompareSelector( {availableCourses:this.props.availableCourses, 
-                                       currentFirstCourse:this.state.firstCourse,
-                                       currentSecondCourse:this.state.secondCourse,
-                                       changeFirstCourseHandler:this.changeFirstCourseHandler,
-                                       changeSecondCourseHandler:this.changeSecondCourseHandler}
-                ),
+                CourseCompareSelector({availableCourses: this.props.availableCourses, 
+                                       currentFirstCourse: this.state.firstCourse, 
+                                       currentSecondCourse: this.state.secondCourse, 
+                                       changeFirstCourseHandler: this.changeFirstCourseHandler, 
+                                       changeSecondCourseHandler: this.changeSecondCourseHandler}
+                ), 
 
-                QuestionComparerList( {questions:this.state.questions, 
-                                      compareEnabled:this.state.compareEnabled,
-                                      templates:this.state.templates,
-                                      firstTitleCaption:this.getCourseCaption(this.state.firstCourse),
-                                      secondTitleCaption:this.getCourseCaption(this.state.secondCourse)}
-                                      ),
-                 this.renderPaginator(),
+                QuestionComparerList({questions: this.state.questions, 
+                                      compareEnabled: this.state.compareEnabled, 
+                                      templates: this.state.templates, 
+                                      firstTitleCaption: this.getCourseCaption(this.state.firstCourse), 
+                                      secondTitleCaption: this.getCourseCaption(this.state.secondCourse)}
+                                      ), 
+                 this.renderPaginator(), 
                  this.renderLoader()
             )
             );

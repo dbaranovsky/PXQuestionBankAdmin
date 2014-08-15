@@ -60,18 +60,18 @@ var ShareMetadataEditorRow = React.createClass({displayName: 'ShareMetadataEdito
 
    renderSharedValue: function(){
         if (this.props.question.isShared ){
-             return  (React.DOM.div( {className:this.props.isUnique? "cell shared unique" : "cell shared"}, 
-                     MetadataFieldEditor( {currentCourseId:this.props.currentCourseId,
-                                          question:this.props.isStatic?  this.props.question.defaultSection :  this.props.question.defaultSection.dynamicValues, 
-                                          questionId:  this.props.question.id,
-                                          editMode:false, 
-                                          metadata:this.props.courseMetadata,
-                                          editHandler:this.sharedEditHandler, 
-                                          applyHandler: this.applyHandler,
-                                          field:this.props.field, 
-                                          title:this.props.title, 
-                                          isUnique:this.state.isUnique,
-                                          allowEdit:  this.props.question.canEditSharedQuestionMetadata})
+             return  (React.DOM.div({className: this.props.isUnique? "cell shared unique" : "cell shared"}, 
+                     MetadataFieldEditor({currentCourseId: this.props.currentCourseId, 
+                                          question: this.props.isStatic?  this.props.question.defaultSection :  this.props.question.defaultSection.dynamicValues, 
+                                          questionId: this.props.question.id, 
+                                          editMode: false, 
+                                          metadata: this.props.courseMetadata, 
+                                          editHandler: this.sharedEditHandler, 
+                                          applyHandler: this.applyHandler, 
+                                          field: this.props.field, 
+                                          title: this.props.title, 
+                                          isUnique: this.state.isUnique, 
+                                          allowEdit: this.props.question.canEditSharedQuestionMetadata})
                  ));
         }
     },
@@ -85,16 +85,16 @@ var ShareMetadataEditorRow = React.createClass({displayName: 'ShareMetadataEdito
           return (React.DOM.span(null, "OFF"));
         }
 
-        return (React.DOM.div( {className:"switcher-container"},  " ", React.DOM.input( {name:"switcher",   checked:!this.state.isDisabled, 'data-size':"small", 'data-on-text':"3", 'data-off-text':"2.0.1", type:"checkbox"} )));
+        return (React.DOM.div({className: "switcher-container"}, " ", React.DOM.input({name: "switcher", checked: !this.state.isDisabled, 'data-size': "small", 'data-on-text': "3", 'data-off-text': "2.0.1", type: "checkbox"})));
     },
 
     renderSwitchControl: function(){
        if (this.props.question.isShared && this.state.isUnique != true){
-         return  (React.DOM.div( {className:"cell control"}, 
-                     React.DOM.div( {className:"override-control"}, 
-                          React.DOM.p(null,  " " ),
-                         React.DOM.div(null,  " Override"), 
-                         React.DOM.div( {className:"switch-wrapper"}, 
+         return  (React.DOM.div({className: "cell control"}, 
+                     React.DOM.div({className: "override-control"}, 
+                          React.DOM.p(null, " "), 
+                         React.DOM.div(null, " Override"), 
+                         React.DOM.div({className: "switch-wrapper"}, 
 
                           this.renderSwitcherInput()
                          )
@@ -136,14 +136,14 @@ var ShareMetadataEditorRow = React.createClass({displayName: 'ShareMetadataEdito
     },
 
     renderLocalValue: function(){
-      return  (React.DOM.div( {className:"cell"}, 
-                 MetadataFieldEditor( {currentCourseId:this.props.currentCourseId,
-                                    question:this.props.isStatic?  this.props.question.localSection :  this.props.question.localSection.dynamicValues, 
-                                    isDisabled:this.state.isDisabled || (!this.props.question.canEditSharedQuestionMetadata && this.props.question.isShared) || !this.props.question.canEditQuestion, 
-                                    metadata:this.props.metadata, 
-                                    editHandler:this.localEditHandler, 
-                                    field:this.props.field, 
-                                    title:this.props.title} )
+      return  (React.DOM.div({className: "cell"}, 
+                 MetadataFieldEditor({currentCourseId: this.props.currentCourseId, 
+                                    question: this.props.isStatic?  this.props.question.localSection :  this.props.question.localSection.dynamicValues, 
+                                    isDisabled: this.state.isDisabled || (!this.props.question.canEditSharedQuestionMetadata && this.props.question.isShared) || !this.props.question.canEditQuestion, 
+                                    metadata: this.props.metadata, 
+                                    editHandler: this.localEditHandler, 
+                                    field: this.props.field, 
+                                    title: this.props.title})
                  ));
 
     },
@@ -238,9 +238,9 @@ var ShareMetadataEditorRow = React.createClass({displayName: 'ShareMetadataEdito
     },
 
     render: function() {
-    		return(   React.DOM.div( {className:"row"}, 
-                        this.renderSharedValue(),
-                        this.renderSwitchControl(),
+    		return(   React.DOM.div({className: "row"}, 
+                        this.renderSharedValue(), 
+                        this.renderSwitchControl(), 
                         this.renderLocalValue()
                       )
                    );

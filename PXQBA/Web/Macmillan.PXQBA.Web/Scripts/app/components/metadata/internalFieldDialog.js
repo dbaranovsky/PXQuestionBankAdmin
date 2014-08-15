@@ -26,21 +26,21 @@ var InternalFieldDialog = React.createClass({displayName: 'InternalFieldDialog',
         var renderBody = function(){
              return (React.DOM.div(null, 
                         React.DOM.div(null, 
-                            React.DOM.div(null,  " Internal name: " ), " ", TextEditor( {value:self.state.value, dataChangeHandler:self.onChangeHandler})
-                        ),
-                         React.DOM.div( {className:"modal-footer clearfix"}, 
-                                 React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal"}, "Cancel"),
-                                 React.DOM.button( {type:"button", className:"btn btn-primary", 'data-dismiss':"modal", onClick:self.editInternalFieldHandler}, "Save")
+                            React.DOM.div(null, " Internal name: "), " ", TextEditor({value: self.state.value, dataChangeHandler: self.onChangeHandler})
+                        ), 
+                         React.DOM.div({className: "modal-footer clearfix"}, 
+                                 React.DOM.button({type: "button", className: "btn btn-default", 'data-dismiss': "modal"}, "Cancel"), 
+                                 React.DOM.button({type: "button", className: "btn btn-primary", 'data-dismiss': "modal", onClick: self.editInternalFieldHandler}, "Save")
                             )
                     )
             );
         };
 
-        return (ModalDialog( {showOnCreate:true,
-                             renderHeaderText:renderHeaderText, 
-                             renderBody:renderBody, 
-                             closeDialogHandler:  this.props.closeDialogHandler,
-                             dialogId:"internalFieldDialog"}));
+        return (ModalDialog({showOnCreate: true, 
+                             renderHeaderText: renderHeaderText, 
+                             renderBody: renderBody, 
+                             closeDialogHandler: this.props.closeDialogHandler, 
+                             dialogId: "internalFieldDialog"}));
     }
 });
 

@@ -57,14 +57,14 @@ var AvailibleValuesBodyItemLinks = React.createClass({displayName: 'AvailibleVal
         var itemsHtml = [];
 
         for(var i=0; i<this.state.items.length; i++) {
-            itemsHtml.push(MetadataItemLinkRow( 
-                                    {ref:"item-"+i,
-                                    index:i,
-                                    item:this.state.items[i],
-                                    disabled:!this.props.canEdit,
-                                    deleteItemHandler:this.deleteItemHandler,
-                                    editItemHandler:this.updateItemHandler,
-                                    editModeOff:this.editModeOff}
+            itemsHtml.push(MetadataItemLinkRow({
+                                    ref: "item-"+i, 
+                                    index: i, 
+                                    item: this.state.items[i], 
+                                    disabled: !this.props.canEdit, 
+                                    deleteItemHandler: this.deleteItemHandler, 
+                                    editItemHandler: this.updateItemHandler, 
+                                    editModeOff: this.editModeOff}
                                     ));
         }
 
@@ -154,9 +154,9 @@ var AvailibleValuesBodyItemLinks = React.createClass({displayName: 'AvailibleVal
     },
 
     renderTextDescription: function() {
-        return (React.DOM.div( {className:"metadata-item-links-descripton-container"}, 
-                "List all possible course items for ", React.DOM.b(null, this.props.fieldNameCaption), " below, one"+' '+
-                "per row. Values will appear to editors and instructors in the order listed. Tip: You may"+' '+
+        return (React.DOM.div({className: "metadata-item-links-descripton-container"}, 
+                "List all possible course items for ", React.DOM.b(null, this.props.fieldNameCaption), " below, one" + ' ' +
+                "per row. Values will appear to editors and instructors in the order listed. Tip: You may" + ' ' +
                 "copy values from a spreadsheet with item ID and title columns and paste them into field below."
                ));
     },
@@ -168,16 +168,16 @@ var AvailibleValuesBodyItemLinks = React.createClass({displayName: 'AvailibleVal
             classNameText+=" disabled";
         }
 
-        return (React.DOM.button( {type:"button", className:classNameText,  onClick:this.addItemHandler} , "Add row"));
+        return (React.DOM.button({type: "button", className: classNameText, onClick: this.addItemHandler}, "Add row"));
     },
 
     renderPasteHolder: function() {
-        return (React.DOM.textarea( {placeholder:"Paste values form spreadsheet here", 
-                 className:"availible-values-paste-area",
-                 disabled:!this.props.canEdit ? 'disabled' : undefined,
-                 onChange:this.pasteHandler, 
-                 value:"",
-                 rows:"1"}
+        return (React.DOM.textarea({placeholder: "Paste values form spreadsheet here", 
+                 className: "availible-values-paste-area", 
+                 disabled: !this.props.canEdit ? 'disabled' : undefined, 
+                 onChange: this.pasteHandler, 
+                 value: "", 
+                 rows: "1"}
                  ));
     },
 
@@ -186,28 +186,28 @@ var AvailibleValuesBodyItemLinks = React.createClass({displayName: 'AvailibleVal
             React.DOM.div(null, 
                 React.DOM.div(null, 
                     this.renderTextDescription()
-                ),
+                ), 
                 React.DOM.div(null, 
                     this.renderPasteHolder()
-                ),
-                React.DOM.div( {className:"item-liks-table-container"}, 
-                    React.DOM.table( {className:"table table item-liks-table"}, 
+                ), 
+                React.DOM.div({className: "item-liks-table-container"}, 
+                    React.DOM.table({className: "table table item-liks-table"}, 
                         React.DOM.thead(null, 
                               React.DOM.tr(null, 
-                                  React.DOM.td( {style:{width:'40%'}, className:"item-liks-table-cell"}, React.DOM.b(null, "ItemID")),
-                                  React.DOM.td( {style:{width:'40%'}, className:"item-liks-table-cell"}, React.DOM.b(null, "ItemTitle")),
-                                  React.DOM.td( {style:{width:'20%'}})
+                                  React.DOM.td({style: {width:'40%'}, className: "item-liks-table-cell"}, React.DOM.b(null, "ItemID")), 
+                                  React.DOM.td({style: {width:'40%'}, className: "item-liks-table-cell"}, React.DOM.b(null, "ItemTitle")), 
+                                  React.DOM.td({style: {width:'20%'}})
                              )
-                         ),
+                         ), 
                          React.DOM.tbody(null, this.renderItems())
                     )
-                ),
+                ), 
                 React.DOM.div(null, 
                  this.renderAddButton()
-                ),
-                React.DOM.div( {className:"modal-footer clearfix"}, 
-                    React.DOM.button( {ref:"cancelButton", type:"button", className:"btn btn-default", 'data-dismiss':"modal"}, "Cancel"),
-                    React.DOM.button( {type:"button", className:"btn btn-primary", onClick:this.editAvailibleValuesHandler}, "Save")
+                ), 
+                React.DOM.div({className: "modal-footer clearfix"}, 
+                    React.DOM.button({ref: "cancelButton", type: "button", className: "btn btn-default", 'data-dismiss': "modal"}, "Cancel"), 
+                    React.DOM.button({type: "button", className: "btn btn-primary", onClick: this.editAvailibleValuesHandler}, "Save")
                 )
             )
             );

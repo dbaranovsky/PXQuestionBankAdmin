@@ -76,14 +76,14 @@ var QuestionFilterItemsContainer = React.createClass({displayName: 'QuestionFilt
    },
 
    renderFilterItem: function(itemDescriptor) {
-      return (QuestionFilterItemBase( {descriptor:itemDescriptor}))
+      return (QuestionFilterItemBase({descriptor: itemDescriptor}))
    },
 
 
    render: function() {
         return (
-            React.DOM.div( {className:"questionFilterContainer"}, 
-                 React.DOM.div(null,  
+            React.DOM.div({className: "questionFilterContainer"}, 
+                 React.DOM.div(null, 
                      this.renderFilterItems()
                 )
             )

@@ -41,13 +41,13 @@ var ImportFromTitleStep3Root = React.createClass({displayName: 'ImportFromTitleS
 	},
 
     renderSelectorMenu: function() {
-    	return(React.DOM.button( {type:"button", className:"btn btn-default btn-sm", onClick:this.backHandler}, 
+    	return(React.DOM.button({type: "button", className: "btn btn-default btn-sm", onClick: this.backHandler}, 
                 "Back"
                ));
     },
 
     renderEndPage: function() {
-    	          return ( ImportCompleteBox( {questionImported:this.state.questionImported, titleId:this.state.titleIdImportedTo} ));
+    	          return ( ImportCompleteBox({questionImported: this.state.questionImported, titleId: this.state.titleIdImportedTo}));
     },
 
     getTetles: function() {
@@ -56,10 +56,10 @@ var ImportFromTitleStep3Root = React.createClass({displayName: 'ImportFromTitleS
     },
 
     renderTitleList: function() {
-    	return (TitleListSelector( {data:this.getTetles(), 
-                     			   selectTitleHandler:this.selectTitleHandler, 
-                     			   caption:"Select title to import to:",
-                     			   renderSelectorMenu:this.renderSelectorMenu}
+    	return (TitleListSelector({data: this.getTetles(), 
+                     			   selectTitleHandler: this.selectTitleHandler, 
+                     			   caption: "Select title to import to:", 
+                     			   renderSelectorMenu: this.renderSelectorMenu}
                 ));
     },
 
@@ -77,8 +77,8 @@ var ImportFromTitleStep3Root = React.createClass({displayName: 'ImportFromTitleS
        return (
                 React.DOM.div(null, 
                       React.DOM.div(null, 
-                     		 content,
-                     		 this.state.loading? Loader(null ) : ""
+                     		 content, 
+                     		 this.state.loading? Loader(null) : ""
            	         )
                 )
             );

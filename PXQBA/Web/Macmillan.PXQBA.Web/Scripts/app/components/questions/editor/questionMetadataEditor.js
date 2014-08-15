@@ -44,13 +44,13 @@ var QuestionMetadataEditor = React.createClass({displayName: 'QuestionMetadataEd
 
       if (this.props.question.defaultSection.dynamicValues == null || this.props.question.defaultSection.dynamicValues == 0 ){
              $.each(localFieldsName, function( index, value ) {
-                 rows.push( ShareMetadataEditorRow( 
-                            {currentCourseId:self.props.currentCourseId,
-                            question:self.props.question,
-                            metadata:self.props.metadata, 
-                            courseMetadata:self.state.courseMetadata,
-                            editHandler:self.props.editHandler, 
-                            field:value} ));
+                 rows.push( ShareMetadataEditorRow({
+                            currentCourseId: self.props.currentCourseId, 
+                            question: self.props.question, 
+                            metadata: self.props.metadata, 
+                            courseMetadata: self.state.courseMetadata, 
+                            editHandler: self.props.editHandler, 
+                            field: value}));
             });
 
              return rows;
@@ -67,25 +67,25 @@ var QuestionMetadataEditor = React.createClass({displayName: 'QuestionMetadataEd
 
       var self = this;    
       $.each(fieldsWithAnalouges, function( index, value ) {
-             rows.push( ShareMetadataEditorRow( 
-                        {currentCourseId:self.props.currentCourseId,
-                        question:self.props.question, 
-                        courseMetadata:self.state.courseMetadata, 
-                        metadata:self.props.metadata, 
-                        editHandler:self.props.editHandler, 
-                        field:value} ));
+             rows.push( ShareMetadataEditorRow({
+                        currentCourseId: self.props.currentCourseId, 
+                        question: self.props.question, 
+                        courseMetadata: self.state.courseMetadata, 
+                        metadata: self.props.metadata, 
+                        editHandler: self.props.editHandler, 
+                        field: value}));
       });
 
 
        $.each(fieldsWithoutAnalouges, function( index, value ) {
-             rows.push( ShareMetadataEditorRow( 
-                        {currentCourseId:self.props.currentCourseId,
-                        question:self.props.question, 
-                        courseMetadata:self.state.courseMetadata, 
-                        isUnique:true, 
-                        metadata:self.props.metadata, 
-                        editHandler:self.props.editHandler,
-                        field:value} ));
+             rows.push( ShareMetadataEditorRow({
+                        currentCourseId: self.props.currentCourseId, 
+                        question: self.props.question, 
+                        courseMetadata: self.state.courseMetadata, 
+                        isUnique: true, 
+                        metadata: self.props.metadata, 
+                        editHandler: self.props.editHandler, 
+                        field: value}));
       });
 
 
@@ -97,9 +97,9 @@ var QuestionMetadataEditor = React.createClass({displayName: 'QuestionMetadataEd
     addStaticRows: function(){
       var rows=[];
       var self = this;
-      rows.push(ShareMetadataEditorRow( {currentCourseId:self.props.currentCourseId, question:self.props.question, courseMetadata:self.state.courseMetadata,  isStatic:true,  isUnique:false, metadata:self.props.metadata, editHandler:self.props.editHandler, field:window.consts.questionTitleName} ));
-      rows.push(ShareMetadataEditorRow( {currentCourseId:self.props.currentCourseId, question:self.props.question, courseMetadata:self.state.courseMetadata,  isStatic:true,  isUnique:false, metadata:self.props.metadata, editHandler:self.props.editHandler, field:window.consts.questionChapterName} ));
-      rows.push(ShareMetadataEditorRow( {currentCourseId:self.props.currentCourseId, question:self.props.question, courseMetadata:self.state.courseMetadata,  isStatic:true,  isUnique:false, metadata:self.props.metadata, editHandler:self.props.editHandler, field:window.consts.questionBankName} ));
+      rows.push(ShareMetadataEditorRow({currentCourseId: self.props.currentCourseId, question: self.props.question, courseMetadata: self.state.courseMetadata, isStatic: true, isUnique: false, metadata: self.props.metadata, editHandler: self.props.editHandler, field: window.consts.questionTitleName}));
+      rows.push(ShareMetadataEditorRow({currentCourseId: self.props.currentCourseId, question: self.props.question, courseMetadata: self.state.courseMetadata, isStatic: true, isUnique: false, metadata: self.props.metadata, editHandler: self.props.editHandler, field: window.consts.questionChapterName}));
+      rows.push(ShareMetadataEditorRow({currentCourseId: self.props.currentCourseId, question: self.props.question, courseMetadata: self.state.courseMetadata, isStatic: true, isUnique: false, metadata: self.props.metadata, editHandler: self.props.editHandler, field: window.consts.questionBankName}));
 
       return rows;
     },
@@ -113,26 +113,26 @@ var QuestionMetadataEditor = React.createClass({displayName: 'QuestionMetadataEd
         }
 
         if(this.state.metadataLoaded){
-           return ( React.DOM.div( {className:localClass}, 
-                      React.DOM.div( {className:"row header", style:style}, 
-                        React.DOM.div( {className:"cell"},  " ", React.DOM.span( {className:"label label-default metadata-info-label"}, "Shared values")),
-                        React.DOM.div( {className:"cell control"}),
-                        React.DOM.div( {className:"cell"},  " ", React.DOM.span( {className:"label label-default metadata-info-label"}, "Local values"))
-                      ),
-                      React.DOM.div( {className:"body-container"}, 
+           return ( React.DOM.div({className: localClass}, 
+                      React.DOM.div({className: "row header", style: style}, 
+                        React.DOM.div({className: "cell"}, " ", React.DOM.span({className: "label label-default metadata-info-label"}, "Shared values")), 
+                        React.DOM.div({className: "cell control"}), 
+                        React.DOM.div({className: "cell"}, " ", React.DOM.span({className: "label label-default metadata-info-label"}, "Local values"))
+                      ), 
+                      React.DOM.div({className: "body-container"}, 
 
                          this.renderRows()
                           
                         
                  
-                     )          
+                     )
                  )
 
            
          );
         }
 
-        return (React.DOM.div( {className:"waiting"}))
+        return (React.DOM.div({className: "waiting"}))
        
     }
 });

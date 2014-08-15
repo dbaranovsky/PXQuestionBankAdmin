@@ -40,14 +40,14 @@ var AvailibleValuesBodyTextArea = React.createClass({displayName: 'AvailibleValu
     renderTextDescription: function() {
         if(this.props.fieldType==window.enums.metadataFieldType.keywords) {
             return (React.DOM.div(null, 
-                "List pre-defined values for ", React.DOM.b(null, this.props.fieldNameCaption), " below, one per line. Editors"+' '+ 
-                "will be able to define additional values while editing questions. Values will"+' '+
+                "List pre-defined values for ", React.DOM.b(null, this.props.fieldNameCaption), " below, one per line. Editors" + ' ' + 
+                "will be able to define additional values while editing questions. Values will" + ' ' +
                 "appear to editors and instructors in alphabetical order."
                ));
         }
 
         return (React.DOM.div(null, 
-                "List all possible values for ", React.DOM.b(null, this.props.fieldNameCaption), " below, one per line. Values"+' '+
+                "List all possible values for ", React.DOM.b(null, this.props.fieldNameCaption), " below, one per line. Values" + ' ' +
                 "will appear to editors and instructors in the order listed."
                ));
     },
@@ -56,20 +56,20 @@ var AvailibleValuesBodyTextArea = React.createClass({displayName: 'AvailibleValu
         return(
             React.DOM.div(null, 
                 React.DOM.div(null, 
-                    React.DOM.div( {className:"metadata-values-label"},  
+                    React.DOM.div({className: "metadata-values-label"}, 
                         this.renderTextDescription()
                      ), 
-                     React.DOM.div(null,  
-                            TextAreaEditor( 
-                              {disabled:!this.props.canEdit,
-                              classNameProps:"metadata-availible-values-editor",
-                              dataChangeHandler:this.onChangeHandler, 
-                              value:this.state.value} )
+                     React.DOM.div(null, 
+                            TextAreaEditor({
+                              disabled: !this.props.canEdit, 
+                              classNameProps: "metadata-availible-values-editor", 
+                              dataChangeHandler: this.onChangeHandler, 
+                              value: this.state.value})
                      )
-                ),
-                React.DOM.div( {className:"modal-footer clearfix"}, 
-                                 React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal"}, "Cancel"),
-                                 React.DOM.button( {type:"button", className:"btn btn-primary", 'data-dismiss':"modal", onClick:this.editAvailibleValuesHandler}, "Save")
+                ), 
+                React.DOM.div({className: "modal-footer clearfix"}, 
+                                 React.DOM.button({type: "button", className: "btn btn-default", 'data-dismiss': "modal"}, "Cancel"), 
+                                 React.DOM.button({type: "button", className: "btn btn-primary", 'data-dismiss': "modal", onClick: this.editAvailibleValuesHandler}, "Save")
                 )
             )
             );

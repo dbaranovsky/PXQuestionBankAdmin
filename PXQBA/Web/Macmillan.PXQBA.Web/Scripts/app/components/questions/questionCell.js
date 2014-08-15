@@ -39,7 +39,7 @@ var QuestionCell = React.createClass({displayName: 'QuestionCell',
               return null;
             }
 
-            return QuestionCellMenu( {onEditClickHandler:this.onEditClickHandler, isDisabled:this.props.field == window.consts.questionStatusName && !this.props.canChangeDraftStatus && this.props.draft})
+            return QuestionCellMenu({onEditClickHandler: this.onEditClickHandler, isDisabled: this.props.field == window.consts.questionStatusName && !this.props.canChangeDraftStatus && this.props.draft})
         }
         return null;
     },
@@ -58,23 +58,23 @@ var QuestionCell = React.createClass({displayName: 'QuestionCell',
 
     renderExpandButton: function() {
           if(this.props.capabilities.canPreviewQuestion){
-             return (ExpandButton( {expanded:this.props.expanded, onClickHandler:this.expandPreviewQuestionHandler, targetCaption:"question"})); 
+             return (ExpandButton({expanded: this.props.expanded, onClickHandler: this.expandPreviewQuestionHandler, targetCaption: "question"})); 
           }
 
     },
 
     renderDraftLabel: function() {
       if(this.props.draft) {
-        return (React.DOM.span( {className:"label label-default draft-label"}, "DRAFT"))
+        return (React.DOM.span({className: "label label-default draft-label"}, "DRAFT"))
       }
       return null;
     },
 
     renderValue: function() {
         if(this.state.editMode) {
-            return (QuestionInlineEditorBase( {afterEditingHandler:this.afterEditingHandler,
-                    capabilities:  this.props.capabilities,
-                    metadata: {field: this.props.field,
+            return (QuestionInlineEditorBase({afterEditingHandler: this.afterEditingHandler, 
+                    capabilities: this.props.capabilities, 
+                    metadata:  {field: this.props.field,
                                currentValue: this.props.value,
                                questionId: this.props.questionId,
                                editorDescriptor: this.props.editorDescriptor,
@@ -88,15 +88,15 @@ var QuestionCell = React.createClass({displayName: 'QuestionCell',
         }
          
         if(this.props.field==window.consts.questionTitleName) {
-           return (React.DOM.div( {className:"cell-value"},  
-                     React.DOM.table( {className:"cell-value-table"}, 
+           return (React.DOM.div({className: "cell-value"}, 
+                     React.DOM.table({className: "cell-value-table"}, 
                         React.DOM.tr(null, 
                           React.DOM.td(null, 
                              this.renderExpandButton()
-                          ),
+                          ), 
                           React.DOM.td(null, 
                              this.props.value
-                          ),
+                          ), 
                           React.DOM.td(null, 
                              this.renderDraftLabel()
                          )
@@ -105,7 +105,7 @@ var QuestionCell = React.createClass({displayName: 'QuestionCell',
                     ));
         }
 
-        return (React.DOM.div( {className:"cell-value"}, this.props.value, " " ));
+        return (React.DOM.div({className: "cell-value"}, this.props.value, " "));
     },
 
     render: function() {
@@ -114,17 +114,17 @@ var QuestionCell = React.createClass({displayName: 'QuestionCell',
             });
 
         return ( 
-                React.DOM.td( {onMouseOver:this.mouseOverHandler,
-                    onMouseLeave:this.mouseLeaveHandler,
-                    className:cellClass}
-                    , 
+                React.DOM.td({onMouseOver: this.mouseOverHandler, 
+                    onMouseLeave: this.mouseLeaveHandler, 
+                    className: cellClass
+                    }, 
 
                     React.DOM.table(null, 
                         React.DOM.tr(null, 
                             React.DOM.td(null, 
                             this.renderValue()
-                            ),
-                            React.DOM.td( {className:"cell-menu-holder"}, 
+                            ), 
+                            React.DOM.td({className: "cell-menu-holder"}, 
                                  this.renderMenu()
                             )
                         )

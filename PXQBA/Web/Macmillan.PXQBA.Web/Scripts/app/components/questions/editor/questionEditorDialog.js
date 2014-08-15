@@ -71,29 +71,29 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
             return self.props.caption;
         };
         var renderBody = function(){
-            return (QuestionEditor(  {currentCourseId:  self.props.currentCourseId,
-                                     question:self.props.question,
-                                     metadata:self.props.metadata,  
-                                     editSourceQuestionHandler:self.props.editSourceQuestionHandler, 
-                                     finishSaving:  self.finishSaving, 
-                                     closeDialog:self.closeDialog, 
-                                     isNew:self.props.isNew, 
-                                     isDuplicate:self.props.caption === window.enums.dialogCaptions.duplicateQuestion,
-                                     handlers:self.props.handlers,
-                                     viewHistoryMode:  self.props.viewHistoryMode,
-                                     isEditedInPlace:  self.props.isEditedInPlace,
-                                     caption:self.props.caption,
-                                     notesChangedHandler:  self.notesChangedHandler}
+            return (QuestionEditor({currentCourseId: self.props.currentCourseId, 
+                                     question: self.props.question, 
+                                     metadata: self.props.metadata, 
+                                     editSourceQuestionHandler: self.props.editSourceQuestionHandler, 
+                                     finishSaving: self.finishSaving, 
+                                     closeDialog: self.closeDialog, 
+                                     isNew: self.props.isNew, 
+                                     isDuplicate: self.props.caption === window.enums.dialogCaptions.duplicateQuestion, 
+                                     handlers: self.props.handlers, 
+                                     viewHistoryMode: self.props.viewHistoryMode, 
+                                     isEditedInPlace: self.props.isEditedInPlace, 
+                                     caption: self.props.caption, 
+                                     notesChangedHandler: self.notesChangedHandler}
                                      ));
         };
         var renderFooterButtons = function(){
             return ("");
         };
-        return (ModalDialog( {renderHeaderText:renderHeaderText, 
-                             renderBody:renderBody, 
-                             renderFooterButtons:renderFooterButtons, 
-                             closeDialogHandler:  this.closeDialog,
-                             dialogId:"questionEditorModal"})
+        return (ModalDialog({renderHeaderText: renderHeaderText, 
+                             renderBody: renderBody, 
+                             renderFooterButtons: renderFooterButtons, 
+                             closeDialogHandler: this.closeDialog, 
+                             dialogId: "questionEditorModal"})
                 );
     }
 });

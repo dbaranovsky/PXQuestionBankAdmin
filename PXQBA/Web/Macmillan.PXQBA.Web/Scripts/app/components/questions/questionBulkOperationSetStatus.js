@@ -13,8 +13,8 @@ var QuestionBulkOperationSetStatus = React.createClass({displayName: 'QuestionBu
 
     render: function() {
         return ( 
-            React.DOM.div(null,  
-            SingleSelectButton( {caption:"Set status to..",  cancelHandler:this.cancelHandler, selectHandler:this.selectHandler, values:this.props.availableStatuses} )
+            React.DOM.div(null, 
+            SingleSelectButton({caption: "Set status to..", cancelHandler: this.cancelHandler, selectHandler: this.selectHandler, values: this.props.availableStatuses})
             )
             );
         }

@@ -10,7 +10,7 @@ var ToltipElement = React.createClass({displayName: 'ToltipElement',
   		className+=" "+this.props.classNameProp;
   	}
        return (
-                React.DOM.span( {className:className, title:this.props.tooltipText, onClick:this.props.onClickHandler})
+                React.DOM.span({className: className, title: this.props.tooltipText, onClick: this.props.onClickHandler})
     );
   },
 });

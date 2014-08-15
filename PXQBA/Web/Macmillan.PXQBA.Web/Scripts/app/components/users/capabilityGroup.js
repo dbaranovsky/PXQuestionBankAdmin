@@ -28,7 +28,7 @@ var CapabilityGroup = React.createClass({displayName: 'CapabilityGroup',
         var capabilities = [];
         var self = this;
           capabilities = this.props.capabilityGroup.capabilities.map(function (capability, i) {
-            return (CapabilityItem( {capability:capability, editCapability:self.editCapability, viewMode:self.props.viewMode}));
+            return (CapabilityItem({capability: capability, editCapability: self.editCapability, viewMode: self.props.viewMode}));
           });
 
         return capabilities;
@@ -61,8 +61,8 @@ var CapabilityGroup = React.createClass({displayName: 'CapabilityGroup',
     render: function(){
      
       return(
-        React.DOM.div( {className:"capabilities-group"}, 
-           React.DOM.input( {type:"checkbox",  disabled:this.props.viewMode, checked:this.isGroupSelected(), onChange:this.switchGroup} ), " ", React.DOM.b(null,  " ", this.props.capabilityGroup.name),
+        React.DOM.div({className: "capabilities-group"}, 
+           React.DOM.input({type: "checkbox", disabled: this.props.viewMode, checked: this.isGroupSelected(), onChange: this.switchGroup}), " ", React.DOM.b(null, " ", this.props.capabilityGroup.name), 
            this.renderCapabilities()
         )
         );

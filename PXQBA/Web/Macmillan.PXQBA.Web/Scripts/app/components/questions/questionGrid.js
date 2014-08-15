@@ -48,30 +48,30 @@ var QuestionGrid = React.createClass({displayName: 'QuestionGrid',
   render: function() { 
         if (this.props.response.canViewQuestionList){
              return (
-              React.DOM.div( {className:"questionGrid"}, 
-                React.DOM.div( {className:"question-grid-item"},  
-                     QuestionFilter( {filter:this.props.response.filter, allAvailableColumns:this.props.response.allAvailableColumns})
-                ),
-                React.DOM.div( {className:"question-grid-item"},  
-                    QuestionList( {data:this.props.response.questionList, 
-                                        currentCourseId:this.props.response.productCourseId,
-                                        filter:this.props.response.filter,
-                                        order:this.props.response.order, 
-                                        columns:this.props.response.columns,
-                                        questionCardTemplate:  this.props.response.questionCardLayout,
-                                        allAvailableColumns:this.props.response.allAvailableColumns,
-                                        handlers:this.props.handlers,
-                                        currentPage:this.props.response.pageNumber,
-                                        capabilities:  this.getCapabilities(),
-                                        options:  this.getOptions()}
+              React.DOM.div({className: "questionGrid"}, 
+                React.DOM.div({className: "question-grid-item"}, 
+                     QuestionFilter({filter: this.props.response.filter, allAvailableColumns: this.props.response.allAvailableColumns})
+                ), 
+                React.DOM.div({className: "question-grid-item"}, 
+                    QuestionList({data: this.props.response.questionList, 
+                                        currentCourseId: this.props.response.productCourseId, 
+                                        filter: this.props.response.filter, 
+                                        order: this.props.response.order, 
+                                        columns: this.props.response.columns, 
+                                        questionCardTemplate: this.props.response.questionCardLayout, 
+                                        allAvailableColumns: this.props.response.allAvailableColumns, 
+                                        handlers: this.props.handlers, 
+                                        currentPage: this.props.response.pageNumber, 
+                                        capabilities: this.getCapabilities(), 
+                                        options: this.getOptions()}
                                         )
                 ), 
-                React.DOM.div( {className:"question-grid-item"},  
-                    Paginator( {metadata:{
+                React.DOM.div({className: "question-grid-item"}, 
+                    Paginator({metadata: {
                             currentPage: this.props.response.pageNumber,
                             totalPages: this.props.response.totalPages}, 
-                            customPaginatorClickHandle:this.customPaginatorClickHandle})
-                ) 
+                            customPaginatorClickHandle: this.customPaginatorClickHandle})
+                )
                  
             ) 
 

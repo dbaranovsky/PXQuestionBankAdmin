@@ -13,8 +13,8 @@ var Flag = React.createClass({displayName: 'Flag',
   },
   render: function() {
     if (this.state.isFlagged){
-       return ( React.DOM.div( {className:"flag flagged", onClick:this.flaggingHandler}, React.DOM.span( {className:"glyphicon glyphicon-flag"})) );
+       return ( React.DOM.div({className: "flag flagged", onClick: this.flaggingHandler}, React.DOM.span({className: "glyphicon glyphicon-flag"})) );
     }
-       return ( React.DOM.div( {className:"flag", onClick:this.flaggingHandler}, React.DOM.span( {className:"glyphicon glyphicon-flag"})) );
+       return ( React.DOM.div({className: "flag", onClick: this.flaggingHandler}, React.DOM.span({className: "glyphicon glyphicon-flag"})) );
   }
 });

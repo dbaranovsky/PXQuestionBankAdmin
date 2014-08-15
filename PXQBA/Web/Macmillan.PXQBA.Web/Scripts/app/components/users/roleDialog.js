@@ -64,7 +64,7 @@ var RoleDialog = React.createClass({displayName: 'RoleDialog',
       
         var renderBody = function(){
             if (self.state.loading){
-              return (React.DOM.div( {className:"waiting"}));
+              return (React.DOM.div({className: "waiting"}));
             }
 
             if(self.state.role == null){
@@ -73,7 +73,7 @@ var RoleDialog = React.createClass({displayName: 'RoleDialog',
         
             return (React.DOM.div(null, 
 
-                       EditRoleBox( {role:self.state.role, newRole:self.props.newRole, viewMode:self.props.viewMode, editRoleHandler:self.editRoleHandler, deleting:self.props.deleting})
+                       EditRoleBox({role: self.state.role, newRole: self.props.newRole, viewMode: self.props.viewMode, editRoleHandler: self.editRoleHandler, deleting: self.props.deleting})
                     )
             );
         };
@@ -82,33 +82,33 @@ var RoleDialog = React.createClass({displayName: 'RoleDialog',
       var  renderFooterButtons = function(){
 
                   if(self.props.deleting){
-                   return (React.DOM.div( {className:"modal-footer"},  
-                              React.DOM.button( {type:"button", className:"btn btn-primary", 'data-dismiss':"modal", 'data-target':"roleModal", onClick:self.removeRoleHandler}, "Delete"),
-                             React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal", 'data-target':"roleModal"}, "Close")
+                   return (React.DOM.div({className: "modal-footer"}, 
+                              React.DOM.button({type: "button", className: "btn btn-primary", 'data-dismiss': "modal", 'data-target': "roleModal", onClick: self.removeRoleHandler}, "Delete"), 
+                             React.DOM.button({type: "button", className: "btn btn-default", 'data-dismiss': "modal", 'data-target': "roleModal"}, "Close")
                           ));
                   }
                   if(self.props.viewMode){
-                   return (React.DOM.div( {className:"modal-footer"},  
-                             React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal", 'data-target':"roleModal"}, "Close")
+                   return (React.DOM.div({className: "modal-footer"}, 
+                             React.DOM.button({type: "button", className: "btn btn-default", 'data-dismiss': "modal", 'data-target': "roleModal"}, "Close")
                           ));
                   }
 
                   if(self.state.role != undefined && self.state.role.name==""){
-                       return (React.DOM.div( {className:"modal-footer"},  
-                             React.DOM.button( {type:"button", className:"btn btn-primary",  onClick:self.saveRoleHandler}, "Save"),
-                             React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal", 'data-target':"roleModal"}, "Cancel")
+                       return (React.DOM.div({className: "modal-footer"}, 
+                             React.DOM.button({type: "button", className: "btn btn-primary", onClick: self.saveRoleHandler}, "Save"), 
+                             React.DOM.button({type: "button", className: "btn btn-default", 'data-dismiss': "modal", 'data-target': "roleModal"}, "Cancel")
                           ));
                   }
 
-                   return (React.DOM.div( {className:"modal-footer"},  
-                             React.DOM.button( {type:"button", className:"btn btn-primary", 'data-dismiss':"modal", 'data-target':"roleModal", onClick:self.saveRoleHandler}, "Save"),
-                             React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal", 'data-target':"roleModal"}, "Cancel")
+                   return (React.DOM.div({className: "modal-footer"}, 
+                             React.DOM.button({type: "button", className: "btn btn-primary", 'data-dismiss': "modal", 'data-target': "roleModal", onClick: self.saveRoleHandler}, "Save"), 
+                             React.DOM.button({type: "button", className: "btn btn-default", 'data-dismiss': "modal", 'data-target': "roleModal"}, "Cancel")
                           ));
                  }
 
    
 
-        return (ModalDialog(  {showOnCreate:  true, renderHeaderText:renderHeaderText, renderBody:renderBody,  closeDialogHandler:  this.closeDialog,  renderFooterButtons:renderFooterButtons, dialogId:"addRoleModal"}));
+        return (ModalDialog({showOnCreate: true, renderHeaderText: renderHeaderText, renderBody: renderBody, closeDialogHandler: this.closeDialog, renderFooterButtons: renderFooterButtons, dialogId: "addRoleModal"}));
     }
 
 });

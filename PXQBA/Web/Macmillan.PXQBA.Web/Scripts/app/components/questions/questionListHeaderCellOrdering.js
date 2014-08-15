@@ -18,7 +18,7 @@ var QuestinListHeaderCellOrdering = React.createClass({displayName: 'QuestinList
 
   render: function() {
     return (   
-            React.DOM.span( {className:this.renderClass(this.props.order)})
+            React.DOM.span({className: this.renderClass(this.props.order)})
       );
     }
 });

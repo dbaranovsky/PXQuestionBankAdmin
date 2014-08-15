@@ -46,10 +46,10 @@ var TitleSpecificMetadataField = React.createClass({displayName: 'TitleSpecificM
   },
 
   renderInternalNameButton: function() {
-    return (React.DOM.button( {type:"button",
-                    className:this.buildDisabledClass("btn btn-default btn-xs", !this.props.canEditTitleMetadataFull), 
-                    onClick:this.openInternalNameDialogHandler}, 
-            React.DOM.span( {className:"icon-pencil-1"})
+    return (React.DOM.button({type: "button", 
+                    className: this.buildDisabledClass("btn btn-default btn-xs", !this.props.canEditTitleMetadataFull), 
+                    onClick: this.openInternalNameDialogHandler}, 
+            React.DOM.span({className: "icon-pencil-1"})
             ));
   },
 
@@ -60,21 +60,21 @@ var TitleSpecificMetadataField = React.createClass({displayName: 'TitleSpecificM
       return null;
      }
 
-     return (React.DOM.button( {type:"button", className:"btn btn-default",  
-                                   onClick:this.openAvailibleValuesDialog} , "Values..."));
+     return (React.DOM.button({type: "button", className: "btn btn-default", 
+                                   onClick: this.openAvailibleValuesDialog}, "Values..."));
   },
 
   renderDisplayOptionsButton: function() {
-     return (React.DOM.button( {type:"button", className:this.buildDisabledClass("btn btn-default", !this.props.canEditTitleMetadataReduced), 
-                                   onClick:this.openDisplayOptionsDialog} , "Edit..."));
+     return (React.DOM.button({type: "button", className: this.buildDisabledClass("btn btn-default", !this.props.canEditTitleMetadataReduced), 
+                                   onClick: this.openDisplayOptionsDialog}, "Edit..."));
   },
 
   renderDeleteButton: function() {
-     return (React.DOM.button( {type:"button", className:this.buildDisabledClass("btn btn-default btn-sm", !this.props.canEditTitleMetadataReduced),
-                     onClick:this.deleteHandler, 
-                     'data-toggle':"tooltip",
-                     title:"Delete field"}, 
-                   React.DOM.span( {className:"glyphicon glyphicon-trash"}
+     return (React.DOM.button({type: "button", className: this.buildDisabledClass("btn btn-default btn-sm", !this.props.canEditTitleMetadataReduced), 
+                     onClick: this.deleteHandler, 
+                     'data-toggle': "tooltip", 
+                     title: "Delete field"}, 
+                   React.DOM.span({className: "glyphicon glyphicon-trash"}
                    )
              ));
   },
@@ -94,29 +94,29 @@ var TitleSpecificMetadataField = React.createClass({displayName: 'TitleSpecificM
 
     render: function() {
        return (
-               React.DOM.tr(null,   
+               React.DOM.tr(null, 
                		React.DOM.td(null, 
-               			 TextEditor( {value:this.props.data.fieldName,
-                           disabled:!this.props.canEditTitleMetadataReduced,
-               			 			 dataChangeHandler:this.changeFieldNameHandler,
-               			 			 onBlurHandler:this.onBlurFieldNameHandler}
-               				) 
-               		),
-               		React.DOM.td(null,  
-               		     React.DOM.span(null,  " ", this.props.data.internalName, " " ),
-               		     React.DOM.span(null,  " ", this.renderInternalNameButton())
-               		),
-               		React.DOM.td(null,  
-               		   SingleSelectSelector( 
-                       {disabled:!this.props.canEditTitleMetadataReduced,
-                       allOptions:this.props.availableFieldTypes,
-                       dataPlaceholder:"No Type",
-                       onChangeHandler:this.changeTypeHandler,
-                       currentValues:  this.getCurrentTypeValues()} )
-               		),
-               		React.DOM.td(null, this.renderAvailibleValuesButton()),
-               		React.DOM.td(null,  " ", this.renderDisplayOptionsButton()),
-               		React.DOM.td(null,    
+               			 TextEditor({value: this.props.data.fieldName, 
+                           disabled: !this.props.canEditTitleMetadataReduced, 
+               			 			 dataChangeHandler: this.changeFieldNameHandler, 
+               			 			 onBlurHandler: this.onBlurFieldNameHandler}
+               				)
+               		), 
+               		React.DOM.td(null, 
+               		     React.DOM.span(null, " ", this.props.data.internalName, " "), 
+               		     React.DOM.span(null, " ", this.renderInternalNameButton())
+               		), 
+               		React.DOM.td(null, 
+               		   SingleSelectSelector({
+                       disabled: !this.props.canEditTitleMetadataReduced, 
+                       allOptions: this.props.availableFieldTypes, 
+                       dataPlaceholder: "No Type", 
+                       onChangeHandler: this.changeTypeHandler, 
+                       currentValues: this.getCurrentTypeValues()})
+               		), 
+               		React.DOM.td(null, this.renderAvailibleValuesButton()), 
+               		React.DOM.td(null, " ", this.renderDisplayOptionsButton()), 
+               		React.DOM.td(null, 
                        this.renderDeleteButton()
                		)
                 )

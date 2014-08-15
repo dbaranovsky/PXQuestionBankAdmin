@@ -23,7 +23,7 @@ var MultiSelectEditor = React.createClass({displayName: 'MultiSelectEditor',
       
          
         for(var i=0; i<metadataValues.length; i++) {
-            options.push(React.DOM.option( {value:metadataValues[i].value}, metadataValues[i].text))
+            options.push(React.DOM.option({value: metadataValues[i].value}, metadataValues[i].text))
         }
                     
         return ({options: options});
@@ -87,8 +87,8 @@ var MultiSelectEditor = React.createClass({displayName: 'MultiSelectEditor',
    
     render: function() {
         return (
-             React.DOM.select( {'data-placeholder':"No Value", multiple:true, disabled:this.props.isDisabled}, 
-                    this.renderMenuItems()  
+             React.DOM.select({'data-placeholder': "No Value", multiple: true, disabled: this.props.isDisabled}, 
+                    this.renderMenuItems()
              ) 
          );
     }

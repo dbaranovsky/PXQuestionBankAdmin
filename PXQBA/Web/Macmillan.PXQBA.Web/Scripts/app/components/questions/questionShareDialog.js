@@ -80,19 +80,19 @@ var QuestionShareDialog = React.createClass({displayName: 'QuestionShareDialog',
       
         var renderBody = function(){
           if (self.state.waiting){
-            return (React.DOM.div(null,  " ", React.DOM.div( {className:"waiting"} )));
+            return (React.DOM.div(null, " ", React.DOM.div({className: "waiting"})));
           }
 
             return (React.DOM.div(null, 
 
-                        ShareQuestionBox( {metadata:self.state.metadata, shareHandler:self.shareQuestion, closeDialogHandler:self.closeHandler, currentTitle:self.props.currentTitle})
+                        ShareQuestionBox({metadata: self.state.metadata, shareHandler: self.shareQuestion, closeDialogHandler: self.closeHandler, currentTitle: self.props.currentTitle})
                     )
             );
         };
 
    
 
-        return (ModalDialog( {renderHeaderText:renderHeaderText, renderBody:renderBody,  dialogId:"shareQuestionModal"}));
+        return (ModalDialog({renderHeaderText: renderHeaderText, renderBody: renderBody, dialogId: "shareQuestionModal"}));
     }
 });
 
@@ -179,7 +179,7 @@ var ShareQuestionBox = React.createClass({displayName: 'ShareQuestionBox',
    } ,
     renderWaiter: function(){
         if (this.state.loading){
-           return (React.DOM.div( {className:"waiting small"}));
+           return (React.DOM.div({className: "waiting small"}));
         }
 
         return (React.DOM.div(null));
@@ -197,20 +197,20 @@ var ShareQuestionBox = React.createClass({displayName: 'ShareQuestionBox',
           if (metadataField == null  || 
               metadataField.editorDescriptor.availableChoice.length == 0 || 
               (metadataField.editorDescriptor.availableChoice.length == 1 &&   metadataField.editorDescriptor.availableChoice[0].text == this.props.currentTitle)){
-            return (React.DOM.div(null, "There are no titles to share with ", React.DOM.br(null),React.DOM.br(null)))
+            return (React.DOM.div(null, "There are no titles to share with ", React.DOM.br(null), React.DOM.br(null)))
           }
 
 
             return (React.DOM.div(null, 
                            
-                           MetadataFieldEditor( {question:this.state.shareViewModel, metadata:this.state.metadata, setDefault:this.state.setDefaults, editHandler:this.productTitleEditHandler, field:window.consts.targetProductCourse, excludeValue:this.props.currentTitle}),
-                           this.renderWaiter(),
-                           MetadataFieldEditor( {question:this.state.shareViewModel, metadata:this.state.metadata, setDefault:true, defaultType:window.enums.editorType.singleSelect, isDisabled:this.state.loading, reload:true, editHandler:this.editHandler, field:window.consts.questionChapterName, title:"Target chapter"}),
-                           MetadataFieldEditor( {question:this.state.shareViewModel, metadata:this.state.metadata, setDefault:true, defaultType:window.enums.editorType.singleSelect, isDisabled:this.state.loading,  reload:true, editHandler:this.editHandler, field:window.consts.questionBankName, title:"Target bank"}),
+                           MetadataFieldEditor({question: this.state.shareViewModel, metadata: this.state.metadata, setDefault: this.state.setDefaults, editHandler: this.productTitleEditHandler, field: window.consts.targetProductCourse, excludeValue: this.props.currentTitle}), 
+                           this.renderWaiter(), 
+                           MetadataFieldEditor({question: this.state.shareViewModel, metadata: this.state.metadata, setDefault: true, defaultType: window.enums.editorType.singleSelect, isDisabled: this.state.loading, reload: true, editHandler: this.editHandler, field: window.consts.questionChapterName, title: "Target chapter"}), 
+                           MetadataFieldEditor({question: this.state.shareViewModel, metadata: this.state.metadata, setDefault: true, defaultType: window.enums.editorType.singleSelect, isDisabled: this.state.loading, reload: true, editHandler: this.editHandler, field: window.consts.questionBankName, title: "Target bank"}), 
 
-                            React.DOM.div( {className:"modal-footer clearfix"}, 
-                                 React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal", onClick:this.props.closeDialogHandler}, "Cancel"),
-                                 React.DOM.button( {type:"button", className:"btn btn-primary", 'data-dismiss':"modal",  onClick:this.shareQuestion}, "Share")
+                            React.DOM.div({className: "modal-footer clearfix"}, 
+                                 React.DOM.button({type: "button", className: "btn btn-default", 'data-dismiss': "modal", onClick: this.props.closeDialogHandler}, "Cancel"), 
+                                 React.DOM.button({type: "button", className: "btn btn-primary", 'data-dismiss': "modal", onClick: this.shareQuestion}, "Share")
                             )
                    )
                );

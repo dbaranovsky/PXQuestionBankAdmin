@@ -26,15 +26,15 @@
      var self= this;
 
       if(this.state.loading){
-          return (React.DOM.div( {className:"waiting middle"}));
+          return (React.DOM.div({className: "waiting middle"}));
       }
 
      var rows = [];
      rows = this.state.titles.map(function (title, i) {
         
-            return ( React.DOM.div( {className:"title-row"}, 
-                        React.DOM.div( {className:"title-cell"}, title.name),
-                        React.DOM.div( {className:"title-cell"}, React.DOM.i(null, title.currentRole.name))
+            return ( React.DOM.div({className: "title-row"}, 
+                        React.DOM.div({className: "title-cell"}, title.name), 
+                        React.DOM.div({className: "title-cell"}, React.DOM.i(null, title.currentRole.name))
                       ));
           });
 
@@ -57,7 +57,7 @@
 
       
         var renderBody = function(){
-            return (React.DOM.div( {className:"title-table"},  
+            return (React.DOM.div({className: "title-table"}, 
                      self.renderRows()
                     )
             );
@@ -66,20 +66,20 @@
      
       var  renderFooterButtons = function(){
 
-                   return (React.DOM.div( {className:"modal-footer"},  
-                             React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal", 'data-target':"roleModal"}, "Close")
+                   return (React.DOM.div({className: "modal-footer"}, 
+                             React.DOM.button({type: "button", className: "btn btn-default", 'data-dismiss': "modal", 'data-target': "roleModal"}, "Close")
                           ));
              
                  };
 
    
 
-        return (ModalDialog(  {showOnCreate:  true, 
-                              renderHeaderText:renderHeaderText, 
-                              renderBody:renderBody,  
-                              closeDialogHandler:  this.closeDialog, 
-                              renderFooterButtons:renderFooterButtons, 
-                              dialogId:"titlesModal"}));
+        return (ModalDialog({showOnCreate: true, 
+                              renderHeaderText: renderHeaderText, 
+                              renderBody: renderBody, 
+                              closeDialogHandler: this.closeDialog, 
+                              renderFooterButtons: renderFooterButtons, 
+                              dialogId: "titlesModal"}));
     }
 });
 

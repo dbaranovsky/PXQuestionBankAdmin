@@ -47,10 +47,10 @@
           var userTitle = this.props.title;
           var self = this;
            var currentValue = userTitle.currentRole == null? "" : userTitle.currentRole.id;
-            return (React.DOM.div( {className:"role-row"}, 
-                          React.DOM.div( {className:"role-cell"}, userTitle.name),
-                            React.DOM.div( {className:"role-cell selector"}, 
-                                    SingleSelectSelector( {disabled:!userTitle.canSetRoles,  allowNewValues:false, currentValues:currentValue,  allowDeselect:true, allOptions:self.getAllOptions(userTitle.availableRoles), onChangeHandler:self.selectorChangeHandler})
+            return (React.DOM.div({className: "role-row"}, 
+                          React.DOM.div({className: "role-cell"}, userTitle.name), 
+                            React.DOM.div({className: "role-cell selector"}, 
+                                    SingleSelectSelector({disabled: !userTitle.canSetRoles, allowNewValues: false, currentValues: currentValue, allowDeselect: true, allOptions: self.getAllOptions(userTitle.availableRoles), onChangeHandler: self.selectorChangeHandler})
                             )
                          ));
       }

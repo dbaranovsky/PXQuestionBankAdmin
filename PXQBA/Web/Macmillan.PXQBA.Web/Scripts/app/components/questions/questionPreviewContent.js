@@ -29,9 +29,9 @@ var QuestionPreviewContent = React.createClass({displayName: 'QuestionPreviewCon
        render: function() {
             return ( 
                    React.DOM.div(null, 
-                   React.DOM.div( {className:"question-preview-container"}),
-                         React.DOM.hr(null ),
-                   React.DOM.div( {className:"question-card-template", dangerouslySetInnerHTML:{__html: this.compileTemplate()}} )
+                   React.DOM.div({className: "question-preview-container"}), 
+                         React.DOM.hr(null), 
+                   React.DOM.div({className: "question-card-template", dangerouslySetInnerHTML: {__html: this.compileTemplate()}})
                    )
              );
         }

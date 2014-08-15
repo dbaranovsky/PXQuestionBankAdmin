@@ -15,22 +15,22 @@ var PreviewCardTemplateDialog = React.createClass({displayName: 'PreviewCardTemp
         var renderBody = function(){
              return (React.DOM.div(null, 
                         React.DOM.div(null, 
-                            React.DOM.div(null,  
-                                React.DOM.div( {className:"question-card-template", dangerouslySetInnerHTML:{__html: self.props.cardHtml}} )
-                             )  
-                        ),
-                         React.DOM.div( {className:"modal-footer clearfix"}, 
-                                 React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal"}, "Close")
+                            React.DOM.div(null, 
+                                React.DOM.div({className: "question-card-template", dangerouslySetInnerHTML: {__html: self.props.cardHtml}})
+                             )
+                        ), 
+                         React.DOM.div({className: "modal-footer clearfix"}, 
+                                 React.DOM.button({type: "button", className: "btn btn-default", 'data-dismiss': "modal"}, "Close")
                             )
                     )
             );
         };
 
-        return (ModalDialog( {showOnCreate:true,
-                             renderHeaderText:renderHeaderText, 
-                             renderBody:renderBody, 
-                             closeDialogHandler:  this.props.closeDialogHandler,
-                             dialogId:"questionCardPreview"}));
+        return (ModalDialog({showOnCreate: true, 
+                             renderHeaderText: renderHeaderText, 
+                             renderBody: renderBody, 
+                             closeDialogHandler: this.props.closeDialogHandler, 
+                             dialogId: "questionCardPreview"}));
     }
 });
 

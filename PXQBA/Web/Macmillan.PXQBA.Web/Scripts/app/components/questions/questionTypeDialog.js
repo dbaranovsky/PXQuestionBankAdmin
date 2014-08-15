@@ -31,16 +31,16 @@ var QuestionTypeDialog = React.createClass({displayName: 'QuestionTypeDialog',
         var renderBody = function(){
             return (React.DOM.div(null, 
 
-                    React.DOM.ul( {className:"nav nav-tabs"}, 
-                      React.DOM.li( {className:"active"},  
-                         React.DOM.a( {href:"#newQuestion", 'data-toggle':"tab"}, "New question")
+                    React.DOM.ul({className: "nav nav-tabs"}, 
+                      React.DOM.li({className: "active"}, 
+                         React.DOM.a({href: "#newQuestion", 'data-toggle': "tab"}, "New question")
                       )
                                                 
-                    ),   
+                    ), 
                   
-                      React.DOM.div( {className:"tab-pane active", id:"newQuestion"}, 
-                         React.DOM.div( {className:"tab-body"},        
-                            AddQuestionBox( {nextStepHandler:nextStepHandler, metadata:metadata})
+                      React.DOM.div({className: "tab-pane active", id: "newQuestion"}, 
+                         React.DOM.div({className: "tab-body"}, 
+                            AddQuestionBox({nextStepHandler: nextStepHandler, metadata: metadata})
                           )
                       )
                     
@@ -54,7 +54,7 @@ var QuestionTypeDialog = React.createClass({displayName: 'QuestionTypeDialog',
             return ("");
         };
 
-        return (ModalDialog( {renderHeaderText:renderHeaderText, renderBody:renderBody, renderFooterButtons:renderFooterButtons, dialogId:"addQuestionModal"})
+        return (ModalDialog({renderHeaderText: renderHeaderText, renderBody: renderBody, renderFooterButtons: renderFooterButtons, dialogId: "addQuestionModal"})
                 );
     }
 });
@@ -81,13 +81,13 @@ var AddQuestionBox = React.createClass({displayName: 'AddQuestionBox',
    render: function() {
             return (React.DOM.div(null, 
                            
-                           MetadataFieldEditor( {question:this.state.question, metadata:this.props.metadata, setDefault:true,  editHandler:this.editHandler, field:"type"}),
-                           MetadataFieldEditor( {question:this.state.question, metadata:this.props.metadata, setDefault:true,  editHandler:this.editHandler, field:"chapter"}),
-                           MetadataFieldEditor( {question:this.state.question, metadata:this.props.metadata, setDefault:true,  editHandler:this.editHandler, field:"bank"}),
+                           MetadataFieldEditor({question: this.state.question, metadata: this.props.metadata, setDefault: true, editHandler: this.editHandler, field: "type"}), 
+                           MetadataFieldEditor({question: this.state.question, metadata: this.props.metadata, setDefault: true, editHandler: this.editHandler, field: "chapter"}), 
+                           MetadataFieldEditor({question: this.state.question, metadata: this.props.metadata, setDefault: true, editHandler: this.editHandler, field: "bank"}), 
 
-                            React.DOM.div( {className:"modal-footer clearfix"}, 
-                                 React.DOM.button( {type:"button", className:"btn btn-primary", 'data-dismiss':"modal",  onClick:this.nextStepHandler}, "Next"),
-                                 React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal"}, "Close")
+                            React.DOM.div({className: "modal-footer clearfix"}, 
+                                 React.DOM.button({type: "button", className: "btn btn-primary", 'data-dismiss': "modal", onClick: this.nextStepHandler}, "Next"), 
+                                 React.DOM.button({type: "button", className: "btn btn-default", 'data-dismiss': "modal"}, "Close")
                             )
                    )
                );

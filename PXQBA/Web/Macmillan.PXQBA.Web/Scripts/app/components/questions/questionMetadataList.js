@@ -5,14 +5,14 @@
 var QuestionMetadataList = React.createClass({displayName: 'QuestionMetadataList',
 
     renderOption: function(questionFieldDescriptor) {
-         return ( React.DOM.li(null,  " ", React.DOM.a( {className:"add-column-item", 'data-field':questionFieldDescriptor.metadataName}, 
+         return ( React.DOM.li(null, " ", React.DOM.a({className: "add-column-item", 'data-field': questionFieldDescriptor.metadataName}, 
                         questionFieldDescriptor.friendlyName)
                   )
                 );
     },
 
     renderStub: function() {
-        return (React.DOM.li(null,  " ", React.DOM.div( {className:"add-columns-message"}, this.props.noValueLabel)));
+        return (React.DOM.li(null, " ", React.DOM.div({className: "add-columns-message"}, this.props.noValueLabel)));
     },
 
     onClickEventHandler: function(event) {
@@ -33,7 +33,7 @@ var QuestionMetadataList = React.createClass({displayName: 'QuestionMetadataList
 
     render: function() {
          return (
-                 React.DOM.ul( {className:"dropdown-menu", onClick:this.onClickEventHandler}, 
+                 React.DOM.ul({className: "dropdown-menu", onClick: this.onClickEventHandler}, 
                             this.renderMenuOption()
                  )
             );

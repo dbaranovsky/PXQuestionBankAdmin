@@ -26,7 +26,7 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
 
     renderLoader: function() {
         if((this.state.loading)) {
-            return (Loader(null ));
+            return (Loader(null));
         }
         return null;
     },
@@ -45,11 +45,11 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
 
         switch (this.state.editor.step) {
           case this.editorsSteps.step1:
-           return ( QuestionTypeDialog( 
-                              {nextStepHandler:this.nextStepHandler, 
-                              showOnCreate:true, 
-                              metadata:this.state.editor.metadata, 
-                              closeDialogHandler:  this.closeDialogHandler}));
+           return ( QuestionTypeDialog({
+                              nextStepHandler: this.nextStepHandler, 
+                              showOnCreate: true, 
+                              metadata: this.state.editor.metadata, 
+                              closeDialogHandler: this.closeDialogHandler}));
           case this.editorsSteps.step2:
 
              var containsTextFilter = this.props.response.filter.filter(function(item) { return item.field==window.consts.containsTextName })[0];
@@ -58,23 +58,23 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
                  containsText = containsTextFilter.values[0];
               }
 
-            return (QuestionEditorDialog( 
-                                          {currentCourseId:this.props.response.productCourseId,
-                                          closeDialogHandler:this.closeDialogHandler,
-                                          editSourceQuestionHandler:this.editSourceQuestionHandler,
-                                          isNew:this.state.editor.isNew,
-                                          showOnCreate:true,
-                                          question:this.state.editor.template,
-                                          caption:this.state.editor.caption, 
-                                          metadata:this.state.editor.metadata,
-                                          viewHistoryMode:this.state.editor.viewHistoryMode,
-                                          isEditedInPlace:  this.state.editor.isEditedInPlace,
-                                          handlers:  {
+            return (QuestionEditorDialog({
+                                          currentCourseId: this.props.response.productCourseId, 
+                                          closeDialogHandler: this.closeDialogHandler, 
+                                          editSourceQuestionHandler: this.editSourceQuestionHandler, 
+                                          isNew: this.state.editor.isNew, 
+                                          showOnCreate: true, 
+                                          question: this.state.editor.template, 
+                                          caption: this.state.editor.caption, 
+                                          metadata: this.state.editor.metadata, 
+                                          viewHistoryMode: this.state.editor.viewHistoryMode, 
+                                          isEditedInPlace: this.state.editor.isEditedInPlace, 
+                                          handlers: {
                                             createDraftHandler: this.createDraftHandler,
                                             createQuestionFromVersionHandler: this.createQuestionFromVersionHandler,
                                             reloadEditor: this.reloadQuestion
                                           }, 
-                                          hasContainsTextFilter:containsText !== ""}));
+                                          hasContainsTextFilter: containsText !== ""}));
                                           
           default:
             return null;
@@ -219,25 +219,25 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
 
     renderNotesDialog: function(){
       if(this.state.showNoteEditDialog) {
-        return (EditQuestionNotesDialog( {closeDialogHandler:this.closeNoteDialogHandler,
-                                         questionId:this.state.questionIdForNotes, 
-                                         canDelete:this.props.response.canRemoveNotesQuestion,
-                                         canAddNote:this.props.response.canAddNotesQuestion,
-                                         currentCourseId:this.props.response.productCourseId} ));
+        return (EditQuestionNotesDialog({closeDialogHandler: this.closeNoteDialogHandler, 
+                                         questionId: this.state.questionIdForNotes, 
+                                         canDelete: this.props.response.canRemoveNotesQuestion, 
+                                         canAddNote: this.props.response.canAddNotesQuestion, 
+                                         currentCourseId: this.props.response.productCourseId}));
       }
       return null;
     },
 
     renderShareDialog: function() {
       if(this.state.showShareDialog) {
-        return (QuestionShareDialog( {currentCourseId:this.props.response.productCourseId, showOnCreate:true, closeDialogHandler:this.closeShareDialogHandler, questionIds:this.state.questionIds, currentTitle:this.props.response.productTitle}));
+        return (QuestionShareDialog({currentCourseId: this.props.response.productCourseId, showOnCreate: true, closeDialogHandler: this.closeShareDialogHandler, questionIds: this.state.questionIds, currentTitle: this.props.response.productTitle}));
       }
       return null;
     },
 
     renderNotificationDialog: function(){
       if(this.state.showNotificationDialog){
-        return (NotificationDialog(  {closeDialog:this.closeNotificationDialog, proceedHandler:  this.state.proceed, notification:this.state.notification, isCustomCloseHandle:false}));
+        return (NotificationDialog({closeDialog: this.closeNotificationDialog, proceedHandler: this.state.proceed, notification: this.state.notification, isCustomCloseHandle: false}));
       }
     },
 
@@ -287,29 +287,29 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
         return null;
       }
 
-      return (React.DOM.button( {className:"btn btn-primary ",  disabled:!this.props.response.canCreateQuestion, onClick:this.initialCreateNewQuestion}, 
+      return (React.DOM.button({className: "btn btn-primary ", disabled: !this.props.response.canCreateQuestion, onClick: this.initialCreateNewQuestion}, 
                     "Add Question"
               ));
     },
 
     render: function() {
        return (
-            React.DOM.div( {className:"QuestionListPage"}, 
-             this.renderLoader(),
+            React.DOM.div({className: "QuestionListPage"}, 
+             this.renderLoader(), 
                 React.DOM.div(null, 
-                  React.DOM.a( {href:window.actions.questionTitle.titleListUrl}, 
-                     React.DOM.span( {className:"mars-font"}, " " ),
-                     React.DOM.span(null,  " Back to the titles list")
+                  React.DOM.a({href: window.actions.questionTitle.titleListUrl}, 
+                     React.DOM.span({className: "mars-font"}, " "), 
+                     React.DOM.span(null, " Back to the titles list")
                   )
-                ),
-                React.DOM.div( {className:"add-question-action"}, 
+                ), 
+                React.DOM.div({className: "add-question-action"}, 
                      this.renderAddQuestionButton()
-                ),
+                ), 
                 React.DOM.div(null, 
-                  QuestionTabs( 
-                       {mode:this.props.mode,
-                       response:this.props.response, 
-                       handlers:{
+                  QuestionTabs({
+                       mode: this.props.mode, 
+                       response: this.props.response, 
+                       handlers: {
                                copyQuestionHandler: this.copyQuestionHandler,
                                editQuestionHandler: this.editQuestionHandler,
                                closeNoteDialogHandler: this.closeNoteDialogHandler,
@@ -319,10 +319,10 @@ var QuestionListPage = React.createClass({displayName: 'QuestionListPage',
                                createDraftHandler: this.createDraftHandler,
                                showNotification: this.showNotification
                         }})
-                ),
-                this.renderQuestionEditorDialog(),
-                this.renderNotesDialog(),
-                this.renderShareDialog(),
+                ), 
+                this.renderQuestionEditorDialog(), 
+                this.renderNotesDialog(), 
+                this.renderShareDialog(), 
                 this.renderNotificationDialog()
                  
             )

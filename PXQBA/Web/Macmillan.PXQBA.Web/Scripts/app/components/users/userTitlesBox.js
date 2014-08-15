@@ -25,13 +25,13 @@ var UserTitlesBox = React.createClass({displayName: 'UserTitlesBox',
      var self= this;
 
      if (this.props.loading){
-        return (React.DOM.div( {className:"waiting"}));
+        return (React.DOM.div({className: "waiting"}));
       }
 
      var rows = [];
      rows = this.props.titles.productCourses.map(function (userTitle, i) {
 
-                return (UserTitleRow( {title:userTitle, changeTitleHandler:self.changeTitleHandler} ));
+                return (UserTitleRow({title: userTitle, changeTitleHandler: self.changeTitleHandler}));
                
           });
 
@@ -44,8 +44,8 @@ var UserTitlesBox = React.createClass({displayName: 'UserTitlesBox',
     },
   render: function(){
 
-      return (React.DOM.div(null , 
-                  React.DOM.div( {className:"roles-table role-selector"}, 
+      return (React.DOM.div(null, 
+                  React.DOM.div({className: "roles-table role-selector"}, 
                   this.renderRows()
                   )
                      

@@ -14,7 +14,7 @@ var TitleListSelector = React.createClass({displayName: 'TitleListSelector',
     },
 
     renderTitle: function(titleModel) {
-        return (TitleSelector( {data:titleModel, selectTitleHandler:this.props.selectTitleHandler}));
+        return (TitleSelector({data: titleModel, selectTitleHandler: this.props.selectTitleHandler}));
     },
 
 
@@ -22,17 +22,17 @@ var TitleListSelector = React.createClass({displayName: 'TitleListSelector',
     render: function() {
        return (
                 React.DOM.div(null, 
-                   React.DOM.div( {className:"title-list-selector shared-note"}, 
-                        React.DOM.div( {className:"selector-text"}, 
+                   React.DOM.div({className: "title-list-selector shared-note"}, 
+                        React.DOM.div({className: "selector-text"}, 
                           React.DOM.span(null, 
                             this.props.caption
                           )
-                         ),
-                        React.DOM.div( {className:"selector-menu"}, 
+                         ), 
+                        React.DOM.div({className: "selector-menu"}, 
                         this.props.renderSelectorMenu == undefined? "" : this.props.renderSelectorMenu()
                         )
 
-                   ),
+                   ), 
 
                      this.renderTitles()
                 )

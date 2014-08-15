@@ -57,9 +57,9 @@ var EditUserDialog  = React.createClass({displayName: 'EditUserDialog',
 
       
         var renderBody = function(){
-            return (React.DOM.div( {className:"user-titles-container"}, 
-              React.DOM.div( {className:"title-table"},  
-                      UserTitlesBox( {user:self.props.user, titles:self.state.roles, loading:self.state.loading, changeTitles:self.changeTitles} )
+            return (React.DOM.div({className: "user-titles-container"}, 
+              React.DOM.div({className: "title-table"}, 
+                      UserTitlesBox({user: self.props.user, titles: self.state.roles, loading: self.state.loading, changeTitles: self.changeTitles})
                     )
                     )
             );
@@ -68,21 +68,21 @@ var EditUserDialog  = React.createClass({displayName: 'EditUserDialog',
      
       var  renderFooterButtons = function(){
 
-                   return (React.DOM.div( {className:"modal-footer"},  
-                             React.DOM.button( {type:"button", className:"btn btn-primary", onClick:self.saveUserRoles}, "Save"),
-                             React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal", 'data-target':"editUserModal"}, "Close")
+                   return (React.DOM.div({className: "modal-footer"}, 
+                             React.DOM.button({type: "button", className: "btn btn-primary", onClick: self.saveUserRoles}, "Save"), 
+                             React.DOM.button({type: "button", className: "btn btn-default", 'data-dismiss': "modal", 'data-target': "editUserModal"}, "Close")
                           ));
              
                  };
 
    
 
-        return (ModalDialog(  {showOnCreate:  true, 
-                              renderHeaderText:renderHeaderText, 
-                              renderBody:renderBody,  
-                              closeDialogHandler:  this.closeDialog, 
-                              renderFooterButtons:renderFooterButtons, 
-                              dialogId:"editUserModal"}));
+        return (ModalDialog({showOnCreate: true, 
+                              renderHeaderText: renderHeaderText, 
+                              renderBody: renderBody, 
+                              closeDialogHandler: this.closeDialog, 
+                              renderFooterButtons: renderFooterButtons, 
+                              dialogId: "editUserModal"}));
     }
 });
 
