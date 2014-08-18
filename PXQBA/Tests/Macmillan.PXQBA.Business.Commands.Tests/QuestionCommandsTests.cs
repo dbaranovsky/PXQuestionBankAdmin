@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using AutoMapper;
 using AutoMapper.Mappers;
 using Bfw.Agilix.Commands;
 using Bfw.Agilix.DataContracts;
 using Bfw.Agilix.Dlap;
+using Bfw.Common.Caching;
 using Bfw.Common.JqGridHelper;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Commands.Helpers;
@@ -33,56 +35,7 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
         private IModelProfileService modelProfileService;
         private IQuestionCommands questionCommands;
         private string productCourseId = "12";
-        private string twoQuestionsSOLRSearchResultResponse = @" <results>
-                                                              <result name=""response"" numFound=""2"" start=""0"" maxScore=""16.067871"" time=""8"">
-                                                                <doc entityid=""39768"" class=""question"" questionid=""f13f2cd1-2ddf-430c-85c9-2577a5f009f4"">
-                                                                  <str name=""dlap_id"">39768|Q|f13f2cd1-2ddf-430c-85c9-2577a5f009f4</str>
-                                                                  <str name=""dlap_class"">question</str>
-                                                                    <arr name=""product-course-id-12/bank"">
-                                                                    <str>Test Bank</str>
-                                                                    </arr>
-                                                                    <arr name=""product-course-id-12/chapter"">
-                                                                    <str>Test Chapter</str>
-                                                                    </arr>
-                                                                  <arr name=""score"">
-                                                                    <float name=""score"">16.067871</float>
-                                                                  </arr>
-
-                                                                   <arr name=""product-course-id-12/sequence"">
-                                                                    <float name=""score"">18.38</float>
-                                                                  </arr>
-                                                                </doc>
-                                                                <doc entityid=""39768"" class=""question"" questionid=""4684f693-7997-4dc2-8496-56eb645e47ac"">
-                                                                  <str name=""dlap_id"">39768|Q|4684f693-7997-4dc2-8496-56eb645e47ac</str>
-                                                                  <str name=""dlap_class"">question</str>
-                                                                    <arr name=""product-course-id-12/bank"">
-                                                                    <str>Test Bank</str>
-                                                                    </arr>
-                                                                    <arr name=""product-course-id-12/chapter"">
-                                                                    <str>Test Chapter</str>
-                                                                    </arr>
-
-                                                                  <arr name=""score"">
-                                                                    <float name=""score"">16.067871</float>
-                                                                  </arr>
-                                                                  <arr name=""product-course-id-12/sequence"">
-                                                                    <float name=""score"">18.34</float>
-                                                                  </arr>
-                                                                </doc>
-                                                              </result>
-                                                            </results>";
-
-        private const string productCourseSection = @"<product-course-id-12>
-<bank>Test Bank</bank>
-<chapter>Test Chapter</chapter>
-<productcourseid>12</productcourseid>
-</product-course-id-12>";
-
-        private const string taskResponse = @"<responses>
-                                               <task running=""false"">
-                                               
-                                                </task> 
-                                            </responses>";
+      
         [TestInitialize]
         public void TestInitialize()
         {
@@ -257,9 +210,16 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
         [TestMethod]
         public void GetFacetedResults_OneQuestionPerPageAndPageNo1_ReturnFirstQuestion()
         {
-            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(ExecuteAsAdminFillTwoQuestions));
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(search =>
+                                                                                {
+                                                                                    Assert.IsTrue(search.SearchParameters.Facet);
+                                                                                 //   Assert.IsTrue(search.SearchParameters.Query == "");
+                                                                                    search.ParseResponse(new DlapResponse(XDocument.Parse(facetedResult)));
+                                                                                }));
 
             var result = questionCommands.GetFacetedResults("210017", "12", "chapter");
+            Assert.IsTrue(result.Count() == 24);
+            Assert.IsTrue(result.First(x => x.FacetedFieldValue == "Chapter 6").FacetedCount == 434);
 
          
         }
@@ -708,7 +668,296 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
            Assert.IsTrue(string.IsNullOrEmpty(questionCommands.GetQuizIdForQuestion("123", "345")));
         }
 
+        [TestMethod]
+        public void UpdateSharedQuestionField_QuestionWithStaticField_True()
+        {
+
+            var course = GetTestCourse();
+            var question = new Question()
+            {
+                MetadataElements = new Dictionary<string, XElement>()
+                                                  {
+                                                      {"product-course-id-12/bank",  XElement.Parse(@"<arr name=""product-course-id-12/bank"">
+                                                                                                  <bank>Test Bank</bank>
+                                                                                                   <productcourseid>12</productcourseid>
+                                                                                                    </arr>")},
+                                                      {"product-course-defaults", XElement.Parse(@"<arr name=""product-course-defaults"">
+                                                                                                  <bank>Test Bank</bank>
+                                                                                                    </arr>")}
+                                                  },
+                InteractionType = "2",
+                QuestionVersion = "0",
+                Id = "432",
+                EntityId = course.QuestionRepositoryCourseId
+            };
+
+            
+
+
+            productCourseOperation.GetProductCourse(Arg.Any<string>()).Returns(course);
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(cmd =>
+                                                                                      {
+                                                                                          cmd.Questions = new List<Question>
+                                                                                                          {
+                                                                                                              question
+                                                                                                          };
+                                                                                      }));
+
+
+            Assert.IsTrue(questionCommands.UpdateSharedQuestionField(course.QuestionRepositoryCourseId, "questionId", "bank", new List<string> { "Test" }));
+            var changedQuestion = Mapper.Map<Models.Question>(question);
+            Assert.IsTrue(changedQuestion.DefaultSection.Bank == "Test");
+            Assert.IsTrue(changedQuestion.ProductCourseSections.First().Bank == "Test");
+          
       
+        }
+
+        [TestMethod]
+        public void UpdateSharedQuestionField_QuestionWithDynamicField_True()
+        {
+            var course = GetTestCourse();
+            var question = new Question()
+            {
+                MetadataElements = new Dictionary<string, XElement>()
+                                                  {
+                                                      {"product-course-id-12/bank",  XElement.Parse(@"<arr name=""product-course-id-12/bank"">
+                                                                                                  <field>field 1</field>
+                                                                                                   <productcourseid>12</productcourseid>
+                                                                                                    </arr>")},
+                                                      {"product-course-defaults", XElement.Parse(@"<arr name=""product-course-defaults"">
+                                                                                                  <field>field 1</field>
+                                                                                                    </arr>")}
+                                                  },
+                InteractionType = "2",
+                QuestionVersion = "0",
+                Id = "432",
+                EntityId = course.QuestionRepositoryCourseId
+            };
+
+  
+
+
+            productCourseOperation.GetProductCourse(Arg.Any<string>()).Returns(course);
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(cmd =>
+            {
+                cmd.Questions = new List<Question>
+                                                                                                          {
+                                                                                                              question
+                                                                                                          };
+            }));
+
+
+            Assert.IsTrue(questionCommands.UpdateSharedQuestionField(course.QuestionRepositoryCourseId, "questionId", "field", new List<string> { "value" }));
+            var changedQuestion = Mapper.Map<Models.Question>(question);
+            Assert.IsTrue(changedQuestion.ProductCourseSections.First().DynamicValues.First().Value.First() == "value");
+           
+
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void UpdateSharedQuestionField_AnyIncorrectParametrs_False()
+        {
+
+            
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(cmd =>
+            {
+                cmd.Questions = new List<Question>
+                                                                                                          {
+                                                                                                              new Question()
+                                                                                                          };
+            }));
+            Assert.IsFalse(questionCommands.UpdateSharedQuestionField("12", "questionId", "field", new List<string> { "value" }));
+        }
+
+
+        [TestMethod]
+        public void BulkUpdateQuestionField_UnknownFieldBulkUpdate_EmptyResult()
+        {
+            var result = questionCommands.BulkUpdateQuestionField(null, null, null, "field", null, null);
+            Assert.IsFalse(result.IsSuccess);
+        }
+
+
+        [TestMethod]
+        public void BulkUpdateQuestionField_QuestionIdsForBulkStatusUpdateWithOneDraftAndNotAllowed_SuccessResult()
+        {
+            var course = GetTestCourse();
+            var questions = new List<Question>
+                            {
+                                new Question()
+                                {
+                                    QuestionStatus = "2",
+                                    InteractionType = "2",
+                                      MetadataElements = new Dictionary<string, XElement>()
+                                },
+
+                                  new Question()
+                                {
+                                   InteractionType = "2",
+                                   QuestionStatus = "1",
+                                     MetadataElements = new Dictionary<string, XElement>()
+                                },
+
+                                  new Question()
+                                {
+                                    InteractionType = "2" ,
+                                    QuestionStatus = "2",
+                                    MetadataElements = new Dictionary<string, XElement>
+                                                       {
+                                                           {MetadataFieldNames.DraftFrom, XElement.Parse(string.Format("<{0}>sdfdf</{0}>", MetadataFieldNames.DraftFrom))}
+                                                       }
+                                }
+
+
+                            };
+               context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(cmd =>
+                                                                                         {
+                                                                                             cmd.Questions = questions;
+                                                                                         }));
+            var capabilities = new List<Capability>
+                               {
+                                  Capability.ChangeStatusFromDeletedToAvailable,
+                                  Capability.ChangeDraftStatus
+                               };
+
+            var result = questionCommands.BulkUpdateQuestionField(course.ProductCourseId,
+                course.QuestionRepositoryCourseId, new[] {"1", "2", "3"}, MetadataFieldNames.QuestionStatus, "0",
+                capabilities);
+
+            Assert.IsTrue(result.IsSuccess);
+            Assert.IsTrue(result.DraftSkipped == 1);
+            Assert.IsTrue(result.PermissionStatusSkipped == 1);
+            Assert.IsTrue(questions.Select(x => x.QuestionStatus).Contains("0"));
+        }
+
+
+        [TestMethod]
+        public void BulkUpdateQuestionField_QuestionIdsForBulkChapterUpdateWithOneDraft_SuccessResult()
+        {
+            var course = GetTestCourse();
+            var questionToCheckChanges = new Question()
+                                         {
+                                             InteractionType = "2",
+                                             QuestionStatus = "0",
+                                             MetadataElements = new Dictionary<string, XElement>()
+                                                                {
+                                                                    {
+                                                                        "product-course-id-12",
+                                                                        XElement.Parse(productCourseSection)
+                                                                    }
+                                                                },
+                                             Id = "1"
+                                         };
+            var questions = new List<Question>
+                            {
+                               questionToCheckChanges,
+
+                                  new Question()
+                                {
+                                    InteractionType = "2",
+                                    QuestionStatus = "0",
+                                    MetadataElements = new Dictionary<string, XElement>()
+                                                       {
+                                                           {"product-course-id-12", XElement.Parse(productCourseSection)}
+                                                       },
+                                                         Id = "2"
+
+                                },
+                                   new Question()
+                                {
+                                   InteractionType = "2",
+                                   QuestionStatus = "2",
+                                    MetadataElements = new Dictionary<string, XElement>()
+                                                       {
+                                                           {"product-course-id-12", XElement.Parse(productCourseSection)}
+                                                       },
+                                                         Id = "3"
+                                }
+
+                            };
+
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(cmd =>
+            {
+                cmd.Questions = questions;
+            }));
+            var capabilities = new List<Capability>
+                               {
+                                  Capability.EditAvailableQuestion,
+                               };
+
+            var result = questionCommands.BulkUpdateQuestionField(course.ProductCourseId,
+                course.QuestionRepositoryCourseId, new[] { "1", "2", "3" }, MetadataFieldNames.Chapter, "bulkupdate",
+                capabilities);
+
+            Assert.IsTrue(result.IsSuccess);
+            Assert.IsTrue(result.PermissionSkipped == 1);
+            var chsdf = Mapper.Map<IEnumerable<Models.Question>>(questions);
+            Assert.IsTrue(Mapper.Map<Models.Question>(questionToCheckChanges).ProductCourseSections.First().Chapter == "bulkupdate");
+        }
+
+
+
+        [TestMethod]
+
+        public void UpdateQuestionField_SequenceToUpdate_SuccessUpdate()
+        {
+            var course = GetTestCourse();
+
+            var capabilities = new List<Capability>
+                               {
+                                  Capability.EditDeletedQuestion
+                               };
+
+            var question = new Question()
+            {
+                InteractionType = "2",
+                QuestionStatus = "0",
+                MetadataElements = new Dictionary<string, XElement>()
+                                                                {
+                                                                    {
+                                                                        "product-course-id-12",
+                                                                        XElement.Parse(productCourseSection)
+                                                                    }
+                                                                },
+                Id = "1"
+            };
+
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(ExecuteAsAdminFillTwoQuestions));
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(cmd =>
+            {
+                cmd.Questions = new List<Question>()
+                                {
+                                    question
+                                };
+            }));
+
+            Assert.IsTrue(questionCommands.UpdateQuestionField(course.ProductCourseId, course.QuestionRepositoryCourseId, "f13f2cd1-2ddf-430c-85c9-2577a5f009f4", MetadataFieldNames.Sequence, "1", capabilities));
+            Assert.IsTrue(Mapper.Map<Models.Question>(question).ProductCourseSections.First().Sequence == "9.17");
+        }
+
+
+        [TestMethod]
+        [ExpectedException(typeof(FormatException))]
+        public void UpdateQuestionField_IncorrectParams_False()
+        {
+            Assert.IsFalse(questionCommands.UpdateQuestionField(null, null, "", MetadataFieldNames.Sequence, "df", null));
+        }
+
+
+        [TestMethod]
+        public void GetQuestionCountByChapters_AnyCorrectParams_TwoQuestionForOneChapter()
+        {
+            var course = GetTestCourse();
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(search =>
+                                                                                {
+                                                                                    Assert.IsTrue( search.SearchParameters.Query == @"(dlap_class:question) AND (product-course-id-12/productcourseid_dlap_e:""12"") AND (product-course-id-12/chapter_dlap_e:""Test Chapter"")");
+                                                                                    ExecuteAsAdminFillTwoQuestions(search);
+                                                                                }));
+            var result = questionCommands.GetQuestionCountByChapters(course.QuestionRepositoryCourseId, course.ProductCourseId, new List<string>() {"Test Chapter"});
+            Assert.IsTrue(result.First().Value == 2);
+        }
 
 
 
@@ -794,8 +1043,301 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
                 QuestionRepositoryCourseId = "1525",
                 ProductCourseId = "12",
                 FieldDescriptors = new List<CourseMetadataFieldDescriptor>()
+                                   {
+                                       new CourseMetadataFieldDescriptor()
+                                       {
+                                           Name = "bank",
+                                           CourseMetadataFieldValues = new List<CourseMetadataFieldValue>()
+                                                                       {
+                                                                         new CourseMetadataFieldValue()
+                                                                         {
+                                                                            Text = "Test"
+                                                                         }
+                                                                       }
+                                       },
+
+                                        new CourseMetadataFieldDescriptor()
+                                       {
+                                           Name = "field",
+                                           CourseMetadataFieldValues = new List<CourseMetadataFieldValue>()
+                                                                       {
+                                                                         new CourseMetadataFieldValue()
+                                                                         {
+                                                                            Text = "value"
+                                                                         }
+
+            
+                                                                       }
+                                       }
+                                   }
             };
         }
+
+        #endregion
+
+        #region test xml's
+
+        private string facetedResult = @"<results>
+  <result name=""response"" numFound=""6934"" start=""0"" maxScore=""9.422424"" time=""36"">
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A4000044"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A4000044</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A400005C"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A400005C</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A4000068"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A4000068</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A4000074"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A4000074</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A4000080"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A4000080</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A400008C"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A400008C</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A4000098"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A4000098</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A40000A0"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A40000A0</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A40000AC"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A40000AC</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A40000B8"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A40000B8</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A40000C4"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A40000C4</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A40000D0"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A40000D0</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A40000DC"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A40000DC</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A40000E8"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A40000E8</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A40000F4"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A40000F4</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A4000104"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A4000104</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A4000110"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A4000110</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A400011C"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A400011C</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A4000128"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A4000128</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A4000134"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A4000134</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A4000140"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A4000140</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A400014C"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A400014C</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A4000158"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A4000158</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A4000164"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A4000164</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+    <doc entityid=""6712"" class=""question"" questionid=""2CB4C3C29D8EEDCFC6316EC5A4000170"">
+      <str name=""dlap_id"">6712|Q|2CB4C3C29D8EEDCFC6316EC5A4000170</str>
+      <str name=""dlap_class"">question</str>
+      <arr name=""score"">
+        <float name=""score"">9.422424</float>
+      </arr>
+    </doc>
+  </result>
+  <lst name=""facet_counts"">
+    <lst name=""facet_fields"">
+      <lst name=""product-course-id-12/chapter_dlap_e"">
+        <int name=""Chapter 6"">434</int>
+        <int name=""Chapter 11"">421</int>
+        <int name=""Chapter 12"">417</int>
+        <int name=""Chapter 3"">412</int>
+        <int name=""Chapter 7"">384</int>
+        <int name=""Chapter 10"">378</int>
+        <int name=""Chapter 2"">376</int>
+        <int name=""Chapter 8"">369</int>
+        <int name=""Chapter 13"">356</int>
+        <int name=""Chapter 19"">336</int>
+        <int name=""Chapter 15"">327</int>
+        <int name=""Chapter 16"">325</int>
+        <int name=""Chapter 17"">324</int>
+        <int name=""Chapter 5"">312</int>
+        <int name=""Chapter 14"">311</int>
+        <int name=""Chapter 4"">294</int>
+        <int name=""Chapter 9"">291</int>
+        <int name=""Chapter 20"">287</int>
+        <int name=""Chapter 10A"">244</int>
+        <int name=""Chapter 18"">217</int>
+        <int name=""Chapter 2A"">75</int>
+        <int name=""Chapter 19A"">41</int>
+        <int name=""Chapter 1"">3</int>
+        <int name=""First Chapter"">0</int>
+      </lst>
+    </lst>
+  </lst>
+</results>";
+
+        private string twoQuestionsSOLRSearchResultResponse = @" <results>
+                                                              <result name=""response"" numFound=""2"" start=""0"" maxScore=""16.067871"" time=""8"">
+                                                                <doc entityid=""39768"" class=""question"" questionid=""f13f2cd1-2ddf-430c-85c9-2577a5f009f4"">
+                                                                  <str name=""dlap_id"">39768|Q|f13f2cd1-2ddf-430c-85c9-2577a5f009f4</str>
+                                                                  <str name=""dlap_class"">question</str>
+                                                                    <arr name=""product-course-id-12/bank"">
+                                                                    <str>Test Bank</str>
+                                                                    </arr>
+                                                                    <arr name=""product-course-id-12/chapter"">
+                                                                    <str>Test Chapter</str>
+                                                                    </arr>
+                                                                  <arr name=""score"">
+                                                                    <float name=""score"">16.067871</float>
+                                                                  </arr>
+
+                                                                   <arr name=""product-course-id-12/sequence"">
+                                                                    <float name=""score"">18.38</float>
+                                                                  </arr>
+                                                                </doc>
+                                                                <doc entityid=""39768"" class=""question"" questionid=""4684f693-7997-4dc2-8496-56eb645e47ac"">
+                                                                  <str name=""dlap_id"">39768|Q|4684f693-7997-4dc2-8496-56eb645e47ac</str>
+                                                                  <str name=""dlap_class"">question</str>
+                                                                    <arr name=""product-course-id-12/bank"">
+                                                                    <str>Test Bank</str>
+                                                                    </arr>
+                                                                    <arr name=""product-course-id-12/chapter"">
+                                                                    <str>Test Chapter</str>
+                                                                    </arr>
+
+                                                                  <arr name=""score"">
+                                                                    <float name=""score"">16.067871</float>
+                                                                  </arr>
+                                                                  <arr name=""product-course-id-12/sequence"">
+                                                                    <float name=""score"">18.34</float>
+                                                                  </arr>
+                                                                </doc>
+                                                              </result>
+                                                            </results>";
+
+        private const string productCourseSection = @"<product-course-id-12>
+<bank>Test Bank</bank>
+<chapter>Test Chapter</chapter>
+<productcourseid>12</productcourseid>
+<sequence>3</sequence>
+</product-course-id-12>";
+
+        private const string taskResponse = @"<responses>
+                                               <task running=""false"">
+                                               
+                                                </task> 
+                                            </responses>";
 
         #endregion
     }
