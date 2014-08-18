@@ -121,7 +121,7 @@ var MetadataCfgRoot = React.createClass({displayName: 'MetadataCfgRoot',
 
    renderLoader: function() {
       if(this.state.dataLoading) {
-        return (Loader(null ))
+        return (Loader(null))
       }
       
       return null;
@@ -129,15 +129,15 @@ var MetadataCfgRoot = React.createClass({displayName: 'MetadataCfgRoot',
 
    renderMetadataTabs: function() {
      if(this.state.currentCourse!=null) {
-        return ( MetadataTabs( 
-                  {data:this.state.metadataConfigViewModelDirty,
-                  dataChangeHandler:this.changeViewModelHandler,
-                  metadataFieldsHandlers:{
+        return ( MetadataTabs({
+                  data: this.state.metadataConfigViewModelDirty, 
+                  dataChangeHandler: this.changeViewModelHandler, 
+                  metadataFieldsHandlers: {
                       addHandler: this.addMetadataFieldFieldHandler,
                       deleteHandler: this.deleteMetadataFieldHandler,
                       updateHandler: this.updateMetadataFieldHandler
-                    },
-                  availableFieldTypes:this.state.metadataConfigViewModelDirty.availableFieldTypes}
+                    }, 
+                  availableFieldTypes: this.state.metadataConfigViewModelDirty.availableFieldTypes}
                   ));
       }
       return null;
@@ -146,9 +146,9 @@ var MetadataCfgRoot = React.createClass({displayName: 'MetadataCfgRoot',
 
    renderButtons: function() {
      if(this.state.currentCourse!=null) {
-        return (MetadataMainButtonsContainer( 
-                    {saveHandler:this.saveEditConfigHandler,
-                    cancelHandler:this.cancelEditConfigHandler}
+        return (MetadataMainButtonsContainer({
+                    saveHandler: this.saveEditConfigHandler, 
+                    cancelHandler: this.cancelEditConfigHandler}
                 ));
       }
       return null;
@@ -157,19 +157,19 @@ var MetadataCfgRoot = React.createClass({displayName: 'MetadataCfgRoot',
     render: function() {
        return (
                 React.DOM.div(null, 
-                    React.DOM.div( {className:"metadata-button-holder"}, 
-                      React.DOM.div( {className:"metadata-button-container"}, 
+                    React.DOM.div({className: "metadata-button-holder"}, 
+                      React.DOM.div({className: "metadata-button-container"}, 
                            this.renderButtons()
                       )
-                    ),
-                      MetadataCourseSelector( {selectCourseHandler:this.selectCourseHandler, 
-                                              availableCourses:this.props.availableCourses,
-                                              currentCourse:this.state.currentCourse}
-                                              ),
-                       this.renderLoader(),
-                       this.renderMetadataTabs(),
-                     React.DOM.div( {className:"metadata-button-holder"}, 
-                       React.DOM.div( {className:"metadata-button-container"}, 
+                    ), 
+                      MetadataCourseSelector({selectCourseHandler: this.selectCourseHandler, 
+                                              availableCourses: this.props.availableCourses, 
+                                              currentCourse: this.state.currentCourse}
+                                              ), 
+                       this.renderLoader(), 
+                       this.renderMetadataTabs(), 
+                     React.DOM.div({className: "metadata-button-holder"}, 
+                       React.DOM.div({className: "metadata-button-container"}, 
                           this.renderButtons()
                        )
                     )

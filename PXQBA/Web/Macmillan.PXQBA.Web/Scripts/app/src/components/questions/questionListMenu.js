@@ -212,7 +212,15 @@ var QuestionListMenu = React.createClass({
       if (this.props.showAll){
       var isDeleted = this.props.data[window.consts.questionStatusName] == window.enums.statuses.deleted;
       var isDisabled =false;
-      if(!this.props.metadataCapabilities.canEditQuestion && 
+      var editTooltip = "";
+
+      if(this.props.data[window.consts.questionStatusName] == window.enums.statuses.deleted){
+           isDisabled= true;
+           editTooltip = this.props.data.draftfrom != ""? "You can't edit a deleted draft." : 
+                                                  "You can't edit a deleted question.";
+           editTooltip += " Change the status to in-progress or duplicate the question.";
+
+      }else if(!this.props.metadataCapabilities.canEditQuestion && 
          !this.props.isShared &&
          !this.props.data[window.consts.questionStatusName] == window.enums.statuses.availibleToInstructor){
         isDisabled= true;
@@ -228,10 +236,13 @@ var QuestionListMenu = React.createClass({
       return(<div className="menu-container-main">
                     {this.renderDraftButton()}
                <div className="dropdown">
+                  <div  className="button-wrapper" data-toggle="tooltip" title={editTooltip}>
                   <button id="edit-question" type="button" className="btn btn-default btn-sm" onClick={this.editQuestionHandler} disabled={isDisabled}  data-target="#" data-toggle="dropdown" title="Edit Question">
-                         <span className="icon-pencil-1" data-toggle="tooltip" title="Edit Question"></span>
+                         <span className="icon-pencil-1"></span>
                   </button>
+                 
                     {this.renderEditMenu()}
+                     </div>
                 </div>
                <button type="button" className="btn btn-default btn-sm" disabled={!this.props.capabilities.canDuplicateQuestion} onClick={this.copyQuestionHandler}  data-toggle="tooltip" title="Duplicate Question"><span className="icon-docs"></span></button>
                <button type="button" className="btn btn-default btn-sm" onClick={this.editNotesHandler} data-toggle="tooltip" title="Edit Notes"><span className="glyphicon glyphicon-list-alt"></span> </button> 

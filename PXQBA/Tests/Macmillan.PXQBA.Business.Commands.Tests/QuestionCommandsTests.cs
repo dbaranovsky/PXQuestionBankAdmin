@@ -6,6 +6,7 @@ using AutoMapper.Mappers;
 using Bfw.Agilix.Commands;
 using Bfw.Agilix.DataContracts;
 using Bfw.Agilix.Dlap;
+using Bfw.Common.JqGridHelper;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Commands.Helpers;
 using Macmillan.PXQBA.Business.Commands.Services.DLAP;
@@ -17,6 +18,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Course = Macmillan.PXQBA.Business.Models.Course;
 using Question = Bfw.Agilix.DataContracts.Question;
+using QuestionChoice = Bfw.Agilix.DataContracts.QuestionChoice;
 
 namespace Macmillan.PXQBA.Business.Commands.Tests
 {
@@ -206,7 +208,7 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
         public void GetQuestionList_OneQuestionPerPageAndPageNo2_ReturnSecondQuestion()
         {
             context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(ExecuteAsAdminFillTwoQuestions));
-            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(ExecuteAsAdminGetAgilixQuestions));
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(ExecuteAsAdminGetAgilixQuestion));
 
             var filter = new List<FilterFieldDescriptor>();
             AddNessesaryProductCourseFilter(filter);
@@ -223,7 +225,7 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
         public void GetQuestionList_OneQuestionPerPageAndPageNo1_ReturnFirstQuestion()
         {
             context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(ExecuteAsAdminFillTwoQuestions));
-            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(ExecuteAsAdminGetAgilixQuestions));
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(ExecuteAsAdminGetAgilixQuestion));
 
             var filter = new List<FilterFieldDescriptor>();
             AddNessesaryProductCourseFilter(filter);
@@ -241,7 +243,7 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
         public void GetComparedQuestionList_OneQuestionPerPageAndPageNo1_ReturnFirstQuestion()
         {
             context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(ExecuteAsAdminFillTwoQuestions));
-            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(ExecuteAsAdminGetAgilixQuestions));
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(ExecuteAsAdminGetAgilixQuestion));
 
            
             var result = questionCommands.GetComparedQuestionList("131", "431", "3541", 0, 1);
@@ -458,10 +460,257 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
          [TestMethod]
          public void DeleteQuestion_CorrectParams_SuccessRun()
          {
-             context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(ExecuteAsAdminGetAgilixQuestions));
+             context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(ExecuteAsAdminGetAgilixQuestion));
              questionCommands.DeleteQuestion("2423", "4353");
          }
-       
+
+        [TestMethod]
+        public void GetQuestionDrafts_AnyQuestion_QuestionDrafts()
+        {
+            var course = GetTestCourse();
+            var question = new Models.Question
+                           {
+                               Id = "f13f2cd1-2ddf-430c-85c9-2577a5f009f4"
+                           };
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(command =>
+                                                                                      {
+                                                                                          Assert.IsTrue(command.SearchParameters.QuestionIds.Contains("4684f693-7997-4dc2-8496-56eb645e47ac"));
+                                                                                          ExecuteAsAdminGetTwoAgilixQuestions(command);
+                                                                                      }));
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(search =>
+                                                                                {
+                                                                                    Assert.IsTrue(search.SearchParameters.Query == string.Format("(dlap_class:question) AND (draftfrom:{0})", question.Id));
+                                                                                    Assert.IsTrue(search.SearchParameters.EntityId == course.QuestionRepositoryCourseId);
+                                                                                    ExecuteAsAdminFillTwoQuestions(search);
+                                                                                }));
+            var drafts = questionCommands.GetQuestionDrafts(course.QuestionRepositoryCourseId, question);
+            Assert.IsTrue(drafts.Count() == 2);
+            Assert.IsTrue(drafts.Select(d => d.Id).Contains("4684f693-7997-4dc2-8496-56eb645e47ac"));
+        }
+
+
+        [TestMethod]
+        public void GetVersionHistory_AnyQuestion_QuestionHistoryWithCorrectPreviewLinks()
+        {
+            
+            
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(ExecuteAsAdminGetTwoAgilixQuestions));
+            var course = GetTestCourse();
+            var versions = questionCommands.GetVersionHistory(course.QuestionRepositoryCourseId, "21");
+            Assert.IsTrue(versions.Count() == 2);
+            Assert.IsTrue(versions.Select(x => x.Preview).Any(x => x.Contains(String.Format(@"src=""/brainhoney/Resource/{0}/[~]/folder/image.jpg""", course.QuestionRepositoryCourseId))));
+
+        }
+
+
+        [TestMethod]
+        public void RemoveFromTitle_AnyQuetionIds_True()
+        {
+
+            var agilixQuestions = new List<Question>()
+                                       {
+                                           new Question()
+                                           {
+                                               Id = "f13f2cd1-2ddf-430c-85c9-2577a5f009f4",
+                                               MetadataElements = new Dictionary<string, XElement>
+                                                                  {
+                                                                      {"product-course-id-1234", XElement.Parse(productCourseSection)},
+                                                                      {"product-course-id-122434", XElement.Parse(productCourseSection)}
+                                                                  },
+                                                InteractionType = "2"
+                                               
+
+                                           }
+                                       };
+
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(questions => questions.Questions = agilixQuestions));
+            var course = GetTestCourse();
+
+
+            Assert.IsTrue(questionCommands.RemoveFromTitle(new[] { "3232", "223" }, course.QuestionRepositoryCourseId, "1234"));
+            Assert.IsTrue(agilixQuestions.First().MetadataElements.Count == 1);
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RemoveFromTitle_Null_False()
+        {
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(ExecuteAsAdminGetTwoAgilixQuestions));
+            Assert.IsFalse(questionCommands.RemoveFromTitle(null, null, null));
+
+        }
+
+
+        [TestMethod]
+        public void SetSequence_Question_ProperplySettedQuestionSeq()
+        {
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(ExecuteAsAdminFillTwoQuestions));
+            var course = GetTestCourse();
+            var question = new Models.Question()
+            {
+                Id = "1",
+                Version = 3,
+                ProductCourseSections = new List<QuestionMetadataSection>()
+                                                        {
+                                                            new QuestionMetadataSection()
+                                                            {
+                                                                ProductCourseId = course.ProductCourseId,
+                                                                Bank = "Test Bank",
+                                                                Sequence = "0"
+                                                            }
+                                                        },
+                InteractionType = "2"
+
+            };
+
+
+            questionCommands.SetSequence(course.ProductCourseId, question);
+            Assert.IsTrue(question.ProductCourseSections.First().Sequence == "19");
+   
+        }
+
+        [TestMethod]
+        public void UpdateQuestion_QuestionToSave_QuestionWithModifBySetted()
+        {
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(ExecuteAsAdminGetTwoAgilixQuestions));
+            var course = GetTestCourse();
+            var question = new Models.Question()
+            {
+                Id = "1",
+                ProductCourseSections = new List<QuestionMetadataSection>()
+                                                        {
+                                                            new QuestionMetadataSection()
+                                                            {
+                                                                ProductCourseId = course.ProductCourseId
+                                                            }
+                                                        },
+                InteractionType = "2"
+
+            };
+
+           var result = questionCommands.UpdateQuestion(question);
+           Assert.IsTrue(result.Id == question.Id);
+           Assert.IsTrue(result.ModifiedBy == context.CurrentUser.Id);
+
+        }
+
+
+        [TestMethod]
+        public void UpdateQuestions_QuestionsToSave_UpdatedQuestions()
+        {
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(ExecuteAsAdminGetTwoAgilixQuestions));
+            var course = GetTestCourse();
+            var questions = new List<Models.Question>
+                           {
+                               new Models.Question()
+                               {
+                                   Id = "1",
+                                   InteractionType = "2"
+
+                               },
+                               new Models.Question()
+                               {
+                                   Id = "1",
+                                  InteractionType = "2"
+                               }
+                           };
+
+            Assert.IsTrue(questionCommands.UpdateQuestions(questions, course.QuestionRepositoryCourseId, course.ProductCourseId));
+
+            foreach (var question in questions)
+            {
+                Assert.IsTrue(question.Id == "1");
+            }
+
+        }
+
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void UpdateQuestions_Null_False()
+        {
+           Assert.IsFalse(questionCommands.UpdateQuestions(null,null)); 
+           
+        }
+
+        [TestMethod]
+        public void GetAgilixQuestion_QuestionId_Question()
+        {
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(ExecuteAsAdminGetAgilixQuestion));
+            var course = GetTestCourse();
+            var question = questionCommands.GetAgilixQuestion(course.QuestionRepositoryCourseId, "df");
+            Assert.IsTrue(question.Id == "df");
+            Assert.IsTrue(question.InteractionType == "2");
+        }
+
+        [TestMethod]
+        public void GetAgilixQuestion_QuestionIdAndVersion_SpecificVersion()
+        {
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(ExecuteAsAdminGetTwoAgilixQuestions));
+            var course = GetTestCourse();
+            var question = questionCommands.GetAgilixQuestion(course.QuestionRepositoryCourseId, "df", "3");
+            Assert.IsTrue(question.QuestionVersion == "3");
+        }
+
+
+
+        [TestMethod]
+        public void GetQuestion_QuestionId_Question()
+        {
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(ExecuteAsAdminGetAgilixQuestion));
+            var question = questionCommands.GetQuestion(GetTestCourse().QuestionRepositoryCourseId, "df");
+            Assert.IsTrue(question.Id == "df");
+
+        }
+
+        [TestMethod]
+        public void GetQuestions_QuestionIds_Questions()
+        {
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(ExecuteAsAdminGetAgilixQuestion));
+            var course = GetTestCourse();
+            var questions = questionCommands.GetQuestions(course.QuestionRepositoryCourseId, new []{"12", "35"});
+            Assert.IsTrue(questions.Any(x=> x.Id == "12"));
+            Assert.IsTrue(questions.Any(x => x.Id == "35"));
+        }
+
+
+        [TestMethod]
+        public void GetQuizIdForQuestion_QuestionIdWithQuizId_QuizId()
+        {
+            var quizId = "4331";
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetItems>(items =>
+                                                                                  {
+                                                                                      Assert.IsTrue(items.SearchParameters.Query == "/Questions/question@id='123'");
+                                                                                      items.Items =
+                                                                                          new PagedList<Item>(
+                                                                                              new List<Item>()
+                                                                                              {
+                                                                                                  new Item()
+                                                                                                  {
+                                                                                                      Id = quizId
+                                                                                                  }
+                                                                                              }, 0, 1);
+
+                                                                                  }));
+            Assert.IsTrue(quizId == questionCommands.GetQuizIdForQuestion("123", "345"));
+        }
+
+        [TestMethod]
+        public void GetQuizIdForQuestion_QuestionIdWithoutQuizId_EmptyString()
+        {
+
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetItems>(items =>
+                    {
+                        Assert.IsTrue(items.SearchParameters.Query == "/Questions/question@id='123'");
+                        items.Items = new PagedList<Item>(new List<Item>(), 0, 1);
+                    }));
+           Assert.IsTrue(string.IsNullOrEmpty(questionCommands.GetQuizIdForQuestion("123", "345")));
+        }
+
+      
+
+
 
         #region private methods
 
@@ -481,7 +730,7 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
 
         }
 
-        private void ExecuteAsAdminGetAgilixQuestions(GetQuestions questionSearch)
+        private void ExecuteAsAdminGetAgilixQuestion(GetQuestions questionSearch)
         {
             var questions = new List<Question>();
             foreach (var quesionId in questionSearch.SearchParameters.QuestionIds)
@@ -489,7 +738,7 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
                 questions.Add(new Question()
                               {
                                   Id = quesionId,
-                                  MetadataElements = new Dictionary<string, XElement> { { "<product-course-id-12>", XElement.Parse(productCourseSection) } },
+                                  MetadataElements = new Dictionary<string, XElement> { { "product-course-id-12", XElement.Parse(productCourseSection) } },
                                   InteractionType = "2"
                               });
             }
@@ -516,13 +765,24 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
                                                Id = "f13f2cd1-2ddf-430c-85c9-2577a5f009f4",
                                                MetadataElements = new Dictionary<string, XElement>
                                                                   {
-                                                                      {"<product-course-id-12>", XElement.Parse(productCourseSection)}
+                                                                      {"product-course-id-12", XElement.Parse(productCourseSection)}
                                                                   },
+                                               
 
                                            },
                                            new Question(){
                                                Id = "4684f693-7997-4dc2-8496-56eb645e47ac",
-                                               MetadataElements = new Dictionary<string, XElement>{{"<product-course-id-12>", XElement.Parse(productCourseSection)}},
+                                               MetadataElements = new Dictionary<string, XElement>{{"product-course-id-12", XElement.Parse(productCourseSection)}},
+                                               InteractionType = "choice",
+                                               Choices = new List<QuestionChoice>()
+                                                         {
+                                                             new QuestionChoice()
+                                                             {
+                                                                 Id = "1",
+                                                                 Text = @"src=""[~]/folder/image.jpg"""
+                                                             }
+                                                         },
+                                                QuestionVersion = "3"
                                            }
                                        };
         }

@@ -18,10 +18,10 @@ var QuestionTypeList = React.createClass({displayName: 'QuestionTypeList',
          var self = this;
          var types = this.props.questionTypes.map(function (type) {
 
-          return (QuestionType( {questionTypeValue:type.key, 
-                                questionTypeText:type.value, 
-                                isSelected: type.key == self.state.type, 
-                                changeHandler:self.changeHandler.bind(null, type.key)}));
+          return (QuestionType({questionTypeValue: type.key, 
+                                questionTypeText: type.value, 
+                                isSelected:  type.key == self.state.type, 
+                                changeHandler: self.changeHandler.bind(null, type.key)}));
           });
          return types;
     },
@@ -29,7 +29,7 @@ var QuestionTypeList = React.createClass({displayName: 'QuestionTypeList',
     render: function() {
        
         return (
-          	 React.DOM.div( {className:"questionTypeList"}, 
+          	 React.DOM.div({className: "questionTypeList"}, 
                 this.renderTypes()
              )         
             );
@@ -39,10 +39,10 @@ var QuestionTypeList = React.createClass({displayName: 'QuestionTypeList',
 var QuestionType = React.createClass({displayName: 'QuestionType',
     render: function() {
         return (
-             React.DOM.div( {className:"radio", onClick:this.props.changeHandler}, 
+             React.DOM.div({className: "radio", onClick: this.props.changeHandler}, 
            
                             React.DOM.label(null, 
-                                React.DOM.input( {type:"radio", name:"questionTypes", checked:this.props.isSelected, value:this.props.questionTypeValue}),
+                                React.DOM.input({type: "radio", name: "questionTypes", checked: this.props.isSelected, value: this.props.questionTypeValue}), 
                                     this.props.questionTypeText
                             )
              )     

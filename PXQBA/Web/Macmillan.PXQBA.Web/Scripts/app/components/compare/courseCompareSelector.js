@@ -19,22 +19,22 @@ var CourseCompareSelector = React.createClass({displayName: 'CourseCompareSelect
                   	React.DOM.tr(null, 
                   		React.DOM.td(null, 
                   		    "Compare"
-                  		),
+                  		), 
                   		React.DOM.td(null, 
-               			  MetadataCourseSelector( {selectCourseHandler:this.selectFirstCourseHandler, 
-                                         availableCourses:this.props.availableCourses,
-                                         currentCourse:this.props.currentFirstCourse,
-                                         hideLabel:true}
+               			  MetadataCourseSelector({selectCourseHandler: this.selectFirstCourseHandler, 
+                                         availableCourses: this.props.availableCourses, 
+                                         currentCourse: this.props.currentFirstCourse, 
+                                         hideLabel: true}
                                          )
-                        ),
+                        ), 
                         React.DOM.td(null, 
                            "with"
-                        ),
+                        ), 
                         React.DOM.td(null, 
-                    	 MetadataCourseSelector( {selectCourseHandler:this.selectSecondCourseHandler, 
-                                         availableCourses:this.props.availableCourses,
-                                         currentCourse:this.props.currentSecondCourse,
-                                         hideLabel:true}
+                    	 MetadataCourseSelector({selectCourseHandler: this.selectSecondCourseHandler, 
+                                         availableCourses: this.props.availableCourses, 
+                                         currentCourse: this.props.currentSecondCourse, 
+                                         hideLabel: true}
                                          )
                         )
                      )

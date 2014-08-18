@@ -99,18 +99,18 @@ var QuestionInlineEditorBase = React.createClass({displayName: 'QuestionInlineEd
     renderSpecificEditor: function() {
         switch (this.props.metadata.editorDescriptor.editorType) {
           case window.enums.editorType.text:
-            return (QuestionInlineEditorText( {saveVelueHandler:this.saveVelueHandler, 
-                    afterEditingHandler:this.props.afterEditingHandler,
-                    metadata:this.props.metadata}));
+            return (QuestionInlineEditorText({saveVelueHandler: this.saveVelueHandler, 
+                    afterEditingHandler: this.props.afterEditingHandler, 
+                    metadata: this.props.metadata}));
           case window.enums.editorType.singleSelect:
-            return (QuestionInlineEditorSingleSelect( {saveVelueHandler:this.saveVelueHandler, 
-                        afterEditingHandler:this.props.afterEditingHandler,
-                        metadata:this.props.metadata,
-                        values:this.getAvailibleValues()} ));
+            return (QuestionInlineEditorSingleSelect({saveVelueHandler: this.saveVelueHandler, 
+                        afterEditingHandler: this.props.afterEditingHandler, 
+                        metadata: this.props.metadata, 
+                        values: this.getAvailibleValues()}));
           case window.enums.editorType.number:
-            return (QuestionInlineEditorNumber( {saveVelueHandler:this.saveVelueHandler, 
-                       afterEditingHandler:this.props.afterEditingHandler,
-                       metadata:this.props.metadata} ));
+            return (QuestionInlineEditorNumber({saveVelueHandler: this.saveVelueHandler, 
+                       afterEditingHandler: this.props.afterEditingHandler, 
+                       metadata: this.props.metadata}));
           default:
             return null;
         }
@@ -133,7 +133,7 @@ var QuestionInlineEditorBase = React.createClass({displayName: 'QuestionInlineEd
      render: function() {
       
         return ( 
-            React.DOM.div( {className:"inline-editor-container"}, 
+            React.DOM.div({className: "inline-editor-container"}, 
                this.renderSpecificEditor()
             )
             );

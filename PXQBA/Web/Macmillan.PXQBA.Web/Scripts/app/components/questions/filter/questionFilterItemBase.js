@@ -14,7 +14,7 @@ var QuestionFilterItemBase = React.createClass({displayName: 'QuestionFilterItem
 
     renderCloseButton: function() {
         if(this.props.descriptor.canCloseOnFilter) {
-            return (React.DOM.span( {className:"filter-closer", onClick:this.closeFilterHandler,  'data-toggle':"tooltip", title:"Cancel"},  " Х " ));
+            return (React.DOM.span({className: "filter-closer", onClick: this.closeFilterHandler, 'data-toggle': "tooltip", title: "Cancel"}, " Х "));
         }
         return null;
     },
@@ -22,18 +22,18 @@ var QuestionFilterItemBase = React.createClass({displayName: 'QuestionFilterItem
     renderFilterBody: function() {
         switch(this.props.descriptor.filterType) {
             case window.enums.filterType.singleSelect:
-                return ( SingleSelectSelector( {allOptions:this.props.descriptor.allOptions,  
-                                                    currentValues:this.props.descriptor.currentValues, 
-                                                    onChangeHandler:this.filtrationChangeHandler,
-                                                    dataPlaceholder:"No Filtration"}
+                return ( SingleSelectSelector({allOptions: this.props.descriptor.allOptions, 
+                                                    currentValues: this.props.descriptor.currentValues, 
+                                                    onChangeHandler: this.filtrationChangeHandler, 
+                                                    dataPlaceholder: "No Filtration"}
                                                     ));
             case window.enums.filterType.multiSelectWithAddition:
-                return ( QuestionFilterItemMultiSelect( {allOptions:this.props.descriptor.allOptions,  
-                                                    currentValues:this.props.descriptor.currentValues, 
-                                                    onChangeHandler:this.filtrationChangeHandler}));
+                return ( QuestionFilterItemMultiSelect({allOptions: this.props.descriptor.allOptions, 
+                                                    currentValues: this.props.descriptor.currentValues, 
+                                                    onChangeHandler: this.filtrationChangeHandler}));
             case window.enums.filterType.text:
-                return (QuestionFilterItemText( {onChangeHandler:this.filtrationChangeHandler, 
-                                                currentValues:this.props.descriptor.currentValues}));
+                return (QuestionFilterItemText({onChangeHandler: this.filtrationChangeHandler, 
+                                                currentValues: this.props.descriptor.currentValues}));
 
             default: 
                 return null;
@@ -42,12 +42,12 @@ var QuestionFilterItemBase = React.createClass({displayName: 'QuestionFilterItem
 
     render: function() {
         return (
-            React.DOM.div( {className:"questionFilterItemBase"}, 
-                     React.DOM.div( {className:"filter-header"},  
-                        React.DOM.span(null,  " ", this.props.descriptor.caption, " " ), 
+            React.DOM.div({className: "questionFilterItemBase"}, 
+                     React.DOM.div({className: "filter-header"}, 
+                        React.DOM.span(null, " ", this.props.descriptor.caption, " "), 
                          this.renderCloseButton()
-                     ),
-                     React.DOM.div( {className:"filter-body"}, 
+                     ), 
+                     React.DOM.div({className: "filter-body"}, 
                         this.renderFilterBody()
                      )
             )

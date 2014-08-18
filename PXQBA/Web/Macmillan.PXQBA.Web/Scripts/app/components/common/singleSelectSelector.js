@@ -15,7 +15,7 @@ var SingleSelectSelector = React.createClass({displayName: 'SingleSelectSelector
   renderMenuItems: function(options) {
     var optionsHtml = [];
     for(var i=0; i<options.length; i++) {
-              optionsHtml.push(React.DOM.option( {value:options[i].value}, options[i].text));
+              optionsHtml.push(React.DOM.option({value: options[i].value}, options[i].text));
     }
 
     return optionsHtml;
@@ -50,7 +50,12 @@ var SingleSelectSelector = React.createClass({displayName: 'SingleSelectSelector
     $(selector).val(this.props.currentValues)
                          .chosen(chosenOptions)
                          .change(function(e, params){
-                            self.changeHandler([params.selected]);
+                            if(params != undefined){
+                              self.changeHandler([params.selected]);
+                            }else{
+                                 self.changeHandler([""]);
+                            }
+
                          });
     $(selector).trigger('chosen:updated');
   },
@@ -58,8 +63,8 @@ var SingleSelectSelector = React.createClass({displayName: 'SingleSelectSelector
 
     render: function() {
         return (
-               React.DOM.select( {'data-placeholder':this.props.dataPlaceholder, disabled:this.props.disabled}, 
-                  this.state.options  
+               React.DOM.select({'data-placeholder': this.props.dataPlaceholder, disabled: this.props.disabled}, 
+                  this.state.options
               ) 
             );
         }

@@ -217,7 +217,7 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
 
        
        if(questionsForRender.length==0) {
-           questionsForRender.push(QuestionNoDataStub( {colSpan:this.getAllColumnCount()} ));
+           questionsForRender.push(QuestionNoDataStub({colSpan: this.getAllColumnCount()}));
         } 
 
         return questionsForRender;
@@ -249,32 +249,32 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
        
       var isQuestionExpanded = this.isQuestionExpanded(question.data.id);
 
-      var questionHtml = (Question( {metadata:question,
-                       currentCourseId:  this.props.currentCourseId,
-                       onClickQuestionEventHandler:this.onClickQuestionEventHandler
-                                                .bind(null, question.data.id, question.data.sharedWith!=="", !this.isQuestionSelected(question.data.id)),
-                       inlineMenuEnabled:this.props.options.inlineMenuEnabled,
-                       columns:this.props.columns, 
-                       menuHandlers:this.props.handlers,
-                       selectQuestionHandler:this.selectQuestionHandler,
-                       selected:this.isQuestionSelected(question.data.id),
-                       expandPreviewQuestionHandler:  this.expandPreviewQuestionHandler,
-                       expanded:isQuestionExpanded,
-                       grouped:isGrouped,
-                       draft:isDraft,
-                       capabilities:  this.props.capabilities}
+      var questionHtml = (Question({metadata: question, 
+                       currentCourseId: this.props.currentCourseId, 
+                       onClickQuestionEventHandler: this.onClickQuestionEventHandler
+                                                .bind(null, question.data.id, question.data.sharedWith!=="", !this.isQuestionSelected(question.data.id)), 
+                       inlineMenuEnabled: this.props.options.inlineMenuEnabled, 
+                       columns: this.props.columns, 
+                       menuHandlers: this.props.handlers, 
+                       selectQuestionHandler: this.selectQuestionHandler, 
+                       selected: this.isQuestionSelected(question.data.id), 
+                       expandPreviewQuestionHandler: this.expandPreviewQuestionHandler, 
+                       expanded: isQuestionExpanded, 
+                       grouped: isGrouped, 
+                       draft: isDraft, 
+                       capabilities: this.props.capabilities}
                       ));
 
       var preview = null;
       if(isQuestionExpanded) {
-          preview = (QuestionPreview( 
-                      {onClickQuestionEventHandler:this.onClickQuestionEventHandler
-                                                  .bind(null, question.data.id, question.data.sharedWith!=="", !this.isQuestionSelected(question.data.id)),
-                      colSpan:this.getAllColumnCount()-1, 
-                      metadata:question.data, 
-                      preview:question.data.questionHtmlInlinePreview, 
-                      questionCardTemplate:this.props.questionCardTemplate,
-                      grouped:isGrouped}
+          preview = (QuestionPreview({
+                      onClickQuestionEventHandler: this.onClickQuestionEventHandler
+                                                  .bind(null, question.data.id, question.data.sharedWith!=="", !this.isQuestionSelected(question.data.id)), 
+                      colSpan: this.getAllColumnCount()-1, 
+                      metadata: question.data, 
+                      preview: question.data.questionHtmlInlinePreview, 
+                      questionCardTemplate: this.props.questionCardTemplate, 
+                      grouped: isGrouped}
                       ));
       }
  
@@ -286,10 +286,10 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
       if((this.state.selectedQuestions.length>0)||
         (this.props.options.bulkOperationBarType==window.enums.bulkOperationBarType.importQuestions)) {
         var isAllQuestionsShared = $.inArray(false, $.map(this.state.selectedQuestions, function(e){ return e.isShared;})) == -1;
-        return (QuestionBulkOperationBarBase(
-                                          {bulkOperationBarType:this.props.options.bulkOperationBarType,
-                                          colSpan:this.getAllColumnCount(), 
-                                          parameters:{
+        return (QuestionBulkOperationBarBase({
+                                          bulkOperationBarType: this.props.options.bulkOperationBarType, 
+                                          colSpan: this.getAllColumnCount(), 
+                                          parameters: {
                                             currentCourseId: this.props.currentCourseId,
                                             selectedQuestions: $.map(this.state.selectedQuestions,function(e){return e.id;}),
                                             deselectsAllHandler: this.deselectsAllQuestionHandler,
@@ -297,31 +297,31 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
                                             bulkShareHandler: this.props.handlers.shareHandler,
                                             isShared: isAllQuestionsShared,
                                             capabilities: this.props.capabilities
-                                          }} ));
+                                          }}));
       }
       return null;
     },
 
     render: function() {
         return (
-          React.DOM.div( {className:"questionList"}, 
-                React.DOM.table( {className:"table table question-table"}, 
+          React.DOM.div({className: "questionList"}, 
+                React.DOM.table({className: "table table question-table"}, 
                    React.DOM.thead(null, 
-                    QuestionListHeader( {ordering:this.props.order, 
-                                        columns:this.props.columns, 
-                                        allAvailableColumns:this.props.allAvailableColumns, 
-                                        selectAllQuestionHandelr:this.selectAllQuestionHandelr,
-                                        selectedAll:this.state.selectedAll,
-                                        expandAllQuestionHandler:this.expandAllQuestionHandler,
-                                        expandedAll:this.state.expandedAll,  
-                                        canViewPreview:this.props.capabilities.canPreviewQuestion})
-                  ),
-                  React.DOM.tbody(null,  
-                    this.renderBulkOperationBar(),
+                    QuestionListHeader({ordering: this.props.order, 
+                                        columns: this.props.columns, 
+                                        allAvailableColumns: this.props.allAvailableColumns, 
+                                        selectAllQuestionHandelr: this.selectAllQuestionHandelr, 
+                                        selectedAll: this.state.selectedAll, 
+                                        expandAllQuestionHandler: this.expandAllQuestionHandler, 
+                                        expandedAll: this.state.expandedAll, 
+                                        canViewPreview: this.props.capabilities.canPreviewQuestion})
+                  ), 
+                  React.DOM.tbody(null, 
+                    this.renderBulkOperationBar(), 
                     this.renderQuestions()
-                  ) 
-                ),
-              React.DOM.div( {className:"dialogs-container"}
+                  )
+                ), 
+              React.DOM.div({className: "dialogs-container"}
                  
               )
           )

@@ -66,9 +66,9 @@ var NoteBox = React.createClass({displayName: 'NoteBox',
 
   render: function() {
     return (
-      React.DOM.div( {className:"note-box"}, 
-        NoteList( {data:this.state.data,  onNoteDelete:  this.noteDeleteHandler, onNoteUpdate:this.noteUpdateHandler, canDelete:this.props.canDelete} ),
-        NoteForm( {onNoteSubmit:this.handleNoteSubmit, questionId:this.props.questionId, canAddNote:this.props.canAddNote} )
+      React.DOM.div({className: "note-box"}, 
+        NoteList({data: this.state.data, onNoteDelete: this.noteDeleteHandler, onNoteUpdate: this.noteUpdateHandler, canDelete: this.props.canDelete}), 
+        NoteForm({onNoteSubmit: this.handleNoteSubmit, questionId: this.props.questionId, canAddNote: this.props.canAddNote})
       )
     );
   }

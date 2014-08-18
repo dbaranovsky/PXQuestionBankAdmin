@@ -59,10 +59,10 @@ var AddSiteBuilderDialog  = React.createClass({displayName: 'AddSiteBuilderDialo
                   React.DOM.table(null, 
                       React.DOM.tr(null, 
                           React.DOM.td(null, 
-                              self.props.siteBuilderLink 
-                          ),
+                              self.props.siteBuilderLink
+                          ), 
                           React.DOM.td(null, 
-                              TextEditor( {dataChangeHandler:self.dataChangeHandler, value:self.state.repositoryName})
+                              TextEditor({dataChangeHandler: self.dataChangeHandler, value: self.state.repositoryName})
                           )
                       )
                   )
@@ -71,18 +71,18 @@ var AddSiteBuilderDialog  = React.createClass({displayName: 'AddSiteBuilderDialo
     };
 
     var  renderFooterButtons = function(){
-         return (React.DOM.div( {className:"modal-footer"},  
-                    React.DOM.button( {type:"button", ref:"cancelButton", className:"btn btn-default", 'data-dismiss':"modal"}, "Cancel"),
-                    React.DOM.button( {type:"button", className:"btn btn-primary", onClick:self.addSiteBuilderRepository}, "Add")
+         return (React.DOM.div({className: "modal-footer"}, 
+                    React.DOM.button({type: "button", ref: "cancelButton", className: "btn btn-default", 'data-dismiss': "modal"}, "Cancel"), 
+                    React.DOM.button({type: "button", className: "btn btn-primary", onClick: self.addSiteBuilderRepository}, "Add")
                  ));
     };
  
-    return (ModalDialog(  {ref:"modelDialog",
-                          showOnCreate:  true, 
-                          renderHeaderText:renderHeaderText, 
-                          renderBody:renderBody,  
-                          closeDialogHandler:  this.closeDialog, 
-                          renderFooterButtons:renderFooterButtons, 
-                          dialogId:"AddSiteBuilderDialogId"})); 
+    return (ModalDialog({ref: "modelDialog", 
+                          showOnCreate: true, 
+                          renderHeaderText: renderHeaderText, 
+                          renderBody: renderBody, 
+                          closeDialogHandler: this.closeDialog, 
+                          renderFooterButtons: renderFooterButtons, 
+                          dialogId: "AddSiteBuilderDialogId"})); 
     }
 });

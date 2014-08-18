@@ -32,9 +32,9 @@ var NotificationDialog =React.createClass({displayName: 'NotificationDialog',
         };
         
         var renderBody = function(){
-            return (React.DOM.div( {className:"notification-body"}, 
-            			React.DOM.p(null, self.props.notification.message),
-            			React.DOM.input( {type:"checkbox", checked:self.state.dontShow, onChange:self.changeShowHangler}),React.DOM.span(null,  " Dont show again")
+            return (React.DOM.div({className: "notification-body"}, 
+            			React.DOM.p(null, self.props.notification.message), 
+            			React.DOM.input({type: "checkbox", checked: self.state.dontShow, onChange: self.changeShowHangler}), React.DOM.span(null, " Dont show again")
             		));
         };
 
@@ -42,28 +42,28 @@ var NotificationDialog =React.createClass({displayName: 'NotificationDialog',
 
         if (this.props.isCustomCloseHandle){
               renderFooterButtons = function(){
-               return (React.DOM.div( {className:"modal-footer"},  
-                         React.DOM.button( {type:"button", className:"btn btn-primary",  onClick:self.proceedHandler}, "Proceed"),
-                         React.DOM.button( {type:"button", className:"btn btn-default", onClick:self.closeDialog}, "Cancel")
+               return (React.DOM.div({className: "modal-footer"}, 
+                         React.DOM.button({type: "button", className: "btn btn-primary", onClick: self.proceedHandler}, "Proceed"), 
+                         React.DOM.button({type: "button", className: "btn btn-default", onClick: self.closeDialog}, "Cancel")
                       ));
               };
         } else{
 
              renderFooterButtons = function(){
-                   return (React.DOM.div( {className:"modal-footer"},  
-                             React.DOM.button( {type:"button", className:"btn btn-primary", 'data-dismiss':"modal",  onClick:self.proceedHandler}, "Proceed"),
-                             React.DOM.button( {type:"button", className:"btn btn-default", 'data-dismiss':"modal", 'data-targer':"notificationDialog"}, "Cancel")
+                   return (React.DOM.div({className: "modal-footer"}, 
+                             React.DOM.button({type: "button", className: "btn btn-primary", 'data-dismiss': "modal", onClick: self.proceedHandler}, "Proceed"), 
+                             React.DOM.button({type: "button", className: "btn btn-default", 'data-dismiss': "modal", 'data-targer': "notificationDialog"}, "Cancel")
                           ));
             };
        }
 
-        return (ModalDialog( {renderHeaderText:renderHeaderText, 
-                             renderBody:renderBody, 
-                             dialogId:"notificationDialog",
-                             closeDialogHandler:  this.closeDialog,
-                             showOnCreate:  true,
-                             preventDefaultClose:  this.props.isCustomCloseHandle,
-                             renderFooterButtons:renderFooterButtons} )
+        return (ModalDialog({renderHeaderText: renderHeaderText, 
+                             renderBody: renderBody, 
+                             dialogId: "notificationDialog", 
+                             closeDialogHandler: this.closeDialog, 
+                             showOnCreate: true, 
+                             preventDefaultClose: this.props.isCustomCloseHandle, 
+                             renderFooterButtons: renderFooterButtons})
                 );
   
        

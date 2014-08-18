@@ -5,7 +5,7 @@
 var QuestionListGroupSeparator = React.createClass({displayName: 'QuestionListGroupSeparator',
     render: function() {
         return (
-                 React.DOM.tr(null, React.DOM.td( {colSpan:this.props.colSpan},  " " ))
+                 React.DOM.tr(null, React.DOM.td({colSpan: this.props.colSpan}, " "))
              );
 }
 });

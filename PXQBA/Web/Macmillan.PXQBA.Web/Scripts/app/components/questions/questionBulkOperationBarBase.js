@@ -39,22 +39,22 @@ var QuestionBulkOperationBarBase = React.createClass({displayName: 'QuestionBulk
     renderBar: function() {
        switch (this.props.bulkOperationBarType) {
           case window.enums.bulkOperationBarType.standart:
-            return (QuestionBulkOperationBarStandart( 
-                            {message:this.getTextMessage(),
-                            selectedQuestions:this.props.parameters.selectedQuestions,
-                            deselectsAllHandler:this.props.parameters.deselectsAllHandler,
-                            columns:this.props.parameters.columns,
-                            bulkShareHandler:  this.props.parameters.bulkShareHandler,
-                            isShared:  this.props.parameters.isShared,
+            return (QuestionBulkOperationBarStandart({
+                            message: this.getTextMessage(), 
+                            selectedQuestions: this.props.parameters.selectedQuestions, 
+                            deselectsAllHandler: this.props.parameters.deselectsAllHandler, 
+                            columns: this.props.parameters.columns, 
+                            bulkShareHandler: this.props.parameters.bulkShareHandler, 
+                            isShared: this.props.parameters.isShared, 
                             capabilities: this.props.parameters.capabilities, 
-                            currentCourseId:  this.props.parameters.currentCourseId}
+                            currentCourseId: this.props.parameters.currentCourseId}
                             ));
           case window.enums.bulkOperationBarType.importQuestions:
-            return (QuestionBulkOperationBarImport( 
-                      {message:this.getTextMessage(),
-                      deselectsAllHandler:this.props.parameters.deselectsAllHandler,
-                      selectedQuestions:this.props.parameters.selectedQuestions,
-                      currentCourseId:  this.props.parameters.currentCourseId}
+            return (QuestionBulkOperationBarImport({
+                      message: this.getTextMessage(), 
+                      deselectsAllHandler: this.props.parameters.deselectsAllHandler, 
+                      selectedQuestions: this.props.parameters.selectedQuestions, 
+                      currentCourseId: this.props.parameters.currentCourseId}
                    ));
           default:
             return "";
@@ -64,7 +64,7 @@ var QuestionBulkOperationBarBase = React.createClass({displayName: 'QuestionBulk
     render: function() {
         return ( 
                   React.DOM.tr(null, 
-                    React.DOM.td( {colSpan:this.props.colSpan, className:"bulk-operation-bar"}, 
+                    React.DOM.td({colSpan: this.props.colSpan, className: "bulk-operation-bar"}, 
                         this.renderBar()
                     )
                   )

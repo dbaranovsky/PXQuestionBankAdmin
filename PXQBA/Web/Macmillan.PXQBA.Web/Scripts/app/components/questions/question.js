@@ -47,24 +47,24 @@ var Question = React.createClass({displayName: 'Question',
             questionIds.push(questionId);
 
        
-            return QuestionListMenu(
-                        {currentCourseId:  this.props.currentCourseId,
-                        data:this.props.metadata.data, 
-                        copyQuestionHandler:this.props.menuHandlers.copyQuestionHandler.bind(null, questionId),
-                        editQuestionHandler:this.props.menuHandlers.editQuestionHandler.bind(null, questionId),
-                        editNotesHandler:this.props.menuHandlers.editNotesHandler.bind(null, questionId),
-                        shareHandler: this.props.menuHandlers.shareHandler.bind(null, questionIds),
-                        publishDraftHandler:  this.props.menuHandlers.publishDraftHandler.bind(null, questionId),
-                        createDraftHandler: this.props.menuHandlers.createDraftHandler.bind(null, questionId),
-                        showNotification:  this.props.menuHandlers.showNotification,
-                        showAll:  this.state.showMenu, 
-                        isShared:  this.isShared(),
-                        titleCount:  this.getTitleCount(),
-                        draft:  this.props.draft,
-                        capabilities:  this.props.capabilities,
+            return QuestionListMenu({
+                        currentCourseId: this.props.currentCourseId, 
+                        data: this.props.metadata.data, 
+                        copyQuestionHandler: this.props.menuHandlers.copyQuestionHandler.bind(null, questionId), 
+                        editQuestionHandler: this.props.menuHandlers.editQuestionHandler.bind(null, questionId), 
+                        editNotesHandler: this.props.menuHandlers.editNotesHandler.bind(null, questionId), 
+                        shareHandler: this.props.menuHandlers.shareHandler.bind(null, questionIds), 
+                        publishDraftHandler: this.props.menuHandlers.publishDraftHandler.bind(null, questionId), 
+                        createDraftHandler: this.props.menuHandlers.createDraftHandler.bind(null, questionId), 
+                        showNotification: this.props.menuHandlers.showNotification, 
+                        showAll: this.state.showMenu, 
+                        isShared: this.isShared(), 
+                        titleCount: this.getTitleCount(), 
+                        draft: this.props.draft, 
+                        capabilities: this.props.capabilities, 
                         metadataCapabilities: {canCreateDraftFromAvailableQuestion: this.props.metadata.canCreateDraftFromAvailableQuestion,
                                                 canChangeDraftStatus:  this.props.metadata.canChangeDraftStatus,
-                                                canEditQuestion:  this.props.metadata.canEditQuestion}} )
+                                                canEditQuestion:  this.props.metadata.canEditQuestion}})
                         
     },
 
@@ -77,29 +77,29 @@ var Question = React.createClass({displayName: 'Question',
  
 
     renderCell: function(metadataName, editorDescriptor, allowedEdit, canUpdateSharedValue) {
-        return ( QuestionCell( {value:this.props.metadata.data[metadataName],
-                               currentCourseId:this.props.currentCourseId,
-                               field:metadataName, 
-                               questionId:this.props.metadata.data.id,
-                               status: this.props.metadata.data[window.consts.questionStatusName],
-                               editorDescriptor:editorDescriptor,
-                               allowedEdit:  allowedEdit,
-                               expanded:  this.props.expanded,
-                               draft:this.props.draft,
-                               expandPreviewQuestionHandler:  this.props.expandPreviewQuestionHandler,
-                               canChangeDraftStatus:  this.props.metadata.canChangeDraftStatus,
-                               capabilities:  this.props.capabilities,
-                               canUpdateSharedValue:  canUpdateSharedValue,
-                               isShared:  this.isShared()}
+        return ( QuestionCell({value: this.props.metadata.data[metadataName], 
+                               currentCourseId: this.props.currentCourseId, 
+                               field: metadataName, 
+                               questionId: this.props.metadata.data.id, 
+                               status: this.props.metadata.data[window.consts.questionStatusName], 
+                               editorDescriptor: editorDescriptor, 
+                               allowedEdit: allowedEdit, 
+                               expanded: this.props.expanded, 
+                               draft: this.props.draft, 
+                               expandPreviewQuestionHandler: this.props.expandPreviewQuestionHandler, 
+                               canChangeDraftStatus: this.props.metadata.canChangeDraftStatus, 
+                               capabilities: this.props.capabilities, 
+                               canUpdateSharedValue: canUpdateSharedValue, 
+                               isShared: this.isShared()}
                                 ));
     },
       
    renderGroupLine: function() {
         if(this.props.grouped) {
-          return (React.DOM.td( {className:"grouped-cell"}));
+          return (React.DOM.td({className: "grouped-cell"}));
         }
 
-        return (React.DOM.td( {className:"grouped-cell-empty"}));
+        return (React.DOM.td({className: "grouped-cell-empty"}));
     },
 
     render: function() {
@@ -133,22 +133,22 @@ var Question = React.createClass({displayName: 'Question',
             });
 
         return ( 
-            React.DOM.tr( {className:componentClass, 
-                    onMouseOver:this.mouseOverHandler,
-                    onMouseLeave:this.mouseLeaveHandler,
-                    onClick:this.props.onClickQuestionEventHandler}
-                    , 
+            React.DOM.tr({className: componentClass, 
+                    onMouseOver: this.mouseOverHandler, 
+                    onMouseLeave: this.mouseLeaveHandler, 
+                    onClick: this.props.onClickQuestionEventHandler
+                    }, 
 
-                this.renderGroupLine(),
-                React.DOM.td(null,  
-                    React.DOM.input( {type:"checkbox", checked:this.props.selected, onChange:this.selectQuestionHandler})
-                ),
-                 cells,
-                 React.DOM.td( {className:"actions-cloumn"},   
-                   React.DOM.div( {className:"actions-container"}, 
+                this.renderGroupLine(), 
+                React.DOM.td(null, 
+                    React.DOM.input({type: "checkbox", checked: this.props.selected, onChange: this.selectQuestionHandler})
+                ), 
+                 cells, 
+                 React.DOM.td({className: "actions-cloumn"}, 
+                   React.DOM.div({className: "actions-container"}, 
                         this.renderMenu()
                    )
-                )  
+                )
             ) 
             );
         }

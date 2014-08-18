@@ -5,7 +5,11 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
 
    getInitialState: function() {
 
-      return { question: this.props.question, viewHistoryMode: this.props.viewHistoryMode, saving: false, savingCount: 0};
+      return { question: this.props.question, viewHistoryMode: this.props.viewHistoryMode, saving: false, 
+               savingCount: 0,
+               isHTS: this.props.question.questionType!= null && this.props.question.questionType.toLowerCase()=="hts"? true: false,
+               isCustom: this.props.question.questionType!= null,
+               isGraph: this.props.question.questionType == "FMA_GRAPH"};
     },
 
     componentDidMount: function(){
@@ -144,8 +148,8 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
      renderNotification: function(){
         if (this.state.showNotification){
            var notification =  userManager.getNotificationById(this.state.typeId);
-           if (notification != null && notification.isShown){
-             return ( NotificationDialog(  {closeDialog:this.closeNotificationDialog, proceedHandler:  this.proceedHandler, notification:notification, isCustomCloseHandle:true}));
+           if (notification != null && (notification.isShown || ((this.state.isHTS || this.state.isGraph) && this.state.typeId==window.enums.notificationTypes.saveAndPublishDraft))){
+             return ( NotificationDialog({closeDialog: this.closeNotificationDialog, proceedHandler: this.proceedHandler, notification: notification, isCustomCloseHandle: true}));
            }
            else {
             if(this.state.typeId==window.enums.notificationTypes.saveAndPublishDraft) {
@@ -191,27 +195,27 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
         
         var renderBody = function(){
             return (React.DOM.div(null, 
-                      "Do you want to create a draft question or edit in place?",
-                      React.DOM.br(null ),React.DOM.br(null ),
-                      React.DOM.button( {className:"btn btn-primary", 'data-toggle':"modal", onClick:self.state.editInPlaceHandler}, 
+                      "Do you want to create a draft question or edit in place?", 
+                      React.DOM.br(null), React.DOM.br(null), 
+                      React.DOM.button({className: "btn btn-primary", 'data-toggle': "modal", onClick: self.state.editInPlaceHandler}, 
                                    "Edit in place"
-                      ),
-                        "   ",
-                      React.DOM.button( {className:"btn btn-primary ",  'data-toggle':"modal", onClick:self.createDraft} , 
+                      ), 
+                        "   ", 
+                      React.DOM.button({className: "btn btn-primary ", 'data-toggle': "modal", onClick: self.createDraft}, 
                                  "Create a Draft"
-                      ),
-                         "   ",
-                      React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal", onClick:self.closeEditInPlaceDialog}, 
+                      ), 
+                         "   ", 
+                      React.DOM.button({className: "btn btn-default", 'data-toggle': "modal", onClick: self.closeEditInPlaceDialog}, 
                              "Cancel"
                         )
                     )
               );
         };
-        return (ModalDialog( {renderHeaderText:renderHeaderText, 
-                             renderBody:renderBody, 
-                             dialogId:"editInPlace",
-                             closeDialogHandler:  this.closeSaveWarningDialog,
-                             showOnCreate:  true,
+        return (ModalDialog({renderHeaderText: renderHeaderText, 
+                             renderBody: renderBody, 
+                             dialogId: "editInPlace", 
+                             closeDialogHandler: this.closeSaveWarningDialog, 
+                             showOnCreate: true, 
                              preventDefaultClose: true})
                 );
       }
@@ -238,32 +242,32 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
      render: function() {
         return (
             React.DOM.div(null, 
-                      React.DOM.div( {className:"header-buttons"}, 
-                         React.DOM.button( {className:"btn btn-primary run-question", 'data-toggle':"modal", disabled:this.state.saving || !this.state.question.canTestQuestion, onClick:this.runQuestion}, 
-                             React.DOM.span( {className:"glyphicon glyphicon-play"}), " Try Question"
+                      React.DOM.div({className: "header-buttons"}, 
+                         React.DOM.button({className: "btn btn-primary run-question", 'data-toggle': "modal", disabled: this.state.saving || !this.state.question.canTestQuestion, onClick: this.runQuestion}, 
+                             React.DOM.span({className: "glyphicon glyphicon-play"}), " Try Question"
                         )
-                      ),
+                      ), 
                 
-                React.DOM.div( {className:"editor-tabs"}, 
-                  QuestionEditorTabs( {ref:"questionEditorTabs",
-                                      currentCourseId:this.props.currentCourseId,
-                                      question:this.state.question, 
-                                      closeDialog:this.closeDialog,  
-                                      editSourceQuestionHandler:this.props.editSourceQuestionHandler, 
-                                      showSaveWarning:this.showSaveWarning,  
-                                      showEditInPlaceDialog:  this.showEditInPlaceDialog,
-                                      closeEditInPlaceDialog:  this.closeEditInPlaceDialog,
-                                      showNotificationForInProgress:  this.showNotificationForInProgress,
-                                      saveQuestion:  this.saveQuestion,
-                                      metadata:this.props.metadata, 
-                                      editHandler:this.editHandler, 
-                                      isDuplicate:this.props.isDuplicate,
-                                      handlers:this.props.handlers,
-                                      viewHistoryMode: this.props.viewHistoryMode,
-                                      saving:  this.state.saving, 
-                                      notesChangedHandler:this.props.notesChangedHandler})
-                ),
-                this.renderNotification(),
+                React.DOM.div({className: "editor-tabs"}, 
+                  QuestionEditorTabs({ref: "questionEditorTabs", 
+                                      currentCourseId: this.props.currentCourseId, 
+                                      question: this.state.question, 
+                                      closeDialog: this.closeDialog, 
+                                      editSourceQuestionHandler: this.props.editSourceQuestionHandler, 
+                                      showSaveWarning: this.showSaveWarning, 
+                                      showEditInPlaceDialog: this.showEditInPlaceDialog, 
+                                      closeEditInPlaceDialog: this.closeEditInPlaceDialog, 
+                                      showNotificationForInProgress: this.showNotificationForInProgress, 
+                                      saveQuestion: this.saveQuestion, 
+                                      metadata: this.props.metadata, 
+                                      editHandler: this.editHandler, 
+                                      isDuplicate: this.props.isDuplicate, 
+                                      handlers: this.props.handlers, 
+                                      viewHistoryMode: this.props.viewHistoryMode, 
+                                      saving: this.state.saving, 
+                                      notesChangedHandler: this.props.notesChangedHandler})
+                ), 
+                this.renderNotification(), 
                 this.renderEditInPlaceDialog()
 
 

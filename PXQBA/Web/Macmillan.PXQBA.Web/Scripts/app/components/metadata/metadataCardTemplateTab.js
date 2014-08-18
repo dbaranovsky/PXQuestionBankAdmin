@@ -69,8 +69,8 @@ var MetadataCardTemplateTab = React.createClass({displayName: 'MetadataCardTempl
 
   renderPreviewCardTemplateDialog: function() {
     if(this.state.showPreviewCardTemplateDialog) {
-      return (PreviewCardTemplateDialog( {closeDialogHandler:this.closePreviewCardTemplateDialogHandler, 
-                                  cardHtml:this.state.cardHtml} 
+      return (PreviewCardTemplateDialog({closeDialogHandler: this.closePreviewCardTemplateDialogHandler, 
+                                  cardHtml: this.state.cardHtml}
                                   ));
     }
 
@@ -82,24 +82,24 @@ var MetadataCardTemplateTab = React.createClass({displayName: 'MetadataCardTempl
          React.DOM.div(null, 
              React.DOM.div(null, 
               this.renderPreviewCardTemplateDialog()
-             ),
-             React.DOM.div( {className:"metadata-template-header"}, 
-                  React.DOM.div( {className:"metadata-template-description"}, 
-                      React.DOM.span(null,  " Edit question card HTML code Here " ),
-                      React.DOM.span( {className:"metadata-dispplay-options-help"},  
-                      ToltipElement( {tooltipText:"Edit question card HTML code Here"}) 
+             ), 
+             React.DOM.div({className: "metadata-template-header"}, 
+                  React.DOM.div({className: "metadata-template-description"}, 
+                      React.DOM.span(null, " Edit question card HTML code Here "), 
+                      React.DOM.span({className: "metadata-dispplay-options-help"}, 
+                      ToltipElement({tooltipText: "Edit question card HTML code Here"})
                       )
-                  ),
-                  React.DOM.div( {className:"metadata-template-button-container"}, 
-                      React.DOM.button( {type:"button", className:"btn btn-primary",  onClick:this.runPreview}, "Preview")
+                  ), 
+                  React.DOM.div({className: "metadata-template-button-container"}, 
+                      React.DOM.button({type: "button", className: "btn btn-primary", onClick: this.runPreview}, "Preview")
                   )
-             ),
+             ), 
        	    	React.DOM.div(null, 
-                   TextAreaEditor( 
-                        {classNameProps:"metadata-template-editor",
-                        disabled:!this.props.data.canEditQuestionCardTemplate,
-                        dataChangeHandler:this.changeHandler.bind(this, this.cardTemplateName), 
-                        value:this.props.data[this.cardTemplateName]} )
+                   TextAreaEditor({
+                        classNameProps: "metadata-template-editor", 
+                        disabled: !this.props.data.canEditQuestionCardTemplate, 
+                        dataChangeHandler: this.changeHandler.bind(this, this.cardTemplateName), 
+                        value: this.props.data[this.cardTemplateName]})
  			        )
          )
             );

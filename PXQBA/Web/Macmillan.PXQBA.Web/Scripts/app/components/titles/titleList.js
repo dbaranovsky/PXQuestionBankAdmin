@@ -14,7 +14,7 @@ var TitleList = React.createClass({displayName: 'TitleList',
 	},
 
 	renderTitle: function(titleModel) {
-		return (Title( {data:titleModel} ));
+		return (Title({data: titleModel}));
 	},
 
     render: function() {

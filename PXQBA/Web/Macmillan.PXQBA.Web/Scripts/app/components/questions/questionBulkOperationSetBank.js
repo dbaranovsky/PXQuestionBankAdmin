@@ -13,8 +13,8 @@ var QuestionBulkOperationSetBank = React.createClass({displayName: 'QuestionBulk
 
     render: function() {
         return ( 
-            React.DOM.div(null,  
-            SingleSelectButton( {caption:"Change Bank to..",  cancelHandler:this.cancelHandler, selectHandler:this.selectHandler, values:this.props.availableStatuses} )
+            React.DOM.div(null, 
+            SingleSelectButton({caption: "Change Bank to..", cancelHandler: this.cancelHandler, selectHandler: this.selectHandler, values: this.props.availableStatuses})
             )
             );
         }

@@ -33,16 +33,16 @@ var ModalDialog = React.createClass({displayName: 'ModalDialog',
 
     render: function() {
         return (
-            React.DOM.div( {className:"modal fade", id:this.props.dialogId, tabIndex:"-1", role:"dialog", 'data-backdrop':"static",  'aria-labelledby':"addQuestionModalLabel", 'aria-hidden':"true"} , 
-                React.DOM.div( {className:"modal-dialog"}, 
-                    React.DOM.div( {className:"modal-content"}, 
-                        React.DOM.div( {className:"modal-header"}, 
-                            React.DOM.button( {type:"button", className:"close", onClick:this.closeDialog}, "×"),
-                            React.DOM.h4( {className:"modal-title", id:"myModalLabel"}, this.props.renderHeaderText())
-                        ),
-                        React.DOM.div( {className:"modal-body"} , 
+            React.DOM.div({className: "modal fade", id: this.props.dialogId, tabIndex: "-1", role: "dialog", 'data-backdrop': "static", 'aria-labelledby': "addQuestionModalLabel", 'aria-hidden': "true"}, 
+                React.DOM.div({className: "modal-dialog"}, 
+                    React.DOM.div({className: "modal-content"}, 
+                        React.DOM.div({className: "modal-header"}, 
+                            React.DOM.button({type: "button", className: "close", onClick: this.closeDialog}, "×"), 
+                            React.DOM.h4({className: "modal-title", id: "myModalLabel"}, this.props.renderHeaderText())
+                        ), 
+                        React.DOM.div({className: "modal-body"}, 
                             this.props.setInnerHtml? "" :this.props.renderBody()
-                        ),
+                        ), 
                        
                       (this.props.renderFooterButtons !== undefined) ? this.props.renderFooterButtons() :""
                     

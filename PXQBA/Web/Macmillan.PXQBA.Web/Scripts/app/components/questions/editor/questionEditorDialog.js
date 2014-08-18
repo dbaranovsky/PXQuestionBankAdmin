@@ -49,12 +49,20 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
          }
 
          questionDataManager.clearResources(this.props.currentCourseId, this.props.question.realQuestionId, needRemoveResources);
-         
+
+         //quick workaround for IE11 issue with highlighting in qba-371
+          if(!!navigator.userAgent.match(/Trident.*rv[ :]*11\./) && 
+             this.props.caption == window.enums.dialogCaptions.duplicateQuestion &&
+             this.props.hasContainsTextFilter) {
+               location.reload();
+         }
+
     },
 
     notesChangedHandler: function(){
        this.setState({notesChanged: true});
      },
+
 
 
     render: function() {
@@ -63,29 +71,29 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
             return self.props.caption;
         };
         var renderBody = function(){
-            return (QuestionEditor(  {currentCourseId:  self.props.currentCourseId,
-                                     question:self.props.question,
-                                     metadata:self.props.metadata,  
-                                     editSourceQuestionHandler:self.props.editSourceQuestionHandler, 
-                                     finishSaving:  self.finishSaving, 
-                                     closeDialog:self.closeDialog, 
-                                     isNew:self.props.isNew, 
-                                     isDuplicate:self.props.caption === window.enums.dialogCaptions.duplicateQuestion,
-                                     handlers:self.props.handlers,
-                                     viewHistoryMode:  self.props.viewHistoryMode,
-                                     isEditedInPlace:  self.props.isEditedInPlace,
-                                     caption:self.props.caption,
-                                     notesChangedHandler:  self.notesChangedHandler}
+            return (QuestionEditor({currentCourseId: self.props.currentCourseId, 
+                                     question: self.props.question, 
+                                     metadata: self.props.metadata, 
+                                     editSourceQuestionHandler: self.props.editSourceQuestionHandler, 
+                                     finishSaving: self.finishSaving, 
+                                     closeDialog: self.closeDialog, 
+                                     isNew: self.props.isNew, 
+                                     isDuplicate: self.props.caption === window.enums.dialogCaptions.duplicateQuestion, 
+                                     handlers: self.props.handlers, 
+                                     viewHistoryMode: self.props.viewHistoryMode, 
+                                     isEditedInPlace: self.props.isEditedInPlace, 
+                                     caption: self.props.caption, 
+                                     notesChangedHandler: self.notesChangedHandler}
                                      ));
         };
         var renderFooterButtons = function(){
             return ("");
         };
-        return (ModalDialog( {renderHeaderText:renderHeaderText, 
-                             renderBody:renderBody, 
-                             renderFooterButtons:renderFooterButtons, 
-                             closeDialogHandler:  this.closeDialog,
-                             dialogId:"questionEditorModal"})
+        return (ModalDialog({renderHeaderText: renderHeaderText, 
+                             renderBody: renderBody, 
+                             renderFooterButtons: renderFooterButtons, 
+                             closeDialogHandler: this.closeDialog, 
+                             dialogId: "questionEditorModal"})
                 );
     }
 });
