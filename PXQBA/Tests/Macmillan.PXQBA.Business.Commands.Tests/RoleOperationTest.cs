@@ -195,7 +195,8 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
 
     
         [TestMethod]
-        public void UpdateRolesCapabilities_QBAUser_SqlInvokedWithRoleId()
+        [ExpectedException(typeof(NullReferenceException))]
+        public void UpdateRolesCapabilities_QBAUser_SqlInvokedWithoutRoleId()
         {
             const int roleId = 123;
             const string courseId = "courseId";
@@ -213,15 +214,41 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
 
             Role role = new Role()
                         {
-                            Id = 1
+                            Id = -1
                         };
+
+            roleOperation.UpdateRolesCapabilities(courseId, new List<Role>() { role });
+        }
+
+
+        [TestMethod]
+        public void UpdateRolesCapabilities_QBAUser_SqlInvokedWithRoleId()
+        {
+            const int roleId = 123;
+            const string courseId = "courseId";
+
+            bool invokedWithRoleId = false;
+
+            databaseManager.ExecuteScalar(Arg.Is<DbCommand>(c => c.CommandText == "dbo.UpdateQBARole")).Returns(roleId);
+
+            databaseManager.When(
+                dm =>
+                    dm.ExecuteNonQuery(Arg.Is<DbCommand>(c => c.CommandText == "dbo.UpdateQBARoleCapabilities" &&
+                                                        c.Parameters[0].ParameterName == "@roleId" &&
+                                                        (int)c.Parameters[0].Value == roleId)))
+                        .Do(d => { invokedWithRoleId = true; });
+
+            Role role = new Role()
+            {
+                Id = 1
+            };
 
             roleOperation.UpdateRolesCapabilities(courseId, new List<Role>() { role });
 
             Assert.IsTrue(invokedWithRoleId);
         }
 
-        //
+        
         [TestMethod]
         public void GetUserCapabilities_CourseId_ReturnCapabilities()
         {
@@ -244,6 +271,20 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
            Assert.IsTrue(capabilities.ToArray()[1] == Capability.ChangeDraftStatus);
         }
 
+      [TestMethod]
+        public void DeleteRole_RoleToDelete_SuccessRun()
+        {
+            var counter = 0;
+            databaseManager.ExecuteNonQuery(Arg.Do<DbCommand>(x =>
+            {
+                Assert.IsTrue(x.CommandText == "dbo.DeleteQBARole");
+                Assert.IsTrue(x.Parameters["@roleId"].Value.ToString() == "1");
+               
+                counter++;
+            }));
+            roleOperation.DeleteRole(1);
+           Assert.IsTrue(counter == 1);
+        }
 
         private IEnumerable<DatabaseRecord> GetQBARoleCapabilitiesRecords()
         {
