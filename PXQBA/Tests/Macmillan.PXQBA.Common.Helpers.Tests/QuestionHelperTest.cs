@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Macmillan.PXQBA.Common.Helpers.Tests
 {
     [TestClass]
-    public class QuestionHelperTests
+    public class QuestionHelperTest
     {
         private const string questionBodyWithImages = @"<question questionid=""88b12b6e-01b7-4ada-b97e-148a49e6d0cb"" version=""2"" resourceentityid=""39768,62"" creationdate=""2014-07-08T09:49:02.167Z"" creationby=""7"" modifieddate=""2014-07-08T09:49:08.9233687Z"" modifiedby=""7"" flags=""4"" actualentityid=""39768"" schema=""2"" partial=""false"">
                   <meta>

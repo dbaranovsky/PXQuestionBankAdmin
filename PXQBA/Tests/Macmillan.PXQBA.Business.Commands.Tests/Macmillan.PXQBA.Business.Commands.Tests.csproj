@@ -65,13 +65,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="NoteCommandsTests.cs" />
-    <Compile Include="ProductCourseOperationTests.cs" />
+    <Compile Include="NoteCommandsTest.cs" />
+    <Compile Include="ProductCourseOperationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuestionCommandsTests.cs" />
-    <Compile Include="RoleOperationTests.cs" />
+    <Compile Include="QuestionCommandsTest.cs" />
+    <Compile Include="RoleOperationTest.cs" />
     <Compile Include="QuestionSequenceHelperTest.cs" />
-    <Compile Include="UserNotificationOperationTests.cs" />
+    <Compile Include="UserNotificationOperationTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Commands\Macmillan.PXQBA.Business.Commands.csproj">

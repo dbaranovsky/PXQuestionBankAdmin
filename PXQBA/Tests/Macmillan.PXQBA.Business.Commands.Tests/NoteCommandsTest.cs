@@ -11,7 +11,7 @@ using NSubstitute;
 namespace Macmillan.PXQBA.Business.Commands.Tests
 {
     [TestClass]
-    public class NoteCommandsTests
+    public class NoteCommandsTest
     {
         private INoteCommands noteCommands;
         private IDatabaseManager databaseManager;

@@ -22,7 +22,7 @@ namespace Macmillan.PXQBA.Business.Services.Tests
 {
     [TestClass]
     [DeploymentItem("FilesForValidation")]
-    public class QuestionManagementServiceTests
+    public class QuestionManagementServiceTest
     {
         private IQuestionManagementService questionManagementService;
 

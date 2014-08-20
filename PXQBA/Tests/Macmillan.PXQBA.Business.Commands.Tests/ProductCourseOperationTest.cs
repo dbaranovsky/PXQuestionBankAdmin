@@ -13,7 +13,7 @@ using NSubstitute;
 namespace Macmillan.PXQBA.Business.Commands.Tests
 {
     [TestClass]
-    public class ProductCourseOperationTests
+    public class ProductCourseOperationTest
     {
         private IContext context;
         private IDatabaseManager databaseManager;

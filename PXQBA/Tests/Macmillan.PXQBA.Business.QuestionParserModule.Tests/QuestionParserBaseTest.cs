@@ -11,7 +11,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Tests
 {
     [TestClass]
     [DeploymentItem(@"FileForImport", "TestData")]
-    public class QuestionParserBaseTests
+    public class QuestionParserBaseTest
     {
         private List<QuestionParserBase> parsers;
         [TestInitialize]

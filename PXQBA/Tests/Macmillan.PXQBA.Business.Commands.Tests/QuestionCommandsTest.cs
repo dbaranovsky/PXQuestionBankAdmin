@@ -25,7 +25,7 @@ using QuestionChoice = Bfw.Agilix.DataContracts.QuestionChoice;
 namespace Macmillan.PXQBA.Business.Commands.Tests
 {
     [TestClass]
-    public class QuestionCommandsTests
+    public class QuestionCommandsTest
     {
         private IContext context;
         private IProductCourseOperation productCourseOperation;

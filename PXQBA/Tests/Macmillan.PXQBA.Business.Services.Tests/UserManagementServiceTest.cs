@@ -13,7 +13,7 @@ using NSubstitute;
 namespace Macmillan.PXQBA.Business.Services.Tests
 {
     [TestClass]
-    public class UserManagementServiceTests
+    public class UserManagementServiceTest
     {
  
         private AutomapperConfigurator automapperConfigurator;

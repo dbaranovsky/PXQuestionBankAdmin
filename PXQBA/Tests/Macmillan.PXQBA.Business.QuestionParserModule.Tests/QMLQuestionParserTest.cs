@@ -12,7 +12,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Tests
 {
      [TestClass]
      [DeploymentItem(@"FileForImport\QML")]
-   public class QMLQuestionParserTests
+   public class QMLQuestionParserTest
     {
         [TestMethod]
         public void Parse_QMLFile_TwelveParsedQuestionsWithoutErros()
