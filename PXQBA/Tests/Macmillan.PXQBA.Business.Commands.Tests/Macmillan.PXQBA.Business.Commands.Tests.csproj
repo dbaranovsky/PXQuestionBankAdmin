@@ -65,13 +65,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="NoteCommandsTests.cs" />
-    <Compile Include="ProductCourseOperationTests.cs" />
+    <Compile Include="NoteCommandsTest.cs" />
+    <Compile Include="ProductCourseOperationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuestionCommandsTests.cs" />
-    <Compile Include="RoleOperationTests.cs" />
+    <Compile Include="QuestionCommandsTest.cs" />
+    <Compile Include="RoleOperationTest.cs" />
     <Compile Include="QuestionSequenceHelperTest.cs" />
-    <Compile Include="UserNotificationOperationTests.cs" />
+    <Compile Include="TemporaryQuestionOperationTest.cs" />
+    <Compile Include="KeywordOperationTest.cs" />
+    <Compile Include="UserNotificationOperationTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Commands\Macmillan.PXQBA.Business.Commands.csproj">
@@ -93,6 +95,10 @@
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Services\Macmillan.PXQBA.Business.Services.csproj">
       <Project>{CF2B92A9-6E1D-4472-AD9C-AED6DC86A62C}</Project>
       <Name>Macmillan.PXQBA.Business.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Macmillan.PXQBA.Common.Helpers\Macmillan.PXQBA.Common.Helpers.csproj">
+      <Project>{DC4AEAAB-7123-4E1C-BD7D-FB0913C68B2C}</Project>
+      <Name>Macmillan.PXQBA.Common.Helpers</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.Commands\Bfw.Agilix.Commands.csproj">
       <Project>{19E52C79-1FE3-4385-A035-B603213C099E}</Project>

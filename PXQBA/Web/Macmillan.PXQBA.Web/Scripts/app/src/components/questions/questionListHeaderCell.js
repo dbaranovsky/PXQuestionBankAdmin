@@ -59,6 +59,7 @@ var QuestinListHeaderCell = React.createClass({
  renderHeader: function(){
       return(  <table>
           <tr>
+            <td>{this.renderExpandButton()}</td>
             <td className="header-caption seq">{this.renderCaption()}</td>
             <td> <QuestinListHeaderCellOrdering order={this.props.order} /></td>
             <td className="delete-button seq">{this.renderDeleteButton()}</td>

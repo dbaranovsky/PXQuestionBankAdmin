@@ -8,7 +8,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Tests
 {
     [TestClass]
     [DeploymentItem(@"FileForImport\Respondus")]
-    public class RespondusQuestionParserTests
+    public class RespondusQuestionParserTest
     {
         [TestMethod]
         public void Parse_FileWithTwoQuestion_TwoParsedQuestions()

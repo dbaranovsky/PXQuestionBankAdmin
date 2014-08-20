@@ -51,10 +51,10 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QMLQuestionParser.cs" />
-    <Compile Include="QTIQuestionParserTests.cs" />
-    <Compile Include="QuestionParserBaseTests.cs" />
-    <Compile Include="RespondusQuestionParserTests.cs" />
+    <Compile Include="QMLQuestionParserTest.cs" />
+    <Compile Include="QTIQuestionParserTest.cs" />
+    <Compile Include="QuestionParserBaseTest.cs" />
+    <Compile Include="RespondusQuestionParserTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.QuestionParserModule\Macmillan.PXQBA.Business.QuestionParserModule.csproj">

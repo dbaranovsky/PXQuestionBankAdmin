@@ -11,7 +11,7 @@ using System.Linq;
 namespace Macmillan.PXQBA.Business.Commands.Tests
 {
     [TestClass]
-    public class UserNotificationOperationTests
+    public class UserNotificationOperationTest
     {
         private IDatabaseManager databaseManager;
         private IContext businessContext;

@@ -13,7 +13,7 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Tests
 {
     [TestClass]
     [DeploymentItem(@"FileForImport\QTI")]
-    public class QTIQuestionParserTests
+    public class QTIQuestionParserTest
     {
         [TestMethod]
         public void Parse_FileWithAllFormate_FiveParsedQuestionsWithOneEssayQuestion()

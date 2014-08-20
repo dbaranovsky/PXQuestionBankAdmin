@@ -463,6 +463,7 @@ var questionDataManager = (function() {
         }).done(function (response) {      
              console.log('restoreVersion complete');
              self.showSuccessPopup('The version of '+ version.modifiedDate + ' by '+version.modifiedBy+' was restored by creating a duplicate version');
+             self.resetState();
         }).error(function(e){
              console.log('restoreVersion error');
              self.showErrorPopup();

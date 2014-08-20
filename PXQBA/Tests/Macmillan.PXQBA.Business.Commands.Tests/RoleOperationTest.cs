@@ -14,7 +14,7 @@ using NSubstitute;
 namespace Macmillan.PXQBA.Business.Commands.Tests
 {
     [TestClass]
-    public class RoleOperationTests
+    public class RoleOperationTest
     {
         private IDatabaseManager databaseManager;
         private IUserOperation userOperation;

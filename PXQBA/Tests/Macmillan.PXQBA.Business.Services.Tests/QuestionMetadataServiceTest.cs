@@ -11,7 +11,7 @@ using NSubstitute;
 namespace Macmillan.PXQBA.Business.Services.Tests
 {
     [TestClass]
-    public class QuestionMetadataServiceTests
+    public class QuestionMetadataServiceTest
     {
         private IQuestionMetadataService questionMetadataService;
 

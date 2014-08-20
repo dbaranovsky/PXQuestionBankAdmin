@@ -22,7 +22,7 @@ namespace Macmillan.PXQBA.Business.Services.Tests
 {
     [TestClass]
     [DeploymentItem("FilesForValidation")]
-    public class QuestionManagementServiceTests
+    public class QuestionManagementServiceTest
     {
         private IQuestionManagementService questionManagementService;
 
@@ -107,15 +107,11 @@ namespace Macmillan.PXQBA.Business.Services.Tests
                                                                                        {
                                                                                            Id = "15",
                                                                                            DuplicateFromShared = "3411",
-                                                                                           ProductCourseSections =
-                                                                                               new List
-                                                                                               <QuestionMetadataSection>
+                                                                                           ProductCourseSections = new List <QuestionMetadataSection>
                                                                                                {
                                                                                                    new QuestionMetadataSection
                                                                                                    {
-                                                                                                       ProductCourseId =
-                                                                                                           course
-                                                                                                           .ProductCourseId,
+                                                                                                       ProductCourseId = course.ProductCourseId,
                                                                                                    }
                                                                                                }
                                                                                        });
@@ -159,9 +155,58 @@ namespace Macmillan.PXQBA.Business.Services.Tests
         [TestMethod]
         public void UpdateQuestion_QuestionWithNewKeyWords_ProperlySettedQuestion()
         {
+            var course = GetTestCourse();
+            course.FieldDescriptors = new List<CourseMetadataFieldDescriptor>()
+                                      {
+                                          new CourseMetadataFieldDescriptor()
+                                          {
+                                              Name = "keyword",
+                                              CourseMetadataFieldValues = new List<CourseMetadataFieldValue>()
+                                                                          {
+                                                                              new CourseMetadataFieldValue()
+                                                                              {
+                                                                                  Text = "val1"
+                                                                              },
+                                                                               new CourseMetadataFieldValue()
+                                                                              {
+                                                                                  Text = "val2"
+                                                                              }
+                                                                          },
+                                             Type = MetadataFieldType.Keywords
+                                          }
+                                      };
+
             temporaryQuestionOperation.CopyQuestionToSourceCourse(Arg.Any<string>(), Arg.Any<string>())
-                .Returns(new Question() {Id = "14"});
-            var restult = questionManagementService.UpdateQuestion(new Course(), "15", new Question() {Id = "16"});
+                .Returns(new Question()
+                         {
+                             Id = "14",
+                             ProductCourseSections = new List<QuestionMetadataSection>
+                                                                                         {
+                                                                                             new QuestionMetadataSection
+                                                                                             {
+                                                                                                 ProductCourseId = course.ProductCourseId,
+                                                                                                 DynamicValues = new Dictionary<string, List<string>>()
+                                                                                                                 {
+                                                                                                                     {"keyword", new List<string>()
+                                                                                                                                 {
+                                                                                                                                     "val1",
+                                                                                                                                     "val3"
+                                                                                                                                 }}
+                                                                                                                 }
+                                                                                             }
+                                                                                         }
+                         
+                         });
+            var restult = questionManagementService.UpdateQuestion(course, "15", new Question()
+                                                                                 {
+                                                                                     Id = "16"
+                                                                                    
+                                                                                });
+            keywordOperation.AddKeywords(Arg.Any<string>(), 
+                                         Arg.Any<string>(), 
+                                         Arg.Do<IEnumerable<string>>(manuallyAddedValues => 
+                                                                        Assert.IsTrue(manuallyAddedValues.Contains("val3")&& manuallyAddedValues.Count() == 1))
+                                         );
             Assert.IsTrue(restult.Id == "14");
         }
 
@@ -177,6 +222,7 @@ namespace Macmillan.PXQBA.Business.Services.Tests
         [TestMethod]
         public void UpdateQuestionField_AnyCorrectParametrs_True()
         {
+            
             questionCommands.UpdateQuestionField(null, null, null, null, null, null).ReturnsForAnyArgs(true);
             Assert.IsTrue(questionManagementService.UpdateQuestionField(new Course() {ProductCourseId = "23"}, null,
                 null, null, new List<Capability>()));
@@ -348,16 +394,20 @@ namespace Macmillan.PXQBA.Business.Services.Tests
         public void UpdateSharedQuestionField_AnyCorrectParametrs_True()
         {
 
-
+            var course = GetTestCourse();
             questionCommands.UpdateSharedQuestionField(null, null, null, null).ReturnsForAnyArgs(true);
             questionCommands.GetQuestion(Arg.Any<string>(), Arg.Any<string>()).Returns(new Question()
                                                                                        {
-                                                                                           ProductCourseSections = new List<QuestionMetadataSection>()
-                                                                                                                   {
-                                                                                                                      
-                                                                                                                   }
+                                                                                            ProductCourseSections = new List<QuestionMetadataSection>
+                                                                 {
+                                                                     new QuestionMetadataSection
+                                                                     {
+                                                                     
+                                                                     }
+                                                                 }
                                                                                        });
-            Assert.IsTrue(questionManagementService.UpdateSharedQuestionField(GetTestCourse(), null, null, null));
+            productCourseManagementService.GetProductCourse(Arg.Any<string>()).Returns(new Course());
+            Assert.IsTrue(questionManagementService.UpdateSharedQuestionField(course, null, null, null));
         }
 
         [TestMethod]
@@ -365,13 +415,19 @@ namespace Macmillan.PXQBA.Business.Services.Tests
         {
 
             questionCommands.UpdateSharedQuestionField(null, null, null, null).ReturnsForAnyArgs(false);
-            questionCommands.GetQuestion(Arg.Any<string>(), Arg.Any<string>()).Returns(new Question()
-            {
-                ProductCourseSections = new List<QuestionMetadataSection>()
-                                                                                                                   {
-
-                                                                                                                   }
-            });
+            questionCommands.GetQuestion(Arg.Any<string>(), Arg.Any<string>())
+                            .Returns(new Question
+                                     {
+                                         ProductCourseSections = new List<QuestionMetadataSection>
+                                                                 {
+                                                                     new QuestionMetadataSection
+                                                                     {
+                                                                         ParentProductCourseId
+                                                                             = "13"
+                                                                     }
+                                                                 }
+                                     });
+            productCourseManagementService.GetProductCourse(Arg.Any<string>()).Returns(new Course());
             Assert.IsFalse(questionManagementService.UpdateSharedQuestionField(GetTestCourse(),null, null, null));
         }
 
@@ -431,7 +487,16 @@ namespace Macmillan.PXQBA.Business.Services.Tests
 
         [TestMethod]
         [ExpectedException(typeof(Exception))]
-        public void GetQuestion_AnyIncorrectParams_Exception()
+        public void GetQuestion_AnyIncorrectWithVesrion_Exception()
+        {
+
+            questionCommands.GetQuestion(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<string>()).Returns(x => { throw new Exception(); });
+            questionManagementService.GetQuestion(GetTestCourse(), string.Empty, "2");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void GetQuestion_AnyIncorrectNoVersion_Exception()
         {
 
             questionCommands.GetQuestion(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<string>()).Returns(x => { throw new Exception(); });
@@ -578,6 +643,25 @@ namespace Macmillan.PXQBA.Business.Services.Tests
         public void PublishToTitle_AnyParameters_NewProductCourseSectionAdded()
         {
             var course = GetTestCourse();
+            course.FieldDescriptors = new List<CourseMetadataFieldDescriptor>()
+                                      {
+                                          new CourseMetadataFieldDescriptor()
+                                          {
+                                              Name = "keywords",
+                                              CourseMetadataFieldValues = new List<CourseMetadataFieldValue>()
+                                                                          {
+                                                                              new CourseMetadataFieldValue()
+                                                                              {
+                                                                                  Text = "val2"
+                                                                              },
+                                                                                 new CourseMetadataFieldValue()
+                                                                              {
+                                                                                  Text = "val3"
+                                                                              }
+
+                                                                          }
+                                          }
+                                      };
 
             string[] questionIds = new[] {"1", "2"};
             int newProductCourseId = 1100;
@@ -589,9 +673,20 @@ namespace Macmillan.PXQBA.Business.Services.Tests
                                                                        {
                                                                            new QuestionMetadataSection()
                                                                            {
-                                                                               ProductCourseId = course.ProductCourseId
+                                                                               ProductCourseId = course.ProductCourseId,
+                                                                               DynamicValues = new Dictionary<string, List<string>>()
+                                                                                     {
+                                                                                         {"keywords", new List<string>(){"val1", "val2"}}
+                                                                                     }
                                                                            }
-                                                                       }
+                                                                       },
+                                                DefaultSection = new QuestionMetadataSection()
+                                                                 {
+                                                                     DynamicValues = new Dictionary<string, List<string>>()
+                                                                                     {
+                                                                                         {"keywords", new List<string>(){"val1", "val2"}}
+                                                                                     }
+                                                                 }
                                            },
                                            new Question()
                                            {
@@ -601,22 +696,27 @@ namespace Macmillan.PXQBA.Business.Services.Tests
                                                                            {
                                                                                ProductCourseId = course.ProductCourseId
                                                                            }
-                                                                       }
+                                                                       },
+                                                  DefaultSection = new QuestionMetadataSection()
+                                                                 {
+                                                                     DynamicValues = new Dictionary<string, List<string>>()
+                                                                                     {
+                                                                                         {"keywords", new List<string>(){"val1", "val2"}}
+                                                                                     }
+                                                                 }
                                            }
                                        };
 
-            questionCommands.UpdateQuestions(Arg.Any<IEnumerable<Question>>(), Arg.Any<string>(), Arg.Any<string>())
-                .Returns(true);
+            questionCommands.UpdateQuestions(Arg.Any<IEnumerable<Question>>(), Arg.Any<string>(), Arg.Any<string>()).Returns(true);
             questionCommands.GetQuestions(Arg.Any<string>(), Arg.Any<string[]>()).Returns(questions);
+            productCourseManagementService.GetProductCourse(Arg.Any<string>()).ReturnsForAnyArgs(course);
 
-            var result = questionManagementService.PublishToTitle(questionIds, newProductCourseId, "bank 1", "chapter 1",
-                course);
+            var result = questionManagementService.PublishToTitle(questionIds, newProductCourseId, "bank 1", "chapter 1", course);
 
             Assert.IsTrue(result.IsSuccess);
-            Assert.IsTrue(
-                questions[0].ProductCourseSections.Count(q => q.ProductCourseId == newProductCourseId.ToString()) == 1);
-            Assert.IsTrue(
-                questions[1].ProductCourseSections.Count(q => q.ProductCourseId == newProductCourseId.ToString()) == 1);
+            Assert.IsTrue(questions[0].ProductCourseSections.Count(q => q.ProductCourseId == newProductCourseId.ToString()) == 1);
+            Assert.IsTrue(questions[1].ProductCourseSections.Count(q => q.ProductCourseId == newProductCourseId.ToString()) == 1);
+            Assert.IsTrue(questions[0].ProductCourseSections.First(q => q.ProductCourseId == newProductCourseId.ToString()).DynamicValues.First().Value.Count == 1);
         }
 
         [TestMethod]
@@ -674,7 +774,49 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             var course = GetTestCourse();
             var targetCourse = GetTestCourse();
             targetCourse.QuestionRepositoryCourseId = "1535";
+            targetCourse.FieldDescriptors = new List<CourseMetadataFieldDescriptor>()
+                                            {
+                                                new CourseMetadataFieldDescriptor()
+                                                {
+                                                    Name = "keyword",
+                                                    CourseMetadataFieldValues = new List<CourseMetadataFieldValue>()
+                                                                                {
+                                                                                    new CourseMetadataFieldValue()
+                                                                                    {
+                                                                                        Text = "val1"
+                                                                                    }
+                                                                                },
+                                                    Type =  MetadataFieldType.Keywords
+                                                }
+                                            };
+            var questions = new List<Question>
+                            {
+                                new Question
+                                {
+                                    ProductCourseSections = new List<QuestionMetadataSection>
+                                                            {
+                                                                new QuestionMetadataSection
+                                                                {
+                                                                    ProductCourseId = course.ProductCourseId,
+                                                                    DynamicValues = new Dictionary<string, List<string>>()
+                                                                                    {
+                                                                                        {"keyword", new List<string>(){"val2"}}
+                                                                                    }
+                                                                }
+                                                            },
+                                    DefaultSection = new QuestionMetadataSection()
+                                                     {
+                                                         Chapter = "chapter"
+                                                     }
+                                }
+                            };
+
+            keywordOperation.GetKeywordList(targetCourse.ProductCourseId, "keyword")
+                .Returns(new List<string>() {"val2"});
+            questionCommands.GetQuestions(null, null).ReturnsForAnyArgs(questions);
             Assert.IsTrue(questionManagementService.ImportQuestions(course, new[] {"1", "2"}, targetCourse));
+            Assert.IsTrue(questions.Any( x=> string.IsNullOrEmpty(x.DefaultSection.Chapter)));
+            Assert.IsTrue(targetCourse.FieldDescriptors.First().CourseMetadataFieldValues.Select(x=> x.Text).Contains("val2"));
         }
 
 
@@ -704,6 +846,16 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             parsedFileOperation.AddParsedFile(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<byte[]>()).Returns(14);
 
             var result = questionManagementService.ValidateFile(fileName, File.ReadAllBytes(fileName));
+            Assert.IsTrue(result.FileValidationResults.First().Id == 14);
+            Assert.IsTrue(result.FileValidationResults.First().QuestionParsed == 1);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FormatException))]
+        public void ValidateFile_InvalidFile_FailedRun()
+        {
+
+            var result = questionManagementService.ValidateFile("test", null);
             Assert.IsTrue(result.FileValidationResults.First().Id == 14);
             Assert.IsTrue(result.FileValidationResults.First().QuestionParsed == 1);
         }
