@@ -38,17 +38,15 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
         notificationManager.showSuccess(text);
     },
 
-    closeDialog: function(){
+    closeDialog: function(isClearResources){
          monitorChanges(".local", true);
          $(this.getDOMNode()).modal("hide");
          $('.modal-backdrop').remove(); 
-         var questionType = this.props.question.questionType == null? "" :this.props.question.questionType.toLowerCase();
-         var needRemoveResources = false;
-         if ( questionType != "hts" && questionType !="fma_graph"){
-            needRemoveResources = true;
-         }
 
-         questionDataManager.clearResources(this.props.currentCourseId, this.props.question.realQuestionId, needRemoveResources);
+         if(isClearResources){
+            this.clearResources();
+         }
+       
 
          //quick workaround for IE11 issue with highlighting in qba-371
           if(!!navigator.userAgent.match(/Trident.*rv[ :]*11\./) && 
@@ -63,7 +61,19 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
        this.setState({notesChanged: true});
      },
 
+     clearResources: function(response){
+             var questionType = this.props.question.questionType == null? "" :this.props.question.questionType.toLowerCase();
+             var needRemoveResources = false;
+             if ( questionType != "hts" && questionType !="fma_graph"){
+                needRemoveResources = true;
+             }
 
+              questionDataManager.clearResources(this.props.currentCourseId, this.props.question.realQuestionId, needRemoveResources);
+     },
+
+     closeModal: function(){
+        this.closeDialog(true);
+     },
 
     render: function() {
          var self = this;
@@ -83,7 +93,8 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
                                      viewHistoryMode: self.props.viewHistoryMode, 
                                      isEditedInPlace: self.props.isEditedInPlace, 
                                      caption: self.props.caption, 
-                                     notesChangedHandler: self.notesChangedHandler}
+                                     notesChangedHandler: self.notesChangedHandler, 
+                                     clearResources: self.clearResources}
                                      ));
         };
         var renderFooterButtons = function(){
@@ -92,8 +103,9 @@ var QuestionEditorDialog = React.createClass({displayName: 'QuestionEditorDialog
         return (ModalDialog({renderHeaderText: renderHeaderText, 
                              renderBody: renderBody, 
                              renderFooterButtons: renderFooterButtons, 
-                             closeDialogHandler: this.closeDialog, 
-                             dialogId: "questionEditorModal"})
+                             closeDialogHandler: this.closeModal, 
+                             dialogId: "questionEditorModal", 
+                             isMainEditor: true})
                 );
     }
 });
