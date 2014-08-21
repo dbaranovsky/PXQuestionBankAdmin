@@ -77,8 +77,8 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
     },
 
     saveAndPublish: function(){
-       questionDataManager.saveAndPublishDraftQuestion(this.props.currentCourseId, this.state.question).done(this.updateQuestionHandler);
-       this.closeDialog();
+       questionDataManager.saveAndPublishDraftQuestion(this.props.currentCourseId, this.state.question).done(this.clearResources);
+       this.closeDialog(false);
     },
     updateQuestionHandler: function(response) {
       this.setState({saving: false, savingCount: this.state.savingCount+1});
@@ -109,6 +109,9 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
        
     },
 
+  clearResources: function(response){
+      this.props.clearResources();
+  },
     reloadHistory: function(){
       this.refs.questionEditorTabs.refs.versionHistory.updateQuestionVersion();
     },
@@ -134,14 +137,14 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
      },
   
 
-     closeDialog: function(){
+     closeDialog: function(isClearResources){
    
       if(hasUnsavedData()){
        if (confirm("You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?")){
-          this.props.closeDialog();
+          this.props.closeDialog(isClearResources);
        }
      } else{
-       this.props.closeDialog(); 
+       this.props.closeDialog(isClearResources); 
      }
      },
 
@@ -166,7 +169,7 @@ var QuestionEditor = React.createClass({displayName: 'QuestionEditor',
              $('.modal-backdrop').first().remove(); 
              this.setState({showNotification: false, saving: false});
          } else{
-             this.closeDialog();
+             this.closeDialog(true);
          }
         
      },

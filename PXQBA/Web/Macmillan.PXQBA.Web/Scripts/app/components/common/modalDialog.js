@@ -6,12 +6,12 @@ var ModalDialog = React.createClass({displayName: 'ModalDialog',
 
 
     componentDidMount: function(){
-         if(typeof this.props.closeDialogHandler !== 'undefined'){
+         /*if(typeof this.props.closeDialogHandler !== 'undefined'){
             var self = this;
             $(this.getDOMNode()).on('hidden.bs.modal', function (e) {
                 self.props.closeDialogHandler();
             });
-        }
+        }*/
        
 
         if (this.props.showOnCreate){
@@ -24,7 +24,7 @@ var ModalDialog = React.createClass({displayName: 'ModalDialog',
     },
 
     closeDialog: function(){
-         if(this.props.preventDefaultClose){
+         if(this.props.preventDefaultClose || (this.props.isMainEditor != undefined && this.props.isMainEditor)){
              this.props.closeDialogHandler();
          } else {
              $(this.getDOMNode()).modal('hide'); 

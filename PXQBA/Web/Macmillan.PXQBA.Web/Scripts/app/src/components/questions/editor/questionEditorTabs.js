@@ -189,7 +189,7 @@ var QuestionEditorTabs = React.createClass({
       if (!this.props.saving){
           return(
                     <div>
-                        <button className="btn btn-default" data-toggle="modal" title="Cancel" onClick={this.props.closeDialog}>
+                        <button className="btn btn-default" data-toggle="modal" title="Cancel" onClick={this.closeDialog}>
                              Cancel
                         </button>
                          {this.renderPublishButton()}
@@ -202,7 +202,7 @@ var QuestionEditorTabs = React.createClass({
 
         return(
                     <div>
-                        <button className="btn btn-default" data-toggle="modal" title="Cancel" onClick={this.props.closeDialog}>
+                        <button className="btn btn-default" data-toggle="modal" title="Cancel" onClick={this.closeDialog}>
                              Cancel
                         </button>
                          {this.renderPublishButton()}
@@ -223,6 +223,10 @@ var QuestionEditorTabs = React.createClass({
                    </button>);
         }
         return null;
+    },
+
+    closeDialog: function(){
+        this.props.closeDialog(true);
     },
    
    saveClickHandler: function() {

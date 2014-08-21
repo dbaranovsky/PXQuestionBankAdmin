@@ -189,7 +189,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
       if (!this.props.saving){
           return(
                     React.DOM.div(null, 
-                        React.DOM.button({className: "btn btn-default", 'data-toggle': "modal", title: "Cancel", onClick: this.props.closeDialog}, 
+                        React.DOM.button({className: "btn btn-default", 'data-toggle': "modal", title: "Cancel", onClick: this.closeDialog}, 
                              "Cancel"
                         ), 
                          this.renderPublishButton(), 
@@ -202,7 +202,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
 
         return(
                     React.DOM.div(null, 
-                        React.DOM.button({className: "btn btn-default", 'data-toggle': "modal", title: "Cancel", onClick: this.props.closeDialog}, 
+                        React.DOM.button({className: "btn btn-default", 'data-toggle': "modal", title: "Cancel", onClick: this.closeDialog}, 
                              "Cancel"
                         ), 
                          this.renderPublishButton(), 
@@ -223,6 +223,10 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
                    ));
         }
         return null;
+    },
+
+    closeDialog: function(){
+        this.props.closeDialog(true);
     },
    
    saveClickHandler: function() {
