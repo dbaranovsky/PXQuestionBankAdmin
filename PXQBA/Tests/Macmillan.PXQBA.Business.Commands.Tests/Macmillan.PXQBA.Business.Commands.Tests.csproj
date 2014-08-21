@@ -73,6 +73,7 @@
     <Compile Include="QuestionSequenceHelperTest.cs" />
     <Compile Include="TemporaryQuestionOperationTest.cs" />
     <Compile Include="KeywordOperationTest.cs" />
+    <Compile Include="ParsedFileOperationTest.cs" />
     <Compile Include="UserNotificationOperationTest.cs" />
   </ItemGroup>
   <ItemGroup>

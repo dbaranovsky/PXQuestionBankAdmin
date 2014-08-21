@@ -45,6 +45,26 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
         }
 
         [TestMethod]
+        public void DeleteNote_AnyNote_ExecuteNonQueryInvoked()
+        {
+            var invokeCount = 0;
+            var note = new Note()
+            {
+                Id = 1
+            };
+            databaseManager.When(m => m.ExecuteNonQuery(Arg.Do<DbCommand>(x =>
+            {
+                Assert.IsTrue(x.CommandText == "dbo.DeleteQBANote");
+                Assert.IsTrue(x.Parameters["@noteId"].Value.ToString() == note.Id.ToString());
+            }))).Do(x => invokeCount++);
+
+            noteCommands.DeleteNote(note);
+
+            Assert.AreEqual(invokeCount, 1);
+        }
+
+
+        [TestMethod]
         public void GetQuestionNotes_AnyNote_ExecuteNonQueryInvoked()
         {
             var invokeCount = 0;
@@ -52,6 +72,24 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
 
             noteCommands.CreateNote(new Note());
 
+            Assert.AreEqual(invokeCount, 1);
+        }
+
+         [TestMethod]
+        public void UpdateNote_AnyNote_ExecuteNonQueryInvoked()
+        {
+            var invokeCount = 0;
+             var note = new Note()
+                        {
+                            Id = 1
+                        };
+            databaseManager.When(m => m.ExecuteNonQuery(Arg.Do<DbCommand>(x =>
+                                                                          {
+                                                                              Assert.IsTrue(x.CommandText == "dbo.UpdateQBANote");
+                                                                              Assert.IsTrue(x.Parameters["@noteId"].Value.ToString() == note.Id.ToString());
+                                                                          }))).Do(x => invokeCount++);
+
+            noteCommands.UpdateNote(note);
             Assert.AreEqual(invokeCount, 1);
         }
 

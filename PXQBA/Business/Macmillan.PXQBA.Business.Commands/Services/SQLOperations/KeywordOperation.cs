@@ -14,11 +14,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.SQLOperations
 
         public KeywordOperation(IDatabaseManager databaseManager)
         {
-
-#if DEBUG
-            databaseManager = new DatabaseManager(@"TestPXData");
-#endif
-
             this.databaseManager = databaseManager;
         }
 
