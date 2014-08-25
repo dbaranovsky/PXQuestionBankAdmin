@@ -26,9 +26,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         public ProductCourseOperation(IDatabaseManager databaseManager, IContext businessContext)
         {
-#if DEBUG
-            databaseManager = new DatabaseManager(@"TestPXData");
-#endif
             this.databaseManager = databaseManager;
             this.businessContext = businessContext;
         }

@@ -36,8 +36,7 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
         public void TestInitialize()
         {
             context = Substitute.For<IContext>();
-            context.CurrentUser = new UserInfo();
-            context.CurrentUser.Id = "633478";
+            context.CurrentUser = new UserInfo {Id = "633478"};
 
             questionCommands = Substitute.For<IQuestionCommands>();
             questionCommands.SetSequence(Arg.Any<string>(), Arg.Do<Question>(q => q.ProductCourseSections.First().Sequence = "1"));

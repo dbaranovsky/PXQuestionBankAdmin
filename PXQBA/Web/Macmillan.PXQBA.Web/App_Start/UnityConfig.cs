@@ -88,6 +88,7 @@ namespace Macmillan.PXQBA.Web.App_Start
                      ));
                  container.RegisterType<IKeywordOperation, KeywordOperation>(new InjectionConstructor(new DatabaseManager("TestPXData")));
                  container.RegisterType<IParsedFileOperation, ParsedFileOperation>(new InjectionConstructor(new DatabaseManager("TestPXData")));
+                 container.RegisterType<IProductCourseOperation, ProductCourseOperation>(new InjectionConstructor(new DatabaseManager("TestPXData"), typeof(IContext)));
 #endif
         }
     }
