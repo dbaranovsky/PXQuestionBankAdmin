@@ -79,6 +79,8 @@
     <Compile Include="TemporaryQuestionOperationTest.cs" />
     <Compile Include="KeywordOperationTest.cs" />
     <Compile Include="ParsedFileOperationTest.cs" />
+    <Compile Include="CourseDataXmlHelperTest.cs" />
+    <Compile Include="QuestionDataXmlParserTest.cs" />
     <Compile Include="UserNotificationOperationTest.cs" />
     <Compile Include="UserOpertaionTest.cs" />
   </ItemGroup>
