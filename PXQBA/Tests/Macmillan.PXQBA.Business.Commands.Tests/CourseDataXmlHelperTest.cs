@@ -57,5 +57,6 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
             Assert.IsFalse(CourseDataXmlHelper.GetItemLinksDescriptors(XElement.Parse("<coursedata></coursedata>")).Any());
         }
 
+
     }
 }

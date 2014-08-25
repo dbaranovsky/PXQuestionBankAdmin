@@ -45,27 +45,6 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
             productCourseOperation = new ProductCourseOperation(databaseManager, context);
         }
 
-        static void ExecuteAsAdminFillOneCourse(GetCourse getCourseCommand)
-        {
-            getCourseCommand.Courses = new List<Course>()
-                          {
-                              new Course()
-                              {
-                                  Id = getCourseCommand.SearchParameters.CourseId
-                              }
-                          };
-        }
-
-        static void ExecuteAsAdminFillGetItems(GetItems getItemsCommand)
-        {
-            getItemsCommand.Items = new List<Item>()
-                                    {
-                                        new Item()
-                                        {
-                                            Id = "1122",
-                                        }
-                                    };
-        }
 
         [TestMethod]
         public void GetProductCourse_AnyCourseId_ReturnCourseIsNotNull()
@@ -375,6 +354,7 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
             productCourseOperation.PutResources(new List<Resource>());
         }
 
+#region private methods and fields
         private void ExecuteAsAdminBatch(Batch cmd)
         {
             Assert.IsTrue(cmd.RunAsync);
@@ -418,5 +398,30 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
                                                   </response>
                                              
                                                </responses></responses>";
-   }
+
+
+      private  static void ExecuteAsAdminFillOneCourse(GetCourse getCourseCommand)
+        {
+            getCourseCommand.Courses = new List<Course>()
+                          {
+                              new Course()
+                              {
+                                  Id = getCourseCommand.SearchParameters.CourseId
+                              }
+                          };
+        }
+
+      private static void ExecuteAsAdminFillGetItems(GetItems getItemsCommand)
+        {
+            getItemsCommand.Items = new List<Item>()
+                                    {
+                                        new Item()
+                                        {
+                                            Id = "1122",
+                                        }
+                                    };
+        }
+#endregion
+    }
+
 }
