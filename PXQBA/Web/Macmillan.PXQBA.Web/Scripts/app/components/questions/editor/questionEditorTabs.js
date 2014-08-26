@@ -418,8 +418,13 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
       this.setState({viewHistoryMode: false});
       this.props.showNotificationForInProgress(this.switchTab.bind(this, tab));
       this.switchTab(tab);
+
       if(this.state.isGraph){
         this.setState({currentTab: tab.substring(1)});
+      }
+      if(this.state.isHTS){
+        $(this.getDOMNode()).find("iframe").remove();
+        this.hookUpHTSEditor(this.props.question.editorUrl);
       }
     },
 
