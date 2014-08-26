@@ -6,12 +6,13 @@ var ModalDialog = React.createClass({
 
 
     componentDidMount: function(){
-         /*if(typeof this.props.closeDialogHandler !== 'undefined'){
+         if(typeof this.props.closeDialogHandler !== 'undefined' &&
+            !(this.props.isMainEditor != undefined && this.props.isMainEditor)){
             var self = this;
             $(this.getDOMNode()).on('hidden.bs.modal', function (e) {
                 self.props.closeDialogHandler();
             });
-        }*/
+        }
        
 
         if (this.props.showOnCreate){
