@@ -156,7 +156,7 @@ var questionDataManager = (function() {
     self.getNewQuestionTemplate = function(courseId, question) {
         var request = {
             courseId: courseId,
-            questionType: question.type,
+            questionType: question.dlap_q_type,
             bank: question.bank,
             chapter: question.chapter
         };

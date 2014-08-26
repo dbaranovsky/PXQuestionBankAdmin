@@ -250,7 +250,7 @@ var QuestionEditorTabs = React.createClass({
         var interactionData = "";
         if (this.state.currentTab =="body"){
 
-            if(typeof(flashElement.getXML) == "function"){
+            if(flashElement!= undefined && typeof(flashElement.getXML) == "function"){
                  interactionData = flashElement.getXML();
             }
 
@@ -384,7 +384,7 @@ var QuestionEditorTabs = React.createClass({
         var flashElement = $(this.getDOMNode()).find("#flash")[0];
         var interactionData = "";
 
-        if(typeof(flashElement.getXML)== "function"){
+        if(flashElement!= undefined && typeof(flashElement.getXML)== "function"){
           interactionData = flashElement.getXML();
         }
         
@@ -418,6 +418,14 @@ var QuestionEditorTabs = React.createClass({
       this.setState({viewHistoryMode: false});
       this.props.showNotificationForInProgress(this.switchTab.bind(this, tab));
       this.switchTab(tab);
+
+      if(this.state.isGraph){
+        this.setState({currentTab: tab.substring(1)});
+      }
+      if(this.state.isHTS){
+        $(this.getDOMNode()).find("iframe").remove();
+        this.hookUpHTSEditor(this.props.question.editorUrl);
+      }
     },
 
     switchTab: function(tab){

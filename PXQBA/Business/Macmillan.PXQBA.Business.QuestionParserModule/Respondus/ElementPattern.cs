@@ -11,8 +11,8 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Respondus
     /// </summary>
     internal static class ElementPattern
     {
-        public const string QuestionBlock = @"((^)\d\.[ ][\s\S]*?(?=^\d\.[ ]))";//(^\d[.][ ][\s\S]*)";//(^\d+[.][ ].*[(].* point.*[)][\s\S])";
-        public const string Title = @"^\d[.][ ].*";
+        public const string QuestionBlock = @"((^)\d+\.[ ][\s\S]*?(?=^\d+\.[ ]))";//(^\d[.][ ][\s\S]*)";//(^\d+[.][ ].*[(].* point.*[)][\s\S])";
+        public const string Title = @"^\d+[.][ ].*";
         public const string Points = @"[(](.*)[ ]point[s]?[)]";
         public const string GeneralFeedback = @"General Feedback:.*";
         public const string Feedback = @"Feedback:.*";

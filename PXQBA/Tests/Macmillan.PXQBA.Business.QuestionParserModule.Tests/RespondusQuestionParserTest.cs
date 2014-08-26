@@ -42,5 +42,17 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.Tests
             Assert.IsTrue(result.FileValidationResults.First().Questions.Count == 5);
 
         }
+
+
+        [TestMethod]
+        public void Parse_FileWith16Questions_16ParsedQuestions()
+        {
+            var fileName = "16_questions.txt";
+            Assert.IsTrue(File.Exists(fileName));
+            var parser = new RespondusQuestionParser();
+            var result = parser.Parse(fileName, File.ReadAllBytes(fileName));
+            Assert.IsTrue(result.FileValidationResults.First().Questions.Count == 16);
+            Assert.IsTrue(result.FileValidationResults.First().Questions.Last().Choices.Last().Text == "1947");
+        }
     }
 }
