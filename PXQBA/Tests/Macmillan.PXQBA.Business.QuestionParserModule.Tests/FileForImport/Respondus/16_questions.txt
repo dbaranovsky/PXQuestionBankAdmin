@@ -1,0 +1,211 @@
+1. 26.08 Sculptor (1.0 point)
+Who was the sculptor of Bacchus, Sleeping Cupid, Madonna of the Stairs, and David? 
+
+a. Donatello 
+b. Leonardo da Vinci 
+c. Giotto 
+*d. Michaelangelo 
+ 
+General Feedback:
+	Michaelangelo was the sculptor of Bacchus, Sleeping Cupid, Madonna of the Stairs, and David 
+
+
+2. 26.08 Composer (1.0 point)
+This German composer is known for the following works: Magnificat, Christmas Oratorio, and the Brandenburg Concertos. 
+
+a. Handel 
+b. Beethoven 
+c. Mozart 
+*d. Bach 
+e. Brahms 
+ 
+General Feedback:
+	The German composure is Bach. He is probably best known for the Brandenburg Concertos. 
+
+
+3. Summa theologica (1.0 point)
+Who authored Summa theologica? 
+
+a. Martin Luther 
+*b. Thomas Acquinas 
+c. St. Augustine 
+d. John Calvin 
+ 
+General Feedback:
+	Summa theologica was authored by Thomas Acquinas. 
+
+
+4. Machiavelli (1.0 point)
+Machiavelli is the author of Il Principe, which describes the means by which a prince may gain and maintain his power. 
+
+*a. True 
+b. False 
+ 
+General Feedback:
+	Machiavelli's Il Principe ("the prince") describes how to gain and maintain political power. 
+
+
+5. Laws of Motion (1.0 point)
+Newton's three famous laws of motion include these concepts (select three): 
+
+*a. Speed 
+*b. Velocity 
+c. Mass 
+*d. Vector 
+e. Energy 
+f. Gravity 
+ 
+General Feedback:
+	Speed, Velocity, and Vector are the concepts Newton used in his three laws of motion. 
+
+
+6. Smallpox (1.0 point)
+Who discovered the vaccine for smallpox? 
+
+a. Louis Pastuer 
+*b. Edward Jenner 
+c. Alfred Nobel 
+d. Jonas Salk 
+ 
+General Feedback:
+	Edward Jenner inoculated people with the related "cow-pox" virus which helped them build an immunity against the deadly scourge of smallpox. 
+
+
+7. Penicillin (1.0 point)
+Who is credited for discovering the antibacterial medicine penicillin? 
+
+a. Louis Pastuer 
+b. Edward Jenner 
+*c. Alexander Fleming 
+d. Jonas Salk 
+ 
+General Feedback:
+	In 1928, Alexander Fleming noticed that mold inhibited the growth of bacteria, which led to the isolation of penicillin in 1940. Fleming later won the Nobel prize in medicine in 1945. 
+
+
+8. Psychoanalysis (1.0 point)
+Who is considered to be the founder of psychoanalysis? 
+
+*a. Sigmund Frued 
+b. Emile Durkheim 
+c. C. G. Jung 
+d. Eugen Bleuler 
+e. Josef Breuer 
+ 
+General Feedback:
+	Sigmund Frued was the founder of psychoanalysis. 
+
+
+9. New World (1.0 point)
+Who are the first two European mariners credited for sailing to the "New World." 
+
+*a. Leif Ericson 
+b. Christopher Columbus 
+*c. Thorfinn Karlsefni 
+d. Amerigo Vespucci 
+e. Wheris Waldo 
+ 
+General Feedback:
+	Leif Ericson (also known as Leiv Eiriksson, and "Eirik the Red") became the first European to set foot on the shores of North America (modern-day New Foundland). Several years later (in 1006), fellow Norwegian Thorfinn Karlsefni lead a colonizing expedition to New Foundland. 
+
+
+10. South Pole (1.0 point)
+Who is credited as being the first person to reach the South Pole? 
+
+a. Frederick Cook 
+*b. Roald Amundsen 
+c. Robert E. Peary 
+d. Ernest Shackleton 
+e. Edmund Hillary 
+ 
+General Feedback:
+	Roald Amundsen is credited as being the first person to reach the South Pole (1911). As far as the others... Frederick Cook claimed that he reached the North Pole in 1909 (which would have made him the first to do so) but this was later determined to be fraudulent... Ernest Shackleton led a failed Antarctica expedition in 1914 that resulted in an amazing tale of survival by Shackleton and 27 of his men (read the story "Endurance" by Alfred Lansing)... Edmund Hillary (and Nepalese Tenzing Norgay) was the first to reach the top of Mt. Everest. 
+
+
+11. Wireless radio (1.0 point)
+Who is credited for inventing the wireless radio? 
+
+a. Vladimar Zworykin 
+b. Thomas Edison 
+*c. Guglielmo Marconi 
+d. David Sarnoff 
+e. Edwin Armstrong 
+ 
+General Feedback:
+	In 1895 Italian inventor Guglielmo Marconi built the equipment and transmitted electrical signals through the air from one end of his house to the other, and then from the house to the garden. These experiments were, in effect, the dawn of practical wireless telegraphy or radio. 
+
+
+12. First computer (1.0 point)
+In 1946, J. Presper Eckert and John Mauchly created the first large general-purpose electronic computer. It was given the name _________. 
+
+Correct Answer(s):
+a. ENIAC
+b. the ENIAC
+c. Electronic Numerical Integrator and Computer
+d. the Electronic Numerical Integrator and Computer
+e. "ENIAC" 
+ 
+General Feedback:
+	J. Presper Eckert and John Mauchly called their general-purpose electronic computer the ENIAC, which stood for Electronic Numerical Integrator and Computer. 
+
+
+13. Louisiana Purchase (1.0 point)
+In 1803, the U.S. negotiated the Louisiana Purchase from _______________ for $15 million. With this purchase, the U.S. doubles its domain, increasing its territory by 827,000 sq. mi. (2,144,500 sq km), from the Mississippi River to the Rockies and from the Gulf of Mexico to British North America. 
+
+a. Great Britain 
+b. Spain 
+c. Mexico 
+*d. France 
+e. Russia 
+ 
+General Feedback:
+	The Louisiana Purchase has been described as the greatest real estate deal in history. In 1803 the United States paid France $15 million for the Louisiana Territory--827,000 square miles of land west of the Mississippi River. The lands acquired stretched from the Mississippi River to the Rocky Mountains and from the Gulf of Mexico to the Canadian border. Thirteen states were carved from the Louisiana Territory. The Louisiana Purchase nearly doubled the size of the United States, making it one of the largest nations in the world. 
+
+
+14. Independence (1.0 point)
+In 1803, _______________ was the first black nation to gain independence from European colonial rule. 
+
+a. Nigeria 
+b. Trinidad and Tobago 
+*c. Haiti 
+d. Kenya 
+e. Angola 
+ 
+General Feedback:
+	Haiti was the first black nation to gain independence from European colonial rule. Independence for other black nations came much later: Nigeria (1960), Trinidad & Tobago (1962), Kenya (1963), and Angola (1975). 
+
+
+15. Inca (1.0 point)
+The remains of the Inca empire can be found in the modern-day country of __________. 
+
+Correct Answer(s):
+a. Peru 
+ 
+General Feedback:
+	The Inca empire was located in the modern-day country of Peru, South America. 
+
+
+16. Timeline (1.0 point)
+For each of the following dates, match the event or person associated with it. 
+
+	[h] 1. 1066 
+	[i] 2. 1100s 
+	[g] 3. 1215 
+	[j] 4. 1347 
+	[e] 5. 1455 
+	[f] 6. 1517 
+	[a] 7. 1664 
+	[b] 8. 1764 
+	[d] 9. 1867 
+	[c] 10. 1947 
+
+	a. Newton's theory of universal gravitation 
+	b. Mozart (aged 8) writes first symphony 
+	c. Gandhi's civil disobedience movement leads to an independent India 
+	d. Japan ends 675-year shogun rule 
+	e. Gutenberg's movable-type printing press produces the Bible 
+	f. Martin Luther initiates the Reformation 
+	g. Magna Carta signed 
+	h. Norman Conquest of Britain 
+	i. Angkor Wat is built 
+	j. Bubonic Plague spreads in Europe 
