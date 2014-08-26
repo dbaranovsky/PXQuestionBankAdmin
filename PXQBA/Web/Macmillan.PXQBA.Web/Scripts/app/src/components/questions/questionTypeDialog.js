@@ -64,7 +64,7 @@ var AddQuestionBox = React.createClass({
  
    getInitialState: function() {
       return { 
-               question: {type: 0, chapter:"", bank:""}
+               question: {dlap_q_type: 0, chapter:"", bank:""}
       };
     },
 
@@ -81,7 +81,7 @@ var AddQuestionBox = React.createClass({
    render: function() {
             return (<div>
                            
-                           <MetadataFieldEditor question={this.state.question} metadata={this.props.metadata} setDefault={true}  editHandler={this.editHandler} field={"type"}/>
+                           <MetadataFieldEditor question={this.state.question} metadata={this.props.metadata} setDefault={true}  editHandler={this.editHandler} field={"dlap_q_type"}/>
                            <MetadataFieldEditor question={this.state.question} metadata={this.props.metadata} setDefault={true}  editHandler={this.editHandler} field={"chapter"}/>
                            <MetadataFieldEditor question={this.state.question} metadata={this.props.metadata} setDefault={true}  editHandler={this.editHandler} field={"bank"}/>
 
