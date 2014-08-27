@@ -8,6 +8,7 @@ using Bfw.Common.Database;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Commands.Services.SQLOperations;
 using Macmillan.PXQBA.Business.Models;
+using Macmillan.PXQBA.Common.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 
@@ -31,6 +32,10 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
             userOperation = Substitute.For<IUserOperation>();
             productCourseOperation = Substitute.For<IProductCourseOperation>();
             businessContext = Substitute.For<IContext>();
+            businessContext.CurrentUser = new UserInfo()
+                                          {
+                                              Username = "234818"
+                                          };
 
             roleOperation = new RoleOperation(databaseManager, userOperation, productCourseOperation, businessContext);
         }
@@ -44,6 +49,16 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
             databaseManager.Query(Arg.Is<DbCommand>(c => c.CommandText == "dbo.GetQBAUsers"))
                            .Returns(GetQBAUsersRecords(totalRecordsCount));
 
+            userOperation.GetUsers(null).ReturnsForAnyArgs(new List<UserInfo>()
+                                                                         {
+                                                                             new UserInfo()
+                                                                             {
+                                                                                 FirstName = "Test",
+                                                                                 LastName = "Test",
+                                                                                 Username = "1"
+                                                                             }
+                                                                         });
+
             var users = roleOperation.GetQBAUsers(0, recordsCount);
             var usersArray = users.CollectionPage.ToArray();
 
@@ -52,6 +67,7 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
             Assert.IsTrue(usersArray[0].Id == "0");
             Assert.IsTrue(usersArray[1].Id == "1");
             Assert.IsTrue(usersArray[2].Id == "2");
+            Assert.IsTrue(usersArray[1].FullName== "Test Test");
         }
 
 
@@ -119,9 +135,26 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
             int index = 1;
             databaseManager.Query(Arg.Is<DbCommand>(c => c.CommandText == "dbo.GetQBAUserCoursesWithRoles"))
                          .Returns(new List<DatabaseRecord>() { GetQBAUserCoursesWithRolesecord(index) });
-
+              userOperation.GetUsers(null).ReturnsForAnyArgs(new List<UserInfo>()
+                                                                         {
+                                                                             new UserInfo()
+                                                                             {
+                                                                                 FirstName = "Test",
+                                                                                 LastName = "Test",
+                                                                                 Username = "1"
+                                                                             }
+                                                                         });
+            productCourseOperation.GetCoursesByCourseIds(null).ReturnsForAnyArgs(new List<Course>()
+                                                                                 {
+                                                                                     new Course()
+                                                                                   {
+                                                                                       Title = "Test",
+                                                                                       ProductCourseId = (index + 1000).ToString()
+                                                                                   }
+                                                                                 });
 
             var user = roleOperation.GetUserWithRoles(userId);
+          
 
             Assert.IsTrue(user.Id==userId);
             Assert.IsTrue(user.ProductCourses[0].Id == (index + 1000).ToString());
@@ -129,8 +162,70 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
             Assert.IsTrue(user.ProductCourses[0].AvailableRoles[0].Id == index + 10);
             Assert.IsTrue(user.ProductCourses[0].AvailableRoles[0].Name == "Role" + index);
             Assert.IsTrue(user.ProductCourses[0].CurrentRole.Name == "Role" + index);
+            Assert.IsTrue(user.FullName == "Test Test");
+            Assert.IsTrue(user.ProductCourses[0].Name == "Test");
+        }
+ [TestMethod]
+        public void GetUserWithRoles_UserIdNoCourses_FilledQBAUser()
+        {
+            string userId = "123";
+            int index = 1;
+            databaseManager.Query(Arg.Is<DbCommand>(c => c.CommandText == "dbo.GetQBAUserCoursesWithRoles"))
+                         .Returns(new List<DatabaseRecord>() { GetQBAUserCoursesWithRolesecord(index) });
+              userOperation.GetUsers(null).ReturnsForAnyArgs(new List<UserInfo>()
+                                                                         {
+                                                                             new UserInfo()
+                                                                             {
+                                                                                 FirstName = "Test",
+                                                                                 LastName = "Test",
+                                                                                 Username = "1"
+                                                                             }
+                                                                         });
+            productCourseOperation.GetCoursesByCourseIds(null).ReturnsForAnyArgs(new List<Course>()
+                                                                                 {
+                                                                                     new Course()
+                                                                                   {
+                                                                                       Title = "Test",
+                                                                                       ProductCourseId = (index + 1000).ToString()
+                                                                                   }
+                                                                                 });
+
+            var user = roleOperation.GetUserWithRoles(userId);
+          
+
+            Assert.IsTrue(user.Id==userId);
+            Assert.IsTrue(user.ProductCourses[0].Id == (index + 1000).ToString());
+            Assert.IsTrue(user.ProductCourses[0].AvailableRoles.Count == 1);
+            Assert.IsTrue(user.ProductCourses[0].AvailableRoles[0].Id == index + 10);
+            Assert.IsTrue(user.ProductCourses[0].AvailableRoles[0].Name == "Role" + index);
+            Assert.IsTrue(user.ProductCourses[0].CurrentRole.Name == "Role" + index);
+            Assert.IsTrue(user.FullName == "Test Test");
+            Assert.IsTrue(user.ProductCourses[0].Name == "Test");
         }
 
+
+        [TestMethod]
+        public void GetUserWithRoles_UserId_UserWithSettedCourseAndId()
+        {
+            string userId = "123";
+            DatabaseRecord dataRecord1 = new DatabaseRecord();
+
+            dataRecord1["CourseId"] = "123";
+            dataRecord1["RoleId"] = 1;
+            dataRecord1["RoleName"] = "Role";
+            dataRecord1["UserId"] = "123";
+
+
+            databaseManager.Query(Arg.Is<DbCommand>(c => c.CommandText == "dbo.GetQBAUserCoursesWithRoles"))
+                         .Returns(new List<DatabaseRecord>() { dataRecord1, dataRecord1 });
+
+          
+
+            var user = roleOperation.GetUserWithRoles(userId);
+            Assert.IsTrue(user.Id == "123");
+            Assert.IsTrue(user.ProductCourses.Count() == 1);
+
+        }
 
         [TestMethod]
         public void GetRoleWithCapabilities_RoleId_SqlInvokedWithRoleId()
@@ -186,6 +281,13 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
             var user = new QBAUser()
                        {
                            Id = userId,
+                           ProductCourses = new List<UserProductCourse>()
+                                            {
+                                                new UserProductCourse()
+                                                {
+                                                    CurrentRole = new Role(){ Id = 12}
+                                                }
+                                            }
                        };
 
             roleOperation.UpdateUserRoles(user);
@@ -193,24 +295,17 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
             Assert.IsTrue(invokedWithUserId);
         }
 
+
     
         [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]
-        public void UpdateRolesCapabilities_QBAUser_SqlInvokedWithoutRoleId()
+        public void UpdateRolesCapabilities_QBAUserWithNewRole_NullReferenseExpception()
         {
             const int roleId = 123;
             const string courseId = "courseId";
 
-            bool invokedWithRoleId = false;
-
             databaseManager.ExecuteScalar(Arg.Is<DbCommand>(c => c.CommandText == "dbo.UpdateQBARole")).Returns(roleId);
 
-            databaseManager.When(
-                dm =>
-                    dm.ExecuteNonQuery(Arg.Is<DbCommand>(c => c.CommandText == "dbo.UpdateQBARoleCapabilities" &&
-                                                        c.Parameters[0].ParameterName == "@roleId" &&
-                                                        (int)c.Parameters[0].Value == roleId)))
-                        .Do(d => { invokedWithRoleId = true; });
 
             Role role = new Role()
                         {
@@ -218,6 +313,50 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
                         };
 
             roleOperation.UpdateRolesCapabilities(courseId, new List<Role>() { role });
+        }
+
+        [TestMethod]
+        public void UpdateRolesCapabilities_QBAUserWithNewRole_SqlInvokedWithRoleId()
+        {
+ 
+            const string courseId = "courseId";
+
+            bool invokedWithRoleId = false;
+
+            databaseManager.ExecuteScalar(Arg.Is<DbCommand>(c => c.CommandText == "dbo.AddQBARole")).Returns("123");
+
+            databaseManager.When(
+                dm =>
+                    dm.ExecuteNonQuery(Arg.Is<DbCommand>(c => c.CommandText == "dbo.UpdateQBARoleCapabilities" &&
+                                                        c.Parameters[0].ParameterName == "@roleId" &&
+                                                        (int)c.Parameters[0].Value == 123)))
+                        .Do(d => { invokedWithRoleId = true; });
+
+            var role = new Role()
+            {
+                Id = -1,
+                Capabilities = new List<Capability>()
+                               {
+                                  Capability.ChangeStatusFromAvailableToDeleted
+                               }
+            };
+
+            roleOperation.UpdateRolesCapabilities(courseId, new List<Role>() { role });
+
+            Assert.IsTrue(invokedWithRoleId);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void UpdateRolesCapabilities_QBAUserWithoutRoleId_NullReferenceException()
+        {
+       
+            Role role = new Role()
+            {
+                Id = 123
+            };
+
+            roleOperation.UpdateRolesCapabilities("courseId", new List<Role>() { role });
         }
 
 
@@ -238,9 +377,13 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
                                                         (int)c.Parameters[0].Value == roleId)))
                         .Do(d => { invokedWithRoleId = true; });
 
-            Role role = new Role()
+            var role = new Role()
             {
-                Id = 1
+                Id = 1,
+                Capabilities = new List<Capability>()
+                               {
+                                  Capability.ChangeStatusFromAvailableToDeleted
+                               }
             };
 
             roleOperation.UpdateRolesCapabilities(courseId, new List<Role>() { role });
@@ -286,7 +429,28 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
            Assert.IsTrue(counter == 1);
         }
 
-        private IEnumerable<DatabaseRecord> GetQBARoleCapabilitiesRecords()
+        [TestMethod]
+        public void GrantPredefinedRoleToCurrentUser_PredefinedRoleAndUserId_ProperlySettedRole()
+        {
+
+  
+            databaseManager.Query(Arg.Is<DbCommand>(c => c.CommandText == "dbo.GetQBAUserCoursesWithRoles"))
+                         .Returns(new List<DatabaseRecord>(){ GetQBAUserCoursesWithSettedRoleName("23")});
+
+            databaseManager.When(m => m.ExecuteNonQuery(Arg.Do<DbCommand>(x =>
+            {
+                Assert.IsTrue(x.CommandText == "dbo.UpdateQBAUserRoles");
+                Assert.IsTrue(x.Parameters["@roleId"].Value.ToString() == "11");
+            })));
+
+            roleOperation.GrantPredefinedRoleToCurrentUser(PredefinedRole.Author, "321");
+          
+
+        }
+
+      #region private methods
+
+      private IEnumerable<DatabaseRecord> GetQBARoleCapabilitiesRecords()
         {
             List<DatabaseRecord> records = new List<DatabaseRecord>();
 
@@ -313,6 +477,19 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
             record["RoleId"] = index + 10;
             record["RoleName"] = "Role" + index;
             record["UserId"] = "123";
+
+            return record;
+        }
+
+
+        private DatabaseRecord GetQBAUserCoursesWithSettedRoleName(string roleName)
+        {
+            DatabaseRecord record = new DatabaseRecord();
+
+            record["CourseId"] = "321";
+            record["RoleId"] = 11;
+            record["RoleName"] = roleName;
+            record["UserId"] = "234818";
 
             return record;
         }
@@ -358,12 +535,22 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
         private DatabaseRecord GetQBAUsersRecord(int index)
         {
             DatabaseRecord record = new DatabaseRecord();
-            record["Id"] = index;
+
+            if (index == 4)
+            {
+                record["Id"] = null;
+            }
+            else
+            {
+                record["Id"] = index;
+            }
+          
             record["Count"] = index * 2;
 
             return record;
         }
 
+      #endregion
 
     }
 }

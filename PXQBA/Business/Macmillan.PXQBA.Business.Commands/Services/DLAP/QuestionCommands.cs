@@ -1126,20 +1126,20 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         private void SaveQuestionXmlToSharedFolder(IEnumerable<Bfw.Agilix.DataContracts.Question> questions, string courseId)
         {
-            var tempCourseId = ConfigurationHelper.GetTemporaryCourseId();
-            if (courseId == tempCourseId)
-            {
-                return;
-            }
+            //var tempCourseId = ConfigurationHelper.GetTemporaryCourseId();
+            //if (courseId == tempCourseId)
+            //{
+            //    return;
+            //}
 
-            try
-            {
-                FileHelper.SaveQuestionsXmlsToPath(questions.Where(x => x.EntityId != tempCourseId), ConfigurationHelper.GetQuestionXmlSharedFolders());
-            }
-            catch (Exception e)
-            {
-                StaticLogger.LogError("FileHelper.SaveQuestionXmlsToPath failed", e);
-            }   
+            //try
+            //{
+            //    FileHelper.SaveQuestionsXmlsToPath(questions.Where(x => x.EntityId != tempCourseId), ConfigurationHelper.GetQuestionXmlSharedFolders());
+            //}
+            //catch (Exception e)
+            //{
+            //    StaticLogger.LogError("FileHelper.SaveQuestionXmlsToPath failed", e);
+            //}   
         }
 
 

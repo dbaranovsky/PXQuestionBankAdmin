@@ -101,7 +101,7 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
 
 
         [TestMethod]
-        public void GetParsedFile_ParsedFileId_ParsedFile()
+        public void GetParsedFile_ParsedFileId_ParsedFileWithResourses()
         {
             var databaseRecord = new DatabaseRecord();
             databaseRecord["Id"] = (long)5;
@@ -120,6 +120,32 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
             Assert.IsTrue(parsedFile != null);
             Assert.IsTrue(parsedFile.FileName == "test.zip");
             Assert.IsTrue(parsedFile.ResourcesData != null);
+            Assert.IsTrue(parsedFile.QuestionsData == "test");
+            Assert.IsTrue(parsedFile.Id == 5);
+
+
+        }
+
+        [TestMethod]
+        public void GetParsedFile_ParsedFileId_ParsedFileWithoutResourses()
+        {
+            var databaseRecord = new DatabaseRecord();
+            databaseRecord["Id"] = (long)5;
+            databaseRecord["FileName"] = "test.zip";
+            databaseRecord["QuestionsData"] = "test";
+            databaseRecord["ResourcesData"] = null;
+
+            databaseManager.Query(Arg.Do<DbCommand>(x =>
+            {
+                Assert.IsTrue(x.CommandText == "dbo.GetQBAParsedFile");
+                Assert.IsTrue(x.Parameters["@id"].Value.ToString() == "5");
+            }))
+                           .Returns(new List<DatabaseRecord>() { databaseRecord });
+
+            var parsedFile = parsedFileOperation.GetParsedFile(5);
+            Assert.IsTrue(parsedFile != null);
+            Assert.IsTrue(parsedFile.FileName == "test.zip");
+            Assert.IsTrue(parsedFile.ResourcesData == null);
             Assert.IsTrue(parsedFile.QuestionsData == "test");
             Assert.IsTrue(parsedFile.Id == 5);
 
