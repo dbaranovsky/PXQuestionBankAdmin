@@ -152,5 +152,9 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
         /// </summary>
         public const string QuestionXmlSharedFolder = "QuestionXmlSharedFolder";
 
+        /// <summary>
+        /// Symbols that should be escaped when contains text search
+        /// </summary>
+        public const string SymbolsToEscapeInContainsTextSearch = "SymbolsToEscapeInContainsTextSearch";
     }
 }

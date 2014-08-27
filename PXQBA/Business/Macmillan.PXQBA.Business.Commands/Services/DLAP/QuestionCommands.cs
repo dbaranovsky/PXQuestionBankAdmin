@@ -917,7 +917,9 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
         {
             if (filterFieldDescriptor.Field == MetadataFieldNames.ContainsText && filterFieldDescriptor.Values.Any())
             {
-                return filterFieldDescriptor.Values.First();
+                var textToSearch = filterFieldDescriptor.Values.First();
+                var symbolsToEscape = ConfigurationHelper.GetSymbolsToEscapeInContainsTextSearch();
+                return symbolsToEscape.Aggregate(textToSearch, (current, symbol) => current.Replace(symbol.ToString(), ""));
             }
             var values = GetFilterValues(filterFieldDescriptor);
             var fieldFormat = GetFilterFieldFormat(filterFieldDescriptor);

@@ -432,5 +432,20 @@ namespace Macmillan.PXQBA.Common.Helpers
 
             return new List<string>();
         }
+
+        /// <summary>
+        /// Gets symbols that should be escaped when contains text search
+        /// </summary>
+        /// <returns></returns>
+        public static string GetSymbolsToEscapeInContainsTextSearch()
+        {
+            var value = ConfigurationManager.AppSettings[ConfigurationKeys.SymbolsToEscapeInContainsTextSearch];
+            if (!string.IsNullOrEmpty(value))
+            {
+                return value;
+            }
+
+            return "/{}";
+        }
     }
 }

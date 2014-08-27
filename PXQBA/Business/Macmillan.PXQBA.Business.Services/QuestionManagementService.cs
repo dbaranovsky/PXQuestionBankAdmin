@@ -192,8 +192,11 @@ namespace Macmillan.PXQBA.Business.Services
             foreach (var question in questions)
             {
                 var parentProductCourse = GetParentProductCourse(question, currentCourse);
-                question.DefaultSection = GetDefaultSection(question, parentProductCourse);
-                
+                if (question.ProductCourseSections.Count() < 2 || question.DefaultSection == null)
+                {
+                    question.DefaultSection = GetDefaultSection(question, parentProductCourse);
+                }
+
                 question.ProductCourseSections.RemoveAll(s => s.ProductCourseId == courseIdToPublish.ToString());
                 question.ProductCourseSections.Add(GetNewProductCourseSection(courseIdToPublish, bank, chapter, parentProductCourse, question));
             }
