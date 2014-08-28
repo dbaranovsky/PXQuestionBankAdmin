@@ -18,14 +18,30 @@ namespace Macmillan.PXQBA.Web.ActionResults
             JsonRequestBehavior = JsonRequestBehavior.DenyGet;
         }
 
+        /// <summary>
+        /// Encoding of the content to use
+        /// </summary>
         public Encoding ContentEncoding { get; set; }
 
+        /// <summary>
+        /// Content type
+        /// </summary>
         public string ContentType { get; set; }
 
+        /// <summary>
+        /// Data to be returned
+        /// </summary>
         public object Data { get; set; }
 
+        /// <summary>
+        /// Specifies wheather GET request from client is allowed
+        /// </summary>
         public JsonRequestBehavior JsonRequestBehavior { get; set; }
 
+        /// <summary>
+        /// Executes result
+        /// </summary>
+        /// <param name="context">Controller contex</param>
         public override void ExecuteResult(ControllerContext context)
         {
             if (context == null)

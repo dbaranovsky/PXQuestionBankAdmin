@@ -312,6 +312,9 @@ namespace Macmillan.PXQBA.Business.Models
         }
     }
 
+    /// <summary>
+    /// Predefined roles that cannot be edited
+    /// </summary>
     public enum PredefinedRole
     {
         [Description("Super Administrator")]

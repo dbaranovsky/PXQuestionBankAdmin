@@ -14,12 +14,15 @@ using Macmillan.PXQBA.Web.Constants;
 
 namespace Macmillan.PXQBA.Web.Filters
 {
+    /// <summary>
+    /// Authentication filter that is used before every request to check authentication and authenticate the user
+    /// </summary>
     public class AuthenticationAttribute : ActionFilterAttribute, IAuthenticationFilter
     {
         /// <summary>
         ///     Authenticates user using MARS system
         /// </summary>
-        /// <param name="filterContext"></param>
+        /// <param name="filterContext">Authentication filter context</param>
         public void OnAuthentication(AuthenticationContext filterContext)
         {
             if (!filterContext.HttpContext.Request.IsAuthenticated)
@@ -47,6 +50,10 @@ namespace Macmillan.PXQBA.Web.Filters
             }
         }
 
+        /// <summary>
+        /// Executes authentication challenge if necessary
+        /// </summary>
+        /// <param name="filterContext">Authentication filter context</param>
         public void OnAuthenticationChallenge(AuthenticationChallengeContext filterContext)
         {
         }

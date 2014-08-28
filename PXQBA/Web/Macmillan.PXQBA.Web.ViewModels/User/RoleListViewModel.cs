@@ -9,6 +9,9 @@ namespace Macmillan.PXQBA.Web.ViewModels.User
     {
         private IEnumerable<RoleViewModel> roles;
 
+        /// <summary>
+        /// List of roles
+        /// </summary>
         public IEnumerable<RoleViewModel> Roles
         {
             get

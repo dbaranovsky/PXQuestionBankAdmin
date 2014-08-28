@@ -247,6 +247,9 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
         }
     }
 
+    /// <summary>
+    /// Converter from parsed resource to resource
+    /// </summary>
     public class ParsedResourceToResourceConverter : ITypeConverter<ParsedResource, Resource>
     {
         private readonly IModelProfileService modelProfileService;
@@ -263,6 +266,9 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
         }
     }
 
+    /// <summary>
+    /// Converter from Question type to QuestionMetadata type
+    /// </summary>
     public class QuestionToQuestionMetadataConverter : ITypeConverter<Question, QuestionMetadata>
     {
         private readonly IModelProfileService modelProfileService;
@@ -282,6 +288,9 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
         }
     }
 
+    /// <summary>
+    /// Converter from ParsedQuestion type to Question type
+    /// </summary>
     public class ParsedQuestionToQuestionConverter : ITypeConverter<ParsedQuestion, Question>
     {
         private readonly IModelProfileService modelProfileService;
@@ -301,6 +310,9 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
         }
     }
 
+    /// <summary>
+    /// Converter from Question type to ComparedQuestion type
+    /// </summary>
     public class QuestionToComparedQuestionConverter : ITypeConverter<Question, ComparedQuestion>
     {
         public ComparedQuestion Convert(ResolutionContext context)
@@ -336,7 +348,9 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
         }
     }
 
-
+    /// <summary>
+    /// Converter from Question type to DuplicateFromViewModel type
+    /// </summary>
     public class QuestionToDuplicateFromConverter : ITypeConverter<Question, DuplicateFromViewModel>
     {
 
@@ -365,6 +379,9 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
         }
     }
 
+    /// <summary>
+    /// Converter from ProductSection to LocalValues section
+    /// </summary>
     public class ProductSectionToLocalValuesConverter : ITypeConverter<List<QuestionMetadataSection>, QuestionMetadataSection>
     {
         public QuestionMetadataSection Convert(ResolutionContext context)
@@ -389,6 +406,9 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
         }
     }
 
+    /// <summary>
+    /// Converter from Question type to SharedQuestionDuplicateFromViewModel type
+    /// </summary>
     public class ProductSectionToSharedQuestionDuplicateConverter : ITypeConverter<Question, SharedQuestionDuplicateFromViewModel>
     {
         private readonly IModelProfileService modelProfileService;
