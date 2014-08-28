@@ -9,7 +9,8 @@ var QuestionFilterItemText = React.createClass({
     },
 
     onChangeHandler: function(text) { 
-        this.setState({value: text});
+        var encodedValue =  encodeURIComponent(text);
+        this.setState({value: encodedValue});
     },
 
     componentWillReceiveProps: function(nextProps) {
@@ -44,7 +45,7 @@ var QuestionFilterItemText = React.createClass({
                     <table className="filter-text-table">
                       <tr>
                         <td>
-                         <TextEditor value={this.state.value}
+                         <TextEditor value={decodeURIComponent(this.state.value)}
                                dataChangeHandler={this.onChangeHandler} 
                                classNameProps="filter-text-input"
                                onKeyPressHandler={this.onKeyPress}

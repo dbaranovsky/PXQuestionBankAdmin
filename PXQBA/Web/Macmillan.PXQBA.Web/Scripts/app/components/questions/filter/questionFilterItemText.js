@@ -9,7 +9,8 @@ var QuestionFilterItemText = React.createClass({displayName: 'QuestionFilterItem
     },
 
     onChangeHandler: function(text) { 
-        this.setState({value: text});
+        var encodedValue =  encodeURIComponent(text);
+        this.setState({value: encodedValue});
     },
 
     componentWillReceiveProps: function(nextProps) {
@@ -44,7 +45,7 @@ var QuestionFilterItemText = React.createClass({displayName: 'QuestionFilterItem
                     React.DOM.table({className: "filter-text-table"}, 
                       React.DOM.tr(null, 
                         React.DOM.td(null, 
-                         TextEditor({value: this.state.value, 
+                         TextEditor({value: decodeURIComponent(this.state.value), 
                                dataChangeHandler: this.onChangeHandler, 
                                classNameProps: "filter-text-input", 
                                onKeyPressHandler: this.onKeyPress}
