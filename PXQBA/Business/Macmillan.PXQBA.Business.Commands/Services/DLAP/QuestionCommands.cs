@@ -1121,27 +1121,7 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             cmd.Add(questions);
             businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
             InvalidateQuestionCache(questions, courseId);
-            SaveQuestionXmlToSharedFolder(questions, courseId);
         }
-
-        private void SaveQuestionXmlToSharedFolder(IEnumerable<Bfw.Agilix.DataContracts.Question> questions, string courseId)
-        {
-            //var tempCourseId = ConfigurationHelper.GetTemporaryCourseId();
-            //if (courseId == tempCourseId)
-            //{
-            //    return;
-            //}
-
-            //try
-            //{
-            //    FileHelper.SaveQuestionsXmlsToPath(questions.Where(x => x.EntityId != tempCourseId), ConfigurationHelper.GetQuestionXmlSharedFolders());
-            //}
-            //catch (Exception e)
-            //{
-            //    StaticLogger.LogError("FileHelper.SaveQuestionXmlsToPath failed", e);
-            //}   
-        }
-
 
         private IEnumerable<Bfw.Agilix.DataContracts.Question> GetAgilixQuestionsAsAdmin(string repositoryCourseId,
             IEnumerable<string> questionIds, bool allVersions = false)
