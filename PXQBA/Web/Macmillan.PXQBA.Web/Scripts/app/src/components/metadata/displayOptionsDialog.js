@@ -94,7 +94,7 @@ var DisplayOptionsDialog = React.createClass({
                             label="Display this field when listing questions" 
                             onChangeHandler={self.onChangeHandler.bind(null, "displayInInstructorQuiz")}/>
 
-                         <div> <b> Recourse Panel</b>
+                         <div> <b> Recource Panel</b>
                                 <span className="metadata-dispplay-options-help">
                                   <ToltipElement classNameProp="tooltip-img" 
                                                  tooltipText="Click for details"

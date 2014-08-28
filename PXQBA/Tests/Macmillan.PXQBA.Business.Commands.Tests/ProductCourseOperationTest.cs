@@ -56,6 +56,31 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
 
             Assert.IsNotNull(course);
         }
+        [TestMethod]
+        public void GetProductCourse_AnyCourseIdWithQuestionRepoId()
+        {
+            const string courseId = "123";
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetCourse>(x =>
+                                                                                   {
+                                                                                       x.Courses = new List
+                                                                                           <Course>
+                                                                                                                  {
+                                                                                                                      new Course
+                                                                                                                      {
+                                                                                                                          Id
+                                                                                                                              =
+                                                                                                                              x
+                                                                                                                              .SearchParameters
+                                                                                                                              .CourseId,
+                                                                                                                        QuestionBankRepositoryCourse = "323"
+                                                                                                                      }
+                                                                                                                  };
+                                                                                   }));
+
+            var course = productCourseOperation.GetProductCourse(courseId, true);
+
+            Assert.IsNotNull(course);
+        }
 
         [TestMethod]
         public void GetProductCourse_SpecificCourseId_CorrenctInvokeGetCourseCommand()
@@ -312,6 +337,13 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
         {
             productCourseOperation.RemoveResources(string.Empty, new List<string>());
         }
+
+       [TestMethod]
+        public void GetCoursesByCourseIds_IdsToGet_SuccessRun()
+        {
+            productCourseOperation.GetCoursesByCourseIds(new List<string>(){"2342"}, false);
+        }
+
 
 
         [TestMethod]

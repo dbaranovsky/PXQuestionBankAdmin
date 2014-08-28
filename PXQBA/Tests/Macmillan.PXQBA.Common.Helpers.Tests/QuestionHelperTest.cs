@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Linq;
 using Macmillan.PXQBA.Business.Commands.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -66,6 +69,23 @@ namespace Macmillan.PXQBA.Common.Helpers.Tests
 
             Assert.AreEqual(list.Count, 0);
            
+        }
+
+        [TestMethod]
+        public void IsDraft_NotDraft_False()
+        {
+            var question = new Bfw.Agilix.DataContracts.Question
+                           {
+                               Id = "2",
+                               MetadataElements = new Dictionary<string, XElement>
+                                                                  {
+                                                                        {"draftfrom", XElement.Parse(@" <draftfrom></draftfrom>")}
+                                                                  },
+
+                           };
+
+            Assert.IsFalse(QuestionHelper.IsDraft(question));
+
         }
     }
 }

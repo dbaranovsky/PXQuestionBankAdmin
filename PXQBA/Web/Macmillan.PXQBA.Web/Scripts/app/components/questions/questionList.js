@@ -45,7 +45,7 @@ var QuestionList = React.createClass({displayName: 'QuestionList',
 
         var text = containsTextFilter.values[0];
         if(text != null) {
-          highlighter.highlight(text);
+          highlighter.highlight(decodeURIComponent(text));
         } 
         else {
           highlighter.unhighlight();

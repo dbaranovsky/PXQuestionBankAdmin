@@ -65,13 +65,18 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
 
 
         [TestMethod]
-        public void GetQuestionNotes_AnyNote_ExecuteNonQueryInvoked()
+        public void CreateNote_AnyNote_ExecuteNonQueryInvoked()
         {
             var invokeCount = 0;
-            databaseManager.When(m => m.ExecuteNonQuery(Arg.Any<DbCommand>())).Do(x => invokeCount++);
+            databaseManager.When(m => m.ExecuteNonQuery(Arg.Do<DbCommand>(x =>
+                                                                          {
+                                                                              x.Parameters["@noteId"].Value = (int)31;
+                                                                          })))
+                          .Do(x => invokeCount++);
 
-            noteCommands.CreateNote(new Note());
-
+            var result = noteCommands.CreateNote(new Note());
+            
+            Assert.IsTrue(result.Id == 31);
             Assert.AreEqual(invokeCount, 1);
         }
 

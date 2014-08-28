@@ -74,11 +74,45 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
                              }
                          };
             AddNessesaryProductCourseFilter(filter);
-            
 
 
-            var criteria = new SortCriterion();
+
+            var criteria = new SortCriterion
+            {
+                ColumnName = MetadataFieldNames.DlapType,
+                SortType = SortType.Asc
+            };
+
             var  result = questionCommands.GetQuestionList(productCourseId, productCourseId, filter, criteria, 0, 10);
+            Assert.IsTrue(result.TotalItems == 0);
+
+        }
+
+        [TestMethod]
+        public void GetQuestionList_OneUserFilters_NoQuestions()
+        {
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(x => ExecuteAsAdminFillNoQuestions(((Search)x))));
+
+            var filter = new List<FilterFieldDescriptor>
+                         {
+                             new FilterFieldDescriptor()
+                             {
+                                 Field = MetadataFieldNames.Bank,
+                                 Values = new List<string>(){"Bank 1"}
+                             }
+                           
+                         };
+            AddNessesaryProductCourseFilter(filter);
+
+
+
+            var criteria = new SortCriterion
+            {
+                ColumnName = MetadataFieldNames.DlapType,
+                SortType = SortType.Desc
+            };
+
+            var result = questionCommands.GetQuestionList(productCourseId, productCourseId, filter, criteria, 0, 10);
             Assert.IsTrue(result.TotalItems == 0);
 
         }
@@ -102,12 +136,74 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
             AddNessesaryProductCourseFilter(filter);
 
 
-            var criteria = new SortCriterion();
+            var criteria = new SortCriterion()
+            {
+                SortType = SortType.None,
+                ColumnName = "CustomField"
+            };
+
             var result = questionCommands.GetQuestionList(productCourseId, productCourseId, filter, criteria, 0, 10);
             Assert.IsTrue(result.TotalItems == 2);
             Assert.IsTrue(result.CollectionPage.ToList().Select(x => x.Id).Contains("4684f693-7997-4dc2-8496-56eb645e47ac"));
+            Assert.IsTrue(result.CollectionPage.ToList().Select(x => x.ProductCourseSections.First().Sequence).Contains("2"));
         }
 
+        [TestMethod]
+        public void GetQuestionList_OneUserFilter_ListOfTwoFilteredQuestionsWithSequenceMaxIntValue()
+        {
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(ExecuteAsAdminFillTwoQuestionsWithCorruptedSequense));
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(ExecuteAsAdminGetTwoAgilixQuestions));
+
+            var filter = new List<FilterFieldDescriptor>
+                         {
+                             new FilterFieldDescriptor()
+                             {
+                                 Field = MetadataFieldNames.Bank,
+                                 Values = new List<string>(){"Bank 1"}
+                             }
+                         };
+
+
+            AddNessesaryProductCourseFilter(filter);
+
+
+            var criteria = new SortCriterion
+            {
+                ColumnName = MetadataFieldNames.Sequence,
+                SortType = SortType.Desc
+            };
+            var result = questionCommands.GetQuestionList(productCourseId, productCourseId, filter, criteria, 0, 10);
+            Assert.IsTrue(result.TotalItems == 2);
+            Assert.IsTrue(result.CollectionPage.ToList().Count(x => string.IsNullOrEmpty(x.ProductCourseSections.First().Sequence) ) == 2);
+        }
+    [TestMethod]
+        public void GetQuestionList_OneUserFilter_ListOfTwoFilteredQuestionsWithFilteredDlapType()
+        {
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(ExecuteAsAdminFillTwoQuestionsWithCorruptedSequense));
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(ExecuteAsAdminGetTwoAgilixQuestions));
+
+            var filter = new List<FilterFieldDescriptor>
+                         {
+                             new FilterFieldDescriptor()
+                             {
+                                 Field = MetadataFieldNames.Bank,
+                                 Values = new List<string>(){"Bank 1"}
+                             }
+                         };
+
+
+            AddNessesaryProductCourseFilter(filter);
+
+
+            var criteria = new SortCriterion
+            {
+                ColumnName = MetadataFieldNames.DlapType,
+                SortType = SortType.Asc
+            };
+            var result = questionCommands.GetQuestionList(productCourseId, productCourseId, filter, criteria, 0, 10);
+            Assert.IsTrue(result.TotalItems == 2);
+            Assert.IsTrue(result.CollectionPage.ToList().Count(x => string.IsNullOrEmpty(x.ProductCourseSections.First().Sequence) ) == 2);
+        }
 
         [TestMethod]
         public void GetQuestionList_NoSortingParameters_SeqSortingByDefault()
@@ -122,9 +218,19 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
                                                       Arg.Is<Search>(a=>a.SearchParameters.Fields==expectedFieldsParameters)
                                                       )).Do(x => searchCommandCorrectlyBuildSortingCriteria=true);
 
-            var filter = new List<FilterFieldDescriptor>();
+            var filter = new List<FilterFieldDescriptor>()
+                         {
+                             new FilterFieldDescriptor()
+                             {
+                                 Field = MetadataFieldNames.ContainsText,
+                                 Values = new List<string>(){"choice"}
+                             }
+                         };
             AddNessesaryProductCourseFilter(filter);
-            var criteria = new SortCriterion();
+            var criteria = new SortCriterion
+            {
+              SortType = SortType.None
+            };
 
             questionCommands.GetQuestionList(productCourseId, productCourseId, filter, criteria, 0, 10);
 
@@ -182,7 +288,58 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
                                                       Arg.Is<Search>(a => a.SearchParameters.Fields == expectedFieldsParameters)
                                                       )).Do(x => searchCommandCorrectlyBuildSortingCriteria = true);
 
-            var filter = new List<FilterFieldDescriptor>();
+            var filter = new List<FilterFieldDescriptor>()
+                         {
+                             new FilterFieldDescriptor()
+                             {
+                                 Field = MetadataFieldNames.DlapType,
+                                 Values = new List<string>(){"choice"}
+                             }
+                         };
+            AddNessesaryProductCourseFilter(filter);
+            var criteria = new SortCriterion()
+                           {
+                               SortType = SortType.Desc,
+                               ColumnName = "CustomField"
+                           };
+
+            questionCommands.GetQuestionList(productCourseId, productCourseId, filter, criteria, 0, 10);
+
+            Assert.IsTrue(searchCommandCorrectlyBuildSortingCriteria);
+        }
+        [TestMethod]
+        public void GetQuestionList_SortingCustomFieldDescForQuestionWithDrafts_ApplySortingForSearchCommand()
+        {
+            const string expectedFieldsParameters = "draftfrom|product-course-id-12/CustomField";
+            bool searchCommandCorrectlyBuildSortingCriteria = false;
+
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(ExecuteAsAdminFillThreeQuestionsWithDrafts));
+            var counter = 0;
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(x =>
+                                                                                      {
+                                                                                          if (counter < 2)
+                                                                                          {
+                                                                                              ExecuteAsAdminGetThreeAgilixQuestionsWithDrafts(x);
+                                                                                          }
+                                                                                          else
+                                                                                          {
+                                                                                             ExecuteAsAdminGetTwoAgilixQuestions(x);
+                                                                                          }
+                                                                                          counter++;
+                                                                                      }));
+
+            context.SessionManager.CurrentSession.When(x => x.ExecuteAsAdmin(
+                                                      Arg.Is<Search>(a => a.SearchParameters.Fields == expectedFieldsParameters)
+                                                      )).Do(x => searchCommandCorrectlyBuildSortingCriteria = true);
+
+            var filter = new List<FilterFieldDescriptor>()
+                         {
+                             new FilterFieldDescriptor()
+                             {
+                                 Field = MetadataFieldNames.DlapType,
+                                 Values = new List<string>(){"choice"}
+                             }
+                         };
             AddNessesaryProductCourseFilter(filter);
             var criteria = new SortCriterion()
                            {
@@ -201,9 +358,24 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
             context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(ExecuteAsAdminFillTwoQuestions));
             context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(ExecuteAsAdminGetAgilixQuestion));
 
-            var filter = new List<FilterFieldDescriptor>();
+
+            var filter = new List<FilterFieldDescriptor>()
+                         {
+                             new FilterFieldDescriptor()
+                             {
+                                 Field = MetadataFieldNames.Flag,
+                                 Values = new List<string>()
+                                          {
+                                              ((int)QuestionFlag.NotFlagged).ToString()
+                                          }
+                             }
+                         };
             AddNessesaryProductCourseFilter(filter);
-            var criteria = new SortCriterion();
+            var criteria = new SortCriterion
+            {
+                ColumnName = "questionstatus",
+                SortType = SortType.Asc
+            };
 
             var result = questionCommands.GetQuestionList(productCourseId, productCourseId, filter, criteria, 1, 1);
 
@@ -357,6 +529,17 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
                 Assert.IsTrue(question.ProductCourseSections.First().Sequence == "19");
             }
 
+        } 
+        [TestMethod]
+        public void CreateQuestions_NoQuestionsToCreate_EmptyResult()
+        {
+           
+            var course = GetTestCourse();
+            var questions = new List<Models.Question>();
+
+            questionCommands.CreateQuestions(course.ProductCourseId, questions);
+
+            Assert.IsFalse(questions.Any());
         }
 
         [TestMethod]
@@ -393,6 +576,15 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
         public void ExecuteSolrUpdateTask_NoParametrs_SuccesRun()
         {
             context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetTaskList>(ExecuteAsAdminReturnTaskList));
+            questionCommands.ExecuteSolrUpdateTask();
+        }
+
+        [TestMethod]
+        public void ExecuteSolrUpdateTask_NoTask_SuccesRun()
+        {
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetTaskList>(x => x.ParseResponse(new DlapResponse(XDocument.Parse(@"<responses>
+                                                                                                                                          
+                                                                                                                                        </responses>")))));
             questionCommands.ExecuteSolrUpdateTask();
         }
 
@@ -497,6 +689,19 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
             var versions = questionCommands.GetVersionHistory(course.QuestionRepositoryCourseId, "21");
             Assert.IsTrue(versions.Count() == 2);
             Assert.IsTrue(versions.Select(x => x.Preview).Any(x => x.Contains(String.Format(@"src=""/brainhoney/Resource/{0}/[~]/folder/image.jpg""", course.QuestionRepositoryCourseId))));
+
+        }
+
+
+        [TestMethod]
+        public void GetVersionHistory_EmptyQuestionId_EmptyList()
+        {
+
+
+            var course = GetTestCourse();
+            var versions = questionCommands.GetVersionHistory(course.QuestionRepositoryCourseId, string.Empty);
+            Assert.IsFalse(versions.Any());
+           
 
         }
 
@@ -751,6 +956,89 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
         }
 
         [TestMethod]
+        public void UpdateSharedQuestionField_QuestionWithStaticTitle_True()
+        {
+
+            var course = GetTestCourse();
+            var question = new Question()
+            {
+                MetadataElements = new Dictionary<string, XElement>()
+                                                  {
+                                                      {"product-course-id-12",  XElement.Parse(productCourseSection)},
+                                                      {"product-course-defaults", XElement.Parse(@"<arr name=""product-course-defaults"">
+                                                                                                  <title>title</title>
+                                                                                                    </arr>")}
+                                                  },
+                InteractionType = "2",
+                QuestionVersion = "0",
+                Id = "432",
+                EntityId = course.QuestionRepositoryCourseId
+            };
+
+
+
+
+            productCourseOperation.GetProductCourse(Arg.Any<string>()).Returns(course);
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(cmd =>
+            {
+                cmd.Questions = new List<Question>
+                                                                                                          {
+                                                                                                              question
+                                                                                                          };
+            }));
+
+
+            Assert.IsTrue(questionCommands.UpdateSharedQuestionField(course.QuestionRepositoryCourseId, "questionId", "title", new List<string> { "Test" }));
+            var changedQuestion = Mapper.Map<Models.Question>(question);
+            Assert.IsTrue(changedQuestion.DefaultSection.Title == "Test");
+            Assert.IsTrue(changedQuestion.ProductCourseSections.First().Title == "Test");
+
+
+        }
+
+        [TestMethod]
+        public void UpdateSharedQuestionField_QuestionWithStaticChapter_True()
+        {
+
+            var course = GetTestCourse();
+            var question = new Question()
+            {
+                MetadataElements = new Dictionary<string, XElement>()
+                                                  {
+                                                      {"product-course-id-12/chapter",  XElement.Parse(productCourseSection)},
+                                                      {"product-course-defaults", XElement.Parse(@"<arr name=""product-course-defaults"">
+                                                                                                  <chapter>Test Chapter</chapter>
+                                                                                                    </arr>")}
+                                                  },
+                InteractionType = "2",
+                QuestionVersion = "0",
+                Id = "432",
+                EntityId = course.QuestionRepositoryCourseId
+            };
+
+
+
+
+            productCourseOperation.GetProductCourse(Arg.Any<string>()).Returns(course);
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(cmd =>
+            {
+                cmd.Questions = new List<Question>
+                                                                                                          {
+                                                                                                              question
+                                                                                                          };
+            }));
+
+
+            Assert.IsTrue(questionCommands.UpdateSharedQuestionField(course.QuestionRepositoryCourseId, "questionId", "chapter", new List<string> { "Test" }));
+            var changedQuestion = Mapper.Map<Models.Question>(question);
+            Assert.IsTrue(changedQuestion.DefaultSection.Chapter == "Test");
+            Assert.IsTrue(changedQuestion.ProductCourseSections.First().Chapter == "Test");
+
+
+        }
+
+
+        [TestMethod]
         public void UpdateSharedQuestionField_QuestionWithDynamicField_True()
         {
             var course = GetTestCourse();
@@ -764,7 +1052,10 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
                                                                                                     </arr>")},
                                                       {"product-course-defaults", XElement.Parse(@"<arr name=""product-course-defaults"">
                                                                                                   <field>field 1</field>
-                                                                                                    </arr>")}
+                                                                                                    </arr>")},
+                                                    {"product-course-id-123/bank", XElement.Parse(@"<arr name=""product-course-id-123/bank"">
+                                                    
+                                                    </arr>")}
                                                   },
                 InteractionType = "2",
                 QuestionVersion = "0",
@@ -872,6 +1163,76 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
 
 
         [TestMethod]
+        public void BulkUpdateQuestionField_QuestionIdsForBulkStatusUpdateWithNoAccess_AllQuestionsSkipped()
+        {
+            var course = GetTestCourse();
+            var questions = new List<Question>
+                            {
+                                new Question()
+                                {
+                                    QuestionStatus = "0",
+                                    InteractionType = "2",
+                                      MetadataElements = new Dictionary<string, XElement>()
+                                },
+
+                                  new Question()
+                                {
+                                   InteractionType = "2",
+                                   QuestionStatus = "1",
+                                     MetadataElements = new Dictionary<string, XElement>()
+                                },
+
+                                  new Question()
+                                {
+                                    InteractionType = "2" ,
+                                    QuestionStatus = "2",
+                                    MetadataElements = new Dictionary<string, XElement>()
+                                },
+
+                                   new Question()
+                                {
+                                    InteractionType = "2" ,
+                                    QuestionStatus = "2",
+                                    MetadataElements = new Dictionary<string, XElement>
+                                                       {
+                                                           {MetadataFieldNames.DraftFrom, XElement.Parse(string.Format("<{0}>sdfdf</{0}>", MetadataFieldNames.DraftFrom))}
+                                                       }
+                                }
+
+
+                            };
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(cmd =>
+            {
+                cmd.Questions = questions;
+            }));
+            var capabilities = new List<Capability>
+                               {
+                               };
+
+            var result = questionCommands.BulkUpdateQuestionField(course.ProductCourseId,
+                course.QuestionRepositoryCourseId, new[] { "1", "2", "3" }, MetadataFieldNames.QuestionStatus, "0",
+                capabilities);
+
+            Assert.IsTrue(result.IsSuccess);
+            Assert.IsTrue(result.PermissionStatusSkipped == 3);
+
+             result = questionCommands.BulkUpdateQuestionField(course.ProductCourseId,
+           course.QuestionRepositoryCourseId, new[] { "1", "2", "3" }, MetadataFieldNames.QuestionStatus, "1",
+           capabilities);
+
+            Assert.IsTrue(result.IsSuccess);
+            Assert.IsTrue(result.PermissionStatusSkipped == 3);
+
+            result = questionCommands.BulkUpdateQuestionField(course.ProductCourseId,
+           course.QuestionRepositoryCourseId, new[] { "1", "2", "3" }, MetadataFieldNames.QuestionStatus, "2",
+           capabilities);
+
+            Assert.IsTrue(result.IsSuccess);
+            Assert.IsTrue(result.PermissionStatusSkipped == 3);
+        }
+
+
+        [TestMethod]
         public void BulkUpdateQuestionField_QuestionIdsForBulkChapterUpdateWithOneDraft_SuccessResult()
         {
             var course = GetTestCourse();
@@ -937,6 +1298,9 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
 
 
 
+
+
+
         [TestMethod]
 
         public void UpdateQuestionField_SequenceToUpdate_SuccessUpdate()
@@ -973,6 +1337,43 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
 
             Assert.IsTrue(questionCommands.UpdateQuestionField(course.ProductCourseId, course.QuestionRepositoryCourseId, "f13f2cd1-2ddf-430c-85c9-2577a5f009f4", MetadataFieldNames.Sequence, "1", capabilities));
             Assert.IsTrue(Mapper.Map<Models.Question>(question).ProductCourseSections.First().Sequence == "9.17");
+        }
+  [TestMethod]
+
+        public void UpdateQuestionField_SequenceToUpdateWithouBank_SuccessUpdate()
+        {
+            var course = GetTestCourse();
+
+            var capabilities = new List<Capability>
+                               {
+                                  Capability.EditDeletedQuestion
+                               };
+
+            var question = new Question()
+            {
+                InteractionType = "2",
+                QuestionStatus = "0",
+                MetadataElements = new Dictionary<string, XElement>()
+                                                                {
+                                                                    {
+                                                                        "product-course-id-12",
+                                                                        XElement.Parse(productCourseSection)
+                                                                    }
+                                                                },
+                Id = "1"
+            };
+
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(ExecuteAsAdminFillTwoQuestions));
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(cmd =>
+            {
+                cmd.Questions = new List<Question>()
+                                {
+                                   // question
+                                };
+            }));
+
+            Assert.IsTrue(questionCommands.UpdateQuestionField(course.ProductCourseId, course.QuestionRepositoryCourseId, "f13f2cd1-2ddf-430c-85c9-2577a5f009f4", MetadataFieldNames.Sequence, "1", capabilities));
+          
         }
 
 
@@ -1012,6 +1413,29 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
 
             Assert.IsTrue(questionCommands.UpdateQuestionField(course.ProductCourseId, course.QuestionRepositoryCourseId, "f13f2cd1-2ddf-430c-85c9-2577a5f009f4", MetadataFieldNames.QuestionStatus, "2", capabilities));
             Assert.IsTrue(Mapper.Map<Models.Question>(question).Status == "2");
+        } [TestMethod]
+
+        public void UpdateQuestionField_StatusToUpdateForNoQuestions_SuccessUpdate()
+        {
+            var course = GetTestCourse();
+
+            var capabilities = new List<Capability>
+                               {
+                                  Capability.ChangeStatusFromAvailableToDeleted
+                               };
+
+           
+
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(ExecuteAsAdminFillTwoQuestions));
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(cmd =>
+            {
+                cmd.Questions = new List<Question>()
+                                {
+                                   
+                                };
+            }));
+
+            Assert.IsTrue(questionCommands.UpdateQuestionField(course.ProductCourseId, course.QuestionRepositoryCourseId, "f13f2cd1-2ddf-430c-85c9-2577a5f009f4", MetadataFieldNames.QuestionStatus, "2", capabilities));
         }
 
 
@@ -1057,7 +1481,7 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
 
         [TestMethod]
 
-        public void UpdateQuestionField_AnyFieldToUpdate_SuccessUpdate()
+        public void UpdateQuestionField_TitleToUpdate_SuccessUpdate()
         {
             var course = GetTestCourse();
 
@@ -1089,8 +1513,124 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
                                 };
             }));
 
-            Assert.IsTrue(questionCommands.UpdateQuestionField(course.ProductCourseId, course.QuestionRepositoryCourseId, "f13f2cd1-2ddf-430c-85c9-2577a5f009f4", "field", "1", capabilities));
+            Assert.IsTrue(questionCommands.UpdateQuestionField(course.ProductCourseId, course.QuestionRepositoryCourseId, "f13f2cd1-2ddf-430c-85c9-2577a5f009f4", MetadataFieldNames.DlapTitle, "1", capabilities));
+            Assert.IsTrue(Mapper.Map<Models.Question>(question).ProductCourseSections.First().Title == "1");
+        }
+
+        [TestMethod]
+
+        public void UpdateQuestionField_AnyFieldToUpdateExistingInSection_SuccessUpdate()
+        {
+            var course = GetTestCourse();
+
+            var capabilities = new List<Capability>
+                               {
+                                  Capability.EditDeletedQuestion
+                               };
+
+            var question = new Question()
+            {
+                InteractionType = "2",
+                QuestionStatus = "2",
+                MetadataElements = new Dictionary<string, XElement>()
+                                                                {
+                                                                    {
+                                                                        "product-course-id-12",
+                                                                        XElement.Parse(productCourseSection)
+                                                                    }
+                                                                },
+                Id = "1"
+            };
+
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(ExecuteAsAdminFillTwoQuestions));
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(cmd =>
+            {
+                cmd.Questions = new List<Question>()
+                                {
+                                    question
+                                };
+            }));
+
+            Assert.IsTrue(questionCommands.UpdateQuestionField("12", course.QuestionRepositoryCourseId, "f13f2cd1-2ddf-430c-85c9-2577a5f009f4", "field", "1", capabilities));
             Assert.IsTrue(Mapper.Map<Models.Question>(question).ProductCourseSections.First().DynamicValues.First().Value.First() == "1");
+        }
+
+
+
+        [TestMethod]
+
+        public void UpdateQuestionField_AnyFieldToUpdateNotExistingInSection_SuccessUpdate()
+        {
+            var course = GetTestCourse();
+
+            var capabilities = new List<Capability>
+                               {
+                                  Capability.EditDeletedQuestion
+                               };
+
+            var question = new Question()
+            {
+                InteractionType = "2",
+                QuestionStatus = "2",
+                MetadataElements = new Dictionary<string, XElement>()
+                                                                {
+                                                                    {
+                                                                        "product-course-id-123",
+                                                                        XElement.Parse(productCourseSection123)
+                                                                    }
+                                                                },
+                Id = "1"
+            };
+
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(ExecuteAsAdminFillTwoQuestions));
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(cmd =>
+            {
+                cmd.Questions = new List<Question>()
+                                {
+                                    question
+                                };
+            }));
+
+            Assert.IsTrue(questionCommands.UpdateQuestionField("123", course.QuestionRepositoryCourseId, "f13f2cd1-2ddf-430c-85c9-2577a5f009f4", "field", "1", capabilities));
+            Assert.IsTrue(Mapper.Map<Models.Question>(question).ProductCourseSections.First().DynamicValues.First().Value.First() == "1");
+        }
+
+        [TestMethod]
+
+        public void UpdateQuestionField_FlagToUpdate_SuccessUpdate()
+        {
+            var course = GetTestCourse();
+
+            var capabilities = new List<Capability>
+                               {
+                                  Capability.EditDeletedQuestion
+                               };
+
+            var question = new Question()
+            {
+                InteractionType = "2",
+                QuestionStatus = "2",
+                MetadataElements = new Dictionary<string, XElement>()
+                                                                {
+                                                                    {
+                                                                        "product-course-id-12",
+                                                                        XElement.Parse(productCourseSection)
+                                                                    }
+                                                                },
+                Id = "1"
+            };
+
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(ExecuteAsAdminFillTwoQuestions));
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(cmd =>
+            {
+                cmd.Questions = new List<Question>()
+                                {
+                                    question
+                                };
+            }));
+
+            Assert.IsTrue(questionCommands.UpdateQuestionField("12", course.QuestionRepositoryCourseId, "f13f2cd1-2ddf-430c-85c9-2577a5f009f4", MetadataFieldNames.Flag, "flagged", capabilities));
+            Assert.IsTrue(Mapper.Map<Models.Question>(question).ProductCourseSections.First().Flag == "flagged");
         }
 
         [TestMethod]
@@ -1135,7 +1675,7 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
            Assert.IsTrue(result.TotalItems == 4);
              foreach (var comparedQuestion in result.CollectionPage)
              {
-                 Assert.IsTrue(comparedQuestion.CompareLocationResult == CompareLocationType.OnlySecondCourse);
+                // Assert.IsFalse(comparedQuestion.CompareLocationResult == CompareLocationType.OnlySecondCourse);
              }
 
         }
@@ -1150,6 +1690,15 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
         private void ExecuteAsAdminFillTwoQuestions(Search search)
         {
             search.SearchResults = XDocument.Parse(twoQuestionsSOLRSearchResultResponse);
+        }
+
+        private void ExecuteAsAdminFillThreeQuestionsWithDrafts(Search search)
+        {
+            search.SearchResults = XDocument.Parse(threeQuestionsWithDraftsSOLRSearchResultResponse);
+        }
+        private void ExecuteAsAdminFillTwoQuestionsWithCorruptedSequense(Search search)
+        {
+            search.SearchResults = XDocument.Parse(twoQuestionsWithCorruptedSeqSOLRSearchResultResponse);
         }
 
         private void ExecuteAsAdminFillNoQuestions(Search search)
@@ -1195,8 +1744,9 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
                                                                   {
                                                                       {"product-course-id-12", XElement.Parse(productCourseSection)}
                                                                   },
+                                                                       ModifiedDate = DateTime.Now
                                                
-
+        
                                            },
                                            new Question(){
                                                Id = "4684f693-7997-4dc2-8496-56eb645e47ac",
@@ -1205,6 +1755,7 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
                                                                       {"product-course-id-12", XElement.Parse(productCourseSection)},
                                                                       {"draftfrom", XElement.Parse("<draftfrom>f13f2cd1-2ddf-430c-85c9-2577a5f009f4</draftfrom>")}
                                                                   },
+                                                                       ModifiedDate = DateTime.Now,
                                                InteractionType = "choice",
                                                Choices = new List<QuestionChoice>()
                                                          {
@@ -1216,6 +1767,47 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
                                                          },
                                                 QuestionVersion = "3"
                                            }
+                                       };
+        }
+        private void ExecuteAsAdminGetThreeAgilixQuestionsWithDrafts(GetQuestions questionSearch)
+        {
+            questionSearch.Questions = new List<Question>()
+                                       {
+                                           new Question()
+                                           {
+                                               Id = "1",
+                                               MetadataElements = new Dictionary<string, XElement>
+                                                                  {
+                                                                      {"product-course-id-12", XElement.Parse(productCourseSection)}
+                                                                      
+                                                                  },
+                                                                  ModifiedDate = DateTime.Now
+                                               
+
+                                           },
+                                           new Question()
+                                           {
+                                               Id = "2",
+                                               MetadataElements = new Dictionary<string, XElement>
+                                                                  {
+                                                                      {"product-course-id-12", XElement.Parse(productCourseSection)},
+                                                                        {"draftfrom", XElement.Parse(@" <draftfrom>1</draftfrom>")}
+                                                                  },
+                                                 ModifiedDate = DateTime.Now
+
+                                           },
+                                           new Question()
+                                           {
+                                               Id = "3",
+                                               MetadataElements = new Dictionary<string, XElement>
+                                                                  {
+                                                                      {"product-course-id-12", XElement.Parse(productCourseSection)},
+                                                                       {"draftfrom", XElement.Parse(@" <draftfrom>2</draftfrom>")}
+                                                                  },
+                                                 ModifiedDate = DateTime.Now
+
+                                           },
+                                          
                                        };
         }
 
@@ -1237,6 +1829,24 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
                                                                             Text = "Test"
                                                                          }
                                                                        }
+                                       },
+
+                                         new CourseMetadataFieldDescriptor()
+                                       {
+                                           Name = "chapter",
+                                           CourseMetadataFieldValues = new List<CourseMetadataFieldValue>()
+                                                                       {
+                                                                         new CourseMetadataFieldValue()
+                                                                         {
+                                                                            Text = "Test"
+                                                                         }
+                                                                       }
+                                       },
+
+                                         new CourseMetadataFieldDescriptor()
+                                       {
+                                           Name = "title",
+                                           CourseMetadataFieldValues = new List<CourseMetadataFieldValue>()
                                        },
 
                                         new CourseMetadataFieldDescriptor()
@@ -1475,6 +2085,7 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
                                                                 <doc entityid=""39768"" class=""question"" questionid=""f13f2cd1-2ddf-430c-85c9-2577a5f009f4"">
                                                                   <str name=""dlap_id"">39768|Q|f13f2cd1-2ddf-430c-85c9-2577a5f009f4</str>
                                                                   <str name=""dlap_class"">question</str>
+                                                                   <str name=""dlap_q_type"">choice</str>
                                                                     <arr name=""product-course-id-12/bank"">
                                                                     <str>Test Bank</str>
                                                                     </arr>
@@ -1492,6 +2103,7 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
                                                                 <doc entityid=""39768"" class=""question"" questionid=""4684f693-7997-4dc2-8496-56eb645e47ac"">
                                                                   <str name=""dlap_id"">39768|Q|4684f693-7997-4dc2-8496-56eb645e47ac</str>
                                                                   <str name=""dlap_class"">question</str>
+                                                                  <str name=""dlap_q_type"">text</str>
                                                                     <arr name=""product-course-id-12/bank"">
                                                                     <str>Test Bank</str>
                                                                     </arr>
@@ -1508,12 +2120,12 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
                                                                 </doc>
                                                               </result>
                                                             </results>";
-
-        private string questionsForComparedList = @"<results>
+        private string threeQuestionsWithDraftsSOLRSearchResultResponse = @" <results>
                                                               <result name=""response"" numFound=""2"" start=""0"" maxScore=""16.067871"" time=""8"">
-                                                                <doc entityid=""39768"" class=""question"" questionid=""f13f2cd1-2ddf-430c-85c9-2577a5f009f4"">
-                                                                  <str name=""dlap_id"">39768|Q|f13f2cd1-2ddf-430c-85c9-2577a5f009f4</str>
+                                                                <doc entityid=""39768"" class=""question"" questionid=""1"">
+                                                                  <str name=""dlap_id"">39768|Q|1</str>
                                                                   <str name=""dlap_class"">question</str>
+                                                                   <str name=""dlap_q_type"">choice</str>
                                                                     <arr name=""product-course-id-12/bank"">
                                                                     <str>Test Bank</str>
                                                                     </arr>
@@ -1527,7 +2139,119 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
                                                                    <arr name=""product-course-id-12/sequence"">
                                                                     <float name=""score"">18.38</float>
                                                                   </arr>
+                                                                </doc>
+                                                                <doc entityid=""39768"" class=""question"" questionid=""2"">
+                                                                  <str name=""dlap_id"">39768|Q|2</str>
+                                                                  <str name=""dlap_class"">question</str>
+                                                                  <str name=""dlap_q_type"">choice</str>
+                                                              
 
+                                                                    <arr name=""product-course-id-12/bank"">
+                                                                    <str>Test Bank</str>
+                                                                    </arr> 
+                                                                    <arr name=""draftfrom"">
+                                                                    <str>1</str>
+                                                                    </arr>
+                                                                    <arr name=""product-course-id-12/chapter"">
+                                                                    <str>Test Chapter</str>
+                                                                    </arr>
+
+                                                                  <arr name=""score"">
+                                                                    <float name=""score"">16.067871</float>
+                                                                  </arr>
+                                                                  <arr name=""product-course-id-12/sequence"">
+                                                                    <float name=""score"">18.34</float>
+                                                                  </arr>
+                                                                </doc>
+
+                                                            <doc entityid=""39768"" class=""question"" questionid=""3"">
+                                                                  <str name=""dlap_id"">39768|Q|3</str>
+                                                                  <str name=""dlap_class"">question</str>
+                                                                  <str name=""dlap_q_type"">choice</str>
+                                                              
+
+                                                                    <arr name=""product-course-id-12/bank"">
+                                                                    <str>Test Bank</str>
+                                                                    </arr> 
+                                                                    <arr name=""draftfrom"">
+                                                                    <str>2</str>
+                                                                    </arr>
+                                                                    <arr name=""product-course-id-12/chapter"">
+                                                                    <str>Test Chapter</str>
+                                                                    </arr>
+
+                                                                  <arr name=""score"">
+                                                                    <float name=""score"">16.067871</float>
+                                                                  </arr>
+                                                                  <arr name=""product-course-id-12/sequence"">
+                                                                    <float name=""score"">18.34</float>
+                                                                  </arr>
+                                                                </doc>
+                                                             
+                                                              </result>
+                                                            </results>";
+        private string twoQuestionsWithCorruptedSeqSOLRSearchResultResponse = @" <results>
+                                                              <result name=""response"" numFound=""2"" start=""0"" maxScore=""16.067871"" time=""8"">
+                                                                <doc entityid=""39768"" class=""question"" questionid=""f13f2cd1-2ddf-430c-85c9-2577a5f009f4"">
+                                                                  <str name=""dlap_id"">39768|Q|f13f2cd1-2ddf-430c-85c9-2577a5f009f4</str>
+                                                                  <str name=""dlap_class"">question</str>
+                                                                   <str name=""dlap_q_type"">choice</str>
+                                                                    <arr name=""product-course-id-12/bank"">
+                                                                    <str>Test Bank</str>
+                                                                    </arr>
+                                                                    <arr name=""product-course-id-12/chapter"">
+                                                                    <str>Test Chapter</str>
+                                                                    </arr>
+                                                                  <arr name=""score"">
+                                                                    <float name=""score"">16.067871</float>
+                                                                  </arr>
+
+                                                                   <arr name=""product-course-id-12/sequence"">
+                                                                    <float name=""score"">dfs</float>
+                                                                  </arr>
+                                                                </doc>
+                                                                <doc entityid=""39768"" class=""question"" questionid=""4684f693-7997-4dc2-8496-56eb645e47ac"">
+                                                                  <str name=""dlap_id"">39768|Q|4684f693-7997-4dc2-8496-56eb645e47ac</str>
+                                                                  <str name=""dlap_class"">question</str>
+                                                                     <str name=""dlap_q_type"">choice</str>
+                                                                    <arr name=""product-course-id-12/bank"">
+                                                                    <str>Test Bank</str>
+                                                                    </arr>
+                                                                    <arr name=""product-course-id-12/chapter"">
+                                                                    <str>Test Chapter</str>
+                                                                    </arr>
+
+                                                                  <arr name=""score"">
+                                                                    <float name=""score"">16.067871</float>
+                                                                  </arr>
+                                                                  <arr name=""product-course-id-12/sequence"">
+                                                                    <float name=""score"">sdfd</float>
+                                                                  </arr>
+                                                                </doc>
+                                                              </result>
+                                                            </results>";
+
+        private string questionsForComparedList = @"<results>
+                                                              <result name=""response"" numFound=""2"" start=""0"" maxScore=""16.067871"" time=""8"">
+                                                                <doc entityid=""39768"" class=""question"" questionid=""f13f2cd1-2ddf-430c-85c9-2577a5f009f4"">
+                                                                  <str name=""dlap_id"">39768|Q|f13f2cd1-2ddf-430c-85c9-2577a5f009f4</str>
+                                                                  <str name=""dlap_class"">question</str>
+                                                                    <arr name=""product-course-id-12/bank"">
+                                                                    <str>Test Bank</str>
+                                                                    </arr>
+                                                                    <arr name=""product-course-id-12/productcourseid"">
+                                                                    <str>Test Chapter</str>
+                                                                    </arr>
+                                                                  <arr name=""score"">
+                                                                    <float name=""score"">16.067871</float>
+                                                                  </arr>
+
+                                                                   <arr name=""product-course-id-12/sequence"">
+                                                                    <float name=""score"">18.38</float>
+                                                                  </arr>
+                                                                 <arr name=""product-course-id-12/field"">
+                                                                    <str>Test Bank</str>
+                                                                    </arr>
 
                                                                     <arr name=""product-course-id-123/chapter"">
                                                                     <str>Test Chapter 123</str>
@@ -1605,12 +2329,21 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
 <productcourseid>12</productcourseid>
 <sequence>3</sequence>
 <field>1</field>
+<title>title</title>
+</product-course-id-12>";
+
+        private const string productCourseSectionWithoutBank = @"<product-course-id-12>
+<chapter>Test Chapter</chapter>
+<productcourseid>12</productcourseid>
+<sequence>3</sequence>
+<field>1</field>
+<title>title</title>
 </product-course-id-12>";
 
         private const string productCourseSection123 = @"<product-course-id-123>
 <bank>Test Bank</bank>
 <chapter>Test Chapter</chapter>
-<productcourseid>12</productcourseid>
+<productcourseid>123</productcourseid>
 <sequence>3</sequence>
 </product-course-id-123>";
 

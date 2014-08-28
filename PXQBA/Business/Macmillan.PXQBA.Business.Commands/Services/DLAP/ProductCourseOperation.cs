@@ -141,19 +141,6 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
             var cmd = new UpdateCourses();
             cmd.Add(agilixCourse);
             businessContext.SessionManager.CurrentSession.ExecuteAsAdmin(cmd);
-            SaveCourseToXmlSharedFolder(agilixCourse);
-        }
-
-        private void SaveCourseToXmlSharedFolder(Bfw.Agilix.DataContracts.Course agilixCourse)
-        {
-            try
-            {
-                FileHelper.SaveCourseXmlToPaths(agilixCourse, ConfigurationHelper.GetCourseXmlSharedFolders());
-            }
-            catch (Exception e)
-            {
-                StaticLogger.LogError("FileHelper.SaveQuestionXmlsToPath failed", e);
-            }
         }
 
         private IList<Course> GetQuestionBankRepository(IList<Course> courses)

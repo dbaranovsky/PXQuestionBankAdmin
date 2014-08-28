@@ -853,6 +853,12 @@ input.filter-text-input {
     list-style-type: none;
 }
 
+.question-preview input[type="checkbox"] {
+    width: 50px !important;
+}
+
+
+
 /*Titles page*/
 #title-container {
     margin: 20px 0px 0px 0px;
