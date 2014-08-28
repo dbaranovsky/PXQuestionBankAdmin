@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 namespace Macmillan.PXQBA.Business.QuestionParserModule.DataContracts
 {
     /// <summary>
-    /// Is used to serialize\deserialize dictionary to\from xml
+    /// Is used to serialize and deserialize dictionary to and from xml
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
     /// <typeparam name="TValue"></typeparam>
@@ -16,6 +16,10 @@ namespace Macmillan.PXQBA.Business.QuestionParserModule.DataContracts
     {
         #region IXmlSerializable Members
 
+        /// <summary>
+        /// Gets schema of the serialized object
+        /// </summary>
+        /// <returns>Schema if exists</returns>
         public XmlSchema GetSchema()
         {
             return null;

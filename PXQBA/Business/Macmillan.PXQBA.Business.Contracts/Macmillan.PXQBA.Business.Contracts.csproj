@@ -63,7 +63,6 @@
     </Compile>
     <Compile Include="IModelProfileService.cs" />
     <Compile Include="INotesManagementService.cs" />
-    <Compile Include="IQuestionFilterManagementService.cs" />
     <Compile Include="IQuestionManagementService.cs" />
     <Compile Include="IQuestionMetadataService.cs" />
     <Compile Include="IProductCourseManagementService.cs" />

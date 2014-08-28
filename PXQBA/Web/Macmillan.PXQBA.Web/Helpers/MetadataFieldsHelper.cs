@@ -5,8 +5,16 @@ using Macmillan.PXQBA.Web.ViewModels.Filter;
 
 namespace Macmillan.PXQBA.Web.Helpers
 {
+    /// <summary>
+    /// Question metadata field helper that provides UI settings for metadata fields in different areas such as list,editor,filter
+    /// </summary>
      public static class MetadataFieldsHelper
     {
+         /// <summary>
+         /// Converts question metadata field into view model for that field with displaying settings for different areas like filter, list, editor
+         /// </summary>
+         /// <param name="metaField"></param>
+         /// <returns></returns>
         public static  QuestionFieldViewModel Convert(QuestionMetaField metaField)
          {
              var model = new QuestionFieldViewModel
