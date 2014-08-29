@@ -26,14 +26,14 @@ namespace Macmillan.PXQBA.Business.Services.Tests
         {
             const string questionId = "q123";
 
-            bool isCorrencInvoked = false;
+            bool isCorrectInvoked = false;
 
             noteCommands.When(r => r.GetQuestionNotes(Arg.Is<string>(a => a == questionId)))
-                        .Do(d => { isCorrencInvoked = true; });
+                        .Do(d => { isCorrectInvoked = true; });
 
             notsNotesManagementService.GetQuestionNotes(questionId);
 
-            Assert.IsTrue(isCorrencInvoked);
+            Assert.IsTrue(isCorrectInvoked);
         }
 
 
@@ -46,14 +46,14 @@ namespace Macmillan.PXQBA.Business.Services.Tests
                             Id = noteId
                         };
 
-            bool isCorrencInvoked = false;
+            bool isCorrectInvoked = false;
 
             noteCommands.When(r => r.CreateNote(Arg.Is<Note>(a => a.Id==noteId)))
-                        .Do(d => { isCorrencInvoked = true; });
+                        .Do(d => { isCorrectInvoked = true; });
 
             notsNotesManagementService.CreateNote(note);
 
-            Assert.IsTrue(isCorrencInvoked);
+            Assert.IsTrue(isCorrectInvoked);
         }
 
 
@@ -66,14 +66,14 @@ namespace Macmillan.PXQBA.Business.Services.Tests
                 Id = noteId
             };
 
-            bool isCorrencInvoked = false;
+            bool isCorrectInvoked = false;
 
             noteCommands.When(r => r.DeleteNote(Arg.Is<Note>(a => a.Id == noteId)))
-                        .Do(d => { isCorrencInvoked = true; });
+                        .Do(d => { isCorrectInvoked = true; });
 
             notsNotesManagementService.DeleteNote(note);
 
-            Assert.IsTrue(isCorrencInvoked);
+            Assert.IsTrue(isCorrectInvoked);
         }
 
         [TestMethod]
@@ -85,14 +85,16 @@ namespace Macmillan.PXQBA.Business.Services.Tests
                 Id = noteId
             };
 
-            bool isCorrencInvoked = false;
+            bool isCorrectInvoked = false;
 
             noteCommands.When(r => r.UpdateNote(Arg.Is<Note>(a => a.Id == noteId)))
-                        .Do(d => { isCorrencInvoked = true; });
+                        .Do(d => { isCorrectInvoked = true; });
 
             notsNotesManagementService.SaveNote(note);
 
-            Assert.IsTrue(isCorrencInvoked);
+            Assert.IsTrue(isCorrectInvoked);
         }
+
+
     }
 }
