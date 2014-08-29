@@ -91,6 +91,8 @@
     <Compile Include="..\..\Web\Macmillan.PXQBA.Web\Properties\ProductInfo.cs">
       <Link>Properties\ProductInfo.cs</Link>
     </Compile>
+    <Compile Include="NotesManagementServiceTest.cs" />
+    <Compile Include="ProductCourseManagementServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionManagementServiceTest.cs" />
     <Compile Include="QuestionMetadataServiceTest.cs" />
