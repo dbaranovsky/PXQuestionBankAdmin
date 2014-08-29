@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using Bfw.Agilix.DataContracts;
+﻿using Bfw.Agilix.DataContracts;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
+using System;
+using System.Collections.Generic;
 
 namespace Macmillan.PXQBA.Business.Services.Tests
 {
@@ -197,6 +197,19 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             productCourseManagementService.PutResources(resources);
 
             Assert.IsTrue(isCorrectInvoked);
+        }
+
+        [TestMethod]
+        public void AddSiteBuilderCourse_NotValidUrl_Null()
+        {
+            const string url = "not_valid_url";
+
+            productCourseOperation.When(o=>o.AddSiteBuilderCourseToQBA(Arg.Is<string>(u => u == url)))
+                .Do(d=> { throw new Exception("TestException");});
+
+            string courseId = productCourseManagementService.AddSiteBuilderCourse(url);
+
+            Assert.IsTrue(String.IsNullOrEmpty(courseId));
         }
 
     }
