@@ -1,6 +1,8 @@
-﻿using Bfw.Agilix.DataContracts;
+﻿using System.Linq;
+using Bfw.Agilix.DataContracts;
 using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
+using Macmillan.PXQBA.Business.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using System;
@@ -124,6 +126,63 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             Assert.IsTrue(isCorrectInvoked);
         }
 
+
+        [TestMethod]
+        public void CreateNewDraftCourse_Title_StaticFieldsToCourseAdded()
+        {
+            const string title = "some_title";
+            const string productCourseId = "productCourseId";
+            bool isStaticFieldsAdded = false;
+
+            productCourseOperation.CreateDraftCourse(Arg.Is<string>(t => t == title)).Returns(new Models.Course()
+            {
+                ProductCourseId =
+                    productCourseId
+            });
+
+            productCourseOperation.When(
+                o => o.UpdateCourse(Arg.Is<Models.Course>(c => c.ProductCourseId == productCourseId && IsStaticFieldsAdded(c))))
+                    .Do(d => { isStaticFieldsAdded = true; });
+
+            productCourseManagementService.CreateNewDraftCourse(title);
+
+            Assert.IsTrue(isStaticFieldsAdded);
+        }
+
+        [TestMethod]
+        public void CreateNewDraftCourse_Title_GrantUserSuperAdmin()
+        {
+            const string title = "some_title";
+            const string productCourseId = "productCourseId";
+            bool isUpdateRolesCapabilitiesInvoked = false;
+            bool isGrantPredefinedRoleToCurrentUserInvoked = false;
+
+            productCourseOperation.CreateDraftCourse(Arg.Is<string>(t => t == title)).Returns(new Models.Course()
+            {
+                ProductCourseId =
+                    productCourseId
+            });
+
+            roleOperation.When(
+                o => o.UpdateRolesCapabilities(Arg.Is<string>(c => c == productCourseId),
+                                               Arg.Is<IEnumerable<Role>>(r=>r.Any())))
+                    .Do(d => { isUpdateRolesCapabilitiesInvoked = true; });
+
+            roleOperation.When(
+                     o => o.GrantPredefinedRoleToCurrentUser(
+                                   Arg.Is<PredefinedRole>(r => r == PredefinedRole.SuperAdministrator),
+                                   Arg.Is<string>(c => c == productCourseId)))
+                     .Do(d => { isGrantPredefinedRoleToCurrentUserInvoked = true; });
+            
+            productCourseManagementService.CreateNewDraftCourse(title);
+
+            Assert.IsTrue(isUpdateRolesCapabilitiesInvoked);
+            Assert.IsTrue(isGrantPredefinedRoleToCurrentUserInvoked);
+        }
+
+
+
+
         [TestMethod]
         public void AddSiteBuilderCourse_SomeUrl_AddSiteBuilderCourseToQBAAndUpdateCourseInvoked()
         {
@@ -146,6 +205,78 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             productCourseManagementService.AddSiteBuilderCourse(url);
 
             Assert.IsTrue(isCorrectInvoked);
+        }
+
+        [TestMethod]
+        public void AddSiteBuilderCourse_SomeUrl_GrantUserSuperAdmin()
+        {
+            const string url = "some_url";
+            const string productCourseId = "productCourseId";
+            bool isUpdateRolesCapabilitiesInvoked = false;
+            bool isGrantPredefinedRoleToCurrentUserInvoked = false;
+
+            productCourseOperation.AddSiteBuilderCourseToQBA(Arg.Is<string>(u => u == url)).Returns(productCourseId);
+
+            productCourseOperation.GetProductCourse(Arg.Is<string>(c => c == productCourseId)).Returns(new Models.Course()
+            {
+                ProductCourseId =
+                    productCourseId
+            });
+
+            roleOperation.When(
+                o => o.UpdateRolesCapabilities(Arg.Is<string>(c => c == productCourseId),
+                                               Arg.Is<IEnumerable<Role>>(r => r.Any())))
+                    .Do(d => { isUpdateRolesCapabilitiesInvoked = true; });
+
+            roleOperation.When(
+                     o => o.GrantPredefinedRoleToCurrentUser(
+                                   Arg.Is<PredefinedRole>(r => r == PredefinedRole.SuperAdministrator),
+                                   Arg.Is<string>(c => c == productCourseId)))
+                     .Do(d => { isGrantPredefinedRoleToCurrentUserInvoked = true; });
+
+            productCourseManagementService.AddSiteBuilderCourse(url);
+
+            Assert.IsTrue(isUpdateRolesCapabilitiesInvoked);
+            Assert.IsTrue(isGrantPredefinedRoleToCurrentUserInvoked);
+        }
+
+
+        [TestMethod]
+        public void AddSiteBuilderCourse_NotValidUrl_Null()
+        {
+            const string url = "not_valid_url";
+
+            productCourseOperation.When(o => o.AddSiteBuilderCourseToQBA(Arg.Is<string>(u => u == url)))
+                .Do(d => { throw new Exception("TestException"); });
+
+            string courseId = productCourseManagementService.AddSiteBuilderCourse(url);
+
+            Assert.IsTrue(String.IsNullOrEmpty(courseId));
+        }
+
+
+        [TestMethod]
+        public void AddSiteBuilderCourse_SomeUrl_StaticFieldsToCourseAdded()
+        {
+            const string url = "some_url";
+            const string productCourseId = "productCourseId";
+            bool isStaticFieldsPresent = false;
+
+            productCourseOperation.AddSiteBuilderCourseToQBA(Arg.Is<string>(u => u == url)).Returns(productCourseId);
+
+            productCourseOperation.GetProductCourse(Arg.Is<string>(c => c == productCourseId)).Returns(new Models.Course()
+            {
+                ProductCourseId =
+                    productCourseId
+            });
+
+            productCourseOperation.When(
+                o => o.UpdateCourse(Arg.Is<Models.Course>(c => c.ProductCourseId == productCourseId && IsStaticFieldsAdded(c))))
+                    .Do(d => { isStaticFieldsPresent = true; });
+
+            productCourseManagementService.AddSiteBuilderCourse(url);
+
+            Assert.IsTrue(isStaticFieldsPresent);
         }
 
         [TestMethod]
@@ -199,18 +330,22 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             Assert.IsTrue(isCorrectInvoked);
         }
 
-        [TestMethod]
-        public void AddSiteBuilderCourse_NotValidUrl_Null()
+
+
+
+        private bool IsStaticFieldsAdded(Models.Course course)
         {
-            const string url = "not_valid_url";
+            var staticFields = CourseExtensions.GetPredefinedCourseFields();
 
-            productCourseOperation.When(o=>o.AddSiteBuilderCourseToQBA(Arg.Is<string>(u => u == url)))
-                .Do(d=> { throw new Exception("TestException");});
+            if (staticFields.Any(staticField => course.FieldDescriptors.All(f => f.Name != staticField.Name)))
+            {
+                return false;
+            }
 
-            string courseId = productCourseManagementService.AddSiteBuilderCourse(url);
-
-            Assert.IsTrue(String.IsNullOrEmpty(courseId));
+            return true;
         }
+
+
 
     }
 }
