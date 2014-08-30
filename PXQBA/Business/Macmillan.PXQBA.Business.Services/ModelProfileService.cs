@@ -169,21 +169,19 @@ namespace Macmillan.PXQBA.Business.Services
 
         public SharedQuestionDuplicateFromViewModel GetSourceQuestionSharedFrom(string questionIdDuplicateFrom, Course course)
         {
-            if (!string.IsNullOrEmpty(questionIdDuplicateFrom))
+            if (string.IsNullOrEmpty(questionIdDuplicateFrom))
             {
-                if (!string.IsNullOrEmpty(questionIdDuplicateFrom))
-                {
-                        var sharedWith =
-                            string.Join(", ", productCourseOperation.GetCoursesByCourseIds(questionCommands.GetQuestion(course.QuestionRepositoryCourseId, questionIdDuplicateFrom)
-                                    .ProductCourseSections.Select(s => s.ProductCourseId)).Select(c => c.Title));
-                        return new SharedQuestionDuplicateFromViewModel
-                               {
-                                   QuestionId = questionIdDuplicateFrom,
-                                   SharedWith = sharedWith
-                               };
-                }
-            }
-            return null;
+                return null;
+            };
+
+            var sharedWith =
+                string.Join(", ", productCourseOperation.GetCoursesByCourseIds(questionCommands.GetQuestion(course.QuestionRepositoryCourseId, questionIdDuplicateFrom)
+                    .ProductCourseSections.Select(s => s.ProductCourseId)).Select(c => c.Title));
+            return new SharedQuestionDuplicateFromViewModel
+                   {
+                       QuestionId = questionIdDuplicateFrom,
+                       SharedWith = sharedWith
+                   };
         }
 
         public QuestionMetadataSection GetDefaultSectionForViewModel(Question question)
