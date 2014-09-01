@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Linq.Dynamic;
-using System.Xml.Serialization;
-using Macmillan.PXQBA.Business.Commands.Contracts;
+﻿using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Business.QuestionParserModule;
 using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
-using Macmillan.PXQBA.Business.QuestionParserModule.QML;
 using Macmillan.PXQBA.Business.QuestionParserModule.QTI;
 using Macmillan.PXQBA.Business.Services.Automapper;
 using Macmillan.PXQBA.Common.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Mono.Options;
 using NSubstitute;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Xml.Serialization;
 
 namespace Macmillan.PXQBA.Business.Services.Tests
 {
@@ -45,10 +42,7 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             QuestionParserProvider.AddParser(new QTIQuestionParser());
 
             questionCommands = Substitute.For<IQuestionCommands>();
-            questionCommands.GetQuestionList(string.Empty, string.Empty, null, null, 0, 0)
-                .ReturnsForAnyArgs(GetQuestions());
-            questionCommands.GetComparedQuestionList(null, null, null, 0, 0).ReturnsForAnyArgs(GetComparedQuestions());
-
+            
             temporaryQuestionOperation = Substitute.For<ITemporaryQuestionOperation>();
             productCourseManagementService = Substitute.For<IProductCourseManagementService>();
             keywordOperation = Substitute.For<IKeywordOperation>();
@@ -63,6 +57,9 @@ namespace Macmillan.PXQBA.Business.Services.Tests
         [TestMethod]
         public void GetQuestionList_AnyParameters_ListOfQuestion()
         {
+            questionCommands.GetQuestionList(string.Empty, string.Empty, null, null, 0, 0)
+                .ReturnsForAnyArgs(GetQuestions());
+
             var result = questionManagementService.GetQuestionList(new Course(), new List<FilterFieldDescriptor>(),
                 new SortCriterion(), 1, 5);
             Assert.IsTrue(result.TotalItems == 2);
@@ -70,10 +67,91 @@ namespace Macmillan.PXQBA.Business.Services.Tests
 
 
         [TestMethod]
+        public void GetQuestionList_AnyParameters_CorrectCommandInvoked()
+        {
+            bool correctInvoked = false;
+
+            const int startingRecordNumber = 5;
+            const int recordCount = 50;
+
+            var course = new Course()
+                         {
+                             ProductCourseId = "Id123",
+                             QuestionRepositoryCourseId = "qrId"
+                         };
+
+            var filterFieldDescriptors = new List<FilterFieldDescriptor>()
+                                         {
+                                             new FilterFieldDescriptor()
+                                             {
+                                                 Field = "Field1"
+                                             },
+                                             new FilterFieldDescriptor()
+                                             {
+                                                 Field = "Field2"
+                                             }
+                                         };
+
+            var sortCriterion = new SortCriterion()
+                                {
+                                    ColumnName = "Field3",
+                                    SortType = SortType.Asc
+                                };
+
+            
+            questionCommands.When(qc=>qc.GetQuestionList(Arg.Is<string>(rid=>rid==course.QuestionRepositoryCourseId),
+                                                         Arg.Is<string>(cid=>cid==course.ProductCourseId),
+                                                         Arg.Is<IEnumerable<FilterFieldDescriptor>>(f => f.ToArray()[0].Field == filterFieldDescriptors[0].Field && 
+                                                                                                         f.ToArray()[1].Field == filterFieldDescriptors[1].Field),
+                                                         Arg.Is<SortCriterion>(s=>s.ColumnName==sortCriterion.ColumnName && s.SortType == sortCriterion.SortType),
+                                                         Arg.Is<int>(srn => srn == startingRecordNumber),
+                                                         Arg.Is<int>(rc =>rc == recordCount))).Do(d=>
+                                                                                                  {
+                                                                                                      correctInvoked =
+                                                                                                          true;
+                                                                                                  });
+
+           questionManagementService.GetQuestionList(course, filterFieldDescriptors,
+                sortCriterion, startingRecordNumber, recordCount);
+
+            Assert.IsTrue(correctInvoked);
+        }
+
+
+        [TestMethod]
         public void GetComparedQuestionList_AnyParameters_ListOfComparesQuestion()
         {
+            questionCommands.GetComparedQuestionList(null, null, null, 0, 0).ReturnsForAnyArgs(GetComparedQuestions());
+
             var result = questionManagementService.GetComparedQuestionList(null, null, null, 0, 0);
             Assert.IsTrue(result.TotalItems == 2);
+        }
+
+        [TestMethod]
+        public void GetComparedQuestionList_AnyParameters_CorrectCommandInvoked()
+        {
+            bool correctInvoked = false;
+
+            const string questionRepositoryCourseId = "repositoryCourseId";
+            const string firstCourseId = "firstCourseId";
+            const string secondCourseId = "secondCourseId";
+            const int startingRecordNumber = 5;
+            const int recordCount = 50;
+
+            questionCommands.When(
+                qc => qc.GetComparedQuestionList(Arg.Is<string>(qrc => qrc == questionRepositoryCourseId),
+                    Arg.Is<string>(fci => fci == firstCourseId),
+                    Arg.Is<string>(sci => sci == secondCourseId),
+                    Arg.Is<int>(srn => srn == startingRecordNumber),
+                    Arg.Is<int>(rc => rc == recordCount))).Do(d=> { correctInvoked = true; });
+
+            questionManagementService.GetComparedQuestionList(questionRepositoryCourseId, 
+                                                              firstCourseId, 
+                                                              secondCourseId,
+                                                              startingRecordNumber,
+                                                              recordCount);
+            
+            Assert.IsTrue(correctInvoked);
         }
 
         [TestMethod]
@@ -184,6 +262,35 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             Assert.IsTrue(question.ProductCourseSections.First().ProductCourseId == course.ProductCourseId);
         }
 
+
+        [TestMethod]
+        public void DuplicateQuestion_QuestionWithoutServiceFieldsOneProductCourse_ExecuteSolrUpdateTaskInvoked()
+        {
+            bool executeSolrUpdateTaskInvoked = false;
+
+            var course = GetTestCourse();
+            questionCommands.CreateQuestion(Arg.Any<string>(), Arg.Any<Question>()).Returns(x => (Question)x[1]);
+            questionCommands.GetQuestion(Arg.Any<string>(), Arg.Any<string>()).Returns(new Question
+            {
+                Id = "15",
+                DuplicateFromShared = "3411",
+                ProductCourseSections = new List<QuestionMetadataSection>
+                                                                                               {
+                                                                                                   new QuestionMetadataSection
+                                                                                                   {
+                                                                                                       ProductCourseId = course.ProductCourseId,
+                                                                                                   }
+                                                                                               }
+            });
+
+            questionCommands.When(q => q.ExecuteSolrUpdateTask()).Do(d => { executeSolrUpdateTaskInvoked = true; });
+
+            questionManagementService.DuplicateQuestion(course, "QuestionId");
+
+            Assert.IsTrue(executeSolrUpdateTaskInvoked);
+        }
+
+
         [TestMethod]
         public void UpdateQuestion_QuestionWithNewKeyWords_ProperlySettedQuestion()
         {
@@ -258,6 +365,21 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             questionCommands.UpdateQuestionField(null, null, null, null, null, null).ReturnsForAnyArgs(true);
             Assert.IsTrue(questionManagementService.UpdateQuestionField(new Course() {ProductCourseId = "23"}, null,
                 null, null, new List<Capability>()));
+        }
+
+        [TestMethod]
+        public void UpdateQuestionField_AnyCorrectParametrs_ExecuteSolrUpdateTaskInvoked()
+        {
+            bool executeSolrUpdateTaskInvoked = false;
+            
+            questionCommands.When(q => q.ExecuteSolrUpdateTask()).Do(d => { executeSolrUpdateTaskInvoked = true; });
+
+            questionCommands.UpdateQuestionField(null, null, null, null, null, null).ReturnsForAnyArgs(true);
+
+            questionManagementService.UpdateQuestionField(new Course() {ProductCourseId = "23"}, null,
+                null, null, new List<Capability>());
+
+            Assert.IsTrue(executeSolrUpdateTaskInvoked);
         }
 
         [TestMethod]
@@ -519,6 +641,33 @@ namespace Macmillan.PXQBA.Business.Services.Tests
         }
 
         [TestMethod]
+        public void UpdateSharedQuestionField_AnyCorrectParametrs_ExecuteSolrUpdateTaskInvoked()
+        {
+            bool executeSolrUpdateTaskInvoked = false;
+
+            var course = GetTestCourse();
+            questionCommands.UpdateSharedQuestionField(null, null, null, null).ReturnsForAnyArgs(true);
+            questionCommands.GetQuestion(Arg.Any<string>(), Arg.Any<string>()).Returns(new Question()
+            {
+                ProductCourseSections = new List<QuestionMetadataSection>
+                                                                 {
+                                                                     new QuestionMetadataSection
+                                                                     {
+                                                                     
+                                                                     }
+                                                                 }
+            });
+
+            questionCommands.When(q => q.ExecuteSolrUpdateTask()).Do(d => { executeSolrUpdateTaskInvoked = true; });
+
+            productCourseManagementService.GetProductCourse(Arg.Any<string>()).Returns(new Course());
+
+            questionManagementService.UpdateSharedQuestionField(course, null, null, null);
+
+            Assert.IsTrue(executeSolrUpdateTaskInvoked);
+        }
+
+        [TestMethod]
         public void UpdateSharedQuestionField_NotDraftQuestion_False()
         {
 
@@ -723,6 +872,24 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             Assert.IsTrue(result.IsSuccess);
         }
 
+        [TestMethod]
+        public void BulklUpdateQuestionField_AnyParameters_ExecuteSolrUpdateTaskInvoked()
+        {
+            bool executeSolrUpdateTaskInvoked = false;
+            
+            questionCommands.BulkUpdateQuestionField(null, null, null, null, null, null).ReturnsForAnyArgs(new BulkOperationResult()
+            {
+                IsSuccess = true
+            });
+
+            questionCommands.When(q => q.ExecuteSolrUpdateTask()).Do(d => { executeSolrUpdateTaskInvoked = true; });
+
+            string[] questionIds = { "1", "2" };
+            var result = questionManagementService.BulklUpdateQuestionField(GetTestCourse(), questionIds, "field", "bank 1", new List<Capability>());
+
+            Assert.IsTrue(result.IsSuccess);
+            Assert.IsTrue(executeSolrUpdateTaskInvoked);
+        }
 
         [TestMethod]
         public void PublishToTitle_AnyParameters_TransferNotSuccessfulFromQuestionCommands()
