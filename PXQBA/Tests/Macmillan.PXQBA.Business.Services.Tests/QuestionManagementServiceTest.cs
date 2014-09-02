@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Linq.Dynamic;
-using System.Xml.Serialization;
-using Macmillan.PXQBA.Business.Commands.Contracts;
+﻿using Macmillan.PXQBA.Business.Commands.Contracts;
 using Macmillan.PXQBA.Business.Contracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Business.QuestionParserModule;
 using Macmillan.PXQBA.Business.QuestionParserModule.DataContracts;
-using Macmillan.PXQBA.Business.QuestionParserModule.QML;
 using Macmillan.PXQBA.Business.QuestionParserModule.QTI;
 using Macmillan.PXQBA.Business.Services.Automapper;
 using Macmillan.PXQBA.Common.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Mono.Options;
 using NSubstitute;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Xml.Serialization;
 
 namespace Macmillan.PXQBA.Business.Services.Tests
 {
@@ -45,10 +42,7 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             QuestionParserProvider.AddParser(new QTIQuestionParser());
 
             questionCommands = Substitute.For<IQuestionCommands>();
-            questionCommands.GetQuestionList(string.Empty, string.Empty, null, null, 0, 0)
-                .ReturnsForAnyArgs(GetQuestions());
-            questionCommands.GetComparedQuestionList(null, null, null, 0, 0).ReturnsForAnyArgs(GetComparedQuestions());
-
+            
             temporaryQuestionOperation = Substitute.For<ITemporaryQuestionOperation>();
             productCourseManagementService = Substitute.For<IProductCourseManagementService>();
             keywordOperation = Substitute.For<IKeywordOperation>();
@@ -63,6 +57,9 @@ namespace Macmillan.PXQBA.Business.Services.Tests
         [TestMethod]
         public void GetQuestionList_AnyParameters_ListOfQuestion()
         {
+            questionCommands.GetQuestionList(string.Empty, string.Empty, null, null, 0, 0)
+                .ReturnsForAnyArgs(GetQuestions());
+
             var result = questionManagementService.GetQuestionList(new Course(), new List<FilterFieldDescriptor>(),
                 new SortCriterion(), 1, 5);
             Assert.IsTrue(result.TotalItems == 2);
@@ -70,10 +67,91 @@ namespace Macmillan.PXQBA.Business.Services.Tests
 
 
         [TestMethod]
+        public void GetQuestionList_AnyParameters_CorrectCommandInvoked()
+        {
+            bool correctInvoked = false;
+
+            const int startingRecordNumber = 5;
+            const int recordCount = 50;
+
+            var course = new Course()
+                         {
+                             ProductCourseId = "Id123",
+                             QuestionRepositoryCourseId = "qrId"
+                         };
+
+            var filterFieldDescriptors = new List<FilterFieldDescriptor>()
+                                         {
+                                             new FilterFieldDescriptor()
+                                             {
+                                                 Field = "Field1"
+                                             },
+                                             new FilterFieldDescriptor()
+                                             {
+                                                 Field = "Field2"
+                                             }
+                                         };
+
+            var sortCriterion = new SortCriterion()
+                                {
+                                    ColumnName = "Field3",
+                                    SortType = SortType.Asc
+                                };
+
+            
+            questionCommands.When(qc=>qc.GetQuestionList(Arg.Is<string>(rid=>rid==course.QuestionRepositoryCourseId),
+                                                         Arg.Is<string>(cid=>cid==course.ProductCourseId),
+                                                         Arg.Is<IEnumerable<FilterFieldDescriptor>>(f => f.ToArray()[0].Field == filterFieldDescriptors[0].Field && 
+                                                                                                         f.ToArray()[1].Field == filterFieldDescriptors[1].Field),
+                                                         Arg.Is<SortCriterion>(s=>s.ColumnName==sortCriterion.ColumnName && s.SortType == sortCriterion.SortType),
+                                                         Arg.Is<int>(srn => srn == startingRecordNumber),
+                                                         Arg.Is<int>(rc =>rc == recordCount))).Do(d=>
+                                                                                                  {
+                                                                                                      correctInvoked =
+                                                                                                          true;
+                                                                                                  });
+
+           questionManagementService.GetQuestionList(course, filterFieldDescriptors,
+                sortCriterion, startingRecordNumber, recordCount);
+
+            Assert.IsTrue(correctInvoked);
+        }
+
+
+        [TestMethod]
         public void GetComparedQuestionList_AnyParameters_ListOfComparesQuestion()
         {
+            questionCommands.GetComparedQuestionList(null, null, null, 0, 0).ReturnsForAnyArgs(GetComparedQuestions());
+
             var result = questionManagementService.GetComparedQuestionList(null, null, null, 0, 0);
             Assert.IsTrue(result.TotalItems == 2);
+        }
+
+        [TestMethod]
+        public void GetComparedQuestionList_AnyParameters_CorrectCommandInvoked()
+        {
+            bool correctInvoked = false;
+
+            const string questionRepositoryCourseId = "repositoryCourseId";
+            const string firstCourseId = "firstCourseId";
+            const string secondCourseId = "secondCourseId";
+            const int startingRecordNumber = 5;
+            const int recordCount = 50;
+
+            questionCommands.When(
+                qc => qc.GetComparedQuestionList(Arg.Is<string>(qrc => qrc == questionRepositoryCourseId),
+                    Arg.Is<string>(fci => fci == firstCourseId),
+                    Arg.Is<string>(sci => sci == secondCourseId),
+                    Arg.Is<int>(srn => srn == startingRecordNumber),
+                    Arg.Is<int>(rc => rc == recordCount))).Do(d=> { correctInvoked = true; });
+
+            questionManagementService.GetComparedQuestionList(questionRepositoryCourseId, 
+                                                              firstCourseId, 
+                                                              secondCourseId,
+                                                              startingRecordNumber,
+                                                              recordCount);
+            
+            Assert.IsTrue(correctInvoked);
         }
 
         [TestMethod]
@@ -96,6 +174,38 @@ namespace Macmillan.PXQBA.Business.Services.Tests
                 .Returns(x => { throw new Exception(); }
                 );
            questionManagementService.CreateQuestion(GetTestCourse(), "HTS", "bank", "chapter");     
+        }
+
+        [TestMethod]
+        public void CreateQuestion_CourseSpecificWithFields_CopyCourseSpecificFields()
+        {
+            const string field1 = "FirstSpecificFields";
+            const string field2 = "SecondSpecificFields";
+            Course couse = new Course()
+                           {
+                               QuestionRepositoryCourseId = "1525",
+                               ProductCourseId = "2135",
+                               FieldDescriptors = new List<CourseMetadataFieldDescriptor>()
+                                                  {
+                                                      new CourseMetadataFieldDescriptor()
+                                                      {
+                                                          Name = field1
+                                                      },
+                                                      new CourseMetadataFieldDescriptor()
+                                                      {
+                                                          Name = field2
+                                                      }
+                                                  }
+                           };
+
+            temporaryQuestionOperation.CreateQuestion(Arg.Any<string>(), Arg.Any<Question>())
+                .Returns(x => (Question)x[1]);
+            var result = questionManagementService.CreateQuestion(couse, "HTS", "bank", "chapter");
+            Assert.IsTrue(result.ProductCourseSections.First().Bank == "bank");
+            Assert.IsTrue(result.ProductCourseSections.First().Chapter == "chapter");
+            Assert.IsTrue(result.ProductCourseSections.First().Title == "New Question");
+            Assert.IsTrue(result.ProductCourseSections.First().DynamicValues.ContainsKey(field1));
+            Assert.IsTrue(result.ProductCourseSections.First().DynamicValues.ContainsKey(field2));
         }
 
         [TestMethod]
@@ -151,6 +261,35 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             Assert.IsTrue(question.ProductCourseSections.Count == 1);
             Assert.IsTrue(question.ProductCourseSections.First().ProductCourseId == course.ProductCourseId);
         }
+
+
+        [TestMethod]
+        public void DuplicateQuestion_QuestionWithoutServiceFieldsOneProductCourse_ExecuteSolrUpdateTaskInvoked()
+        {
+            bool executeSolrUpdateTaskInvoked = false;
+
+            var course = GetTestCourse();
+            questionCommands.CreateQuestion(Arg.Any<string>(), Arg.Any<Question>()).Returns(x => (Question)x[1]);
+            questionCommands.GetQuestion(Arg.Any<string>(), Arg.Any<string>()).Returns(new Question
+            {
+                Id = "15",
+                DuplicateFromShared = "3411",
+                ProductCourseSections = new List<QuestionMetadataSection>
+                                                                                               {
+                                                                                                   new QuestionMetadataSection
+                                                                                                   {
+                                                                                                       ProductCourseId = course.ProductCourseId,
+                                                                                                   }
+                                                                                               }
+            });
+
+            questionCommands.When(q => q.ExecuteSolrUpdateTask()).Do(d => { executeSolrUpdateTaskInvoked = true; });
+
+            questionManagementService.DuplicateQuestion(course, "QuestionId");
+
+            Assert.IsTrue(executeSolrUpdateTaskInvoked);
+        }
+
 
         [TestMethod]
         public void UpdateQuestion_QuestionWithNewKeyWords_ProperlySettedQuestion()
@@ -226,6 +365,21 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             questionCommands.UpdateQuestionField(null, null, null, null, null, null).ReturnsForAnyArgs(true);
             Assert.IsTrue(questionManagementService.UpdateQuestionField(new Course() {ProductCourseId = "23"}, null,
                 null, null, new List<Capability>()));
+        }
+
+        [TestMethod]
+        public void UpdateQuestionField_AnyCorrectParametrs_ExecuteSolrUpdateTaskInvoked()
+        {
+            bool executeSolrUpdateTaskInvoked = false;
+            
+            questionCommands.When(q => q.ExecuteSolrUpdateTask()).Do(d => { executeSolrUpdateTaskInvoked = true; });
+
+            questionCommands.UpdateQuestionField(null, null, null, null, null, null).ReturnsForAnyArgs(true);
+
+            questionManagementService.UpdateQuestionField(new Course() {ProductCourseId = "23"}, null,
+                null, null, new List<Capability>());
+
+            Assert.IsTrue(executeSolrUpdateTaskInvoked);
         }
 
         [TestMethod]
@@ -346,6 +500,82 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             Assert.IsTrue(draftQuestion.Id == originalQuestion.Id);
         }
 
+        [TestMethod] 
+        public void PublishDraftToOriginal_DraftWithManyDrafts_UpdatedSubDrafts()
+        {
+            const string subDraftId = "42";
+
+            bool updatedSubDrafts = false;
+
+            Course cousre = GetTestCourse();
+            
+            var draftQuestion = new Question()
+            {
+                DuplicateFromShared = "14",
+                DraftFrom = "111",
+                Id = "15"
+            };
+            var draftFromDraftQuestion = new Question()
+            {
+                DuplicateFromShared = "88989",
+                DraftFrom = draftQuestion.Id,
+                Id = "324"
+            };
+            questionCommands.GetQuestion(Arg.Any<string>(), draftFromDraftQuestion.Id).Returns(draftFromDraftQuestion);
+            questionCommands.GetQuestion(Arg.Any<string>(), draftQuestion.Id).Returns(draftQuestion);
+            questionCommands.GetQuestionDrafts(Arg.Is<string>(r=>r==cousre.QuestionRepositoryCourseId),
+                                               Arg.Is<Question>(q=>q.Id==draftQuestion.Id))
+                                         .Returns(new List<Question>()
+                                                  {
+                                                      new Question()
+                                                      {
+                                                          Id = subDraftId
+                                                      }
+                                                  });
+
+            questionCommands.When(qc => qc.UpdateQuestions(Arg.Is<IEnumerable<Question>>(q => q.ToArray()[0].Id == subDraftId &&
+                                                           q.ToArray()[0].DraftFrom == draftQuestion.DraftFrom),
+                                                       Arg.Is<string>(r=>r==cousre.QuestionRepositoryCourseId),
+                                                       Arg.Any<string>())).Do(d=> { updatedSubDrafts = true; });
+
+            var isSuccess = questionManagementService.PublishDraftToOriginal(cousre, draftFromDraftQuestion.Id);
+
+            Assert.IsTrue(isSuccess);
+            Assert.IsTrue(updatedSubDrafts);
+            Assert.IsTrue(draftFromDraftQuestion.DraftFrom == "111");
+            Assert.IsTrue(draftFromDraftQuestion.IsPublishedFromDraft);
+            Assert.IsTrue(draftFromDraftQuestion.Id == draftQuestion.Id);
+        }
+
+
+        [TestMethod] 
+        public void PublishDraftToOriginal_AnyCorrectParametrs_ExecuteSolrUpdateTaskInvoked()
+        {
+            bool executeSolrUpdateTaskInvoked = false;
+
+            var originalQuestion = new Question()
+            {
+                DuplicateFromShared = "14",
+                DraftFrom = "111",
+                Id = "15"
+            };
+            var draftQuestion = new Question()
+            {
+                DuplicateFromShared = "88989",
+                DraftFrom = originalQuestion.Id,
+                Id = "324"
+            };
+            questionCommands.GetQuestion(Arg.Any<string>(), draftQuestion.Id).Returns(draftQuestion);
+            questionCommands.GetQuestion(Arg.Any<string>(), originalQuestion.Id).Returns(originalQuestion);
+
+            questionCommands.When(q => q.ExecuteSolrUpdateTask()).Do(d => { executeSolrUpdateTaskInvoked = true; });
+
+            bool isSuccess = questionManagementService.PublishDraftToOriginal(GetTestCourse(), draftQuestion.Id);
+
+            Assert.IsTrue(isSuccess);
+            Assert.IsTrue(executeSolrUpdateTaskInvoked);
+        }
+
         [TestMethod]
         public void PublishDraftToOriginal_NotDraftQuestion_False()
         {
@@ -411,6 +641,33 @@ namespace Macmillan.PXQBA.Business.Services.Tests
         }
 
         [TestMethod]
+        public void UpdateSharedQuestionField_AnyCorrectParametrs_ExecuteSolrUpdateTaskInvoked()
+        {
+            bool executeSolrUpdateTaskInvoked = false;
+
+            var course = GetTestCourse();
+            questionCommands.UpdateSharedQuestionField(null, null, null, null).ReturnsForAnyArgs(true);
+            questionCommands.GetQuestion(Arg.Any<string>(), Arg.Any<string>()).Returns(new Question()
+            {
+                ProductCourseSections = new List<QuestionMetadataSection>
+                                                                 {
+                                                                     new QuestionMetadataSection
+                                                                     {
+                                                                     
+                                                                     }
+                                                                 }
+            });
+
+            questionCommands.When(q => q.ExecuteSolrUpdateTask()).Do(d => { executeSolrUpdateTaskInvoked = true; });
+
+            productCourseManagementService.GetProductCourse(Arg.Any<string>()).Returns(new Course());
+
+            questionManagementService.UpdateSharedQuestionField(course, null, null, null);
+
+            Assert.IsTrue(executeSolrUpdateTaskInvoked);
+        }
+
+        [TestMethod]
         public void UpdateSharedQuestionField_NotDraftQuestion_False()
         {
 
@@ -464,6 +721,49 @@ namespace Macmillan.PXQBA.Business.Services.Tests
         {
             questionCommands.RemoveFromTitle(null, null, null).ReturnsForAnyArgs(true);
             Assert.IsTrue(questionManagementService.RemoveFromTitle(new string[] { }, GetTestCourse()));
+        }
+
+        [TestMethod]
+        public void RemoveFromTitle_AnyCorrectParametrs_ExecuteSolrUpdateTaskInvoked()
+        {
+            bool executeSolrUpdateTaskInvoked = false;
+
+            questionCommands.When(q => q.ExecuteSolrUpdateTask()).Do(d => { executeSolrUpdateTaskInvoked = true; });
+            questionCommands.RemoveFromTitle(null, null, null).ReturnsForAnyArgs(true);
+
+            questionManagementService.RemoveFromTitle(new string[] {}, GetTestCourse());
+            Assert.IsTrue(executeSolrUpdateTaskInvoked);
+        }
+
+        [TestMethod] 
+        public void RemoveFromTitle_CorrectParametrs_CorrectCommandInvoked()
+        {
+            bool correctCommandInvoked = false;
+
+            Course course = new Course()
+                            {
+                                ProductCourseId = "ProductCourseId",
+                                QuestionRepositoryCourseId = "QuestionRepositoryCourseId"
+                            };
+
+            string[] questionIds =
+            {
+                "q1",
+                "q2"
+            };
+
+            questionCommands.RemoveFromTitle(null, null, null).ReturnsForAnyArgs(true);
+
+            questionCommands.When(qc => qc.RemoveFromTitle(Arg.Is<string[]>(ar => ar[0] == questionIds[0] && 
+                                                                                  ar[1]==questionIds[1]),
+                                                         Arg.Is<string>(cr=>cr==course.QuestionRepositoryCourseId),
+                                                         Arg.Is<string>(cid=>cid==course.ProductCourseId)
+            )).Do(d=> { correctCommandInvoked = true; });
+
+            var result = questionManagementService.RemoveFromTitle(questionIds, course);
+
+            Assert.IsTrue(correctCommandInvoked);
+            Assert.IsTrue(result);
         }
 
         [TestMethod]
@@ -527,6 +827,29 @@ namespace Macmillan.PXQBA.Business.Services.Tests
              Assert.IsTrue(questionVersion.RestoredFromVersion == version);
              Assert.IsTrue(questionVersion.DraftFrom == questionFromCommands.DraftFrom);
              Assert.IsTrue(string.IsNullOrEmpty(questionVersion.DuplicateFromShared));
+         }
+
+         [TestMethod]
+         public void RestoreQuestionVersion_ExistingVersion_ExecuteSolrUpdateTaskInvoked()
+         {
+             bool executeSolrUpdateTaskInvoked = false;
+
+             var questionFromCommands = new Question()
+             {
+                 DuplicateFromShared = "88989",
+                 DraftFrom = "324",
+                 Version = 2
+             };
+             const string version = "2";
+
+             questionCommands.GetQuestion(Arg.Any<string>(), Arg.Any<string>(), "2").Returns(questionFromCommands);
+
+             questionCommands.When(q => q.ExecuteSolrUpdateTask()).Do(d => { executeSolrUpdateTaskInvoked = true; });
+
+             var questionVersion = questionManagementService.RestoreQuestionVersion(GetTestCourse(), "32", version);
+
+             Assert.IsTrue(questionVersion.RestoredFromVersion == version);
+             Assert.IsTrue(executeSolrUpdateTaskInvoked);
          }
 
          [TestMethod]
@@ -615,6 +938,24 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             Assert.IsTrue(result.IsSuccess);
         }
 
+        [TestMethod]
+        public void BulklUpdateQuestionField_AnyParameters_ExecuteSolrUpdateTaskInvoked()
+        {
+            bool executeSolrUpdateTaskInvoked = false;
+            
+            questionCommands.BulkUpdateQuestionField(null, null, null, null, null, null).ReturnsForAnyArgs(new BulkOperationResult()
+            {
+                IsSuccess = true
+            });
+
+            questionCommands.When(q => q.ExecuteSolrUpdateTask()).Do(d => { executeSolrUpdateTaskInvoked = true; });
+
+            string[] questionIds = { "1", "2" };
+            var result = questionManagementService.BulklUpdateQuestionField(GetTestCourse(), questionIds, "field", "bank 1", new List<Capability>());
+
+            Assert.IsTrue(result.IsSuccess);
+            Assert.IsTrue(executeSolrUpdateTaskInvoked);
+        }
 
         [TestMethod]
         public void PublishToTitle_AnyParameters_TransferNotSuccessfulFromQuestionCommands()
@@ -719,6 +1060,167 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             Assert.IsTrue(questions[0].ProductCourseSections.First(q => q.ProductCourseId == newProductCourseId.ToString()).DynamicValues.First().Value.Count == 1);
         }
 
+
+        [TestMethod] 
+        public void PublishToTitle_QuestionWithManyProductCourses_NewProductCourseSectionAdded()
+        {
+            var course = GetTestCourse();
+            course.FieldDescriptors = new List<CourseMetadataFieldDescriptor>()
+                                      {
+                                          new CourseMetadataFieldDescriptor()
+                                          {
+                                              Name = "keywords",
+                                              CourseMetadataFieldValues = new List<CourseMetadataFieldValue>()
+                                                                          {
+                                                                              new CourseMetadataFieldValue()
+                                                                              {
+                                                                                  Text = "val2"
+                                                                              },
+                                                                                 new CourseMetadataFieldValue()
+                                                                              {
+                                                                                  Text = "val3"
+                                                                              }
+
+                                                                          }
+                                          }
+                                      };
+
+            string[] questionIds = new[] { "1", "2" };
+            int newProductCourseId = 1100;
+            List<Question> questions = new List<Question>
+                                       {
+                                           new Question()
+                                           {
+                                                ProductCourseSections = new List<QuestionMetadataSection>()
+                                                                       {
+                                                                           new QuestionMetadataSection()
+                                                                           {
+                                                                               ProductCourseId = course.ProductCourseId
+                                                                           },
+                                                                             new QuestionMetadataSection()
+                                                                           {
+                                                                               ProductCourseId = "34"
+                                                                           },
+                                                                             new QuestionMetadataSection()
+                                                                           {
+                                                                               ProductCourseId = "35"
+                                                                           }
+                                                                       },
+                                                DefaultSection = new QuestionMetadataSection()
+                                                                 {
+                                                                     DynamicValues = new Dictionary<string, List<string>>()
+                                                                                     {
+                                                                                         {"keywords", new List<string>(){"val1", "val2"}}
+                                                                                     }
+                                                                 }
+                                           },
+                                           new Question()
+                                           {
+                                                 ProductCourseSections = new List<QuestionMetadataSection>()
+                                                                       {
+                                                                           new QuestionMetadataSection()
+                                                                           {
+                                                                               ProductCourseId = course.ProductCourseId
+                                                                           },
+                                                                             new QuestionMetadataSection()
+                                                                           {
+                                                                               ProductCourseId = "34"
+                                                                           },
+                                                                             new QuestionMetadataSection()
+                                                                           {
+                                                                               ProductCourseId = "35"
+                                                                           }
+                                                                       },
+                                                  DefaultSection = new QuestionMetadataSection()
+                                                                 {
+                                                                     DynamicValues = new Dictionary<string, List<string>>()
+                                                                                     {
+                                                                                         {"keywords", new List<string>(){"val1", "val2"}}
+                                                                                     }
+                                                                 }
+                                           }
+                                       };
+
+            questionCommands.UpdateQuestions(Arg.Any<IEnumerable<Question>>(), Arg.Any<string>(), Arg.Any<string>()).Returns(true);
+            questionCommands.GetQuestions(Arg.Any<string>(), Arg.Any<string[]>()).Returns(questions);
+            productCourseManagementService.GetProductCourse(Arg.Any<string>()).ReturnsForAnyArgs(course);
+
+            var result = questionManagementService.PublishToTitle(questionIds, newProductCourseId, "bank 1", "chapter 1", course);
+
+            Assert.IsTrue(result.IsSuccess);
+            Assert.IsTrue(questions[0].ProductCourseSections.Count() == 4);
+            Assert.IsTrue(questions[1].ProductCourseSections.Count() == 4);
+            Assert.IsTrue(questions[0].ProductCourseSections.Count(q => q.ProductCourseId == newProductCourseId.ToString()) == 1);
+            Assert.IsTrue(questions[1].ProductCourseSections.Count(q => q.ProductCourseId == newProductCourseId.ToString()) == 1);
+            Assert.IsTrue(questions[0].ProductCourseSections.First(q => q.ProductCourseId == newProductCourseId.ToString()).DynamicValues.First().Value.Count == 1);
+        }
+
+        [TestMethod]
+        public void PublishToTitle_AnyParameters_ExecuteSolrUpdateTaskInvoked()
+        {
+            bool executeSolrUpdateTaskInvoked = false;
+
+            var course = GetTestCourse();
+            course.FieldDescriptors = new List<CourseMetadataFieldDescriptor>()
+                                      {
+                                          new CourseMetadataFieldDescriptor()
+                                          {
+                                              Name = "keywords",
+                                              CourseMetadataFieldValues = new List<CourseMetadataFieldValue>()
+                                                                          {
+                                                                              new CourseMetadataFieldValue()
+                                                                              {
+                                                                                  Text = "val2"
+                                                                              },
+                                                                                 new CourseMetadataFieldValue()
+                                                                              {
+                                                                                  Text = "val3"
+                                                                              }
+
+                                                                          }
+                                          }
+                                      };
+
+            string[] questionIds = new[] { "1", "2" };
+            int newProductCourseId = 1100;
+            List<Question> questions = new List<Question>
+                                       {
+                                           new Question()
+                                           {
+                                               ProductCourseSections = new List<QuestionMetadataSection>()
+                                                                       {
+                                                                           new QuestionMetadataSection()
+                                                                           {
+                                                                               ProductCourseId = course.ProductCourseId,
+                                                                               DynamicValues = new Dictionary<string, List<string>>()
+                                                                                     {
+                                                                                         {"keywords", new List<string>(){"val1", "val2"}}
+                                                                                     }
+                                                                           }
+                                                                       },
+                                                DefaultSection = new QuestionMetadataSection()
+                                                                 {
+                                                                     DynamicValues = new Dictionary<string, List<string>>()
+                                                                                     {
+                                                                                         {"keywords", new List<string>(){"val1", "val2"}}
+                                                                                     }
+                                                                 }
+                                           }
+ };
+            questionCommands.When(q=>q.ExecuteSolrUpdateTask()).Do(d=> { executeSolrUpdateTaskInvoked = true; });
+            questionCommands.UpdateQuestions(Arg.Any<IEnumerable<Question>>(), Arg.Any<string>(), Arg.Any<string>()).Returns(true);
+            questionCommands.GetQuestions(Arg.Any<string>(), Arg.Any<string[]>()).Returns(questions);
+            productCourseManagementService.GetProductCourse(Arg.Any<string>()).ReturnsForAnyArgs(course);
+
+            var result = questionManagementService.PublishToTitle(questionIds, newProductCourseId, "bank 1", "chapter 1", course);
+
+            Assert.IsTrue(executeSolrUpdateTaskInvoked);
+            Assert.IsTrue(result.IsSuccess);
+            Assert.IsTrue(questions[0].ProductCourseSections.Count(q => q.ProductCourseId == newProductCourseId.ToString()) == 1);
+            Assert.IsTrue(questions[0].ProductCourseSections.First(q => q.ProductCourseId == newProductCourseId.ToString()).DynamicValues.First().Value.Count == 1);
+        }
+
+
         [TestMethod]
         public void RemoveRelatedQuestionTempResources_QuestionWithImages_SuccessRun()
         {
@@ -743,6 +1245,14 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             questionManagementService.RemoveRelatedQuestionTempResources("QSDDF", course);
         }
 
+        [TestMethod]  
+        public void RemoveRelatedQuestionTempResources_NonexistentQuestion_NoException()
+        {
+            var course = GetTestCourse();
+             
+            questionManagementService.RemoveRelatedQuestionTempResources("questionId", course);
+        }
+
         [TestMethod]
         public void ImportFile_ParsedQuestionFileWithOnequestion_One()
         {
@@ -751,6 +1261,22 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             modelProfileService.GetQuestionFromParsedQuestion(Arg.Any<ParsedQuestion>(), course)
                 .Returns(x => GetQuestionFromParsedQuestion((ParsedQuestion) x[0], (Course) x[1]));
             Assert.IsTrue(questionManagementService.ImportFile(1, course.ProductCourseId) == 1);
+        }
+
+        [TestMethod]
+        public void ImportFile_ParsedQuestionFileWithOnequestion_ExecuteSolrUpdateTaskInvoked()
+        {
+            bool executeSolrUpdateTaskInvoked = false;
+            var course = GetTestCourse();
+            productCourseManagementService.GetProductCourse(null).ReturnsForAnyArgs(course);
+            questionCommands.When(q => q.ExecuteSolrUpdateTask()).Do(d => { executeSolrUpdateTaskInvoked = true; });
+
+            modelProfileService.GetQuestionFromParsedQuestion(Arg.Any<ParsedQuestion>(), course)
+                .Returns(x => GetQuestionFromParsedQuestion((ParsedQuestion)x[0], (Course)x[1]));
+
+            questionManagementService.ImportFile(1, course.ProductCourseId);
+
+            Assert.IsTrue(executeSolrUpdateTaskInvoked);
         }
 
         [TestMethod]
@@ -817,6 +1343,63 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             Assert.IsTrue(questionManagementService.ImportQuestions(course, new[] {"1", "2"}, targetCourse));
             Assert.IsTrue(questions.Any( x=> string.IsNullOrEmpty(x.DefaultSection.Chapter)));
             Assert.IsTrue(targetCourse.FieldDescriptors.First().CourseMetadataFieldValues.Select(x=> x.Text).Contains("val2"));
+        }
+
+
+        [TestMethod]
+        public void ImportQuestions_TwoCorrectCoursesAndQuestions_ExecuteSolrUpdateTaskInvoked()
+        {
+            bool executeSolrUpdateTaskInvoked = false;
+
+            var course = GetTestCourse();
+            var targetCourse = GetTestCourse();
+            targetCourse.QuestionRepositoryCourseId = "1535";
+            targetCourse.FieldDescriptors = new List<CourseMetadataFieldDescriptor>()
+                                            {
+                                                new CourseMetadataFieldDescriptor()
+                                                {
+                                                    Name = "keyword",
+                                                    CourseMetadataFieldValues = new List<CourseMetadataFieldValue>()
+                                                                                {
+                                                                                    new CourseMetadataFieldValue()
+                                                                                    {
+                                                                                        Text = "val1"
+                                                                                    }
+                                                                                },
+                                                    Type =  MetadataFieldType.Keywords
+                                                }
+                                            };
+            var questions = new List<Question>
+                            {
+                                new Question
+                                {
+                                    ProductCourseSections = new List<QuestionMetadataSection>
+                                                            {
+                                                                new QuestionMetadataSection
+                                                                {
+                                                                    ProductCourseId = course.ProductCourseId,
+                                                                    DynamicValues = new Dictionary<string, List<string>>()
+                                                                                    {
+                                                                                        {"keyword", new List<string>(){"val2"}}
+                                                                                    }
+                                                                }
+                                                            },
+                                    DefaultSection = new QuestionMetadataSection()
+                                                     {
+                                                         Chapter = "chapter"
+                                                     }
+                                }
+                            };
+
+            keywordOperation.GetKeywordList(targetCourse.ProductCourseId, "keyword")
+                .Returns(new List<string>() { "val2" });
+            questionCommands.GetQuestions(null, null).ReturnsForAnyArgs(questions);
+
+            questionCommands.When(q => q.ExecuteSolrUpdateTask()).Do(d => { executeSolrUpdateTaskInvoked = true; });
+
+            questionManagementService.ImportQuestions(course, new[] {"1", "2"}, targetCourse);
+
+            Assert.IsTrue(executeSolrUpdateTaskInvoked);
         }
 
 

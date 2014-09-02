@@ -85,6 +85,31 @@ namespace Macmillan.PXQBA.Common.Helpers.Tests
                            };
 
             Assert.IsFalse(QuestionHelper.IsDraft(question));
+        }
+
+        [TestMethod]
+        public void IsDraft_Draft_True()
+        {
+            var question = new Bfw.Agilix.DataContracts.Question
+            {
+                Id = "2",
+                MetadataElements = new Dictionary<string, XElement>
+                                                                  {
+                                                                        {"draftfrom", XElement.Parse(@" <draftfrom>123</draftfrom>")}
+                                                                  },
+
+            };
+
+            Assert.IsTrue(QuestionHelper.IsDraft(question));
+        }
+
+
+        [TestMethod]  
+        public void GetQuestionRelatedResources_NotCorrectXml_NoException()
+        {
+            var list = QuestionHelper.GetQuestionRelatedResources("<question not correct xml <<");
+
+            Assert.AreEqual(list.Count, 0);
 
         }
     }
