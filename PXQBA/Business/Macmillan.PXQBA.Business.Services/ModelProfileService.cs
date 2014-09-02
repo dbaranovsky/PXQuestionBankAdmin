@@ -415,13 +415,11 @@ namespace Macmillan.PXQBA.Business.Services
             return fields;
         }
 
-        public string GetTypeFromParsedType(ParsedQuestionType type)
+        private string GetTypeFromParsedType(ParsedQuestionType type)
         {
             switch (type)
             {
-                 case ParsedQuestionType.MultipleChoice:
-                    return "choice";
-                 case ParsedQuestionType.MultipleAnswer:
+                case ParsedQuestionType.MultipleAnswer:
                     return "answer";
                  case ParsedQuestionType.Essay:
                     return "essay";
