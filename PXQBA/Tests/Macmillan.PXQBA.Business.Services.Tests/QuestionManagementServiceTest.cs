@@ -724,6 +724,49 @@ namespace Macmillan.PXQBA.Business.Services.Tests
         }
 
         [TestMethod]
+        public void RemoveFromTitle_AnyCorrectParametrs_ExecuteSolrUpdateTaskInvoked()
+        {
+            bool executeSolrUpdateTaskInvoked = false;
+
+            questionCommands.When(q => q.ExecuteSolrUpdateTask()).Do(d => { executeSolrUpdateTaskInvoked = true; });
+            questionCommands.RemoveFromTitle(null, null, null).ReturnsForAnyArgs(true);
+
+            questionManagementService.RemoveFromTitle(new string[] {}, GetTestCourse());
+            Assert.IsTrue(executeSolrUpdateTaskInvoked);
+        }
+
+        [TestMethod] 
+        public void RemoveFromTitle_CorrectParametrs_CorrectCommandInvoked()
+        {
+            bool correctCommandInvoked = false;
+
+            Course course = new Course()
+                            {
+                                ProductCourseId = "ProductCourseId",
+                                QuestionRepositoryCourseId = "QuestionRepositoryCourseId"
+                            };
+
+            string[] questionIds =
+            {
+                "q1",
+                "q2"
+            };
+
+            questionCommands.RemoveFromTitle(null, null, null).ReturnsForAnyArgs(true);
+
+            questionCommands.When(qc => qc.RemoveFromTitle(Arg.Is<string[]>(ar => ar[0] == questionIds[0] && 
+                                                                                  ar[1]==questionIds[1]),
+                                                         Arg.Is<string>(cr=>cr==course.QuestionRepositoryCourseId),
+                                                         Arg.Is<string>(cid=>cid==course.ProductCourseId)
+            )).Do(d=> { correctCommandInvoked = true; });
+
+            var result = questionManagementService.RemoveFromTitle(questionIds, course);
+
+            Assert.IsTrue(correctCommandInvoked);
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
         public void RemoveFromTitle_AnyIncorrectParametrs_False()
         {
             questionCommands.RemoveFromTitle(null, null, null).ReturnsForAnyArgs(false);
@@ -784,6 +827,29 @@ namespace Macmillan.PXQBA.Business.Services.Tests
              Assert.IsTrue(questionVersion.RestoredFromVersion == version);
              Assert.IsTrue(questionVersion.DraftFrom == questionFromCommands.DraftFrom);
              Assert.IsTrue(string.IsNullOrEmpty(questionVersion.DuplicateFromShared));
+         }
+
+         [TestMethod]
+         public void RestoreQuestionVersion_ExistingVersion_ExecuteSolrUpdateTaskInvoked()
+         {
+             bool executeSolrUpdateTaskInvoked = false;
+
+             var questionFromCommands = new Question()
+             {
+                 DuplicateFromShared = "88989",
+                 DraftFrom = "324",
+                 Version = 2
+             };
+             const string version = "2";
+
+             questionCommands.GetQuestion(Arg.Any<string>(), Arg.Any<string>(), "2").Returns(questionFromCommands);
+
+             questionCommands.When(q => q.ExecuteSolrUpdateTask()).Do(d => { executeSolrUpdateTaskInvoked = true; });
+
+             var questionVersion = questionManagementService.RestoreQuestionVersion(GetTestCourse(), "32", version);
+
+             Assert.IsTrue(questionVersion.RestoredFromVersion == version);
+             Assert.IsTrue(executeSolrUpdateTaskInvoked);
          }
 
          [TestMethod]
@@ -1198,6 +1264,22 @@ namespace Macmillan.PXQBA.Business.Services.Tests
         }
 
         [TestMethod]
+        public void ImportFile_ParsedQuestionFileWithOnequestion_ExecuteSolrUpdateTaskInvoked()
+        {
+            bool executeSolrUpdateTaskInvoked = false;
+            var course = GetTestCourse();
+            productCourseManagementService.GetProductCourse(null).ReturnsForAnyArgs(course);
+            questionCommands.When(q => q.ExecuteSolrUpdateTask()).Do(d => { executeSolrUpdateTaskInvoked = true; });
+
+            modelProfileService.GetQuestionFromParsedQuestion(Arg.Any<ParsedQuestion>(), course)
+                .Returns(x => GetQuestionFromParsedQuestion((ParsedQuestion)x[0], (Course)x[1]));
+
+            questionManagementService.ImportFile(1, course.ProductCourseId);
+
+            Assert.IsTrue(executeSolrUpdateTaskInvoked);
+        }
+
+        [TestMethod]
         public void ImportFile_ParsedQuestionFileWithFiveQuestions_Five()
         {
 
@@ -1261,6 +1343,63 @@ namespace Macmillan.PXQBA.Business.Services.Tests
             Assert.IsTrue(questionManagementService.ImportQuestions(course, new[] {"1", "2"}, targetCourse));
             Assert.IsTrue(questions.Any( x=> string.IsNullOrEmpty(x.DefaultSection.Chapter)));
             Assert.IsTrue(targetCourse.FieldDescriptors.First().CourseMetadataFieldValues.Select(x=> x.Text).Contains("val2"));
+        }
+
+
+        [TestMethod]
+        public void ImportQuestions_TwoCorrectCoursesAndQuestions_ExecuteSolrUpdateTaskInvoked()
+        {
+            bool executeSolrUpdateTaskInvoked = false;
+
+            var course = GetTestCourse();
+            var targetCourse = GetTestCourse();
+            targetCourse.QuestionRepositoryCourseId = "1535";
+            targetCourse.FieldDescriptors = new List<CourseMetadataFieldDescriptor>()
+                                            {
+                                                new CourseMetadataFieldDescriptor()
+                                                {
+                                                    Name = "keyword",
+                                                    CourseMetadataFieldValues = new List<CourseMetadataFieldValue>()
+                                                                                {
+                                                                                    new CourseMetadataFieldValue()
+                                                                                    {
+                                                                                        Text = "val1"
+                                                                                    }
+                                                                                },
+                                                    Type =  MetadataFieldType.Keywords
+                                                }
+                                            };
+            var questions = new List<Question>
+                            {
+                                new Question
+                                {
+                                    ProductCourseSections = new List<QuestionMetadataSection>
+                                                            {
+                                                                new QuestionMetadataSection
+                                                                {
+                                                                    ProductCourseId = course.ProductCourseId,
+                                                                    DynamicValues = new Dictionary<string, List<string>>()
+                                                                                    {
+                                                                                        {"keyword", new List<string>(){"val2"}}
+                                                                                    }
+                                                                }
+                                                            },
+                                    DefaultSection = new QuestionMetadataSection()
+                                                     {
+                                                         Chapter = "chapter"
+                                                     }
+                                }
+                            };
+
+            keywordOperation.GetKeywordList(targetCourse.ProductCourseId, "keyword")
+                .Returns(new List<string>() { "val2" });
+            questionCommands.GetQuestions(null, null).ReturnsForAnyArgs(questions);
+
+            questionCommands.When(q => q.ExecuteSolrUpdateTask()).Do(d => { executeSolrUpdateTaskInvoked = true; });
+
+            questionManagementService.ImportQuestions(course, new[] {"1", "2"}, targetCourse);
+
+            Assert.IsTrue(executeSolrUpdateTaskInvoked);
         }
 
 
