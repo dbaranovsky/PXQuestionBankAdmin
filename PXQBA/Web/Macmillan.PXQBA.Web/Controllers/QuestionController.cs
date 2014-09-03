@@ -345,7 +345,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             {
                 return new HttpUnauthorizedResult();
             }
-            var question = questionManagementService.CreateDraft(courseHelper.GetCourse(courseId), questionId);
+            var question = questionManagementService.CreateDraft(courseHelper.GetCourse(courseId), questionId, version);
             return JsonCamel(CreateQuestionViewModelForEditing(courseId, question));
 
         }
