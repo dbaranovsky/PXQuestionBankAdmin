@@ -214,12 +214,10 @@ var QuestionListMenu = React.createClass({
       var isDisabled =false;
       var editTooltip = "";
 
-      if(this.props.data[window.consts.questionStatusName] == window.enums.statuses.deleted){
-           isDisabled= true;
-           editTooltip = this.props.data.draftfrom != ""? "You can't edit a deleted draft." : 
-                                                  "You can't edit a deleted question.";
-           editTooltip += " Change the status to in-progress or duplicate the question.";
-
+      if(isDeleted){
+        if(!this.props.metadataCapabilities.canEditQuestion) {
+          isDisabled = true;
+        }
       }else if(!this.props.metadataCapabilities.canEditQuestion && 
          !this.props.isShared &&
          !this.props.data[window.consts.questionStatusName] == window.enums.statuses.availibleToInstructor){
