@@ -319,7 +319,7 @@ namespace Bfw.Agilix.Dlap.Components.Session
                         // not much we can do here, so just reauth the user...
                     }
 
-                    if (ticket != null && ticket.Expired)
+                    if (ticket == null || ticket.Expired)
                     {
                         StartBrainHoneySession(username, ConfigurationManager.AppSettings["BrainhoneyDefaultPassword"], timeZoneInfo);
                     }
