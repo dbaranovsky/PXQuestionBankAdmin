@@ -154,7 +154,7 @@ namespace Macmillan.PXQBA.Business.Services.Automapper
                 .ForMember(d => d.ReferenceId, opt => opt.MapFrom(s => s.Reference))
                 .ForMember(d => d.Email, opt => opt.MapFrom(s => s.Email))
                 .ForMember(d => d.DomainId, opt => opt.MapFrom(s => s.Domain != null ? s.Domain.Id : ""))
-                .ForMember(d => d.DomainName, opt => opt.MapFrom(s => s.Domain != null ? s.Domain.Name : ""))
+                .ForMember(d => d.DomainName, opt => opt.MapFrom(s => s.Credentials != null ? s.Credentials.UserSpace : ""))
                 .ForMember(d => d.LastLogin, opt => opt.MapFrom(s => s.LastLogin));
 
             Mapper.CreateMap<Course, ProductCourseViewModel>()

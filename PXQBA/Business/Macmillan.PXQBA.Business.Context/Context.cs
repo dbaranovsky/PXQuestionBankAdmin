@@ -13,6 +13,7 @@ using Bfw.Common.Logging;
 using Bfw.PX.Biz.ServiceContracts;
 using Macmillan.PXQBA.Business.Models;
 using Macmillan.PXQBA.Common.Helpers;
+using Course = Bfw.Agilix.DataContracts.Course;
 
 namespace Macmillan.PXQBA.Business
 {
@@ -33,7 +34,6 @@ namespace Macmillan.PXQBA.Business
         /// The cache provider.
         /// </value>
         public ICacheProvider CacheProvider { get; protected set; }
-
         public Context(ISessionManager sessionManager, ILogger logger, ITraceManager tracer, ICacheProvider cacheProvider, IRAServices raServices)
         {
             this.sessionManager = sessionManager;
@@ -83,9 +83,69 @@ namespace Macmillan.PXQBA.Business
                 if (!search.Users.IsNullOrEmpty())
                 {
                     var agxUser = search.Users.First();
+                    UpdateUserSubscription(agxUser);
                     CurrentUser = Mapper.Map<UserInfo>(agxUser);
                 }
             }
+        }
+
+        private void UpdateUserSubscription(AgilixUser agxUser)
+        {
+            var cmd = new GetUserEnrollmentList()
+                      {
+                          SearchParameters = new EntitySearch()
+                                             {
+                                                 UserId = agxUser.Id
+                                             }
+                      };
+           cmd.ParseResponse(AdminDlapConnection.Send(cmd.ToRequest()));
+            if (!cmd.Enrollments.Any() ||
+                !cmd.Enrollments.Any(x => x.CourseId == ConfigurationHelper.GetTemporaryCourseId()))
+            {
+                try
+                {
+                    SetDummyCourseEnrollment(agxUser);
+                }
+                catch (Exception e)
+                {
+                   logger.Log(e, LogSeverity.Error);
+                }
+               
+            }
+
+
+        }
+
+        private void SetDummyCourseEnrollment(AgilixUser agxUser)
+        {
+           logger.Log(string.Format("Subscribe userId={0} to QBA Dummy course", agxUser.Id), LogSeverity.Information);
+            
+            var cmd = new CreateEnrollment()
+                      {
+                          RunAsync = false,
+                      };
+            cmd.Add(new Enrollment()
+                    {
+                        CourseId = ConfigurationHelper.GetTemporaryCourseId(),
+                        Course =  new Course()
+                                  {
+                                      Id = ConfigurationHelper.GetTemporaryCourseId()
+                                  },
+                        User = new AgilixUser()
+                               {
+                                   Id = agxUser.Id
+                               },
+                        Domain = new Domain()
+                                 {
+                                     Id = agxUser.Domain.Id
+                                 },
+                        Flags = DlapRights.ReadCourseFull| DlapRights.ReadCourse | DlapRights.UpdateCourse,
+                        Status = ((int)EnrollmentStatus.Active).ToString(),
+                        StartDate = DateTime.Now,
+                        EndDate = DateTime.Now.AddYears(1000)
+                    });
+
+           cmd.ParseResponse(AdminDlapConnection.Send(cmd.ToRequest()));
         }
 
         private void InitializeSession(string loggedUserId)
@@ -95,7 +155,7 @@ namespace Macmillan.PXQBA.Business
             if (session == null)
             {
                 logger.Log("Could not resume session, starting new session", LogSeverity.Debug);
-                session = sessionManager.StartNewSession(domainUserName, ConfigurationHelper.GetBrainhoneyDefaultPassword(), true, CurrentUser.Id);
+                session = sessionManager.StartNewSession(domainUserName, ConfigurationHelper.GetBrainhoneyDefaultPassword(), true, CurrentUser.Id, TimeZoneInfo.Local);
             }
             session.UserId = CurrentUser.Id;
             sessionManager.CurrentSession = session;
