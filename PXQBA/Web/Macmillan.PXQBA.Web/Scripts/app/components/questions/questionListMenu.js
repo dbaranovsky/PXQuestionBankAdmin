@@ -30,6 +30,10 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
     },
 
     editQuestionHandler: function() {
+        if(!this.props.isShared && this.props.data[window.consts.questionStatusName] == window.enums.statuses.availibleToInstructor) {
+           this.createDraftHandler();
+           return;
+        }
         if(!this.props.isShared && this.props.data[window.consts.questionStatusName] == window.enums.statuses.deleted){
           this.props.editQuestionHandler();
           return;
@@ -194,17 +198,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
 
 
                if (status == window.enums.statuses.availibleToInstructor){
-                   return(
-                     React.DOM.ul( {className:"dropdown-menu show-menu", role:"menu", 'aria-labelledby':"dropdownMenuType",  'aria-labelledby':"edit-question"}, 
-                       React.DOM.li( {role:"presentation", className:"dropdown-header"}, "Edit options"),
-                       React.DOM.li( {role:"presentation", className:"divider"}),
-                       React.DOM.li( {role:"presentation", className:this.props.metadataCapabilities.canEditQuestion ? "" :"disabled"}, 
-                          React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick: this.props.metadataCapabilities.canEditQuestion? this.props.editQuestionHandler.bind(this, false, true) : null}, "Edit in Place")
-                       ),
-                       React.DOM.li( {role:"presentation", className:this.props.metadataCapabilities.canCreateDraftFromAvailableQuestion ? "" :"disabled"}, 
-                         React.DOM.a( {className:"edit-field-item", role:"menuitem", tabIndex:"-1", onClick:this.props.metadataCapabilities.canCreateDraftFromAvailableQuestion ? this.createDraftHandler : null }, "Create a Draft")
-                        )
-                     ));
+                   return null;
                 }
     },
 
@@ -215,7 +209,8 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
       var editTooltip = "";
 
       if(isDeleted){
-        if(!this.props.metadataCapabilities.canEditQuestion) {
+        if(!this.props.metadataCapabilities.canEditQuestion && 
+            this.props.data[window.consts.questionStatusName] != window.enums.statuses.availibleToInstructor) {
           isDisabled = true;
         }
       }else if(!this.props.metadataCapabilities.canEditQuestion && 
@@ -225,8 +220,7 @@ var QuestionListMenu = React.createClass({displayName: 'QuestionListMenu',
       }else{
         if(this.props.data[window.consts.questionStatusName] == window.enums.statuses.availibleToInstructor  && 
           !this.props.isShared && 
-          !this.props.metadataCapabilities.canCreateDraftFromAvailableQuestion &&
-          !this.props.metadataCapabilities.canEditQuestion) {
+          !this.props.metadataCapabilities.canCreateDraftFromAvailableQuestion) {
           isDisabled = true;
         }
       }

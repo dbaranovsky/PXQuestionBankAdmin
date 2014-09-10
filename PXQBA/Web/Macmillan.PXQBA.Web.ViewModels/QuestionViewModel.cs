@@ -228,6 +228,13 @@ namespace Macmillan.PXQBA.Web.ViewModels
         /// Indicates if current user has capability to remove notes from question
         /// </summary>
         public bool CanRemoveNotesQuestion { get; set; }
+
+        /// <summary>
+        /// Indicates if current user has capability to create draft from available question
+        /// </summary>
+        public bool CanCreateDraftFromAvailableQuestion { get; set; }
+
+
         #endregion
 
 

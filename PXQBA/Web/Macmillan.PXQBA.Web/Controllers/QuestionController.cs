@@ -233,6 +233,7 @@ namespace Macmillan.PXQBA.Web.Controllers
             questionViewModel.CanViewHistory = userCapabilities.Contains(Capability.ViewVersionHistory);
             questionViewModel.CanAddNotesQuestion = userCapabilities.Contains(Capability.AddNoteToQuestion);
             questionViewModel.CanRemoveNotesQuestion = userCapabilities.Contains(Capability.RemoveNoteFromQuestion);
+            questionViewModel.CanCreateDraftFromAvailableQuestion = userCapabilities.Contains(Capability.CreateDraftFromAvailableQuestion);
 
             if (!userCapabilities.Contains(Capability.EditSharedQuestionContent) && questionViewModel.IsShared)
             {

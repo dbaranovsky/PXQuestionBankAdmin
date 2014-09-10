@@ -289,6 +289,17 @@ var QuestionEditorTabs = React.createClass({
           return;
         }
 
+        if (this.props.question.status == window.enums.statusesId.availibleToInstructor){
+           if(!this.props.question.canCreateDraftFromAvailableQuestion) {
+             alert('You have no permission to create a draft from question with available to instructor status.');
+             return;
+           }
+           if (confirm("Do you want to create a draft question?")){
+             this.props.handlers.createDraftHandler(this.props.question.realQuestionId, null);
+           }
+           return;
+        }
+
 
         if (!this.props.question.canEditQuestion){
           alert("You have no permission to edit question");
@@ -301,12 +312,7 @@ var QuestionEditorTabs = React.createClass({
             return;
         }
 
-        if (this.props.question.status == window.enums.statusesId.availibleToInstructor){
-           if (confirm("Do you want to create a draft question?")){
-             this.props.handlers.createDraftHandler(this.props.question.realQuestionId, null);
-           }
-           return;
-        }
+
 
          if (this.props.question.status == window.enums.statusesId.inProgress){
            this.props.showEditInPlaceDialog(this.editInPlaceHandler.bind(this, "#body"));
@@ -328,6 +334,19 @@ var QuestionEditorTabs = React.createClass({
           return;
         }
 
+         if (this.props.question.status == window.enums.statusesId.availibleToInstructor){
+           if(!this.props.question.canCreateDraftFromAvailableQuestion) {
+             alert('You have no permission to create a draft from question with available to instructor status.');
+             return;
+           }
+
+           if (confirm("Do you want to create a draft question?")){
+             this.props.handlers.createDraftHandler(this.props.question.realQuestionId, null);
+           }
+           return;
+        }
+
+
        if (!this.props.question.canEditQuestion){
           alert("You have no permission to edit question");
            return;
@@ -338,13 +357,6 @@ var QuestionEditorTabs = React.createClass({
            $(this.getDOMNode()).find('#metadata').tab('show');
            this.setState({viewHistoryMode: false});
             return;
-        }
-
-         if (this.props.question.status == window.enums.statusesId.availibleToInstructor){
-           if (confirm("Do you want to create a draft question?")){
-             this.props.handlers.createDraftHandler(this.props.question.realQuestionId, null);
-           }
-           return;
         }
 
          if (this.props.question.status == window.enums.statusesId.inProgress){
