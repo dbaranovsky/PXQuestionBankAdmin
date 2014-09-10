@@ -30,6 +30,10 @@ var QuestionListMenu = React.createClass({
     },
 
     editQuestionHandler: function() {
+        if(!this.props.isShared && this.props.data[window.consts.questionStatusName] == window.enums.statuses.availibleToInstructor) {
+           this.createDraftHandler();
+           return;
+        }
         if(!this.props.isShared && this.props.data[window.consts.questionStatusName] == window.enums.statuses.deleted){
           this.props.editQuestionHandler();
           return;
@@ -194,17 +198,7 @@ var QuestionListMenu = React.createClass({
 
 
                if (status == window.enums.statuses.availibleToInstructor){
-                   return(
-                     <ul className="dropdown-menu show-menu" role="menu" aria-labelledby="dropdownMenuType"  aria-labelledby="edit-question">
-                       <li role="presentation" className="dropdown-header">Edit options</li>
-                       <li role="presentation" className="divider"></li>
-                       <li role="presentation" className={this.props.metadataCapabilities.canEditQuestion ? "" :"disabled"}>
-                          <a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={ this.props.metadataCapabilities.canEditQuestion? this.props.editQuestionHandler.bind(this, false, true) : null}>Edit in Place</a>
-                       </li>
-                       <li role="presentation" className={this.props.metadataCapabilities.canCreateDraftFromAvailableQuestion ? "" :"disabled"}>
-                         <a className="edit-field-item" role="menuitem" tabIndex="-1" onClick={this.props.metadataCapabilities.canCreateDraftFromAvailableQuestion ? this.createDraftHandler : null }>Create a Draft</a>
-                        </li>
-                     </ul>);
+                   return null;
                 }
     },
 
@@ -215,7 +209,8 @@ var QuestionListMenu = React.createClass({
       var editTooltip = "";
 
       if(isDeleted){
-        if(!this.props.metadataCapabilities.canEditQuestion) {
+        if(!this.props.metadataCapabilities.canEditQuestion && 
+            this.props.data[window.consts.questionStatusName] != window.enums.statuses.availibleToInstructor) {
           isDisabled = true;
         }
       }else if(!this.props.metadataCapabilities.canEditQuestion && 
@@ -225,8 +220,7 @@ var QuestionListMenu = React.createClass({
       }else{
         if(this.props.data[window.consts.questionStatusName] == window.enums.statuses.availibleToInstructor  && 
           !this.props.isShared && 
-          !this.props.metadataCapabilities.canCreateDraftFromAvailableQuestion &&
-          !this.props.metadataCapabilities.canEditQuestion) {
+          !this.props.metadataCapabilities.canCreateDraftFromAvailableQuestion) {
           isDisabled = true;
         }
       }
