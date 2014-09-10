@@ -52,13 +52,20 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="EnumerableHelperTest.cs" />
+    <Compile Include="EnumHelperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionHelperTest.cs" />
+    <Compile Include="StreamHelperTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Commands\Macmillan.PXQBA.Business.Commands.csproj">
       <Project>{DCC579E2-F0D2-48C9-B660-DFAF8858C40C}</Project>
       <Name>Macmillan.PXQBA.Business.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Macmillan.PXQBA.Common.Helpers\Macmillan.PXQBA.Common.Helpers.csproj">
+      <Project>{dc4aeaab-7123-4e1c-bd7d-fb0913c68b2c}</Project>
+      <Name>Macmillan.PXQBA.Common.Helpers</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\PXShared\Bfw.Agilix\Bfw.Agilix.DataContracts\Bfw.Agilix.DataContracts.csproj">
       <Project>{4D185F8E-C2A0-442A-A05E-78B566361562}</Project>
