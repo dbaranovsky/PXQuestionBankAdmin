@@ -43,6 +43,12 @@ namespace Macmillan.PXQBA.Business
             this.raServices = raServices;
         }
 
+        public Context(ISessionManager sessionManager, ILogger logger, ITraceManager tracer, ICacheProvider cacheProvider, IRAServices raServices, DlapConnection adminConnection) 
+                                                                                                                         : this(sessionManager, logger, tracer, cacheProvider, raServices)
+        {
+            this.adminDlapConnection = adminConnection;
+        }
+
         public ISessionManager SessionManager
         {
             get

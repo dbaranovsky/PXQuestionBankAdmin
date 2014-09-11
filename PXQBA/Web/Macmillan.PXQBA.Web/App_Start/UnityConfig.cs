@@ -71,10 +71,11 @@ namespace Macmillan.PXQBA.Web.App_Start
             container.RegisterType<IRAServices, RAServices>(new PerRequestLifetimeManager());
             container.RegisterTypes(AllClasses.FromAssemblies(typeof(Context).Assembly), WithMappings.FromAllInterfaces, WithName.Default, WithLifetime.Custom<PerRequestLifetimeManager>);
             container.RegisterTypes(AllClasses.FromAssemblies(typeof(QuestionCommands).Assembly), WithMappings.FromAllInterfaces, WithName.Default);
-
+            
             var cs = ConfigurationManager.ConnectionStrings["QBADummyModelContainer"];
 
             container.RegisterType<IDatabaseManager, DatabaseManager>(new InjectionConstructor("PXData"));
+            container.RegisterType<IContext, Context>(new PerRequestLifetimeManager(), new InjectionConstructor(typeof(ISessionManager), typeof(ILogger), typeof(ITraceManager), typeof(ICacheProvider), typeof(IRAServices)));
 
 #if DEBUG
                  container.RegisterType<INoteCommands, NoteCommands>(new InjectionConstructor(new DatabaseManager("TestPXData")));

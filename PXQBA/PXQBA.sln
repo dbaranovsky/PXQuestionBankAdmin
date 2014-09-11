@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{16737015-FE69-42C8-980E-56350EED0D50}"
 EndProject
@@ -72,6 +72,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Macmillan.PXQBA.Common.Helpers.Tests", "Tests\Macmillan.PXQBA.Common.Helpers.Tests\Macmillan.PXQBA.Common.Helpers.Tests.csproj", "{74354750-D2B9-4B4A-8553-97CA6EC6C5D6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Macmillan.PXQBA.Business.Commands.Tests", "Tests\Macmillan.PXQBA.Business.Commands.Tests\Macmillan.PXQBA.Business.Commands.Tests.csproj", "{9DF37EA3-EB8D-4C8E-A189-3F4D8DEB3405}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Macmillan.PXQBA.Business.Tests", "Tests\Macmillan.PXQBA.Business.Tests\Macmillan.PXQBA.Business.Tests.csproj", "{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -902,6 +904,30 @@ Global
 		{9DF37EA3-EB8D-4C8E-A189-3F4D8DEB3405}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DF37EA3-EB8D-4C8E-A189-3F4D8DEB3405}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9DF37EA3-EB8D-4C8E-A189-3F4D8DEB3405}.Release|x64.ActiveCfg = Release|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.DEV_PROD_REFRESH|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.DEV_PROD_REFRESH|Any CPU.Build.0 = Debug|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.DEV_PROD_REFRESH|x64.ActiveCfg = Debug|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.DEV|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.DEV|Any CPU.Build.0 = Debug|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.DEV|x64.ActiveCfg = Debug|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.LoadTesting|Any CPU.ActiveCfg = Release|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.LoadTesting|Any CPU.Build.0 = Release|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.LoadTesting|x64.ActiveCfg = Release|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.PRISTINE|Any CPU.ActiveCfg = Release|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.PRISTINE|Any CPU.Build.0 = Release|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.PRISTINE|x64.ActiveCfg = Release|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.PROD|Any CPU.ActiveCfg = Release|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.PROD|Any CPU.Build.0 = Release|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.PROD|x64.ActiveCfg = Release|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.QA|Any CPU.ActiveCfg = Release|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.QA|Any CPU.Build.0 = Release|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.QA|x64.ActiveCfg = Release|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64}.Release|x64.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -937,6 +963,7 @@ Global
 		{38EAB49D-9618-4143-BFD2-5D4CD20BCFF6} = {FF845810-CB11-44FA-93AF-0BC8136A2D3A}
 		{74354750-D2B9-4B4A-8553-97CA6EC6C5D6} = {FF845810-CB11-44FA-93AF-0BC8136A2D3A}
 		{9DF37EA3-EB8D-4C8E-A189-3F4D8DEB3405} = {FF845810-CB11-44FA-93AF-0BC8136A2D3A}
+		{6BF9A676-E5F8-4DF3-B14B-8FD749C61E64} = {FF845810-CB11-44FA-93AF-0BC8136A2D3A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45

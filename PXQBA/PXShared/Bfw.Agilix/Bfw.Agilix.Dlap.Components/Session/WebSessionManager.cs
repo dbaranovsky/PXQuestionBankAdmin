@@ -319,7 +319,8 @@ namespace Bfw.Agilix.Dlap.Components.Session
                         // not much we can do here, so just reauth the user...
                     }
 
-                    if (ticket == null || ticket.Expired)
+                    //If ticket has expired, sometimes BH will renew the session with userid 13. In this case ,we renew the session for the user
+                    if (ticket == null || ticket.Expired || ticket.Name != userId)
                     {
                         StartBrainHoneySession(username, ConfigurationManager.AppSettings["BrainhoneyDefaultPassword"], timeZoneInfo);
                     }
