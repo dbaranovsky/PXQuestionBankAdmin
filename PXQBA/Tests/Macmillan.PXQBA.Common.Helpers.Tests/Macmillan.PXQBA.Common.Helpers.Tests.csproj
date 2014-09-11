@@ -56,12 +56,17 @@
     <Compile Include="EnumHelperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionHelperTest.cs" />
+    <Compile Include="QuestionPreviewHelperTest.cs" />
     <Compile Include="StreamHelperTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Commands\Macmillan.PXQBA.Business.Commands.csproj">
       <Project>{DCC579E2-F0D2-48C9-B660-DFAF8858C40C}</Project>
       <Name>Macmillan.PXQBA.Business.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Business\Macmillan.PXQBA.Business.Models\Macmillan.PXQBA.Business.Models.csproj">
+      <Project>{800708c5-6692-4c91-be89-729a017b5027}</Project>
+      <Name>Macmillan.PXQBA.Business.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Common\Macmillan.PXQBA.Common.Helpers\Macmillan.PXQBA.Common.Helpers.csproj">
       <Project>{dc4aeaab-7123-4e1c-bd7d-fb0913c68b2c}</Project>
