@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
@@ -52,6 +53,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ConfigurationHelperTest.cs" />
     <Compile Include="EnumerableHelperTest.cs" />
     <Compile Include="EnumHelperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

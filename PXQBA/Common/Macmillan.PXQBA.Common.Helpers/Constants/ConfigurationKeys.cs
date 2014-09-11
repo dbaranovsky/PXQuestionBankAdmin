@@ -9,7 +9,7 @@ namespace Macmillan.PXQBA.Common.Helpers.Constants
     /// <summary>
     /// Represents configuration file key values
     /// </summary>
-    class ConfigurationKeys
+    public class ConfigurationKeys
     {
         /// <summary>
         /// Represents the key for Mars login page
