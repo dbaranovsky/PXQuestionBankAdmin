@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using Bfw.Agilix.DataContracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -20,6 +21,21 @@ namespace Macmillan.PXQBA.Common.Helpers.Tests
                                 {
                                     InteractionType = "custom"
                                 };
+
+            string html = QuestionPreviewHelper.GetQuestionHtmlPreview(question);
+
+            Assert.IsTrue(expectedHtml == html);
+        }
+
+        [TestMethod]
+        public void GetQuestionHtmlPreview_EmptyQuestion_EmptyHtml()
+        {
+            const string expectedHtml = @"<div class=""question-preview""><div class=""question-body""></div></div>";
+
+            Question question = new Question()
+            {
+                
+            };
 
             string html = QuestionPreviewHelper.GetQuestionHtmlPreview(question);
 
@@ -267,6 +283,75 @@ namespace Macmillan.PXQBA.Common.Helpers.Tests
             string html = QuestionPreviewHelper.GetGraphEditor(customXML, "questionId", "FMA_GRAPH");
 
             Assert.IsTrue(!String.IsNullOrEmpty(html));
+        }
+
+
+        [TestMethod]
+        [ExpectedException(typeof(XmlException))]
+        public void GetGraphEditor_NoCorrectXml_StringWithError()
+        {
+            const string customXML = @"<question>
+                      <meta chapter="""" difficulty=""SELECT"" skill=""SELECT"" topic="""">
+                        <custom><![CDATA[]]></custom>
+                      </meta>
+                      <feedback>
+                        <correct><![CDATA[]]></correct>
+                        <incorrect><![CDATA[]]></incorrect>
+                      </feedback>
+                      <evaluate/>
+                      <graph>
+                        <tolerance pixelAccuracy=""10"" slopeAccuracy=""10"" unlabeledDeductions=""15""/>
+                        <snapping default=""true"" toggleable=""true""/>
+                        <mouse xIncrements="".25"" yIncrements="".25""/>
+                        <units rows=""100"" cols=""100"" drawGrid=""true"" drawTicks=""true"" rowTicks=""10"" colTicks=""10"" rowGrid=""5"" colGrid=""5""/>
+                        <labels x=""x-axis"" y=""y-axis""/>
+                      </graph>
+                      <defaultElements>
+                        <element type=""TwoPointLine"" legend=""None"" dotColor=""0"" lineColor=""0"" hideDots=""false"" evaluate=""false"">
+                          <editable duplicate=""true"" erase=""false"" legend=""true"" drag=""false""/>
+                          <point x=""35"" y=""65""/>
+                          <point x=""90"" y=""65""/>
+                        </element>
+                      </defaultElements>
+                      <answerElements>
+                        <element type=""SinglePoint"" legend=""None"" dotColor=""0"" lineColor=""0"" hideDots=""false"" evaluate=""true"">
+                          <editable duplicate=""true"" erase=""true"" legend=""true"" drag=""true""/>
+                          <evaluate by=""""/>
+                          <point x=""25"" y=""65""/>
+                        </element>
+                        <element type=""SinglePoint"" legend=""None"" dotColor=""0"" lineColor=""0"" hideDots=""false"" evaluate=""true"">
+                          <editable duplicate=""true"" erase=""true"" legend=""true"" drag=""true""/>
+                          <evaluate by=""""/>
+                          <point x=""30"" y=""50""/>
+                        </element>
+                        <element type=""InfinityLine"" legend=""None"" dotColor=""0"" lineColor=""0"" hideDots=""false"" evaluate=""true"">
+                          <editable duplicate=""true"" erase=""true"" legend=""true"" drag=""true""/>
+                          <evaluate by=""""/>
+                          <point x=""30"" y=""15""/>
+                          <point x=""65"" y=""40""/>
+                        </element>
+                        <element type=""TwoPointLine"" legend=""None"" dotColor=""0"" lineColor=""0"" hideDots=""false"" evaluate=""true"">
+                          <editable duplicate=""true"" erase=""true"" legend=""true"" drag=""true""/>
+                          <point x=""5"" y=""85""/>
+                          <point x=""60"" y=""40""/>
+                          <evaluate by=""""/>
+                        </element>
+                      </answerElements>
+                      <legend title=""Legend"">
+                        <radio label=""None"" color=""0x000000"" selectable=""true""/>
+                      </legend>
+                      <ui>
+                        <tool type=""Selection"" tip=""""/>
+                        <tool type=""SinglePoint"" tip=""""/>
+                        <tool type=""Duplicate"" tip=""""/>
+                        <tool type=""Eraser"" tip=""""/>
+                      </ui></question></question>";
+
+
+
+            string error = QuestionPreviewHelper.GetGraphEditor(customXML, "questionId", "FMA_GRAPH");
+
+            Assert.IsTrue(error.Contains("There was an error:"));
         }
 
 
