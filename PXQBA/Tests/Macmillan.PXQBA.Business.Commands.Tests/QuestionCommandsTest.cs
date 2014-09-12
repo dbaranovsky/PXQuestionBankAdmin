@@ -1633,6 +1633,91 @@ namespace Macmillan.PXQBA.Business.Commands.Tests
             Assert.IsTrue(Mapper.Map<Models.Question>(question).ProductCourseSections.First().Flag == "flagged");
         }
 
+
+        [TestMethod]
+
+        public void UpdateQuestionField_BankToUpdateNoCapability_BankNotUpdated()
+        {
+            var course = GetTestCourse();
+
+            var capabilities = new List<Capability>
+                               {
+                                  
+                               };
+
+            var question = new Question()
+            {
+                InteractionType = "2",
+                QuestionStatus = "2",
+                MetadataElements = new Dictionary<string, XElement>()
+                                                                {
+                                                                    {
+                                                                        "product-course-id-12",
+                                                                        XElement.Parse(productCourseSection)
+                                                                    }
+                                                                },
+                Id = "1"
+            };
+
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(ExecuteAsAdminFillTwoQuestions));
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(cmd =>
+            {
+                cmd.Questions = new List<Question>()
+                                {
+                                    question
+                                };
+            }));
+
+            var result = questionCommands.UpdateQuestionField("12", course.QuestionRepositoryCourseId, "f13f2cd1-2ddf-430c-85c9-2577a5f009f4", MetadataFieldNames.Bank, "NewBank!", capabilities);
+
+            var questionModel = Mapper.Map<Models.Question>(question);
+            Assert.IsTrue(result);
+            Assert.IsTrue(questionModel.ProductCourseSections.First().Bank == "Test Bank");
+        }
+
+
+        [TestMethod]
+
+        public void UpdateQuestionField_BankToUpdateCapabilityAllowed_BankUpdated()
+        {
+            var course = GetTestCourse();
+
+            var capabilities = new List<Capability>
+            {
+                Capability.EditDeletedQuestion
+            };
+
+            var question = new Question()
+            {
+                InteractionType = "2",
+                QuestionStatus = "2",
+                MetadataElements = new Dictionary<string, XElement>()
+                                                                {
+                                                                    {
+                                                                        "product-course-id-12",
+                                                                        XElement.Parse(productCourseSection)
+                                                                    }
+                                                                },
+                Id = "1"
+            };
+
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<Search>(ExecuteAsAdminFillTwoQuestions));
+            context.SessionManager.CurrentSession.ExecuteAsAdmin(Arg.Do<GetQuestions>(cmd =>
+            {
+                cmd.Questions = new List<Question>()
+                                {
+                                    question
+                                };
+            }));
+
+            var result = questionCommands.UpdateQuestionField("12", course.QuestionRepositoryCourseId, "f13f2cd1-2ddf-430c-85c9-2577a5f009f4", MetadataFieldNames.Bank, "NewBank!", capabilities);
+
+            var questionModel = Mapper.Map<Models.Question>(question);
+            Assert.IsTrue(result);
+            Assert.IsTrue(questionModel.ProductCourseSections.First().Bank == "NewBank!");
+        }
+
+
         [TestMethod]
         [ExpectedException(typeof(FormatException))]
         public void UpdateQuestionField_IncorrectParams_False()
