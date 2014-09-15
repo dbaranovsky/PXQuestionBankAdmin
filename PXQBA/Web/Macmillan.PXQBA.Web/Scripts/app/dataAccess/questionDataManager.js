@@ -4,21 +4,19 @@ var questionDataManager = (function() {
     self.cache = {};
 
     self.processDataResponse = function (response) {
-        //save in cache here
+        self.cache = response;
     };
 
-    self.loadFromCache = function (filter, page, orderType, orderField) {
-        // load from cache here
-        return null;
+    self.loadFromCache = function (filter) {
+        self.cache.filter = filter;
+        return self.cache;
     };
 
-    self.getQuestionsByQuery = function (filter, page, columns, orderType, orderField) {
+    self.getQuestionsByQuery = function (filter, page, columns, orderType, orderField, needRerender) {
         
-        var cacheResult = self.loadFromCache(filter, page, orderType, orderField);
-
-        if (cacheResult != null) {
+        if (needRerender == 'false') {
             return $.Deferred(function() {
-                this.resolve(cacheResult);
+                this.resolve(self.loadFromCache(filter));
             });
         }
 

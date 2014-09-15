@@ -1,7 +1,7 @@
 ﻿var questionContainer = $('#question-container')[0];
 
-crossroads.addRoute('/page/{page}/columns/{columns}/filter/{query}/order/{orderType}/:orderField:',
-    function (page, columns, query, orderType, orderField) {
+crossroads.addRoute('/page/{page}/columns/{columns}/filter/{query}/needRerender/{needRerender}/order/{orderType}/:orderField:',
+    function (page, columns, query, needRerender, orderType, orderField) {
         console.log('route callback executed');
         routsManager.setState(query, page, columns, orderType, orderField);
         asyncManager.startWait(questionContainer);
@@ -9,7 +9,8 @@ crossroads.addRoute('/page/{page}/columns/{columns}/filter/{query}/order/{orderT
                                                                     page,
                                                                     columnHashParameterHelper.parse(columns),
                                                                     orderType,
-                                                                    orderField);
+                                                                    orderField,
+                                                                    needRerender);
         questionsData.done(function (response) {
 
             routsManager.copyAndApplyState(response.filter,

@@ -44,6 +44,10 @@
         if (currentValues.length==0) {
             if (isDelete) {
                 return false;
+            } else {
+                if (currentFilterItem == null) {
+                    return false;
+                }
             }
             
             if (filterItem.values == null) {
