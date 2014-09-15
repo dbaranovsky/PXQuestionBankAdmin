@@ -5,6 +5,7 @@
     self.page = new RouteItem('page', '1');
     self.columns = new RouteItem('columns', window.consts.grid.initialFieldSet);
     self.order = new RouteItem('order', 'none');
+    self.needRerender = new RouteItem('needRerender', 'true');
 
     self.setState = function (filter, page, columns, orderType, orderField) {
         self.query.setValue(filter);
@@ -23,11 +24,12 @@
     },
 
     self.buildHash = function () {
-        return '[page]/[columns]/[filer]/[order]'
+        return '[page]/[columns]/[filer]/[needRerender]/[order]'
             .replace('[filer]', self.query.getRoute())
             .replace('[page]', self.page.getRoute())
             .replace('[columns]', self.columns.getRoute())
-            .replace('[order]', self.order.getRoute());
+            .replace('[order]', self.order.getRoute())
+            .replace('[needRerender]', self.needRerender.getRoute());
     };
 
     self.setPage = function (page) {
@@ -69,9 +71,12 @@
         
         if (isFiltrationChenged) {
             self.page.setValue(1);
+        } else {
+            self.needRerender.setValue('false');
         }
 
         hasher.setHash(self.buildHash());
+        self.needRerender.setValue('true');
     };
 
     self.resetParameters = function() {
@@ -89,14 +94,17 @@
     };
 
     self.deleteFiltration = function (field) {
-        var isFiltrationChenged = filterHashParameterHelper.isFiltrationChenged(field, null, self.query.getValue(), false);
+        var isFiltrationChenged = filterHashParameterHelper.isFiltrationChenged(field, null, self.query.getValue(), true);
         self.query.setValue(filterHashParameterHelper.deleteFiltration(field, self.query.getValue()));
         
         if (isFiltrationChenged) {
             self.page.setValue(1);
+        } else {
+            self.needRerender.setValue('false');
         }
 
         hasher.setHash(self.buildHash());
+        self.needRerender.setValue('true');
     };
 
 
