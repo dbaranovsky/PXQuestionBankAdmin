@@ -492,6 +492,10 @@ input.red-border, textarea.red-border {
     margin: 0 -1px 4px 0 !important;
 }
 
+.local.wide .chosen-container .chosen-search {
+    height: 33px !important;
+}
+
 @-moz-document url-prefix() {
 
     .local.wide .chosen-container .chosen-results {
