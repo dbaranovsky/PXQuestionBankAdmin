@@ -185,7 +185,7 @@ namespace Macmillan.PXQBA.Business.Tests
          }
 
         [TestMethod]
-        [ExpectedException(typeof(DlapException))]
+        [ExpectedException(typeof(NullReferenceException))]
         public void Initialize_IncorrectUserId_DlapException()
         {
             var context = new Context(sessionManager, logger, tracer, cacheProvider, raServices);
