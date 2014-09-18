@@ -438,6 +438,7 @@ namespace Bfw.Agilix.Dlap.Components.Session
                         }
                         else
                         {
+                            timeZoneInfo = TimeZoneInfo.Local;
                             requestData += "&standardOffset=" + -1 * timeZoneInfo.BaseUtcOffset.TotalMinutes +
                                            "&daylightOffset=" + timeZoneInfo.BaseUtcOffset.TotalMinutes;
                         }
