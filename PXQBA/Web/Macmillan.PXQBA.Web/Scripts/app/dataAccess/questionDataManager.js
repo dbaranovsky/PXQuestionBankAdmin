@@ -284,9 +284,9 @@ var questionDataManager = (function() {
     };
 
     self.removeTitle = function (courseId, questionId) {
+         asyncManager.startWait();
         var questions = [];
         questions.push(questionId);
-        
         var request = {
             courseId: courseId,
             questionsId: questions
