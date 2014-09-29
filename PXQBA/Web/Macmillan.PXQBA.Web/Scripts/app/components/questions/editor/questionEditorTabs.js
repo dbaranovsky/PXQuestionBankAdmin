@@ -61,15 +61,15 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
     renderSharingNotification: function(){
 
      if(this.props.question.sharedQuestionDuplicateFrom!=null && this.props.isDuplicate){
-            return (React.DOM.div( {className:"shared-note"}, "This question is a duplicate of a ",
-                    React.DOM.a( {className:"shared-question-link", href:"", onClick:this.loadSourceQuestion}, "shared question"),
-                    "from ", React.DOM.b(null, this.props.question.sharedQuestionDuplicateFrom.sharedWith) 
+            return (React.DOM.div({className: "shared-note"}, "This question is a duplicate of a ", 
+                    React.DOM.a({className: "shared-question-link", href: "", onClick: this.loadSourceQuestion}, "shared question"), 
+                    "from ", React.DOM.b(null, this.props.question.sharedQuestionDuplicateFrom.sharedWith)
                ));
       }
 
       if (this.props.question.isShared && !this.props.isDuplicate && !this.props.isNew){
                 var sharedCourses = this.props.question.productCourses.length;
-                return (React.DOM.div( {className:"shared-note"}, "Editing this question content would affect ", sharedCourses == 1 ?  "1 title" :"all "+sharedCourses+ " titles", " that use this question " ));
+                return (React.DOM.div({className: "shared-note"}, "Editing this question content would affect ", sharedCourses == 1 ?  "1 title" :"all "+sharedCourses+ " titles", " that use this question "));
       }
 
       return null;
@@ -189,11 +189,11 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
       if (!this.props.saving){
           return(
                     React.DOM.div(null, 
-                        React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal", title:"Cancel", onClick:this.closeDialog}, 
+                        React.DOM.button({className: "btn btn-default", 'data-toggle': "modal", title: "Cancel", onClick: this.closeDialog}, 
                              "Cancel"
-                        ),
-                         this.renderPublishButton(),
-                         React.DOM.button( {className:"btn btn-primary ",  'data-toggle':"modal",  title:"Save", onClick:this.saveClickHandler} , 
+                        ), 
+                         this.renderPublishButton(), 
+                         React.DOM.button({className: "btn btn-primary ", 'data-toggle': "modal", title: "Save", onClick: this.saveClickHandler}, 
                              "Save"
                         )
                       )
@@ -202,14 +202,14 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
 
         return(
                     React.DOM.div(null, 
-                        React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal", title:"Cancel", onClick:this.closeDialog}, 
+                        React.DOM.button({className: "btn btn-default", 'data-toggle': "modal", title: "Cancel", onClick: this.closeDialog}, 
                              "Cancel"
-                        ),
-                         this.renderPublishButton(),
-                         React.DOM.button( {className:"btn btn-primary ",  disabled:"disabled", 'data-toggle':"modal",  title:"Save", onClick:this.saveClickHandler} , 
+                        ), 
+                         this.renderPublishButton(), 
+                         React.DOM.button({className: "btn btn-primary ", disabled: "disabled", 'data-toggle': "modal", title: "Save", onClick: this.saveClickHandler}, 
                              "Save"
-                        ),
-                       React.DOM.div( {className:"waiting small"} )
+                        ), 
+                       React.DOM.div({className: "waiting small"})
 
                       )
                      );
@@ -218,7 +218,7 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
 
     renderPublishButton: function() {
         if(this.props.question.isDraft) {
-          return (React.DOM.button( {className:"btn btn-default", 'data-toggle':"modal",   title:"Save and Publish", disabled:this.props.saving || !this.props.question.canPublishDraft, onClick:this.saveAndPublishHandler}, 
+          return (React.DOM.button({className: "btn btn-default", 'data-toggle': "modal", title: "Save and Publish", disabled: this.props.saving || !this.props.question.canPublishDraft, onClick: this.saveAndPublishHandler}, 
                               "Save and Publish"
                    ));
         }
@@ -447,70 +447,70 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
 
     renderTabsHeader: function(){
       if (this.state.viewHistoryMode){
-        return (React.DOM.ul( {className:"nav nav-tabs"}, 
-                             React.DOM.li( {className:"active"},  
-                                 React.DOM.a( {href:"#body", id:"body-tab",  onClick:this.switchTabBody}, "Body")
-                             ),
+        return (React.DOM.ul({className: "nav nav-tabs"}, 
+                             React.DOM.li({className: "active"}, 
+                                 React.DOM.a({href: "#body", id: "body-tab", onClick: this.switchTabBody}, "Body")
+                             ), 
                              React.DOM.li(null, 
-                                 React.DOM.a( {href:"#metadata",  id:"metadata-tab",  onClick:this.switchTabMetadata}, "Metadata")
-                             ),
+                                 React.DOM.a({href: "#metadata", id: "metadata-tab", onClick: this.switchTabMetadata}, "Metadata")
+                             ), 
                               React.DOM.li(null, 
-                                 React.DOM.a( {href:"#history", id:"history-tab", 'data-toggle':"tab"}, "History")
-                             ),
+                                 React.DOM.a({href: "#history", id: "history-tab", 'data-toggle': "tab"}, "History")
+                             ), 
                              React.DOM.li(null, 
-                                 React.DOM.a( {href:"#notes", id:"notes-tab", onClick:this.switchTabNotes}, "Notes")
+                                 React.DOM.a({href: "#notes", id: "notes-tab", onClick: this.switchTabNotes}, "Notes")
                              )
                         ));
       }
 
       if (this.state.isGraph){
-        return(   React.DOM.ul( {className:"nav nav-tabs"}, 
-                             React.DOM.li( {className:"active"},  
-                                 React.DOM.a( {href:"#body", id:"body-tab", onClick:this.switchTabBody}, "Body")
-                             ),
+        return(   React.DOM.ul({className: "nav nav-tabs"}, 
+                             React.DOM.li({className: "active"}, 
+                                 React.DOM.a({href: "#body", id: "body-tab", onClick: this.switchTabBody}, "Body")
+                             ), 
                              React.DOM.li(null, 
-                                 React.DOM.a( {href:"#metadata", id:"metadata-tab", onClick:this.switchTabMetadata}, "Metadata")
-                             ),
+                                 React.DOM.a({href: "#metadata", id: "metadata-tab", onClick: this.switchTabMetadata}, "Metadata")
+                             ), 
                               React.DOM.li(null, 
-                                 React.DOM.a( {href:"#history", id:"history-tab", onClick:this.switchTabHistory}, "History")
-                             ),
+                                 React.DOM.a({href: "#history", id: "history-tab", onClick: this.switchTabHistory}, "History")
+                             ), 
                              React.DOM.li(null, 
-                                 React.DOM.a( {href:"#notes", id:"notes-tab", onClick:this.switchTabNotes}, "Notes")
+                                 React.DOM.a({href: "#notes", id: "notes-tab", onClick: this.switchTabNotes}, "Notes")
                              )
                         ));
 
       }
 
-      return (React.DOM.ul( {className:"nav nav-tabs"}, 
-                             React.DOM.li( {className:"active"},  
-                                 React.DOM.a( {href:"#body", id:"body-tab", 'data-toggle':"tab"}, "Body")
-                             ),
+      return (React.DOM.ul({className: "nav nav-tabs"}, 
+                             React.DOM.li({className: "active"}, 
+                                 React.DOM.a({href: "#body", id: "body-tab", 'data-toggle': "tab"}, "Body")
+                             ), 
                              React.DOM.li(null, 
-                                 React.DOM.a( {href:"#metadata", id:"metadata-tab", 'data-toggle':"tab"} , "Metadata")
-                             ),
+                                 React.DOM.a({href: "#metadata", id: "metadata-tab", 'data-toggle': "tab"}, "Metadata")
+                             ), 
                               React.DOM.li(null, 
-                                 React.DOM.a( {href:"#history", id:"history-tab", 'data-toggle':"tab"}, "History")
-                             ),
+                                 React.DOM.a({href: "#history", id: "history-tab", 'data-toggle': "tab"}, "History")
+                             ), 
                               React.DOM.li(null, 
-                                 React.DOM.a( {href:"#notes", id:"notes-tab", 'data-toggle':"tab"}, "Notes")
+                                 React.DOM.a({href: "#notes", id: "notes-tab", 'data-toggle': "tab"}, "Notes")
                              )
                         ));
     },
 
      renderHistory: function(){
         if(this.props.question.canViewHistory){
-          return ( VersionHistory( {ref:"versionHistory", currentCourseId:this.props.currentCourseId, question:this.props.question, handlers:this.props.handlers} ));
+          return ( VersionHistory({ref: "versionHistory", currentCourseId: this.props.currentCourseId, question: this.props.question, handlers: this.props.handlers}));
         }
 
-        return (React.DOM.span( {className:"label label-danger"}, "You have no permission to view question history"))
+        return (React.DOM.span({className: "label label-danger"}, "You have no permission to view question history"))
     },
 
     renderNotes: function(){
       if(this.state.notesLoading){
-          return(React.DOM.div( {className:"waiting"}));
+          return(React.DOM.div({className: "waiting"}));
       }
 
-      return(NoteBox( {questionId:this.props.question.realQuestionId, currentCourseId:this.props.currentCourseId,  canDelete:this.props.question.canRemoveNotesQuestion, canAddNote:this.props.question.canAddNotesQuestion, notesChangedHandler:this.notesChangedHandler}));
+      return(NoteBox({questionId: this.props.question.realQuestionId, currentCourseId: this.props.currentCourseId, canDelete: this.props.question.canRemoveNotesQuestion, canAddNote: this.props.question.canAddNotesQuestion, notesChangedHandler: this.notesChangedHandler}));
     },
 
     notesChangedHandler: function(){
@@ -539,55 +539,55 @@ var QuestionEditorTabs = React.createClass({displayName: 'QuestionEditorTabs',
         return ( 
                 React.DOM.div(null, 
                   
-                 this.renderTabsHeader(),
+                 this.renderTabsHeader(), 
 
-                React.DOM.div( {className:"tab-content"}, 
+                React.DOM.div({className: "tab-content"}, 
 
-                    React.DOM.div( {className:"tab-pane active", id:"body"}, 
+                    React.DOM.div({className: "tab-pane active", id: "body"}, 
                     React.DOM.div(null, 
-                       React.DOM.div( {className:"top-buttons-container"}, 
+                       React.DOM.div({className: "top-buttons-container"}, 
                          this.renderFooterButtons(true)
                        )
-                     ),
-                      this.renderSharingNotification(),
+                     ), 
+                      this.renderSharingNotification(), 
 
-                       React.DOM.div( {className:"tab-body .shared"}, 
-                          (!this.props.question.canEditSharedQuestionContent && this.props.question.isShared) || !this.props.question.canEditQuestion?  React.DOM.span( {className:"label label-danger"}, "You have no permission to edit question body") : React.DOM.div(  {className:"iframe waiting"} ),
-                           this.state.graphLoading? React.DOM.div(  {className:"iframe waiting"} ) : "",
-                          React.DOM.div( {id:"quizeditorcomponent", className:iframeClass}),
+                       React.DOM.div({className: "tab-body .shared"}, 
+                          (!this.props.question.canEditSharedQuestionContent && this.props.question.isShared) || !this.props.question.canEditQuestion?  React.DOM.span({className: "label label-danger"}, "You have no permission to edit question body") : React.DOM.div({className: "iframe waiting"}), 
+                           this.state.graphLoading? React.DOM.div({className: "iframe waiting"}) : "", 
+                          React.DOM.div({id: "quizeditorcomponent", className: iframeClass}), 
                           this.state.isHTS? "" :
-                          React.DOM.div( {className:"modal-footer"}, 
+                          React.DOM.div({className: "modal-footer"}, 
                            this.renderFooterButtons(true)
                           )
                        )
-                    ),
-                    React.DOM.div( {className:"tab-pane", id:"metadata"}, 
+                    ), 
+                    React.DOM.div({className: "tab-pane", id: "metadata"}, 
                       React.DOM.div(null, 
-                         React.DOM.div( {className:"top-buttons-container"}, 
+                         React.DOM.div({className: "top-buttons-container"}, 
                            this.renderFooterButtons()
                          )
-                       ),
-                      this.renderSharingNotification(),
+                       ), 
+                      this.renderSharingNotification(), 
 
-                       React.DOM.div( {className:!this.props.question.isShared  ? "tab-body" : "tab-body wide"},          
+                       React.DOM.div({className: !this.props.question.isShared  ? "tab-body" : "tab-body wide"}, 
 
-                            QuestionMetadataEditor( {currentCourseId:this.props.currentCourseId, metadata:this.props.metadata, question:this.props.question, editHandler:this.props.editHandler, isDuplicate:this.props.isDuplicate} ),
-                            React.DOM.div( {className:"modal-footer"}, 
+                            QuestionMetadataEditor({currentCourseId: this.props.currentCourseId, metadata: this.props.metadata, question: this.props.question, editHandler: this.props.editHandler, isDuplicate: this.props.isDuplicate}), 
+                            React.DOM.div({className: "modal-footer"}, 
                                this.renderFooterButtons()
                            )
                        )
-                    ),
-                    React.DOM.div( {className:"tab-pane", id:"history"}, 
+                    ), 
+                    React.DOM.div({className: "tab-pane", id: "history"}, 
 
-                       React.DOM.div( {className:"tab-body"}, 
+                       React.DOM.div({className: "tab-body"}, 
                          this.renderHistory()
                        )
 
-                   ),
+                   ), 
 
-                   React.DOM.div( {className:"tab-pane", id:"notes"}, 
+                   React.DOM.div({className: "tab-pane", id: "notes"}, 
 
-                       React.DOM.div( {className:"tab-notes"}, 
+                       React.DOM.div({className: "tab-notes"}, 
                           this.renderNotes()
                        )
 
