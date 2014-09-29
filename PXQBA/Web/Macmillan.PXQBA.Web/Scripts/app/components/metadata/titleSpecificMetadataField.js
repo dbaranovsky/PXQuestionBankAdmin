@@ -81,7 +81,7 @@ var TitleSpecificMetadataField = React.createClass({displayName: 'TitleSpecificM
 
  	getInternalName: function(name) {
     var internalName = name.toLowerCase();
-    internalName = internalName.replace(/\s+/g, '');
+    internalName = internalName.replace(/\s+|'/g, '');
  		return internalName;
  	},
 
