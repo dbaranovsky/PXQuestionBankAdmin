@@ -83,7 +83,9 @@ namespace Macmillan.PXQBA.Business.Commands.Services.DLAP
 
         private IEnumerable<Question> SortBySequenceInsideBank(IEnumerable<Question> questions, string currentCourseId, SortCriterion sortCriterion)
         {
-            var nonDraftQuestions = questions.Where(q => string.IsNullOrEmpty(q.DraftFrom));
+            var nonDraftQuestions = questions.Where(q => string.IsNullOrEmpty(q.DraftFrom) &&
+                                                         q.ProductCourseSections.Any(
+                                                             p => p.ProductCourseId == currentCourseId));
             if (sortCriterion.ColumnName == MetadataFieldNames.Bank || sortCriterion.SortType == SortType.None ||
                 (sortCriterion.ColumnName == MetadataFieldNames.Sequence && sortCriterion.SortType == SortType.Asc))
             {
