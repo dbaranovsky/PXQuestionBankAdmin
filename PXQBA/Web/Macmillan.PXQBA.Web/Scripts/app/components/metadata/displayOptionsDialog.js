@@ -18,8 +18,11 @@ var DisplayOptionsDialog = React.createClass({displayName: 'DisplayOptionsDialog
                 showFilterInBanks: false,
                 showFilterInResources: false
              };
+        }else{
+           displayOptions = $.extend(true, {}, this.props.value);
         }
-        return {displayOptions: displayOptions}
+
+        return {displayOptions: displayOptions, originalDisplayOptions: displayOptions, isDirty: false};
         
     },
 
@@ -37,7 +40,8 @@ var DisplayOptionsDialog = React.createClass({displayName: 'DisplayOptionsDialog
         this.refs.modalDialog.refs.cancelButton.getDOMNode().click();
         this.props.showDisplayImageDialogHandler(window.content.img.displayOptionsHelp[imgName]);
     },
- 
+
+  
 
     render: function() {
  
